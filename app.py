@@ -1,6 +1,6 @@
-from curriculum.day3 import day3
 from flask import Flask, render_template
 from curriculum.first_nine_weeks import first_nine_weeks as first_nine_weeks_lessons
+from curriculum.day3 import day3
 
 app = Flask(__name__)
 
