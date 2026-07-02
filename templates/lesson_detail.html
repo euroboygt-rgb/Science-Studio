@@ -18,6 +18,26 @@
 <h3>Mini Lesson</h3>
 <p>{{ lesson.mini_lesson }}</p>
 
+<h3>Vocabulary</h3>
+
+<div class="row">
+    {% for vocab in lesson.vocabulary %}
+    <div class="col-md-6 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ vocab.term|title }}</h5>
+                <p><strong>Picture:</strong> {{ vocab.picture }}</p>
+                <p><strong>Definition:</strong> {{ vocab.definition }}</p>
+                <p><strong>Example:</strong> {{ vocab.example }}</p>
+                <p><strong>Science Use:</strong> {{ vocab.science_use }}</p>
+                <p><strong>Real-World Use:</strong> {{ vocab.real_world_use }}</p>
+                <p><strong>STAAR Connection:</strong> {{ vocab.staar_connection }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 <h3>Science Notebook</h3>
 <p>{{ lesson.science_notebook }}</p>
 
