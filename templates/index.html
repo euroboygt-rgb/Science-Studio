@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>SISD Science Lesson Builder</title>
-</head>
+{% block content %}
+<h1>Teacher Dashboard</h1>
+<p class="lead">What do I need to teach today?</p>
 
-<body>
-
-    <h1>Welcome Kevin!</h1>
-
-    <p>This is our first webpage.</p>
-
-    <p>Eventually this will become our Science Dashboard.</p>
-
-</body>
-
-</html>
+<div class="card mb-4">
+    <div class="card-body">
+        <h3>Today’s Focus</h3>
+        <p><strong>Unit:</strong> Investigating Physical Properties of Matter</p>
+        <p><strong>Lesson:</strong> Matter Mystery Lab</p>
+        <p><strong>TEKS:</strong> 5.6A, 5.1C, 5.1G</p>
+        <a href="/labs" class="btn btn-primary">Open Interactive Labs</a>
+    </div>
+</div>
+{% endblock %}
