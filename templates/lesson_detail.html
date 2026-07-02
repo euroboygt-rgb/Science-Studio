@@ -3,27 +3,50 @@
 {% block content %}
 <h1>Day {{ lesson.day }}: {{ lesson.title }}</h1>
 
-<div class="card">
+<p class="lead">{{ lesson.unit }}</p>
+
+<div class="card mb-3">
     <div class="card-body">
         <p><strong>TEKS:</strong> {{ lesson.teks | join(", ") }}</p>
-
-        {% if lesson.lab %}
-            <p><span class="badge bg-success">Lab Day</span></p>
-        {% else %}
-            <p><span class="badge bg-secondary">No Lab</span></p>
-        {% endif %}
-
-        <h3>Lesson Builder</h3>
-        <ul>
-            <li>Bell Ringer</li>
-            <li>Learning Target</li>
-            <li>Vocabulary</li>
-            <li>Mini Lesson</li>
-            <li>Student Activity</li>
-            <li>Exit Ticket</li>
-        </ul>
-
-        <a href="/first-nine-weeks" class="btn btn-secondary">Back to First 9 Weeks</a>
+        <p><strong>Learning Target:</strong> {{ lesson.learning_target }}</p>
     </div>
 </div>
+
+<h3>Bell Ringer</h3>
+<p>{{ lesson.bell_ringer }}</p>
+
+<h3>Mini Lesson</h3>
+<p>{{ lesson.mini_lesson }}</p>
+
+<h3>Science Notebook</h3>
+<p>{{ lesson.science_notebook }}</p>
+
+<h3>Guided Practice</h3>
+<p>{{ lesson.guided_practice }}</p>
+
+<h3>Lab</h3>
+<p>{{ lesson.lab }}</p>
+
+<h3>Lab Notebook</h3>
+<p>{{ lesson.lab_notebook }}</p>
+
+<h3>STAAR Practice</h3>
+{% for question in lesson.staar_practice %}
+<div class="card mb-2">
+    <div class="card-body">
+        <p><strong>Question:</strong> {{ question.question }}</p>
+        <ul>
+            {% for choice in question.choices %}
+                <li>{{ choice }}</li>
+            {% endfor %}
+        </ul>
+        <p><strong>Answer:</strong> {{ question.answer }}</p>
+    </div>
+</div>
+{% endfor %}
+
+<h3>Exit Ticket</h3>
+<p>{{ lesson.exit_ticket }}</p>
+
+<a href="/first-nine-weeks" class="btn btn-secondary">Back</a>
 {% endblock %}
