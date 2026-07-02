@@ -17,20 +17,34 @@
 <h2>Unit 1 Lesson Sequence</h2>
 
 <ul class="list-group">
-    <li class="list-group-item">Day 1: Classroom Rituals and Routines</li>
-    <li class="list-group-item">Day 2: Science Notebook and Lab Notebook Setup</li>
-    <li class="list-group-item">Day 3: Matter and Safety</li>
-    <li class="list-group-item">Day 4: States of Matter</li>
-    <li class="list-group-item">Day 5: Magnetism</li>
-    <li class="list-group-item">Day 6: Mass</li>
-    <li class="list-group-item">Day 7: Volume</li>
-    <li class="list-group-item">Day 8: Mass and Volume</li>
-    <li class="list-group-item">Day 9: Objects in Liquids</li>
-    <li class="list-group-item">Day 10: Liquids in Liquids</li>
-    <li class="list-group-item">Day 11: Soluble Materials</li>
-    <li class="list-group-item">Day 12: Insoluble Materials</li>
-    <li class="list-group-item">Day 13: Conductors and Insulators</li>
-    <li class="list-group-item">Day 14: Toy Design Performance Assessment</li>
-    <li class="list-group-item">Day 15: Toy Design Presentations and Reflection</li>
+
+    {% for lesson in lessons %}
+
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+
+        <div>
+
+            <strong>Day {{ lesson.day }}</strong> - {{ lesson.title }}
+
+            {% if lesson.teks %}
+            <br>
+            <small class="text-muted">
+                TEKS:
+                {{ lesson.teks | join(", ") }}
+            </small>
+            {% endif %}
+
+        </div>
+
+        {% if lesson.lab %}
+        <span class="badge bg-success">
+            Lab
+        </span>
+        {% endif %}
+
+    </li>
+
+    {% endfor %}
+
 </ul>
 {% endblock %}

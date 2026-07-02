@@ -1,0 +1,17 @@
+first_nine_weeks = [
+    {"day": 1, "title": "Classroom Rituals and Routines", "teks": [], "lab": False},
+    {"day": 2, "title": "Science Notebook and Lab Notebook Setup", "teks": [], "lab": False},
+    {"day": 3, "title": "Matter and Safety", "teks": ["5.6A", "5.1C"], "lab": True},
+    {"day": 4, "title": "States of Matter", "teks": ["5.6A"], "lab": False},
+    {"day": 5, "title": "Magnetism", "teks": ["5.6A"], "lab": True},
+    {"day": 6, "title": "Mass", "teks": ["5.6A"], "lab": False},
+    {"day": 7, "title": "Volume", "teks": ["5.6A"], "lab": False},
+    {"day": 8, "title": "Mass and Volume", "teks": ["5.6A"], "lab": True},
+    {"day": 9, "title": "Objects in Liquids", "teks": ["5.6A"], "lab": True},
+    {"day": 10, "title": "Liquids in Liquids", "teks": ["5.6A"], "lab": True},
+    {"day": 11, "title": "Soluble Materials", "teks": ["5.6A"], "lab": True},
+    {"day": 12, "title": "Insoluble Materials", "teks": ["5.6A"], "lab": True},
+    {"day": 13, "title": "Conductors and Insulators", "teks": ["5.6A"], "lab": True},
+    {"day": 14, "title": "Toy Design Performance Assessment", "teks": ["5.6A", "5.1G"], "lab": False},
+    {"day": 15, "title": "Toy Design Presentations and Reflection", "teks": ["5.6A", "5.1G"], "lab": False},
+]

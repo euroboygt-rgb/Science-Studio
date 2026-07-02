@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Day {{ lesson.day }}: {{ lesson.title }}</h1>
+
+<div class="card">
+    <div class="card-body">
+        <p><strong>TEKS:</strong> {{ lesson.teks | join(", ") }}</p>
+
+        {% if lesson.lab %}
+            <p><span class="badge bg-success">Lab Day</span></p>
+        {% else %}
+            <p><span class="badge bg-secondary">No Lab</span></p>
+        {% endif %}
+
+        <h3>Lesson Builder</h3>
+        <ul>
+            <li>Bell Ringer</li>
+            <li>Learning Target</li>
+            <li>Vocabulary</li>
+            <li>Mini Lesson</li>
+            <li>Student Activity</li>
+            <li>Exit Ticket</li>
+        </ul>
+
+        <a href="/first-nine-weeks" class="btn btn-secondary">Back to First 9 Weeks</a>
+    </div>
+</div>
+{% endblock %}
