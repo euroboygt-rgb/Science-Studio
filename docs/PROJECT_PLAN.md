@@ -5,7 +5,10 @@
 Create a 5th Grade Texas Science teaching platform for Socorro ISD.
 
 ## Goals
-
+- Interactive online lab creator
+- Digital student lab pages
+- Lab materials generator
+- CER lab response builder
 - TEKS-aligned daily lessons
 - First 9 weeks curriculum
 - Labs
@@ -25,6 +28,8 @@ Create a 5th Grade Texas Science teaching platform for Socorro ISD.
 
 1. Build dashboard
 2. Add navigation
-3. Add First 9 Weeks page
-4. Add Unit 1 lesson list
-5. Add daily lesson pages
+3. Add Lab Creator page
+4. Create first online lab: Matter Mystery Lab
+5. Add student data table
+6. Add CER response section
+7. Save labs in Python data first
