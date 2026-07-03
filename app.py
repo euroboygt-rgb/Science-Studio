@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from curriculum.first_nine_weeks import first_nine_weeks as first_nine_weeks_lessons
+from curriculum.day1 import day1
 from curriculum.day3 import day3
 from curriculum.day4 import day4
 
@@ -7,6 +8,7 @@ app = Flask(__name__)
 
 
 lesson_details = {
+    1: day1,
     3: day3,
     4: day4,
 }
