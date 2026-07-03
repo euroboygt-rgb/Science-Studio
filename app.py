@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from curriculum.first_nine_weeks import first_nine_weeks as first_nine_weeks_lessons
 from curriculum.day3 import day3
 from curriculum.day4 import day4
@@ -32,8 +32,17 @@ def first_nine_weeks_page():
 
 @app.route("/first-nine-weeks/day/<int:day>")
 def lesson_detail(day):
+    view_mode = request.args.get("view", "teacher")
+
+    if view_mode not in ["teacher", "student"]:
+        view_mode = "teacher"
+
     if day in lesson_details:
-        return render_template("lesson_detail.html", lesson=lesson_details[day])
+        return render_template(
+            "lesson_detail.html",
+            lesson=lesson_details[day],
+            view_mode=view_mode
+        )
 
     selected_lesson = None
 
@@ -41,7 +50,11 @@ def lesson_detail(day):
         if lesson["day"] == day:
             selected_lesson = lesson
 
-    return render_template("lesson_detail.html", lesson=selected_lesson)
+    return render_template(
+        "lesson_detail.html",
+        lesson=selected_lesson,
+        view_mode=view_mode
+    )
 
 
 if __name__ == "__main__":
