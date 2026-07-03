@@ -109,7 +109,7 @@
             </div>
         </div>
 
-                {% if lesson.get("interactive_activity") %}
+        {% if lesson.get("interactive_activity") %}
         <div class="card mb-3">
             <div class="card-header bg-primary text-white">
                 Interactive Activity
@@ -162,7 +162,6 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-
                 {% if lesson.get("property_sort_cards") %}
                 <div class="row">
                     {% for card in lesson.get("property_sort_cards") %}
@@ -199,13 +198,7 @@
                             </details>
 
                             {% endif %}
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-                {% if lesson.get("state_sort_cards") %}
+                                            {% if lesson.get("state_sort_cards") %}
                 <div class="row">
                     {% for card in lesson.get("state_sort_cards") %}
                     <div class="col-md-6 mb-3">
@@ -245,7 +238,11 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
             </div>
         </div>
         {% endif %}

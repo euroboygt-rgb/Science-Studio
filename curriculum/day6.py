@@ -15,6 +15,67 @@ day6 = {
 
     "guided_practice": "Show students examples such as pencil, rock, water, juice, air in a balloon, steam, and a plastic cup. Students identify the state of matter and explain the evidence that supports their answer.",
 
+    "interactive_activity_title": "Solid, Liquid, Gas Sort",
+
+    "interactive_activity": "Students sort examples into solid, liquid, and gas. For each example, students explain the evidence that helped them decide.",
+
+    "state_sort_cards": [
+        {
+            "example": "Pencil",
+            "student_task": "Decide whether this example is a solid, liquid, or gas.",
+            "category": "Solid",
+            "evidence": "A pencil keeps its own shape and takes up space."
+        },
+        {
+            "example": "Water in a cup",
+            "student_task": "Decide whether this example is a solid, liquid, or gas.",
+            "category": "Liquid",
+            "evidence": "Water takes the shape of the cup and has a definite volume."
+        },
+        {
+            "example": "Air inside a balloon",
+            "student_task": "Decide whether this example is a solid, liquid, or gas.",
+            "category": "Gas",
+            "evidence": "Air spreads out to fill the balloon and takes up space."
+        },
+        {
+            "example": "Rock",
+            "student_task": "Decide whether this example is a solid, liquid, or gas.",
+            "category": "Solid",
+            "evidence": "A rock keeps its own shape and takes up space."
+        },
+        {
+            "example": "Juice in a bottle",
+            "student_task": "Decide whether this example is a solid, liquid, or gas.",
+            "category": "Liquid",
+            "evidence": "Juice takes the shape of its container."
+        },
+        {
+            "example": "Steam from hot water",
+            "student_task": "Decide whether this example is a solid, liquid, or gas.",
+            "category": "Gas",
+            "evidence": "Steam spreads out into the air and does not keep its own shape."
+        },
+        {
+            "example": "Ice cube",
+            "student_task": "Decide whether this example is a solid, liquid, or gas.",
+            "category": "Solid",
+            "evidence": "An ice cube keeps its shape unless it melts."
+        },
+        {
+            "example": "Milk in a carton",
+            "student_task": "Decide whether this example is a solid, liquid, or gas.",
+            "category": "Liquid",
+            "evidence": "Milk can be poured and takes the shape of its container."
+        },
+        {
+            "example": "Air in a tire",
+            "student_task": "Decide whether this example is a solid, liquid, or gas.",
+            "category": "Gas",
+            "evidence": "Air fills the space inside the tire."
+        }
+    ],
+
     "lab": "States of Matter Sort: students sort example cards into solid, liquid, and gas categories. Students must explain which physical properties helped them decide.",
 
     "lab_notebook": "Students record examples of solids, liquids, and gases and explain the evidence for each state of matter.",
