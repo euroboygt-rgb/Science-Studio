@@ -17,7 +17,16 @@ day1 = {
 
     "lab": False,
 
-    "lab_notebook": "No lab notebook entry today. Students are learning the systems that will make future labs safe and organized.",
+    "lab_notebook": "Today students do not complete a lab investigation. Instead, they complete a routine practice chart that will help them understand how science class will run during future labs and activities.",
+
+    "lab_notebook_table": {
+        "columns": [
+            "Classroom Routine",
+            "What should it look like?",
+            "Why does it help science class?"
+        ],
+        "rows": 6
+    },
 
     "staar_practice": [
         {
