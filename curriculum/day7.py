@@ -15,6 +15,67 @@ day7 = {
 
     "guided_practice": "Show students several objects such as a paper clip, pencil, coin, eraser, aluminum foil, plastic spoon, key, and rubber band. Students predict whether each object will be attracted to a magnet, then discuss what evidence would be needed to prove the answer.",
 
+    "interactive_activity_title": "Magnetic or Nonmagnetic Sort",
+
+    "interactive_activity": "Students sort objects into magnetic and nonmagnetic groups. For each object, students make a prediction and explain what evidence would prove whether the object is magnetic.",
+
+    "magnetism_sort_cards": [
+        {
+            "object": "Paper clip",
+            "student_task": "Predict whether this object is magnetic or nonmagnetic.",
+            "category": "Magnetic",
+            "evidence": "A paper clip is usually made of steel, which is attracted to a magnet."
+        },
+        {
+            "object": "Plastic spoon",
+            "student_task": "Predict whether this object is magnetic or nonmagnetic.",
+            "category": "Nonmagnetic",
+            "evidence": "Plastic is not attracted to a magnet."
+        },
+        {
+            "object": "Iron nail",
+            "student_task": "Predict whether this object is magnetic or nonmagnetic.",
+            "category": "Magnetic",
+            "evidence": "Iron is attracted to a magnet."
+        },
+        {
+            "object": "Rubber band",
+            "student_task": "Predict whether this object is magnetic or nonmagnetic.",
+            "category": "Nonmagnetic",
+            "evidence": "Rubber is not attracted to a magnet."
+        },
+        {
+            "object": "Wooden pencil",
+            "student_task": "Predict whether this object is magnetic or nonmagnetic.",
+            "category": "Nonmagnetic",
+            "evidence": "Wood is not attracted to a magnet."
+        },
+        {
+            "object": "Steel screw",
+            "student_task": "Predict whether this object is magnetic or nonmagnetic.",
+            "category": "Magnetic",
+            "evidence": "Steel usually contains iron and is often attracted to a magnet."
+        },
+        {
+            "object": "Aluminum foil",
+            "student_task": "Predict whether this object is magnetic or nonmagnetic.",
+            "category": "Nonmagnetic",
+            "evidence": "Aluminum is a metal, but it is not usually attracted to a magnet."
+        },
+        {
+            "object": "Copper penny",
+            "student_task": "Predict whether this object is magnetic or nonmagnetic.",
+            "category": "Nonmagnetic",
+            "evidence": "Copper is a metal, but it is not attracted to a magnet."
+        },
+        {
+            "object": "Metal key",
+            "student_task": "Predict whether this object is magnetic or nonmagnetic.",
+            "category": "Test Needed",
+            "evidence": "Some keys may be attracted to a magnet and others may not. Students should test it instead of guessing."
+        }
+    ],
+
     "lab": "Stuck on You Magnetism Lab: students test classroom objects with a magnet. For each object, students make a prediction, test the object, record whether it was attracted to the magnet, and use evidence to decide if the object is magnetic or nonmagnetic.",
 
     "lab_notebook": "Students record predictions, test results, and evidence from the magnetism investigation.",
