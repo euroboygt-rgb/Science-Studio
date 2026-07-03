@@ -129,6 +129,7 @@
                             <p><strong>Student Task:</strong> {{ scenario.student_task }}</p>
 
                             {% if view_mode == "student" %}
+
                             <label class="form-label"><strong>Safe or Unsafe?</strong></label>
                             <select class="form-select mb-2">
                                 <option selected>Choose...</option>
@@ -141,15 +142,21 @@
 
                             <label class="form-label"><strong>Which safety rule applies?</strong></label>
                             <textarea class="form-control" rows="2" placeholder="Explain the rule..."></textarea>
+
                             {% else %}
+
                             <details>
-                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <summary class="btn btn-sm btn-outline-primary">
+                                    Reveal Teacher Guidance
+                                </summary>
+
                                 <div class="mt-3">
                                     <p><strong>Category:</strong> {{ scenario.category }}</p>
                                     <p><strong>Safe Action:</strong> {{ scenario.safe_action }}</p>
                                     <p><strong>Explanation:</strong> {{ scenario.explanation }}</p>
                                 </div>
                             </details>
+
                             {% endif %}
                         </div>
                     </div>
@@ -167,6 +174,7 @@
                             <p><strong>Student Task:</strong> {{ card.student_task }}</p>
 
                             {% if view_mode == "student" %}
+
                             <label class="form-label"><strong>Sort this property:</strong></label>
                             <select class="form-select mb-2">
                                 <option selected>Choose...</option>
@@ -177,14 +185,20 @@
 
                             <label class="form-label"><strong>Explain your thinking:</strong></label>
                             <textarea class="form-control" rows="2" placeholder="Why did you choose that category?"></textarea>
+
                             {% else %}
+
                             <details>
-                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <summary class="btn btn-sm btn-outline-primary">
+                                    Reveal Teacher Guidance
+                                </summary>
+
                                 <div class="mt-3">
                                     <p><strong>Category:</strong> {{ card.category }}</p>
                                     <p><strong>Explanation:</strong> {{ card.explanation }}</p>
                                 </div>
                             </details>
+
                             {% endif %}
                         </div>
                     </div>
@@ -201,6 +215,7 @@
                             <p><strong>Student Task:</strong> {{ card.student_task }}</p>
 
                             {% if view_mode == "student" %}
+
                             <label class="form-label"><strong>Sort this example:</strong></label>
                             <select class="form-select mb-2">
                                 <option selected>Choose...</option>
@@ -211,14 +226,20 @@
 
                             <label class="form-label"><strong>What is your evidence?</strong></label>
                             <textarea class="form-control" rows="2" placeholder="Explain how you know..."></textarea>
+
                             {% else %}
+
                             <details>
-                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <summary class="btn btn-sm btn-outline-primary">
+                                    Reveal Teacher Guidance
+                                </summary>
+
                                 <div class="mt-3">
                                     <p><strong>Category:</strong> {{ card.category }}</p>
                                     <p><strong>Evidence:</strong> {{ card.evidence }}</p>
                                 </div>
                             </details>
+
                             {% endif %}
                         </div>
                     </div>
@@ -235,6 +256,7 @@
                             <p><strong>Student Task:</strong> {{ card.student_task }}</p>
 
                             {% if view_mode == "student" %}
+
                             <label class="form-label"><strong>Prediction:</strong></label>
                             <select class="form-select mb-2">
                                 <option selected>Choose...</option>
@@ -245,14 +267,20 @@
 
                             <label class="form-label"><strong>What evidence would prove it?</strong></label>
                             <textarea class="form-control" rows="2" placeholder="Explain what you would observe during the magnet test..."></textarea>
+
                             {% else %}
+
                             <details>
-                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <summary class="btn btn-sm btn-outline-primary">
+                                    Reveal Teacher Guidance
+                                </summary>
+
                                 <div class="mt-3">
                                     <p><strong>Category:</strong> {{ card.category }}</p>
                                     <p><strong>Evidence:</strong> {{ card.evidence }}</p>
                                 </div>
                             </details>
+
                             {% endif %}
                         </div>
                     </div>
@@ -270,6 +298,7 @@
                             <p><strong>Student Task:</strong> {{ card.student_task }}</p>
 
                             {% if view_mode == "student" %}
+
                             <label class="form-label"><strong>Physical Property:</strong></label>
                             <select class="form-select mb-2">
                                 <option selected>Choose...</option>
@@ -299,9 +328,14 @@
 
                             <label class="form-label"><strong>Explain your thinking:</strong></label>
                             <textarea class="form-control" rows="2" placeholder="Explain why you chose that tool and unit..."></textarea>
+
                             {% else %}
+
                             <details>
-                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <summary class="btn btn-sm btn-outline-primary">
+                                    Reveal Teacher Guidance
+                                </summary>
+
                                 <div class="mt-3">
                                     <p><strong>Physical Property:</strong> {{ card.property }}</p>
                                     <p><strong>Tool:</strong> {{ card.tool }}</p>
@@ -309,62 +343,7 @@
                                     <p><strong>Explanation:</strong> {{ card.explanation }}</p>
                                 </div>
                             </details>
-                            {% endif %}
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
 
-                {% if lesson.get("volume_measurement_cards") %}
-                <div class="row">
-                    {% for card in lesson.get("volume_measurement_cards") %}
-                    <div class="col-md-6 mb-3">
-                        <div class="border rounded p-3 h-100 bg-light">
-                            <h5>Volume Task {{ loop.index }}</h5>
-                            <p><strong>Task:</strong> {{ card.task }}</p>
-                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
-
-                            {% if view_mode == "student" %}
-                            <label class="form-label"><strong>Physical Property:</strong></label>
-                            <select class="form-select mb-2">
-                                <option selected>Choose...</option>
-                                <option>Volume</option>
-                                <option>Mass</option>
-                                <option>Temperature</option>
-                                <option>Length</option>
-                            </select>
-
-                            <label class="form-label"><strong>Tool:</strong></label>
-                            <select class="form-select mb-2">
-                                <option selected>Choose...</option>
-                                <option>Graduated cylinder</option>
-                                <option>Balance</option>
-                                <option>Thermometer</option>
-                                <option>Metric ruler</option>
-                            </select>
-
-                            <label class="form-label"><strong>Unit:</strong></label>
-                            <select class="form-select mb-2">
-                                <option selected>Choose...</option>
-                                <option>Milliliters</option>
-                                <option>Grams</option>
-                                <option>Degrees Celsius</option>
-                                <option>Centimeters</option>
-                            </select>
-
-                            <label class="form-label"><strong>Explain your thinking:</strong></label>
-                            <textarea class="form-control" rows="2" placeholder="Explain why you chose that property, tool, and unit..."></textarea>
-                            {% else %}
-                            <details>
-                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
-                                <div class="mt-3">
-                                    <p><strong>Physical Property:</strong> {{ card.property }}</p>
-                                    <p><strong>Tool:</strong> {{ card.tool }}</p>
-                                    <p><strong>Unit:</strong> {{ card.unit }}</p>
-                                    <p><strong>Explanation:</strong> {{ card.explanation }}</p>
-                                </div>
-                            </details>
                             {% endif %}
                         </div>
                     </div>
@@ -432,7 +411,9 @@
             </div>
 
             <div class="card-body">
+
                 {% if lesson.get("staar_practice") %}
+
                     {% for question in lesson.get("staar_practice") %}
                     {% set question_number = loop.index %}
 
@@ -440,6 +421,7 @@
                         <p><strong>Question {{ question_number }}:</strong> {{ question.question }}</p>
 
                         {% if view_mode == "student" %}
+
                         {% for choice in question.choices %}
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="question{{ question_number }}">
@@ -448,7 +430,9 @@
                             </label>
                         </div>
                         {% endfor %}
+
                         {% else %}
+
                         <ol type="A">
                             {% for choice in question.choices %}
                             <li>{{ choice }}</li>
@@ -456,17 +440,25 @@
                         </ol>
 
                         <details>
-                            <summary class="btn btn-sm btn-outline-success">Reveal Teacher Answer</summary>
+                            <summary class="btn btn-sm btn-outline-success">
+                                Reveal Teacher Answer
+                            </summary>
+
                             <p class="text-success mt-3">
                                 <strong>Teacher Answer:</strong> {{ question.answer }}
                             </p>
                         </details>
+
                         {% endif %}
                     </div>
                     {% endfor %}
+
                 {% else %}
+
                     <p>STAAR practice questions will be added soon.</p>
+
                 {% endif %}
+
             </div>
         </div>
 
@@ -528,7 +520,9 @@
             </div>
 
             <div class="card-body">
+
                 {% if lesson.get("vocabulary") %}
+
                     {% for vocab in lesson.get("vocabulary") %}
                     <div class="border rounded p-2 mb-3">
                         <h5>{{ vocab.term|title }}</h5>
@@ -541,9 +535,13 @@
                         <p><strong>STAAR Connection:</strong> {{ vocab.staar_connection }}</p>
                     </div>
                     {% endfor %}
+
                 {% else %}
+
                     <p>Vocabulary will be added soon.</p>
+
                 {% endif %}
+
             </div>
         </div>
 

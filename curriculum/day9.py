@@ -15,6 +15,77 @@ day9 = {
 
     "guided_practice": "Show students containers with different amounts of water. Students practice reading or estimating liquid volume and identifying the correct tool and unit. Discuss why a graduated cylinder is better than a beaker when an accurate volume measurement is needed.",
 
+    "interactive_activity_title": "Volume Tool and Unit Challenge",
+
+    "interactive_activity": "Students decide which physical property is being measured, which tool should be used, and which unit belongs with the measurement.",
+
+    "volume_measurement_cards": [
+        {
+            "task": "A student wants to measure how much space 75 mL of water takes up.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Volume",
+            "tool": "Graduated cylinder",
+            "unit": "Milliliters",
+            "explanation": "Liquid volume is the amount of space a liquid takes up. A graduated cylinder measures liquid volume in milliliters."
+        },
+        {
+            "task": "A student wants to measure how much water is in a small cup.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Volume",
+            "tool": "Graduated cylinder",
+            "unit": "Milliliters",
+            "explanation": "The amount of liquid in the cup is liquid volume. The best science tool is a graduated cylinder."
+        },
+        {
+            "task": "A student wants to measure how much matter is in a rock.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Mass",
+            "tool": "Balance",
+            "unit": "Grams",
+            "explanation": "Mass is the amount of matter in an object. A balance measures mass in grams."
+        },
+        {
+            "task": "A student wants to measure the temperature of water.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Temperature",
+            "tool": "Thermometer",
+            "unit": "Degrees Celsius",
+            "explanation": "Temperature is measured with a thermometer. In science, the unit is usually degrees Celsius."
+        },
+        {
+            "task": "A student wants to measure the length of a pencil.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Length",
+            "tool": "Metric ruler",
+            "unit": "Centimeters",
+            "explanation": "Length is measured with a ruler. Centimeters are a metric unit for length."
+        },
+        {
+            "task": "A student pours liquid into a beaker but needs an accurate measurement.",
+            "student_task": "Choose the better tool and unit.",
+            "property": "Volume",
+            "tool": "Graduated cylinder",
+            "unit": "Milliliters",
+            "explanation": "A beaker can hold liquid, but a graduated cylinder is better for accurately measuring liquid volume."
+        },
+        {
+            "task": "A student reads a liquid level at the 50 mL mark.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Volume",
+            "tool": "Graduated cylinder",
+            "unit": "Milliliters",
+            "explanation": "The student measured liquid volume. The unit mL means milliliters."
+        },
+        {
+            "task": "A student wants to compare two containers to see which one holds more liquid.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Volume",
+            "tool": "Graduated cylinder",
+            "unit": "Milliliters",
+            "explanation": "To compare how much liquid each container holds, the student should measure volume in milliliters."
+        }
+    ],
+
     "lab": False,
 
     "lab_notebook": "Students practice identifying examples of volume and matching each measurement situation with the correct tool and unit.",
