@@ -1,8 +1,15 @@
 from flask import Flask, render_template
 from curriculum.first_nine_weeks import first_nine_weeks as first_nine_weeks_lessons
 from curriculum.day3 import day3
+from curriculum.day4 import day4
 
 app = Flask(__name__)
+
+
+lesson_details = {
+    3: day3,
+    4: day4,
+}
 
 
 @app.route("/")
@@ -25,8 +32,8 @@ def first_nine_weeks_page():
 
 @app.route("/first-nine-weeks/day/<int:day>")
 def lesson_detail(day):
-    if day == 3:
-        return render_template("lesson_detail.html", lesson=day3)
+    if day in lesson_details:
+        return render_template("lesson_detail.html", lesson=lesson_details[day])
 
     selected_lesson = None
 
