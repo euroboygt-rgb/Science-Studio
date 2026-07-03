@@ -15,6 +15,77 @@ day8 = {
 
     "guided_practice": "Show students objects such as a cotton ball, rock, pencil, eraser, paper clip, marker, and small book. Students predict which objects have more or less mass, then discuss why measuring with a balance gives better evidence than guessing.",
 
+    "interactive_activity_title": "Mass Measurement Challenge",
+
+    "interactive_activity": "Students decide which physical property is being measured, which tool should be used, and which unit belongs with the measurement.",
+
+    "mass_measurement_cards": [
+        {
+            "task": "A student wants to measure how much matter is in a rock.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Mass",
+            "tool": "Balance",
+            "unit": "Grams",
+            "explanation": "Mass is the amount of matter in an object. A balance measures mass, usually in grams."
+        },
+        {
+            "task": "A student wants to measure how much matter is in an eraser.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Mass",
+            "tool": "Balance",
+            "unit": "Grams",
+            "explanation": "The amount of matter in the eraser is its mass. The correct tool is a balance."
+        },
+        {
+            "task": "A student wants to measure how long a pencil is.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Length",
+            "tool": "Metric ruler",
+            "unit": "Centimeters",
+            "explanation": "Length is measured with a ruler. Centimeters are a metric unit for length."
+        },
+        {
+            "task": "A student wants to measure the temperature of water.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Temperature",
+            "tool": "Thermometer",
+            "unit": "Degrees Celsius",
+            "explanation": "Temperature is measured with a thermometer. In science class, the unit is usually degrees Celsius."
+        },
+        {
+            "task": "A student wants to measure how much liquid is in a graduated cylinder.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Volume",
+            "tool": "Graduated cylinder",
+            "unit": "Milliliters",
+            "explanation": "Liquid volume is measured with a graduated cylinder. The unit is usually milliliters."
+        },
+        {
+            "task": "A student wants to compare the mass of a cotton ball and a rock.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Mass",
+            "tool": "Balance",
+            "unit": "Grams",
+            "explanation": "A balance gives evidence about which object has more mass."
+        },
+        {
+            "task": "A student says a large sponge must have more mass than a small rock.",
+            "student_task": "Choose the best way to test the claim.",
+            "property": "Mass",
+            "tool": "Balance",
+            "unit": "Grams",
+            "explanation": "Size does not always tell mass. Students need to measure with a balance."
+        },
+        {
+            "task": "A student wants to measure the mass of a paper clip.",
+            "student_task": "Choose the physical property, tool, and unit.",
+            "property": "Mass",
+            "tool": "Balance",
+            "unit": "Grams",
+            "explanation": "Even small objects have mass. A balance can measure the paper clip in grams."
+        }
+    ],
+
     "lab": False,
 
     "lab_notebook": "Students practice estimating and recording the mass of classroom objects. They identify the tool used and the correct unit of measurement.",
