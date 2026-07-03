@@ -191,31 +191,25 @@
             <div class="card-body">
                 <p>{{ lesson.get("lab_notebook", "Lab notebook entry will be added soon.") }}</p>
 
-                {% if view_mode == "student" %}
+                {% if view_mode == "student" and lesson.get("lab_notebook_table") %}
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Scenario</th>
-                            <th>Safe or Unsafe?</th>
-                            <th>What Should Happen Next?</th>
+                            {% for column in lesson.get("lab_notebook_table").columns %}
+                            <th>{{ column }}</th>
+                            {% endfor %}
                         </tr>
                     </thead>
                     <tbody>
+                        {% for row in range(lesson.get("lab_notebook_table").rows) %}
                         <tr>
-                            <td><input class="form-control" placeholder="Scenario number"></td>
-                            <td><input class="form-control" placeholder="Safe or unsafe"></td>
-                            <td><input class="form-control" placeholder="Next step"></td>
+                            {% for column in lesson.get("lab_notebook_table").columns %}
+                            <td>
+                                <input class="form-control" placeholder="{{ column }}">
+                            </td>
+                            {% endfor %}
                         </tr>
-                        <tr>
-                            <td><input class="form-control" placeholder="Scenario number"></td>
-                            <td><input class="form-control" placeholder="Safe or unsafe"></td>
-                            <td><input class="form-control" placeholder="Next step"></td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-control" placeholder="Scenario number"></td>
-                            <td><input class="form-control" placeholder="Safe or unsafe"></td>
-                            <td><input class="form-control" placeholder="Next step"></td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
                 {% endif %}

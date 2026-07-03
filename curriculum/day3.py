@@ -9,7 +9,7 @@ day3 = {
 
     "learning_target": "I can identify common science tools and explain how each tool helps scientists collect accurate data.",
 
-    "mini_lesson": "Introduce common 5th grade science tools: balance, graduated cylinder, beaker, thermometer, spring scale, hand lens, metric ruler, beaker, and safety goggles. Explain what each tool measures and when scientists use it.",
+    "mini_lesson": "Introduce common 5th grade science tools: balance, graduated cylinder, beaker, thermometer, spring scale, hand lens, metric ruler, and safety goggles. Explain what each tool measures and when scientists use it.",
 
     "science_notebook": "Create a science tools chart with four columns: Tool, What It Measures, Unit, and Picture.",
 
@@ -17,7 +17,16 @@ day3 = {
 
     "lab": "Science Tool Stations: students rotate through stations using balances, graduated cylinders, thermometers, spring scales, hand lenses, rulers, and beakers.",
 
-    "lab_notebook": "Students record the tool used, measurement, unit, and one observation from each station.",
+    "lab_notebook": "Students record the tool used, what the tool is used for, and the correct unit of measurement.",
+
+    "lab_notebook_table": {
+        "columns": [
+            "Tool",
+            "What is it used for?",
+            "Unit of measurement"
+        ],
+        "rows": 8
+    },
 
     "staar_practice": [
         {
@@ -35,79 +44,79 @@ day3 = {
     "exit_ticket": "Choose one science tool. Explain what it measures and why a scientist would use it.",
 
     "vocabulary": [
-    {
-        "term": "balance",
-        "picture": "Picture of a balance",
-        "definition": "A tool used to measure the mass of an object.",
-        "example": "A scientist uses a balance to measure the mass of a rock.",
-        "science_use": "Used in science to measure mass in grams.",
-        "real_world_use": "A baker or jeweler may use a balance to measure materials.",
-        "staar_connection": "On STAAR, students may need to identify that a balance is the correct tool for measuring mass."
-    },
-    {
-        "term": "graduated cylinder",
-        "picture": "Picture of a graduated cylinder",
-        "definition": "A tool used to measure the volume of liquids.",
-        "example": "A student uses a graduated cylinder to measure 150 mL of water.",
-        "science_use": "Used in science to measure liquid volume accurately in milliliters.",
-        "real_world_use": "Used in medicine, chemistry, and cooking when exact liquid amounts are needed.",
-        "staar_connection": "On STAAR, students may need to choose a graduated cylinder as the best tool for measuring liquid volume."
-    },
-    {
-        "term": "beaker",
-        "picture": "Picture of a beaker",
-        "definition": "A container used to hold, mix, or pour liquids.",
-        "example": "A student pours water from a beaker into a graduated cylinder.",
-        "science_use": "Used in science to hold or mix liquids, but not for exact measurements.",
-        "real_world_use": "Used in laboratories to hold and pour liquids during experiments.",
-        "staar_connection": "On STAAR, students may need to know that a beaker holds liquids, but a graduated cylinder measures volume more accurately."
-    },
-    {
-        "term": "thermometer",
-        "picture": "Picture of a thermometer",
-        "definition": "A tool used to measure temperature.",
-        "example": "A scientist uses a thermometer to measure the temperature of water.",
-        "science_use": "Used in science to measure temperature in degrees Celsius.",
-        "real_world_use": "People use thermometers to check body temperature or weather temperature.",
-        "staar_connection": "On STAAR, students may need to identify a thermometer as the best tool for measuring temperature."
-    },
-    {
-        "term": "hand lens",
-        "picture": "Picture of a hand lens",
-        "definition": "A tool used to make small objects appear larger.",
-        "example": "A student uses a hand lens to look closely at a leaf.",
-        "science_use": "Used in science to observe details that are difficult to see with the naked eye.",
-        "real_world_use": "A jeweler or detective may use a magnifying lens to examine details.",
-        "staar_connection": "On STAAR, students may need to identify a hand lens as the best tool for making close observations."
-    },
-    {
-        "term": "metric ruler",
-        "picture": "Picture of a metric ruler",
-        "definition": "A tool used to measure length or distance.",
-        "example": "A student uses a metric ruler to measure the length of a pencil.",
-        "science_use": "Used in science to measure length in centimeters or millimeters.",
-        "real_world_use": "People use rulers in school, construction, and design.",
-        "staar_connection": "On STAAR, students may need to identify a metric ruler as the correct tool for measuring length."
-    },
-    {
-        "term": "spring scale",
-        "picture": "Picture of a spring scale",
-        "definition": "A tool used to measure force or weight.",
-        "example": "A student uses a spring scale to measure the force needed to pull an object.",
-        "science_use": "Used in science to measure force in newtons.",
-        "real_world_use": "Used when weighing hanging objects like fish or luggage.",
-        "staar_connection": "On STAAR, students may need to identify a spring scale as the tool for measuring force or weight."
-    },
-    {
-        "term": "safety goggles",
-        "picture": "Picture of safety goggles",
-        "definition": "Protective eyewear used to keep eyes safe during experiments.",
-        "example": "Students wear safety goggles when using liquids or glass containers.",
-        "science_use": "Used in science to protect eyes during lab investigations.",
-        "real_world_use": "Workers in construction, chemistry, and medicine use protective eyewear.",
-        "staar_connection": "On STAAR, students may answer questions about safe lab practices and proper safety equipment."
-    }
-],
+        {
+            "term": "balance",
+            "picture": "Picture of a balance",
+            "definition": "A tool used to measure the mass of an object.",
+            "example": "A student uses a balance to measure the mass of a rock.",
+            "science_use": "Used in science to measure mass in grams.",
+            "real_world_use": "Used by scientists, bakers, jewelers, and pharmacists to measure materials.",
+            "staar_connection": "On STAAR, students may need to identify that a balance is the correct tool for measuring mass."
+        },
+        {
+            "term": "graduated cylinder",
+            "picture": "Picture of a graduated cylinder",
+            "definition": "A tool used to measure the volume of liquids.",
+            "example": "A student uses a graduated cylinder to measure 150 mL of water.",
+            "science_use": "Used in science to measure liquid volume accurately in milliliters.",
+            "real_world_use": "Used in laboratories, medicine, and chemistry when exact liquid amounts are needed.",
+            "staar_connection": "On STAAR, students may need to choose a graduated cylinder as the best tool for measuring liquid volume."
+        },
+        {
+            "term": "beaker",
+            "picture": "Picture of a beaker",
+            "definition": "A container used to hold, mix, or pour liquids.",
+            "example": "A student pours water from a beaker into a graduated cylinder.",
+            "science_use": "Used in science to hold or mix liquids, but not for exact measurements.",
+            "real_world_use": "Used in laboratories to hold and pour liquids during experiments.",
+            "staar_connection": "On STAAR, students may need to know that a beaker holds liquids, but a graduated cylinder measures volume more accurately."
+        },
+        {
+            "term": "thermometer",
+            "picture": "Picture of a thermometer",
+            "definition": "A tool used to measure temperature.",
+            "example": "A student uses a thermometer to measure the temperature of water.",
+            "science_use": "Used in science to measure temperature in degrees Celsius.",
+            "real_world_use": "People use thermometers to check body temperature, weather temperature, or food temperature.",
+            "staar_connection": "On STAAR, students may need to identify a thermometer as the best tool for measuring temperature."
+        },
+        {
+            "term": "spring scale",
+            "picture": "Picture of a spring scale",
+            "definition": "A tool used to measure force or weight.",
+            "example": "A student uses a spring scale to measure how much force is needed to pull an object.",
+            "science_use": "Used in science to measure force in newtons.",
+            "real_world_use": "Used to weigh hanging objects such as luggage or fish.",
+            "staar_connection": "On STAAR, students may need to identify a spring scale as the tool for measuring force."
+        },
+        {
+            "term": "hand lens",
+            "picture": "Picture of a hand lens",
+            "definition": "A tool used to make small objects appear larger.",
+            "example": "A student uses a hand lens to look closely at a leaf.",
+            "science_use": "Used in science to observe details that are difficult to see with only your eyes.",
+            "real_world_use": "Jewelers, detectives, and scientists use lenses to examine small details.",
+            "staar_connection": "On STAAR, students may need to identify a hand lens as the best tool for making close observations."
+        },
+        {
+            "term": "metric ruler",
+            "picture": "Picture of a metric ruler",
+            "definition": "A tool used to measure length or distance.",
+            "example": "A student uses a metric ruler to measure the length of a pencil.",
+            "science_use": "Used in science to measure length in centimeters or millimeters.",
+            "real_world_use": "People use rulers in school, construction, art, and design.",
+            "staar_connection": "On STAAR, students may need to identify a metric ruler as the correct tool for measuring length."
+        },
+        {
+            "term": "safety goggles",
+            "picture": "Picture of safety goggles",
+            "definition": "Protective eyewear used to keep eyes safe during experiments.",
+            "example": "Students wear safety goggles when using liquids or glass containers.",
+            "science_use": "Used in science to protect eyes during lab investigations.",
+            "real_world_use": "Workers in construction, medicine, chemistry, and manufacturing use protective eyewear.",
+            "staar_connection": "On STAAR, students may answer questions about safe lab practices and proper safety equipment."
+        }
+    ],
 
     "materials": [
         "Balances",
@@ -122,5 +131,5 @@ day3 = {
         "Water"
     ],
 
-    "teacher_notes": "Students work in groups during a 60-minute science block. Students often confuse beakers and graduated cylinders. Emphasize that graduated cylinders measure volume more accurately."
+    "teacher_notes": "Students work in groups during a 60-minute science block. Focus on matching each tool to what it measures and the correct unit. Students often confuse beakers and graduated cylinders. Emphasize that graduated cylinders measure volume more accurately."
 }
