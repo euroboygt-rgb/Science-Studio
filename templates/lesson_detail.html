@@ -66,6 +66,45 @@
             </div>
         </div>
 
+        {% if lesson.get("interactive_activity") %}
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white">
+                Interactive Activity
+            </div>
+            <div class="card-body">
+                <h4>{{ lesson.get("interactive_activity_title", "Interactive Activity") }}</h4>
+                <p>{{ lesson.get("interactive_activity") }}</p>
+
+                {% if lesson.get("safety_scenarios") %}
+                <div class="row">
+                    {% for scenario in lesson.get("safety_scenarios") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>Scenario {{ loop.index }}</h5>
+                            <p><strong>Situation:</strong> {{ scenario.scenario }}</p>
+                            <p><strong>Student Task:</strong> {{ scenario.student_task }}</p>
+
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">
+                                    Reveal Teacher Guidance
+                                </summary>
+
+                                <div class="mt-3">
+                                    <p><strong>Category:</strong> {{ scenario.category }}</p>
+                                    <p><strong>Safe Action:</strong> {{ scenario.safe_action }}</p>
+                                    <p><strong>Explanation:</strong> {{ scenario.explanation }}</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+        {% endif %}
+
         <div class="card mb-3">
             <div class="card-header bg-success text-white">
                 Lab
@@ -110,9 +149,15 @@
                             {% endfor %}
                         </ol>
 
-                        <p class="text-success">
-                            <strong>Teacher Answer:</strong> {{ question.answer }}
-                        </p>
+                        <details>
+                            <summary class="btn btn-sm btn-outline-success">
+                                Reveal Teacher Answer
+                            </summary>
+
+                            <p class="text-success mt-3">
+                                <strong>Teacher Answer:</strong> {{ question.answer }}
+                            </p>
+                        </details>
                     </div>
                     {% endfor %}
 

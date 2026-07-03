@@ -15,6 +15,55 @@ day4 = {
 
     "guided_practice": "Students work in groups to read lab safety scenario cards. For each scenario, students decide whether the behavior is safe or unsafe and explain what should be done instead.",
 
+    "interactive_activity_title": "Lab Safety Scenario Challenge",
+
+    "interactive_activity": "Students work in groups. For each scenario, they discuss whether the situation is safe or unsafe, decide what should happen next, and explain the safety rule being tested.",
+
+    "safety_scenarios": [
+        {
+            "scenario": "A student notices water spilled near a table during a lab.",
+            "student_task": "Decide what the student should do first.",
+            "category": "Unsafe",
+            "safe_action": "Tell the teacher immediately and keep classmates away from the spill.",
+            "explanation": "Spills can cause slipping or damage materials. Students should report spills instead of trying to ignore them."
+        },
+        {
+            "scenario": "A group puts on safety goggles before working with liquids.",
+            "student_task": "Decide if this is safe or unsafe.",
+            "category": "Safe",
+            "safe_action": "Continue following the lab directions.",
+            "explanation": "Safety goggles protect eyes from splashes and are required when working with certain materials."
+        },
+        {
+            "scenario": "A student smells a mystery liquid directly from the container.",
+            "student_task": "Identify the unsafe behavior and explain what should happen instead.",
+            "category": "Unsafe",
+            "safe_action": "Do not smell unknown materials directly. Follow teacher directions.",
+            "explanation": "Students should never smell, taste, or touch unknown materials unless the teacher gives clear permission."
+        },
+        {
+            "scenario": "A student breaks a glass beaker and starts picking up the pieces with bare hands.",
+            "student_task": "Decide the safest next step.",
+            "category": "Unsafe",
+            "safe_action": "Stop immediately and tell the teacher.",
+            "explanation": "Broken glass can cut skin. The teacher should handle cleanup using the proper safety procedure."
+        },
+        {
+            "scenario": "A group reads all directions before beginning the investigation.",
+            "student_task": "Decide if this is safe or unsafe.",
+            "category": "Safe",
+            "safe_action": "Begin only after the teacher gives permission.",
+            "explanation": "Reading directions helps prevent accidents and keeps the investigation organized."
+        },
+        {
+            "scenario": "A student starts mixing materials before the teacher explains the procedure.",
+            "student_task": "Explain why this is a problem.",
+            "category": "Unsafe",
+            "safe_action": "Wait for teacher instructions before touching or mixing materials.",
+            "explanation": "Mixing materials without directions can be dangerous and can ruin the investigation."
+        }
+    ],
+
     "lab": "Lab Safety Scenario Sort: groups sort classroom lab situations into Safe, Unsafe, and Fix It categories. Students must explain the safety rule connected to each situation.",
 
     "lab_notebook": "Students create a three-column chart: Scenario, Safe or Unsafe, What Should Happen Next.",
@@ -112,5 +161,5 @@ day4 = {
         "Optional: safety contract"
     ],
 
-    "teacher_notes": "This lesson should be taught as a scenario-based lesson, not just a list of rules. Students should explain why a choice is safe or unsafe. Focus on STAAR-style thinking: What is the safest action? What should the student do first? What equipment is needed?"
+    "teacher_notes": "This lesson should be taught as a scenario-based lesson, not just a list of rules. Students work in groups during a 60-minute science block. Focus on STAAR-style thinking: What is the safest action? What should the student do first? What equipment is needed?"
 }
