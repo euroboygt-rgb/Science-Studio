@@ -162,7 +162,47 @@
                     {% endfor %}
                 </div>
                 {% endif %}
+                {% if lesson.get("property_sort_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("property_sort_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>{{ card.property }}</h5>
+                            <p><strong>Example:</strong> {{ card.object_example }}</p>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
 
+                            {% if view_mode == "student" %}
+
+                            <label class="form-label"><strong>Sort this property:</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Observe</option>
+                                <option>Measure</option>
+                                <option>Test</option>
+                            </select>
+
+                            <label class="form-label"><strong>Explain your thinking:</strong></label>
+                            <textarea class="form-control" rows="2" placeholder="Why did you choose that category?"></textarea>
+
+                            {% else %}
+
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">
+                                    Reveal Teacher Guidance
+                                </summary>
+
+                                <div class="mt-3">
+                                    <p><strong>Category:</strong> {{ card.category }}</p>
+                                    <p><strong>Explanation:</strong> {{ card.explanation }}</p>
+                                </div>
+                            </details>
+
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
             </div>
         </div>
         {% endif %}
