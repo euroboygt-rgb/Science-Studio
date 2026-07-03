@@ -31,15 +31,20 @@
                 TEKS: {{ lesson.teks | join(", ") }}
             </small>
             {% endif %}
+
+            {% if lesson.lab %}
+            <br>
+            <span class="badge bg-success mt-1">Lab</span>
+            {% endif %}
         </div>
 
         <div>
-            {% if lesson.lab %}
-            <span class="badge bg-success me-2">Lab</span>
-            {% endif %}
+            <a href="/first-nine-weeks/day/{{ lesson.day }}?view=teacher" class="btn btn-sm btn-outline-primary">
+                Teacher View
+            </a>
 
-            <a href="/first-nine-weeks/day/{{ lesson.day }}" class="btn btn-sm btn-outline-primary">
-                Open Lesson
+            <a href="/first-nine-weeks/day/{{ lesson.day }}?view=student" class="btn btn-sm btn-outline-success">
+                Student View
             </a>
         </div>
 
