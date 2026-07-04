@@ -468,6 +468,48 @@
 
 
 
+
+                {% if lesson.get("magnetic_separation_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("magnetic_separation_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>{{ card.mixture }}</h5>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Can a magnet separate this mixture?</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+
+                            <label class="form-label"><strong>Magnetic Part:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="Which part is attracted to the magnet?"></textarea>
+
+                            <label class="form-label"><strong>Nonmagnetic Part:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="Which part is not attracted to the magnet?"></textarea>
+
+                            <label class="form-label"><strong>Evidence:</strong></label>
+                            <textarea class="form-control" rows="2" placeholder="Use evidence to explain your answer..."></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Can Magnet Separate?</strong> {{ card.can_magnet_separate }}</p>
+                                    <p><strong>Magnetic Part:</strong> {{ card.magnetic_part }}</p>
+                                    <p><strong>Nonmagnetic Part:</strong> {{ card.nonmagnetic_part }}</p>
+                                    <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("particle_size_cards") %}
                 <div class="row">
                     {% for card in lesson.get("particle_size_cards") %}

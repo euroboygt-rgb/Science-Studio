@@ -15,7 +15,81 @@ day18 = {
 
     "guided_practice": "Show students mixture examples such as iron filings and sand, paper clips and rice, steel washers and gravel, aluminum foil and sand, and plastic beads with paper clips. Students decide whether magnetism could separate the mixture. Students must explain which part is magnetic and which part is not magnetic.",
 
+    "interactive_activity_title": "Magnetic Separation Challenge",
+
+    "interactive_activity": "Students read mixture scenarios and decide whether a magnet can separate the mixture. Students identify the magnetic part, the nonmagnetic part, and the evidence.",
+
+    "magnetic_separation_cards": [
+        {
+            "mixture": "Iron filings and sand",
+            "student_task": "Decide if a magnet can separate this mixture. Identify the magnetic and nonmagnetic parts.",
+            "can_magnet_separate": "Yes",
+            "magnetic_part": "Iron filings",
+            "nonmagnetic_part": "Sand",
+            "evidence": "The iron filings are attracted to the magnet, but sand is not."
+        },
+        {
+            "mixture": "Steel paper clips and rice",
+            "student_task": "Decide if a magnet can separate this mixture. Identify the magnetic and nonmagnetic parts.",
+            "can_magnet_separate": "Yes",
+            "magnetic_part": "Steel paper clips",
+            "nonmagnetic_part": "Rice",
+            "evidence": "The steel paper clips are attracted to the magnet, but rice is not."
+        },
+        {
+            "mixture": "Plastic beads and aluminum foil",
+            "student_task": "Decide if a magnet can separate this mixture.",
+            "can_magnet_separate": "No",
+            "magnetic_part": "None",
+            "nonmagnetic_part": "Plastic beads and aluminum foil",
+            "evidence": "Neither material is attracted to the classroom magnet."
+        },
+        {
+            "mixture": "Steel washers and gravel",
+            "student_task": "Decide if a magnet can separate this mixture. Identify the magnetic and nonmagnetic parts.",
+            "can_magnet_separate": "Yes",
+            "magnetic_part": "Steel washers",
+            "nonmagnetic_part": "Gravel",
+            "evidence": "The steel washers are attracted to the magnet, but gravel is not."
+        },
+        {
+            "mixture": "Copper pieces and sand",
+            "student_task": "Decide if a magnet can separate this mixture.",
+            "can_magnet_separate": "No",
+            "magnetic_part": "None",
+            "nonmagnetic_part": "Copper pieces and sand",
+            "evidence": "Copper and sand are not attracted to a classroom magnet."
+        },
+        {
+            "mixture": "Iron nails and plastic beads",
+            "student_task": "Decide if a magnet can separate this mixture. Identify the magnetic and nonmagnetic parts.",
+            "can_magnet_separate": "Yes",
+            "magnetic_part": "Iron nails",
+            "nonmagnetic_part": "Plastic beads",
+            "evidence": "The iron nails are attracted to the magnet, but plastic beads are not."
+        },
+        {
+            "mixture": "Brass fasteners and paper",
+            "student_task": "Decide if a magnet can separate this mixture.",
+            "can_magnet_separate": "No",
+            "magnetic_part": "None",
+            "nonmagnetic_part": "Brass fasteners and paper",
+            "evidence": "Brass and paper are not attracted to a classroom magnet."
+        },
+        {
+            "mixture": "Steel can pieces and cardboard",
+            "student_task": "Decide if a magnet can separate this mixture. Identify the magnetic and nonmagnetic parts.",
+            "can_magnet_separate": "Yes",
+            "magnetic_part": "Steel can pieces",
+            "nonmagnetic_part": "Cardboard",
+            "evidence": "Steel is attracted to a magnet, but cardboard is not."
+        }
+    ],
+
     "lab": "Magnetic Separation Lab: students test mixtures that contain magnetic and nonmagnetic materials. Students use a magnet to separate the magnetic part from the nonmagnetic part. Students record the mixture, the magnetic material, the nonmagnetic material, and evidence that magnetism separated the mixture.",
+
+    "lab_link": "/labs/magnet-separation",
+    "lab_link_text": "Open Interactive Magnet Separation Lab",
 
     "lab_notebook": "Students record each mixture, identify which part was magnetic, identify which part was nonmagnetic, and explain how the magnet separated the mixture.",
 
@@ -33,22 +107,12 @@ day18 = {
     "staar_practice": [
         {
             "question": "A student has a mixture of iron filings and sand. Which tool would best separate the iron filings from the sand?",
-            "choices": [
-                "Magnet",
-                "Thermometer",
-                "Graduated cylinder",
-                "Balance"
-            ],
+            "choices": ["Magnet", "Thermometer", "Graduated cylinder", "Balance"],
             "answer": "Magnet"
         },
         {
             "question": "Which physical property is used when a magnet separates iron filings from sand?",
-            "choices": [
-                "Magnetism",
-                "Solubility",
-                "Volume",
-                "Temperature"
-            ],
+            "choices": ["Magnetism", "Solubility", "Volume", "Temperature"],
             "answer": "Magnetism"
         },
         {
@@ -63,12 +127,7 @@ day18 = {
         },
         {
             "question": "Which mixture could best be separated using a magnet?",
-            "choices": [
-                "Iron filings and sand",
-                "Salt and water",
-                "Oil and water",
-                "Pasta and water"
-            ],
+            "choices": ["Iron filings and sand", "Salt and water", "Oil and water", "Pasta and water"],
             "answer": "Iron filings and sand"
         },
         {

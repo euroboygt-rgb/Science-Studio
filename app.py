@@ -93,6 +93,11 @@ def mixtures_lab():
 def particle_size_lab():
     return render_template("particle_size_lab.html")
 
+
+@app.route("/labs/magnet-separation")
+def magnet_separation_lab():
+    return render_template("magnet_separation_lab.html")
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
