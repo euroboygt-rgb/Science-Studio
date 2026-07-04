@@ -88,6 +88,9 @@ day12 = {
 
     "lab": "Liquids in Liquids Lab: students observe different liquids placed into graduated cylinders. Students record whether the liquids mix or form layers. If layers form, students use the position of each layer to organize the liquids from least dense to most dense.",
 
+    "lab_link": "/labs/liquid-density",
+    "lab_link_text": "Open Interactive Liquid Density Lab",
+
     "lab_notebook": "Students record liquid combinations, predictions, observations, and evidence about relative density.",
 
     "lab_notebook_table": {

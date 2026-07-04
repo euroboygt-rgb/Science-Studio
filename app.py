@@ -51,6 +51,10 @@ def mass_volume_lab():
 def sink_float_lab():
     return render_template("sink_float_lab.html")
 
+@app.route("/labs/liquid-density")
+def liquid_density_lab():
+    return render_template("liquid_density_lab.html")
+
 
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
