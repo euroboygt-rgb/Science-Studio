@@ -38,6 +38,11 @@ def labs():
     return render_template("labs.html")
 
 
+@app.route("/labs/mass-volume")
+def mass_volume_lab():
+    return render_template("mass_volume_lab.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
