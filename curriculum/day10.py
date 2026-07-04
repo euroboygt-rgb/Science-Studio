@@ -15,6 +15,77 @@ day10 = {
 
     "guided_practice": "Model how to measure mass using a balance and how to record the result in grams. Then model how to measure liquid volume using a graduated cylinder and record the result in milliliters. Discuss how careful measurement gives stronger evidence than guessing.",
 
+    "interactive_activity_title": "Mass or Volume Evidence Challenge",
+
+    "interactive_activity": "Students decide whether each task is measuring mass or volume. Then they choose the correct tool, unit, and evidence that supports the answer.",
+
+    "mass_volume_investigation_cards": [
+        {
+            "task": "A student places a rock on a balance and records 42 grams.",
+            "student_task": "Decide whether the student measured mass or volume. Then choose the tool and unit.",
+            "property": "Mass",
+            "tool": "Balance",
+            "unit": "Grams",
+            "evidence": "The student used a balance and recorded grams, so the property measured was mass."
+        },
+        {
+            "task": "A student pours water into a graduated cylinder and records 60 milliliters.",
+            "student_task": "Decide whether the student measured mass or volume. Then choose the tool and unit.",
+            "property": "Volume",
+            "tool": "Graduated cylinder",
+            "unit": "Milliliters",
+            "evidence": "The student used a graduated cylinder and recorded milliliters, so the property measured was volume."
+        },
+        {
+            "task": "A student wants to know how much matter is in an eraser.",
+            "student_task": "Choose the correct property, tool, and unit.",
+            "property": "Mass",
+            "tool": "Balance",
+            "unit": "Grams",
+            "evidence": "Mass is the amount of matter in an object. A balance measures mass in grams."
+        },
+        {
+            "task": "A student wants to know how much space a liquid takes up.",
+            "student_task": "Choose the correct property, tool, and unit.",
+            "property": "Volume",
+            "tool": "Graduated cylinder",
+            "unit": "Milliliters",
+            "evidence": "Volume is the amount of space matter takes up. Liquid volume is measured with a graduated cylinder in milliliters."
+        },
+        {
+            "task": "A student compares a cotton ball and a rock to see which has more matter.",
+            "student_task": "Choose the correct property, tool, and unit.",
+            "property": "Mass",
+            "tool": "Balance",
+            "unit": "Grams",
+            "evidence": "The student is comparing how much matter each object has, so the student should measure mass with a balance."
+        },
+        {
+            "task": "A student reads the level of water at the 75 mL mark.",
+            "student_task": "Choose the correct property, tool, and unit.",
+            "property": "Volume",
+            "tool": "Graduated cylinder",
+            "unit": "Milliliters",
+            "evidence": "The mL mark shows liquid volume. Milliliters are used to measure liquid volume."
+        },
+        {
+            "task": "A student says a large sponge must have more mass than a small rock because it is bigger.",
+            "student_task": "Choose the best way to test the claim.",
+            "property": "Mass",
+            "tool": "Balance",
+            "unit": "Grams",
+            "evidence": "Size does not always show mass. The student should use a balance to collect measurement evidence."
+        },
+        {
+            "task": "A student needs to measure 100 mL of water for an investigation.",
+            "student_task": "Choose the correct property, tool, and unit.",
+            "property": "Volume",
+            "tool": "Graduated cylinder",
+            "unit": "Milliliters",
+            "evidence": "The student is measuring liquid volume, so the correct tool is a graduated cylinder and the unit is milliliters."
+        }
+    ],
+
     "lab": "Mass and Volume Investigation: students rotate through stations to measure the mass of classroom objects and observe or measure volume. Students record the tool used, measurement, unit, and evidence for each object.",
 
     "lab_notebook": "Students record the mass and volume information for each object or liquid tested during the investigation.",

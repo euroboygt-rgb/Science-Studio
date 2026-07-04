@@ -372,56 +372,6 @@
                 </div>
                 {% endif %}
 
-                {% if lesson.get("mass_volume_investigation_cards") %}
-                <div class="row">
-                    {% for card in lesson.get("mass_volume_investigation_cards") %}
-                    <div class="col-md-6 mb-3">
-                        <div class="border rounded p-3 h-100 bg-light">
-                            <h5>Investigation Task {{ loop.index }}</h5>
-                            <p><strong>Task:</strong> {{ card.task }}</p>
-                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
-
-                            {% if view_mode == "student" %}
-                            <label class="form-label"><strong>Mass or Volume?</strong></label>
-                            <select class="form-select mb-2">
-                                <option selected>Choose...</option>
-                                <option>Mass</option>
-                                <option>Volume</option>
-                            </select>
-
-                            <label class="form-label"><strong>Tool:</strong></label>
-                            <select class="form-select mb-2">
-                                <option selected>Choose...</option>
-                                <option>Balance</option>
-                                <option>Graduated cylinder</option>
-                            </select>
-
-                            <label class="form-label"><strong>Unit:</strong></label>
-                            <select class="form-select mb-2">
-                                <option selected>Choose...</option>
-                                <option>Grams</option>
-                                <option>Milliliters</option>
-                            </select>
-
-                            <label class="form-label"><strong>What is your evidence?</strong></label>
-                            <textarea class="form-control" rows="2" placeholder="Use the tool or unit as evidence..."></textarea>
-                            {% else %}
-                            <details>
-                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
-                                <div class="mt-3">
-                                    <p><strong>Property:</strong> {{ card.property }}</p>
-                                    <p><strong>Tool:</strong> {{ card.tool }}</p>
-                                    <p><strong>Unit:</strong> {{ card.unit }}</p>
-                                    <p><strong>Evidence:</strong> {{ card.evidence }}</p>
-                                </div>
-                            </details>
-                            {% endif %}
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
             </div>
         </div>
         {% endif %}
