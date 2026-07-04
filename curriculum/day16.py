@@ -15,7 +15,81 @@ day16 = {
 
     "guided_practice": "Show students examples and nonexamples: trail mix, salad, cereal with marshmallows, sand and water, salt water, a metal spoon, a plastic cup, and a solid rock. Students decide whether each example is a mixture and explain how they know. Emphasize that mixtures contain two or more substances that can be physically separated.",
 
+    "interactive_activity_title": "Mixture or Not a Mixture Challenge",
+
+    "interactive_activity": "Students decide whether each example is a mixture. Then they identify the parts of the mixture and the physical property that could be used to separate it.",
+
+    "mixture_cards": [
+        {
+            "example": "Trail mix with raisins, pretzels, cereal, and chocolate pieces",
+            "student_task": "Decide if this is a mixture. Identify the parts and how they could be separated.",
+            "classification": "Mixture",
+            "parts": "Raisins, pretzels, cereal, chocolate pieces",
+            "separation_property": "Size, shape, color, or sorting by hand",
+            "evidence": "The parts stay the same and can be physically separated."
+        },
+        {
+            "example": "A single copper wire",
+            "student_task": "Decide if this is a mixture or not a mixture.",
+            "classification": "Not a mixture",
+            "parts": "One material: copper",
+            "separation_property": "No separation needed",
+            "evidence": "It is one material, not a combination of different substances."
+        },
+        {
+            "example": "Sand and water in a cup",
+            "student_task": "Decide if this is a mixture. Identify the parts and how they could be separated.",
+            "classification": "Mixture",
+            "parts": "Sand and water",
+            "separation_property": "Particle size; settling; filtering",
+            "evidence": "The sand remains sand and the water remains water. They can be separated physically."
+        },
+        {
+            "example": "Beans and rice in a bowl",
+            "student_task": "Decide if this is a mixture. Identify the parts and how they could be separated.",
+            "classification": "Mixture",
+            "parts": "Beans and rice",
+            "separation_property": "Particle size, shape, or sorting by hand",
+            "evidence": "The beans and rice keep their properties and can be separated."
+        },
+        {
+            "example": "A glass marble",
+            "student_task": "Decide if this is a mixture or not a mixture.",
+            "classification": "Not a mixture",
+            "parts": "One object",
+            "separation_property": "No separation needed",
+            "evidence": "It is not a visible combination of different materials."
+        },
+        {
+            "example": "Paper clips mixed with sand",
+            "student_task": "Decide if this is a mixture. Identify the parts and how they could be separated.",
+            "classification": "Mixture",
+            "parts": "Paper clips and sand",
+            "separation_property": "Magnetism",
+            "evidence": "A magnet can attract the paper clips but not the sand."
+        },
+        {
+            "example": "Oil and water in a graduated cylinder",
+            "student_task": "Decide if this is a mixture. Identify the parts and how they could be separated.",
+            "classification": "Mixture",
+            "parts": "Oil and water",
+            "separation_property": "Relative density",
+            "evidence": "Oil and water form layers and can be separated physically."
+        },
+        {
+            "example": "Salt water",
+            "student_task": "Decide if this is a mixture. Identify the parts and how they could be separated.",
+            "classification": "Mixture",
+            "parts": "Salt and water",
+            "separation_property": "Solubility and evaporation",
+            "evidence": "Salt dissolves in water, but the water can evaporate and leave the salt behind."
+        }
+    ],
+
     "lab": "Mixture Exploration Lab: students observe different mixtures such as trail mix, cereal mixture, sand and water, and beans with rice. Students identify the parts of each mixture and describe which physical properties could help separate them.",
+
+    "lab_link": "/labs/mixtures",
+    "lab_link_text": "Open Interactive Mixtures Lab",
 
     "lab_notebook": "Students record each mixture, identify its parts, describe the physical properties of the parts, and explain how the mixture could be separated.",
 

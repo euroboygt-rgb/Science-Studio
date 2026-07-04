@@ -79,6 +79,11 @@ def conductivity_lab():
 def unit1_review_game():
     return render_template("unit1_review_game.html")
 
+
+@app.route("/labs/mixtures")
+def mixtures_lab():
+    return render_template("mixtures_lab.html")
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

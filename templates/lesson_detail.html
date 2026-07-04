@@ -466,6 +466,56 @@
 
 
 
+
+                {% if lesson.get("mixture_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("mixture_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>{{ card.example }}</h5>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Classification:</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Mixture</option>
+                                <option>Not a mixture</option>
+                            </select>
+
+                            <label class="form-label"><strong>Parts:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="List the parts if it is a mixture..."></textarea>
+
+                            <label class="form-label"><strong>Physical Property Used to Separate:</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Particle size</option>
+                                <option>Shape or color</option>
+                                <option>Magnetism</option>
+                                <option>Relative density</option>
+                                <option>Solubility</option>
+                                <option>No separation needed</option>
+                            </select>
+
+                            <label class="form-label"><strong>Evidence:</strong></label>
+                            <textarea class="form-control" rows="2" placeholder="Use evidence to explain your answer..."></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Classification:</strong> {{ card.classification }}</p>
+                                    <p><strong>Parts:</strong> {{ card.parts }}</p>
+                                    <p><strong>Separation Property:</strong> {{ card.separation_property }}</p>
+                                    <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("unit1_review_cards") %}
                 <div class="row">
                     {% for card in lesson.get("unit1_review_cards") %}
