@@ -427,6 +427,7 @@
         {% endif %}
 
         <div class="card mb-3">
+                    <div class="card mb-3">
             <div class="card-header bg-success text-white">
                 Lab
             </div>
@@ -439,6 +440,12 @@
                     {% endif %}
                 {% else %}
                     <p>No lab for this lesson.</p>
+                {% endif %}
+
+                {% if lesson.get("lab_link") %}
+                <a href="{{ lesson.get('lab_link') }}" class="btn btn-lg btn-success mt-3">
+                    {{ lesson.get("lab_link_text", "Open Interactive Lab") }}
+                </a>
                 {% endif %}
             </div>
         </div>

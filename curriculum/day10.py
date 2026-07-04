@@ -88,6 +88,9 @@ day10 = {
 
     "lab": "Mass and Volume Investigation: students rotate through stations to measure the mass of classroom objects and observe or measure volume. Students record the tool used, measurement, unit, and evidence for each object.",
 
+    "lab_link": "/labs/mass-volume",
+    "lab_link_text": "Open Interactive Mass and Volume Lab",
+
     "lab_notebook": "Students record the mass and volume information for each object or liquid tested during the investigation.",
 
     "lab_notebook_table": {
