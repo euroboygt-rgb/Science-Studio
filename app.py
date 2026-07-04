@@ -12,6 +12,7 @@ from curriculum.day9 import day9
 from curriculum.day10 import day10
 from curriculum.day11 import day11
 from curriculum.day12 import day12
+from curriculum.day13 import day13
 
 app = Flask(__name__)
 
@@ -29,6 +30,7 @@ lesson_details = {
     10: day10,
     11: day11,
     12: day12,
+    13: day13,
 }
 
 
@@ -55,6 +57,11 @@ def sink_float_lab():
 def liquid_density_lab():
     return render_template("liquid_density_lab.html")
 
+
+
+@app.route("/labs/solubility")
+def solubility_lab():
+    return render_template("solubility_lab.html")
 
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():

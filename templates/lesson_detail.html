@@ -463,6 +463,50 @@
                 </div>
                 {% endif %}
 
+
+                {% if lesson.get("solubility_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("solubility_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>{{ card.material }}</h5>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Prediction / Conclusion:</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Soluble</option>
+                                <option>Insoluble</option>
+                            </select>
+
+                            <label class="form-label"><strong>Observation:</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Dissolves and can no longer be easily seen</option>
+                                <option>Settles at the bottom</option>
+                                <option>Floats or remains visible</option>
+                                <option>Clouds the water and does not fully dissolve</option>
+                            </select>
+
+                            <label class="form-label"><strong>Evidence:</strong></label>
+                            <textarea class="form-control" rows="2" placeholder="Use your observation as evidence..."></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Observation:</strong> {{ card.observation }}</p>
+                                    <p><strong>Conclusion:</strong> {{ card.conclusion }}</p>
+                                    <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("liquid_layer_cards") %}
                 <div class="row">
                     {% for card in lesson.get("liquid_layer_cards") %}

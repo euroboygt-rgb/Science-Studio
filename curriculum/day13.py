@@ -9,13 +9,79 @@ day13 = {
 
     "learning_target": "I can test materials in water and use evidence to classify them as soluble or insoluble.",
 
-    "mini_lesson": "Explain that solubility is a physical property that describes whether a material dissolves in a liquid, such as water. A soluble material dissolves and seems to disappear into the liquid, but the material is still there. An insoluble material does not dissolve and can usually still be seen. Students should focus on using observations as evidence, not guessing based on appearance.",
+    "mini_lesson": "Solubility is a physical property that describes whether a material dissolves in a liquid, such as water. A soluble material dissolves and seems to disappear into the liquid, but the material is still there. An insoluble material does not dissolve and can usually still be seen.",
 
-    "science_notebook": "Students create a page titled 'Soluble and Insoluble Materials.' They write the words soluble, insoluble, dissolve, solution, and evidence. Students draw two examples: one material dissolving in water and one material not dissolving in water. Students write one sentence explaining how they know whether a material is soluble or insoluble.",
+    "science_notebook": "Students create a page titled 'Soluble and Insoluble Materials.' They define soluble, insoluble, dissolve, solution, and evidence. Students draw one example of a material dissolving and one example of a material not dissolving.",
 
-    "guided_practice": "Show students common materials such as salt, sugar, sand, pepper, flour, and baking soda. Ask students to predict whether each material will dissolve in water. Discuss why predictions must be tested and why observations should be recorded as evidence.",
+    "guided_practice": "Show students materials such as salt, sugar, sand, pepper, flour, and baking soda. Students predict whether each material will dissolve in water. Discuss why predictions must be tested with evidence.",
 
-    "lab": "Soluble and Insoluble Materials Lab: students place small amounts of different materials into cups of water, stir, observe, and record whether each material dissolves. Students classify each material as soluble or insoluble based on evidence from their observations.",
+    "interactive_activity_title": "Soluble or Insoluble Evidence Challenge",
+
+    "interactive_activity": "Students use observations from water tests to decide whether each material is soluble or insoluble. Students must use evidence such as dissolves, settles, floats, clouds the water, or remains visible.",
+
+    "solubility_cards": [
+        {
+            "material": "Salt",
+            "student_task": "Predict whether salt is soluble or insoluble in water. Then use the observation as evidence.",
+            "observation": "The salt dissolves and can no longer be easily seen.",
+            "conclusion": "Soluble",
+            "evidence": "The salt dissolves in water, so it is soluble."
+        },
+        {
+            "material": "Sugar",
+            "student_task": "Predict whether sugar is soluble or insoluble in water. Then use the observation as evidence.",
+            "observation": "The sugar dissolves and can no longer be easily seen.",
+            "conclusion": "Soluble",
+            "evidence": "The sugar dissolves in water, so it is soluble."
+        },
+        {
+            "material": "Sand",
+            "student_task": "Predict whether sand is soluble or insoluble in water. Then use the observation as evidence.",
+            "observation": "The sand does not dissolve and settles at the bottom.",
+            "conclusion": "Insoluble",
+            "evidence": "The sand remains visible and settles at the bottom, so it is insoluble."
+        },
+        {
+            "material": "Pepper",
+            "student_task": "Predict whether pepper is soluble or insoluble in water. Then use the observation as evidence.",
+            "observation": "The pepper does not dissolve and remains visible.",
+            "conclusion": "Insoluble",
+            "evidence": "The pepper remains visible after stirring, so it is insoluble."
+        },
+        {
+            "material": "Baking soda",
+            "student_task": "Predict whether baking soda is soluble or insoluble in water. Then use the observation as evidence.",
+            "observation": "The baking soda dissolves after stirring.",
+            "conclusion": "Soluble",
+            "evidence": "The baking soda dissolves in water, so it is soluble."
+        },
+        {
+            "material": "Flour",
+            "student_task": "Predict whether flour is soluble or insoluble in water. Then use the observation as evidence.",
+            "observation": "The flour clouds the water and does not fully dissolve.",
+            "conclusion": "Insoluble",
+            "evidence": "The flour remains visible and does not fully dissolve, so it is insoluble."
+        },
+        {
+            "material": "Small gravel",
+            "student_task": "Predict whether small gravel is soluble or insoluble in water. Then use the observation as evidence.",
+            "observation": "The gravel does not dissolve and settles at the bottom.",
+            "conclusion": "Insoluble",
+            "evidence": "The gravel remains visible and settles at the bottom, so it is insoluble."
+        },
+        {
+            "material": "Drink mix powder",
+            "student_task": "Predict whether drink mix powder is soluble or insoluble in water. Then use the observation as evidence.",
+            "observation": "The drink mix powder dissolves and changes the color of the water.",
+            "conclusion": "Soluble",
+            "evidence": "The drink mix dissolves in water, so it is soluble."
+        }
+    ],
+
+    "lab": "Soluble and Insoluble Materials Lab: students place small amounts of different materials into cups of water, stir, observe, and record whether each material dissolves. Students classify each material as soluble or insoluble based on evidence.",
+
+    "lab_link": "/labs/solubility",
+    "lab_link_text": "Open Interactive Solubility Lab",
 
     "lab_notebook": "Students record each material tested, their prediction, their observation after stirring, and whether the material is soluble or insoluble.",
 
@@ -89,10 +155,10 @@ day13 = {
             "term": "solubility",
             "picture": "Picture of a material dissolving in water",
             "definition": "A physical property that describes whether a material dissolves in a liquid.",
-            "example": "Salt has solubility in water because it dissolves.",
+            "example": "Salt dissolves in water.",
             "science_use": "Scientists use solubility to compare how materials behave in liquids.",
             "real_world_use": "Solubility is used when making drinks, cooking, cleaning, and medicine.",
-            "staar_connection": "On STAAR, students may need to identify solubility as the property being tested when a material dissolves."
+            "staar_connection": "On STAAR, students may identify solubility when a material dissolves."
         },
         {
             "term": "soluble",
@@ -100,8 +166,8 @@ day13 = {
             "definition": "Able to dissolve in a liquid.",
             "example": "Sugar is soluble in water.",
             "science_use": "A soluble material mixes evenly into the liquid and can no longer be easily seen.",
-            "real_world_use": "Drink mixes, sugar, and salt are examples of materials that can dissolve in water.",
-            "staar_connection": "On STAAR, students may need to classify a material as soluble based on evidence."
+            "real_world_use": "Drink mixes, sugar, and salt can dissolve in water.",
+            "staar_connection": "On STAAR, students may classify a material as soluble based on evidence."
         },
         {
             "term": "insoluble",
@@ -110,7 +176,7 @@ day13 = {
             "example": "Sand is insoluble in water.",
             "science_use": "An insoluble material can still be seen after mixing or may settle at the bottom.",
             "real_world_use": "Sand, rocks, and many plastics do not dissolve in water.",
-            "staar_connection": "On STAAR, students may need to classify a material as insoluble based on observations."
+            "staar_connection": "On STAAR, students may classify a material as insoluble based on observations."
         },
         {
             "term": "dissolve",
@@ -118,8 +184,8 @@ day13 = {
             "definition": "To mix completely into a liquid so the material can no longer be easily seen.",
             "example": "Salt dissolves when stirred into water.",
             "science_use": "Scientists observe whether materials dissolve during solubility investigations.",
-            "real_world_use": "Sugar dissolves in tea, salt dissolves in soup, and drink powder dissolves in water.",
-            "staar_connection": "On STAAR, students may need to recognize dissolving as evidence of solubility."
+            "real_world_use": "Sugar dissolves in tea and salt dissolves in soup.",
+            "staar_connection": "On STAAR, dissolving is evidence of solubility."
         },
         {
             "term": "solution",
@@ -127,8 +193,8 @@ day13 = {
             "definition": "A mixture formed when one material dissolves in another material.",
             "example": "Salt water is a solution.",
             "science_use": "A solution forms when a soluble material dissolves in a liquid.",
-            "real_world_use": "Lemonade, salt water, and some medicines are solutions.",
-            "staar_connection": "On STAAR, students may see examples of solutions when materials dissolve in liquids."
+            "real_world_use": "Lemonade and salt water are solutions.",
+            "staar_connection": "On STAAR, students may see examples of solutions when materials dissolve."
         },
         {
             "term": "mixture",
@@ -137,7 +203,7 @@ day13 = {
             "example": "Sand and water form a mixture, but the sand does not dissolve.",
             "science_use": "Scientists observe mixtures to see whether materials dissolve or remain separate.",
             "real_world_use": "Trail mix, cereal with milk, and salad are mixtures.",
-            "staar_connection": "On STAAR, students may need to compare mixtures where materials dissolve with mixtures where materials do not dissolve."
+            "staar_connection": "On STAAR, students may compare mixtures where materials dissolve with mixtures where they do not dissolve."
         },
         {
             "term": "evidence",
@@ -169,5 +235,5 @@ day13 = {
         "Safety goggles"
     ],
 
-    "teacher_notes": "Students may think a material disappears when it dissolves. Emphasize that the material is still present, but it has mixed into the water so it cannot be easily seen. Students should not taste any materials. Keep the focus on observations: dissolves, settles, floats, clouds the water, or remains visible. This lesson supports STAAR questions about identifying solubility as a physical property."
+    "teacher_notes": "Students may think a material disappears when it dissolves. Emphasize that the material is still present, but it has mixed into the water so it cannot be easily seen. Students should not taste any materials. Keep the focus on observations: dissolves, settles, floats, clouds the water, or remains visible."
 }

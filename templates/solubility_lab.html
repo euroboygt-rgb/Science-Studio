@@ -1,0 +1,338 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Solubility Lab Simulator</h1>
+<p class="lead">
+    Test materials in water and decide whether they are soluble or insoluble.
+</p>
+
+<a href="/first-nine-weeks/day/13?view=student" class="btn btn-secondary mb-4">
+    Back to Day 13
+</a>
+
+<style>
+    .sim-card {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
+    .info-box {
+        background: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .cup {
+        width: 180px;
+        height: 240px;
+        border-left: 5px solid #333;
+        border-right: 5px solid #333;
+        border-bottom: 5px solid #333;
+        border-radius: 0 0 25px 25px;
+        margin: 20px auto;
+        position: relative;
+        background: white;
+        overflow: hidden;
+    }
+
+    .water {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 75%;
+        background: #8ed8ff;
+    }
+
+    .solution-water {
+        background: #b8f7ff;
+    }
+
+    .drink-water {
+        background: #ff8fb3;
+    }
+
+    .cloudy-water {
+        background: #d9d9d9;
+    }
+
+    .particles {
+        position: absolute;
+        width: 100%;
+        height: 75%;
+        bottom: 0;
+        z-index: 3;
+    }
+
+    .particle {
+        width: 10px;
+        height: 10px;
+        background: #795548;
+        border-radius: 50%;
+        position: absolute;
+        transition: all 0.8s;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .mystery-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="sim-card">
+    <h2>Part 1: Test a Material in Water</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Choose a material, predict whether it is soluble or insoluble, then stir and observe.
+    </div>
+
+    <label class="form-label"><strong>Choose a material:</strong></label>
+    <select id="materialSelect" class="form-select mb-3" onchange="resetCup()">
+        <option value="soluble" data-name="Salt" data-result="The salt dissolves and can no longer be easily seen." data-reason="Salt dissolves in water, so it is soluble.">Salt</option>
+        <option value="soluble" data-name="Sugar" data-result="The sugar dissolves and can no longer be easily seen." data-reason="Sugar dissolves in water, so it is soluble.">Sugar</option>
+        <option value="sink" data-name="Sand" data-result="The sand does not dissolve and settles at the bottom." data-reason="Sand remains visible and settles at the bottom, so it is insoluble.">Sand</option>
+        <option value="float" data-name="Pepper" data-result="The pepper does not dissolve and remains visible." data-reason="Pepper remains visible after stirring, so it is insoluble.">Pepper</option>
+        <option value="soluble" data-name="Baking Soda" data-result="The baking soda dissolves after stirring." data-reason="Baking soda dissolves in water, so it is soluble.">Baking Soda</option>
+        <option value="cloudy" data-name="Flour" data-result="The flour clouds the water and does not fully dissolve." data-reason="Flour does not fully dissolve, so it is insoluble.">Flour</option>
+        <option value="sink" data-name="Small Gravel" data-result="The gravel does not dissolve and settles at the bottom." data-reason="Small gravel remains visible and settles at the bottom, so it is insoluble.">Small Gravel</option>
+        <option value="drink" data-name="Drink Mix" data-result="The drink mix dissolves and changes the color of the water." data-reason="Drink mix dissolves in water, so it is soluble.">Drink Mix</option>
+    </select>
+
+    <label class="form-label"><strong>Your prediction:</strong></label>
+    <select id="predictionSelect" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Soluble</option>
+        <option>Insoluble</option>
+    </select>
+
+    <div class="cup">
+        <div id="water" class="water"></div>
+        <div id="particles" class="particles"></div>
+    </div>
+
+    <button class="btn btn-primary" onclick="addMaterial()">Add Material</button>
+    <button class="btn btn-warning" onclick="stirMaterial()">Stir</button>
+    <button class="btn btn-success" onclick="checkPrediction()">Check Prediction</button>
+
+    <div id="materialFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 2: STAAR Evidence Practice</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Read the observation and choose the best conclusion.
+    </div>
+
+    <div class="mystery-card">
+        <h4>Mystery Material A</h4>
+        <p><strong>Observation:</strong> The material disappears after stirring and the water stays clear.</p>
+
+        <select id="mysteryA" class="form-select mb-2">
+            <option selected>Choose conclusion...</option>
+            <option>Soluble</option>
+            <option>Insoluble</option>
+        </select>
+    </div>
+
+    <div class="mystery-card">
+        <h4>Mystery Material B</h4>
+        <p><strong>Observation:</strong> The material settles at the bottom after stirring.</p>
+
+        <select id="mysteryB" class="form-select mb-2">
+            <option selected>Choose conclusion...</option>
+            <option>Soluble</option>
+            <option>Insoluble</option>
+        </select>
+    </div>
+
+    <div class="mystery-card">
+        <h4>Mystery Material C</h4>
+        <p><strong>Observation:</strong> The material remains floating on top of the water.</p>
+
+        <select id="mysteryC" class="form-select mb-2">
+            <option selected>Choose conclusion...</option>
+            <option>Soluble</option>
+            <option>Insoluble</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success" onclick="checkMysteries()">Check Mystery Materials</button>
+
+    <div id="mysteryFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 3: Choose the Best Investigation</h2>
+
+    <div class="info-box">
+        <strong>STAAR-style question:</strong> A student wants to know if a white powder is soluble in water. What should the student do?
+    </div>
+
+    <select id="procedureSelect" class="form-select mb-3">
+        <option selected>Choose procedure...</option>
+        <option>Place the powder near a magnet.</option>
+        <option>Place the powder in water, stir, and observe whether it dissolves.</option>
+        <option>Measure the temperature of the powder.</option>
+        <option>Place the powder on a balance.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkProcedure()">Check Procedure</button>
+
+    <div id="procedureFeedback"></div>
+</div>
+
+<script>
+    function showFeedback(elementId, message, isCorrect) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+        box.innerHTML = message;
+    }
+
+    function resetCup() {
+        document.getElementById("water").className = "water";
+        document.getElementById("particles").innerHTML = "";
+        document.getElementById("materialFeedback").innerHTML = "";
+        document.getElementById("materialFeedback").className = "";
+        document.getElementById("predictionSelect").value = "Choose...";
+    }
+
+    function addMaterial() {
+        const particles = document.getElementById("particles");
+        particles.innerHTML = "";
+
+        for (let i = 0; i < 18; i++) {
+            const dot = document.createElement("div");
+            dot.className = "particle";
+            dot.style.left = Math.floor(Math.random() * 150) + "px";
+            dot.style.top = Math.floor(Math.random() * 130) + "px";
+            particles.appendChild(dot);
+        }
+    }
+
+    function stirMaterial() {
+        const materialSelect = document.getElementById("materialSelect");
+        const result = materialSelect.value;
+        const water = document.getElementById("water");
+        const dots = document.querySelectorAll(".particle");
+
+        if (dots.length === 0) {
+            addMaterial();
+        }
+
+        if (result === "soluble") {
+            water.className = "water solution-water";
+            document.querySelectorAll(".particle").forEach(function(dot) {
+                dot.style.opacity = "0";
+            });
+        } else if (result === "drink") {
+            water.className = "water drink-water";
+            document.querySelectorAll(".particle").forEach(function(dot) {
+                dot.style.opacity = "0";
+            });
+        } else if (result === "sink") {
+            document.querySelectorAll(".particle").forEach(function(dot) {
+                dot.style.top = "160px";
+                dot.style.opacity = "1";
+            });
+        } else if (result === "float") {
+            document.querySelectorAll(".particle").forEach(function(dot) {
+                dot.style.top = "10px";
+                dot.style.opacity = "1";
+            });
+        } else if (result === "cloudy") {
+            water.className = "water cloudy-water";
+            document.querySelectorAll(".particle").forEach(function(dot) {
+                dot.style.opacity = "0.35";
+            });
+        }
+
+        const selected = materialSelect.options[materialSelect.selectedIndex];
+        showFeedback("materialFeedback", "<strong>Observation:</strong> " + selected.dataset.result, true);
+    }
+
+    function checkPrediction() {
+        const materialSelect = document.getElementById("materialSelect");
+        const result = materialSelect.value;
+        const prediction = document.getElementById("predictionSelect").value;
+        const selected = materialSelect.options[materialSelect.selectedIndex];
+
+        let correctAnswer = "Insoluble";
+
+        if (result === "soluble" || result === "drink") {
+            correctAnswer = "Soluble";
+        }
+
+        if (prediction === correctAnswer) {
+            showFeedback("materialFeedback", "Correct! " + selected.dataset.reason, true);
+        } else {
+            showFeedback("materialFeedback", "Not yet. Stir the material and use the observation as evidence.", false);
+        }
+    }
+
+    function checkMysteries() {
+        const a = document.getElementById("mysteryA").value;
+        const b = document.getElementById("mysteryB").value;
+        const c = document.getElementById("mysteryC").value;
+
+        if (a === "Soluble" && b === "Insoluble" && c === "Insoluble") {
+            showFeedback(
+                "mysteryFeedback",
+                "Correct! A dissolves, so it is soluble. B and C remain visible, so they are insoluble.",
+                true
+            );
+        } else {
+            showFeedback(
+                "mysteryFeedback",
+                "Not yet. If the material dissolves, it is soluble. If it remains visible, settles, or floats, it is insoluble.",
+                false
+            );
+        }
+    }
+
+    function checkProcedure() {
+        const answer = document.getElementById("procedureSelect").value;
+
+        if (answer === "Place the powder in water, stir, and observe whether it dissolves.") {
+            showFeedback(
+                "procedureFeedback",
+                "Correct! To test solubility, place the material in water, stir, and observe whether it dissolves.",
+                true
+            );
+        } else {
+            showFeedback(
+                "procedureFeedback",
+                "Not yet. Solubility is tested by putting the material in water and observing whether it dissolves.",
+                false
+            );
+        }
+    }
+
+    resetCup();
+</script>
+
+{% endblock %}
