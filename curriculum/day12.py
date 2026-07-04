@@ -15,6 +15,77 @@ day12 = {
 
     "guided_practice": "Show students a picture or model of layered liquids such as oil, water, corn syrup, and honey. Ask students which liquid is least dense and which liquid is most dense. Guide students to use evidence from the layers: top means less dense, bottom means more dense.",
 
+    "interactive_activity_title": "Liquid Layer Density Challenge",
+
+    "interactive_activity": "Students use STAAR-style graduated cylinder models to organize liquids from least dense to most dense. Students must use layer position as evidence.",
+
+    "liquid_layer_cards": [
+        {
+            "model": "Graduated Cylinder A: Top layer = Oil, Middle layer = Water, Bottom layer = Corn syrup",
+            "student_task": "Organize the liquids from least dense to most dense.",
+            "least_dense": "Oil",
+            "middle_dense": "Water",
+            "most_dense": "Corn syrup",
+            "evidence": "Oil is on top, so it is least dense. Corn syrup is on the bottom, so it is most dense."
+        },
+        {
+            "model": "Graduated Cylinder B: Top layer = Water, Middle layer = Corn syrup, Bottom layer = Honey",
+            "student_task": "Organize the liquids from least dense to most dense.",
+            "least_dense": "Water",
+            "middle_dense": "Corn syrup",
+            "most_dense": "Honey",
+            "evidence": "Water is on top, so it is least dense. Honey is on the bottom, so it is most dense."
+        },
+        {
+            "model": "Graduated Cylinder C: Top layer = Rubbing alcohol, Middle layer = Oil, Bottom layer = Water",
+            "student_task": "Organize the liquids from least dense to most dense.",
+            "least_dense": "Rubbing alcohol",
+            "middle_dense": "Oil",
+            "most_dense": "Water",
+            "evidence": "Rubbing alcohol is on top, so it is least dense. Water is on the bottom, so it is most dense."
+        },
+        {
+            "model": "Graduated Cylinder D: Top layer = Oil, Middle layer = Dish soap, Bottom layer = Honey",
+            "student_task": "Organize the liquids from least dense to most dense.",
+            "least_dense": "Oil",
+            "middle_dense": "Dish soap",
+            "most_dense": "Honey",
+            "evidence": "Oil is the top layer, dish soap is in the middle, and honey is the bottom layer."
+        },
+        {
+            "model": "Graduated Cylinder E: Top layer = Vegetable oil, Middle layer = Water, Bottom layer = Honey",
+            "student_task": "Organize the liquids from least dense to most dense.",
+            "least_dense": "Vegetable oil",
+            "middle_dense": "Water",
+            "most_dense": "Honey",
+            "evidence": "Vegetable oil floats above water and honey, so it is least dense. Honey is at the bottom, so it is most dense."
+        },
+        {
+            "model": "Graduated Cylinder F: Top layer = Oil, Middle layer = Water, Bottom layer = Honey",
+            "student_task": "Which liquid is most dense? Which liquid is least dense?",
+            "least_dense": "Oil",
+            "middle_dense": "Water",
+            "most_dense": "Honey",
+            "evidence": "The liquid on top is least dense. The liquid on the bottom is most dense."
+        },
+        {
+            "model": "Graduated Cylinder G: Top layer = Water, Middle layer = Dish soap, Bottom layer = Corn syrup",
+            "student_task": "Organize the liquids from least dense to most dense.",
+            "least_dense": "Water",
+            "middle_dense": "Dish soap",
+            "most_dense": "Corn syrup",
+            "evidence": "Water is above the other liquids, so it is least dense. Corn syrup is below the other liquids, so it is most dense."
+        },
+        {
+            "model": "Graduated Cylinder H: Top layer = Rubbing alcohol, Middle layer = Water, Bottom layer = Corn syrup",
+            "student_task": "Organize the liquids from least dense to most dense.",
+            "least_dense": "Rubbing alcohol",
+            "middle_dense": "Water",
+            "most_dense": "Corn syrup",
+            "evidence": "The order from top to bottom shows the order from least dense to most dense."
+        }
+    ],
+
     "lab": "Liquids in Liquids Lab: students observe different liquids placed into graduated cylinders. Students record whether the liquids mix or form layers. If layers form, students use the position of each layer to organize the liquids from least dense to most dense.",
 
     "lab_notebook": "Students record liquid combinations, predictions, observations, and evidence about relative density.",
