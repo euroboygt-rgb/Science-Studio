@@ -162,6 +162,7 @@ day10 = {
     "vocabulary": [
         {
             "term": "mass",
+            "image": "/static/vocabulary/unit1/mass.png",
             "picture": "Picture of a balance measuring an object",
             "definition": "The amount of matter in an object.",
             "example": "A rock has mass because it is made of matter.",
@@ -171,6 +172,7 @@ day10 = {
         },
         {
             "term": "volume",
+            "image": "/static/vocabulary/unit1/volume.png",
             "picture": "Picture of liquid in a graduated cylinder",
             "definition": "The amount of space matter takes up.",
             "example": "Water in a cup has volume because it takes up space.",

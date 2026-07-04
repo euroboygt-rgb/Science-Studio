@@ -153,6 +153,7 @@ day13 = {
     "vocabulary": [
         {
             "term": "solubility",
+            "image": "/static/vocabulary/unit1/solubility.png",
             "picture": "Picture of a material dissolving in water",
             "definition": "A physical property that describes whether a material dissolves in a liquid.",
             "example": "Salt dissolves in water.",
@@ -189,6 +190,7 @@ day13 = {
         },
         {
             "term": "solution",
+            "image": "/static/vocabulary/unit2/solution.png",
             "picture": "Picture of salt water in a clear cup",
             "definition": "A mixture formed when one material dissolves in another material.",
             "example": "Salt water is a solution.",
@@ -198,6 +200,7 @@ day13 = {
         },
         {
             "term": "mixture",
+            "image": "/static/vocabulary/unit2/mixture.png",
             "picture": "Picture of sand and water in a cup",
             "definition": "Two or more substances put together.",
             "example": "Sand and water form a mixture, but the sand does not dissolve.",

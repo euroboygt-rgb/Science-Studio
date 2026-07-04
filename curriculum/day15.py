@@ -157,6 +157,7 @@ day15 = {
         },
         {
             "term": "mass",
+            "image": "/static/vocabulary/unit1/mass.png",
             "picture": "Picture of an object on a balance",
             "definition": "The amount of matter in an object.",
             "example": "A rock has a mass of 42 grams.",
@@ -166,6 +167,7 @@ day15 = {
         },
         {
             "term": "volume",
+            "image": "/static/vocabulary/unit1/volume.png",
             "picture": "Picture of liquid in a graduated cylinder",
             "definition": "The amount of space matter takes up.",
             "example": "A liquid has a volume of 50 milliliters.",
@@ -175,6 +177,7 @@ day15 = {
         },
         {
             "term": "magnetism",
+            "image": "/static/vocabulary/unit1/magnetism.png",
             "picture": "Picture of a magnet attracting a paper clip",
             "definition": "A physical property that describes whether a material is attracted to a magnet.",
             "example": "A paper clip is attracted to a magnet.",
@@ -184,6 +187,7 @@ day15 = {
         },
         {
             "term": "relative density",
+            "image": "/static/vocabulary/unit1/relative_density.png",
             "picture": "Picture of one object floating and one object sinking",
             "definition": "A physical property that compares whether one substance is more or less dense than another substance.",
             "example": "Oil floats on water because oil is less dense than water.",
@@ -193,6 +197,7 @@ day15 = {
         },
         {
             "term": "solubility",
+            "image": "/static/vocabulary/unit1/solubility.png",
             "picture": "Picture of salt dissolving in water",
             "definition": "A physical property that describes whether a material dissolves in a liquid.",
             "example": "Sugar is soluble in water.",
@@ -202,6 +207,7 @@ day15 = {
         },
         {
             "term": "conductivity",
+            "image": "/static/vocabulary/unit1/conductor.png",
             "picture": "Picture of a simple circuit with a light bulb",
             "definition": "A physical property that describes how well energy moves through a material.",
             "example": "Copper wire conducts electricity.",

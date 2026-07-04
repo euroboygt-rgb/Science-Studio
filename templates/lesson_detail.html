@@ -834,6 +834,13 @@
                     <div class="border rounded p-2 mb-3">
                         <h5>{{ vocab.term|title }}</h5>
 
+                        {% if vocab.get("image") %}
+                        <img src="{{ vocab.get('image') }}"
+                             alt="{{ vocab.term }} vocabulary image"
+                             class="img-fluid rounded border mb-2"
+                             style="max-height: 180px;">
+                        {% endif %}
+
                         <p><strong>Picture:</strong> {{ vocab.picture }}</p>
                         <p><strong>Definition:</strong> {{ vocab.definition }}</p>
                         <p><strong>Example:</strong> {{ vocab.example }}</p>

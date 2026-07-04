@@ -147,6 +147,7 @@ day7 = {
         },
         {
             "term": "magnetism",
+            "image": "/static/vocabulary/unit1/magnetism.png",
             "picture": "Picture of a magnet attracting metal objects",
             "definition": "The ability of a material to be attracted to a magnet.",
             "example": "A steel paper clip shows magnetism because it is attracted to a magnet.",

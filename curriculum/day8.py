@@ -148,6 +148,7 @@ day8 = {
     "vocabulary": [
         {
             "term": "mass",
+            "image": "/static/vocabulary/unit1/mass.png",
             "picture": "Picture of a balance measuring an object",
             "definition": "The amount of matter in an object.",
             "example": "A rock usually has more mass than a cotton ball.",
@@ -193,6 +194,7 @@ day8 = {
         },
         {
             "term": "matter",
+            "image": "/static/vocabulary/unit1/matter.png",
             "picture": "Picture of solid, liquid, and gas examples",
             "definition": "Anything that has mass and takes up space.",
             "example": "A pencil, water, air, and a rock are all matter.",

@@ -158,6 +158,7 @@ day9 = {
     "vocabulary": [
         {
             "term": "volume",
+            "image": "/static/vocabulary/unit1/volume.png",
             "picture": "Picture of liquid in a graduated cylinder",
             "definition": "The amount of space that matter takes up.",
             "example": "A cup of water has volume because it takes up space.",
@@ -203,6 +204,7 @@ day9 = {
         },
         {
             "term": "matter",
+            "image": "/static/vocabulary/unit1/matter.png",
             "picture": "Picture of solid, liquid, and gas examples",
             "definition": "Anything that has mass and takes up space.",
             "example": "Water, air, a pencil, and a rock are all matter.",

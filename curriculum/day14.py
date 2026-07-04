@@ -153,6 +153,7 @@ day14 = {
     "vocabulary": [
         {
             "term": "conductivity",
+            "image": "/static/vocabulary/unit1/conductor.png",
             "picture": "Picture of a simple circuit with a light bulb",
             "definition": "A physical property that describes how well energy moves through a material.",
             "example": "Copper has high electrical conductivity.",
@@ -162,6 +163,7 @@ day14 = {
         },
         {
             "term": "conductor",
+            "image": "/static/vocabulary/unit1/conductor.png",
             "picture": "Picture of a wire completing a circuit",
             "definition": "A material that allows energy to move through it easily.",
             "example": "Copper wire is a conductor.",
@@ -171,6 +173,7 @@ day14 = {
         },
         {
             "term": "insulator",
+            "image": "/static/vocabulary/unit1/insulator.png",
             "picture": "Picture of a rubber covering around a wire",
             "definition": "A material that does not allow energy to move through it easily.",
             "example": "Rubber is an insulator.",

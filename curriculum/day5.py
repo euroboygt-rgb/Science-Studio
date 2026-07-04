@@ -81,6 +81,7 @@ day5 = {
     "vocabulary": [
         {
             "term": "matter",
+            "image": "/static/vocabulary/unit1/matter.png",
             "picture": "Picture of solid, liquid, and gas examples",
             "definition": "Anything that has mass and takes up space.",
             "example": "A pencil, water, air, and a rock are all matter.",

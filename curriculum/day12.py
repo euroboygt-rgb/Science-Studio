@@ -161,6 +161,7 @@ day12 = {
     "vocabulary": [
         {
             "term": "relative density",
+            "image": "/static/vocabulary/unit1/relative_density.png",
             "picture": "Picture of liquids layered in a graduated cylinder",
             "definition": "A physical property that compares whether one substance is more or less dense than another substance.",
             "example": "Oil floats on water because oil is less dense than water.",

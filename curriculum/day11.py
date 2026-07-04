@@ -153,6 +153,7 @@ day11 = {
     "vocabulary": [
         {
             "term": "relative density",
+            "image": "/static/vocabulary/unit1/relative_density.png",
             "picture": "Picture of one object floating and one object sinking in water",
             "definition": "A physical property that compares whether an object is more or less dense than a liquid.",
             "example": "A cork floats in water because it is less dense than water.",
@@ -207,6 +208,7 @@ day11 = {
         },
         {
             "term": "liquid",
+            "image": "/static/vocabulary/unit1/liquid.png",
             "picture": "Picture of water being poured into a cup",
             "definition": "A state of matter that has a definite volume but takes the shape of its container.",
             "example": "Water is a liquid.",

@@ -146,6 +146,7 @@ day6 = {
         },
         {
             "term": "solid",
+            "image": "/static/vocabulary/unit1/solid.png",
             "picture": "Picture of a rock, pencil, or ice cube",
             "definition": "A state of matter that has a definite shape and takes up space.",
             "example": "A pencil, rock, desk, and ice cube are solids.",
@@ -155,6 +156,7 @@ day6 = {
         },
         {
             "term": "liquid",
+            "image": "/static/vocabulary/unit1/liquid.png",
             "picture": "Picture of water being poured into a cup",
             "definition": "A state of matter that takes the shape of its container and has a definite volume.",
             "example": "Water, milk, juice, and cooking oil are liquids.",
@@ -164,6 +166,7 @@ day6 = {
         },
         {
             "term": "gas",
+            "image": "/static/vocabulary/unit1/gas.png",
             "picture": "Picture of air filling a balloon",
             "definition": "A state of matter that spreads out to fill its container.",
             "example": "Air inside a balloon is a gas.",
@@ -182,6 +185,7 @@ day6 = {
         },
         {
             "term": "volume",
+            "image": "/static/vocabulary/unit1/volume.png",
             "picture": "Picture of liquid in a graduated cylinder",
             "definition": "The amount of space that matter takes up.",
             "example": "A graduated cylinder can measure the volume of water in milliliters.",
