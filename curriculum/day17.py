@@ -13,9 +13,83 @@ day17 = {
 
     "science_notebook": "Students create a page titled 'Separating Mixtures by Particle Size.' They define particle, sieve, strainer, and filter. Students draw a mixture of large and small particles being separated by a sieve. Students write one sentence explaining why the sieve works.",
 
-    "guided_practice": "Show students examples of mixtures that could be separated by particle size: gravel and sand, beans and rice, cereal and small crumbs, rocks and soil, and pasta and salt. Students identify which part has larger particles, which part has smaller particles, and what tool could separate them.",
+    "guided_practice": "Show students examples of mixtures that could be separated by particle size: gravel and sand, beans and rice, cereal and small crumbs, rocks and soil, and pasta and water. Students identify which part has larger particles, which part has smaller particles, and what tool could separate them.",
 
-    "lab": "Particle Size Separation Lab: students observe mixtures with different-sized particles. Students choose a tool such as a sieve, strainer, or screen and test whether the tool can separate the mixture. Students record the physical property used and the evidence from the separation.",
+    "interactive_activity_title": "Particle Size Separation Challenge",
+
+    "interactive_activity": "Students read mixture scenarios and choose the best tool for separating the mixture. Students must explain how particle size is used as evidence.",
+
+    "particle_size_cards": [
+        {
+            "mixture": "Gravel and sand",
+            "student_task": "Choose the best tool and explain how particle size helps separate the mixture.",
+            "large_particles": "Gravel",
+            "small_particles": "Sand",
+            "best_tool": "Sieve or screen",
+            "evidence": "The gravel particles are larger, so they stay on top of the sieve. The smaller sand particles pass through."
+        },
+        {
+            "mixture": "Pasta and water",
+            "student_task": "Choose the best tool and explain how particle size helps separate the mixture.",
+            "large_particles": "Pasta",
+            "small_particles": "Water passes through the holes",
+            "best_tool": "Strainer",
+            "evidence": "The pasta is too large to pass through the strainer, but the water flows through."
+        },
+        {
+            "mixture": "Beans and rice",
+            "student_task": "Choose the best tool and explain how particle size helps separate the mixture.",
+            "large_particles": "Beans",
+            "small_particles": "Rice",
+            "best_tool": "Screen or hand sorting",
+            "evidence": "The beans are larger than the rice, so size can help separate them."
+        },
+        {
+            "mixture": "Coffee grounds and liquid coffee",
+            "student_task": "Choose the best tool and explain how particle size helps separate the mixture.",
+            "large_particles": "Coffee grounds",
+            "small_particles": "Liquid coffee",
+            "best_tool": "Filter",
+            "evidence": "The filter traps the coffee grounds while the liquid passes through."
+        },
+        {
+            "mixture": "Rocks and soil",
+            "student_task": "Choose the best tool and explain how particle size helps separate the mixture.",
+            "large_particles": "Rocks",
+            "small_particles": "Soil",
+            "best_tool": "Screen or sieve",
+            "evidence": "The rocks are larger than the soil particles, so the screen can separate them."
+        },
+        {
+            "mixture": "Cereal and small crumbs",
+            "student_task": "Choose the best tool and explain how particle size helps separate the mixture.",
+            "large_particles": "Cereal pieces",
+            "small_particles": "Crumbs",
+            "best_tool": "Sieve or screen",
+            "evidence": "The crumbs are small enough to pass through while the cereal pieces stay on top."
+        },
+        {
+            "mixture": "Sand and water",
+            "student_task": "Choose the best tool and explain how particle size helps separate the mixture.",
+            "large_particles": "Sand particles",
+            "small_particles": "Water passes through the filter",
+            "best_tool": "Filter",
+            "evidence": "The sand particles can be trapped by the filter while the water passes through."
+        },
+        {
+            "mixture": "Marbles and salt",
+            "student_task": "Choose the best tool and explain how particle size helps separate the mixture.",
+            "large_particles": "Marbles",
+            "small_particles": "Salt",
+            "best_tool": "Sieve or hand sorting",
+            "evidence": "The marbles are much larger than the salt, so particle size can separate them."
+        }
+    ],
+
+    "lab": "Particle Size Separation Lab: students observe mixtures with different-sized particles. Students choose a tool such as a sieve, strainer, screen, or filter and test whether the tool can separate the mixture. Students record the physical property used and the evidence from the separation.",
+
+    "lab_link": "/labs/particle-size",
+    "lab_link_text": "Open Interactive Particle Size Lab",
 
     "lab_notebook": "Students record each mixture, the particle sizes observed, the tool used to separate the mixture, and evidence that the tool worked.",
 

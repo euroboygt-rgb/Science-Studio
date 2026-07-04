@@ -1,0 +1,340 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Particle Size Separation Lab Simulator</h1>
+<p class="lead">
+    Use sieves, strainers, screens, and filters to separate mixtures by particle size.
+</p>
+
+<a href="/first-nine-weeks/day/17?view=student" class="btn btn-secondary mb-4">
+    Back to Day 17
+</a>
+
+<style>
+    .sim-card {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
+    .info-box {
+        background: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .mixture-area {
+        min-height: 160px;
+        border: 3px solid #333;
+        border-radius: 15px;
+        background: white;
+        margin: 20px auto;
+        padding: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .item {
+        border: 2px solid #333;
+        border-radius: 12px;
+        background: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .large-item {
+        width: 78px;
+        height: 48px;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .small-item {
+        width: 45px;
+        height: 32px;
+        font-weight: bold;
+        font-size: 10px;
+    }
+
+    .liquid-item {
+        width: 90px;
+        height: 42px;
+        background: #8ed8ff;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .tool-area {
+        min-height: 95px;
+        border: 3px dashed #333;
+        border-radius: 15px;
+        background: white;
+        margin: 20px auto;
+        padding: 15px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .sorted-box {
+        min-height: 120px;
+        border: 2px dashed #333;
+        border-radius: 12px;
+        background: white;
+        padding: 12px;
+        margin-bottom: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .scenario-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="sim-card">
+    <h2>Part 1: Choose the Best Tool</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Choose the best tool to separate a mixture by particle size.
+    </div>
+
+    <label class="form-label"><strong>Choose a mixture:</strong></label>
+    <select id="mixtureSelect" class="form-select mb-3" onchange="showMixture()">
+        <option value="sieve" data-name="Gravel and Sand" data-large="Gravel" data-small="Sand" data-reason="A sieve separates gravel and sand because gravel particles are larger than sand particles.">Gravel and Sand</option>
+        <option value="strainer" data-name="Pasta and Water" data-large="Pasta" data-small="Water" data-reason="A strainer separates pasta and water because pasta is too large to pass through, but water passes through.">Pasta and Water</option>
+        <option value="screen" data-name="Rocks and Soil" data-large="Rocks" data-small="Soil" data-reason="A screen separates rocks and soil because rocks are larger than soil particles.">Rocks and Soil</option>
+        <option value="filter" data-name="Coffee Grounds and Liquid Coffee" data-large="Coffee Grounds" data-small="Liquid Coffee" data-reason="A filter traps coffee grounds while liquid coffee passes through.">Coffee Grounds and Liquid Coffee</option>
+    </select>
+
+    <div id="mixtureArea" class="mixture-area"></div>
+
+    <label class="form-label"><strong>Choose a tool:</strong></label>
+    <select id="toolSelect" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Sieve</option>
+        <option>Strainer</option>
+        <option>Screen</option>
+        <option>Filter</option>
+        <option>Magnet</option>
+        <option>Thermometer</option>
+    </select>
+
+    <button class="btn btn-primary" onclick="placeTool()">Place Tool</button>
+    <button class="btn btn-success" onclick="separateMixture()">Separate Mixture</button>
+
+    <div id="toolArea" class="tool-area">Tool will appear here</div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Stays on top / trapped</h5>
+            <div id="topBox" class="sorted-box"></div>
+        </div>
+
+        <div class="col-md-6">
+            <h5>Passes through</h5>
+            <div id="bottomBox" class="sorted-box"></div>
+        </div>
+    </div>
+
+    <div id="separationFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 2: STAAR Tool Match</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Match each mixture to the best separation tool.
+    </div>
+
+    <div class="scenario-card">
+        <h4>Gravel and sand</h4>
+        <select id="match1" class="form-select">
+            <option selected>Choose tool...</option>
+            <option>Sieve</option>
+            <option>Magnet</option>
+            <option>Thermometer</option>
+            <option>Balance</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>Pasta and water</h4>
+        <select id="match2" class="form-select">
+            <option selected>Choose tool...</option>
+            <option>Strainer</option>
+            <option>Magnet</option>
+            <option>Ruler</option>
+            <option>Thermometer</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>Coffee grounds and liquid coffee</h4>
+        <select id="match3" class="form-select">
+            <option selected>Choose tool...</option>
+            <option>Filter</option>
+            <option>Magnet</option>
+            <option>Balance</option>
+            <option>Thermometer</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success" onclick="checkToolMatch()">Check Tool Match</button>
+
+    <div id="matchFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 3: Explain the Evidence</h2>
+
+    <div class="info-box">
+        <strong>STAAR-style question:</strong> A student uses a sieve to separate gravel and sand. The gravel stays on top and the sand falls through. What physical property made this separation possible?
+    </div>
+
+    <select id="evidenceAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Particle size</option>
+        <option>Temperature</option>
+        <option>Conductivity</option>
+        <option>Magnetism</option>
+    </select>
+
+    <textarea id="evidenceText" class="form-control mb-3" rows="3" placeholder="Explain your evidence..."></textarea>
+
+    <button class="btn btn-success" onclick="checkEvidence()">Check Evidence</button>
+
+    <div id="evidenceFeedback"></div>
+</div>
+
+<script>
+    function showFeedback(elementId, message, isCorrect) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+        box.innerHTML = message;
+    }
+
+    function makeItem(label, sizeClass) {
+        const item = document.createElement("div");
+        item.className = "item " + sizeClass;
+        item.innerText = label;
+        return item;
+    }
+
+    function showMixture() {
+        const select = document.getElementById("mixtureSelect");
+        const selected = select.options[select.selectedIndex];
+
+        const mixtureArea = document.getElementById("mixtureArea");
+        mixtureArea.innerHTML = "";
+
+        for (let i = 0; i < 4; i++) {
+            mixtureArea.appendChild(makeItem(selected.dataset.large, "large-item"));
+            if (selected.dataset.small.includes("Water") || selected.dataset.small.includes("Liquid")) {
+                mixtureArea.appendChild(makeItem(selected.dataset.small, "liquid-item"));
+            } else {
+                mixtureArea.appendChild(makeItem(selected.dataset.small, "small-item"));
+            }
+        }
+
+        document.getElementById("toolArea").innerText = "Tool will appear here";
+        document.getElementById("topBox").innerHTML = "";
+        document.getElementById("bottomBox").innerHTML = "";
+        document.getElementById("separationFeedback").innerHTML = "";
+        document.getElementById("separationFeedback").className = "";
+        document.getElementById("toolSelect").value = "Choose...";
+    }
+
+    function placeTool() {
+        const tool = document.getElementById("toolSelect").value;
+        document.getElementById("toolArea").innerText = tool === "Choose..." ? "Choose a tool first" : tool + " placed between mixture and containers";
+    }
+
+    function separateMixture() {
+        const mixtureSelect = document.getElementById("mixtureSelect");
+        const selected = mixtureSelect.options[mixtureSelect.selectedIndex];
+        const correctTool = mixtureSelect.value;
+        const tool = document.getElementById("toolSelect").value.toLowerCase();
+
+        const topBox = document.getElementById("topBox");
+        const bottomBox = document.getElementById("bottomBox");
+
+        topBox.innerHTML = "";
+        bottomBox.innerHTML = "";
+
+        if (tool === correctTool) {
+            for (let i = 0; i < 4; i++) {
+                topBox.appendChild(makeItem(selected.dataset.large, "large-item"));
+
+                if (selected.dataset.small.includes("Water") || selected.dataset.small.includes("Liquid")) {
+                    bottomBox.appendChild(makeItem(selected.dataset.small, "liquid-item"));
+                } else {
+                    bottomBox.appendChild(makeItem(selected.dataset.small, "small-item"));
+                }
+            }
+
+            showFeedback("separationFeedback", "Correct! " + selected.dataset.reason, true);
+        } else {
+            showFeedback("separationFeedback", "Not yet. Choose the tool that matches the particle size difference in the mixture.", false);
+        }
+    }
+
+    function checkToolMatch() {
+        const m1 = document.getElementById("match1").value;
+        const m2 = document.getElementById("match2").value;
+        const m3 = document.getElementById("match3").value;
+
+        if (m1 === "Sieve" && m2 === "Strainer" && m3 === "Filter") {
+            showFeedback("matchFeedback", "Correct! Each tool separates materials based on particle size.", true);
+        } else {
+            showFeedback("matchFeedback", "Not yet. Match the tool to what needs to stay behind and what needs to pass through.", false);
+        }
+    }
+
+    function checkEvidence() {
+        const answer = document.getElementById("evidenceAnswer").value;
+        const explanation = document.getElementById("evidenceText").value.toLowerCase();
+
+        if (answer === "Particle size") {
+            showFeedback("evidenceFeedback", "Correct! The gravel particles are larger than the sand particles, so the sieve separates them by particle size.", true);
+        } else {
+            showFeedback("evidenceFeedback", "Not yet. The key evidence is that large gravel stays on top while smaller sand falls through.", false);
+        }
+    }
+
+    showMixture();
+</script>
+
+{% endblock %}
