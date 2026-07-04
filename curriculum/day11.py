@@ -15,6 +15,69 @@ day11 = {
 
     "guided_practice": "Show students several objects such as a paper clip, plastic cap, cork, marble, wooden craft stick, rubber band, aluminum foil, and eraser. Students predict whether each object will sink or float in water. Discuss why predictions must be tested with evidence.",
 
+    "interactive_activity_title": "Sink or Float Evidence Challenge",
+
+    "interactive_activity": "Students decide whether each object will sink or float in water. Then they use the observation as evidence to describe whether the object is more dense or less dense than water.",
+
+    "sink_float_cards": [
+        {
+            "object": "Cork",
+            "student_task": "Predict whether the cork will sink or float in water. Then explain what the observation shows about relative density.",
+            "observation": "Float",
+            "relative_density": "Less dense than water",
+            "evidence": "The cork floats, so it is less dense than water."
+        },
+        {
+            "object": "Marble",
+            "student_task": "Predict whether the marble will sink or float in water. Then explain what the observation shows about relative density.",
+            "observation": "Sink",
+            "relative_density": "More dense than water",
+            "evidence": "The marble sinks, so it is more dense than water."
+        },
+        {
+            "object": "Plastic bottle cap",
+            "student_task": "Predict whether the plastic bottle cap will sink or float in water. Then explain what the observation shows about relative density.",
+            "observation": "Float",
+            "relative_density": "Less dense than water",
+            "evidence": "The plastic bottle cap floats, so it is less dense than water."
+        },
+        {
+            "object": "Paper clip",
+            "student_task": "Predict whether the paper clip will sink or float in water. Then explain what the observation shows about relative density.",
+            "observation": "Sink",
+            "relative_density": "More dense than water",
+            "evidence": "The paper clip sinks, so it is more dense than water."
+        },
+        {
+            "object": "Wooden craft stick",
+            "student_task": "Predict whether the wooden craft stick will sink or float in water. Then explain what the observation shows about relative density.",
+            "observation": "Float",
+            "relative_density": "Less dense than water",
+            "evidence": "The wooden craft stick floats, so it is less dense than water."
+        },
+        {
+            "object": "Small rock",
+            "student_task": "Predict whether the small rock will sink or float in water. Then explain what the observation shows about relative density.",
+            "observation": "Sink",
+            "relative_density": "More dense than water",
+            "evidence": "The small rock sinks, so it is more dense than water."
+        },
+        {
+            "object": "Foam cube",
+            "student_task": "Predict whether the foam cube will sink or float in water. Then explain what the observation shows about relative density.",
+            "observation": "Float",
+            "relative_density": "Less dense than water",
+            "evidence": "The foam cube floats, so it is less dense than water."
+        },
+        {
+            "object": "Metal washer",
+            "student_task": "Predict whether the metal washer will sink or float in water. Then explain what the observation shows about relative density.",
+            "observation": "Sink",
+            "relative_density": "More dense than water",
+            "evidence": "The metal washer sinks, so it is more dense than water."
+        }
+    ],
+
     "lab": "Objects in Liquids Lab: students place different objects into water and observe whether each object sinks or floats. Students record predictions, observations, and evidence. Students use their results to describe the relative density of each object compared to water. The simulator also includes STAAR-style liquid density ordering and solids placed into layered liquids.",
 
     "lab_link": "/labs/sink-float",
@@ -169,6 +232,8 @@ day11 = {
         "Aluminum foil",
         "Erasers",
         "Small rocks",
+        "Foam cubes",
+        "Metal washers",
         "Optional: trays for each group"
     ],
 
