@@ -11,11 +11,77 @@ day14 = {
 
     "mini_lesson": "Conductivity is a physical property that describes how well a material allows energy, such as heat or electricity, to move through it. A conductor allows energy to move through it easily. An insulator does not allow energy to move through it easily. Metals are often good conductors. Materials such as plastic, rubber, wood, and foam are often good insulators.",
 
-    "science_notebook": "Students create a page titled 'Conductors and Insulators.' They define conductor, insulator, conductivity, heat energy, and evidence. Students draw one example of a conductor and one example of an insulator. Students write one sentence explaining how evidence can be used to classify materials.",
+    "science_notebook": "Students create a page titled 'Conductors and Insulators.' They define conductor, insulator, conductivity, heat energy, electricity, circuit, and evidence. Students draw one example of a conductor and one example of an insulator.",
 
     "guided_practice": "Show students common objects such as a metal spoon, plastic spoon, wooden craft stick, rubber band, aluminum foil, paper clip, foam cup, and copper wire. Students predict whether each material would be a conductor or an insulator. Discuss why predictions must be tested with evidence.",
 
+    "interactive_activity_title": "Conductor or Insulator Evidence Challenge",
+
+    "interactive_activity": "Students use observations from circuit and heat tests to decide whether each material is a conductor or an insulator. Students must use evidence such as the bulb lights, the bulb does not light, heat moves quickly, or heat moves slowly.",
+
+    "conductor_cards": [
+        {
+            "material": "Copper wire",
+            "student_task": "Predict whether copper wire is a conductor or insulator. Use the circuit observation as evidence.",
+            "observation": "The bulb lights when copper wire is placed in the circuit.",
+            "conclusion": "Conductor",
+            "evidence": "The bulb lights, so copper wire allows electricity to move through it."
+        },
+        {
+            "material": "Plastic spoon",
+            "student_task": "Predict whether a plastic spoon is a conductor or insulator. Use the circuit observation as evidence.",
+            "observation": "The bulb does not light when the plastic spoon is placed in the circuit.",
+            "conclusion": "Insulator",
+            "evidence": "The bulb does not light, so the plastic spoon does not allow electricity to move through it easily."
+        },
+        {
+            "material": "Aluminum foil",
+            "student_task": "Predict whether aluminum foil is a conductor or insulator. Use the circuit observation as evidence.",
+            "observation": "The bulb lights when aluminum foil is placed in the circuit.",
+            "conclusion": "Conductor",
+            "evidence": "The bulb lights, so aluminum foil allows electricity to move through it."
+        },
+        {
+            "material": "Rubber band",
+            "student_task": "Predict whether a rubber band is a conductor or insulator. Use the circuit observation as evidence.",
+            "observation": "The bulb does not light when the rubber band is placed in the circuit.",
+            "conclusion": "Insulator",
+            "evidence": "The bulb does not light, so the rubber band is an insulator."
+        },
+        {
+            "material": "Metal paper clip",
+            "student_task": "Predict whether a metal paper clip is a conductor or insulator. Use the circuit observation as evidence.",
+            "observation": "The bulb lights when the metal paper clip is placed in the circuit.",
+            "conclusion": "Conductor",
+            "evidence": "The bulb lights, so the metal paper clip is a conductor."
+        },
+        {
+            "material": "Wooden craft stick",
+            "student_task": "Predict whether a wooden craft stick is a conductor or insulator. Use the circuit observation as evidence.",
+            "observation": "The bulb does not light when the wooden craft stick is placed in the circuit.",
+            "conclusion": "Insulator",
+            "evidence": "The bulb does not light, so the wooden craft stick is an insulator."
+        },
+        {
+            "material": "Foam cup piece",
+            "student_task": "Predict whether foam is a conductor or insulator. Use the test observation as evidence.",
+            "observation": "The bulb does not light when foam is placed in the circuit.",
+            "conclusion": "Insulator",
+            "evidence": "The bulb does not light, so foam does not allow electricity to move through it easily."
+        },
+        {
+            "material": "Steel nail",
+            "student_task": "Predict whether a steel nail is a conductor or insulator. Use the circuit observation as evidence.",
+            "observation": "The bulb lights when the steel nail is placed in the circuit.",
+            "conclusion": "Conductor",
+            "evidence": "The bulb lights, so the steel nail is a conductor."
+        }
+    ],
+
     "lab": "Conductors and Insulators Lab: students test different materials to observe whether they allow energy to move through them. Students record predictions, observations, and evidence. Students classify each material as a conductor or insulator based on the results.",
+
+    "lab_link": "/labs/conductivity",
+    "lab_link_text": "Open Interactive Conductivity Lab",
 
     "lab_notebook": "Students record each material tested, their prediction, the observation from the test, and whether the material is a conductor or insulator.",
 
@@ -92,7 +158,7 @@ day14 = {
             "example": "Copper has high electrical conductivity.",
             "science_use": "Scientists use conductivity to compare whether materials allow heat or electricity to move through them.",
             "real_world_use": "Conductivity is important in wires, cooking pans, electronics, and safety equipment.",
-            "staar_connection": "On STAAR, students may identify conductivity as the property being tested when a circuit lights or heat moves through a material."
+            "staar_connection": "On STAAR, students may identify conductivity when a circuit lights or heat moves through a material."
         },
         {
             "term": "conductor",

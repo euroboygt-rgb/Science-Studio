@@ -65,6 +65,11 @@ def liquid_density_lab():
 def solubility_lab():
     return render_template("solubility_lab.html")
 
+
+@app.route("/labs/conductivity")
+def conductivity_lab():
+    return render_template("conductivity_lab.html")
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
