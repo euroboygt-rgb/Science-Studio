@@ -17,4 +17,17 @@ first_nine_weeks = [
     {"day": 13, "title": "Soluble and Insoluble Materials", "teks": ["5.6A"], "lab": True},
     {"day": 14, "title": "Conductors and Insulators", "teks": ["5.6A"], "lab": True},
     {"day": 15, "title": "Matter Review and Performance Assessment", "teks": ["5.6A"], "lab": False},
+
+    # Unit 2 - Investigating Mixtures
+    {"day": 16, "title": "What Is a Mixture?", "teks": ["5.6B"], "lab": True},
+    {"day": 17, "title": "Separating Mixtures by Particle Size", "teks": ["5.6B"], "lab": True},
+    {"day": 18, "title": "Separating Mixtures Using Magnetism", "teks": ["5.6B"], "lab": True},
+    {"day": 19, "title": "Separating Mixtures Using Relative Density", "teks": ["5.6B"], "lab": True},
+    {"day": 20, "title": "Solubility and Solutions in Mixtures", "teks": ["5.6B"], "lab": True},
+    {"day": 21, "title": "Separating Solutions by Evaporation", "teks": ["5.6B"], "lab": True},
+    {"day": 22, "title": "Conservation of Matter in Solutions", "teks": ["5.6B"], "lab": True},
+    {"day": 23, "title": "Mixtures and Solutions Review", "teks": ["5.6B"], "lab": False},
+    {"day": 24, "title": "Matter Is Made of Particles Too Small to See", "teks": ["5.6D"], "lab": True},
+    {"day": 25, "title": "Unit 2 Performance Assessment", "teks": ["5.3A", "5.6B", "5.6D"], "lab": False},
+
 ]
