@@ -465,6 +465,57 @@
 
 
 
+
+                {% if lesson.get("unit1_review_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("unit1_review_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>Review Scenario {{ loop.index }}</h5>
+                            <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Physical Property:</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Mass</option>
+                                <option>Volume</option>
+                                <option>Magnetism</option>
+                                <option>Relative density</option>
+                                <option>Solubility</option>
+                                <option>Conductivity</option>
+                            </select>
+
+                            <label class="form-label"><strong>Tool or Test:</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Balance</option>
+                                <option>Graduated cylinder</option>
+                                <option>Magnet test</option>
+                                <option>Sink, float, or layering test</option>
+                                <option>Dissolving test</option>
+                                <option>Circuit test</option>
+                            </select>
+
+                            <label class="form-label"><strong>Evidence:</strong></label>
+                            <textarea class="form-control" rows="2" placeholder="Use the observation as evidence..."></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Physical Property:</strong> {{ card.property }}</p>
+                                    <p><strong>Tool or Test:</strong> {{ card.tool_or_test }}</p>
+                                    <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("conductor_cards") %}
                 <div class="row">
                     {% for card in lesson.get("conductor_cards") %}

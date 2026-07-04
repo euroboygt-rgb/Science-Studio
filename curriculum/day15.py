@@ -9,13 +9,79 @@ day15 = {
 
     "learning_target": "I can use evidence from investigations to compare and classify matter based on physical properties.",
 
-    "mini_lesson": "Review the physical properties studied in Unit 1: state of matter, mass, volume, magnetism, relative density, solubility, and conductivity. Remind students that physical properties can be observed, measured, or tested without changing the material into something new. Students should use evidence from tools, observations, and investigation results to support their answers.",
+    "mini_lesson": "Review the physical properties studied in Unit 1: state of matter, mass, volume, magnetism, relative density, solubility, and conductivity. Physical properties can be observed, measured, or tested without changing the material into something new. Students should use evidence from tools, observations, and investigation results to support their answers.",
 
     "science_notebook": "Students create a Unit 1 review page titled 'Physical Properties of Matter.' Students make a chart with three columns: Property, Tool or Test, and Evidence. They add examples for mass, volume, magnetism, relative density, solubility, and conductivity.",
 
-    "guided_practice": "Review sample STAAR-style investigation scenarios. Ask students to identify the physical property being tested, the tool or procedure being used, and the evidence that supports the conclusion. Emphasize that students must read data tables, pictures, and models carefully.",
+    "guided_practice": "Review sample STAAR-style investigation scenarios. Ask students to identify the physical property being tested, the tool or procedure being used, and the evidence that supports the conclusion.",
 
-    "lab": "Performance Assessment: students rotate through review stations or complete a written performance task. Students identify physical properties of matter, choose appropriate tools or tests, record evidence, and explain conclusions using science vocabulary.",
+    "interactive_activity_title": "Unit 1 Physical Properties Review Challenge",
+
+    "interactive_activity": "Students read investigation scenarios and identify the physical property, tool or test, and evidence. This reviews all major Unit 1 physical properties before the performance assessment.",
+
+    "unit1_review_cards": [
+        {
+            "scenario": "A student places a rock on a balance and records 42 grams.",
+            "student_task": "Identify the physical property, tool, and evidence.",
+            "property": "Mass",
+            "tool_or_test": "Balance",
+            "evidence": "The balance gives a measurement in grams, so the property is mass."
+        },
+        {
+            "scenario": "A student pours water into a graduated cylinder and reads 75 mL.",
+            "student_task": "Identify the physical property, tool, and evidence.",
+            "property": "Volume",
+            "tool_or_test": "Graduated cylinder",
+            "evidence": "The graduated cylinder measures liquid volume in milliliters."
+        },
+        {
+            "scenario": "A paper clip is placed near a magnet and moves toward the magnet.",
+            "student_task": "Identify the physical property, tool, and evidence.",
+            "property": "Magnetism",
+            "tool_or_test": "Magnet test",
+            "evidence": "The paper clip is attracted to the magnet, so magnetism is being tested."
+        },
+        {
+            "scenario": "Oil forms a layer above water in a graduated cylinder.",
+            "student_task": "Identify the physical property, tool, and evidence.",
+            "property": "Relative density",
+            "tool_or_test": "Sink, float, or layering test",
+            "evidence": "Oil is above water, so oil is less dense than water."
+        },
+        {
+            "scenario": "Salt is stirred into water and can no longer be easily seen.",
+            "student_task": "Identify the physical property, tool, and evidence.",
+            "property": "Solubility",
+            "tool_or_test": "Dissolving test",
+            "evidence": "The salt dissolves in water, so solubility is being tested."
+        },
+        {
+            "scenario": "Sand is stirred into water and settles at the bottom.",
+            "student_task": "Identify the physical property, tool, and evidence.",
+            "property": "Solubility",
+            "tool_or_test": "Dissolving test",
+            "evidence": "The sand does not dissolve and remains visible, so it is insoluble."
+        },
+        {
+            "scenario": "A copper wire is placed in a simple circuit and the bulb lights.",
+            "student_task": "Identify the physical property, tool, and evidence.",
+            "property": "Conductivity",
+            "tool_or_test": "Circuit test",
+            "evidence": "The bulb lights, so copper wire conducts electricity."
+        },
+        {
+            "scenario": "A marble sinks when placed in water.",
+            "student_task": "Identify the physical property, tool, and evidence.",
+            "property": "Relative density",
+            "tool_or_test": "Sink or float test",
+            "evidence": "The marble sinks, so it is more dense than water."
+        }
+    ],
+
+    "lab": "Performance Assessment: students complete a Unit 1 matter review challenge. Students identify physical properties, choose the correct tool or test, record evidence, and explain conclusions using science vocabulary.",
+
+    "lab_link": "/labs/unit1-review",
+    "lab_link_text": "Open Unit 1 Review Game",
 
     "lab_notebook": "Students complete a Unit 1 review evidence table. They identify each property, describe how it can be tested, and write evidence that supports a conclusion.",
 
@@ -32,72 +98,37 @@ day15 = {
     "staar_practice": [
         {
             "question": "A student uses a balance to measure a rock. Which physical property is being measured?",
-            "choices": [
-                "Mass",
-                "Volume",
-                "Solubility",
-                "Conductivity"
-            ],
+            "choices": ["Mass", "Volume", "Solubility", "Conductivity"],
             "answer": "Mass"
         },
         {
             "question": "A student places a paper clip near a magnet and observes that the paper clip is attracted to the magnet. Which physical property is being tested?",
-            "choices": [
-                "Relative density",
-                "Solubility",
-                "Magnetism",
-                "Volume"
-            ],
+            "choices": ["Relative density", "Solubility", "Magnetism", "Volume"],
             "answer": "Magnetism"
         },
         {
             "question": "A student pours oil and water into a graduated cylinder. The oil forms a layer above the water. What can the student conclude?",
-            "choices": [
-                "Oil is less dense than water",
-                "Oil is more dense than water",
-                "Oil is soluble in water",
-                "Water is magnetic"
-            ],
+            "choices": ["Oil is less dense than water", "Oil is more dense than water", "Oil is soluble in water", "Water is magnetic"],
             "answer": "Oil is less dense than water"
         },
         {
             "question": "A student stirs salt into water and the salt can no longer be seen. Which property is being tested?",
-            "choices": [
-                "Conductivity",
-                "Solubility",
-                "Magnetism",
-                "Mass"
-            ],
+            "choices": ["Conductivity", "Solubility", "Magnetism", "Mass"],
             "answer": "Solubility"
         },
         {
             "question": "A student places a piece of copper wire into a simple circuit and the bulb lights. What conclusion is best supported?",
-            "choices": [
-                "Copper wire is an insulator",
-                "Copper wire is a conductor",
-                "Copper wire is soluble",
-                "Copper wire is less dense than water"
-            ],
+            "choices": ["Copper wire is an insulator", "Copper wire is a conductor", "Copper wire is soluble", "Copper wire is less dense than water"],
             "answer": "Copper wire is a conductor"
         },
         {
             "question": "Which tool should a student use to measure the volume of a liquid?",
-            "choices": [
-                "Balance",
-                "Magnet",
-                "Graduated cylinder",
-                "Spring scale"
-            ],
+            "choices": ["Balance", "Magnet", "Graduated cylinder", "Spring scale"],
             "answer": "Graduated cylinder"
         },
         {
             "question": "A marble sinks when placed in water. Which conclusion is best supported?",
-            "choices": [
-                "The marble is less dense than water",
-                "The marble is more dense than water",
-                "The marble dissolves in water",
-                "The marble is a gas"
-            ],
+            "choices": ["The marble is less dense than water", "The marble is more dense than water", "The marble dissolves in water", "The marble is a gas"],
             "answer": "The marble is more dense than water"
         },
         {
@@ -119,7 +150,7 @@ day15 = {
             "term": "physical property",
             "picture": "Picture of different objects being observed and tested",
             "definition": "A characteristic of matter that can be observed, measured, or tested without changing the material into something new.",
-            "example": "Color, texture, mass, volume, magnetism, solubility, relative density, and conductivity are physical properties.",
+            "example": "Mass, volume, magnetism, solubility, relative density, and conductivity are physical properties.",
             "science_use": "Scientists use physical properties to compare, classify, and identify matter.",
             "real_world_use": "Physical properties help people choose materials for tools, buildings, cooking, clothing, and technology.",
             "staar_connection": "On STAAR, students must identify physical properties and use evidence from investigations."
@@ -210,5 +241,5 @@ day15 = {
         "Safety goggles"
     ],
 
-    "teacher_notes": "This lesson should be used as a review and performance assessment before moving out of Unit 1. Students should practice identifying the physical property being tested, choosing the correct tool or procedure, and using evidence to support conclusions. Push students to explain how they know instead of only choosing an answer."
+    "teacher_notes": "This lesson should be used as a review and performance assessment before moving out of Unit 1. Students should practice identifying the physical property being tested, choosing the correct tool or procedure, and using evidence to support conclusions."
 }
