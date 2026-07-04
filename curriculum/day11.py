@@ -15,7 +15,10 @@ day11 = {
 
     "guided_practice": "Show students several objects such as a paper clip, plastic cap, cork, marble, wooden craft stick, rubber band, aluminum foil, and eraser. Students predict whether each object will sink or float in water. Discuss why predictions must be tested with evidence.",
 
-    "lab": "Objects in Liquids Lab: students place different objects into water and observe whether each object sinks or floats. Students record predictions, observations, and evidence. Students use their results to describe the relative density of each object compared to water.",
+    "lab": "Objects in Liquids Lab: students place different objects into water and observe whether each object sinks or floats. Students record predictions, observations, and evidence. Students use their results to describe the relative density of each object compared to water. The simulator also includes STAAR-style liquid density ordering and solids placed into layered liquids.",
+
+    "lab_link": "/labs/sink-float",
+    "lab_link_text": "Open Interactive Sink, Float, and Density Lab",
 
     "lab_notebook": "Students record whether each object sinks or floats and explain what the observation shows about the object's relative density compared to water.",
 
@@ -169,5 +172,5 @@ day11 = {
         "Optional: trays for each group"
     ],
 
-    "teacher_notes": "Students may think heavy objects always sink and light objects always float. Use this lesson to push students toward evidence. Emphasize relative density, not just size or weight. A large object can float if it is less dense than water, and a small object can sink if it is more dense than water."
+    "teacher_notes": "Students may think heavy objects always sink and light objects always float. Use this lesson to push students toward evidence. Emphasize relative density, not just size or weight. A large object can float if it is less dense than water, and a small object can sink if it is more dense than water. STAAR may show layered liquids or solids suspended in different liquid layers and ask students to compare density from least to greatest."
 }
