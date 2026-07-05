@@ -15,13 +15,77 @@ day27 = {
 
     "guided_practice": "Show students examples such as tug-of-war teams pulling equally, two students pushing on opposite sides of a desk with equal strength, and a book resting on a table. Students identify the forces, compare the strength of the forces, describe the direction, and explain why motion does not change.",
 
-    "lab": "Balanced Forces Lab: students use classroom objects or a simulator to model equal forces. Students push or pull gently from opposite sides with equal strength and observe whether the object changes position. Students use arrows to model the forces.",
+    "interactive_activity_title": "Balanced Forces Challenge",
 
-    "lab_notebook": "Students record the object, the forces acting on the object, the direction of each force, whether the forces are equal or unequal, and the effect on motion.",
+    "interactive_activity": "Students read balanced-force scenarios and identify the direction, strength, and effect of the forces. Students use evidence to explain why the object does not change motion.",
+
+    "balanced_force_cards": [
+        {
+            "scenario": "Two students push on opposite sides of a box with the same amount of force. The box stays in the same place.",
+            "student_task": "Explain why the box does not move.",
+            "force_1": "Push to the right",
+            "force_2": "Push to the left",
+            "strength": "Equal strength",
+            "effect_on_motion": "No change in motion",
+            "evidence": "The forces are equal and opposite, so the box stays at rest."
+        },
+        {
+            "scenario": "Two tug-of-war teams pull the rope in opposite directions with equal strength. The center flag does not move.",
+            "student_task": "Explain why the rope does not move toward either team.",
+            "force_1": "Pull to the left",
+            "force_2": "Pull to the right",
+            "strength": "Equal strength",
+            "effect_on_motion": "No change in motion",
+            "evidence": "Both teams pull with the same strength in opposite directions."
+        },
+        {
+            "scenario": "A book rests on a table. The book does not move up or down.",
+            "student_task": "Explain why the book stays at rest.",
+            "force_1": "Gravity pulls downward",
+            "force_2": "The table pushes upward",
+            "strength": "Balanced forces",
+            "effect_on_motion": "No change in motion",
+            "evidence": "The book stays in the same position because the forces are balanced."
+        },
+        {
+            "scenario": "A box is pulled to the left with 20 N and pulled to the right with 20 N.",
+            "student_task": "Decide whether the forces are balanced or unbalanced.",
+            "force_1": "20 N left",
+            "force_2": "20 N right",
+            "strength": "Equal strength",
+            "effect_on_motion": "No change in motion",
+            "evidence": "The forces have the same strength and act in opposite directions."
+        },
+        {
+            "scenario": "A student pushes a chair from the left. Another student pushes the same chair from the right with the same strength.",
+            "student_task": "Explain what happens to the chair.",
+            "force_1": "Push from the left",
+            "force_2": "Push from the right",
+            "strength": "Equal strength",
+            "effect_on_motion": "No change in motion",
+            "evidence": "The chair does not move because the forces cancel each other out."
+        },
+        {
+            "scenario": "Two same-size arrows point toward a box from opposite directions.",
+            "student_task": "Use the model to explain whether motion changes.",
+            "force_1": "Arrow pushing right",
+            "force_2": "Arrow pushing left",
+            "strength": "Equal strength shown by same-size arrows",
+            "effect_on_motion": "No change in motion",
+            "evidence": "Same-size arrows in opposite directions show equal, balanced forces."
+        }
+    ],
+
+    "lab": "Balanced Forces Tug-of-War Lab: students use a simulator and classroom models to compare force strength and direction. Students observe that when forces are equal and opposite, the object or rope does not change motion.",
+
+    "lab_link": "/labs/balanced-forces",
+    "lab_link_text": "Open Balanced Forces Tug-of-War Simulator",
+
+    "lab_notebook": "Students record the object or system, the direction of each force, whether the forces are equal or unequal, the effect on motion, and evidence that supports the claim.",
 
     "lab_notebook_table": {
         "columns": [
-            "Object",
+            "Object or System",
             "Force 1 Direction",
             "Force 2 Direction",
             "Equal or Unequal Forces?",
@@ -34,12 +98,7 @@ day27 = {
     "staar_practice": [
         {
             "question": "Two students push on opposite sides of a box with equal force. The box does not move. Which statement best explains why?",
-            "choices": [
-                "The forces are equal and balanced",
-                "The box has no mass",
-                "Only one force is acting on the box",
-                "The box became magnetic"
-            ],
+            "choices": ["The forces are equal and balanced", "The box has no mass", "Only one force is acting on the box", "The box became magnetic"],
             "answer": "The forces are equal and balanced"
         },
         {
@@ -54,42 +113,22 @@ day27 = {
         },
         {
             "question": "In a tug-of-war game, both teams pull with the same strength in opposite directions. What will most likely happen?",
-            "choices": [
-                "The rope will not move toward either team",
-                "The rope will always move left",
-                "The rope will always move right",
-                "The rope will disappear"
-            ],
+            "choices": ["The rope will not move toward either team", "The rope will always move left", "The rope will always move right", "The rope will disappear"],
             "answer": "The rope will not move toward either team"
         },
         {
             "question": "What usually happens when equal forces act on an object in opposite directions?",
-            "choices": [
-                "There is no change in motion",
-                "The object always speeds up",
-                "The object always changes color",
-                "The object loses all mass"
-            ],
+            "choices": ["There is no change in motion", "The object always speeds up", "The object always changes color", "The object loses all mass"],
             "answer": "There is no change in motion"
         },
         {
             "question": "A book is resting on a table. The book is not moving. Which explanation is best?",
-            "choices": [
-                "The forces acting on the book are balanced",
-                "No forces exist anywhere near the book",
-                "The book is not matter",
-                "The book is moving too fast to see"
-            ],
+            "choices": ["The forces acting on the book are balanced", "No forces exist anywhere near the book", "The book is not matter", "The book is moving too fast to see"],
             "answer": "The forces acting on the book are balanced"
         },
         {
             "question": "Which evidence supports the claim that forces on an object are balanced?",
-            "choices": [
-                "The object does not change its motion",
-                "The object changes color",
-                "The object becomes a liquid",
-                "The object disappears"
-            ],
+            "choices": ["The object does not change its motion", "The object changes color", "The object becomes a liquid", "The object disappears"],
             "answer": "The object does not change its motion"
         }
     ],

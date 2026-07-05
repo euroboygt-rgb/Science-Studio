@@ -27,6 +27,7 @@ from curriculum.day24 import day24
 from curriculum.day25 import day25
 from curriculum.day26 import day26
 from curriculum.day27 import day27
+from curriculum.day28 import day28
 
 app = Flask(__name__)
 
@@ -59,6 +60,7 @@ lesson_details = {
     25: day25,
     26: day26,
     27: day27,
+    28: day28,
 }
 
 
@@ -155,6 +157,11 @@ def unit2_performance_game():
 @app.route("/labs/forces")
 def forces_lab():
     return render_template("forces_lab.html")
+
+
+@app.route("/labs/balanced-forces")
+def balanced_forces_lab():
+    return render_template("balanced_forces_lab.html")
 
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
