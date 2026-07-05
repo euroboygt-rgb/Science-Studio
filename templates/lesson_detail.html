@@ -474,6 +474,45 @@
 
 
 
+
+                {% if lesson.get("particle_model_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("particle_model_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>Particle Model Scenario {{ loop.index }}</h5>
+                            <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Visible Evidence:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What can you see or observe?"></textarea>
+
+                            <label class="form-label"><strong>Particles Present:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What particles are present even if they are too small to see?"></textarea>
+
+                            <label class="form-label"><strong>Particle Model:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="Describe or draw the model in your notebook."></textarea>
+
+                            <label class="form-label"><strong>Explanation:</strong></label>
+                            <textarea class="form-control" rows="2" placeholder="Use evidence to explain how matter is made of particles too small to see."></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Visible Evidence:</strong> {{ card.visible_evidence }}</p>
+                                    <p><strong>Particles Present:</strong> {{ card.particles_present }}</p>
+                                    <p><strong>Model:</strong> {{ card.model }}</p>
+                                    <p><strong>Explanation:</strong> {{ card.explanation }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("unit2_review_cards") %}
                 <div class="row">
                     {% for card in lesson.get("unit2_review_cards") %}

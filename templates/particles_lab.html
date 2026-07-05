@@ -1,0 +1,387 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Particles Too Small to See Lab Simulator</h1>
+<p class="lead">
+    Use models to show air particles in a balloon and food-coloring particles spreading through water.
+</p>
+
+<a href="/first-nine-weeks/day/24?view=student" class="btn btn-secondary mb-4">
+    Back to Day 24
+</a>
+
+<style>
+    .sim-card {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
+    .info-box {
+        background: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .balloon-area {
+        height: 320px;
+        border: 3px solid #333;
+        border-radius: 15px;
+        background: white;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .balloon {
+        width: 120px;
+        height: 150px;
+        border: 4px solid #333;
+        border-radius: 60% 60% 55% 55%;
+        background: #f8d7da;
+        position: absolute;
+        left: 50%;
+        bottom: 60px;
+        transform: translateX(-50%) scale(0.55);
+        transition: 0.5s;
+    }
+
+    .balloon-neck {
+        width: 40px;
+        height: 35px;
+        border: 4px solid #333;
+        background: #f8d7da;
+        position: absolute;
+        left: 50%;
+        bottom: 38px;
+        transform: translateX(-50%);
+    }
+
+    .air-particle {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: white;
+        border: 1px solid #333;
+        position: absolute;
+        display: none;
+    }
+
+    .cup-area {
+        width: 310px;
+        height: 300px;
+        border: 4px solid #333;
+        border-radius: 0 0 30px 30px;
+        background: #8ed8ff;
+        margin: 20px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .color-particle {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #6f42c1;
+        border: 1px solid #333;
+        position: absolute;
+        transition: 1s;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .scenario-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .model-box {
+        min-height: 130px;
+        border: 2px dashed #333;
+        border-radius: 12px;
+        background: white;
+        padding: 12px;
+        text-align: center;
+    }
+</style>
+
+<div class="sim-card">
+    <h2>Part 1: Balloon Air Particles</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Air is matter. It has particles too small to see, takes up space, and can push on the balloon.
+    </div>
+
+    <button class="btn btn-primary" onclick="inflateBalloon()">Add Air</button>
+    <button class="btn btn-warning" onclick="showAirParticles()">Show Particle Model</button>
+    <button class="btn btn-secondary" onclick="resetBalloon()">Reset Balloon</button>
+
+    <div class="balloon-area">
+        <div id="balloon" class="balloon">
+            <div class="air-particle" style="top:35px; left:35px;"></div>
+            <div class="air-particle" style="top:65px; left:70px;"></div>
+            <div class="air-particle" style="top:95px; left:45px;"></div>
+            <div class="air-particle" style="top:115px; left:80px;"></div>
+            <div class="air-particle" style="top:55px; left:20px;"></div>
+            <div class="air-particle" style="top:90px; left:95px;"></div>
+        </div>
+        <div class="balloon-neck"></div>
+    </div>
+
+    <label class="form-label"><strong>What evidence shows air is matter?</strong></label>
+    <select id="balloonAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The balloon gets larger because air takes up space.</option>
+        <option>The air disappears inside the balloon.</option>
+        <option>The balloon becomes solid.</option>
+        <option>There are no particles inside the balloon.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkBalloon()">Check Balloon Evidence</button>
+    <div id="balloonFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 2: Food-Coloring Diffusion Model</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Food coloring spreads through water because tiny particles move and spread out.
+    </div>
+
+    <button class="btn btn-primary" onclick="dropColor()">Drop Food Coloring</button>
+    <button class="btn btn-warning" onclick="spreadColor()">Let Particles Spread</button>
+    <button class="btn btn-secondary" onclick="resetColor()">Reset Water</button>
+
+    <div id="cupArea" class="cup-area">
+        <strong style="position:absolute; top:8px; left:12px;">Water</strong>
+    </div>
+
+    <label class="form-label"><strong>What does the spreading color model?</strong></label>
+    <select id="colorAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Particles of food coloring move and spread through the water.</option>
+        <option>The food coloring disappears forever.</option>
+        <option>The water becomes a solid.</option>
+        <option>Particles are large enough to see one at a time.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkColor()">Check Food-Coloring Evidence</button>
+    <div id="colorFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 3: STAAR Model Challenge</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Match evidence to the correct particle model.
+    </div>
+
+    <div class="scenario-card">
+        <h4>Question 1</h4>
+        <p>A balloon gets bigger when air is added. Which model best explains this?</p>
+        <select id="q1" class="form-select">
+            <option selected>Choose...</option>
+            <option>Tiny air particles spread throughout the balloon and take up space.</option>
+            <option>There are no particles inside the balloon.</option>
+            <option>One large solid block fills the balloon.</option>
+            <option>The balloon gets bigger because air is not matter.</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>Question 2</h4>
+        <p>Food coloring spreads through water. Which explanation is best?</p>
+        <select id="q2" class="form-select">
+            <option selected>Choose...</option>
+            <option>Food-coloring particles move and spread between water particles.</option>
+            <option>Food coloring disappears and is no longer matter.</option>
+            <option>Water particles stop moving.</option>
+            <option>Food coloring becomes a magnet.</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>Question 3</h4>
+        <p>Why do scientists draw particles as dots in models?</p>
+        <select id="q3" class="form-select">
+            <option selected>Choose...</option>
+            <option>The real particles are too small to see directly.</option>
+            <option>The real particles are bigger than the container.</option>
+            <option>The dots prove matter disappears.</option>
+            <option>The dots show that air has no mass.</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Model</button>
+    <div id="staarFeedback"></div>
+</div>
+
+<script>
+    let balloonInflated = false;
+    let colorDropped = false;
+    let colorSpread = false;
+
+    function showFeedback(elementId, message, isCorrect) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+        box.innerHTML = message;
+    }
+
+    function inflateBalloon() {
+        balloonInflated = true;
+        const balloon = document.getElementById("balloon");
+        balloon.style.transform = "translateX(-50%) scale(1.25)";
+    }
+
+    function showAirParticles() {
+        if (!balloonInflated) {
+            showFeedback("balloonFeedback", "Add air first. Then show the particle model.", false);
+            return;
+        }
+
+        document.querySelectorAll(".air-particle").forEach(function(particle) {
+            particle.style.display = "block";
+        });
+
+        showFeedback("balloonFeedback", "Model shown: the dots represent air particles too small to see.", true);
+    }
+
+    function resetBalloon() {
+        balloonInflated = false;
+        const balloon = document.getElementById("balloon");
+        balloon.style.transform = "translateX(-50%) scale(0.55)";
+        document.querySelectorAll(".air-particle").forEach(function(particle) {
+            particle.style.display = "none";
+        });
+        document.getElementById("balloonAnswer").value = "Choose...";
+        document.getElementById("balloonFeedback").innerHTML = "";
+        document.getElementById("balloonFeedback").className = "";
+    }
+
+    function checkBalloon() {
+        const answer = document.getElementById("balloonAnswer").value;
+
+        if (answer === "The balloon gets larger because air takes up space.") {
+            showFeedback("balloonFeedback", "Correct! Air is matter because it takes up space inside the balloon.", true);
+        } else {
+            showFeedback("balloonFeedback", "Not yet. The balloon getting larger is evidence that air takes up space.", false);
+        }
+    }
+
+    function createColorParticle(left, top) {
+        const particle = document.createElement("div");
+        particle.className = "color-particle";
+        particle.style.left = left + "px";
+        particle.style.top = top + "px";
+        document.getElementById("cupArea").appendChild(particle);
+        return particle;
+    }
+
+    function resetColor() {
+        colorDropped = false;
+        colorSpread = false;
+        document.getElementById("cupArea").innerHTML = '<strong style="position:absolute; top:8px; left:12px;">Water</strong>';
+        document.getElementById("colorAnswer").value = "Choose...";
+        document.getElementById("colorFeedback").innerHTML = "";
+        document.getElementById("colorFeedback").className = "";
+    }
+
+    function dropColor() {
+        resetColor();
+        colorDropped = true;
+
+        createColorParticle(140, 45);
+        createColorParticle(155, 55);
+        createColorParticle(125, 60);
+        createColorParticle(145, 75);
+
+        showFeedback("colorFeedback", "Food coloring added. Now let the particles spread.", true);
+    }
+
+    function spreadColor() {
+        if (!colorDropped) {
+            showFeedback("colorFeedback", "Drop food coloring first.", false);
+            return;
+        }
+
+        colorSpread = true;
+
+        const particles = document.querySelectorAll(".color-particle");
+        const positions = [
+            [35, 70], [240, 85], [90, 140], [200, 180],
+            [145, 120], [65, 220], [230, 235], [150, 250],
+            [115, 190], [185, 70]
+        ];
+
+        while (particles.length < positions.length) {
+            createColorParticle(140, 45);
+            break;
+        }
+
+        document.querySelectorAll(".color-particle").forEach(function(particle, index) {
+            const pos = positions[index % positions.length];
+            particle.style.left = pos[0] + "px";
+            particle.style.top = pos[1] + "px";
+        });
+
+        for (let i = document.querySelectorAll(".color-particle").length; i < positions.length; i++) {
+            const p = createColorParticle(140, 45);
+            setTimeout(function() {
+                p.style.left = positions[i][0] + "px";
+                p.style.top = positions[i][1] + "px";
+            }, 100);
+        }
+
+        showFeedback("colorFeedback", "The particles spread through the water. This is a model of particles moving.", true);
+    }
+
+    function checkColor() {
+        const answer = document.getElementById("colorAnswer").value;
+
+        if (answer === "Particles of food coloring move and spread through the water.") {
+            showFeedback("colorFeedback", "Correct! The color spreading is evidence that particles move through the water.", true);
+        } else {
+            showFeedback("colorFeedback", "Not yet. Food coloring does not disappear. Its particles spread through the water.", false);
+        }
+    }
+
+    function checkSTAAR() {
+        const q1 = document.getElementById("q1").value;
+        const q2 = document.getElementById("q2").value;
+        const q3 = document.getElementById("q3").value;
+
+        if (
+            q1 === "Tiny air particles spread throughout the balloon and take up space." &&
+            q2 === "Food-coloring particles move and spread between water particles." &&
+            q3 === "The real particles are too small to see directly."
+        ) {
+            showFeedback("staarFeedback", "Correct! You matched the evidence to particle models.", true);
+        } else {
+            showFeedback("staarFeedback", "Not yet. Models help us show particles that are too small to see.", false);
+        }
+    }
+</script>
+
+{% endblock %}

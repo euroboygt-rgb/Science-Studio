@@ -135,6 +135,11 @@ def conservation_matter_lab():
 def unit2_review_game():
     return render_template("unit2_review_game.html")
 
+
+@app.route("/labs/particles")
+def particles_lab():
+    return render_template("particles_lab.html")
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

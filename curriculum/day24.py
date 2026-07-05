@@ -15,9 +15,67 @@ day24 = {
 
     "guided_practice": "Show students scenarios such as air in a balloon, air in a syringe, smell spreading through a room, and food coloring spreading in water. Students identify what can be seen, what cannot be seen, and what evidence shows that tiny particles are present.",
 
-    "lab": "Invisible Matter Investigation: students compare a balloon before and after it is filled with air. Students observe that the balloon changes size and shape because air takes up space. Students may also compare the mass of a deflated balloon and an inflated balloon if a sensitive balance is available. Students then create a model showing air particles inside the balloon.",
+    "interactive_activity_title": "Particles Too Small to See Challenge",
 
-    "lab_notebook": "Students record observations before and after air is added to the balloon. Students explain what evidence shows that air is matter even though it cannot be seen. Students draw a particle model of air inside a balloon.",
+    "interactive_activity": "Students study everyday examples of invisible or tiny particles. Students identify the visible evidence, explain what particles are present, and create a model to show particles too small to see.",
+
+    "particle_model_cards": [
+        {
+            "scenario": "A deflated balloon is filled with air. The balloon becomes larger and firm.",
+            "student_task": "Explain what evidence shows that air is matter.",
+            "visible_evidence": "The balloon gets larger and pushes outward.",
+            "particles_present": "Air particles",
+            "model": "Draw tiny dots spread throughout the inside of the balloon.",
+            "explanation": "Air is made of particles too small to see. The air particles take up space inside the balloon."
+        },
+        {
+            "scenario": "Food coloring is dropped into a cup of water. After a while, the color spreads through the water.",
+            "student_task": "Explain what the spreading color models.",
+            "visible_evidence": "The color spreads from one area to the rest of the water.",
+            "particles_present": "Food coloring particles and water particles",
+            "model": "Draw colored dots spreading between water particles.",
+            "explanation": "The food coloring particles move and spread through the water, even though individual particles are too small to see."
+        },
+        {
+            "scenario": "A smell from popcorn spreads across a classroom.",
+            "student_task": "Explain how students can smell popcorn even across the room.",
+            "visible_evidence": "Students can smell popcorn even when they are not next to it.",
+            "particles_present": "Tiny smell particles moving through air",
+            "model": "Draw tiny particles moving from the popcorn through the air.",
+            "explanation": "Tiny particles from the popcorn move through the air and reach students' noses."
+        },
+        {
+            "scenario": "A syringe filled with air is pushed closed with a finger over the end. The air pushes back.",
+            "student_task": "Explain what evidence shows air is inside the syringe.",
+            "visible_evidence": "The plunger is harder to push because air pushes back.",
+            "particles_present": "Air particles",
+            "model": "Draw air particles squeezed closer together inside the syringe.",
+            "explanation": "Air particles take up space. When they are compressed, they push back against the plunger."
+        },
+        {
+            "scenario": "A sealed empty plastic bottle is squeezed. It pushes back and returns to shape.",
+            "student_task": "Explain why the bottle does not completely collapse.",
+            "visible_evidence": "The bottle resists being squeezed.",
+            "particles_present": "Air particles inside the bottle",
+            "model": "Draw air particles inside the bottle pushing outward.",
+            "explanation": "The bottle is not really empty. Air particles inside take up space and push on the bottle."
+        },
+        {
+            "scenario": "A balloon is placed on a sensitive balance before and after it is inflated. The inflated balloon has slightly more mass.",
+            "student_task": "Explain what the mass evidence shows.",
+            "visible_evidence": "The inflated balloon has greater mass.",
+            "particles_present": "Air particles",
+            "model": "Draw more air particles inside the inflated balloon than inside the deflated balloon.",
+            "explanation": "Air is matter because it has mass and takes up space."
+        }
+    ],
+
+    "lab": "Invisible Matter Investigation: students compare a balloon before and after it is filled with air. Students observe that the balloon changes size and shape because air takes up space. Students also model food coloring particles spreading through water.",
+
+    "lab_link": "/labs/particles",
+    "lab_link_text": "Open Interactive Particles Lab",
+
+    "lab_notebook": "Students record observations before and after air is added to the balloon. Students explain what evidence shows that air is matter even though it cannot be seen. Students draw particle models of air inside a balloon and food coloring spreading through water.",
 
     "lab_notebook_table": {
         "columns": [
@@ -33,12 +91,7 @@ day24 = {
     "staar_practice": [
         {
             "question": "A student blows air into a balloon. The balloon gets larger. What does this show about air?",
-            "choices": [
-                "Air takes up space",
-                "Air is not matter",
-                "Air has no particles",
-                "Air disappears inside the balloon"
-            ],
+            "choices": ["Air takes up space", "Air is not matter", "Air has no particles", "Air disappears inside the balloon"],
             "answer": "Air takes up space"
         },
         {
@@ -164,13 +217,13 @@ day24 = {
             "staar_connection": "Students may use mass data as evidence that invisible matter is present."
         },
         {
-            "term": "metric system",
-            "picture": "Picture of grams, centimeters, and milliliters",
-            "definition": "A system of measurement used in science.",
-            "example": "Scientists may use grams to measure mass.",
-            "science_use": "The metric system helps scientists collect and compare measurements.",
-            "real_world_use": "The metric system is used in science, medicine, engineering, and many countries.",
-            "staar_connection": "Students may use metric units when recording science data."
+            "term": "space",
+            "picture": "Picture of air filling a balloon",
+            "definition": "The area or volume that matter takes up.",
+            "example": "Air takes up space inside a balloon.",
+            "science_use": "Scientists use space and volume as evidence that matter is present.",
+            "real_world_use": "Space is important when filling tires, balloons, containers, and packages.",
+            "staar_connection": "Students may explain that air is matter because it takes up space."
         }
     ],
 
