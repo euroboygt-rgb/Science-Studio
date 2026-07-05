@@ -32,5 +32,6 @@ first_nine_weeks = [
 
     # Unit 3 - Investigating Force and Motion
     {"day": 26, "title": "What Is Force?", "teks": ["5.7A"], "lab": True},
+    {"day": 27, "title": "Equal Forces and Balanced Motion", "teks": ["5.7A"], "lab": True},
 
 ]
