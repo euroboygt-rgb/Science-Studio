@@ -1,0 +1,369 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Solutions and Solubility Lab Simulator</h1>
+<p class="lead">
+    Test materials in water to see whether they dissolve and form a solution.
+</p>
+
+<a href="/first-nine-weeks/day/20?view=student" class="btn btn-secondary mb-4">
+    Back to Day 20
+</a>
+
+<style>
+    .sim-card {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
+    .info-box {
+        background: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .cup {
+        width: 260px;
+        height: 270px;
+        border: 4px solid #333;
+        border-radius: 0 0 25px 25px;
+        background: #8ed8ff;
+        margin: 20px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cup-label {
+        position: absolute;
+        top: 8px;
+        left: 10px;
+        font-weight: bold;
+    }
+
+    .particle {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: white;
+        border: 1px solid #333;
+        position: absolute;
+    }
+
+    .settled {
+        bottom: 8px;
+    }
+
+    .floating {
+        top: 38px;
+    }
+
+    .even1 { top: 70px; left: 50px; }
+    .even2 { top: 100px; left: 140px; }
+    .even3 { top: 145px; left: 80px; }
+    .even4 { top: 180px; left: 170px; }
+    .even5 { top: 220px; left: 115px; }
+
+    .layer {
+        position: absolute;
+        top: 35px;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: #ffe08a;
+        border-bottom: 2px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .scenario-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="sim-card">
+    <h2>Part 1: Test Solubility</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> If a material dissolves and spreads evenly in water, it is soluble and forms a solution.
+    </div>
+
+    <label class="form-label"><strong>Choose a material to add to water:</strong></label>
+    <select id="materialSelect" class="form-select mb-3" onchange="resetCup()">
+        <option value="soluble" data-material="Salt" data-result="Salt dissolves in water. Salt is the solute and water is the solvent. The mixture is a solution.">Salt</option>
+        <option value="soluble" data-material="Sugar" data-result="Sugar dissolves in water. Sugar is the solute and water is the solvent. The mixture is a solution.">Sugar</option>
+        <option value="insoluble-settle" data-material="Sand" data-result="Sand does not dissolve. It settles at the bottom, so this is not a solution.">Sand</option>
+        <option value="insoluble-float" data-material="Pepper" data-result="Pepper does not dissolve evenly. It remains visible, so this is not a solution.">Pepper</option>
+        <option value="insoluble-layer" data-material="Oil" data-result="Oil does not dissolve in water. It forms a separate layer, so this is not a solution.">Oil</option>
+        <option value="soluble" data-material="Drink mix" data-result="Drink mix dissolves and spreads through the water. This mixture is a solution.">Drink mix</option>
+    </select>
+
+    <button class="btn btn-primary" onclick="addMaterial()">Add Material</button>
+    <button class="btn btn-success" onclick="stirCup()">Stir and Observe</button>
+
+    <div id="cup" class="cup">
+        <div class="cup-label">Water</div>
+    </div>
+
+    <label class="form-label"><strong>Your conclusion:</strong></label>
+    <select id="studentConclusion" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Soluble and forms a solution</option>
+        <option>Insoluble and does not form a solution</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkConclusion()">Check Conclusion</button>
+
+    <div id="solubilityFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 2: Identify Solute and Solvent</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> The solute dissolves. The solvent does the dissolving.
+    </div>
+
+    <div class="scenario-card">
+        <h4>Salt water</h4>
+        <label class="form-label">Solute:</label>
+        <select id="solute1" class="form-select mb-2">
+            <option selected>Choose...</option>
+            <option>Salt</option>
+            <option>Water</option>
+        </select>
+
+        <label class="form-label">Solvent:</label>
+        <select id="solvent1" class="form-select">
+            <option selected>Choose...</option>
+            <option>Salt</option>
+            <option>Water</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>Sugar water</h4>
+        <label class="form-label">Solute:</label>
+        <select id="solute2" class="form-select mb-2">
+            <option selected>Choose...</option>
+            <option>Sugar</option>
+            <option>Water</option>
+        </select>
+
+        <label class="form-label">Solvent:</label>
+        <select id="solvent2" class="form-select">
+            <option selected>Choose...</option>
+            <option>Sugar</option>
+            <option>Water</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success" onclick="checkSoluteSolvent()">Check Solute and Solvent</button>
+
+    <div id="soluteSolventFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 3: STAAR Evidence Challenge</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Use observations to decide whether a mixture is a solution.
+    </div>
+
+    <div class="scenario-card">
+        <h4>Question 1</h4>
+        <p>A student stirs salt into water. The salt can no longer be seen. What happened?</p>
+        <select id="q1" class="form-select">
+            <option selected>Choose...</option>
+            <option>The salt dissolved in the water.</option>
+            <option>The salt disappeared forever.</option>
+            <option>The salt became magnetic.</option>
+            <option>The water became a solid.</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>Question 2</h4>
+        <p>A student stirs sand into water. The sand settles at the bottom. What conclusion is supported?</p>
+        <select id="q2" class="form-select">
+            <option selected>Choose...</option>
+            <option>Sand is insoluble in water.</option>
+            <option>Sand is soluble in water.</option>
+            <option>Sand is the solvent.</option>
+            <option>Sand became a gas.</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>Question 3</h4>
+        <p>Which example is a solution?</p>
+        <select id="q3" class="form-select">
+            <option selected>Choose...</option>
+            <option>Salt dissolved in water</option>
+            <option>Rocks mixed with sand</option>
+            <option>Paper clips mixed with rice</option>
+            <option>Oil floating on water</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Evidence</button>
+
+    <div id="staarFeedback"></div>
+</div>
+
+<script>
+    let stirred = false;
+
+    function showFeedback(elementId, message, isCorrect) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+        box.innerHTML = message;
+    }
+
+    function resetCup() {
+        stirred = false;
+        document.getElementById("cup").innerHTML = '<div class="cup-label">Water</div>';
+        document.getElementById("solubilityFeedback").innerHTML = "";
+        document.getElementById("solubilityFeedback").className = "";
+        document.getElementById("studentConclusion").value = "Choose...";
+    }
+
+    function makeParticle(className, leftValue) {
+        const p = document.createElement("div");
+        p.className = "particle " + className;
+        if (leftValue) {
+            p.style.left = leftValue;
+        }
+        return p;
+    }
+
+    function addMaterial() {
+        resetCup();
+        const select = document.getElementById("materialSelect");
+        const selected = select.options[select.selectedIndex];
+        const cup = document.getElementById("cup");
+
+        const label = document.createElement("div");
+        label.style.position = "absolute";
+        label.style.top = "40px";
+        label.style.left = "80px";
+        label.style.fontWeight = "bold";
+        label.innerText = selected.dataset.material + " added";
+        cup.appendChild(label);
+    }
+
+    function stirCup() {
+        stirred = true;
+        const select = document.getElementById("materialSelect");
+        const selected = select.options[select.selectedIndex];
+        const cup = document.getElementById("cup");
+
+        cup.innerHTML = '<div class="cup-label">Water</div>';
+
+        if (select.value === "soluble") {
+            cup.appendChild(makeParticle("even1"));
+            cup.appendChild(makeParticle("even2"));
+            cup.appendChild(makeParticle("even3"));
+            cup.appendChild(makeParticle("even4"));
+            cup.appendChild(makeParticle("even5"));
+        }
+
+        if (select.value === "insoluble-settle") {
+            cup.appendChild(makeParticle("settled", "45px"));
+            cup.appendChild(makeParticle("settled", "90px"));
+            cup.appendChild(makeParticle("settled", "135px"));
+            cup.appendChild(makeParticle("settled", "180px"));
+        }
+
+        if (select.value === "insoluble-float") {
+            cup.appendChild(makeParticle("floating", "45px"));
+            cup.appendChild(makeParticle("floating", "90px"));
+            cup.appendChild(makeParticle("floating", "135px"));
+            cup.appendChild(makeParticle("floating", "180px"));
+        }
+
+        if (select.value === "insoluble-layer") {
+            const layer = document.createElement("div");
+            layer.className = "layer";
+            layer.innerText = "Oil layer";
+            cup.appendChild(layer);
+        }
+    }
+
+    function checkConclusion() {
+        const select = document.getElementById("materialSelect");
+        const selected = select.options[select.selectedIndex];
+        const answer = document.getElementById("studentConclusion").value;
+
+        if (!stirred) {
+            showFeedback("solubilityFeedback", "Stir the cup first, then make your conclusion.", false);
+            return;
+        }
+
+        if (select.value === "soluble" && answer === "Soluble and forms a solution") {
+            showFeedback("solubilityFeedback", "Correct! " + selected.dataset.result, true);
+        } else if (select.value !== "soluble" && answer === "Insoluble and does not form a solution") {
+            showFeedback("solubilityFeedback", "Correct! " + selected.dataset.result, true);
+        } else {
+            showFeedback("solubilityFeedback", "Not yet. Look at whether the material dissolved evenly or stayed visible.", false);
+        }
+    }
+
+    function checkSoluteSolvent() {
+        const s1 = document.getElementById("solute1").value;
+        const sv1 = document.getElementById("solvent1").value;
+        const s2 = document.getElementById("solute2").value;
+        const sv2 = document.getElementById("solvent2").value;
+
+        if (s1 === "Salt" && sv1 === "Water" && s2 === "Sugar" && sv2 === "Water") {
+            showFeedback("soluteSolventFeedback", "Correct! The solute dissolves. The solvent does the dissolving.", true);
+        } else {
+            showFeedback("soluteSolventFeedback", "Not yet. Ask yourself: Which substance dissolves, and which substance does the dissolving?", false);
+        }
+    }
+
+    function checkSTAAR() {
+        const q1 = document.getElementById("q1").value;
+        const q2 = document.getElementById("q2").value;
+        const q3 = document.getElementById("q3").value;
+
+        if (
+            q1 === "The salt dissolved in the water." &&
+            q2 === "Sand is insoluble in water." &&
+            q3 === "Salt dissolved in water"
+        ) {
+            showFeedback("staarFeedback", "Correct! You used evidence to identify solubility and solutions.", true);
+        } else {
+            showFeedback("staarFeedback", "Not yet. A solution forms when a material dissolves and spreads evenly in water.", false);
+        }
+    }
+</script>
+
+{% endblock %}

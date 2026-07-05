@@ -470,6 +470,56 @@
 
 
 
+
+                {% if lesson.get("solution_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("solution_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>{{ card.mixture }}</h5>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Soluble or Insoluble?</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Soluble</option>
+                                <option>Insoluble</option>
+                            </select>
+
+                            <label class="form-label"><strong>Solute:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What substance dissolves? Write none if nothing dissolves."></textarea>
+
+                            <label class="form-label"><strong>Solvent:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What substance does the dissolving?"></textarea>
+
+                            <label class="form-label"><strong>Solution or Not a Solution?</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Solution</option>
+                                <option>Not a solution</option>
+                            </select>
+
+                            <label class="form-label"><strong>Evidence:</strong></label>
+                            <textarea class="form-control" rows="2" placeholder="Use evidence from dissolving, settling, floating, or layering..."></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Soluble or Insoluble:</strong> {{ card.soluble_or_insoluble }}</p>
+                                    <p><strong>Solute:</strong> {{ card.solute }}</p>
+                                    <p><strong>Solvent:</strong> {{ card.solvent }}</p>
+                                    <p><strong>Solution or Not:</strong> {{ card.solution_or_not }}</p>
+                                    <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("relative_density_mixture_cards") %}
                 <div class="row">
                     {% for card in lesson.get("relative_density_mixture_cards") %}

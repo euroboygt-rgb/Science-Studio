@@ -15,7 +15,89 @@ day20 = {
 
     "guided_practice": "Show students examples: salt and water, sugar and water, sand and water, oil and water, drink mix and water, and pepper and water. Students decide whether each substance dissolves in water. Then students identify whether the mixture is a solution or not a solution.",
 
+    "interactive_activity_title": "Solution or Not a Solution Challenge",
+
+    "interactive_activity": "Students read mixture scenarios and decide whether the material is soluble or insoluble in water. Students identify the solute, solvent, and whether the mixture is a solution.",
+
+    "solution_cards": [
+        {
+            "mixture": "Salt and water",
+            "student_task": "Decide if this mixture is a solution. Identify the solute, solvent, and evidence.",
+            "soluble_or_insoluble": "Soluble",
+            "solute": "Salt",
+            "solvent": "Water",
+            "solution_or_not": "Solution",
+            "evidence": "The salt dissolves and spreads evenly through the water."
+        },
+        {
+            "mixture": "Sugar and water",
+            "student_task": "Decide if this mixture is a solution. Identify the solute, solvent, and evidence.",
+            "soluble_or_insoluble": "Soluble",
+            "solute": "Sugar",
+            "solvent": "Water",
+            "solution_or_not": "Solution",
+            "evidence": "The sugar dissolves and is evenly distributed in the water."
+        },
+        {
+            "mixture": "Sand and water",
+            "student_task": "Decide if this mixture is a solution. Identify the evidence.",
+            "soluble_or_insoluble": "Insoluble",
+            "solute": "None",
+            "solvent": "Water",
+            "solution_or_not": "Not a solution",
+            "evidence": "The sand remains visible and settles at the bottom."
+        },
+        {
+            "mixture": "Drink mix and water",
+            "student_task": "Decide if this mixture is a solution. Identify the solute, solvent, and evidence.",
+            "soluble_or_insoluble": "Soluble",
+            "solute": "Drink mix",
+            "solvent": "Water",
+            "solution_or_not": "Solution",
+            "evidence": "The drink mix dissolves and spreads evenly through the water."
+        },
+        {
+            "mixture": "Pepper and water",
+            "student_task": "Decide if this mixture is a solution. Identify the evidence.",
+            "soluble_or_insoluble": "Insoluble",
+            "solute": "None",
+            "solvent": "Water",
+            "solution_or_not": "Not a solution",
+            "evidence": "The pepper remains visible and does not dissolve evenly."
+        },
+        {
+            "mixture": "Oil and water",
+            "student_task": "Decide if this mixture is a solution. Identify the evidence.",
+            "soluble_or_insoluble": "Insoluble",
+            "solute": "None",
+            "solvent": "Water",
+            "solution_or_not": "Not a solution",
+            "evidence": "The oil does not dissolve. It forms a separate layer."
+        },
+        {
+            "mixture": "Lemonade powder and water",
+            "student_task": "Decide if this mixture is a solution. Identify the solute, solvent, and evidence.",
+            "soluble_or_insoluble": "Soluble",
+            "solute": "Lemonade powder",
+            "solvent": "Water",
+            "solution_or_not": "Solution",
+            "evidence": "The powder dissolves and spreads evenly in the water."
+        },
+        {
+            "mixture": "Rock pieces and water",
+            "student_task": "Decide if this mixture is a solution. Identify the evidence.",
+            "soluble_or_insoluble": "Insoluble",
+            "solute": "None",
+            "solvent": "Water",
+            "solution_or_not": "Not a solution",
+            "evidence": "The rock pieces remain visible and do not dissolve."
+        }
+    ],
+
     "lab": "Solubility and Solutions Lab: students test different materials in water. Students stir each material and observe whether it dissolves, settles, floats, or remains visible. Students identify which mixtures are solutions and which are not solutions.",
+
+    "lab_link": "/labs/solutions",
+    "lab_link_text": "Open Interactive Solutions Lab",
 
     "lab_notebook": "Students record the material tested, the solvent, the observation after stirring, whether the material is soluble or insoluble, and whether the mixture is a solution.",
 
@@ -33,62 +115,32 @@ day20 = {
     "staar_practice": [
         {
             "question": "A student stirs salt into water until the salt can no longer be seen. Which statement is best supported?",
-            "choices": [
-                "The salt dissolved in the water",
-                "The salt disappeared and no longer exists",
-                "The salt became magnetic",
-                "The water became a solid"
-            ],
+            "choices": ["The salt dissolved in the water", "The salt disappeared and no longer exists", "The salt became magnetic", "The water became a solid"],
             "answer": "The salt dissolved in the water"
         },
         {
             "question": "In a saltwater solution, what is the solute?",
-            "choices": [
-                "Salt",
-                "Water",
-                "The cup",
-                "The spoon"
-            ],
+            "choices": ["Salt", "Water", "The cup", "The spoon"],
             "answer": "Salt"
         },
         {
             "question": "In a sugar-water solution, what is the solvent?",
-            "choices": [
-                "Water",
-                "Sugar",
-                "The beaker",
-                "The thermometer"
-            ],
+            "choices": ["Water", "Sugar", "The beaker", "The thermometer"],
             "answer": "Water"
         },
         {
             "question": "A student stirs sand into water. The sand settles at the bottom of the cup. What conclusion is best supported?",
-            "choices": [
-                "Sand is insoluble in water",
-                "Sand is soluble in water",
-                "Sand is the solvent",
-                "Sand became a gas"
-            ],
+            "choices": ["Sand is insoluble in water", "Sand is soluble in water", "Sand is the solvent", "Sand became a gas"],
             "answer": "Sand is insoluble in water"
         },
         {
             "question": "Which example is a solution?",
-            "choices": [
-                "Salt dissolved in water",
-                "Rocks mixed with sand",
-                "Paper clips mixed with rice",
-                "Oil floating on water"
-            ],
+            "choices": ["Salt dissolved in water", "Rocks mixed with sand", "Paper clips mixed with rice", "Oil floating on water"],
             "answer": "Salt dissolved in water"
         },
         {
             "question": "Which property is being tested when a student observes whether a substance dissolves in water?",
-            "choices": [
-                "Solubility",
-                "Magnetism",
-                "Conductivity",
-                "Relative density"
-            ],
+            "choices": ["Solubility", "Magnetism", "Conductivity", "Relative density"],
             "answer": "Solubility"
         }
     ],

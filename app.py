@@ -107,6 +107,11 @@ def magnet_separation_lab():
 def relative_density_mixtures_lab():
     return render_template("relative_density_mixtures_lab.html")
 
+
+@app.route("/labs/solutions")
+def solutions_lab():
+    return render_template("solutions_lab.html")
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
