@@ -1,0 +1,391 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Evaporation Separation Lab Simulator</h1>
+<p class="lead">
+    Separate a dissolved solid from water by evaporating the solvent.
+</p>
+
+<a href="/first-nine-weeks/day/21?view=student" class="btn btn-secondary mb-4">
+    Back to Day 21
+</a>
+
+<style>
+    .sim-card {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
+    .info-box {
+        background: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .dish {
+        width: 320px;
+        height: 210px;
+        border: 4px solid #333;
+        border-radius: 0 0 45px 45px;
+        background: #8ed8ff;
+        margin: 20px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .dish-label {
+        position: absolute;
+        top: 8px;
+        left: 12px;
+        font-weight: bold;
+    }
+
+    .water-low {
+        height: 95px;
+        background: #8ed8ff;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-top: 2px solid #333;
+    }
+
+    .water-very-low {
+        height: 35px;
+        background: #8ed8ff;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-top: 2px solid #333;
+    }
+
+    .crystal {
+        width: 18px;
+        height: 18px;
+        background: white;
+        border: 2px solid #333;
+        transform: rotate(45deg);
+        position: absolute;
+        bottom: 15px;
+    }
+
+    .vapor {
+        position: absolute;
+        font-weight: bold;
+        color: #555;
+        animation: rise 1.5s infinite alternate;
+    }
+
+    @keyframes rise {
+        from { transform: translateY(0); opacity: 1; }
+        to { transform: translateY(-20px); opacity: 0.5; }
+    }
+
+    .timeline {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+
+    .timeline-step {
+        border: 2px solid #333;
+        border-radius: 10px;
+        background: white;
+        padding: 10px;
+        min-width: 120px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .active-step {
+        background: #d1e7dd;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .scenario-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="sim-card">
+    <h2>Part 1: Evaporate a Solution</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Water is the solvent. During evaporation, water changes into water vapor and leaves. The dissolved solid can remain behind.
+    </div>
+
+    <label class="form-label"><strong>Choose a solution:</strong></label>
+    <select id="solutionSelect" class="form-select mb-3" onchange="resetDish()">
+        <option data-solute="Salt" data-solvent="Water" data-left="Salt crystals" data-reason="The water evaporated, but salt crystals were left behind.">Salt water</option>
+        <option data-solute="Sugar" data-solvent="Water" data-left="Sugar crystals or residue" data-reason="The water evaporated, but sugar material was left behind.">Sugar water</option>
+        <option data-solute="Drink mix" data-solvent="Water" data-left="Drink mix residue" data-reason="The water evaporated, but the dissolved drink mix material was left behind.">Drink mix and water</option>
+    </select>
+
+    <div class="timeline">
+        <div id="step1" class="timeline-step active-step">1. Solution</div>
+        <div id="step2" class="timeline-step">2. Evaporating</div>
+        <div id="step3" class="timeline-step">3. Solid Left</div>
+    </div>
+
+    <button class="btn btn-primary" onclick="showSolution()">Show Solution</button>
+    <button class="btn btn-warning" onclick="evaporateSome()">Evaporate Some Water</button>
+    <button class="btn btn-success" onclick="finishEvaporation()">Finish Evaporation</button>
+
+    <div id="dish" class="dish">
+        <div class="dish-label">Solution</div>
+    </div>
+
+    <label class="form-label"><strong>What evaporates?</strong></label>
+    <select id="evaporatesAnswer" class="form-select mb-2">
+        <option selected>Choose...</option>
+        <option>Water</option>
+        <option>Salt, sugar, or drink mix</option>
+        <option>The dish</option>
+    </select>
+
+    <label class="form-label"><strong>What is left behind?</strong></label>
+    <select id="leftAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The dissolved solid</option>
+        <option>A magnet</option>
+        <option>Nothing because the solute disappeared forever</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkEvaporation()">Check Evaporation</button>
+
+    <div id="evaporationFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 2: Best Separation Method</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Evaporation works best when a solid is dissolved in a liquid.
+    </div>
+
+    <div class="scenario-card">
+        <h4>Salt dissolved in water</h4>
+        <select id="method1" class="form-select">
+            <option selected>Choose method...</option>
+            <option>Evaporation</option>
+            <option>Magnetism</option>
+            <option>Sink or float</option>
+            <option>Measure temperature</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>Iron filings mixed with sand</h4>
+        <select id="method2" class="form-select">
+            <option selected>Choose method...</option>
+            <option>Evaporation</option>
+            <option>Magnetism</option>
+            <option>Liquid layering</option>
+            <option>Graduated cylinder only</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>Wood chips mixed with marbles</h4>
+        <select id="method3" class="form-select">
+            <option selected>Choose method...</option>
+            <option>Evaporation</option>
+            <option>Magnetism</option>
+            <option>Sink or float using relative density</option>
+            <option>Thermometer</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success" onclick="checkMethods()">Check Methods</button>
+
+    <div id="methodFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 3: STAAR Evidence Challenge</h2>
+
+    <div class="info-box">
+        <strong>Question:</strong> A student leaves salt water in a shallow dish. After several days, the water is gone and white crystals are in the dish.
+    </div>
+
+    <label class="form-label"><strong>Best conclusion:</strong></label>
+    <select id="staar1" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The salt was still present in the solution.</option>
+        <option>The salt disappeared forever.</option>
+        <option>The dish created new salt.</option>
+        <option>The water became magnetic.</option>
+    </select>
+
+    <label class="form-label"><strong>Best evidence:</strong></label>
+    <select id="staar2" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>White crystals were left after the water evaporated.</option>
+        <option>The solution was in a dish.</option>
+        <option>The student used a ruler.</option>
+        <option>The salt became invisible, so it was gone.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Evidence</button>
+
+    <div id="staarFeedback"></div>
+</div>
+
+<script>
+    let finished = false;
+
+    function showFeedback(elementId, message, isCorrect) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+        box.innerHTML = message;
+    }
+
+    function setStep(active) {
+        ["step1", "step2", "step3"].forEach(function(id) {
+            document.getElementById(id).className = "timeline-step";
+        });
+        document.getElementById(active).className = "timeline-step active-step";
+    }
+
+    function resetDish() {
+        finished = false;
+        setStep("step1");
+        document.getElementById("dish").innerHTML = '<div class="dish-label">Solution</div>';
+        document.getElementById("evaporationFeedback").innerHTML = "";
+        document.getElementById("evaporationFeedback").className = "";
+        document.getElementById("evaporatesAnswer").value = "Choose...";
+        document.getElementById("leftAnswer").value = "Choose...";
+    }
+
+    function addCrystals() {
+        const dish = document.getElementById("dish");
+        const positions = ["55px", "95px", "135px", "175px", "215px"];
+        positions.forEach(function(left) {
+            const c = document.createElement("div");
+            c.className = "crystal";
+            c.style.left = left;
+            dish.appendChild(c);
+        });
+    }
+
+    function showSolution() {
+        resetDish();
+        const selected = document.getElementById("solutionSelect").options[document.getElementById("solutionSelect").selectedIndex];
+        const dish = document.getElementById("dish");
+        dish.innerHTML = '<div class="dish-label">' + selected.dataset.solute + ' dissolved in ' + selected.dataset.solvent + '</div>';
+        setStep("step1");
+    }
+
+    function evaporateSome() {
+        finished = false;
+        const selected = document.getElementById("solutionSelect").options[document.getElementById("solutionSelect").selectedIndex];
+        const dish = document.getElementById("dish");
+
+        dish.innerHTML = '<div class="dish-label">Water evaporating</div><div class="water-low"></div>';
+        addCrystals();
+
+        const vapor1 = document.createElement("div");
+        vapor1.className = "vapor";
+        vapor1.style.left = "85px";
+        vapor1.style.top = "15px";
+        vapor1.innerText = "water vapor";
+
+        const vapor2 = document.createElement("div");
+        vapor2.className = "vapor";
+        vapor2.style.left = "175px";
+        vapor2.style.top = "35px";
+        vapor2.innerText = "water vapor";
+
+        dish.appendChild(vapor1);
+        dish.appendChild(vapor2);
+
+        setStep("step2");
+    }
+
+    function finishEvaporation() {
+        finished = true;
+        const selected = document.getElementById("solutionSelect").options[document.getElementById("solutionSelect").selectedIndex];
+        const dish = document.getElementById("dish");
+
+        dish.innerHTML = '<div class="dish-label">' + selected.dataset.left + ' left behind</div>';
+        addCrystals();
+        setStep("step3");
+    }
+
+    function checkEvaporation() {
+        const selected = document.getElementById("solutionSelect").options[document.getElementById("solutionSelect").selectedIndex];
+        const evaporates = document.getElementById("evaporatesAnswer").value;
+        const left = document.getElementById("leftAnswer").value;
+
+        if (!finished) {
+            showFeedback("evaporationFeedback", "Finish the evaporation first, then check your answer.", false);
+            return;
+        }
+
+        if (evaporates === "Water" && left === "The dissolved solid") {
+            showFeedback("evaporationFeedback", "Correct! " + selected.dataset.reason, true);
+        } else {
+            showFeedback("evaporationFeedback", "Not yet. During evaporation, water leaves as water vapor and the dissolved solid can remain behind.", false);
+        }
+    }
+
+    function checkMethods() {
+        const m1 = document.getElementById("method1").value;
+        const m2 = document.getElementById("method2").value;
+        const m3 = document.getElementById("method3").value;
+
+        if (
+            m1 === "Evaporation" &&
+            m2 === "Magnetism" &&
+            m3 === "Sink or float using relative density"
+        ) {
+            showFeedback("methodFeedback", "Correct! You matched each mixture to the best separation method.", true);
+        } else {
+            showFeedback("methodFeedback", "Not yet. Evaporation is best for dissolved solids in water. Magnetism is best for magnetic materials. Relative density is best for sink/float differences.", false);
+        }
+    }
+
+    function checkSTAAR() {
+        const s1 = document.getElementById("staar1").value;
+        const s2 = document.getElementById("staar2").value;
+
+        if (
+            s1 === "The salt was still present in the solution." &&
+            s2 === "White crystals were left after the water evaporated."
+        ) {
+            showFeedback("staarFeedback", "Correct! The crystals are evidence that the dissolved salt was still present.", true);
+        } else {
+            showFeedback("staarFeedback", "Not yet. The best evidence is what was left behind after the water evaporated.", false);
+        }
+    }
+</script>
+
+{% endblock %}

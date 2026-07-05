@@ -114,6 +114,11 @@ def relative_density_mixtures_lab():
 def solutions_lab():
     return render_template("solutions_lab.html")
 
+
+@app.route("/labs/evaporation")
+def evaporation_lab():
+    return render_template("evaporation_lab.html")
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

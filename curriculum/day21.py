@@ -15,7 +15,77 @@ day21 = {
 
     "guided_practice": "Review scenarios such as salt water, sugar water, sand and water, oil and water, and drink mix in water. Students decide which mixtures could be separated by evaporation and which would need a different separation method. Students explain that evaporation is useful when a solid is dissolved in a liquid.",
 
+    "interactive_activity_title": "Evaporation Separation Challenge",
+
+    "interactive_activity": "Students read solution and mixture scenarios and decide whether evaporation is the best way to separate the substances. Students identify the solute, solvent, what evaporates, and what is left behind.",
+
+    "evaporation_cards": [
+        {
+            "scenario": "Salt is dissolved in water. The cup is left in the sun for several days.",
+            "student_task": "Identify what evaporates and what is left behind.",
+            "best_method": "Evaporation",
+            "solute": "Salt",
+            "solvent": "Water",
+            "what_evaporates": "Water",
+            "what_is_left": "Salt crystals",
+            "evidence": "The water leaves as water vapor, but the salt remains in the dish."
+        },
+        {
+            "scenario": "Sugar is dissolved in water. The water evaporates slowly.",
+            "student_task": "Identify what evaporates and what is left behind.",
+            "best_method": "Evaporation",
+            "solute": "Sugar",
+            "solvent": "Water",
+            "what_evaporates": "Water",
+            "what_is_left": "Sugar crystals or sugar residue",
+            "evidence": "The dissolved sugar was still present and can remain after the water evaporates."
+        },
+        {
+            "scenario": "Sand is mixed with water and settles at the bottom.",
+            "student_task": "Decide if evaporation is the best first method.",
+            "best_method": "Filtering or settling first",
+            "solute": "None",
+            "solvent": "Water",
+            "what_evaporates": "Water could evaporate, but sand was never dissolved",
+            "what_is_left": "Sand",
+            "evidence": "Sand is insoluble and can be separated faster by filtering or pouring off the water."
+        },
+        {
+            "scenario": "Drink mix is dissolved in water.",
+            "student_task": "Identify what evaporates and what is left behind.",
+            "best_method": "Evaporation",
+            "solute": "Drink mix",
+            "solvent": "Water",
+            "what_evaporates": "Water",
+            "what_is_left": "Drink mix particles or residue",
+            "evidence": "The water evaporates, but the dissolved material can remain behind."
+        },
+        {
+            "scenario": "Oil and water form two layers.",
+            "student_task": "Decide if evaporation is the best method.",
+            "best_method": "Separate by relative density",
+            "solute": "None",
+            "solvent": "None",
+            "what_evaporates": "Water could evaporate, but this is not a solution",
+            "what_is_left": "Oil and other material",
+            "evidence": "Oil does not dissolve in water. It forms a layer, so relative density is a better method."
+        },
+        {
+            "scenario": "Salt water is heated safely by the teacher until the water leaves the container.",
+            "student_task": "Identify the evidence that salt was still present.",
+            "best_method": "Evaporation",
+            "solute": "Salt",
+            "solvent": "Water",
+            "what_evaporates": "Water",
+            "what_is_left": "Salt crystals",
+            "evidence": "White crystals left behind show that the salt did not disappear."
+        }
+    ],
+
     "lab": "Evaporation Separation Lab: students model how a dissolved solid can be separated from water by evaporation. Students observe or model salt water before evaporation, during evaporation, and after evaporation. Students identify the solute, solvent, and evidence that the dissolved substance was still present.",
+
+    "lab_link": "/labs/evaporation",
+    "lab_link_text": "Open Interactive Evaporation Lab",
 
     "lab_notebook": "Students record the solution, identify the solute and solvent, describe what happens to the water during evaporation, and explain what evidence shows the dissolved substance remains.",
 
@@ -34,12 +104,7 @@ day21 = {
     "staar_practice": [
         {
             "question": "A student wants to separate salt from salt water. Which process would help separate the salt from the water?",
-            "choices": [
-                "Evaporation",
-                "Magnetism",
-                "Using a thermometer",
-                "Measuring with a ruler"
-            ],
+            "choices": ["Evaporation", "Magnetism", "Using a thermometer", "Measuring with a ruler"],
             "answer": "Evaporation"
         },
         {
@@ -54,12 +119,7 @@ day21 = {
         },
         {
             "question": "When salt water evaporates, what may be left behind?",
-            "choices": [
-                "Salt crystals",
-                "A magnet",
-                "Oil",
-                "Sand that dissolved"
-            ],
+            "choices": ["Salt crystals", "A magnet", "Oil", "Sand that dissolved"],
             "answer": "Salt crystals"
         },
         {
