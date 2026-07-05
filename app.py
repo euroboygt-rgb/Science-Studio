@@ -128,6 +128,11 @@ def evaporation_lab():
 def conservation_matter_lab():
     return render_template("conservation_matter_lab.html")
 
+
+@app.route("/labs/unit2-review")
+def unit2_review_game():
+    return render_template("unit2_review_game.html")
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

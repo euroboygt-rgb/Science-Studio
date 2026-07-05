@@ -26,7 +26,7 @@ first_nine_weeks = [
     {"day": 20, "title": "Solubility and Solutions in Mixtures", "teks": ["5.6B"], "lab": True},
     {"day": 21, "title": "Separating Solutions by Evaporation", "teks": ["5.6B"], "lab": True},
     {"day": 22, "title": "Conservation of Matter in Solutions", "teks": ["5.6B"], "lab": True},
-    {"day": 23, "title": "Mixtures and Solutions Review", "teks": ["5.6B"], "lab": False},
+    {"day": 23, "title": "Mixtures and Solutions Review", "teks": ["5.6B"], "lab": True},
     {"day": 24, "title": "Matter Is Made of Particles Too Small to See", "teks": ["5.6D"], "lab": True},
     {"day": 25, "title": "Unit 2 Performance Assessment", "teks": ["5.3A", "5.6B", "5.6D"], "lab": False},
 

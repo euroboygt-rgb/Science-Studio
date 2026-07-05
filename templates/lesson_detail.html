@@ -473,6 +473,65 @@
 
 
 
+
+                {% if lesson.get("unit2_review_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("unit2_review_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>Review Scenario {{ loop.index }}</h5>
+                            <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Best Separation Method:</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Use a sieve or screen</option>
+                                <option>Use a strainer</option>
+                                <option>Use a magnet</option>
+                                <option>Place the mixture in water</option>
+                                <option>Separate by liquid layers</option>
+                                <option>Evaporation</option>
+                                <option>Filtering or settling</option>
+                                <option>Identify as a solution</option>
+                                <option>Use conservation of matter</option>
+                            </select>
+
+                            <label class="form-label"><strong>Physical Property Used:</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Particle size</option>
+                                <option>Magnetism</option>
+                                <option>Relative density</option>
+                                <option>Solubility</option>
+                                <option>Evaporation</option>
+                                <option>Mass</option>
+                                <option>Conservation of matter</option>
+                            </select>
+
+                            <label class="form-label"><strong>Tool or Process:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What tool or process would you use?"></textarea>
+
+                            <label class="form-label"><strong>Evidence:</strong></label>
+                            <textarea class="form-control" rows="2" placeholder="Use observations or data as evidence..."></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Best Method:</strong> {{ card.best_method }}</p>
+                                    <p><strong>Physical Property:</strong> {{ card.physical_property }}</p>
+                                    <p><strong>Tool or Process:</strong> {{ card.tool }}</p>
+                                    <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("conservation_cards") %}
                 <div class="row">
                     {% for card in lesson.get("conservation_cards") %}

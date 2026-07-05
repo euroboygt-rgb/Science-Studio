@@ -9,13 +9,103 @@ day23 = {
 
     "learning_target": "I can choose the best method to separate a mixture or solution and explain the physical property used.",
 
-    "mini_lesson": "Review Unit 2 concepts. A mixture is a combination of two or more substances that can be separated in a physical way. A solution is a type of mixture where a solute dissolves evenly in a solvent. Mixtures can be separated using physical properties such as particle size, magnetism, relative density, solubility, and evaporation. Students should match the separation method to the property of the materials. For example, a magnet separates iron filings from sand because iron is magnetic. A sieve separates gravel from sand because the particles have different sizes. Evaporation separates salt from salt water because water evaporates and salt can remain behind.",
+    "mini_lesson": "Review Unit 2 concepts. A mixture is a combination of two or more substances that can be separated in a physical way. A solution is a type of mixture where a solute dissolves evenly in a solvent. Mixtures can be separated using physical properties such as particle size, magnetism, relative density, solubility, and evaporation. Students should match the separation method to the property of the materials.",
 
     "science_notebook": "Students create a Unit 2 review page titled 'How Can We Separate Mixtures?' Students make a chart with four columns: Mixture, Separation Method, Physical Property Used, and Evidence. Students include examples for particle size, magnetism, relative density, solubility, evaporation, and conservation of matter.",
 
     "guided_practice": "Review mixed scenarios as a class. Students identify the mixture, choose the best tool or method, name the physical property, and explain their evidence. Include examples such as gravel and sand, iron filings and sand, oil and water, wood chips and marbles, salt water, sand and water, and sugar water.",
 
-    "lab": "Unit 2 Review Stations: students rotate through review cards. At each station, students identify the mixture or solution, choose a separation method, name the physical property, and write evidence that supports their answer.",
+    "interactive_activity_title": "Unit 2 Mixtures and Solutions Review Challenge",
+
+    "interactive_activity": "Students read Unit 2 review scenarios and choose the best separation method, physical property, tool, and evidence.",
+
+    "unit2_review_cards": [
+        {
+            "scenario": "A student has gravel mixed with sand.",
+            "student_task": "Choose the best separation method and explain the evidence.",
+            "best_method": "Use a sieve or screen",
+            "physical_property": "Particle size",
+            "tool": "Sieve or screen",
+            "evidence": "Gravel particles are larger than sand particles, so the sand can pass through while gravel stays behind."
+        },
+        {
+            "scenario": "A student has iron filings mixed with sand.",
+            "student_task": "Choose the best separation method and explain the evidence.",
+            "best_method": "Use a magnet",
+            "physical_property": "Magnetism",
+            "tool": "Magnet",
+            "evidence": "Iron filings are attracted to the magnet, but sand is not."
+        },
+        {
+            "scenario": "A student has wood chips mixed with marbles.",
+            "student_task": "Choose the best separation method and explain the evidence.",
+            "best_method": "Place the mixture in water",
+            "physical_property": "Relative density",
+            "tool": "Cup of water",
+            "evidence": "Wood chips float because they are less dense than water. Marbles sink because they are more dense than water."
+        },
+        {
+            "scenario": "Oil and water form two layers in a graduated cylinder.",
+            "student_task": "Choose the best separation method and explain the evidence.",
+            "best_method": "Separate by liquid layers",
+            "physical_property": "Relative density",
+            "tool": "Graduated cylinder or clear container",
+            "evidence": "Oil forms the top layer because oil is less dense than water."
+        },
+        {
+            "scenario": "Salt dissolves in water and can no longer be seen.",
+            "student_task": "Identify the type of mixture and the evidence.",
+            "best_method": "Identify as a solution",
+            "physical_property": "Solubility",
+            "tool": "Water and stirring test",
+            "evidence": "Salt dissolves and spreads evenly through the water, so salt water is a solution."
+        },
+        {
+            "scenario": "A student wants to get salt back from salt water.",
+            "student_task": "Choose the best separation method and explain the evidence.",
+            "best_method": "Evaporation",
+            "physical_property": "Evaporation separates the solvent from the solute",
+            "tool": "Shallow dish or evaporation model",
+            "evidence": "Water evaporates and salt crystals can remain behind."
+        },
+        {
+            "scenario": "Sand is mixed with water and settles at the bottom.",
+            "student_task": "Choose the best separation method and explain the evidence.",
+            "best_method": "Filtering or settling",
+            "physical_property": "Particle size and insolubility",
+            "tool": "Filter, strainer, or careful pouring",
+            "evidence": "Sand does not dissolve. It remains visible and settles at the bottom."
+        },
+        {
+            "scenario": "A student mixes 80 g of water with 12 g of salt. Nothing spills.",
+            "student_task": "Calculate the total mass and explain the evidence.",
+            "best_method": "Use conservation of matter",
+            "physical_property": "Mass",
+            "tool": "Balance",
+            "evidence": "80 g + 12 g = 92 g. The dissolved salt is still matter, so the total mass is conserved."
+        },
+        {
+            "scenario": "A student has pasta mixed with water.",
+            "student_task": "Choose the best separation method and explain the evidence.",
+            "best_method": "Use a strainer",
+            "physical_property": "Particle size",
+            "tool": "Strainer",
+            "evidence": "The pasta is too large to pass through the holes, but the water passes through."
+        },
+        {
+            "scenario": "A student has sugar dissolved in water.",
+            "student_task": "Identify the solute, solvent, and type of mixture.",
+            "best_method": "Identify as a solution",
+            "physical_property": "Solubility",
+            "tool": "Water and stirring test",
+            "evidence": "Sugar is the solute, water is the solvent, and the sugar dissolves evenly."
+        }
+    ],
+
+    "lab": "Unit 2 Review Game: students review mixture and solution scenarios. Students choose the best separation method, identify the physical property, and use evidence to support their answers.",
+
+    "lab_link": "/labs/unit2-review",
+    "lab_link_text": "Open Unit 2 Review Game",
 
     "lab_notebook": "Students complete a review table showing how each mixture can be separated and which physical property makes the separation possible.",
 
@@ -33,92 +123,47 @@ day23 = {
     "staar_practice": [
         {
             "question": "A student needs to separate gravel from sand. Which method would work best?",
-            "choices": [
-                "Use a sieve",
-                "Use a magnet",
-                "Use evaporation",
-                "Use a thermometer"
-            ],
+            "choices": ["Use a sieve", "Use a magnet", "Use evaporation", "Use a thermometer"],
             "answer": "Use a sieve"
         },
         {
             "question": "Which physical property allows a sieve to separate gravel from sand?",
-            "choices": [
-                "Particle size",
-                "Magnetism",
-                "Conductivity",
-                "Temperature"
-            ],
+            "choices": ["Particle size", "Magnetism", "Conductivity", "Temperature"],
             "answer": "Particle size"
         },
         {
             "question": "A student has a mixture of iron filings and sand. Which method would best separate the iron filings?",
-            "choices": [
-                "Use a magnet",
-                "Use evaporation",
-                "Use a strainer",
-                "Use a ruler"
-            ],
+            "choices": ["Use a magnet", "Use evaporation", "Use a strainer", "Use a ruler"],
             "answer": "Use a magnet"
         },
         {
             "question": "Wood chips float in water, but marbles sink. Which physical property is being used to separate the mixture?",
-            "choices": [
-                "Relative density",
-                "Solubility",
-                "Magnetism",
-                "Temperature"
-            ],
+            "choices": ["Relative density", "Solubility", "Magnetism", "Temperature"],
             "answer": "Relative density"
         },
         {
             "question": "Oil forms a layer above water. Which conclusion is best supported?",
-            "choices": [
-                "Oil is less dense than water",
-                "Oil is more dense than water",
-                "Oil is soluble in water",
-                "Oil is magnetic"
-            ],
+            "choices": ["Oil is less dense than water", "Oil is more dense than water", "Oil is soluble in water", "Oil is magnetic"],
             "answer": "Oil is less dense than water"
         },
         {
             "question": "A student stirs salt into water until the salt can no longer be seen. What type of mixture has formed?",
-            "choices": [
-                "A solution",
-                "A magnetic mixture",
-                "A solid only",
-                "A mixture that cannot be separated"
-            ],
+            "choices": ["A solution", "A magnetic mixture", "A solid only", "A mixture that cannot be separated"],
             "answer": "A solution"
         },
         {
             "question": "In salt water, what is the solute?",
-            "choices": [
-                "Salt",
-                "Water",
-                "The cup",
-                "The spoon"
-            ],
+            "choices": ["Salt", "Water", "The cup", "The spoon"],
             "answer": "Salt"
         },
         {
             "question": "Which method could be used to get salt back from salt water?",
-            "choices": [
-                "Evaporation",
-                "Magnetism",
-                "Sink or float",
-                "Using a ruler"
-            ],
+            "choices": ["Evaporation", "Magnetism", "Sink or float", "Using a ruler"],
             "answer": "Evaporation"
         },
         {
             "question": "A student mixes 80 g of water with 12 g of salt. If nothing spills, what should the mass of the solution be?",
-            "choices": [
-                "92 g",
-                "80 g",
-                "68 g",
-                "12 g"
-            ],
+            "choices": ["92 g", "80 g", "68 g", "12 g"],
             "answer": "92 g"
         },
         {
