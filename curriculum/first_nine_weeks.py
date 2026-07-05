@@ -34,5 +34,6 @@ first_nine_weeks = [
     {"day": 26, "title": "What Is Force?", "teks": ["5.7A"], "lab": True},
     {"day": 27, "title": "Equal Forces and Balanced Motion", "teks": ["5.7A"], "lab": True},
     {"day": 28, "title": "Unequal Forces and Changes in Motion", "teks": ["5.7A"], "lab": True},
+    {"day": 29, "title": "Pushes, Pulls, Strength, and Direction", "teks": ["5.7A"], "lab": True},
 
 ]
