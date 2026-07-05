@@ -15,7 +15,81 @@ day19 = {
 
     "guided_practice": "Show students examples such as wood chips and marbles, plastic beads and metal washers, oil and water, cork and rocks, and foam pieces with gravel. Students decide which part would float, which part would sink, or which liquid would form the top layer. Students explain how relative density helps separate the mixture.",
 
+    "interactive_activity_title": "Relative Density Separation Challenge",
+
+    "interactive_activity": "Students read mixture scenarios and decide how relative density can separate the mixture. Students identify which part is less dense, which part is more dense, and the evidence from sinking, floating, or layering.",
+
+    "relative_density_mixture_cards": [
+        {
+            "mixture": "Wood chips and marbles",
+            "student_task": "Use relative density to explain how this mixture can be separated.",
+            "less_dense_part": "Wood chips",
+            "more_dense_part": "Marbles",
+            "observation": "Wood chips float and marbles sink.",
+            "evidence": "The floating wood chips are less dense than water. The sinking marbles are more dense than water."
+        },
+        {
+            "mixture": "Cork pieces and small rocks",
+            "student_task": "Use relative density to explain how this mixture can be separated.",
+            "less_dense_part": "Cork pieces",
+            "more_dense_part": "Small rocks",
+            "observation": "Cork floats and rocks sink.",
+            "evidence": "Cork is less dense than water. Rocks are more dense than water."
+        },
+        {
+            "mixture": "Plastic beads and metal washers",
+            "student_task": "Use relative density to explain how this mixture can be separated.",
+            "less_dense_part": "Plastic beads",
+            "more_dense_part": "Metal washers",
+            "observation": "Plastic beads float and metal washers sink.",
+            "evidence": "The plastic beads are less dense than water. The metal washers are more dense than water."
+        },
+        {
+            "mixture": "Foam pieces and gravel",
+            "student_task": "Use relative density to explain how this mixture can be separated.",
+            "less_dense_part": "Foam pieces",
+            "more_dense_part": "Gravel",
+            "observation": "Foam floats and gravel sinks.",
+            "evidence": "Foam is less dense than water. Gravel is more dense than water."
+        },
+        {
+            "mixture": "Oil and water",
+            "student_task": "Use relative density to explain how this mixture can be separated.",
+            "less_dense_part": "Oil",
+            "more_dense_part": "Water",
+            "observation": "Oil forms the top layer and water forms the bottom layer.",
+            "evidence": "Oil is less dense than water, so it stays above the water."
+        },
+        {
+            "mixture": "Syrup, water, and oil",
+            "student_task": "Use relative density to explain the order of the liquid layers.",
+            "less_dense_part": "Oil",
+            "more_dense_part": "Syrup",
+            "observation": "Oil is on top, water is in the middle, and syrup is on the bottom.",
+            "evidence": "The least dense liquid is on top. The most dense liquid is on the bottom."
+        },
+        {
+            "mixture": "Ping-pong ball and coin",
+            "student_task": "Use relative density to explain how this mixture can be separated.",
+            "less_dense_part": "Ping-pong ball",
+            "more_dense_part": "Coin",
+            "observation": "The ping-pong ball floats and the coin sinks.",
+            "evidence": "The ping-pong ball is less dense than water. The coin is more dense than water."
+        },
+        {
+            "mixture": "Pencil pieces and glass marbles",
+            "student_task": "Use relative density to explain how this mixture can be separated.",
+            "less_dense_part": "Pencil pieces",
+            "more_dense_part": "Glass marbles",
+            "observation": "The pencil pieces float and the glass marbles sink.",
+            "evidence": "The pencil pieces are less dense than water. The glass marbles are more dense than water."
+        }
+    ],
+
     "lab": "Relative Density Separation Lab: students test mixtures by placing materials in water and observing whether each part sinks or floats. Students also observe liquid layers such as oil and water. Students record evidence and explain how relative density can be used to separate each mixture.",
+
+    "lab_link": "/labs/relative-density-mixtures",
+    "lab_link_text": "Open Interactive Relative Density Lab",
 
     "lab_notebook": "Students record each mixture, identify which part is less dense, which part is more dense, and explain how sinking, floating, or layering can separate the mixture.",
 
@@ -33,32 +107,17 @@ day19 = {
     "staar_practice": [
         {
             "question": "A student places wood chips and marbles in water. The wood chips float and the marbles sink. Which physical property is being used to separate the mixture?",
-            "choices": [
-                "Relative density",
-                "Magnetism",
-                "Conductivity",
-                "Temperature"
-            ],
+            "choices": ["Relative density", "Magnetism", "Conductivity", "Temperature"],
             "answer": "Relative density"
         },
         {
             "question": "Oil forms a layer above water in a graduated cylinder. What can the student conclude?",
-            "choices": [
-                "Oil is less dense than water",
-                "Oil is more dense than water",
-                "Oil is magnetic",
-                "Oil has no mass"
-            ],
+            "choices": ["Oil is less dense than water", "Oil is more dense than water", "Oil is magnetic", "Oil has no mass"],
             "answer": "Oil is less dense than water"
         },
         {
             "question": "Which mixture could be separated by placing it in water and observing which parts sink and float?",
-            "choices": [
-                "Cork pieces and small rocks",
-                "Iron filings and sand",
-                "Salt dissolved in water",
-                "Coffee grounds and liquid coffee"
-            ],
+            "choices": ["Cork pieces and small rocks", "Iron filings and sand", "Salt dissolved in water", "Coffee grounds and liquid coffee"],
             "answer": "Cork pieces and small rocks"
         },
         {
@@ -88,6 +147,7 @@ day19 = {
     "vocabulary": [
         {
             "term": "relative density",
+            "image": "/static/vocabulary/unit1/relative_density.png",
             "picture": "Picture of one object floating and one object sinking",
             "definition": "A physical property that compares whether a substance is more dense or less dense than another substance.",
             "example": "Oil floats on water because oil is less dense than water.",
@@ -97,6 +157,7 @@ day19 = {
         },
         {
             "term": "mixture",
+            "image": "/static/vocabulary/unit2/mixture.png",
             "picture": "Picture of two or more substances together",
             "definition": "A combination of two or more substances that can be separated in some physical way.",
             "example": "Wood chips and marbles can form a mixture.",

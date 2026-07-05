@@ -1,0 +1,354 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Relative Density Mixtures Lab Simulator</h1>
+<p class="lead">
+    Use sinking, floating, and liquid layers to separate mixtures.
+</p>
+
+<a href="/first-nine-weeks/day/19?view=student" class="btn btn-secondary mb-4">
+    Back to Day 19
+</a>
+
+<style>
+    .sim-card {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
+    .info-box {
+        background: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .tank {
+        width: 280px;
+        height: 280px;
+        border: 4px solid #333;
+        border-radius: 0 0 25px 25px;
+        background: #8ed8ff;
+        margin: 20px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .object {
+        width: 90px;
+        height: 40px;
+        border: 2px solid #333;
+        border-radius: 12px;
+        background: white;
+        position: absolute;
+        left: 95px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .float-object {
+        top: 20px;
+    }
+
+    .sink-object {
+        bottom: 15px;
+    }
+
+    .layer-tank {
+        width: 260px;
+        height: 300px;
+        border: 4px solid #333;
+        border-radius: 0 0 25px 25px;
+        margin: 20px auto;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background: white;
+    }
+
+    .layer {
+        height: 90px;
+        border-top: 2px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+
+    .oil {
+        background: #ffe08a;
+    }
+
+    .water {
+        background: #8ed8ff;
+    }
+
+    .syrup {
+        background: #c48a5a;
+    }
+
+    .sorted-box {
+        min-height: 110px;
+        border: 2px dashed #333;
+        border-radius: 12px;
+        background: white;
+        padding: 12px;
+        margin-bottom: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .small-card {
+        width: 110px;
+        height: 48px;
+        border: 2px solid #333;
+        border-radius: 12px;
+        background: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .scenario-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="sim-card">
+    <h2>Part 1: Sink or Float Separation</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Place a mixture in water. The less dense part floats. The more dense part sinks.
+    </div>
+
+    <label class="form-label"><strong>Choose a mixture:</strong></label>
+    <select id="solidMixture" class="form-select mb-3" onchange="resetSolidTest()">
+        <option data-float="Wood chips" data-sink="Marbles" data-reason="Wood chips are less dense than water, so they float. Marbles are more dense than water, so they sink.">Wood chips and marbles</option>
+        <option data-float="Cork pieces" data-sink="Small rocks" data-reason="Cork pieces are less dense than water, so they float. Small rocks are more dense than water, so they sink.">Cork pieces and small rocks</option>
+        <option data-float="Plastic beads" data-sink="Metal washers" data-reason="Plastic beads float. Metal washers sink. This separates the mixture by relative density.">Plastic beads and metal washers</option>
+        <option data-float="Foam pieces" data-sink="Gravel" data-reason="Foam pieces float because they are less dense than water. Gravel sinks because it is more dense than water.">Foam pieces and gravel</option>
+    </select>
+
+    <button class="btn btn-primary" onclick="testSinkFloat()">Place Mixture in Water</button>
+
+    <div class="tank" id="tank">
+        <div style="position:absolute; top:5px; left:10px; font-weight:bold;">Water</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Less dense / floats</h5>
+            <div id="floatBox" class="sorted-box"></div>
+        </div>
+
+        <div class="col-md-6">
+            <h5>More dense / sinks</h5>
+            <div id="sinkBox" class="sorted-box"></div>
+        </div>
+    </div>
+
+    <div id="solidFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 2: Liquid Layers</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Liquids can form layers. The least dense liquid is on top. The most dense liquid is on the bottom.
+    </div>
+
+    <label class="form-label"><strong>Choose the correct order from top to bottom:</strong></label>
+    <select id="layerAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Oil, water, syrup</option>
+        <option>Syrup, water, oil</option>
+        <option>Water, oil, syrup</option>
+        <option>Oil, syrup, water</option>
+    </select>
+
+    <button class="btn btn-primary" onclick="buildLayers()">Build Liquid Column</button>
+
+    <div id="layerTank" class="layer-tank"></div>
+
+    <div id="layerFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 3: STAAR Evidence Challenge</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Use observations as evidence to explain relative density.
+    </div>
+
+    <div class="scenario-card">
+        <h4>Question 1</h4>
+        <p>A student places wood chips and marbles in water. The wood chips float, and the marbles sink. Which property separates the mixture?</p>
+        <select id="q1" class="form-select">
+            <option selected>Choose...</option>
+            <option>Relative density</option>
+            <option>Magnetism</option>
+            <option>Conductivity</option>
+            <option>Temperature</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>Question 2</h4>
+        <p>Oil forms a layer above water. What is the best conclusion?</p>
+        <select id="q2" class="form-select">
+            <option selected>Choose...</option>
+            <option>Oil is less dense than water.</option>
+            <option>Oil is more dense than water.</option>
+            <option>Oil is magnetic.</option>
+            <option>Oil has no mass.</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>Question 3</h4>
+        <p>Liquid A is on top, Liquid B is in the middle, and Liquid C is on the bottom. Which statement is supported?</p>
+        <select id="q3" class="form-select">
+            <option selected>Choose...</option>
+            <option>Liquid A is least dense and Liquid C is most dense.</option>
+            <option>Liquid A is most dense and Liquid C is least dense.</option>
+            <option>All liquids have the same density.</option>
+            <option>The liquids separated because of magnetism.</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success" onclick="checkEvidence()">Check Evidence</button>
+
+    <div id="evidenceFeedback"></div>
+</div>
+
+<script>
+    function showFeedback(elementId, message, isCorrect) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+        box.innerHTML = message;
+    }
+
+    function makeCard(label) {
+        const div = document.createElement("div");
+        div.className = "small-card";
+        div.innerText = label;
+        return div;
+    }
+
+    function resetSolidTest() {
+        document.getElementById("tank").innerHTML = '<div style="position:absolute; top:5px; left:10px; font-weight:bold;">Water</div>';
+        document.getElementById("floatBox").innerHTML = "";
+        document.getElementById("sinkBox").innerHTML = "";
+        document.getElementById("solidFeedback").innerHTML = "";
+        document.getElementById("solidFeedback").className = "";
+    }
+
+    function testSinkFloat() {
+        const select = document.getElementById("solidMixture");
+        const selected = select.options[select.selectedIndex];
+
+        const tank = document.getElementById("tank");
+        tank.innerHTML = '<div style="position:absolute; top:5px; left:10px; font-weight:bold;">Water</div>';
+
+        const floatObj = document.createElement("div");
+        floatObj.className = "object float-object";
+        floatObj.innerText = selected.dataset.float;
+
+        const sinkObj = document.createElement("div");
+        sinkObj.className = "object sink-object";
+        sinkObj.innerText = selected.dataset.sink;
+
+        tank.appendChild(floatObj);
+        tank.appendChild(sinkObj);
+
+        document.getElementById("floatBox").innerHTML = "";
+        document.getElementById("sinkBox").innerHTML = "";
+
+        document.getElementById("floatBox").appendChild(makeCard(selected.dataset.float));
+        document.getElementById("sinkBox").appendChild(makeCard(selected.dataset.sink));
+
+        showFeedback("solidFeedback", "Correct! " + selected.dataset.reason, true);
+    }
+
+    function buildLayers() {
+        const answer = document.getElementById("layerAnswer").value;
+        const tank = document.getElementById("layerTank");
+        tank.innerHTML = "";
+
+        if (answer === "Oil, water, syrup") {
+            const syrup = document.createElement("div");
+            syrup.className = "layer syrup";
+            syrup.innerText = "Syrup: most dense";
+
+            const water = document.createElement("div");
+            water.className = "layer water";
+            water.innerText = "Water: middle density";
+
+            const oil = document.createElement("div");
+            oil.className = "layer oil";
+            oil.innerText = "Oil: least dense";
+
+            tank.appendChild(syrup);
+            tank.appendChild(water);
+            tank.appendChild(oil);
+
+            showFeedback("layerFeedback", "Correct! From top to bottom: oil, water, syrup. Least dense is on top and most dense is on bottom.", true);
+        } else {
+            showFeedback("layerFeedback", "Not yet. The least dense liquid should be on top. The most dense liquid should be on the bottom.", false);
+        }
+    }
+
+    function checkEvidence() {
+        const q1 = document.getElementById("q1").value;
+        const q2 = document.getElementById("q2").value;
+        const q3 = document.getElementById("q3").value;
+
+        if (
+            q1 === "Relative density" &&
+            q2 === "Oil is less dense than water." &&
+            q3 === "Liquid A is least dense and Liquid C is most dense."
+        ) {
+            showFeedback("evidenceFeedback", "Correct! You used sinking, floating, and layering as evidence for relative density.", true);
+        } else {
+            showFeedback("evidenceFeedback", "Not yet. Remember: floating or top layer means less dense. Sinking or bottom layer means more dense.", false);
+        }
+    }
+</script>
+
+{% endblock %}
