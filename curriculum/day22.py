@@ -15,7 +15,77 @@ day22 = {
 
     "guided_practice": "Work through examples as a class. Example: 80 g water + 5 g salt = 85 g saltwater solution. Example: 120 g water + 12 g sugar = 132 g sugar-water solution. Students practice finding the missing mass and explaining why the total stays the same.",
 
+    "interactive_activity_title": "Conservation of Matter Mass Challenge",
+
+    "interactive_activity": "Students solve conservation of matter scenarios by adding the mass of the solute and solvent. Students explain why dissolved substances are still present even when they cannot be seen.",
+
+    "conservation_cards": [
+        {
+            "scenario": "A student mixes 100 g of water with 10 g of salt. Nothing spills.",
+            "student_task": "Calculate the total mass after mixing and explain why.",
+            "solute": "Salt",
+            "solute_mass": "10 g",
+            "solvent": "Water",
+            "solvent_mass": "100 g",
+            "total_mass": "110 g",
+            "evidence": "The salt dissolves, but it is still matter. 100 g + 10 g = 110 g."
+        },
+        {
+            "scenario": "A student mixes 50 g of water with 5 g of sugar. Nothing spills.",
+            "student_task": "Calculate the total mass after mixing and explain why.",
+            "solute": "Sugar",
+            "solute_mass": "5 g",
+            "solvent": "Water",
+            "solvent_mass": "50 g",
+            "total_mass": "55 g",
+            "evidence": "Matter is conserved. The sugar particles spread through the water but do not disappear."
+        },
+        {
+            "scenario": "A student mixes 40 g of water with 8 g of drink mix. The final solution has a mass of 48 g.",
+            "student_task": "Decide whether matter was conserved.",
+            "solute": "Drink mix",
+            "solute_mass": "8 g",
+            "solvent": "Water",
+            "solvent_mass": "40 g",
+            "total_mass": "48 g",
+            "evidence": "40 g + 8 g = 48 g, so the mass after mixing matches the total before mixing."
+        },
+        {
+            "scenario": "A student mixes 75 g of water with 6 g of salt. Nothing spills.",
+            "student_task": "Calculate the total mass after mixing.",
+            "solute": "Salt",
+            "solute_mass": "6 g",
+            "solvent": "Water",
+            "solvent_mass": "75 g",
+            "total_mass": "81 g",
+            "evidence": "75 g + 6 g = 81 g. The salt is still present even though it dissolved."
+        },
+        {
+            "scenario": "A student mixes 90 g of water with sugar. The final solution has a mass of 102 g.",
+            "student_task": "Find the missing mass of the sugar.",
+            "solute": "Sugar",
+            "solute_mass": "12 g",
+            "solvent": "Water",
+            "solvent_mass": "90 g",
+            "total_mass": "102 g",
+            "evidence": "102 g - 90 g = 12 g of sugar."
+        },
+        {
+            "scenario": "A student mixes salt and water, but some solution spills. The final mass is less than expected.",
+            "student_task": "Explain why the mass changed.",
+            "solute": "Salt",
+            "solute_mass": "Measured before mixing",
+            "solvent": "Water",
+            "solvent_mass": "Measured before mixing",
+            "total_mass": "Less than expected because matter left the system",
+            "evidence": "Matter was not destroyed. Some matter left the system when the solution spilled."
+        }
+    ],
+
     "lab": "Conservation of Matter Lab: students measure the mass of water and a soluble solid before mixing. Students then mix the substances and measure the mass of the solution. Students compare the total mass before and after mixing and explain whether matter was conserved.",
+
+    "lab_link": "/labs/conservation-matter",
+    "lab_link_text": "Open Interactive Conservation of Matter Lab",
 
     "lab_notebook": "Students record the mass of the solvent, the mass of the solute, the predicted total mass, the actual mass after mixing, and evidence that matter was conserved.",
 
@@ -35,12 +105,7 @@ day22 = {
     "staar_practice": [
         {
             "question": "A student has 100 g of water and 10 g of salt. The salt dissolves in the water. If no matter is lost, what should the mass of the solution be?",
-            "choices": [
-                "110 g",
-                "100 g",
-                "90 g",
-                "10 g"
-            ],
+            "choices": ["110 g", "100 g", "90 g", "10 g"],
             "answer": "110 g"
         },
         {
@@ -55,12 +120,7 @@ day22 = {
         },
         {
             "question": "A student mixes 50 g of water with 5 g of sugar. What should the total mass be if no material is spilled?",
-            "choices": [
-                "55 g",
-                "50 g",
-                "45 g",
-                "5 g"
-            ],
+            "choices": ["55 g", "50 g", "45 g", "5 g"],
             "answer": "55 g"
         },
         {
@@ -75,22 +135,12 @@ day22 = {
         },
         {
             "question": "A group records 40 g of water and 8 g of drink mix before mixing. After mixing, the solution has a mass of 48 g. What does this show?",
-            "choices": [
-                "Matter was conserved",
-                "Matter disappeared",
-                "The drink mix became a gas",
-                "The water lost all mass"
-            ],
+            "choices": ["Matter was conserved", "Matter disappeared", "The drink mix became a gas", "The water lost all mass"],
             "answer": "Matter was conserved"
         },
         {
             "question": "Which tool would students use to collect evidence about conservation of matter?",
-            "choices": [
-                "Balance",
-                "Magnet",
-                "Thermometer",
-                "Ruler"
-            ],
+            "choices": ["Balance", "Magnet", "Thermometer", "Ruler"],
             "answer": "Balance"
         }
     ],

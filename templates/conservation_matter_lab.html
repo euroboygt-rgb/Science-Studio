@@ -1,0 +1,355 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Conservation of Matter Mass-Balance Lab</h1>
+<p class="lead">
+    Mix a solute and solvent, then compare the mass before and after mixing.
+</p>
+
+<a href="/first-nine-weeks/day/22?view=student" class="btn btn-secondary mb-4">
+    Back to Day 22
+</a>
+
+<style>
+    .sim-card {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
+    .info-box {
+        background: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .balance-area {
+        min-height: 180px;
+        border: 3px solid #333;
+        border-radius: 15px;
+        background: white;
+        margin: 20px auto;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .scale-display {
+        font-size: 34px;
+        font-weight: bold;
+        border: 3px solid #333;
+        border-radius: 12px;
+        background: #e9ecef;
+        padding: 15px;
+        margin: 15px auto;
+        max-width: 260px;
+    }
+
+    .cup {
+        width: 120px;
+        height: 120px;
+        border: 4px solid #333;
+        border-radius: 0 0 25px 25px;
+        background: #8ed8ff;
+        margin: 15px auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .solute {
+        width: 80px;
+        min-height: 45px;
+        border: 3px solid #333;
+        border-radius: 12px;
+        background: white;
+        margin: 15px auto;
+        padding: 8px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .solution-particle {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1px solid #333;
+        background: white;
+        position: absolute;
+    }
+
+    .p1 { top: 25px; left: 25px; }
+    .p2 { top: 45px; left: 75px; }
+    .p3 { top: 70px; left: 45px; }
+    .p4 { top: 92px; left: 82px; }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .scenario-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="sim-card">
+    <h2>Part 1: Mix and Measure</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> If no matter is added, removed, or spilled, the mass after mixing should equal the total mass before mixing.
+    </div>
+
+    <label class="form-label"><strong>Choose a solution:</strong></label>
+    <select id="solutionSelect" class="form-select mb-3" onchange="resetLab()">
+        <option data-solute="Salt" data-solute-mass="10" data-solvent="Water" data-solvent-mass="100">100 g water + 10 g salt</option>
+        <option data-solute="Sugar" data-solute-mass="5" data-solvent="Water" data-solvent-mass="50">50 g water + 5 g sugar</option>
+        <option data-solute="Drink mix" data-solute-mass="8" data-solvent="Water" data-solvent-mass="40">40 g water + 8 g drink mix</option>
+        <option data-solute="Salt" data-solute-mass="6" data-solvent="Water" data-solvent-mass="75">75 g water + 6 g salt</option>
+    </select>
+
+    <button class="btn btn-primary" onclick="measureBefore()">Measure Before Mixing</button>
+    <button class="btn btn-warning" onclick="mixSolution()">Mix Solution</button>
+    <button class="btn btn-success" onclick="measureAfter()">Measure After Mixing</button>
+
+    <div class="balance-area">
+        <h4 id="labStep">Choose a solution and measure before mixing.</h4>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="cup">
+                    <strong style="position:absolute; top:5px; left:20px;">Water</strong>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="soluteBox" class="solute">Solute</div>
+            </div>
+        </div>
+
+        <div id="scaleDisplay" class="scale-display">0 g</div>
+    </div>
+
+    <label class="form-label"><strong>Predict the total mass after mixing:</strong></label>
+    <input id="predictionInput" class="form-control mb-3" type="number" placeholder="Enter mass in grams">
+
+    <button class="btn btn-success" onclick="checkPrediction()">Check Prediction</button>
+
+    <div id="predictionFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 2: Missing Mass Challenge</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Use conservation of matter to find the missing mass.
+    </div>
+
+    <div class="scenario-card">
+        <h4>Question 1</h4>
+        <p>90 g of water is mixed with sugar. The final solution has a mass of 102 g. What was the mass of the sugar?</p>
+        <input id="missing1" class="form-control" type="number" placeholder="grams">
+    </div>
+
+    <div class="scenario-card">
+        <h4>Question 2</h4>
+        <p>60 g of water is mixed with 7 g of salt. What should the final mass be if nothing spills?</p>
+        <input id="missing2" class="form-control" type="number" placeholder="grams">
+    </div>
+
+    <div class="scenario-card">
+        <h4>Question 3</h4>
+        <p>A solution has a final mass of 85 g. The solute had a mass of 9 g. What was the mass of the water?</p>
+        <input id="missing3" class="form-control" type="number" placeholder="grams">
+    </div>
+
+    <button class="btn btn-success" onclick="checkMissingMass()">Check Missing Mass</button>
+
+    <div id="missingFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 3: STAAR Evidence Challenge</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Use data as evidence to explain conservation of matter.
+    </div>
+
+    <div class="scenario-card">
+        <h4>Data Table</h4>
+        <table class="table table-bordered bg-white">
+            <tr>
+                <th>Material</th>
+                <th>Mass Before Mixing</th>
+            </tr>
+            <tr>
+                <td>Water</td>
+                <td>80 g</td>
+            </tr>
+            <tr>
+                <td>Salt</td>
+                <td>12 g</td>
+            </tr>
+            <tr>
+                <td>Saltwater Solution</td>
+                <td>92 g</td>
+            </tr>
+        </table>
+
+        <label class="form-label"><strong>What does the data show?</strong></label>
+        <select id="staar1" class="form-select mb-3">
+            <option selected>Choose...</option>
+            <option>Matter was conserved because 80 g + 12 g = 92 g.</option>
+            <option>The salt disappeared because it dissolved.</option>
+            <option>The water lost all of its mass.</option>
+            <option>The solution became magnetic.</option>
+        </select>
+
+        <label class="form-label"><strong>Best evidence:</strong></label>
+        <select id="staar2" class="form-select mb-3">
+            <option selected>Choose...</option>
+            <option>The mass before mixing equals the mass after mixing.</option>
+            <option>The salt could not be seen.</option>
+            <option>The cup was clear.</option>
+            <option>The water was a liquid.</option>
+        </select>
+
+        <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Evidence</button>
+
+        <div id="staarFeedback"></div>
+    </div>
+</div>
+
+<script>
+    let mixed = false;
+    let measuredAfter = false;
+
+    function showFeedback(elementId, message, isCorrect) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+        box.innerHTML = message;
+    }
+
+    function getSelectedData() {
+        const select = document.getElementById("solutionSelect");
+        const selected = select.options[select.selectedIndex];
+
+        return {
+            solute: selected.dataset.solute,
+            soluteMass: Number(selected.dataset.soluteMass),
+            solvent: selected.dataset.solvent,
+            solventMass: Number(selected.dataset.solventMass),
+            total: Number(selected.dataset.soluteMass) + Number(selected.dataset.solventMass)
+        };
+    }
+
+    function resetLab() {
+        mixed = false;
+        measuredAfter = false;
+
+        const data = getSelectedData();
+        document.getElementById("soluteBox").innerText = data.solute;
+        document.getElementById("scaleDisplay").innerText = "0 g";
+        document.getElementById("labStep").innerText = "Measure before mixing.";
+        document.getElementById("predictionInput").value = "";
+        document.getElementById("predictionFeedback").innerHTML = "";
+        document.getElementById("predictionFeedback").className = "";
+    }
+
+    function measureBefore() {
+        const data = getSelectedData();
+        document.getElementById("labStep").innerText = data.solventMass + " g water + " + data.soluteMass + " g " + data.solute;
+        document.getElementById("scaleDisplay").innerText = data.solventMass + " g + " + data.soluteMass + " g";
+    }
+
+    function mixSolution() {
+        mixed = true;
+
+        const data = getSelectedData();
+        const cup = document.querySelector(".cup");
+        cup.innerHTML = '<strong style="position:absolute; top:5px; left:20px;">Solution</strong>' +
+            '<div class="solution-particle p1"></div>' +
+            '<div class="solution-particle p2"></div>' +
+            '<div class="solution-particle p3"></div>' +
+            '<div class="solution-particle p4"></div>';
+
+        document.getElementById("labStep").innerText = data.solute + " dissolved. It is still matter.";
+        document.getElementById("scaleDisplay").innerText = "Mixed";
+    }
+
+    function measureAfter() {
+        const data = getSelectedData();
+
+        if (!mixed) {
+            document.getElementById("labStep").innerText = "Mix the solution first.";
+            return;
+        }
+
+        measuredAfter = true;
+        document.getElementById("labStep").innerText = "Final solution mass";
+        document.getElementById("scaleDisplay").innerText = data.total + " g";
+    }
+
+    function checkPrediction() {
+        const data = getSelectedData();
+        const prediction = Number(document.getElementById("predictionInput").value);
+
+        if (!measuredAfter) {
+            showFeedback("predictionFeedback", "Measure after mixing first, then check your prediction.", false);
+            return;
+        }
+
+        if (prediction === data.total) {
+            showFeedback("predictionFeedback", "Correct! Matter was conserved. " + data.solventMass + " g + " + data.soluteMass + " g = " + data.total + " g.", true);
+        } else {
+            showFeedback("predictionFeedback", "Not yet. Add the mass of the solvent and the mass of the solute.", false);
+        }
+    }
+
+    function checkMissingMass() {
+        const a1 = Number(document.getElementById("missing1").value);
+        const a2 = Number(document.getElementById("missing2").value);
+        const a3 = Number(document.getElementById("missing3").value);
+
+        if (a1 === 12 && a2 === 67 && a3 === 76) {
+            showFeedback("missingFeedback", "Correct! You used conservation of matter to find each missing mass.", true);
+        } else {
+            showFeedback("missingFeedback", "Not yet. Use addition or subtraction. The parts before mixing equal the total after mixing.", false);
+        }
+    }
+
+    function checkSTAAR() {
+        const s1 = document.getElementById("staar1").value;
+        const s2 = document.getElementById("staar2").value;
+
+        if (
+            s1 === "Matter was conserved because 80 g + 12 g = 92 g." &&
+            s2 === "The mass before mixing equals the mass after mixing."
+        ) {
+            showFeedback("staarFeedback", "Correct! The data shows that the total mass stayed the same.", true);
+        } else {
+            showFeedback("staarFeedback", "Not yet. Use the mass data as evidence.", false);
+        }
+    }
+
+    resetLab();
+</script>
+
+{% endblock %}
