@@ -479,6 +479,66 @@
 
 
 
+
+                {% if lesson.get("force_strength_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("force_strength_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>Force Strength Scenario {{ loop.index }}</h5>
+                            <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Push or Pull?</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Push</option>
+                                <option>Pull</option>
+                            </select>
+
+                            <label class="form-label"><strong>Force Strength:</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Weak force</option>
+                                <option>Medium force</option>
+                                <option>Strong force</option>
+                            </select>
+
+                            <label class="form-label"><strong>Direction:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="Which direction did the force act?"></textarea>
+
+                            <label class="form-label"><strong>Effect on Motion:</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Starts moving</option>
+                                <option>Speeds up</option>
+                                <option>Slows down</option>
+                                <option>Stops</option>
+                                <option>Changes direction</option>
+                                <option>Moves farther</option>
+                            </select>
+
+                            <label class="form-label"><strong>Evidence:</strong></label>
+                            <textarea class="form-control" rows="2" placeholder="What evidence supports your answer?"></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Push or Pull:</strong> {{ card.push_or_pull }}</p>
+                                    <p><strong>Strength:</strong> {{ card.strength }}</p>
+                                    <p><strong>Direction:</strong> {{ card.direction }}</p>
+                                    <p><strong>Effect on Motion:</strong> {{ card.effect_on_motion }}</p>
+                                    <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("unequal_force_cards") %}
                 <div class="row">
                     {% for card in lesson.get("unequal_force_cards") %}

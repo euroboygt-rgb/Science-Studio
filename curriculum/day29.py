@@ -15,7 +15,71 @@ day29 = {
 
     "guided_practice": "Use examples such as pushing a toy car gently, pushing it harder, pulling a wagon, kicking a ball from the side, and stopping a rolling ball. For each example, students identify the type of force, strength of force, direction of force, and effect on motion.",
 
-    "lab": "Force Strength and Direction Investigation: students test how different pushes and pulls affect the motion of objects. Students compare weak and strong forces and forces applied from different directions. Students record distance traveled, direction changed, and evidence of motion change.",
+    "interactive_activity_title": "Force Strength and Direction Challenge",
+
+    "interactive_activity": "Students study force scenarios and identify whether the force is a push or pull, whether it is weak or strong, the direction of the force, and the effect on motion.",
+
+    "force_strength_cards": [
+        {
+            "scenario": "A student gives a toy car a weak push forward. The car rolls a short distance.",
+            "student_task": "Identify the force strength, direction, and effect on motion.",
+            "push_or_pull": "Push",
+            "strength": "Weak force",
+            "direction": "Forward",
+            "effect_on_motion": "The car starts moving and rolls a short distance.",
+            "evidence": "The car moved, but it did not travel very far."
+        },
+        {
+            "scenario": "The same toy car is pushed harder in the same direction. The car rolls farther.",
+            "student_task": "Explain how force strength changed the motion.",
+            "push_or_pull": "Push",
+            "strength": "Strong force",
+            "direction": "Forward",
+            "effect_on_motion": "The car moves farther or faster.",
+            "evidence": "The stronger push caused a greater change in motion."
+        },
+        {
+            "scenario": "A wagon is pulled toward a student.",
+            "student_task": "Identify the force and direction.",
+            "push_or_pull": "Pull",
+            "strength": "Medium force",
+            "direction": "Toward the student",
+            "effect_on_motion": "The wagon moves toward the student.",
+            "evidence": "The wagon changes position in the direction of the pull."
+        },
+        {
+            "scenario": "A rolling ball is pushed in the same direction it is already moving.",
+            "student_task": "Predict how the motion changes.",
+            "push_or_pull": "Push",
+            "strength": "Added force",
+            "direction": "Same direction as motion",
+            "effect_on_motion": "The ball speeds up.",
+            "evidence": "A force in the same direction as motion can increase speed."
+        },
+        {
+            "scenario": "A rolling ball is pushed in the opposite direction of its motion.",
+            "student_task": "Predict how the motion changes.",
+            "push_or_pull": "Push",
+            "strength": "Opposite force",
+            "direction": "Opposite direction of motion",
+            "effect_on_motion": "The ball slows down or stops.",
+            "evidence": "A force opposite the motion can reduce speed."
+        },
+        {
+            "scenario": "A soccer ball is rolling forward. A student kicks it from the side.",
+            "student_task": "Explain how the force affects direction.",
+            "push_or_pull": "Push",
+            "strength": "Side force",
+            "direction": "From the side",
+            "effect_on_motion": "The ball changes direction.",
+            "evidence": "The ball moves in a new direction after the side force."
+        }
+    ],
+
+    "lab": "Force Strength and Direction Lab: students use a simulator and classroom materials to test how weak and strong pushes or pulls affect motion. Students compare forces in the same direction, opposite direction, and from the side.",
+
+    "lab_link": "/labs/force-strength-direction",
+    "lab_link_text": "Open Force Strength and Direction Simulator",
 
     "lab_notebook": "Students record the object, type of force, strength of force, direction of force, and effect on motion. Students use observations and measurements as evidence.",
 
@@ -188,5 +252,5 @@ day29 = {
         "Safety goggles if needed"
     ],
 
-    "teacher_notes": "Today bridges equal/unequal forces into experimental investigation. Emphasize that force has both strength and direction. Larger arrows represent stronger forces. Students should begin thinking like investigators: change one thing, observe the motion, measure when possible, and use evidence."
+    "teacher_notes": "Today bridges equal and unequal forces into experimental investigation. Emphasize that force has both strength and direction. Larger arrows represent stronger forces. Students should begin thinking like investigators: change one thing, observe the motion, measure when possible, and use evidence."
 }
