@@ -30,4 +30,7 @@ first_nine_weeks = [
     {"day": 24, "title": "Matter Is Made of Particles Too Small to See", "teks": ["5.6D"], "lab": True},
     {"day": 25, "title": "Unit 2 Performance Assessment", "teks": ["5.3A", "5.6B", "5.6D"], "lab": True},
 
+    # Unit 3 - Investigating Force and Motion
+    {"day": 26, "title": "What Is Force?", "teks": ["5.7A"], "lab": True},
+
 ]
