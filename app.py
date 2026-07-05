@@ -23,6 +23,7 @@ from curriculum.day20 import day20
 from curriculum.day21 import day21
 from curriculum.day22 import day22
 from curriculum.day23 import day23
+from curriculum.day24 import day24
 
 app = Flask(__name__)
 
@@ -51,6 +52,7 @@ lesson_details = {
     21: day21,
     22: day22,
     23: day23,
+    24: day24,
 }
 
 
