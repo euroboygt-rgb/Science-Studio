@@ -15,7 +15,77 @@ day31 = {
 
     "guided_practice": "Show examples such as sliding a book across a desk, a toy car rolling on tile, a toy car rolling on carpet, shoes gripping the floor, bike brakes slowing a wheel, and a playground slide. Students identify the moving object, the surface, the direction of motion, the direction of friction, and the effect on motion.",
 
-    "lab": "Friction Surface Investigation: students roll or slide the same object across different surfaces. Students compare how far the object travels on smooth and rough surfaces. Students use distance measurements as evidence to explain how friction affects motion.",
+    "interactive_activity_title": "Friction Surface Challenge",
+
+    "interactive_activity": "Students read friction scenarios and identify the surface, direction of motion, direction of friction, amount of friction, and evidence that friction affected motion.",
+
+    "friction_cards": [
+        {
+            "scenario": "A toy car rolls across smooth tile and travels far before stopping.",
+            "student_task": "Explain why the car traveled far.",
+            "surface": "Smooth tile",
+            "friction_amount": "Less friction",
+            "motion_direction": "Forward",
+            "friction_direction": "Opposite the motion",
+            "effect_on_motion": "The car slows down slowly and travels farther.",
+            "evidence": "The car traveled a long distance before stopping."
+        },
+        {
+            "scenario": "The same toy car rolls across carpet and stops quickly.",
+            "student_task": "Explain why the car did not travel as far.",
+            "surface": "Carpet",
+            "friction_amount": "More friction",
+            "motion_direction": "Forward",
+            "friction_direction": "Opposite the motion",
+            "effect_on_motion": "The car slows down quickly and travels a shorter distance.",
+            "evidence": "The car stopped sooner on the carpet."
+        },
+        {
+            "scenario": "A book slides to the right across a desk.",
+            "student_task": "Identify the direction of friction.",
+            "surface": "Desk",
+            "friction_amount": "Some friction",
+            "motion_direction": "Right",
+            "friction_direction": "Left",
+            "effect_on_motion": "The book slows down.",
+            "evidence": "The book does not keep sliding forever."
+        },
+        {
+            "scenario": "Bike brakes press against a wheel and the bicycle slows down.",
+            "student_task": "Explain how friction helps stop the bicycle.",
+            "surface": "Brake pad and wheel",
+            "friction_amount": "More friction",
+            "motion_direction": "Wheel moving forward",
+            "friction_direction": "Opposite the wheel's motion",
+            "effect_on_motion": "The bicycle slows down or stops.",
+            "evidence": "The brakes increase friction, causing the wheel to slow."
+        },
+        {
+            "scenario": "A person walks on a wet, slippery floor and has less grip.",
+            "student_task": "Explain why the floor is slippery.",
+            "surface": "Wet smooth floor",
+            "friction_amount": "Less friction",
+            "motion_direction": "Forward walking motion",
+            "friction_direction": "Opposite slipping motion",
+            "effect_on_motion": "Shoes have less grip and may slide.",
+            "evidence": "The person slips more easily because there is less friction."
+        },
+        {
+            "scenario": "A sled slides easily on ice but not as easily on grass.",
+            "student_task": "Compare friction on ice and grass.",
+            "surface": "Ice and grass",
+            "friction_amount": "Ice has less friction; grass has more friction",
+            "motion_direction": "Forward",
+            "friction_direction": "Opposite the motion",
+            "effect_on_motion": "The sled travels farther on ice and shorter on grass.",
+            "evidence": "The sled slows faster on the rougher grassy surface."
+        }
+    ],
+
+    "lab": "Friction Surface Investigation: students use a simulator and classroom materials to roll or slide the same object across different surfaces. Students compare distance traveled on smooth and rough surfaces and use measurements as evidence.",
+
+    "lab_link": "/labs/friction-surfaces",
+    "lab_link_text": "Open Friction Surface Simulator",
 
     "lab_notebook": "Students record the surface tested, object used, distance traveled, amount of friction, and evidence that friction slowed the object.",
 
@@ -34,12 +104,7 @@ day31 = {
     "staar_practice": [
         {
             "question": "A toy car rolls farther on tile than on carpet. Which force most likely caused the car to slow down more on the carpet?",
-            "choices": [
-                "Friction",
-                "Gravity",
-                "Magnetism",
-                "Light"
-            ],
+            "choices": ["Friction", "Gravity", "Magnetism", "Light"],
             "answer": "Friction"
         },
         {
@@ -54,22 +119,12 @@ day31 = {
         },
         {
             "question": "A box is sliding to the right. Which direction does friction act?",
-            "choices": [
-                "Left",
-                "Right",
-                "Up only",
-                "Down only"
-            ],
+            "choices": ["Left", "Right", "Up only", "Down only"],
             "answer": "Left"
         },
         {
             "question": "Which surface would most likely create the greatest friction for a sliding book?",
-            "choices": [
-                "Carpet",
-                "Smooth tile",
-                "Ice",
-                "Wax paper"
-            ],
+            "choices": ["Carpet", "Smooth tile", "Ice", "Wax paper"],
             "answer": "Carpet"
         },
         {
@@ -84,12 +139,7 @@ day31 = {
         },
         {
             "question": "Bike brakes help stop a moving bicycle because they increase —",
-            "choices": [
-                "friction",
-                "magnetism",
-                "solubility",
-                "evaporation"
-            ],
+            "choices": ["friction", "magnetism", "solubility", "evaporation"],
             "answer": "friction"
         }
     ],

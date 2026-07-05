@@ -481,6 +481,64 @@
 
 
 
+
+                {% if lesson.get("friction_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("friction_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>Friction Scenario {{ loop.index }}</h5>
+                            <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Surface:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What surface is the object moving on?"></textarea>
+
+                            <label class="form-label"><strong>Amount of Friction:</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Less friction</option>
+                                <option>Some friction</option>
+                                <option>More friction</option>
+                            </select>
+
+                            <label class="form-label"><strong>Direction of Motion:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="Which direction is the object moving?"></textarea>
+
+                            <label class="form-label"><strong>Direction of Friction:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="Which direction does friction act?"></textarea>
+
+                            <label class="form-label"><strong>Effect on Motion:</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Slows down</option>
+                                <option>Stops sooner</option>
+                                <option>Travels farther</option>
+                                <option>Travels shorter distance</option>
+                            </select>
+
+                            <label class="form-label"><strong>Evidence:</strong></label>
+                            <textarea class="form-control" rows="2" placeholder="What evidence supports your answer?"></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Surface:</strong> {{ card.surface }}</p>
+                                    <p><strong>Friction Amount:</strong> {{ card.friction_amount }}</p>
+                                    <p><strong>Motion Direction:</strong> {{ card.motion_direction }}</p>
+                                    <p><strong>Friction Direction:</strong> {{ card.friction_direction }}</p>
+                                    <p><strong>Effect on Motion:</strong> {{ card.effect_on_motion }}</p>
+                                    <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("gravity_cards") %}
                 <div class="row">
                     {% for card in lesson.get("gravity_cards") %}

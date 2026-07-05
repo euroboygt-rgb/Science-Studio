@@ -187,6 +187,12 @@ def gravity_drop_lab():
     return render_template("gravity_drop_lab.html")
 
 
+
+@app.route("/labs/friction-surfaces")
+def friction_surfaces_lab():
+    return render_template("friction_surfaces_lab.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
