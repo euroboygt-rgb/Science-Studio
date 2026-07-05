@@ -149,6 +149,11 @@ def particles_lab():
 def unit2_performance_game():
     return render_template("unit2_performance_game.html")
 
+
+@app.route("/labs/forces")
+def forces_lab():
+    return render_template("forces_lab.html")
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

@@ -15,7 +15,65 @@ day26 = {
 
     "guided_practice": "Show students classroom examples: pushing a book, pulling a chair, kicking a ball, dropping a pencil, and using a magnet near a paper clip. For each example, students identify the force, whether it is a push or pull, the direction of the force, and how the motion changed.",
 
-    "lab": "Force Observation Lab: students test simple pushes and pulls using classroom objects. Students gently push and pull objects such as toy cars, books, erasers, and balls. Students observe whether the object starts moving, stops, changes direction, speeds up, or slows down.",
+    "interactive_activity_title": "Push or Pull Force Challenge",
+
+    "interactive_activity": "Students read force scenarios and identify the type of force, the direction of the force, and the effect on motion.",
+
+    "force_cards": [
+        {
+            "scenario": "A student pushes a toy car forward. The car starts moving across the desk.",
+            "student_task": "Identify the force and describe how the motion changed.",
+            "force_type": "Push",
+            "direction": "Forward",
+            "effect_on_motion": "The car started moving forward.",
+            "evidence": "The car was at rest before the push. After the push, the car moved."
+        },
+        {
+            "scenario": "A student pulls a wagon toward herself using a handle.",
+            "student_task": "Identify the force and describe the direction.",
+            "force_type": "Pull",
+            "direction": "Toward the student",
+            "effect_on_motion": "The wagon moved toward the student.",
+            "evidence": "The handle was pulled, and the wagon changed position."
+        },
+        {
+            "scenario": "A soccer ball is rolling forward. A student kicks it from the side, and the ball changes direction.",
+            "student_task": "Explain how the force changed the ball's motion.",
+            "force_type": "Push",
+            "direction": "Sideways",
+            "effect_on_motion": "The ball changed direction.",
+            "evidence": "The ball was moving one way before the kick and a different way after the kick."
+        },
+        {
+            "scenario": "A pencil falls from a desk to the floor.",
+            "student_task": "Identify the force acting at a distance.",
+            "force_type": "Gravity",
+            "direction": "Downward",
+            "effect_on_motion": "The pencil moved downward.",
+            "evidence": "The pencil fell toward Earth without being pushed by a hand."
+        },
+        {
+            "scenario": "A magnet is placed near a paper clip. The paper clip moves toward the magnet.",
+            "student_task": "Identify the force acting at a distance.",
+            "force_type": "Magnetism",
+            "direction": "Toward the magnet",
+            "effect_on_motion": "The paper clip moved toward the magnet.",
+            "evidence": "The paper clip moved even though the magnet did not touch it."
+        },
+        {
+            "scenario": "A student pushes a rolling ball in the opposite direction. The ball slows down and stops.",
+            "student_task": "Explain how the force affected motion.",
+            "force_type": "Push",
+            "direction": "Opposite the ball's motion",
+            "effect_on_motion": "The ball slowed down and stopped.",
+            "evidence": "The force acted against the direction the ball was moving."
+        }
+    ],
+
+    "lab": "Push and Pull Force Lab: students use a simulator and classroom objects to test how pushes and pulls affect motion. Students identify the type of force, direction of the force, and effect on motion.",
+
+    "lab_link": "/labs/forces",
+    "lab_link_text": "Open Push/Pull Force Simulator",
 
     "lab_notebook": "Students record the object, the force used, whether it was a push or pull, the direction of the force, and the effect on the object's motion.",
 
@@ -33,62 +91,32 @@ day26 = {
     "staar_practice": [
         {
             "question": "A student pushes a toy car. The car begins to move forward. What caused the car to move?",
-            "choices": [
-                "A force",
-                "A shadow",
-                "A thermometer",
-                "A change in color"
-            ],
+            "choices": ["A force", "A shadow", "A thermometer", "A change in color"],
             "answer": "A force"
         },
         {
             "question": "Which statement best describes a force?",
-            "choices": [
-                "A push or pull that can change motion",
-                "The color of an object",
-                "The temperature of a liquid",
-                "The shape of a container"
-            ],
+            "choices": ["A push or pull that can change motion", "The color of an object", "The temperature of a liquid", "The shape of a container"],
             "answer": "A push or pull that can change motion"
         },
         {
             "question": "A student pulls a wagon toward the playground. Which type of force is being used?",
-            "choices": [
-                "Pull",
-                "Friction only",
-                "Light",
-                "Sound"
-            ],
+            "choices": ["Pull", "Friction only", "Light", "Sound"],
             "answer": "Pull"
         },
         {
             "question": "A ball is rolling to the right. A student kicks it to the left. What changed?",
-            "choices": [
-                "The direction of the ball's motion",
-                "The ball stopped being matter",
-                "The ball became magnetic",
-                "The ball lost all mass"
-            ],
+            "choices": ["The direction of the ball's motion", "The ball stopped being matter", "The ball became magnetic", "The ball lost all mass"],
             "answer": "The direction of the ball's motion"
         },
         {
             "question": "Which example shows a force acting at a distance?",
-            "choices": [
-                "A magnet pulling a paper clip",
-                "A student pushing a desk",
-                "A hand pulling a rope",
-                "A foot kicking a ball"
-            ],
+            "choices": ["A magnet pulling a paper clip", "A student pushing a desk", "A hand pulling a rope", "A foot kicking a ball"],
             "answer": "A magnet pulling a paper clip"
         },
         {
             "question": "A pencil falls from a desk to the floor. Which force pulls the pencil downward?",
-            "choices": [
-                "Gravity",
-                "Friction",
-                "A push from the floor",
-                "Mechanical energy"
-            ],
+            "choices": ["Gravity", "Friction", "A push from the floor", "Mechanical energy"],
             "answer": "Gravity"
         }
     ],
