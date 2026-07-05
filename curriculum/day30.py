@@ -15,7 +15,65 @@ day30 = {
 
     "guided_practice": "Show students examples: a pencil falling, a ball dropped from a hand, a book resting on a desk, a ball thrown upward and coming back down, and rain falling from clouds. Students identify gravity, the direction of the force, and the effect on motion.",
 
-    "lab": "Gravity Drop Investigation: students observe how gravity affects falling objects. Students drop safe classroom objects from the same height and record the direction of motion. Students may compare objects with similar shape but different mass, or compare a flat paper and a crumpled paper to discuss how air can affect falling motion.",
+    "interactive_activity_title": "Gravity Force Challenge",
+
+    "interactive_activity": "Students read gravity scenarios and identify the force, direction of the force, effect on motion, and evidence that gravity acted on the object.",
+
+    "gravity_cards": [
+        {
+            "scenario": "A pencil rolls off a desk and falls to the floor.",
+            "student_task": "Identify the force and explain the motion.",
+            "force": "Gravity",
+            "direction": "Downward toward Earth",
+            "effect_on_motion": "The pencil moves downward.",
+            "evidence": "The pencil changed position from the desk to the floor."
+        },
+        {
+            "scenario": "A student drops a ball from shoulder height. The ball falls straight down.",
+            "student_task": "Explain what force caused the ball to fall.",
+            "force": "Gravity",
+            "direction": "Downward",
+            "effect_on_motion": "The ball starts moving downward after it is released.",
+            "evidence": "The ball moved toward the ground after being dropped."
+        },
+        {
+            "scenario": "A ball is thrown upward. After a moment, it slows down and falls back to the ground.",
+            "student_task": "Explain how gravity affected the ball's motion.",
+            "force": "Gravity",
+            "direction": "Downward",
+            "effect_on_motion": "The ball slows as it moves upward, then moves downward.",
+            "evidence": "The ball returns to the ground instead of continuing upward forever."
+        },
+        {
+            "scenario": "Rain falls from clouds to the ground.",
+            "student_task": "Identify the force and direction.",
+            "force": "Gravity",
+            "direction": "Downward toward Earth",
+            "effect_on_motion": "Raindrops move downward.",
+            "evidence": "Rain falls from higher in the sky to lower on the ground."
+        },
+        {
+            "scenario": "A book rests on a table and does not fall through the table.",
+            "student_task": "Explain the forces acting on the book.",
+            "force": "Gravity pulls down and the table pushes up",
+            "direction": "Gravity downward, table force upward",
+            "effect_on_motion": "The book stays at rest.",
+            "evidence": "The book does not move because the forces are balanced."
+        },
+        {
+            "scenario": "A flat sheet of paper and a crumpled sheet of paper are dropped. The crumpled paper reaches the floor first.",
+            "student_task": "Explain why both objects still show gravity.",
+            "force": "Gravity",
+            "direction": "Downward",
+            "effect_on_motion": "Both papers move downward, but air affects the flat paper more.",
+            "evidence": "Both objects fall toward Earth after being released."
+        }
+    ],
+
+    "lab": "Gravity Drop Lab: students use a simulator and classroom objects to observe gravity pulling objects downward. Students compare drop height, object type, and evidence of downward motion.",
+
+    "lab_link": "/labs/gravity-drop",
+    "lab_link_text": "Open Gravity Drop Simulator",
 
     "lab_notebook": "Students record the object, starting height, direction of motion, observation, and evidence that gravity acted on the object.",
 
@@ -34,22 +92,12 @@ day30 = {
     "staar_practice": [
         {
             "question": "A student drops a ball. The ball falls to the ground. Which force caused the ball to move downward?",
-            "choices": [
-                "Gravity",
-                "Magnetism",
-                "Friction",
-                "Light"
-            ],
+            "choices": ["Gravity", "Magnetism", "Friction", "Light"],
             "answer": "Gravity"
         },
         {
             "question": "Which arrow best shows the direction of gravity on a falling object near Earth?",
-            "choices": [
-                "Downward arrow",
-                "Upward arrow",
-                "Arrow to the left only",
-                "Arrow to the right only"
-            ],
+            "choices": ["Downward arrow", "Upward arrow", "Arrow to the left only", "Arrow to the right only"],
             "answer": "Downward arrow"
         },
         {

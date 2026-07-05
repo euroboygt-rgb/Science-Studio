@@ -179,6 +179,12 @@ def force_strength_direction_lab():
     return render_template("force_strength_direction_lab.html")
 
 
+
+@app.route("/labs/gravity-drop")
+def gravity_drop_lab():
+    return render_template("gravity_drop_lab.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
