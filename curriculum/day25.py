@@ -15,7 +15,65 @@ day25 = {
 
     "guided_practice": "Model one example before students work independently. Example: Iron filings mixed with sand can be separated with a magnet because iron is magnetic and sand is not. Students must name the physical property, tool, evidence, and explanation.",
 
-    "lab": "Unit 2 Performance Assessment: students complete a multi-part task. Part 1: design a process to separate a recycling-center mixture using physical properties. Part 2: explain how to identify and separate a solution. Part 3: use a particle model to explain invisible matter or food coloring spreading through water.",
+    "interactive_activity_title": "Unit 2 Performance Assessment Challenge",
+
+    "interactive_activity": "Students complete performance task cards. For each card, students identify the evidence, physical property or model, tool or method, and a written explanation.",
+
+    "unit2_performance_cards": [
+        {
+            "task": "Recycling Center Separation Plan",
+            "prompt": "A recycling center receives a mixture of steel paper clips, plastic beads, wood chips, gravel, sand, and glass marbles. Design a plan to separate the materials.",
+            "evidence": "Steel is magnetic, particles have different sizes, and some materials float while others sink.",
+            "physical_property_or_model": "Magnetism, particle size, and relative density",
+            "tool_or_method": "Magnet, sieve or screen, and water test",
+            "teacher_guidance": "Students should use a magnet to remove steel, use screens or sieves for particle size, and use water to separate floating and sinking materials."
+        },
+        {
+            "task": "Solution Separation Explanation",
+            "prompt": "A student dissolves salt in water. The salt can no longer be seen. Explain whether the salt disappeared and how the student could get the salt back.",
+            "evidence": "Salt water still has salt even though the salt particles are spread throughout the water.",
+            "physical_property_or_model": "Solubility and evaporation",
+            "tool_or_method": "Evaporation model or shallow dish",
+            "teacher_guidance": "Students should explain that salt is the solute, water is the solvent, salt water is a solution, and evaporation can leave salt crystals behind."
+        },
+        {
+            "task": "Conservation of Matter Evidence",
+            "prompt": "A student mixes 80 g of water with 12 g of salt. Nothing spills. What should the mass of the solution be? Explain why.",
+            "evidence": "80 g + 12 g = 92 g.",
+            "physical_property_or_model": "Mass and conservation of matter",
+            "tool_or_method": "Balance and mass data",
+            "teacher_guidance": "Students should calculate 92 g and explain that dissolved salt is still matter. If nothing spills, total mass stays the same."
+        },
+        {
+            "task": "Particles Too Small to See Model",
+            "prompt": "A drop of food coloring is placed in water. After several minutes, the color spreads through the water. Draw and explain a model of what happened.",
+            "evidence": "The color spreads through the water even though individual particles cannot be seen.",
+            "physical_property_or_model": "Particle model of matter",
+            "tool_or_method": "Draw tiny particles spreading through water",
+            "teacher_guidance": "Students should model food-coloring particles moving and spreading through water particles."
+        },
+        {
+            "task": "Air Is Matter Explanation",
+            "prompt": "A balloon gets larger when air is added. Explain how this is evidence that air is matter.",
+            "evidence": "The balloon expands and pushes outward.",
+            "physical_property_or_model": "Matter takes up space and is made of particles",
+            "tool_or_method": "Particle model of air inside a balloon",
+            "teacher_guidance": "Students should explain that air particles are too small to see but take up space inside the balloon."
+        },
+        {
+            "task": "Choose the Best Separation Method",
+            "prompt": "A student has iron filings, sand, wood chips, and marbles mixed together. What steps could separate the mixture?",
+            "evidence": "Iron is magnetic. Wood floats. Marbles sink. Sand has small particles.",
+            "physical_property_or_model": "Magnetism, relative density, and particle size",
+            "tool_or_method": "Magnet, water, and sieve or filter",
+            "teacher_guidance": "Accept logical plans that use physical properties with evidence."
+        }
+    ],
+
+    "lab": "Unit 2 Performance Assessment Game: students complete a multi-part challenge. Part 1: design a process to separate a recycling-center mixture using physical properties. Part 2: explain how to identify and separate a solution. Part 3: use mass data to show conservation of matter. Part 4: use a particle model to explain invisible matter or food coloring spreading through water.",
+
+    "lab_link": "/labs/unit2-performance",
+    "lab_link_text": "Open Unit 2 Performance Assessment Game",
 
     "lab_notebook": "Students record their plan, evidence, physical properties, tools, and explanations for each performance task section.",
 
