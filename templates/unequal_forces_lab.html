@@ -1,0 +1,427 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Unequal Forces Motion Simulator</h1>
+<p class="lead">
+    Change the force strength on each side and watch how motion changes.
+</p>
+
+<a href="/first-nine-weeks/day/28?view=student" class="btn btn-secondary mb-4">
+    Back to Day 28
+</a>
+
+<style>
+    .sim-card {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
+    .info-box {
+        background: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .track {
+        height: 260px;
+        border: 4px solid #333;
+        border-radius: 15px;
+        background: white;
+        position: relative;
+        overflow: hidden;
+        margin: 20px 0;
+    }
+
+    .center-line {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: #333;
+    }
+
+    .object {
+        width: 110px;
+        height: 70px;
+        border: 3px solid #333;
+        border-radius: 12px;
+        background: #e9ecef;
+        position: absolute;
+        left: calc(50% - 55px);
+        top: 95px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        transition: left 0.7s;
+    }
+
+    .arrow {
+        font-size: 46px;
+        font-weight: bold;
+    }
+
+    .left-force-label {
+        position: absolute;
+        top: 35px;
+        left: 40px;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    .right-force-label {
+        position: absolute;
+        top: 35px;
+        right: 40px;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    .motion-data {
+        background: white;
+        border: 2px solid #333;
+        border-radius: 10px;
+        padding: 12px;
+        margin-top: 10px;
+    }
+
+    .force-model {
+        background: white;
+        border: 3px solid #333;
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        margin: 15px 0;
+    }
+
+    .box-model {
+        display: inline-block;
+        padding: 25px;
+        border: 3px solid #333;
+        border-radius: 12px;
+        background: #e9ecef;
+        font-weight: bold;
+        margin: 0 20px;
+    }
+
+    .small-arrow {
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .large-arrow {
+        font-size: 56px;
+        font-weight: bold;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .scenario-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="sim-card">
+    <h2>Part 1: Unequal Force Test</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Unequal forces cause a change in motion. The object moves toward the stronger force.
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label class="form-label"><strong>Left Force:</strong> <span id="leftLabel">20</span> N</label>
+            <input id="leftForce" type="range" class="form-range" min="0" max="100" value="20" step="10" oninput="updateLabels(); resetTrack();">
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label"><strong>Right Force:</strong> <span id="rightLabel">60</span> N</label>
+            <input id="rightForce" type="range" class="form-range" min="0" max="100" value="60" step="10" oninput="updateLabels(); resetTrack();">
+        </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="applyForces()">Apply Forces</button>
+    <button class="btn btn-secondary" onclick="resetTrack()">Reset</button>
+
+    <div class="track">
+        <div class="center-line"></div>
+        <div class="left-force-label"><span class="arrow">→</span> <span id="leftTrackLabel">20 N</span></div>
+        <div class="right-force-label"><span id="rightTrackLabel">60 N</span> <span class="arrow">←</span></div>
+        <div id="movingObject" class="object">Box</div>
+    </div>
+
+    <div class="motion-data">
+        <p><strong>Stronger Force:</strong> <span id="strongerData">Not tested yet</span></p>
+        <p><strong>Direction of Motion:</strong> <span id="directionData">Not tested yet</span></p>
+        <p><strong>Effect on Motion:</strong> <span id="motionData">Not tested yet</span></p>
+    </div>
+
+    <label class="form-label mt-3"><strong>What does this trial show?</strong></label>
+    <select id="trialAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Unequal forces caused the object to move toward the stronger force.</option>
+        <option>Equal forces caused no change in motion.</option>
+        <option>The object disappeared because forces acted on it.</option>
+        <option>No forces acted on the object.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkTrial()">Check Trial Evidence</button>
+    <div id="trialFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 2: Unequal Arrow Model</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Different-size arrows show unequal forces. Motion changes in the direction of the stronger force.
+    </div>
+
+    <div class="force-model" id="arrowModel">
+        <span id="leftArrow" class="small-arrow">→</span>
+        <span id="leftArrowText">20 N</span>
+        <span class="box-model">Box</span>
+        <span id="rightArrowText">60 N</span>
+        <span id="rightArrow" class="large-arrow">←</span>
+    </div>
+
+    <label class="form-label"><strong>What does this arrow model show?</strong></label>
+    <select id="modelAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The forces are unequal, so motion changes toward the stronger force.</option>
+        <option>The forces are equal, so the box cannot move.</option>
+        <option>The arrows show the object's color.</option>
+        <option>The object has no forces acting on it.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkModel()">Check Arrow Model</button>
+    <div id="modelFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 3: Predict the Motion</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Use force strength and direction to predict motion.
+    </div>
+
+    <div class="scenario-card">
+        <h4>1. 80 N left and 30 N right</h4>
+        <select id="q1" class="form-select">
+            <option selected>Choose...</option>
+            <option>Moves left</option>
+            <option>Moves right</option>
+            <option>No change in motion</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>2. 40 N left and 40 N right</h4>
+        <select id="q2" class="form-select">
+            <option selected>Choose...</option>
+            <option>Moves left</option>
+            <option>Moves right</option>
+            <option>No change in motion</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>3. 20 N left and 70 N right</h4>
+        <select id="q3" class="form-select">
+            <option selected>Choose...</option>
+            <option>Moves left</option>
+            <option>Moves right</option>
+            <option>No change in motion</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>4. A rolling ball is pushed opposite its motion</h4>
+        <select id="q4" class="form-select">
+            <option selected>Choose...</option>
+            <option>The ball may slow down or stop</option>
+            <option>The ball must speed up</option>
+            <option>The ball disappears</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success" onclick="checkPredictions()">Check Predictions</button>
+    <div id="predictionFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 4: STAAR Evidence Challenge</h2>
+
+    <div class="info-box">
+        <strong>Question:</strong> A box is pushed to the right with 60 N and to the left with 20 N.
+    </div>
+
+    <label class="form-label"><strong>Best claim:</strong></label>
+    <select id="staar1" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The box will move right.</option>
+        <option>The box will not move.</option>
+        <option>The box will move left.</option>
+        <option>The box will lose mass.</option>
+    </select>
+
+    <label class="form-label"><strong>Best evidence:</strong></label>
+    <select id="staar2" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The right force is stronger than the left force.</option>
+        <option>The box has a color.</option>
+        <option>The box is made of matter.</option>
+        <option>The forces are the same strength.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Evidence</button>
+    <div id="staarFeedback"></div>
+</div>
+
+<script>
+    let tested = false;
+
+    function showFeedback(elementId, message, isCorrect) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+        box.innerHTML = message;
+    }
+
+    function updateLabels() {
+        const left = Number(document.getElementById("leftForce").value);
+        const right = Number(document.getElementById("rightForce").value);
+
+        document.getElementById("leftLabel").innerText = left;
+        document.getElementById("rightLabel").innerText = right;
+        document.getElementById("leftTrackLabel").innerText = left + " N";
+        document.getElementById("rightTrackLabel").innerText = right + " N";
+        document.getElementById("leftArrowText").innerText = left + " N";
+        document.getElementById("rightArrowText").innerText = right + " N";
+
+        document.getElementById("leftArrow").className = left >= right ? "large-arrow" : "small-arrow";
+        document.getElementById("rightArrow").className = right >= left ? "large-arrow" : "small-arrow";
+    }
+
+    function resetTrack() {
+        tested = false;
+        document.getElementById("movingObject").style.left = "calc(50% - 55px)";
+        document.getElementById("strongerData").innerText = "Not tested yet";
+        document.getElementById("directionData").innerText = "Not tested yet";
+        document.getElementById("motionData").innerText = "Not tested yet";
+        document.getElementById("trialAnswer").value = "Choose...";
+        document.getElementById("trialFeedback").innerHTML = "";
+        document.getElementById("trialFeedback").className = "";
+    }
+
+    function applyForces() {
+        tested = true;
+
+        const left = Number(document.getElementById("leftForce").value);
+        const right = Number(document.getElementById("rightForce").value);
+        const object = document.getElementById("movingObject");
+
+        if (left > right) {
+            object.style.left = "65%";
+            document.getElementById("strongerData").innerText = "Left force";
+            document.getElementById("directionData").innerText = "Right";
+            document.getElementById("motionData").innerText = "The box moves right because the left side pushes harder.";
+        } else if (right > left) {
+            object.style.left = "20%";
+            document.getElementById("strongerData").innerText = "Right force";
+            document.getElementById("directionData").innerText = "Left";
+            document.getElementById("motionData").innerText = "The box moves left because the right side pushes harder.";
+        } else {
+            object.style.left = "calc(50% - 55px)";
+            document.getElementById("strongerData").innerText = "Neither force";
+            document.getElementById("directionData").innerText = "No change";
+            document.getElementById("motionData").innerText = "The forces are equal, so the motion does not change.";
+        }
+    }
+
+    function checkTrial() {
+        const left = Number(document.getElementById("leftForce").value);
+        const right = Number(document.getElementById("rightForce").value);
+        const answer = document.getElementById("trialAnswer").value;
+
+        if (!tested) {
+            showFeedback("trialFeedback", "Apply the forces first, then check your answer.", false);
+            return;
+        }
+
+        if (left !== right && answer === "Unequal forces caused the object to move toward the stronger force.") {
+            showFeedback("trialFeedback", "Correct! Unequal forces changed the object's motion.", true);
+        } else if (left === right) {
+            showFeedback("trialFeedback", "This trial uses equal forces. Change one force so they are unequal.", false);
+        } else {
+            showFeedback("trialFeedback", "Not yet. Unequal forces cause motion to change toward the stronger force.", false);
+        }
+    }
+
+    function checkModel() {
+        const left = Number(document.getElementById("leftForce").value);
+        const right = Number(document.getElementById("rightForce").value);
+        const answer = document.getElementById("modelAnswer").value;
+
+        if (left !== right && answer === "The forces are unequal, so motion changes toward the stronger force.") {
+            showFeedback("modelFeedback", "Correct! Different-size arrows show unequal forces.", true);
+        } else if (left === right) {
+            showFeedback("modelFeedback", "Set one force stronger than the other to show unequal forces.", false);
+        } else {
+            showFeedback("modelFeedback", "Not yet. Arrow size shows force strength.", false);
+        }
+    }
+
+    function checkPredictions() {
+        let correct = 0;
+
+        if (document.getElementById("q1").value === "Moves left") correct++;
+        if (document.getElementById("q2").value === "No change in motion") correct++;
+        if (document.getElementById("q3").value === "Moves right") correct++;
+        if (document.getElementById("q4").value === "The ball may slow down or stop") correct++;
+
+        if (correct === 4) {
+            showFeedback("predictionFeedback", "Correct! You predicted motion using force strength and direction.", true);
+        } else {
+            showFeedback("predictionFeedback", "You got " + correct + " out of 4. The object moves toward the stronger force. Equal forces usually cause no change.", false);
+        }
+    }
+
+    function checkSTAAR() {
+        const s1 = document.getElementById("staar1").value;
+        const s2 = document.getElementById("staar2").value;
+
+        if (s1 === "The box will move right." && s2 === "The right force is stronger than the left force.") {
+            showFeedback("staarFeedback", "Correct! The box moves toward the stronger force.", true);
+        } else {
+            showFeedback("staarFeedback", "Not yet. Compare the force strengths and choose the direction of the stronger force.", false);
+        }
+    }
+
+    updateLabels();
+</script>
+
+{% endblock %}

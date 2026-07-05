@@ -163,6 +163,12 @@ def forces_lab():
 def balanced_forces_lab():
     return render_template("balanced_forces_lab.html")
 
+
+@app.route("/labs/unequal-forces")
+def unequal_forces_lab():
+    return render_template("unequal_forces_lab.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

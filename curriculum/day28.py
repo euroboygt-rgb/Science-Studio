@@ -15,7 +15,71 @@ day28 = {
 
     "guided_practice": "Use examples such as tug-of-war with one stronger team, a soccer ball being kicked, a toy car being pushed harder on one side, and a box being pulled with different strengths. Students identify which force is stronger, which direction the object moves, and how motion changes.",
 
-    "lab": "Unequal Forces Investigation: students use classroom objects or a model to test what happens when forces are unequal. Students compare equal pushes with unequal pushes and observe the effect on motion. Students use arrows to model the forces and record evidence.",
+    "interactive_activity_title": "Unequal Forces Motion Challenge",
+
+    "interactive_activity": "Students read unequal-force scenarios and identify the stronger force, direction of motion, and evidence that motion changed.",
+
+    "unequal_force_cards": [
+        {
+            "scenario": "A box is pushed to the right with 60 N and pushed to the left with 20 N.",
+            "student_task": "Identify the stronger force and predict the motion.",
+            "force_1": "60 N to the right",
+            "force_2": "20 N to the left",
+            "stronger_force": "Right force",
+            "effect_on_motion": "The box moves to the right.",
+            "evidence": "The force to the right is stronger than the force to the left."
+        },
+        {
+            "scenario": "In tug-of-war, the left team pulls harder than the right team.",
+            "student_task": "Explain what happens to the rope.",
+            "force_1": "Stronger pull to the left",
+            "force_2": "Weaker pull to the right",
+            "stronger_force": "Left team",
+            "effect_on_motion": "The rope moves left.",
+            "evidence": "The forces are unequal, so the rope moves toward the stronger force."
+        },
+        {
+            "scenario": "A rolling ball is pushed from the side. The ball changes direction.",
+            "student_task": "Explain how the force changed motion.",
+            "force_1": "Side push",
+            "force_2": "Original motion forward",
+            "stronger_force": "Side push changes the direction",
+            "effect_on_motion": "The ball changes direction.",
+            "evidence": "The ball moved one way before the force and a different way after the force."
+        },
+        {
+            "scenario": "A toy car is pushed harder the second time than the first time.",
+            "student_task": "Compare the effect of a weak push and a strong push.",
+            "force_1": "Weak push",
+            "force_2": "Strong push",
+            "stronger_force": "Strong push",
+            "effect_on_motion": "The car moves farther or faster with the stronger push.",
+            "evidence": "Greater force caused a greater change in motion."
+        },
+        {
+            "scenario": "A ball rolls forward. A student pushes against the ball's motion, and the ball slows down.",
+            "student_task": "Explain why the ball slows down.",
+            "force_1": "Ball moving forward",
+            "force_2": "Push backward",
+            "stronger_force": "Backward force acts against motion",
+            "effect_on_motion": "The ball slows down or stops.",
+            "evidence": "A force acting opposite the motion changed the ball's speed."
+        },
+        {
+            "scenario": "A model shows one large arrow pointing left and one small arrow pointing right.",
+            "student_task": "Use the arrow model to predict motion.",
+            "force_1": "Large arrow left",
+            "force_2": "Small arrow right",
+            "stronger_force": "Left force",
+            "effect_on_motion": "The object moves left.",
+            "evidence": "Different-size arrows show unequal forces."
+        }
+    ],
+
+    "lab": "Unequal Forces Motion Lab: students use a simulator and classroom models to test what happens when forces are unequal. Students compare force strength, direction, and the resulting change in motion.",
+
+    "lab_link": "/labs/unequal-forces",
+    "lab_link_text": "Open Unequal Forces Motion Simulator",
 
     "lab_notebook": "Students record the object, the direction and strength of each force, whether the forces are equal or unequal, the direction of motion, and evidence that motion changed.",
 
@@ -34,12 +98,7 @@ day28 = {
     "staar_practice": [
         {
             "question": "A box is pushed to the right with 60 N of force and to the left with 20 N of force. Which direction will the box most likely move?",
-            "choices": [
-                "Right",
-                "Left",
-                "It will not move",
-                "Up"
-            ],
+            "choices": ["Right", "Left", "It will not move", "Up"],
             "answer": "Right"
         },
         {
@@ -54,22 +113,12 @@ day28 = {
         },
         {
             "question": "In a tug-of-war game, the left team pulls harder than the right team. What will most likely happen?",
-            "choices": [
-                "The rope will move left",
-                "The rope will stay exactly in the center",
-                "The rope will disappear",
-                "The forces are balanced"
-            ],
+            "choices": ["The rope will move left", "The rope will stay exactly in the center", "The rope will disappear", "The forces are balanced"],
             "answer": "The rope will move left"
         },
         {
             "question": "What usually happens when unequal forces act on an object?",
-            "choices": [
-                "The object's motion changes",
-                "The object always stays at rest",
-                "The object loses all mass",
-                "The object becomes invisible"
-            ],
+            "choices": ["The object's motion changes", "The object always stays at rest", "The object loses all mass", "The object becomes invisible"],
             "answer": "The object's motion changes"
         },
         {
