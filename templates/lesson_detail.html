@@ -491,6 +491,41 @@
 
 
 
+
+                {% if lesson.get("performance_builder_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("performance_builder_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>Performance Assessment Scenario {{ loop.index }}</h5>
+                            <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Claim:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What is the science claim?"></textarea>
+
+                            <label class="form-label"><strong>Evidence:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What data or observation supports the claim?"></textarea>
+
+                            <label class="form-label"><strong>Reasoning:</strong></label>
+                            <textarea class="form-control" rows="3" placeholder="How does force and motion explain the evidence?"></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Claim:</strong> {{ card.claim }}</p>
+                                    <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                                    <p><strong>Reasoning:</strong> {{ card.reasoning }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("playground_engineering_cards") %}
                 <div class="row">
                     {% for card in lesson.get("playground_engineering_cards") %}

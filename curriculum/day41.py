@@ -15,7 +15,59 @@ day41 = {
 
     "guided_practice": "Model a short sample presentation: 'Our slide was unsafe because the toy traveled too far. We changed the slide surface to increase friction. The distance changed from 90 cm to 40 cm. This shows the rougher surface slowed the motion and made the design safer.' Students identify the claim, evidence, reasoning, independent variable, dependent variable, and force involved.",
 
+    "interactive_activity_title": "Unit 3 Performance Assessment Presentation Builder",
+
+    "interactive_activity": "Students build a complete force and motion presentation by identifying the problem, model, variable changed, data, claim, evidence, reasoning, and science vocabulary.",
+
+    "performance_builder_cards": [
+        {
+            "scenario": "A group changed the surface of a slide to make it rougher. The toy traveled a shorter distance after the change.",
+            "student_task": "Write the claim, evidence, and reasoning.",
+            "claim": "The improved slide design was safer.",
+            "evidence": "The toy traveled a shorter distance after the surface was changed.",
+            "reasoning": "A rougher surface increased friction, which slowed the toy's motion."
+        },
+        {
+            "scenario": "A group lowered the angle of a ramp. The toy car traveled 95 cm before the change and 42 cm after the change.",
+            "student_task": "Identify the variable changed and the evidence.",
+            "claim": "Lowering the ramp angle reduced the distance traveled.",
+            "evidence": "The toy car traveled 42 cm after the change instead of 95 cm before the change.",
+            "reasoning": "Changing the ramp angle changed how gravity affected the motion."
+        },
+        {
+            "scenario": "A group says, 'Our design is safer because it looks cool.'",
+            "student_task": "Explain what is missing from this presentation.",
+            "claim": "The statement is not strong enough.",
+            "evidence": "It does not include data or observations.",
+            "reasoning": "Science presentations need evidence to support claims."
+        },
+        {
+            "scenario": "A group changed both the slide angle and the landing surface at the same time.",
+            "student_task": "Explain the fair test problem.",
+            "claim": "The test was not fair.",
+            "evidence": "Two variables were changed at the same time.",
+            "reasoning": "Engineers should change one variable so they know which change caused the result."
+        },
+        {
+            "scenario": "A group used the words gravity, friction, force, motion, data, evidence, and claim in their presentation.",
+            "student_task": "Explain why vocabulary helps the presentation.",
+            "claim": "Science vocabulary makes the explanation stronger.",
+            "evidence": "The group used words that connect to force and motion.",
+            "reasoning": "Vocabulary helps explain how and why the design worked."
+        },
+        {
+            "scenario": "A group has a model, data table, graph, claim, evidence, and reasoning.",
+            "student_task": "Decide if the group is ready to present.",
+            "claim": "The group is ready to present.",
+            "evidence": "They included the major parts of the performance assessment.",
+            "reasoning": "A strong performance assessment explains the design and supports it with evidence."
+        }
+    ],
+
     "lab": "Unit 3 Performance Assessment: students complete and present their playground safety engineering design. Students explain their model, describe the force and motion problem, identify the variable changed, use data as evidence, and explain how the design improved safety.",
+
+    "lab_link": "/labs/unit3-presentation-builder",
+    "lab_link_text": "Open Unit 3 Presentation Builder and Rubric Checker",
 
     "lab_notebook": "Students record their design problem, model sketch, variable changed, data or observations, force and motion explanation, safety claim, evidence, and reflection.",
 

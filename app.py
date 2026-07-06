@@ -41,6 +41,7 @@ from curriculum.day38 import day38
 from curriculum.day39 import day39
 from curriculum.day40 import day40
 from curriculum.day41 import day41
+from curriculum.day42 import day42
 
 app = Flask(__name__)
 
@@ -87,6 +88,7 @@ lesson_details = {
     39: day39,
     40: day40,
     41: day41,
+    42: day42,
 }
 
 
@@ -271,6 +273,12 @@ def ball_bounce_analyzer_lab():
 @app.route("/labs/playground-safety")
 def playground_safety_lab():
     return render_template("playground_safety_lab.html")
+
+
+
+@app.route("/labs/unit3-presentation-builder")
+def unit3_presentation_builder():
+    return render_template("unit3_presentation_builder.html")
 
 
 @app.route("/first-nine-weeks")
