@@ -15,7 +15,65 @@ day37 = {
 
     "guided_practice": "As a class, model how the balloon rocket works. Point out the balloon, air, straw, string, tape, start line, and finish direction. Students explain what force causes the balloon to move and why the release method must stay the same each trial.",
 
-    "lab": "Balloon Rocket Investigation: students test how the amount of air in a balloon affects the distance a balloon rocket travels. Students conduct repeated trials, record data, identify patterns, and write a claim supported by evidence.",
+    "interactive_activity_title": "Balloon Rocket Mission Challenge",
+
+    "interactive_activity": "Students read balloon rocket scenarios and identify variables, fair test controls, force direction, motion patterns, claims, and evidence.",
+
+    "balloon_rocket_cards": [
+        {
+            "scenario": "A student tests small, medium, and large amounts of air in the same balloon rocket.",
+            "student_task": "Identify the independent and dependent variables.",
+            "independent_variable": "Amount of air in the balloon",
+            "dependent_variable": "Distance the balloon rocket travels",
+            "controlled_variables": "Same balloon type, same straw, same string, same tape, same release method, same start line",
+            "science_note": "Only the amount of air changes."
+        },
+        {
+            "scenario": "A balloon rocket moves forward when air rushes backward out of the balloon.",
+            "student_task": "Explain the force and motion pattern.",
+            "independent_variable": "Amount of air in the balloon",
+            "dependent_variable": "Distance the balloon rocket travels",
+            "controlled_variables": "Same rocket setup",
+            "science_note": "Air pushes backward, and the balloon rocket moves forward."
+        },
+        {
+            "scenario": "A group uses a different balloon for each trial.",
+            "student_task": "Explain why this is not a fair test.",
+            "independent_variable": "Amount of air in the balloon",
+            "dependent_variable": "Distance traveled",
+            "controlled_variables": "The same balloon type should be used each time",
+            "science_note": "Changing balloons adds another variable."
+        },
+        {
+            "scenario": "A balloon rocket travels 42 cm with small air, 86 cm with medium air, and 132 cm with large air.",
+            "student_task": "Identify the pattern and write a claim.",
+            "independent_variable": "Amount of air",
+            "dependent_variable": "Distance traveled",
+            "controlled_variables": "Same string, straw, balloon type, tape, and release method",
+            "science_note": "Pattern: more air caused the rocket to travel farther."
+        },
+        {
+            "scenario": "A student pulls the string tighter for the large-air trial than for the small-air trial.",
+            "student_task": "Identify the controlled variable problem.",
+            "independent_variable": "Amount of air",
+            "dependent_variable": "Distance traveled",
+            "controlled_variables": "String setup should stay the same",
+            "science_note": "Changing string tightness makes the test unfair."
+        },
+        {
+            "scenario": "A student writes: The large amount of air made the rocket go farther because it traveled 132 cm, but the small amount traveled only 42 cm.",
+            "student_task": "Identify the claim and evidence.",
+            "independent_variable": "Amount of air",
+            "dependent_variable": "Distance traveled",
+            "controlled_variables": "Same balloon rocket setup",
+            "science_note": "Claim: more air made the rocket go farther. Evidence: 132 cm compared with 42 cm."
+        }
+    ],
+
+    "lab": "Balloon Rocket Investigation: students use the simulator and classroom materials to test how the amount of air affects the distance a balloon rocket travels. Students conduct repeated trials, record data, create a graph, identify patterns, and write a claim supported by evidence.",
+
+    "lab_link": "/labs/balloon-rocket",
+    "lab_link_text": "Open Balloon Rocket Mission Simulator",
 
     "lab_notebook": "Students record the amount of air, Trial 1, Trial 2, Trial 3, average or pattern, and evidence statement. Students then write a claim explaining how air force affected balloon rocket motion.",
 
@@ -34,22 +92,12 @@ day37 = {
     "staar_practice": [
         {
             "question": "A student tests how the amount of air in a balloon affects the distance a balloon rocket travels. What is the independent variable?",
-            "choices": [
-                "Amount of air in the balloon",
-                "Distance the balloon rocket travels",
-                "The same string",
-                "The same straw"
-            ],
+            "choices": ["Amount of air in the balloon", "Distance the balloon rocket travels", "The same string", "The same straw"],
             "answer": "Amount of air in the balloon"
         },
         {
             "question": "In the balloon rocket investigation, what is the dependent variable?",
-            "choices": [
-                "Distance the balloon rocket travels",
-                "Amount of air in the balloon",
-                "Same start line",
-                "Same tape"
-            ],
+            "choices": ["Distance the balloon rocket travels", "Amount of air in the balloon", "Same start line", "Same tape"],
             "answer": "Distance the balloon rocket travels"
         },
         {
@@ -64,12 +112,7 @@ day37 = {
         },
         {
             "question": "Why should students complete more than one trial?",
-            "choices": [
-                "To make the data more reliable",
-                "To change every variable",
-                "To avoid collecting data",
-                "To make the balloon disappear"
-            ],
+            "choices": ["To make the data more reliable", "To change every variable", "To avoid collecting data", "To make the balloon disappear"],
             "answer": "To make the data more reliable"
         },
         {

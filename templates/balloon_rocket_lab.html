@@ -1,0 +1,864 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Balloon Rocket Mission Simulator</h1>
+<p class="lead">
+    Launch balloon rockets, collect data, graph the results, and explain how force affects motion.
+</p>
+
+<a href="/first-nine-weeks/day/37?view=student" class="btn btn-secondary mb-4">
+    Back to Day 37
+</a>
+
+<style>
+    .mission-card {
+        border: 1px solid #ddd;
+        border-radius: 18px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
+    .mission-banner {
+        border-radius: 18px;
+        padding: 18px;
+        background: #212529;
+        color: white;
+        margin-bottom: 20px;
+        border: 4px solid #111;
+    }
+
+    .mission-badge {
+        display: inline-block;
+        background: #fff3cd;
+        color: #111;
+        border: 3px solid #111;
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-weight: bold;
+        margin: 5px;
+    }
+
+    .control-panel {
+        background: white;
+        border: 3px solid #111;
+        border-radius: 16px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .space-screen {
+        height: 430px;
+        border: 5px solid #111;
+        border-radius: 22px;
+        background:
+            radial-gradient(circle at 10% 20%, white 0 2px, transparent 3px),
+            radial-gradient(circle at 30% 70%, white 0 2px, transparent 3px),
+            radial-gradient(circle at 55% 25%, white 0 2px, transparent 3px),
+            radial-gradient(circle at 80% 60%, white 0 2px, transparent 3px),
+            radial-gradient(circle at 92% 18%, white 0 2px, transparent 3px),
+            linear-gradient(180deg, #102542, #1b4965 60%, #bee9e8 100%);
+        position: relative;
+        overflow: hidden;
+        margin: 20px 0;
+    }
+
+    .planet {
+        position: absolute;
+        right: 35px;
+        top: 35px;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: #e9ecef;
+        border: 4px solid #111;
+    }
+
+    .planet::after {
+        content: "";
+        position: absolute;
+        left: -18px;
+        top: 42px;
+        width: 125px;
+        height: 16px;
+        border: 4px solid #111;
+        border-radius: 50%;
+        transform: rotate(-15deg);
+        background: transparent;
+    }
+
+    .string-line {
+        position: absolute;
+        left: 55px;
+        right: 55px;
+        top: 215px;
+        height: 5px;
+        background: white;
+        border: 2px solid #111;
+        box-shadow: 0 0 8px white;
+    }
+
+    .start-post, .finish-post {
+        position: absolute;
+        top: 125px;
+        width: 16px;
+        height: 185px;
+        background: #e9ecef;
+        border: 3px solid #111;
+    }
+
+    .start-post { left: 55px; }
+    .finish-post { right: 55px; }
+
+    .launch-sign {
+        position: absolute;
+        left: 28px;
+        top: 310px;
+        background: #fff3cd;
+        border: 3px solid #111;
+        border-radius: 10px;
+        padding: 6px 10px;
+        font-weight: bold;
+    }
+
+    .finish-sign {
+        position: absolute;
+        right: 23px;
+        top: 310px;
+        background: #d1e7dd;
+        border: 3px solid #111;
+        border-radius: 10px;
+        padding: 6px 10px;
+        font-weight: bold;
+    }
+
+    .rocket {
+        position: absolute;
+        left: 95px;
+        top: 166px;
+        width: 150px;
+        height: 95px;
+        transition: left 1.6s ease-out, transform 0.3s;
+        z-index: 5;
+    }
+
+    .balloon {
+        position: absolute;
+        left: 20px;
+        top: 18px;
+        width: 85px;
+        height: 58px;
+        border: 4px solid #111;
+        border-radius: 50% 50% 45% 45%;
+        background: #ffccd5;
+        transform: rotate(3deg);
+        transition: width 0.4s, height 0.4s;
+    }
+
+    .balloon::after {
+        content: "";
+        position: absolute;
+        right: -18px;
+        top: 22px;
+        width: 24px;
+        height: 16px;
+        background: #ffccd5;
+        border: 4px solid #111;
+        border-left: none;
+        border-radius: 0 12px 12px 0;
+    }
+
+    .straw {
+        position: absolute;
+        left: 38px;
+        top: 42px;
+        width: 105px;
+        height: 18px;
+        background: #e9ecef;
+        border: 3px solid #111;
+        border-radius: 12px;
+    }
+
+    .tape {
+        position: absolute;
+        left: 62px;
+        top: 25px;
+        width: 30px;
+        height: 50px;
+        border: 3px solid #111;
+        background: rgba(255,255,255,0.75);
+        transform: rotate(-8deg);
+    }
+
+    .flame {
+        position: absolute;
+        left: -15px;
+        top: 34px;
+        font-size: 36px;
+        display: none;
+        transform: rotate(180deg);
+    }
+
+    .air-arrow {
+        position: absolute;
+        left: 10px;
+        top: 115px;
+        font-weight: bold;
+        background: white;
+        border: 3px solid #111;
+        border-radius: 12px;
+        padding: 8px;
+        display: none;
+    }
+
+    .motion-arrow {
+        position: absolute;
+        left: 265px;
+        top: 122px;
+        font-weight: bold;
+        background: #d1e7dd;
+        border: 3px solid #111;
+        border-radius: 12px;
+        padding: 8px;
+        display: none;
+    }
+
+    .distance-line {
+        position: absolute;
+        left: 95px;
+        top: 282px;
+        width: 0;
+        height: 7px;
+        background: #fff3cd;
+        border: 2px solid #111;
+        transition: width 1.6s ease-out;
+    }
+
+    .distance-readout {
+        position: absolute;
+        left: 95px;
+        bottom: 20px;
+        background: white;
+        border: 3px solid #111;
+        border-radius: 12px;
+        padding: 8px 12px;
+        font-weight: bold;
+    }
+
+    .mission-feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .warning {
+        background: #fff3cd;
+        color: #664d03;
+    }
+
+    .graph-box {
+        background: white;
+        border: 4px solid #333;
+        border-radius: 15px;
+        height: 410px;
+        position: relative;
+        margin: 20px 0;
+        overflow: hidden;
+    }
+
+    .y-axis {
+        position: absolute;
+        left: 85px;
+        top: 55px;
+        bottom: 75px;
+        width: 5px;
+        background: #333;
+    }
+
+    .x-axis {
+        position: absolute;
+        left: 85px;
+        right: 55px;
+        bottom: 75px;
+        height: 5px;
+        background: #333;
+    }
+
+    .bar {
+        position: absolute;
+        bottom: 80px;
+        width: 78px;
+        background: #e9ecef;
+        border: 3px solid #333;
+        transition: height 0.7s;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        font-weight: bold;
+        padding-top: 6px;
+    }
+
+    .bar-label {
+        position: absolute;
+        bottom: 35px;
+        width: 125px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .graph-title {
+        position: absolute;
+        top: 12px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .x-label {
+        position: absolute;
+        bottom: 5px;
+        left: 150px;
+        right: 50px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .y-label {
+        position: absolute;
+        left: -62px;
+        top: 190px;
+        transform: rotate(-90deg);
+        font-weight: bold;
+        width: 250px;
+        text-align: center;
+    }
+
+    .claim-box {
+        background: white;
+        border: 3px solid #111;
+        border-radius: 14px;
+        padding: 15px;
+        margin-top: 15px;
+    }
+
+    .scenario-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .sparkle {
+        position: absolute;
+        font-size: 28px;
+        animation: pop 1.2s ease-out forwards;
+        pointer-events: none;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0.2); opacity: 0; }
+        30% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(0.8); opacity: 0; }
+    }
+</style>
+
+<div class="mission-banner">
+    <h2>🚀 Mission Control: Balloon Rocket Lab</h2>
+    <p class="mb-2">
+        Your mission: test how the amount of air affects rocket distance.
+    </p>
+    <span class="mission-badge">Independent Variable: Amount of Air</span>
+    <span class="mission-badge">Dependent Variable: Distance Traveled</span>
+    <span class="mission-badge">Goal: Use Data as Evidence</span>
+</div>
+
+<div class="mission-card">
+    <h2>Part 1: Launch the Balloon Rocket</h2>
+
+    <div class="control-panel">
+        <div class="row">
+            <div class="col-md-3">
+                <label class="form-label"><strong>Amount of air:</strong></label>
+                <select id="airSelect" class="form-select mb-3" onchange="setBalloonSize(); resetRocketOnly();">
+                    <option value="small">Small air</option>
+                    <option value="medium">Medium air</option>
+                    <option value="large">Large air</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label"><strong>Rocket setup:</strong></label>
+                <select id="setupSelect" class="form-select mb-3" onchange="resetRocketOnly();">
+                    <option value="fair">Fair setup</option>
+                    <option value="loose">Loose string</option>
+                    <option value="different">Different balloon</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label"><strong>Trial:</strong></label>
+                <select id="trialSelect" class="form-select mb-3">
+                    <option value="1">Trial 1</option>
+                    <option value="2">Trial 2</option>
+                    <option value="3">Trial 3</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label"><strong>Mission mode:</strong></label>
+                <select id="modeSelect" class="form-select mb-3">
+                    <option value="science">Science mode</option>
+                    <option value="party">Party mode</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg" onclick="launchRocket()">🚀 Launch Rocket</button>
+        <button class="btn btn-warning" onclick="showForceArrows()">Show Force Arrows</button>
+        <button class="btn btn-secondary" onclick="resetRocketOnly()">Reset Rocket</button>
+        <button class="btn btn-danger" onclick="clearData()">Clear Mission Data</button>
+    </div>
+
+    <div class="space-screen" id="spaceScreen">
+        <div class="planet"></div>
+        <div class="start-post"></div>
+        <div class="finish-post"></div>
+        <div class="launch-sign">START</div>
+        <div class="finish-sign">FINISH</div>
+        <div class="string-line"></div>
+
+        <div id="airArrow" class="air-arrow">Air pushes backward ←</div>
+        <div id="motionArrow" class="motion-arrow">Rocket moves forward →</div>
+
+        <div id="rocket" class="rocket">
+            <div id="flame" class="flame">💨</div>
+            <div id="balloon" class="balloon"></div>
+            <div class="straw"></div>
+            <div class="tape"></div>
+        </div>
+
+        <div id="distanceLine" class="distance-line"></div>
+        <div id="distanceReadout" class="distance-readout">Distance: 0 cm</div>
+    </div>
+
+    <div id="launchFeedback" class="mission-feedback correct">
+        Choose an amount of air, keep the setup fair, and launch three trials for each air amount.
+    </div>
+</div>
+
+<div class="mission-card">
+    <h2>Part 2: Mission Data Table</h2>
+
+    <div class="alert alert-warning">
+        Run Trial 1, Trial 2, and Trial 3 for small, medium, and large amounts of air.
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered bg-white">
+            <thead>
+                <tr>
+                    <th>Amount of Air</th>
+                    <th>Trial 1</th>
+                    <th>Trial 2</th>
+                    <th>Trial 3</th>
+                    <th>Average</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Small air</strong></td>
+                    <td id="small1"></td>
+                    <td id="small2"></td>
+                    <td id="small3"></td>
+                    <td id="smallAvg"></td>
+                </tr>
+                <tr>
+                    <td><strong>Medium air</strong></td>
+                    <td id="medium1"></td>
+                    <td id="medium2"></td>
+                    <td id="medium3"></td>
+                    <td id="mediumAvg"></td>
+                </tr>
+                <tr>
+                    <td><strong>Large air</strong></td>
+                    <td id="large1"></td>
+                    <td id="large2"></td>
+                    <td id="large3"></td>
+                    <td id="largeAvg"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="btn btn-success" onclick="autoFillFairData()">Auto-Fill Fair Mission Data</button>
+    <button class="btn btn-primary" onclick="makeGraph()">Make Mission Graph</button>
+</div>
+
+<div class="mission-card">
+    <h2>Part 3: Graph the Mission Data</h2>
+
+    <div class="graph-box">
+        <div class="graph-title">Effect of Air Amount on Balloon Rocket Distance</div>
+        <div class="y-axis"></div>
+        <div class="x-axis"></div>
+        <div class="y-label">Distance traveled in cm</div>
+        <div class="x-label">Amount of air</div>
+
+        <div id="barSmall" class="bar" style="left: 150px; height: 0;">0</div>
+        <div id="barMedium" class="bar" style="left: 330px; height: 0;">0</div>
+        <div id="barLarge" class="bar" style="left: 510px; height: 0;">0</div>
+
+        <div class="bar-label" style="left: 125px;">Small</div>
+        <div class="bar-label" style="left: 305px;">Medium</div>
+        <div class="bar-label" style="left: 485px;">Large</div>
+    </div>
+
+    <div id="graphFeedback"></div>
+</div>
+
+<div class="mission-card">
+    <h2>Part 4: Mission Claim, Evidence, and Reasoning</h2>
+
+    <label class="form-label"><strong>What pattern do you see?</strong></label>
+    <select id="patternAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>As the amount of air increased, the balloon rocket traveled farther.</option>
+        <option>The amount of air did not affect distance.</option>
+        <option>The balloon rocket traveled the same distance every time.</option>
+        <option>The small amount of air made the rocket travel farthest.</option>
+    </select>
+
+    <label class="form-label"><strong>Best claim:</strong></label>
+    <select id="claimAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>More air caused the balloon rocket to travel farther.</option>
+        <option>Air did not cause the balloon rocket to move.</option>
+        <option>The balloon rocket changed into a magnet.</option>
+        <option>The straw was the independent variable.</option>
+    </select>
+
+    <label class="form-label"><strong>Best evidence:</strong></label>
+    <select id="evidenceAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The large-air average was greater than the small-air average.</option>
+        <option>The balloon had a color.</option>
+        <option>The string was in the room.</option>
+        <option>The student liked rockets.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkCER()">Check CER</button>
+    <button class="btn btn-primary" onclick="buildCER()">Build CER Paragraph</button>
+
+    <div id="cerFeedback"></div>
+    <div id="cerOutput"></div>
+</div>
+
+<div class="mission-card">
+    <h2>Part 5: STAAR Mission Challenge</h2>
+
+    <div class="scenario-card">
+        <p>
+            A student wants to test how the amount of air in a balloon affects the distance a balloon rocket travels.
+            The student uses the same balloon type, same straw, same string, same tape, and same release method.
+        </p>
+    </div>
+
+    <label class="form-label"><strong>What is the independent variable?</strong></label>
+    <select id="staar1" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Amount of air in the balloon</option>
+        <option>Distance traveled</option>
+        <option>Same straw</option>
+        <option>Same tape</option>
+    </select>
+
+    <label class="form-label"><strong>What is the dependent variable?</strong></label>
+    <select id="staar2" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Distance traveled</option>
+        <option>Amount of air</option>
+        <option>Same string</option>
+        <option>Same release method</option>
+    </select>
+
+    <label class="form-label"><strong>Which action would make the test unfair?</strong></label>
+    <select id="staar3" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Using a different balloon for the large-air trial</option>
+        <option>Using the same string every trial</option>
+        <option>Using the same straw every trial</option>
+        <option>Measuring the distance each trial</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
+    <div id="staarFeedback"></div>
+</div>
+
+<script>
+    const data = {
+        small: [null, null, null],
+        medium: [null, null, null],
+        large: [null, null, null]
+    };
+
+    const baseDistances = {
+        small: 45,
+        medium: 85,
+        large: 130
+    };
+
+    function showFeedback(elementId, message, kind) {
+        const box = document.getElementById(elementId);
+        box.className = "mission-feedback " + kind;
+        box.innerHTML = message;
+    }
+
+    function setBalloonSize() {
+        const air = document.getElementById("airSelect").value;
+        const balloon = document.getElementById("balloon");
+
+        if (air === "small") {
+            balloon.style.width = "65px";
+            balloon.style.height = "45px";
+        }
+
+        if (air === "medium") {
+            balloon.style.width = "85px";
+            balloon.style.height = "58px";
+        }
+
+        if (air === "large") {
+            balloon.style.width = "108px";
+            balloon.style.height = "72px";
+        }
+    }
+
+    function resetRocketOnly() {
+        setBalloonSize();
+        document.getElementById("rocket").style.left = "95px";
+        document.getElementById("rocket").style.transform = "rotate(0deg)";
+        document.getElementById("distanceLine").style.width = "0";
+        document.getElementById("distanceReadout").innerText = "Distance: 0 cm";
+        document.getElementById("flame").style.display = "none";
+        document.getElementById("airArrow").style.display = "none";
+        document.getElementById("motionArrow").style.display = "none";
+    }
+
+    function showForceArrows() {
+        document.getElementById("airArrow").style.display = "block";
+        document.getElementById("motionArrow").style.display = "block";
+    }
+
+    function randomTrialDistance(air, setup) {
+        let base = baseDistances[air];
+        let variation = Math.floor(Math.random() * 11) - 5;
+
+        if (setup === "loose") {
+            base -= 18;
+            variation += Math.floor(Math.random() * 15) - 7;
+        }
+
+        if (setup === "different") {
+            base += Math.floor(Math.random() * 31) - 15;
+            variation += Math.floor(Math.random() * 15) - 7;
+        }
+
+        return Math.max(10, base + variation);
+    }
+
+    function makeSparkles() {
+        const mode = document.getElementById("modeSelect").value;
+        if (mode !== "party") return;
+
+        const screen = document.getElementById("spaceScreen");
+
+        for (let i = 0; i < 10; i++) {
+            const sparkle = document.createElement("div");
+            sparkle.className = "sparkle";
+            sparkle.innerText = ["✨", "⭐", "🚀", "💫"][Math.floor(Math.random() * 4)];
+            sparkle.style.left = (120 + Math.random() * 600) + "px";
+            sparkle.style.top = (40 + Math.random() * 260) + "px";
+            screen.appendChild(sparkle);
+
+            setTimeout(() => sparkle.remove(), 1300);
+        }
+    }
+
+    function launchRocket() {
+        const air = document.getElementById("airSelect").value;
+        const setup = document.getElementById("setupSelect").value;
+        const trial = Number(document.getElementById("trialSelect").value);
+
+        const distance = randomTrialDistance(air, setup);
+        const pixelDistance = Math.min(distance * 4.25, 610);
+
+        showForceArrows();
+        document.getElementById("flame").style.display = "block";
+        document.getElementById("rocket").style.left = (95 + pixelDistance) + "px";
+        document.getElementById("rocket").style.transform = "rotate(-2deg)";
+        document.getElementById("distanceLine").style.width = pixelDistance + "px";
+        document.getElementById("distanceReadout").innerText = "Distance: " + distance + " cm";
+
+        makeSparkles();
+
+        data[air][trial - 1] = distance;
+        updateTable();
+
+        if (setup === "fair") {
+            showFeedback("launchFeedback", "Mission data recorded. Fair test: only the amount of air changed.", "correct");
+        }
+
+        if (setup === "loose") {
+            showFeedback("launchFeedback", "Warning: loose string changes the setup. That makes the test unfair.", "incorrect");
+        }
+
+        if (setup === "different") {
+            showFeedback("launchFeedback", "Warning: using a different balloon adds another variable. That makes the test unfair.", "incorrect");
+        }
+    }
+
+    function average(values) {
+        const nums = values.filter(v => v !== null);
+        if (nums.length === 0) return null;
+        return Math.round(nums.reduce((a, b) => a + b, 0) / nums.length);
+    }
+
+    function updateTable() {
+        ["small", "medium", "large"].forEach(air => {
+            for (let i = 0; i < 3; i++) {
+                document.getElementById(air + (i + 1)).innerText = data[air][i] === null ? "" : data[air][i] + " cm";
+            }
+
+            const avg = average(data[air]);
+            document.getElementById(air + "Avg").innerText = avg === null ? "" : avg + " cm";
+        });
+    }
+
+    function autoFillFairData() {
+        data.small = [42, 46, 45];
+        data.medium = [82, 86, 85];
+        data.large = [128, 132, 130];
+        updateTable();
+        showFeedback("launchFeedback", "Fair mission data added. Now make the graph.", "correct");
+    }
+
+    function clearData() {
+        data.small = [null, null, null];
+        data.medium = [null, null, null];
+        data.large = [null, null, null];
+        updateTable();
+        makeGraph(true);
+        resetRocketOnly();
+        showFeedback("launchFeedback", "Mission data cleared. Start a new launch mission.", "warning");
+    }
+
+    function makeGraph(clearOnly=false) {
+        const smallAvg = average(data.small) || 0;
+        const mediumAvg = average(data.medium) || 0;
+        const largeAvg = average(data.large) || 0;
+
+        // Fixed graph scale:
+        // 160 cm = full graph height.
+        // This keeps the graph scientifically clear:
+        // small air = shortest bar, medium air = middle bar, large air = tallest bar.
+        const graphMaxCm = 160;
+        const maxPixelHeight = 260;
+
+        const bars = [
+            ["barSmall", smallAvg],
+            ["barMedium", mediumAvg],
+            ["barLarge", largeAvg]
+        ];
+
+        bars.forEach(([id, value]) => {
+            const bar = document.getElementById(id);
+            const cappedValue = Math.min(value, graphMaxCm);
+            const height = Math.round((cappedValue / graphMaxCm) * maxPixelHeight);
+
+            bar.style.height = height + "px";
+            bar.innerText = value === 0 ? "0" : value + " cm";
+        });
+
+        if (!clearOnly) {
+            if (smallAvg && mediumAvg && largeAvg) {
+                showFeedback(
+                    "graphFeedback",
+                    "Graph created. The bars should show small air as shortest, medium air as middle, and large air as tallest.",
+                    "correct"
+                );
+            } else {
+                showFeedback(
+                    "graphFeedback",
+                    "Graph created, but some data is missing. Run trials or use Auto-Fill Fair Mission Data.",
+                    "incorrect"
+                );
+            }
+        }
+    }
+
+    function checkCER() {
+        const pattern = document.getElementById("patternAnswer").value;
+        const claim = document.getElementById("claimAnswer").value;
+        const evidence = document.getElementById("evidenceAnswer").value;
+
+        if (
+            pattern === "As the amount of air increased, the balloon rocket traveled farther." &&
+            claim === "More air caused the balloon rocket to travel farther." &&
+            evidence === "The large-air average was greater than the small-air average."
+        ) {
+            showFeedback("cerFeedback", "Correct! Your pattern, claim, and evidence match the mission data.", "correct");
+        } else {
+            showFeedback("cerFeedback", "Not yet. Use the graph pattern and compare the small-air average to the large-air average.", "incorrect");
+        }
+    }
+
+    function buildCER() {
+        const smallAvg = average(data.small) || 45;
+        const largeAvg = average(data.large) || 130;
+
+        document.getElementById("cerOutput").innerHTML = `
+            <div class="claim-box">
+                <h3>My Mission CER Paragraph</h3>
+                <p><strong>Claim:</strong> More air caused the balloon rocket to travel farther.</p>
+                <p><strong>Evidence:</strong> The small-air average was about ${smallAvg} cm, while the large-air average was about ${largeAvg} cm.</p>
+                <p><strong>Reasoning:</strong> The amount of air was the independent variable. Distance traveled was the dependent variable. More air pushed out of the balloon, creating a stronger force that moved the rocket farther.</p>
+            </div>
+        `;
+    }
+
+    function checkSTAAR() {
+        const s1 = document.getElementById("staar1").value;
+        const s2 = document.getElementById("staar2").value;
+        const s3 = document.getElementById("staar3").value;
+
+        if (
+            s1 === "Amount of air in the balloon" &&
+            s2 === "Distance traveled" &&
+            s3 === "Using a different balloon for the large-air trial"
+        ) {
+            showFeedback("staarFeedback", "Correct! Amount of air is changed, distance is measured, and changing balloons would make the test unfair.", "correct");
+        } else {
+            showFeedback("staarFeedback", "Not yet. Independent variable = what changed. Dependent variable = what measured. A fair test keeps the rocket setup the same.", "incorrect");
+        }
+    }
+
+    setBalloonSize();
+    updateTable();
+</script>
+
+{% endblock %}
