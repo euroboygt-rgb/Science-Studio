@@ -265,6 +265,12 @@ def ball_bounce_analyzer_lab():
     return render_template("ball_bounce_analyzer_lab.html")
 
 
+
+@app.route("/labs/playground-safety")
+def playground_safety_lab():
+    return render_template("playground_safety_lab.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

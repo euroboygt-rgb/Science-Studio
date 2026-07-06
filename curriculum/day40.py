@@ -15,7 +15,65 @@ day40 = {
 
     "guided_practice": "Show students a sample playground problem: a slide is too steep, so students move too fast at the bottom. Ask students what force causes motion down the slide, what could increase or decrease speed, and what design changes could make the slide safer. Students identify one variable to change, such as slide height, slide angle, surface material, ramp length, or landing surface.",
 
+    "interactive_activity_title": "Playground Safety Engineering Challenge",
+
+    "interactive_activity": "Students read playground engineering scenarios, identify the force and motion problem, choose one variable to change, collect data, and decide if the design is safer using evidence.",
+
+    "playground_engineering_cards": [
+        {
+            "scenario": "A slide is very steep, and a toy figure travels too far after leaving the slide.",
+            "student_task": "Choose one variable to change to make the slide safer.",
+            "problem": "The toy figure moves too fast and travels too far.",
+            "variable_changed": "Slide angle or slide surface",
+            "data_to_collect": "Distance traveled after leaving the slide",
+            "safe_design_reason": "A less steep slide or rougher surface can reduce speed and distance."
+        },
+        {
+            "scenario": "A swing moves too fast and stops suddenly.",
+            "student_task": "Explain how engineers could make the motion safer.",
+            "problem": "The swing has too much motion and stops too quickly.",
+            "variable_changed": "Starting height or landing area",
+            "data_to_collect": "Swing distance or stopping safety score",
+            "safe_design_reason": "Reducing starting height or adding a safer stop area can reduce sudden motion."
+        },
+        {
+            "scenario": "A ramp sends a toy car too far across the playground.",
+            "student_task": "Identify the independent and dependent variables.",
+            "problem": "The ramp causes too much distance traveled.",
+            "variable_changed": "Ramp height",
+            "data_to_collect": "Distance the toy car travels",
+            "safe_design_reason": "A lower ramp can reduce distance and speed."
+        },
+        {
+            "scenario": "A playground landing area is hard, and students stop suddenly at the bottom of a slide.",
+            "student_task": "Choose a safer design change and explain the evidence needed.",
+            "problem": "The landing area does not reduce the impact of stopping.",
+            "variable_changed": "Landing surface material",
+            "data_to_collect": "Safety score or stopping distance",
+            "safe_design_reason": "A softer landing surface can make stopping safer."
+        },
+        {
+            "scenario": "A student changes slide angle and landing material at the same time.",
+            "student_task": "Explain why this is not a fair test.",
+            "problem": "Too many variables changed.",
+            "variable_changed": "Only one variable should change",
+            "data_to_collect": "Distance, speed, or safety score",
+            "safe_design_reason": "Changing one variable at a time helps engineers know which change improved safety."
+        },
+        {
+            "scenario": "A group says their design is safer because the toy traveled 35 cm after the change instead of 90 cm before the change.",
+            "student_task": "Identify the claim and evidence.",
+            "problem": "Original design allowed too much travel distance.",
+            "variable_changed": "A safer design variable",
+            "data_to_collect": "Before and after distance",
+            "safe_design_reason": "The shorter distance is evidence that the design reduced motion."
+        }
+    ],
+
     "lab": "Engineering Challenge: students design a safer playground equipment model. They may focus on a slide, swing, ramp, zip line, seesaw, or ball ramp. Students identify a force and motion problem, design a model, choose one variable to change, collect or explain data, and justify how their design improves safety.",
+
+    "lab_link": "/labs/playground-safety",
+    "lab_link_text": "Open Playground Safety Engineering Simulator",
 
     "lab_notebook": "Students record the playground problem, design goal, model sketch, independent variable, dependent variable, controlled variables, data or observations, force and motion explanation, safety improvement, and claim with evidence.",
 

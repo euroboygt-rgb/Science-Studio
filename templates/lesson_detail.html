@@ -490,6 +490,45 @@
 
 
 
+
+                {% if lesson.get("playground_engineering_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("playground_engineering_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>Playground Engineering Scenario {{ loop.index }}</h5>
+                            <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Design Problem:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What is unsafe or needs improvement?"></textarea>
+
+                            <label class="form-label"><strong>Variable Changed:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What one variable should be changed?"></textarea>
+
+                            <label class="form-label"><strong>Data to Collect:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What should be measured or observed?"></textarea>
+
+                            <label class="form-label"><strong>Safety Explanation:</strong></label>
+                            <textarea class="form-control" rows="3" placeholder="Explain how the design affects force, motion, or safety."></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Problem:</strong> {{ card.problem }}</p>
+                                    <p><strong>Variable Changed:</strong> {{ card.variable_changed }}</p>
+                                    <p><strong>Data to Collect:</strong> {{ card.data_to_collect }}</p>
+                                    <p><strong>Safe Design Reason:</strong> {{ card.safe_design_reason }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("graphing_analysis_cards") %}
                 <div class="row">
                     {% for card in lesson.get("graphing_analysis_cards") %}

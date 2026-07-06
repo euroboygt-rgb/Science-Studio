@@ -1,0 +1,917 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Playground Safety Engineering Simulator</h1>
+<p class="lead">
+    Choose a playground problem, change one variable, test the design, collect data, and decide if it is safer.
+</p>
+
+<a href="/first-nine-weeks/day/40?view=student" class="btn btn-secondary mb-4">
+    Back to Day 40
+</a>
+
+<style>
+    .eng-card {
+        border: 1px solid #ddd;
+        border-radius: 18px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
+    .mission-banner {
+        background: #212529;
+        color: white;
+        border: 4px solid #111;
+        border-radius: 18px;
+        padding: 18px;
+        margin-bottom: 20px;
+    }
+
+    .badge-pill {
+        display: inline-block;
+        background: #fff3cd;
+        color: #111;
+        border: 3px solid #111;
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-weight: bold;
+        margin: 5px;
+    }
+
+    .control-box {
+        background: white;
+        border: 3px solid #111;
+        border-radius: 16px;
+        padding: 15px;
+        margin-bottom: 18px;
+    }
+
+    .playground {
+        height: 470px;
+        border: 5px solid #111;
+        border-radius: 22px;
+        background:
+            linear-gradient(180deg, #bde0fe 0%, #eaf6ff 55%, #d1e7dd 55%, #d1e7dd 100%);
+        position: relative;
+        overflow: hidden;
+        margin: 20px 0;
+    }
+
+    .sun {
+        position: absolute;
+        right: 45px;
+        top: 35px;
+        width: 80px;
+        height: 80px;
+        background: #fff3cd;
+        border: 4px solid #111;
+        border-radius: 50%;
+    }
+
+    .cloud {
+        position: absolute;
+        top: 55px;
+        left: 70px;
+        width: 150px;
+        height: 50px;
+        background: white;
+        border: 3px solid #111;
+        border-radius: 999px;
+    }
+
+    .platform {
+        position: absolute;
+        left: 110px;
+        top: 150px;
+        width: 90px;
+        height: 35px;
+        background: #e9ecef;
+        border: 4px solid #111;
+        border-radius: 8px;
+    }
+
+    .leg {
+        position: absolute;
+        width: 14px;
+        background: #111;
+        top: 185px;
+        height: 160px;
+    }
+
+    .leg1 { left: 125px; }
+    .leg2 { left: 178px; }
+
+    .slide {
+        position: absolute;
+        left: 170px;
+        top: 180px;
+        width: 300px;
+        height: 24px;
+        background: #e9ecef;
+        border: 4px solid #111;
+        border-radius: 14px;
+        transform-origin: left center;
+        transform: rotate(32deg);
+        transition: transform 0.6s, background 0.6s;
+    }
+
+    .landing-pad {
+        position: absolute;
+        left: 430px;
+        top: 330px;
+        width: 145px;
+        height: 35px;
+        background: white;
+        border: 4px solid #111;
+        border-radius: 12px;
+        transition: background 0.5s;
+    }
+
+    .surface-label {
+        position: absolute;
+        left: 420px;
+        top: 375px;
+        background: white;
+        border: 3px solid #111;
+        border-radius: 12px;
+        padding: 8px 12px;
+        font-weight: bold;
+    }
+
+    .toy {
+        position: absolute;
+        left: 130px;
+        top: 118px;
+        width: 45px;
+        height: 45px;
+        background: #ffccd5;
+        border: 4px solid #111;
+        border-radius: 50%;
+        transition: left 1s, top 1s;
+        z-index: 4;
+    }
+
+    .toy::after {
+        content: "";
+        position: absolute;
+        left: 12px;
+        top: 40px;
+        width: 12px;
+        height: 35px;
+        background: #111;
+        border-radius: 8px;
+    }
+
+    .motion-arrow {
+        position: absolute;
+        left: 255px;
+        top: 110px;
+        background: #fff3cd;
+        border: 3px solid #111;
+        border-radius: 12px;
+        padding: 8px;
+        font-weight: bold;
+        display: none;
+    }
+
+    .friction-arrow {
+        position: absolute;
+        left: 280px;
+        top: 250px;
+        background: #d1e7dd;
+        border: 3px solid #111;
+        border-radius: 12px;
+        padding: 8px;
+        font-weight: bold;
+        display: none;
+    }
+
+    .distance-line {
+        position: absolute;
+        left: 500px;
+        top: 405px;
+        width: 0;
+        height: 7px;
+        background: #111;
+        transition: width 1s;
+    }
+
+    .readout {
+        position: absolute;
+        left: 35px;
+        bottom: 25px;
+        background: white;
+        border: 3px solid #111;
+        border-radius: 12px;
+        padding: 10px 14px;
+        font-weight: bold;
+    }
+
+    .safety-meter {
+        position: absolute;
+        right: 30px;
+        bottom: 25px;
+        width: 220px;
+        background: white;
+        border: 3px solid #111;
+        border-radius: 12px;
+        padding: 10px;
+        font-weight: bold;
+    }
+
+    .meter-bar {
+        height: 24px;
+        width: 0%;
+        background: #e9ecef;
+        border: 2px solid #111;
+        border-radius: 8px;
+        transition: width 0.7s;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .warning {
+        background: #fff3cd;
+        color: #664d03;
+    }
+
+    .graph-box {
+        background: white;
+        border: 4px solid #333;
+        border-radius: 15px;
+        height: 410px;
+        position: relative;
+        margin: 20px 0;
+        overflow: hidden;
+    }
+
+    .y-axis {
+        position: absolute;
+        left: 85px;
+        top: 55px;
+        bottom: 75px;
+        width: 5px;
+        background: #333;
+    }
+
+    .x-axis {
+        position: absolute;
+        left: 85px;
+        right: 55px;
+        bottom: 75px;
+        height: 5px;
+        background: #333;
+    }
+
+    .bar {
+        position: absolute;
+        bottom: 80px;
+        width: 95px;
+        background: #e9ecef;
+        border: 3px solid #333;
+        transition: height 0.7s;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        font-weight: bold;
+        padding-top: 6px;
+    }
+
+    .bar-label {
+        position: absolute;
+        bottom: 35px;
+        width: 160px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .graph-title {
+        position: absolute;
+        top: 12px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .x-label {
+        position: absolute;
+        bottom: 5px;
+        left: 150px;
+        right: 50px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .y-label {
+        position: absolute;
+        left: -62px;
+        top: 190px;
+        transform: rotate(-90deg);
+        font-weight: bold;
+        width: 250px;
+        text-align: center;
+    }
+
+    .claim-box {
+        background: white;
+        border: 3px solid #111;
+        border-radius: 14px;
+        padding: 15px;
+        margin-top: 15px;
+    }
+
+    .sparkle {
+        position: absolute;
+        font-size: 30px;
+        animation: pop 1.1s ease-out forwards;
+        pointer-events: none;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0.2); opacity: 0; }
+        30% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(0.8); opacity: 0; }
+    }
+</style>
+
+<div class="mission-banner">
+    <h2>🛝 Playground Safety Engineering Lab</h2>
+    <p class="mb-2">Your mission: improve a playground design by changing one variable and using data as evidence.</p>
+    <span class="badge-pill">Engineer Goal: Safer Motion</span>
+    <span class="badge-pill">Change One Variable</span>
+    <span class="badge-pill">Collect Data</span>
+    <span class="badge-pill">Use Evidence</span>
+</div>
+
+<div class="eng-card">
+    <h2>Part 1: Choose a Playground Problem</h2>
+
+    <div class="control-box">
+        <div class="row">
+            <div class="col-md-3">
+                <label class="form-label"><strong>Problem:</strong></label>
+                <select id="problemSelect" class="form-select mb-3" onchange="loadProblem()">
+                    <option value="steepSlide">Slide is too steep</option>
+                    <option value="slickSlide">Slide is too slippery</option>
+                    <option value="hardLanding">Landing area is too hard</option>
+                    <option value="fastRamp">Ramp sends object too far</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label"><strong>Change one variable:</strong></label>
+                <select id="variableSelect" class="form-select mb-3" onchange="applyDesign(); resetToyOnly();">
+                    <option value="lowerAngle">Lower the slide angle</option>
+                    <option value="roughSurface">Add a rougher slide surface</option>
+                    <option value="softLanding">Add a soft landing pad</option>
+                    <option value="longerRunout">Add a longer safe run-out area</option>
+                    <option value="tooMany">Change two variables at once</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label"><strong>Test type:</strong></label>
+                <select id="testSelect" class="form-select mb-3">
+                    <option value="before">Original design</option>
+                    <option value="after">Improved design</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label"><strong>Trial:</strong></label>
+                <select id="trialSelect" class="form-select mb-3">
+                    <option value="1">Trial 1</option>
+                    <option value="2">Trial 2</option>
+                    <option value="3">Trial 3</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="btn btn-success" onclick="checkOneVariable()">Check Engineering Plan</button>
+        <button class="btn btn-primary btn-lg" onclick="runTest()">Test Design</button>
+        <button class="btn btn-warning" onclick="showForceLabels()">Show Forces</button>
+        <button class="btn btn-secondary" onclick="resetToyOnly()">Reset Model</button>
+        <button class="btn btn-danger" onclick="clearData()">Clear Data</button>
+    </div>
+
+    <div id="planFeedback" class="feedback warning">
+        Engineering rule: change one variable at a time so you know what improved the design.
+    </div>
+
+    <div class="playground" id="playground">
+        <div class="sun"></div>
+        <div class="cloud"></div>
+        <div class="platform"></div>
+        <div class="leg leg1"></div>
+        <div class="leg leg2"></div>
+        <div id="slide" class="slide"></div>
+        <div id="landingPad" class="landing-pad"></div>
+        <div id="surfaceLabel" class="surface-label">Landing: hard surface</div>
+        <div id="toy" class="toy"></div>
+        <div id="motionArrow" class="motion-arrow">Gravity pulls down slide →</div>
+        <div id="frictionArrow" class="friction-arrow">Friction slows motion ←</div>
+        <div id="distanceLine" class="distance-line"></div>
+        <div id="readout" class="readout">Distance after slide: 0 cm</div>
+
+        <div class="safety-meter">
+            Safety Score
+            <div id="meterBar" class="meter-bar"></div>
+            <div id="meterText">0 / 100</div>
+        </div>
+    </div>
+</div>
+
+<div class="eng-card">
+    <h2>Part 2: Engineering Data Table</h2>
+
+    <div class="alert alert-warning">
+        Test the original design and improved design. Then compare the averages.
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered bg-white">
+            <thead>
+                <tr>
+                    <th>Design</th>
+                    <th>Trial 1</th>
+                    <th>Trial 2</th>
+                    <th>Trial 3</th>
+                    <th>Average Distance</th>
+                    <th>Average Safety Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Original Design</strong></td>
+                    <td id="before1"></td>
+                    <td id="before2"></td>
+                    <td id="before3"></td>
+                    <td id="beforeAvg"></td>
+                    <td id="beforeSafety"></td>
+                </tr>
+                <tr>
+                    <td><strong>Improved Design</strong></td>
+                    <td id="after1"></td>
+                    <td id="after2"></td>
+                    <td id="after3"></td>
+                    <td id="afterAvg"></td>
+                    <td id="afterSafety"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="btn btn-success" onclick="autoFillData()">Auto-Fill Engineering Data</button>
+    <button class="btn btn-primary" onclick="makeGraph()">Make Before/After Graph</button>
+</div>
+
+<div class="eng-card">
+    <h2>Part 3: Graph the Engineering Data</h2>
+
+    <div class="graph-box">
+        <div class="graph-title">Distance After Slide: Before and After Design Change</div>
+        <div class="y-axis"></div>
+        <div class="x-axis"></div>
+        <div class="y-label">Average distance in cm</div>
+        <div class="x-label">Design tested</div>
+
+        <div id="barBefore" class="bar" style="left: 210px; height: 0;">0</div>
+        <div id="barAfter" class="bar" style="left: 470px; height: 0;">0</div>
+
+        <div class="bar-label" style="left: 178px;">Original Design</div>
+        <div class="bar-label" style="left: 438px;">Improved Design</div>
+    </div>
+
+    <div id="graphFeedback"></div>
+</div>
+
+<div class="eng-card">
+    <h2>Part 4: Decide If It Is Safer</h2>
+
+    <label class="form-label"><strong>What happened to the distance after the design change?</strong></label>
+    <select id="patternAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The distance decreased after the design change.</option>
+        <option>The distance increased after the design change.</option>
+        <option>The distance stayed exactly the same.</option>
+        <option>No data was collected.</option>
+    </select>
+
+    <label class="form-label"><strong>Best claim:</strong></label>
+    <select id="claimAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The improved design was safer because it reduced the distance traveled after the slide.</option>
+        <option>The original design was safer because it traveled farther.</option>
+        <option>The design did not involve force or motion.</option>
+        <option>The color of the slide made it safer.</option>
+    </select>
+
+    <label class="form-label"><strong>Best evidence:</strong></label>
+    <select id="evidenceAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The improved design had a shorter average distance than the original design.</option>
+        <option>The playground had a sun in the picture.</option>
+        <option>The toy figure was small.</option>
+        <option>The graph had two bars.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkCER()">Check Engineering CER</button>
+    <button class="btn btn-primary" onclick="buildCER()">Build Engineering CER Paragraph</button>
+
+    <div id="cerFeedback"></div>
+    <div id="cerOutput"></div>
+</div>
+
+<div class="eng-card">
+    <h2>Part 5: STAAR Engineering Challenge</h2>
+
+    <p class="alert alert-warning">
+        A group changed a slide surface to make it rougher. The toy traveled 90 cm before the change and 40 cm after the change.
+    </p>
+
+    <label class="form-label"><strong>What variable did the group change?</strong></label>
+    <select id="staar1" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Slide surface</option>
+        <option>Distance traveled</option>
+        <option>Same toy figure</option>
+        <option>Same starting line</option>
+    </select>
+
+    <label class="form-label"><strong>What data did the group measure?</strong></label>
+    <select id="staar2" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Distance traveled</option>
+        <option>Color of the slide</option>
+        <option>Name of the engineer</option>
+        <option>Weather outside</option>
+    </select>
+
+    <label class="form-label"><strong>Which claim is best supported?</strong></label>
+    <select id="staar3" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The rougher surface made the design safer by reducing distance traveled.</option>
+        <option>The rougher surface made the toy travel farther.</option>
+        <option>The surface did not affect motion.</option>
+        <option>The toy changed into a magnet.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
+    <div id="staarFeedback"></div>
+</div>
+
+<script>
+    const data = {
+        before: [null, null, null],
+        after: [null, null, null]
+    };
+
+    const safetyData = {
+        before: [null, null, null],
+        after: [null, null, null]
+    };
+
+    const problemInfo = {
+        steepSlide: {
+            problem: "Slide is too steep",
+            beforeBase: 95,
+            afterBase: {
+                lowerAngle: 42,
+                roughSurface: 55,
+                softLanding: 78,
+                longerRunout: 72,
+                tooMany: 35
+            },
+            bestVariable: "lowerAngle"
+        },
+        slickSlide: {
+            problem: "Slide is too slippery",
+            beforeBase: 90,
+            afterBase: {
+                lowerAngle: 60,
+                roughSurface: 38,
+                softLanding: 76,
+                longerRunout: 70,
+                tooMany: 36
+            },
+            bestVariable: "roughSurface"
+        },
+        hardLanding: {
+            problem: "Landing area is too hard",
+            beforeBase: 82,
+            afterBase: {
+                lowerAngle: 58,
+                roughSurface: 60,
+                softLanding: 45,
+                longerRunout: 65,
+                tooMany: 40
+            },
+            bestVariable: "softLanding"
+        },
+        fastRamp: {
+            problem: "Ramp sends object too far",
+            beforeBase: 105,
+            afterBase: {
+                lowerAngle: 45,
+                roughSurface: 58,
+                softLanding: 82,
+                longerRunout: 68,
+                tooMany: 42
+            },
+            bestVariable: "lowerAngle"
+        }
+    };
+
+    function showFeedback(elementId, message, kind) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + kind;
+        box.innerHTML = message;
+    }
+
+    function average(values) {
+        const nums = values.filter(v => v !== null);
+        if (nums.length === 0) return null;
+        return Math.round(nums.reduce((a, b) => a + b, 0) / nums.length);
+    }
+
+    function loadProblem() {
+        clearData();
+        applyDesign();
+        resetToyOnly();
+        showFeedback("planFeedback", "New playground problem loaded. Choose one variable to improve the design.", "warning");
+    }
+
+    function applyDesign() {
+        const variable = document.getElementById("variableSelect").value;
+        const slide = document.getElementById("slide");
+        const landing = document.getElementById("landingPad");
+        const label = document.getElementById("surfaceLabel");
+
+        slide.style.transform = "rotate(32deg)";
+        slide.style.background = "#e9ecef";
+        landing.style.background = "white";
+        label.innerText = "Landing: hard surface";
+
+        if (variable === "lowerAngle") {
+            slide.style.transform = "rotate(20deg)";
+        }
+
+        if (variable === "roughSurface") {
+            slide.style.background = "repeating-linear-gradient(45deg, #e9ecef, #e9ecef 8px, #adb5bd 8px, #adb5bd 16px)";
+        }
+
+        if (variable === "softLanding") {
+            landing.style.background = "#d1e7dd";
+            label.innerText = "Landing: soft pad";
+        }
+
+        if (variable === "longerRunout") {
+            landing.style.width = "220px";
+            label.innerText = "Landing: longer safe area";
+        } else {
+            landing.style.width = "145px";
+        }
+
+        if (variable === "tooMany") {
+            slide.style.transform = "rotate(20deg)";
+            slide.style.background = "repeating-linear-gradient(45deg, #e9ecef, #e9ecef 8px, #adb5bd 8px, #adb5bd 16px)";
+            landing.style.background = "#d1e7dd";
+            label.innerText = "Changed too many things";
+        }
+    }
+
+    function resetToyOnly() {
+        document.getElementById("toy").style.left = "130px";
+        document.getElementById("toy").style.top = "118px";
+        document.getElementById("distanceLine").style.width = "0";
+        document.getElementById("readout").innerText = "Distance after slide: 0 cm";
+        document.getElementById("meterBar").style.width = "0%";
+        document.getElementById("meterText").innerText = "0 / 100";
+        document.getElementById("motionArrow").style.display = "none";
+        document.getElementById("frictionArrow").style.display = "none";
+    }
+
+    function showForceLabels() {
+        document.getElementById("motionArrow").style.display = "block";
+        document.getElementById("frictionArrow").style.display = "block";
+    }
+
+    function checkOneVariable() {
+        const variable = document.getElementById("variableSelect").value;
+        const problem = document.getElementById("problemSelect").value;
+
+        if (variable === "tooMany") {
+            showFeedback("planFeedback", "Not a fair engineering test. You changed more than one variable at once.", "incorrect");
+            return;
+        }
+
+        if (variable === problemInfo[problem].bestVariable) {
+            showFeedback("planFeedback", "Strong engineering plan! You changed one variable that matches the safety problem.", "correct");
+        } else {
+            showFeedback("planFeedback", "This is still a fair test because you changed one variable. Think about whether it is the best variable for the problem.", "warning");
+        }
+    }
+
+    function randomDistance(testType) {
+        const problem = document.getElementById("problemSelect").value;
+        const variable = document.getElementById("variableSelect").value;
+
+        let base = problemInfo[problem].beforeBase;
+
+        if (testType === "after") {
+            base = problemInfo[problem].afterBase[variable];
+        }
+
+        const variation = Math.floor(Math.random() * 9) - 4;
+        return Math.max(10, base + variation);
+    }
+
+    function safetyScore(distance) {
+        return Math.max(5, Math.min(100, 110 - distance));
+    }
+
+    function makeSparkles() {
+        const playground = document.getElementById("playground");
+
+        for (let i = 0; i < 6; i++) {
+            const sparkle = document.createElement("div");
+            sparkle.className = "sparkle";
+            sparkle.innerText = ["✨", "🛝", "⭐", "✅"][Math.floor(Math.random() * 4)];
+            sparkle.style.left = (240 + Math.random() * 420) + "px";
+            sparkle.style.top = (80 + Math.random() * 260) + "px";
+            playground.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1200);
+        }
+    }
+
+    function runTest() {
+        const testType = document.getElementById("testSelect").value;
+        const trial = Number(document.getElementById("trialSelect").value);
+        const distance = randomDistance(testType);
+        const score = safetyScore(distance);
+
+        showForceLabels();
+
+        document.getElementById("toy").style.left = Math.min(510 + distance * 1.3, 760) + "px";
+        document.getElementById("toy").style.top = "335px";
+        document.getElementById("distanceLine").style.width = Math.min(distance * 1.3, 300) + "px";
+        document.getElementById("readout").innerText = "Distance after slide: " + distance + " cm";
+        document.getElementById("meterBar").style.width = score + "%";
+        document.getElementById("meterText").innerText = score + " / 100";
+
+        data[testType][trial - 1] = distance;
+        safetyData[testType][trial - 1] = score;
+        updateTable();
+        makeSparkles();
+
+        if (testType === "before") {
+            showFeedback("planFeedback", "Original design tested. Now test the improved design and compare the data.", "warning");
+        } else {
+            showFeedback("planFeedback", "Improved design tested. Compare the average distance and safety score.", "correct");
+        }
+    }
+
+    function updateTable() {
+        ["before", "after"].forEach(type => {
+            for (let i = 0; i < 3; i++) {
+                document.getElementById(type + (i + 1)).innerText = data[type][i] === null ? "" : data[type][i] + " cm";
+            }
+
+            const avg = average(data[type]);
+            const safetyAvg = average(safetyData[type]);
+            document.getElementById(type + "Avg").innerText = avg === null ? "" : avg + " cm";
+            document.getElementById(type + "Safety").innerText = safetyAvg === null ? "" : safetyAvg + " / 100";
+        });
+    }
+
+    function autoFillData() {
+        data.before = [92, 96, 94];
+        safetyData.before = data.before.map(safetyScore);
+
+        const problem = document.getElementById("problemSelect").value;
+        const variable = document.getElementById("variableSelect").value;
+        const base = problemInfo[problem].afterBase[variable];
+
+        data.after = [base - 2, base + 1, base];
+        safetyData.after = data.after.map(safetyScore);
+
+        updateTable();
+        showFeedback("planFeedback", "Engineering data added. Now make the before/after graph.", "correct");
+    }
+
+    function clearData() {
+        data.before = [null, null, null];
+        data.after = [null, null, null];
+        safetyData.before = [null, null, null];
+        safetyData.after = [null, null, null];
+        updateTable();
+        makeGraph(true);
+        resetToyOnly();
+    }
+
+    function makeGraph(clearOnly=false) {
+        const beforeAvg = average(data.before) || 0;
+        const afterAvg = average(data.after) || 0;
+
+        const graphMaxCm = 120;
+        const maxPixelHeight = 270;
+
+        const bars = [
+            ["barBefore", beforeAvg],
+            ["barAfter", afterAvg]
+        ];
+
+        bars.forEach(([id, value]) => {
+            const bar = document.getElementById(id);
+            const cappedValue = Math.min(value, graphMaxCm);
+            const height = Math.round((cappedValue / graphMaxCm) * maxPixelHeight);
+            bar.style.height = height + "px";
+            bar.innerText = value === 0 ? "0" : value + " cm";
+        });
+
+        if (!clearOnly) {
+            if (beforeAvg && afterAvg) {
+                if (afterAvg < beforeAvg) {
+                    showFeedback("graphFeedback", "Graph created. The improved design traveled a shorter distance, which suggests safer motion.", "correct");
+                } else {
+                    showFeedback("graphFeedback", "Graph created. The improved design did not reduce distance. Engineers may need to redesign.", "incorrect");
+                }
+            } else {
+                showFeedback("graphFeedback", "Graph created, but data is missing. Test both designs or use Auto-Fill Engineering Data.", "incorrect");
+            }
+        }
+    }
+
+    function checkCER() {
+        const pattern = document.getElementById("patternAnswer").value;
+        const claim = document.getElementById("claimAnswer").value;
+        const evidence = document.getElementById("evidenceAnswer").value;
+
+        if (
+            pattern === "The distance decreased after the design change." &&
+            claim === "The improved design was safer because it reduced the distance traveled after the slide." &&
+            evidence === "The improved design had a shorter average distance than the original design."
+        ) {
+            showFeedback("cerFeedback", "Correct! Your engineering claim is supported by evidence.", "correct");
+        } else {
+            showFeedback("cerFeedback", "Not yet. Use the before/after data. Safer design should reduce unsafe motion or improve the safety score.", "incorrect");
+        }
+    }
+
+    function buildCER() {
+        const beforeAvg = average(data.before) || 94;
+        const afterAvg = average(data.after) || 42;
+        const beforeSafety = average(safetyData.before) || 16;
+        const afterSafety = average(safetyData.after) || 68;
+        const variableText = document.getElementById("variableSelect").selectedOptions[0].text;
+
+        document.getElementById("cerOutput").innerHTML = `
+            <div class="claim-box">
+                <h3>My Engineering CER Paragraph</h3>
+                <p><strong>Claim:</strong> The improved playground design was safer.</p>
+                <p><strong>Evidence:</strong> The original design traveled about ${beforeAvg} cm after the slide, but the improved design traveled about ${afterAvg} cm. The safety score changed from about ${beforeSafety}/100 to ${afterSafety}/100.</p>
+                <p><strong>Reasoning:</strong> The engineering team changed one variable: ${variableText}. The data shows the motion was reduced or controlled, which can make the playground design safer.</p>
+            </div>
+        `;
+    }
+
+    function checkSTAAR() {
+        const s1 = document.getElementById("staar1").value;
+        const s2 = document.getElementById("staar2").value;
+        const s3 = document.getElementById("staar3").value;
+
+        if (
+            s1 === "Slide surface" &&
+            s2 === "Distance traveled" &&
+            s3 === "The rougher surface made the design safer by reducing distance traveled."
+        ) {
+            showFeedback("staarFeedback", "Correct! You used the engineering data as evidence.", "correct");
+        } else {
+            showFeedback("staarFeedback", "Not yet. Look for what was changed, what was measured, and which claim the data supports.", "incorrect");
+        }
+    }
+
+    applyDesign();
+    updateTable();
+</script>
+
+{% endblock %}
