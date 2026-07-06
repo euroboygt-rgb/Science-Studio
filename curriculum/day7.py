@@ -13,6 +13,10 @@ day7 = {
 
     "science_notebook": "Students create a page titled 'Magnetism.' They write the definition of magnetism, draw a magnet attracting an object, and create a T-chart for magnetic and nonmagnetic materials.",
 
+    "interactive_activity_title": "Magnetic or Not Lab Game",
+
+    "interactive_activity": "Students predict and test whether different objects are attracted to a magnet, then use evidence to explain magnetism as a physical property.",
+
     "guided_practice": "Show students several objects such as a paper clip, pencil, coin, eraser, aluminum foil, plastic spoon, key, and rubber band. Students predict whether each object will be attracted to a magnet, then discuss what evidence would be needed to prove the answer.",
 
     "interactive_activity_title": "Magnetic or Nonmagnetic Sort",
@@ -77,6 +81,8 @@ day7 = {
     ],
 
     "lab": "Stuck on You Magnetism Lab: students test classroom objects with a magnet. For each object, students make a prediction, test the object, record whether it was attracted to the magnet, and use evidence to decide if the object is magnetic or nonmagnetic.",
+    "lab_link": "/labs/magnetic-or-not",
+    "lab_link_text": "Open Magnetic or Not Lab Game",
 
     "lab_notebook": "Students record predictions, test results, and evidence from the magnetism investigation.",
 

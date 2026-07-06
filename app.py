@@ -335,6 +335,12 @@ def states_matter_match():
     return render_template("states_matter_match_game.html")
 
 
+
+@app.route("/labs/magnetic-or-not")
+def magnetic_or_not():
+    return render_template("magnetic_or_not_lab_game.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

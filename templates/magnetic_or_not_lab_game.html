@@ -1,0 +1,560 @@
+{% extends "base.html" %}
+
+{% block title %}Magnetic or Not Lab Game{% endblock %}
+
+{% block content %}
+
+<h1>Magnetic or Not? Lab Game</h1>
+<p class="lead">
+    Predict, test, and explain which objects are attracted to a magnet.
+</p>
+
+<a href="/first-nine-weeks/day/7?view=student" class="btn btn-secondary mb-4">
+    Back to Day 7
+</a>
+
+<style>
+    .magnet-hero {
+        background:
+            radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+            radial-gradient(circle at 80% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+            linear-gradient(135deg, #102542 0%, #1b4965 58%, #5fa8d3 100%);
+        color: white;
+        border: 5px solid #111;
+        border-radius: 28px;
+        padding: 28px;
+        box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+        margin-bottom: 24px;
+    }
+
+    .magnet-card {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 22px;
+        padding: 20px;
+        box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
+        margin-bottom: 22px;
+    }
+
+    .lab-stage {
+        background:
+            linear-gradient(180deg, #bde0fe 0%, #eaf6ff 58%, #d1e7dd 58%, #d1e7dd 100%);
+        border: 5px solid #111;
+        border-radius: 24px;
+        min-height: 360px;
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 18px;
+    }
+
+    .magnet-area {
+        background: rgba(255,255,255,0.7);
+        border: 4px solid #111;
+        border-radius: 20px;
+        min-height: 230px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .horseshoe {
+        position: absolute;
+        left: 30px;
+        top: 55px;
+        font-size: 110px;
+        transform: rotate(-20deg);
+    }
+
+    .test-object {
+        position: absolute;
+        right: 80px;
+        top: 82px;
+        background: #fff3cd;
+        border: 4px solid #111;
+        border-radius: 18px;
+        padding: 16px;
+        min-width: 150px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 900;
+        transition: all 0.8s ease;
+    }
+
+    .attracted {
+        right: 330px;
+        transform: rotate(-8deg);
+        background: #d1e7dd;
+    }
+
+    .not-attracted {
+        right: 80px;
+        transform: translateY(35px);
+        background: #f8d7da;
+    }
+
+    .object-button {
+        background: #f8f9fa;
+        border: 3px solid #111;
+        border-radius: 16px;
+        padding: 12px;
+        margin: 5px;
+        font-weight: 900;
+        min-width: 145px;
+    }
+
+    .object-button:hover {
+        background: #fff3cd;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .warning {
+        background: #fff3cd;
+        color: #664d03;
+    }
+
+    .sort-row {
+        background: #f8f9fa;
+        border: 3px solid #111;
+        border-radius: 16px;
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+
+    .data-table th,
+    .data-table td {
+        border: 3px solid #111;
+        padding: 10px;
+        background: white;
+    }
+
+    .sparkle {
+        position: absolute;
+        font-size: 28px;
+        animation: pop 1.1s ease-out forwards;
+        pointer-events: none;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0.2); opacity: 0; }
+        30% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(0.8); opacity: 0; }
+    }
+</style>
+
+<section class="magnet-hero">
+    <span class="badge-science">Day 7</span>
+    <span class="badge-science">Magnetism</span>
+    <span class="badge-science">Physical Property</span>
+
+    <h2 class="mt-3">🧲 Magnetism Detective Mission</h2>
+    <p class="lead mb-0">
+        Magnetism is a physical property. Magnets attract some materials, especially materials made of iron or steel.
+        Not all metals are magnetic.
+    </p>
+</section>
+
+<section class="magnet-card">
+    <h2>Part 1: Predict and Test</h2>
+    <p>Choose an object, make a prediction, then test it with the magnet.</p>
+
+    <div class="lab-stage" id="labStage">
+        <div class="row">
+            <div class="col-lg-4">
+                <h3>Choose object:</h3>
+                <div id="objectButtons"></div>
+
+                <hr>
+
+                <label class="form-label"><strong>Prediction:</strong></label>
+                <select id="prediction" class="form-select mb-3">
+                    <option selected>Choose...</option>
+                    <option>Attracted to the magnet</option>
+                    <option>Not attracted to the magnet</option>
+                </select>
+
+                <button class="btn btn-primary science-btn" onclick="testObject()">Test with Magnet</button>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="magnet-area">
+                    <div class="horseshoe">🧲</div>
+                    <div id="testObject" class="test-object">Choose an object</div>
+                </div>
+
+                <div id="testFeedback" class="feedback warning">
+                    Choose an object, make a prediction, and test it.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="magnet-card">
+    <h2>Part 2: Data Table</h2>
+    <p>Your test results will appear here.</p>
+
+    <div class="table-responsive">
+        <table class="table data-table">
+            <thead>
+                <tr>
+                    <th>Object</th>
+                    <th>Prediction</th>
+                    <th>Result</th>
+                    <th>Evidence</th>
+                </tr>
+            </thead>
+            <tbody id="dataBody">
+                <tr>
+                    <td colspan="4">No tests yet.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="btn btn-warning science-btn" onclick="resetData()">Reset Data</button>
+</section>
+
+<section class="magnet-card">
+    <h2>Part 3: Magnetic or Not Sort</h2>
+    <p>Use what you learned to sort the objects.</p>
+
+    <div id="sortArea"></div>
+
+    <button class="btn btn-success science-btn" onclick="checkSort()">Check My Sort</button>
+    <button class="btn btn-warning science-btn" onclick="resetSort()">Reset Sort</button>
+
+    <div id="sortFeedback"></div>
+</section>
+
+<section class="magnet-card">
+    <h2>Part 4: Science Explanation Builder</h2>
+
+    <label class="form-label"><strong>Complete the explanation:</strong></label>
+
+    <div class="sort-row">
+        <p>
+            A magnet attracted the
+            <select id="explain1">
+                <option selected>choose...</option>
+                <option>iron nail and steel paper clip</option>
+                <option>plastic straw and rubber eraser</option>
+                <option>wood craft stick and copper penny</option>
+            </select>
+            because those objects contain
+            <select id="explain2">
+                <option selected>choose...</option>
+                <option>iron or steel</option>
+                <option>water</option>
+                <option>plastic</option>
+            </select>.
+            This shows that
+            <select id="explain3">
+                <option selected>choose...</option>
+                <option>magnetism is a physical property</option>
+                <option>all metals are magnetic</option>
+                <option>all solids are magnetic</option>
+            </select>.
+        </p>
+    </div>
+
+    <button class="btn btn-success science-btn" onclick="checkExplanation()">Check Explanation</button>
+    <div id="explanationFeedback"></div>
+</section>
+
+<section class="magnet-card">
+    <h2>Part 5: STAAR Quick Check</h2>
+
+    <p class="alert alert-warning">
+        A student tests four objects with a magnet. The magnet attracts a steel paper clip,
+        but it does not attract a plastic straw, a wood craft stick, or a copper penny.
+    </p>
+
+    <label class="form-label"><strong>Which statement is best supported by the evidence?</strong></label>
+    <select id="staar1" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Only some materials are attracted to magnets.</option>
+        <option>All metals are attracted to magnets.</option>
+        <option>All solids are attracted to magnets.</option>
+        <option>Magnets only attract objects that float.</option>
+    </select>
+
+    <label class="form-label"><strong>Which evidence supports the answer?</strong></label>
+    <select id="staar2" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The steel paper clip was attracted, but the copper penny was not.</option>
+        <option>The plastic straw was longer than the paper clip.</option>
+        <option>The wood craft stick was brown.</option>
+        <option>The penny was round.</option>
+    </select>
+
+    <button class="btn btn-success science-btn" onclick="checkSTAAR()">Check STAAR Quick Check</button>
+    <div id="staarFeedback"></div>
+</section>
+
+<script>
+    const objects = [
+        {
+            name: "Iron nail",
+            emoji: "🔩",
+            magnetic: true,
+            evidence: "The iron nail moved toward the magnet."
+        },
+        {
+            name: "Steel paper clip",
+            emoji: "📎",
+            magnetic: true,
+            evidence: "The steel paper clip was attracted to the magnet."
+        },
+        {
+            name: "Plastic straw",
+            emoji: "🥤",
+            magnetic: false,
+            evidence: "The plastic straw did not move toward the magnet."
+        },
+        {
+            name: "Wood craft stick",
+            emoji: "🪵",
+            magnetic: false,
+            evidence: "The wood craft stick did not move toward the magnet."
+        },
+        {
+            name: "Copper penny",
+            emoji: "🪙",
+            magnetic: false,
+            evidence: "The copper penny did not move toward the magnet."
+        },
+        {
+            name: "Rubber eraser",
+            emoji: "🧽",
+            magnetic: false,
+            evidence: "The rubber eraser did not move toward the magnet."
+        },
+        {
+            name: "Steel screw",
+            emoji: "🔩",
+            magnetic: true,
+            evidence: "The steel screw moved toward the magnet."
+        },
+        {
+            name: "Aluminum foil",
+            emoji: "⬜",
+            magnetic: false,
+            evidence: "The aluminum foil did not move toward the magnet."
+        }
+    ];
+
+    let selectedObject = null;
+    let dataRows = [];
+
+    function showFeedback(elementId, message, kind) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + kind;
+        box.innerHTML = message;
+    }
+
+    function renderObjectButtons() {
+        const area = document.getElementById("objectButtons");
+        area.innerHTML = "";
+
+        objects.forEach((object, index) => {
+            const button = document.createElement("button");
+            button.className = "object-button";
+            button.innerHTML = object.emoji + "<br>" + object.name;
+            button.onclick = () => chooseObject(index);
+            area.appendChild(button);
+        });
+    }
+
+    function chooseObject(index) {
+        selectedObject = objects[index];
+
+        const objectBox = document.getElementById("testObject");
+        objectBox.className = "test-object";
+        objectBox.innerHTML = selectedObject.emoji + "<br>" + selectedObject.name;
+
+        showFeedback("testFeedback", "Prediction time: Will this object be attracted to the magnet?", "warning");
+    }
+
+    function testObject() {
+        if (!selectedObject) {
+            showFeedback("testFeedback", "Choose an object first.", "incorrect");
+            return;
+        }
+
+        const prediction = document.getElementById("prediction").value;
+
+        if (prediction === "Choose...") {
+            showFeedback("testFeedback", "Make a prediction before testing.", "warning");
+            return;
+        }
+
+        const objectBox = document.getElementById("testObject");
+        const resultText = selectedObject.magnetic ? "Attracted to the magnet" : "Not attracted to the magnet";
+
+        objectBox.className = selectedObject.magnetic ? "test-object attracted" : "test-object not-attracted";
+
+        const predictionCorrect = prediction === resultText;
+
+        dataRows.push({
+            object: selectedObject.name,
+            prediction,
+            result: resultText,
+            evidence: selectedObject.evidence
+        });
+
+        renderData();
+
+        if (predictionCorrect) {
+            showFeedback("testFeedback", "Correct prediction! " + selectedObject.evidence, "correct");
+            makeSparkles();
+        } else {
+            showFeedback("testFeedback", "Good test. Your prediction was not correct this time. Evidence: " + selectedObject.evidence, "warning");
+        }
+    }
+
+    function renderData() {
+        const body = document.getElementById("dataBody");
+        body.innerHTML = "";
+
+        if (dataRows.length === 0) {
+            body.innerHTML = '<tr><td colspan="4">No tests yet.</td></tr>';
+            return;
+        }
+
+        dataRows.forEach(row => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${row.object}</td>
+                <td>${row.prediction}</td>
+                <td>${row.result}</td>
+                <td>${row.evidence}</td>
+            `;
+            body.appendChild(tr);
+        });
+    }
+
+    function resetData() {
+        dataRows = [];
+        renderData();
+        document.getElementById("testFeedback").innerHTML = "Choose an object, make a prediction, and test it.";
+        document.getElementById("testFeedback").className = "feedback warning";
+    }
+
+    function renderSortArea() {
+        const area = document.getElementById("sortArea");
+        area.innerHTML = "";
+
+        objects.forEach((object, index) => {
+            const row = document.createElement("div");
+            row.className = "sort-row";
+            row.innerHTML = `
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <strong>${object.emoji} ${object.name}</strong>
+                    </div>
+                    <div class="col-md-6">
+                        <select id="sort${index}" class="form-select">
+                            <option selected>Choose...</option>
+                            <option>Magnetic</option>
+                            <option>Not magnetic</option>
+                        </select>
+                    </div>
+                </div>
+            `;
+            area.appendChild(row);
+        });
+    }
+
+    function checkSort() {
+        let correct = 0;
+
+        objects.forEach((object, index) => {
+            const answer = document.getElementById("sort" + index).value;
+            const correctAnswer = object.magnetic ? "Magnetic" : "Not magnetic";
+
+            if (answer === correctAnswer) {
+                correct++;
+            }
+        });
+
+        if (correct === objects.length) {
+            showFeedback("sortFeedback", "Excellent! You correctly sorted every object.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("sortFeedback", "You got " + correct + " out of " + objects.length + ". Remember: iron and steel are magnetic, but not all metals are magnetic.", "warning");
+        }
+    }
+
+    function resetSort() {
+        renderSortArea();
+        document.getElementById("sortFeedback").innerHTML = "";
+    }
+
+    function checkExplanation() {
+        const e1 = document.getElementById("explain1").value;
+        const e2 = document.getElementById("explain2").value;
+        const e3 = document.getElementById("explain3").value;
+
+        if (
+            e1 === "iron nail and steel paper clip" &&
+            e2 === "iron or steel" &&
+            e3 === "magnetism is a physical property"
+        ) {
+            showFeedback("explanationFeedback", "Correct! Your explanation uses evidence and science vocabulary.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("explanationFeedback", "Not yet. Use evidence from the objects that were attracted to the magnet.", "incorrect");
+        }
+    }
+
+    function checkSTAAR() {
+        const s1 = document.getElementById("staar1").value;
+        const s2 = document.getElementById("staar2").value;
+
+        if (
+            s1 === "Only some materials are attracted to magnets." &&
+            s2 === "The steel paper clip was attracted, but the copper penny was not."
+        ) {
+            showFeedback("staarFeedback", "Correct! The evidence shows that only some materials are attracted to magnets.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("staarFeedback", "Not yet. Look for the answer that is supported by the test results.", "incorrect");
+        }
+    }
+
+    function makeSparkles() {
+        const stage = document.getElementById("labStage");
+
+        for (let i = 0; i < 8; i++) {
+            const sparkle = document.createElement("div");
+            sparkle.className = "sparkle";
+            sparkle.innerText = ["✨", "⭐", "🧲", "✅"][Math.floor(Math.random() * 4)];
+            sparkle.style.left = (80 + Math.random() * 760) + "px";
+            sparkle.style.top = (30 + Math.random() * 240) + "px";
+            stage.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1200);
+        }
+    }
+
+    renderObjectButtons();
+    renderSortArea();
+    renderData();
+</script>
+
+{% endblock %}
