@@ -15,7 +15,65 @@ day38 = {
 
     "guided_practice": "As a class, discuss how to make the test fair. Students should decide how high the ball will be dropped, what surface will be used, how the ball will be released, and how bounce height will be measured. Emphasize that only the ball type should change.",
 
-    "lab": "Design Your Own Lab: students design and conduct a fair investigation to test which ball bounces higher. Students test at least three ball types, complete repeated trials, record bounce-height data, and prepare to analyze the results on Day 39.",
+    "interactive_activity_title": "Ball Bounce Lab Designer Challenge",
+
+    "interactive_activity": "Students read ball bounce scenarios and identify variables, controlled variables, fair test problems, data patterns, claims, and evidence.",
+
+    "ball_bounce_cards": [
+        {
+            "scenario": "A student drops a foam ball, tennis ball, and rubber ball from the same height onto the same surface.",
+            "student_task": "Identify the independent and dependent variables.",
+            "independent_variable": "Type of ball",
+            "dependent_variable": "Bounce height",
+            "controlled_variables": "Same drop height, same surface, same release method, same measuring tool",
+            "science_note": "This is a fair test because only the ball type changes."
+        },
+        {
+            "scenario": "A student drops a rubber ball from 100 cm but drops a foam ball from 50 cm.",
+            "student_task": "Explain why this is not a fair test.",
+            "independent_variable": "Type of ball",
+            "dependent_variable": "Bounce height",
+            "controlled_variables": "Drop height should stay the same",
+            "science_note": "Changing drop height adds another variable."
+        },
+        {
+            "scenario": "A student drops one ball on tile and another ball on carpet.",
+            "student_task": "Identify the controlled variable problem.",
+            "independent_variable": "Type of ball",
+            "dependent_variable": "Bounce height",
+            "controlled_variables": "Surface should stay the same",
+            "science_note": "Changing the surface makes it hard to know if ball type caused the bounce difference."
+        },
+        {
+            "scenario": "A rubber ball bounced 74 cm, a tennis ball bounced 48 cm, and a foam ball bounced 18 cm.",
+            "student_task": "Identify the pattern and write a claim.",
+            "independent_variable": "Type of ball",
+            "dependent_variable": "Bounce height",
+            "controlled_variables": "Same drop height, surface, release method, and measuring tool",
+            "science_note": "Pattern: different ball types bounced to different heights. Claim: the rubber ball bounced highest."
+        },
+        {
+            "scenario": "A group completes three trials for each ball type.",
+            "student_task": "Explain why repeated trials are helpful.",
+            "independent_variable": "Type of ball",
+            "dependent_variable": "Bounce height",
+            "controlled_variables": "Same setup for every trial",
+            "science_note": "Repeated trials make the data more reliable."
+        },
+        {
+            "scenario": "A student writes: The rubber ball bounced higher because it bounced 74 cm, while the foam ball bounced only 18 cm.",
+            "student_task": "Identify the claim and evidence.",
+            "independent_variable": "Type of ball",
+            "dependent_variable": "Bounce height",
+            "controlled_variables": "Same drop height, surface, and release method",
+            "science_note": "Claim: the rubber ball bounced higher. Evidence: 74 cm compared with 18 cm."
+        }
+    ],
+
+    "lab": "Ball Bounce Lab Designer: students use the simulator and classroom materials to design a fair investigation. Students choose variables, check if the test is fair, test different balls, collect bounce-height data, graph results, and write a claim supported by evidence.",
+
+    "lab_link": "/labs/ball-bounce-designer",
+    "lab_link_text": "Open Ball Bounce Lab Designer Simulator",
 
     "lab_notebook": "Students record the ball type, Trial 1 bounce height, Trial 2 bounce height, Trial 3 bounce height, average or pattern, and evidence statement. Students should also write whether their hypothesis was supported by the data.",
 
@@ -34,22 +92,12 @@ day38 = {
     "staar_practice": [
         {
             "question": "A student tests which ball bounces higher by dropping different balls from the same height. What is the independent variable?",
-            "choices": [
-                "Type of ball",
-                "Bounce height",
-                "Same drop height",
-                "Same surface"
-            ],
+            "choices": ["Type of ball", "Bounce height", "Same drop height", "Same surface"],
             "answer": "Type of ball"
         },
         {
             "question": "In the ball bounce investigation, what is the dependent variable?",
-            "choices": [
-                "Bounce height",
-                "Type of ball",
-                "Same measuring tool",
-                "Same release method"
-            ],
+            "choices": ["Bounce height", "Type of ball", "Same measuring tool", "Same release method"],
             "answer": "Bounce height"
         },
         {
@@ -64,32 +112,17 @@ day38 = {
         },
         {
             "question": "Why should students complete three trials for each ball?",
-            "choices": [
-                "To make the data more reliable",
-                "To change the independent variable every time",
-                "To avoid using a data table",
-                "To make the investigation unfair"
-            ],
+            "choices": ["To make the data more reliable", "To change the independent variable every time", "To avoid using a data table", "To make the investigation unfair"],
             "answer": "To make the data more reliable"
         },
         {
             "question": "A rubber ball bounced 72 cm, a tennis ball bounced 48 cm, and a foam ball bounced 18 cm. Which claim is best supported?",
-            "choices": [
-                "The rubber ball bounced the highest",
-                "The foam ball bounced the highest",
-                "All balls bounced the same height",
-                "Ball type did not affect bounce height"
-            ],
+            "choices": ["The rubber ball bounced the highest", "The foam ball bounced the highest", "All balls bounced the same height", "Ball type did not affect bounce height"],
             "answer": "The rubber ball bounced the highest"
         },
         {
             "question": "Which evidence best supports the claim that the rubber ball bounced higher than the foam ball?",
-            "choices": [
-                "The rubber ball bounced 72 cm and the foam ball bounced 18 cm",
-                "The balls were dropped in a classroom",
-                "The student used a pencil",
-                "The balls were different colors"
-            ],
+            "choices": ["The rubber ball bounced 72 cm and the foam ball bounced 18 cm", "The balls were dropped in a classroom", "The student used a pencil", "The balls were different colors"],
             "answer": "The rubber ball bounced 72 cm and the foam ball bounced 18 cm"
         }
     ],

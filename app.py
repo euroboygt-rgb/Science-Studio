@@ -249,6 +249,12 @@ def balloon_rocket_lab():
     return render_template("balloon_rocket_lab.html")
 
 
+
+@app.route("/labs/ball-bounce-designer")
+def ball_bounce_designer_lab():
+    return render_template("ball_bounce_designer_lab.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
