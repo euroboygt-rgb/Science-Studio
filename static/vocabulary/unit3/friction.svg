@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
+<rect width="720" height="420" rx="24" fill="white"/>
+<rect x="18" y="18" width="684" height="384" rx="22" fill="#f8f9fa" stroke="#111" stroke-width="5"/>
+<text x="360" y="58" text-anchor="middle" font-size="38" font-weight="bold" font-family="Arial">Friction</text>
+
+        <rect x="290" y="145" width="150" height="85" rx="14" fill="#e9ecef" stroke="#111" stroke-width="6"/>
+        <text x="365" y="198" text-anchor="middle" font-size="25" font-family="Arial">Book</text>
+        <line x1="250" y1="105" x2="430" y2="105" stroke="#111" stroke-width="10"/>
+        <polygon points="445,105 405,80 405,130" fill="#111"/>
+        <text x="340" y="80" text-anchor="middle" font-size="25" font-family="Arial">motion</text>
+        <line x1="455" y1="265" x2="270" y2="265" stroke="#111" stroke-width="10"/>
+        <polygon points="255,265 295,240 295,290" fill="#111"/>
+        <text x="360" y="305" text-anchor="middle" font-size="25" font-family="Arial">friction</text>
+        <rect x="90" y="235" width="540" height="35" fill="#c9b18f" stroke="#111" stroke-width="4"/>
+        
+<text x="360" y="385" text-anchor="middle" font-size="26" font-family="Arial">Opposite motion</text>
+</svg>

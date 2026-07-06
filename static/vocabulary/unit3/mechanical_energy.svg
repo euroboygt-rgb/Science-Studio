@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
+<rect width="720" height="420" rx="24" fill="white"/>
+<rect x="18" y="18" width="684" height="384" rx="22" fill="#f8f9fa" stroke="#111" stroke-width="5"/>
+<text x="360" y="58" text-anchor="middle" font-size="38" font-weight="bold" font-family="Arial">Mechanical Energy</text>
+
+        <circle cx="210" cy="215" r="38" fill="#e9ecef" stroke="#111" stroke-width="6"/>
+        <circle cx="470" cy="215" r="38" fill="#e9ecef" stroke="#111" stroke-width="6"/>
+        <line x1="255" y1="215" x2="420" y2="215" stroke="#111" stroke-width="10"/>
+        <polygon points="435,215 395,190 395,240" fill="#111"/>
+        <text x="340" y="175" text-anchor="middle" font-size="28" font-family="Arial">moving</text>
+        <path d="M150 285 Q340 330 540 285" fill="none" stroke="#111" stroke-width="6"/>
+        
+<text x="360" y="385" text-anchor="middle" font-size="26" font-family="Arial">Energy of motion</text>
+</svg>

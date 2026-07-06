@@ -163,7 +163,7 @@ day29 = {
     "vocabulary": [
         {
             "term": "force",
-            "image": "/static/vocabulary/unit3/force.png",
+            "image": "/static/vocabulary/unit3/force.svg",
             "picture": "Picture of a person pushing an object",
             "definition": "A push or pull that can change the position or motion of an object.",
             "example": "A student pushes a toy car to make it move.",
@@ -218,7 +218,7 @@ day29 = {
         },
         {
             "term": "mechanical energy",
-            "image": "/static/vocabulary/unit3/mechanical_energy.png",
+            "image": "/static/vocabulary/unit3/mechanical_energy.svg",
             "picture": "Picture of a moving object",
             "definition": "Energy of motion.",
             "example": "A moving toy car has mechanical energy.",

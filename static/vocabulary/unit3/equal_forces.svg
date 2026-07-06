@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
+<rect width="720" height="420" rx="24" fill="white"/>
+<rect x="18" y="18" width="684" height="384" rx="22" fill="#f8f9fa" stroke="#111" stroke-width="5"/>
+<text x="360" y="58" text-anchor="middle" font-size="38" font-weight="bold" font-family="Arial">Equal Forces</text>
+
+        <rect x="285" y="150" width="150" height="95" rx="15" fill="#e9ecef" stroke="#111" stroke-width="6"/>
+        <text x="360" y="208" text-anchor="middle" font-size="28" font-family="Arial">Box</text>
+        <line x1="110" y1="198" x2="270" y2="198" stroke="#111" stroke-width="12"/>
+        <polygon points="270,198 230,173 230,223" fill="#111"/>
+        <line x1="610" y1="198" x2="450" y2="198" stroke="#111" stroke-width="12"/>
+        <polygon points="450,198 490,173 490,223" fill="#111"/>
+        <text x="190" y="160" text-anchor="middle" font-size="25" font-family="Arial">50 N</text>
+        <text x="530" y="160" text-anchor="middle" font-size="25" font-family="Arial">50 N</text>
+        
+<text x="360" y="385" text-anchor="middle" font-size="26" font-family="Arial">Same strength, opposite directions</text>
+</svg>

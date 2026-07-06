@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
+<rect width="720" height="420" rx="24" fill="white"/>
+<rect x="18" y="18" width="684" height="384" rx="22" fill="#f8f9fa" stroke="#111" stroke-width="5"/>
+<text x="360" y="58" text-anchor="middle" font-size="38" font-weight="bold" font-family="Arial">Magnetism</text>
+
+        <rect x="95" y="150" width="190" height="80" rx="14" fill="#e9ecef" stroke="#111" stroke-width="6"/>
+        <line x1="190" y1="150" x2="190" y2="230" stroke="#111" stroke-width="5"/>
+        <text x="143" y="202" text-anchor="middle" font-size="34" font-family="Arial">N</text>
+        <text x="237" y="202" text-anchor="middle" font-size="34" font-family="Arial">S</text>
+        <circle cx="505" cy="190" r="34" fill="#f8f9fa" stroke="#111" stroke-width="6"/>
+        <text x="505" y="199" text-anchor="middle" font-size="22" font-family="Arial">clip</text>
+        <line x1="470" y1="190" x2="310" y2="190" stroke="#111" stroke-width="10"/>
+        <polygon points="295,190 335,165 335,215" fill="#111"/>
+        <text x="400" y="155" text-anchor="middle" font-size="26" font-family="Arial">attract</text>
+        
+<text x="360" y="385" text-anchor="middle" font-size="26" font-family="Arial">Attract or repel</text>
+</svg>

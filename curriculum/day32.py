@@ -154,7 +154,7 @@ day32 = {
     "vocabulary": [
         {
             "term": "magnetism",
-            "image": "/static/vocabulary/unit3/magnetism.png",
+            "image": "/static/vocabulary/unit3/magnetism.svg",
             "picture": "Picture of a magnet attracting a paper clip",
             "definition": "An attracting or repelling force that causes a magnetic material to move.",
             "example": "A magnet pulls a paper clip toward it.",
@@ -200,7 +200,7 @@ day32 = {
         },
         {
             "term": "force",
-            "image": "/static/vocabulary/unit3/force.png",
+            "image": "/static/vocabulary/unit3/force.svg",
             "picture": "Picture of a push or pull acting on an object",
             "definition": "A push or pull that can change the position or motion of an object.",
             "example": "Magnetism is a force that can pull a paper clip.",

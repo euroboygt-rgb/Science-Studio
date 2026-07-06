@@ -148,7 +148,7 @@ day28 = {
     "vocabulary": [
         {
             "term": "unequal forces",
-            "image": "/static/vocabulary/unit3/unequal_forces.png",
+            "image": "/static/vocabulary/unit3/unequal_forces.svg",
             "picture": "Picture of one large force arrow and one smaller force arrow acting on an object",
             "definition": "Forces acting on an object in different directions that are not the same strength.",
             "example": "A stronger push to the right and a weaker push to the left are unequal forces.",
@@ -167,7 +167,7 @@ day28 = {
         },
         {
             "term": "force",
-            "image": "/static/vocabulary/unit3/force.png",
+            "image": "/static/vocabulary/unit3/force.svg",
             "picture": "Picture of a person pushing an object",
             "definition": "A push or pull that can change the position or motion of an object.",
             "example": "A push can make a toy car move.",

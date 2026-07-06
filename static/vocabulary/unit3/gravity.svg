@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
+<rect width="720" height="420" rx="24" fill="white"/>
+<rect x="18" y="18" width="684" height="384" rx="22" fill="#f8f9fa" stroke="#111" stroke-width="5"/>
+<text x="360" y="58" text-anchor="middle" font-size="38" font-weight="bold" font-family="Arial">Gravity</text>
+
+        <circle cx="360" cy="120" r="42" fill="#e9ecef" stroke="#111" stroke-width="6"/>
+        <line x1="360" y1="180" x2="360" y2="290" stroke="#111" stroke-width="12"/>
+        <polygon points="360,305 330,260 390,260" fill="#111"/>
+        <rect x="90" y="315" width="540" height="35" fill="#d9d9d9" stroke="#111" stroke-width="4"/>
+        <text x="360" y="345" text-anchor="middle" font-size="22" font-family="Arial">Earth</text>
+        
+<text x="360" y="385" text-anchor="middle" font-size="26" font-family="Arial">Gravity pulls downward</text>
+</svg>

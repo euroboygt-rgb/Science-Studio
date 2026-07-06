@@ -149,7 +149,7 @@ day31 = {
     "vocabulary": [
         {
             "term": "friction",
-            "image": "/static/vocabulary/unit3/friction.png",
+            "image": "/static/vocabulary/unit3/friction.svg",
             "picture": "Picture of an object sliding on a rough surface",
             "definition": "A force that acts in the opposite direction to movement.",
             "example": "Friction from carpet can slow down a toy car.",
@@ -159,7 +159,7 @@ day31 = {
         },
         {
             "term": "force",
-            "image": "/static/vocabulary/unit3/force.png",
+            "image": "/static/vocabulary/unit3/force.svg",
             "picture": "Picture of a push or pull acting on an object",
             "definition": "A push or pull that can change the position or motion of an object.",
             "example": "Friction is a force that can slow an object down.",

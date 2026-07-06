@@ -126,7 +126,7 @@ day26 = {
     "vocabulary": [
         {
             "term": "force",
-            "image": "/static/vocabulary/unit3/force.png",
+            "image": "/static/vocabulary/unit3/force.svg",
             "picture": "Picture of a person pushing an object",
             "definition": "A push or pull that can change the position or motion of an object.",
             "example": "Kicking a soccer ball uses force to make the ball move.",

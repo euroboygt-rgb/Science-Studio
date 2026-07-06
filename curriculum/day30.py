@@ -147,7 +147,7 @@ day30 = {
     "vocabulary": [
         {
             "term": "gravity",
-            "image": "/static/vocabulary/unit3/gravity.png",
+            "image": "/static/vocabulary/unit3/gravity.svg",
             "picture": "Picture of an object falling toward Earth",
             "definition": "A force that pulls objects toward each other.",
             "example": "Gravity pulls a dropped ball toward the ground.",
@@ -157,7 +157,7 @@ day30 = {
         },
         {
             "term": "force",
-            "image": "/static/vocabulary/unit3/force.png",
+            "image": "/static/vocabulary/unit3/force.svg",
             "picture": "Picture of a push or pull acting on an object",
             "definition": "A push or pull that can change the position or motion of an object.",
             "example": "Gravity is a force that pulls objects downward.",
@@ -203,7 +203,7 @@ day30 = {
         },
         {
             "term": "mechanical energy",
-            "image": "/static/vocabulary/unit3/mechanical_energy.png",
+            "image": "/static/vocabulary/unit3/mechanical_energy.svg",
             "picture": "Picture of a moving object",
             "definition": "Energy of motion.",
             "example": "A falling ball has mechanical energy because it is moving.",

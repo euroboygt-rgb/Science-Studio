@@ -138,7 +138,7 @@ day27 = {
     "vocabulary": [
         {
             "term": "equal forces",
-            "image": "/static/vocabulary/unit3/equal_forces.png",
+            "image": "/static/vocabulary/unit3/equal_forces.svg",
             "picture": "Picture of two equal arrows pushing or pulling in opposite directions",
             "definition": "Two or more forces that act on an object in different directions with the same strength.",
             "example": "Two teams pulling on a rope with the same strength create equal forces.",
@@ -157,7 +157,7 @@ day27 = {
         },
         {
             "term": "force",
-            "image": "/static/vocabulary/unit3/force.png",
+            "image": "/static/vocabulary/unit3/force.svg",
             "picture": "Picture of a person pushing an object",
             "definition": "A push or pull that can change the position or motion of an object.",
             "example": "Pushing a box uses force.",
