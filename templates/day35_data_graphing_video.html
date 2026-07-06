@@ -120,6 +120,7 @@
 
     .iv { left: 35px; bottom: 35px; }
     .dv { right: 35px; top: 25px; }
+
     .control-panel {
         background: #f8f9fa;
         border: 2px solid #ddd;
@@ -135,11 +136,11 @@
     <div class="control-panel">
         <div class="row">
             <div class="col-md-4">
-                <label class="form-label"><strong>Video speed:</strong></label>
+                <label class="form-label"><strong>Silent video speed:</strong></label>
                 <select id="speedSelect" class="form-select">
                     <option value="1">Normal</option>
                     <option value="1.5" selected>Slow</option>
-                    <option value="2.1">Extra slow</option>
+                    <option value="2.2">Extra slow</option>
                 </select>
             </div>
 
@@ -192,7 +193,8 @@
 
     <button class="btn btn-primary" onclick="startMiniLesson(true)">Start with Voice</button>
     <button class="btn btn-success" onclick="startMiniLesson(false)">Start Silent</button>
-    <button class="btn btn-warning" onclick="speakCurrentCaption()">Repeat Current Step</button>
+    <button class="btn btn-info" onclick="playCurrentStep()">Repeat Current Step</button>
+    <button class="btn btn-warning" onclick="nextStep()">Next Step</button>
     <button class="btn btn-danger" onclick="stopVoice()">Stop Voice</button>
     <button class="btn btn-secondary" onclick="resetMiniLesson()">Reset</button>
 </div>
@@ -214,22 +216,23 @@
     let timers = [];
     let currentCaption = "Click Start with Voice or Start Silent.";
     let voices = [];
+    let currentStepIndex = 0;
+    let currentUtterance = null;
+    let runId = 0;
+    let usingVoice = false;
 
     const steps = [
         {
-            time: 300,
             text: "Step 1: Ask a testable question. How does ramp height affect the distance a toy car travels?",
             action: () => {}
         },
         {
-            time: 3200,
             text: "Step 2: Change one thing on purpose. Ramp height is the independent variable.",
             action: () => {
                 document.getElementById("ivLabel").style.display = "block";
             }
         },
         {
-            time: 6600,
             text: "Step 3: Measure the result. Distance traveled is the dependent variable.",
             action: () => {
                 document.getElementById("dvLabel").style.display = "block";
@@ -238,21 +241,18 @@
             }
         },
         {
-            time: 10100,
             text: "Step 4: Put the measurements in a data table. Repeated trials make the data more reliable.",
             action: () => {
                 document.getElementById("dataTable").style.display = "block";
             }
         },
         {
-            time: 13900,
             text: "Step 5: Make a graph. The x-axis gets the independent variable. The y-axis gets the dependent variable.",
             action: () => {
                 document.getElementById("graph").style.display = "block";
             }
         },
         {
-            time: 18000,
             text: "Step 6: Use the graph pattern as evidence for your claim. In this example, the car traveled farther when ramp height increased.",
             action: () => {}
         }
@@ -264,7 +264,7 @@
 
         if (!voiceSelect) return;
 
-        const currentValue = voiceSelect.value;
+        const oldValue = voiceSelect.value;
         voiceSelect.innerHTML = '<option value="">Default browser voice</option>';
 
         voices.forEach((voice, index) => {
@@ -274,16 +274,12 @@
             voiceSelect.appendChild(option);
         });
 
-        voiceSelect.value = currentValue;
+        voiceSelect.value = oldValue;
     }
 
     if ("speechSynthesis" in window) {
         window.speechSynthesis.onvoiceschanged = loadVoices;
         loadVoices();
-    }
-
-    function getSpeedMultiplier() {
-        return Number(document.getElementById("speedSelect").value);
     }
 
     function stopTimers() {
@@ -295,16 +291,25 @@
         if ("speechSynthesis" in window) {
             window.speechSynthesis.cancel();
         }
+        currentUtterance = null;
     }
 
-    function speak(text) {
+    function setCaption(text) {
+        currentCaption = text;
+        document.getElementById("caption").innerHTML = text;
+    }
+
+    function speak(text, afterDone) {
         if (!("speechSynthesis" in window)) {
+            if (afterDone) afterDone();
             return;
         }
 
         stopVoice();
 
         const utterance = new SpeechSynthesisUtterance(text);
+        currentUtterance = utterance;
+
         utterance.rate = Number(document.getElementById("voiceSpeedSelect").value);
         utterance.pitch = 1;
         utterance.volume = 1;
@@ -314,48 +319,78 @@
             utterance.voice = voices[Number(voiceChoice)];
         }
 
+        utterance.onend = function() {
+            currentUtterance = null;
+            if (afterDone) afterDone();
+        };
+
+        utterance.onerror = function() {
+            currentUtterance = null;
+            if (afterDone) afterDone();
+        };
+
         window.speechSynthesis.speak(utterance);
     }
 
-    function setCaption(text, useVoice) {
-        currentCaption = text;
-        document.getElementById("caption").innerHTML = text;
-        if (useVoice) {
-            speak(text);
+    function showStep(index, speakIt, autoAdvance, thisRunId) {
+        if (thisRunId !== runId || index >= steps.length) return;
+
+        currentStepIndex = index;
+        steps[index].action();
+        setCaption(steps[index].text);
+
+        if (speakIt) {
+            speak(steps[index].text, () => {
+                if (thisRunId !== runId) return;
+                if (autoAdvance) {
+                    const pause = setTimeout(() => {
+                        showStep(index + 1, true, true, thisRunId);
+                    }, 900);
+                    timers.push(pause);
+                }
+            });
+        } else if (autoAdvance) {
+            const speedMultiplier = Number(document.getElementById("speedSelect").value);
+            const timer = setTimeout(() => {
+                showStep(index + 1, false, true, thisRunId);
+            }, 3600 * speedMultiplier);
+            timers.push(timer);
         }
     }
 
-    function speakCurrentCaption() {
-        speak(currentCaption);
+    function startMiniLesson(useVoice) {
+        resetMiniLesson();
+        usingVoice = useVoice;
+        runId++;
+        showStep(0, useVoice, true, runId);
+    }
+
+    function playCurrentStep() {
+        runId++;
+        showStep(currentStepIndex, true, false, runId);
+    }
+
+    function nextStep() {
+        runId++;
+        const next = Math.min(currentStepIndex + 1, steps.length - 1);
+        showStep(next, usingVoice, false, runId);
     }
 
     function resetMiniLesson() {
+        runId++;
         stopTimers();
         stopVoice();
 
-        currentCaption = "Click Start with Voice or Start Silent.";
-        document.getElementById("caption").innerHTML = currentCaption;
+        currentStepIndex = 0;
+        usingVoice = false;
+        setCaption("Click Start with Voice or Start Silent.");
+
         document.getElementById("ivLabel").style.display = "none";
         document.getElementById("dvLabel").style.display = "none";
         document.getElementById("dataTable").style.display = "none";
         document.getElementById("graph").style.display = "none";
         document.getElementById("car").style.left = "130px";
         document.getElementById("car").style.bottom = "155px";
-    }
-
-    function startMiniLesson(useVoice) {
-        resetMiniLesson();
-
-        const speedMultiplier = getSpeedMultiplier();
-
-        steps.forEach(step => {
-            const timer = setTimeout(() => {
-                step.action();
-                setCaption(step.text, useVoice);
-            }, step.time * speedMultiplier);
-
-            timers.push(timer);
-        });
     }
 
     resetMiniLesson();
