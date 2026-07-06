@@ -317,6 +317,12 @@ def teacher_dashboard():
     return render_template("teacher_dashboard.html")
 
 
+
+@app.route("/student-dashboard")
+def student_dashboard():
+    return render_template("student_dashboard.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
