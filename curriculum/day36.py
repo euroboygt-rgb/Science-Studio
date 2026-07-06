@@ -15,7 +15,65 @@ day36 = {
 
     "guided_practice": "As a class, build a sample setup. Identify the starting line, ramp height, measuring line, and stopping point. Practice how to release the car without pushing it. Discuss why pushing the car would make the test unfair.",
 
-    "lab": "Car on a Ramp Investigation: students test three ramp heights to determine how ramp height affects the distance a toy car travels. Students conduct at least three trials for each ramp height, record data, compare results, and write a claim supported by evidence.",
+    "interactive_activity_title": "Car on a Ramp Investigation Challenge",
+
+    "interactive_activity": "Students read ramp investigation scenarios and identify variables, controlled variables, fair test problems, data patterns, claims, and evidence.",
+
+    "ramp_investigation_cards": [
+        {
+            "scenario": "A student tests low, medium, and high ramp heights using the same toy car.",
+            "student_task": "Identify the independent and dependent variables.",
+            "independent_variable": "Ramp height",
+            "dependent_variable": "Distance the toy car travels",
+            "controlled_variables": "Same toy car, same ramp, same surface, same starting line, same measuring tool",
+            "fair_test_note": "Only ramp height changes."
+        },
+        {
+            "scenario": "A student pushes the toy car harder on the high ramp than on the low ramp.",
+            "student_task": "Explain why this is not a fair test.",
+            "independent_variable": "Ramp height",
+            "dependent_variable": "Distance the toy car travels",
+            "controlled_variables": "The release method should stay the same",
+            "fair_test_note": "Pushing the car adds another variable, so the test is not fair."
+        },
+        {
+            "scenario": "A student uses a different toy car for each ramp height.",
+            "student_task": "Identify the controlled variable problem.",
+            "independent_variable": "Ramp height",
+            "dependent_variable": "Distance the toy car travels",
+            "controlled_variables": "Same toy car should be used each time",
+            "fair_test_note": "Changing cars makes it hard to know if ramp height caused the distance change."
+        },
+        {
+            "scenario": "The toy car travels 40 cm from the low ramp, 66 cm from the medium ramp, and 91 cm from the high ramp.",
+            "student_task": "Identify the pattern and write a claim.",
+            "independent_variable": "Ramp height",
+            "dependent_variable": "Distance the toy car travels",
+            "controlled_variables": "Same car, same surface, same starting line",
+            "fair_test_note": "Pattern: as ramp height increased, distance traveled increased."
+        },
+        {
+            "scenario": "A group completes three trials for each ramp height.",
+            "student_task": "Explain why repeated trials are helpful.",
+            "independent_variable": "Ramp height",
+            "dependent_variable": "Distance the toy car travels",
+            "controlled_variables": "Same setup for every trial",
+            "fair_test_note": "Repeated trials make the data more reliable."
+        },
+        {
+            "scenario": "A student writes: The high ramp made the car go farther because it traveled 92 cm from the high ramp and 38 cm from the low ramp.",
+            "student_task": "Identify the claim and evidence.",
+            "independent_variable": "Ramp height",
+            "dependent_variable": "Distance the toy car travels",
+            "controlled_variables": "Same car, ramp, surface, and release method",
+            "fair_test_note": "Claim: high ramp made the car go farther. Evidence: 92 cm compared with 38 cm."
+        }
+    ],
+
+    "lab": "Car on a Ramp Investigation: students use a simulator and classroom materials to test three ramp heights. Students conduct repeated trials, record distance data, build a graph, identify a pattern, and write a claim supported by evidence.",
+
+    "lab_link": "/labs/ramp-investigation",
+    "lab_link_text": "Open Car on a Ramp Investigation Simulator",
 
     "lab_notebook": "Students record the ramp height, Trial 1, Trial 2, Trial 3, average or pattern, and evidence statement. Students then write a claim explaining how ramp height affected motion.",
 
@@ -34,22 +92,12 @@ day36 = {
     "staar_practice": [
         {
             "question": "A student tests how ramp height affects the distance a toy car travels. What is the independent variable?",
-            "choices": [
-                "Ramp height",
-                "Distance the toy car travels",
-                "The same toy car",
-                "The meterstick"
-            ],
+            "choices": ["Ramp height", "Distance the toy car travels", "The same toy car", "The meterstick"],
             "answer": "Ramp height"
         },
         {
             "question": "In the ramp investigation, what is the dependent variable?",
-            "choices": [
-                "Distance the toy car travels",
-                "Ramp height",
-                "Same surface",
-                "Same starting line"
-            ],
+            "choices": ["Distance the toy car travels", "Ramp height", "Same surface", "Same starting line"],
             "answer": "Distance the toy car travels"
         },
         {
@@ -64,12 +112,7 @@ day36 = {
         },
         {
             "question": "Why should the student complete three trials at each ramp height?",
-            "choices": [
-                "To make the data more reliable",
-                "To change all variables",
-                "To avoid recording data",
-                "To make the ramp shorter"
-            ],
+            "choices": ["To make the data more reliable", "To change all variables", "To avoid recording data", "To make the ramp shorter"],
             "answer": "To make the data more reliable"
         },
         {

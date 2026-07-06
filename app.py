@@ -233,6 +233,12 @@ def data_graphing_lab():
     return render_template("data_graphing_lab.html")
 
 
+
+@app.route("/labs/ramp-investigation")
+def ramp_investigation_lab():
+    return render_template("ramp_investigation_lab.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
