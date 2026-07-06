@@ -494,6 +494,32 @@
 
 
 
+
+                {% if lesson.get("reflection_tasks") %}
+                <div class="row">
+                    {% for task in lesson.get("reflection_tasks") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>{{ task.task }}</h5>
+                            <p><strong>Description:</strong> {{ task.description }}</p>
+                            <p><strong>Student Goal:</strong> {{ task.student_goal }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% if lesson.get("notebook_checklist") %}
+                <div class="border rounded p-3 bg-light mb-3">
+                    <h5>Notebook Checklist</h5>
+                    <ul>
+                        {% for item in lesson.get("notebook_checklist") %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
                 {% if lesson.get("station_rotation") %}
                 <div class="row">
                     {% for station in lesson.get("station_rotation") %}

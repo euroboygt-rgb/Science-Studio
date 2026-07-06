@@ -305,6 +305,12 @@ def staar_digital_assessment():
     return render_template("staar_digital_assessment.html")
 
 
+
+@app.route("/labs/reflection-tracker")
+def reflection_tracker():
+    return render_template("reflection_tracker.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

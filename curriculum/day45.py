@@ -15,7 +15,14 @@ day45 = {
 
     "guided_practice": "Model how to reflect using data. Example: 'I scored strongest on mixtures because I can explain how to separate gravel and sand by particle size. I need more practice with variables because I sometimes mix up independent and dependent variables. My goal is to identify what is changed and what is measured in every investigation.'",
 
+    "interactive_activity_title": "Reflection Tracker and Goal-Setting Tool",
+
+    "interactive_activity": "Students use assessment data, notebook evidence, confidence ratings, and goal-setting prompts to reflect on the 1st 9 weeks and prepare for the next unit.",
+
     "lab": "Reflection and Notebook Check: students review their Day 44 assessment results, complete a notebook checklist, finish missing work, create a personal science goal, and preview the next unit.",
+
+    "lab_link": "/labs/reflection-tracker",
+    "lab_link_text": "Open Reflection Tracker and Goal-Setting Tool",
 
     "lab_notebook": "Students complete a reflection table using assessment topics, confidence ratings, evidence from their work, and an action step for improvement.",
 
