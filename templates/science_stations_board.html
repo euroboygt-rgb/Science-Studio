@@ -352,6 +352,21 @@
         color: #664d03;
     }
 
+    .summary-input {
+        min-width: 180px;
+        font-size: 14px;
+    }
+
+    .summary-evidence {
+        min-width: 240px;
+        font-size: 14px;
+    }
+
+    .summary-action-btn {
+        margin: 2px;
+        white-space: nowrap;
+    }
+
     .sparkle {
         position: absolute;
         font-size: 28px;
@@ -516,6 +531,7 @@
                     <th>Evidence or Reasoning</th>
                     <th>Confidence</th>
                     <th>Complete?</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody id="summaryTable"></tbody>
@@ -523,6 +539,7 @@
     </div>
 
     <button class="btn btn-danger" onclick="clearAllWork()">Clear All Station Work</button>
+    <button class="btn btn-primary" onclick="window.print()">Print Station Summary</button>
 </div>
 
 <script>
@@ -1500,17 +1517,78 @@
 
         stations.forEach(station => {
             const saved = work[station.id] || {};
+
             const row = document.createElement("tr");
             row.innerHTML = `
-                <td>Station ${station.id}</td>
+                <td><strong>Station ${station.id}</strong></td>
                 <td>${station.topic}</td>
-                <td>${saved.answer || ""}</td>
-                <td>${saved.evidence || ""}</td>
-                <td>${saved.confidence || ""}</td>
-                <td>${saved.complete ? "✅ Yes" : ""}</td>
+                <td>
+                    <textarea id="summaryAnswer${station.id}" class="form-control summary-input" rows="2" placeholder="Type answer">${saved.answer || ""}</textarea>
+                </td>
+                <td>
+                    <textarea id="summaryEvidence${station.id}" class="form-control summary-evidence" rows="2" placeholder="Type evidence">${saved.evidence || ""}</textarea>
+                </td>
+                <td>
+                    <select id="summaryConfidence${station.id}" class="form-select summary-input">
+                        <option ${!saved.confidence || saved.confidence === "Choose..." ? "selected" : ""}>Choose...</option>
+                        <option ${saved.confidence === "1 - I need help" ? "selected" : ""}>1 - I need help</option>
+                        <option ${saved.confidence === "2 - I am starting to understand" ? "selected" : ""}>2 - I am starting to understand</option>
+                        <option ${saved.confidence === "3 - I understand most of it" ? "selected" : ""}>3 - I understand most of it</option>
+                        <option ${saved.confidence === "4 - I can explain it to someone else" ? "selected" : ""}>4 - I can explain it to someone else</option>
+                    </select>
+                </td>
+                <td id="summaryComplete${station.id}">${saved.complete ? "✅ Yes" : ""}</td>
+                <td>
+                    <button class="btn btn-sm btn-secondary summary-action-btn" onclick="openStationFromSummary(${station.id})">Open</button>
+                    <button class="btn btn-sm btn-success summary-action-btn" onclick="saveSummaryRow(${station.id})">Save</button>
+                    <button class="btn btn-sm btn-warning summary-action-btn" onclick="markSummaryComplete(${station.id})">Complete</button>
+                </td>
             `;
+
             body.appendChild(row);
         });
+    }
+
+    function saveSummaryRow(stationId) {
+        const station = stations.find(s => s.id === stationId);
+
+        work[stationId] = {
+            topic: station.topic,
+            answer: document.getElementById("summaryAnswer" + stationId).value,
+            evidence: document.getElementById("summaryEvidence" + stationId).value,
+            confidence: document.getElementById("summaryConfidence" + stationId).value,
+            complete: work[stationId]?.complete || false
+        };
+
+        saveToStorage();
+        updateProgress();
+        renderStations();
+
+        if (currentStationId === stationId) {
+            document.getElementById("studentAnswer").value = work[stationId].answer;
+            document.getElementById("studentEvidence").value = work[stationId].evidence;
+            document.getElementById("confidenceRating").value = work[stationId].confidence;
+        }
+
+        showFeedback("saveFeedback", "Station " + stationId + " summary row saved.", "correct");
+    }
+
+    function markSummaryComplete(stationId) {
+        saveSummaryRow(stationId);
+        work[stationId].complete = true;
+
+        saveToStorage();
+        updateSummary();
+        updateProgress();
+        renderStations();
+
+        showFeedback("saveFeedback", "Station " + stationId + " marked complete from the summary table.", "correct");
+        makeSparkles();
+    }
+
+    function openStationFromSummary(stationId) {
+        selectStation(stationId);
+        document.getElementById("stationTitle").scrollIntoView({behavior: "smooth", block: "start"});
     }
 
     function updateProgress() {
