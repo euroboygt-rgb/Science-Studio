@@ -482,6 +482,63 @@
 
 
 
+
+                {% if lesson.get("magnetism_force_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("magnetism_force_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>Magnetism Scenario {{ loop.index }}</h5>
+                            <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Object or Magnet Test:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What object or magnets are being tested?"></textarea>
+
+                            <label class="form-label"><strong>Magnetic or Not?</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Magnetic</option>
+                                <option>Not magnetic</option>
+                                <option>Magnetic interaction between magnets</option>
+                            </select>
+
+                            <label class="form-label"><strong>Attract, Repel, or No Effect?</strong></label>
+                            <select class="form-select mb-2">
+                                <option selected>Choose...</option>
+                                <option>Attract</option>
+                                <option>Repel</option>
+                                <option>No effect</option>
+                            </select>
+
+                            <label class="form-label"><strong>Force Direction:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="Which direction did the magnetic force act?"></textarea>
+
+                            <label class="form-label"><strong>Effect on Motion:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="How did motion change?"></textarea>
+
+                            <label class="form-label"><strong>Evidence:</strong></label>
+                            <textarea class="form-control" rows="2" placeholder="What evidence supports your answer?"></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Object:</strong> {{ card.object }}</p>
+                                    <p><strong>Magnetic or Not:</strong> {{ card.magnetic_or_not }}</p>
+                                    <p><strong>Attract or Repel:</strong> {{ card.attract_or_repel }}</p>
+                                    <p><strong>Force Direction:</strong> {{ card.force_direction }}</p>
+                                    <p><strong>Effect on Motion:</strong> {{ card.effect_on_motion }}</p>
+                                    <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("friction_cards") %}
                 <div class="row">
                     {% for card in lesson.get("friction_cards") %}

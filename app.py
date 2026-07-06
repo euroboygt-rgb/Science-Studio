@@ -195,6 +195,12 @@ def friction_surfaces_lab():
     return render_template("friction_surfaces_lab.html")
 
 
+
+@app.route("/labs/magnetism-force")
+def magnetism_force_lab():
+    return render_template("magnetism_force_lab.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

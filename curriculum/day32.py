@@ -15,16 +15,86 @@ day32 = {
 
     "guided_practice": "Show students examples: a magnet attracting a paper clip, a magnet not attracting plastic, two magnets attracting, and two magnets repelling. Students identify the object, whether it is magnetic, the force direction, and the effect on motion.",
 
-    "lab": "Magnetic Force Investigation: students test different objects to see which are attracted to a magnet. Students also observe how two magnets can attract or repel. Students record observations as evidence that magnetism can change motion without direct contact.",
+    "interactive_activity_title": "Magnetism Force Challenge",
 
-    "lab_notebook": "Students record the object tested, material, whether it was attracted to the magnet, direction of motion, and evidence that magnetism acted as a force.",
+    "interactive_activity": "Students read magnetism scenarios and identify whether the force attracts or repels, the direction of motion, and evidence that magnetism acted as a force.",
+
+    "magnetism_force_cards": [
+        {
+            "scenario": "A magnet is placed near a paper clip. The paper clip moves toward the magnet.",
+            "student_task": "Explain how magnetism changed the paper clip's motion.",
+            "object": "Paper clip",
+            "magnetic_or_not": "Magnetic",
+            "attract_or_repel": "Attract",
+            "force_direction": "Toward the magnet",
+            "effect_on_motion": "The paper clip moves toward the magnet.",
+            "evidence": "The paper clip moved without being touched."
+        },
+        {
+            "scenario": "A magnet is placed near a plastic spoon. The spoon does not move.",
+            "student_task": "Explain why the spoon did not move toward the magnet.",
+            "object": "Plastic spoon",
+            "magnetic_or_not": "Not magnetic",
+            "attract_or_repel": "No attraction",
+            "force_direction": "No magnetic motion observed",
+            "effect_on_motion": "The spoon does not move.",
+            "evidence": "Plastic is not attracted to the magnet."
+        },
+        {
+            "scenario": "The north pole of one magnet is placed near the south pole of another magnet. The magnets move toward each other.",
+            "student_task": "Identify the magnetic interaction.",
+            "object": "Two magnets",
+            "magnetic_or_not": "Magnetic interaction",
+            "attract_or_repel": "Attract",
+            "force_direction": "Toward each other",
+            "effect_on_motion": "The magnets move together.",
+            "evidence": "Opposite poles attract."
+        },
+        {
+            "scenario": "The north pole of one magnet is placed near the north pole of another magnet. The magnets push away from each other.",
+            "student_task": "Identify the magnetic interaction.",
+            "object": "Two magnets",
+            "magnetic_or_not": "Magnetic interaction",
+            "attract_or_repel": "Repel",
+            "force_direction": "Away from each other",
+            "effect_on_motion": "The magnets move apart.",
+            "evidence": "Like poles repel."
+        },
+        {
+            "scenario": "A magnet is placed near an iron nail. The nail moves toward the magnet.",
+            "student_task": "Use evidence to decide if the nail is magnetic.",
+            "object": "Iron nail",
+            "magnetic_or_not": "Magnetic",
+            "attract_or_repel": "Attract",
+            "force_direction": "Toward the magnet",
+            "effect_on_motion": "The nail moves toward the magnet.",
+            "evidence": "The nail was attracted to the magnet."
+        },
+        {
+            "scenario": "A magnet is held under a piece of paper with a paper clip on top. The paper clip moves when the magnet moves.",
+            "student_task": "Explain how magnetism acts at a distance.",
+            "object": "Paper clip",
+            "magnetic_or_not": "Magnetic",
+            "attract_or_repel": "Attract",
+            "force_direction": "Toward the hidden magnet",
+            "effect_on_motion": "The paper clip moves even though the magnet is not touching it.",
+            "evidence": "Magnetism can act through the paper and change motion."
+        }
+    ],
+
+    "lab": "Magnetic Force Investigation: students use a simulator and classroom magnets to test attraction, repulsion, magnetic materials, and nonmagnetic materials. Students record evidence that magnetism can change motion without direct contact.",
+
+    "lab_link": "/labs/magnetism-force",
+    "lab_link_text": "Open Magnetism Attract/Repel Simulator",
+
+    "lab_notebook": "Students record the object tested, material, whether it was attracted to the magnet, whether magnets attracted or repelled, direction of motion, and evidence that magnetism acted as a force.",
 
     "lab_notebook_table": {
         "columns": [
-            "Object",
-            "Material",
-            "Attracted to Magnet?",
-            "Attract or Repel?",
+            "Object or Magnet Test",
+            "Material or Poles",
+            "Attract, Repel, or No Effect?",
+            "Direction of Motion",
             "Effect on Motion",
             "Evidence"
         ],
@@ -34,32 +104,17 @@ day32 = {
     "staar_practice": [
         {
             "question": "A magnet is placed near a paper clip. The paper clip moves toward the magnet. Which force caused the paper clip to move?",
-            "choices": [
-                "Magnetism",
-                "Gravity",
-                "Friction",
-                "Evaporation"
-            ],
+            "choices": ["Magnetism", "Gravity", "Friction", "Evaporation"],
             "answer": "Magnetism"
         },
         {
             "question": "Which object would most likely be attracted to a magnet?",
-            "choices": [
-                "Iron nail",
-                "Plastic spoon",
-                "Wooden block",
-                "Rubber eraser"
-            ],
+            "choices": ["Iron nail", "Plastic spoon", "Wooden block", "Rubber eraser"],
             "answer": "Iron nail"
         },
         {
             "question": "Two magnets are placed close together. They push away from each other. Which word describes this magnetic force?",
-            "choices": [
-                "Repel",
-                "Dissolve",
-                "Evaporate",
-                "Measure"
-            ],
+            "choices": ["Repel", "Dissolve", "Evaporate", "Measure"],
             "answer": "Repel"
         },
         {
