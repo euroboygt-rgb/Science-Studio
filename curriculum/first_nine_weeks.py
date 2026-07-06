@@ -46,5 +46,6 @@ first_nine_weeks = [
     {"day": 38, "title": "Design Your Own Lab: Which Ball Bounces Higher?", "teks": ["5.7B", "5.1B", "5.1E"], "lab": True},
     {"day": 39, "title": "Analyze Ball Bounce Data and Make Graphs", "teks": ["5.7B", "5.1B", "5.1E"], "lab": True},
     {"day": 40, "title": "Playground Equipment Engineering Challenge", "teks": ["5.7A", "5.7B", "5.1B", "5.1E"], "lab": True},
+    {"day": 41, "title": "Unit 3 Performance Assessment and Presentation", "teks": ["5.7A", "5.7B", "5.1B", "5.1E", "5.3A"], "lab": True},
 
 ]
