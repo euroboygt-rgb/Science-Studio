@@ -15,7 +15,77 @@ day33 = {
 
     "guided_practice": "Use examples such as a toy car hitting a block, a bowling ball knocking down pins, a soccer ball being kicked, dominoes falling, a bat hitting a ball, and a marble bumping another marble. Students identify the moving object, the object that receives energy, the motion before and after, and evidence that energy transferred.",
 
-    "lab": "Mechanical Energy Transfer Investigation: students use toy cars, balls, blocks, or dominoes to observe how a moving object can transfer energy to another object. Students record how motion changes after contact and use evidence to explain energy transfer.",
+    "interactive_activity_title": "Mechanical Energy Transfer Challenge",
+
+    "interactive_activity": "Students read energy transfer scenarios and identify the moving object, the object receiving energy, the force or contact, motion before, motion after, and evidence that energy transferred.",
+
+    "mechanical_energy_cards": [
+        {
+            "scenario": "A moving toy car hits a small block. The block starts moving.",
+            "student_task": "Explain how energy transferred.",
+            "moving_object": "Toy car",
+            "receiving_object": "Block",
+            "force_or_contact": "The toy car pushes the block during contact.",
+            "motion_before": "The car is moving and the block is at rest.",
+            "motion_after": "The block starts moving.",
+            "evidence": "The block changed from rest to motion after the car hit it."
+        },
+        {
+            "scenario": "One domino falls and knocks down the next domino.",
+            "student_task": "Identify the evidence of energy transfer.",
+            "moving_object": "First domino",
+            "receiving_object": "Next domino",
+            "force_or_contact": "The first domino pushes the next domino.",
+            "motion_before": "The first domino is moving and the next domino is at rest.",
+            "motion_after": "The next domino starts falling.",
+            "evidence": "Motion transferred through the domino chain."
+        },
+        {
+            "scenario": "A marble rolls into another marble. The second marble starts moving.",
+            "student_task": "Explain what happened to the second marble.",
+            "moving_object": "First marble",
+            "receiving_object": "Second marble",
+            "force_or_contact": "The first marble collides with the second marble.",
+            "motion_before": "The first marble is moving and the second marble is at rest.",
+            "motion_after": "The second marble starts moving.",
+            "evidence": "The second marble changed motion after the collision."
+        },
+        {
+            "scenario": "A soccer player kicks a soccer ball. The ball moves forward.",
+            "student_task": "Explain how the ball received energy.",
+            "moving_object": "Player's foot",
+            "receiving_object": "Soccer ball",
+            "force_or_contact": "The foot pushes the ball.",
+            "motion_before": "The ball is at rest.",
+            "motion_after": "The ball starts moving forward.",
+            "evidence": "The ball changed from rest to motion after being kicked."
+        },
+        {
+            "scenario": "A bowling ball rolls into pins. The pins fall over.",
+            "student_task": "Describe the energy transfer.",
+            "moving_object": "Bowling ball",
+            "receiving_object": "Bowling pins",
+            "force_or_contact": "The bowling ball collides with the pins.",
+            "motion_before": "The ball is moving and the pins are at rest.",
+            "motion_after": "The pins move and fall over.",
+            "evidence": "The pins changed motion after the ball hit them."
+        },
+        {
+            "scenario": "A faster toy car hits a block and moves it farther than a slower toy car.",
+            "student_task": "Compare slow motion and fast motion.",
+            "moving_object": "Faster toy car",
+            "receiving_object": "Block",
+            "force_or_contact": "The faster car pushes the block during contact.",
+            "motion_before": "The block is at rest.",
+            "motion_after": "The block moves farther.",
+            "evidence": "The faster moving car caused a greater change in the block's motion."
+        }
+    ],
+
+    "lab": "Mechanical Energy Transfer Investigation: students use a simulator and classroom objects to observe how a moving object can transfer energy to another object. Students record how motion changes after contact and use evidence to explain energy transfer.",
+
+    "lab_link": "/labs/mechanical-energy-transfer",
+    "lab_link_text": "Open Mechanical Energy Transfer Simulator",
 
     "lab_notebook": "Students record the moving object, object receiving energy, force or contact, motion before, motion after, and evidence that energy transferred.",
 

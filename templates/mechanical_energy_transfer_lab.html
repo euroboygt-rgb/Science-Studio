@@ -1,0 +1,488 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Mechanical Energy Transfer Simulator</h1>
+<p class="lead">
+    Test how a moving object can transfer energy to another object.
+</p>
+
+<a href="/first-nine-weeks/day/33?view=student" class="btn btn-secondary mb-4">
+    Back to Day 33
+</a>
+
+<style>
+    .sim-card {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
+    .info-box {
+        background: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .track {
+        height: 300px;
+        border: 4px solid #333;
+        border-radius: 15px;
+        background: white;
+        position: relative;
+        overflow: hidden;
+        margin: 20px 0;
+    }
+
+    .ground {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 55px;
+        background: #d9d9d9;
+        border-top: 4px solid #333;
+        text-align: center;
+        font-weight: bold;
+        padding-top: 12px;
+    }
+
+    .moving-object {
+        width: 95px;
+        height: 60px;
+        border: 3px solid #333;
+        border-radius: 12px;
+        background: #e9ecef;
+        position: absolute;
+        left: 40px;
+        top: 155px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        text-align: center;
+        transition: left 0.9s;
+    }
+
+    .target-object {
+        width: 95px;
+        height: 60px;
+        border: 3px solid #333;
+        border-radius: 12px;
+        background: #f8f9fa;
+        position: absolute;
+        left: 390px;
+        top: 155px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        text-align: center;
+        transition: left 0.9s, transform 0.9s;
+    }
+
+    .energy-arrow {
+        position: absolute;
+        left: 180px;
+        top: 90px;
+        font-size: 44px;
+        font-weight: bold;
+        display: none;
+    }
+
+    .distance-line {
+        position: absolute;
+        left: 390px;
+        bottom: 70px;
+        height: 5px;
+        width: 0;
+        background: #333;
+        transition: width 0.9s;
+    }
+
+    .motion-data {
+        background: white;
+        border: 2px solid #333;
+        border-radius: 10px;
+        padding: 12px;
+        margin-top: 10px;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .scenario-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .model-box {
+        background: white;
+        border: 3px solid #333;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        margin: 15px 0;
+    }
+
+    .big-arrow {
+        font-size: 55px;
+        font-weight: bold;
+    }
+
+    .object-box {
+        display: inline-block;
+        padding: 18px;
+        border: 3px solid #333;
+        border-radius: 10px;
+        background: #e9ecef;
+        font-weight: bold;
+        margin: 0 15px;
+    }
+</style>
+
+<div class="sim-card">
+    <h2>Part 1: Energy Transfer Collision Test</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> A moving object has mechanical energy. When it hits another object, energy can transfer and change the second object's motion.
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <label class="form-label"><strong>Moving object:</strong></label>
+            <select id="movingSelect" class="form-select mb-3" onchange="resetSim()">
+                <option>Toy car</option>
+                <option>Marble</option>
+                <option>Ball</option>
+                <option>Domino</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label"><strong>Object receiving energy:</strong></label>
+            <select id="targetSelect" class="form-select mb-3" onchange="resetSim()">
+                <option>Block</option>
+                <option>Marble</option>
+                <option>Domino</option>
+                <option>Pin</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label"><strong>Speed of moving object:</strong> <span id="speedLabel">3</span></label>
+            <input id="speedInput" type="range" class="form-range mb-3" min="1" max="5" value="3" oninput="updateSpeed(); resetSim();">
+        </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="runCollision()">Run Collision</button>
+    <button class="btn btn-warning" onclick="showEnergyArrow()">Show Energy Transfer Arrow</button>
+    <button class="btn btn-secondary" onclick="resetSim()">Reset</button>
+
+    <div class="track">
+        <div id="energyArrow" class="energy-arrow">Mechanical energy transfers →</div>
+        <div id="movingObject" class="moving-object">Toy car</div>
+        <div id="targetObject" class="target-object">Block</div>
+        <div id="distanceLine" class="distance-line"></div>
+        <div class="ground">Track / Surface</div>
+    </div>
+
+    <div class="motion-data">
+        <p><strong>Moving Object:</strong> <span id="movingData">Not tested yet</span></p>
+        <p><strong>Object Receiving Energy:</strong> <span id="targetData">Not tested yet</span></p>
+        <p><strong>Motion Before:</strong> <span id="beforeData">Not tested yet</span></p>
+        <p><strong>Motion After:</strong> <span id="afterData">Not tested yet</span></p>
+        <p><strong>Evidence:</strong> <span id="evidenceData">Not tested yet</span></p>
+    </div>
+
+    <label class="form-label mt-3"><strong>Best explanation:</strong></label>
+    <select id="collisionAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Mechanical energy transferred from the moving object to the object it hit.</option>
+        <option>The object moved because it changed color.</option>
+        <option>Gravity pulled the object sideways.</option>
+        <option>No energy transferred because nothing changed motion.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkCollision()">Check Collision Evidence</button>
+    <div id="collisionFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 2: Energy Transfer Model</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Look for a change in motion as evidence that energy transferred.
+    </div>
+
+    <div class="model-box">
+        <p>
+            <span class="object-box">Moving car</span>
+            <span class="big-arrow">→</span>
+            <span class="object-box">Block at rest</span>
+        </p>
+        <p>
+            <span class="object-box">After contact</span>
+            <span class="big-arrow">→</span>
+            <span class="object-box">Block moves</span>
+        </p>
+    </div>
+
+    <label class="form-label"><strong>Which is the best evidence of energy transfer?</strong></label>
+    <select id="modelAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The block changed from rest to motion after contact.</option>
+        <option>The block had a color.</option>
+        <option>The car was a toy.</option>
+        <option>The surface was flat.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkModel()">Check Model</button>
+    <div id="modelFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 3: Predict the Energy Transfer</h2>
+
+    <div class="info-box">
+        <strong>Goal:</strong> Decide which object has mechanical energy and how motion changes.
+    </div>
+
+    <div class="scenario-card">
+        <h4>1. A rolling marble hits a still marble.</h4>
+        <select id="q1" class="form-select">
+            <option selected>Choose...</option>
+            <option>The still marble may start moving.</option>
+            <option>The still marble must dissolve.</option>
+            <option>No energy can transfer.</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>2. One domino falls into another domino.</h4>
+        <select id="q2" class="form-select">
+            <option selected>Choose...</option>
+            <option>The next domino may start falling.</option>
+            <option>The next domino becomes magnetic.</option>
+            <option>The next domino evaporates.</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>3. Which object has mechanical energy?</h4>
+        <select id="q3" class="form-select">
+            <option selected>Choose...</option>
+            <option>A rolling ball</option>
+            <option>A book resting on a desk</option>
+            <option>A pencil sitting still</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>4. A faster toy car moves a block farther than a slower toy car.</h4>
+        <select id="q4" class="form-select">
+            <option selected>Choose...</option>
+            <option>More motion can transfer more energy.</option>
+            <option>Slower objects always transfer more energy.</option>
+            <option>Motion is not related to energy transfer.</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success" onclick="checkPredictions()">Check Predictions</button>
+    <div id="predictionFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 4: STAAR Mechanical Energy Challenge</h2>
+
+    <div class="info-box">
+        <strong>Question:</strong> A moving toy car hits a block. The block starts moving across the floor.
+    </div>
+
+    <label class="form-label"><strong>Best claim:</strong></label>
+    <select id="staar1" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Mechanical energy transferred from the car to the block.</option>
+        <option>The block dissolved in water.</option>
+        <option>Friction pulled the block upward.</option>
+        <option>The car stopped being matter.</option>
+    </select>
+
+    <label class="form-label"><strong>Best evidence:</strong></label>
+    <select id="staar2" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The block changed from rest to motion after the car hit it.</option>
+        <option>The block was on the floor.</option>
+        <option>The car had wheels.</option>
+        <option>The block had a color.</option>
+    </select>
+
+    <label class="form-label"><strong>Which object had mechanical energy before the collision?</strong></label>
+    <select id="staar3" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The moving toy car</option>
+        <option>The still block</option>
+        <option>The floor only</option>
+        <option>Neither object</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
+    <div id="staarFeedback"></div>
+</div>
+
+<script>
+    let tested = false;
+
+    function showFeedback(elementId, message, isCorrect) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+        box.innerHTML = message;
+    }
+
+    function updateSpeed() {
+        document.getElementById("speedLabel").innerText = document.getElementById("speedInput").value;
+    }
+
+    function resetSim() {
+        tested = false;
+
+        const moving = document.getElementById("movingSelect").value;
+        const target = document.getElementById("targetSelect").value;
+
+        document.getElementById("movingObject").innerText = moving;
+        document.getElementById("targetObject").innerText = target;
+
+        document.getElementById("movingObject").style.left = "40px";
+        document.getElementById("targetObject").style.left = "390px";
+        document.getElementById("targetObject").style.transform = "rotate(0deg)";
+        document.getElementById("distanceLine").style.width = "0";
+        document.getElementById("energyArrow").style.display = "none";
+
+        document.getElementById("movingData").innerText = "Not tested yet";
+        document.getElementById("targetData").innerText = "Not tested yet";
+        document.getElementById("beforeData").innerText = "Not tested yet";
+        document.getElementById("afterData").innerText = "Not tested yet";
+        document.getElementById("evidenceData").innerText = "Not tested yet";
+
+        document.getElementById("collisionAnswer").value = "Choose...";
+        document.getElementById("collisionFeedback").innerHTML = "";
+        document.getElementById("collisionFeedback").className = "";
+    }
+
+    function showEnergyArrow() {
+        document.getElementById("energyArrow").style.display = "block";
+    }
+
+    function runCollision() {
+        tested = true;
+
+        const moving = document.getElementById("movingSelect").value;
+        const target = document.getElementById("targetSelect").value;
+        const speed = Number(document.getElementById("speedInput").value);
+
+        const movingObject = document.getElementById("movingObject");
+        const targetObject = document.getElementById("targetObject");
+        const distanceLine = document.getElementById("distanceLine");
+
+        let targetDistance = speed * 45;
+        if (target === "Domino") {
+            targetObject.style.transform = "rotate(65deg)";
+            targetDistance = speed * 25;
+        } else {
+            targetObject.style.transform = "rotate(0deg)";
+        }
+
+        movingObject.style.left = "300px";
+        targetObject.style.left = (390 + targetDistance) + "px";
+        distanceLine.style.width = targetDistance + "px";
+
+        showEnergyArrow();
+
+        document.getElementById("movingData").innerText = moving;
+        document.getElementById("targetData").innerText = target;
+        document.getElementById("beforeData").innerText = moving + " is moving. " + target + " is at rest.";
+        document.getElementById("afterData").innerText = target + " changes motion after contact.";
+        document.getElementById("evidenceData").innerText = "The " + target.toLowerCase() + " changed from rest to motion after being hit.";
+    }
+
+    function checkCollision() {
+        const answer = document.getElementById("collisionAnswer").value;
+
+        if (!tested) {
+            showFeedback("collisionFeedback", "Run the collision first, then check your answer.", false);
+            return;
+        }
+
+        if (answer === "Mechanical energy transferred from the moving object to the object it hit.") {
+            showFeedback("collisionFeedback", "Correct! The moving object transferred energy when it hit the other object.", true);
+        } else {
+            showFeedback("collisionFeedback", "Not yet. The best evidence is that the second object changed motion after contact.", false);
+        }
+    }
+
+    function checkModel() {
+        const answer = document.getElementById("modelAnswer").value;
+
+        if (answer === "The block changed from rest to motion after contact.") {
+            showFeedback("modelFeedback", "Correct! A change from rest to motion is evidence of energy transfer.", true);
+        } else {
+            showFeedback("modelFeedback", "Not yet. Look for a change in motion after contact.", false);
+        }
+    }
+
+    function checkPredictions() {
+        let correct = 0;
+
+        if (document.getElementById("q1").value === "The still marble may start moving.") correct++;
+        if (document.getElementById("q2").value === "The next domino may start falling.") correct++;
+        if (document.getElementById("q3").value === "A rolling ball") correct++;
+        if (document.getElementById("q4").value === "More motion can transfer more energy.") correct++;
+
+        if (correct === 4) {
+            showFeedback("predictionFeedback", "Correct! You used motion changes as evidence of energy transfer.", true);
+        } else {
+            showFeedback("predictionFeedback", "You got " + correct + " out of 4. Mechanical energy is energy of motion.", false);
+        }
+    }
+
+    function checkSTAAR() {
+        const s1 = document.getElementById("staar1").value;
+        const s2 = document.getElementById("staar2").value;
+        const s3 = document.getElementById("staar3").value;
+
+        if (
+            s1 === "Mechanical energy transferred from the car to the block." &&
+            s2 === "The block changed from rest to motion after the car hit it." &&
+            s3 === "The moving toy car"
+        ) {
+            showFeedback("staarFeedback", "Correct! The car had mechanical energy because it was moving, and the block's motion changed after contact.", true);
+        } else {
+            showFeedback("staarFeedback", "Not yet. Use the block's change from rest to motion as evidence.", false);
+        }
+    }
+
+    updateSpeed();
+    resetSim();
+</script>
+
+{% endblock %}
