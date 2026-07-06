@@ -1,0 +1,496 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Fair Test Variables Planner</h1>
+<p class="lead">
+    Learn independent, dependent, and controlled variables. Then build a fair force and motion investigation.
+</p>
+
+<a href="/first-nine-weeks/day/34?view=student" class="btn btn-secondary mb-4">
+    Back to Day 34
+</a>
+
+<style>
+    .sim-card {
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
+    .teacher-teach {
+        border: 4px solid #333;
+        border-radius: 18px;
+        background: white;
+        padding: 18px;
+    }
+
+    .video-box {
+        height: 330px;
+        border: 4px solid #333;
+        border-radius: 15px;
+        background: #fff;
+        position: relative;
+        overflow: hidden;
+        margin: 15px 0;
+    }
+
+    .ramp {
+        position: absolute;
+        left: 110px;
+        bottom: 90px;
+        width: 410px;
+        height: 18px;
+        background: #333;
+        transform-origin: left center;
+        transform: rotate(-12deg);
+    }
+
+    .car {
+        position: absolute;
+        left: 115px;
+        bottom: 140px;
+        width: 80px;
+        height: 45px;
+        border: 3px solid #333;
+        border-radius: 10px;
+        background: #e9ecef;
+        text-align: center;
+        font-weight: bold;
+        padding-top: 8px;
+        transition: left 0.7s, bottom 0.7s;
+    }
+
+    .measure-line {
+        position: absolute;
+        left: 110px;
+        bottom: 45px;
+        height: 5px;
+        width: 0;
+        background: #333;
+        transition: width 0.7s;
+    }
+
+    .label-bubble {
+        position: absolute;
+        padding: 8px 12px;
+        border: 3px solid #333;
+        border-radius: 12px;
+        background: #fff3cd;
+        font-weight: bold;
+        max-width: 240px;
+    }
+
+    .iv-label { left: 40px; top: 35px; }
+    .dv-label { right: 30px; top: 45px; }
+    .cv-label { left: 260px; bottom: 95px; }
+
+    .info-box {
+        background: #fff3cd;
+        border-left: 5px solid #ffc107;
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .scenario-card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .planner-output {
+        background: white;
+        border: 2px solid #333;
+        border-radius: 12px;
+        padding: 15px;
+        margin-top: 15px;
+    }
+
+    .vocab-tile {
+        background: white;
+        border: 2px solid #333;
+        border-radius: 12px;
+        padding: 15px;
+        height: 100%;
+    }
+</style>
+
+<div class="sim-card teacher-teach">
+    <h2>Teacher Teach: Variables in a Fair Test</h2>
+
+    <div class="info-box">
+        <strong>Teacher Script:</strong>
+        “A fair test changes only one thing on purpose. That one thing is the independent variable.
+        The thing we measure is the dependent variable. Everything we keep the same is a controlled variable.”
+    </div>
+
+    <div class="video-box">
+        <div class="label-bubble iv-label">
+            Independent Variable:<br>
+            What I change
+        </div>
+
+        <div class="label-bubble dv-label">
+            Dependent Variable:<br>
+            What I measure
+        </div>
+
+        <div class="label-bubble cv-label">
+            Controlled Variables:<br>
+            What stays the same
+        </div>
+
+        <div id="ramp" class="ramp"></div>
+        <div id="car" class="car">Car</div>
+        <div id="measureLine" class="measure-line"></div>
+    </div>
+
+    <button class="btn btn-primary" onclick="playTeacherTeach()">Play Mini Lesson</button>
+    <button class="btn btn-secondary" onclick="resetTeacherTeach()">Reset</button>
+
+    <div id="teachFeedback" class="feedback correct">
+        Click “Play Mini Lesson” to animate the example.
+    </div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 1: Quick Visual Vocabulary</h2>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="vocab-tile">
+                <h4>Independent Variable</h4>
+                <p>The one thing changed on purpose.</p>
+                <strong>Example:</strong> Ramp height
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="vocab-tile">
+                <h4>Dependent Variable</h4>
+                <p>The result measured or observed.</p>
+                <strong>Example:</strong> Distance traveled
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="vocab-tile">
+                <h4>Controlled Variables</h4>
+                <p>The things kept the same.</p>
+                <strong>Example:</strong> Same car, surface, start line
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 2: Build a Fair Test</h2>
+
+    <div class="info-box">
+        Choose a force and motion question. The planner will help you identify the variables.
+    </div>
+
+    <label class="form-label"><strong>Investigation Question:</strong></label>
+    <select id="questionSelect" class="form-select mb-3" onchange="fillPlanner()">
+        <option selected>Choose...</option>
+        <option>How does ramp height affect the distance a toy car travels?</option>
+        <option>How does surface type affect the distance a block slides?</option>
+        <option>How does push strength affect the distance a toy car travels?</option>
+        <option>How does ball type affect bounce height?</option>
+        <option>How does magnet distance affect paper clip motion?</option>
+    </select>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label class="form-label"><strong>Independent Variable:</strong></label>
+            <input id="ivInput" class="form-control mb-3" placeholder="The one thing changed on purpose">
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label"><strong>Dependent Variable:</strong></label>
+            <input id="dvInput" class="form-control mb-3" placeholder="What is measured or observed">
+        </div>
+    </div>
+
+    <label class="form-label"><strong>Controlled Variables:</strong></label>
+    <textarea id="cvInput" class="form-control mb-3" rows="3" placeholder="List at least three things that stay the same."></textarea>
+
+    <label class="form-label"><strong>Hypothesis:</strong></label>
+    <textarea id="hypothesisInput" class="form-control mb-3" rows="2" placeholder="If..., then..., because..."></textarea>
+
+    <button class="btn btn-success" onclick="checkPlanner()">Check My Fair Test</button>
+    <button class="btn btn-primary" onclick="makePlan()">Build Investigation Plan</button>
+
+    <div id="plannerFeedback"></div>
+    <div id="plannerOutput"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 3: Identify the Variables</h2>
+
+    <div class="scenario-card">
+        <h4>1. A student changes ramp height and measures distance traveled.</h4>
+        <label>Independent Variable:</label>
+        <select id="q1" class="form-select mb-2">
+            <option selected>Choose...</option>
+            <option>Ramp height</option>
+            <option>Distance traveled</option>
+            <option>Same toy car</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>2. A student changes surface type and measures how far a block slides.</h4>
+        <label>Dependent Variable:</label>
+        <select id="q2" class="form-select mb-2">
+            <option selected>Choose...</option>
+            <option>Surface type</option>
+            <option>Distance the block slides</option>
+            <option>Same block</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>3. Which one should stay the same when testing ramp height?</h4>
+        <select id="q3" class="form-select mb-2">
+            <option selected>Choose...</option>
+            <option>Same toy car</option>
+            <option>Different toy car every time</option>
+            <option>Different measuring tool every time</option>
+        </select>
+    </div>
+
+    <div class="scenario-card">
+        <h4>4. Why repeat trials?</h4>
+        <select id="q4" class="form-select mb-2">
+            <option selected>Choose...</option>
+            <option>To make data more reliable</option>
+            <option>To change every variable</option>
+            <option>To avoid measuring</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success" onclick="checkVariables()">Check Answers</button>
+    <div id="variablesFeedback"></div>
+</div>
+
+<div class="sim-card">
+    <h2>Part 4: STAAR Fair Test Challenge</h2>
+
+    <div class="info-box">
+        <strong>Question:</strong> A student wants to test if push strength affects how far a toy car travels.
+    </div>
+
+    <label class="form-label"><strong>What should the student change?</strong></label>
+    <select id="staar1" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Push strength</option>
+        <option>Toy car every trial</option>
+        <option>Surface every trial</option>
+        <option>Measuring tool every trial</option>
+    </select>
+
+    <label class="form-label"><strong>What should the student measure?</strong></label>
+    <select id="staar2" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Distance the toy car travels</option>
+        <option>The color of the car</option>
+        <option>The name of the car</option>
+        <option>The shape of the pencil</option>
+    </select>
+
+    <label class="form-label"><strong>What should stay the same?</strong></label>
+    <select id="staar3" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Same toy car, same surface, same starting line</option>
+        <option>Different toy car, different surface, different ruler</option>
+        <option>Only measure one trial</option>
+        <option>Change every part of the test</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
+    <div id="staarFeedback"></div>
+</div>
+
+<script>
+    const plans = {
+        "How does ramp height affect the distance a toy car travels?": {
+            iv: "Ramp height",
+            dv: "Distance the toy car travels",
+            cv: "Same toy car, same surface, same starting line, same measuring tool",
+            hyp: "If the ramp height increases, then the toy car will travel farther because more motion may transfer to the car."
+        },
+        "How does surface type affect the distance a block slides?": {
+            iv: "Surface type",
+            dv: "Distance the block slides",
+            cv: "Same block, same push strength, same starting line, same measuring tool",
+            hyp: "If the surface is rougher, then the block will travel a shorter distance because there is more friction."
+        },
+        "How does push strength affect the distance a toy car travels?": {
+            iv: "Push strength",
+            dv: "Distance the toy car travels",
+            cv: "Same toy car, same surface, same starting line, same measuring tool",
+            hyp: "If push strength increases, then the toy car will travel farther because a stronger force changes motion more."
+        },
+        "How does ball type affect bounce height?": {
+            iv: "Ball type",
+            dv: "Bounce height",
+            cv: "Same drop height, same surface, same measuring tool, same release method",
+            hyp: "If the ball type changes, then the bounce height may change because different balls transfer energy differently."
+        },
+        "How does magnet distance affect paper clip motion?": {
+            iv: "Distance between magnet and paper clip",
+            dv: "How far or whether the paper clip moves",
+            cv: "Same magnet, same paper clip, same surface, same starting position",
+            hyp: "If the magnet is closer to the paper clip, then the paper clip will move more because magnetic force is stronger nearby."
+        }
+    };
+
+    function showFeedback(elementId, message, isCorrect) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+        box.innerHTML = message;
+    }
+
+    function playTeacherTeach() {
+        const car = document.getElementById("car");
+        const line = document.getElementById("measureLine");
+        const feedback = document.getElementById("teachFeedback");
+
+        feedback.innerHTML = "Step 1: Change one thing on purpose: ramp height. That is the independent variable.";
+        car.style.left = "160px";
+        car.style.bottom = "155px";
+
+        setTimeout(() => {
+            feedback.innerHTML = "Step 2: Measure the result: how far the car travels. That is the dependent variable.";
+            car.style.left = "480px";
+            car.style.bottom = "82px";
+            line.style.width = "410px";
+        }, 1400);
+
+        setTimeout(() => {
+            feedback.innerHTML = "Step 3: Keep other things the same: same car, same surface, same starting line. Those are controlled variables.";
+        }, 2900);
+
+        setTimeout(() => {
+            feedback.innerHTML = "Final idea: A fair test changes only one thing and measures what happens.";
+        }, 4400);
+    }
+
+    function resetTeacherTeach() {
+        document.getElementById("car").style.left = "115px";
+        document.getElementById("car").style.bottom = "140px";
+        document.getElementById("measureLine").style.width = "0";
+        document.getElementById("teachFeedback").innerHTML = "Click “Play Mini Lesson” to animate the example.";
+    }
+
+    function fillPlanner() {
+        const q = document.getElementById("questionSelect").value;
+        if (!plans[q]) return;
+
+        document.getElementById("ivInput").value = plans[q].iv;
+        document.getElementById("dvInput").value = plans[q].dv;
+        document.getElementById("cvInput").value = plans[q].cv;
+        document.getElementById("hypothesisInput").value = plans[q].hyp;
+    }
+
+    function checkPlanner() {
+        const iv = document.getElementById("ivInput").value.trim();
+        const dv = document.getElementById("dvInput").value.trim();
+        const cv = document.getElementById("cvInput").value.trim();
+        const hyp = document.getElementById("hypothesisInput").value.trim();
+
+        if (iv && dv && cv && hyp) {
+            showFeedback("plannerFeedback", "Good plan! You identified what changes, what is measured, and what stays the same.", true);
+        } else {
+            showFeedback("plannerFeedback", "Finish all four parts: independent variable, dependent variable, controlled variables, and hypothesis.", false);
+        }
+    }
+
+    function makePlan() {
+        const q = document.getElementById("questionSelect").value;
+        const iv = document.getElementById("ivInput").value;
+        const dv = document.getElementById("dvInput").value;
+        const cv = document.getElementById("cvInput").value;
+        const hyp = document.getElementById("hypothesisInput").value;
+
+        document.getElementById("plannerOutput").innerHTML = `
+            <div class="planner-output">
+                <h3>My Fair Test Plan</h3>
+                <p><strong>Question:</strong> ${q}</p>
+                <p><strong>Hypothesis:</strong> ${hyp}</p>
+                <p><strong>Independent Variable:</strong> ${iv}</p>
+                <p><strong>Dependent Variable:</strong> ${dv}</p>
+                <p><strong>Controlled Variables:</strong> ${cv}</p>
+                <h4>Data Table</h4>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Trial</th>
+                        <th>${iv}</th>
+                        <th>${dv}</th>
+                        <th>Observation</th>
+                    </tr>
+                    <tr><td>1</td><td></td><td></td><td></td></tr>
+                    <tr><td>2</td><td></td><td></td><td></td></tr>
+                    <tr><td>3</td><td></td><td></td><td></td></tr>
+                </table>
+            </div>
+        `;
+    }
+
+    function checkVariables() {
+        let correct = 0;
+
+        if (document.getElementById("q1").value === "Ramp height") correct++;
+        if (document.getElementById("q2").value === "Distance the block slides") correct++;
+        if (document.getElementById("q3").value === "Same toy car") correct++;
+        if (document.getElementById("q4").value === "To make data more reliable") correct++;
+
+        if (correct === 4) {
+            showFeedback("variablesFeedback", "Correct! You can identify variables in a fair test.", true);
+        } else {
+            showFeedback("variablesFeedback", "You got " + correct + " out of 4. Remember: change one thing, measure one result, keep the rest the same.", false);
+        }
+    }
+
+    function checkSTAAR() {
+        const s1 = document.getElementById("staar1").value;
+        const s2 = document.getElementById("staar2").value;
+        const s3 = document.getElementById("staar3").value;
+
+        if (
+            s1 === "Push strength" &&
+            s2 === "Distance the toy car travels" &&
+            s3 === "Same toy car, same surface, same starting line"
+        ) {
+            showFeedback("staarFeedback", "Correct! That setup changes one variable and keeps the rest controlled.", true);
+        } else {
+            showFeedback("staarFeedback", "Not yet. The student changes push strength, measures distance, and keeps the car, surface, and starting line the same.", false);
+        }
+    }
+
+    resetTeacherTeach();
+</script>
+
+{% endblock %}

@@ -211,6 +211,12 @@ def mechanical_energy_transfer_lab():
     return render_template("mechanical_energy_transfer_lab.html")
 
 
+
+@app.route("/labs/variables-planner")
+def variables_planner_lab():
+    return render_template("variables_planner_lab.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

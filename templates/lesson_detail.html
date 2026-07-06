@@ -484,6 +484,45 @@
 
 
 
+
+                {% if lesson.get("variables_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("variables_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>Variables Scenario {{ loop.index }}</h5>
+                            <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Independent Variable:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What is changed on purpose?"></textarea>
+
+                            <label class="form-label"><strong>Dependent Variable:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What is measured or observed?"></textarea>
+
+                            <label class="form-label"><strong>Controlled Variables:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What should stay the same?"></textarea>
+
+                            <label class="form-label"><strong>Why is this a fair test?</strong></label>
+                            <textarea class="form-control" rows="2" placeholder="Explain how only one thing changes."></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Independent Variable:</strong> {{ card.independent_variable }}</p>
+                                    <p><strong>Dependent Variable:</strong> {{ card.dependent_variable }}</p>
+                                    <p><strong>Controlled Variables:</strong> {{ card.controlled_variables }}</p>
+                                    <p><strong>Fair Test Reason:</strong> {{ card.fair_test_reason }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("mechanical_energy_cards") %}
                 <div class="row">
                     {% for card in lesson.get("mechanical_energy_cards") %}

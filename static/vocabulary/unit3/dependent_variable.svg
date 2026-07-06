@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420">
+<rect width="720" height="420" rx="24" fill="white"/>
+<rect x="18" y="18" width="684" height="384" rx="22" fill="#f8f9fa" stroke="#111" stroke-width="5"/>
+<text x="360" y="58" text-anchor="middle" font-size="36" font-weight="bold" font-family="Arial">Dependent Variable</text>
+
+        <rect x="95" y="165" width="110" height="65" rx="14" fill="#e9ecef" stroke="#111" stroke-width="5"/>
+        <text x="150" y="205" text-anchor="middle" font-size="22" font-family="Arial">Car</text>
+        <line x1="220" y1="220" x2="595" y2="220" stroke="#111" stroke-width="8"/>
+        <polygon points="605,220 565,195 565,245" fill="#111"/>
+        <line x1="95" y1="270" x2="605" y2="270" stroke="#111" stroke-width="5"/>
+        <text x="350" y="310" text-anchor="middle" font-size="28" font-family="Arial">Measure distance traveled</text>
+        
+<text x="360" y="385" text-anchor="middle" font-size="26" font-family="Arial">What you measure</text>
+</svg>
