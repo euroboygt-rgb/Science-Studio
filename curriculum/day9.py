@@ -13,6 +13,10 @@ day9 = {
 
     "science_notebook": "Students create a page titled 'Volume.' They write the definition of volume, draw a graduated cylinder, label milliliters as the unit, and compare mass and volume in a simple T-chart.",
 
+    "interactive_activity_title": "Graduated Cylinder Volume Simulator",
+
+    "interactive_activity": "Students pour liquids into a graduated cylinder, read the volume in milliliters, observe the meniscus, and use water displacement to find the volume of objects.",
+
     "guided_practice": "Show students containers with different amounts of water. Students practice reading or estimating liquid volume and identifying the correct tool and unit. Discuss why a graduated cylinder is better than a beaker when an accurate volume measurement is needed.",
 
     "interactive_activity_title": "Volume Tool and Unit Challenge",
@@ -87,6 +91,8 @@ day9 = {
     ],
 
     "lab": False,
+    "lab_link": "/labs/graduated-cylinder-volume",
+    "lab_link_text": "Open Graduated Cylinder Volume Simulator",
 
     "lab_notebook": "Students practice identifying examples of volume and matching each measurement situation with the correct tool and unit.",
 

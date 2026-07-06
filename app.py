@@ -347,6 +347,12 @@ def balance_scale_mass():
     return render_template("balance_scale_mass_simulator.html")
 
 
+
+@app.route("/labs/graduated-cylinder-volume")
+def graduated_cylinder_volume():
+    return render_template("graduated_cylinder_volume_simulator.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
