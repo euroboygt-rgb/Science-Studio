@@ -15,7 +15,65 @@ day42 = {
 
     "guided_practice": "Model how to attack a mixed STAAR-style question. First, identify the unit or concept. Second, underline important data, numbers, or observations. Third, eliminate answers that do not match the evidence. Fourth, choose the answer best supported by science vocabulary and data.",
 
+    "interactive_activity_title": "STAAR Spiral Review Mission",
+
+    "interactive_activity": "Students review Matter, Mixtures and Solutions, Particles Too Small to See, and Force and Motion using sorting cards, STAAR-style questions, evidence checks, and confidence ratings.",
+
+    "spiral_review_cards": [
+        {
+            "scenario": "A student uses a magnet to remove paper clips from sand.",
+            "student_task": "Identify the unit and science property.",
+            "unit": "Mixtures and Solutions",
+            "concept": "Separating a mixture using magnetism",
+            "evidence": "The paper clips are attracted to the magnet, but sand is not.",
+            "strategy": "Ask: What property helps separate the materials?"
+        },
+        {
+            "scenario": "A rubber ball bounces 74 cm, and a foam ball bounces 18 cm.",
+            "student_task": "Identify the claim best supported by evidence.",
+            "unit": "Force and Motion",
+            "concept": "Using data as evidence",
+            "evidence": "The rubber ball bounced higher because 74 cm is greater than 18 cm.",
+            "strategy": "Use the numbers in the question to support the answer."
+        },
+        {
+            "scenario": "Sugar dissolves in water and can no longer be seen.",
+            "student_task": "Explain what happened to the sugar particles.",
+            "unit": "Particles Too Small to See",
+            "concept": "Tiny particles spread out in water",
+            "evidence": "The sugar is still there, but the particles are too small to see.",
+            "strategy": "Do not choose answers that say matter disappeared."
+        },
+        {
+            "scenario": "A rough surface makes a toy car slow down faster.",
+            "student_task": "Identify the force affecting the motion.",
+            "unit": "Force and Motion",
+            "concept": "Friction",
+            "evidence": "Rough surfaces increase friction, which slows motion.",
+            "strategy": "Look for words like rough, smooth, slow down, or stop."
+        },
+        {
+            "scenario": "A student separates gravel and sand with a screen.",
+            "student_task": "Identify the property used to separate the mixture.",
+            "unit": "Mixtures and Solutions",
+            "concept": "Particle size",
+            "evidence": "The screen separates larger particles from smaller particles.",
+            "strategy": "Screens and filters usually connect to particle size."
+        },
+        {
+            "scenario": "A student tests how ramp height affects distance traveled.",
+            "student_task": "Identify the independent and dependent variables.",
+            "unit": "Force and Motion",
+            "concept": "Variables in a fair test",
+            "evidence": "Ramp height is changed. Distance traveled is measured.",
+            "strategy": "Independent variable = changed. Dependent variable = measured."
+        }
+    ],
+
     "lab": "STAAR Spiral Review Stations: students rotate through review stations for physical properties of matter, separating mixtures, particles too small to see, force and motion, variables, graphing, and claim-evidence-reasoning.",
+
+    "lab_link": "/labs/staar-spiral-review-game",
+    "lab_link_text": "Open STAAR Spiral Review Game",
 
     "lab_notebook": "Students record each station, the science concept reviewed, one question they answered, evidence or reasoning used, and a confidence rating.",
 

@@ -281,6 +281,12 @@ def unit3_presentation_builder():
     return render_template("unit3_presentation_builder.html")
 
 
+
+@app.route("/labs/staar-spiral-review-game")
+def staar_spiral_review_game():
+    return render_template("staar_spiral_review_game.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

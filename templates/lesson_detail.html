@@ -492,6 +492,45 @@
 
 
 
+
+                {% if lesson.get("spiral_review_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("spiral_review_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>STAAR Spiral Review Scenario {{ loop.index }}</h5>
+                            <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Unit:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="Matter, Mixtures, Particles, Force and Motion, or Variables?"></textarea>
+
+                            <label class="form-label"><strong>Science Concept:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What concept is being tested?"></textarea>
+
+                            <label class="form-label"><strong>Evidence:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What evidence supports the answer?"></textarea>
+
+                            <label class="form-label"><strong>STAAR Strategy:</strong></label>
+                            <textarea class="form-control" rows="3" placeholder="What strategy would help solve this question?"></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Unit:</strong> {{ card.unit }}</p>
+                                    <p><strong>Concept:</strong> {{ card.concept }}</p>
+                                    <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                                    <p><strong>Strategy:</strong> {{ card.strategy }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("performance_builder_cards") %}
                 <div class="row">
                     {% for card in lesson.get("performance_builder_cards") %}
