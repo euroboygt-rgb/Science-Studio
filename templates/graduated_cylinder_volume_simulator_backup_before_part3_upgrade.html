@@ -298,78 +298,6 @@
         100% { transform: scale(0.8); opacity: 0; }
     }
 
-
-    .graduated-cylinder {
-        overflow: visible !important;
-    }
-
-    .displacement-demo-zone {
-        background: rgba(255,255,255,0.72);
-        border: 4px solid #111;
-        border-radius: 24px;
-        min-height: 520px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        overflow: visible;
-        padding: 30px;
-    }
-
-    .displacement-panel {
-        background: white;
-        border: 4px solid #111;
-        border-radius: 18px;
-        padding: 14px;
-        margin-bottom: 12px;
-        font-weight: 900;
-        text-align: center;
-    }
-
-    .displacement-object {
-        position: absolute;
-        left: 50%;
-        top: -78px;
-        transform: translateX(-50%);
-        font-size: 46px;
-        z-index: 20;
-        display: none;
-        transition: top 0.85s ease;
-    }
-
-    .displacement-object.dropped {
-        top: 318px;
-    }
-
-    .displacement-arrow {
-        font-size: 2rem;
-        font-weight: 950;
-        text-align: center;
-    }
-
-    .volume-stat-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin-bottom: 12px;
-    }
-
-    .volume-stat {
-        background: #fff3cd;
-        border: 3px solid #111;
-        border-radius: 14px;
-        padding: 10px;
-        text-align: center;
-        font-weight: 950;
-    }
-
-    @media (max-width: 900px) {
-        .volume-stat-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-
-
     @media (max-width: 900px) {
         .measurement-label {
             right: -100px;
@@ -489,74 +417,21 @@
 <section class="volume-card">
     <h2>Part 3: Water Displacement Challenge</h2>
     <p>
-        This part has its own graduated cylinder. Start with 50 mL of water, drop an object in,
-        watch the water rise, then subtract to find the object's volume.
+        Start with water in the graduated cylinder. Drop an object into the water.
+        The water level rises because the object takes up space.
     </p>
 
-    <div class="volume-stat-grid">
-        <div class="volume-stat">
-            Starting Volume<br>
-            <span id="startVolumeBox">-- mL</span>
-        </div>
-
-        <div class="volume-stat">
-            Final Volume<br>
-            <span id="finalVolumeBox">-- mL</span>
-        </div>
-
-        <div class="volume-stat">
-            Object Volume<br>
-            <span id="objectVolumeBox">-- mL</span>
-        </div>
-    </div>
-
     <div class="challenge-box">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="readout" id="displacementReadout">DISPLACEMENT: 0 mL</div>
+        <h3>Step 1: Choose an object</h3>
+        <div id="objectButtons"></div>
 
-                <h3>Step 1: Prepare water</h3>
-                <button class="btn btn-warning science-btn mb-2" onclick="prepareDisplacement()">
-                    Prepare 50 mL Water
-                </button>
+        <h3 class="mt-3">Step 2: Drop it into the water</h3>
+        <button class="btn btn-primary science-btn" onclick="dropSelectedObject()">Drop Object</button>
+        <button class="btn btn-warning science-btn" onclick="prepareDisplacement()">Prepare 50 mL Water</button>
+        <button class="btn btn-success science-btn" onclick="recordDisplacement()">Record Displacement</button>
 
-                <h3 class="mt-3">Step 2: Choose an object</h3>
-                <div id="objectButtons"></div>
-
-                <h3 class="mt-3">Step 3: Drop and observe</h3>
-                <button class="btn btn-primary science-btn" onclick="dropSelectedObject()">
-                    Drop Object Into Cylinder
-                </button>
-
-                <button class="btn btn-danger science-btn" onclick="resetDisplacement()">
-                    Reset Displacement
-                </button>
-
-                <button class="btn btn-success science-btn mt-2" onclick="recordDisplacement()">
-                    Record Displacement
-                </button>
-
-                <div id="displacementFeedback" class="feedback warning">
-                    Click Prepare 50 mL Water, choose an object, then drop it in.
-                </div>
-            </div>
-
-            <div class="col-lg-8">
-                <div class="displacement-demo-zone">
-                    <div style="position: relative;">
-                        <div class="cylinder-lip"></div>
-
-                        <div class="graduated-cylinder" id="displacementCylinder">
-                            <div id="displacementTicks"></div>
-                            <div class="liquid-fill" id="displacementFill"></div>
-                            <div class="meniscus" id="displacementMeniscus"></div>
-                            <div class="measurement-line" id="displacementMeasurementLine"></div>
-                            <div class="measurement-label" id="displacementMeasurementLabel">0 mL</div>
-                            <div class="displacement-object" id="displacementObject">🪨</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="displacementFeedback" class="feedback warning">
+            Click Prepare 50 mL Water, choose an object, then drop it in.
         </div>
 
         <label class="form-label mt-3"><strong>What is the object's volume?</strong></label>
@@ -565,20 +440,15 @@
             <option>5 mL</option>
             <option>10 mL</option>
             <option>15 mL</option>
-            <option>18 mL</option>
             <option>20 mL</option>
             <option>25 mL</option>
             <option>30 mL</option>
         </select>
 
-        <button class="btn btn-success science-btn" onclick="checkDisplacementAnswer()">
-            Check Object Volume
-        </button>
-
+        <button class="btn btn-success science-btn" onclick="checkDisplacementAnswer()">Check Object Volume</button>
         <div id="displacementCheckFeedback"></div>
     </div>
 </section>
-
 
 <section class="volume-card">
     <h2>Part 4: Target Volume Challenge</h2>
@@ -972,215 +842,10 @@
         }
     }
 
-
-    let displacementStageVolume = 0;
-
-    function renderDisplacementTicks() {
-        const ticks = document.getElementById("displacementTicks");
-        if (!ticks) return;
-
-        ticks.innerHTML = "";
-
-        for (let value = 0; value <= 100; value += 5) {
-            const tick = document.createElement("div");
-            tick.className = value % 10 === 0 ? "tick major" : "tick minor";
-            tick.style.bottom = value + "%";
-            ticks.appendChild(tick);
-
-            if (value % 10 === 0) {
-                const label = document.createElement("div");
-                label.className = "tick-label";
-                label.style.bottom = value + "%";
-                label.innerText = value + " mL";
-                ticks.appendChild(label);
-            }
-        }
-    }
-
-    function updateDisplacementCylinder() {
-        const percent = Math.max(0, Math.min(100, displacementStageVolume));
-
-        document.getElementById("displacementFill").style.height = percent + "%";
-        document.getElementById("displacementMeniscus").style.bottom = percent + "%";
-        document.getElementById("displacementMeasurementLine").style.bottom = percent + "%";
-        document.getElementById("displacementMeasurementLabel").style.bottom = "calc(" + percent + "% - 18px)";
-        document.getElementById("displacementMeasurementLabel").innerText = displacementStageVolume + " mL";
-        document.getElementById("displacementReadout").innerText = "DISPLACEMENT: " + displacementStageVolume + " mL";
-
-        document.getElementById("startVolumeBox").innerText = displacementStart === null ? "-- mL" : displacementStart + " mL";
-        document.getElementById("finalVolumeBox").innerText = displacementEnd === null ? "-- mL" : displacementEnd + " mL";
-
-        if (displacementStart !== null && displacementEnd !== null) {
-            document.getElementById("objectVolumeBox").innerText = (displacementEnd - displacementStart) + " mL";
-        } else {
-            document.getElementById("objectVolumeBox").innerText = "-- mL";
-        }
-    }
-
-    function renderObjectButtons() {
-        const area = document.getElementById("objectButtons");
-        area.innerHTML = "";
-
-        objects.forEach((object, index) => {
-            const button = document.createElement("button");
-            button.className = "object-choice";
-            button.innerHTML = object.emoji + "<br>" + object.name;
-            button.onclick = () => chooseObject(index);
-            area.appendChild(button);
-        });
-    }
-
-    function chooseObject(index) {
-        selectedObject = objects[index];
-
-        const objectIcon = document.getElementById("displacementObject");
-        objectIcon.innerText = selectedObject.emoji;
-        objectIcon.style.display = "block";
-        objectIcon.classList.remove("dropped");
-
-        showFeedback(
-            "displacementFeedback",
-            "Selected: " + selectedObject.name + ". Now drop it into the graduated cylinder.",
-            "warning"
-        );
-    }
-
-    function prepareDisplacement() {
-        selectedObject = null;
-        displacementStart = 50;
-        displacementEnd = null;
-        displacementStageVolume = 50;
-
-        const objectIcon = document.getElementById("displacementObject");
-        objectIcon.style.display = "none";
-        objectIcon.classList.remove("dropped");
-
-        updateDisplacementCylinder();
-
-        showFeedback(
-            "displacementFeedback",
-            "Starting volume is 50 mL. Choose an object and drop it in.",
-            "correct"
-        );
-    }
-
-    function resetDisplacement() {
-        selectedObject = null;
-        displacementStart = null;
-        displacementEnd = null;
-        displacementStageVolume = 0;
-
-        const objectIcon = document.getElementById("displacementObject");
-        objectIcon.style.display = "none";
-        objectIcon.classList.remove("dropped");
-
-        updateDisplacementCylinder();
-
-        showFeedback(
-            "displacementFeedback",
-            "Click Prepare 50 mL Water, choose an object, then drop it in.",
-            "warning"
-        );
-
-        document.getElementById("displacementCheckFeedback").innerHTML = "";
-    }
-
-    function dropSelectedObject() {
-        if (displacementStart === null) {
-            showFeedback("displacementFeedback", "Click Prepare 50 mL Water first.", "warning");
-            return;
-        }
-
-        if (!selectedObject) {
-            showFeedback("displacementFeedback", "Choose an object first.", "warning");
-            return;
-        }
-
-        const objectIcon = document.getElementById("displacementObject");
-        objectIcon.innerText = selectedObject.emoji;
-        objectIcon.style.display = "block";
-        objectIcon.classList.remove("dropped");
-
-        showFeedback(
-            "displacementFeedback",
-            selectedObject.name + " is dropping into the water. Watch the mL measurement rise.",
-            "warning"
-        );
-
-        setTimeout(() => {
-            objectIcon.classList.add("dropped");
-        }, 80);
-
-        setTimeout(() => {
-            displacementEnd = displacementStart + selectedObject.volume;
-            displacementStageVolume = displacementEnd;
-            updateDisplacementCylinder();
-
-            showFeedback(
-                "displacementFeedback",
-                selectedObject.name + " dropped in. The water rose from " + displacementStart + " mL to " + displacementEnd + " mL. Object volume = " + selectedObject.volume + " mL.",
-                "correct"
-            );
-
-            makeSparkles();
-        }, 850);
-    }
-
-    function checkDisplacementAnswer() {
-        if (!selectedObject || displacementEnd === null) {
-            showFeedback("displacementCheckFeedback", "Complete the displacement test first.", "warning");
-            return;
-        }
-
-        const answer = document.getElementById("displacementAnswer").value;
-        const correct = selectedObject.volume + " mL";
-
-        if (answer === correct) {
-            showFeedback(
-                "displacementCheckFeedback",
-                "Correct! " + displacementEnd + " mL - " + displacementStart + " mL = " + selectedObject.volume + " mL.",
-                "correct"
-            );
-            makeSparkles();
-        } else {
-            showFeedback(
-                "displacementCheckFeedback",
-                "Not yet. Subtract starting volume from final volume: " + displacementEnd + " mL - " + displacementStart + " mL.",
-                "incorrect"
-            );
-        }
-    }
-
-    function recordDisplacement() {
-        if (!selectedObject || displacementEnd === null) {
-            showFeedback("displacementFeedback", "Drop an object into the water before recording.", "warning");
-            return;
-        }
-
-        records.push({
-            test: "Water displacement: " + selectedObject.name,
-            start: displacementStart + " mL",
-            end: displacementEnd + " mL",
-            result: selectedObject.volume + " mL",
-            evidence: "The water level increased from " + displacementStart + " mL to " + displacementEnd + " mL."
-        });
-
-        renderData();
-
-        showFeedback(
-            "displacementFeedback",
-            "Recorded: " + selectedObject.name + " has a volume of " + selectedObject.volume + " mL.",
-            "correct"
-        );
-    }
-
-
     renderTicks();
-    renderDisplacementTicks();
     renderObjectButtons();
     renderData();
     updateCylinder();
-    updateDisplacementCylinder();
 </script>
 
 {% endblock %}
