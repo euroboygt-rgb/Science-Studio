@@ -1,0 +1,479 @@
+{% extends "base.html" %}
+
+{% block title %}Physical Properties Sort Game{% endblock %}
+
+{% block content %}
+
+<h1>Physical Properties Sort Game</h1>
+<p class="lead">
+    Sort objects by the physical property being tested. Use evidence from the object, tool, or test.
+</p>
+
+<a href="/first-nine-weeks/day/5?view=student" class="btn btn-secondary mb-4">
+    Back to Day 5
+</a>
+
+<style>
+    .property-hero {
+        background:
+            radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+            radial-gradient(circle at 80% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+            linear-gradient(135deg, #102542 0%, #1b4965 58%, #5fa8d3 100%);
+        color: white;
+        border: 5px solid #111;
+        border-radius: 28px;
+        padding: 28px;
+        box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+        margin-bottom: 24px;
+    }
+
+    .property-card {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 22px;
+        padding: 20px;
+        box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
+        margin-bottom: 22px;
+    }
+
+    .property-stage {
+        background:
+            linear-gradient(180deg, #bde0fe 0%, #eaf6ff 58%, #d1e7dd 58%, #d1e7dd 100%);
+        border: 5px solid #111;
+        border-radius: 24px;
+        min-height: 340px;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 18px;
+    }
+
+    .object-card {
+        display: inline-block;
+        background: #fff3cd;
+        border: 4px solid #111;
+        border-radius: 18px;
+        padding: 15px;
+        margin: 8px;
+        min-width: 130px;
+        text-align: center;
+        font-weight: 900;
+        cursor: pointer;
+    }
+
+    .object-card:hover {
+        transform: translateY(-2px);
+        background: #d1e7dd;
+    }
+
+    .tool-box {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 18px;
+        padding: 15px;
+        min-height: 160px;
+    }
+
+    .property-pill {
+        display: inline-block;
+        background: #d1e7dd;
+        border: 3px solid #111;
+        border-radius: 999px;
+        padding: 8px 12px;
+        margin: 5px;
+        font-weight: 900;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .warning {
+        background: #fff3cd;
+        color: #664d03;
+    }
+
+    .sort-row {
+        background: #f8f9fa;
+        border: 3px solid #111;
+        border-radius: 16px;
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+
+    .sparkle {
+        position: absolute;
+        font-size: 28px;
+        animation: pop 1.1s ease-out forwards;
+        pointer-events: none;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0.2); opacity: 0; }
+        30% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(0.8); opacity: 0; }
+    }
+</style>
+
+<section class="property-hero">
+    <span class="badge-science">Day 5</span>
+    <span class="badge-science">Matter</span>
+    <span class="badge-science">Physical Properties</span>
+
+    <h2 class="mt-3">🔬 Matter Detective Mission</h2>
+    <p class="lead mb-0">
+        A physical property is a characteristic of matter that can be observed or measured.
+        Test the objects and use evidence to sort them.
+    </p>
+</section>
+
+<section class="property-card">
+    <h2>Part 1: Learn the Physical Properties</h2>
+
+    <div>
+        <span class="property-pill">Mass = amount of matter</span>
+        <span class="property-pill">Volume = space matter takes up</span>
+        <span class="property-pill">Magnetism = attracted to magnet</span>
+        <span class="property-pill">Solubility = dissolves in water</span>
+        <span class="property-pill">Relative Density = sinks or floats</span>
+        <span class="property-pill">Conductor = allows electricity</span>
+        <span class="property-pill">Insulator = does not allow electricity easily</span>
+    </div>
+</section>
+
+<section class="property-card">
+    <h2>Part 2: Test an Object</h2>
+
+    <div class="property-stage" id="propertyStage">
+        <div class="row">
+            <div class="col-lg-7">
+                <h3>Choose an object:</h3>
+
+                <div id="objectList">
+                    <div class="object-card" onclick="chooseObject('iron nail')">🔩<br>Iron Nail</div>
+                    <div class="object-card" onclick="chooseObject('plastic spoon')">🥄<br>Plastic Spoon</div>
+                    <div class="object-card" onclick="chooseObject('sugar')">🍬<br>Sugar</div>
+                    <div class="object-card" onclick="chooseObject('copper wire')">🔌<br>Copper Wire</div>
+                    <div class="object-card" onclick="chooseObject('cork')">🟤<br>Cork</div>
+                    <div class="object-card" onclick="chooseObject('rock')">🪨<br>Rock</div>
+                </div>
+
+                <p class="mt-3"><strong>Selected object:</strong> <span id="selectedObject">None yet</span></p>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="tool-box">
+                    <h3>Choose a test:</h3>
+
+                    <select id="testSelect" class="form-select mb-3">
+                        <option value="magnet">Place near a magnet</option>
+                        <option value="water">Place in water</option>
+                        <option value="circuit">Test in a circuit</option>
+                        <option value="dissolve">Stir into water</option>
+                        <option value="balance">Place on a balance</option>
+                        <option value="cylinder">Place in graduated cylinder</option>
+                    </select>
+
+                    <button class="btn btn-primary science-btn" onclick="runTest()">Run Test</button>
+
+                    <div id="testResult" class="feedback warning">
+                        Choose an object and run a test.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <label class="form-label"><strong>Which physical property did this test show?</strong></label>
+    <select id="propertyAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Mass</option>
+        <option>Volume</option>
+        <option>Magnetism</option>
+        <option>Solubility</option>
+        <option>Relative density</option>
+        <option>Electrical conductivity</option>
+    </select>
+
+    <button class="btn btn-success science-btn" onclick="checkPropertyAnswer()">Check Property</button>
+    <div id="propertyFeedback"></div>
+</section>
+
+<section class="property-card">
+    <h2>Part 3: Sort the Objects</h2>
+    <p>Choose the best physical property clue for each object.</p>
+
+    <div id="sortArea"></div>
+
+    <button class="btn btn-success science-btn" onclick="checkSort()">Check My Sort</button>
+    <button class="btn btn-warning science-btn" onclick="resetSort()">Reset Sort</button>
+
+    <div id="sortFeedback"></div>
+</section>
+
+<section class="property-card">
+    <h2>Part 4: STAAR Quick Check</h2>
+
+    <p class="alert alert-warning">
+        A student places an iron nail, a plastic spoon, and a wood craft stick near a magnet.
+        The iron nail moves toward the magnet.
+    </p>
+
+    <label class="form-label"><strong>Which physical property is being tested?</strong></label>
+    <select id="staar1" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Magnetism</option>
+        <option>Solubility</option>
+        <option>Volume</option>
+        <option>Temperature</option>
+    </select>
+
+    <label class="form-label"><strong>Which evidence supports the answer?</strong></label>
+    <select id="staar2" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The iron nail moved toward the magnet.</option>
+        <option>The plastic spoon was white.</option>
+        <option>The wood craft stick was long.</option>
+        <option>The magnet was on the table.</option>
+    </select>
+
+    <button class="btn btn-success science-btn" onclick="checkSTAAR()">Check STAAR Quick Check</button>
+    <div id="staarFeedback"></div>
+</section>
+
+<script>
+    let selectedObject = null;
+    let lastTest = null;
+
+    const testToProperty = {
+        magnet: "Magnetism",
+        water: "Relative density",
+        circuit: "Electrical conductivity",
+        dissolve: "Solubility",
+        balance: "Mass",
+        cylinder: "Volume"
+    };
+
+    const objectResults = {
+        "iron nail": {
+            magnet: "The iron nail is attracted to the magnet.",
+            water: "The iron nail sinks in water.",
+            circuit: "The iron nail can conduct electricity.",
+            dissolve: "The iron nail does not dissolve in water.",
+            balance: "The iron nail has measurable mass.",
+            cylinder: "The iron nail takes up space and raises the water level."
+        },
+        "plastic spoon": {
+            magnet: "The plastic spoon is not attracted to the magnet.",
+            water: "The plastic spoon floats or stays near the surface.",
+            circuit: "The plastic spoon does not conduct electricity well.",
+            dissolve: "The plastic spoon does not dissolve in water.",
+            balance: "The plastic spoon has measurable mass.",
+            cylinder: "The plastic spoon takes up space and can change the water level."
+        },
+        "sugar": {
+            magnet: "Sugar is not attracted to the magnet.",
+            water: "Sugar may sink first, then dissolve when stirred.",
+            circuit: "Dry sugar does not conduct electricity well.",
+            dissolve: "Sugar dissolves in water.",
+            balance: "Sugar has measurable mass.",
+            cylinder: "Sugar takes up space before it dissolves."
+        },
+        "copper wire": {
+            magnet: "Copper wire is not attracted to the magnet.",
+            water: "Copper wire sinks in water.",
+            circuit: "Copper wire conducts electricity.",
+            dissolve: "Copper wire does not dissolve in water.",
+            balance: "Copper wire has measurable mass.",
+            cylinder: "Copper wire takes up space and raises the water level."
+        },
+        "cork": {
+            magnet: "Cork is not attracted to the magnet.",
+            water: "Cork floats in water.",
+            circuit: "Cork does not conduct electricity well.",
+            dissolve: "Cork does not dissolve in water.",
+            balance: "Cork has measurable mass.",
+            cylinder: "Cork takes up space."
+        },
+        "rock": {
+            magnet: "This rock is not attracted to the magnet.",
+            water: "The rock sinks in water.",
+            circuit: "The rock does not conduct electricity well.",
+            dissolve: "The rock does not dissolve in water.",
+            balance: "The rock has measurable mass.",
+            cylinder: "The rock takes up space and raises the water level."
+        }
+    };
+
+    const sortItems = [
+        {
+            object: "Iron nail",
+            clue: "Moves toward a magnet",
+            answer: "Magnetism"
+        },
+        {
+            object: "Sugar",
+            clue: "Dissolves when stirred into water",
+            answer: "Solubility"
+        },
+        {
+            object: "Cork",
+            clue: "Floats in water",
+            answer: "Relative density"
+        },
+        {
+            object: "Copper wire",
+            clue: "Completes an electric circuit",
+            answer: "Electrical conductivity"
+        },
+        {
+            object: "Rock",
+            clue: "Makes the balance pan move downward",
+            answer: "Mass"
+        },
+        {
+            object: "Toy block",
+            clue: "Raises the water level in a graduated cylinder",
+            answer: "Volume"
+        }
+    ];
+
+    function showFeedback(elementId, message, kind) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + kind;
+        box.innerHTML = message;
+    }
+
+    function chooseObject(objectName) {
+        selectedObject = objectName;
+        document.getElementById("selectedObject").innerText = objectName;
+        showFeedback("testResult", "Now choose a test and click Run Test.", "warning");
+    }
+
+    function runTest() {
+        if (!selectedObject) {
+            showFeedback("testResult", "Choose an object first.", "incorrect");
+            return;
+        }
+
+        const test = document.getElementById("testSelect").value;
+        lastTest = test;
+
+        const result = objectResults[selectedObject][test];
+        showFeedback("testResult", "<strong>Result:</strong> " + result, "correct");
+        makeSparkles();
+    }
+
+    function checkPropertyAnswer() {
+        if (!lastTest) {
+            showFeedback("propertyFeedback", "Run a test first.", "warning");
+            return;
+        }
+
+        const answer = document.getElementById("propertyAnswer").value;
+        const correct = testToProperty[lastTest];
+
+        if (answer === correct) {
+            showFeedback("propertyFeedback", "Correct! That test shows " + correct + ".", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("propertyFeedback", "Not yet. This test shows " + correct + ".", "incorrect");
+        }
+    }
+
+    function renderSortArea() {
+        const area = document.getElementById("sortArea");
+        area.innerHTML = "";
+
+        sortItems.forEach((item, index) => {
+            const row = document.createElement("div");
+            row.className = "sort-row";
+            row.innerHTML = `
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <strong>${item.object}</strong><br>
+                        Clue: ${item.clue}
+                    </div>
+                    <div class="col-md-8">
+                        <select id="sort${index}" class="form-select">
+                            <option selected>Choose physical property...</option>
+                            <option>Mass</option>
+                            <option>Volume</option>
+                            <option>Magnetism</option>
+                            <option>Solubility</option>
+                            <option>Relative density</option>
+                            <option>Electrical conductivity</option>
+                        </select>
+                    </div>
+                </div>
+            `;
+            area.appendChild(row);
+        });
+    }
+
+    function checkSort() {
+        let correct = 0;
+
+        sortItems.forEach((item, index) => {
+            const answer = document.getElementById("sort" + index).value;
+            if (answer === item.answer) {
+                correct++;
+            }
+        });
+
+        if (correct === sortItems.length) {
+            showFeedback("sortFeedback", "Excellent! All objects were sorted by the correct physical property.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("sortFeedback", "You got " + correct + " out of " + sortItems.length + ". Review the clues and try again.", "warning");
+        }
+    }
+
+    function resetSort() {
+        renderSortArea();
+        document.getElementById("sortFeedback").innerHTML = "";
+    }
+
+    function checkSTAAR() {
+        const s1 = document.getElementById("staar1").value;
+        const s2 = document.getElementById("staar2").value;
+
+        if (s1 === "Magnetism" && s2 === "The iron nail moved toward the magnet.") {
+            showFeedback("staarFeedback", "Correct! The object moving toward the magnet is evidence of magnetism.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("staarFeedback", "Not yet. Look for the property being tested and the evidence from the observation.", "incorrect");
+        }
+    }
+
+    function makeSparkles() {
+        const stage = document.getElementById("propertyStage");
+
+        for (let i = 0; i < 8; i++) {
+            const sparkle = document.createElement("div");
+            sparkle.className = "sparkle";
+            sparkle.innerText = ["✨", "⭐", "🔬", "✅"][Math.floor(Math.random() * 4)];
+            sparkle.style.left = (80 + Math.random() * 700) + "px";
+            sparkle.style.top = (30 + Math.random() * 220) + "px";
+            stage.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1200);
+        }
+    }
+
+    renderSortArea();
+</script>
+
+{% endblock %}

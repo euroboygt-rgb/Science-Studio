@@ -323,6 +323,12 @@ def student_dashboard():
     return render_template("student_dashboard.html")
 
 
+
+@app.route("/labs/physical-properties-sort")
+def physical_properties_sort():
+    return render_template("physical_properties_sort_game.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

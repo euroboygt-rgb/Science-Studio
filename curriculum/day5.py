@@ -13,6 +13,10 @@ day5 = {
 
     "science_notebook": "Create a page titled Physical Properties of Matter. Write the definition of matter, physical property, and examples of properties.",
 
+    "interactive_activity_title": "Physical Properties Sort Game",
+
+    "interactive_activity": "Students sort objects by physical properties such as mass, volume, magnetism, solubility, relative density, conductivity, and insulation.",
+
     "guided_practice": "Describe classroom objects using physical properties such as color, texture, size, shape, and mass.",
 
     "interactive_activity_title": "Matter Property Sort",
@@ -51,6 +55,8 @@ day5 = {
     ],
 
     "lab": "Physical Property Observation Stations",
+    "lab_link": "/labs/physical-properties-sort",
+    "lab_link_text": "Open Physical Properties Sort Game",
 
     "lab_notebook": "Record objects and identify physical properties that can be observed, measured, or tested.",
 
