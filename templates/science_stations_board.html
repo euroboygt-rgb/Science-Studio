@@ -4,7 +4,7 @@
 
 <h1>Digital Science Stations Rotation Board</h1>
 <p class="lead">
-    Rotate through 1st 9 weeks review stations. Answer, explain with evidence, rate confidence, and track your progress.
+    Pick a station, watch the voice demo, try the activity, answer the quick check, and mark it complete.
 </p>
 
 <a href="/first-nine-weeks/day/43?view=student" class="btn btn-secondary mb-4">
@@ -32,13 +32,21 @@
         margin: 5px;
     }
 
+    .work-card {
+        border: 1px solid #ddd;
+        border-radius: 18px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
     .station-card {
         border: 4px solid #111;
         border-radius: 18px;
         padding: 15px;
         background: white;
         margin-bottom: 15px;
-        min-height: 150px;
+        min-height: 155px;
         cursor: pointer;
         transition: transform 0.2s;
     }
@@ -56,34 +64,33 @@
         background: #cfe2ff;
     }
 
-    .work-card {
-        border: 1px solid #ddd;
-        border-radius: 18px;
+    .control-screen {
+        background:
+            radial-gradient(circle at 12% 20%, white 0 2px, transparent 3px),
+            radial-gradient(circle at 35% 70%, white 0 2px, transparent 3px),
+            radial-gradient(circle at 70% 25%, white 0 2px, transparent 3px),
+            radial-gradient(circle at 90% 75%, white 0 2px, transparent 3px),
+            linear-gradient(180deg, #102542, #1b4965);
+        color: white;
+        border: 5px solid #111;
+        border-radius: 24px;
         padding: 20px;
-        margin-bottom: 25px;
-        background: #f8f9fa;
+        margin-bottom: 20px;
     }
 
-    .timer-box {
+    .timer-box, .progress-box {
         background: white;
-        border: 4px solid #111;
-        border-radius: 18px;
-        text-align: center;
-        padding: 20px;
-        margin-bottom: 15px;
-    }
-
-    .timer-number {
-        font-size: 58px;
-        font-weight: bold;
-    }
-
-    .progress-box {
-        background: white;
+        color: #111;
         border: 4px solid #111;
         border-radius: 18px;
         padding: 15px;
         margin-bottom: 15px;
+    }
+
+    .timer-number {
+        font-size: 52px;
+        font-weight: bold;
+        text-align: center;
     }
 
     .progress-track {
@@ -101,50 +108,23 @@
         transition: width 0.5s;
     }
 
-    .feedback {
-        font-weight: bold;
-        margin-top: 10px;
-        padding: 12px;
-        border-radius: 10px;
-    }
-
-    .correct {
-        background: #d1e7dd;
-        color: #0f5132;
-    }
-
-    .incorrect {
-        background: #f8d7da;
-        color: #842029;
-    }
-
-    .warning {
-        background: #fff3cd;
-        color: #664d03;
-    }
-
-    .station-screen {
-        background:
-            radial-gradient(circle at 12% 20%, white 0 2px, transparent 3px),
-            radial-gradient(circle at 35% 70%, white 0 2px, transparent 3px),
-            radial-gradient(circle at 70% 25%, white 0 2px, transparent 3px),
-            radial-gradient(circle at 90% 75%, white 0 2px, transparent 3px),
-            linear-gradient(180deg, #102542, #1b4965);
-        color: white;
-        border: 5px solid #111;
-        border-radius: 24px;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
-
     .student-path {
-        height: 130px;
+        height: 125px;
         background: #eaf6ff;
         border: 4px solid #111;
         border-radius: 18px;
         position: relative;
         overflow: hidden;
-        margin-bottom: 18px;
+    }
+
+    .track {
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        height: 8px;
+        background: #111;
+        border-radius: 999px;
     }
 
     .avatar {
@@ -177,14 +157,109 @@
         font-size: 58px;
     }
 
-    .track {
-        position: absolute;
-        left: 20px;
-        right: 20px;
-        bottom: 20px;
-        height: 8px;
-        background: #111;
+    .station-tabs {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+
+    .station-tab {
+        border: 3px solid #111;
         border-radius: 999px;
+        padding: 10px 16px;
+        background: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .station-tab.active {
+        background: #fff3cd;
+    }
+
+    .demo-stage {
+        background:
+            linear-gradient(180deg, #bde0fe 0%, #eaf6ff 58%, #d1e7dd 58%, #d1e7dd 100%);
+        border: 5px solid #111;
+        border-radius: 22px;
+        min-height: 360px;
+        position: relative;
+        overflow: hidden;
+        padding: 20px;
+        margin-bottom: 15px;
+    }
+
+    .demo-board {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 18px;
+        padding: 16px;
+        max-width: 520px;
+        min-height: 260px;
+    }
+
+    .demo-title {
+        font-size: 26px;
+        font-weight: bold;
+        border-bottom: 3px solid #111;
+        padding-bottom: 8px;
+        margin-bottom: 10px;
+    }
+
+    .demo-visual {
+        position: absolute;
+        right: 35px;
+        top: 45px;
+        width: 260px;
+        height: 240px;
+        background: white;
+        border: 4px solid #111;
+        border-radius: 20px;
+        padding: 15px;
+        font-size: 48px;
+        text-align: center;
+    }
+
+    .demo-step-number {
+        position: absolute;
+        right: 35px;
+        bottom: 25px;
+        background: #fff3cd;
+        color: #111;
+        border: 4px solid #111;
+        border-radius: 999px;
+        padding: 10px 18px;
+        font-weight: bold;
+    }
+
+    .try-box {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 18px;
+        padding: 18px;
+        margin-bottom: 15px;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .warning {
+        background: #fff3cd;
+        color: #664d03;
     }
 
     .sparkle {
@@ -204,23 +279,20 @@
 <div class="station-banner">
     <h2>🧭 1st 9 Weeks Science Stations</h2>
     <p class="mb-2">
-        Visit each station, answer the quick check, explain your evidence, and mark it complete.
+        Each station now has a voice demo and a Try It activity.
     </p>
-    <span class="badge-pill">Matter</span>
-    <span class="badge-pill">Mixtures</span>
-    <span class="badge-pill">Particles</span>
-    <span class="badge-pill">Force & Motion</span>
-    <span class="badge-pill">Variables</span>
-    <span class="badge-pill">Graphs</span>
-    <span class="badge-pill">CER</span>
-    <span class="badge-pill">Vocabulary</span>
+    <span class="badge-pill">Watch Demo</span>
+    <span class="badge-pill">Try It</span>
+    <span class="badge-pill">Quick Check</span>
+    <span class="badge-pill">Evidence</span>
+    <span class="badge-pill">Confidence</span>
 </div>
 
-<div class="station-screen">
+<div class="control-screen">
     <div class="row">
         <div class="col-md-4">
-            <div class="timer-box text-dark">
-                Station Timer
+            <div class="timer-box">
+                <h4>Station Timer</h4>
                 <div id="timerDisplay" class="timer-number">08:00</div>
                 <button class="btn btn-success" onclick="startTimer()">Start</button>
                 <button class="btn btn-warning" onclick="pauseTimer()">Pause</button>
@@ -229,7 +301,7 @@
         </div>
 
         <div class="col-md-8">
-            <div class="progress-box text-dark">
+            <div class="progress-box">
                 <h4>Station Progress</h4>
                 <div class="progress-track">
                     <div id="progressFill" class="progress-fill"></div>
@@ -247,56 +319,103 @@
 </div>
 
 <div class="work-card">
-    <h2>Part 1: Choose a Station</h2>
-
+    <h2>Part 1: Pick a Station</h2>
     <div class="row" id="stationGrid"></div>
 </div>
 
 <div class="work-card">
     <h2 id="stationTitle">Choose a station to begin.</h2>
 
-    <div class="alert alert-warning">
-        <strong>Station Task:</strong>
-        <span id="stationTask">Click one of the station cards above.</span>
+    <div class="station-tabs">
+        <button id="demoTab" class="station-tab active" onclick="showMode('demo')">▶ Watch Demo</button>
+        <button id="tryTab" class="station-tab" onclick="showMode('try')">🧪 Try It</button>
+        <button id="workTab" class="station-tab" onclick="showMode('work')">📝 Evidence Tracker</button>
     </div>
 
-    <p><strong>Student Goal:</strong> <span id="stationGoal">Your goal will appear here.</span></p>
-    <p><strong>STAAR Strategy:</strong> <span id="stationStrategy">Your strategy will appear here.</span></p>
+    <div id="demoMode">
+        <div class="demo-stage">
+            <div class="demo-board">
+                <div id="demoStepTitle" class="demo-title">Station Demo</div>
+                <p id="demoNarration">Pick a station above, then press Start Voice Demo.</p>
+            </div>
 
-    <hr>
+            <div id="demoVisual" class="demo-visual">🔬</div>
+            <div id="demoStepNumber" class="demo-step-number">Step 0 of 0</div>
+        </div>
 
-    <h3>Quick Check</h3>
-    <p id="quickQuestion">The station question will appear here.</p>
+        <button class="btn btn-success" onclick="startVoiceDemo()">Start Voice Demo</button>
+        <button class="btn btn-primary" onclick="startSilentDemo()">Start Silent Demo</button>
+        <button class="btn btn-warning" onclick="repeatDemoStep()">Repeat Step</button>
+        <button class="btn btn-secondary" onclick="previousDemoStep()">Previous</button>
+        <button class="btn btn-secondary" onclick="nextDemoStep()">Next</button>
+        <button class="btn btn-danger" onclick="stopVoice()">Stop Voice</button>
 
-    <select id="quickAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-    </select>
+        <div class="mt-3">
+            <label class="form-label"><strong>Voice speed:</strong></label>
+            <select id="voiceSpeed" class="form-select" style="max-width: 220px;">
+                <option value="0.85">Slow</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.15">Fast</option>
+            </select>
+        </div>
 
-    <button class="btn btn-success" onclick="checkQuickAnswer()">Check Quick Check</button>
-    <div id="quickFeedback"></div>
+        <div id="demoFeedback"></div>
+    </div>
 
-    <hr>
+    <div id="tryMode" style="display:none;">
+        <div class="try-box">
+            <h3 id="tryTitle">Try It Activity</h3>
+            <p id="tryTask">Pick a station to see the activity.</p>
 
-    <h3>Evidence and Confidence Tracker</h3>
+            <label class="form-label"><strong>Try It answer:</strong></label>
+            <select id="tryAnswer" class="form-select mb-3">
+                <option selected>Choose...</option>
+            </select>
 
-    <label class="form-label"><strong>My answer or idea:</strong></label>
-    <textarea id="studentAnswer" class="form-control mb-3" rows="2" placeholder="Write your answer or idea here."></textarea>
+            <button class="btn btn-success" onclick="checkTryIt()">Check Try It</button>
+            <button class="btn btn-primary" onclick="showHint()">Show Hint</button>
 
-    <label class="form-label"><strong>Evidence or reasoning:</strong></label>
-    <textarea id="studentEvidence" class="form-control mb-3" rows="3" placeholder="Use science vocabulary, data, or observations."></textarea>
+            <div id="tryFeedback"></div>
+        </div>
 
-    <label class="form-label"><strong>Confidence rating:</strong></label>
-    <select id="confidenceRating" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>1 - I need help</option>
-        <option>2 - I am starting to understand</option>
-        <option>3 - I understand most of it</option>
-        <option>4 - I can explain it to someone else</option>
-    </select>
+        <div class="try-box">
+            <h3>Quick Check</h3>
+            <p id="quickQuestion">The station question will appear here.</p>
 
-    <button class="btn btn-primary" onclick="saveStationWork()">Save Station Work</button>
-    <button class="btn btn-warning" onclick="markComplete()">Mark Station Complete</button>
-    <div id="saveFeedback"></div>
+            <select id="quickAnswer" class="form-select mb-3">
+                <option selected>Choose...</option>
+            </select>
+
+            <button class="btn btn-success" onclick="checkQuickAnswer()">Check Quick Check</button>
+            <div id="quickFeedback"></div>
+        </div>
+    </div>
+
+    <div id="workMode" style="display:none;">
+        <div class="try-box">
+            <h3>Evidence and Confidence Tracker</h3>
+
+            <label class="form-label"><strong>My answer or idea:</strong></label>
+            <textarea id="studentAnswer" class="form-control mb-3" rows="2" placeholder="Write your answer or idea here."></textarea>
+
+            <label class="form-label"><strong>Evidence or reasoning:</strong></label>
+            <textarea id="studentEvidence" class="form-control mb-3" rows="3" placeholder="Use science vocabulary, data, or observations."></textarea>
+
+            <label class="form-label"><strong>Confidence rating:</strong></label>
+            <select id="confidenceRating" class="form-select mb-3">
+                <option selected>Choose...</option>
+                <option>1 - I need help</option>
+                <option>2 - I am starting to understand</option>
+                <option>3 - I understand most of it</option>
+                <option>4 - I can explain it to someone else</option>
+            </select>
+
+            <button class="btn btn-primary" onclick="saveStationWork()">Save Station Work</button>
+            <button class="btn btn-warning" onclick="markComplete()">Mark Station Complete</button>
+
+            <div id="saveFeedback"></div>
+        </div>
+    </div>
 </div>
 
 <div class="work-card">
@@ -321,16 +440,6 @@
     <button class="btn btn-danger" onclick="clearAllWork()">Clear All Station Work</button>
 </div>
 
-<div class="work-card">
-    <h2>Part 3: Teacher Quick Pull Group Helper</h2>
-    <p>
-        After students rate confidence, use this to decide who may need small-group support.
-    </p>
-
-    <button class="btn btn-primary" onclick="showTeacherTips()">Show Teacher Review Tips</button>
-    <div id="teacherTips"></div>
-</div>
-
 <script>
     const stations = [
         {
@@ -338,9 +447,20 @@
             title: "Physical Properties of Matter",
             emoji: "🧱",
             topic: "Matter",
+            demoVisual: "🧲⚖️💧",
             task: "Sort objects or cards by mass, volume, magnetism, solubility, density, conductivity, and insulation.",
             goal: "Explain which physical property was used to classify each item.",
             strategy: "Look for what can be observed, measured, or tested.",
+            demoSteps: [
+                ["Physical Properties", "A physical property is a characteristic of matter that can be observed or measured.", "🧱"],
+                ["Examples", "Mass, volume, magnetism, solubility, density, conductivity, and insulation are physical properties.", "⚖️"],
+                ["How This Station Works", "At this station, students decide which property is being tested or used to sort objects.", "🧲"],
+                ["STAAR Tip", "On STAAR, ask yourself: What property helps me describe, compare, or classify this material?", "⭐"]
+            ],
+            tryTask: "Which property explains whether a material is attracted to a magnet?",
+            tryChoices: ["Magnetism", "Solubility", "Volume", "Temperature"],
+            tryAnswer: "Magnetism",
+            hint: "A magnet tests whether an object is magnetic.",
             question: "Which property explains whether a material is attracted to a magnet?",
             choices: ["Magnetism", "Solubility", "Volume", "Temperature"],
             answer: "Magnetism"
@@ -350,9 +470,20 @@
             title: "Separating Mixtures",
             emoji: "🧪",
             topic: "Mixtures and Solutions",
+            demoVisual: "🧲🪨💧",
             task: "Choose the best method to separate mixtures using particle size, magnetism, relative density, solubility, or evaporation.",
             goal: "Match each mixture to the best separation method and explain why.",
             strategy: "Ask: What property is different between the materials?",
+            demoSteps: [
+                ["Mixture Review", "A mixture has two or more materials that keep their own properties.", "🥣"],
+                ["Separation Methods", "Mixtures can be separated by particle size, magnetism, relative density, solubility, or evaporation.", "🧲"],
+                ["How This Station Works", "Students choose the best tool or process to separate each mixture.", "🪨"],
+                ["STAAR Tip", "Look for clues like screen, magnet, floating, dissolving, or evaporating.", "⭐"]
+            ],
+            tryTask: "A screen separates gravel from sand. Which property is used?",
+            tryChoices: ["Particle size", "Gravity", "Electrical conductivity", "Mechanical energy"],
+            tryAnswer: "Particle size",
+            hint: "Screens separate larger pieces from smaller pieces.",
             question: "A screen separates gravel from sand. Which property is used?",
             choices: ["Particle size", "Gravity", "Electrical conductivity", "Mechanical energy"],
             answer: "Particle size"
@@ -362,9 +493,20 @@
             title: "Particles Too Small to See",
             emoji: "🔬",
             topic: "Particles",
+            demoVisual: "💧✨🔬",
             task: "Use models to explain what happens when salt or sugar dissolves in water.",
             goal: "Explain that matter is still present even when particles are too small to see.",
             strategy: "Do not choose answers that say matter disappeared.",
+            demoSteps: [
+                ["Tiny Particles", "Matter can be made of particles that are too small to see with only your eyes.", "🔬"],
+                ["Dissolving", "When sugar dissolves in water, tiny sugar particles spread throughout the water.", "💧"],
+                ["Important Idea", "The sugar did not disappear. It is still there, but the particles are too small to see.", "✨"],
+                ["STAAR Tip", "Never choose an answer that says matter disappeared forever.", "⭐"]
+            ],
+            tryTask: "Sugar dissolves in water. Why can the sugar no longer be seen?",
+            tryChoices: ["The sugar particles spread out and are too small to see", "The sugar disappeared forever", "The sugar turned into plastic", "The sugar became magnetic"],
+            tryAnswer: "The sugar particles spread out and are too small to see",
+            hint: "Matter does not disappear. Think tiny particles.",
             question: "Sugar dissolves in water. Why can the sugar no longer be seen?",
             choices: ["The sugar particles spread out and are too small to see", "The sugar disappeared forever", "The sugar turned into plastic", "The sugar became magnetic"],
             answer: "The sugar particles spread out and are too small to see"
@@ -374,9 +516,20 @@
             title: "Force and Motion",
             emoji: "🚗",
             topic: "Force and Motion",
+            demoVisual: "🚗⬇️🛑",
             task: "Analyze examples of gravity, friction, magnetism, balanced forces, and unequal forces.",
             goal: "Identify the force and explain how it affects motion.",
             strategy: "Look for words like push, pull, slow down, fall, roll, attract, or repel.",
+            demoSteps: [
+                ["Force", "A force is a push or pull that can change motion.", "💪"],
+                ["Gravity", "Gravity pulls objects toward Earth, like a car moving down a ramp.", "⬇️"],
+                ["Friction", "Friction acts against motion when surfaces touch. Rough surfaces usually make more friction.", "🛑"],
+                ["STAAR Tip", "Look for clues like rough, smooth, slow down, fall, push, or pull.", "⭐"]
+            ],
+            tryTask: "A rough surface makes a toy car slow down faster. Which force increased?",
+            tryChoices: ["Friction", "Light", "Sound", "Solubility"],
+            tryAnswer: "Friction",
+            hint: "This force acts opposite motion when surfaces touch.",
             question: "A rough surface makes a toy car slow down faster. Which force increased?",
             choices: ["Friction", "Light", "Sound", "Solubility"],
             answer: "Friction"
@@ -386,9 +539,20 @@
             title: "Variables and Fair Tests",
             emoji: "📊",
             topic: "Variables",
+            demoVisual: "📏🚗📊",
             task: "Read investigation scenarios and identify independent variables, dependent variables, and controlled variables.",
             goal: "Explain how to make each investigation a fair test.",
             strategy: "Changed on purpose = independent. Measured result = dependent. Same things = controls.",
+            demoSteps: [
+                ["Independent Variable", "The independent variable is the one thing changed on purpose.", "🔁"],
+                ["Dependent Variable", "The dependent variable is what is measured or observed.", "📏"],
+                ["Controlled Variables", "Controlled variables stay the same to make the test fair.", "✅"],
+                ["STAAR Tip", "Changed equals independent. Measured equals dependent. Same equals controlled.", "⭐"]
+            ],
+            tryTask: "A student tests how ramp height affects distance. What is the independent variable?",
+            tryChoices: ["Ramp height", "Distance traveled", "Same toy car", "Same floor"],
+            tryAnswer: "Ramp height",
+            hint: "Independent variable means what is changed on purpose.",
             question: "A student tests how ramp height affects distance. What is the independent variable?",
             choices: ["Ramp height", "Distance traveled", "Same toy car", "Same floor"],
             answer: "Ramp height"
@@ -398,9 +562,20 @@
             title: "Graphs and Data",
             emoji: "📈",
             topic: "Graphs and Data",
+            demoVisual: "📊🏀✅",
             task: "Read data tables and graphs from ramp, balloon rocket, and ball bounce investigations.",
             goal: "Use data to identify patterns and support claims.",
             strategy: "Use numbers from the table or graph as evidence.",
+            demoSteps: [
+                ["Graphs Show Data", "Graphs help scientists see patterns in data.", "📊"],
+                ["Axis Review", "The x-axis usually shows what changed. The y-axis usually shows what was measured.", "📈"],
+                ["Evidence", "Strong science answers use numbers from the table or graph.", "🔢"],
+                ["STAAR Tip", "Find the tallest bar, shortest bar, or pattern before choosing your answer.", "⭐"]
+            ],
+            tryTask: "A rubber ball bounced 74 cm and a foam ball bounced 18 cm. Which claim is supported?",
+            tryChoices: ["The rubber ball bounced higher", "The foam ball bounced higher", "Both bounced the same", "No data was collected"],
+            tryAnswer: "The rubber ball bounced higher",
+            hint: "Compare the numbers. 74 cm is greater than 18 cm.",
             question: "A rubber ball bounced 74 cm and a foam ball bounced 18 cm. Which claim is supported?",
             choices: ["The rubber ball bounced higher", "The foam ball bounced higher", "Both bounced the same", "No data was collected"],
             answer: "The rubber ball bounced higher"
@@ -410,9 +585,20 @@
             title: "Claim, Evidence, and Reasoning",
             emoji: "📝",
             topic: "CER",
+            demoVisual: "📝🔢💭",
             task: "Write short CER responses using data from matter, mixtures, and force and motion investigations.",
             goal: "Write a claim supported by number evidence or observations.",
             strategy: "Claim answers the question. Evidence proves it. Reasoning explains why.",
+            demoSteps: [
+                ["Claim", "A claim is your answer to the science question.", "📝"],
+                ["Evidence", "Evidence is data or observations that support your claim.", "🔢"],
+                ["Reasoning", "Reasoning explains why the evidence supports the claim using science ideas.", "💭"],
+                ["STAAR Tip", "A strong response uses data, not just an opinion.", "⭐"]
+            ],
+            tryTask: "Which sentence is evidence?",
+            tryChoices: ["The toy car traveled 82 cm", "The lab was fun", "I liked the toy car", "The graph looked nice"],
+            tryAnswer: "The toy car traveled 82 cm",
+            hint: "Evidence uses data or observations.",
             question: "Which sentence is evidence?",
             choices: ["The toy car traveled 82 cm", "The lab was fun", "I liked the toy car", "The graph looked nice"],
             answer: "The toy car traveled 82 cm"
@@ -422,9 +608,20 @@
             title: "Vocabulary Power",
             emoji: "💪",
             topic: "Vocabulary",
+            demoVisual: "💪📚⭐",
             task: "Match vocabulary words to definitions, examples, and STAAR-style clues.",
             goal: "Review key words from Units 1, 2, and 3.",
             strategy: "Use clue words in the question to connect to vocabulary.",
+            demoSteps: [
+                ["Vocabulary Helps", "Science vocabulary helps you understand what the question is asking.", "📚"],
+                ["Clue Words", "Words like push, pull, dissolve, screen, rough, and measure give clues.", "🔍"],
+                ["Connect Ideas", "Match vocabulary to examples from investigations and labs.", "🔗"],
+                ["STAAR Tip", "When stuck, ask: What science word does this example show?", "⭐"]
+            ],
+            tryTask: "Which word means a push or pull?",
+            tryChoices: ["Force", "Solution", "Mass", "Evaporation"],
+            tryAnswer: "Force",
+            hint: "This word belongs to force and motion.",
             question: "Which word means a push or pull?",
             choices: ["Force", "Solution", "Mass", "Evaporation"],
             answer: "Force"
@@ -432,6 +629,8 @@
     ];
 
     let currentStationId = null;
+    let currentDemoStep = 0;
+    let demoInterval = null;
     let work = {};
     let secondsLeft = 480;
     let timerInterval = null;
@@ -451,6 +650,10 @@
         box.innerHTML = message;
     }
 
+    function getStation() {
+        return stations.find(s => s.id === currentStationId);
+    }
+
     function renderStations() {
         const grid = document.getElementById("stationGrid");
         grid.innerHTML = "";
@@ -465,7 +668,7 @@
                 <div class="station-card ${complete ? "complete" : ""} ${active ? "active" : ""}" onclick="selectStation(${station.id})">
                     <h4>${station.emoji} Station ${station.id}</h4>
                     <p><strong>${station.title}</strong></p>
-                    <p>${complete ? "✅ Complete" : "Click to begin"}</p>
+                    <p>${complete ? "✅ Complete" : "Watch Demo / Try It"}</p>
                 </div>
             `;
             grid.appendChild(div);
@@ -473,50 +676,215 @@
     }
 
     function selectStation(id) {
+        stopVoice();
         currentStationId = id;
-        const station = stations.find(s => s.id === id);
+        currentDemoStep = 0;
+
+        const station = getStation();
 
         document.getElementById("stationTitle").innerText = "Station " + station.id + ": " + station.title;
-        document.getElementById("stationTask").innerText = station.task;
-        document.getElementById("stationGoal").innerText = station.goal;
-        document.getElementById("stationStrategy").innerText = station.strategy;
+        document.getElementById("tryTitle").innerText = station.title + " Try It";
+        document.getElementById("tryTask").innerText = station.tryTask;
         document.getElementById("quickQuestion").innerText = station.question;
 
-        const answerSelect = document.getElementById("quickAnswer");
-        answerSelect.innerHTML = "<option selected>Choose...</option>";
-
-        shuffleArray(station.choices).forEach(choice => {
-            const option = document.createElement("option");
-            option.innerText = choice;
-            option.value = choice;
-            answerSelect.appendChild(option);
-        });
+        fillSelect("tryAnswer", station.tryChoices);
+        fillSelect("quickAnswer", station.choices);
 
         const saved = work[id] || {};
         document.getElementById("studentAnswer").value = saved.answer || "";
         document.getElementById("studentEvidence").value = saved.evidence || "";
         document.getElementById("confidenceRating").value = saved.confidence || "Choose...";
 
+        document.getElementById("tryFeedback").innerHTML = "";
         document.getElementById("quickFeedback").innerHTML = "";
         document.getElementById("saveFeedback").innerHTML = "";
+        document.getElementById("demoFeedback").innerHTML = "";
 
+        renderDemoStep();
+        showMode("demo");
         renderStations();
     }
 
+    function fillSelect(id, choices) {
+        const select = document.getElementById(id);
+        select.innerHTML = "<option selected>Choose...</option>";
+
+        shuffleArray(choices).forEach(choice => {
+            const option = document.createElement("option");
+            option.innerText = choice;
+            option.value = choice;
+            select.appendChild(option);
+        });
+    }
+
+    function showMode(mode) {
+        document.getElementById("demoMode").style.display = mode === "demo" ? "block" : "none";
+        document.getElementById("tryMode").style.display = mode === "try" ? "block" : "none";
+        document.getElementById("workMode").style.display = mode === "work" ? "block" : "none";
+
+        document.getElementById("demoTab").classList.toggle("active", mode === "demo");
+        document.getElementById("tryTab").classList.toggle("active", mode === "try");
+        document.getElementById("workTab").classList.toggle("active", mode === "work");
+    }
+
+    function renderDemoStep() {
+        const station = getStation();
+
+        if (!station) {
+            document.getElementById("demoStepTitle").innerText = "Station Demo";
+            document.getElementById("demoNarration").innerText = "Pick a station above, then press Start Voice Demo.";
+            document.getElementById("demoVisual").innerText = "🔬";
+            document.getElementById("demoStepNumber").innerText = "Step 0 of 0";
+            return;
+        }
+
+        const step = station.demoSteps[currentDemoStep];
+        document.getElementById("demoStepTitle").innerText = step[0];
+        document.getElementById("demoNarration").innerText = step[1];
+        document.getElementById("demoVisual").innerText = step[2];
+        document.getElementById("demoStepNumber").innerText = "Step " + (currentDemoStep + 1) + " of " + station.demoSteps.length;
+    }
+
+    function speak(text) {
+        stopVoice();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = Number(document.getElementById("voiceSpeed").value);
+        utterance.pitch = 1;
+        utterance.volume = 1;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    function startVoiceDemo() {
+        const station = getStation();
+
+        if (!station) {
+            showFeedback("demoFeedback", "Choose a station first.", "warning");
+            return;
+        }
+
+        clearInterval(demoInterval);
+        currentDemoStep = 0;
+        renderDemoStep();
+        speak(station.demoSteps[currentDemoStep][1]);
+
+        demoInterval = setInterval(() => {
+            if (window.speechSynthesis.speaking) return;
+
+            if (currentDemoStep < station.demoSteps.length - 1) {
+                currentDemoStep++;
+                renderDemoStep();
+                speak(station.demoSteps[currentDemoStep][1]);
+            } else {
+                clearInterval(demoInterval);
+                showFeedback("demoFeedback", "Demo complete. Now click Try It.", "correct");
+            }
+        }, 800);
+    }
+
+    function startSilentDemo() {
+        const station = getStation();
+
+        if (!station) {
+            showFeedback("demoFeedback", "Choose a station first.", "warning");
+            return;
+        }
+
+        stopVoice();
+        clearInterval(demoInterval);
+        currentDemoStep = 0;
+        renderDemoStep();
+
+        demoInterval = setInterval(() => {
+            if (currentDemoStep < station.demoSteps.length - 1) {
+                currentDemoStep++;
+                renderDemoStep();
+            } else {
+                clearInterval(demoInterval);
+                showFeedback("demoFeedback", "Silent demo complete. Now click Try It.", "correct");
+            }
+        }, 3200);
+    }
+
+    function repeatDemoStep() {
+        const station = getStation();
+        if (!station) return;
+        renderDemoStep();
+        speak(station.demoSteps[currentDemoStep][1]);
+    }
+
+    function nextDemoStep() {
+        const station = getStation();
+        if (!station) return;
+        stopVoice();
+
+        if (currentDemoStep < station.demoSteps.length - 1) {
+            currentDemoStep++;
+        }
+
+        renderDemoStep();
+    }
+
+    function previousDemoStep() {
+        const station = getStation();
+        if (!station) return;
+        stopVoice();
+
+        if (currentDemoStep > 0) {
+            currentDemoStep--;
+        }
+
+        renderDemoStep();
+    }
+
+    function stopVoice() {
+        clearInterval(demoInterval);
+        if ("speechSynthesis" in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+
+    function checkTryIt() {
+        const station = getStation();
+
+        if (!station) {
+            showFeedback("tryFeedback", "Choose a station first.", "warning");
+            return;
+        }
+
+        const chosen = document.getElementById("tryAnswer").value;
+
+        if (chosen === station.tryAnswer) {
+            showFeedback("tryFeedback", "Correct! You are ready for the quick check.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("tryFeedback", "Not yet. Use the hint or watch the demo again.", "incorrect");
+        }
+    }
+
+    function showHint() {
+        const station = getStation();
+        if (!station) {
+            showFeedback("tryFeedback", "Choose a station first.", "warning");
+            return;
+        }
+        showFeedback("tryFeedback", "Hint: " + station.hint, "warning");
+    }
+
     function checkQuickAnswer() {
-        if (!currentStationId) {
+        const station = getStation();
+
+        if (!station) {
             showFeedback("quickFeedback", "Choose a station first.", "warning");
             return;
         }
 
-        const station = stations.find(s => s.id === currentStationId);
         const chosen = document.getElementById("quickAnswer").value;
 
         if (chosen === station.answer) {
             showFeedback("quickFeedback", "Correct! " + station.strategy, "correct");
             makeSparkles();
         } else {
-            showFeedback("quickFeedback", "Not yet. The correct answer is: " + station.answer + ".", "incorrect");
+            showFeedback("quickFeedback", "Not yet. Correct answer: " + station.answer + ".", "incorrect");
         }
     }
 
@@ -526,7 +894,7 @@
             return;
         }
 
-        const station = stations.find(s => s.id === currentStationId);
+        const station = getStation();
 
         work[currentStationId] = {
             topic: station.topic,
@@ -600,16 +968,19 @@
 
     function clearAllWork() {
         if (!confirm("Clear all station work on this device?")) return;
+
         work = {};
         localStorage.removeItem("day43ScienceStationsWork");
         currentStationId = null;
+        stopVoice();
+
         renderStations();
         updateSummary();
         updateProgress();
+        renderDemoStep();
+
         document.getElementById("stationTitle").innerText = "Choose a station to begin.";
-        document.getElementById("stationTask").innerText = "Click one of the station cards above.";
-        document.getElementById("stationGoal").innerText = "Your goal will appear here.";
-        document.getElementById("stationStrategy").innerText = "Your strategy will appear here.";
+        document.getElementById("tryTask").innerText = "Pick a station to see the activity.";
         document.getElementById("quickQuestion").innerText = "The station question will appear here.";
     }
 
@@ -621,6 +992,7 @@
 
     function startTimer() {
         clearInterval(timerInterval);
+
         timerInterval = setInterval(() => {
             secondsLeft--;
             document.getElementById("timerDisplay").innerText = formatTime(secondsLeft);
@@ -645,6 +1017,7 @@
 
     function makeSparkles() {
         const path = document.getElementById("studentPath");
+
         for (let i = 0; i < 8; i++) {
             const sparkle = document.createElement("div");
             sparkle.className = "sparkle";
@@ -656,22 +1029,11 @@
         }
     }
 
-    function showTeacherTips() {
-        document.getElementById("teacherTips").innerHTML = `
-            <div class="feedback warning">
-                <h4>Suggested Small Groups</h4>
-                <p><strong>Pull Group 1:</strong> Students rating 1 or 2 on Variables and Graphs.</p>
-                <p><strong>Pull Group 2:</strong> Students missing mixture separation methods: particle size, magnetism, solubility, evaporation, relative density.</p>
-                <p><strong>Pull Group 3:</strong> Students who can answer but do not include evidence or reasoning.</p>
-                <p><strong>Fast Finishers:</strong> Have them write one CER paragraph using data from Station 6.</p>
-            </div>
-        `;
-    }
-
     loadFromStorage();
     renderStations();
     updateSummary();
     updateProgress();
+    renderDemoStep();
     document.getElementById("timerDisplay").innerText = formatTime(secondsLeft);
 </script>
 
