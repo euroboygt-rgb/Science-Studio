@@ -2,6 +2,71 @@
 
 {% block content %}
 
+{% set vocab_day = lesson.get("day", 0) %}
+
+{% macro unit_vocab_poster(unit_number, unit_title, filename, anchor) %}
+<div class="card mt-3 mb-3 vocab-poster-card">
+    <div class="card-header bg-primary text-white">
+        Vocabulary Picture Support
+    </div>
+
+    <div class="card-body">
+        <h5>{{ unit_title }}</h5>
+
+        <img src="{{ url_for('static', filename='vocabulary/posters/' ~ filename) }}"
+             alt="{{ unit_title }} vocabulary poster"
+             style="width:100%; max-width:560px; border:3px solid #111; border-radius:16px; display:block; margin:12px auto;">
+
+        <div class="no-print">
+            <a href="/vocabulary#{{ anchor }}" class="btn btn-primary mt-2">
+                Open Printable Poster
+            </a>
+
+            <a href="{{ url_for('static', filename='vocabulary/posters/' ~ filename) }}"
+               class="btn btn-success mt-2"
+               download>
+                Download Poster
+            </a>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+<div id="unitVocabPosterBlock">
+    {% if vocab_day >= 5 and vocab_day <= 15 %}
+        {{ unit_vocab_poster(1, "Unit 1: Matter and Physical Properties", "unit1_vocabulary_poster.png", "unit1") }}
+    {% elif vocab_day >= 16 and vocab_day <= 25 %}
+        {{ unit_vocab_poster(2, "Unit 2: Mixtures and Solutions", "unit2_vocabulary_poster.png", "unit2") }}
+    {% elif vocab_day >= 26 and vocab_day <= 41 %}
+        {{ unit_vocab_poster(3, "Unit 3: Force and Motion", "unit3_vocabulary_poster.png", "unit3") }}
+    {% elif vocab_day >= 42 and vocab_day <= 45 %}
+        {{ unit_vocab_poster(1, "Unit 1: Matter and Physical Properties", "unit1_vocabulary_poster.png", "unit1") }}
+        {{ unit_vocab_poster(2, "Unit 2: Mixtures and Solutions", "unit2_vocabulary_poster.png", "unit2") }}
+        {{ unit_vocab_poster(3, "Unit 3: Force and Motion", "unit3_vocabulary_poster.png", "unit3") }}
+    {% endif %}
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const block = document.getElementById("unitVocabPosterBlock");
+    if (!block || block.innerText.trim().length === 0) return;
+
+    const headers = Array.from(document.querySelectorAll(".card-header, h2, h3, h4"));
+    const vocabHeader = headers.find(header =>
+        header.textContent.toLowerCase().includes("vocabulary")
+    );
+
+    if (vocabHeader) {
+        const card = vocabHeader.closest(".card");
+        if (card) {
+            card.appendChild(block);
+        }
+    }
+});
+</script>
+
+
+
 {% if not lesson %}
 
 <div class="alert alert-danger">

@@ -353,6 +353,12 @@ def graduated_cylinder_volume():
     return render_template("graduated_cylinder_volume_simulator.html")
 
 
+
+@app.route("/vocabulary")
+def vocabulary_posters():
+    return render_template("vocabulary_posters.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
