@@ -329,6 +329,12 @@ def physical_properties_sort():
     return render_template("physical_properties_sort_game.html")
 
 
+
+@app.route("/labs/states-matter-match")
+def states_matter_match():
+    return render_template("states_matter_match_game.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

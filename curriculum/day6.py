@@ -13,6 +13,10 @@ day6 = {
 
     "science_notebook": "Students create a page titled 'States of Matter.' They make a three-column chart for solids, liquids, and gases. In each column, students write the definition, draw a picture, and list classroom or real-world examples.",
 
+    "interactive_activity_title": "States of Matter Match Game",
+
+    "interactive_activity": "Students match solids, liquids, and gases to their properties, particle models, examples, and evidence from observations.",
+
     "guided_practice": "Show students examples such as pencil, rock, water, juice, air in a balloon, steam, and a plastic cup. Students identify the state of matter and explain the evidence that supports their answer.",
 
     "interactive_activity_title": "Solid, Liquid, Gas Sort",
@@ -77,6 +81,8 @@ day6 = {
     ],
 
     "lab": "States of Matter Sort: students sort example cards into solid, liquid, and gas categories. Students must explain which physical properties helped them decide.",
+    "lab_link": "/labs/states-matter-match",
+    "lab_link_text": "Open States of Matter Match Game",
 
     "lab_notebook": "Students record examples of solids, liquids, and gases and explain the evidence for each state of matter.",
 
