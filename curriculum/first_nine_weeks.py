@@ -48,5 +48,6 @@ first_nine_weeks = [
     {"day": 40, "title": "Playground Equipment Engineering Challenge", "teks": ["5.7A", "5.7B", "5.1B", "5.1E"], "lab": True},
     {"day": 41, "title": "Unit 3 Performance Assessment and Presentation", "teks": ["5.7A", "5.7B", "5.1B", "5.1E", "5.3A"], "lab": True},
     {"day": 42, "title": "1st 9 Weeks STAAR Spiral Review", "teks": ["5.6A", "5.6B", "5.6D", "5.7A", "5.7B"], "lab": True},
+    {"day": 43, "title": "1st 9 Weeks Science Stations Review", "teks": ["5.6A", "5.6B", "5.6D", "5.7A", "5.7B"], "lab": True},
 
 ]
