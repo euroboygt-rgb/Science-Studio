@@ -289,6 +289,12 @@ def staar_spiral_review_game():
     return render_template("staar_spiral_review_game.html")
 
 
+
+@app.route("/labs/science-stations-board")
+def science_stations_board():
+    return render_template("science_stations_board.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

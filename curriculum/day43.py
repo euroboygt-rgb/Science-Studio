@@ -15,7 +15,14 @@ day43 = {
 
     "guided_practice": "Before stations begin, model one station task. Show a sample question about separating a mixture of sand and gravel. Ask students to identify the science topic, the property used, the answer, and the evidence. Emphasize that strong answers use vocabulary such as particle size, magnetism, solubility, evaporation, gravity, friction, force, variable, data, and evidence.",
 
+    "interactive_activity_title": "Digital Science Stations Rotation Board",
+
+    "interactive_activity": "Students rotate through digital review stations for matter, mixtures, particles, force and motion, variables, graphing, vocabulary, and CER. Students answer a quick check, write evidence, rate confidence, and track completion.",
+
     "lab": "Science Stations Review: students rotate through stations reviewing matter, mixtures and solutions, particles too small to see, force and motion, variables and fair tests, graphs and data, vocabulary, and CER writing.",
+
+    "lab_link": "/labs/science-stations-board",
+    "lab_link_text": "Open Digital Science Stations Rotation Board",
 
     "lab_notebook": "Students record each station, science topic, answer, evidence or reasoning, and confidence rating. Students mark stations they need to revisit before the assessment.",
 
