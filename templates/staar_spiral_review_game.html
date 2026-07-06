@@ -535,6 +535,40 @@
         {word: "evidence", category: "Variables and Data"}
     ];
 
+
+    function shuffleArray(items) {
+        const copy = [...items];
+
+        for (let i = copy.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+
+        return copy;
+    }
+
+    function shuffleSelectOptions(selectId) {
+        const select = document.getElementById(selectId);
+        if (!select) return;
+
+        const placeholder = select.options[0];
+        const options = Array.from(select.options).slice(1);
+        const shuffled = shuffleArray(options);
+
+        select.innerHTML = "";
+        select.appendChild(placeholder);
+
+        shuffled.forEach(option => {
+            select.appendChild(option);
+        });
+
+        select.selectedIndex = 0;
+    }
+
+    function randomizeDropdownAnswers() {
+        ["evidenceAnswer", "boss1", "boss2", "boss3"].forEach(shuffleSelectOptions);
+    }
+
     function showFeedback(elementId, message, kind) {
         const box = document.getElementById(elementId);
         box.className = "feedback " + kind;
@@ -586,7 +620,7 @@
         const choicesDiv = document.getElementById("answerChoices");
         choicesDiv.innerHTML = "";
 
-        currentQuestion.choices.forEach(choice => {
+        shuffleArray(currentQuestion.choices).forEach(choice => {
             const btn = document.createElement("button");
             btn.className = "answer-btn";
             btn.innerText = choice;
@@ -612,7 +646,8 @@
             showFeedback("gameFeedback", "Not yet. Correct answer: " + currentQuestion.answer + ". " + currentQuestion.explain, "incorrect");
         }
 
-        updateDisplays();
+        randomizeDropdownAnswers();
+    updateDisplays();
     }
 
     function useHint() {
@@ -637,7 +672,8 @@
         score = 0;
         streak = 0;
         questionCount = 0;
-        updateDisplays();
+        randomizeDropdownAnswers();
+    updateDisplays();
         nextQuestion();
         showFeedback("gameFeedback", "Game reset. Start a new review round.", "warning");
     }
@@ -661,12 +697,14 @@
             score += 5;
             streak++;
             showFeedback("sortFeedback", "Correct sort! " + currentSort.word + " belongs in " + currentSort.category + ".", "correct");
-            updateDisplays();
+            randomizeDropdownAnswers();
+    updateDisplays();
             makeSparkles();
         } else {
             streak = 0;
             showFeedback("sortFeedback", "Not yet. " + currentSort.word + " belongs in " + currentSort.category + ".", "incorrect");
-            updateDisplays();
+            randomizeDropdownAnswers();
+    updateDisplays();
         }
     }
 
@@ -677,12 +715,14 @@
             score += 10;
             streak++;
             showFeedback("evidenceFeedback", "Correct! Strong evidence uses data from the question.", "correct");
-            updateDisplays();
+            randomizeDropdownAnswers();
+    updateDisplays();
             makeSparkles();
         } else {
             streak = 0;
             showFeedback("evidenceFeedback", "Not yet. Evidence should use numbers or observations, not opinions.", "incorrect");
-            updateDisplays();
+            randomizeDropdownAnswers();
+    updateDisplays();
         }
     }
 
@@ -699,15 +739,18 @@
             score += 30;
             streak += 3;
             showFeedback("bossFeedback", "Review Boss defeated! You used mixture, particle, and force evidence correctly.", "correct");
-            updateDisplays();
+            randomizeDropdownAnswers();
+    updateDisplays();
             makeSparkles();
         } else {
             streak = 0;
             showFeedback("bossFeedback", "The Review Boss is still standing. Check particle size, tiny particles, and friction.", "incorrect");
-            updateDisplays();
+            randomizeDropdownAnswers();
+    updateDisplays();
         }
     }
 
+    randomizeDropdownAnswers();
     updateDisplays();
 </script>
 
