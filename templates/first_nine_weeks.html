@@ -250,7 +250,13 @@
                             {% endfor %}
                         </div>
 
-                        {% if lesson.lab if lesson.lab is defined else lesson["lab"] %}
+                        {% if lesson.lab is defined %}
+                            {% set has_lab = lesson.lab %}
+                        {% else %}
+                            {% set has_lab = lesson["lab"] %}
+                        {% endif %}
+
+                        {% if has_lab %}
                             <p class="mb-2"><strong>Includes:</strong> Lab / interactive activity</p>
                         {% endif %}
 
