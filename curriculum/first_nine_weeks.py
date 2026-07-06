@@ -42,5 +42,6 @@ first_nine_weeks = [
     {"day": 34, "title": "Variables in Force and Motion Investigations", "teks": ["5.7B", "5.1B", "5.1E"], "lab": True},
     {"day": 35, "title": "Testing Variables and Graphing Data", "teks": ["5.7B", "5.1B", "5.1E"], "lab": True},
     {"day": 36, "title": "Car on a Ramp Investigation", "teks": ["5.7B", "5.1B", "5.1E"], "lab": True},
+    {"day": 37, "title": "Balloon Rocket Investigation", "teks": ["5.7B", "5.1B", "5.1E"], "lab": True},
 
 ]
