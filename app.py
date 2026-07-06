@@ -311,6 +311,12 @@ def reflection_tracker():
     return render_template("reflection_tracker.html")
 
 
+
+@app.route("/teacher-dashboard")
+def teacher_dashboard():
+    return render_template("teacher_dashboard.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

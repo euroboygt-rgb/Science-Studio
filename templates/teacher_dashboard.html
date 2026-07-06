@@ -1,0 +1,483 @@
+{% extends "base.html" %}
+
+{% block title %}Teacher Dashboard{% endblock %}
+
+{% block content %}
+
+<style>
+    .teacher-hero {
+        background:
+            radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+            radial-gradient(circle at 80% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+            linear-gradient(135deg, #102542 0%, #1b4965 58%, #5fa8d3 100%);
+        color: white;
+        border: 5px solid #111;
+        border-radius: 28px;
+        padding: 32px;
+        box-shadow: 8px 8px 0 rgba(17, 17, 17, 0.18);
+        margin-bottom: 24px;
+    }
+
+    .teacher-hero h1 {
+        font-size: clamp(2.2rem, 5vw, 4.5rem);
+        font-weight: 950;
+        line-height: 0.95;
+        margin-bottom: 14px;
+    }
+
+    .dashboard-card {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 22px;
+        padding: 20px;
+        box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
+        margin-bottom: 22px;
+        height: 100%;
+    }
+
+    .folder-card {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 22px;
+        box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
+        margin-bottom: 22px;
+        overflow: hidden;
+    }
+
+    .folder-header {
+        border-bottom: 4px solid #111;
+        padding: 18px 22px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .folder-title {
+        font-size: 1.45rem;
+        font-weight: 950;
+        margin: 0;
+    }
+
+    .folder-subtitle {
+        margin: 4px 0 0;
+        font-weight: 650;
+    }
+
+    .folder-body {
+        padding: 18px;
+        display: none;
+    }
+
+    .folder-body.open {
+        display: block;
+    }
+
+    .day-row {
+        background: #f8f9fa;
+        border: 3px solid #111;
+        border-radius: 16px;
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+
+    .tool-link {
+        display: block;
+        background: #f8f9fa;
+        border: 3px solid #111;
+        border-radius: 16px;
+        padding: 13px;
+        margin-bottom: 10px;
+        font-weight: 850;
+        color: #111;
+    }
+
+    .tool-link:hover {
+        background: #fff3cd;
+        color: #111;
+    }
+
+    .science-btn-small {
+        border: 3px solid #111;
+        border-radius: 12px;
+        font-weight: 850;
+        box-shadow: 2px 2px 0 rgba(17,17,17,0.2);
+        margin: 3px;
+    }
+
+    .unit-setup { background: #eaf6ff; }
+    .unit-one { background: #d1e7dd; }
+    .unit-two { background: #cff4fc; }
+    .unit-three { background: #fff3cd; }
+    .unit-review { background: #f8d7da; }
+
+    .teacher-note {
+        background: #fff3cd;
+        border-left: 8px solid #111;
+        border-radius: 14px;
+        padding: 16px;
+        font-weight: 700;
+    }
+
+    .checklist-row {
+        background: #f8f9fa;
+        border: 3px solid #111;
+        border-radius: 14px;
+        padding: 11px;
+        margin-bottom: 8px;
+    }
+
+    .stat-number {
+        font-size: 3rem;
+        font-weight: 950;
+        line-height: 1;
+    }
+
+    @media print {
+        .no-print {
+            display: none !important;
+        }
+
+        .dashboard-card,
+        .folder-card {
+            box-shadow: none;
+            border: 2px solid #111;
+        }
+
+        .folder-body {
+            display: block !important;
+        }
+    }
+</style>
+
+<section class="teacher-hero">
+    <span class="badge-science">Teacher Command Center</span>
+    <span class="badge-science">45 Lessons</span>
+    <span class="badge-science">Labs + Assessment + Reflection</span>
+
+    <h1 class="mt-3">Teacher Dashboard</h1>
+
+    <p class="lead mb-0">
+        Launch lessons, open student or teacher views, find labs, review assessment tools,
+        plan small groups, and prepare a principal demo from one place.
+    </p>
+</section>
+
+<section class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="dashboard-card text-center">
+            <div class="stat-number">45</div>
+            <h5>Daily Lessons</h5>
+            <p class="mb-0">Complete 1st 9 weeks</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="dashboard-card text-center">
+            <div class="stat-number">3</div>
+            <h5>Main Units</h5>
+            <p class="mb-0">Matter, mixtures, force</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="dashboard-card text-center">
+            <div class="stat-number">30+</div>
+            <h5>Interactive Tools</h5>
+            <p class="mb-0">Labs, games, simulations</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="dashboard-card text-center">
+            <div class="stat-number">1</div>
+            <h5>Assessment Cycle</h5>
+            <p class="mb-0">Review, assess, reflect</p>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4">
+    <div class="col-lg-6">
+        <div class="dashboard-card">
+            <h2>🚀 Quick Lesson Launcher</h2>
+            <p>Choose any day and open the student or teacher view.</p>
+
+            <label class="form-label"><strong>Select lesson day:</strong></label>
+            <select id="lessonSelect" class="form-select mb-3"></select>
+
+            <div class="d-flex flex-wrap gap-2 no-print">
+                <button class="btn btn-primary science-btn-small" onclick="openSelectedLesson('student')">Open Student View</button>
+                <button class="btn btn-success science-btn-small" onclick="openSelectedLesson('teacher')">Open Teacher View</button>
+                <button class="btn btn-warning science-btn-small" onclick="openSelectedLessonList()">Open 1st 9 Weeks List</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="dashboard-card">
+            <h2>🧰 Teacher Tool Shortcuts</h2>
+            <a class="tool-link" href="/labs">🔬 Interactive Lab Library</a>
+            <a class="tool-link" href="/labs/staar-spiral-review-game">🎮 Day 42 STAAR Spiral Review Game</a>
+            <a class="tool-link" href="/labs/science-stations-board">🧭 Day 43 Digital Science Stations</a>
+            <a class="tool-link" href="/labs/staar-digital-assessment">📝 Day 44 Digital Assessment</a>
+            <a class="tool-link" href="/labs/reflection-tracker">🎯 Day 45 Reflection Tracker</a>
+        </div>
+    </div>
+</section>
+
+<section class="teacher-note mb-4">
+    Suggested teacher flow: open the daily teacher view first, then launch the student view or lab on the projector.
+    Use the assessment and reflection tools during the final review days.
+</section>
+
+<section class="dashboard-card">
+    <h2>📂 Lesson Folders</h2>
+    <p>Open a unit folder to jump directly to teacher or student views.</p>
+
+    <div class="no-print mb-3">
+        <button class="btn btn-primary science-btn-small" onclick="openFolder('setupFolder')">Setup</button>
+        <button class="btn btn-success science-btn-small" onclick="openFolder('unit1Folder')">Unit 1</button>
+        <button class="btn btn-info science-btn-small" onclick="openFolder('unit2Folder')">Unit 2</button>
+        <button class="btn btn-warning science-btn-small" onclick="openFolder('unit3Folder')">Unit 3</button>
+        <button class="btn btn-danger science-btn-small" onclick="openFolder('reviewFolder')">Review</button>
+        <button class="btn btn-secondary science-btn-small" onclick="openAllFolders()">Open All</button>
+        <button class="btn btn-dark science-btn-small" onclick="closeAllFolders()">Close All</button>
+    </div>
+
+    <div id="folderContainer"></div>
+</section>
+
+<section class="row g-4">
+    <div class="col-lg-4">
+        <div class="dashboard-card">
+            <h2>👥 Small Group Reteach</h2>
+            <p>Use this after review games or the Day 44 assessment.</p>
+
+            <a class="tool-link" href="/first-nine-weeks/day/14?view=teacher">Matter: Conductors / Insulators</a>
+            <a class="tool-link" href="/first-nine-weeks/day/21?view=teacher">Mixtures: Evaporation</a>
+            <a class="tool-link" href="/first-nine-weeks/day/24?view=teacher">Particles Too Small to See</a>
+            <a class="tool-link" href="/first-nine-weeks/day/31?view=teacher">Force: Friction</a>
+            <a class="tool-link" href="/first-nine-weeks/day/34?view=teacher">Variables and Fair Tests</a>
+            <a class="tool-link" href="/first-nine-weeks/day/35?view=teacher">Graphs and Data</a>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="dashboard-card">
+            <h2>🖨️ Printable Teacher Checklist</h2>
+
+            <div class="checklist-row"><input type="checkbox"> Bell ringer ready</div>
+            <div class="checklist-row"><input type="checkbox"> Learning target posted</div>
+            <div class="checklist-row"><input type="checkbox"> Materials ready</div>
+            <div class="checklist-row"><input type="checkbox"> Lab safety reviewed</div>
+            <div class="checklist-row"><input type="checkbox"> Student view tested</div>
+            <div class="checklist-row"><input type="checkbox"> Teacher view tested</div>
+            <div class="checklist-row"><input type="checkbox"> Exit ticket ready</div>
+
+            <button class="btn btn-primary science-btn-small no-print" onclick="window.print()">Print Dashboard</button>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="dashboard-card">
+            <h2>🏫 Principal Demo Flow</h2>
+            <p>Use this order to show the app clearly.</p>
+
+            <a class="tool-link" href="/">1. Show Science Dashboard</a>
+            <a class="tool-link" href="/first-nine-weeks">2. Show Lesson Folders</a>
+            <a class="tool-link" href="/first-nine-weeks/day/10?view=student">3. Show Sample Student Lesson</a>
+            <a class="tool-link" href="/first-nine-weeks/day/10?view=teacher">4. Show Teacher Lesson View</a>
+            <a class="tool-link" href="/labs/ramp-investigation">5. Show Interactive Simulation</a>
+            <a class="tool-link" href="/labs/staar-digital-assessment">6. Show Assessment Tool</a>
+            <a class="tool-link" href="/labs/reflection-tracker">7. Show Reflection Tool</a>
+        </div>
+    </div>
+</section>
+
+<script>
+    const lessons = [
+        [1, "Classroom Rituals and Routines"],
+        [2, "Science Notebook and Lab Notebook Setup"],
+        [3, "Introduction to Science Tools and Equipment"],
+        [4, "Lab Safety"],
+        [5, "Matter and Physical Properties"],
+        [6, "States of Matter"],
+        [7, "Magnetism"],
+        [8, "Mass"],
+        [9, "Volume"],
+        [10, "Mass and Volume Investigation"],
+        [11, "Objects in Liquids"],
+        [12, "Liquids in Liquids"],
+        [13, "Soluble and Insoluble Materials"],
+        [14, "Conductors and Insulators"],
+        [15, "Matter Review and Performance Assessment"],
+        [16, "What Is a Mixture?"],
+        [17, "Separating Mixtures by Particle Size"],
+        [18, "Separating Mixtures Using Magnetism"],
+        [19, "Separating Mixtures Using Relative Density"],
+        [20, "Solubility and Solutions in Mixtures"],
+        [21, "Separating Solutions by Evaporation"],
+        [22, "Conservation of Matter in Solutions"],
+        [23, "Mixtures and Solutions Review"],
+        [24, "Matter Is Made of Particles Too Small to See"],
+        [25, "Unit 2 Performance Assessment"],
+        [26, "What Is Force?"],
+        [27, "Equal Forces and Balanced Motion"],
+        [28, "Unequal Forces and Changes in Motion"],
+        [29, "Pushes, Pulls, Strength, and Direction"],
+        [30, "Gravity"],
+        [31, "Friction"],
+        [32, "Magnetism as a Force"],
+        [33, "Mechanical Energy and Energy Transfer"],
+        [34, "Variables in Force and Motion Investigations"],
+        [35, "Testing Variables and Graphing Data"],
+        [36, "Car on a Ramp Investigation"],
+        [37, "Balloon Rocket Investigation"],
+        [38, "Design Your Own Lab: Which Ball Bounces Higher?"],
+        [39, "Analyze Ball Bounce Data and Make Graphs"],
+        [40, "Playground Equipment Engineering Challenge"],
+        [41, "Unit 3 Performance Assessment and Presentation"],
+        [42, "1st 9 Weeks STAAR Spiral Review"],
+        [43, "1st 9 Weeks Science Stations Review"],
+        [44, "1st 9 Weeks Assessment and STAAR-Style Practice"],
+        [45, "Data Reflection, Notebook Check, Catch-Up, and Preview Next Unit"]
+    ];
+
+    const folders = [
+        {
+            id: "setupFolder",
+            className: "unit-setup",
+            icon: "🧰",
+            title: "Classroom Setup",
+            subtitle: "Days 1–4 • routines, notebooks, tools, and lab safety",
+            start: 1,
+            end: 4
+        },
+        {
+            id: "unit1Folder",
+            className: "unit-one",
+            icon: "🧱",
+            title: "Unit 1: Matter and Physical Properties",
+            subtitle: "Days 5–15 • matter, mass, volume, magnetism, density, solubility, conductors, and insulators",
+            start: 5,
+            end: 15
+        },
+        {
+            id: "unit2Folder",
+            className: "unit-two",
+            icon: "🧪",
+            title: "Unit 2: Mixtures and Solutions",
+            subtitle: "Days 16–25 • mixtures, separation methods, solutions, evaporation, and particles",
+            start: 16,
+            end: 25
+        },
+        {
+            id: "unit3Folder",
+            className: "unit-three",
+            icon: "🚗",
+            title: "Unit 3: Force and Motion",
+            subtitle: "Days 26–41 • force, motion, variables, data, graphing, and engineering design",
+            start: 26,
+            end: 41
+        },
+        {
+            id: "reviewFolder",
+            className: "unit-review",
+            icon: "🎯",
+            title: "Review, Assessment, and Reflection",
+            subtitle: "Days 42–45 • STAAR review, stations, assessment, and reflection",
+            start: 42,
+            end: 45
+        }
+    ];
+
+    function renderLessonSelect() {
+        const select = document.getElementById("lessonSelect");
+        select.innerHTML = "";
+
+        lessons.forEach(([day, title]) => {
+            const option = document.createElement("option");
+            option.value = day;
+            option.innerText = "Day " + day + ": " + title;
+            select.appendChild(option);
+        });
+    }
+
+    function openSelectedLesson(view) {
+        const day = document.getElementById("lessonSelect").value;
+        window.location.href = "/first-nine-weeks/day/" + day + "?view=" + view;
+    }
+
+    function openSelectedLessonList() {
+        window.location.href = "/first-nine-weeks";
+    }
+
+    function renderFolders() {
+        const container = document.getElementById("folderContainer");
+        container.innerHTML = "";
+
+        folders.forEach((folder, folderIndex) => {
+            const section = document.createElement("section");
+            section.className = "folder-card";
+
+            const matchingLessons = lessons.filter(([day]) => day >= folder.start && day <= folder.end);
+
+            section.innerHTML = `
+                <div class="folder-header ${folder.className}" onclick="toggleFolder('${folder.id}')">
+                    <div>
+                        <h2 class="folder-title"><span style="font-size:42px; margin-right:8px;">${folder.icon}</span>${folder.title}</h2>
+                        <p class="folder-subtitle">${folder.subtitle}</p>
+                    </div>
+                    <button class="btn btn-light science-btn-small no-print" type="button">Open / Close</button>
+                </div>
+
+                <div id="${folder.id}" class="folder-body ${folderIndex === 0 ? "open" : ""}">
+                    ${matchingLessons.map(([day, title]) => `
+                        <div class="day-row">
+                            <div class="row align-items-center">
+                                <div class="col-lg-7">
+                                    <strong>Day ${day}:</strong> ${title}
+                                </div>
+                                <div class="col-lg-5 text-lg-end mt-2 mt-lg-0 no-print">
+                                    <a class="btn btn-primary btn-sm science-btn-small" href="/first-nine-weeks/day/${day}?view=student">Student</a>
+                                    <a class="btn btn-success btn-sm science-btn-small" href="/first-nine-weeks/day/${day}?view=teacher">Teacher</a>
+                                </div>
+                            </div>
+                        </div>
+                    `).join("")}
+                </div>
+            `;
+
+            container.appendChild(section);
+        });
+    }
+
+    function toggleFolder(id) {
+        document.getElementById(id).classList.toggle("open");
+    }
+
+    function openFolder(id) {
+        closeAllFolders();
+        document.getElementById(id).classList.add("open");
+        document.getElementById(id).scrollIntoView({behavior: "smooth", block: "start"});
+    }
+
+    function openAllFolders() {
+        document.querySelectorAll(".folder-body").forEach(folder => {
+            folder.classList.add("open");
+        });
+    }
+
+    function closeAllFolders() {
+        document.querySelectorAll(".folder-body").forEach(folder => {
+            folder.classList.remove("open");
+        });
+    }
+
+    renderLessonSelect();
+    renderFolders();
+</script>
+
+{% endblock %}
