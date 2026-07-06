@@ -21,7 +21,7 @@
     }
 
     .screen {
-        height: 360px;
+        height: 390px;
         border: 4px solid #333;
         border-radius: 15px;
         background: #f8f9fa;
@@ -53,7 +53,7 @@
         text-align: center;
         font-weight: bold;
         padding-top: 8px;
-        transition: left 0.8s, bottom 0.8s;
+        transition: left 1.4s, bottom 1.4s;
     }
 
     .graph {
@@ -89,7 +89,7 @@
     .caption {
         font-size: 24px;
         font-weight: bold;
-        min-height: 75px;
+        min-height: 95px;
         padding: 15px;
         background: #fff3cd;
         border-left: 6px solid #ffc107;
@@ -107,10 +107,6 @@
         display: none;
     }
 
-    .data-table table {
-        margin: 0;
-    }
-
     .label-bubble {
         position: absolute;
         padding: 8px 12px;
@@ -119,17 +115,54 @@
         background: white;
         font-weight: bold;
         display: none;
+        max-width: 230px;
     }
 
     .iv { left: 35px; bottom: 35px; }
     .dv { right: 35px; top: 25px; }
+    .control-panel {
+        background: #f8f9fa;
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
 </style>
 
 <div class="video-card">
-    <h2>Mini Lesson Animation</h2>
+    <h2>Mini Lesson Animation with Voice</h2>
+
+    <div class="control-panel">
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-label"><strong>Video speed:</strong></label>
+                <select id="speedSelect" class="form-select">
+                    <option value="1">Normal</option>
+                    <option value="1.5" selected>Slow</option>
+                    <option value="2.1">Extra slow</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label"><strong>Voice speed:</strong></label>
+                <select id="voiceSpeedSelect" class="form-select">
+                    <option value="0.85">Normal voice</option>
+                    <option value="0.7" selected>Slower voice</option>
+                    <option value="0.6">Extra slow voice</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label"><strong>Voice:</strong></label>
+                <select id="voiceSelect" class="form-select">
+                    <option value="">Default browser voice</option>
+                </select>
+            </div>
+        </div>
+    </div>
 
     <div id="caption" class="caption">
-        Click Start to teach the full idea.
+        Click Start with Voice or Start Silent.
     </div>
 
     <div class="screen">
@@ -157,7 +190,10 @@
         </div>
     </div>
 
-    <button class="btn btn-primary" onclick="startMiniLesson()">Start Mini Video</button>
+    <button class="btn btn-primary" onclick="startMiniLesson(true)">Start with Voice</button>
+    <button class="btn btn-success" onclick="startMiniLesson(false)">Start Silent</button>
+    <button class="btn btn-warning" onclick="speakCurrentCaption()">Repeat Current Step</button>
+    <button class="btn btn-danger" onclick="stopVoice()">Stop Voice</button>
     <button class="btn btn-secondary" onclick="resetMiniLesson()">Reset</button>
 </div>
 
@@ -175,8 +211,130 @@
 </div>
 
 <script>
+    let timers = [];
+    let currentCaption = "Click Start with Voice or Start Silent.";
+    let voices = [];
+
+    const steps = [
+        {
+            time: 300,
+            text: "Step 1: Ask a testable question. How does ramp height affect the distance a toy car travels?",
+            action: () => {}
+        },
+        {
+            time: 3200,
+            text: "Step 2: Change one thing on purpose. Ramp height is the independent variable.",
+            action: () => {
+                document.getElementById("ivLabel").style.display = "block";
+            }
+        },
+        {
+            time: 6600,
+            text: "Step 3: Measure the result. Distance traveled is the dependent variable.",
+            action: () => {
+                document.getElementById("dvLabel").style.display = "block";
+                document.getElementById("car").style.left = "425px";
+                document.getElementById("car").style.bottom = "82px";
+            }
+        },
+        {
+            time: 10100,
+            text: "Step 4: Put the measurements in a data table. Repeated trials make the data more reliable.",
+            action: () => {
+                document.getElementById("dataTable").style.display = "block";
+            }
+        },
+        {
+            time: 13900,
+            text: "Step 5: Make a graph. The x-axis gets the independent variable. The y-axis gets the dependent variable.",
+            action: () => {
+                document.getElementById("graph").style.display = "block";
+            }
+        },
+        {
+            time: 18000,
+            text: "Step 6: Use the graph pattern as evidence for your claim. In this example, the car traveled farther when ramp height increased.",
+            action: () => {}
+        }
+    ];
+
+    function loadVoices() {
+        voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+        const voiceSelect = document.getElementById("voiceSelect");
+
+        if (!voiceSelect) return;
+
+        const currentValue = voiceSelect.value;
+        voiceSelect.innerHTML = '<option value="">Default browser voice</option>';
+
+        voices.forEach((voice, index) => {
+            const option = document.createElement("option");
+            option.value = index;
+            option.textContent = voice.name + " (" + voice.lang + ")";
+            voiceSelect.appendChild(option);
+        });
+
+        voiceSelect.value = currentValue;
+    }
+
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+        loadVoices();
+    }
+
+    function getSpeedMultiplier() {
+        return Number(document.getElementById("speedSelect").value);
+    }
+
+    function stopTimers() {
+        timers.forEach(timer => clearTimeout(timer));
+        timers = [];
+    }
+
+    function stopVoice() {
+        if ("speechSynthesis" in window) {
+            window.speechSynthesis.cancel();
+        }
+    }
+
+    function speak(text) {
+        if (!("speechSynthesis" in window)) {
+            return;
+        }
+
+        stopVoice();
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = Number(document.getElementById("voiceSpeedSelect").value);
+        utterance.pitch = 1;
+        utterance.volume = 1;
+
+        const voiceChoice = document.getElementById("voiceSelect").value;
+        if (voiceChoice !== "" && voices[Number(voiceChoice)]) {
+            utterance.voice = voices[Number(voiceChoice)];
+        }
+
+        window.speechSynthesis.speak(utterance);
+    }
+
+    function setCaption(text, useVoice) {
+        currentCaption = text;
+        document.getElementById("caption").innerHTML = text;
+        if (useVoice) {
+            speak(text);
+        }
+    }
+
+    function speakCurrentCaption() {
+        speak(currentCaption);
+    }
+
     function resetMiniLesson() {
-        document.getElementById("caption").innerHTML = "Click Start to teach the full idea.";
+        stopTimers();
+        stopVoice();
+
+        currentCaption = "Click Start with Voice or Start Silent.";
+        document.getElementById("caption").innerHTML = currentCaption;
         document.getElementById("ivLabel").style.display = "none";
         document.getElementById("dvLabel").style.display = "none";
         document.getElementById("dataTable").style.display = "none";
@@ -185,38 +343,19 @@
         document.getElementById("car").style.bottom = "155px";
     }
 
-    function startMiniLesson() {
+    function startMiniLesson(useVoice) {
         resetMiniLesson();
 
-        setTimeout(() => {
-            document.getElementById("caption").innerHTML = "Step 1: Ask a testable question about force and motion.";
-        }, 300);
+        const speedMultiplier = getSpeedMultiplier();
 
-        setTimeout(() => {
-            document.getElementById("caption").innerHTML = "Step 2: Change one thing on purpose. That is the independent variable.";
-            document.getElementById("ivLabel").style.display = "block";
-        }, 1900);
+        steps.forEach(step => {
+            const timer = setTimeout(() => {
+                step.action();
+                setCaption(step.text, useVoice);
+            }, step.time * speedMultiplier);
 
-        setTimeout(() => {
-            document.getElementById("caption").innerHTML = "Step 3: Measure the result. That is the dependent variable.";
-            document.getElementById("dvLabel").style.display = "block";
-            document.getElementById("car").style.left = "425px";
-            document.getElementById("car").style.bottom = "82px";
-        }, 3600);
-
-        setTimeout(() => {
-            document.getElementById("caption").innerHTML = "Step 4: Put the measurements in a data table.";
-            document.getElementById("dataTable").style.display = "block";
-        }, 5400);
-
-        setTimeout(() => {
-            document.getElementById("caption").innerHTML = "Step 5: Make a graph. X-axis gets the independent variable. Y-axis gets the dependent variable.";
-            document.getElementById("graph").style.display = "block";
-        }, 7200);
-
-        setTimeout(() => {
-            document.getElementById("caption").innerHTML = "Step 6: Use the graph pattern as evidence for your claim.";
-        }, 9000);
+            timers.push(timer);
+        });
     }
 
     resetMiniLesson();

@@ -225,6 +225,12 @@ def day35_data_graphing_video():
     return render_template("day35_data_graphing_video.html")
 
 
+
+@app.route("/labs/data-graphing")
+def data_graphing_lab():
+    return render_template("data_graphing_lab.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(

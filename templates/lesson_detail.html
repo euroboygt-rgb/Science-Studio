@@ -485,6 +485,54 @@
 
 
 
+
+                {% if lesson.get("graphing_data_cards") %}
+                <div class="row">
+                    {% for card in lesson.get("graphing_data_cards") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>Graphing Scenario {{ loop.index }}</h5>
+                            <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+                            <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+                            {% if view_mode == "student" %}
+                            <label class="form-label"><strong>Independent Variable:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What was changed on purpose?"></textarea>
+
+                            <label class="form-label"><strong>Dependent Variable:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What was measured or observed?"></textarea>
+
+                            <label class="form-label"><strong>X-axis Label:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What should go on the x-axis?"></textarea>
+
+                            <label class="form-label"><strong>Y-axis Label:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What should go on the y-axis?"></textarea>
+
+                            <label class="form-label"><strong>Pattern:</strong></label>
+                            <textarea class="form-control mb-2" rows="2" placeholder="What pattern do you notice in the data?"></textarea>
+
+                            <label class="form-label"><strong>Claim and Evidence:</strong></label>
+                            <textarea class="form-control" rows="3" placeholder="Write a claim and use data as evidence."></textarea>
+                            {% else %}
+                            <details>
+                                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                                <div class="mt-3">
+                                    <p><strong>Independent Variable:</strong> {{ card.independent_variable }}</p>
+                                    <p><strong>Dependent Variable:</strong> {{ card.dependent_variable }}</p>
+                                    <p><strong>X-axis:</strong> {{ card.x_axis }}</p>
+                                    <p><strong>Y-axis:</strong> {{ card.y_axis }}</p>
+                                    <p><strong>Pattern:</strong> {{ card.pattern }}</p>
+                                    <p><strong>Claim:</strong> {{ card.claim }}</p>
+                                    <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                                </div>
+                            </details>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
                 {% if lesson.get("variables_cards") %}
                 <div class="row">
                     {% for card in lesson.get("variables_cards") %}
