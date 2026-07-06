@@ -72,6 +72,9 @@ day39 = {
 
     "lab": "Ball Bounce Data Analysis Lab: students use Day 38 data or sample class data to calculate averages, create a graph, identify the pattern, and write a claim-evidence-reasoning paragraph.",
 
+    "lab_link": "/labs/ball-bounce-analyzer",
+    "lab_link_text": "Open Ball Bounce Data Analyzer and Graphing Simulator",
+
     "lab_notebook": "Students record ball type, trial data, average bounce height, graph labels, pattern statement, claim, evidence, and reasoning.",
 
     "lab_notebook_table": {

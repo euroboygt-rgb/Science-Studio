@@ -1,0 +1,556 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Ball Bounce Data Analyzer</h1>
+<p class="lead">
+    Analyze ball bounce data, calculate averages, make a graph, and write a claim with evidence.
+</p>
+
+<a href="/first-nine-weeks/day/39?view=student" class="btn btn-secondary mb-4">
+    Back to Day 39
+</a>
+
+<style>
+    .analyzer-card {
+        border: 1px solid #ddd;
+        border-radius: 18px;
+        padding: 20px;
+        margin-bottom: 25px;
+        background: #f8f9fa;
+    }
+
+    .banner {
+        background: #212529;
+        color: white;
+        border: 4px solid #111;
+        border-radius: 18px;
+        padding: 18px;
+        margin-bottom: 20px;
+    }
+
+    .badge-pill {
+        display: inline-block;
+        background: #fff3cd;
+        color: #111;
+        border: 3px solid #111;
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-weight: bold;
+        margin: 5px;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .warning {
+        background: #fff3cd;
+        color: #664d03;
+    }
+
+    .graph-box {
+        background: white;
+        border: 4px solid #333;
+        border-radius: 15px;
+        height: 440px;
+        position: relative;
+        margin: 20px 0;
+        overflow: hidden;
+    }
+
+    .y-axis {
+        position: absolute;
+        left: 85px;
+        top: 55px;
+        bottom: 75px;
+        width: 5px;
+        background: #333;
+    }
+
+    .x-axis {
+        position: absolute;
+        left: 85px;
+        right: 55px;
+        bottom: 75px;
+        height: 5px;
+        background: #333;
+    }
+
+    .bar {
+        position: absolute;
+        bottom: 80px;
+        width: 70px;
+        background: #e9ecef;
+        border: 3px solid #333;
+        transition: height 0.7s;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        font-weight: bold;
+        padding-top: 6px;
+    }
+
+    .bar-label {
+        position: absolute;
+        bottom: 35px;
+        width: 115px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .graph-title {
+        position: absolute;
+        top: 12px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .x-label {
+        position: absolute;
+        bottom: 5px;
+        left: 150px;
+        right: 50px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .y-label {
+        position: absolute;
+        left: -62px;
+        top: 200px;
+        transform: rotate(-90deg);
+        font-weight: bold;
+        width: 250px;
+        text-align: center;
+    }
+
+    .scale-label {
+        position: absolute;
+        left: 35px;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .claim-box {
+        background: white;
+        border: 3px solid #111;
+        border-radius: 14px;
+        padding: 15px;
+        margin-top: 15px;
+    }
+
+    input[type="number"] {
+        max-width: 90px;
+    }
+</style>
+
+<div class="banner">
+    <h2>📊 Ball Bounce Data Lab</h2>
+    <p class="mb-2">
+        Your job is to turn raw trial data into science evidence.
+    </p>
+    <span class="badge-pill">X-axis: Ball Type</span>
+    <span class="badge-pill">Y-axis: Bounce Height</span>
+    <span class="badge-pill">Use averages</span>
+    <span class="badge-pill">Write CER</span>
+</div>
+
+<div class="analyzer-card">
+    <h2>Part 1: Enter or Use Class Data</h2>
+
+    <div class="alert alert-warning">
+        You can type your own Day 38 data, or click Auto-Fill Sample Data.
+    </div>
+
+    <button class="btn btn-success mb-3" onclick="autoFillData()">Auto-Fill Sample Class Data</button>
+    <button class="btn btn-primary mb-3" onclick="calculateAverages()">Calculate Averages</button>
+    <button class="btn btn-danger mb-3" onclick="clearData()">Clear Data</button>
+
+    <div class="table-responsive">
+        <table class="table table-bordered bg-white">
+            <thead>
+                <tr>
+                    <th>Ball Type</th>
+                    <th>Trial 1</th>
+                    <th>Trial 2</th>
+                    <th>Trial 3</th>
+                    <th>Average</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Foam ball</strong></td>
+                    <td><input id="foam1" type="number" class="form-control" min="0"></td>
+                    <td><input id="foam2" type="number" class="form-control" min="0"></td>
+                    <td><input id="foam3" type="number" class="form-control" min="0"></td>
+                    <td id="foamAvg"><strong>--</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Tennis ball</strong></td>
+                    <td><input id="tennis1" type="number" class="form-control" min="0"></td>
+                    <td><input id="tennis2" type="number" class="form-control" min="0"></td>
+                    <td><input id="tennis3" type="number" class="form-control" min="0"></td>
+                    <td id="tennisAvg"><strong>--</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Rubber ball</strong></td>
+                    <td><input id="rubber1" type="number" class="form-control" min="0"></td>
+                    <td><input id="rubber2" type="number" class="form-control" min="0"></td>
+                    <td><input id="rubber3" type="number" class="form-control" min="0"></td>
+                    <td id="rubberAvg"><strong>--</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Ping pong ball</strong></td>
+                    <td><input id="pingpong1" type="number" class="form-control" min="0"></td>
+                    <td><input id="pingpong2" type="number" class="form-control" min="0"></td>
+                    <td><input id="pingpong3" type="number" class="form-control" min="0"></td>
+                    <td id="pingpongAvg"><strong>--</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="averageFeedback"></div>
+</div>
+
+<div class="analyzer-card">
+    <h2>Part 2: Make a Graph</h2>
+
+    <button class="btn btn-primary" onclick="makeGraph()">Make Graph</button>
+
+    <div class="graph-box">
+        <div class="graph-title">Effect of Ball Type on Bounce Height</div>
+
+        <div class="scale-label" style="top: 55px;">100</div>
+        <div class="scale-label" style="top: 130px;">75</div>
+        <div class="scale-label" style="top: 205px;">50</div>
+        <div class="scale-label" style="top: 280px;">25</div>
+        <div class="scale-label" style="top: 355px;">0</div>
+
+        <div class="y-axis"></div>
+        <div class="x-axis"></div>
+        <div class="y-label">Average bounce height in cm</div>
+        <div class="x-label">Ball type</div>
+
+        <div id="barFoam" class="bar" style="left: 130px; height: 0;">0</div>
+        <div id="barTennis" class="bar" style="left: 280px; height: 0;">0</div>
+        <div id="barRubber" class="bar" style="left: 430px; height: 0;">0</div>
+        <div id="barPingpong" class="bar" style="left: 580px; height: 0;">0</div>
+
+        <div class="bar-label" style="left: 108px;">Foam</div>
+        <div class="bar-label" style="left: 258px;">Tennis</div>
+        <div class="bar-label" style="left: 408px;">Rubber</div>
+        <div class="bar-label" style="left: 558px;">Ping pong</div>
+    </div>
+
+    <div id="graphFeedback"></div>
+</div>
+
+<div class="analyzer-card">
+    <h2>Part 3: Read the Graph</h2>
+
+    <label class="form-label"><strong>What belongs on the x-axis?</strong></label>
+    <select id="xAxisAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Ball type</option>
+        <option>Bounce height</option>
+        <option>Student names</option>
+        <option>Notebook color</option>
+    </select>
+
+    <label class="form-label"><strong>What belongs on the y-axis?</strong></label>
+    <select id="yAxisAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Bounce height</option>
+        <option>Ball type</option>
+        <option>Same surface</option>
+        <option>Same drop height</option>
+    </select>
+
+    <label class="form-label"><strong>What pattern does the graph show?</strong></label>
+    <select id="patternAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Different ball types bounced to different heights.</option>
+        <option>All balls bounced the same height.</option>
+        <option>The foam ball bounced highest.</option>
+        <option>No data was collected.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkGraphReading()">Check Graph Reading</button>
+    <div id="readingFeedback"></div>
+</div>
+
+<div class="analyzer-card">
+    <h2>Part 4: Claim, Evidence, and Reasoning Builder</h2>
+
+    <label class="form-label"><strong>Choose the best claim:</strong></label>
+    <select id="claimAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The rubber ball bounced the highest.</option>
+        <option>The foam ball bounced the highest.</option>
+        <option>Ball type did not affect bounce height.</option>
+        <option>The measuring tool caused the ball to bounce.</option>
+    </select>
+
+    <label class="form-label"><strong>Choose the best evidence:</strong></label>
+    <select id="evidenceAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The rubber ball average was greater than the foam ball average.</option>
+        <option>The balls were different colors.</option>
+        <option>The students used pencils.</option>
+        <option>The lab was completed on Day 39.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkCER()">Check CER</button>
+    <button class="btn btn-primary" onclick="buildCER()">Build CER Paragraph</button>
+
+    <div id="cerFeedback"></div>
+    <div id="cerOutput"></div>
+</div>
+
+<div class="analyzer-card">
+    <h2>Part 5: STAAR Data Challenge</h2>
+
+    <p class="alert alert-warning">
+        A student collected ball bounce data. Foam averaged 18 cm, tennis averaged 48 cm, rubber averaged 74 cm, and ping pong averaged 56 cm.
+    </p>
+
+    <label class="form-label"><strong>Which ball bounced highest?</strong></label>
+    <select id="staar1" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Rubber ball</option>
+        <option>Foam ball</option>
+        <option>Tennis ball</option>
+        <option>Ping pong ball</option>
+    </select>
+
+    <label class="form-label"><strong>Which evidence supports that answer?</strong></label>
+    <select id="staar2" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The rubber ball averaged 74 cm, which was the greatest bounce height.</option>
+        <option>The foam ball averaged 18 cm.</option>
+        <option>The balls were tested in class.</option>
+        <option>The graph had a title.</option>
+    </select>
+
+    <label class="form-label"><strong>Why is the graph useful?</strong></label>
+    <select id="staar3" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>It helps show patterns in the data.</option>
+        <option>It changes the data.</option>
+        <option>It removes the need for evidence.</option>
+        <option>It makes the test unfair.</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
+    <div id="staarFeedback"></div>
+</div>
+
+<script>
+    const ballTypes = ["foam", "tennis", "rubber", "pingpong"];
+    const labels = {
+        foam: "Foam ball",
+        tennis: "Tennis ball",
+        rubber: "Rubber ball",
+        pingpong: "Ping pong ball"
+    };
+
+    let averages = {
+        foam: 0,
+        tennis: 0,
+        rubber: 0,
+        pingpong: 0
+    };
+
+    function showFeedback(elementId, message, kind) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + kind;
+        box.innerHTML = message;
+    }
+
+    function getTrialValues(ballType) {
+        const values = [];
+        for (let i = 1; i <= 3; i++) {
+            const value = Number(document.getElementById(ballType + i).value);
+            if (!value || value < 0) {
+                return null;
+            }
+            values.push(value);
+        }
+        return values;
+    }
+
+    function average(values) {
+        return Math.round(values.reduce((a, b) => a + b, 0) / values.length);
+    }
+
+    function autoFillData() {
+        document.getElementById("foam1").value = 17;
+        document.getElementById("foam2").value = 19;
+        document.getElementById("foam3").value = 18;
+
+        document.getElementById("tennis1").value = 47;
+        document.getElementById("tennis2").value = 49;
+        document.getElementById("tennis3").value = 48;
+
+        document.getElementById("rubber1").value = 72;
+        document.getElementById("rubber2").value = 75;
+        document.getElementById("rubber3").value = 74;
+
+        document.getElementById("pingpong1").value = 54;
+        document.getElementById("pingpong2").value = 57;
+        document.getElementById("pingpong3").value = 56;
+
+        calculateAverages();
+        showFeedback("averageFeedback", "Sample class data added and averages calculated.", "correct");
+    }
+
+    function calculateAverages() {
+        let allComplete = true;
+
+        ballTypes.forEach(ballType => {
+            const values = getTrialValues(ballType);
+
+            if (values === null) {
+                averages[ballType] = 0;
+                document.getElementById(ballType + "Avg").innerHTML = "<strong>--</strong>";
+                allComplete = false;
+            } else {
+                averages[ballType] = average(values);
+                document.getElementById(ballType + "Avg").innerHTML = "<strong>" + averages[ballType] + " cm</strong>";
+            }
+        });
+
+        if (allComplete) {
+            showFeedback("averageFeedback", "Averages calculated. Now make the graph.", "correct");
+        } else {
+            showFeedback("averageFeedback", "Some data is missing. Enter all three trials for each ball or use sample data.", "incorrect");
+        }
+    }
+
+    function clearData() {
+        ballTypes.forEach(ballType => {
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(ballType + i).value = "";
+            }
+            averages[ballType] = 0;
+            document.getElementById(ballType + "Avg").innerHTML = "<strong>--</strong>";
+        });
+
+        makeGraph(true);
+        showFeedback("averageFeedback", "Data cleared. Enter new data or use sample data.", "warning");
+    }
+
+    function makeGraph(clearOnly=false) {
+        calculateAverages();
+
+        const graphMaxCm = 100;
+        const maxPixelHeight = 285;
+
+        const bars = [
+            ["barFoam", averages.foam],
+            ["barTennis", averages.tennis],
+            ["barRubber", averages.rubber],
+            ["barPingpong", averages.pingpong]
+        ];
+
+        bars.forEach(([id, value]) => {
+            const bar = document.getElementById(id);
+            const cappedValue = Math.min(value, graphMaxCm);
+            const height = Math.round((cappedValue / graphMaxCm) * maxPixelHeight);
+            bar.style.height = height + "px";
+            bar.innerText = value === 0 ? "0" : value + " cm";
+        });
+
+        if (!clearOnly) {
+            if (averages.foam && averages.tennis && averages.rubber && averages.pingpong) {
+                showFeedback("graphFeedback", "Graph created. Look for the tallest bar and compare the averages.", "correct");
+            } else {
+                showFeedback("graphFeedback", "Graph created, but some data is missing. Complete the data table first.", "incorrect");
+            }
+        }
+    }
+
+    function checkGraphReading() {
+        const x = document.getElementById("xAxisAnswer").value;
+        const y = document.getElementById("yAxisAnswer").value;
+        const pattern = document.getElementById("patternAnswer").value;
+
+        if (
+            x === "Ball type" &&
+            y === "Bounce height" &&
+            pattern === "Different ball types bounced to different heights."
+        ) {
+            showFeedback("readingFeedback", "Correct! Ball type is the independent variable, and bounce height is the dependent variable.", "correct");
+        } else {
+            showFeedback("readingFeedback", "Not yet. X-axis shows what changed. Y-axis shows what was measured.", "incorrect");
+        }
+    }
+
+    function checkCER() {
+        const claim = document.getElementById("claimAnswer").value;
+        const evidence = document.getElementById("evidenceAnswer").value;
+
+        if (
+            claim === "The rubber ball bounced the highest." &&
+            evidence === "The rubber ball average was greater than the foam ball average."
+        ) {
+            showFeedback("cerFeedback", "Correct! Your claim uses data evidence.", "correct");
+        } else {
+            showFeedback("cerFeedback", "Not yet. A claim answers the question. Evidence uses numbers or data from the graph.", "incorrect");
+        }
+    }
+
+    function buildCER() {
+        calculateAverages();
+
+        const foamAvg = averages.foam || 18;
+        const tennisAvg = averages.tennis || 48;
+        const rubberAvg = averages.rubber || 74;
+        const pingpongAvg = averages.pingpong || 56;
+
+        document.getElementById("cerOutput").innerHTML = `
+            <div class="claim-box">
+                <h3>My Ball Bounce CER Paragraph</h3>
+                <p><strong>Claim:</strong> The rubber ball bounced the highest.</p>
+                <p><strong>Evidence:</strong> The foam ball averaged ${foamAvg} cm, the tennis ball averaged ${tennisAvg} cm, the rubber ball averaged ${rubberAvg} cm, and the ping pong ball averaged ${pingpongAvg} cm.</p>
+                <p><strong>Reasoning:</strong> Ball type was the independent variable, and bounce height was the dependent variable. Since the rubber ball had the greatest average bounce height, the data supports the claim that the rubber ball bounced the highest.</p>
+            </div>
+        `;
+    }
+
+    function checkSTAAR() {
+        const s1 = document.getElementById("staar1").value;
+        const s2 = document.getElementById("staar2").value;
+        const s3 = document.getElementById("staar3").value;
+
+        if (
+            s1 === "Rubber ball" &&
+            s2 === "The rubber ball averaged 74 cm, which was the greatest bounce height." &&
+            s3 === "It helps show patterns in the data."
+        ) {
+            showFeedback("staarFeedback", "Correct! You used the graph data as evidence.", "correct");
+        } else {
+            showFeedback("staarFeedback", "Not yet. Look for the greatest average and the evidence that supports it.", "incorrect");
+        }
+    }
+</script>
+
+{% endblock %}
