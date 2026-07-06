@@ -15,7 +15,14 @@ day44 = {
 
     "guided_practice": "Before beginning the assessment, model one sample question. Have students identify the topic, circle data or evidence, eliminate two answer choices, and justify the final answer. Keep this brief so students have enough assessment time.",
 
+    "interactive_activity_title": "STAAR-Style Digital Assessment",
+
+    "interactive_activity": "Students complete a randomized digital assessment covering Matter, Mixtures and Solutions, Particles Too Small to See, Force and Motion, Variables, Data, Graphs, and Evidence. After submitting, students receive a score report and topic breakdown.",
+
     "lab": "Assessment Day: students complete a STAAR-style assessment covering Matter, Mixtures and Solutions, Particles Too Small to See, Force and Motion, Variables, Data, Graphs, and Claim-Evidence-Reasoning.",
+
+    "lab_link": "/labs/staar-digital-assessment",
+    "lab_link_text": "Open STAAR-Style Digital Assessment",
 
     "lab_notebook": "Students use their lab notebook only after the assessment for reflection. They record which questions felt strongest, which questions were most difficult, and what evidence or vocabulary helped them.",
 

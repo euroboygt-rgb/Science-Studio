@@ -297,6 +297,12 @@ def science_stations_board():
     return render_template("science_stations_board.html")
 
 
+
+@app.route("/labs/staar-digital-assessment")
+def staar_digital_assessment():
+    return render_template("staar_digital_assessment.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
