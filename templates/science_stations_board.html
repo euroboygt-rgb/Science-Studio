@@ -240,6 +240,96 @@
         margin-bottom: 15px;
     }
 
+    .sim-panel {
+        background: #f8f9fa;
+        border: 3px solid #111;
+        border-radius: 16px;
+        padding: 15px;
+        margin-top: 12px;
+    }
+
+    .sim-stage {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 18px;
+        min-height: 210px;
+        padding: 18px;
+        margin: 12px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sim-object {
+        display: inline-block;
+        border: 3px solid #111;
+        border-radius: 16px;
+        padding: 15px;
+        margin: 8px;
+        background: #fff3cd;
+        font-weight: bold;
+        min-width: 110px;
+        text-align: center;
+    }
+
+    .mini-beaker {
+        width: 180px;
+        height: 190px;
+        border: 5px solid #111;
+        border-top: none;
+        border-radius: 0 0 22px 22px;
+        margin: 10px auto;
+        background: #bde0fe;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .particle-dot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background: #111;
+        border-radius: 50%;
+        transition: all 1s;
+    }
+
+    .mini-track {
+        height: 80px;
+        background: #d1e7dd;
+        border: 4px solid #111;
+        border-radius: 18px;
+        position: relative;
+        overflow: hidden;
+        margin-top: 12px;
+    }
+
+    .mini-car {
+        position: absolute;
+        left: 20px;
+        bottom: 18px;
+        font-size: 42px;
+        transition: left 1s ease-out;
+    }
+
+    .mini-graph {
+        height: 230px;
+        border: 4px solid #111;
+        border-radius: 18px;
+        background: white;
+        position: relative;
+        margin-top: 12px;
+    }
+
+    .mini-bar {
+        position: absolute;
+        bottom: 35px;
+        width: 58px;
+        background: #e9ecef;
+        border: 3px solid #111;
+        text-align: center;
+        font-weight: bold;
+        transition: height 0.6s;
+    }
+
     .feedback {
         font-weight: bold;
         margin-top: 10px;
@@ -364,17 +454,12 @@
 
     <div id="tryMode" style="display:none;">
         <div class="try-box">
-            <h3 id="tryTitle">Try It Activity</h3>
+            <h3 id="tryTitle">Try It Mini-Simulator</h3>
             <p id="tryTask">Pick a station to see the activity.</p>
 
-            <label class="form-label"><strong>Try It answer:</strong></label>
-            <select id="tryAnswer" class="form-select mb-3">
-                <option selected>Choose...</option>
-            </select>
+            <div id="miniSimulatorArea" class="mt-3"></div>
 
-            <button class="btn btn-success" onclick="checkTryIt()">Check Try It</button>
-            <button class="btn btn-primary" onclick="showHint()">Show Hint</button>
-
+            <button class="btn btn-primary mt-3" onclick="showHint()">Show Hint</button>
             <div id="tryFeedback"></div>
         </div>
 
@@ -683,11 +768,11 @@
         const station = getStation();
 
         document.getElementById("stationTitle").innerText = "Station " + station.id + ": " + station.title;
-        document.getElementById("tryTitle").innerText = station.title + " Try It";
+        document.getElementById("tryTitle").innerText = station.title + " Mini-Simulator";
         document.getElementById("tryTask").innerText = station.tryTask;
         document.getElementById("quickQuestion").innerText = station.question;
 
-        fillSelect("tryAnswer", station.tryChoices);
+        renderMiniSimulator(station.id);
         fillSelect("quickAnswer", station.choices);
 
         const saved = work[id] || {};
@@ -843,21 +928,505 @@
         }
     }
 
-    function checkTryIt() {
-        const station = getStation();
+    function renderMiniSimulator(stationId) {
+        const area = document.getElementById("miniSimulatorArea");
 
-        if (!station) {
-            showFeedback("tryFeedback", "Choose a station first.", "warning");
-            return;
+        if (stationId === 1) {
+            area.innerHTML = `
+                <div class="sim-panel">
+                    <h4>Test Physical Properties</h4>
+                    <p>Choose an object and a test. Then decide which property is being tested.</p>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Object:</strong></label>
+                            <select id="propObject" class="form-select">
+                                <option value="iron nail">Iron nail</option>
+                                <option value="plastic spoon">Plastic spoon</option>
+                                <option value="sugar">Sugar</option>
+                                <option value="copper wire">Copper wire</option>
+                                <option value="cork">Cork</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Test:</strong></label>
+                            <select id="propTest" class="form-select">
+                                <option value="magnet">Place near a magnet</option>
+                                <option value="water">Place in water</option>
+                                <option value="electricity">Test with a circuit</option>
+                                <option value="dissolve">Stir into water</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Property:</strong></label>
+                            <select id="propAnswer" class="form-select">
+                                <option selected>Choose...</option>
+                                <option>Magnetism</option>
+                                <option>Relative density</option>
+                                <option>Electrical conductivity</option>
+                                <option>Solubility</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="sim-stage">
+                        <span class="sim-object">🧲 Magnet</span>
+                        <span class="sim-object">💧 Water</span>
+                        <span class="sim-object">💡 Circuit</span>
+                        <span class="sim-object">🥄 Stir</span>
+                        <p id="propResult" class="mt-3"><strong>Result:</strong> Run a test.</p>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="runPropertyTest()">Run Test</button>
+                    <button class="btn btn-success" onclick="checkPropertyStation()">Check Property</button>
+                </div>
+            `;
         }
 
-        const chosen = document.getElementById("tryAnswer").value;
+        if (stationId === 2) {
+            area.innerHTML = `
+                <div class="sim-panel">
+                    <h4>Separate the Mixture</h4>
+                    <p>Choose the best tool or process for each mixture.</p>
 
-        if (chosen === station.tryAnswer) {
-            showFeedback("tryFeedback", "Correct! You are ready for the quick check.", "correct");
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Mixture:</strong></label>
+                            <select id="mixtureSelect" class="form-select">
+                                <option value="gravel and sand">Gravel and sand</option>
+                                <option value="iron filings and sand">Iron filings and sand</option>
+                                <option value="salt water">Salt water</option>
+                                <option value="oil and water">Oil and water</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label"><strong>Tool or process:</strong></label>
+                            <select id="toolSelect" class="form-select">
+                                <option selected>Choose...</option>
+                                <option>Screen or filter by size</option>
+                                <option>Magnet</option>
+                                <option>Evaporation</option>
+                                <option>Separate by relative density</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="sim-stage">
+                        <span class="sim-object">🪨 Gravel</span>
+                        <span class="sim-object">🏖️ Sand</span>
+                        <span class="sim-object">🧲 Magnet</span>
+                        <span class="sim-object">💧 Liquid</span>
+                        <p id="mixtureResult" class="mt-3"><strong>Result:</strong> Choose a tool and test it.</p>
+                    </div>
+
+                    <button class="btn btn-success" onclick="checkMixtureStation()">Test Separation Method</button>
+                </div>
+            `;
+        }
+
+        if (stationId === 3) {
+            area.innerHTML = `
+                <div class="sim-panel">
+                    <h4>Build a Particle Model</h4>
+                    <p>Mix sugar into water. Watch the particles spread out.</p>
+
+                    <div class="mini-beaker" id="particleBeaker">
+                        <div class="particle-dot" style="left:78px; top:145px;"></div>
+                        <div class="particle-dot" style="left:92px; top:148px;"></div>
+                        <div class="particle-dot" style="left:66px; top:158px;"></div>
+                        <div class="particle-dot" style="left:104px; top:160px;"></div>
+                        <div class="particle-dot" style="left:86px; top:168px;"></div>
+                    </div>
+
+                    <label class="form-label"><strong>Best explanation:</strong></label>
+                    <select id="particleAnswer" class="form-select mb-3">
+                        <option selected>Choose...</option>
+                        <option>The sugar particles spread out and are too small to see.</option>
+                        <option>The sugar disappeared forever.</option>
+                        <option>The sugar became a magnet.</option>
+                        <option>The sugar turned into plastic.</option>
+                    </select>
+
+                    <button class="btn btn-primary" onclick="mixParticles()">Mix Sugar and Water</button>
+                    <button class="btn btn-success" onclick="checkParticleStation()">Check Model</button>
+                </div>
+            `;
+        }
+
+        if (stationId === 4) {
+            area.innerHTML = `
+                <div class="sim-panel">
+                    <h4>Test Force and Motion</h4>
+                    <p>Choose a surface and run the car. Rougher surfaces should create more friction.</p>
+
+                    <label class="form-label"><strong>Surface:</strong></label>
+                    <select id="surfaceSelect" class="form-select mb-3">
+                        <option value="tile">Smooth tile</option>
+                        <option value="carpet">Rough carpet</option>
+                        <option value="sandpaper">Very rough sandpaper</option>
+                    </select>
+
+                    <div class="mini-track">
+                        <div id="forceCar" class="mini-car">🚗</div>
+                    </div>
+
+                    <p id="forceResult" class="mt-3"><strong>Distance:</strong> 0 cm</p>
+
+                    <label class="form-label"><strong>Which force slows the car?</strong></label>
+                    <select id="forceAnswer" class="form-select mb-3">
+                        <option selected>Choose...</option>
+                        <option>Friction</option>
+                        <option>Solubility</option>
+                        <option>Evaporation</option>
+                        <option>Volume</option>
+                    </select>
+
+                    <button class="btn btn-primary" onclick="runForceCar()">Run Car</button>
+                    <button class="btn btn-success" onclick="checkForceStation()">Check Force</button>
+                </div>
+            `;
+        }
+
+        if (stationId === 5) {
+            area.innerHTML = `
+                <div class="sim-panel">
+                    <h4>Fix the Fair Test</h4>
+                    <p>A student tests how ramp height affects distance traveled.</p>
+
+                    <div class="alert alert-warning">
+                        Scenario: The student changes ramp height and measures how far the toy car travels.
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Independent variable:</strong></label>
+                            <select id="ivAnswer" class="form-select">
+                                <option selected>Choose...</option>
+                                <option>Ramp height</option>
+                                <option>Distance traveled</option>
+                                <option>Same toy car</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Dependent variable:</strong></label>
+                            <select id="dvAnswer" class="form-select">
+                                <option selected>Choose...</option>
+                                <option>Distance traveled</option>
+                                <option>Ramp height</option>
+                                <option>Same floor</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label"><strong>Controlled variable:</strong></label>
+                            <select id="cvAnswer" class="form-select">
+                                <option selected>Choose...</option>
+                                <option>Same toy car</option>
+                                <option>Ramp height</option>
+                                <option>Distance traveled</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success mt-3" onclick="checkVariableStation()">Check Variables</button>
+                </div>
+            `;
+        }
+
+        if (stationId === 6) {
+            area.innerHTML = `
+                <div class="sim-panel">
+                    <h4>Build a Graph From Data</h4>
+                    <p>Use the ball bounce data to make a bar graph and choose the best claim.</p>
+
+                    <table class="table table-bordered bg-white">
+                        <tr><th>Ball</th><th>Average Bounce Height</th></tr>
+                        <tr><td>Foam</td><td>18 cm</td></tr>
+                        <tr><td>Tennis</td><td>48 cm</td></tr>
+                        <tr><td>Rubber</td><td>74 cm</td></tr>
+                    </table>
+
+                    <div class="mini-graph">
+                        <div id="foamMiniBar" class="mini-bar" style="left:60px; height:0;">0</div>
+                        <div id="tennisMiniBar" class="mini-bar" style="left:150px; height:0;">0</div>
+                        <div id="rubberMiniBar" class="mini-bar" style="left:240px; height:0;">0</div>
+                        <div style="position:absolute; bottom:8px; left:60px; font-weight:bold;">Foam</div>
+                        <div style="position:absolute; bottom:8px; left:145px; font-weight:bold;">Tennis</div>
+                        <div style="position:absolute; bottom:8px; left:235px; font-weight:bold;">Rubber</div>
+                    </div>
+
+                    <label class="form-label mt-3"><strong>Best claim:</strong></label>
+                    <select id="graphClaimAnswer" class="form-select mb-3">
+                        <option selected>Choose...</option>
+                        <option>The rubber ball bounced the highest.</option>
+                        <option>The foam ball bounced the highest.</option>
+                        <option>All balls bounced the same.</option>
+                        <option>No data was collected.</option>
+                    </select>
+
+                    <button class="btn btn-primary" onclick="makeStationGraph()">Make Graph</button>
+                    <button class="btn btn-success" onclick="checkGraphStation()">Check Claim</button>
+                </div>
+            `;
+        }
+
+        if (stationId === 7) {
+            area.innerHTML = `
+                <div class="sim-panel">
+                    <h4>Build a CER</h4>
+                    <p>Use the data to choose the best claim, evidence, and reasoning.</p>
+
+                    <div class="alert alert-warning">
+                        Data: A toy car traveled 82 cm on smooth tile and 35 cm on rough carpet.
+                    </div>
+
+                    <label class="form-label"><strong>Claim:</strong></label>
+                    <select id="cerClaim" class="form-select mb-3">
+                        <option selected>Choose...</option>
+                        <option>The toy car traveled farther on smooth tile.</option>
+                        <option>The toy car traveled farther on rough carpet.</option>
+                        <option>The surface did not affect motion.</option>
+                    </select>
+
+                    <label class="form-label"><strong>Evidence:</strong></label>
+                    <select id="cerEvidence" class="form-select mb-3">
+                        <option selected>Choose...</option>
+                        <option>The car traveled 82 cm on tile and 35 cm on carpet.</option>
+                        <option>The car looked cool.</option>
+                        <option>The lab was fun.</option>
+                    </select>
+
+                    <label class="form-label"><strong>Reasoning:</strong></label>
+                    <select id="cerReasoning" class="form-select mb-3">
+                        <option selected>Choose...</option>
+                        <option>Carpet has more friction, so it slowed the car more.</option>
+                        <option>Color changes motion.</option>
+                        <option>Data is not needed.</option>
+                    </select>
+
+                    <button class="btn btn-success" onclick="checkCERStation()">Check CER</button>
+                    <button class="btn btn-primary" onclick="buildStationCER()">Build CER Paragraph</button>
+                    <div id="stationCerOutput"></div>
+                </div>
+            `;
+        }
+
+        if (stationId === 8) {
+            area.innerHTML = `
+                <div class="sim-panel">
+                    <h4>Vocabulary Match</h4>
+                    <p>Read the clue and choose the correct vocabulary word.</p>
+
+                    <div class="alert alert-warning" id="vocabClue">
+                        Clue: A push or pull that can change motion.
+                    </div>
+
+                    <label class="form-label"><strong>Vocabulary word:</strong></label>
+                    <select id="vocabAnswer" class="form-select mb-3">
+                        <option selected>Choose...</option>
+                        <option>Force</option>
+                        <option>Solution</option>
+                        <option>Evaporation</option>
+                        <option>Mass</option>
+                    </select>
+
+                    <button class="btn btn-success" onclick="checkVocabStation()">Check Vocabulary</button>
+                    <button class="btn btn-primary" onclick="newVocabClue()">New Clue</button>
+                </div>
+            `;
+        }
+    }
+
+    function runPropertyTest() {
+        const object = document.getElementById("propObject").value;
+        const test = document.getElementById("propTest").value;
+        let result = "";
+
+        if (test === "magnet") {
+            result = object === "iron nail" ? "The iron nail is attracted to the magnet." : "This object is not attracted to the magnet.";
+        }
+        if (test === "water") {
+            result = object === "cork" ? "The cork floats in water." : "This object does not float like cork.";
+        }
+        if (test === "electricity") {
+            result = object === "copper wire" ? "The copper wire completes the circuit." : "This object does not conduct electricity well.";
+        }
+        if (test === "dissolve") {
+            result = object === "sugar" ? "The sugar dissolves in water." : "This object does not dissolve like sugar.";
+        }
+
+        document.getElementById("propResult").innerHTML = "<strong>Result:</strong> " + result;
+    }
+
+    function checkPropertyStation() {
+        const test = document.getElementById("propTest").value;
+        const answer = document.getElementById("propAnswer").value;
+        const correct = {
+            magnet: "Magnetism",
+            water: "Relative density",
+            electricity: "Electrical conductivity",
+            dissolve: "Solubility"
+        }[test];
+
+        if (answer === correct) {
+            showFeedback("tryFeedback", "Correct! That test is checking " + correct + ".", "correct");
             makeSparkles();
         } else {
-            showFeedback("tryFeedback", "Not yet. Use the hint or watch the demo again.", "incorrect");
+            showFeedback("tryFeedback", "Not yet. This test is checking " + correct + ".", "incorrect");
+        }
+    }
+
+    function checkMixtureStation() {
+        const mixture = document.getElementById("mixtureSelect").value;
+        const tool = document.getElementById("toolSelect").value;
+        const correct = {
+            "gravel and sand": "Screen or filter by size",
+            "iron filings and sand": "Magnet",
+            "salt water": "Evaporation",
+            "oil and water": "Separate by relative density"
+        }[mixture];
+
+        if (tool === correct) {
+            document.getElementById("mixtureResult").innerHTML = "<strong>Result:</strong> The mixture can be separated using " + correct + ".";
+            showFeedback("tryFeedback", "Correct separation method!", "correct");
+            makeSparkles();
+        } else {
+            document.getElementById("mixtureResult").innerHTML = "<strong>Result:</strong> That tool does not best separate this mixture.";
+            showFeedback("tryFeedback", "Not yet. Best method: " + correct + ".", "incorrect");
+        }
+    }
+
+    function mixParticles() {
+        const dots = document.querySelectorAll(".particle-dot");
+        const positions = [
+            [25, 35], [120, 42], [60, 85], [135, 112], [45, 145]
+        ];
+
+        dots.forEach((dot, i) => {
+            dot.style.left = positions[i][0] + "px";
+            dot.style.top = positions[i][1] + "px";
+        });
+    }
+
+    function checkParticleStation() {
+        const answer = document.getElementById("particleAnswer").value;
+
+        if (answer === "The sugar particles spread out and are too small to see.") {
+            showFeedback("tryFeedback", "Correct! The sugar did not disappear. The particles spread out.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("tryFeedback", "Not yet. Matter does not disappear. Think tiny particles.", "incorrect");
+        }
+    }
+
+    function runForceCar() {
+        const surface = document.getElementById("surfaceSelect").value;
+        const distances = {tile: 90, carpet: 45, sandpaper: 25};
+        const distance = distances[surface];
+
+        document.getElementById("forceCar").style.left = (20 + distance * 3) + "px";
+        document.getElementById("forceResult").innerHTML = "<strong>Distance:</strong> " + distance + " cm";
+    }
+
+    function checkForceStation() {
+        const answer = document.getElementById("forceAnswer").value;
+
+        if (answer === "Friction") {
+            showFeedback("tryFeedback", "Correct! Friction slows the car when surfaces touch.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("tryFeedback", "Not yet. The force that slows motion on a surface is friction.", "incorrect");
+        }
+    }
+
+    function checkVariableStation() {
+        const iv = document.getElementById("ivAnswer").value;
+        const dv = document.getElementById("dvAnswer").value;
+        const cv = document.getElementById("cvAnswer").value;
+
+        if (iv === "Ramp height" && dv === "Distance traveled" && cv === "Same toy car") {
+            showFeedback("tryFeedback", "Correct! Changed = ramp height, measured = distance, same = toy car.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("tryFeedback", "Not yet. Independent = changed. Dependent = measured. Controlled = kept the same.", "incorrect");
+        }
+    }
+
+    function makeStationGraph() {
+        document.getElementById("foamMiniBar").style.height = "45px";
+        document.getElementById("foamMiniBar").innerText = "18";
+        document.getElementById("tennisMiniBar").style.height = "110px";
+        document.getElementById("tennisMiniBar").innerText = "48";
+        document.getElementById("rubberMiniBar").style.height = "170px";
+        document.getElementById("rubberMiniBar").innerText = "74";
+    }
+
+    function checkGraphStation() {
+        const answer = document.getElementById("graphClaimAnswer").value;
+
+        if (answer === "The rubber ball bounced the highest.") {
+            showFeedback("tryFeedback", "Correct! The rubber ball has the tallest bar and greatest number.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("tryFeedback", "Not yet. Look for the greatest value and tallest bar.", "incorrect");
+        }
+    }
+
+    function checkCERStation() {
+        const claim = document.getElementById("cerClaim").value;
+        const evidence = document.getElementById("cerEvidence").value;
+        const reasoning = document.getElementById("cerReasoning").value;
+
+        if (
+            claim === "The toy car traveled farther on smooth tile." &&
+            evidence === "The car traveled 82 cm on tile and 35 cm on carpet." &&
+            reasoning === "Carpet has more friction, so it slowed the car more."
+        ) {
+            showFeedback("tryFeedback", "Correct CER! Claim, evidence, and reasoning all match.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("tryFeedback", "Not yet. Use the data and connect it to friction.", "incorrect");
+        }
+    }
+
+    function buildStationCER() {
+        document.getElementById("stationCerOutput").innerHTML = `
+            <div class="feedback correct">
+                <strong>Sample CER:</strong><br>
+                The toy car traveled farther on smooth tile. The evidence is that the car traveled 82 cm on tile and 35 cm on carpet. Carpet has more friction, so it slowed the car more than the smooth tile.
+            </div>
+        `;
+    }
+
+    const vocabClues = [
+        ["A push or pull that can change motion.", "Force", ["Force", "Solution", "Evaporation", "Mass"]],
+        ["A mixture where one substance dissolves evenly in another.", "Solution", ["Force", "Solution", "Friction", "Gravity"]],
+        ["The process that can separate salt from salt water.", "Evaporation", ["Evaporation", "Magnetism", "Volume", "Motion"]],
+        ["The amount of matter in an object.", "Mass", ["Mass", "Solubility", "Friction", "Evidence"]]
+    ];
+    let currentVocab = vocabClues[0];
+
+    function newVocabClue() {
+        currentVocab = vocabClues[Math.floor(Math.random() * vocabClues.length)];
+        document.getElementById("vocabClue").innerText = "Clue: " + currentVocab[0];
+
+        const select = document.getElementById("vocabAnswer");
+        select.innerHTML = "<option selected>Choose...</option>";
+        shuffleArray(currentVocab[2]).forEach(choice => {
+            const option = document.createElement("option");
+            option.value = choice;
+            option.innerText = choice;
+            select.appendChild(option);
+        });
+    }
+
+    function checkVocabStation() {
+        const answer = document.getElementById("vocabAnswer").value;
+
+        if (answer === currentVocab[1]) {
+            showFeedback("tryFeedback", "Correct vocabulary match!", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("tryFeedback", "Not yet. Correct word: " + currentVocab[1] + ".", "incorrect");
         }
     }
 
