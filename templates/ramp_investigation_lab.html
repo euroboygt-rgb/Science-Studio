@@ -560,7 +560,12 @@
         const mediumAvg = average(data.medium) || 0;
         const highAvg = average(data.high) || 0;
 
-        const max = Math.max(lowAvg, mediumAvg, highAvg, 1);
+        // Fixed graph scale:
+        // 100 cm = full graph height.
+        // This makes the graph show the real pattern:
+        // low ramp shorter, medium ramp middle, high ramp tallest.
+        const graphMaxCm = 100;
+        const maxPixelHeight = 245;
 
         const bars = [
             ["barLow", lowAvg],
@@ -570,16 +575,26 @@
 
         bars.forEach(([id, value]) => {
             const bar = document.getElementById(id);
-            const height = Math.round((value / max) * 245);
+            const cappedValue = Math.min(value, graphMaxCm);
+            const height = Math.round((cappedValue / graphMaxCm) * maxPixelHeight);
+
             bar.style.height = height + "px";
             bar.innerText = value === 0 ? "0" : value + " cm";
         });
 
         if (!clearOnly) {
             if (lowAvg && mediumAvg && highAvg) {
-                showFeedback("graphFeedback", "Graph created. Look for the pattern in the averages.", true);
+                showFeedback(
+                    "graphFeedback",
+                    "Graph created correctly. The bars should show low ramp as shortest, medium ramp as middle, and high ramp as tallest.",
+                    true
+                );
             } else {
-                showFeedback("graphFeedback", "Graph created, but some data is missing. Run trials or use Auto-Fill Fair Class Data.", false);
+                showFeedback(
+                    "graphFeedback",
+                    "Graph created, but some data is missing. Run trials or use Auto-Fill Fair Class Data.",
+                    false
+                );
             }
         }
     }
