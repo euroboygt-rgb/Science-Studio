@@ -1,0 +1,805 @@
+{% extends "base.html" %}
+
+{% block title %}Balance Scale Mass Simulator{% endblock %}
+
+{% block content %}
+
+<h1>Balance Scale Mass Simulator</h1>
+<p class="lead">
+    Use gram masses to balance the scale and find the mass of different objects.
+</p>
+
+<a href="/first-nine-weeks/day/8?view=student" class="btn btn-secondary mb-4">
+    Back to Day 8
+</a>
+
+<style>
+    .mass-hero {
+        background:
+            radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+            radial-gradient(circle at 82% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+            linear-gradient(135deg, #102542 0%, #1b4965 58%, #5fa8d3 100%);
+        color: white;
+        border: 5px solid #111;
+        border-radius: 28px;
+        padding: 28px;
+        box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+        margin-bottom: 24px;
+    }
+
+    .mass-card {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 22px;
+        padding: 20px;
+        box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
+        margin-bottom: 22px;
+    }
+
+    .lab-stage {
+        background:
+            radial-gradient(circle at 15% 18%, rgba(255,255,255,0.9) 0 3px, transparent 4px),
+            radial-gradient(circle at 82% 28%, rgba(255,255,255,0.9) 0 3px, transparent 4px),
+            linear-gradient(180deg, #bde0fe 0%, #eaf6ff 56%, #d1e7dd 56%, #d1e7dd 100%);
+        border: 5px solid #111;
+        border-radius: 24px;
+        min-height: 470px;
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 18px;
+    }
+
+    .scale-wrap {
+        position: relative;
+        height: 330px;
+        background: rgba(255,255,255,0.72);
+        border: 4px solid #111;
+        border-radius: 22px;
+        overflow: hidden;
+    }
+
+    .scale-base {
+        position: absolute;
+        left: 50%;
+        bottom: 22px;
+        transform: translateX(-50%);
+        width: 180px;
+        height: 32px;
+        background: #343a40;
+        border: 4px solid #111;
+        border-radius: 16px 16px 8px 8px;
+    }
+
+    .scale-post {
+        position: absolute;
+        left: 50%;
+        bottom: 50px;
+        transform: translateX(-50%);
+        width: 28px;
+        height: 185px;
+        background: #6c757d;
+        border: 4px solid #111;
+        border-radius: 14px;
+    }
+
+    .scale-beam {
+        position: absolute;
+        left: 50%;
+        bottom: 218px;
+        width: 540px;
+        height: 20px;
+        background: #ffc107;
+        border: 4px solid #111;
+        border-radius: 999px;
+        transform-origin: center center;
+        transform: translateX(-50%) rotate(0deg);
+        transition: transform 0.6s ease;
+    }
+
+    .scale-center {
+        position: absolute;
+        left: 50%;
+        bottom: 204px;
+        transform: translateX(-50%);
+        width: 48px;
+        height: 48px;
+        background: #dc3545;
+        border: 4px solid #111;
+        border-radius: 50%;
+        z-index: 3;
+    }
+
+    .pan {
+        position: absolute;
+        width: 210px;
+        min-height: 92px;
+        background: #f8f9fa;
+        border: 4px solid #111;
+        border-radius: 0 0 45px 45px;
+        text-align: center;
+        padding: 12px;
+        transition: transform 0.6s ease, top 0.6s ease;
+    }
+
+    .left-pan {
+        left: 115px;
+        top: 172px;
+    }
+
+    .right-pan {
+        right: 115px;
+        top: 172px;
+    }
+
+    .pan-label {
+        font-weight: 950;
+        margin-bottom: 6px;
+    }
+
+    .pan-content {
+        font-size: 32px;
+        min-height: 44px;
+    }
+
+    .left-heavy {
+        transform: translateY(38px);
+    }
+
+    .right-heavy {
+        transform: translateY(38px);
+    }
+
+    .object-button,
+    .mass-button {
+        background: #f8f9fa;
+        border: 3px solid #111;
+        border-radius: 16px;
+        padding: 11px;
+        margin: 5px;
+        font-weight: 900;
+        min-width: 115px;
+    }
+
+    .object-button:hover,
+    .mass-button:hover {
+        background: #fff3cd;
+        transform: translateY(-1px);
+    }
+
+    .mass-stack {
+        display: inline-block;
+        background: #d1e7dd;
+        border: 3px solid #111;
+        border-radius: 10px;
+        padding: 4px 8px;
+        margin: 2px;
+        font-size: 0.9rem;
+        font-weight: 900;
+    }
+
+    .digital-readout {
+        background: #111;
+        color: #00ff7f;
+        border: 4px solid #000;
+        border-radius: 16px;
+        padding: 14px;
+        font-family: monospace;
+        font-size: 1.4rem;
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .feedback {
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .correct {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .incorrect {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .warning {
+        background: #fff3cd;
+        color: #664d03;
+    }
+
+    .data-table th,
+    .data-table td {
+        border: 3px solid #111;
+        padding: 10px;
+        background: white;
+    }
+
+    .challenge-box {
+        background: #f8f9fa;
+        border: 3px solid #111;
+        border-radius: 16px;
+        padding: 14px;
+        margin-bottom: 12px;
+    }
+
+    .sparkle {
+        position: absolute;
+        font-size: 28px;
+        animation: pop 1.1s ease-out forwards;
+        pointer-events: none;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0.2); opacity: 0; }
+        30% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(0.8); opacity: 0; }
+    }
+
+    @media (max-width: 900px) {
+        .scale-beam {
+            width: 390px;
+        }
+
+        .left-pan {
+            left: 25px;
+        }
+
+        .right-pan {
+            right: 25px;
+        }
+
+        .pan {
+            width: 160px;
+        }
+    }
+</style>
+
+<section class="mass-hero">
+    <span class="badge-science">Day 8</span>
+    <span class="badge-science">Mass</span>
+    <span class="badge-science">Balance Scale</span>
+    <span class="badge-science">Grams</span>
+
+    <h2 class="mt-3">⚖️ Mass Measurement Mission</h2>
+    <p class="lead mb-0">
+        Mass is the amount of matter in an object. Scientists often measure mass in grams using a balance scale.
+        When the scale is balanced, the object’s mass equals the total gram masses.
+    </p>
+</section>
+
+<section class="mass-card">
+    <h2>Part 1: Balance the Scale</h2>
+    <p>
+        Choose an object for the left pan. Add gram masses to the right pan until the scale balances.
+    </p>
+
+    <div class="lab-stage" id="labStage">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="digital-readout" id="readout">
+                    LEFT: 0 g | RIGHT: 0 g
+                </div>
+
+                <h3>Choose an object:</h3>
+                <div id="objectButtons"></div>
+
+                <hr>
+
+                <h3>Add gram masses:</h3>
+                <div id="massButtons"></div>
+
+                <button class="btn btn-warning science-btn mt-2" onclick="removeLastMass()">Remove Last Mass</button>
+                <button class="btn btn-danger science-btn mt-2" onclick="resetScale()">Reset Scale</button>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="scale-wrap">
+                    <div id="scaleBeam" class="scale-beam"></div>
+                    <div class="scale-post"></div>
+                    <div class="scale-base"></div>
+                    <div class="scale-center"></div>
+
+                    <div id="leftPan" class="pan left-pan">
+                        <div class="pan-label">Object</div>
+                        <div id="leftContent" class="pan-content">❔</div>
+                        <div id="leftLabel">Choose object</div>
+                    </div>
+
+                    <div id="rightPan" class="pan right-pan">
+                        <div class="pan-label">Gram Masses</div>
+                        <div id="rightContent" class="pan-content">⚖️</div>
+                        <div id="rightLabel">0 g</div>
+                    </div>
+                </div>
+
+                <div id="scaleFeedback" class="feedback warning">
+                    Choose an object, then add gram masses to balance the scale.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-success science-btn" onclick="recordMeasurement()">Record Measurement</button>
+    <div id="recordFeedback"></div>
+</section>
+
+<section class="mass-card">
+    <h2>Part 2: My Mass Data Table</h2>
+    <p>Record your balanced measurements here.</p>
+
+    <div class="table-responsive">
+        <table class="table data-table">
+            <thead>
+                <tr>
+                    <th>Object</th>
+                    <th>Object Mass</th>
+                    <th>Gram Masses Used</th>
+                    <th>Observation</th>
+                </tr>
+            </thead>
+            <tbody id="dataBody">
+                <tr>
+                    <td colspan="4">No measurements recorded yet.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="btn btn-warning science-btn" onclick="clearData()">Clear Data</button>
+</section>
+
+<section class="mass-card">
+    <h2>Part 3: Mystery Mass Challenge</h2>
+    <p>
+        The object is hidden. Use the balance scale to figure out the mystery object’s mass.
+    </p>
+
+    <div class="challenge-box">
+        <button class="btn btn-primary science-btn" onclick="startMystery()">Start Mystery Challenge</button>
+        <button class="btn btn-warning science-btn" onclick="resetScale()">Clear Scale</button>
+
+        <div id="mysteryInfo" class="feedback warning">
+            Click Start Mystery Challenge.
+        </div>
+
+        <label class="form-label mt-3"><strong>What is the mystery object's mass?</strong></label>
+        <select id="mysteryAnswer" class="form-select mb-3">
+            <option selected>Choose...</option>
+            <option>5 g</option>
+            <option>10 g</option>
+            <option>20 g</option>
+            <option>35 g</option>
+            <option>50 g</option>
+            <option>75 g</option>
+            <option>100 g</option>
+            <option>150 g</option>
+            <option>250 g</option>
+        </select>
+
+        <button class="btn btn-success science-btn" onclick="checkMystery()">Check Mystery Mass</button>
+        <div id="mysteryFeedback"></div>
+    </div>
+</section>
+
+<section class="mass-card">
+    <h2>Part 4: Mass Is Not the Same as Size</h2>
+    <p>Choose the object with more mass. Be careful: bigger does not always mean more mass.</p>
+
+    <div id="compareArea"></div>
+
+    <button class="btn btn-success science-btn" onclick="checkCompare()">Check Comparisons</button>
+    <button class="btn btn-warning science-btn" onclick="renderCompare()">Reset</button>
+
+    <div id="compareFeedback"></div>
+</section>
+
+<section class="mass-card">
+    <h2>Part 5: CER Explanation Builder</h2>
+
+    <div class="challenge-box">
+        <p>
+            <strong>Question:</strong> How can a balance scale be used to measure mass?
+        </p>
+
+        <label class="form-label"><strong>Claim:</strong></label>
+        <select id="claim" class="form-select mb-3">
+            <option selected>Choose...</option>
+            <option>A balance scale measures mass by comparing an object to known gram masses.</option>
+            <option>A balance scale measures color by comparing objects.</option>
+            <option>A balance scale measures temperature using grams.</option>
+        </select>
+
+        <label class="form-label"><strong>Evidence:</strong></label>
+        <select id="evidence" class="form-select mb-3">
+            <option selected>Choose...</option>
+            <option>When the two sides balance, the object has the same mass as the total gram masses.</option>
+            <option>When the two sides balance, the object becomes a liquid.</option>
+            <option>When the two sides balance, the object changes color.</option>
+        </select>
+
+        <label class="form-label"><strong>Reasoning:</strong></label>
+        <select id="reasoning" class="form-select mb-3">
+            <option selected>Choose...</option>
+            <option>Mass is the amount of matter, and gram masses are known amounts used for comparison.</option>
+            <option>Mass means how shiny an object is.</option>
+            <option>Mass only depends on the size of the object.</option>
+        </select>
+
+        <button class="btn btn-success science-btn" onclick="checkCER()">Check CER</button>
+        <div id="cerFeedback"></div>
+    </div>
+</section>
+
+<section class="mass-card">
+    <h2>Part 6: STAAR Quick Check</h2>
+
+    <p class="alert alert-warning">
+        A student places a toy car on one side of a balance scale. The scale balances when the student places
+        one 50 g mass, two 20 g masses, and one 10 g mass on the other side.
+    </p>
+
+    <label class="form-label"><strong>What is the mass of the toy car?</strong></label>
+    <select id="staar1" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>60 g</option>
+        <option>80 g</option>
+        <option>100 g</option>
+        <option>110 g</option>
+    </select>
+
+    <label class="form-label"><strong>Which evidence supports the answer?</strong></label>
+    <select id="staar2" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>The gram masses add to 100 g and the scale balanced.</option>
+        <option>The toy car is larger than the gram masses.</option>
+        <option>The balance scale has two pans.</option>
+        <option>The 50 g mass is the biggest mass used.</option>
+    </select>
+
+    <button class="btn btn-success science-btn" onclick="checkSTAAR()">Check STAAR Quick Check</button>
+    <div id="staarFeedback"></div>
+</section>
+
+<script>
+    const objects = [
+        { name: "Paper clip", emoji: "📎", mass: 5 },
+        { name: "Eraser", emoji: "🧽", mass: 20 },
+        { name: "Golf ball", emoji: "⚪", mass: 50 },
+        { name: "Toy car", emoji: "🚗", mass: 100 },
+        { name: "Book", emoji: "📘", mass: 250 },
+        { name: "Metal cube", emoji: "◼️", mass: 150 },
+        { name: "Cotton ball", emoji: "☁️", mass: 2 },
+        { name: "Large sponge", emoji: "🧽", mass: 10 }
+    ];
+
+    const massOptions = [1, 2, 5, 10, 20, 50, 100];
+    const compareItems = [
+        {
+            pair: "Large sponge vs. small metal cube",
+            left: "Large sponge",
+            right: "Small metal cube",
+            answer: "Small metal cube",
+            reason: "The metal cube can have more matter packed into a smaller space."
+        },
+        {
+            pair: "Cotton ball vs. paper clip",
+            left: "Cotton ball",
+            right: "Paper clip",
+            answer: "Paper clip",
+            reason: "The paper clip has more mass even though it is small."
+        },
+        {
+            pair: "Book vs. eraser",
+            left: "Book",
+            right: "Eraser",
+            answer: "Book",
+            reason: "The book has more matter than the eraser."
+        },
+        {
+            pair: "Toy car vs. paper clip",
+            left: "Toy car",
+            right: "Paper clip",
+            answer: "Toy car",
+            reason: "The toy car has a greater mass than the paper clip."
+        }
+    ];
+
+    let selectedObject = null;
+    let rightMasses = [];
+    let measurements = [];
+    let mysteryMass = null;
+
+    function showFeedback(elementId, message, kind) {
+        const box = document.getElementById(elementId);
+        box.className = "feedback " + kind;
+        box.innerHTML = message;
+    }
+
+    function totalRightMass() {
+        return rightMasses.reduce((sum, value) => sum + value, 0);
+    }
+
+    function renderObjectButtons() {
+        const area = document.getElementById("objectButtons");
+        area.innerHTML = "";
+
+        objects.forEach((object, index) => {
+            const button = document.createElement("button");
+            button.className = "object-button";
+            button.innerHTML = object.emoji + "<br>" + object.name;
+            button.onclick = () => chooseObject(index);
+            area.appendChild(button);
+        });
+    }
+
+    function renderMassButtons() {
+        const area = document.getElementById("massButtons");
+        area.innerHTML = "";
+
+        massOptions.forEach(value => {
+            const button = document.createElement("button");
+            button.className = "mass-button";
+            button.innerHTML = value + " g";
+            button.onclick = () => addMass(value);
+            area.appendChild(button);
+        });
+    }
+
+    function chooseObject(index) {
+        selectedObject = {...objects[index], hidden: false};
+        rightMasses = [];
+        updateScale();
+        showFeedback("scaleFeedback", "Now add gram masses until the scale balances.", "warning");
+    }
+
+    function chooseMysteryObject(mass) {
+        selectedObject = {
+            name: "Mystery Object",
+            emoji: "❔",
+            mass: mass,
+            hidden: true
+        };
+        rightMasses = [];
+        updateScale();
+    }
+
+    function addMass(value) {
+        if (!selectedObject) {
+            showFeedback("scaleFeedback", "Choose an object first.", "incorrect");
+            return;
+        }
+
+        rightMasses.push(value);
+        updateScale();
+    }
+
+    function removeLastMass() {
+        rightMasses.pop();
+        updateScale();
+    }
+
+    function resetScale() {
+        selectedObject = null;
+        rightMasses = [];
+        updateScale();
+        showFeedback("scaleFeedback", "Choose an object, then add gram masses to balance the scale.", "warning");
+    }
+
+    function updateScale() {
+        const leftMass = selectedObject ? selectedObject.mass : 0;
+        const rightMass = totalRightMass();
+
+        document.getElementById("readout").innerText = "LEFT: " + leftMass + " g | RIGHT: " + rightMass + " g";
+
+        document.getElementById("leftContent").innerHTML = selectedObject ? selectedObject.emoji : "❔";
+        document.getElementById("leftLabel").innerText = selectedObject ? selectedObject.name : "Choose object";
+
+        document.getElementById("rightContent").innerHTML = rightMasses.length
+            ? rightMasses.map(m => `<span class="mass-stack">${m}g</span>`).join("")
+            : "⚖️";
+
+        document.getElementById("rightLabel").innerText = rightMass + " g";
+
+        const difference = leftMass - rightMass;
+        let angle = 0;
+
+        if (difference > 0) angle = Math.min(18, difference / 7);
+        if (difference < 0) angle = Math.max(-18, difference / 7);
+
+        document.getElementById("scaleBeam").style.transform = "translateX(-50%) rotate(" + angle + "deg)";
+
+        const leftPan = document.getElementById("leftPan");
+        const rightPan = document.getElementById("rightPan");
+
+        leftPan.classList.remove("left-heavy");
+        rightPan.classList.remove("right-heavy");
+
+        if (difference > 0) {
+            leftPan.classList.add("left-heavy");
+            showFeedback("scaleFeedback", "The object side is heavier. Add more gram masses.", "warning");
+        } else if (difference < 0) {
+            rightPan.classList.add("right-heavy");
+            showFeedback("scaleFeedback", "The gram mass side is heavier. Remove some mass or reset.", "warning");
+        } else if (selectedObject && rightMass > 0) {
+            showFeedback("scaleFeedback", "Balanced! The object's mass is " + rightMass + " g.", "correct");
+            makeSparkles();
+        }
+    }
+
+    function recordMeasurement() {
+        if (!selectedObject) {
+            showFeedback("recordFeedback", "Choose and measure an object first.", "incorrect");
+            return;
+        }
+
+        const leftMass = selectedObject.mass;
+        const rightMass = totalRightMass();
+
+        if (leftMass !== rightMass) {
+            showFeedback("recordFeedback", "Record only when the scale is balanced.", "warning");
+            return;
+        }
+
+        measurements.push({
+            object: selectedObject.name,
+            mass: leftMass,
+            massesUsed: rightMasses.join(" g + ") + " g",
+            observation: "The scale balanced."
+        });
+
+        renderData();
+        showFeedback("recordFeedback", "Measurement recorded.", "correct");
+    }
+
+    function renderData() {
+        const body = document.getElementById("dataBody");
+        body.innerHTML = "";
+
+        if (measurements.length === 0) {
+            body.innerHTML = '<tr><td colspan="4">No measurements recorded yet.</td></tr>';
+            return;
+        }
+
+        measurements.forEach(row => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${row.object}</td>
+                <td>${row.mass} g</td>
+                <td>${row.massesUsed}</td>
+                <td>${row.observation}</td>
+            `;
+            body.appendChild(tr);
+        });
+    }
+
+    function clearData() {
+        measurements = [];
+        renderData();
+    }
+
+    function startMystery() {
+        const possible = [5, 10, 20, 35, 50, 75, 100, 150, 250];
+        mysteryMass = possible[Math.floor(Math.random() * possible.length)];
+        chooseMysteryObject(mysteryMass);
+        showFeedback("mysteryInfo", "Mystery object placed on the scale. Add gram masses until it balances.", "warning");
+        document.getElementById("mysteryFeedback").innerHTML = "";
+    }
+
+    function checkMystery() {
+        if (!mysteryMass) {
+            showFeedback("mysteryFeedback", "Start the mystery challenge first.", "warning");
+            return;
+        }
+
+        const answer = document.getElementById("mysteryAnswer").value;
+        const rightMass = totalRightMass();
+
+        if (answer === mysteryMass + " g" && rightMass === mysteryMass) {
+            showFeedback("mysteryFeedback", "Correct! You balanced the mystery object and identified its mass as " + mysteryMass + " g.", "correct");
+            makeSparkles();
+        } else if (rightMass !== mysteryMass) {
+            showFeedback("mysteryFeedback", "The scale is not balanced yet. Keep adjusting the gram masses.", "warning");
+        } else {
+            showFeedback("mysteryFeedback", "The scale is balanced, but check your answer choice.", "incorrect");
+        }
+    }
+
+    function renderCompare() {
+        const area = document.getElementById("compareArea");
+        area.innerHTML = "";
+
+        compareItems.forEach((item, index) => {
+            const row = document.createElement("div");
+            row.className = "challenge-box";
+            row.innerHTML = `
+                <p><strong>${item.pair}</strong></p>
+                <select id="compare${index}" class="form-select">
+                    <option selected>Choose...</option>
+                    <option>${item.left}</option>
+                    <option>${item.right}</option>
+                </select>
+            `;
+            area.appendChild(row);
+        });
+
+        document.getElementById("compareFeedback").innerHTML = "";
+    }
+
+    function checkCompare() {
+        let correct = 0;
+        let explanations = [];
+
+        compareItems.forEach((item, index) => {
+            const answer = document.getElementById("compare" + index).value;
+            if (answer === item.answer) correct++;
+            explanations.push("<li><strong>" + item.pair + ":</strong> " + item.reason + "</li>");
+        });
+
+        if (correct === compareItems.length) {
+            showFeedback("compareFeedback", "Excellent! Bigger does not always mean more mass. Mass depends on the amount of matter.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("compareFeedback", "You got " + correct + " out of " + compareItems.length + ". Review the explanations:<ul>" + explanations.join("") + "</ul>", "warning");
+        }
+    }
+
+    function checkCER() {
+        const claim = document.getElementById("claim").value;
+        const evidence = document.getElementById("evidence").value;
+        const reasoning = document.getElementById("reasoning").value;
+
+        if (
+            claim === "A balance scale measures mass by comparing an object to known gram masses." &&
+            evidence === "When the two sides balance, the object has the same mass as the total gram masses." &&
+            reasoning === "Mass is the amount of matter, and gram masses are known amounts used for comparison."
+        ) {
+            showFeedback("cerFeedback", "Excellent CER! You used a claim, evidence, and reasoning.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("cerFeedback", "Not yet. Choose the statements that explain how the balanced scale gives evidence for mass.", "incorrect");
+        }
+    }
+
+    function checkSTAAR() {
+        const s1 = document.getElementById("staar1").value;
+        const s2 = document.getElementById("staar2").value;
+
+        if (
+            s1 === "100 g" &&
+            s2 === "The gram masses add to 100 g and the scale balanced."
+        ) {
+            showFeedback("staarFeedback", "Correct! 50 g + 20 g + 20 g + 10 g = 100 g. Since the scale balanced, the toy car has a mass of 100 g.", "correct");
+            makeSparkles();
+        } else {
+            showFeedback("staarFeedback", "Not yet. Add the gram masses and use the fact that the scale balanced.", "incorrect");
+        }
+    }
+
+    function makeSparkles() {
+        const stage = document.getElementById("labStage");
+
+        for (let i = 0; i < 10; i++) {
+            const sparkle = document.createElement("div");
+            sparkle.className = "sparkle";
+            sparkle.innerText = ["✨", "⭐", "⚖️", "✅"][Math.floor(Math.random() * 4)];
+            sparkle.style.left = (80 + Math.random() * 760) + "px";
+            sparkle.style.top = (30 + Math.random() * 330) + "px";
+            stage.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1200);
+        }
+    }
+
+    renderObjectButtons();
+    renderMassButtons();
+    renderData();
+    renderCompare();
+    updateScale();
+</script>
+
+{% endblock %}

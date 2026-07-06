@@ -13,6 +13,10 @@ day8 = {
 
     "science_notebook": "Students create a page titled 'Mass.' They write the definition of mass, draw a balance, label grams as the unit, and write examples of objects with different masses.",
 
+    "interactive_activity_title": "Balance Scale Mass Simulator",
+
+    "interactive_activity": "Students use a digital balance scale and gram masses to compare objects, measure mass, collect data, and explain that mass is the amount of matter in an object.",
+
     "guided_practice": "Show students objects such as a cotton ball, rock, pencil, eraser, paper clip, marker, and small book. Students predict which objects have more or less mass, then discuss why measuring with a balance gives better evidence than guessing.",
 
     "interactive_activity_title": "Mass Measurement Challenge",
@@ -87,6 +91,8 @@ day8 = {
     ],
 
     "lab": False,
+    "lab_link": "/labs/balance-scale-mass",
+    "lab_link_text": "Open Balance Scale Mass Simulator",
 
     "lab_notebook": "Students practice estimating and recording the mass of classroom objects. They identify the tool used and the correct unit of measurement.",
 

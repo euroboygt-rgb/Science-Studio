@@ -341,6 +341,12 @@ def magnetic_or_not():
     return render_template("magnetic_or_not_lab_game.html")
 
 
+
+@app.route("/labs/balance-scale-mass")
+def balance_scale_mass():
+    return render_template("balance_scale_mass_simulator.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
