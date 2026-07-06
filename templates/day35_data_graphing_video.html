@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Day 35 Teacher Teach Mini Video</h1>
+<p class="lead">
+    Testing variables, organizing data, and graphing force and motion results.
+</p>
+
+<a href="/first-nine-weeks/day/35?view=student" class="btn btn-secondary mb-4">
+    Back to Day 35
+</a>
+
+<style>
+    .video-card {
+        border: 4px solid #333;
+        border-radius: 18px;
+        background: white;
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+
+    .screen {
+        height: 360px;
+        border: 4px solid #333;
+        border-radius: 15px;
+        background: #f8f9fa;
+        position: relative;
+        overflow: hidden;
+        margin: 20px 0;
+    }
+
+    .ramp {
+        position: absolute;
+        left: 120px;
+        bottom: 100px;
+        width: 360px;
+        height: 18px;
+        background: #333;
+        transform-origin: left center;
+        transform: rotate(-14deg);
+    }
+
+    .car {
+        position: absolute;
+        left: 130px;
+        bottom: 155px;
+        width: 80px;
+        height: 45px;
+        border: 3px solid #333;
+        border-radius: 10px;
+        background: #e9ecef;
+        text-align: center;
+        font-weight: bold;
+        padding-top: 8px;
+        transition: left 0.8s, bottom 0.8s;
+    }
+
+    .graph {
+        position: absolute;
+        right: 50px;
+        bottom: 55px;
+        width: 250px;
+        height: 230px;
+        background: white;
+        border: 3px solid #333;
+        border-radius: 12px;
+        display: none;
+    }
+
+    .bar {
+        position: absolute;
+        bottom: 45px;
+        width: 45px;
+        background: #e9ecef;
+        border: 3px solid #333;
+    }
+
+    .bar1 { left: 35px; height: 55px; }
+    .bar2 { left: 105px; height: 95px; }
+    .bar3 { left: 175px; height: 140px; }
+
+    .axis-label {
+        position: absolute;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .caption {
+        font-size: 24px;
+        font-weight: bold;
+        min-height: 75px;
+        padding: 15px;
+        background: #fff3cd;
+        border-left: 6px solid #ffc107;
+        border-radius: 10px;
+    }
+
+    .data-table {
+        position: absolute;
+        left: 45px;
+        top: 40px;
+        background: white;
+        border: 3px solid #333;
+        border-radius: 10px;
+        padding: 10px;
+        display: none;
+    }
+
+    .data-table table {
+        margin: 0;
+    }
+
+    .label-bubble {
+        position: absolute;
+        padding: 8px 12px;
+        border: 3px solid #333;
+        border-radius: 12px;
+        background: white;
+        font-weight: bold;
+        display: none;
+    }
+
+    .iv { left: 35px; bottom: 35px; }
+    .dv { right: 35px; top: 25px; }
+</style>
+
+<div class="video-card">
+    <h2>Mini Lesson Animation</h2>
+
+    <div id="caption" class="caption">
+        Click Start to teach the full idea.
+    </div>
+
+    <div class="screen">
+        <div id="ivLabel" class="label-bubble iv">Independent variable: ramp height</div>
+        <div id="dvLabel" class="label-bubble dv">Dependent variable: distance traveled</div>
+
+        <div id="dataTable" class="data-table">
+            <table class="table table-bordered table-sm">
+                <tr><th>Ramp height</th><th>Distance</th></tr>
+                <tr><td>Low</td><td>40 cm</td></tr>
+                <tr><td>Medium</td><td>65 cm</td></tr>
+                <tr><td>High</td><td>90 cm</td></tr>
+            </table>
+        </div>
+
+        <div id="ramp" class="ramp"></div>
+        <div id="car" class="car">Car</div>
+
+        <div id="graph" class="graph">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+            <div class="axis-label" style="bottom: 8px; left: 65px;">Ramp height</div>
+            <div class="axis-label" style="top: 80px; left: -35px; transform: rotate(-90deg);">Distance</div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="startMiniLesson()">Start Mini Video</button>
+    <button class="btn btn-secondary" onclick="resetMiniLesson()">Reset</button>
+</div>
+
+<div class="video-card">
+    <h2>Teacher Talk Track</h2>
+    <ol>
+        <li><strong>Question:</strong> How does ramp height affect the distance a toy car travels?</li>
+        <li><strong>Independent variable:</strong> ramp height, because that is what we change on purpose.</li>
+        <li><strong>Dependent variable:</strong> distance traveled, because that is what we measure.</li>
+        <li><strong>Controlled variables:</strong> same car, same surface, same starting line, same measuring tool.</li>
+        <li><strong>Data:</strong> collect repeated trials and organize the results in a table.</li>
+        <li><strong>Graph:</strong> x-axis shows ramp height; y-axis shows distance traveled.</li>
+        <li><strong>Claim:</strong> The toy car traveled farther when ramp height increased.</li>
+    </ol>
+</div>
+
+<script>
+    function resetMiniLesson() {
+        document.getElementById("caption").innerHTML = "Click Start to teach the full idea.";
+        document.getElementById("ivLabel").style.display = "none";
+        document.getElementById("dvLabel").style.display = "none";
+        document.getElementById("dataTable").style.display = "none";
+        document.getElementById("graph").style.display = "none";
+        document.getElementById("car").style.left = "130px";
+        document.getElementById("car").style.bottom = "155px";
+    }
+
+    function startMiniLesson() {
+        resetMiniLesson();
+
+        setTimeout(() => {
+            document.getElementById("caption").innerHTML = "Step 1: Ask a testable question about force and motion.";
+        }, 300);
+
+        setTimeout(() => {
+            document.getElementById("caption").innerHTML = "Step 2: Change one thing on purpose. That is the independent variable.";
+            document.getElementById("ivLabel").style.display = "block";
+        }, 1900);
+
+        setTimeout(() => {
+            document.getElementById("caption").innerHTML = "Step 3: Measure the result. That is the dependent variable.";
+            document.getElementById("dvLabel").style.display = "block";
+            document.getElementById("car").style.left = "425px";
+            document.getElementById("car").style.bottom = "82px";
+        }, 3600);
+
+        setTimeout(() => {
+            document.getElementById("caption").innerHTML = "Step 4: Put the measurements in a data table.";
+            document.getElementById("dataTable").style.display = "block";
+        }, 5400);
+
+        setTimeout(() => {
+            document.getElementById("caption").innerHTML = "Step 5: Make a graph. X-axis gets the independent variable. Y-axis gets the dependent variable.";
+            document.getElementById("graph").style.display = "block";
+        }, 7200);
+
+        setTimeout(() => {
+            document.getElementById("caption").innerHTML = "Step 6: Use the graph pattern as evidence for your claim.";
+        }, 9000);
+    }
+
+    resetMiniLesson();
+</script>
+
+{% endblock %}

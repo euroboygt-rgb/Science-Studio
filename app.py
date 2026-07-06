@@ -34,6 +34,7 @@ from curriculum.day31 import day31
 from curriculum.day32 import day32
 from curriculum.day33 import day33
 from curriculum.day34 import day34
+from curriculum.day35 import day35
 
 app = Flask(__name__)
 
@@ -73,6 +74,7 @@ lesson_details = {
     32: day32,
     33: day33,
     34: day34,
+    35: day35,
 }
 
 
@@ -215,6 +217,12 @@ def mechanical_energy_transfer_lab():
 @app.route("/labs/variables-planner")
 def variables_planner_lab():
     return render_template("variables_planner_lab.html")
+
+
+
+@app.route("/videos/day35-data-graphing")
+def day35_data_graphing_video():
+    return render_template("day35_data_graphing_video.html")
 
 
 @app.route("/first-nine-weeks")

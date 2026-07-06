@@ -1593,6 +1593,36 @@
         </div>
         {% endif %}
 
+        {% if lesson.get("anchor_charts") or lesson.get("teacher_video_link") %}
+        <div class="card mb-3">
+            <div class="card-header bg-info text-white">
+                Teacher Teach, Anchor Charts, and Mini Video
+            </div>
+            <div class="card-body">
+                {% if lesson.get("teacher_video_link") %}
+                <a href="{{ lesson.get('teacher_video_link') }}" class="btn btn-primary btn-lg mb-3">
+                    {{ lesson.get("teacher_video_link_text", "Open Teacher Teach Mini Video") }}
+                </a>
+                {% endif %}
+
+                {% if lesson.get("anchor_charts") %}
+                <div class="row">
+                    {% for chart in lesson.get("anchor_charts") %}
+                    <div class="col-md-6 mb-3">
+                        <div class="border rounded p-3 h-100 bg-light">
+                            <h5>{{ chart.title }}</h5>
+                            <img src="{{ chart.image }}" class="img-fluid border rounded mb-2" alt="{{ chart.title }}">
+                            <p>{{ chart.description }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+
         <div class="card mb-3">
             <div class="card-header bg-success text-white">
                 Lab
