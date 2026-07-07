@@ -359,6 +359,12 @@ def vocabulary_posters():
     return render_template("vocabulary_posters.html")
 
 
+
+@app.route("/instructional-officer-demo")
+def instructional_officer_demo():
+    return render_template("instructional_officer_demo.html")
+
+
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
