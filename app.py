@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request
 from curriculum.first_nine_weeks import first_nine_weeks as first_nine_weeks_lessons
 from curriculum.day1 import day1
@@ -401,4 +402,5 @@ def lesson_detail(day):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)

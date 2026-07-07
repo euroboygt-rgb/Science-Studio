@@ -1,31 +1,22 @@
-# SISD 5th Grade Science Lesson Builder
+# SISD 5th Grade Science Studio
 
-This project is a lesson planning web app for 5th Grade Texas Science in Socorro Independent School District.
+A 5th grade science classroom web app for the 1st 9 weeks.
 
-It helps organize:
-- 9-week science pacing
-- Daily lesson plans
-- TEKS
-- Vocabulary
-- Labs
-- STAAR-style practice
-- Stemscopes and McGraw Hill Science connections
+Includes:
+- 45 daily lessons
+- Student and teacher views
+- Interactive labs and simulations
+- Vocabulary posters
+- STAAR-style review
+- Digital assessment
+- Reflection and goal-setting tool
+- Instructional Officer guided demo page
 
-## Why I Built This
+Main demo page after publishing:
+/instructional-officer-demo
 
-I am building this as my Boot.dev personal project and as a real classroom tool for planning 5th grade science lessons.
+Local run:
+python3 app.py
 
-## Tech Used
-
-- Python
-- Flask
-- HTML
-- CSS
-
-## How to Run
-
-Clone the project:
-
-```bash
-git clone YOUR_REPO_LINK_HERE
-cd sisd-science-lesson-builder
+Production start command:
+gunicorn app:app
