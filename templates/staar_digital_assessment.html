@@ -180,8 +180,8 @@
 
     <div class="row">
         <div class="col-md-4">
-            <label class="form-label"><strong>Student name:</strong></label>
-            <input id="studentName" class="form-control mb-3" placeholder="Type student name">
+            <label class="form-label"><strong>Initials or class number — optional:</strong></label>
+            <input id="studentName" class="form-control mb-3" placeholder="Type initials or class number — optional">
         </div>
 
         <div class="col-md-4">
@@ -674,7 +674,7 @@
         const percent = Math.round((correct / assessmentQuestions.length) * 100);
 
         return {
-            studentName: document.getElementById("studentDisplay").innerText,
+            studentInitials / Class # — optional: document.getElementById("studentDisplay").innerText,
             correct,
             total: assessmentQuestions.length,
             percent,
@@ -807,7 +807,7 @@
 
     function showTeacherAnswerKeyOnly() {
         const fakeReport = {
-            studentName: "Teacher Preview",
+            studentInitials / Class # — optional: "Teacher Preview",
             correct: 0,
             total: assessmentQuestions.length,
             percent: 0,

@@ -95,7 +95,7 @@ day39 = {
             "choices": [
                 "Type of ball",
                 "Bounce height",
-                "Student name",
+                "Initials or class number — optional",
                 "Color of notebook"
             ],
             "answer": "Type of ball"
