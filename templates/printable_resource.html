@@ -5,181 +5,181 @@
 {% block content %}
 
 <style>
+  .print-hero {
+    background: #102542;
+    color: white;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 22px;
+  }
+
+  .print-page {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 22px;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
+  }
+
+  .student-line {
+    border-bottom: 2px solid #111;
+    display: inline-block;
+    min-width: 260px;
+    margin: 0 12px 8px 4px;
+  }
+
+  .foldable-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  .foldable-panel {
+    border: 3px dashed #111;
+    border-radius: 16px;
+    min-height: 170px;
+    padding: 14px;
+    background: #f8f9fa;
+  }
+
+  .foldable-panel h3 {
+    font-weight: 950;
+  }
+
+  .vocab-pill {
+    display: inline-block;
+    background: #d1e7dd;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 4px 9px;
+    font-weight: 850;
+    margin: 3px;
+  }
+
+  .question-box {
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 14px;
+    background: #fff3cd;
+    margin-top: 16px;
+  }
+
+  .write-lines {
+    line-height: 2.1;
+    background-image: linear-gradient(to bottom, transparent 95%, #999 96%);
+    background-size: 100% 2.1em;
+    min-height: 130px;
+  }
+
+  .science-btn-small {
+    border: 3px solid #111;
+    border-radius: 12px;
+    font-weight: 850;
+    box-shadow: 2px 2px 0 rgba(17,17,17,0.2);
+    margin: 3px;
+  }
+
+  @media print {
+    .no-print,
+    .science-navbar,
+    .classroom-footer {
+      display: none !important;
+    }
+
+    body {
+      background: white !important;
+    }
+
+    .science-shell {
+      max-width: 100%;
+      padding: 0;
+    }
+
+    .print-page,
     .print-hero {
-        background: #102542;
-        color: white;
-        border: 5px solid #111;
-        border-radius: 24px;
-        padding: 24px;
-        margin-bottom: 22px;
+      box-shadow: none;
+      border: 2px solid #111;
+      page-break-inside: avoid;
     }
-
-    .print-page {
-        background: white;
-        border: 4px solid #111;
-        border-radius: 18px;
-        padding: 22px;
-        margin-bottom: 22px;
-        box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
-    }
-
-    .student-line {
-        border-bottom: 2px solid #111;
-        display: inline-block;
-        min-width: 260px;
-        margin: 0 12px 8px 4px;
-    }
-
-    .foldable-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-        margin-top: 16px;
-    }
-
-    .foldable-panel {
-        border: 3px dashed #111;
-        border-radius: 16px;
-        min-height: 170px;
-        padding: 14px;
-        background: #f8f9fa;
-    }
-
-    .foldable-panel h3 {
-        font-weight: 950;
-    }
-
-    .vocab-pill {
-        display: inline-block;
-        background: #d1e7dd;
-        border: 2px solid #111;
-        border-radius: 999px;
-        padding: 4px 9px;
-        font-weight: 850;
-        margin: 3px;
-    }
-
-    .question-box {
-        border: 3px solid #111;
-        border-radius: 16px;
-        padding: 14px;
-        background: #fff3cd;
-        margin-top: 16px;
-    }
-
-    .write-lines {
-        line-height: 2.1;
-        background-image: linear-gradient(to bottom, transparent 95%, #999 96%);
-        background-size: 100% 2.1em;
-        min-height: 130px;
-    }
-
-    .science-btn-small {
-        border: 3px solid #111;
-        border-radius: 12px;
-        font-weight: 850;
-        box-shadow: 2px 2px 0 rgba(17,17,17,0.2);
-        margin: 3px;
-    }
-
-    @media print {
-        .no-print,
-        .science-navbar,
-        .classroom-footer {
-            display: none !important;
-        }
-
-        body {
-            background: white !important;
-        }
-
-        .science-shell {
-            max-width: 100%;
-            padding: 0;
-        }
-
-        .print-page,
-        .print-hero {
-            box-shadow: none;
-            border: 2px solid #111;
-            page-break-inside: avoid;
-        }
-    }
+  }
 </style>
 
 <section class="print-hero">
-    <h1>{{ resource["title"] }}</h1>
-    <p class="lead mb-0">
-        Day {{ resource["day"] }} • {{ resource["unit"] }} • {{ resource["resource_type"] }}
-    </p>
+  <h1>{{ resource["title"] }}</h1>
+  <p class="lead mb-0">
+    Day {{ resource["day"] }} • {{ resource["unit"] }} • {{ resource["resource_type"] }}
+  </p>
 </section>
 
 <section class="no-print mb-3">
-    <a href="/resources" class="btn btn-secondary science-btn-small">Back to Resources</a>
-    <a href="{{ resource['lesson_link'] }}" class="btn btn-primary science-btn-small">Open Student Lesson</a>
-    <a href="{{ resource['teacher_link'] }}" class="btn btn-success science-btn-small">Open Teacher Lesson</a>
-    <button onclick="window.print()" class="btn btn-warning science-btn-small">Print This Resource</button>
+  <a href="/resources" class="btn btn-secondary science-btn-small">Back to Resources</a>
+  <a href="{{ resource['lesson_link'] }}" class="btn btn-primary science-btn-small">Open Student Lesson</a>
+  <a href="{{ resource['teacher_link'] }}" class="btn btn-success science-btn-small">Open Teacher Lesson</a>
+  <button onclick="window.print()" class="btn btn-warning science-btn-small">Print This Resource</button>
 </section>
 
 <section class="print-page">
-    <h2>Student Printable</h2>
+  <h2>Student Printable</h2>
 
-    <p>
-        Initials / Class # — optional:
-        <span class="student-line"></span>
-        Date:
-        <span class="student-line"></span>
-    </p>
+  <p>
+    Initials / Class # — optional:
+    <span class="student-line"></span>
+    Date:
+    <span class="student-line"></span>
+  </p>
 
-    <h3>Learning Task</h3>
-    <p>{{ resource["student_task"] }}</p>
+  <h3>Learning Task</h3>
+  <p>{{ resource["student_task"] }}</p>
 
-    <h3>Vocabulary</h3>
-    <div>
-        {% for word in resource["vocabulary"] %}
-        <span class="vocab-pill">{{ word }}</span>
-        {% endfor %}
+  <h3>Vocabulary</h3>
+  <div>
+    {% for word in resource["vocabulary"] %}
+    <span class="vocab-pill">{{ word }}</span>
+    {% endfor %}
+  </div>
+
+  <h3 class="mt-4">Foldable / Notebook Panels</h3>
+  <p>Cut, fold, glue, or copy these sections into your science notebook.</p>
+
+  <div class="foldable-grid">
+    {% for panel in resource["panels"] %}
+    <div class="foldable-panel">
+      <h3>{{ panel }}</h3>
+      <p>Draw or write evidence here.</p>
+      <div class="write-lines"></div>
     </div>
+    {% endfor %}
+  </div>
 
-    <h3 class="mt-4">Foldable / Notebook Panels</h3>
-    <p>Cut, fold, glue, or copy these sections into your science notebook.</p>
+  <div class="question-box">
+    <h3>STAAR Connection</h3>
+    <p><strong>Question:</strong> {{ resource["staar_practice"] }}</p>
+    <p><strong>My answer:</strong></p>
+    <div class="write-lines"></div>
+  </div>
 
-    <div class="foldable-grid">
-        {% for panel in resource["panels"] %}
-        <div class="foldable-panel">
-            <h3>{{ panel }}</h3>
-            <p>Draw or write evidence here.</p>
-            <div class="write-lines"></div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <div class="question-box">
-        <h3>STAAR Connection</h3>
-        <p><strong>Question:</strong> {{ resource["staar_practice"] }}</p>
-        <p><strong>My answer:</strong></p>
-        <div class="write-lines"></div>
-    </div>
-
-    <div class="question-box">
-        <h3>Exit Reflection</h3>
-        <p>One thing I understand better now is...</p>
-        <div class="write-lines"></div>
-    </div>
+  <div class="question-box">
+    <h3>Exit Reflection</h3>
+    <p>One thing I understand better now is...</p>
+    <div class="write-lines"></div>
+  </div>
 </section>
 
 <section class="print-page">
-    <h2>Teacher Directions</h2>
+  <h2>Teacher Directions</h2>
 
-    <ol>
-        <li>Open the matching lesson for Day {{ resource["day"] }}.</li>
-        <li>Use this printable during the Science Notebook, Guided Practice, Lab Notebook, or Review section.</li>
-        <li>Students may complete the panels individually, with partners, or at stations.</li>
-        <li>For privacy, students should use initials, class number, or leave the name field blank.</li>
-        <li>Use the STAAR Connection question for discussion, exit ticket, or small-group reteach.</li>
-    </ol>
+  <ol>
+    <li>Open the matching lesson for Day {{ resource["day"] }}.</li>
+    <li>Use this printable during the Science Notebook, Guided Practice, Lab Notebook, or Review section.</li>
+    <li>Students may complete the panels individually, with partners, or at stations.</li>
+    <li>For privacy, students should use initials, class number, or leave the name field blank.</li>
+    <li>Use the STAAR Connection question for discussion, exit ticket, or small-group reteach.</li>
+  </ol>
 
-    <p><strong>Suggested use:</strong> {{ resource["resource_type"] }}</p>
+  <p><strong>Suggested use:</strong> {{ resource["resource_type"] }}</p>
 </section>
 
 {% endblock %}

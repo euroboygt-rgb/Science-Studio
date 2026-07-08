@@ -4,481 +4,481 @@
 
 <h1>Friction Surface Simulator</h1>
 <p class="lead">
-    Test how different surfaces affect how far an object moves.
+  Test how different surfaces affect how far an object moves.
 </p>
 
 <a href="/first-nine-weeks/day/31?view=student" class="btn btn-secondary mb-4">
-    Back to Day 31
+  Back to Day 31
 </a>
 
 <style>
-    .sim-card {
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 25px;
-        background: #f8f9fa;
-    }
+  .sim-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
 
-    .info-box {
-        background: #fff3cd;
-        border-left: 5px solid #ffc107;
-        padding: 12px;
-        margin-bottom: 15px;
-    }
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
 
-    .track {
-        height: 260px;
-        border: 4px solid #333;
-        border-radius: 15px;
-        background: white;
-        position: relative;
-        overflow: hidden;
-        margin: 20px 0;
-    }
+  .track {
+    height: 260px;
+    border: 4px solid #333;
+    border-radius: 15px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+  }
 
-    .surface-strip {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 70px;
-        background: #e9ecef;
-        border-top: 4px solid #333;
-        text-align: center;
-        font-weight: bold;
-        padding-top: 20px;
-    }
+  .surface-strip {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 70px;
+    background: #e9ecef;
+    border-top: 4px solid #333;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 20px;
+  }
 
-    .moving-object {
-        width: 90px;
-        height: 60px;
-        border: 3px solid #333;
-        border-radius: 12px;
-        background: #f8f9fa;
-        position: absolute;
-        left: 40px;
-        top: 125px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        text-align: center;
-        transition: left 0.9s;
-    }
+  .moving-object {
+    width: 90px;
+    height: 60px;
+    border: 3px solid #333;
+    border-radius: 12px;
+    background: #f8f9fa;
+    position: absolute;
+    left: 40px;
+    top: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+    transition: left 0.9s;
+  }
 
-    .motion-arrow {
-        position: absolute;
-        left: 120px;
-        top: 55px;
-        font-size: 48px;
-        font-weight: bold;
-        display: none;
-    }
+  .motion-arrow {
+    position: absolute;
+    left: 120px;
+    top: 55px;
+    font-size: 48px;
+    font-weight: bold;
+    display: none;
+  }
 
-    .friction-arrow {
-        position: absolute;
-        left: 130px;
-        top: 15px;
-        font-size: 48px;
-        font-weight: bold;
-        display: none;
-    }
+  .friction-arrow {
+    position: absolute;
+    left: 130px;
+    top: 15px;
+    font-size: 48px;
+    font-weight: bold;
+    display: none;
+  }
 
-    .distance-line {
-        position: absolute;
-        left: 40px;
-        bottom: 85px;
-        height: 5px;
-        width: 0;
-        background: #333;
-        transition: width 0.9s;
-    }
+  .distance-line {
+    position: absolute;
+    left: 40px;
+    bottom: 85px;
+    height: 5px;
+    width: 0;
+    background: #333;
+    transition: width 0.9s;
+  }
 
-    .motion-data {
-        background: white;
-        border: 2px solid #333;
-        border-radius: 10px;
-        padding: 12px;
-        margin-top: 10px;
-    }
+  .motion-data {
+    background: white;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+  }
 
-    .feedback {
-        font-weight: bold;
-        margin-top: 10px;
-        padding: 10px;
-        border-radius: 8px;
-    }
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
 
-    .correct {
-        background: #d1e7dd;
-        color: #0f5132;
-    }
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
 
-    .incorrect {
-        background: #f8d7da;
-        color: #842029;
-    }
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
 
-    .scenario-card {
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 15px;
-    }
+  .scenario-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
 
-    .model-box {
-        background: white;
-        border: 3px solid #333;
-        border-radius: 12px;
-        padding: 20px;
-        text-align: center;
-        margin: 15px 0;
-    }
+  .model-box {
+    background: white;
+    border: 3px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin: 15px 0;
+  }
 
-    .big-arrow {
-        font-size: 55px;
-        font-weight: bold;
-    }
+  .big-arrow {
+    font-size: 55px;
+    font-weight: bold;
+  }
 
-    .object-box {
-        display: inline-block;
-        padding: 18px;
-        border: 3px solid #333;
-        border-radius: 10px;
-        background: #e9ecef;
-        font-weight: bold;
-        margin: 0 20px;
-    }
+  .object-box {
+    display: inline-block;
+    padding: 18px;
+    border: 3px solid #333;
+    border-radius: 10px;
+    background: #e9ecef;
+    font-weight: bold;
+    margin: 0 20px;
+  }
 </style>
 
 <div class="sim-card">
-    <h2>Part 1: Surface Friction Test</h2>
+  <h2>Part 1: Surface Friction Test</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Rougher surfaces usually create more friction. More friction makes an object slow down sooner and travel a shorter distance.
+  <div class="info-box">
+    <strong>Goal:</strong> Rougher surfaces usually create more friction. More friction makes an object slow down sooner and travel a shorter distance.
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <label class="form-label"><strong>Object:</strong></label>
+      <select id="objectSelect" class="form-select mb-3" onchange="resetSim()">
+        <option>Toy car</option>
+        <option>Book</option>
+        <option>Block</option>
+        <option>Ball</option>
+      </select>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <label class="form-label"><strong>Object:</strong></label>
-            <select id="objectSelect" class="form-select mb-3" onchange="resetSim()">
-                <option>Toy car</option>
-                <option>Book</option>
-                <option>Block</option>
-                <option>Ball</option>
-            </select>
-        </div>
-
-        <div class="col-md-4">
-            <label class="form-label"><strong>Surface:</strong></label>
-            <select id="surfaceSelect" class="form-select mb-3" onchange="resetSim()">
-                <option>Smooth tile</option>
-                <option>Wax paper</option>
-                <option>Desktop</option>
-                <option>Carpet</option>
-                <option>Sandpaper</option>
-            </select>
-        </div>
-
-        <div class="col-md-4">
-            <label class="form-label"><strong>Push strength:</strong> <span id="strengthLabel">3</span></label>
-            <input id="strengthInput" type="range" class="form-range mb-3" min="1" max="5" value="3" oninput="updateStrength(); resetSim();">
-        </div>
+    <div class="col-md-4">
+      <label class="form-label"><strong>Surface:</strong></label>
+      <select id="surfaceSelect" class="form-select mb-3" onchange="resetSim()">
+        <option>Smooth tile</option>
+        <option>Wax paper</option>
+        <option>Desktop</option>
+        <option>Carpet</option>
+        <option>Sandpaper</option>
+      </select>
     </div>
 
-    <button class="btn btn-primary" onclick="runTest()">Run Test</button>
-    <button class="btn btn-warning" onclick="showArrows()">Show Motion and Friction Arrows</button>
-    <button class="btn btn-secondary" onclick="resetSim()">Reset</button>
-
-    <div class="track">
-        <div id="motionArrow" class="motion-arrow">Motion →</div>
-        <div id="frictionArrow" class="friction-arrow">← Friction</div>
-        <div id="distanceLine" class="distance-line"></div>
-        <div id="movingObject" class="moving-object">Toy car</div>
-        <div id="surfaceStrip" class="surface-strip">Smooth tile</div>
+    <div class="col-md-4">
+      <label class="form-label"><strong>Push strength:</strong> <span id="strengthLabel">3</span></label>
+      <input id="strengthInput" type="range" class="form-range mb-3" min="1" max="5" value="3" oninput="updateStrength(); resetSim();">
     </div>
+  </div>
 
-    <div class="motion-data">
-        <p><strong>Surface:</strong> <span id="surfaceData">Not tested yet</span></p>
-        <p><strong>Amount of Friction:</strong> <span id="frictionData">Not tested yet</span></p>
-        <p><strong>Distance Traveled:</strong> <span id="distanceData">Not tested yet</span></p>
-        <p><strong>Evidence:</strong> <span id="evidenceData">Not tested yet</span></p>
-    </div>
+  <button class="btn btn-primary" onclick="runTest()">Run Test</button>
+  <button class="btn btn-warning" onclick="showArrows()">Show Motion and Friction Arrows</button>
+  <button class="btn btn-secondary" onclick="resetSim()">Reset</button>
 
-    <label class="form-label mt-3"><strong>Best explanation:</strong></label>
-    <select id="testAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Friction acted opposite the motion and affected how far the object traveled.</option>
-        <option>Friction pulled the object downward toward Earth.</option>
-        <option>The object moved because it changed color.</option>
-        <option>No force acted on the object.</option>
-    </select>
+  <div class="track">
+    <div id="motionArrow" class="motion-arrow">Motion →</div>
+    <div id="frictionArrow" class="friction-arrow">← Friction</div>
+    <div id="distanceLine" class="distance-line"></div>
+    <div id="movingObject" class="moving-object">Toy car</div>
+    <div id="surfaceStrip" class="surface-strip">Smooth tile</div>
+  </div>
 
-    <button class="btn btn-success" onclick="checkTest()">Check Surface Evidence</button>
-    <div id="testFeedback"></div>
+  <div class="motion-data">
+    <p><strong>Surface:</strong> <span id="surfaceData">Not tested yet</span></p>
+    <p><strong>Amount of Friction:</strong> <span id="frictionData">Not tested yet</span></p>
+    <p><strong>Distance Traveled:</strong> <span id="distanceData">Not tested yet</span></p>
+    <p><strong>Evidence:</strong> <span id="evidenceData">Not tested yet</span></p>
+  </div>
+
+  <label class="form-label mt-3"><strong>Best explanation:</strong></label>
+  <select id="testAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Friction acted opposite the motion and affected how far the object traveled.</option>
+    <option>Friction pulled the object downward toward Earth.</option>
+    <option>The object moved because it changed color.</option>
+    <option>No force acted on the object.</option>
+  </select>
+
+  <button class="btn btn-success" onclick="checkTest()">Check Surface Evidence</button>
+  <div id="testFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 2: Friction Direction Model</h2>
+  <h2>Part 2: Friction Direction Model</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Friction acts opposite the direction of motion.
-    </div>
+  <div class="info-box">
+    <strong>Goal:</strong> Friction acts opposite the direction of motion.
+  </div>
 
-    <div class="model-box">
-        <span class="big-arrow">←</span>
-        <span>Friction</span>
-        <span class="object-box">Sliding book</span>
-        <span>Motion</span>
-        <span class="big-arrow">→</span>
-    </div>
+  <div class="model-box">
+    <span class="big-arrow">←</span>
+    <span>Friction</span>
+    <span class="object-box">Sliding book</span>
+    <span>Motion</span>
+    <span class="big-arrow">→</span>
+  </div>
 
-    <label class="form-label"><strong>If the book slides to the right, which direction does friction act?</strong></label>
-    <select id="directionAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Left, opposite the motion</option>
-        <option>Right, same as motion</option>
-        <option>Up only</option>
-        <option>Down only</option>
-    </select>
+  <label class="form-label"><strong>If the book slides to the right, which direction does friction act?</strong></label>
+  <select id="directionAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Left, opposite the motion</option>
+    <option>Right, same as motion</option>
+    <option>Up only</option>
+    <option>Down only</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkDirection()">Check Direction</button>
-    <div id="directionFeedback"></div>
+  <button class="btn btn-success" onclick="checkDirection()">Check Direction</button>
+  <div id="directionFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 3: Predict the Surface</h2>
+  <h2>Part 3: Predict the Surface</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Use distance traveled as evidence for friction.
-    </div>
+  <div class="info-box">
+    <strong>Goal:</strong> Use distance traveled as evidence for friction.
+  </div>
 
-    <div class="scenario-card">
-        <h4>1. A toy car travels the shortest distance on this surface.</h4>
-        <select id="q1" class="form-select">
-            <option selected>Choose...</option>
-            <option>Carpet</option>
-            <option>Smooth tile</option>
-            <option>Wax paper</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>1. A toy car travels the shortest distance on this surface.</h4>
+    <select id="q1" class="form-select">
+      <option selected>Choose...</option>
+      <option>Carpet</option>
+      <option>Smooth tile</option>
+      <option>Wax paper</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>2. A toy car travels farthest on this surface.</h4>
-        <select id="q2" class="form-select">
-            <option selected>Choose...</option>
-            <option>Wax paper</option>
-            <option>Sandpaper</option>
-            <option>Carpet</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>2. A toy car travels farthest on this surface.</h4>
+    <select id="q2" class="form-select">
+      <option selected>Choose...</option>
+      <option>Wax paper</option>
+      <option>Sandpaper</option>
+      <option>Carpet</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>3. A sliding box moves to the right. Friction acts...</h4>
-        <select id="q3" class="form-select">
-            <option selected>Choose...</option>
-            <option>Left</option>
-            <option>Right</option>
-            <option>Only upward</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>3. A sliding box moves to the right. Friction acts...</h4>
+    <select id="q3" class="form-select">
+      <option selected>Choose...</option>
+      <option>Left</option>
+      <option>Right</option>
+      <option>Only upward</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>4. Bike brakes stop a bicycle because they increase...</h4>
-        <select id="q4" class="form-select">
-            <option selected>Choose...</option>
-            <option>Friction</option>
-            <option>Solubility</option>
-            <option>Evaporation</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>4. Bike brakes stop a bicycle because they increase...</h4>
+    <select id="q4" class="form-select">
+      <option selected>Choose...</option>
+      <option>Friction</option>
+      <option>Solubility</option>
+      <option>Evaporation</option>
+    </select>
+  </div>
 
-    <button class="btn btn-success" onclick="checkPredictions()">Check Predictions</button>
-    <div id="predictionFeedback"></div>
+  <button class="btn btn-success" onclick="checkPredictions()">Check Predictions</button>
+  <div id="predictionFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 4: STAAR Friction Challenge</h2>
+  <h2>Part 4: STAAR Friction Challenge</h2>
 
-    <div class="info-box">
-        <strong>Question:</strong> A student pushes the same toy car with the same force on tile and carpet. The car travels 120 cm on tile and 45 cm on carpet.
-    </div>
+  <div class="info-box">
+    <strong>Question:</strong> A student pushes the same toy car with the same force on tile and carpet. The car travels 120 cm on tile and 45 cm on carpet.
+  </div>
 
-    <label class="form-label"><strong>Best claim:</strong></label>
-    <select id="staar1" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Carpet caused more friction than tile.</option>
-        <option>Tile caused more friction than carpet.</option>
-        <option>Friction did not affect the car.</option>
-        <option>The car disappeared on carpet.</option>
-    </select>
+  <label class="form-label"><strong>Best claim:</strong></label>
+  <select id="staar1" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Carpet caused more friction than tile.</option>
+    <option>Tile caused more friction than carpet.</option>
+    <option>Friction did not affect the car.</option>
+    <option>The car disappeared on carpet.</option>
+  </select>
 
-    <label class="form-label"><strong>Best evidence:</strong></label>
-    <select id="staar2" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The car traveled a shorter distance on carpet.</option>
-        <option>The car had wheels.</option>
-        <option>The car was a toy.</option>
-        <option>The carpet had a color.</option>
-    </select>
+  <label class="form-label"><strong>Best evidence:</strong></label>
+  <select id="staar2" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The car traveled a shorter distance on carpet.</option>
+    <option>The car had wheels.</option>
+    <option>The car was a toy.</option>
+    <option>The carpet had a color.</option>
+  </select>
 
-    <label class="form-label"><strong>Best description of friction:</strong></label>
-    <select id="staar3" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>A force that acts opposite motion</option>
-        <option>A force that only pulls downward</option>
-        <option>A force that only attracts metal</option>
-        <option>A force that changes color</option>
-    </select>
+  <label class="form-label"><strong>Best description of friction:</strong></label>
+  <select id="staar3" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>A force that acts opposite motion</option>
+    <option>A force that only pulls downward</option>
+    <option>A force that only attracts metal</option>
+    <option>A force that changes color</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
-    <div id="staarFeedback"></div>
+  <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
+  <div id="staarFeedback"></div>
 </div>
 
 <script>
-    let tested = false;
+  let tested = false;
 
-    function showFeedback(elementId, message, isCorrect) {
-        const box = document.getElementById(elementId);
-        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
-        box.innerHTML = message;
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function updateStrength() {
+    document.getElementById("strengthLabel").innerText = document.getElementById("strengthInput").value;
+  }
+
+  function frictionValue(surface) {
+    if (surface === "Wax paper") return 1;
+    if (surface === "Smooth tile") return 2;
+    if (surface === "Desktop") return 3;
+    if (surface === "Carpet") return 5;
+    if (surface === "Sandpaper") return 6;
+    return 3;
+  }
+
+  function frictionLabel(value) {
+    if (value <= 1) return "Very low friction";
+    if (value <= 2) return "Low friction";
+    if (value <= 3) return "Medium friction";
+    if (value <= 5) return "High friction";
+    return "Very high friction";
+  }
+
+  function resetSim() {
+    tested = false;
+
+    const obj = document.getElementById("objectSelect").value;
+    const surface = document.getElementById("surfaceSelect").value;
+
+    document.getElementById("movingObject").innerText = obj;
+    document.getElementById("movingObject").style.left = "40px";
+    document.getElementById("surfaceStrip").innerText = surface;
+    document.getElementById("distanceLine").style.width = "0";
+
+    document.getElementById("motionArrow").style.display = "none";
+    document.getElementById("frictionArrow").style.display = "none";
+
+    document.getElementById("surfaceData").innerText = "Not tested yet";
+    document.getElementById("frictionData").innerText = "Not tested yet";
+    document.getElementById("distanceData").innerText = "Not tested yet";
+    document.getElementById("evidenceData").innerText = "Not tested yet";
+
+    document.getElementById("testAnswer").value = "Choose...";
+    document.getElementById("testFeedback").innerHTML = "";
+    document.getElementById("testFeedback").className = "";
+  }
+
+  function showArrows() {
+    document.getElementById("motionArrow").style.display = "block";
+    document.getElementById("frictionArrow").style.display = "block";
+  }
+
+  function runTest() {
+    tested = true;
+
+    const surface = document.getElementById("surfaceSelect").value;
+    const strength = Number(document.getElementById("strengthInput").value);
+    const friction = frictionValue(surface);
+
+    let distance = Math.max(45, strength * 85 - friction * 35);
+    if (distance > 500) distance = 500;
+
+    document.getElementById("movingObject").style.left = (40 + distance) + "px";
+    document.getElementById("distanceLine").style.width = distance + "px";
+    showArrows();
+
+    document.getElementById("surfaceData").innerText = surface;
+    document.getElementById("frictionData").innerText = frictionLabel(friction);
+    document.getElementById("distanceData").innerText = Math.round(distance) + " cm model distance";
+
+    if (friction >= 5) {
+      document.getElementById("evidenceData").innerText = "The object traveled a shorter distance, showing more friction.";
+    } else {
+      document.getElementById("evidenceData").innerText = "The object traveled farther, showing less friction.";
+    }
+  }
+
+  function checkTest() {
+    const answer = document.getElementById("testAnswer").value;
+
+    if (!tested) {
+      showFeedback("testFeedback", "Run the test first, then check your answer.", false);
+      return;
     }
 
-    function updateStrength() {
-        document.getElementById("strengthLabel").innerText = document.getElementById("strengthInput").value;
+    if (answer === "Friction acted opposite the motion and affected how far the object traveled.") {
+      showFeedback("testFeedback", "Correct! Friction acts opposite motion and changes how far the object travels.", true);
+    } else {
+      showFeedback("testFeedback", "Not yet. Use distance traveled as evidence for friction.", false);
     }
+  }
 
-    function frictionValue(surface) {
-        if (surface === "Wax paper") return 1;
-        if (surface === "Smooth tile") return 2;
-        if (surface === "Desktop") return 3;
-        if (surface === "Carpet") return 5;
-        if (surface === "Sandpaper") return 6;
-        return 3;
+  function checkDirection() {
+    const answer = document.getElementById("directionAnswer").value;
+
+    if (answer === "Left, opposite the motion") {
+      showFeedback("directionFeedback", "Correct! Friction acts opposite the direction of motion.", true);
+    } else {
+      showFeedback("directionFeedback", "Not yet. If motion is right, friction acts left.", false);
     }
+  }
 
-    function frictionLabel(value) {
-        if (value <= 1) return "Very low friction";
-        if (value <= 2) return "Low friction";
-        if (value <= 3) return "Medium friction";
-        if (value <= 5) return "High friction";
-        return "Very high friction";
+  function checkPredictions() {
+    let correct = 0;
+
+    if (document.getElementById("q1").value === "Carpet") correct++;
+    if (document.getElementById("q2").value === "Wax paper") correct++;
+    if (document.getElementById("q3").value === "Left") correct++;
+    if (document.getElementById("q4").value === "Friction") correct++;
+
+    if (correct === 4) {
+      showFeedback("predictionFeedback", "Correct! You used surface type, direction, and evidence.", true);
+    } else {
+      showFeedback("predictionFeedback", "You got " + correct + " out of 4. Rougher surfaces usually create more friction.", false);
     }
+  }
 
-    function resetSim() {
-        tested = false;
+  function checkSTAAR() {
+    const s1 = document.getElementById("staar1").value;
+    const s2 = document.getElementById("staar2").value;
+    const s3 = document.getElementById("staar3").value;
 
-        const obj = document.getElementById("objectSelect").value;
-        const surface = document.getElementById("surfaceSelect").value;
-
-        document.getElementById("movingObject").innerText = obj;
-        document.getElementById("movingObject").style.left = "40px";
-        document.getElementById("surfaceStrip").innerText = surface;
-        document.getElementById("distanceLine").style.width = "0";
-
-        document.getElementById("motionArrow").style.display = "none";
-        document.getElementById("frictionArrow").style.display = "none";
-
-        document.getElementById("surfaceData").innerText = "Not tested yet";
-        document.getElementById("frictionData").innerText = "Not tested yet";
-        document.getElementById("distanceData").innerText = "Not tested yet";
-        document.getElementById("evidenceData").innerText = "Not tested yet";
-
-        document.getElementById("testAnswer").value = "Choose...";
-        document.getElementById("testFeedback").innerHTML = "";
-        document.getElementById("testFeedback").className = "";
+    if (
+      s1 === "Carpet caused more friction than tile." &&
+      s2 === "The car traveled a shorter distance on carpet." &&
+      s3 === "A force that acts opposite motion"
+    ) {
+      showFeedback("staarFeedback", "Correct! The shorter distance on carpet is evidence that carpet caused more friction.", true);
+    } else {
+      showFeedback("staarFeedback", "Not yet. More friction usually means the object travels a shorter distance.", false);
     }
+  }
 
-    function showArrows() {
-        document.getElementById("motionArrow").style.display = "block";
-        document.getElementById("frictionArrow").style.display = "block";
-    }
-
-    function runTest() {
-        tested = true;
-
-        const surface = document.getElementById("surfaceSelect").value;
-        const strength = Number(document.getElementById("strengthInput").value);
-        const friction = frictionValue(surface);
-
-        let distance = Math.max(45, strength * 85 - friction * 35);
-        if (distance > 500) distance = 500;
-
-        document.getElementById("movingObject").style.left = (40 + distance) + "px";
-        document.getElementById("distanceLine").style.width = distance + "px";
-        showArrows();
-
-        document.getElementById("surfaceData").innerText = surface;
-        document.getElementById("frictionData").innerText = frictionLabel(friction);
-        document.getElementById("distanceData").innerText = Math.round(distance) + " cm model distance";
-
-        if (friction >= 5) {
-            document.getElementById("evidenceData").innerText = "The object traveled a shorter distance, showing more friction.";
-        } else {
-            document.getElementById("evidenceData").innerText = "The object traveled farther, showing less friction.";
-        }
-    }
-
-    function checkTest() {
-        const answer = document.getElementById("testAnswer").value;
-
-        if (!tested) {
-            showFeedback("testFeedback", "Run the test first, then check your answer.", false);
-            return;
-        }
-
-        if (answer === "Friction acted opposite the motion and affected how far the object traveled.") {
-            showFeedback("testFeedback", "Correct! Friction acts opposite motion and changes how far the object travels.", true);
-        } else {
-            showFeedback("testFeedback", "Not yet. Use distance traveled as evidence for friction.", false);
-        }
-    }
-
-    function checkDirection() {
-        const answer = document.getElementById("directionAnswer").value;
-
-        if (answer === "Left, opposite the motion") {
-            showFeedback("directionFeedback", "Correct! Friction acts opposite the direction of motion.", true);
-        } else {
-            showFeedback("directionFeedback", "Not yet. If motion is right, friction acts left.", false);
-        }
-    }
-
-    function checkPredictions() {
-        let correct = 0;
-
-        if (document.getElementById("q1").value === "Carpet") correct++;
-        if (document.getElementById("q2").value === "Wax paper") correct++;
-        if (document.getElementById("q3").value === "Left") correct++;
-        if (document.getElementById("q4").value === "Friction") correct++;
-
-        if (correct === 4) {
-            showFeedback("predictionFeedback", "Correct! You used surface type, direction, and evidence.", true);
-        } else {
-            showFeedback("predictionFeedback", "You got " + correct + " out of 4. Rougher surfaces usually create more friction.", false);
-        }
-    }
-
-    function checkSTAAR() {
-        const s1 = document.getElementById("staar1").value;
-        const s2 = document.getElementById("staar2").value;
-        const s3 = document.getElementById("staar3").value;
-
-        if (
-            s1 === "Carpet caused more friction than tile." &&
-            s2 === "The car traveled a shorter distance on carpet." &&
-            s3 === "A force that acts opposite motion"
-        ) {
-            showFeedback("staarFeedback", "Correct! The shorter distance on carpet is evidence that carpet caused more friction.", true);
-        } else {
-            showFeedback("staarFeedback", "Not yet. More friction usually means the object travels a shorter distance.", false);
-        }
-    }
-
-    updateStrength();
-    resetSim();
+  updateStrength();
+  resetSim();
 </script>
 
 {% endblock %}

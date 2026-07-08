@@ -4,558 +4,558 @@
 
 <h1>Magnetism Attract/Repel Simulator</h1>
 <p class="lead">
-    Test magnetic materials, attraction, repulsion, and motion caused by magnetism.
+  Test magnetic materials, attraction, repulsion, and motion caused by magnetism.
 </p>
 
 <a href="/first-nine-weeks/day/32?view=student" class="btn btn-secondary mb-4">
-    Back to Day 32
+  Back to Day 32
 </a>
 
 <style>
-    .sim-card {
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 25px;
-        background: #f8f9fa;
-    }
+  .sim-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
 
-    .info-box {
-        background: #fff3cd;
-        border-left: 5px solid #ffc107;
-        padding: 12px;
-        margin-bottom: 15px;
-    }
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
 
-    .magnet-zone {
-        height: 300px;
-        border: 4px solid #333;
-        border-radius: 15px;
-        background: white;
-        position: relative;
-        overflow: hidden;
-        margin: 20px 0;
-    }
+  .magnet-zone {
+    height: 300px;
+    border: 4px solid #333;
+    border-radius: 15px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+  }
 
-    .magnet {
-        width: 130px;
-        height: 60px;
-        border: 3px solid #333;
-        border-radius: 10px;
-        position: absolute;
-        top: 120px;
-        font-weight: bold;
-        display: flex;
-        overflow: hidden;
-    }
+  .magnet {
+    width: 130px;
+    height: 60px;
+    border: 3px solid #333;
+    border-radius: 10px;
+    position: absolute;
+    top: 120px;
+    font-weight: bold;
+    display: flex;
+    overflow: hidden;
+  }
 
-    .left-magnet {
-        left: 60px;
-    }
+  .left-magnet {
+    left: 60px;
+  }
 
-    .target-magnet {
-        right: 70px;
-        transition: right 0.8s;
-    }
+  .target-magnet {
+    right: 70px;
+    transition: right 0.8s;
+  }
 
-    .pole {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #e9ecef;
-        border-right: 2px solid #333;
-    }
+  .pole {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9ecef;
+    border-right: 2px solid #333;
+  }
 
-    .pole:last-child {
-        border-right: 0;
-    }
+  .pole:last-child {
+    border-right: 0;
+  }
 
-    .object {
-        width: 95px;
-        height: 60px;
-        border: 3px solid #333;
-        border-radius: 12px;
-        background: #f8f9fa;
-        position: absolute;
-        right: 100px;
-        top: 120px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-weight: bold;
-        transition: right 0.8s, top 0.8s;
-    }
+  .object {
+    width: 95px;
+    height: 60px;
+    border: 3px solid #333;
+    border-radius: 12px;
+    background: #f8f9fa;
+    position: absolute;
+    right: 100px;
+    top: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    transition: right 0.8s, top 0.8s;
+  }
 
-    .force-arrow {
-        position: absolute;
-        top: 80px;
-        left: 220px;
-        font-size: 52px;
-        font-weight: bold;
-        display: none;
-    }
+  .force-arrow {
+    position: absolute;
+    top: 80px;
+    left: 220px;
+    font-size: 52px;
+    font-weight: bold;
+    display: none;
+  }
 
-    .motion-data {
-        background: white;
-        border: 2px solid #333;
-        border-radius: 10px;
-        padding: 12px;
-        margin-top: 10px;
-    }
+  .motion-data {
+    background: white;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+  }
 
-    .feedback {
-        font-weight: bold;
-        margin-top: 10px;
-        padding: 10px;
-        border-radius: 8px;
-    }
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
 
-    .correct {
-        background: #d1e7dd;
-        color: #0f5132;
-    }
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
 
-    .incorrect {
-        background: #f8d7da;
-        color: #842029;
-    }
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
 
-    .scenario-card {
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 15px;
-    }
+  .scenario-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
 
-    .model-box {
-        background: white;
-        border: 3px solid #333;
-        border-radius: 12px;
-        padding: 20px;
-        text-align: center;
-        margin: 15px 0;
-    }
+  .model-box {
+    background: white;
+    border: 3px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin: 15px 0;
+  }
 
-    .big-arrow {
-        font-size: 55px;
-        font-weight: bold;
-    }
+  .big-arrow {
+    font-size: 55px;
+    font-weight: bold;
+  }
 
-    .mini-magnet {
-        display: inline-flex;
-        width: 120px;
-        height: 50px;
-        border: 3px solid #333;
-        border-radius: 8px;
-        overflow: hidden;
-        vertical-align: middle;
-        margin: 0 12px;
-        font-weight: bold;
-    }
+  .mini-magnet {
+    display: inline-flex;
+    width: 120px;
+    height: 50px;
+    border: 3px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    vertical-align: middle;
+    margin: 0 12px;
+    font-weight: bold;
+  }
 
-    .mini-pole {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #e9ecef;
-        border-right: 2px solid #333;
-    }
+  .mini-pole {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e9ecef;
+    border-right: 2px solid #333;
+  }
 
-    .mini-pole:last-child {
-        border-right: 0;
-    }
+  .mini-pole:last-child {
+    border-right: 0;
+  }
 </style>
 
 <div class="sim-card">
-    <h2>Part 1: Magnetic Material Test</h2>
+  <h2>Part 1: Magnetic Material Test</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Magnetism can attract magnetic materials and change their motion without touching them.
+  <div class="info-box">
+    <strong>Goal:</strong> Magnetism can attract magnetic materials and change their motion without touching them.
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label class="form-label"><strong>Object:</strong></label>
+      <select id="objectSelect" class="form-select mb-3" onchange="resetObjectTest()">
+        <option>Paper clip</option>
+        <option>Iron nail</option>
+        <option>Steel washer</option>
+        <option>Plastic spoon</option>
+        <option>Wooden stick</option>
+        <option>Rubber eraser</option>
+        <option>Aluminum foil</option>
+      </select>
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <label class="form-label"><strong>Object:</strong></label>
-            <select id="objectSelect" class="form-select mb-3" onchange="resetObjectTest()">
-                <option>Paper clip</option>
-                <option>Iron nail</option>
-                <option>Steel washer</option>
-                <option>Plastic spoon</option>
-                <option>Wooden stick</option>
-                <option>Rubber eraser</option>
-                <option>Aluminum foil</option>
-            </select>
-        </div>
+    <div class="col-md-6">
+      <label class="form-label"><strong>Magnet distance:</strong> <span id="distanceLabel">3</span></label>
+      <input id="distanceInput" type="range" class="form-range mb-3" min="1" max="5" value="3" oninput="updateDistance(); resetObjectTest();">
+    </div>
+  </div>
 
-        <div class="col-md-6">
-            <label class="form-label"><strong>Magnet distance:</strong> <span id="distanceLabel">3</span></label>
-            <input id="distanceInput" type="range" class="form-range mb-3" min="1" max="5" value="3" oninput="updateDistance(); resetObjectTest();">
-        </div>
+  <button class="btn btn-primary" onclick="testObject()">Test Object</button>
+  <button class="btn btn-warning" onclick="showObjectArrow()">Show Force Arrow</button>
+  <button class="btn btn-secondary" onclick="resetObjectTest()">Reset</button>
+
+  <div class="magnet-zone">
+    <div class="magnet left-magnet">
+      <div class="pole">N</div>
+      <div class="pole">S</div>
     </div>
 
-    <button class="btn btn-primary" onclick="testObject()">Test Object</button>
-    <button class="btn btn-warning" onclick="showObjectArrow()">Show Force Arrow</button>
-    <button class="btn btn-secondary" onclick="resetObjectTest()">Reset</button>
+    <div id="objectArrow" class="force-arrow">← Attraction</div>
+    <div id="testObjectBox" class="object">Paper clip</div>
+  </div>
 
-    <div class="magnet-zone">
-        <div class="magnet left-magnet">
-            <div class="pole">N</div>
-            <div class="pole">S</div>
-        </div>
+  <div class="motion-data">
+    <p><strong>Object:</strong> <span id="objectData">Not tested yet</span></p>
+    <p><strong>Magnetic or Not?</strong> <span id="magneticData">Not tested yet</span></p>
+    <p><strong>Effect on Motion:</strong> <span id="motionData">Not tested yet</span></p>
+    <p><strong>Evidence:</strong> <span id="evidenceData">Not tested yet</span></p>
+  </div>
 
-        <div id="objectArrow" class="force-arrow">← Attraction</div>
-        <div id="testObjectBox" class="object">Paper clip</div>
-    </div>
+  <label class="form-label mt-3"><strong>Best explanation:</strong></label>
+  <select id="objectAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Magnetism attracted the magnetic object and changed its motion.</option>
+    <option>Gravity pulled the object sideways.</option>
+    <option>The object changed color, so it moved.</option>
+    <option>No force acted on any object.</option>
+  </select>
 
-    <div class="motion-data">
-        <p><strong>Object:</strong> <span id="objectData">Not tested yet</span></p>
-        <p><strong>Magnetic or Not?</strong> <span id="magneticData">Not tested yet</span></p>
-        <p><strong>Effect on Motion:</strong> <span id="motionData">Not tested yet</span></p>
-        <p><strong>Evidence:</strong> <span id="evidenceData">Not tested yet</span></p>
-    </div>
-
-    <label class="form-label mt-3"><strong>Best explanation:</strong></label>
-    <select id="objectAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Magnetism attracted the magnetic object and changed its motion.</option>
-        <option>Gravity pulled the object sideways.</option>
-        <option>The object changed color, so it moved.</option>
-        <option>No force acted on any object.</option>
-    </select>
-
-    <button class="btn btn-success" onclick="checkObjectTest()">Check Object Evidence</button>
-    <div id="objectFeedback"></div>
+  <button class="btn btn-success" onclick="checkObjectTest()">Check Object Evidence</button>
+  <div id="objectFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 2: Attract or Repel Magnets</h2>
+  <h2>Part 2: Attract or Repel Magnets</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Opposite poles attract. Like poles repel.
+  <div class="info-box">
+    <strong>Goal:</strong> Opposite poles attract. Like poles repel.
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label class="form-label"><strong>Left magnet facing pole:</strong></label>
+      <select id="leftPole" class="form-select mb-3" onchange="resetMagnetTest()">
+        <option>N</option>
+        <option>S</option>
+      </select>
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <label class="form-label"><strong>Left magnet facing pole:</strong></label>
-            <select id="leftPole" class="form-select mb-3" onchange="resetMagnetTest()">
-                <option>N</option>
-                <option>S</option>
-            </select>
-        </div>
+    <div class="col-md-6">
+      <label class="form-label"><strong>Right magnet facing pole:</strong></label>
+      <select id="rightPole" class="form-select mb-3" onchange="resetMagnetTest()">
+        <option>S</option>
+        <option>N</option>
+      </select>
+    </div>
+  </div>
 
-        <div class="col-md-6">
-            <label class="form-label"><strong>Right magnet facing pole:</strong></label>
-            <select id="rightPole" class="form-select mb-3" onchange="resetMagnetTest()">
-                <option>S</option>
-                <option>N</option>
-            </select>
-        </div>
+  <button class="btn btn-primary" onclick="testMagnets()">Test Magnets</button>
+  <button class="btn btn-warning" onclick="showMagnetArrow()">Show Force Arrow</button>
+  <button class="btn btn-secondary" onclick="resetMagnetTest()">Reset</button>
+
+  <div class="magnet-zone">
+    <div id="magnetLeft" class="magnet left-magnet">
+      <div id="leftFarPole" class="pole">S</div>
+      <div id="leftFacingPole" class="pole">N</div>
     </div>
 
-    <button class="btn btn-primary" onclick="testMagnets()">Test Magnets</button>
-    <button class="btn btn-warning" onclick="showMagnetArrow()">Show Force Arrow</button>
-    <button class="btn btn-secondary" onclick="resetMagnetTest()">Reset</button>
+    <div id="magnetArrow" class="force-arrow">Attract → ←</div>
 
-    <div class="magnet-zone">
-        <div id="magnetLeft" class="magnet left-magnet">
-            <div id="leftFarPole" class="pole">S</div>
-            <div id="leftFacingPole" class="pole">N</div>
-        </div>
-
-        <div id="magnetArrow" class="force-arrow">Attract → ←</div>
-
-        <div id="magnetRight" class="magnet target-magnet">
-            <div id="rightFacingPole" class="pole">S</div>
-            <div id="rightFarPole" class="pole">N</div>
-        </div>
+    <div id="magnetRight" class="magnet target-magnet">
+      <div id="rightFacingPole" class="pole">S</div>
+      <div id="rightFarPole" class="pole">N</div>
     </div>
+  </div>
 
-    <div class="motion-data">
-        <p><strong>Interaction:</strong> <span id="interactionData">Not tested yet</span></p>
-        <p><strong>Effect on Motion:</strong> <span id="magnetMotionData">Not tested yet</span></p>
-        <p><strong>Evidence:</strong> <span id="magnetEvidenceData">Not tested yet</span></p>
-    </div>
+  <div class="motion-data">
+    <p><strong>Interaction:</strong> <span id="interactionData">Not tested yet</span></p>
+    <p><strong>Effect on Motion:</strong> <span id="magnetMotionData">Not tested yet</span></p>
+    <p><strong>Evidence:</strong> <span id="magnetEvidenceData">Not tested yet</span></p>
+  </div>
 
-    <label class="form-label mt-3"><strong>Best explanation:</strong></label>
-    <select id="magnetAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Opposite poles attract and like poles repel.</option>
-        <option>All magnet poles always attract.</option>
-        <option>All magnet poles always repel.</option>
-        <option>Magnets only work if they touch.</option>
-    </select>
+  <label class="form-label mt-3"><strong>Best explanation:</strong></label>
+  <select id="magnetAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Opposite poles attract and like poles repel.</option>
+    <option>All magnet poles always attract.</option>
+    <option>All magnet poles always repel.</option>
+    <option>Magnets only work if they touch.</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkMagnetTest()">Check Magnet Evidence</button>
-    <div id="magnetFeedback"></div>
+  <button class="btn btn-success" onclick="checkMagnetTest()">Check Magnet Evidence</button>
+  <div id="magnetFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 3: Magnetic Force Model</h2>
+  <h2>Part 3: Magnetic Force Model</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Use arrows to show magnetic attraction and repulsion.
-    </div>
+  <div class="info-box">
+    <strong>Goal:</strong> Use arrows to show magnetic attraction and repulsion.
+  </div>
 
-    <div class="model-box">
-        <p>
-            <span class="mini-magnet">
-                <span class="mini-pole">N</span>
-                <span class="mini-pole">S</span>
-            </span>
-            <span class="big-arrow">←</span>
-            <strong>Paper clip</strong>
-        </p>
+  <div class="model-box">
+    <p>
+      <span class="mini-magnet">
+        <span class="mini-pole">N</span>
+        <span class="mini-pole">S</span>
+      </span>
+      <span class="big-arrow">←</span>
+      <strong>Paper clip</strong>
+    </p>
 
-        <p>
-            <span class="mini-magnet">
-                <span class="mini-pole">N</span>
-                <span class="mini-pole">S</span>
-            </span>
-            <span class="big-arrow">↔</span>
-            <span class="mini-magnet">
-                <span class="mini-pole">S</span>
-                <span class="mini-pole">N</span>
-            </span>
-        </p>
-    </div>
+    <p>
+      <span class="mini-magnet">
+        <span class="mini-pole">N</span>
+        <span class="mini-pole">S</span>
+      </span>
+      <span class="big-arrow">↔</span>
+      <span class="mini-magnet">
+        <span class="mini-pole">S</span>
+        <span class="mini-pole">N</span>
+      </span>
+    </p>
+  </div>
 
-    <label class="form-label"><strong>What can magnetism do?</strong></label>
-    <select id="modelAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Attract or repel and change motion without touching.</option>
-        <option>Only pull objects downward.</option>
-        <option>Only slow objects because of surface rubbing.</option>
-        <option>Only dissolve materials in water.</option>
-    </select>
+  <label class="form-label"><strong>What can magnetism do?</strong></label>
+  <select id="modelAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Attract or repel and change motion without touching.</option>
+    <option>Only pull objects downward.</option>
+    <option>Only slow objects because of surface rubbing.</option>
+    <option>Only dissolve materials in water.</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkModel()">Check Model</button>
-    <div id="modelFeedback"></div>
+  <button class="btn btn-success" onclick="checkModel()">Check Model</button>
+  <div id="modelFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 4: STAAR Magnetism Challenge</h2>
+  <h2>Part 4: STAAR Magnetism Challenge</h2>
 
-    <div class="info-box">
-        <strong>Question:</strong> A magnet is placed near a steel paper clip. The paper clip moves toward the magnet, even though the magnet does not touch it.
-    </div>
+  <div class="info-box">
+    <strong>Question:</strong> A magnet is placed near a steel paper clip. The paper clip moves toward the magnet, even though the magnet does not touch it.
+  </div>
 
-    <label class="form-label"><strong>Best claim:</strong></label>
-    <select id="staar1" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Magnetism attracted the paper clip.</option>
-        <option>Friction pulled the paper clip toward the magnet.</option>
-        <option>Gravity pushed the paper clip sideways.</option>
-        <option>The paper clip dissolved.</option>
-    </select>
+  <label class="form-label"><strong>Best claim:</strong></label>
+  <select id="staar1" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Magnetism attracted the paper clip.</option>
+    <option>Friction pulled the paper clip toward the magnet.</option>
+    <option>Gravity pushed the paper clip sideways.</option>
+    <option>The paper clip dissolved.</option>
+  </select>
 
-    <label class="form-label"><strong>Best evidence:</strong></label>
-    <select id="staar2" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The paper clip moved toward the magnet without touching it.</option>
-        <option>The paper clip was small.</option>
-        <option>The paper clip had a color.</option>
-        <option>The magnet was on a table.</option>
-    </select>
+  <label class="form-label"><strong>Best evidence:</strong></label>
+  <select id="staar2" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The paper clip moved toward the magnet without touching it.</option>
+    <option>The paper clip was small.</option>
+    <option>The paper clip had a color.</option>
+    <option>The magnet was on a table.</option>
+  </select>
 
-    <label class="form-label"><strong>Best force arrow:</strong></label>
-    <select id="staar3" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Arrow pointing toward the magnet</option>
-        <option>Arrow pointing away from the magnet</option>
-        <option>Arrow pointing only upward</option>
-        <option>No arrow</option>
-    </select>
+  <label class="form-label"><strong>Best force arrow:</strong></label>
+  <select id="staar3" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Arrow pointing toward the magnet</option>
+    <option>Arrow pointing away from the magnet</option>
+    <option>Arrow pointing only upward</option>
+    <option>No arrow</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
-    <div id="staarFeedback"></div>
+  <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
+  <div id="staarFeedback"></div>
 </div>
 
 <script>
-    let objectTested = false;
-    let magnetTested = false;
+  let objectTested = false;
+  let magnetTested = false;
 
-    function showFeedback(elementId, message, isCorrect) {
-        const box = document.getElementById(elementId);
-        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
-        box.innerHTML = message;
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function updateDistance() {
+    document.getElementById("distanceLabel").innerText = document.getElementById("distanceInput").value;
+  }
+
+  function isMagneticObject(obj) {
+    return obj === "Paper clip" || obj === "Iron nail" || obj === "Steel washer";
+  }
+
+  function resetObjectTest() {
+    objectTested = false;
+
+    const obj = document.getElementById("objectSelect").value;
+    const distance = Number(document.getElementById("distanceInput").value);
+    const box = document.getElementById("testObjectBox");
+
+    box.innerText = obj;
+    box.style.right = (60 + distance * 25) + "px";
+    box.style.top = "120px";
+
+    document.getElementById("objectArrow").style.display = "none";
+    document.getElementById("objectData").innerText = "Not tested yet";
+    document.getElementById("magneticData").innerText = "Not tested yet";
+    document.getElementById("motionData").innerText = "Not tested yet";
+    document.getElementById("evidenceData").innerText = "Not tested yet";
+    document.getElementById("objectAnswer").value = "Choose...";
+    document.getElementById("objectFeedback").innerHTML = "";
+    document.getElementById("objectFeedback").className = "";
+  }
+
+  function showObjectArrow() {
+    document.getElementById("objectArrow").style.display = "block";
+  }
+
+  function testObject() {
+    objectTested = true;
+
+    const obj = document.getElementById("objectSelect").value;
+    const box = document.getElementById("testObjectBox");
+    const magnetic = isMagneticObject(obj);
+
+    showObjectArrow();
+
+    document.getElementById("objectData").innerText = obj;
+
+    if (magnetic) {
+      box.style.right = "360px";
+      document.getElementById("magneticData").innerText = "Magnetic";
+      document.getElementById("motionData").innerText = obj + " moves toward the magnet.";
+      document.getElementById("evidenceData").innerText = "The object moved toward the magnet without being touched.";
+    } else {
+      box.style.right = "100px";
+      box.style.top = "120px";
+      document.getElementById("magneticData").innerText = "Not magnetic";
+      document.getElementById("motionData").innerText = obj + " does not move toward the magnet.";
+      document.getElementById("evidenceData").innerText = "The object was not attracted to the magnet.";
+    }
+  }
+
+  function checkObjectTest() {
+    const obj = document.getElementById("objectSelect").value;
+    const magnetic = isMagneticObject(obj);
+    const answer = document.getElementById("objectAnswer").value;
+
+    if (!objectTested) {
+      showFeedback("objectFeedback", "Test the object first, then check your answer.", false);
+      return;
     }
 
-    function updateDistance() {
-        document.getElementById("distanceLabel").innerText = document.getElementById("distanceInput").value;
+    if (magnetic && answer === "Magnetism attracted the magnetic object and changed its motion.") {
+      showFeedback("objectFeedback", "Correct! The magnetic object moved toward the magnet.", true);
+    } else if (!magnetic) {
+      showFeedback("objectFeedback", "This object is not magnetic, so it was not attracted to the magnet. Try paper clip, iron nail, or steel washer.", false);
+    } else {
+      showFeedback("objectFeedback", "Not yet. Use the object's motion toward the magnet as evidence.", false);
+    }
+  }
+
+  function resetMagnetTest() {
+    magnetTested = false;
+
+    const left = document.getElementById("leftPole").value;
+    const right = document.getElementById("rightPole").value;
+
+    document.getElementById("leftFacingPole").innerText = left;
+    document.getElementById("leftFarPole").innerText = left === "N" ? "S" : "N";
+    document.getElementById("rightFacingPole").innerText = right;
+    document.getElementById("rightFarPole").innerText = right === "N" ? "S" : "N";
+
+    document.getElementById("magnetRight").style.right = "70px";
+    document.getElementById("magnetArrow").style.display = "none";
+
+    document.getElementById("interactionData").innerText = "Not tested yet";
+    document.getElementById("magnetMotionData").innerText = "Not tested yet";
+    document.getElementById("magnetEvidenceData").innerText = "Not tested yet";
+    document.getElementById("magnetAnswer").value = "Choose...";
+    document.getElementById("magnetFeedback").innerHTML = "";
+    document.getElementById("magnetFeedback").className = "";
+  }
+
+  function showMagnetArrow() {
+    document.getElementById("magnetArrow").style.display = "block";
+  }
+
+  function testMagnets() {
+    magnetTested = true;
+
+    const left = document.getElementById("leftPole").value;
+    const right = document.getElementById("rightPole").value;
+    const target = document.getElementById("magnetRight");
+    const arrow = document.getElementById("magnetArrow");
+
+    if (left !== right) {
+      target.style.right = "260px";
+      arrow.innerText = "Attract → ←";
+      document.getElementById("interactionData").innerText = "Attract";
+      document.getElementById("magnetMotionData").innerText = "The magnets move toward each other.";
+      document.getElementById("magnetEvidenceData").innerText = "Opposite poles attract.";
+    } else {
+      target.style.right = "25px";
+      arrow.innerText = "Repel ← →";
+      document.getElementById("interactionData").innerText = "Repel";
+      document.getElementById("magnetMotionData").innerText = "The magnets move away from each other.";
+      document.getElementById("magnetEvidenceData").innerText = "Like poles repel.";
     }
 
-    function isMagneticObject(obj) {
-        return obj === "Paper clip" || obj === "Iron nail" || obj === "Steel washer";
+    showMagnetArrow();
+  }
+
+  function checkMagnetTest() {
+    const answer = document.getElementById("magnetAnswer").value;
+
+    if (!magnetTested) {
+      showFeedback("magnetFeedback", "Test the magnets first, then check your answer.", false);
+      return;
     }
 
-    function resetObjectTest() {
-        objectTested = false;
-
-        const obj = document.getElementById("objectSelect").value;
-        const distance = Number(document.getElementById("distanceInput").value);
-        const box = document.getElementById("testObjectBox");
-
-        box.innerText = obj;
-        box.style.right = (60 + distance * 25) + "px";
-        box.style.top = "120px";
-
-        document.getElementById("objectArrow").style.display = "none";
-        document.getElementById("objectData").innerText = "Not tested yet";
-        document.getElementById("magneticData").innerText = "Not tested yet";
-        document.getElementById("motionData").innerText = "Not tested yet";
-        document.getElementById("evidenceData").innerText = "Not tested yet";
-        document.getElementById("objectAnswer").value = "Choose...";
-        document.getElementById("objectFeedback").innerHTML = "";
-        document.getElementById("objectFeedback").className = "";
+    if (answer === "Opposite poles attract and like poles repel.") {
+      showFeedback("magnetFeedback", "Correct! Magnets can attract or repel and change motion.", true);
+    } else {
+      showFeedback("magnetFeedback", "Not yet. Opposite poles attract. Like poles repel.", false);
     }
+  }
 
-    function showObjectArrow() {
-        document.getElementById("objectArrow").style.display = "block";
+  function checkModel() {
+    const answer = document.getElementById("modelAnswer").value;
+
+    if (answer === "Attract or repel and change motion without touching.") {
+      showFeedback("modelFeedback", "Correct! Magnetism is a force that can act at a distance.", true);
+    } else {
+      showFeedback("modelFeedback", "Not yet. Magnetism can attract or repel objects.", false);
     }
+  }
 
-    function testObject() {
-        objectTested = true;
+  function checkSTAAR() {
+    const s1 = document.getElementById("staar1").value;
+    const s2 = document.getElementById("staar2").value;
+    const s3 = document.getElementById("staar3").value;
 
-        const obj = document.getElementById("objectSelect").value;
-        const box = document.getElementById("testObjectBox");
-        const magnetic = isMagneticObject(obj);
-
-        showObjectArrow();
-
-        document.getElementById("objectData").innerText = obj;
-
-        if (magnetic) {
-            box.style.right = "360px";
-            document.getElementById("magneticData").innerText = "Magnetic";
-            document.getElementById("motionData").innerText = obj + " moves toward the magnet.";
-            document.getElementById("evidenceData").innerText = "The object moved toward the magnet without being touched.";
-        } else {
-            box.style.right = "100px";
-            box.style.top = "120px";
-            document.getElementById("magneticData").innerText = "Not magnetic";
-            document.getElementById("motionData").innerText = obj + " does not move toward the magnet.";
-            document.getElementById("evidenceData").innerText = "The object was not attracted to the magnet.";
-        }
+    if (
+      s1 === "Magnetism attracted the paper clip." &&
+      s2 === "The paper clip moved toward the magnet without touching it." &&
+      s3 === "Arrow pointing toward the magnet"
+    ) {
+      showFeedback("staarFeedback", "Correct! The paper clip's motion toward the magnet is evidence of magnetic force.", true);
+    } else {
+      showFeedback("staarFeedback", "Not yet. Use the motion toward the magnet as evidence.", false);
     }
+  }
 
-    function checkObjectTest() {
-        const obj = document.getElementById("objectSelect").value;
-        const magnetic = isMagneticObject(obj);
-        const answer = document.getElementById("objectAnswer").value;
-
-        if (!objectTested) {
-            showFeedback("objectFeedback", "Test the object first, then check your answer.", false);
-            return;
-        }
-
-        if (magnetic && answer === "Magnetism attracted the magnetic object and changed its motion.") {
-            showFeedback("objectFeedback", "Correct! The magnetic object moved toward the magnet.", true);
-        } else if (!magnetic) {
-            showFeedback("objectFeedback", "This object is not magnetic, so it was not attracted to the magnet. Try paper clip, iron nail, or steel washer.", false);
-        } else {
-            showFeedback("objectFeedback", "Not yet. Use the object's motion toward the magnet as evidence.", false);
-        }
-    }
-
-    function resetMagnetTest() {
-        magnetTested = false;
-
-        const left = document.getElementById("leftPole").value;
-        const right = document.getElementById("rightPole").value;
-
-        document.getElementById("leftFacingPole").innerText = left;
-        document.getElementById("leftFarPole").innerText = left === "N" ? "S" : "N";
-        document.getElementById("rightFacingPole").innerText = right;
-        document.getElementById("rightFarPole").innerText = right === "N" ? "S" : "N";
-
-        document.getElementById("magnetRight").style.right = "70px";
-        document.getElementById("magnetArrow").style.display = "none";
-
-        document.getElementById("interactionData").innerText = "Not tested yet";
-        document.getElementById("magnetMotionData").innerText = "Not tested yet";
-        document.getElementById("magnetEvidenceData").innerText = "Not tested yet";
-        document.getElementById("magnetAnswer").value = "Choose...";
-        document.getElementById("magnetFeedback").innerHTML = "";
-        document.getElementById("magnetFeedback").className = "";
-    }
-
-    function showMagnetArrow() {
-        document.getElementById("magnetArrow").style.display = "block";
-    }
-
-    function testMagnets() {
-        magnetTested = true;
-
-        const left = document.getElementById("leftPole").value;
-        const right = document.getElementById("rightPole").value;
-        const target = document.getElementById("magnetRight");
-        const arrow = document.getElementById("magnetArrow");
-
-        if (left !== right) {
-            target.style.right = "260px";
-            arrow.innerText = "Attract → ←";
-            document.getElementById("interactionData").innerText = "Attract";
-            document.getElementById("magnetMotionData").innerText = "The magnets move toward each other.";
-            document.getElementById("magnetEvidenceData").innerText = "Opposite poles attract.";
-        } else {
-            target.style.right = "25px";
-            arrow.innerText = "Repel ← →";
-            document.getElementById("interactionData").innerText = "Repel";
-            document.getElementById("magnetMotionData").innerText = "The magnets move away from each other.";
-            document.getElementById("magnetEvidenceData").innerText = "Like poles repel.";
-        }
-
-        showMagnetArrow();
-    }
-
-    function checkMagnetTest() {
-        const answer = document.getElementById("magnetAnswer").value;
-
-        if (!magnetTested) {
-            showFeedback("magnetFeedback", "Test the magnets first, then check your answer.", false);
-            return;
-        }
-
-        if (answer === "Opposite poles attract and like poles repel.") {
-            showFeedback("magnetFeedback", "Correct! Magnets can attract or repel and change motion.", true);
-        } else {
-            showFeedback("magnetFeedback", "Not yet. Opposite poles attract. Like poles repel.", false);
-        }
-    }
-
-    function checkModel() {
-        const answer = document.getElementById("modelAnswer").value;
-
-        if (answer === "Attract or repel and change motion without touching.") {
-            showFeedback("modelFeedback", "Correct! Magnetism is a force that can act at a distance.", true);
-        } else {
-            showFeedback("modelFeedback", "Not yet. Magnetism can attract or repel objects.", false);
-        }
-    }
-
-    function checkSTAAR() {
-        const s1 = document.getElementById("staar1").value;
-        const s2 = document.getElementById("staar2").value;
-        const s3 = document.getElementById("staar3").value;
-
-        if (
-            s1 === "Magnetism attracted the paper clip." &&
-            s2 === "The paper clip moved toward the magnet without touching it." &&
-            s3 === "Arrow pointing toward the magnet"
-        ) {
-            showFeedback("staarFeedback", "Correct! The paper clip's motion toward the magnet is evidence of magnetic force.", true);
-        } else {
-            showFeedback("staarFeedback", "Not yet. Use the motion toward the magnet as evidence.", false);
-        }
-    }
-
-    updateDistance();
-    resetObjectTest();
-    resetMagnetTest();
+  updateDistance();
+  resetObjectTest();
+  resetMagnetTest();
 </script>
 
 {% endblock %}

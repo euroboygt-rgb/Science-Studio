@@ -5,221 +5,221 @@
 {% block content %}
 
 <style>
-    .resource-hero {
-        background:
-            radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
-            radial-gradient(circle at 82% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
-            linear-gradient(135deg, #102542 0%, #1b4965 58%, #5fa8d3 100%);
-        color: white;
-        border: 5px solid #111;
-        border-radius: 28px;
-        padding: 32px;
-        box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
-        margin-bottom: 24px;
-    }
+  .resource-hero {
+    background:
+      radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      radial-gradient(circle at 82% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      linear-gradient(135deg, #102542 0%, #1b4965 58%, #5fa8d3 100%);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 28px;
+    padding: 32px;
+    box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+    margin-bottom: 24px;
+  }
 
-    .folder-card {
-        background: white;
-        border: 4px solid #111;
-        border-radius: 22px;
-        box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
-        margin-bottom: 22px;
-        overflow: hidden;
-    }
+  .folder-card {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 22px;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
+    margin-bottom: 22px;
+    overflow: hidden;
+  }
 
-    .folder-header {
-        border-bottom: 4px solid #111;
-        padding: 18px 22px;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 14px;
-    }
+  .folder-header {
+    border-bottom: 4px solid #111;
+    padding: 18px 22px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+  }
 
-    .folder-title {
-        font-size: 1.45rem;
-        font-weight: 950;
-        margin: 0;
-    }
+  .folder-title {
+    font-size: 1.45rem;
+    font-weight: 950;
+    margin: 0;
+  }
 
-    .folder-body {
-        padding: 18px;
-        display: none;
-    }
+  .folder-body {
+    padding: 18px;
+    display: none;
+  }
 
-    .folder-body.open {
-        display: block;
-    }
+  .folder-body.open {
+    display: block;
+  }
 
-    .resource-card {
-        background: #f8f9fa;
-        border: 3px solid #111;
-        border-radius: 18px;
-        padding: 16px;
-        height: 100%;
-    }
+  .resource-card {
+    background: #f8f9fa;
+    border: 3px solid #111;
+    border-radius: 18px;
+    padding: 16px;
+    height: 100%;
+  }
 
-    .resource-card:hover {
-        background: #fff3cd;
-        transform: translateY(-2px);
-    }
+  .resource-card:hover {
+    background: #fff3cd;
+    transform: translateY(-2px);
+  }
 
-    .resource-type {
-        display: inline-block;
-        background: #d1e7dd;
-        border: 2px solid #111;
-        border-radius: 999px;
-        padding: 4px 9px;
-        font-size: 0.8rem;
-        font-weight: 850;
-        margin-bottom: 8px;
-    }
+  .resource-type {
+    display: inline-block;
+    background: #d1e7dd;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 4px 9px;
+    font-size: 0.8rem;
+    font-weight: 850;
+    margin-bottom: 8px;
+  }
 
-    .science-btn-small {
-        border: 3px solid #111;
-        border-radius: 12px;
-        font-weight: 850;
-        box-shadow: 2px 2px 0 rgba(17,17,17,0.2);
-        margin: 3px;
-    }
+  .science-btn-small {
+    border: 3px solid #111;
+    border-radius: 12px;
+    font-weight: 850;
+    box-shadow: 2px 2px 0 rgba(17,17,17,0.2);
+    margin: 3px;
+  }
 
-    .setup { background: #eaf6ff; }
-    .unit1 { background: #d1e7dd; }
-    .unit2 { background: #cff4fc; }
-    .unit3 { background: #fff3cd; }
-    .review { background: #f8d7da; }
+  .setup { background: #eaf6ff; }
+  .unit1 { background: #d1e7dd; }
+  .unit2 { background: #cff4fc; }
+  .unit3 { background: #fff3cd; }
+  .review { background: #f8d7da; }
 
-    .toolbar {
-        background: white;
-        border: 4px solid #111;
-        border-radius: 22px;
-        padding: 18px;
-        margin-bottom: 24px;
-        box-shadow: 5px 5px 0 rgba(17,17,17,0.12);
-    }
+  .toolbar {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 22px;
+    padding: 18px;
+    margin-bottom: 24px;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.12);
+  }
 
-    .hidden-resource {
-        display: none !important;
-    }
+  .hidden-resource {
+    display: none !important;
+  }
 </style>
 
 <section class="resource-hero">
-    <span class="badge-science">Printable Resources</span>
-    <span class="badge-science">Foldables</span>
-    <span class="badge-science">Notebook Inserts</span>
-    <span class="badge-science">Lab Sheets</span>
+  <span class="badge-science">Printable Resources</span>
+  <span class="badge-science">Foldables</span>
+  <span class="badge-science">Notebook Inserts</span>
+  <span class="badge-science">Lab Sheets</span>
 
-    <h1 class="mt-3">Science Studio Printable Resource Center</h1>
+  <h1 class="mt-3">Science Studio Printable Resource Center</h1>
 
-    <p class="lead mb-0">
-        Original printable foldables, notebook inserts, lab sheets, planners, and review resources
-        connected to the 1st 9 Weeks lessons.
-    </p>
+  <p class="lead mb-0">
+    Original printable foldables, notebook inserts, lab sheets, planners, and review resources
+    connected to the 1st 9 Weeks lessons.
+  </p>
 </section>
 
 <section class="toolbar no-print">
-    <div class="row align-items-end">
-        <div class="col-lg-5">
-            <label class="form-label"><strong>Search resources:</strong></label>
-            <input id="resourceSearch" class="form-control" placeholder="Search mass, volume, force, mixture, STAAR..." oninput="filterResources()">
-        </div>
-
-        <div class="col-lg-7 mt-3 mt-lg-0">
-            <button class="btn btn-primary science-btn-small" onclick="openFolder('setup')">Setup</button>
-            <button class="btn btn-success science-btn-small" onclick="openFolder('unit1')">Unit 1</button>
-            <button class="btn btn-info science-btn-small" onclick="openFolder('unit2')">Unit 2</button>
-            <button class="btn btn-warning science-btn-small" onclick="openFolder('unit3')">Unit 3</button>
-            <button class="btn btn-danger science-btn-small" onclick="openFolder('review')">Review</button>
-            <button class="btn btn-secondary science-btn-small" onclick="openAllFolders()">Open All</button>
-            <button class="btn btn-dark science-btn-small" onclick="closeAllFolders()">Close All</button>
-        </div>
+  <div class="row align-items-end">
+    <div class="col-lg-5">
+      <label class="form-label"><strong>Search resources:</strong></label>
+      <input id="resourceSearch" class="form-control" placeholder="Search mass, volume, force, mixture, STAAR..." oninput="filterResources()">
     </div>
+
+    <div class="col-lg-7 mt-3 mt-lg-0">
+      <button class="btn btn-primary science-btn-small" onclick="openFolder('setup')">Setup</button>
+      <button class="btn btn-success science-btn-small" onclick="openFolder('unit1')">Unit 1</button>
+      <button class="btn btn-info science-btn-small" onclick="openFolder('unit2')">Unit 2</button>
+      <button class="btn btn-warning science-btn-small" onclick="openFolder('unit3')">Unit 3</button>
+      <button class="btn btn-danger science-btn-small" onclick="openFolder('review')">Review</button>
+      <button class="btn btn-secondary science-btn-small" onclick="openAllFolders()">Open All</button>
+      <button class="btn btn-dark science-btn-small" onclick="closeAllFolders()">Close All</button>
+    </div>
+  </div>
 </section>
 
 {% for folder in resource_folders %}
 <section class="folder-card">
-    <div class="folder-header {{ folder['id'] }}" onclick="toggleFolder('{{ folder['id'] }}Folder')">
-        <div>
-            <h2 class="folder-title">{{ folder["icon"] }} {{ folder["title"] }}</h2>
-            <p class="mb-0"><strong>{{ folder["description"] }}</strong></p>
-        </div>
-
-        <button class="btn btn-light science-btn-small no-print" type="button">Open / Close</button>
+  <div class="folder-header {{ folder['id'] }}" onclick="toggleFolder('{{ folder['id'] }}Folder')">
+    <div>
+      <h2 class="folder-title">{{ folder["icon"] }} {{ folder["title"] }}</h2>
+      <p class="mb-0"><strong>{{ folder["description"] }}</strong></p>
     </div>
 
-    <div id="{{ folder['id'] }}Folder" class="folder-body {% if loop.first %}open{% endif %}">
-        <div class="row g-3">
-            {% for resource in folder["resources"] %}
-            <div class="col-md-6 col-lg-4 resource-item"
-                 data-keywords="{{ resource['title'] }} {{ resource['unit'] }} {{ resource['resource_type'] }} {{ resource['vocabulary']|join(' ') }}">
-                <div class="resource-card">
-                    <span class="resource-type">{{ resource["resource_type"] }}</span>
-                    <h4>Day {{ resource["day"] }}: {{ resource["title"] }}</h4>
-                    <p>{{ resource["student_task"] }}</p>
+    <button class="btn btn-light science-btn-small no-print" type="button">Open / Close</button>
+  </div>
 
-                    <div class="no-print">
-                        <a href="/resources/{{ resource['slug'] }}" class="btn btn-primary btn-sm science-btn-small">
-                            Open / Print
-                        </a>
+  <div id="{{ folder['id'] }}Folder" class="folder-body {% if loop.first %}open{% endif %}">
+    <div class="row g-3">
+      {% for resource in folder["resources"] %}
+      <div class="col-md-6 col-lg-4 resource-item"
+         data-keywords="{{ resource['title'] }} {{ resource['unit'] }} {{ resource['resource_type'] }} {{ resource['vocabulary']|join(' ') }}">
+        <div class="resource-card">
+          <span class="resource-type">{{ resource["resource_type"] }}</span>
+          <h4>Day {{ resource["day"] }}: {{ resource["title"] }}</h4>
+          <p>{{ resource["student_task"] }}</p>
 
-                        <a href="{{ resource['lesson_link'] }}" class="btn btn-success btn-sm science-btn-small">
-                            Student Lesson
-                        </a>
+          <div class="no-print">
+            <a href="/resources/{{ resource['slug'] }}" class="btn btn-primary btn-sm science-btn-small">
+              Open / Print
+            </a>
 
-                        <a href="{{ resource['teacher_link'] }}" class="btn btn-warning btn-sm science-btn-small">
-                            Teacher
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+            <a href="{{ resource['lesson_link'] }}" class="btn btn-success btn-sm science-btn-small">
+              Student Lesson
+            </a>
+
+            <a href="{{ resource['teacher_link'] }}" class="btn btn-warning btn-sm science-btn-small">
+              Teacher
+            </a>
+          </div>
         </div>
+      </div>
+      {% endfor %}
     </div>
+  </div>
 </section>
 {% endfor %}
 
 <script>
-    function toggleFolder(id) {
-        document.getElementById(id).classList.toggle("open");
+  function toggleFolder(id) {
+    document.getElementById(id).classList.toggle("open");
+  }
+
+  function openFolder(id) {
+    closeAllFolders();
+    document.getElementById(id + "Folder").classList.add("open");
+    document.getElementById(id + "Folder").scrollIntoView({behavior: "smooth", block: "start"});
+  }
+
+  function openAllFolders() {
+    document.querySelectorAll(".folder-body").forEach(folder => {
+      folder.classList.add("open");
+    });
+  }
+
+  function closeAllFolders() {
+    document.querySelectorAll(".folder-body").forEach(folder => {
+      folder.classList.remove("open");
+    });
+  }
+
+  function filterResources() {
+    const search = document.getElementById("resourceSearch").value.toLowerCase().trim();
+    const items = document.querySelectorAll(".resource-item");
+
+    if (search.length > 0) {
+      openAllFolders();
     }
 
-    function openFolder(id) {
-        closeAllFolders();
-        document.getElementById(id + "Folder").classList.add("open");
-        document.getElementById(id + "Folder").scrollIntoView({behavior: "smooth", block: "start"});
-    }
+    items.forEach(item => {
+      const text = item.innerText.toLowerCase() + " " + item.dataset.keywords.toLowerCase();
 
-    function openAllFolders() {
-        document.querySelectorAll(".folder-body").forEach(folder => {
-            folder.classList.add("open");
-        });
-    }
-
-    function closeAllFolders() {
-        document.querySelectorAll(".folder-body").forEach(folder => {
-            folder.classList.remove("open");
-        });
-    }
-
-    function filterResources() {
-        const search = document.getElementById("resourceSearch").value.toLowerCase().trim();
-        const items = document.querySelectorAll(".resource-item");
-
-        if (search.length > 0) {
-            openAllFolders();
-        }
-
-        items.forEach(item => {
-            const text = item.innerText.toLowerCase() + " " + item.dataset.keywords.toLowerCase();
-
-            if (!search || text.includes(search)) {
-                item.classList.remove("hidden-resource");
-            } else {
-                item.classList.add("hidden-resource");
-            }
-        });
-    }
+      if (!search || text.includes(search)) {
+        item.classList.remove("hidden-resource");
+      } else {
+        item.classList.add("hidden-resource");
+      }
+    });
+  }
 </script>
 
 {% endblock %}

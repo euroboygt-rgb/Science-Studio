@@ -5,52 +5,52 @@
 <p class="lead">July 27, 2026 - September 25, 2026</p>
 
 <div class="card mb-3">
-    <div class="card-body">
-        <h3>Unit 1: Investigating Physical Properties of Matter</h3>
-        <p><strong>Suggested Length:</strong> 15 instructional days</p>
-        <p><strong>Main TEKS:</strong> 5.6A</p>
-        <p><strong>Focus:</strong> Students compare and contrast matter based on physical properties.</p>
-        <a href="/labs" class="btn btn-primary">Open Unit 1 Labs</a>
-    </div>
+  <div class="card-body">
+    <h3>Unit 1: Investigating Physical Properties of Matter</h3>
+    <p><strong>Suggested Length:</strong> 15 instructional days</p>
+    <p><strong>Main TEKS:</strong> 5.6A</p>
+    <p><strong>Focus:</strong> Students compare and contrast matter based on physical properties.</p>
+    <a href="/labs" class="btn btn-primary">Open Unit 1 Labs</a>
+  </div>
 </div>
 
 <h2>Unit 1 Lesson Sequence</h2>
 
 <ul class="list-group">
 
-    {% for lesson in lessons %}
+  {% for lesson in lessons %}
 
-    <li class="list-group-item d-flex justify-content-between align-items-center">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
 
-        <div>
-            <strong>Day {{ lesson.day }}</strong> - {{ lesson.title }}
+    <div>
+      <strong>Day {{ lesson.day }}</strong> - {{ lesson.title }}
 
-            {% if lesson.teks %}
-            <br>
-            <small class="text-muted">
-                TEKS: {{ lesson.teks | join(", ") }}
-            </small>
-            {% endif %}
+      {% if lesson.teks %}
+      <br>
+      <small class="text-muted">
+        TEKS: {{ lesson.teks | join(", ") }}
+      </small>
+      {% endif %}
 
-            {% if lesson.lab %}
-            <br>
-            <span class="badge bg-success mt-1">Lab</span>
-            {% endif %}
-        </div>
+      {% if lesson.lab %}
+      <br>
+      <span class="badge bg-success mt-1">Lab</span>
+      {% endif %}
+    </div>
 
-        <div>
-            <a href="/first-nine-weeks/day/{{ lesson.day }}?view=teacher" class="btn btn-sm btn-outline-primary">
-                Teacher View
-            </a>
+    <div>
+      <a href="/first-nine-weeks/day/{{ lesson.day }}?view=teacher" class="btn btn-sm btn-outline-primary">
+        Teacher View
+      </a>
 
-            <a href="/first-nine-weeks/day/{{ lesson.day }}?view=student" class="btn btn-sm btn-outline-success">
-                Student View
-            </a>
-        </div>
+      <a href="/first-nine-weeks/day/{{ lesson.day }}?view=student" class="btn btn-sm btn-outline-success">
+        Student View
+      </a>
+    </div>
 
-    </li>
+  </li>
 
-    {% endfor %}
+  {% endfor %}
 
 </ul>
 {% endblock %}

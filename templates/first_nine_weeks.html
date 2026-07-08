@@ -7,302 +7,302 @@
 {% set lesson_list = lessons if lessons is defined else first_nine_weeks if first_nine_weeks is defined else [] %}
 
 <style>
-    .folder-hero {
-        background:
-            radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
-            radial-gradient(circle at 70% 30%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
-            linear-gradient(135deg, #102542 0%, #1b4965 60%, #5fa8d3 100%);
-        color: white;
-        border: 5px solid #111;
-        border-radius: 28px;
-        padding: 30px;
-        box-shadow: 8px 8px 0 rgba(17, 17, 17, 0.18);
-        margin-bottom: 25px;
-    }
+  .folder-hero {
+    background:
+      radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      radial-gradient(circle at 70% 30%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      linear-gradient(135deg, #102542 0%, #1b4965 60%, #5fa8d3 100%);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 28px;
+    padding: 30px;
+    box-shadow: 8px 8px 0 rgba(17, 17, 17, 0.18);
+    margin-bottom: 25px;
+  }
 
-    .folder-hero h1 {
-        font-weight: 950;
-        font-size: clamp(2rem, 5vw, 4rem);
-        margin-bottom: 10px;
-    }
+  .folder-hero h1 {
+    font-weight: 950;
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 10px;
+  }
 
-    .folder-card {
-        background: white;
-        border: 4px solid #111;
-        border-radius: 22px;
-        box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
-        margin-bottom: 22px;
-        overflow: hidden;
-    }
+  .folder-card {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 22px;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
+    margin-bottom: 22px;
+    overflow: hidden;
+  }
 
-    .folder-header {
-        border-bottom: 4px solid #111;
-        padding: 18px 22px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-    }
+  .folder-header {
+    border-bottom: 4px solid #111;
+    padding: 18px 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+  }
 
-    .folder-title {
-        font-size: 1.45rem;
-        font-weight: 950;
-        margin: 0;
-    }
+  .folder-title {
+    font-size: 1.45rem;
+    font-weight: 950;
+    margin: 0;
+  }
 
-    .folder-subtitle {
-        margin: 4px 0 0;
-        font-weight: 650;
-    }
+  .folder-subtitle {
+    margin: 4px 0 0;
+    font-weight: 650;
+  }
 
-    .folder-icon {
-        font-size: 42px;
-        margin-right: 10px;
-    }
+  .folder-icon {
+    font-size: 42px;
+    margin-right: 10px;
+  }
 
-    .folder-days {
-        padding: 20px;
-        display: none;
-    }
+  .folder-days {
+    padding: 20px;
+    display: none;
+  }
 
-    .folder-days.open {
-        display: block;
-    }
+  .folder-days.open {
+    display: block;
+  }
 
-    .day-card {
-        background: #f8f9fa;
-        border: 3px solid #111;
-        border-radius: 18px;
-        padding: 16px;
-        height: 100%;
-        transition: transform 0.15s ease;
-    }
+  .day-card {
+    background: #f8f9fa;
+    border: 3px solid #111;
+    border-radius: 18px;
+    padding: 16px;
+    height: 100%;
+    transition: transform 0.15s ease;
+  }
 
-    .day-card:hover {
-        transform: translateY(-2px);
-        background: #fff3cd;
-    }
+  .day-card:hover {
+    transform: translateY(-2px);
+    background: #fff3cd;
+  }
 
-    .day-number {
-        display: inline-block;
-        background: #102542;
-        color: white;
-        border: 3px solid #111;
-        border-radius: 999px;
-        padding: 5px 11px;
-        font-weight: 900;
-        margin-bottom: 8px;
-    }
+  .day-number {
+    display: inline-block;
+    background: #102542;
+    color: white;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 5px 11px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
 
-    .teks-pill {
-        display: inline-block;
-        background: #d1e7dd;
-        border: 2px solid #111;
-        border-radius: 999px;
-        padding: 3px 8px;
-        font-size: 0.8rem;
-        font-weight: 800;
-        margin: 2px;
-    }
+  .teks-pill {
+    display: inline-block;
+    background: #d1e7dd;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 3px 8px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    margin: 2px;
+  }
 
-    .science-btn-small {
-        border: 3px solid #111;
-        border-radius: 12px;
-        font-weight: 850;
-        box-shadow: 2px 2px 0 rgba(17,17,17,0.2);
-    }
+  .science-btn-small {
+    border: 3px solid #111;
+    border-radius: 12px;
+    font-weight: 850;
+    box-shadow: 2px 2px 0 rgba(17,17,17,0.2);
+  }
 
-    .unit-setup {
-        background: #eaf6ff;
-    }
+  .unit-setup {
+    background: #eaf6ff;
+  }
 
-    .unit-one {
-        background: #d1e7dd;
-    }
+  .unit-one {
+    background: #d1e7dd;
+  }
 
-    .unit-two {
-        background: #cff4fc;
-    }
+  .unit-two {
+    background: #cff4fc;
+  }
 
-    .unit-three {
-        background: #fff3cd;
-    }
+  .unit-three {
+    background: #fff3cd;
+  }
 
-    .unit-review {
-        background: #f8d7da;
-    }
+  .unit-review {
+    background: #f8d7da;
+  }
 
-    .quick-jump {
-        background: white;
-        border: 4px solid #111;
-        border-radius: 22px;
-        padding: 18px;
-        margin-bottom: 22px;
-        box-shadow: 5px 5px 0 rgba(17,17,17,0.12);
-    }
+  .quick-jump {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 22px;
+    padding: 18px;
+    margin-bottom: 22px;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.12);
+  }
 
-    .quick-jump button {
-        margin: 4px;
-    }
+  .quick-jump button {
+    margin: 4px;
+  }
 </style>
 
 <section class="folder-hero">
-    <h1>🔬 1st 9 Weeks Lesson Folders</h1>
-    <p class="lead mb-0">
-        Open a folder to find the daily lessons, student view, teacher view, labs, review days, and assessments.
-    </p>
+  <h1>🔬 1st 9 Weeks Lesson Folders</h1>
+  <p class="lead mb-0">
+    Open a folder to find the daily lessons, student view, teacher view, labs, review days, and assessments.
+  </p>
 </section>
 
 <section class="quick-jump no-print">
-    <h3>Quick Open</h3>
-    <button class="btn btn-primary science-btn-small" onclick="openFolder('setupFolder')">Classroom Setup</button>
-    <button class="btn btn-success science-btn-small" onclick="openFolder('unit1Folder')">Unit 1</button>
-    <button class="btn btn-info science-btn-small" onclick="openFolder('unit2Folder')">Unit 2</button>
-    <button class="btn btn-warning science-btn-small" onclick="openFolder('unit3Folder')">Unit 3</button>
-    <button class="btn btn-danger science-btn-small" onclick="openFolder('reviewFolder')">Review</button>
-    <button class="btn btn-secondary science-btn-small" onclick="openAllFolders()">Open All</button>
-    <button class="btn btn-dark science-btn-small" onclick="closeAllFolders()">Close All</button>
+  <h3>Quick Open</h3>
+  <button class="btn btn-primary science-btn-small" onclick="openFolder('setupFolder')">Classroom Setup</button>
+  <button class="btn btn-success science-btn-small" onclick="openFolder('unit1Folder')">Unit 1</button>
+  <button class="btn btn-info science-btn-small" onclick="openFolder('unit2Folder')">Unit 2</button>
+  <button class="btn btn-warning science-btn-small" onclick="openFolder('unit3Folder')">Unit 3</button>
+  <button class="btn btn-danger science-btn-small" onclick="openFolder('reviewFolder')">Review</button>
+  <button class="btn btn-secondary science-btn-small" onclick="openAllFolders()">Open All</button>
+  <button class="btn btn-dark science-btn-small" onclick="closeAllFolders()">Close All</button>
 </section>
 
 {% set folders = [
-    {
-        "id": "setupFolder",
-        "class": "unit-setup",
-        "icon": "🧰",
-        "title": "Classroom Setup",
-        "subtitle": "Days 1–4 • Routines, notebooks, tools, and lab safety",
-        "start": 1,
-        "end": 4
-    },
-    {
-        "id": "unit1Folder",
-        "class": "unit-one",
-        "icon": "🧱",
-        "title": "Unit 1: Matter and Physical Properties",
-        "subtitle": "Days 5–15 • Mass, volume, magnetism, solubility, density, conductors, and insulators",
-        "start": 5,
-        "end": 15
-    },
-    {
-        "id": "unit2Folder",
-        "class": "unit-two",
-        "icon": "🧪",
-        "title": "Unit 2: Mixtures and Solutions",
-        "subtitle": "Days 16–25 • Separating mixtures, solutions, evaporation, and particles too small to see",
-        "start": 16,
-        "end": 25
-    },
-    {
-        "id": "unit3Folder",
-        "class": "unit-three",
-        "icon": "🚗",
-        "title": "Unit 3: Force and Motion",
-        "subtitle": "Days 26–41 • Gravity, friction, variables, data, engineering design, and performance assessment",
-        "start": 26,
-        "end": 41
-    },
-    {
-        "id": "reviewFolder",
-        "class": "unit-review",
-        "icon": "🎯",
-        "title": "Review, Assessment, and Reflection",
-        "subtitle": "Days 42–45 • Spiral review, stations, assessment, notebook check, and goal setting",
-        "start": 42,
-        "end": 45
-    }
+  {
+    "id": "setupFolder",
+    "class": "unit-setup",
+    "icon": "🧰",
+    "title": "Classroom Setup",
+    "subtitle": "Days 1–4 • Routines, notebooks, tools, and lab safety",
+    "start": 1,
+    "end": 4
+  },
+  {
+    "id": "unit1Folder",
+    "class": "unit-one",
+    "icon": "🧱",
+    "title": "Unit 1: Matter and Physical Properties",
+    "subtitle": "Days 5–15 • Mass, volume, magnetism, solubility, density, conductors, and insulators",
+    "start": 5,
+    "end": 15
+  },
+  {
+    "id": "unit2Folder",
+    "class": "unit-two",
+    "icon": "🧪",
+    "title": "Unit 2: Mixtures and Solutions",
+    "subtitle": "Days 16–25 • Separating mixtures, solutions, evaporation, and particles too small to see",
+    "start": 16,
+    "end": 25
+  },
+  {
+    "id": "unit3Folder",
+    "class": "unit-three",
+    "icon": "🚗",
+    "title": "Unit 3: Force and Motion",
+    "subtitle": "Days 26–41 • Gravity, friction, variables, data, engineering design, and performance assessment",
+    "start": 26,
+    "end": 41
+  },
+  {
+    "id": "reviewFolder",
+    "class": "unit-review",
+    "icon": "🎯",
+    "title": "Review, Assessment, and Reflection",
+    "subtitle": "Days 42–45 • Spiral review, stations, assessment, notebook check, and goal setting",
+    "start": 42,
+    "end": 45
+  }
 ] %}
 
 {% for folder in folders %}
 <section class="folder-card">
-    <div class="folder-header {{ folder.class }}" onclick="toggleFolder('{{ folder.id }}')">
-        <div>
-            <h2 class="folder-title">
-                <span class="folder-icon">{{ folder.icon }}</span>
-                {{ folder.title }}
-            </h2>
-            <p class="folder-subtitle">{{ folder.subtitle }}</p>
-        </div>
-        <div>
-            <button class="btn btn-light science-btn-small no-print" type="button">
-                Open / Close
-            </button>
-        </div>
+  <div class="folder-header {{ folder.class }}" onclick="toggleFolder('{{ folder.id }}')">
+    <div>
+      <h2 class="folder-title">
+        <span class="folder-icon">{{ folder.icon }}</span>
+        {{ folder.title }}
+      </h2>
+      <p class="folder-subtitle">{{ folder.subtitle }}</p>
     </div>
-
-    <div id="{{ folder.id }}" class="folder-days {% if loop.first %}open{% endif %}">
-        <div class="row g-3">
-            {% for lesson in lesson_list %}
-                {% set day_number = lesson.day if lesson.day is defined else lesson["day"] %}
-                {% if day_number >= folder.start and day_number <= folder.end %}
-                <div class="col-md-6 col-lg-4">
-                    <div class="day-card">
-                        <span class="day-number">Day {{ day_number }}</span>
-
-                        <h4>
-                            {{ lesson.title if lesson.title is defined else lesson["title"] }}
-                        </h4>
-
-                        {% set lesson_teks = lesson.teks if lesson.teks is defined else lesson["teks"] %}
-                        <div class="mb-3">
-                            {% for tek in lesson_teks %}
-                                <span class="teks-pill">{{ tek }}</span>
-                            {% endfor %}
-                        </div>
-
-                        {% if lesson.lab is defined %}
-                            {% set has_lab = lesson.lab %}
-                        {% else %}
-                            {% set has_lab = lesson["lab"] %}
-                        {% endif %}
-
-                        {% if has_lab %}
-                            <p class="mb-2"><strong>Includes:</strong> Lab / interactive activity</p>
-                        {% endif %}
-
-                        <div class="d-flex flex-wrap gap-2 no-print">
-                            <a class="btn btn-primary btn-sm science-btn-small"
-                               href="/first-nine-weeks/day/{{ day_number }}?view=student">
-                                Student
-                            </a>
-
-                            <a class="btn btn-success btn-sm science-btn-small"
-                               href="/first-nine-weeks/day/{{ day_number }}?view=teacher">
-                                Teacher
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-            {% endfor %}
-        </div>
+    <div>
+      <button class="btn btn-light science-btn-small no-print" type="button">
+        Open / Close
+      </button>
     </div>
+  </div>
+
+  <div id="{{ folder.id }}" class="folder-days {% if loop.first %}open{% endif %}">
+    <div class="row g-3">
+      {% for lesson in lesson_list %}
+        {% set day_number = lesson.day if lesson.day is defined else lesson["day"] %}
+        {% if day_number >= folder.start and day_number <= folder.end %}
+        <div class="col-md-6 col-lg-4">
+          <div class="day-card">
+            <span class="day-number">Day {{ day_number }}</span>
+
+            <h4>
+              {{ lesson.title if lesson.title is defined else lesson["title"] }}
+            </h4>
+
+            {% set lesson_teks = lesson.teks if lesson.teks is defined else lesson["teks"] %}
+            <div class="mb-3">
+              {% for tek in lesson_teks %}
+                <span class="teks-pill">{{ tek }}</span>
+              {% endfor %}
+            </div>
+
+            {% if lesson.lab is defined %}
+              {% set has_lab = lesson.lab %}
+            {% else %}
+              {% set has_lab = lesson["lab"] %}
+            {% endif %}
+
+            {% if has_lab %}
+              <p class="mb-2"><strong>Includes:</strong> Lab / interactive activity</p>
+            {% endif %}
+
+            <div class="d-flex flex-wrap gap-2 no-print">
+              <a class="btn btn-primary btn-sm science-btn-small"
+                href="/first-nine-weeks/day/{{ day_number }}?view=student">
+                Student
+              </a>
+
+              <a class="btn btn-success btn-sm science-btn-small"
+                href="/first-nine-weeks/day/{{ day_number }}?view=teacher">
+                Teacher
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
 </section>
 {% endfor %}
 
 <script>
-    function toggleFolder(id) {
-        const folder = document.getElementById(id);
-        folder.classList.toggle("open");
-    }
+  function toggleFolder(id) {
+    const folder = document.getElementById(id);
+    folder.classList.toggle("open");
+  }
 
-    function openFolder(id) {
-        closeAllFolders();
-        document.getElementById(id).classList.add("open");
-        document.getElementById(id).scrollIntoView({behavior: "smooth", block: "start"});
-    }
+  function openFolder(id) {
+    closeAllFolders();
+    document.getElementById(id).classList.add("open");
+    document.getElementById(id).scrollIntoView({behavior: "smooth", block: "start"});
+  }
 
-    function openAllFolders() {
-        document.querySelectorAll(".folder-days").forEach(folder => {
-            folder.classList.add("open");
-        });
-    }
+  function openAllFolders() {
+    document.querySelectorAll(".folder-days").forEach(folder => {
+      folder.classList.add("open");
+    });
+  }
 
-    function closeAllFolders() {
-        document.querySelectorAll(".folder-days").forEach(folder => {
-            folder.classList.remove("open");
-        });
-    }
+  function closeAllFolders() {
+    document.querySelectorAll(".folder-days").forEach(folder => {
+      folder.classList.remove("open");
+    });
+  }
 </script>
 
 {% endblock %}

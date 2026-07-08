@@ -4,425 +4,425 @@
 
 <h1>Mass and Volume Lab Simulator</h1>
 <p class="lead">
-    Practice measuring mass, liquid volume, and solid volume by water displacement.
+  Practice measuring mass, liquid volume, and solid volume by water displacement.
 </p>
 
 <a href="/first-nine-weeks/day/10?view=student" class="btn btn-secondary mb-4">
-    Back to Day 10
+  Back to Day 10
 </a>
 
 <style>
-    .sim-card {
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 25px;
-        background: #f8f9fa;
-    }
+  .sim-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
 
-    .balance-area {
-        background: white;
-        border: 2px solid #333;
-        border-radius: 12px;
-        padding: 20px;
-        margin-top: 15px;
-        text-align: center;
-    }
+  .balance-area {
+    background: white;
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 15px;
+    text-align: center;
+  }
 
-    .balance-beam {
-        width: 100%;
-        height: 12px;
-        background: #444;
-        margin: 30px auto 10px auto;
-        border-radius: 8px;
-        transform-origin: center;
-        transition: transform 0.4s;
-    }
+  .balance-beam {
+    width: 100%;
+    height: 12px;
+    background: #444;
+    margin: 30px auto 10px auto;
+    border-radius: 8px;
+    transform-origin: center;
+    transition: transform 0.4s;
+  }
 
-    .balance-stand {
-        width: 8px;
-        height: 70px;
-        background: #444;
-        margin: 0 auto;
-    }
+  .balance-stand {
+    width: 8px;
+    height: 70px;
+    background: #444;
+    margin: 0 auto;
+  }
 
-    .balance-base {
-        width: 150px;
-        height: 15px;
-        background: #444;
-        margin: 0 auto;
-        border-radius: 8px;
-    }
+  .balance-base {
+    width: 150px;
+    height: 15px;
+    background: #444;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
 
-    .object-box {
-        display: inline-block;
-        padding: 15px 25px;
-        background: #e7f1ff;
-        border: 2px solid #0d6efd;
-        border-radius: 10px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
+  .object-box {
+    display: inline-block;
+    padding: 15px 25px;
+    background: #e7f1ff;
+    border: 2px solid #0d6efd;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
 
-    .cylinder {
-        width: 120px;
-        height: 300px;
-        border-left: 4px solid #333;
-        border-right: 4px solid #333;
-        border-bottom: 4px solid #333;
-        border-radius: 0 0 20px 20px;
-        margin: 20px auto;
-        position: relative;
-        background: white;
-        overflow: hidden;
-    }
+  .cylinder {
+    width: 120px;
+    height: 300px;
+    border-left: 4px solid #333;
+    border-right: 4px solid #333;
+    border-bottom: 4px solid #333;
+    border-radius: 0 0 20px 20px;
+    margin: 20px auto;
+    position: relative;
+    background: white;
+    overflow: hidden;
+  }
 
-    .water {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        background: #6ec6ff;
-        transition: height 0.4s;
-    }
+  .water {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #6ec6ff;
+    transition: height 0.4s;
+  }
 
-    .cylinder-mark {
-        position: absolute;
-        left: 0;
-        width: 35px;
-        border-top: 1px solid #333;
-        font-size: 12px;
-        color: #333;
-    }
+  .cylinder-mark {
+    position: absolute;
+    left: 0;
+    width: 35px;
+    border-top: 1px solid #333;
+    font-size: 12px;
+    color: #333;
+  }
 
-    .solid-object {
-        width: 50px;
-        height: 50px;
-        border-radius: 10px;
-        background: #8d6e63;
-        margin: 10px auto;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        font-weight: bold;
-    }
+  .solid-object {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: #8d6e63;
+    margin: 10px auto;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+  }
 
-    .feedback {
-        font-weight: bold;
-        margin-top: 10px;
-        padding: 10px;
-        border-radius: 8px;
-    }
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
 
-    .correct {
-        background: #d1e7dd;
-        color: #0f5132;
-    }
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
 
-    .incorrect {
-        background: #f8d7da;
-        color: #842029;
-    }
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
 
-    .info-box {
-        background: #fff3cd;
-        border-left: 5px solid #ffc107;
-        padding: 12px;
-        margin-bottom: 15px;
-    }
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
 </style>
 
 <div class="sim-card">
-    <h2>Part 1: Triple Beam Balance Simulator</h2>
+  <h2>Part 1: Triple Beam Balance Simulator</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Choose an object. Move the riders until your total mass matches the object’s mass.
-    </div>
+  <div class="info-box">
+    <strong>Goal:</strong> Choose an object. Move the riders until your total mass matches the object’s mass.
+  </div>
 
-    <label class="form-label"><strong>Choose an object:</strong></label>
-    <select id="massObject" class="form-select mb-3" onchange="changeMassObject()">
-        <option value="42" data-name="Rock">Rock</option>
-        <option value="18" data-name="Eraser">Eraser</option>
-        <option value="6" data-name="Paper Clip">Paper Clip</option>
-        <option value="24" data-name="Marker">Marker</option>
-        <option value="3" data-name="Cotton Ball">Cotton Ball</option>
-        <option value="115" data-name="Small Book">Small Book</option>
-    </select>
+  <label class="form-label"><strong>Choose an object:</strong></label>
+  <select id="massObject" class="form-select mb-3" onchange="changeMassObject()">
+    <option value="42" data-name="Rock">Rock</option>
+    <option value="18" data-name="Eraser">Eraser</option>
+    <option value="6" data-name="Paper Clip">Paper Clip</option>
+    <option value="24" data-name="Marker">Marker</option>
+    <option value="3" data-name="Cotton Ball">Cotton Ball</option>
+    <option value="115" data-name="Small Book">Small Book</option>
+  </select>
 
-    <div class="balance-area">
-        <div class="object-box" id="massObjectName">Rock</div>
+  <div class="balance-area">
+    <div class="object-box" id="massObjectName">Rock</div>
 
-        <div id="balanceBeam" class="balance-beam"></div>
-        <div class="balance-stand"></div>
-        <div class="balance-base"></div>
+    <div id="balanceBeam" class="balance-beam"></div>
+    <div class="balance-stand"></div>
+    <div class="balance-base"></div>
 
-        <p class="mt-3">
-            <strong>Your measured mass:</strong>
-            <span id="massTotal">0</span> grams
-        </p>
-    </div>
-
-    <label class="form-label mt-3"><strong>100 gram rider:</strong> <span id="hundredsValue">0</span> g</label>
-    <input type="range" class="form-range" id="hundreds" min="0" max="500" step="100" value="0" oninput="updateMassTotal()">
-
-    <label class="form-label"><strong>10 gram rider:</strong> <span id="tensValue">0</span> g</label>
-    <input type="range" class="form-range" id="tens" min="0" max="90" step="10" value="0" oninput="updateMassTotal()">
-
-    <label class="form-label"><strong>1 gram rider:</strong> <span id="onesValue">0</span> g</label>
-    <input type="range" class="form-range" id="ones" min="0" max="9" step="1" value="0" oninput="updateMassTotal()">
-
-    <button class="btn btn-primary mt-3" onclick="checkMass()">Check Mass</button>
-
-    <div id="massFeedback"></div>
-</div>
-
-<div class="sim-card">
-    <h2>Part 2: Liquid Volume Simulator</h2>
-
-    <div class="info-box">
-        <strong>Goal:</strong> Pour liquid into the graduated cylinder until you reach the target volume.
-    </div>
-
-    <label class="form-label"><strong>Choose a target volume:</strong></label>
-    <select id="targetVolume" class="form-select mb-3" onchange="resetLiquidVolume()">
-        <option value="25">25 mL</option>
-        <option value="40">40 mL</option>
-        <option value="50">50 mL</option>
-        <option value="75">75 mL</option>
-        <option value="100">100 mL</option>
-    </select>
-
-    <div class="cylinder">
-        <div class="cylinder-mark" style="bottom: 0%;">0</div>
-        <div class="cylinder-mark" style="bottom: 25%;">25</div>
-        <div class="cylinder-mark" style="bottom: 50%;">50</div>
-        <div class="cylinder-mark" style="bottom: 75%;">75</div>
-        <div class="cylinder-mark" style="bottom: 100%;">100</div>
-        <div id="liquidWater" class="water" style="height: 0%;"></div>
-    </div>
-
-    <label class="form-label">
-        <strong>Pour liquid:</strong>
-        <span id="currentLiquidVolume">0</span> mL
-    </label>
-    <input type="range" class="form-range" id="liquidSlider" min="0" max="100" step="5" value="0" oninput="updateLiquidVolume()">
-
-    <button class="btn btn-primary mt-3" onclick="checkLiquidVolume()">Check Liquid Volume</button>
-
-    <div id="liquidFeedback"></div>
-</div>
-
-<div class="sim-card">
-    <h2>Part 3: Solid Volume by Water Displacement</h2>
-
-    <div class="info-box">
-        <strong>Goal:</strong> Read the starting water level. Drop in the object. Read the final water level.
-        Then calculate the solid’s volume.
-    </div>
-
-    <p>
-        <strong>Formula:</strong>
-        Final water level - starting water level = volume of solid
+    <p class="mt-3">
+      <strong>Your measured mass:</strong>
+      <span id="massTotal">0</span> grams
     </p>
+  </div>
 
-    <label class="form-label"><strong>Choose a solid object:</strong></label>
-    <select id="solidObject" class="form-select mb-3" onchange="resetDisplacement()">
-        <option value="15" data-name="Small Rock">Small Rock</option>
-        <option value="25" data-name="Large Rock">Large Rock</option>
-        <option value="10" data-name="Marble">Marble</option>
-        <option value="20" data-name="Metal Cube">Metal Cube</option>
-    </select>
+  <label class="form-label mt-3"><strong>100 gram rider:</strong> <span id="hundredsValue">0</span> g</label>
+  <input type="range" class="form-range" id="hundreds" min="0" max="500" step="100" value="0" oninput="updateMassTotal()">
 
-    <p><strong>Starting water level:</strong> <span id="startingLevel">40</span> mL</p>
-    <p><strong>Final water level:</strong> <span id="finalLevel">?</span></p>
+  <label class="form-label"><strong>10 gram rider:</strong> <span id="tensValue">0</span> g</label>
+  <input type="range" class="form-range" id="tens" min="0" max="90" step="10" value="0" oninput="updateMassTotal()">
 
-    <div class="solid-object" id="solidObjectName">Small Rock</div>
+  <label class="form-label"><strong>1 gram rider:</strong> <span id="onesValue">0</span> g</label>
+  <input type="range" class="form-range" id="ones" min="0" max="9" step="1" value="0" oninput="updateMassTotal()">
 
-    <div class="cylinder">
-        <div class="cylinder-mark" style="bottom: 0%;">0</div>
-        <div class="cylinder-mark" style="bottom: 25%;">25</div>
-        <div class="cylinder-mark" style="bottom: 50%;">50</div>
-        <div class="cylinder-mark" style="bottom: 75%;">75</div>
-        <div class="cylinder-mark" style="bottom: 100%;">100</div>
-        <div id="displacementWater" class="water" style="height: 40%;"></div>
-    </div>
+  <button class="btn btn-primary mt-3" onclick="checkMass()">Check Mass</button>
 
-    <button class="btn btn-warning mb-3" onclick="dropSolid()">Drop Object Into Water</button>
+  <div id="massFeedback"></div>
+</div>
 
-    <label class="form-label"><strong>What is the volume of the solid?</strong></label>
-    <input id="solidVolumeAnswer" class="form-control mb-2" type="number" placeholder="Type your answer in mL">
+<div class="sim-card">
+  <h2>Part 2: Liquid Volume Simulator</h2>
 
-    <button class="btn btn-primary" onclick="checkSolidVolume()">Check Solid Volume</button>
+  <div class="info-box">
+    <strong>Goal:</strong> Pour liquid into the graduated cylinder until you reach the target volume.
+  </div>
 
-    <div id="solidFeedback"></div>
+  <label class="form-label"><strong>Choose a target volume:</strong></label>
+  <select id="targetVolume" class="form-select mb-3" onchange="resetLiquidVolume()">
+    <option value="25">25 mL</option>
+    <option value="40">40 mL</option>
+    <option value="50">50 mL</option>
+    <option value="75">75 mL</option>
+    <option value="100">100 mL</option>
+  </select>
+
+  <div class="cylinder">
+    <div class="cylinder-mark" style="bottom: 0%;">0</div>
+    <div class="cylinder-mark" style="bottom: 25%;">25</div>
+    <div class="cylinder-mark" style="bottom: 50%;">50</div>
+    <div class="cylinder-mark" style="bottom: 75%;">75</div>
+    <div class="cylinder-mark" style="bottom: 100%;">100</div>
+    <div id="liquidWater" class="water" style="height: 0%;"></div>
+  </div>
+
+  <label class="form-label">
+    <strong>Pour liquid:</strong>
+    <span id="currentLiquidVolume">0</span> mL
+  </label>
+  <input type="range" class="form-range" id="liquidSlider" min="0" max="100" step="5" value="0" oninput="updateLiquidVolume()">
+
+  <button class="btn btn-primary mt-3" onclick="checkLiquidVolume()">Check Liquid Volume</button>
+
+  <div id="liquidFeedback"></div>
+</div>
+
+<div class="sim-card">
+  <h2>Part 3: Solid Volume by Water Displacement</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Read the starting water level. Drop in the object. Read the final water level.
+    Then calculate the solid’s volume.
+  </div>
+
+  <p>
+    <strong>Formula:</strong>
+    Final water level - starting water level = volume of solid
+  </p>
+
+  <label class="form-label"><strong>Choose a solid object:</strong></label>
+  <select id="solidObject" class="form-select mb-3" onchange="resetDisplacement()">
+    <option value="15" data-name="Small Rock">Small Rock</option>
+    <option value="25" data-name="Large Rock">Large Rock</option>
+    <option value="10" data-name="Marble">Marble</option>
+    <option value="20" data-name="Metal Cube">Metal Cube</option>
+  </select>
+
+  <p><strong>Starting water level:</strong> <span id="startingLevel">40</span> mL</p>
+  <p><strong>Final water level:</strong> <span id="finalLevel">?</span></p>
+
+  <div class="solid-object" id="solidObjectName">Small Rock</div>
+
+  <div class="cylinder">
+    <div class="cylinder-mark" style="bottom: 0%;">0</div>
+    <div class="cylinder-mark" style="bottom: 25%;">25</div>
+    <div class="cylinder-mark" style="bottom: 50%;">50</div>
+    <div class="cylinder-mark" style="bottom: 75%;">75</div>
+    <div class="cylinder-mark" style="bottom: 100%;">100</div>
+    <div id="displacementWater" class="water" style="height: 40%;"></div>
+  </div>
+
+  <button class="btn btn-warning mb-3" onclick="dropSolid()">Drop Object Into Water</button>
+
+  <label class="form-label"><strong>What is the volume of the solid?</strong></label>
+  <input id="solidVolumeAnswer" class="form-control mb-2" type="number" placeholder="Type your answer in mL">
+
+  <button class="btn btn-primary" onclick="checkSolidVolume()">Check Solid Volume</button>
+
+  <div id="solidFeedback"></div>
 </div>
 
 <script>
-    function showFeedback(elementId, message, isCorrect) {
-        const box = document.getElementById(elementId);
-        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
-        box.innerHTML = message;
-    }
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
 
-    function changeMassObject() {
-        const objectSelect = document.getElementById("massObject");
-        const selected = objectSelect.options[objectSelect.selectedIndex];
-        document.getElementById("massObjectName").innerText = selected.dataset.name;
+  function changeMassObject() {
+    const objectSelect = document.getElementById("massObject");
+    const selected = objectSelect.options[objectSelect.selectedIndex];
+    document.getElementById("massObjectName").innerText = selected.dataset.name;
 
-        document.getElementById("hundreds").value = 0;
-        document.getElementById("tens").value = 0;
-        document.getElementById("ones").value = 0;
-        document.getElementById("massFeedback").innerHTML = "";
-        document.getElementById("massFeedback").className = "";
-
-        updateMassTotal();
-    }
-
-    function updateMassTotal() {
-        const hundreds = Number(document.getElementById("hundreds").value);
-        const tens = Number(document.getElementById("tens").value);
-        const ones = Number(document.getElementById("ones").value);
-
-        const total = hundreds + tens + ones;
-        const actualMass = Number(document.getElementById("massObject").value);
-
-        document.getElementById("hundredsValue").innerText = hundreds;
-        document.getElementById("tensValue").innerText = tens;
-        document.getElementById("onesValue").innerText = ones;
-        document.getElementById("massTotal").innerText = total;
-
-        const difference = total - actualMass;
-        let tilt = 0;
-
-        if (difference > 0) {
-            tilt = 5;
-        } else if (difference < 0) {
-            tilt = -5;
-        } else {
-            tilt = 0;
-        }
-
-        document.getElementById("balanceBeam").style.transform = "rotate(" + tilt + "deg)";
-    }
-
-    function checkMass() {
-        const actualMass = Number(document.getElementById("massObject").value);
-        const measuredMass = Number(document.getElementById("massTotal").innerText);
-
-        if (measuredMass === actualMass) {
-            showFeedback(
-                "massFeedback",
-                "Correct! The object has a mass of " + actualMass + " grams.",
-                true
-            );
-        } else if (measuredMass < actualMass) {
-            showFeedback(
-                "massFeedback",
-                "Not yet. Your riders show too little mass. Move the riders higher.",
-                false
-            );
-        } else {
-            showFeedback(
-                "massFeedback",
-                "Not yet. Your riders show too much mass. Move the riders lower.",
-                false
-            );
-        }
-    }
-
-    function resetLiquidVolume() {
-        document.getElementById("liquidSlider").value = 0;
-        document.getElementById("liquidFeedback").innerHTML = "";
-        document.getElementById("liquidFeedback").className = "";
-        updateLiquidVolume();
-    }
-
-    function updateLiquidVolume() {
-        const currentVolume = Number(document.getElementById("liquidSlider").value);
-        document.getElementById("currentLiquidVolume").innerText = currentVolume;
-        document.getElementById("liquidWater").style.height = currentVolume + "%";
-    }
-
-    function checkLiquidVolume() {
-        const target = Number(document.getElementById("targetVolume").value);
-        const current = Number(document.getElementById("liquidSlider").value);
-
-        if (current === target) {
-            showFeedback(
-                "liquidFeedback",
-                "Correct! You measured " + target + " mL of liquid volume.",
-                true
-            );
-        } else if (current < target) {
-            showFeedback(
-                "liquidFeedback",
-                "Not yet. You need to pour more liquid.",
-                false
-            );
-        } else {
-            showFeedback(
-                "liquidFeedback",
-                "Not yet. You poured too much liquid.",
-                false
-            );
-        }
-    }
-
-    function resetDisplacement() {
-        const objectSelect = document.getElementById("solidObject");
-        const selected = objectSelect.options[objectSelect.selectedIndex];
-
-        document.getElementById("solidObjectName").innerText = selected.dataset.name;
-        document.getElementById("startingLevel").innerText = "40";
-        document.getElementById("finalLevel").innerText = "?";
-        document.getElementById("displacementWater").style.height = "40%";
-        document.getElementById("solidVolumeAnswer").value = "";
-        document.getElementById("solidFeedback").innerHTML = "";
-        document.getElementById("solidFeedback").className = "";
-    }
-
-    function dropSolid() {
-        const startingLevel = 40;
-        const solidVolume = Number(document.getElementById("solidObject").value);
-        const finalLevel = startingLevel + solidVolume;
-
-        document.getElementById("finalLevel").innerText = finalLevel + " mL";
-        document.getElementById("displacementWater").style.height = finalLevel + "%";
-    }
-
-    function checkSolidVolume() {
-        const answer = Number(document.getElementById("solidVolumeAnswer").value);
-        const solidVolume = Number(document.getElementById("solidObject").value);
-        const finalText = document.getElementById("finalLevel").innerText;
-
-        if (finalText === "?") {
-            showFeedback(
-                "solidFeedback",
-                "Drop the object into the water first. Then read the final water level.",
-                false
-            );
-            return;
-        }
-
-        if (answer === solidVolume) {
-            showFeedback(
-                "solidFeedback",
-                "Correct! Final volume - starting volume = " + solidVolume + " mL.",
-                true
-            );
-        } else {
-            showFeedback(
-                "solidFeedback",
-                "Not yet. Remember: final water level - starting water level = volume of the solid.",
-                false
-            );
-        }
-    }
+    document.getElementById("hundreds").value = 0;
+    document.getElementById("tens").value = 0;
+    document.getElementById("ones").value = 0;
+    document.getElementById("massFeedback").innerHTML = "";
+    document.getElementById("massFeedback").className = "";
 
     updateMassTotal();
+  }
+
+  function updateMassTotal() {
+    const hundreds = Number(document.getElementById("hundreds").value);
+    const tens = Number(document.getElementById("tens").value);
+    const ones = Number(document.getElementById("ones").value);
+
+    const total = hundreds + tens + ones;
+    const actualMass = Number(document.getElementById("massObject").value);
+
+    document.getElementById("hundredsValue").innerText = hundreds;
+    document.getElementById("tensValue").innerText = tens;
+    document.getElementById("onesValue").innerText = ones;
+    document.getElementById("massTotal").innerText = total;
+
+    const difference = total - actualMass;
+    let tilt = 0;
+
+    if (difference > 0) {
+      tilt = 5;
+    } else if (difference < 0) {
+      tilt = -5;
+    } else {
+      tilt = 0;
+    }
+
+    document.getElementById("balanceBeam").style.transform = "rotate(" + tilt + "deg)";
+  }
+
+  function checkMass() {
+    const actualMass = Number(document.getElementById("massObject").value);
+    const measuredMass = Number(document.getElementById("massTotal").innerText);
+
+    if (measuredMass === actualMass) {
+      showFeedback(
+        "massFeedback",
+        "Correct! The object has a mass of " + actualMass + " grams.",
+        true
+      );
+    } else if (measuredMass < actualMass) {
+      showFeedback(
+        "massFeedback",
+        "Not yet. Your riders show too little mass. Move the riders higher.",
+        false
+      );
+    } else {
+      showFeedback(
+        "massFeedback",
+        "Not yet. Your riders show too much mass. Move the riders lower.",
+        false
+      );
+    }
+  }
+
+  function resetLiquidVolume() {
+    document.getElementById("liquidSlider").value = 0;
+    document.getElementById("liquidFeedback").innerHTML = "";
+    document.getElementById("liquidFeedback").className = "";
     updateLiquidVolume();
-    resetDisplacement();
+  }
+
+  function updateLiquidVolume() {
+    const currentVolume = Number(document.getElementById("liquidSlider").value);
+    document.getElementById("currentLiquidVolume").innerText = currentVolume;
+    document.getElementById("liquidWater").style.height = currentVolume + "%";
+  }
+
+  function checkLiquidVolume() {
+    const target = Number(document.getElementById("targetVolume").value);
+    const current = Number(document.getElementById("liquidSlider").value);
+
+    if (current === target) {
+      showFeedback(
+        "liquidFeedback",
+        "Correct! You measured " + target + " mL of liquid volume.",
+        true
+      );
+    } else if (current < target) {
+      showFeedback(
+        "liquidFeedback",
+        "Not yet. You need to pour more liquid.",
+        false
+      );
+    } else {
+      showFeedback(
+        "liquidFeedback",
+        "Not yet. You poured too much liquid.",
+        false
+      );
+    }
+  }
+
+  function resetDisplacement() {
+    const objectSelect = document.getElementById("solidObject");
+    const selected = objectSelect.options[objectSelect.selectedIndex];
+
+    document.getElementById("solidObjectName").innerText = selected.dataset.name;
+    document.getElementById("startingLevel").innerText = "40";
+    document.getElementById("finalLevel").innerText = "?";
+    document.getElementById("displacementWater").style.height = "40%";
+    document.getElementById("solidVolumeAnswer").value = "";
+    document.getElementById("solidFeedback").innerHTML = "";
+    document.getElementById("solidFeedback").className = "";
+  }
+
+  function dropSolid() {
+    const startingLevel = 40;
+    const solidVolume = Number(document.getElementById("solidObject").value);
+    const finalLevel = startingLevel + solidVolume;
+
+    document.getElementById("finalLevel").innerText = finalLevel + " mL";
+    document.getElementById("displacementWater").style.height = finalLevel + "%";
+  }
+
+  function checkSolidVolume() {
+    const answer = Number(document.getElementById("solidVolumeAnswer").value);
+    const solidVolume = Number(document.getElementById("solidObject").value);
+    const finalText = document.getElementById("finalLevel").innerText;
+
+    if (finalText === "?") {
+      showFeedback(
+        "solidFeedback",
+        "Drop the object into the water first. Then read the final water level.",
+        false
+      );
+      return;
+    }
+
+    if (answer === solidVolume) {
+      showFeedback(
+        "solidFeedback",
+        "Correct! Final volume - starting volume = " + solidVolume + " mL.",
+        true
+      );
+    } else {
+      showFeedback(
+        "solidFeedback",
+        "Not yet. Remember: final water level - starting water level = volume of the solid.",
+        false
+      );
+    }
+  }
+
+  updateMassTotal();
+  updateLiquidVolume();
+  resetDisplacement();
 </script>
 
 {% endblock %}

@@ -4,368 +4,368 @@
 
 <h1>Push/Pull Force Simulator</h1>
 <p class="lead">
-    Test how pushes and pulls can change an object's motion, position, or direction.
+  Test how pushes and pulls can change an object's motion, position, or direction.
 </p>
 
 <a href="/first-nine-weeks/day/26?view=student" class="btn btn-secondary mb-4">
-    Back to Day 26
+  Back to Day 26
 </a>
 
 <style>
-    .sim-card {
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 25px;
-        background: #f8f9fa;
-    }
+  .sim-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
 
-    .info-box {
-        background: #fff3cd;
-        border-left: 5px solid #ffc107;
-        padding: 12px;
-        margin-bottom: 15px;
-    }
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
 
-    .track {
-        height: 180px;
-        border: 4px solid #333;
-        border-radius: 15px;
-        background: white;
-        position: relative;
-        overflow: hidden;
-        margin: 20px 0;
-    }
+  .track {
+    height: 180px;
+    border: 4px solid #333;
+    border-radius: 15px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+  }
 
-    .object {
-        width: 90px;
-        height: 60px;
-        border: 3px solid #333;
-        border-radius: 12px;
-        background: #e9ecef;
-        position: absolute;
-        left: 40px;
-        top: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        text-align: center;
-        transition: left 0.7s, top 0.7s;
-    }
+  .object {
+    width: 90px;
+    height: 60px;
+    border: 3px solid #333;
+    border-radius: 12px;
+    background: #e9ecef;
+    position: absolute;
+    left: 40px;
+    top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+    transition: left 0.7s, top 0.7s;
+  }
 
-    .force-arrow {
-        position: absolute;
-        top: 35px;
-        left: 150px;
-        font-size: 44px;
-        font-weight: bold;
-        display: none;
-    }
+  .force-arrow {
+    position: absolute;
+    top: 35px;
+    left: 150px;
+    font-size: 44px;
+    font-weight: bold;
+    display: none;
+  }
 
-    .feedback {
-        font-weight: bold;
-        margin-top: 10px;
-        padding: 10px;
-        border-radius: 8px;
-    }
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
 
-    .correct {
-        background: #d1e7dd;
-        color: #0f5132;
-    }
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
 
-    .incorrect {
-        background: #f8d7da;
-        color: #842029;
-    }
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
 
-    .scenario-card {
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 15px;
-    }
+  .scenario-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
 
-    .motion-data {
-        background: white;
-        border: 2px solid #333;
-        border-radius: 10px;
-        padding: 12px;
-        margin-top: 10px;
-    }
+  .motion-data {
+    background: white;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+  }
 </style>
 
 <div class="sim-card">
-    <h2>Part 1: Test a Push or Pull</h2>
+  <h2>Part 1: Test a Push or Pull</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> A force is a push or pull. A force can make an object start moving, stop moving, speed up, slow down, or change direction.
+  <div class="info-box">
+    <strong>Goal:</strong> A force is a push or pull. A force can make an object start moving, stop moving, speed up, slow down, or change direction.
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <label class="form-label"><strong>Object:</strong></label>
+      <select id="objectSelect" class="form-select mb-3" onchange="resetMotion()">
+        <option>Toy car</option>
+        <option>Ball</option>
+        <option>Book</option>
+        <option>Eraser</option>
+      </select>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <label class="form-label"><strong>Object:</strong></label>
-            <select id="objectSelect" class="form-select mb-3" onchange="resetMotion()">
-                <option>Toy car</option>
-                <option>Ball</option>
-                <option>Book</option>
-                <option>Eraser</option>
-            </select>
-        </div>
-
-        <div class="col-md-4">
-            <label class="form-label"><strong>Force:</strong></label>
-            <select id="forceSelect" class="form-select mb-3" onchange="resetMotion()">
-                <option>Push</option>
-                <option>Pull</option>
-            </select>
-        </div>
-
-        <div class="col-md-4">
-            <label class="form-label"><strong>Direction:</strong></label>
-            <select id="directionSelect" class="form-select mb-3" onchange="resetMotion()">
-                <option>Right</option>
-                <option>Left</option>
-            </select>
-        </div>
+    <div class="col-md-4">
+      <label class="form-label"><strong>Force:</strong></label>
+      <select id="forceSelect" class="form-select mb-3" onchange="resetMotion()">
+        <option>Push</option>
+        <option>Pull</option>
+      </select>
     </div>
 
-    <label class="form-label"><strong>Force strength:</strong> <span id="strengthLabel">2</span></label>
-    <input id="strengthInput" type="range" class="form-range mb-3" min="1" max="4" value="2" oninput="updateStrengthLabel(); resetMotion();">
-
-    <button class="btn btn-primary" onclick="applyForce()">Apply Force</button>
-    <button class="btn btn-secondary" onclick="resetMotion()">Reset</button>
-
-    <div class="track">
-        <div id="forceArrow" class="force-arrow">→</div>
-        <div id="movingObject" class="object">Toy car</div>
+    <div class="col-md-4">
+      <label class="form-label"><strong>Direction:</strong></label>
+      <select id="directionSelect" class="form-select mb-3" onchange="resetMotion()">
+        <option>Right</option>
+        <option>Left</option>
+      </select>
     </div>
+  </div>
 
-    <div class="motion-data">
-        <p><strong>Force Type:</strong> <span id="forceData">Not tested yet</span></p>
-        <p><strong>Direction:</strong> <span id="directionData">Not tested yet</span></p>
-        <p><strong>Effect on Motion:</strong> <span id="motionData">Not tested yet</span></p>
-    </div>
+  <label class="form-label"><strong>Force strength:</strong> <span id="strengthLabel">2</span></label>
+  <input id="strengthInput" type="range" class="form-range mb-3" min="1" max="4" value="2" oninput="updateStrengthLabel(); resetMotion();">
 
-    <label class="form-label mt-3"><strong>What happened to the object?</strong></label>
-    <select id="motionAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The force changed the object's position or motion.</option>
-        <option>The force made the object disappear.</option>
-        <option>The force changed the object into a liquid.</option>
-        <option>No force acted on the object.</option>
+  <button class="btn btn-primary" onclick="applyForce()">Apply Force</button>
+  <button class="btn btn-secondary" onclick="resetMotion()">Reset</button>
+
+  <div class="track">
+    <div id="forceArrow" class="force-arrow">→</div>
+    <div id="movingObject" class="object">Toy car</div>
+  </div>
+
+  <div class="motion-data">
+    <p><strong>Force Type:</strong> <span id="forceData">Not tested yet</span></p>
+    <p><strong>Direction:</strong> <span id="directionData">Not tested yet</span></p>
+    <p><strong>Effect on Motion:</strong> <span id="motionData">Not tested yet</span></p>
+  </div>
+
+  <label class="form-label mt-3"><strong>What happened to the object?</strong></label>
+  <select id="motionAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The force changed the object's position or motion.</option>
+    <option>The force made the object disappear.</option>
+    <option>The force changed the object into a liquid.</option>
+    <option>No force acted on the object.</option>
+  </select>
+
+  <button class="btn btn-success" onclick="checkMotion()">Check Motion Evidence</button>
+  <div id="motionFeedback"></div>
+</div>
+
+<div class="sim-card">
+  <h2>Part 2: Push, Pull, or Force at a Distance?</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Some forces happen by touching. Other forces, like gravity and magnetism, can act at a distance.
+  </div>
+
+  <div class="scenario-card">
+    <h4>1. A student kicks a soccer ball.</h4>
+    <select id="q1" class="form-select">
+      <option selected>Choose...</option>
+      <option>Push</option>
+      <option>Pull</option>
+      <option>Gravity</option>
+      <option>Magnetism</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>2. A student pulls a wagon handle.</h4>
+    <select id="q2" class="form-select">
+      <option selected>Choose...</option>
+      <option>Push</option>
+      <option>Pull</option>
+      <option>Gravity</option>
+      <option>Magnetism</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>3. A pencil falls from a desk to the floor.</h4>
+    <select id="q3" class="form-select">
+      <option selected>Choose...</option>
+      <option>Push</option>
+      <option>Pull</option>
+      <option>Gravity</option>
+      <option>Magnetism</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>4. A magnet pulls a paper clip toward it.</h4>
+    <select id="q4" class="form-select">
+      <option selected>Choose...</option>
+      <option>Push</option>
+      <option>Pull</option>
+      <option>Gravity</option>
+      <option>Magnetism</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" onclick="checkForceTypes()">Check Force Types</button>
+  <div id="forceTypeFeedback"></div>
+</div>
+
+<div class="sim-card">
+  <h2>Part 3: STAAR Force Evidence</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Use evidence to explain how a force changed motion.
+  </div>
+
+  <div class="scenario-card">
+    <p>A toy car is at rest. A student pushes the toy car to the right. The car rolls to the right.</p>
+
+    <label class="form-label"><strong>What caused the car to move?</strong></label>
+    <select id="staar1" class="form-select mb-3">
+      <option selected>Choose...</option>
+      <option>A force</option>
+      <option>A shadow</option>
+      <option>A color change</option>
+      <option>A thermometer</option>
     </select>
 
-    <button class="btn btn-success" onclick="checkMotion()">Check Motion Evidence</button>
-    <div id="motionFeedback"></div>
-</div>
+    <label class="form-label"><strong>What is the evidence?</strong></label>
+    <select id="staar2" class="form-select mb-3">
+      <option selected>Choose...</option>
+      <option>The car was at rest, then moved after the push.</option>
+      <option>The car was blue.</option>
+      <option>The desk was flat.</option>
+      <option>The car had wheels.</option>
+    </select>
 
-<div class="sim-card">
-    <h2>Part 2: Push, Pull, or Force at a Distance?</h2>
+    <label class="form-label"><strong>Which arrow shows the force direction?</strong></label>
+    <select id="staar3" class="form-select">
+      <option selected>Choose...</option>
+      <option>→</option>
+      <option>←</option>
+      <option>↑</option>
+      <option>↓</option>
+    </select>
+  </div>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Some forces happen by touching. Other forces, like gravity and magnetism, can act at a distance.
-    </div>
-
-    <div class="scenario-card">
-        <h4>1. A student kicks a soccer ball.</h4>
-        <select id="q1" class="form-select">
-            <option selected>Choose...</option>
-            <option>Push</option>
-            <option>Pull</option>
-            <option>Gravity</option>
-            <option>Magnetism</option>
-        </select>
-    </div>
-
-    <div class="scenario-card">
-        <h4>2. A student pulls a wagon handle.</h4>
-        <select id="q2" class="form-select">
-            <option selected>Choose...</option>
-            <option>Push</option>
-            <option>Pull</option>
-            <option>Gravity</option>
-            <option>Magnetism</option>
-        </select>
-    </div>
-
-    <div class="scenario-card">
-        <h4>3. A pencil falls from a desk to the floor.</h4>
-        <select id="q3" class="form-select">
-            <option selected>Choose...</option>
-            <option>Push</option>
-            <option>Pull</option>
-            <option>Gravity</option>
-            <option>Magnetism</option>
-        </select>
-    </div>
-
-    <div class="scenario-card">
-        <h4>4. A magnet pulls a paper clip toward it.</h4>
-        <select id="q4" class="form-select">
-            <option selected>Choose...</option>
-            <option>Push</option>
-            <option>Pull</option>
-            <option>Gravity</option>
-            <option>Magnetism</option>
-        </select>
-    </div>
-
-    <button class="btn btn-success" onclick="checkForceTypes()">Check Force Types</button>
-    <div id="forceTypeFeedback"></div>
-</div>
-
-<div class="sim-card">
-    <h2>Part 3: STAAR Force Evidence</h2>
-
-    <div class="info-box">
-        <strong>Goal:</strong> Use evidence to explain how a force changed motion.
-    </div>
-
-    <div class="scenario-card">
-        <p>A toy car is at rest. A student pushes the toy car to the right. The car rolls to the right.</p>
-
-        <label class="form-label"><strong>What caused the car to move?</strong></label>
-        <select id="staar1" class="form-select mb-3">
-            <option selected>Choose...</option>
-            <option>A force</option>
-            <option>A shadow</option>
-            <option>A color change</option>
-            <option>A thermometer</option>
-        </select>
-
-        <label class="form-label"><strong>What is the evidence?</strong></label>
-        <select id="staar2" class="form-select mb-3">
-            <option selected>Choose...</option>
-            <option>The car was at rest, then moved after the push.</option>
-            <option>The car was blue.</option>
-            <option>The desk was flat.</option>
-            <option>The car had wheels.</option>
-        </select>
-
-        <label class="form-label"><strong>Which arrow shows the force direction?</strong></label>
-        <select id="staar3" class="form-select">
-            <option selected>Choose...</option>
-            <option>→</option>
-            <option>←</option>
-            <option>↑</option>
-            <option>↓</option>
-        </select>
-    </div>
-
-    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Evidence</button>
-    <div id="staarFeedback"></div>
+  <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Evidence</button>
+  <div id="staarFeedback"></div>
 </div>
 
 <script>
-    let forceApplied = false;
+  let forceApplied = false;
 
-    function showFeedback(elementId, message, isCorrect) {
-        const box = document.getElementById(elementId);
-        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
-        box.innerHTML = message;
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function updateStrengthLabel() {
+    document.getElementById("strengthLabel").innerText = document.getElementById("strengthInput").value;
+  }
+
+  function resetMotion() {
+    forceApplied = false;
+
+    const objectName = document.getElementById("objectSelect").value;
+    const object = document.getElementById("movingObject");
+    object.innerText = objectName;
+    object.style.left = "40px";
+    object.style.top = "60px";
+
+    document.getElementById("forceArrow").style.display = "none";
+    document.getElementById("motionAnswer").value = "Choose...";
+    document.getElementById("forceData").innerText = "Not tested yet";
+    document.getElementById("directionData").innerText = "Not tested yet";
+    document.getElementById("motionData").innerText = "Not tested yet";
+    document.getElementById("motionFeedback").innerHTML = "";
+    document.getElementById("motionFeedback").className = "";
+  }
+
+  function applyForce() {
+    forceApplied = true;
+
+    const force = document.getElementById("forceSelect").value;
+    const direction = document.getElementById("directionSelect").value;
+    const strength = Number(document.getElementById("strengthInput").value);
+    const object = document.getElementById("movingObject");
+    const arrow = document.getElementById("forceArrow");
+
+    let distance = 40 + strength * 60;
+
+    if (direction === "Right") {
+      object.style.left = distance + "px";
+      arrow.innerText = "→";
+      arrow.style.left = "150px";
+    } else {
+      object.style.left = "10px";
+      arrow.innerText = "←";
+      arrow.style.left = "150px";
     }
 
-    function updateStrengthLabel() {
-        document.getElementById("strengthLabel").innerText = document.getElementById("strengthInput").value;
+    arrow.style.display = "block";
+
+    document.getElementById("forceData").innerText = force;
+    document.getElementById("directionData").innerText = direction;
+    document.getElementById("motionData").innerText = "The object changed position. A stronger force made a larger change in motion.";
+  }
+
+  function checkMotion() {
+    const answer = document.getElementById("motionAnswer").value;
+
+    if (!forceApplied) {
+      showFeedback("motionFeedback", "Apply a force first, then check your answer.", false);
+      return;
     }
 
-    function resetMotion() {
-        forceApplied = false;
-
-        const objectName = document.getElementById("objectSelect").value;
-        const object = document.getElementById("movingObject");
-        object.innerText = objectName;
-        object.style.left = "40px";
-        object.style.top = "60px";
-
-        document.getElementById("forceArrow").style.display = "none";
-        document.getElementById("motionAnswer").value = "Choose...";
-        document.getElementById("forceData").innerText = "Not tested yet";
-        document.getElementById("directionData").innerText = "Not tested yet";
-        document.getElementById("motionData").innerText = "Not tested yet";
-        document.getElementById("motionFeedback").innerHTML = "";
-        document.getElementById("motionFeedback").className = "";
+    if (answer === "The force changed the object's position or motion.") {
+      showFeedback("motionFeedback", "Correct! A push or pull can change an object's position or motion.", true);
+    } else {
+      showFeedback("motionFeedback", "Not yet. Look at how the object moved after the force was applied.", false);
     }
+  }
 
-    function applyForce() {
-        forceApplied = true;
+  function checkForceTypes() {
+    let correct = 0;
 
-        const force = document.getElementById("forceSelect").value;
-        const direction = document.getElementById("directionSelect").value;
-        const strength = Number(document.getElementById("strengthInput").value);
-        const object = document.getElementById("movingObject");
-        const arrow = document.getElementById("forceArrow");
+    if (document.getElementById("q1").value === "Push") correct++;
+    if (document.getElementById("q2").value === "Pull") correct++;
+    if (document.getElementById("q3").value === "Gravity") correct++;
+    if (document.getElementById("q4").value === "Magnetism") correct++;
 
-        let distance = 40 + strength * 60;
-
-        if (direction === "Right") {
-            object.style.left = distance + "px";
-            arrow.innerText = "→";
-            arrow.style.left = "150px";
-        } else {
-            object.style.left = "10px";
-            arrow.innerText = "←";
-            arrow.style.left = "150px";
-        }
-
-        arrow.style.display = "block";
-
-        document.getElementById("forceData").innerText = force;
-        document.getElementById("directionData").innerText = direction;
-        document.getElementById("motionData").innerText = "The object changed position. A stronger force made a larger change in motion.";
+    if (correct === 4) {
+      showFeedback("forceTypeFeedback", "Correct! You identified pushes, pulls, gravity, and magnetism.", true);
+    } else {
+      showFeedback("forceTypeFeedback", "You got " + correct + " out of 4. Remember: pushes and pulls often touch, but gravity and magnetism can act at a distance.", false);
     }
+  }
 
-    function checkMotion() {
-        const answer = document.getElementById("motionAnswer").value;
+  function checkSTAAR() {
+    const s1 = document.getElementById("staar1").value;
+    const s2 = document.getElementById("staar2").value;
+    const s3 = document.getElementById("staar3").value;
 
-        if (!forceApplied) {
-            showFeedback("motionFeedback", "Apply a force first, then check your answer.", false);
-            return;
-        }
-
-        if (answer === "The force changed the object's position or motion.") {
-            showFeedback("motionFeedback", "Correct! A push or pull can change an object's position or motion.", true);
-        } else {
-            showFeedback("motionFeedback", "Not yet. Look at how the object moved after the force was applied.", false);
-        }
+    if (
+      s1 === "A force" &&
+      s2 === "The car was at rest, then moved after the push." &&
+      s3 === "→"
+    ) {
+      showFeedback("staarFeedback", "Correct! The push was a force acting to the right, and the car's motion changed.", true);
+    } else {
+      showFeedback("staarFeedback", "Not yet. Use the motion change as evidence and match the arrow to the direction of the push.", false);
     }
+  }
 
-    function checkForceTypes() {
-        let correct = 0;
-
-        if (document.getElementById("q1").value === "Push") correct++;
-        if (document.getElementById("q2").value === "Pull") correct++;
-        if (document.getElementById("q3").value === "Gravity") correct++;
-        if (document.getElementById("q4").value === "Magnetism") correct++;
-
-        if (correct === 4) {
-            showFeedback("forceTypeFeedback", "Correct! You identified pushes, pulls, gravity, and magnetism.", true);
-        } else {
-            showFeedback("forceTypeFeedback", "You got " + correct + " out of 4. Remember: pushes and pulls often touch, but gravity and magnetism can act at a distance.", false);
-        }
-    }
-
-    function checkSTAAR() {
-        const s1 = document.getElementById("staar1").value;
-        const s2 = document.getElementById("staar2").value;
-        const s3 = document.getElementById("staar3").value;
-
-        if (
-            s1 === "A force" &&
-            s2 === "The car was at rest, then moved after the push." &&
-            s3 === "→"
-        ) {
-            showFeedback("staarFeedback", "Correct! The push was a force acting to the right, and the car's motion changed.", true);
-        } else {
-            showFeedback("staarFeedback", "Not yet. Use the motion change as evidence and match the arrow to the direction of the push.", false);
-        }
-    }
-
-    updateStrengthLabel();
-    resetMotion();
+  updateStrengthLabel();
+  resetMotion();
 </script>
 
 {% endblock %}

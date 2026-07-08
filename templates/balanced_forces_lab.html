@@ -4,394 +4,394 @@
 
 <h1>Balanced Forces Tug-of-War Simulator</h1>
 <p class="lead">
-    Test equal and unequal forces to see when motion changes.
+  Test equal and unequal forces to see when motion changes.
 </p>
 
 <a href="/first-nine-weeks/day/27?view=student" class="btn btn-secondary mb-4">
-    Back to Day 27
+  Back to Day 27
 </a>
 
 <style>
-    .sim-card {
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 25px;
-        background: #f8f9fa;
-    }
+  .sim-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
 
-    .info-box {
-        background: #fff3cd;
-        border-left: 5px solid #ffc107;
-        padding: 12px;
-        margin-bottom: 15px;
-    }
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
 
-    .arena {
-        height: 260px;
-        border: 4px solid #333;
-        border-radius: 15px;
-        background: white;
-        position: relative;
-        overflow: hidden;
-        margin: 20px 0;
-    }
+  .arena {
+    height: 260px;
+    border: 4px solid #333;
+    border-radius: 15px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+  }
 
-    .center-line {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        bottom: 0;
-        width: 4px;
-        background: #333;
-    }
+  .center-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #333;
+  }
 
-    .rope {
-        position: absolute;
-        top: 120px;
-        left: 90px;
-        width: 70%;
-        height: 12px;
-        background: #8b5a2b;
-        border: 2px solid #333;
-        transition: left 0.6s;
-    }
+  .rope {
+    position: absolute;
+    top: 120px;
+    left: 90px;
+    width: 70%;
+    height: 12px;
+    background: #8b5a2b;
+    border: 2px solid #333;
+    transition: left 0.6s;
+  }
 
-    .flag {
-        position: absolute;
-        top: 85px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 28px;
-        height: 60px;
-        background: #dc3545;
-        border: 2px solid #333;
-        transition: left 0.6s;
-    }
+  .flag {
+    position: absolute;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 60px;
+    background: #dc3545;
+    border: 2px solid #333;
+    transition: left 0.6s;
+  }
 
-    .team {
-        position: absolute;
-        top: 145px;
-        font-weight: bold;
-        font-size: 18px;
-    }
+  .team {
+    position: absolute;
+    top: 145px;
+    font-weight: bold;
+    font-size: 18px;
+  }
 
-    .team-left {
-        left: 25px;
-    }
+  .team-left {
+    left: 25px;
+  }
 
-    .team-right {
-        right: 25px;
-    }
+  .team-right {
+    right: 25px;
+  }
 
-    .arrow {
-        font-size: 46px;
-        font-weight: bold;
-    }
+  .arrow {
+    font-size: 46px;
+    font-weight: bold;
+  }
 
-    .force-model {
-        background: white;
-        border: 3px solid #333;
-        border-radius: 12px;
-        padding: 15px;
-        text-align: center;
-        margin: 15px 0;
-    }
+  .force-model {
+    background: white;
+    border: 3px solid #333;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    margin: 15px 0;
+  }
 
-    .box-model {
-        display: inline-block;
-        padding: 25px;
-        border: 3px solid #333;
-        border-radius: 12px;
-        background: #e9ecef;
-        font-weight: bold;
-        margin: 0 20px;
-    }
+  .box-model {
+    display: inline-block;
+    padding: 25px;
+    border: 3px solid #333;
+    border-radius: 12px;
+    background: #e9ecef;
+    font-weight: bold;
+    margin: 0 20px;
+  }
 
-    .feedback {
-        font-weight: bold;
-        margin-top: 10px;
-        padding: 10px;
-        border-radius: 8px;
-    }
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
 
-    .correct {
-        background: #d1e7dd;
-        color: #0f5132;
-    }
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
 
-    .incorrect {
-        background: #f8d7da;
-        color: #842029;
-    }
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
 
-    .scenario-card {
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 15px;
-    }
+  .scenario-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
 </style>
 
 <div class="sim-card">
-    <h2>Part 1: Tug-of-War Force Test</h2>
+  <h2>Part 1: Tug-of-War Force Test</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> When opposite forces have equal strength, the rope does not move. The forces are balanced.
+  <div class="info-box">
+    <strong>Goal:</strong> When opposite forces have equal strength, the rope does not move. The forces are balanced.
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label class="form-label"><strong>Left Team Force:</strong> <span id="leftLabel">50</span> N</label>
+      <input id="leftForce" type="range" class="form-range" min="0" max="100" value="50" step="10" oninput="updateLabels(); resetArena();">
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <label class="form-label"><strong>Left Team Force:</strong> <span id="leftLabel">50</span> N</label>
-            <input id="leftForce" type="range" class="form-range" min="0" max="100" value="50" step="10" oninput="updateLabels(); resetArena();">
-        </div>
-
-        <div class="col-md-6">
-            <label class="form-label"><strong>Right Team Force:</strong> <span id="rightLabel">50</span> N</label>
-            <input id="rightForce" type="range" class="form-range" min="0" max="100" value="50" step="10" oninput="updateLabels(); resetArena();">
-        </div>
+    <div class="col-md-6">
+      <label class="form-label"><strong>Right Team Force:</strong> <span id="rightLabel">50</span> N</label>
+      <input id="rightForce" type="range" class="form-range" min="0" max="100" value="50" step="10" oninput="updateLabels(); resetArena();">
     </div>
+  </div>
 
-    <button class="btn btn-primary" onclick="pullRope()">Pull Rope</button>
-    <button class="btn btn-secondary" onclick="resetArena()">Reset</button>
+  <button class="btn btn-primary" onclick="pullRope()">Pull Rope</button>
+  <button class="btn btn-secondary" onclick="resetArena()">Reset</button>
 
-    <div class="arena">
-        <div class="center-line"></div>
-        <div id="rope" class="rope"></div>
-        <div id="flag" class="flag"></div>
-        <div class="team team-left">Left Team <span class="arrow">←</span></div>
-        <div class="team team-right"><span class="arrow">→</span> Right Team</div>
-    </div>
+  <div class="arena">
+    <div class="center-line"></div>
+    <div id="rope" class="rope"></div>
+    <div id="flag" class="flag"></div>
+    <div class="team team-left">Left Team <span class="arrow">←</span></div>
+    <div class="team team-right"><span class="arrow">→</span> Right Team</div>
+  </div>
 
-    <label class="form-label"><strong>What happened?</strong></label>
-    <select id="tugAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The forces were equal and balanced, so the rope did not change motion.</option>
-        <option>The forces were equal, so the rope disappeared.</option>
-        <option>The smaller force pulled the rope farther.</option>
-        <option>No forces acted on the rope.</option>
-    </select>
+  <label class="form-label"><strong>What happened?</strong></label>
+  <select id="tugAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The forces were equal and balanced, so the rope did not change motion.</option>
+    <option>The forces were equal, so the rope disappeared.</option>
+    <option>The smaller force pulled the rope farther.</option>
+    <option>No forces acted on the rope.</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkTug()">Check Tug-of-War Evidence</button>
-    <div id="tugFeedback"></div>
+  <button class="btn btn-success" onclick="checkTug()">Check Tug-of-War Evidence</button>
+  <div id="tugFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 2: Equal Arrow Model</h2>
+  <h2>Part 2: Equal Arrow Model</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Same-size arrows in opposite directions show equal, balanced forces.
-    </div>
+  <div class="info-box">
+    <strong>Goal:</strong> Same-size arrows in opposite directions show equal, balanced forces.
+  </div>
 
-    <div class="force-model">
-        <span class="arrow">←</span>
-        <span id="leftArrowLabel">50 N</span>
-        <span class="box-model">Box</span>
-        <span id="rightArrowLabel">50 N</span>
-        <span class="arrow">→</span>
-    </div>
+  <div class="force-model">
+    <span class="arrow">←</span>
+    <span id="leftArrowLabel">50 N</span>
+    <span class="box-model">Box</span>
+    <span id="rightArrowLabel">50 N</span>
+    <span class="arrow">→</span>
+  </div>
 
-    <label class="form-label"><strong>What does this model show?</strong></label>
-    <select id="modelAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Equal forces in opposite directions cause no change in motion.</option>
-        <option>One force is stronger, so the box must move.</option>
-        <option>The box has no forces acting on it.</option>
-        <option>The arrows show temperature.</option>
-    </select>
+  <label class="form-label"><strong>What does this model show?</strong></label>
+  <select id="modelAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Equal forces in opposite directions cause no change in motion.</option>
+    <option>One force is stronger, so the box must move.</option>
+    <option>The box has no forces acting on it.</option>
+    <option>The arrows show temperature.</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkModel()">Check Arrow Model</button>
-    <div id="modelFeedback"></div>
+  <button class="btn btn-success" onclick="checkModel()">Check Arrow Model</button>
+  <div id="modelFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 3: Balanced or Unbalanced?</h2>
+  <h2>Part 3: Balanced or Unbalanced?</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Identify balanced forces using strength, direction, and motion evidence.
-    </div>
+  <div class="info-box">
+    <strong>Goal:</strong> Identify balanced forces using strength, direction, and motion evidence.
+  </div>
 
-    <div class="scenario-card">
-        <h4>1. 30 N left and 30 N right</h4>
-        <select id="q1" class="form-select">
-            <option selected>Choose...</option>
-            <option>Balanced</option>
-            <option>Unbalanced</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>1. 30 N left and 30 N right</h4>
+    <select id="q1" class="form-select">
+      <option selected>Choose...</option>
+      <option>Balanced</option>
+      <option>Unbalanced</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>2. 80 N left and 40 N right</h4>
-        <select id="q2" class="form-select">
-            <option selected>Choose...</option>
-            <option>Balanced</option>
-            <option>Unbalanced</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>2. 80 N left and 40 N right</h4>
+    <select id="q2" class="form-select">
+      <option selected>Choose...</option>
+      <option>Balanced</option>
+      <option>Unbalanced</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>3. A book rests on a table and does not move</h4>
-        <select id="q3" class="form-select">
-            <option selected>Choose...</option>
-            <option>Balanced</option>
-            <option>Unbalanced</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>3. A book rests on a table and does not move</h4>
+    <select id="q3" class="form-select">
+      <option selected>Choose...</option>
+      <option>Balanced</option>
+      <option>Unbalanced</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>4. A box starts sliding to the right</h4>
-        <select id="q4" class="form-select">
-            <option selected>Choose...</option>
-            <option>Balanced</option>
-            <option>Unbalanced</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>4. A box starts sliding to the right</h4>
+    <select id="q4" class="form-select">
+      <option selected>Choose...</option>
+      <option>Balanced</option>
+      <option>Unbalanced</option>
+    </select>
+  </div>
 
-    <button class="btn btn-success" onclick="checkBalanced()">Check Answers</button>
-    <div id="balancedFeedback"></div>
+  <button class="btn btn-success" onclick="checkBalanced()">Check Answers</button>
+  <div id="balancedFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 4: STAAR Evidence Challenge</h2>
+  <h2>Part 4: STAAR Evidence Challenge</h2>
 
-    <div class="info-box">
-        <strong>Question:</strong> Two students push on opposite sides of a box with equal force. The box does not move.
-    </div>
+  <div class="info-box">
+    <strong>Question:</strong> Two students push on opposite sides of a box with equal force. The box does not move.
+  </div>
 
-    <label class="form-label"><strong>Best claim:</strong></label>
-    <select id="staar1" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The forces are balanced.</option>
-        <option>The box has no mass.</option>
-        <option>The box is magnetic.</option>
-        <option>The force made the box disappear.</option>
-    </select>
+  <label class="form-label"><strong>Best claim:</strong></label>
+  <select id="staar1" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The forces are balanced.</option>
+    <option>The box has no mass.</option>
+    <option>The box is magnetic.</option>
+    <option>The force made the box disappear.</option>
+  </select>
 
-    <label class="form-label"><strong>Best evidence:</strong></label>
-    <select id="staar2" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The box does not change motion.</option>
-        <option>The box has a color.</option>
-        <option>The students are standing.</option>
-        <option>The box is made of matter.</option>
-    </select>
+  <label class="form-label"><strong>Best evidence:</strong></label>
+  <select id="staar2" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The box does not change motion.</option>
+    <option>The box has a color.</option>
+    <option>The students are standing.</option>
+    <option>The box is made of matter.</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Evidence</button>
-    <div id="staarFeedback"></div>
+  <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Evidence</button>
+  <div id="staarFeedback"></div>
 </div>
 
 <script>
-    let tested = false;
+  let tested = false;
 
-    function showFeedback(elementId, message, isCorrect) {
-        const box = document.getElementById(elementId);
-        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
-        box.innerHTML = message;
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function updateLabels() {
+    const left = document.getElementById("leftForce").value;
+    const right = document.getElementById("rightForce").value;
+
+    document.getElementById("leftLabel").innerText = left;
+    document.getElementById("rightLabel").innerText = right;
+    document.getElementById("leftArrowLabel").innerText = left + " N";
+    document.getElementById("rightArrowLabel").innerText = right + " N";
+  }
+
+  function resetArena() {
+    tested = false;
+    document.getElementById("rope").style.left = "90px";
+    document.getElementById("flag").style.left = "50%";
+    document.getElementById("tugAnswer").value = "Choose...";
+    document.getElementById("tugFeedback").innerHTML = "";
+    document.getElementById("tugFeedback").className = "";
+  }
+
+  function pullRope() {
+    tested = true;
+
+    const left = Number(document.getElementById("leftForce").value);
+    const right = Number(document.getElementById("rightForce").value);
+    const rope = document.getElementById("rope");
+    const flag = document.getElementById("flag");
+
+    if (left === right) {
+      rope.style.left = "90px";
+      flag.style.left = "50%";
+      showFeedback("tugFeedback", "The forces are equal and opposite. The rope does not move because the forces are balanced.", true);
+    } else if (left > right) {
+      rope.style.left = "45px";
+      flag.style.left = "42%";
+      showFeedback("tugFeedback", "The left force is stronger, so the rope moves left. That is unbalanced, not balanced.", false);
+    } else {
+      rope.style.left = "135px";
+      flag.style.left = "58%";
+      showFeedback("tugFeedback", "The right force is stronger, so the rope moves right. That is unbalanced, not balanced.", false);
+    }
+  }
+
+  function checkTug() {
+    const left = Number(document.getElementById("leftForce").value);
+    const right = Number(document.getElementById("rightForce").value);
+    const answer = document.getElementById("tugAnswer").value;
+
+    if (!tested) {
+      showFeedback("tugFeedback", "Pull the rope first, then check your answer.", false);
+      return;
     }
 
-    function updateLabels() {
-        const left = document.getElementById("leftForce").value;
-        const right = document.getElementById("rightForce").value;
-
-        document.getElementById("leftLabel").innerText = left;
-        document.getElementById("rightLabel").innerText = right;
-        document.getElementById("leftArrowLabel").innerText = left + " N";
-        document.getElementById("rightArrowLabel").innerText = right + " N";
+    if (left === right && answer === "The forces were equal and balanced, so the rope did not change motion.") {
+      showFeedback("tugFeedback", "Correct! Equal forces in opposite directions are balanced and cause no change in motion.", true);
+    } else if (left !== right) {
+      showFeedback("tugFeedback", "This trial was unbalanced because one force was stronger. Make both forces equal to model balanced forces.", false);
+    } else {
+      showFeedback("tugFeedback", "Not yet. Balanced forces are equal in strength and opposite in direction.", false);
     }
+  }
 
-    function resetArena() {
-        tested = false;
-        document.getElementById("rope").style.left = "90px";
-        document.getElementById("flag").style.left = "50%";
-        document.getElementById("tugAnswer").value = "Choose...";
-        document.getElementById("tugFeedback").innerHTML = "";
-        document.getElementById("tugFeedback").className = "";
+  function checkModel() {
+    const left = Number(document.getElementById("leftForce").value);
+    const right = Number(document.getElementById("rightForce").value);
+    const answer = document.getElementById("modelAnswer").value;
+
+    if (left === right && answer === "Equal forces in opposite directions cause no change in motion.") {
+      showFeedback("modelFeedback", "Correct! Same-size forces in opposite directions are balanced.", true);
+    } else if (left !== right) {
+      showFeedback("modelFeedback", "Set both forces to the same number to show equal forces.", false);
+    } else {
+      showFeedback("modelFeedback", "Not yet. The arrows show force strength and direction.", false);
     }
+  }
 
-    function pullRope() {
-        tested = true;
+  function checkBalanced() {
+    let correct = 0;
 
-        const left = Number(document.getElementById("leftForce").value);
-        const right = Number(document.getElementById("rightForce").value);
-        const rope = document.getElementById("rope");
-        const flag = document.getElementById("flag");
+    if (document.getElementById("q1").value === "Balanced") correct++;
+    if (document.getElementById("q2").value === "Unbalanced") correct++;
+    if (document.getElementById("q3").value === "Balanced") correct++;
+    if (document.getElementById("q4").value === "Unbalanced") correct++;
 
-        if (left === right) {
-            rope.style.left = "90px";
-            flag.style.left = "50%";
-            showFeedback("tugFeedback", "The forces are equal and opposite. The rope does not move because the forces are balanced.", true);
-        } else if (left > right) {
-            rope.style.left = "45px";
-            flag.style.left = "42%";
-            showFeedback("tugFeedback", "The left force is stronger, so the rope moves left. That is unbalanced, not balanced.", false);
-        } else {
-            rope.style.left = "135px";
-            flag.style.left = "58%";
-            showFeedback("tugFeedback", "The right force is stronger, so the rope moves right. That is unbalanced, not balanced.", false);
-        }
+    if (correct === 4) {
+      showFeedback("balancedFeedback", "Correct! You used strength, direction, and motion evidence.", true);
+    } else {
+      showFeedback("balancedFeedback", "You got " + correct + " out of 4. Balanced forces usually cause no change in motion.", false);
     }
+  }
 
-    function checkTug() {
-        const left = Number(document.getElementById("leftForce").value);
-        const right = Number(document.getElementById("rightForce").value);
-        const answer = document.getElementById("tugAnswer").value;
+  function checkSTAAR() {
+    const s1 = document.getElementById("staar1").value;
+    const s2 = document.getElementById("staar2").value;
 
-        if (!tested) {
-            showFeedback("tugFeedback", "Pull the rope first, then check your answer.", false);
-            return;
-        }
-
-        if (left === right && answer === "The forces were equal and balanced, so the rope did not change motion.") {
-            showFeedback("tugFeedback", "Correct! Equal forces in opposite directions are balanced and cause no change in motion.", true);
-        } else if (left !== right) {
-            showFeedback("tugFeedback", "This trial was unbalanced because one force was stronger. Make both forces equal to model balanced forces.", false);
-        } else {
-            showFeedback("tugFeedback", "Not yet. Balanced forces are equal in strength and opposite in direction.", false);
-        }
+    if (s1 === "The forces are balanced." && s2 === "The box does not change motion.") {
+      showFeedback("staarFeedback", "Correct! No change in motion is evidence that the forces are balanced.", true);
+    } else {
+      showFeedback("staarFeedback", "Not yet. The best evidence is that the box does not move or change motion.", false);
     }
+  }
 
-    function checkModel() {
-        const left = Number(document.getElementById("leftForce").value);
-        const right = Number(document.getElementById("rightForce").value);
-        const answer = document.getElementById("modelAnswer").value;
-
-        if (left === right && answer === "Equal forces in opposite directions cause no change in motion.") {
-            showFeedback("modelFeedback", "Correct! Same-size forces in opposite directions are balanced.", true);
-        } else if (left !== right) {
-            showFeedback("modelFeedback", "Set both forces to the same number to show equal forces.", false);
-        } else {
-            showFeedback("modelFeedback", "Not yet. The arrows show force strength and direction.", false);
-        }
-    }
-
-    function checkBalanced() {
-        let correct = 0;
-
-        if (document.getElementById("q1").value === "Balanced") correct++;
-        if (document.getElementById("q2").value === "Unbalanced") correct++;
-        if (document.getElementById("q3").value === "Balanced") correct++;
-        if (document.getElementById("q4").value === "Unbalanced") correct++;
-
-        if (correct === 4) {
-            showFeedback("balancedFeedback", "Correct! You used strength, direction, and motion evidence.", true);
-        } else {
-            showFeedback("balancedFeedback", "You got " + correct + " out of 4. Balanced forces usually cause no change in motion.", false);
-        }
-    }
-
-    function checkSTAAR() {
-        const s1 = document.getElementById("staar1").value;
-        const s2 = document.getElementById("staar2").value;
-
-        if (s1 === "The forces are balanced." && s2 === "The box does not change motion.") {
-            showFeedback("staarFeedback", "Correct! No change in motion is evidence that the forces are balanced.", true);
-        } else {
-            showFeedback("staarFeedback", "Not yet. The best evidence is that the box does not move or change motion.", false);
-        }
-    }
-
-    updateLabels();
+  updateLabels();
 </script>
 
 {% endblock %}

@@ -4,444 +4,444 @@
 
 <h1>Gravity Drop Simulator</h1>
 <p class="lead">
-    Drop objects and use evidence to show that gravity pulls objects downward toward Earth.
+  Drop objects and use evidence to show that gravity pulls objects downward toward Earth.
 </p>
 
 <a href="/first-nine-weeks/day/30?view=student" class="btn btn-secondary mb-4">
-    Back to Day 30
+  Back to Day 30
 </a>
 
 <style>
-    .sim-card {
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 25px;
-        background: #f8f9fa;
-    }
+  .sim-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
 
-    .info-box {
-        background: #fff3cd;
-        border-left: 5px solid #ffc107;
-        padding: 12px;
-        margin-bottom: 15px;
-    }
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
 
-    .drop-zone {
-        height: 360px;
-        border: 4px solid #333;
-        border-radius: 15px;
-        background: white;
-        position: relative;
-        overflow: hidden;
-        margin: 20px 0;
-    }
+  .drop-zone {
+    height: 360px;
+    border: 4px solid #333;
+    border-radius: 15px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+  }
 
-    .ground {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 45px;
-        background: #d9d9d9;
-        border-top: 4px solid #333;
-        text-align: center;
-        font-weight: bold;
-        padding-top: 8px;
-    }
+  .ground {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 45px;
+    background: #d9d9d9;
+    border-top: 4px solid #333;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 8px;
+  }
 
-    .falling-object {
-        width: 70px;
-        height: 55px;
-        border: 3px solid #333;
-        border-radius: 12px;
-        background: #e9ecef;
-        position: absolute;
-        left: 50%;
-        top: 30px;
-        transform: translateX(-50%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        text-align: center;
-        transition: top 0.9s;
-    }
+  .falling-object {
+    width: 70px;
+    height: 55px;
+    border: 3px solid #333;
+    border-radius: 12px;
+    background: #e9ecef;
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+    transition: top 0.9s;
+  }
 
-    .gravity-arrow {
-        position: absolute;
-        left: calc(50% + 55px);
-        top: 65px;
-        font-size: 60px;
-        font-weight: bold;
-        display: none;
-    }
+  .gravity-arrow {
+    position: absolute;
+    left: calc(50% + 55px);
+    top: 65px;
+    font-size: 60px;
+    font-weight: bold;
+    display: none;
+  }
 
-    .height-line {
-        position: absolute;
-        left: 40px;
-        top: 30px;
-        width: 4px;
-        height: 250px;
-        background: #333;
-    }
+  .height-line {
+    position: absolute;
+    left: 40px;
+    top: 30px;
+    width: 4px;
+    height: 250px;
+    background: #333;
+  }
 
-    .height-label {
-        position: absolute;
-        left: 55px;
-        top: 40px;
-        font-weight: bold;
-    }
+  .height-label {
+    position: absolute;
+    left: 55px;
+    top: 40px;
+    font-weight: bold;
+  }
 
-    .motion-data {
-        background: white;
-        border: 2px solid #333;
-        border-radius: 10px;
-        padding: 12px;
-        margin-top: 10px;
-    }
+  .motion-data {
+    background: white;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+  }
 
-    .feedback {
-        font-weight: bold;
-        margin-top: 10px;
-        padding: 10px;
-        border-radius: 8px;
-    }
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
 
-    .correct {
-        background: #d1e7dd;
-        color: #0f5132;
-    }
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
 
-    .incorrect {
-        background: #f8d7da;
-        color: #842029;
-    }
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
 
-    .scenario-card {
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 15px;
-    }
+  .scenario-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
 
-    .model-box {
-        background: white;
-        border: 3px solid #333;
-        border-radius: 12px;
-        padding: 20px;
-        text-align: center;
-        margin: 15px 0;
-    }
+  .model-box {
+    background: white;
+    border: 3px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin: 15px 0;
+  }
 
-    .big-arrow {
-        font-size: 65px;
-        font-weight: bold;
-    }
+  .big-arrow {
+    font-size: 65px;
+    font-weight: bold;
+  }
 </style>
 
 <div class="sim-card">
-    <h2>Part 1: Drop Test</h2>
+  <h2>Part 1: Drop Test</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Gravity pulls objects downward. The evidence is that a released object moves toward the ground.
+  <div class="info-box">
+    <strong>Goal:</strong> Gravity pulls objects downward. The evidence is that a released object moves toward the ground.
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <label class="form-label"><strong>Object:</strong></label>
+      <select id="objectSelect" class="form-select mb-3" onchange="resetDrop()">
+        <option>Ball</option>
+        <option>Pencil</option>
+        <option>Eraser</option>
+        <option>Paper clip</option>
+        <option>Flat paper</option>
+        <option>Crumpled paper</option>
+      </select>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <label class="form-label"><strong>Object:</strong></label>
-            <select id="objectSelect" class="form-select mb-3" onchange="resetDrop()">
-                <option>Ball</option>
-                <option>Pencil</option>
-                <option>Eraser</option>
-                <option>Paper clip</option>
-                <option>Flat paper</option>
-                <option>Crumpled paper</option>
-            </select>
-        </div>
-
-        <div class="col-md-4">
-            <label class="form-label"><strong>Starting height:</strong> <span id="heightLabel">3</span></label>
-            <input id="heightInput" type="range" class="form-range mb-3" min="1" max="5" value="3" oninput="updateHeight(); resetDrop();">
-        </div>
-
-        <div class="col-md-4">
-            <label class="form-label"><strong>Show force arrow?</strong></label>
-            <select id="arrowSelect" class="form-select mb-3" onchange="resetDrop()">
-                <option>Yes</option>
-                <option>No</option>
-            </select>
-        </div>
+    <div class="col-md-4">
+      <label class="form-label"><strong>Starting height:</strong> <span id="heightLabel">3</span></label>
+      <input id="heightInput" type="range" class="form-range mb-3" min="1" max="5" value="3" oninput="updateHeight(); resetDrop();">
     </div>
 
-    <button class="btn btn-primary" onclick="dropObject()">Drop Object</button>
-    <button class="btn btn-warning" onclick="showGravityArrow()">Show Gravity Arrow</button>
-    <button class="btn btn-secondary" onclick="resetDrop()">Reset</button>
-
-    <div class="drop-zone">
-        <div class="height-line"></div>
-        <div class="height-label">Starting height</div>
-        <div id="gravityArrow" class="gravity-arrow">↓</div>
-        <div id="fallingObject" class="falling-object">Ball</div>
-        <div class="ground">Ground / Earth</div>
+    <div class="col-md-4">
+      <label class="form-label"><strong>Show force arrow?</strong></label>
+      <select id="arrowSelect" class="form-select mb-3" onchange="resetDrop()">
+        <option>Yes</option>
+        <option>No</option>
+      </select>
     </div>
+  </div>
 
-    <div class="motion-data">
-        <p><strong>Force:</strong> <span id="forceData">Not tested yet</span></p>
-        <p><strong>Direction of Force:</strong> <span id="directionData">Not tested yet</span></p>
-        <p><strong>Effect on Motion:</strong> <span id="motionData">Not tested yet</span></p>
-        <p><strong>Evidence:</strong> <span id="evidenceData">Not tested yet</span></p>
-    </div>
+  <button class="btn btn-primary" onclick="dropObject()">Drop Object</button>
+  <button class="btn btn-warning" onclick="showGravityArrow()">Show Gravity Arrow</button>
+  <button class="btn btn-secondary" onclick="resetDrop()">Reset</button>
 
-    <label class="form-label mt-3"><strong>Best explanation:</strong></label>
-    <select id="dropAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Gravity pulled the object downward toward Earth.</option>
-        <option>Magnetism pulled every object downward.</option>
-        <option>The object moved downward because it changed color.</option>
-        <option>No force acted on the object.</option>
-    </select>
+  <div class="drop-zone">
+    <div class="height-line"></div>
+    <div class="height-label">Starting height</div>
+    <div id="gravityArrow" class="gravity-arrow">↓</div>
+    <div id="fallingObject" class="falling-object">Ball</div>
+    <div class="ground">Ground / Earth</div>
+  </div>
 
-    <button class="btn btn-success" onclick="checkDrop()">Check Drop Evidence</button>
-    <div id="dropFeedback"></div>
+  <div class="motion-data">
+    <p><strong>Force:</strong> <span id="forceData">Not tested yet</span></p>
+    <p><strong>Direction of Force:</strong> <span id="directionData">Not tested yet</span></p>
+    <p><strong>Effect on Motion:</strong> <span id="motionData">Not tested yet</span></p>
+    <p><strong>Evidence:</strong> <span id="evidenceData">Not tested yet</span></p>
+  </div>
+
+  <label class="form-label mt-3"><strong>Best explanation:</strong></label>
+  <select id="dropAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Gravity pulled the object downward toward Earth.</option>
+    <option>Magnetism pulled every object downward.</option>
+    <option>The object moved downward because it changed color.</option>
+    <option>No force acted on the object.</option>
+  </select>
+
+  <button class="btn btn-success" onclick="checkDrop()">Check Drop Evidence</button>
+  <div id="dropFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 2: Gravity Arrow Model</h2>
+  <h2>Part 2: Gravity Arrow Model</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> A force arrow for gravity points downward near Earth.
-    </div>
+  <div class="info-box">
+    <strong>Goal:</strong> A force arrow for gravity points downward near Earth.
+  </div>
 
-    <div class="model-box">
-        <div style="font-weight: bold;">Object</div>
-        <div class="big-arrow">↓</div>
-        <div style="font-weight: bold;">Gravity pulls toward Earth</div>
-    </div>
+  <div class="model-box">
+    <div style="font-weight: bold;">Object</div>
+    <div class="big-arrow">↓</div>
+    <div style="font-weight: bold;">Gravity pulls toward Earth</div>
+  </div>
 
-    <label class="form-label"><strong>What does the downward arrow represent?</strong></label>
-    <select id="arrowAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The direction gravity pulls the object.</option>
-        <option>The color of the object.</option>
-        <option>The object becoming magnetic.</option>
-        <option>The object disappearing.</option>
-    </select>
+  <label class="form-label"><strong>What does the downward arrow represent?</strong></label>
+  <select id="arrowAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The direction gravity pulls the object.</option>
+    <option>The color of the object.</option>
+    <option>The object becoming magnetic.</option>
+    <option>The object disappearing.</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkArrow()">Check Arrow Model</button>
-    <div id="arrowFeedback"></div>
+  <button class="btn btn-success" onclick="checkArrow()">Check Arrow Model</button>
+  <div id="arrowFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 3: Falling Object Evidence</h2>
+  <h2>Part 3: Falling Object Evidence</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Use observations as evidence that gravity acted.
-    </div>
+  <div class="info-box">
+    <strong>Goal:</strong> Use observations as evidence that gravity acted.
+  </div>
 
-    <div class="scenario-card">
-        <h4>1. A pencil is released from a desk and falls to the floor.</h4>
-        <select id="q1" class="form-select">
-            <option selected>Choose...</option>
-            <option>Gravity pulled the pencil downward.</option>
-            <option>Magnetism pulled the pencil sideways.</option>
-            <option>No force acted on the pencil.</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>1. A pencil is released from a desk and falls to the floor.</h4>
+    <select id="q1" class="form-select">
+      <option selected>Choose...</option>
+      <option>Gravity pulled the pencil downward.</option>
+      <option>Magnetism pulled the pencil sideways.</option>
+      <option>No force acted on the pencil.</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>2. A ball is thrown upward and then comes back down.</h4>
-        <select id="q2" class="form-select">
-            <option selected>Choose...</option>
-            <option>Gravity pulled the ball back toward Earth.</option>
-            <option>The ball stopped being matter.</option>
-            <option>The ball became a liquid.</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>2. A ball is thrown upward and then comes back down.</h4>
+    <select id="q2" class="form-select">
+      <option selected>Choose...</option>
+      <option>Gravity pulled the ball back toward Earth.</option>
+      <option>The ball stopped being matter.</option>
+      <option>The ball became a liquid.</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>3. A flat paper and crumpled paper are dropped. Both fall downward.</h4>
-        <select id="q3" class="form-select">
-            <option selected>Choose...</option>
-            <option>Gravity acted on both pieces of paper.</option>
-            <option>Gravity acted only on the crumpled paper.</option>
-            <option>No gravity acted because paper is light.</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>3. A flat paper and crumpled paper are dropped. Both fall downward.</h4>
+    <select id="q3" class="form-select">
+      <option selected>Choose...</option>
+      <option>Gravity acted on both pieces of paper.</option>
+      <option>Gravity acted only on the crumpled paper.</option>
+      <option>No gravity acted because paper is light.</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>4. A book rests on a table and does not fall.</h4>
-        <select id="q4" class="form-select">
-            <option selected>Choose...</option>
-            <option>Gravity pulls down, and the table pushes up.</option>
-            <option>Gravity is not acting on the book.</option>
-            <option>The book is not matter.</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>4. A book rests on a table and does not fall.</h4>
+    <select id="q4" class="form-select">
+      <option selected>Choose...</option>
+      <option>Gravity pulls down, and the table pushes up.</option>
+      <option>Gravity is not acting on the book.</option>
+      <option>The book is not matter.</option>
+    </select>
+  </div>
 
-    <button class="btn btn-success" onclick="checkEvidence()">Check Evidence</button>
-    <div id="evidenceFeedback"></div>
+  <button class="btn btn-success" onclick="checkEvidence()">Check Evidence</button>
+  <div id="evidenceFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 4: STAAR Gravity Challenge</h2>
+  <h2>Part 4: STAAR Gravity Challenge</h2>
 
-    <div class="info-box">
-        <strong>Question:</strong> A student drops a ball from her hand. The ball moves downward and hits the floor.
-    </div>
+  <div class="info-box">
+    <strong>Question:</strong> A student drops a ball from her hand. The ball moves downward and hits the floor.
+  </div>
 
-    <label class="form-label"><strong>Best claim:</strong></label>
-    <select id="staar1" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Gravity pulled the ball downward.</option>
-        <option>Friction pulled the ball upward.</option>
-        <option>Magnetism changed the ball's color.</option>
-        <option>No force acted on the ball.</option>
-    </select>
+  <label class="form-label"><strong>Best claim:</strong></label>
+  <select id="staar1" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Gravity pulled the ball downward.</option>
+    <option>Friction pulled the ball upward.</option>
+    <option>Magnetism changed the ball's color.</option>
+    <option>No force acted on the ball.</option>
+  </select>
 
-    <label class="form-label"><strong>Best evidence:</strong></label>
-    <select id="staar2" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The ball moved from the hand to the floor.</option>
-        <option>The ball was round.</option>
-        <option>The ball had a color.</option>
-        <option>The student had a hand.</option>
-    </select>
+  <label class="form-label"><strong>Best evidence:</strong></label>
+  <select id="staar2" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The ball moved from the hand to the floor.</option>
+    <option>The ball was round.</option>
+    <option>The ball had a color.</option>
+    <option>The student had a hand.</option>
+  </select>
 
-    <label class="form-label"><strong>Best force arrow:</strong></label>
-    <select id="staar3" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>↓</option>
-        <option>↑</option>
-        <option>←</option>
-        <option>→</option>
-    </select>
+  <label class="form-label"><strong>Best force arrow:</strong></label>
+  <select id="staar3" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>↓</option>
+    <option>↑</option>
+    <option>←</option>
+    <option>→</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
-    <div id="staarFeedback"></div>
+  <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
+  <div id="staarFeedback"></div>
 </div>
 
 <script>
-    let dropped = false;
+  let dropped = false;
 
-    function showFeedback(elementId, message, isCorrect) {
-        const box = document.getElementById(elementId);
-        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
-        box.innerHTML = message;
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function updateHeight() {
+    document.getElementById("heightLabel").innerText = document.getElementById("heightInput").value;
+  }
+
+  function resetDrop() {
+    dropped = false;
+
+    const obj = document.getElementById("objectSelect").value;
+    const height = Number(document.getElementById("heightInput").value);
+    const fallingObject = document.getElementById("fallingObject");
+
+    fallingObject.innerText = obj;
+    fallingObject.style.top = (245 - height * 45) + "px";
+
+    document.getElementById("gravityArrow").style.display = "none";
+    document.getElementById("forceData").innerText = "Not tested yet";
+    document.getElementById("directionData").innerText = "Not tested yet";
+    document.getElementById("motionData").innerText = "Not tested yet";
+    document.getElementById("evidenceData").innerText = "Not tested yet";
+    document.getElementById("dropAnswer").value = "Choose...";
+    document.getElementById("dropFeedback").innerHTML = "";
+    document.getElementById("dropFeedback").className = "";
+  }
+
+  function showGravityArrow() {
+    const arrowChoice = document.getElementById("arrowSelect").value;
+    if (arrowChoice === "Yes") {
+      document.getElementById("gravityArrow").style.display = "block";
+    }
+  }
+
+  function dropObject() {
+    dropped = true;
+
+    const obj = document.getElementById("objectSelect").value;
+    const fallingObject = document.getElementById("fallingObject");
+
+    showGravityArrow();
+
+    if (obj === "Flat paper") {
+      fallingObject.style.top = "235px";
+      document.getElementById("motionData").innerText = "The flat paper falls downward, but air can slow it down.";
+      document.getElementById("evidenceData").innerText = "It still moves downward toward Earth after being released.";
+    } else {
+      fallingObject.style.top = "250px";
+      document.getElementById("motionData").innerText = "The object moves downward after it is released.";
+      document.getElementById("evidenceData").innerText = "It changes position from higher to lower.";
     }
 
-    function updateHeight() {
-        document.getElementById("heightLabel").innerText = document.getElementById("heightInput").value;
+    document.getElementById("forceData").innerText = "Gravity";
+    document.getElementById("directionData").innerText = "Downward toward Earth";
+  }
+
+  function checkDrop() {
+    const answer = document.getElementById("dropAnswer").value;
+
+    if (!dropped) {
+      showFeedback("dropFeedback", "Drop the object first, then check your answer.", false);
+      return;
     }
 
-    function resetDrop() {
-        dropped = false;
-
-        const obj = document.getElementById("objectSelect").value;
-        const height = Number(document.getElementById("heightInput").value);
-        const fallingObject = document.getElementById("fallingObject");
-
-        fallingObject.innerText = obj;
-        fallingObject.style.top = (245 - height * 45) + "px";
-
-        document.getElementById("gravityArrow").style.display = "none";
-        document.getElementById("forceData").innerText = "Not tested yet";
-        document.getElementById("directionData").innerText = "Not tested yet";
-        document.getElementById("motionData").innerText = "Not tested yet";
-        document.getElementById("evidenceData").innerText = "Not tested yet";
-        document.getElementById("dropAnswer").value = "Choose...";
-        document.getElementById("dropFeedback").innerHTML = "";
-        document.getElementById("dropFeedback").className = "";
+    if (answer === "Gravity pulled the object downward toward Earth.") {
+      showFeedback("dropFeedback", "Correct! Gravity is the force pulling the object downward.", true);
+    } else {
+      showFeedback("dropFeedback", "Not yet. Use the downward motion as evidence that gravity acted.", false);
     }
+  }
 
-    function showGravityArrow() {
-        const arrowChoice = document.getElementById("arrowSelect").value;
-        if (arrowChoice === "Yes") {
-            document.getElementById("gravityArrow").style.display = "block";
-        }
+  function checkArrow() {
+    const answer = document.getElementById("arrowAnswer").value;
+
+    if (answer === "The direction gravity pulls the object.") {
+      showFeedback("arrowFeedback", "Correct! Near Earth, the gravity force arrow points downward.", true);
+    } else {
+      showFeedback("arrowFeedback", "Not yet. The arrow shows the direction of the force of gravity.", false);
     }
+  }
 
-    function dropObject() {
-        dropped = true;
+  function checkEvidence() {
+    let correct = 0;
 
-        const obj = document.getElementById("objectSelect").value;
-        const fallingObject = document.getElementById("fallingObject");
+    if (document.getElementById("q1").value === "Gravity pulled the pencil downward.") correct++;
+    if (document.getElementById("q2").value === "Gravity pulled the ball back toward Earth.") correct++;
+    if (document.getElementById("q3").value === "Gravity acted on both pieces of paper.") correct++;
+    if (document.getElementById("q4").value === "Gravity pulls down, and the table pushes up.") correct++;
 
-        showGravityArrow();
-
-        if (obj === "Flat paper") {
-            fallingObject.style.top = "235px";
-            document.getElementById("motionData").innerText = "The flat paper falls downward, but air can slow it down.";
-            document.getElementById("evidenceData").innerText = "It still moves downward toward Earth after being released.";
-        } else {
-            fallingObject.style.top = "250px";
-            document.getElementById("motionData").innerText = "The object moves downward after it is released.";
-            document.getElementById("evidenceData").innerText = "It changes position from higher to lower.";
-        }
-
-        document.getElementById("forceData").innerText = "Gravity";
-        document.getElementById("directionData").innerText = "Downward toward Earth";
+    if (correct === 4) {
+      showFeedback("evidenceFeedback", "Correct! You used motion evidence to explain gravity.", true);
+    } else {
+      showFeedback("evidenceFeedback", "You got " + correct + " out of 4. Gravity pulls objects downward toward Earth.", false);
     }
+  }
 
-    function checkDrop() {
-        const answer = document.getElementById("dropAnswer").value;
+  function checkSTAAR() {
+    const s1 = document.getElementById("staar1").value;
+    const s2 = document.getElementById("staar2").value;
+    const s3 = document.getElementById("staar3").value;
 
-        if (!dropped) {
-            showFeedback("dropFeedback", "Drop the object first, then check your answer.", false);
-            return;
-        }
-
-        if (answer === "Gravity pulled the object downward toward Earth.") {
-            showFeedback("dropFeedback", "Correct! Gravity is the force pulling the object downward.", true);
-        } else {
-            showFeedback("dropFeedback", "Not yet. Use the downward motion as evidence that gravity acted.", false);
-        }
+    if (
+      s1 === "Gravity pulled the ball downward." &&
+      s2 === "The ball moved from the hand to the floor." &&
+      s3 === "↓"
+    ) {
+      showFeedback("staarFeedback", "Correct! The downward motion is evidence that gravity acted on the ball.", true);
+    } else {
+      showFeedback("staarFeedback", "Not yet. Gravity pulls downward, and the best evidence is the ball moving toward the floor.", false);
     }
+  }
 
-    function checkArrow() {
-        const answer = document.getElementById("arrowAnswer").value;
-
-        if (answer === "The direction gravity pulls the object.") {
-            showFeedback("arrowFeedback", "Correct! Near Earth, the gravity force arrow points downward.", true);
-        } else {
-            showFeedback("arrowFeedback", "Not yet. The arrow shows the direction of the force of gravity.", false);
-        }
-    }
-
-    function checkEvidence() {
-        let correct = 0;
-
-        if (document.getElementById("q1").value === "Gravity pulled the pencil downward.") correct++;
-        if (document.getElementById("q2").value === "Gravity pulled the ball back toward Earth.") correct++;
-        if (document.getElementById("q3").value === "Gravity acted on both pieces of paper.") correct++;
-        if (document.getElementById("q4").value === "Gravity pulls down, and the table pushes up.") correct++;
-
-        if (correct === 4) {
-            showFeedback("evidenceFeedback", "Correct! You used motion evidence to explain gravity.", true);
-        } else {
-            showFeedback("evidenceFeedback", "You got " + correct + " out of 4. Gravity pulls objects downward toward Earth.", false);
-        }
-    }
-
-    function checkSTAAR() {
-        const s1 = document.getElementById("staar1").value;
-        const s2 = document.getElementById("staar2").value;
-        const s3 = document.getElementById("staar3").value;
-
-        if (
-            s1 === "Gravity pulled the ball downward." &&
-            s2 === "The ball moved from the hand to the floor." &&
-            s3 === "↓"
-        ) {
-            showFeedback("staarFeedback", "Correct! The downward motion is evidence that gravity acted on the ball.", true);
-        } else {
-            showFeedback("staarFeedback", "Not yet. Gravity pulls downward, and the best evidence is the ball moving toward the floor.", false);
-        }
-    }
-
-    updateHeight();
-    resetDrop();
+  updateHeight();
+  resetDrop();
 </script>
 
 {% endblock %}

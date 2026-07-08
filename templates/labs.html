@@ -5,715 +5,715 @@
 {% block content %}
 
 <style>
-    .labs-hero {
-        background:
-            radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
-            radial-gradient(circle at 78% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
-            linear-gradient(135deg, #102542 0%, #1b4965 58%, #5fa8d3 100%);
-        color: white;
-        border: 5px solid #111;
-        border-radius: 28px;
-        padding: 32px;
-        box-shadow: 8px 8px 0 rgba(17, 17, 17, 0.18);
-        margin-bottom: 24px;
-    }
+  .labs-hero {
+    background:
+      radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      radial-gradient(circle at 78% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      linear-gradient(135deg, #102542 0%, #1b4965 58%, #5fa8d3 100%);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 28px;
+    padding: 32px;
+    box-shadow: 8px 8px 0 rgba(17, 17, 17, 0.18);
+    margin-bottom: 24px;
+  }
 
-    .labs-hero h1 {
-        font-size: clamp(2.2rem, 5vw, 4.5rem);
-        font-weight: 950;
-        line-height: 0.95;
-        margin-bottom: 14px;
-    }
+  .labs-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    font-weight: 950;
+    line-height: 0.95;
+    margin-bottom: 14px;
+  }
 
-    .lab-folder {
-        background: white;
-        border: 4px solid #111;
-        border-radius: 24px;
-        box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
-        margin-bottom: 24px;
-        overflow: hidden;
-    }
+  .lab-folder {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 24px;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
 
-    .folder-header {
-        border-bottom: 4px solid #111;
-        padding: 20px 24px;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 14px;
-    }
+  .folder-header {
+    border-bottom: 4px solid #111;
+    padding: 20px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+  }
 
-    .folder-title {
-        font-size: 1.55rem;
-        font-weight: 950;
-        margin: 0;
-    }
+  .folder-title {
+    font-size: 1.55rem;
+    font-weight: 950;
+    margin: 0;
+  }
 
-    .folder-subtitle {
-        margin: 4px 0 0;
-        font-weight: 650;
-    }
+  .folder-subtitle {
+    margin: 4px 0 0;
+    font-weight: 650;
+  }
 
-    .folder-icon {
-        font-size: 44px;
-        margin-right: 10px;
-    }
+  .folder-icon {
+    font-size: 44px;
+    margin-right: 10px;
+  }
 
-    .folder-body {
-        padding: 20px;
-        display: none;
-    }
+  .folder-body {
+    padding: 20px;
+    display: none;
+  }
 
-    .folder-body.open {
-        display: block;
-    }
+  .folder-body.open {
+    display: block;
+  }
 
-    .lab-card {
-        background: #f8f9fa;
-        border: 3px solid #111;
-        border-radius: 18px;
-        padding: 16px;
-        height: 100%;
-        transition: transform 0.15s ease;
-    }
+  .lab-card {
+    background: #f8f9fa;
+    border: 3px solid #111;
+    border-radius: 18px;
+    padding: 16px;
+    height: 100%;
+    transition: transform 0.15s ease;
+  }
 
-    .lab-card:hover {
-        transform: translateY(-2px);
-        background: #fff3cd;
-    }
+  .lab-card:hover {
+    transform: translateY(-2px);
+    background: #fff3cd;
+  }
 
-    .lab-emoji {
-        font-size: 40px;
-        display: inline-block;
-        margin-bottom: 8px;
-    }
+  .lab-emoji {
+    font-size: 40px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
 
-    .lab-title {
-        font-weight: 950;
-        margin-bottom: 8px;
-    }
+  .lab-title {
+    font-weight: 950;
+    margin-bottom: 8px;
+  }
 
-    .lab-tag {
-        display: inline-block;
-        background: #d1e7dd;
-        border: 2px solid #111;
-        border-radius: 999px;
-        padding: 3px 8px;
-        font-size: 0.78rem;
-        font-weight: 850;
-        margin: 2px;
-    }
+  .lab-tag {
+    display: inline-block;
+    background: #d1e7dd;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 3px 8px;
+    font-size: 0.78rem;
+    font-weight: 850;
+    margin: 2px;
+  }
 
-    .library-toolbar {
-        background: white;
-        border: 4px solid #111;
-        border-radius: 22px;
-        padding: 18px;
-        margin-bottom: 24px;
-        box-shadow: 5px 5px 0 rgba(17,17,17,0.12);
-    }
+  .library-toolbar {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 22px;
+    padding: 18px;
+    margin-bottom: 24px;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.12);
+  }
 
-    .science-btn-small {
-        border: 3px solid #111;
-        border-radius: 12px;
-        font-weight: 850;
-        box-shadow: 2px 2px 0 rgba(17,17,17,0.2);
-        margin: 4px;
-    }
+  .science-btn-small {
+    border: 3px solid #111;
+    border-radius: 12px;
+    font-weight: 850;
+    box-shadow: 2px 2px 0 rgba(17,17,17,0.2);
+    margin: 4px;
+  }
 
-    .unit-one {
-        background: #d1e7dd;
-    }
+  .unit-one {
+    background: #d1e7dd;
+  }
 
-    .unit-two {
-        background: #cff4fc;
-    }
+  .unit-two {
+    background: #cff4fc;
+  }
 
-    .unit-three {
-        background: #fff3cd;
-    }
+  .unit-three {
+    background: #fff3cd;
+  }
 
-    .unit-review {
-        background: #f8d7da;
-    }
+  .unit-review {
+    background: #f8d7da;
+  }
 
-    .teacher-note {
-        background: #fff3cd;
-        border-left: 8px solid #111;
-        border-radius: 14px;
-        padding: 16px;
-        font-weight: 700;
-    }
+  .teacher-note {
+    background: #fff3cd;
+    border-left: 8px solid #111;
+    border-radius: 14px;
+    padding: 16px;
+    font-weight: 700;
+  }
 
-    .hidden-lab {
-        display: none !important;
-    }
+  .hidden-lab {
+    display: none !important;
+  }
 </style>
 
 <section class="labs-hero">
-    <span class="badge-science">Interactive Labs</span>
-    <span class="badge-science">Review Games</span>
-    <span class="badge-science">Assessments</span>
+  <span class="badge-science">Interactive Labs</span>
+  <span class="badge-science">Review Games</span>
+  <span class="badge-science">Assessments</span>
 
-    <h1 class="mt-3">Science Lab Library</h1>
+  <h1 class="mt-3">Science Lab Library</h1>
 
-    <p class="lead mb-0">
-        Open simulations, review games, digital assessments, performance builders,
-        and reflection tools from one classroom-friendly page.
-    </p>
+  <p class="lead mb-0">
+    Open simulations, review games, digital assessments, performance builders,
+    and reflection tools from one classroom-friendly page.
+  </p>
 </section>
 
 <section class="library-toolbar no-print">
-    <div class="row align-items-end">
-        <div class="col-lg-5">
-            <label class="form-label"><strong>Search labs:</strong></label>
-            <input id="labSearch" class="form-control" placeholder="Search matter, mixtures, force, graph, assessment..." oninput="filterLabs()">
-        </div>
-
-        <div class="col-lg-7 mt-3 mt-lg-0">
-            <button class="btn btn-success science-btn-small" onclick="openFolder('unit1Labs')">Unit 1</button>
-            <button class="btn btn-info science-btn-small" onclick="openFolder('unit2Labs')">Unit 2</button>
-            <button class="btn btn-warning science-btn-small" onclick="openFolder('unit3Labs')">Unit 3</button>
-            <button class="btn btn-danger science-btn-small" onclick="openFolder('reviewLabs')">Review Tools</button>
-            <button class="btn btn-secondary science-btn-small" onclick="openAllFolders()">Open All</button>
-            <button class="btn btn-dark science-btn-small" onclick="closeAllFolders()">Close All</button>
-        </div>
+  <div class="row align-items-end">
+    <div class="col-lg-5">
+      <label class="form-label"><strong>Search labs:</strong></label>
+      <input id="labSearch" class="form-control" placeholder="Search matter, mixtures, force, graph, assessment..." oninput="filterLabs()">
     </div>
+
+    <div class="col-lg-7 mt-3 mt-lg-0">
+      <button class="btn btn-success science-btn-small" onclick="openFolder('unit1Labs')">Unit 1</button>
+      <button class="btn btn-info science-btn-small" onclick="openFolder('unit2Labs')">Unit 2</button>
+      <button class="btn btn-warning science-btn-small" onclick="openFolder('unit3Labs')">Unit 3</button>
+      <button class="btn btn-danger science-btn-small" onclick="openFolder('reviewLabs')">Review Tools</button>
+      <button class="btn btn-secondary science-btn-small" onclick="openAllFolders()">Open All</button>
+      <button class="btn btn-dark science-btn-small" onclick="closeAllFolders()">Close All</button>
+    </div>
+  </div>
 </section>
 
 <section class="teacher-note mb-4">
-    Teacher tip: Use this page when you want students to go directly to a lab, review game,
-    station board, assessment, or reflection tool without opening the daily lesson first.
+  Teacher tip: Use this page when you want students to go directly to a lab, review game,
+  station board, assessment, or reflection tool without opening the daily lesson first.
 </section>
 
 <section class="lab-folder">
-    <div class="folder-header unit-one" onclick="toggleFolder('unit1Labs')">
-        <div>
-            <h2 class="folder-title"><span class="folder-icon">🧱</span>Unit 1: Matter and Physical Properties</h2>
-            <p class="folder-subtitle">Mass, volume, density, solubility, conductors, insulators, and matter review.</p>
-        </div>
-        <button class="btn btn-light science-btn-small no-print" type="button">Open / Close</button>
+  <div class="folder-header unit-one" onclick="toggleFolder('unit1Labs')">
+    <div>
+      <h2 class="folder-title"><span class="folder-icon">🧱</span>Unit 1: Matter and Physical Properties</h2>
+      <p class="folder-subtitle">Mass, volume, density, solubility, conductors, insulators, and matter review.</p>
     </div>
+    <button class="btn btn-light science-btn-small no-print" type="button">Open / Close</button>
+  </div>
 
-    <div id="unit1Labs" class="folder-body open">
-        <div class="row g-3">
+  <div id="unit1Labs" class="folder-body open">
+    <div class="row g-3">
 
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="volume graduated cylinder milliliters ml liquid measurement meniscus displacement">
-                <div class="lab-card">
-                    <div class="lab-emoji">💧</div>
-                    <h4 class="lab-title">Graduated Cylinder Volume Simulator</h4>
-                    <p>Pour liquids, read mL marks, see the measurement line, and measure volume by displacement.</p>
-                    <span class="lab-tag">Day 9</span><span class="lab-tag">Volume</span>
-                    <div class="mt-3"><a href="/labs/graduated-cylinder-volume" class="btn btn-primary science-btn-small">Open Simulator</a></div>
-                </div>
-            </div>
-
-
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="mass balance scale grams measure compare matter object weight">
-                <div class="lab-card">
-                    <div class="lab-emoji">⚖️</div>
-                    <h4 class="lab-title">Balance Scale Mass Simulator</h4>
-                    <p>Use gram masses to balance objects, collect data, solve mystery masses, and write CER.</p>
-                    <span class="lab-tag">Day 8</span><span class="lab-tag">Mass</span>
-                    <div class="mt-3"><a href="/labs/balance-scale-mass" class="btn btn-primary science-btn-small">Open Simulator</a></div>
-                </div>
-            </div>
-
-
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="magnetism magnetic or not magnet attract iron steel physical property">
-                <div class="lab-card">
-                    <div class="lab-emoji">🧲</div>
-                    <h4 class="lab-title">Magnetic or Not Lab Game</h4>
-                    <p>Predict and test which objects are attracted to a magnet, then explain using evidence.</p>
-                    <span class="lab-tag">Day 7</span><span class="lab-tag">Magnetism</span>
-                    <div class="mt-3"><a href="/labs/magnetic-or-not" class="btn btn-primary science-btn-small">Open Game</a></div>
-                </div>
-            </div>
-
-
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="states of matter solid liquid gas particles shape volume match game">
-                <div class="lab-card">
-                    <div class="lab-emoji">🧊</div>
-                    <h4 class="lab-title">States of Matter Match Game</h4>
-                    <p>Match solids, liquids, and gases to shape, volume, particles, and examples.</p>
-                    <span class="lab-tag">Day 6</span><span class="lab-tag">States of Matter</span>
-                    <div class="mt-3"><a href="/labs/states-matter-match" class="btn btn-primary science-btn-small">Open Game</a></div>
-                </div>
-            </div>
-
-
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="physical properties matter sort mass volume magnetism solubility density conductor insulator">
-                <div class="lab-card">
-                    <div class="lab-emoji">🔎</div>
-                    <h4 class="lab-title">Physical Properties Sort Game</h4>
-                    <p>Sort objects by mass, volume, magnetism, solubility, relative density, and conductivity.</p>
-                    <span class="lab-tag">Day 5</span><span class="lab-tag">Matter</span>
-                    <div class="mt-3"><a href="/labs/physical-properties-sort" class="btn btn-primary science-btn-small">Open Game</a></div>
-                </div>
-            </div>
-
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="matter mass volume density measurement">
-                <div class="lab-card">
-                    <div class="lab-emoji">⚖️</div>
-                    <h4 class="lab-title">Mass and Volume Investigation</h4>
-                    <p>Measure and compare mass and volume using a virtual investigation.</p>
-                    <span class="lab-tag">Day 10</span><span class="lab-tag">Matter</span>
-                    <div class="mt-3"><a href="/labs/mass-volume" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="sink float density relative density objects liquids">
-                <div class="lab-card">
-                    <div class="lab-emoji">🪨</div>
-                    <h4 class="lab-title">Objects in Liquids</h4>
-                    <p>Test which objects sink or float and connect results to relative density.</p>
-                    <span class="lab-tag">Day 11</span><span class="lab-tag">Density</span>
-                    <div class="mt-3"><a href="/labs/sink-float" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="liquids layers density relative density oil water">
-                <div class="lab-card">
-                    <div class="lab-emoji">💧</div>
-                    <h4 class="lab-title">Liquids in Liquids</h4>
-                    <p>Layer liquids and observe how relative density affects their position.</p>
-                    <span class="lab-tag">Day 12</span><span class="lab-tag">Liquids</span>
-                    <div class="mt-3"><a href="/labs/liquid-density" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="solubility soluble insoluble dissolve solution matter">
-                <div class="lab-card">
-                    <div class="lab-emoji">🥄</div>
-                    <h4 class="lab-title">Solubility Lab</h4>
-                    <p>Test which materials dissolve and which materials remain insoluble.</p>
-                    <span class="lab-tag">Day 13</span><span class="lab-tag">Solubility</span>
-                    <div class="mt-3"><a href="/labs/solubility" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="conductors insulators electricity circuit copper rubber plastic">
-                <div class="lab-card">
-                    <div class="lab-emoji">💡</div>
-                    <h4 class="lab-title">Conductors and Insulators</h4>
-                    <p>Build a circuit and test which materials conduct electricity.</p>
-                    <span class="lab-tag">Day 14</span><span class="lab-tag">Electricity</span>
-                    <div class="mt-3"><a href="/labs/conductivity" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="unit 1 review matter game staar practice">
-                <div class="lab-card">
-                    <div class="lab-emoji">🎮</div>
-                    <h4 class="lab-title">Unit 1 Review Game</h4>
-                    <p>Review matter and physical properties with an interactive game.</p>
-                    <span class="lab-tag">Day 15</span><span class="lab-tag">Review</span>
-                    <div class="mt-3"><a href="/labs/unit1-review" class="btn btn-primary science-btn-small">Open Game</a></div>
-                </div>
-            </div>
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="volume graduated cylinder milliliters ml liquid measurement meniscus displacement">
+        <div class="lab-card">
+          <div class="lab-emoji">💧</div>
+          <h4 class="lab-title">Graduated Cylinder Volume Simulator</h4>
+          <p>Pour liquids, read mL marks, see the measurement line, and measure volume by displacement.</p>
+          <span class="lab-tag">Day 9</span><span class="lab-tag">Volume</span>
+          <div class="mt-3"><a href="/labs/graduated-cylinder-volume" class="btn btn-primary science-btn-small">Open Simulator</a></div>
         </div>
+      </div>
+
+
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="mass balance scale grams measure compare matter object weight">
+        <div class="lab-card">
+          <div class="lab-emoji">⚖️</div>
+          <h4 class="lab-title">Balance Scale Mass Simulator</h4>
+          <p>Use gram masses to balance objects, collect data, solve mystery masses, and write CER.</p>
+          <span class="lab-tag">Day 8</span><span class="lab-tag">Mass</span>
+          <div class="mt-3"><a href="/labs/balance-scale-mass" class="btn btn-primary science-btn-small">Open Simulator</a></div>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="magnetism magnetic or not magnet attract iron steel physical property">
+        <div class="lab-card">
+          <div class="lab-emoji">🧲</div>
+          <h4 class="lab-title">Magnetic or Not Lab Game</h4>
+          <p>Predict and test which objects are attracted to a magnet, then explain using evidence.</p>
+          <span class="lab-tag">Day 7</span><span class="lab-tag">Magnetism</span>
+          <div class="mt-3"><a href="/labs/magnetic-or-not" class="btn btn-primary science-btn-small">Open Game</a></div>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="states of matter solid liquid gas particles shape volume match game">
+        <div class="lab-card">
+          <div class="lab-emoji">🧊</div>
+          <h4 class="lab-title">States of Matter Match Game</h4>
+          <p>Match solids, liquids, and gases to shape, volume, particles, and examples.</p>
+          <span class="lab-tag">Day 6</span><span class="lab-tag">States of Matter</span>
+          <div class="mt-3"><a href="/labs/states-matter-match" class="btn btn-primary science-btn-small">Open Game</a></div>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="physical properties matter sort mass volume magnetism solubility density conductor insulator">
+        <div class="lab-card">
+          <div class="lab-emoji">🔎</div>
+          <h4 class="lab-title">Physical Properties Sort Game</h4>
+          <p>Sort objects by mass, volume, magnetism, solubility, relative density, and conductivity.</p>
+          <span class="lab-tag">Day 5</span><span class="lab-tag">Matter</span>
+          <div class="mt-3"><a href="/labs/physical-properties-sort" class="btn btn-primary science-btn-small">Open Game</a></div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="matter mass volume density measurement">
+        <div class="lab-card">
+          <div class="lab-emoji">⚖️</div>
+          <h4 class="lab-title">Mass and Volume Investigation</h4>
+          <p>Measure and compare mass and volume using a virtual investigation.</p>
+          <span class="lab-tag">Day 10</span><span class="lab-tag">Matter</span>
+          <div class="mt-3"><a href="/labs/mass-volume" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="sink float density relative density objects liquids">
+        <div class="lab-card">
+          <div class="lab-emoji">🪨</div>
+          <h4 class="lab-title">Objects in Liquids</h4>
+          <p>Test which objects sink or float and connect results to relative density.</p>
+          <span class="lab-tag">Day 11</span><span class="lab-tag">Density</span>
+          <div class="mt-3"><a href="/labs/sink-float" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="liquids layers density relative density oil water">
+        <div class="lab-card">
+          <div class="lab-emoji">💧</div>
+          <h4 class="lab-title">Liquids in Liquids</h4>
+          <p>Layer liquids and observe how relative density affects their position.</p>
+          <span class="lab-tag">Day 12</span><span class="lab-tag">Liquids</span>
+          <div class="mt-3"><a href="/labs/liquid-density" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="solubility soluble insoluble dissolve solution matter">
+        <div class="lab-card">
+          <div class="lab-emoji">🥄</div>
+          <h4 class="lab-title">Solubility Lab</h4>
+          <p>Test which materials dissolve and which materials remain insoluble.</p>
+          <span class="lab-tag">Day 13</span><span class="lab-tag">Solubility</span>
+          <div class="mt-3"><a href="/labs/solubility" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="conductors insulators electricity circuit copper rubber plastic">
+        <div class="lab-card">
+          <div class="lab-emoji">💡</div>
+          <h4 class="lab-title">Conductors and Insulators</h4>
+          <p>Build a circuit and test which materials conduct electricity.</p>
+          <span class="lab-tag">Day 14</span><span class="lab-tag">Electricity</span>
+          <div class="mt-3"><a href="/labs/conductivity" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="unit 1 review matter game staar practice">
+        <div class="lab-card">
+          <div class="lab-emoji">🎮</div>
+          <h4 class="lab-title">Unit 1 Review Game</h4>
+          <p>Review matter and physical properties with an interactive game.</p>
+          <span class="lab-tag">Day 15</span><span class="lab-tag">Review</span>
+          <div class="mt-3"><a href="/labs/unit1-review" class="btn btn-primary science-btn-small">Open Game</a></div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="lab-folder">
-    <div class="folder-header unit-two" onclick="toggleFolder('unit2Labs')">
-        <div>
-            <h2 class="folder-title"><span class="folder-icon">🧪</span>Unit 2: Mixtures, Solutions, and Particles</h2>
-            <p class="folder-subtitle">Separating mixtures, solutions, evaporation, conservation of matter, and particles too small to see.</p>
-        </div>
-        <button class="btn btn-light science-btn-small no-print" type="button">Open / Close</button>
+  <div class="folder-header unit-two" onclick="toggleFolder('unit2Labs')">
+    <div>
+      <h2 class="folder-title"><span class="folder-icon">🧪</span>Unit 2: Mixtures, Solutions, and Particles</h2>
+      <p class="folder-subtitle">Separating mixtures, solutions, evaporation, conservation of matter, and particles too small to see.</p>
     </div>
+    <button class="btn btn-light science-btn-small no-print" type="button">Open / Close</button>
+  </div>
 
-    <div id="unit2Labs" class="folder-body">
-        <div class="row g-3">
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="mixtures materials properties">
-                <div class="lab-card">
-                    <div class="lab-emoji">🥣</div>
-                    <h4 class="lab-title">What Is a Mixture?</h4>
-                    <p>Explore how materials keep their properties when mixed.</p>
-                    <span class="lab-tag">Day 16</span><span class="lab-tag">Mixtures</span>
-                    <div class="mt-3"><a href="/labs/mixtures" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="particle size screen filter gravel sand separation">
-                <div class="lab-card">
-                    <div class="lab-emoji">🪨</div>
-                    <h4 class="lab-title">Separate by Particle Size</h4>
-                    <p>Use screens and filters to separate larger and smaller particles.</p>
-                    <span class="lab-tag">Day 17</span><span class="lab-tag">Separation</span>
-                    <div class="mt-3"><a href="/labs/particle-size" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="magnet magnetism separation iron filings sand">
-                <div class="lab-card">
-                    <div class="lab-emoji">🧲</div>
-                    <h4 class="lab-title">Separate Using Magnetism</h4>
-                    <p>Use magnetic properties to separate magnetic and nonmagnetic materials.</p>
-                    <span class="lab-tag">Day 18</span><span class="lab-tag">Magnetism</span>
-                    <div class="mt-3"><a href="/labs/magnet-separation" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="relative density mixtures floating layers">
-                <div class="lab-card">
-                    <div class="lab-emoji">🛢️</div>
-                    <h4 class="lab-title">Separate by Relative Density</h4>
-                    <p>Separate materials based on floating, sinking, and liquid layers.</p>
-                    <span class="lab-tag">Day 19</span><span class="lab-tag">Density</span>
-                    <div class="mt-3"><a href="/labs/relative-density-mixtures" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="solutions solubility dissolve salt water">
-                <div class="lab-card">
-                    <div class="lab-emoji">💧</div>
-                    <h4 class="lab-title">Solutions in Mixtures</h4>
-                    <p>Explore how substances dissolve to form solutions.</p>
-                    <span class="lab-tag">Day 20</span><span class="lab-tag">Solutions</span>
-                    <div class="mt-3"><a href="/labs/solutions" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="evaporation salt water solution recover salt">
-                <div class="lab-card">
-                    <div class="lab-emoji">☀️</div>
-                    <h4 class="lab-title">Separate by Evaporation</h4>
-                    <p>Use evaporation to recover dissolved material from a solution.</p>
-                    <span class="lab-tag">Day 21</span><span class="lab-tag">Evaporation</span>
-                    <div class="mt-3"><a href="/labs/evaporation" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="conservation matter solution mass before after">
-                <div class="lab-card">
-                    <div class="lab-emoji">⚖️</div>
-                    <h4 class="lab-title">Conservation of Matter</h4>
-                    <p>Compare before-and-after mass when materials dissolve.</p>
-                    <span class="lab-tag">Day 22</span><span class="lab-tag">Matter</span>
-                    <div class="mt-3"><a href="/labs/conservation-matter" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="unit 2 review mixtures solutions game">
-                <div class="lab-card">
-                    <div class="lab-emoji">🎮</div>
-                    <h4 class="lab-title">Unit 2 Review Game</h4>
-                    <p>Review mixtures, solutions, and separation methods.</p>
-                    <span class="lab-tag">Day 23</span><span class="lab-tag">Review</span>
-                    <div class="mt-3"><a href="/labs/unit2-review" class="btn btn-primary science-btn-small">Open Game</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="particles too small to see model sugar salt dissolved">
-                <div class="lab-card">
-                    <div class="lab-emoji">🔬</div>
-                    <h4 class="lab-title">Particles Too Small to See</h4>
-                    <p>Model dissolved particles that are too small to see with only eyes.</p>
-                    <span class="lab-tag">Day 24</span><span class="lab-tag">Particles</span>
-                    <div class="mt-3"><a href="/labs/particles" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="unit 2 performance assessment mixtures solutions">
-                <div class="lab-card">
-                    <div class="lab-emoji">🏆</div>
-                    <h4 class="lab-title">Unit 2 Performance Tool</h4>
-                    <p>Practice Unit 2 performance assessment thinking.</p>
-                    <span class="lab-tag">Day 25</span><span class="lab-tag">Performance</span>
-                    <div class="mt-3"><a href="/labs/unit2-performance" class="btn btn-primary science-btn-small">Open Tool</a></div>
-                </div>
-            </div>
+  <div id="unit2Labs" class="folder-body">
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="mixtures materials properties">
+        <div class="lab-card">
+          <div class="lab-emoji">🥣</div>
+          <h4 class="lab-title">What Is a Mixture?</h4>
+          <p>Explore how materials keep their properties when mixed.</p>
+          <span class="lab-tag">Day 16</span><span class="lab-tag">Mixtures</span>
+          <div class="mt-3"><a href="/labs/mixtures" class="btn btn-primary science-btn-small">Open Lab</a></div>
         </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="particle size screen filter gravel sand separation">
+        <div class="lab-card">
+          <div class="lab-emoji">🪨</div>
+          <h4 class="lab-title">Separate by Particle Size</h4>
+          <p>Use screens and filters to separate larger and smaller particles.</p>
+          <span class="lab-tag">Day 17</span><span class="lab-tag">Separation</span>
+          <div class="mt-3"><a href="/labs/particle-size" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="magnet magnetism separation iron filings sand">
+        <div class="lab-card">
+          <div class="lab-emoji">🧲</div>
+          <h4 class="lab-title">Separate Using Magnetism</h4>
+          <p>Use magnetic properties to separate magnetic and nonmagnetic materials.</p>
+          <span class="lab-tag">Day 18</span><span class="lab-tag">Magnetism</span>
+          <div class="mt-3"><a href="/labs/magnet-separation" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="relative density mixtures floating layers">
+        <div class="lab-card">
+          <div class="lab-emoji">🛢️</div>
+          <h4 class="lab-title">Separate by Relative Density</h4>
+          <p>Separate materials based on floating, sinking, and liquid layers.</p>
+          <span class="lab-tag">Day 19</span><span class="lab-tag">Density</span>
+          <div class="mt-3"><a href="/labs/relative-density-mixtures" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="solutions solubility dissolve salt water">
+        <div class="lab-card">
+          <div class="lab-emoji">💧</div>
+          <h4 class="lab-title">Solutions in Mixtures</h4>
+          <p>Explore how substances dissolve to form solutions.</p>
+          <span class="lab-tag">Day 20</span><span class="lab-tag">Solutions</span>
+          <div class="mt-3"><a href="/labs/solutions" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="evaporation salt water solution recover salt">
+        <div class="lab-card">
+          <div class="lab-emoji">☀️</div>
+          <h4 class="lab-title">Separate by Evaporation</h4>
+          <p>Use evaporation to recover dissolved material from a solution.</p>
+          <span class="lab-tag">Day 21</span><span class="lab-tag">Evaporation</span>
+          <div class="mt-3"><a href="/labs/evaporation" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="conservation matter solution mass before after">
+        <div class="lab-card">
+          <div class="lab-emoji">⚖️</div>
+          <h4 class="lab-title">Conservation of Matter</h4>
+          <p>Compare before-and-after mass when materials dissolve.</p>
+          <span class="lab-tag">Day 22</span><span class="lab-tag">Matter</span>
+          <div class="mt-3"><a href="/labs/conservation-matter" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="unit 2 review mixtures solutions game">
+        <div class="lab-card">
+          <div class="lab-emoji">🎮</div>
+          <h4 class="lab-title">Unit 2 Review Game</h4>
+          <p>Review mixtures, solutions, and separation methods.</p>
+          <span class="lab-tag">Day 23</span><span class="lab-tag">Review</span>
+          <div class="mt-3"><a href="/labs/unit2-review" class="btn btn-primary science-btn-small">Open Game</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="particles too small to see model sugar salt dissolved">
+        <div class="lab-card">
+          <div class="lab-emoji">🔬</div>
+          <h4 class="lab-title">Particles Too Small to See</h4>
+          <p>Model dissolved particles that are too small to see with only eyes.</p>
+          <span class="lab-tag">Day 24</span><span class="lab-tag">Particles</span>
+          <div class="mt-3"><a href="/labs/particles" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="unit 2 performance assessment mixtures solutions">
+        <div class="lab-card">
+          <div class="lab-emoji">🏆</div>
+          <h4 class="lab-title">Unit 2 Performance Tool</h4>
+          <p>Practice Unit 2 performance assessment thinking.</p>
+          <span class="lab-tag">Day 25</span><span class="lab-tag">Performance</span>
+          <div class="mt-3"><a href="/labs/unit2-performance" class="btn btn-primary science-btn-small">Open Tool</a></div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="lab-folder">
-    <div class="folder-header unit-three" onclick="toggleFolder('unit3Labs')">
-        <div>
-            <h2 class="folder-title"><span class="folder-icon">🚗</span>Unit 3: Force, Motion, Variables, and Engineering</h2>
-            <p class="folder-subtitle">Forces, gravity, friction, variables, graphing, ramp investigations, balloon rockets, ball bounce, and playground design.</p>
-        </div>
-        <button class="btn btn-light science-btn-small no-print" type="button">Open / Close</button>
+  <div class="folder-header unit-three" onclick="toggleFolder('unit3Labs')">
+    <div>
+      <h2 class="folder-title"><span class="folder-icon">🚗</span>Unit 3: Force, Motion, Variables, and Engineering</h2>
+      <p class="folder-subtitle">Forces, gravity, friction, variables, graphing, ramp investigations, balloon rockets, ball bounce, and playground design.</p>
     </div>
+    <button class="btn btn-light science-btn-small no-print" type="button">Open / Close</button>
+  </div>
 
-    <div id="unit3Labs" class="folder-body">
-        <div class="row g-3">
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="force push pull motion">
-                <div class="lab-card">
-                    <div class="lab-emoji">💪</div>
-                    <h4 class="lab-title">What Is Force?</h4>
-                    <p>Explore pushes, pulls, and how forces change motion.</p>
-                    <span class="lab-tag">Day 26</span><span class="lab-tag">Force</span>
-                    <div class="mt-3"><a href="/labs/forces" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="balanced equal forces motion">
-                <div class="lab-card">
-                    <div class="lab-emoji">⚖️</div>
-                    <h4 class="lab-title">Balanced Forces</h4>
-                    <p>Test equal forces and see why motion may not change.</p>
-                    <span class="lab-tag">Day 27</span><span class="lab-tag">Equal Forces</span>
-                    <div class="mt-3"><a href="/labs/balanced-forces" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="unequal unbalanced forces motion">
-                <div class="lab-card">
-                    <div class="lab-emoji">🏃</div>
-                    <h4 class="lab-title">Unequal Forces</h4>
-                    <p>Test how unequal forces cause changes in motion.</p>
-                    <span class="lab-tag">Day 28</span><span class="lab-tag">Unequal Forces</span>
-                    <div class="mt-3"><a href="/labs/unequal-forces" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="push pull strength direction force">
-                <div class="lab-card">
-                    <div class="lab-emoji">↔️</div>
-                    <h4 class="lab-title">Strength and Direction</h4>
-                    <p>Change the strength and direction of a force.</p>
-                    <span class="lab-tag">Day 29</span><span class="lab-tag">Direction</span>
-                    <div class="mt-3"><a href="/labs/force-strength-direction" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="gravity drop force motion">
-                <div class="lab-card">
-                    <div class="lab-emoji">⬇️</div>
-                    <h4 class="lab-title">Gravity Drop</h4>
-                    <p>Investigate gravity pulling objects downward.</p>
-                    <span class="lab-tag">Day 30</span><span class="lab-tag">Gravity</span>
-                    <div class="mt-3"><a href="/labs/gravity-drop" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="friction surfaces rough smooth car motion">
-                <div class="lab-card">
-                    <div class="lab-emoji">🛑</div>
-                    <h4 class="lab-title">Friction Surfaces</h4>
-                    <p>Test how rough and smooth surfaces affect motion.</p>
-                    <span class="lab-tag">Day 31</span><span class="lab-tag">Friction</span>
-                    <div class="mt-3"><a href="/labs/friction-surfaces" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="magnetism force attract repel motion">
-                <div class="lab-card">
-                    <div class="lab-emoji">🧲</div>
-                    <h4 class="lab-title">Magnetism as a Force</h4>
-                    <p>Use magnetic force to attract, repel, and cause motion.</p>
-                    <span class="lab-tag">Day 32</span><span class="lab-tag">Magnetism</span>
-                    <div class="mt-3"><a href="/labs/magnetism-force" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="mechanical energy transfer motion collision">
-                <div class="lab-card">
-                    <div class="lab-emoji">💥</div>
-                    <h4 class="lab-title">Mechanical Energy Transfer</h4>
-                    <p>Explore how motion energy can transfer during contact.</p>
-                    <span class="lab-tag">Day 33</span><span class="lab-tag">Energy</span>
-                    <div class="mt-3"><a href="/labs/mechanical-energy-transfer" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="variables fair test independent dependent controlled">
-                <div class="lab-card">
-                    <div class="lab-emoji">📋</div>
-                    <h4 class="lab-title">Variables Planner</h4>
-                    <p>Plan a fair test using independent, dependent, and controlled variables.</p>
-                    <span class="lab-tag">Day 34</span><span class="lab-tag">Variables</span>
-                    <div class="mt-3"><a href="/labs/variables-planner" class="btn btn-primary science-btn-small">Open Planner</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="data graphing graph claim evidence">
-                <div class="lab-card">
-                    <div class="lab-emoji">📊</div>
-                    <h4 class="lab-title">Data and Graphing Lab</h4>
-                    <p>Use data tables and graphs to identify patterns and support claims.</p>
-                    <span class="lab-tag">Day 35</span><span class="lab-tag">Graphing</span>
-                    <div class="mt-3"><a href="/labs/data-graphing" class="btn btn-primary science-btn-small">Open Lab</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="video graphing voice lesson mini video">
-                <div class="lab-card">
-                    <div class="lab-emoji">🎥</div>
-                    <h4 class="lab-title">Day 35 Graphing Mini Video</h4>
-                    <p>Watch the app-based voice mini lesson for graphing and data.</p>
-                    <span class="lab-tag">Day 35</span><span class="lab-tag">Video</span>
-                    <div class="mt-3"><a href="/videos/day35-data-graphing" class="btn btn-primary science-btn-small">Open Video</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="ramp investigation car distance variables graph">
-                <div class="lab-card">
-                    <div class="lab-emoji">🚗</div>
-                    <h4 class="lab-title">Car on a Ramp Investigation</h4>
-                    <p>Test ramp height, collect distance data, graph results, and write CER.</p>
-                    <span class="lab-tag">Day 36</span><span class="lab-tag">Ramp</span>
-                    <div class="mt-3"><a href="/labs/ramp-investigation" class="btn btn-primary science-btn-small">Open Investigation</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="balloon rocket force motion air distance">
-                <div class="lab-card">
-                    <div class="lab-emoji">🎈</div>
-                    <h4 class="lab-title">Balloon Rocket Investigation</h4>
-                    <p>Launch a balloon rocket, collect data, and explain force and motion.</p>
-                    <span class="lab-tag">Day 37</span><span class="lab-tag">Rocket</span>
-                    <div class="mt-3"><a href="/labs/balloon-rocket" class="btn btn-primary science-btn-small">Open Investigation</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="ball bounce designer investigation variables">
-                <div class="lab-card">
-                    <div class="lab-emoji">🏀</div>
-                    <h4 class="lab-title">Ball Bounce Lab Designer</h4>
-                    <p>Design a fair test to investigate which ball bounces higher.</p>
-                    <span class="lab-tag">Day 38</span><span class="lab-tag">Design</span>
-                    <div class="mt-3"><a href="/labs/ball-bounce-designer" class="btn btn-primary science-btn-small">Open Designer</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="ball bounce analyzer graph data evidence">
-                <div class="lab-card">
-                    <div class="lab-emoji">📈</div>
-                    <h4 class="lab-title">Ball Bounce Data Analyzer</h4>
-                    <p>Analyze bounce data, make graphs, and build a claim with evidence.</p>
-                    <span class="lab-tag">Day 39</span><span class="lab-tag">Analyze</span>
-                    <div class="mt-3"><a href="/labs/ball-bounce-analyzer" class="btn btn-primary science-btn-small">Open Analyzer</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="playground safety engineering design friction ramp force">
-                <div class="lab-card">
-                    <div class="lab-emoji">🛝</div>
-                    <h4 class="lab-title">Playground Safety Engineering</h4>
-                    <p>Improve a playground design using force, motion, data, and evidence.</p>
-                    <span class="lab-tag">Day 40</span><span class="lab-tag">Engineering</span>
-                    <div class="mt-3"><a href="/labs/playground-safety" class="btn btn-primary science-btn-small">Open Challenge</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="unit 3 performance builder presentation rubric">
-                <div class="lab-card">
-                    <div class="lab-emoji">🎤</div>
-                    <h4 class="lab-title">Unit 3 Presentation Builder</h4>
-                    <p>Build the performance assessment presentation and check the rubric.</p>
-                    <span class="lab-tag">Day 41</span><span class="lab-tag">Performance</span>
-                    <div class="mt-3"><a href="/labs/unit3-presentation-builder" class="btn btn-primary science-btn-small">Open Builder</a></div>
-                </div>
-            </div>
+  <div id="unit3Labs" class="folder-body">
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="force push pull motion">
+        <div class="lab-card">
+          <div class="lab-emoji">💪</div>
+          <h4 class="lab-title">What Is Force?</h4>
+          <p>Explore pushes, pulls, and how forces change motion.</p>
+          <span class="lab-tag">Day 26</span><span class="lab-tag">Force</span>
+          <div class="mt-3"><a href="/labs/forces" class="btn btn-primary science-btn-small">Open Lab</a></div>
         </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="balanced equal forces motion">
+        <div class="lab-card">
+          <div class="lab-emoji">⚖️</div>
+          <h4 class="lab-title">Balanced Forces</h4>
+          <p>Test equal forces and see why motion may not change.</p>
+          <span class="lab-tag">Day 27</span><span class="lab-tag">Equal Forces</span>
+          <div class="mt-3"><a href="/labs/balanced-forces" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="unequal unbalanced forces motion">
+        <div class="lab-card">
+          <div class="lab-emoji">🏃</div>
+          <h4 class="lab-title">Unequal Forces</h4>
+          <p>Test how unequal forces cause changes in motion.</p>
+          <span class="lab-tag">Day 28</span><span class="lab-tag">Unequal Forces</span>
+          <div class="mt-3"><a href="/labs/unequal-forces" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="push pull strength direction force">
+        <div class="lab-card">
+          <div class="lab-emoji">↔️</div>
+          <h4 class="lab-title">Strength and Direction</h4>
+          <p>Change the strength and direction of a force.</p>
+          <span class="lab-tag">Day 29</span><span class="lab-tag">Direction</span>
+          <div class="mt-3"><a href="/labs/force-strength-direction" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="gravity drop force motion">
+        <div class="lab-card">
+          <div class="lab-emoji">⬇️</div>
+          <h4 class="lab-title">Gravity Drop</h4>
+          <p>Investigate gravity pulling objects downward.</p>
+          <span class="lab-tag">Day 30</span><span class="lab-tag">Gravity</span>
+          <div class="mt-3"><a href="/labs/gravity-drop" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="friction surfaces rough smooth car motion">
+        <div class="lab-card">
+          <div class="lab-emoji">🛑</div>
+          <h4 class="lab-title">Friction Surfaces</h4>
+          <p>Test how rough and smooth surfaces affect motion.</p>
+          <span class="lab-tag">Day 31</span><span class="lab-tag">Friction</span>
+          <div class="mt-3"><a href="/labs/friction-surfaces" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="magnetism force attract repel motion">
+        <div class="lab-card">
+          <div class="lab-emoji">🧲</div>
+          <h4 class="lab-title">Magnetism as a Force</h4>
+          <p>Use magnetic force to attract, repel, and cause motion.</p>
+          <span class="lab-tag">Day 32</span><span class="lab-tag">Magnetism</span>
+          <div class="mt-3"><a href="/labs/magnetism-force" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="mechanical energy transfer motion collision">
+        <div class="lab-card">
+          <div class="lab-emoji">💥</div>
+          <h4 class="lab-title">Mechanical Energy Transfer</h4>
+          <p>Explore how motion energy can transfer during contact.</p>
+          <span class="lab-tag">Day 33</span><span class="lab-tag">Energy</span>
+          <div class="mt-3"><a href="/labs/mechanical-energy-transfer" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="variables fair test independent dependent controlled">
+        <div class="lab-card">
+          <div class="lab-emoji">📋</div>
+          <h4 class="lab-title">Variables Planner</h4>
+          <p>Plan a fair test using independent, dependent, and controlled variables.</p>
+          <span class="lab-tag">Day 34</span><span class="lab-tag">Variables</span>
+          <div class="mt-3"><a href="/labs/variables-planner" class="btn btn-primary science-btn-small">Open Planner</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="data graphing graph claim evidence">
+        <div class="lab-card">
+          <div class="lab-emoji">📊</div>
+          <h4 class="lab-title">Data and Graphing Lab</h4>
+          <p>Use data tables and graphs to identify patterns and support claims.</p>
+          <span class="lab-tag">Day 35</span><span class="lab-tag">Graphing</span>
+          <div class="mt-3"><a href="/labs/data-graphing" class="btn btn-primary science-btn-small">Open Lab</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="video graphing voice lesson mini video">
+        <div class="lab-card">
+          <div class="lab-emoji">🎥</div>
+          <h4 class="lab-title">Day 35 Graphing Mini Video</h4>
+          <p>Watch the app-based voice mini lesson for graphing and data.</p>
+          <span class="lab-tag">Day 35</span><span class="lab-tag">Video</span>
+          <div class="mt-3"><a href="/videos/day35-data-graphing" class="btn btn-primary science-btn-small">Open Video</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="ramp investigation car distance variables graph">
+        <div class="lab-card">
+          <div class="lab-emoji">🚗</div>
+          <h4 class="lab-title">Car on a Ramp Investigation</h4>
+          <p>Test ramp height, collect distance data, graph results, and write CER.</p>
+          <span class="lab-tag">Day 36</span><span class="lab-tag">Ramp</span>
+          <div class="mt-3"><a href="/labs/ramp-investigation" class="btn btn-primary science-btn-small">Open Investigation</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="balloon rocket force motion air distance">
+        <div class="lab-card">
+          <div class="lab-emoji">🎈</div>
+          <h4 class="lab-title">Balloon Rocket Investigation</h4>
+          <p>Launch a balloon rocket, collect data, and explain force and motion.</p>
+          <span class="lab-tag">Day 37</span><span class="lab-tag">Rocket</span>
+          <div class="mt-3"><a href="/labs/balloon-rocket" class="btn btn-primary science-btn-small">Open Investigation</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="ball bounce designer investigation variables">
+        <div class="lab-card">
+          <div class="lab-emoji">🏀</div>
+          <h4 class="lab-title">Ball Bounce Lab Designer</h4>
+          <p>Design a fair test to investigate which ball bounces higher.</p>
+          <span class="lab-tag">Day 38</span><span class="lab-tag">Design</span>
+          <div class="mt-3"><a href="/labs/ball-bounce-designer" class="btn btn-primary science-btn-small">Open Designer</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="ball bounce analyzer graph data evidence">
+        <div class="lab-card">
+          <div class="lab-emoji">📈</div>
+          <h4 class="lab-title">Ball Bounce Data Analyzer</h4>
+          <p>Analyze bounce data, make graphs, and build a claim with evidence.</p>
+          <span class="lab-tag">Day 39</span><span class="lab-tag">Analyze</span>
+          <div class="mt-3"><a href="/labs/ball-bounce-analyzer" class="btn btn-primary science-btn-small">Open Analyzer</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="playground safety engineering design friction ramp force">
+        <div class="lab-card">
+          <div class="lab-emoji">🛝</div>
+          <h4 class="lab-title">Playground Safety Engineering</h4>
+          <p>Improve a playground design using force, motion, data, and evidence.</p>
+          <span class="lab-tag">Day 40</span><span class="lab-tag">Engineering</span>
+          <div class="mt-3"><a href="/labs/playground-safety" class="btn btn-primary science-btn-small">Open Challenge</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="unit 3 performance builder presentation rubric">
+        <div class="lab-card">
+          <div class="lab-emoji">🎤</div>
+          <h4 class="lab-title">Unit 3 Presentation Builder</h4>
+          <p>Build the performance assessment presentation and check the rubric.</p>
+          <span class="lab-tag">Day 41</span><span class="lab-tag">Performance</span>
+          <div class="mt-3"><a href="/labs/unit3-presentation-builder" class="btn btn-primary science-btn-small">Open Builder</a></div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="lab-folder">
-    <div class="folder-header unit-review" onclick="toggleFolder('reviewLabs')">
-        <div>
-            <h2 class="folder-title"><span class="folder-icon">🎯</span>Review, Assessment, and Reflection Tools</h2>
-            <p class="folder-subtitle">Spiral review, station board, digital assessment, score report, notebook check, and goal setting.</p>
-        </div>
-        <button class="btn btn-light science-btn-small no-print" type="button">Open / Close</button>
+  <div class="folder-header unit-review" onclick="toggleFolder('reviewLabs')">
+    <div>
+      <h2 class="folder-title"><span class="folder-icon">🎯</span>Review, Assessment, and Reflection Tools</h2>
+      <p class="folder-subtitle">Spiral review, station board, digital assessment, score report, notebook check, and goal setting.</p>
     </div>
+    <button class="btn btn-light science-btn-small no-print" type="button">Open / Close</button>
+  </div>
 
-    <div id="reviewLabs" class="folder-body">
-        <div class="row g-3">
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="staar spiral review game matter mixtures force particles">
-                <div class="lab-card">
-                    <div class="lab-emoji">🎮</div>
-                    <h4 class="lab-title">STAAR Spiral Review Game</h4>
-                    <p>Review Matter, Mixtures, Particles, Force and Motion, Variables, and Data.</p>
-                    <span class="lab-tag">Day 42</span><span class="lab-tag">Review Game</span>
-                    <div class="mt-3"><a href="/labs/staar-spiral-review-game" class="btn btn-primary science-btn-small">Open Game</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="science stations rotation board demos voice mini simulators">
-                <div class="lab-card">
-                    <div class="lab-emoji">🧭</div>
-                    <h4 class="lab-title">Science Stations Board</h4>
-                    <p>Rotate through digital stations with voice demos, mini-simulators, and evidence tracking.</p>
-                    <span class="lab-tag">Day 43</span><span class="lab-tag">Stations</span>
-                    <div class="mt-3"><a href="/labs/science-stations-board" class="btn btn-primary science-btn-small">Open Board</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="digital assessment score report teacher review randomized staar">
-                <div class="lab-card">
-                    <div class="lab-emoji">📝</div>
-                    <h4 class="lab-title">STAAR-Style Digital Assessment</h4>
-                    <p>Randomized assessment with score report, topic breakdown, and teacher review mode.</p>
-                    <span class="lab-tag">Day 44</span><span class="lab-tag">Assessment</span>
-                    <div class="mt-3"><a href="/labs/staar-digital-assessment" class="btn btn-primary science-btn-small">Open Assessment</a></div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 lab-item" data-keywords="reflection tracker notebook checklist goal setting preview next unit">
-                <div class="lab-card">
-                    <div class="lab-emoji">🎯</div>
-                    <h4 class="lab-title">Reflection Tracker</h4>
-                    <p>Reflect on assessment data, complete notebook checks, set goals, and preview next unit.</p>
-                    <span class="lab-tag">Day 45</span><span class="lab-tag">Reflection</span>
-                    <div class="mt-3"><a href="/labs/reflection-tracker" class="btn btn-primary science-btn-small">Open Tracker</a></div>
-                </div>
-            </div>
+  <div id="reviewLabs" class="folder-body">
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="staar spiral review game matter mixtures force particles">
+        <div class="lab-card">
+          <div class="lab-emoji">🎮</div>
+          <h4 class="lab-title">STAAR Spiral Review Game</h4>
+          <p>Review Matter, Mixtures, Particles, Force and Motion, Variables, and Data.</p>
+          <span class="lab-tag">Day 42</span><span class="lab-tag">Review Game</span>
+          <div class="mt-3"><a href="/labs/staar-spiral-review-game" class="btn btn-primary science-btn-small">Open Game</a></div>
         </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="science stations rotation board demos voice mini simulators">
+        <div class="lab-card">
+          <div class="lab-emoji">🧭</div>
+          <h4 class="lab-title">Science Stations Board</h4>
+          <p>Rotate through digital stations with voice demos, mini-simulators, and evidence tracking.</p>
+          <span class="lab-tag">Day 43</span><span class="lab-tag">Stations</span>
+          <div class="mt-3"><a href="/labs/science-stations-board" class="btn btn-primary science-btn-small">Open Board</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="digital assessment score report teacher review randomized staar">
+        <div class="lab-card">
+          <div class="lab-emoji">📝</div>
+          <h4 class="lab-title">STAAR-Style Digital Assessment</h4>
+          <p>Randomized assessment with score report, topic breakdown, and teacher review mode.</p>
+          <span class="lab-tag">Day 44</span><span class="lab-tag">Assessment</span>
+          <div class="mt-3"><a href="/labs/staar-digital-assessment" class="btn btn-primary science-btn-small">Open Assessment</a></div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 lab-item" data-keywords="reflection tracker notebook checklist goal setting preview next unit">
+        <div class="lab-card">
+          <div class="lab-emoji">🎯</div>
+          <h4 class="lab-title">Reflection Tracker</h4>
+          <p>Reflect on assessment data, complete notebook checks, set goals, and preview next unit.</p>
+          <span class="lab-tag">Day 45</span><span class="lab-tag">Reflection</span>
+          <div class="mt-3"><a href="/labs/reflection-tracker" class="btn btn-primary science-btn-small">Open Tracker</a></div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <script>
-    function toggleFolder(id) {
-        document.getElementById(id).classList.toggle("open");
+  function toggleFolder(id) {
+    document.getElementById(id).classList.toggle("open");
+  }
+
+  function openFolder(id) {
+    closeAllFolders();
+    document.getElementById(id).classList.add("open");
+    document.getElementById(id).scrollIntoView({behavior: "smooth", block: "start"});
+  }
+
+  function openAllFolders() {
+    document.querySelectorAll(".folder-body").forEach(folder => {
+      folder.classList.add("open");
+    });
+  }
+
+  function closeAllFolders() {
+    document.querySelectorAll(".folder-body").forEach(folder => {
+      folder.classList.remove("open");
+    });
+  }
+
+  function filterLabs() {
+    const search = document.getElementById("labSearch").value.toLowerCase().trim();
+    const labItems = document.querySelectorAll(".lab-item");
+
+    if (search.length > 0) {
+      openAllFolders();
     }
 
-    function openFolder(id) {
-        closeAllFolders();
-        document.getElementById(id).classList.add("open");
-        document.getElementById(id).scrollIntoView({behavior: "smooth", block: "start"});
-    }
+    labItems.forEach(item => {
+      const text = item.innerText.toLowerCase() + " " + item.dataset.keywords.toLowerCase();
 
-    function openAllFolders() {
-        document.querySelectorAll(".folder-body").forEach(folder => {
-            folder.classList.add("open");
-        });
-    }
-
-    function closeAllFolders() {
-        document.querySelectorAll(".folder-body").forEach(folder => {
-            folder.classList.remove("open");
-        });
-    }
-
-    function filterLabs() {
-        const search = document.getElementById("labSearch").value.toLowerCase().trim();
-        const labItems = document.querySelectorAll(".lab-item");
-
-        if (search.length > 0) {
-            openAllFolders();
-        }
-
-        labItems.forEach(item => {
-            const text = item.innerText.toLowerCase() + " " + item.dataset.keywords.toLowerCase();
-
-            if (!search || text.includes(search)) {
-                item.classList.remove("hidden-lab");
-            } else {
-                item.classList.add("hidden-lab");
-            }
-        });
-    }
+      if (!search || text.includes(search)) {
+        item.classList.remove("hidden-lab");
+      } else {
+        item.classList.add("hidden-lab");
+      }
+    });
+  }
 </script>
 
 {% endblock %}

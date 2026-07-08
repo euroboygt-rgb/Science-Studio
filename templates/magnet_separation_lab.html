@@ -4,302 +4,302 @@
 
 <h1>Magnet Separation Lab Simulator</h1>
 <p class="lead">
-    Use magnetism to separate magnetic materials from nonmagnetic materials.
+  Use magnetism to separate magnetic materials from nonmagnetic materials.
 </p>
 
 <a href="/first-nine-weeks/day/18?view=student" class="btn btn-secondary mb-4">
-    Back to Day 18
+  Back to Day 18
 </a>
 
 <style>
-    .sim-card {
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 25px;
-        background: #f8f9fa;
-    }
+  .sim-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
 
-    .info-box {
-        background: #fff3cd;
-        border-left: 5px solid #ffc107;
-        padding: 12px;
-        margin-bottom: 15px;
-    }
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
 
-    .mixture-area {
-        min-height: 170px;
-        border: 3px solid #333;
-        border-radius: 15px;
-        background: white;
-        margin: 20px auto;
-        padding: 15px;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-    }
+  .mixture-area {
+    min-height: 170px;
+    border: 3px solid #333;
+    border-radius: 15px;
+    background: white;
+    margin: 20px auto;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
 
-    .item {
-        width: 90px;
-        height: 48px;
-        border: 2px solid #333;
-        border-radius: 12px;
-        background: #e9ecef;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-weight: bold;
-        font-size: 12px;
-    }
+  .item {
+    width: 90px;
+    height: 48px;
+    border: 2px solid #333;
+    border-radius: 12px;
+    background: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+  }
 
-    .magnet {
-        width: 140px;
-        height: 55px;
-        border: 4px solid #333;
-        border-radius: 20px;
-        margin: 15px auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        background: #f8d7da;
-    }
+  .magnet {
+    width: 140px;
+    height: 55px;
+    border: 4px solid #333;
+    border-radius: 20px;
+    margin: 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background: #f8d7da;
+  }
 
-    .sorted-box {
-        min-height: 120px;
-        border: 2px dashed #333;
-        border-radius: 12px;
-        background: white;
-        padding: 12px;
-        margin-bottom: 12px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        align-items: center;
-        justify-content: center;
-    }
+  .sorted-box {
+    min-height: 120px;
+    border: 2px dashed #333;
+    border-radius: 12px;
+    background: white;
+    padding: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .feedback {
-        font-weight: bold;
-        margin-top: 10px;
-        padding: 10px;
-        border-radius: 8px;
-    }
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
 
-    .correct {
-        background: #d1e7dd;
-        color: #0f5132;
-    }
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
 
-    .incorrect {
-        background: #f8d7da;
-        color: #842029;
-    }
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
 
-    .scenario-card {
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 15px;
-    }
+  .scenario-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
 </style>
 
 <div class="sim-card">
-    <h2>Part 1: Test a Mixture with a Magnet</h2>
+  <h2>Part 1: Test a Mixture with a Magnet</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> A magnet can separate a mixture only when one part is magnetic and the other part is nonmagnetic.
+  <div class="info-box">
+    <strong>Goal:</strong> A magnet can separate a mixture only when one part is magnetic and the other part is nonmagnetic.
+  </div>
+
+  <label class="form-label"><strong>Choose a mixture:</strong></label>
+  <select id="mixtureSelect" class="form-select mb-3" onchange="showMixture()">
+    <option value="yes" data-name="Iron Filings and Sand" data-magnetic="Iron filings" data-nonmagnetic="Sand" data-reason="Iron filings are attracted to the magnet. Sand is not attracted.">Iron Filings and Sand</option>
+    <option value="yes" data-name="Steel Paper Clips and Rice" data-magnetic="Steel paper clips" data-nonmagnetic="Rice" data-reason="Steel paper clips are attracted to the magnet. Rice is not attracted.">Steel Paper Clips and Rice</option>
+    <option value="no" data-name="Plastic Beads and Aluminum Foil" data-magnetic="None" data-nonmagnetic="Plastic beads and aluminum foil" data-reason="Neither plastic beads nor aluminum foil are attracted to a classroom magnet.">Plastic Beads and Aluminum Foil</option>
+    <option value="yes" data-name="Steel Washers and Gravel" data-magnetic="Steel washers" data-nonmagnetic="Gravel" data-reason="Steel washers are attracted to the magnet. Gravel is not attracted.">Steel Washers and Gravel</option>
+    <option value="no" data-name="Copper Pieces and Sand" data-magnetic="None" data-nonmagnetic="Copper pieces and sand" data-reason="Copper and sand are not attracted to a classroom magnet.">Copper Pieces and Sand</option>
+  </select>
+
+  <div id="mixtureArea" class="mixture-area"></div>
+
+  <div class="magnet">🧲 Magnet</div>
+
+  <button class="btn btn-primary" onclick="testMagnet()">Test with Magnet</button>
+
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <h5>Attracted to magnet</h5>
+      <div id="magneticBox" class="sorted-box"></div>
     </div>
 
-    <label class="form-label"><strong>Choose a mixture:</strong></label>
-    <select id="mixtureSelect" class="form-select mb-3" onchange="showMixture()">
-        <option value="yes" data-name="Iron Filings and Sand" data-magnetic="Iron filings" data-nonmagnetic="Sand" data-reason="Iron filings are attracted to the magnet. Sand is not attracted.">Iron Filings and Sand</option>
-        <option value="yes" data-name="Steel Paper Clips and Rice" data-magnetic="Steel paper clips" data-nonmagnetic="Rice" data-reason="Steel paper clips are attracted to the magnet. Rice is not attracted.">Steel Paper Clips and Rice</option>
-        <option value="no" data-name="Plastic Beads and Aluminum Foil" data-magnetic="None" data-nonmagnetic="Plastic beads and aluminum foil" data-reason="Neither plastic beads nor aluminum foil are attracted to a classroom magnet.">Plastic Beads and Aluminum Foil</option>
-        <option value="yes" data-name="Steel Washers and Gravel" data-magnetic="Steel washers" data-nonmagnetic="Gravel" data-reason="Steel washers are attracted to the magnet. Gravel is not attracted.">Steel Washers and Gravel</option>
-        <option value="no" data-name="Copper Pieces and Sand" data-magnetic="None" data-nonmagnetic="Copper pieces and sand" data-reason="Copper and sand are not attracted to a classroom magnet.">Copper Pieces and Sand</option>
-    </select>
-
-    <div id="mixtureArea" class="mixture-area"></div>
-
-    <div class="magnet">🧲 Magnet</div>
-
-    <button class="btn btn-primary" onclick="testMagnet()">Test with Magnet</button>
-
-    <div class="row mt-3">
-        <div class="col-md-6">
-            <h5>Attracted to magnet</h5>
-            <div id="magneticBox" class="sorted-box"></div>
-        </div>
-
-        <div class="col-md-6">
-            <h5>Not attracted</h5>
-            <div id="nonmagneticBox" class="sorted-box"></div>
-        </div>
+    <div class="col-md-6">
+      <h5>Not attracted</h5>
+      <div id="nonmagneticBox" class="sorted-box"></div>
     </div>
+  </div>
 
-    <div id="magnetFeedback"></div>
+  <div id="magnetFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 2: Can a Magnet Separate It?</h2>
+  <h2>Part 2: Can a Magnet Separate It?</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Decide if magnetism is the best physical property for separating the mixture.
-    </div>
+  <div class="info-box">
+    <strong>Goal:</strong> Decide if magnetism is the best physical property for separating the mixture.
+  </div>
 
-    <div class="scenario-card">
-        <h4>Iron nails and plastic beads</h4>
-        <select id="q1" class="form-select">
-            <option selected>Choose...</option>
-            <option>Yes, use magnetism</option>
-            <option>No, use particle size</option>
-            <option>No, use evaporation</option>
-            <option>No, use a thermometer</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>Iron nails and plastic beads</h4>
+    <select id="q1" class="form-select">
+      <option selected>Choose...</option>
+      <option>Yes, use magnetism</option>
+      <option>No, use particle size</option>
+      <option>No, use evaporation</option>
+      <option>No, use a thermometer</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>Salt and water</h4>
-        <select id="q2" class="form-select">
-            <option selected>Choose...</option>
-            <option>Yes, use magnetism</option>
-            <option>No, use evaporation</option>
-            <option>No, use a ruler</option>
-            <option>No, use a balance only</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>Salt and water</h4>
+    <select id="q2" class="form-select">
+      <option selected>Choose...</option>
+      <option>Yes, use magnetism</option>
+      <option>No, use evaporation</option>
+      <option>No, use a ruler</option>
+      <option>No, use a balance only</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>Steel can pieces and cardboard</h4>
-        <select id="q3" class="form-select">
-            <option selected>Choose...</option>
-            <option>Yes, use magnetism</option>
-            <option>No, use solubility</option>
-            <option>No, use temperature</option>
-            <option>No, use volume</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>Steel can pieces and cardboard</h4>
+    <select id="q3" class="form-select">
+      <option selected>Choose...</option>
+      <option>Yes, use magnetism</option>
+      <option>No, use solubility</option>
+      <option>No, use temperature</option>
+      <option>No, use volume</option>
+    </select>
+  </div>
 
-    <button class="btn btn-success" onclick="checkMagnetChoices()">Check Choices</button>
+  <button class="btn btn-success" onclick="checkMagnetChoices()">Check Choices</button>
 
-    <div id="choiceFeedback"></div>
+  <div id="choiceFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 3: STAAR Evidence Question</h2>
+  <h2>Part 3: STAAR Evidence Question</h2>
 
-    <div class="info-box">
-        <strong>Question:</strong> A student moves a magnet above a mixture of iron filings and sand. The iron filings move toward the magnet, but the sand stays in the cup. What evidence shows that magnetism separated the mixture?
-    </div>
+  <div class="info-box">
+    <strong>Question:</strong> A student moves a magnet above a mixture of iron filings and sand. The iron filings move toward the magnet, but the sand stays in the cup. What evidence shows that magnetism separated the mixture?
+  </div>
 
-    <select id="evidenceAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The iron filings moved toward the magnet, but the sand did not.</option>
-        <option>The sand dissolved in water.</option>
-        <option>The iron filings became a liquid.</option>
-        <option>The magnet measured the mass of the mixture.</option>
-    </select>
+  <select id="evidenceAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The iron filings moved toward the magnet, but the sand did not.</option>
+    <option>The sand dissolved in water.</option>
+    <option>The iron filings became a liquid.</option>
+    <option>The magnet measured the mass of the mixture.</option>
+  </select>
 
-    <textarea id="evidenceText" class="form-control mb-3" rows="3" placeholder="Explain your answer using the word magnetism..."></textarea>
+  <textarea id="evidenceText" class="form-control mb-3" rows="3" placeholder="Explain your answer using the word magnetism..."></textarea>
 
-    <button class="btn btn-success" onclick="checkEvidence()">Check Evidence</button>
+  <button class="btn btn-success" onclick="checkEvidence()">Check Evidence</button>
 
-    <div id="evidenceFeedback"></div>
+  <div id="evidenceFeedback"></div>
 </div>
 
 <script>
-    function showFeedback(elementId, message, isCorrect) {
-        const box = document.getElementById(elementId);
-        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
-        box.innerHTML = message;
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function makeItem(label) {
+    const item = document.createElement("div");
+    item.className = "item";
+    item.innerText = label;
+    return item;
+  }
+
+  function showMixture() {
+    const select = document.getElementById("mixtureSelect");
+    const selected = select.options[select.selectedIndex];
+    const area = document.getElementById("mixtureArea");
+
+    area.innerHTML = "";
+
+    const name = selected.dataset.name;
+    const parts = name.split(" and ");
+
+    for (let i = 0; i < 4; i++) {
+      area.appendChild(makeItem(parts[0]));
+      area.appendChild(makeItem(parts[1]));
     }
 
-    function makeItem(label) {
-        const item = document.createElement("div");
-        item.className = "item";
-        item.innerText = label;
-        return item;
+    document.getElementById("magneticBox").innerHTML = "";
+    document.getElementById("nonmagneticBox").innerHTML = "";
+    document.getElementById("magnetFeedback").innerHTML = "";
+    document.getElementById("magnetFeedback").className = "";
+  }
+
+  function testMagnet() {
+    const select = document.getElementById("mixtureSelect");
+    const selected = select.options[select.selectedIndex];
+
+    const magneticBox = document.getElementById("magneticBox");
+    const nonmagneticBox = document.getElementById("nonmagneticBox");
+
+    magneticBox.innerHTML = "";
+    nonmagneticBox.innerHTML = "";
+
+    if (select.value === "yes") {
+      for (let i = 0; i < 4; i++) {
+        magneticBox.appendChild(makeItem(selected.dataset.magnetic));
+        nonmagneticBox.appendChild(makeItem(selected.dataset.nonmagnetic));
+      }
+
+      showFeedback("magnetFeedback", "Correct separation! " + selected.dataset.reason, true);
+    } else {
+      for (let i = 0; i < 4; i++) {
+        nonmagneticBox.appendChild(makeItem(selected.dataset.nonmagnetic));
+      }
+
+      showFeedback("magnetFeedback", "A magnet does not separate this mixture. " + selected.dataset.reason, false);
     }
+  }
 
-    function showMixture() {
-        const select = document.getElementById("mixtureSelect");
-        const selected = select.options[select.selectedIndex];
-        const area = document.getElementById("mixtureArea");
+  function checkMagnetChoices() {
+    const q1 = document.getElementById("q1").value;
+    const q2 = document.getElementById("q2").value;
+    const q3 = document.getElementById("q3").value;
 
-        area.innerHTML = "";
-
-        const name = selected.dataset.name;
-        const parts = name.split(" and ");
-
-        for (let i = 0; i < 4; i++) {
-            area.appendChild(makeItem(parts[0]));
-            area.appendChild(makeItem(parts[1]));
-        }
-
-        document.getElementById("magneticBox").innerHTML = "";
-        document.getElementById("nonmagneticBox").innerHTML = "";
-        document.getElementById("magnetFeedback").innerHTML = "";
-        document.getElementById("magnetFeedback").className = "";
+    if (
+      q1 === "Yes, use magnetism" &&
+      q2 === "No, use evaporation" &&
+      q3 === "Yes, use magnetism"
+    ) {
+      showFeedback("choiceFeedback", "Correct! Magnetism works when one part of the mixture is magnetic and the other part is not.", true);
+    } else {
+      showFeedback("choiceFeedback", "Not yet. Ask: Is one part attracted to a magnet and the other part not attracted?", false);
     }
+  }
 
-    function testMagnet() {
-        const select = document.getElementById("mixtureSelect");
-        const selected = select.options[select.selectedIndex];
+  function checkEvidence() {
+    const answer = document.getElementById("evidenceAnswer").value;
 
-        const magneticBox = document.getElementById("magneticBox");
-        const nonmagneticBox = document.getElementById("nonmagneticBox");
-
-        magneticBox.innerHTML = "";
-        nonmagneticBox.innerHTML = "";
-
-        if (select.value === "yes") {
-            for (let i = 0; i < 4; i++) {
-                magneticBox.appendChild(makeItem(selected.dataset.magnetic));
-                nonmagneticBox.appendChild(makeItem(selected.dataset.nonmagnetic));
-            }
-
-            showFeedback("magnetFeedback", "Correct separation! " + selected.dataset.reason, true);
-        } else {
-            for (let i = 0; i < 4; i++) {
-                nonmagneticBox.appendChild(makeItem(selected.dataset.nonmagnetic));
-            }
-
-            showFeedback("magnetFeedback", "A magnet does not separate this mixture. " + selected.dataset.reason, false);
-        }
+    if (answer === "The iron filings moved toward the magnet, but the sand did not.") {
+      showFeedback("evidenceFeedback", "Correct! That observation is evidence that the iron filings are magnetic and the sand is nonmagnetic.", true);
+    } else {
+      showFeedback("evidenceFeedback", "Not yet. The best evidence is what moved toward the magnet and what stayed behind.", false);
     }
+  }
 
-    function checkMagnetChoices() {
-        const q1 = document.getElementById("q1").value;
-        const q2 = document.getElementById("q2").value;
-        const q3 = document.getElementById("q3").value;
-
-        if (
-            q1 === "Yes, use magnetism" &&
-            q2 === "No, use evaporation" &&
-            q3 === "Yes, use magnetism"
-        ) {
-            showFeedback("choiceFeedback", "Correct! Magnetism works when one part of the mixture is magnetic and the other part is not.", true);
-        } else {
-            showFeedback("choiceFeedback", "Not yet. Ask: Is one part attracted to a magnet and the other part not attracted?", false);
-        }
-    }
-
-    function checkEvidence() {
-        const answer = document.getElementById("evidenceAnswer").value;
-
-        if (answer === "The iron filings moved toward the magnet, but the sand did not.") {
-            showFeedback("evidenceFeedback", "Correct! That observation is evidence that the iron filings are magnetic and the sand is nonmagnetic.", true);
-        } else {
-            showFeedback("evidenceFeedback", "Not yet. The best evidence is what moved toward the magnet and what stayed behind.", false);
-        }
-    }
-
-    showMixture();
+  showMixture();
 </script>
 
 {% endblock %}

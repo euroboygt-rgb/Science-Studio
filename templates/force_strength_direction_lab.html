@@ -4,455 +4,455 @@
 
 <h1>Force Strength and Direction Simulator</h1>
 <p class="lead">
-    Test how weak and strong pushes or pulls change motion.
+  Test how weak and strong pushes or pulls change motion.
 </p>
 
 <a href="/first-nine-weeks/day/29?view=student" class="btn btn-secondary mb-4">
-    Back to Day 29
+  Back to Day 29
 </a>
 
 <style>
-    .sim-card {
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 25px;
-        background: #f8f9fa;
-    }
+  .sim-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
 
-    .info-box {
-        background: #fff3cd;
-        border-left: 5px solid #ffc107;
-        padding: 12px;
-        margin-bottom: 15px;
-    }
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
 
-    .track {
-        height: 300px;
-        border: 4px solid #333;
-        border-radius: 15px;
-        background: white;
-        position: relative;
-        overflow: hidden;
-        margin: 20px 0;
-    }
+  .track {
+    height: 300px;
+    border: 4px solid #333;
+    border-radius: 15px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+  }
 
-    .object {
-        width: 90px;
-        height: 60px;
-        border: 3px solid #333;
-        border-radius: 12px;
-        background: #e9ecef;
-        position: absolute;
-        left: 80px;
-        top: 120px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        transition: left 0.7s, top 0.7s;
-    }
+  .object {
+    width: 90px;
+    height: 60px;
+    border: 3px solid #333;
+    border-radius: 12px;
+    background: #e9ecef;
+    position: absolute;
+    left: 80px;
+    top: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: left 0.7s, top 0.7s;
+  }
 
-    .force-arrow {
-        position: absolute;
-        font-size: 54px;
-        font-weight: bold;
-        display: none;
-    }
+  .force-arrow {
+    position: absolute;
+    font-size: 54px;
+    font-weight: bold;
+    display: none;
+  }
 
-    .distance-line {
-        position: absolute;
-        left: 80px;
-        bottom: 25px;
-        height: 5px;
-        background: #333;
-        width: 0;
-        transition: width 0.7s;
-    }
+  .distance-line {
+    position: absolute;
+    left: 80px;
+    bottom: 25px;
+    height: 5px;
+    background: #333;
+    width: 0;
+    transition: width 0.7s;
+  }
 
-    .motion-data {
-        background: white;
-        border: 2px solid #333;
-        border-radius: 10px;
-        padding: 12px;
-        margin-top: 10px;
-    }
+  .motion-data {
+    background: white;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+  }
 
-    .feedback {
-        font-weight: bold;
-        margin-top: 10px;
-        padding: 10px;
-        border-radius: 8px;
-    }
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
 
-    .correct {
-        background: #d1e7dd;
-        color: #0f5132;
-    }
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
 
-    .incorrect {
-        background: #f8d7da;
-        color: #842029;
-    }
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
 
-    .scenario-card {
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 15px;
-    }
+  .scenario-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
 
-    .arrow-model {
-        background: white;
-        border: 3px solid #333;
-        border-radius: 12px;
-        padding: 15px;
-        text-align: center;
-        margin: 15px 0;
-    }
+  .arrow-model {
+    background: white;
+    border: 3px solid #333;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    margin: 15px 0;
+  }
 
-    .small-arrow {
-        font-size: 30px;
-        font-weight: bold;
-    }
+  .small-arrow {
+    font-size: 30px;
+    font-weight: bold;
+  }
 
-    .large-arrow {
-        font-size: 60px;
-        font-weight: bold;
-    }
+  .large-arrow {
+    font-size: 60px;
+    font-weight: bold;
+  }
 
-    .box-model {
-        display: inline-block;
-        padding: 25px;
-        border: 3px solid #333;
-        border-radius: 12px;
-        background: #e9ecef;
-        font-weight: bold;
-        margin: 0 20px;
-    }
+  .box-model {
+    display: inline-block;
+    padding: 25px;
+    border: 3px solid #333;
+    border-radius: 12px;
+    background: #e9ecef;
+    font-weight: bold;
+    margin: 0 20px;
+  }
 </style>
 
 <div class="sim-card">
-    <h2>Part 1: Test Force Strength and Direction</h2>
+  <h2>Part 1: Test Force Strength and Direction</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> A stronger force usually causes a greater change in motion. Direction matters too.
+  <div class="info-box">
+    <strong>Goal:</strong> A stronger force usually causes a greater change in motion. Direction matters too.
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <label class="form-label"><strong>Force type:</strong></label>
+      <select id="forceType" class="form-select mb-3" onchange="resetSim()">
+        <option>Push</option>
+        <option>Pull</option>
+      </select>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <label class="form-label"><strong>Force type:</strong></label>
-            <select id="forceType" class="form-select mb-3" onchange="resetSim()">
-                <option>Push</option>
-                <option>Pull</option>
-            </select>
-        </div>
-
-        <div class="col-md-4">
-            <label class="form-label"><strong>Direction:</strong></label>
-            <select id="directionType" class="form-select mb-3" onchange="resetSim()">
-                <option>Same direction as motion</option>
-                <option>Opposite direction of motion</option>
-                <option>From the side</option>
-            </select>
-        </div>
-
-        <div class="col-md-4">
-            <label class="form-label"><strong>Object:</strong></label>
-            <select id="objectType" class="form-select mb-3" onchange="resetSim()">
-                <option>Toy car</option>
-                <option>Ball</option>
-                <option>Box</option>
-                <option>Wagon</option>
-            </select>
-        </div>
+    <div class="col-md-4">
+      <label class="form-label"><strong>Direction:</strong></label>
+      <select id="directionType" class="form-select mb-3" onchange="resetSim()">
+        <option>Same direction as motion</option>
+        <option>Opposite direction of motion</option>
+        <option>From the side</option>
+      </select>
     </div>
 
-    <label class="form-label"><strong>Force strength:</strong> <span id="strengthLabel">2</span></label>
-    <input id="strengthInput" type="range" class="form-range mb-3" min="1" max="5" value="2" oninput="updateStrength(); resetSim();">
-
-    <button class="btn btn-primary" onclick="applyForce()">Apply Force</button>
-    <button class="btn btn-secondary" onclick="resetSim()">Reset</button>
-
-    <div class="track">
-        <div id="forceArrow" class="force-arrow">→</div>
-        <div id="movingObject" class="object">Toy car</div>
-        <div id="distanceLine" class="distance-line"></div>
+    <div class="col-md-4">
+      <label class="form-label"><strong>Object:</strong></label>
+      <select id="objectType" class="form-select mb-3" onchange="resetSim()">
+        <option>Toy car</option>
+        <option>Ball</option>
+        <option>Box</option>
+        <option>Wagon</option>
+      </select>
     </div>
+  </div>
 
-    <div class="motion-data">
-        <p><strong>Force:</strong> <span id="forceData">Not tested yet</span></p>
-        <p><strong>Direction:</strong> <span id="directionData">Not tested yet</span></p>
-        <p><strong>Effect on Motion:</strong> <span id="motionData">Not tested yet</span></p>
-        <p><strong>Evidence:</strong> <span id="evidenceData">Not tested yet</span></p>
-    </div>
+  <label class="form-label"><strong>Force strength:</strong> <span id="strengthLabel">2</span></label>
+  <input id="strengthInput" type="range" class="form-range mb-3" min="1" max="5" value="2" oninput="updateStrength(); resetSim();">
 
-    <label class="form-label mt-3"><strong>Best explanation:</strong></label>
-    <select id="trialAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The strength and direction of the force changed the object's motion.</option>
-        <option>The force made the object disappear.</option>
-        <option>The object changed motion without any force.</option>
-        <option>The force changed only the color of the object.</option>
-    </select>
+  <button class="btn btn-primary" onclick="applyForce()">Apply Force</button>
+  <button class="btn btn-secondary" onclick="resetSim()">Reset</button>
 
-    <button class="btn btn-success" onclick="checkTrial()">Check Trial Evidence</button>
-    <div id="trialFeedback"></div>
+  <div class="track">
+    <div id="forceArrow" class="force-arrow">→</div>
+    <div id="movingObject" class="object">Toy car</div>
+    <div id="distanceLine" class="distance-line"></div>
+  </div>
+
+  <div class="motion-data">
+    <p><strong>Force:</strong> <span id="forceData">Not tested yet</span></p>
+    <p><strong>Direction:</strong> <span id="directionData">Not tested yet</span></p>
+    <p><strong>Effect on Motion:</strong> <span id="motionData">Not tested yet</span></p>
+    <p><strong>Evidence:</strong> <span id="evidenceData">Not tested yet</span></p>
+  </div>
+
+  <label class="form-label mt-3"><strong>Best explanation:</strong></label>
+  <select id="trialAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The strength and direction of the force changed the object's motion.</option>
+    <option>The force made the object disappear.</option>
+    <option>The object changed motion without any force.</option>
+    <option>The force changed only the color of the object.</option>
+  </select>
+
+  <button class="btn btn-success" onclick="checkTrial()">Check Trial Evidence</button>
+  <div id="trialFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 2: Weak Force vs. Strong Force</h2>
+  <h2>Part 2: Weak Force vs. Strong Force</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Compare arrow size and distance moved.
-    </div>
+  <div class="info-box">
+    <strong>Goal:</strong> Compare arrow size and distance moved.
+  </div>
 
-    <div class="arrow-model">
-        <span class="small-arrow">→</span>
-        <span class="box-model">Weak Push</span>
-        <span class="large-arrow">→</span>
-        <span class="box-model">Strong Push</span>
-    </div>
+  <div class="arrow-model">
+    <span class="small-arrow">→</span>
+    <span class="box-model">Weak Push</span>
+    <span class="large-arrow">→</span>
+    <span class="box-model">Strong Push</span>
+  </div>
 
-    <label class="form-label"><strong>Which statement is best?</strong></label>
-    <select id="strengthAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>A stronger force usually causes a greater change in motion.</option>
-        <option>A weaker force always moves an object farther.</option>
-        <option>Arrow size shows the color of the object.</option>
-        <option>Force strength does not affect motion.</option>
-    </select>
+  <label class="form-label"><strong>Which statement is best?</strong></label>
+  <select id="strengthAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>A stronger force usually causes a greater change in motion.</option>
+    <option>A weaker force always moves an object farther.</option>
+    <option>Arrow size shows the color of the object.</option>
+    <option>Force strength does not affect motion.</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkStrength()">Check Strength Model</button>
-    <div id="strengthFeedback"></div>
+  <button class="btn btn-success" onclick="checkStrength()">Check Strength Model</button>
+  <div id="strengthFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 3: Predict the Motion</h2>
+  <h2>Part 3: Predict the Motion</h2>
 
-    <div class="info-box">
-        <strong>Goal:</strong> Use force direction to predict motion changes.
-    </div>
+  <div class="info-box">
+    <strong>Goal:</strong> Use force direction to predict motion changes.
+  </div>
 
-    <div class="scenario-card">
-        <h4>1. A ball is rolling forward. A force pushes it forward.</h4>
-        <select id="q1" class="form-select">
-            <option selected>Choose...</option>
-            <option>Speeds up</option>
-            <option>Slows down or stops</option>
-            <option>Changes direction from the side</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>1. A ball is rolling forward. A force pushes it forward.</h4>
+    <select id="q1" class="form-select">
+      <option selected>Choose...</option>
+      <option>Speeds up</option>
+      <option>Slows down or stops</option>
+      <option>Changes direction from the side</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>2. A ball is rolling forward. A force pushes backward.</h4>
-        <select id="q2" class="form-select">
-            <option selected>Choose...</option>
-            <option>Speeds up</option>
-            <option>Slows down or stops</option>
-            <option>Changes direction from the side</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>2. A ball is rolling forward. A force pushes backward.</h4>
+    <select id="q2" class="form-select">
+      <option selected>Choose...</option>
+      <option>Speeds up</option>
+      <option>Slows down or stops</option>
+      <option>Changes direction from the side</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>3. A ball is rolling forward. A force pushes from the side.</h4>
-        <select id="q3" class="form-select">
-            <option selected>Choose...</option>
-            <option>Speeds up</option>
-            <option>Slows down or stops</option>
-            <option>Changes direction from the side</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>3. A ball is rolling forward. A force pushes from the side.</h4>
+    <select id="q3" class="form-select">
+      <option selected>Choose...</option>
+      <option>Speeds up</option>
+      <option>Slows down or stops</option>
+      <option>Changes direction from the side</option>
+    </select>
+  </div>
 
-    <div class="scenario-card">
-        <h4>4. A toy car moves farther after a stronger push.</h4>
-        <select id="q4" class="form-select">
-            <option selected>Choose...</option>
-            <option>Force strength affected motion.</option>
-            <option>The car disappeared.</option>
-            <option>No force was used.</option>
-        </select>
-    </div>
+  <div class="scenario-card">
+    <h4>4. A toy car moves farther after a stronger push.</h4>
+    <select id="q4" class="form-select">
+      <option selected>Choose...</option>
+      <option>Force strength affected motion.</option>
+      <option>The car disappeared.</option>
+      <option>No force was used.</option>
+    </select>
+  </div>
 
-    <button class="btn btn-success" onclick="checkPredictions()">Check Predictions</button>
-    <div id="predictionFeedback"></div>
+  <button class="btn btn-success" onclick="checkPredictions()">Check Predictions</button>
+  <div id="predictionFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 4: STAAR Evidence Challenge</h2>
+  <h2>Part 4: STAAR Evidence Challenge</h2>
 
-    <div class="info-box">
-        <strong>Question:</strong> A student pushes the same toy car two times. The first push is weak. The second push is stronger. The car moves farther after the second push.
-    </div>
+  <div class="info-box">
+    <strong>Question:</strong> A student pushes the same toy car two times. The first push is weak. The second push is stronger. The car moves farther after the second push.
+  </div>
 
-    <label class="form-label"><strong>Best claim:</strong></label>
-    <select id="staar1" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The stronger force caused a greater change in motion.</option>
-        <option>The car moved farther because it changed color.</option>
-        <option>The weak force caused the greater motion.</option>
-        <option>No force acted on the car.</option>
-    </select>
+  <label class="form-label"><strong>Best claim:</strong></label>
+  <select id="staar1" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The stronger force caused a greater change in motion.</option>
+    <option>The car moved farther because it changed color.</option>
+    <option>The weak force caused the greater motion.</option>
+    <option>No force acted on the car.</option>
+  </select>
 
-    <label class="form-label"><strong>Best evidence:</strong></label>
-    <select id="staar2" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The car moved farther after the stronger push.</option>
-        <option>The car had wheels.</option>
-        <option>The car was on the floor.</option>
-        <option>The car was a toy.</option>
-    </select>
+  <label class="form-label"><strong>Best evidence:</strong></label>
+  <select id="staar2" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The car moved farther after the stronger push.</option>
+    <option>The car had wheels.</option>
+    <option>The car was on the floor.</option>
+    <option>The car was a toy.</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Evidence</button>
-    <div id="staarFeedback"></div>
+  <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Evidence</button>
+  <div id="staarFeedback"></div>
 </div>
 
 <script>
-    let tested = false;
+  let tested = false;
 
-    function showFeedback(elementId, message, isCorrect) {
-        const box = document.getElementById(elementId);
-        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
-        box.innerHTML = message;
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function updateStrength() {
+    document.getElementById("strengthLabel").innerText = document.getElementById("strengthInput").value;
+  }
+
+  function resetSim() {
+    tested = false;
+
+    const obj = document.getElementById("objectType").value;
+    const movingObject = document.getElementById("movingObject");
+
+    movingObject.innerText = obj;
+    movingObject.style.left = "80px";
+    movingObject.style.top = "120px";
+
+    document.getElementById("forceArrow").style.display = "none";
+    document.getElementById("distanceLine").style.width = "0";
+
+    document.getElementById("forceData").innerText = "Not tested yet";
+    document.getElementById("directionData").innerText = "Not tested yet";
+    document.getElementById("motionData").innerText = "Not tested yet";
+    document.getElementById("evidenceData").innerText = "Not tested yet";
+    document.getElementById("trialAnswer").value = "Choose...";
+    document.getElementById("trialFeedback").innerHTML = "";
+    document.getElementById("trialFeedback").className = "";
+  }
+
+  function applyForce() {
+    tested = true;
+
+    const forceType = document.getElementById("forceType").value;
+    const directionType = document.getElementById("directionType").value;
+    const strength = Number(document.getElementById("strengthInput").value);
+    const movingObject = document.getElementById("movingObject");
+    const arrow = document.getElementById("forceArrow");
+    const distanceLine = document.getElementById("distanceLine");
+
+    let distance = strength * 55;
+    let newLeft = 80 + distance;
+    let newTop = 120;
+    let arrowSymbol = "→";
+    let effect = "";
+    let evidence = "";
+
+    if (directionType === "Same direction as motion") {
+      newLeft = 80 + distance;
+      newTop = 120;
+      arrowSymbol = "→";
+      effect = "The object speeds up or moves farther.";
+      evidence = "The force acted in the same direction as the motion.";
+      distanceLine.style.width = distance + "px";
+    } else if (directionType === "Opposite direction of motion") {
+      newLeft = 80 + Math.max(20, 160 - distance);
+      newTop = 120;
+      arrowSymbol = "←";
+      effect = "The object slows down or stops.";
+      evidence = "The force acted opposite the direction of motion.";
+      distanceLine.style.width = Math.max(20, 160 - distance) + "px";
+    } else {
+      newLeft = 80 + distance;
+      newTop = 55;
+      arrowSymbol = "↑";
+      effect = "The object changes direction.";
+      evidence = "The force came from the side and changed the path of motion.";
+      distanceLine.style.width = distance + "px";
     }
 
-    function updateStrength() {
-        document.getElementById("strengthLabel").innerText = document.getElementById("strengthInput").value;
+    movingObject.style.left = newLeft + "px";
+    movingObject.style.top = newTop + "px";
+
+    arrow.innerText = arrowSymbol;
+    arrow.style.left = "120px";
+    arrow.style.top = "45px";
+    arrow.style.display = "block";
+
+    document.getElementById("forceData").innerText = forceType + " with strength " + strength;
+    document.getElementById("directionData").innerText = directionType;
+    document.getElementById("motionData").innerText = effect;
+    document.getElementById("evidenceData").innerText = evidence;
+  }
+
+  function checkTrial() {
+    const answer = document.getElementById("trialAnswer").value;
+
+    if (!tested) {
+      showFeedback("trialFeedback", "Apply the force first, then check your answer.", false);
+      return;
     }
 
-    function resetSim() {
-        tested = false;
-
-        const obj = document.getElementById("objectType").value;
-        const movingObject = document.getElementById("movingObject");
-
-        movingObject.innerText = obj;
-        movingObject.style.left = "80px";
-        movingObject.style.top = "120px";
-
-        document.getElementById("forceArrow").style.display = "none";
-        document.getElementById("distanceLine").style.width = "0";
-
-        document.getElementById("forceData").innerText = "Not tested yet";
-        document.getElementById("directionData").innerText = "Not tested yet";
-        document.getElementById("motionData").innerText = "Not tested yet";
-        document.getElementById("evidenceData").innerText = "Not tested yet";
-        document.getElementById("trialAnswer").value = "Choose...";
-        document.getElementById("trialFeedback").innerHTML = "";
-        document.getElementById("trialFeedback").className = "";
+    if (answer === "The strength and direction of the force changed the object's motion.") {
+      showFeedback("trialFeedback", "Correct! Force strength and direction both affect motion.", true);
+    } else {
+      showFeedback("trialFeedback", "Not yet. Look at the strength, direction, and how the object moved.", false);
     }
+  }
 
-    function applyForce() {
-        tested = true;
+  function checkStrength() {
+    const answer = document.getElementById("strengthAnswer").value;
 
-        const forceType = document.getElementById("forceType").value;
-        const directionType = document.getElementById("directionType").value;
-        const strength = Number(document.getElementById("strengthInput").value);
-        const movingObject = document.getElementById("movingObject");
-        const arrow = document.getElementById("forceArrow");
-        const distanceLine = document.getElementById("distanceLine");
-
-        let distance = strength * 55;
-        let newLeft = 80 + distance;
-        let newTop = 120;
-        let arrowSymbol = "→";
-        let effect = "";
-        let evidence = "";
-
-        if (directionType === "Same direction as motion") {
-            newLeft = 80 + distance;
-            newTop = 120;
-            arrowSymbol = "→";
-            effect = "The object speeds up or moves farther.";
-            evidence = "The force acted in the same direction as the motion.";
-            distanceLine.style.width = distance + "px";
-        } else if (directionType === "Opposite direction of motion") {
-            newLeft = 80 + Math.max(20, 160 - distance);
-            newTop = 120;
-            arrowSymbol = "←";
-            effect = "The object slows down or stops.";
-            evidence = "The force acted opposite the direction of motion.";
-            distanceLine.style.width = Math.max(20, 160 - distance) + "px";
-        } else {
-            newLeft = 80 + distance;
-            newTop = 55;
-            arrowSymbol = "↑";
-            effect = "The object changes direction.";
-            evidence = "The force came from the side and changed the path of motion.";
-            distanceLine.style.width = distance + "px";
-        }
-
-        movingObject.style.left = newLeft + "px";
-        movingObject.style.top = newTop + "px";
-
-        arrow.innerText = arrowSymbol;
-        arrow.style.left = "120px";
-        arrow.style.top = "45px";
-        arrow.style.display = "block";
-
-        document.getElementById("forceData").innerText = forceType + " with strength " + strength;
-        document.getElementById("directionData").innerText = directionType;
-        document.getElementById("motionData").innerText = effect;
-        document.getElementById("evidenceData").innerText = evidence;
+    if (answer === "A stronger force usually causes a greater change in motion.") {
+      showFeedback("strengthFeedback", "Correct! Larger arrows represent stronger forces.", true);
+    } else {
+      showFeedback("strengthFeedback", "Not yet. A stronger force usually creates a greater change in motion.", false);
     }
+  }
 
-    function checkTrial() {
-        const answer = document.getElementById("trialAnswer").value;
+  function checkPredictions() {
+    let correct = 0;
 
-        if (!tested) {
-            showFeedback("trialFeedback", "Apply the force first, then check your answer.", false);
-            return;
-        }
+    if (document.getElementById("q1").value === "Speeds up") correct++;
+    if (document.getElementById("q2").value === "Slows down or stops") correct++;
+    if (document.getElementById("q3").value === "Changes direction from the side") correct++;
+    if (document.getElementById("q4").value === "Force strength affected motion.") correct++;
 
-        if (answer === "The strength and direction of the force changed the object's motion.") {
-            showFeedback("trialFeedback", "Correct! Force strength and direction both affect motion.", true);
-        } else {
-            showFeedback("trialFeedback", "Not yet. Look at the strength, direction, and how the object moved.", false);
-        }
+    if (correct === 4) {
+      showFeedback("predictionFeedback", "Correct! You used force direction and strength to predict motion.", true);
+    } else {
+      showFeedback("predictionFeedback", "You got " + correct + " out of 4. Same direction speeds up, opposite direction slows down, side force changes direction.", false);
     }
+  }
 
-    function checkStrength() {
-        const answer = document.getElementById("strengthAnswer").value;
+  function checkSTAAR() {
+    const s1 = document.getElementById("staar1").value;
+    const s2 = document.getElementById("staar2").value;
 
-        if (answer === "A stronger force usually causes a greater change in motion.") {
-            showFeedback("strengthFeedback", "Correct! Larger arrows represent stronger forces.", true);
-        } else {
-            showFeedback("strengthFeedback", "Not yet. A stronger force usually creates a greater change in motion.", false);
-        }
+    if (
+      s1 === "The stronger force caused a greater change in motion." &&
+      s2 === "The car moved farther after the stronger push."
+    ) {
+      showFeedback("staarFeedback", "Correct! The data shows that the stronger force caused the car to move farther.", true);
+    } else {
+      showFeedback("staarFeedback", "Not yet. Use the distance moved as evidence.", false);
     }
+  }
 
-    function checkPredictions() {
-        let correct = 0;
-
-        if (document.getElementById("q1").value === "Speeds up") correct++;
-        if (document.getElementById("q2").value === "Slows down or stops") correct++;
-        if (document.getElementById("q3").value === "Changes direction from the side") correct++;
-        if (document.getElementById("q4").value === "Force strength affected motion.") correct++;
-
-        if (correct === 4) {
-            showFeedback("predictionFeedback", "Correct! You used force direction and strength to predict motion.", true);
-        } else {
-            showFeedback("predictionFeedback", "You got " + correct + " out of 4. Same direction speeds up, opposite direction slows down, side force changes direction.", false);
-        }
-    }
-
-    function checkSTAAR() {
-        const s1 = document.getElementById("staar1").value;
-        const s2 = document.getElementById("staar2").value;
-
-        if (
-            s1 === "The stronger force caused a greater change in motion." &&
-            s2 === "The car moved farther after the stronger push."
-        ) {
-            showFeedback("staarFeedback", "Correct! The data shows that the stronger force caused the car to move farther.", true);
-        } else {
-            showFeedback("staarFeedback", "Not yet. Use the distance moved as evidence.", false);
-        }
-    }
-
-    updateStrength();
-    resetSim();
+  updateStrength();
+  resetSim();
 </script>
 
 {% endblock %}

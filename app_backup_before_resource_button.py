@@ -47,21 +47,9 @@ from curriculum.day43 import day43
 from curriculum.day44 import day44
 from curriculum.day45 import day45
 
-from curriculum.printable_resources import resource_folders, printable_resources_by_slug, printable_resources_by_day
+from curriculum.printable_resources import resource_folders, printable_resources_by_slug
 
 app = Flask(__name__)
-
-
-@app.context_processor
-def inject_printable_resource_helpers():
-    def get_printable_resource_for_day(day):
-        try:
-            return printable_resources_by_day.get(int(day))
-        except Exception:
-            return None
-
-    return dict(get_printable_resource_for_day=get_printable_resource_for_day)
-
 
 
 def get_student_dashboard_lessons():

@@ -4,498 +4,498 @@
 
 <h1>Data Table and Graphing Simulator</h1>
 <p class="lead">
-    Organize force and motion data, build a graph, find the pattern, and write a claim with evidence.
+  Organize force and motion data, build a graph, find the pattern, and write a claim with evidence.
 </p>
 
 <a href="/first-nine-weeks/day/35?view=student" class="btn btn-secondary mb-4">
-    Back to Day 35
+  Back to Day 35
 </a>
 
 <style>
-    .sim-card {
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 25px;
-        background: #f8f9fa;
-    }
+  .sim-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
 
-    .info-box {
-        background: #fff3cd;
-        border-left: 5px solid #ffc107;
-        padding: 12px;
-        margin-bottom: 15px;
-    }
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
 
-    .graph-box {
-        background: white;
-        border: 4px solid #333;
-        border-radius: 15px;
-        height: 430px;
-        position: relative;
-        margin: 20px 0;
-        overflow: hidden;
-    }
+  .graph-box {
+    background: white;
+    border: 4px solid #333;
+    border-radius: 15px;
+    height: 430px;
+    position: relative;
+    margin: 20px 0;
+    overflow: hidden;
+  }
 
-    .y-axis {
-        position: absolute;
-        left: 85px;
-        top: 55px;
-        bottom: 75px;
-        width: 5px;
-        background: #333;
-    }
+  .y-axis {
+    position: absolute;
+    left: 85px;
+    top: 55px;
+    bottom: 75px;
+    width: 5px;
+    background: #333;
+  }
 
-    .x-axis {
-        position: absolute;
-        left: 85px;
-        right: 55px;
-        bottom: 75px;
-        height: 5px;
-        background: #333;
-    }
+  .x-axis {
+    position: absolute;
+    left: 85px;
+    right: 55px;
+    bottom: 75px;
+    height: 5px;
+    background: #333;
+  }
 
-    .bar {
-        position: absolute;
-        bottom: 80px;
-        width: 70px;
-        background: #e9ecef;
-        border: 3px solid #333;
-        transition: height 0.7s;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        font-weight: bold;
-        padding-top: 6px;
-    }
+  .bar {
+    position: absolute;
+    bottom: 80px;
+    width: 70px;
+    background: #e9ecef;
+    border: 3px solid #333;
+    transition: height 0.7s;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-weight: bold;
+    padding-top: 6px;
+  }
 
-    .bar-label {
-        position: absolute;
-        bottom: 35px;
-        width: 120px;
-        text-align: center;
-        font-weight: bold;
-    }
+  .bar-label {
+    position: absolute;
+    bottom: 35px;
+    width: 120px;
+    text-align: center;
+    font-weight: bold;
+  }
 
-    .graph-title {
-        position: absolute;
-        top: 12px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-    }
+  .graph-title {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
 
-    .x-label {
-        position: absolute;
-        bottom: 5px;
-        left: 150px;
-        right: 50px;
-        text-align: center;
-        font-weight: bold;
-    }
+  .x-label {
+    position: absolute;
+    bottom: 5px;
+    left: 150px;
+    right: 50px;
+    text-align: center;
+    font-weight: bold;
+  }
 
-    .y-label {
-        position: absolute;
-        left: -55px;
-        top: 190px;
-        transform: rotate(-90deg);
-        font-weight: bold;
-        width: 220px;
-        text-align: center;
-    }
+  .y-label {
+    position: absolute;
+    left: -55px;
+    top: 190px;
+    transform: rotate(-90deg);
+    font-weight: bold;
+    width: 220px;
+    text-align: center;
+  }
 
-    .feedback {
-        font-weight: bold;
-        margin-top: 10px;
-        padding: 10px;
-        border-radius: 8px;
-    }
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
 
-    .correct {
-        background: #d1e7dd;
-        color: #0f5132;
-    }
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
 
-    .incorrect {
-        background: #f8d7da;
-        color: #842029;
-    }
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
 
-    .scenario-card {
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 15px;
-    }
+  .scenario-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
 
-    .claim-box {
-        background: white;
-        border: 2px solid #333;
-        border-radius: 12px;
-        padding: 15px;
-        margin-top: 15px;
-    }
+  .claim-box {
+    background: white;
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 15px;
+  }
 </style>
 
 <div class="sim-card">
-    <h2>Part 1: Choose Investigation Data</h2>
+  <h2>Part 1: Choose Investigation Data</h2>
 
-    <div class="info-box">
-        <strong>Reminder:</strong> The independent variable usually goes on the x-axis. The dependent variable usually goes on the y-axis.
-    </div>
+  <div class="info-box">
+    <strong>Reminder:</strong> The independent variable usually goes on the x-axis. The dependent variable usually goes on the y-axis.
+  </div>
 
-    <label class="form-label"><strong>Investigation:</strong></label>
-    <select id="investigationSelect" class="form-select mb-3" onchange="loadInvestigation()">
-        <option value="ramp">How does ramp height affect toy car distance?</option>
-        <option value="surface">How does surface type affect block sliding distance?</option>
-        <option value="push">How does push strength affect toy car distance?</option>
-        <option value="ball">How does ball type affect bounce height?</option>
-    </select>
+  <label class="form-label"><strong>Investigation:</strong></label>
+  <select id="investigationSelect" class="form-select mb-3" onchange="loadInvestigation()">
+    <option value="ramp">How does ramp height affect toy car distance?</option>
+    <option value="surface">How does surface type affect block sliding distance?</option>
+    <option value="push">How does push strength affect toy car distance?</option>
+    <option value="ball">How does ball type affect bounce height?</option>
+  </select>
 
-    <button class="btn btn-primary" onclick="loadInvestigation()">Load Data Table</button>
-    <button class="btn btn-success" onclick="makeGraph()">Make Graph</button>
+  <button class="btn btn-primary" onclick="loadInvestigation()">Load Data Table</button>
+  <button class="btn btn-success" onclick="makeGraph()">Make Graph</button>
 
-    <div class="table-responsive mt-3">
-        <table class="table table-bordered bg-white">
-            <thead>
-                <tr>
-                    <th id="ivHeader">Independent Variable</th>
-                    <th>Trial 1</th>
-                    <th>Trial 2</th>
-                    <th>Trial 3</th>
-                    <th>Average</th>
-                </tr>
-            </thead>
-            <tbody id="dataBody"></tbody>
-        </table>
-    </div>
+  <div class="table-responsive mt-3">
+    <table class="table table-bordered bg-white">
+      <thead>
+        <tr>
+          <th id="ivHeader">Independent Variable</th>
+          <th>Trial 1</th>
+          <th>Trial 2</th>
+          <th>Trial 3</th>
+          <th>Average</th>
+        </tr>
+      </thead>
+      <tbody id="dataBody"></tbody>
+    </table>
+  </div>
 
-    <div class="graph-box">
-        <div id="graphTitle" class="graph-title">Graph will appear here</div>
-        <div class="y-axis"></div>
-        <div class="x-axis"></div>
-        <div id="yLabel" class="y-label">Y-axis</div>
-        <div id="xLabel" class="x-label">X-axis</div>
+  <div class="graph-box">
+    <div id="graphTitle" class="graph-title">Graph will appear here</div>
+    <div class="y-axis"></div>
+    <div class="x-axis"></div>
+    <div id="yLabel" class="y-label">Y-axis</div>
+    <div id="xLabel" class="x-label">X-axis</div>
 
-        <div id="bar1" class="bar" style="left: 150px; height: 0;">0</div>
-        <div id="bar2" class="bar" style="left: 330px; height: 0;">0</div>
-        <div id="bar3" class="bar" style="left: 510px; height: 0;">0</div>
+    <div id="bar1" class="bar" style="left: 150px; height: 0;">0</div>
+    <div id="bar2" class="bar" style="left: 330px; height: 0;">0</div>
+    <div id="bar3" class="bar" style="left: 510px; height: 0;">0</div>
 
-        <div id="label1" class="bar-label" style="left: 125px;">Label 1</div>
-        <div id="label2" class="bar-label" style="left: 305px;">Label 2</div>
-        <div id="label3" class="bar-label" style="left: 485px;">Label 3</div>
-    </div>
+    <div id="label1" class="bar-label" style="left: 125px;">Label 1</div>
+    <div id="label2" class="bar-label" style="left: 305px;">Label 2</div>
+    <div id="label3" class="bar-label" style="left: 485px;">Label 3</div>
+  </div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 2: Read the Graph</h2>
+  <h2>Part 2: Read the Graph</h2>
 
-    <label class="form-label"><strong>What is the independent variable?</strong></label>
-    <select id="ivAnswer" class="form-select mb-3"></select>
+  <label class="form-label"><strong>What is the independent variable?</strong></label>
+  <select id="ivAnswer" class="form-select mb-3"></select>
 
-    <label class="form-label"><strong>What is the dependent variable?</strong></label>
-    <select id="dvAnswer" class="form-select mb-3"></select>
+  <label class="form-label"><strong>What is the dependent variable?</strong></label>
+  <select id="dvAnswer" class="form-select mb-3"></select>
 
-    <label class="form-label"><strong>Which statement describes the pattern?</strong></label>
-    <select id="patternAnswer" class="form-select mb-3"></select>
+  <label class="form-label"><strong>Which statement describes the pattern?</strong></label>
+  <select id="patternAnswer" class="form-select mb-3"></select>
 
-    <button class="btn btn-success" onclick="checkGraphReading()">Check Graph Reading</button>
-    <div id="graphFeedback"></div>
+  <button class="btn btn-success" onclick="checkGraphReading()">Check Graph Reading</button>
+  <div id="graphFeedback"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 3: Write a Claim with Evidence</h2>
+  <h2>Part 3: Write a Claim with Evidence</h2>
 
-    <div class="info-box">
-        <strong>Claim:</strong> answers the question. <br>
-        <strong>Evidence:</strong> uses data from the table or graph.
-    </div>
+  <div class="info-box">
+    <strong>Claim:</strong> answers the question. <br>
+    <strong>Evidence:</strong> uses data from the table or graph.
+  </div>
 
-    <label class="form-label"><strong>Choose the best claim:</strong></label>
-    <select id="claimAnswer" class="form-select mb-3"></select>
+  <label class="form-label"><strong>Choose the best claim:</strong></label>
+  <select id="claimAnswer" class="form-select mb-3"></select>
 
-    <label class="form-label"><strong>Choose the best evidence:</strong></label>
-    <select id="evidenceAnswer" class="form-select mb-3"></select>
+  <label class="form-label"><strong>Choose the best evidence:</strong></label>
+  <select id="evidenceAnswer" class="form-select mb-3"></select>
 
-    <button class="btn btn-success" onclick="checkClaimEvidence()">Check Claim and Evidence</button>
-    <button class="btn btn-primary" onclick="buildCER()">Build CER Paragraph</button>
+  <button class="btn btn-success" onclick="checkClaimEvidence()">Check Claim and Evidence</button>
+  <button class="btn btn-primary" onclick="buildCER()">Build CER Paragraph</button>
 
-    <div id="claimFeedback"></div>
-    <div id="cerOutput"></div>
+  <div id="claimFeedback"></div>
+  <div id="cerOutput"></div>
 </div>
 
 <div class="sim-card">
-    <h2>Part 4: STAAR Graphing Challenge</h2>
+  <h2>Part 4: STAAR Graphing Challenge</h2>
 
-    <div class="scenario-card">
-        <h4>Question</h4>
-        <p>
-            A student changed ramp height and measured toy car distance.
-            The car traveled 42 cm from the low ramp, 66 cm from the medium ramp, and 91 cm from the high ramp.
-        </p>
-    </div>
+  <div class="scenario-card">
+    <h4>Question</h4>
+    <p>
+      A student changed ramp height and measured toy car distance.
+      The car traveled 42 cm from the low ramp, 66 cm from the medium ramp, and 91 cm from the high ramp.
+    </p>
+  </div>
 
-    <label class="form-label"><strong>What should go on the x-axis?</strong></label>
-    <select id="staar1" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Ramp height</option>
-        <option>Distance traveled</option>
-        <option>Same toy car</option>
-        <option>Meterstick</option>
-    </select>
+  <label class="form-label"><strong>What should go on the x-axis?</strong></label>
+  <select id="staar1" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Ramp height</option>
+    <option>Distance traveled</option>
+    <option>Same toy car</option>
+    <option>Meterstick</option>
+  </select>
 
-    <label class="form-label"><strong>What should go on the y-axis?</strong></label>
-    <select id="staar2" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Distance traveled</option>
-        <option>Ramp height</option>
-        <option>Same surface</option>
-        <option>Trial number only</option>
-    </select>
+  <label class="form-label"><strong>What should go on the y-axis?</strong></label>
+  <select id="staar2" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Distance traveled</option>
+    <option>Ramp height</option>
+    <option>Same surface</option>
+    <option>Trial number only</option>
+  </select>
 
-    <label class="form-label"><strong>Which claim is supported by the data?</strong></label>
-    <select id="staar3" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The toy car traveled farther as ramp height increased.</option>
-        <option>Ramp height did not affect distance.</option>
-        <option>The toy car traveled the same distance each time.</option>
-        <option>The car became magnetic.</option>
-    </select>
+  <label class="form-label"><strong>Which claim is supported by the data?</strong></label>
+  <select id="staar3" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The toy car traveled farther as ramp height increased.</option>
+    <option>Ramp height did not affect distance.</option>
+    <option>The toy car traveled the same distance each time.</option>
+    <option>The car became magnetic.</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
-    <div id="staarFeedback"></div>
+  <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
+  <div id="staarFeedback"></div>
 </div>
 
 <script>
-    const investigations = {
-        ramp: {
-            title: "Effect of Ramp Height on Toy Car Distance",
-            iv: "Ramp height",
-            dv: "Distance traveled in cm",
-            rows: [
-                {label: "Low", trials: [40, 42, 41]},
-                {label: "Medium", trials: [64, 66, 65]},
-                {label: "High", trials: [88, 91, 90]}
-            ],
-            pattern: "As ramp height increases, distance traveled increases.",
-            claim: "Increasing ramp height increased the distance the toy car traveled.",
-            evidence: "The car traveled about 41 cm from the low ramp and about 90 cm from the high ramp."
-        },
-        surface: {
-            title: "Effect of Surface Type on Block Sliding Distance",
-            iv: "Surface type",
-            dv: "Distance slid in cm",
-            rows: [
-                {label: "Carpet", trials: [25, 27, 26]},
-                {label: "Desk", trials: [55, 57, 56]},
-                {label: "Tile", trials: [78, 80, 79]}
-            ],
-            pattern: "The block slides farther on smoother surfaces.",
-            claim: "Surface type affected how far the block slid.",
-            evidence: "The block slid about 26 cm on carpet and about 79 cm on tile."
-        },
-        push: {
-            title: "Effect of Push Strength on Toy Car Distance",
-            iv: "Push strength",
-            dv: "Distance traveled in cm",
-            rows: [
-                {label: "Gentle", trials: [35, 36, 34]},
-                {label: "Medium", trials: [61, 63, 62]},
-                {label: "Strong", trials: [95, 97, 96]}
-            ],
-            pattern: "Stronger pushes make the toy car travel farther.",
-            claim: "Increasing push strength increased the distance the toy car traveled.",
-            evidence: "The car traveled about 35 cm with a gentle push and about 96 cm with a strong push."
-        },
-        ball: {
-            title: "Effect of Ball Type on Bounce Height",
-            iv: "Ball type",
-            dv: "Bounce height in cm",
-            rows: [
-                {label: "Foam", trials: [18, 20, 19]},
-                {label: "Tennis", trials: [45, 47, 46]},
-                {label: "Rubber", trials: [72, 75, 73]}
-            ],
-            pattern: "Different balls bounce to different heights.",
-            claim: "Ball type affected bounce height.",
-            evidence: "The foam ball bounced about 19 cm and the rubber ball bounced about 73 cm."
-        }
-    };
+  const investigations = {
+    ramp: {
+      title: "Effect of Ramp Height on Toy Car Distance",
+      iv: "Ramp height",
+      dv: "Distance traveled in cm",
+      rows: [
+        {label: "Low", trials: [40, 42, 41]},
+        {label: "Medium", trials: [64, 66, 65]},
+        {label: "High", trials: [88, 91, 90]}
+      ],
+      pattern: "As ramp height increases, distance traveled increases.",
+      claim: "Increasing ramp height increased the distance the toy car traveled.",
+      evidence: "The car traveled about 41 cm from the low ramp and about 90 cm from the high ramp."
+    },
+    surface: {
+      title: "Effect of Surface Type on Block Sliding Distance",
+      iv: "Surface type",
+      dv: "Distance slid in cm",
+      rows: [
+        {label: "Carpet", trials: [25, 27, 26]},
+        {label: "Desk", trials: [55, 57, 56]},
+        {label: "Tile", trials: [78, 80, 79]}
+      ],
+      pattern: "The block slides farther on smoother surfaces.",
+      claim: "Surface type affected how far the block slid.",
+      evidence: "The block slid about 26 cm on carpet and about 79 cm on tile."
+    },
+    push: {
+      title: "Effect of Push Strength on Toy Car Distance",
+      iv: "Push strength",
+      dv: "Distance traveled in cm",
+      rows: [
+        {label: "Gentle", trials: [35, 36, 34]},
+        {label: "Medium", trials: [61, 63, 62]},
+        {label: "Strong", trials: [95, 97, 96]}
+      ],
+      pattern: "Stronger pushes make the toy car travel farther.",
+      claim: "Increasing push strength increased the distance the toy car traveled.",
+      evidence: "The car traveled about 35 cm with a gentle push and about 96 cm with a strong push."
+    },
+    ball: {
+      title: "Effect of Ball Type on Bounce Height",
+      iv: "Ball type",
+      dv: "Bounce height in cm",
+      rows: [
+        {label: "Foam", trials: [18, 20, 19]},
+        {label: "Tennis", trials: [45, 47, 46]},
+        {label: "Rubber", trials: [72, 75, 73]}
+      ],
+      pattern: "Different balls bounce to different heights.",
+      claim: "Ball type affected bounce height.",
+      evidence: "The foam ball bounced about 19 cm and the rubber ball bounced about 73 cm."
+    }
+  };
 
-    let current = investigations.ramp;
-    let graphMade = false;
+  let current = investigations.ramp;
+  let graphMade = false;
 
-    function average(nums) {
-        return Math.round(nums.reduce((a, b) => a + b, 0) / nums.length);
+  function average(nums) {
+    return Math.round(nums.reduce((a, b) => a + b, 0) / nums.length);
+  }
+
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function fillOptions(selectId, correct, distractors) {
+    const select = document.getElementById(selectId);
+    select.innerHTML = "<option selected>Choose...</option>";
+
+    const choices = [correct, ...distractors];
+    choices.forEach(choice => {
+      const option = document.createElement("option");
+      option.textContent = choice;
+      select.appendChild(option);
+    });
+  }
+
+  function loadInvestigation() {
+    const key = document.getElementById("investigationSelect").value;
+    current = investigations[key];
+    graphMade = false;
+
+    document.getElementById("ivHeader").innerText = current.iv;
+
+    const body = document.getElementById("dataBody");
+    body.innerHTML = "";
+
+    current.rows.forEach(row => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><strong>${row.label}</strong></td>
+        <td>${row.trials[0]}</td>
+        <td>${row.trials[1]}</td>
+        <td>${row.trials[2]}</td>
+        <td><strong>${average(row.trials)}</strong></td>
+      `;
+      body.appendChild(tr);
+    });
+
+    document.getElementById("graphTitle").innerText = "Click Make Graph";
+    document.getElementById("xLabel").innerText = "X-axis";
+    document.getElementById("yLabel").innerText = "Y-axis";
+
+    ["bar1", "bar2", "bar3"].forEach(id => {
+      document.getElementById(id).style.height = "0";
+      document.getElementById(id).innerText = "0";
+    });
+
+    document.getElementById("label1").innerText = current.rows[0].label;
+    document.getElementById("label2").innerText = current.rows[1].label;
+    document.getElementById("label3").innerText = current.rows[2].label;
+
+    fillOptions("ivAnswer", current.iv, ["Distance traveled in cm", "Trial number", "Same measuring tool"]);
+    fillOptions("dvAnswer", current.dv, [current.iv, "Same starting line", "Initials or class number — optional"]);
+    fillOptions("patternAnswer", current.pattern, [
+      "The data shows no pattern.",
+      "The object turned into a liquid.",
+      "The controlled variables changed every trial."
+    ]);
+
+    fillOptions("claimAnswer", current.claim, [
+      "The independent variable did not affect the result.",
+      "The data cannot support any claim.",
+      "The object stopped being matter."
+    ]);
+
+    fillOptions("evidenceAnswer", current.evidence, [
+      "The object had a color.",
+      "The student used a pencil.",
+      "The investigation had a title."
+    ]);
+
+    document.getElementById("graphFeedback").innerHTML = "";
+    document.getElementById("claimFeedback").innerHTML = "";
+    document.getElementById("cerOutput").innerHTML = "";
+  }
+
+  function makeGraph() {
+    graphMade = true;
+
+    document.getElementById("graphTitle").innerText = current.title;
+    document.getElementById("xLabel").innerText = "X-axis: " + current.iv;
+    document.getElementById("yLabel").innerText = "Y-axis: " + current.dv;
+
+    const avgs = current.rows.map(row => average(row.trials));
+    const max = Math.max(...avgs);
+
+    avgs.forEach((value, index) => {
+      const bar = document.getElementById("bar" + (index + 1));
+      const height = Math.round((value / max) * 255);
+      bar.style.height = height + "px";
+      bar.innerText = value;
+    });
+  }
+
+  function checkGraphReading() {
+    if (!graphMade) {
+      showFeedback("graphFeedback", "Make the graph first, then answer the questions.", false);
+      return;
     }
 
-    function showFeedback(elementId, message, isCorrect) {
-        const box = document.getElementById(elementId);
-        box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
-        box.innerHTML = message;
+    let correct = 0;
+    if (document.getElementById("ivAnswer").value === current.iv) correct++;
+    if (document.getElementById("dvAnswer").value === current.dv) correct++;
+    if (document.getElementById("patternAnswer").value === current.pattern) correct++;
+
+    if (correct === 3) {
+      showFeedback("graphFeedback", "Correct! You identified the variables and the graph pattern.", true);
+    } else {
+      showFeedback("graphFeedback", "You got " + correct + " out of 3. Remember: x-axis = independent variable, y-axis = dependent variable.", false);
+    }
+  }
+
+  function checkClaimEvidence() {
+    let correct = 0;
+    if (document.getElementById("claimAnswer").value === current.claim) correct++;
+    if (document.getElementById("evidenceAnswer").value === current.evidence) correct++;
+
+    if (correct === 2) {
+      showFeedback("claimFeedback", "Correct! Your claim is supported by data evidence.", true);
+    } else {
+      showFeedback("claimFeedback", "Not yet. A claim answers the question. Evidence uses numbers from the data.", false);
+    }
+  }
+
+  function buildCER() {
+    const claim = document.getElementById("claimAnswer").value;
+    const evidence = document.getElementById("evidenceAnswer").value;
+
+    if (claim === "Choose..." || evidence === "Choose...") {
+      document.getElementById("cerOutput").innerHTML = `
+        <div class="feedback incorrect">Choose a claim and evidence first.</div>
+      `;
+      return;
     }
 
-    function fillOptions(selectId, correct, distractors) {
-        const select = document.getElementById(selectId);
-        select.innerHTML = "<option selected>Choose...</option>";
+    document.getElementById("cerOutput").innerHTML = `
+      <div class="claim-box">
+        <h3>My CER Paragraph</h3>
+        <p><strong>Claim:</strong> ${claim}</p>
+        <p><strong>Evidence:</strong> ${evidence}</p>
+        <p><strong>Reasoning:</strong> The data pattern supports the claim because the measured result changed when the independent variable changed.</p>
+      </div>
+    `;
+  }
 
-        const choices = [correct, ...distractors];
-        choices.forEach(choice => {
-            const option = document.createElement("option");
-            option.textContent = choice;
-            select.appendChild(option);
-        });
+  function checkSTAAR() {
+    const s1 = document.getElementById("staar1").value;
+    const s2 = document.getElementById("staar2").value;
+    const s3 = document.getElementById("staar3").value;
+
+    if (
+      s1 === "Ramp height" &&
+      s2 === "Distance traveled" &&
+      s3 === "The toy car traveled farther as ramp height increased."
+    ) {
+      showFeedback("staarFeedback", "Correct! Ramp height is changed, distance is measured, and the data supports the claim.", true);
+    } else {
+      showFeedback("staarFeedback", "Not yet. X-axis is what changed. Y-axis is what was measured.", false);
     }
+  }
 
-    function loadInvestigation() {
-        const key = document.getElementById("investigationSelect").value;
-        current = investigations[key];
-        graphMade = false;
-
-        document.getElementById("ivHeader").innerText = current.iv;
-
-        const body = document.getElementById("dataBody");
-        body.innerHTML = "";
-
-        current.rows.forEach(row => {
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
-                <td><strong>${row.label}</strong></td>
-                <td>${row.trials[0]}</td>
-                <td>${row.trials[1]}</td>
-                <td>${row.trials[2]}</td>
-                <td><strong>${average(row.trials)}</strong></td>
-            `;
-            body.appendChild(tr);
-        });
-
-        document.getElementById("graphTitle").innerText = "Click Make Graph";
-        document.getElementById("xLabel").innerText = "X-axis";
-        document.getElementById("yLabel").innerText = "Y-axis";
-
-        ["bar1", "bar2", "bar3"].forEach(id => {
-            document.getElementById(id).style.height = "0";
-            document.getElementById(id).innerText = "0";
-        });
-
-        document.getElementById("label1").innerText = current.rows[0].label;
-        document.getElementById("label2").innerText = current.rows[1].label;
-        document.getElementById("label3").innerText = current.rows[2].label;
-
-        fillOptions("ivAnswer", current.iv, ["Distance traveled in cm", "Trial number", "Same measuring tool"]);
-        fillOptions("dvAnswer", current.dv, [current.iv, "Same starting line", "Initials or class number — optional"]);
-        fillOptions("patternAnswer", current.pattern, [
-            "The data shows no pattern.",
-            "The object turned into a liquid.",
-            "The controlled variables changed every trial."
-        ]);
-
-        fillOptions("claimAnswer", current.claim, [
-            "The independent variable did not affect the result.",
-            "The data cannot support any claim.",
-            "The object stopped being matter."
-        ]);
-
-        fillOptions("evidenceAnswer", current.evidence, [
-            "The object had a color.",
-            "The student used a pencil.",
-            "The investigation had a title."
-        ]);
-
-        document.getElementById("graphFeedback").innerHTML = "";
-        document.getElementById("claimFeedback").innerHTML = "";
-        document.getElementById("cerOutput").innerHTML = "";
-    }
-
-    function makeGraph() {
-        graphMade = true;
-
-        document.getElementById("graphTitle").innerText = current.title;
-        document.getElementById("xLabel").innerText = "X-axis: " + current.iv;
-        document.getElementById("yLabel").innerText = "Y-axis: " + current.dv;
-
-        const avgs = current.rows.map(row => average(row.trials));
-        const max = Math.max(...avgs);
-
-        avgs.forEach((value, index) => {
-            const bar = document.getElementById("bar" + (index + 1));
-            const height = Math.round((value / max) * 255);
-            bar.style.height = height + "px";
-            bar.innerText = value;
-        });
-    }
-
-    function checkGraphReading() {
-        if (!graphMade) {
-            showFeedback("graphFeedback", "Make the graph first, then answer the questions.", false);
-            return;
-        }
-
-        let correct = 0;
-        if (document.getElementById("ivAnswer").value === current.iv) correct++;
-        if (document.getElementById("dvAnswer").value === current.dv) correct++;
-        if (document.getElementById("patternAnswer").value === current.pattern) correct++;
-
-        if (correct === 3) {
-            showFeedback("graphFeedback", "Correct! You identified the variables and the graph pattern.", true);
-        } else {
-            showFeedback("graphFeedback", "You got " + correct + " out of 3. Remember: x-axis = independent variable, y-axis = dependent variable.", false);
-        }
-    }
-
-    function checkClaimEvidence() {
-        let correct = 0;
-        if (document.getElementById("claimAnswer").value === current.claim) correct++;
-        if (document.getElementById("evidenceAnswer").value === current.evidence) correct++;
-
-        if (correct === 2) {
-            showFeedback("claimFeedback", "Correct! Your claim is supported by data evidence.", true);
-        } else {
-            showFeedback("claimFeedback", "Not yet. A claim answers the question. Evidence uses numbers from the data.", false);
-        }
-    }
-
-    function buildCER() {
-        const claim = document.getElementById("claimAnswer").value;
-        const evidence = document.getElementById("evidenceAnswer").value;
-
-        if (claim === "Choose..." || evidence === "Choose...") {
-            document.getElementById("cerOutput").innerHTML = `
-                <div class="feedback incorrect">Choose a claim and evidence first.</div>
-            `;
-            return;
-        }
-
-        document.getElementById("cerOutput").innerHTML = `
-            <div class="claim-box">
-                <h3>My CER Paragraph</h3>
-                <p><strong>Claim:</strong> ${claim}</p>
-                <p><strong>Evidence:</strong> ${evidence}</p>
-                <p><strong>Reasoning:</strong> The data pattern supports the claim because the measured result changed when the independent variable changed.</p>
-            </div>
-        `;
-    }
-
-    function checkSTAAR() {
-        const s1 = document.getElementById("staar1").value;
-        const s2 = document.getElementById("staar2").value;
-        const s3 = document.getElementById("staar3").value;
-
-        if (
-            s1 === "Ramp height" &&
-            s2 === "Distance traveled" &&
-            s3 === "The toy car traveled farther as ramp height increased."
-        ) {
-            showFeedback("staarFeedback", "Correct! Ramp height is changed, distance is measured, and the data supports the claim.", true);
-        } else {
-            showFeedback("staarFeedback", "Not yet. X-axis is what changed. Y-axis is what was measured.", false);
-        }
-    }
-
-    loadInvestigation();
+  loadInvestigation();
 </script>
 
 {% endblock %}

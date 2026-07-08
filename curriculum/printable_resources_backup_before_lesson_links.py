@@ -148,6 +148,3 @@ for folder in resource_folders:
     printable_resources.append(resource)
 
 printable_resources_by_slug = {resource["slug"]: resource for resource in printable_resources}
-
-
-printable_resources_by_day = {resource["day"]: resource for resource in printable_resources}

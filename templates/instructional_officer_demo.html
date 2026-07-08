@@ -5,361 +5,361 @@
 {% block content %}
 
 <style>
-    .demo-hero {
-        background:
-            radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
-            radial-gradient(circle at 82% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
-            linear-gradient(135deg, #102542 0%, #1b4965 58%, #5fa8d3 100%);
-        color: white;
-        border: 5px solid #111;
-        border-radius: 28px;
-        padding: 34px;
-        box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
-        margin-bottom: 24px;
+  .demo-hero {
+    background:
+      radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      radial-gradient(circle at 82% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      linear-gradient(135deg, #102542 0%, #1b4965 58%, #5fa8d3 100%);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 28px;
+    padding: 34px;
+    box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+    margin-bottom: 24px;
+  }
+
+  .demo-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    font-weight: 950;
+    line-height: 0.95;
+    margin-bottom: 14px;
+  }
+
+  .demo-card {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 22px;
+    padding: 22px;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
+    margin-bottom: 24px;
+    height: 100%;
+  }
+
+  .demo-step {
+    background: #f8f9fa;
+    border: 3px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 16px;
+  }
+
+  .step-number {
+    display: inline-block;
+    background: #102542;
+    color: white;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 6px 13px;
+    font-weight: 950;
+    margin-right: 8px;
+  }
+
+  .demo-button {
+    border: 3px solid #111;
+    border-radius: 14px;
+    font-weight: 850;
+    box-shadow: 3px 3px 0 rgba(17,17,17,0.2);
+    margin: 4px;
+  }
+
+  .look-for {
+    background: #fff3cd;
+    border-left: 8px solid #111;
+    border-radius: 14px;
+    padding: 14px;
+    margin-top: 12px;
+    font-weight: 700;
+  }
+
+  .evidence-box {
+    background: #d1e7dd;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 14px;
+    margin-bottom: 12px;
+    font-weight: 750;
+  }
+
+  .email-box {
+    background: #f8f9fa;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    white-space: pre-wrap;
+    font-family: Arial, sans-serif;
+  }
+
+  .demo-section-title {
+    font-weight: 950;
+    margin: 30px 0 16px;
+  }
+
+  @media print {
+    .no-print {
+      display: none !important;
     }
 
-    .demo-hero h1 {
-        font-size: clamp(2.2rem, 5vw, 4.5rem);
-        font-weight: 950;
-        line-height: 0.95;
-        margin-bottom: 14px;
-    }
-
-    .demo-card {
-        background: white;
-        border: 4px solid #111;
-        border-radius: 22px;
-        padding: 22px;
-        box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
-        margin-bottom: 24px;
-        height: 100%;
-    }
-
+    .demo-card,
     .demo-step {
-        background: #f8f9fa;
-        border: 3px solid #111;
-        border-radius: 18px;
-        padding: 18px;
-        margin-bottom: 16px;
+      box-shadow: none;
+      border: 2px solid #111;
+      page-break-inside: avoid;
     }
-
-    .step-number {
-        display: inline-block;
-        background: #102542;
-        color: white;
-        border: 3px solid #111;
-        border-radius: 999px;
-        padding: 6px 13px;
-        font-weight: 950;
-        margin-right: 8px;
-    }
-
-    .demo-button {
-        border: 3px solid #111;
-        border-radius: 14px;
-        font-weight: 850;
-        box-shadow: 3px 3px 0 rgba(17,17,17,0.2);
-        margin: 4px;
-    }
-
-    .look-for {
-        background: #fff3cd;
-        border-left: 8px solid #111;
-        border-radius: 14px;
-        padding: 14px;
-        margin-top: 12px;
-        font-weight: 700;
-    }
-
-    .evidence-box {
-        background: #d1e7dd;
-        border: 3px solid #111;
-        border-radius: 16px;
-        padding: 14px;
-        margin-bottom: 12px;
-        font-weight: 750;
-    }
-
-    .email-box {
-        background: #f8f9fa;
-        border: 4px solid #111;
-        border-radius: 18px;
-        padding: 18px;
-        white-space: pre-wrap;
-        font-family: Arial, sans-serif;
-    }
-
-    .demo-section-title {
-        font-weight: 950;
-        margin: 30px 0 16px;
-    }
-
-    @media print {
-        .no-print {
-            display: none !important;
-        }
-
-        .demo-card,
-        .demo-step {
-            box-shadow: none;
-            border: 2px solid #111;
-            page-break-inside: avoid;
-        }
-    }
+  }
 </style>
 
 <section class="demo-hero">
-    <span class="badge-science">Self-Site Overview</span>
-    <span class="badge-science">5th Grade Science</span>
-    <span class="badge-science">1st 9 Weeks Complete</span>
+  <span class="badge-science">Self-Site Overview</span>
+  <span class="badge-science">5th Grade Science</span>
+  <span class="badge-science">1st 9 Weeks Complete</span>
 
-    <h1 class="mt-3">Science Studio Site Overview</h1>
+  <h1 class="mt-3">Science Studio Site Overview</h1>
 
-    <p class="lead mb-0">
-        This page is designed so an instructional leader can explore the 5th Grade Science Studio
-        without needing a live walkthrough.
-    </p>
+  <p class="lead mb-0">
+    This page is designed so an instructional leader can explore the 5th Grade Science Studio
+    without needing a live walkthrough.
+  </p>
 </section>
 
 <section class="demo-card">
-    <h2>Start Here</h2>
-    <p>
-        This app is a complete 1st 9 Weeks 5th Grade Science learning hub. It includes daily lessons,
-        student and teacher views, interactive labs, vocabulary supports, STAAR-style review,
-        digital assessment, and student reflection tools.
-    </p>
+  <h2>Start Here</h2>
+  <p>
+    This app is a complete 1st 9 Weeks 5th Grade Science learning hub. It includes daily lessons,
+    student and teacher views, interactive labs, vocabulary supports, STAAR-style review,
+    digital assessment, and student reflection tools.
+  </p>
 
-    <div class="row">
-        <div class="col-md-3">
-            <div class="evidence-box">45 daily lessons</div>
-        </div>
-        <div class="col-md-3">
-            <div class="evidence-box">Student + teacher views</div>
-        </div>
-        <div class="col-md-3">
-            <div class="evidence-box">Interactive labs</div>
-        </div>
-        <div class="col-md-3">
-            <div class="evidence-box">STAAR-style practice</div>
-        </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="evidence-box">45 daily lessons</div>
     </div>
+    <div class="col-md-3">
+      <div class="evidence-box">Student + teacher views</div>
+    </div>
+    <div class="col-md-3">
+      <div class="evidence-box">Interactive labs</div>
+    </div>
+    <div class="col-md-3">
+      <div class="evidence-box">STAAR-style practice</div>
+    </div>
+  </div>
 
-    <div class="no-print mt-3">
-        <a href="/student-dashboard" class="btn btn-primary btn-lg demo-button">Open Student Dashboard</a>
-        <a href="/teacher-dashboard" class="btn btn-success btn-lg demo-button">Open Teacher Dashboard</a>
-        <a href="/first-nine-weeks" class="btn btn-warning btn-lg demo-button">Open Lesson Folders</a>
-    </div>
+  <div class="no-print mt-3">
+    <a href="/student-dashboard" class="btn btn-primary btn-lg demo-button">Open Student Dashboard</a>
+    <a href="/teacher-dashboard" class="btn btn-success btn-lg demo-button">Open Teacher Dashboard</a>
+    <a href="/first-nine-weeks" class="btn btn-warning btn-lg demo-button">Open Lesson Folders</a>
+  </div>
 </section>
 
 <h2 class="demo-section-title">Recommended Demo Path</h2>
 
 <section class="demo-card">
-    <div class="demo-step">
-        <h3><span class="step-number">1</span> Student Dashboard</h3>
-        <p>
-            This is the student-friendly starting page. Students can open lessons, access labs,
-            review games, assessments, and track progress.
-        </p>
+  <div class="demo-step">
+    <h3><span class="step-number">1</span> Student Dashboard</h3>
+    <p>
+      This is the student-friendly starting page. Students can open lessons, access labs,
+      review games, assessments, and track progress.
+    </p>
 
-        <div class="look-for">
-            Look for: simple student navigation, lesson progress, review tools, and lab shortcuts.
-        </div>
-
-        <a href="/student-dashboard" class="btn btn-primary demo-button no-print">View Student Dashboard</a>
+    <div class="look-for">
+      Look for: simple student navigation, lesson progress, review tools, and lab shortcuts.
     </div>
 
-    <div class="demo-step">
-        <h3><span class="step-number">2</span> Teacher Dashboard</h3>
-        <p>
-            This is the teacher command center. Teachers can launch any lesson, open teacher notes,
-            access small-group reteach links, and use assessment/reflection tools.
-        </p>
+    <a href="/student-dashboard" class="btn btn-primary demo-button no-print">View Student Dashboard</a>
+  </div>
 
-        <div class="look-for">
-            Look for: teacher lesson launch, small-group reteach options, printable checklist, and demo flow.
-        </div>
+  <div class="demo-step">
+    <h3><span class="step-number">2</span> Teacher Dashboard</h3>
+    <p>
+      This is the teacher command center. Teachers can launch any lesson, open teacher notes,
+      access small-group reteach links, and use assessment/reflection tools.
+    </p>
 
-        <a href="/teacher-dashboard" class="btn btn-success demo-button no-print">View Teacher Dashboard</a>
+    <div class="look-for">
+      Look for: teacher lesson launch, small-group reteach options, printable checklist, and demo flow.
     </div>
 
-    <div class="demo-step">
-        <h3><span class="step-number">3</span> 1st 9 Weeks Lesson Folders</h3>
-        <p>
-            Lessons are organized into classroom setup, Unit 1, Unit 2, Unit 3, and review/assessment folders.
-        </p>
+    <a href="/teacher-dashboard" class="btn btn-success demo-button no-print">View Teacher Dashboard</a>
+  </div>
 
-        <div class="look-for">
-            Look for: all 45 lessons organized by unit, with Student and Teacher buttons for each day.
-        </div>
+  <div class="demo-step">
+    <h3><span class="step-number">3</span> 1st 9 Weeks Lesson Folders</h3>
+    <p>
+      Lessons are organized into classroom setup, Unit 1, Unit 2, Unit 3, and review/assessment folders.
+    </p>
 
-        <a href="/first-nine-weeks" class="btn btn-warning demo-button no-print">View Lesson Folders</a>
+    <div class="look-for">
+      Look for: all 45 lessons organized by unit, with Student and Teacher buttons for each day.
     </div>
 
-    <div class="demo-step">
-        <h3><span class="step-number">4</span> Vocabulary Posters</h3>
-        <p>
-            Vocabulary support includes illustrated posters for Unit 1, Unit 2, and Unit 3.
-            Posters can be opened, downloaded, and printed.
-        </p>
+    <a href="/first-nine-weeks" class="btn btn-warning demo-button no-print">View Lesson Folders</a>
+  </div>
 
-        <div class="look-for">
-            Look for: visual vocabulary support connected to daily lesson pages and printable downloads.
-        </div>
+  <div class="demo-step">
+    <h3><span class="step-number">4</span> Vocabulary Posters</h3>
+    <p>
+      Vocabulary support includes illustrated posters for Unit 1, Unit 2, and Unit 3.
+      Posters can be opened, downloaded, and printed.
+    </p>
 
-        <a href="/vocabulary" class="btn btn-info demo-button no-print">View Vocabulary Posters</a>
+    <div class="look-for">
+      Look for: visual vocabulary support connected to daily lesson pages and printable downloads.
     </div>
+
+    <a href="/vocabulary" class="btn btn-info demo-button no-print">View Vocabulary Posters</a>
+  </div>
 </section>
 
 <h2 class="demo-section-title">Best Interactive Examples to Review</h2>
 
 <section class="row g-4">
-    <div class="col-lg-6">
-        <div class="demo-card">
-            <h3>💧 Day 9: Graduated Cylinder Volume Simulator</h3>
-            <p>
-                Students pour liquid, read the mL measurement, drop objects into water,
-                see displacement, and record volume data.
-            </p>
+  <div class="col-lg-6">
+    <div class="demo-card">
+      <h3>💧 Day 9: Graduated Cylinder Volume Simulator</h3>
+      <p>
+        Students pour liquid, read the mL measurement, drop objects into water,
+        see displacement, and record volume data.
+      </p>
 
-            <div class="look-for">
-                This is one of the strongest demo pieces. It visually shows the water level rising
-                and connects directly to measurement, data, and evidence.
-            </div>
+      <div class="look-for">
+        This is one of the strongest demo pieces. It visually shows the water level rising
+        and connects directly to measurement, data, and evidence.
+      </div>
 
-            <a href="/labs/graduated-cylinder-volume" class="btn btn-primary demo-button no-print">Open Day 9 Simulator</a>
-        </div>
+      <a href="/labs/graduated-cylinder-volume" class="btn btn-primary demo-button no-print">Open Day 9 Simulator</a>
     </div>
+  </div>
 
-    <div class="col-lg-6">
-        <div class="demo-card">
-            <h3>🚗 Day 36: Car on a Ramp Investigation</h3>
-            <p>
-                Students test a variable, collect distance data, graph results, and explain patterns.
-            </p>
+  <div class="col-lg-6">
+    <div class="demo-card">
+      <h3>🚗 Day 36: Car on a Ramp Investigation</h3>
+      <p>
+        Students test a variable, collect distance data, graph results, and explain patterns.
+      </p>
 
-            <div class="look-for">
-                Look for: fair-test thinking, variables, data table, graphing, and CER connection.
-            </div>
+      <div class="look-for">
+        Look for: fair-test thinking, variables, data table, graphing, and CER connection.
+      </div>
 
-            <a href="/labs/ramp-investigation" class="btn btn-success demo-button no-print">Open Ramp Investigation</a>
-        </div>
+      <a href="/labs/ramp-investigation" class="btn btn-success demo-button no-print">Open Ramp Investigation</a>
     </div>
+  </div>
 
-    <div class="col-lg-6">
-        <div class="demo-card">
-            <h3>🧭 Day 43: Science Stations Board</h3>
-            <p>
-                Students rotate through digital review stations with mini-simulators, voice demos,
-                evidence tracking, and summary tools.
-            </p>
+  <div class="col-lg-6">
+    <div class="demo-card">
+      <h3>🧭 Day 43: Science Stations Board</h3>
+      <p>
+        Students rotate through digital review stations with mini-simulators, voice demos,
+        evidence tracking, and summary tools.
+      </p>
 
-            <div class="look-for">
-                Look for: review station structure and student accountability through evidence tracking.
-            </div>
+      <div class="look-for">
+        Look for: review station structure and student accountability through evidence tracking.
+      </div>
 
-            <a href="/labs/science-stations-board" class="btn btn-warning demo-button no-print">Open Science Stations</a>
-        </div>
+      <a href="/labs/science-stations-board" class="btn btn-warning demo-button no-print">Open Science Stations</a>
     </div>
+  </div>
 
-    <div class="col-lg-6">
-        <div class="demo-card">
-            <h3>📝 Day 44: Digital Assessment</h3>
-            <p>
-                Students complete a STAAR-style assessment with score reporting and topic breakdown.
-            </p>
+  <div class="col-lg-6">
+    <div class="demo-card">
+      <h3>📝 Day 44: Digital Assessment</h3>
+      <p>
+        Students complete a STAAR-style assessment with score reporting and topic breakdown.
+      </p>
 
-            <div class="look-for">
-                Look for: randomized questions, immediate feedback report, topic analysis, and teacher review mode.
-            </div>
+      <div class="look-for">
+        Look for: randomized questions, immediate feedback report, topic analysis, and teacher review mode.
+      </div>
 
-            <a href="/labs/staar-digital-assessment" class="btn btn-danger demo-button no-print">Open Digital Assessment</a>
-        </div>
+      <a href="/labs/staar-digital-assessment" class="btn btn-danger demo-button no-print">Open Digital Assessment</a>
     </div>
+  </div>
 
-    <div class="col-lg-6">
-        <div class="demo-card">
-            <h3>🎯 Day 45: Reflection Tracker</h3>
-            <p>
-                Students use assessment data, notebook evidence, and confidence ratings to set a science goal.
-            </p>
+  <div class="col-lg-6">
+    <div class="demo-card">
+      <h3>🎯 Day 45: Reflection Tracker</h3>
+      <p>
+        Students use assessment data, notebook evidence, and confidence ratings to set a science goal.
+      </p>
 
-            <div class="look-for">
-                Look for: assessment reflection, notebook checklist, goal setting, and printable reflection report.
-            </div>
+      <div class="look-for">
+        Look for: assessment reflection, notebook checklist, goal setting, and printable reflection report.
+      </div>
 
-            <a href="/labs/reflection-tracker" class="btn btn-primary demo-button no-print">Open Reflection Tracker</a>
-        </div>
+      <a href="/labs/reflection-tracker" class="btn btn-primary demo-button no-print">Open Reflection Tracker</a>
     </div>
+  </div>
 
-    <div class="col-lg-6">
-        <div class="demo-card">
-            <h3>🔬 Full Interactive Lab Library</h3>
-            <p>
-                All labs, games, simulations, assessments, and reflection tools are organized by unit.
-            </p>
+  <div class="col-lg-6">
+    <div class="demo-card">
+      <h3>🔬 Full Interactive Lab Library</h3>
+      <p>
+        All labs, games, simulations, assessments, and reflection tools are organized by unit.
+      </p>
 
-            <div class="look-for">
-                Look for: unit folders, searchable lab tools, and easy access for students or teachers.
-            </div>
+      <div class="look-for">
+        Look for: unit folders, searchable lab tools, and easy access for students or teachers.
+      </div>
 
-            <a href="/labs" class="btn btn-success demo-button no-print">Open Lab Library</a>
-        </div>
+      <a href="/labs" class="btn btn-success demo-button no-print">Open Lab Library</a>
     </div>
+  </div>
 </section>
 
 <h2 class="demo-section-title">What This App Is Designed To Support</h2>
 
 <section class="row g-4">
-    <div class="col-md-4">
-        <div class="demo-card">
-            <h3>Student Learning</h3>
-            <p>
-                Students can interact with models, simulations, vocabulary visuals, review games,
-                and assessment tools instead of only reading lesson text.
-            </p>
-        </div>
+  <div class="col-md-4">
+    <div class="demo-card">
+      <h3>Student Learning</h3>
+      <p>
+        Students can interact with models, simulations, vocabulary visuals, review games,
+        and assessment tools instead of only reading lesson text.
+      </p>
     </div>
+  </div>
 
-    <div class="col-md-4">
-        <div class="demo-card">
-            <h3>Teacher Planning</h3>
-            <p>
-                Teachers can open daily lesson plans, materials, vocabulary, teacher notes,
-                lab activities, STAAR practice, and exit tickets.
-            </p>
-        </div>
+  <div class="col-md-4">
+    <div class="demo-card">
+      <h3>Teacher Planning</h3>
+      <p>
+        Teachers can open daily lesson plans, materials, vocabulary, teacher notes,
+        lab activities, STAAR practice, and exit tickets.
+      </p>
     </div>
+  </div>
 
-    <div class="col-md-4">
-        <div class="demo-card">
-            <h3>STAAR Readiness</h3>
-            <p>
-                The app builds repeated practice with vocabulary, data, models, variables,
-                evidence, graphing, and STAAR-style questions.
-            </p>
-        </div>
+  <div class="col-md-4">
+    <div class="demo-card">
+      <h3>STAAR Readiness</h3>
+      <p>
+        The app builds repeated practice with vocabulary, data, models, variables,
+        evidence, graphing, and STAAR-style questions.
+      </p>
     </div>
+  </div>
 </section>
 
 <section class="demo-card">
-    <h2>Suggested Feedback Questions</h2>
-    <p>These are the questions I would like feedback on:</p>
+  <h2>Suggested Feedback Questions</h2>
+  <p>These are the questions I would like feedback on:</p>
 
-    <ol>
-        <li>Does the structure make sense for a 5th grade science classroom?</li>
-        <li>Would the student dashboard be easy for students to use independently?</li>
-        <li>Would the teacher dashboard help with planning and lesson delivery?</li>
-        <li>Which interactive labs are strongest?</li>
-        <li>What should be improved before expanding into the 2nd 9 weeks?</li>
-        <li>Would this be useful as a classroom support tool for STAAR readiness?</li>
-    </ol>
+  <ol>
+    <li>Does the structure make sense for a 5th grade science classroom?</li>
+    <li>Would the student dashboard be easy for students to use independently?</li>
+    <li>Would the teacher dashboard help with planning and lesson delivery?</li>
+    <li>Which interactive labs are strongest?</li>
+    <li>What should be improved before expanding into the 2nd 9 weeks?</li>
+    <li>Would this be useful as a classroom support tool for STAAR readiness?</li>
+  </ol>
 </section>
 
 <section class="demo-card">
-    <h2>Email Message to Send with the Link</h2>
-    <p>You can copy this message when the site is published online.</p>
+  <h2>Email Message to Send with the Link</h2>
+  <p>You can copy this message when the site is published online.</p>
 
-    <div class="email-box">
+  <div class="email-box">
 Hello,
 
 I created a 5th Grade Science Studio for the 1st 9 weeks. It includes daily student and teacher lessons, interactive labs, vocabulary supports, STAAR-style review, a digital assessment, and a reflection/goal-setting tool.
@@ -382,9 +382,9 @@ The best pieces to review are:
 I would appreciate feedback on the structure, student usability, teacher usability, and what should be improved before building the next 9 weeks.
 
 Thank you!
-    </div>
+  </div>
 
-    <button class="btn btn-primary demo-button no-print mt-3" onclick="window.print()">Print Site Overview Page</button>
+  <button class="btn btn-primary demo-button no-print mt-3" onclick="window.print()">Print Site Overview Page</button>
 </section>
 
 {% endblock %}

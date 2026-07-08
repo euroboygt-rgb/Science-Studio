@@ -4,810 +4,810 @@
 
 <h1>Ball Bounce Lab Designer</h1>
 <p class="lead">
-    Design a fair test, choose variables, test different balls, collect bounce-height data, and use evidence.
+  Design a fair test, choose variables, test different balls, collect bounce-height data, and use evidence.
 </p>
 
 <a href="/first-nine-weeks/day/38?view=student" class="btn btn-secondary mb-4">
-    Back to Day 38
+  Back to Day 38
 </a>
 
 <style>
-    .lab-card {
-        border: 1px solid #ddd;
-        border-radius: 18px;
-        padding: 20px;
-        margin-bottom: 25px;
-        background: #f8f9fa;
-    }
+  .lab-card {
+    border: 1px solid #ddd;
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
 
-    .lab-banner {
-        border-radius: 18px;
-        padding: 18px;
-        background: #212529;
-        color: white;
-        border: 4px solid #111;
-        margin-bottom: 20px;
-    }
+  .lab-banner {
+    border-radius: 18px;
+    padding: 18px;
+    background: #212529;
+    color: white;
+    border: 4px solid #111;
+    margin-bottom: 20px;
+  }
 
-    .badge-pill {
-        display: inline-block;
-        background: #fff3cd;
-        color: #111;
-        border: 3px solid #111;
-        border-radius: 999px;
-        padding: 8px 14px;
-        font-weight: bold;
-        margin: 5px;
-    }
+  .badge-pill {
+    display: inline-block;
+    background: #fff3cd;
+    color: #111;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: bold;
+    margin: 5px;
+  }
 
-    .fair-box {
-        background: white;
-        border: 3px solid #111;
-        border-radius: 16px;
-        padding: 15px;
-        margin-bottom: 18px;
-    }
+  .fair-box {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 15px;
+    margin-bottom: 18px;
+  }
 
-    .bounce-stage {
-        height: 480px;
-        border: 5px solid #111;
-        border-radius: 22px;
-        background:
-            linear-gradient(180deg, #dff6ff 0%, #f8f9fa 62%, #d1e7dd 62%, #d1e7dd 100%);
-        position: relative;
-        overflow: hidden;
-        margin: 20px 0;
-    }
+  .bounce-stage {
+    height: 480px;
+    border: 5px solid #111;
+    border-radius: 22px;
+    background:
+      linear-gradient(180deg, #dff6ff 0%, #f8f9fa 62%, #d1e7dd 62%, #d1e7dd 100%);
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+  }
 
-    .wall-meter {
-        position: absolute;
-        left: 35px;
-        top: 45px;
-        width: 95px;
-        height: 350px;
-        background: white;
-        border: 4px solid #111;
-        border-radius: 12px;
-    }
+  .wall-meter {
+    position: absolute;
+    left: 35px;
+    top: 45px;
+    width: 95px;
+    height: 350px;
+    background: white;
+    border: 4px solid #111;
+    border-radius: 12px;
+  }
 
-    .meter-mark {
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: #111;
-    }
+  .meter-mark {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #111;
+  }
 
-    .meter-label {
-        position: absolute;
-        left: 12px;
-        font-weight: bold;
-        font-size: 14px;
-    }
+  .meter-label {
+    position: absolute;
+    left: 12px;
+    font-weight: bold;
+    font-size: 14px;
+  }
 
-    .drop-line {
-        position: absolute;
-        left: 190px;
-        top: 65px;
-        width: 4px;
-        height: 310px;
-        background: repeating-linear-gradient(
-            to bottom,
-            #111,
-            #111 8px,
-            transparent 8px,
-            transparent 16px
-        );
-    }
+  .drop-line {
+    position: absolute;
+    left: 190px;
+    top: 65px;
+    width: 4px;
+    height: 310px;
+    background: repeating-linear-gradient(
+      to bottom,
+      #111,
+      #111 8px,
+      transparent 8px,
+      transparent 16px
+    );
+  }
 
-    .drop-label {
-        position: absolute;
-        left: 210px;
-        top: 55px;
-        background: white;
-        border: 3px solid #111;
-        border-radius: 12px;
-        padding: 8px 12px;
-        font-weight: bold;
-    }
+  .drop-label {
+    position: absolute;
+    left: 210px;
+    top: 55px;
+    background: white;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-weight: bold;
+  }
 
-    .surface {
-        position: absolute;
-        left: 150px;
-        right: 60px;
-        bottom: 95px;
-        height: 18px;
-        background: #111;
-        border-radius: 8px;
-    }
+  .surface {
+    position: absolute;
+    left: 150px;
+    right: 60px;
+    bottom: 95px;
+    height: 18px;
+    background: #111;
+    border-radius: 8px;
+  }
 
-    .surface-label {
-        position: absolute;
-        left: 330px;
-        bottom: 50px;
-        background: white;
-        border: 3px solid #111;
-        border-radius: 12px;
-        padding: 8px 12px;
-        font-weight: bold;
-    }
+  .surface-label {
+    position: absolute;
+    left: 330px;
+    bottom: 50px;
+    background: white;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-weight: bold;
+  }
 
-    .ball {
-        position: absolute;
-        left: 165px;
-        top: 70px;
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-        border: 4px solid #111;
-        background: #e9ecef;
-        transition: top 0.55s ease-in, left 0.2s, width 0.2s, height 0.2s;
-        z-index: 4;
-    }
+  .ball {
+    position: absolute;
+    left: 165px;
+    top: 70px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 4px solid #111;
+    background: #e9ecef;
+    transition: top 0.55s ease-in, left 0.2s, width 0.2s, height 0.2s;
+    z-index: 4;
+  }
 
-    .bounce-arrow {
-        position: absolute;
-        left: 250px;
-        top: 170px;
-        background: #fff3cd;
-        border: 3px solid #111;
-        border-radius: 12px;
-        padding: 8px 12px;
-        font-weight: bold;
-        display: none;
-    }
+  .bounce-arrow {
+    position: absolute;
+    left: 250px;
+    top: 170px;
+    background: #fff3cd;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-weight: bold;
+    display: none;
+  }
 
-    .height-line {
-        position: absolute;
-        left: 245px;
-        bottom: 113px;
-        width: 6px;
-        height: 0;
-        background: #111;
-        transition: height 0.55s ease-out;
-    }
+  .height-line {
+    position: absolute;
+    left: 245px;
+    bottom: 113px;
+    width: 6px;
+    height: 0;
+    background: #111;
+    transition: height 0.55s ease-out;
+  }
 
-    .height-readout {
-        position: absolute;
-        left: 330px;
-        top: 120px;
-        background: white;
-        border: 3px solid #111;
-        border-radius: 12px;
-        padding: 8px 12px;
-        font-weight: bold;
-    }
+  .height-readout {
+    position: absolute;
+    left: 330px;
+    top: 120px;
+    background: white;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-weight: bold;
+  }
 
-    .sparkle {
-        position: absolute;
-        font-size: 30px;
-        animation: pop 1.1s ease-out forwards;
-        pointer-events: none;
-    }
+  .sparkle {
+    position: absolute;
+    font-size: 30px;
+    animation: pop 1.1s ease-out forwards;
+    pointer-events: none;
+  }
 
-    @keyframes pop {
-        0% { transform: scale(0.2); opacity: 0; }
-        30% { transform: scale(1.2); opacity: 1; }
-        100% { transform: scale(0.8); opacity: 0; }
-    }
+  @keyframes pop {
+    0% { transform: scale(0.2); opacity: 0; }
+    30% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0; }
+  }
 
-    .feedback {
-        font-weight: bold;
-        margin-top: 10px;
-        padding: 12px;
-        border-radius: 10px;
-    }
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+  }
 
-    .correct {
-        background: #d1e7dd;
-        color: #0f5132;
-    }
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
 
-    .incorrect {
-        background: #f8d7da;
-        color: #842029;
-    }
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
 
-    .warning {
-        background: #fff3cd;
-        color: #664d03;
-    }
+  .warning {
+    background: #fff3cd;
+    color: #664d03;
+  }
 
-    .graph-box {
-        background: white;
-        border: 4px solid #333;
-        border-radius: 15px;
-        height: 420px;
-        position: relative;
-        margin: 20px 0;
-        overflow: hidden;
-    }
+  .graph-box {
+    background: white;
+    border: 4px solid #333;
+    border-radius: 15px;
+    height: 420px;
+    position: relative;
+    margin: 20px 0;
+    overflow: hidden;
+  }
 
-    .y-axis {
-        position: absolute;
-        left: 85px;
-        top: 55px;
-        bottom: 75px;
-        width: 5px;
-        background: #333;
-    }
+  .y-axis {
+    position: absolute;
+    left: 85px;
+    top: 55px;
+    bottom: 75px;
+    width: 5px;
+    background: #333;
+  }
 
-    .x-axis {
-        position: absolute;
-        left: 85px;
-        right: 55px;
-        bottom: 75px;
-        height: 5px;
-        background: #333;
-    }
+  .x-axis {
+    position: absolute;
+    left: 85px;
+    right: 55px;
+    bottom: 75px;
+    height: 5px;
+    background: #333;
+  }
 
-    .bar {
-        position: absolute;
-        bottom: 80px;
-        width: 70px;
-        background: #e9ecef;
-        border: 3px solid #333;
-        transition: height 0.7s;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        font-weight: bold;
-        padding-top: 6px;
-    }
+  .bar {
+    position: absolute;
+    bottom: 80px;
+    width: 70px;
+    background: #e9ecef;
+    border: 3px solid #333;
+    transition: height 0.7s;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-weight: bold;
+    padding-top: 6px;
+  }
 
-    .bar-label {
-        position: absolute;
-        bottom: 35px;
-        width: 115px;
-        text-align: center;
-        font-weight: bold;
-    }
+  .bar-label {
+    position: absolute;
+    bottom: 35px;
+    width: 115px;
+    text-align: center;
+    font-weight: bold;
+  }
 
-    .graph-title {
-        position: absolute;
-        top: 12px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-size: 22px;
-        font-weight: bold;
-    }
+  .graph-title {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+  }
 
-    .x-label {
-        position: absolute;
-        bottom: 5px;
-        left: 150px;
-        right: 50px;
-        text-align: center;
-        font-weight: bold;
-    }
+  .x-label {
+    position: absolute;
+    bottom: 5px;
+    left: 150px;
+    right: 50px;
+    text-align: center;
+    font-weight: bold;
+  }
 
-    .y-label {
-        position: absolute;
-        left: -62px;
-        top: 190px;
-        transform: rotate(-90deg);
-        font-weight: bold;
-        width: 250px;
-        text-align: center;
-    }
+  .y-label {
+    position: absolute;
+    left: -62px;
+    top: 190px;
+    transform: rotate(-90deg);
+    font-weight: bold;
+    width: 250px;
+    text-align: center;
+  }
 
-    .claim-box {
-        background: white;
-        border: 3px solid #111;
-        border-radius: 14px;
-        padding: 15px;
-        margin-top: 15px;
-    }
+  .claim-box {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 15px;
+    margin-top: 15px;
+  }
 </style>
 
 <div class="lab-banner">
-    <h2>🏀 Bounce Lab Designer</h2>
-    <p class="mb-2">Your mission: design a fair test to find which ball bounces higher.</p>
-    <span class="badge-pill">Independent Variable: Ball Type</span>
-    <span class="badge-pill">Dependent Variable: Bounce Height</span>
-    <span class="badge-pill">Controlled Variables: Drop Height, Surface, Release</span>
+  <h2>🏀 Bounce Lab Designer</h2>
+  <p class="mb-2">Your mission: design a fair test to find which ball bounces higher.</p>
+  <span class="badge-pill">Independent Variable: Ball Type</span>
+  <span class="badge-pill">Dependent Variable: Bounce Height</span>
+  <span class="badge-pill">Controlled Variables: Drop Height, Surface, Release</span>
 </div>
 
 <div class="lab-card">
-    <h2>Part 1: Design the Fair Test</h2>
+  <h2>Part 1: Design the Fair Test</h2>
 
-    <div class="fair-box">
-        <div class="row">
-            <div class="col-md-3">
-                <label class="form-label"><strong>Ball type:</strong></label>
-                <select id="ballSelect" class="form-select mb-3" onchange="setBall(); resetBallOnly();">
-                    <option value="foam">Foam ball</option>
-                    <option value="tennis">Tennis ball</option>
-                    <option value="rubber">Rubber ball</option>
-                    <option value="pingpong">Ping pong ball</option>
-                </select>
-            </div>
+  <div class="fair-box">
+    <div class="row">
+      <div class="col-md-3">
+        <label class="form-label"><strong>Ball type:</strong></label>
+        <select id="ballSelect" class="form-select mb-3" onchange="setBall(); resetBallOnly();">
+          <option value="foam">Foam ball</option>
+          <option value="tennis">Tennis ball</option>
+          <option value="rubber">Rubber ball</option>
+          <option value="pingpong">Ping pong ball</option>
+        </select>
+      </div>
 
-            <div class="col-md-3">
-                <label class="form-label"><strong>Drop height:</strong></label>
-                <select id="dropHeightSelect" class="form-select mb-3" onchange="resetBallOnly();">
-                    <option value="100">100 cm</option>
-                    <option value="75">75 cm</option>
-                    <option value="50">50 cm</option>
-                </select>
-            </div>
+      <div class="col-md-3">
+        <label class="form-label"><strong>Drop height:</strong></label>
+        <select id="dropHeightSelect" class="form-select mb-3" onchange="resetBallOnly();">
+          <option value="100">100 cm</option>
+          <option value="75">75 cm</option>
+          <option value="50">50 cm</option>
+        </select>
+      </div>
 
-            <div class="col-md-3">
-                <label class="form-label"><strong>Surface:</strong></label>
-                <select id="surfaceSelect" class="form-select mb-3" onchange="resetBallOnly();">
-                    <option value="tile">Tile floor</option>
-                    <option value="carpet">Carpet</option>
-                    <option value="mat">Gym mat</option>
-                </select>
-            </div>
+      <div class="col-md-3">
+        <label class="form-label"><strong>Surface:</strong></label>
+        <select id="surfaceSelect" class="form-select mb-3" onchange="resetBallOnly();">
+          <option value="tile">Tile floor</option>
+          <option value="carpet">Carpet</option>
+          <option value="mat">Gym mat</option>
+        </select>
+      </div>
 
-            <div class="col-md-3">
-                <label class="form-label"><strong>Trial:</strong></label>
-                <select id="trialSelect" class="form-select mb-3">
-                    <option value="1">Trial 1</option>
-                    <option value="2">Trial 2</option>
-                    <option value="3">Trial 3</option>
-                </select>
-            </div>
-        </div>
-
-        <button class="btn btn-success" onclick="checkFairTest()">Check If My Design Is Fair</button>
-        <button class="btn btn-primary btn-lg" onclick="dropBall()">Drop Ball</button>
-        <button class="btn btn-warning" onclick="showBounceArrow()">Show Bounce Height</button>
-        <button class="btn btn-secondary" onclick="resetBallOnly()">Reset Ball</button>
-        <button class="btn btn-danger" onclick="clearData()">Clear Data</button>
+      <div class="col-md-3">
+        <label class="form-label"><strong>Trial:</strong></label>
+        <select id="trialSelect" class="form-select mb-3">
+          <option value="1">Trial 1</option>
+          <option value="2">Trial 2</option>
+          <option value="3">Trial 3</option>
+        </select>
+      </div>
     </div>
 
-    <div id="fairFeedback" class="feedback warning">
-        Fair test goal: change only the ball type. Keep drop height, surface, and release method the same.
+    <button class="btn btn-success" onclick="checkFairTest()">Check If My Design Is Fair</button>
+    <button class="btn btn-primary btn-lg" onclick="dropBall()">Drop Ball</button>
+    <button class="btn btn-warning" onclick="showBounceArrow()">Show Bounce Height</button>
+    <button class="btn btn-secondary" onclick="resetBallOnly()">Reset Ball</button>
+    <button class="btn btn-danger" onclick="clearData()">Clear Data</button>
+  </div>
+
+  <div id="fairFeedback" class="feedback warning">
+    Fair test goal: change only the ball type. Keep drop height, surface, and release method the same.
+  </div>
+
+  <div class="bounce-stage" id="bounceStage">
+    <div class="wall-meter">
+      <div class="meter-mark" style="top: 30px;"></div><div class="meter-label" style="top: 20px;">100 cm</div>
+      <div class="meter-mark" style="top: 105px;"></div><div class="meter-label" style="top: 95px;">75 cm</div>
+      <div class="meter-mark" style="top: 180px;"></div><div class="meter-label" style="top: 170px;">50 cm</div>
+      <div class="meter-mark" style="top: 255px;"></div><div class="meter-label" style="top: 245px;">25 cm</div>
+      <div class="meter-mark" style="top: 330px;"></div><div class="meter-label" style="top: 320px;">0 cm</div>
     </div>
 
-    <div class="bounce-stage" id="bounceStage">
-        <div class="wall-meter">
-            <div class="meter-mark" style="top: 30px;"></div><div class="meter-label" style="top: 20px;">100 cm</div>
-            <div class="meter-mark" style="top: 105px;"></div><div class="meter-label" style="top: 95px;">75 cm</div>
-            <div class="meter-mark" style="top: 180px;"></div><div class="meter-label" style="top: 170px;">50 cm</div>
-            <div class="meter-mark" style="top: 255px;"></div><div class="meter-label" style="top: 245px;">25 cm</div>
-            <div class="meter-mark" style="top: 330px;"></div><div class="meter-label" style="top: 320px;">0 cm</div>
-        </div>
-
-        <div class="drop-line"></div>
-        <div id="dropLabel" class="drop-label">Drop height: 100 cm</div>
-        <div id="ball" class="ball"></div>
-        <div id="bounceArrow" class="bounce-arrow">Bounce height ↑</div>
-        <div id="heightLine" class="height-line"></div>
-        <div id="heightReadout" class="height-readout">Bounce height: 0 cm</div>
-        <div class="surface"></div>
-        <div id="surfaceLabel" class="surface-label">Surface: Tile floor</div>
-    </div>
+    <div class="drop-line"></div>
+    <div id="dropLabel" class="drop-label">Drop height: 100 cm</div>
+    <div id="ball" class="ball"></div>
+    <div id="bounceArrow" class="bounce-arrow">Bounce height ↑</div>
+    <div id="heightLine" class="height-line"></div>
+    <div id="heightReadout" class="height-readout">Bounce height: 0 cm</div>
+    <div class="surface"></div>
+    <div id="surfaceLabel" class="surface-label">Surface: Tile floor</div>
+  </div>
 </div>
 
 <div class="lab-card">
-    <h2>Part 2: Data Table</h2>
+  <h2>Part 2: Data Table</h2>
 
-    <div class="alert alert-warning">
-        For the fairest data, keep drop height at 100 cm and surface as tile floor while testing each ball type.
-    </div>
+  <div class="alert alert-warning">
+    For the fairest data, keep drop height at 100 cm and surface as tile floor while testing each ball type.
+  </div>
 
-    <div class="table-responsive">
-        <table class="table table-bordered bg-white">
-            <thead>
-                <tr>
-                    <th>Ball Type</th>
-                    <th>Trial 1</th>
-                    <th>Trial 2</th>
-                    <th>Trial 3</th>
-                    <th>Average</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Foam ball</strong></td>
-                    <td id="foam1"></td>
-                    <td id="foam2"></td>
-                    <td id="foam3"></td>
-                    <td id="foamAvg"></td>
-                </tr>
-                <tr>
-                    <td><strong>Tennis ball</strong></td>
-                    <td id="tennis1"></td>
-                    <td id="tennis2"></td>
-                    <td id="tennis3"></td>
-                    <td id="tennisAvg"></td>
-                </tr>
-                <tr>
-                    <td><strong>Rubber ball</strong></td>
-                    <td id="rubber1"></td>
-                    <td id="rubber2"></td>
-                    <td id="rubber3"></td>
-                    <td id="rubberAvg"></td>
-                </tr>
-                <tr>
-                    <td><strong>Ping pong ball</strong></td>
-                    <td id="pingpong1"></td>
-                    <td id="pingpong2"></td>
-                    <td id="pingpong3"></td>
-                    <td id="pingpongAvg"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <div class="table-responsive">
+    <table class="table table-bordered bg-white">
+      <thead>
+        <tr>
+          <th>Ball Type</th>
+          <th>Trial 1</th>
+          <th>Trial 2</th>
+          <th>Trial 3</th>
+          <th>Average</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Foam ball</strong></td>
+          <td id="foam1"></td>
+          <td id="foam2"></td>
+          <td id="foam3"></td>
+          <td id="foamAvg"></td>
+        </tr>
+        <tr>
+          <td><strong>Tennis ball</strong></td>
+          <td id="tennis1"></td>
+          <td id="tennis2"></td>
+          <td id="tennis3"></td>
+          <td id="tennisAvg"></td>
+        </tr>
+        <tr>
+          <td><strong>Rubber ball</strong></td>
+          <td id="rubber1"></td>
+          <td id="rubber2"></td>
+          <td id="rubber3"></td>
+          <td id="rubberAvg"></td>
+        </tr>
+        <tr>
+          <td><strong>Ping pong ball</strong></td>
+          <td id="pingpong1"></td>
+          <td id="pingpong2"></td>
+          <td id="pingpong3"></td>
+          <td id="pingpongAvg"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <button class="btn btn-success" onclick="autoFillFairData()">Auto-Fill Fair Class Data</button>
-    <button class="btn btn-primary" onclick="makeGraph()">Make Bounce Graph</button>
+  <button class="btn btn-success" onclick="autoFillFairData()">Auto-Fill Fair Class Data</button>
+  <button class="btn btn-primary" onclick="makeGraph()">Make Bounce Graph</button>
 </div>
 
 <div class="lab-card">
-    <h2>Part 3: Graph the Data</h2>
+  <h2>Part 3: Graph the Data</h2>
 
-    <div class="graph-box">
-        <div class="graph-title">Effect of Ball Type on Bounce Height</div>
-        <div class="y-axis"></div>
-        <div class="x-axis"></div>
-        <div class="y-label">Bounce height in cm</div>
-        <div class="x-label">Ball type</div>
+  <div class="graph-box">
+    <div class="graph-title">Effect of Ball Type on Bounce Height</div>
+    <div class="y-axis"></div>
+    <div class="x-axis"></div>
+    <div class="y-label">Bounce height in cm</div>
+    <div class="x-label">Ball type</div>
 
-        <div id="barFoam" class="bar" style="left: 130px; height: 0;">0</div>
-        <div id="barTennis" class="bar" style="left: 280px; height: 0;">0</div>
-        <div id="barRubber" class="bar" style="left: 430px; height: 0;">0</div>
-        <div id="barPingpong" class="bar" style="left: 580px; height: 0;">0</div>
+    <div id="barFoam" class="bar" style="left: 130px; height: 0;">0</div>
+    <div id="barTennis" class="bar" style="left: 280px; height: 0;">0</div>
+    <div id="barRubber" class="bar" style="left: 430px; height: 0;">0</div>
+    <div id="barPingpong" class="bar" style="left: 580px; height: 0;">0</div>
 
-        <div class="bar-label" style="left: 108px;">Foam</div>
-        <div class="bar-label" style="left: 258px;">Tennis</div>
-        <div class="bar-label" style="left: 408px;">Rubber</div>
-        <div class="bar-label" style="left: 558px;">Ping pong</div>
-    </div>
+    <div class="bar-label" style="left: 108px;">Foam</div>
+    <div class="bar-label" style="left: 258px;">Tennis</div>
+    <div class="bar-label" style="left: 408px;">Rubber</div>
+    <div class="bar-label" style="left: 558px;">Ping pong</div>
+  </div>
 
-    <div id="graphFeedback"></div>
+  <div id="graphFeedback"></div>
 </div>
 
 <div class="lab-card">
-    <h2>Part 4: Claim, Evidence, and Reasoning</h2>
+  <h2>Part 4: Claim, Evidence, and Reasoning</h2>
 
-    <label class="form-label"><strong>What pattern do you see?</strong></label>
-    <select id="patternAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Different ball types bounced to different heights.</option>
-        <option>All balls bounced the same height.</option>
-        <option>The foam ball bounced highest.</option>
-        <option>Surface type was the only thing tested.</option>
-    </select>
+  <label class="form-label"><strong>What pattern do you see?</strong></label>
+  <select id="patternAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Different ball types bounced to different heights.</option>
+    <option>All balls bounced the same height.</option>
+    <option>The foam ball bounced highest.</option>
+    <option>Surface type was the only thing tested.</option>
+  </select>
 
-    <label class="form-label"><strong>Best claim:</strong></label>
-    <select id="claimAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The rubber ball bounced the highest.</option>
-        <option>The foam ball bounced the highest.</option>
-        <option>Ball type did not affect bounce height.</option>
-        <option>The measuring tool caused the bounce.</option>
-    </select>
+  <label class="form-label"><strong>Best claim:</strong></label>
+  <select id="claimAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The rubber ball bounced the highest.</option>
+    <option>The foam ball bounced the highest.</option>
+    <option>Ball type did not affect bounce height.</option>
+    <option>The measuring tool caused the bounce.</option>
+  </select>
 
-    <label class="form-label"><strong>Best evidence:</strong></label>
-    <select id="evidenceAnswer" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>The rubber ball average was greater than the foam ball average.</option>
-        <option>The balls had different colors.</option>
-        <option>The student used a pencil.</option>
-        <option>The lab was fun.</option>
-    </select>
+  <label class="form-label"><strong>Best evidence:</strong></label>
+  <select id="evidenceAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The rubber ball average was greater than the foam ball average.</option>
+    <option>The balls had different colors.</option>
+    <option>The student used a pencil.</option>
+    <option>The lab was fun.</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkCER()">Check CER</button>
-    <button class="btn btn-primary" onclick="buildCER()">Build CER Paragraph</button>
+  <button class="btn btn-success" onclick="checkCER()">Check CER</button>
+  <button class="btn btn-primary" onclick="buildCER()">Build CER Paragraph</button>
 
-    <div id="cerFeedback"></div>
-    <div id="cerOutput"></div>
+  <div id="cerFeedback"></div>
+  <div id="cerOutput"></div>
 </div>
 
 <div class="lab-card">
-    <h2>Part 5: STAAR Fair Test Challenge</h2>
+  <h2>Part 5: STAAR Fair Test Challenge</h2>
 
-    <p class="alert alert-warning">
-        A student wants to test which ball bounces higher. The student drops each ball from the same height onto the same surface and measures bounce height.
-    </p>
+  <p class="alert alert-warning">
+    A student wants to test which ball bounces higher. The student drops each ball from the same height onto the same surface and measures bounce height.
+  </p>
 
-    <label class="form-label"><strong>What is the independent variable?</strong></label>
-    <select id="staar1" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Type of ball</option>
-        <option>Bounce height</option>
-        <option>Same drop height</option>
-        <option>Same surface</option>
-    </select>
+  <label class="form-label"><strong>What is the independent variable?</strong></label>
+  <select id="staar1" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Type of ball</option>
+    <option>Bounce height</option>
+    <option>Same drop height</option>
+    <option>Same surface</option>
+  </select>
 
-    <label class="form-label"><strong>What is the dependent variable?</strong></label>
-    <select id="staar2" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Bounce height</option>
-        <option>Type of ball</option>
-        <option>Same measuring tool</option>
-        <option>Same release method</option>
-    </select>
+  <label class="form-label"><strong>What is the dependent variable?</strong></label>
+  <select id="staar2" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Bounce height</option>
+    <option>Type of ball</option>
+    <option>Same measuring tool</option>
+    <option>Same release method</option>
+  </select>
 
-    <label class="form-label"><strong>Which action would make the test unfair?</strong></label>
-    <select id="staar3" class="form-select mb-3">
-        <option selected>Choose...</option>
-        <option>Dropping one ball from a different height</option>
-        <option>Using the same surface</option>
-        <option>Using the same measuring tool</option>
-        <option>Repeating trials</option>
-    </select>
+  <label class="form-label"><strong>Which action would make the test unfair?</strong></label>
+  <select id="staar3" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Dropping one ball from a different height</option>
+    <option>Using the same surface</option>
+    <option>Using the same measuring tool</option>
+    <option>Repeating trials</option>
+  </select>
 
-    <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
-    <div id="staarFeedback"></div>
+  <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
+  <div id="staarFeedback"></div>
 </div>
 
 <script>
-    const data = {
-        foam: [null, null, null],
-        tennis: [null, null, null],
-        rubber: [null, null, null],
-        pingpong: [null, null, null]
-    };
+  const data = {
+    foam: [null, null, null],
+    tennis: [null, null, null],
+    rubber: [null, null, null],
+    pingpong: [null, null, null]
+  };
 
-    const baseBounce = {
-        foam: 18,
-        tennis: 48,
-        rubber: 74,
-        pingpong: 56
-    };
+  const baseBounce = {
+    foam: 18,
+    tennis: 48,
+    rubber: 74,
+    pingpong: 56
+  };
 
-    function showFeedback(elementId, message, kind) {
-        const box = document.getElementById(elementId);
-        box.className = "feedback " + kind;
-        box.innerHTML = message;
+  function showFeedback(elementId, message, kind) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + kind;
+    box.innerHTML = message;
+  }
+
+  function setBall() {
+    const ballType = document.getElementById("ballSelect").value;
+    const ball = document.getElementById("ball");
+
+    ball.style.width = "55px";
+    ball.style.height = "55px";
+
+    if (ballType === "foam") {
+      ball.style.background = "#e9ecef";
+      ball.style.borderStyle = "dashed";
     }
 
-    function setBall() {
-        const ballType = document.getElementById("ballSelect").value;
-        const ball = document.getElementById("ball");
-
-        ball.style.width = "55px";
-        ball.style.height = "55px";
-
-        if (ballType === "foam") {
-            ball.style.background = "#e9ecef";
-            ball.style.borderStyle = "dashed";
-        }
-
-        if (ballType === "tennis") {
-            ball.style.background = "#d9f99d";
-            ball.style.borderStyle = "solid";
-        }
-
-        if (ballType === "rubber") {
-            ball.style.background = "#ffccd5";
-            ball.style.borderStyle = "solid";
-        }
-
-        if (ballType === "pingpong") {
-            ball.style.background = "#fff3cd";
-            ball.style.borderStyle = "solid";
-            ball.style.width = "48px";
-            ball.style.height = "48px";
-        }
+    if (ballType === "tennis") {
+      ball.style.background = "#d9f99d";
+      ball.style.borderStyle = "solid";
     }
 
-    function updateLabels() {
-        const dropHeight = document.getElementById("dropHeightSelect").value;
-        const surface = document.getElementById("surfaceSelect").value;
-
-        document.getElementById("dropLabel").innerText = "Drop height: " + dropHeight + " cm";
-
-        let surfaceText = "Tile floor";
-        if (surface === "carpet") surfaceText = "Carpet";
-        if (surface === "mat") surfaceText = "Gym mat";
-
-        document.getElementById("surfaceLabel").innerText = "Surface: " + surfaceText;
+    if (ballType === "rubber") {
+      ball.style.background = "#ffccd5";
+      ball.style.borderStyle = "solid";
     }
 
-    function resetBallOnly() {
-        setBall();
-        updateLabels();
-
-        const dropHeight = Number(document.getElementById("dropHeightSelect").value);
-        const ball = document.getElementById("ball");
-
-        if (dropHeight === 100) ball.style.top = "70px";
-        if (dropHeight === 75) ball.style.top = "145px";
-        if (dropHeight === 50) ball.style.top = "220px";
-
-        ball.style.left = "165px";
-        document.getElementById("heightLine").style.height = "0";
-        document.getElementById("heightReadout").innerText = "Bounce height: 0 cm";
-        document.getElementById("bounceArrow").style.display = "none";
+    if (ballType === "pingpong") {
+      ball.style.background = "#fff3cd";
+      ball.style.borderStyle = "solid";
+      ball.style.width = "48px";
+      ball.style.height = "48px";
     }
+  }
 
-    function showBounceArrow() {
-        document.getElementById("bounceArrow").style.display = "block";
+  function updateLabels() {
+    const dropHeight = document.getElementById("dropHeightSelect").value;
+    const surface = document.getElementById("surfaceSelect").value;
+
+    document.getElementById("dropLabel").innerText = "Drop height: " + dropHeight + " cm";
+
+    let surfaceText = "Tile floor";
+    if (surface === "carpet") surfaceText = "Carpet";
+    if (surface === "mat") surfaceText = "Gym mat";
+
+    document.getElementById("surfaceLabel").innerText = "Surface: " + surfaceText;
+  }
+
+  function resetBallOnly() {
+    setBall();
+    updateLabels();
+
+    const dropHeight = Number(document.getElementById("dropHeightSelect").value);
+    const ball = document.getElementById("ball");
+
+    if (dropHeight === 100) ball.style.top = "70px";
+    if (dropHeight === 75) ball.style.top = "145px";
+    if (dropHeight === 50) ball.style.top = "220px";
+
+    ball.style.left = "165px";
+    document.getElementById("heightLine").style.height = "0";
+    document.getElementById("heightReadout").innerText = "Bounce height: 0 cm";
+    document.getElementById("bounceArrow").style.display = "none";
+  }
+
+  function showBounceArrow() {
+    document.getElementById("bounceArrow").style.display = "block";
+  }
+
+  function checkFairTest() {
+    const dropHeight = document.getElementById("dropHeightSelect").value;
+    const surface = document.getElementById("surfaceSelect").value;
+
+    if (dropHeight === "100" && surface === "tile") {
+      showFeedback("fairFeedback", "Fair test design! You are changing ball type and keeping drop height and surface the same.", "correct");
+    } else {
+      showFeedback("fairFeedback", "Warning: To compare ball type fairly, keep the drop height at 100 cm and the surface as tile floor for all balls.", "incorrect");
     }
+  }
 
-    function checkFairTest() {
-        const dropHeight = document.getElementById("dropHeightSelect").value;
-        const surface = document.getElementById("surfaceSelect").value;
+  function randomBounceHeight(ballType, dropHeight, surface) {
+    let base = baseBounce[ballType];
 
-        if (dropHeight === "100" && surface === "tile") {
-            showFeedback("fairFeedback", "Fair test design! You are changing ball type and keeping drop height and surface the same.", "correct");
-        } else {
-            showFeedback("fairFeedback", "Warning: To compare ball type fairly, keep the drop height at 100 cm and the surface as tile floor for all balls.", "incorrect");
-        }
+    if (dropHeight === "75") base = Math.round(base * 0.75);
+    if (dropHeight === "50") base = Math.round(base * 0.50);
+
+    if (surface === "carpet") base = Math.round(base * 0.55);
+    if (surface === "mat") base = Math.round(base * 0.70);
+
+    const variation = Math.floor(Math.random() * 7) - 3;
+    return Math.max(5, base + variation);
+  }
+
+  function makeSparkles() {
+    const stage = document.getElementById("bounceStage");
+
+    for (let i = 0; i < 7; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.innerText = ["✨", "🏀", "⭐", "💫"][Math.floor(Math.random() * 4)];
+      sparkle.style.left = (250 + Math.random() * 450) + "px";
+      sparkle.style.top = (80 + Math.random() * 270) + "px";
+      stage.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1200);
     }
+  }
 
-    function randomBounceHeight(ballType, dropHeight, surface) {
-        let base = baseBounce[ballType];
+  function dropBall() {
+    const ballType = document.getElementById("ballSelect").value;
+    const dropHeight = document.getElementById("dropHeightSelect").value;
+    const surface = document.getElementById("surfaceSelect").value;
+    const trial = Number(document.getElementById("trialSelect").value);
 
-        if (dropHeight === "75") base = Math.round(base * 0.75);
-        if (dropHeight === "50") base = Math.round(base * 0.50);
+    const bounce = randomBounceHeight(ballType, dropHeight, surface);
+    const ball = document.getElementById("ball");
 
-        if (surface === "carpet") base = Math.round(base * 0.55);
-        if (surface === "mat") base = Math.round(base * 0.70);
+    ball.style.top = "350px";
 
-        const variation = Math.floor(Math.random() * 7) - 3;
-        return Math.max(5, base + variation);
-    }
+    setTimeout(() => {
+      const bounceTop = 350 - (bounce * 2.7);
+      ball.style.top = Math.max(70, bounceTop) + "px";
+      document.getElementById("heightLine").style.height = Math.min(bounce * 2.7, 280) + "px";
+      document.getElementById("heightReadout").innerText = "Bounce height: " + bounce + " cm";
+      showBounceArrow();
+      makeSparkles();
+    }, 600);
 
-    function makeSparkles() {
-        const stage = document.getElementById("bounceStage");
-
-        for (let i = 0; i < 7; i++) {
-            const sparkle = document.createElement("div");
-            sparkle.className = "sparkle";
-            sparkle.innerText = ["✨", "🏀", "⭐", "💫"][Math.floor(Math.random() * 4)];
-            sparkle.style.left = (250 + Math.random() * 450) + "px";
-            sparkle.style.top = (80 + Math.random() * 270) + "px";
-            stage.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 1200);
-        }
-    }
-
-    function dropBall() {
-        const ballType = document.getElementById("ballSelect").value;
-        const dropHeight = document.getElementById("dropHeightSelect").value;
-        const surface = document.getElementById("surfaceSelect").value;
-        const trial = Number(document.getElementById("trialSelect").value);
-
-        const bounce = randomBounceHeight(ballType, dropHeight, surface);
-        const ball = document.getElementById("ball");
-
-        ball.style.top = "350px";
-
-        setTimeout(() => {
-            const bounceTop = 350 - (bounce * 2.7);
-            ball.style.top = Math.max(70, bounceTop) + "px";
-            document.getElementById("heightLine").style.height = Math.min(bounce * 2.7, 280) + "px";
-            document.getElementById("heightReadout").innerText = "Bounce height: " + bounce + " cm";
-            showBounceArrow();
-            makeSparkles();
-        }, 600);
-
-        data[ballType][trial - 1] = bounce;
-        updateTable();
-
-        if (dropHeight === "100" && surface === "tile") {
-            showFeedback("fairFeedback", "Trial recorded. Fair setup: ball type changed, but drop height and surface stayed the same.", "correct");
-        } else {
-            showFeedback("fairFeedback", "Trial recorded, but this setup may be unfair because drop height or surface changed.", "incorrect");
-        }
-    }
-
-    function average(values) {
-        const nums = values.filter(v => v !== null);
-        if (nums.length === 0) return null;
-        return Math.round(nums.reduce((a, b) => a + b, 0) / nums.length);
-    }
-
-    function updateTable() {
-        ["foam", "tennis", "rubber", "pingpong"].forEach(ballType => {
-            for (let i = 0; i < 3; i++) {
-                document.getElementById(ballType + (i + 1)).innerText = data[ballType][i] === null ? "" : data[ballType][i] + " cm";
-            }
-
-            const avg = average(data[ballType]);
-            document.getElementById(ballType + "Avg").innerText = avg === null ? "" : avg + " cm";
-        });
-    }
-
-    function autoFillFairData() {
-        data.foam = [17, 19, 18];
-        data.tennis = [47, 49, 48];
-        data.rubber = [72, 75, 74];
-        data.pingpong = [54, 57, 56];
-        updateTable();
-        showFeedback("fairFeedback", "Fair class data added. Now make the graph.", "correct");
-    }
-
-    function clearData() {
-        data.foam = [null, null, null];
-        data.tennis = [null, null, null];
-        data.rubber = [null, null, null];
-        data.pingpong = [null, null, null];
-        updateTable();
-        makeGraph(true);
-        resetBallOnly();
-        showFeedback("fairFeedback", "Data cleared. Start a new ball bounce investigation.", "warning");
-    }
-
-    function makeGraph(clearOnly=false) {
-        const foamAvg = average(data.foam) || 0;
-        const tennisAvg = average(data.tennis) || 0;
-        const rubberAvg = average(data.rubber) || 0;
-        const pingpongAvg = average(data.pingpong) || 0;
-
-        const graphMaxCm = 100;
-        const maxPixelHeight = 265;
-
-        const bars = [
-            ["barFoam", foamAvg],
-            ["barTennis", tennisAvg],
-            ["barRubber", rubberAvg],
-            ["barPingpong", pingpongAvg]
-        ];
-
-        bars.forEach(([id, value]) => {
-            const bar = document.getElementById(id);
-            const cappedValue = Math.min(value, graphMaxCm);
-            const height = Math.round((cappedValue / graphMaxCm) * maxPixelHeight);
-            bar.style.height = height + "px";
-            bar.innerText = value === 0 ? "0" : value + " cm";
-        });
-
-        if (!clearOnly) {
-            if (foamAvg && tennisAvg && rubberAvg && pingpongAvg) {
-                showFeedback("graphFeedback", "Graph created. Compare the bar heights to find which ball bounced highest.", "correct");
-            } else {
-                showFeedback("graphFeedback", "Graph created, but some data is missing. Run trials or use Auto-Fill Fair Class Data.", "incorrect");
-            }
-        }
-    }
-
-    function checkCER() {
-        const pattern = document.getElementById("patternAnswer").value;
-        const claim = document.getElementById("claimAnswer").value;
-        const evidence = document.getElementById("evidenceAnswer").value;
-
-        if (
-            pattern === "Different ball types bounced to different heights." &&
-            claim === "The rubber ball bounced the highest." &&
-            evidence === "The rubber ball average was greater than the foam ball average."
-        ) {
-            showFeedback("cerFeedback", "Correct! Your pattern, claim, and evidence match the ball bounce data.", "correct");
-        } else {
-            showFeedback("cerFeedback", "Not yet. Use the graph and compare the rubber ball average with the other ball averages.", "incorrect");
-        }
-    }
-
-    function buildCER() {
-        const foamAvg = average(data.foam) || 18;
-        const rubberAvg = average(data.rubber) || 74;
-
-        document.getElementById("cerOutput").innerHTML = `
-            <div class="claim-box">
-                <h3>My Ball Bounce CER Paragraph</h3>
-                <p><strong>Claim:</strong> The rubber ball bounced the highest.</p>
-                <p><strong>Evidence:</strong> The rubber ball average was about ${rubberAvg} cm, while the foam ball average was about ${foamAvg} cm.</p>
-                <p><strong>Reasoning:</strong> The type of ball was the independent variable. Bounce height was the dependent variable. Since the rubber ball had the greatest bounce height, the data supports the claim that ball type affected bounce height.</p>
-            </div>
-        `;
-    }
-
-    function checkSTAAR() {
-        const s1 = document.getElementById("staar1").value;
-        const s2 = document.getElementById("staar2").value;
-        const s3 = document.getElementById("staar3").value;
-
-        if (
-            s1 === "Type of ball" &&
-            s2 === "Bounce height" &&
-            s3 === "Dropping one ball from a different height"
-        ) {
-            showFeedback("staarFeedback", "Correct! Ball type is changed, bounce height is measured, and changing drop height would make the test unfair.", "correct");
-        } else {
-            showFeedback("staarFeedback", "Not yet. Independent variable = what changed. Dependent variable = what measured. A fair test keeps drop height the same.", "incorrect");
-        }
-    }
-
-    resetBallOnly();
+    data[ballType][trial - 1] = bounce;
     updateTable();
+
+    if (dropHeight === "100" && surface === "tile") {
+      showFeedback("fairFeedback", "Trial recorded. Fair setup: ball type changed, but drop height and surface stayed the same.", "correct");
+    } else {
+      showFeedback("fairFeedback", "Trial recorded, but this setup may be unfair because drop height or surface changed.", "incorrect");
+    }
+  }
+
+  function average(values) {
+    const nums = values.filter(v => v !== null);
+    if (nums.length === 0) return null;
+    return Math.round(nums.reduce((a, b) => a + b, 0) / nums.length);
+  }
+
+  function updateTable() {
+    ["foam", "tennis", "rubber", "pingpong"].forEach(ballType => {
+      for (let i = 0; i < 3; i++) {
+        document.getElementById(ballType + (i + 1)).innerText = data[ballType][i] === null ? "" : data[ballType][i] + " cm";
+      }
+
+      const avg = average(data[ballType]);
+      document.getElementById(ballType + "Avg").innerText = avg === null ? "" : avg + " cm";
+    });
+  }
+
+  function autoFillFairData() {
+    data.foam = [17, 19, 18];
+    data.tennis = [47, 49, 48];
+    data.rubber = [72, 75, 74];
+    data.pingpong = [54, 57, 56];
+    updateTable();
+    showFeedback("fairFeedback", "Fair class data added. Now make the graph.", "correct");
+  }
+
+  function clearData() {
+    data.foam = [null, null, null];
+    data.tennis = [null, null, null];
+    data.rubber = [null, null, null];
+    data.pingpong = [null, null, null];
+    updateTable();
+    makeGraph(true);
+    resetBallOnly();
+    showFeedback("fairFeedback", "Data cleared. Start a new ball bounce investigation.", "warning");
+  }
+
+  function makeGraph(clearOnly=false) {
+    const foamAvg = average(data.foam) || 0;
+    const tennisAvg = average(data.tennis) || 0;
+    const rubberAvg = average(data.rubber) || 0;
+    const pingpongAvg = average(data.pingpong) || 0;
+
+    const graphMaxCm = 100;
+    const maxPixelHeight = 265;
+
+    const bars = [
+      ["barFoam", foamAvg],
+      ["barTennis", tennisAvg],
+      ["barRubber", rubberAvg],
+      ["barPingpong", pingpongAvg]
+    ];
+
+    bars.forEach(([id, value]) => {
+      const bar = document.getElementById(id);
+      const cappedValue = Math.min(value, graphMaxCm);
+      const height = Math.round((cappedValue / graphMaxCm) * maxPixelHeight);
+      bar.style.height = height + "px";
+      bar.innerText = value === 0 ? "0" : value + " cm";
+    });
+
+    if (!clearOnly) {
+      if (foamAvg && tennisAvg && rubberAvg && pingpongAvg) {
+        showFeedback("graphFeedback", "Graph created. Compare the bar heights to find which ball bounced highest.", "correct");
+      } else {
+        showFeedback("graphFeedback", "Graph created, but some data is missing. Run trials or use Auto-Fill Fair Class Data.", "incorrect");
+      }
+    }
+  }
+
+  function checkCER() {
+    const pattern = document.getElementById("patternAnswer").value;
+    const claim = document.getElementById("claimAnswer").value;
+    const evidence = document.getElementById("evidenceAnswer").value;
+
+    if (
+      pattern === "Different ball types bounced to different heights." &&
+      claim === "The rubber ball bounced the highest." &&
+      evidence === "The rubber ball average was greater than the foam ball average."
+    ) {
+      showFeedback("cerFeedback", "Correct! Your pattern, claim, and evidence match the ball bounce data.", "correct");
+    } else {
+      showFeedback("cerFeedback", "Not yet. Use the graph and compare the rubber ball average with the other ball averages.", "incorrect");
+    }
+  }
+
+  function buildCER() {
+    const foamAvg = average(data.foam) || 18;
+    const rubberAvg = average(data.rubber) || 74;
+
+    document.getElementById("cerOutput").innerHTML = `
+      <div class="claim-box">
+        <h3>My Ball Bounce CER Paragraph</h3>
+        <p><strong>Claim:</strong> The rubber ball bounced the highest.</p>
+        <p><strong>Evidence:</strong> The rubber ball average was about ${rubberAvg} cm, while the foam ball average was about ${foamAvg} cm.</p>
+        <p><strong>Reasoning:</strong> The type of ball was the independent variable. Bounce height was the dependent variable. Since the rubber ball had the greatest bounce height, the data supports the claim that ball type affected bounce height.</p>
+      </div>
+    `;
+  }
+
+  function checkSTAAR() {
+    const s1 = document.getElementById("staar1").value;
+    const s2 = document.getElementById("staar2").value;
+    const s3 = document.getElementById("staar3").value;
+
+    if (
+      s1 === "Type of ball" &&
+      s2 === "Bounce height" &&
+      s3 === "Dropping one ball from a different height"
+    ) {
+      showFeedback("staarFeedback", "Correct! Ball type is changed, bounce height is measured, and changing drop height would make the test unfair.", "correct");
+    } else {
+      showFeedback("staarFeedback", "Not yet. Independent variable = what changed. Dependent variable = what measured. A fair test keeps drop height the same.", "incorrect");
+    }
+  }
+
+  resetBallOnly();
+  updateTable();
 </script>
 
 {% endblock %}
