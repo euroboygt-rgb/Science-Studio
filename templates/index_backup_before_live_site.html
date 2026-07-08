@@ -1,0 +1,415 @@
+{% extends "base.html" %}
+
+{% block title %}Science Studio Dashboard{% endblock %}
+
+{% block content %}
+
+<style>
+    .hero-lab {
+        position: relative;
+        overflow: hidden;
+        background:
+            radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+            radial-gradient(circle at 35% 75%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+            radial-gradient(circle at 70% 28%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+            linear-gradient(135deg, #102542 0%, #1b4965 55%, #5fa8d3 100%);
+        color: white;
+        border: 5px solid #111;
+        border-radius: 28px;
+        padding: 34px;
+        box-shadow: 8px 8px 0 rgba(17, 17, 17, 0.18);
+        margin-bottom: 28px;
+    }
+
+    .hero-lab h1 {
+        font-size: clamp(2.3rem, 5vw, 4.8rem);
+        font-weight: 950;
+        line-height: 0.95;
+        margin-bottom: 16px;
+    }
+
+    .hero-lab .lead {
+        font-size: 1.25rem;
+        max-width: 740px;
+        font-weight: 600;
+    }
+
+    .lab-table {
+        background: #d1e7dd;
+        border: 5px solid #111;
+        border-radius: 24px;
+        padding: 18px;
+        color: #111;
+    }
+
+    .lab-icon {
+        font-size: 48px;
+        display: inline-block;
+        margin: 8px;
+        animation: floaty 3s ease-in-out infinite;
+    }
+
+    .lab-icon:nth-child(2) {
+        animation-delay: 0.5s;
+    }
+
+    .lab-icon:nth-child(3) {
+        animation-delay: 1s;
+    }
+
+    .lab-icon:nth-child(4) {
+        animation-delay: 1.5s;
+    }
+
+    @keyframes floaty {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+
+    .stat-card {
+        min-height: 150px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 3rem;
+        font-weight: 950;
+        line-height: 1;
+    }
+
+    .launch-card {
+        padding: 22px;
+        min-height: 260px;
+    }
+
+    .unit-card {
+        padding: 20px;
+        height: 100%;
+    }
+
+    .unit-icon {
+        font-size: 46px;
+    }
+
+    .progress-track {
+        height: 30px;
+        background: #e9ecef;
+        border: 3px solid #111;
+        border-radius: 999px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        width: 100%;
+        background: #d1e7dd;
+    }
+
+    .dashboard-section-title {
+        font-weight: 950;
+        margin: 30px 0 16px;
+    }
+
+    .quick-link {
+        display: block;
+        background: white;
+        border: 3px solid #111;
+        border-radius: 18px;
+        padding: 14px;
+        margin-bottom: 12px;
+        font-weight: 850;
+        color: #111;
+    }
+
+    .quick-link:hover {
+        background: #fff3cd;
+        color: #111;
+    }
+
+    .chalkboard {
+        background: #163b2f;
+        color: white;
+        border: 5px solid #111;
+        border-radius: 22px;
+        padding: 22px;
+        box-shadow: inset 0 0 0 3px rgba(255,255,255,0.12);
+    }
+
+    .chalk-line {
+        border-bottom: 2px dashed rgba(255,255,255,0.45);
+        padding: 9px 0;
+        font-weight: 700;
+    }
+
+    .teacher-note {
+        background: #fff3cd;
+        border-left: 8px solid #111;
+        border-radius: 14px;
+        padding: 18px;
+        font-weight: 700;
+    }
+</style>
+
+<section class="hero-lab">
+    <div class="row align-items-center">
+        <div class="col-lg-8">
+            <span class="badge-science">1st 9 Weeks Complete</span>
+            <span class="badge-science">TEKS Practice</span>
+            <span class="badge-science">STAAR Ready</span>
+
+            <h1 class="mt-3">Welcome to Science Studio</h1>
+
+            <p class="lead">
+                A 5th grade science classroom hub with daily lessons, teacher notes,
+                interactive labs, review games, digital assessments, and reflection tools.
+            </p>
+
+            <div class="mt-4">
+                <a href="/first-nine-weeks" class="btn btn-warning btn-lg science-btn me-2 mb-2">
+                    Start 1st 9 Weeks
+                </a>
+
+                <a href="/first-nine-weeks/day/1?view=student" class="btn btn-light btn-lg science-btn me-2 mb-2">
+                    Student View
+                </a>
+
+                <a href="/first-nine-weeks/day/1?view=teacher" class="btn btn-success btn-lg science-btn mb-2">
+                    Teacher View
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="lab-table text-center">
+                <h3>Science Class Tools</h3>
+                <div>
+                    <span class="lab-icon">🔬</span>
+                    <span class="lab-icon">🧪</span>
+                    <span class="lab-icon">🧲</span>
+                    <span class="lab-icon">📊</span>
+                </div>
+                <p class="mb-0">
+                    Investigate • Collect Data • Explain with Evidence
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4">
+    <div class="col-md-3">
+        <div class="science-card stat-card">
+            <div class="stat-number">45</div>
+            <h5>Lessons Built</h5>
+            <p class="mb-0">Complete 1st 9 weeks sequence</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="science-card stat-card">
+            <div class="stat-number">3</div>
+            <h5>Main Units</h5>
+            <p class="mb-0">Matter, mixtures, force and motion</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="science-card stat-card">
+            <div class="stat-number">30+</div>
+            <h5>Interactive Tools</h5>
+            <p class="mb-0">Labs, games, simulations, assessments</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="science-card stat-card">
+            <div class="stat-number">100%</div>
+            <h5>Review Cycle</h5>
+            <p class="mb-0">Teach, investigate, assess, reflect</p>
+        </div>
+    </div>
+</section>
+
+<h2 class="dashboard-section-title">Choose Your Classroom Path</h2>
+
+<section class="row g-4">
+    <div class="col-lg-6">
+        <div class="science-card launch-card">
+            <h2>👩‍🔬 Student Launch</h2>
+            <p>
+                Students can open the lesson, complete interactive activities,
+                practice STAAR-style questions, and use digital labs.
+            </p>
+
+            <div class="d-grid gap-2">
+                <a href="/first-nine-weeks/day/1?view=student" class="btn btn-primary btn-lg science-btn">
+                    Start at Day 1 Student View
+                </a>
+                <a href="/first-nine-weeks/day/42?view=student" class="btn btn-warning btn-lg science-btn">
+                    Open Review Days
+                </a>
+                <a href="/labs/staar-digital-assessment" class="btn btn-success btn-lg science-btn">
+                    Open Digital Assessment
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="science-card launch-card">
+            <h2>👨‍🏫 Teacher Launch</h2>
+            <p>
+                Teachers can view lesson plans, vocabulary, materials, teacher notes,
+                answer guidance, labs, and assessment tools.
+            </p>
+
+            <div class="d-grid gap-2">
+                <a href="/first-nine-weeks/day/1?view=teacher" class="btn btn-success btn-lg science-btn">
+                    Start at Day 1 Teacher View
+                </a>
+                <a href="/first-nine-weeks" class="btn btn-primary btn-lg science-btn">
+                    View Full 1st 9 Weeks
+                </a>
+                <a href="/labs/reflection-tracker" class="btn btn-warning btn-lg science-btn">
+                    Open Reflection Tracker
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<h2 class="dashboard-section-title">1st 9 Weeks Learning Map</h2>
+
+<section class="science-card p-4 mb-4">
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <h3>Progress</h3>
+            <p class="mb-2"><strong>45 of 45 lessons complete</strong></p>
+            <div class="progress-track">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="col-md-8 mt-3 mt-md-0">
+            <p class="mb-0">
+                Students move from classroom routines and science tools into matter,
+                mixtures and solutions, particles too small to see, force and motion,
+                engineering design, review, assessment, and reflection.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4">
+    <div class="col-md-6 col-lg-3">
+        <div class="science-card unit-card">
+            <div class="unit-icon">🧱</div>
+            <h3>Unit 1</h3>
+            <h5>Matter and Physical Properties</h5>
+            <p>Mass, volume, states of matter, magnetism, solubility, density, conductors, and insulators.</p>
+            <a href="/first-nine-weeks/day/5?view=student" class="btn btn-primary science-btn">Open Unit 1</a>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <div class="science-card unit-card">
+            <div class="unit-icon">🧪</div>
+            <h3>Unit 2</h3>
+            <h5>Mixtures and Solutions</h5>
+            <p>Separating mixtures by particle size, magnetism, relative density, solubility, and evaporation.</p>
+            <a href="/first-nine-weeks/day/16?view=student" class="btn btn-primary science-btn">Open Unit 2</a>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <div class="science-card unit-card">
+            <div class="unit-icon">🚗</div>
+            <h3>Unit 3</h3>
+            <h5>Force and Motion</h5>
+            <p>Gravity, friction, balanced forces, unequal forces, variables, graphing, and engineering design.</p>
+            <a href="/first-nine-weeks/day/26?view=student" class="btn btn-primary science-btn">Open Unit 3</a>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <div class="science-card unit-card">
+            <div class="unit-icon">🎯</div>
+            <h3>Review</h3>
+            <h5>STAAR Practice and Reflection</h5>
+            <p>Spiral review, stations, digital assessment, topic breakdown, notebook check, and goal setting.</p>
+            <a href="/first-nine-weeks/day/42?view=student" class="btn btn-primary science-btn">Open Review</a>
+        </div>
+    </div>
+</section>
+
+<h2 class="dashboard-section-title">Quick Classroom Tools</h2>
+
+<section class="row g-4">
+    <div class="col-lg-4">
+        <div class="chalkboard h-100">
+            <h3>Today’s Science Habits</h3>
+            <div class="chalk-line">Ask a testable question.</div>
+            <div class="chalk-line">Use tools safely.</div>
+            <div class="chalk-line">Collect data carefully.</div>
+            <div class="chalk-line">Use evidence, not guesses.</div>
+            <div class="chalk-line">Explain with science vocabulary.</div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="science-card p-4 h-100">
+            <h3>Student Tools</h3>
+            <a class="quick-link" href="/vocabulary">🖼️ Vocabulary Posters</a>
+            <a class="quick-link" href="/student-dashboard">👩‍🔬 Student Dashboard</a>
+            <a class="quick-link" href="/labs/staar-spiral-review-game">🎮 STAAR Spiral Review Game</a>
+            <a class="quick-link" href="/labs/science-stations-board">🧭 Science Stations Board</a>
+            <a class="quick-link" href="/labs/staar-digital-assessment">📝 Digital Assessment</a>
+            <a class="quick-link" href="/labs/reflection-tracker">🎯 Reflection Tracker</a>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="science-card p-4 h-100">
+            <h3>Teacher Tools</h3>
+            <a class="quick-link" href="/student-privacy">🔒 Student Privacy / District Review</a>
+            <a class="quick-link" href="/resources">📄 Printable Resources</a>
+            <a class="quick-link" href="/teacher-dashboard">👨‍🏫 Teacher Dashboard</a>
+            <a class="quick-link" href="/first-nine-weeks/day/44?view=teacher">📋 Day 44 Assessment Plan</a>
+            <a class="quick-link" href="/first-nine-weeks/day/45?view=teacher">🧾 Day 45 Reflection Plan</a>
+            <a class="quick-link" href="/labs/staar-digital-assessment">📊 Assessment Report Tool</a>
+            <a class="quick-link" href="/first-nine-weeks">🗂 Full Lesson Sequence</a>
+        </div>
+    </div>
+</section>
+
+<h2 class="dashboard-section-title">Principal / Demo Snapshot</h2>
+
+<section class="science-card p-4">
+    <div class="row align-items-center">
+        <div class="col-lg-8">
+            <h2>Complete 1st 9 Weeks Science Program</h2>
+            <p><a href="/instructional-officer-demo" class="btn btn-danger btn-lg science-btn">Open Guided Demo Page</a></p>
+            <p>
+                This classroom app includes daily 5th grade science lessons,
+                student and teacher views, interactive lab simulations, vocabulary,
+                STAAR-style practice, review games, a digital assessment, and student reflection tools.
+            </p>
+
+            <div class="teacher-note">
+                Demo idea: Start with the dashboard, open a student lesson, show an interactive lab,
+                then open the digital assessment and reflection tracker.
+            </div>
+        </div>
+
+        <div class="col-lg-4 mt-3 mt-lg-0">
+            <div class="d-grid gap-2">
+                <a href="/first-nine-weeks/day/10?view=student" class="btn btn-primary btn-lg science-btn">Show Sample Lab Lesson</a>
+                <a href="/labs/ramp-investigation" class="btn btn-success btn-lg science-btn">Show Simulation</a>
+                <a href="/labs/staar-digital-assessment" class="btn btn-warning btn-lg science-btn">Show Assessment</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
