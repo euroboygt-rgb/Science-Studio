@@ -2269,4 +2269,145 @@ document.addEventListener("DOMContentLoaded", function () {
 
 {% endif %}
 
+
+{# Science Studio Written CER / Critical Thinking Response #}
+{% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
+{% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
+
+<section class="card my-4" style="border: 4px solid #111; border-radius: 20px; box-shadow: 5px 5px 0 rgba(17,17,17,0.14);">
+    <div class="card-body">
+        <h2 class="card-title">🧠 Explain Your Thinking</h2>
+
+        <p>
+            Use this section to generate your own science response. This is different from
+            STAAR multiple-choice practice. Here, you write or explain your thinking using
+            evidence.
+        </p>
+
+        <div class="alert alert-info" style="border: 3px solid #111;">
+            <strong>Student Task:</strong>
+            Write or orally explain a response connected to today's lesson:
+            <strong>Day {{ lesson_day }}: {{ lesson_title }}</strong>.
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label"><strong>Claim</strong></label>
+                <p class="small">What do you think? Answer the question in a complete sentence.</p>
+                <textarea id="cerClaim{{ lesson_day }}" class="form-control" rows="6"
+                    placeholder="My claim is..."></textarea>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label"><strong>Evidence</strong></label>
+                <p class="small">What data, observation, model, or lab result supports your claim?</p>
+                <textarea id="cerEvidence{{ lesson_day }}" class="form-control" rows="6"
+                    placeholder="My evidence is..."></textarea>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label"><strong>Reasoning</strong></label>
+                <p class="small">Why does your evidence support your claim?</p>
+                <textarea id="cerReasoning{{ lesson_day }}" class="form-control" rows="6"
+                    placeholder="This evidence supports my claim because..."></textarea>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label"><strong>Use Science Vocabulary</strong></label>
+            <textarea id="cerVocabulary{{ lesson_day }}" class="form-control" rows="3"
+                placeholder="Use at least one science vocabulary word from today's lesson."></textarea>
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label"><strong>Oral Response Option</strong></label>
+            <div class="alert alert-warning" style="border: 3px solid #111;">
+                Students may also explain their CER response orally or record it using a
+                teacher-approved district tool. Do not enter personal information.
+            </div>
+        </div>
+
+        <div class="mt-3 no-print">
+            <button type="button" class="btn btn-success" onclick="saveCERResponse('{{ lesson_day }}')"
+                style="border: 3px solid #111; font-weight: 900;">
+                Save on This Device
+            </button>
+
+            <button type="button" class="btn btn-warning" onclick="printCERResponse('{{ lesson_day }}')"
+                style="border: 3px solid #111; font-weight: 900;">
+                Print / Save as PDF
+            </button>
+
+            <button type="button" class="btn btn-secondary" onclick="clearCERResponse('{{ lesson_day }}')"
+                style="border: 3px solid #111; font-weight: 900;">
+                Clear Response
+            </button>
+        </div>
+
+        <p class="small mt-3 mb-0">
+            Privacy note: This response saves only in this browser on this device. It is not sent to an online student database.
+        </p>
+    </div>
+</section>
+
+<script>
+function getCERField(day, field) {
+    return document.getElementById("cer" + field + day);
+}
+
+function saveCERResponse(day) {
+    const data = {
+        claim: getCERField(day, "Claim")?.value || "",
+        evidence: getCERField(day, "Evidence")?.value || "",
+        reasoning: getCERField(day, "Reasoning")?.value || "",
+        vocabulary: getCERField(day, "Vocabulary")?.value || ""
+    };
+
+    localStorage.setItem("scienceStudioCERDay" + day, JSON.stringify(data));
+    alert("CER response saved on this device.");
+}
+
+function loadCERResponse(day) {
+    const saved = localStorage.getItem("scienceStudioCERDay" + day);
+
+    if (!saved) {
+        return;
+    }
+
+    try {
+        const data = JSON.parse(saved);
+
+        if (getCERField(day, "Claim")) getCERField(day, "Claim").value = data.claim || "";
+        if (getCERField(day, "Evidence")) getCERField(day, "Evidence").value = data.evidence || "";
+        if (getCERField(day, "Reasoning")) getCERField(day, "Reasoning").value = data.reasoning || "";
+        if (getCERField(day, "Vocabulary")) getCERField(day, "Vocabulary").value = data.vocabulary || "";
+    } catch (error) {
+        console.log("Could not load saved CER response.", error);
+    }
+}
+
+function clearCERResponse(day) {
+    if (!confirm("Clear this CER response from this device?")) {
+        return;
+    }
+
+    localStorage.removeItem("scienceStudioCERDay" + day);
+
+    ["Claim", "Evidence", "Reasoning", "Vocabulary"].forEach(function(field) {
+        const box = getCERField(day, field);
+        if (box) {
+            box.value = "";
+        }
+    });
+}
+
+function printCERResponse(day) {
+    window.print();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    loadCERResponse("{{ lesson_day }}");
+});
+</script>
+
 {% endblock %}
