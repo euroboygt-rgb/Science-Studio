@@ -369,6 +369,13 @@ def instructional_officer_demo():
 
 
 
+
+@app.route("/student-privacy")
+@app.route("/privacy")
+def student_privacy():
+    return render_template("student_privacy.html")
+
+
 @app.route("/resources")
 def resources():
     return render_template("resources.html", resource_folders=resource_folders)
