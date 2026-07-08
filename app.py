@@ -47,6 +47,8 @@ from curriculum.day43 import day43
 from curriculum.day44 import day44
 from curriculum.day45 import day45
 
+from curriculum.printable_resources import resource_folders, printable_resources_by_slug
+
 app = Flask(__name__)
 
 
@@ -364,6 +366,19 @@ def vocabulary_posters():
 @app.route("/instructional-officer-demo")
 def instructional_officer_demo():
     return render_template("instructional_officer_demo.html")
+
+
+
+@app.route("/resources")
+def resources():
+    return render_template("resources.html", resource_folders=resource_folders)
+
+@app.route("/resources/<slug>")
+def printable_resource(slug):
+    resource = printable_resources_by_slug.get(slug)
+    if not resource:
+        return render_template("resources.html", resource_folders=resource_folders), 404
+    return render_template("printable_resource.html", resource=resource)
 
 
 @app.route("/first-nine-weeks")
