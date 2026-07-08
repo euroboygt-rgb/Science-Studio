@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from curriculum.first_nine_weeks import first_nine_weeks as first_nine_weeks_lessons
 from curriculum.day1 import day1
 from curriculum.day2 import day2
@@ -50,6 +50,26 @@ from curriculum.day45 import day45
 from curriculum.printable_resources import resource_folders, printable_resources_by_slug
 
 app = Flask(__name__)
+
+
+def get_student_dashboard_lessons():
+    try:
+        from curriculum import first_nine_weeks as fw
+
+        for name in [
+            "first_nine_weeks_lessons",
+            "first_nine_weeks",
+            "lessons",
+            "all_lessons",
+        ]:
+            data = getattr(fw, name, None)
+            if isinstance(data, list) and len(data) > 0:
+                return data
+    except Exception as error:
+        print("Could not load student dashboard lessons:", error)
+
+    return []
+
 
 
 lesson_details = {
@@ -321,10 +341,25 @@ def teacher_dashboard():
 
 
 
+
+
+@app.route("/go-to-lesson")
+def go_to_lesson():
+    day = request.args.get("day", type=int)
+
+    if not day:
+        return redirect("/student-dashboard")
+
+    return redirect(f"/first-nine-weeks/day/{day}?view=student")
+
+
+
 @app.route("/student-dashboard")
 def student_dashboard():
-    return render_template("student_dashboard.html")
-
+    return render_template(
+        "student_dashboard.html",
+        lessons=get_student_dashboard_lessons()
+    )
 
 
 @app.route("/labs/physical-properties-sort")
@@ -363,6 +398,7 @@ def vocabulary_posters():
 
 
 
+@app.route("/site-overview")
 @app.route("/instructional-officer-demo")
 def instructional_officer_demo():
     return render_template("instructional_officer_demo.html")

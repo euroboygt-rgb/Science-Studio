@@ -11,10 +11,10 @@ Includes:
 - STAAR-style review
 - Digital assessment
 - Student reflection and goal-setting tool
-- Instructional Officer guided demo page
+- Science Studio site overview page
 
-Main guided demo page:
-/instructional-officer-demo
+Main site overview page:
+/site-overview
 
 Production start command:
 gunicorn app:app
