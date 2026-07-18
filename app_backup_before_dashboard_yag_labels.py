@@ -157,13 +157,9 @@ lesson_details = {
 }
 
 
-
 @app.route("/")
-def index():
-    return render_template(
-        "index.html",
-        lessons=get_first_nine_weeks_lessons()
-    )
+def home():
+    return render_template("index.html")
 
 
 @app.route("/labs")
@@ -394,12 +390,11 @@ def go_to_lesson():
 
 
 
-
 @app.route("/student-dashboard")
 def student_dashboard():
     return render_template(
         "student_dashboard.html",
-        lessons=get_first_nine_weeks_lessons()
+        lessons=get_student_dashboard_lessons()
     )
 
 
@@ -488,12 +483,6 @@ def lesson_detail(day):
         lesson=lesson,
         view=view
     )
-
-
-
-@app.route("/resources/cmelts-energy-anchor-chart")
-def cmelts_energy_anchor_chart():
-    return render_template("cmelts_anchor_chart.html")
 
 
 if __name__ == "__main__":

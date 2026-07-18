@@ -490,12 +490,6 @@ def lesson_detail(day):
     )
 
 
-
-@app.route("/resources/cmelts-energy-anchor-chart")
-def cmelts_energy_anchor_chart():
-    return render_template("cmelts_anchor_chart.html")
-
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)

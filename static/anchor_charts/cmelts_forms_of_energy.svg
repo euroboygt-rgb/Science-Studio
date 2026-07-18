@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250">
+  <rect x="20" y="20" width="960" height="1210" rx="35" fill="#ffffff" stroke="#111" stroke-width="8"/>
+
+  <!-- Header -->
+  <text x="500" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="78" font-weight="900" fill="#111">CMELTS</text>
+  <text x="500" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#111">Forms of Energy</text>
+
+  <text x="500" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="800">
+    <tspan fill="#7b1fa2">Chemical</tspan>
+    <tspan fill="#111"> • </tspan>
+    <tspan fill="#1565c0">Mechanical</tspan>
+    <tspan fill="#111"> • </tspan>
+    <tspan fill="#2e7d32">Electrical</tspan>
+    <tspan fill="#111"> • </tspan>
+    <tspan fill="#ef6c00">Light</tspan>
+    <tspan fill="#111"> • </tspan>
+    <tspan fill="#c62828">Thermal</tspan>
+    <tspan fill="#111"> • </tspan>
+    <tspan fill="#00838f">Sound</tspan>
+  </text>
+
+  <!-- Panel helper sizes:
+       left panels x=55 width=430, right panels x=515 width=430
+       row y values: 260, 520, 780
+  -->
+
+  <!-- C Chemical -->
+  <rect x="55" y="260" width="430" height="230" rx="22" fill="#f8edff" stroke="#7b1fa2" stroke-width="5"/>
+  <circle cx="120" cy="335" r="48" fill="#7b1fa2"/>
+  <text x="120" y="358" text-anchor="middle" font-family="Arial" font-size="64" font-weight="900" fill="white">C</text>
+  <text x="185" y="320" font-family="Arial" font-size="34" font-weight="900" fill="#7b1fa2">C = Chemical</text>
+  <text x="185" y="358" font-family="Arial" font-size="21" font-weight="700" fill="#111">Energy stored in food,</text>
+  <text x="185" y="388" font-family="Arial" font-size="21" font-weight="700" fill="#111">batteries, and fuels.</text>
+  <text x="90" y="445" font-family="Arial" font-size="20" font-weight="700" fill="#111">Example: Food gives your body energy.</text>
+
+  <!-- chemical icons -->
+  <rect x="300" y="400" width="38" height="70" rx="6" fill="#333" stroke="#111" stroke-width="3"/>
+  <rect x="309" y="388" width="20" height="13" fill="#111"/>
+  <rect x="303" y="405" width="32" height="18" fill="#fbc02d"/>
+  <text x="319" y="421" text-anchor="middle" font-family="Arial" font-size="15" font-weight="900">+</text>
+  <path d="M320 430 L307 452 H322 L312 468" fill="none" stroke="#ffd600" stroke-width="5"/>
+  <circle cx="380" cy="435" r="30" fill="#e53935" stroke="#111" stroke-width="3"/>
+  <path d="M380 405 C390 392 407 393 410 408" fill="none" stroke="#2e7d32" stroke-width="5"/>
+  <rect x="415" y="405" width="42" height="62" rx="8" fill="#e53935" stroke="#111" stroke-width="3"/>
+  <text x="436" y="440" text-anchor="middle" font-family="Arial" font-size="13" font-weight="900" fill="white">FUEL</text>
+
+  <!-- M Mechanical -->
+  <rect x="515" y="260" width="430" height="230" rx="22" fill="#eaf4ff" stroke="#1565c0" stroke-width="5"/>
+  <circle cx="580" cy="335" r="48" fill="#1565c0"/>
+  <text x="580" y="358" text-anchor="middle" font-family="Arial" font-size="64" font-weight="900" fill="white">M</text>
+  <text x="645" y="320" font-family="Arial" font-size="34" font-weight="900" fill="#1565c0">M = Mechanical</text>
+  <text x="645" y="358" font-family="Arial" font-size="21" font-weight="700" fill="#111">Energy of motion</text>
+  <text x="645" y="388" font-family="Arial" font-size="21" font-weight="700" fill="#111">and moving parts.</text>
+  <text x="550" y="445" font-family="Arial" font-size="20" font-weight="700" fill="#111">Example: A bicycle moving has energy.</text>
+
+  <!-- mechanical icons -->
+  <circle cx="760" cy="405" r="26" fill="none" stroke="#111" stroke-width="5"/>
+  <circle cx="845" cy="405" r="26" fill="none" stroke="#111" stroke-width="5"/>
+  <path d="M760 405 L800 365 L845 405 L805 405 Z" fill="none" stroke="#1565c0" stroke-width="6"/>
+  <path d="M800 365 L805 405" stroke="#111" stroke-width="4"/>
+  <circle cx="805" cy="405" r="7" fill="#111"/>
+  <circle cx="895" cy="415" r="25" fill="#e53935" stroke="#111" stroke-width="4"/>
+
+  <!-- E Electrical -->
+  <rect x="55" y="520" width="430" height="230" rx="22" fill="#eaf8ea" stroke="#2e7d32" stroke-width="5"/>
+  <circle cx="120" cy="595" r="48" fill="#2e7d32"/>
+  <text x="120" y="618" text-anchor="middle" font-family="Arial" font-size="64" font-weight="900" fill="white">E</text>
+  <text x="185" y="580" font-family="Arial" font-size="34" font-weight="900" fill="#2e7d32">E = Electrical</text>
+  <text x="185" y="618" font-family="Arial" font-size="21" font-weight="700" fill="#111">Energy carried by electric</text>
+  <text x="185" y="648" font-family="Arial" font-size="21" font-weight="700" fill="#111">current through wires.</text>
+  <text x="90" y="705" font-family="Arial" font-size="20" font-weight="700" fill="#111">Example: A lamp uses electrical energy.</text>
+
+  <!-- electrical icons -->
+  <rect x="315" y="650" width="38" height="62" rx="6" fill="#333" stroke="#111" stroke-width="3"/>
+  <rect x="323" y="640" width="22" height="12" fill="#111"/>
+  <path d="M355 680 C380 645 408 710 435 670" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="438" cy="665" r="26" fill="#ffeb3b" stroke="#111" stroke-width="4"/>
+  <rect x="426" y="690" width="24" height="20" fill="#888" stroke="#111" stroke-width="3"/>
+
+  <!-- L Light -->
+  <rect x="515" y="520" width="430" height="230" rx="22" fill="#fff3e0" stroke="#ef6c00" stroke-width="5"/>
+  <circle cx="580" cy="595" r="48" fill="#ef6c00"/>
+  <text x="580" y="618" text-anchor="middle" font-family="Arial" font-size="64" font-weight="900" fill="white">L</text>
+  <text x="645" y="580" font-family="Arial" font-size="34" font-weight="900" fill="#ef6c00">L = Light</text>
+  <text x="645" y="618" font-family="Arial" font-size="21" font-weight="700" fill="#111">Energy we can see from</text>
+  <text x="645" y="648" font-family="Arial" font-size="21" font-weight="700" fill="#111">the Sun, bulbs, and screens.</text>
+  <text x="550" y="705" font-family="Arial" font-size="20" font-weight="700" fill="#111">Example: The Sun gives off light energy.</text>
+
+  <!-- light icons -->
+  <circle cx="760" cy="665" r="34" fill="#ffd54f" stroke="#111" stroke-width="4"/>
+  <line x1="760" y1="610" x2="760" y2="592" stroke="#f9a825" stroke-width="6"/>
+  <line x1="760" y1="720" x2="760" y2="738" stroke="#f9a825" stroke-width="6"/>
+  <line x1="705" y1="665" x2="687" y2="665" stroke="#f9a825" stroke-width="6"/>
+  <line x1="815" y1="665" x2="833" y2="665" stroke="#f9a825" stroke-width="6"/>
+  <rect x="850" y="640" width="50" height="34" rx="12" fill="#1565c0" stroke="#111" stroke-width="4"/>
+  <polygon points="900,642 930,627 930,687 900,672" fill="#ffe082" stroke="#111" stroke-width="3"/>
+
+  <!-- T Thermal -->
+  <rect x="55" y="780" width="430" height="230" rx="22" fill="#ffebee" stroke="#c62828" stroke-width="5"/>
+  <circle cx="120" cy="855" r="48" fill="#c62828"/>
+  <text x="120" y="878" text-anchor="middle" font-family="Arial" font-size="64" font-weight="900" fill="white">T</text>
+  <text x="185" y="840" font-family="Arial" font-size="34" font-weight="900" fill="#c62828">T = Thermal</text>
+  <text x="185" y="878" font-family="Arial" font-size="21" font-weight="700" fill="#111">Heat energy that</text>
+  <text x="185" y="908" font-family="Arial" font-size="21" font-weight="700" fill="#111">makes things warmer.</text>
+  <text x="90" y="965" font-family="Arial" font-size="20" font-weight="700" fill="#111">Example: A campfire gives off thermal energy.</text>
+
+  <!-- thermal icons -->
+  <path d="M355 970 C320 930 365 905 350 865 C395 900 420 930 390 970 Z" fill="#ff7043" stroke="#111" stroke-width="4"/>
+  <path d="M378 970 C355 940 385 920 375 890 C410 925 428 945 410 970 Z" fill="#ffeb3b" stroke="#111" stroke-width="3"/>
+  <rect x="430" y="875" width="26" height="75" rx="12" fill="white" stroke="#111" stroke-width="4"/>
+  <circle cx="443" cy="955" r="22" fill="#e53935" stroke="#111" stroke-width="4"/>
+  <rect x="438" y="900" width="10" height="55" fill="#e53935"/>
+
+  <!-- S Sound -->
+  <rect x="515" y="780" width="430" height="230" rx="22" fill="#e0f7fa" stroke="#00838f" stroke-width="5"/>
+  <circle cx="580" cy="855" r="48" fill="#00838f"/>
+  <text x="580" y="878" text-anchor="middle" font-family="Arial" font-size="64" font-weight="900" fill="white">S</text>
+  <text x="645" y="840" font-family="Arial" font-size="34" font-weight="900" fill="#00838f">S = Sound</text>
+  <text x="645" y="878" font-family="Arial" font-size="21" font-weight="700" fill="#111">Energy made by vibrations</text>
+  <text x="645" y="908" font-family="Arial" font-size="21" font-weight="700" fill="#111">that we can hear.</text>
+  <text x="550" y="965" font-family="Arial" font-size="20" font-weight="700" fill="#111">Example: A speaker makes sound energy.</text>
+
+  <!-- sound icons -->
+  <rect x="765" y="900" width="65" height="78" rx="9" fill="#555" stroke="#111" stroke-width="4"/>
+  <circle cx="797" cy="926" r="18" fill="#222" stroke="#111" stroke-width="3"/>
+  <circle cx="797" cy="960" r="13" fill="#222" stroke="#111" stroke-width="3"/>
+  <path d="M845 912 C870 930 870 950 845 970" fill="none" stroke="#111" stroke-width="5"/>
+  <text x="900" y="930" font-family="Arial" font-size="48" font-weight="900">♪</text>
+
+  <!-- Footer -->
+  <text x="500" y="1135" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#111">
+    Science is
+  </text>
+  <text x="500" y="1190" text-anchor="middle" font-family="Arial, sans-serif" font-size="58" font-weight="900" fill="#1565c0">
+    ENERGIZING!
+  </text>
+</svg>

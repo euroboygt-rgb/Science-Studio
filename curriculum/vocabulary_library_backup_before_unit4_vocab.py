@@ -1,20 +1,4 @@
 VOCABULARY_LIBRARY = {
-
-    "chemical": {
-        "image": "🔋",
-        "definition": "A form of energy stored in matter, such as food, batteries, and fuels.",
-        "science": "A battery stores chemical energy that can change into electrical energy.",
-        "real_world": "Food has chemical energy your body uses.",
-        "staar": "STAAR may ask where energy starts in a flashlight or battery-powered system."
-    },
-    "electrical": {
-        "image": "⚡",
-        "definition": "A form of energy carried by electric current through a circuit or wires.",
-        "science": "Electrical energy flows through a complete circuit.",
-        "real_world": "A lamp uses electrical energy to produce light.",
-        "staar": "STAAR may ask what form of energy moves through wires in a circuit."
-    },
-
     "safety": {
         "image": "🥽",
         "definition": "Actions and equipment used to prevent injury during science work.",

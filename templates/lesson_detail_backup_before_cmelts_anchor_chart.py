@@ -251,23 +251,6 @@ function printAnchorChartOnly() {
 </section>
 
 
-{% if lesson_day >= 37 and lesson_day <= 43 %}
-<section class="lesson-card" style="background:#fff7d6;">
-    <h2>⚡ Unit 4 Anchor Chart: CMELTS</h2>
-    <p>
-        Use CMELTS to remember the six forms of energy:
-        chemical, mechanical, electrical, light, thermal, and sound.
-    </p>
-
-    <a href="/resources/cmelts-energy-anchor-chart" class="btn btn-lg btn-warning science-btn">
-        Open / Print CMELTS Energy Anchor Chart
-    </a>
-</section>
-{% endif %}
-
-
-
-
 <section id="lessonAnchorChart" class="anchor-chart-card">
     <h2>📌 Vocabulary Anchor Chart</h2>
     <p class="mb-2">
