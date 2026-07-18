@@ -1,5 +1,4 @@
 import os
-from curriculum.vocabulary_library import get_vocab_info
 from flask import Flask, render_template, request, redirect
 from curriculum.first_nine_weeks import first_nine_weeks as first_nine_weeks_lessons
 from curriculum.day1 import day1
@@ -51,29 +50,6 @@ from curriculum.day45 import day45
 from curriculum.printable_resources import resource_folders, printable_resources_by_slug, printable_resources_by_day
 
 app = Flask(__name__)
-
-
-@app.context_processor
-def inject_vocabulary_helpers():
-    return dict(get_vocab_info=get_vocab_info)
-
-
-
-def get_first_nine_weeks_lessons():
-    from curriculum.first_nine_weeks import first_nine_weeks_lessons
-    return first_nine_weeks_lessons
-
-
-def get_first_nine_weeks_lesson(day):
-    lessons = get_first_nine_weeks_lessons()
-
-    for lesson in lessons:
-        lesson_day = lesson.get("day") if isinstance(lesson, dict) else getattr(lesson, "day", None)
-        if lesson_day == day:
-            return lesson
-
-    return None
-
 
 
 @app.context_processor
@@ -460,28 +436,38 @@ def printable_resource(slug):
     return render_template("printable_resource.html", resource=resource)
 
 
-
 @app.route("/first-nine-weeks")
 def first_nine_weeks_page():
     return render_template(
         "first_nine_weeks.html",
-        lessons=get_first_nine_weeks_lessons()
+        lessons=first_nine_weeks_lessons
     )
-
 
 
 @app.route("/first-nine-weeks/day/<int:day>")
 def lesson_detail(day):
-    view = request.args.get("view", "teacher")
-    lesson = get_first_nine_weeks_lesson(day)
+    view_mode = request.args.get("view", "teacher")
 
-    if not lesson:
-        return redirect("/first-nine-weeks")
+    if view_mode not in ["teacher", "student"]:
+        view_mode = "teacher"
+
+    if day in lesson_details:
+        return render_template(
+            "lesson_detail.html",
+            lesson=lesson_details[day],
+            view_mode=view_mode
+        )
+
+    selected_lesson = None
+
+    for lesson in first_nine_weeks_lessons:
+        if lesson["day"] == day:
+            selected_lesson = lesson
 
     return render_template(
         "lesson_detail.html",
-        lesson=lesson,
-        view=view
+        lesson=selected_lesson,
+        view_mode=view_mode
     )
 
 

@@ -1,5 +1,4 @@
 import os
-from curriculum.vocabulary_library import get_vocab_info
 from flask import Flask, render_template, request, redirect
 from curriculum.first_nine_weeks import first_nine_weeks as first_nine_weeks_lessons
 from curriculum.day1 import day1
@@ -51,12 +50,6 @@ from curriculum.day45 import day45
 from curriculum.printable_resources import resource_folders, printable_resources_by_slug, printable_resources_by_day
 
 app = Flask(__name__)
-
-
-@app.context_processor
-def inject_vocabulary_helpers():
-    return dict(get_vocab_info=get_vocab_info)
-
 
 
 def get_first_nine_weeks_lessons():

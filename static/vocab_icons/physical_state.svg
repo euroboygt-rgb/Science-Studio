@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <rect x="4" y="4" width="112" height="112" rx="22" fill="#fff3cd" stroke="#111" stroke-width="6"/>
+
+  <!-- liquid -->
+  <path d="M27 35 C20 47 14 57 14 70 C14 83 24 93 37 93 C50 93 60 83 60 70 C60 57 47 43 37 25 C34 29 30 33 27 35 Z"
+        fill="#20bdf2" stroke="#073b66" stroke-width="5"/>
+  <path d="M27 62 C24 70 25 76 30 82" fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- solid -->
+  <path d="M48 24 L72 16 L95 29 L95 57 L70 71 L48 57 Z"
+        fill="#9bdcff" stroke="#073b66" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M48 24 L70 38 L95 29" fill="none" stroke="white" stroke-width="4"/>
+  <path d="M70 38 L70 71" fill="none" stroke="#2a9df4" stroke-width="4"/>
+  <path d="M58 45 L65 42" stroke="#2a9df4" stroke-width="3" stroke-linecap="round"/>
+  <path d="M78 50 L86 45" stroke="#2a9df4" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- gas -->
+  <path d="M78 78 C73 73 77 68 82 65 C78 60 81 55 86 52"
+        fill="none" stroke="#6aaed6" stroke-width="5" stroke-linecap="round"/>
+  <path d="M91 79 C86 73 90 67 96 63 C92 58 95 52 100 48"
+        fill="none" stroke="#6aaed6" stroke-width="5" stroke-linecap="round"/>
+  <path d="M76 91 C70 91 66 87 66 82 C66 76 73 73 79 76 C83 69 94 70 97 78 C104 77 110 82 110 88 C110 94 104 98 97 96 H77 C77 96 76 96 76 96 Z"
+        fill="#eaf7ff" stroke="#2b6f9e" stroke-width="5" stroke-linejoin="round"/>
+</svg>

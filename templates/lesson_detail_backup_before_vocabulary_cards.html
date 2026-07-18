@@ -2,17 +2,6 @@
 
 {% block title %}
     Day {{ lesson.day if lesson.day is defined else lesson["day"] }} - {{ lesson.title if lesson.title is defined else lesson["title"] }}
-
-<script>
-function printAnchorChartOnly() {
-    document.body.classList.add("print-anchor-only");
-    window.print();
-    setTimeout(function() {
-        document.body.classList.remove("print-anchor-only");
-    }, 500);
-}
-</script>
-
 {% endblock %}
 
 {% block content %}
@@ -77,115 +66,6 @@ function printAnchorChartOnly() {
             box-shadow: none !important;
         }
     }
-
-    .vocab-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 16px;
-        margin-top: 14px;
-    }
-
-    .vocab-card {
-        border: 3px solid #111;
-        border-radius: 18px;
-        padding: 14px;
-        background: #f8f9fa;
-        box-shadow: 3px 3px 0 rgba(17,17,17,0.12);
-    }
-
-    .vocab-picture {
-        width: 70px;
-        height: 70px;
-        border: 3px solid #111;
-        border-radius: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        line-height: 1;
-        background: #fff3cd;
-        margin-bottom: 12px;
-        overflow: hidden;
-        white-space: nowrap;
-        flex-shrink: 0;
-    }
-
-    .vocab-word {
-        font-size: 1.25rem;
-        font-weight: 950;
-        margin-bottom: 8px;
-    }
-
-    .vocab-label {
-        font-weight: 900;
-    }
-
-
-    .vocab-picture img {
-        max-width: 58px;
-        max-height: 58px;
-        display: block;
-        object-fit: contain;
-    }
-
-    .anchor-chart-card {
-        background: #fff7d6;
-        border: 4px solid #111;
-        border-radius: 20px;
-        padding: 20px;
-        margin-bottom: 20px;
-        box-shadow: 5px 5px 0 rgba(17,17,17,0.14);
-    }
-
-    .anchor-chart-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 10px;
-        margin-top: 12px;
-    }
-
-    .anchor-chart-word {
-        background: white;
-        border: 3px solid #111;
-        border-radius: 14px;
-        padding: 10px;
-        font-weight: 900;
-        text-align: center;
-    }
-
-    .anchor-chart-icon {
-        font-size: 1.7rem;
-        display: block;
-        margin-bottom: 6px;
-    }
-
-    .anchor-chart-icon img {
-        width: 42px;
-        height: 42px;
-        object-fit: contain;
-        display: block;
-        margin: 0 auto 6px auto;
-    }
-
-    @media print {
-        body.print-anchor-only * {
-            visibility: hidden !important;
-        }
-
-        body.print-anchor-only #lessonAnchorChart,
-        body.print-anchor-only #lessonAnchorChart * {
-            visibility: visible !important;
-        }
-
-        body.print-anchor-only #lessonAnchorChart {
-            position: absolute !important;
-            left: 0 !important;
-            top: 0 !important;
-            width: 100% !important;
-            box-shadow: none !important;
-        }
-    }
-
 </style>
 
 {% macro teks_badges(teks_text) %}
@@ -249,51 +129,6 @@ function printAnchorChartOnly() {
         <a href="/first-nine-weeks/day/{{ lesson_day }}?view=teacher" class="btn btn-success science-btn">Teacher View</a>
     </div>
 </section>
-
-
-<section id="lessonAnchorChart" class="anchor-chart-card">
-    <h2>📌 Vocabulary Anchor Chart</h2>
-    <p class="mb-2">
-        Use these words during today’s lesson, notebook writing, lab discussion, exit ticket, and CER.
-    </p>
-
-    {% if lesson.get("vocabulary") %}
-        <div class="anchor-chart-grid">
-            {% for word in lesson.get("vocabulary") %}
-                {% if word is mapping %}
-                    {% set vocab_word = word.get("term") or word.get("word") or word.get("title") %}
-                {% else %}
-                    {% set vocab_word = word %}
-                {% endif %}
-
-                {% set vocab = get_vocab_info(vocab_word) %}
-
-                <div class="anchor-chart-word">
-                    <span class="anchor-chart-icon">
-                        {% if vocab.image and vocab.image.startswith('/static/') %}
-                            <img src="{{ vocab.image }}" alt="{{ vocab.word }} icon">
-                        {% else %}
-                            {{ vocab.image }}
-                        {% endif %}
-                    </span>
-                    {{ vocab.word }}
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
-
-    <div class="no-print mt-3">
-        <button type="button" class="btn btn-warning science-btn" onclick="printAnchorChartOnly()">
-            Print This Anchor Chart
-        </button>
-
-        <a href="/vocabulary" class="btn btn-primary science-btn">
-            Open Full Vocabulary Page
-        </a>
-    </div>
-</section>
-
-
 
 <section class="lesson-card">
     <h2>🎯 Learning Target</h2>
@@ -434,47 +269,13 @@ function printAnchorChartOnly() {
     <h2>🧾 Vocabulary</h2>
 
     {% if lesson.get("vocabulary") %}
-        <div class="vocab-grid">
+        <div>
             {% for word in lesson.get("vocabulary") %}
                 {% if word is mapping %}
-                    {% set vocab_word = word.get("term") or word.get("word") or word.get("title") %}
+                    <span class="teks-badge">{{ word.get("term") or word.get("word") or word }}</span>
                 {% else %}
-                    {% set vocab_word = word %}
+                    <span class="teks-badge">{{ word }}</span>
                 {% endif %}
-
-                {% set vocab = get_vocab_info(vocab_word) %}
-
-                <div class="vocab-card">
-                    <div class="vocab-picture">
-                        {% if vocab.image and vocab.image.startswith('/static/') %}
-                            <img src="{{ vocab.image }}" alt="{{ vocab.word }} icon">
-                        {% else %}
-                            {{ vocab.image }}
-                        {% endif %}
-                    </div>
-
-                    <div class="vocab-word">{{ vocab.word }}</div>
-
-                    <p>
-                        <span class="vocab-label">Definition:</span>
-                        {{ vocab.definition }}
-                    </p>
-
-                    <p>
-                        <span class="vocab-label">In science:</span>
-                        {{ vocab.science }}
-                    </p>
-
-                    <p>
-                        <span class="vocab-label">Real world:</span>
-                        {{ vocab.real_world }}
-                    </p>
-
-                    <p class="mb-0">
-                        <span class="vocab-label">STAAR connection:</span>
-                        {{ vocab.staar }}
-                    </p>
-                </div>
             {% endfor %}
         </div>
     {% else %}
