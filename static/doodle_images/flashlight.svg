@@ -2,13 +2,14 @@
   <rect x="8" y="8" width="344" height="224" rx="26" fill="#fff7d6" stroke="#111" stroke-width="7"/>
   <rect x="26" y="24" width="308" height="150" rx="20" fill="white" stroke="#111" stroke-width="4"/>
   
-  <circle cx="180" cy="93" r="40" fill="#ffd43b" stroke="#111" stroke-width="5"/>
-  <rect x="160" y="130" width="40" height="25" fill="#adb5bd" stroke="#111" stroke-width="4"/>
-  <line x1="180" y1="35" x2="180" y2="15" stroke="#f59f00" stroke-width="7"/>
-  <line x1="180" y1="170" x2="180" y2="155" stroke="#f59f00" stroke-width="7"/>
-  <line x1="115" y1="93" x2="92" y2="93" stroke="#f59f00" stroke-width="7"/>
-  <line x1="245" y1="93" x2="268" y2="93" stroke="#f59f00" stroke-width="7"/>
+  <rect x="85" y="100" width="150" height="45" rx="14" fill="#adb5bd" stroke="#111" stroke-width="5"/>
+  <polygon points="235,92 300,75 300,170 235,153" fill="#ffd43b" stroke="#111" stroke-width="5"/>
+  <circle cx="285" cy="122" r="22" fill="#fff3bf" stroke="#111" stroke-width="4"/>
+  <rect x="110" y="112" width="55" height="22" rx="8" fill="#333" stroke="#111" stroke-width="3"/>
+  <path d="M308 98 L338 78" stroke="#f9a825" stroke-width="6"/>
+  <path d="M312 125 H344" stroke="#f9a825" stroke-width="6"/>
+  <path d="M308 152 L338 172" stroke="#f9a825" stroke-width="6"/>
 
   <rect x="38" y="185" width="284" height="32" rx="16" fill="#fff7d6" stroke="#111" stroke-width="3"/>
-  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#111">light energy</text>
+  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="900" fill="#111">flashlight</text>
 </svg>

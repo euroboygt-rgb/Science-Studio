@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240">
+  <rect x="8" y="8" width="344" height="224" rx="26" fill="#fff7d6" stroke="#111" stroke-width="7"/>
+  <rect x="26" y="24" width="308" height="150" rx="20" fill="white" stroke="#111" stroke-width="4"/>
+  
+  <rect x="50" y="80" width="70" height="60" rx="12" fill="#b197fc" stroke="#111" stroke-width="4"/>
+  <rect x="145" y="80" width="70" height="60" rx="12" fill="#ffd43b" stroke="#111" stroke-width="4"/>
+  <rect x="240" y="80" width="70" height="60" rx="12" fill="#ffe066" stroke="#111" stroke-width="4"/>
+  <path d="M123 110 H142" stroke="#111" stroke-width="6"/>
+  <polygon points="142,110 128,100 128,120" fill="#111"/>
+  <path d="M218 110 H237" stroke="#111" stroke-width="6"/>
+  <polygon points="237,110 223,100 223,120" fill="#111"/>
+  <text x="85" y="105" text-anchor="middle" font-family="Arial" font-size="15" font-weight="900">chemical</text>
+  <text x="180" y="105" text-anchor="middle" font-family="Arial" font-size="15" font-weight="900">electrical</text>
+  <text x="275" y="105" text-anchor="middle" font-family="Arial" font-size="15" font-weight="900">light</text>
+
+  <rect x="38" y="185" width="284" height="32" rx="16" fill="#fff7d6" stroke="#111" stroke-width="3"/>
+  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="900" fill="#111">flashlight energy flow</text>
+</svg>

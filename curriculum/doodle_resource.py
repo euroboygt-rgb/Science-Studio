@@ -1,5 +1,31 @@
+from curriculum.doodle_resource_review import get_review_doodle_resource
+from curriculum.doodle_resource_unit4 import get_unit4_doodle_resource
+from curriculum.doodle_resource_unit3 import get_unit3_doodle_resource
+from curriculum.doodle_resource_unit2 import get_unit2_doodle_resource
+from curriculum.doodle_resource_unit1 import get_unit1_doodle_resource
+
 def get_doodle_resource(day):
     day = int(day)
+
+    unit1_resource = get_unit1_doodle_resource(day)
+    if unit1_resource:
+        return unit1_resource
+
+    unit2_resource = get_unit2_doodle_resource(day)
+    if unit2_resource:
+        return unit2_resource
+
+    unit3_resource = get_unit3_doodle_resource(day)
+    if unit3_resource:
+        return unit3_resource
+
+    unit4_resource = get_unit4_doodle_resource(day)
+    if unit4_resource:
+        return unit4_resource
+
+    review_resource = get_review_doodle_resource(day)
+    if review_resource:
+        return review_resource
 
     if day <= 2:
         return {

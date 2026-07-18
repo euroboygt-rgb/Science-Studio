@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240">
+  <rect x="8" y="8" width="344" height="224" rx="26" fill="#f1e8ff" stroke="#111" stroke-width="7"/>
+  <rect x="26" y="24" width="308" height="150" rx="20" fill="white" stroke="#111" stroke-width="4"/>
+  
+  <rect x="120" y="62" width="60" height="95" rx="10" fill="#333" stroke="#111" stroke-width="5"/>
+  <rect x="138" y="48" width="24" height="16" fill="#111"/>
+  <rect x="128" y="78" width="44" height="25" fill="#ffd43b" stroke="#111" stroke-width="3"/>
+  <text x="150" y="98" text-anchor="middle" font-family="Arial" font-size="20" font-weight="900">+</text>
+  <circle cx="235" cy="105" r="32" fill="#ff6b6b" stroke="#111" stroke-width="5"/>
+  <path d="M235 70 C250 55 270 60 275 78" fill="none" stroke="#2b9348" stroke-width="6"/>
+
+  <rect x="38" y="185" width="284" height="32" rx="16" fill="#fff7d6" stroke="#111" stroke-width="3"/>
+  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#111">chemical energy</text>
+</svg>

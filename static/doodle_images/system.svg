@@ -1,13 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240">
-  <rect x="8" y="8" width="344" height="224" rx="26" fill="#e8f4ff" stroke="#111" stroke-width="7"/>
+  <rect x="8" y="8" width="344" height="224" rx="26" fill="#f3f3f3" stroke="#111" stroke-width="7"/>
   <rect x="26" y="24" width="308" height="150" rx="20" fill="white" stroke="#111" stroke-width="4"/>
   
-  <circle cx="135" cy="115" r="36" fill="#ffd166" stroke="#111" stroke-width="5"/>
-  <circle cx="225" cy="115" r="36" fill="#74c0fc" stroke="#111" stroke-width="5"/>
-  <path d="M172 115 H188" stroke="#111" stroke-width="8"/>
-  <polygon points="188,115 175,105 175,125" fill="#111"/>
-  <path d="M118 60 C150 42 210 42 242 60" fill="none" stroke="#111" stroke-width="5"/>
+  <rect x="75" y="65" width="210" height="95" rx="18" fill="#e9ecef" stroke="#111" stroke-width="5"/>
+  <circle cx="120" cy="112" r="22" fill="#ffd166" stroke="#111" stroke-width="4"/>
+  <circle cx="180" cy="112" r="22" fill="#74c0fc" stroke="#111" stroke-width="4"/>
+  <circle cx="240" cy="112" r="22" fill="#ff8787" stroke="#111" stroke-width="4"/>
+  <path d="M142 112 H158" stroke="#111" stroke-width="5"/>
+  <path d="M202 112 H218" stroke="#111" stroke-width="5"/>
+  <text x="180" y="48" text-anchor="middle" font-family="Arial" font-size="20" font-weight="900">parts work together</text>
 
   <rect x="38" y="185" width="284" height="32" rx="16" fill="#fff7d6" stroke="#111" stroke-width="3"/>
-  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#111">mechanical energy</text>
+  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="900" fill="#111">system</text>
 </svg>

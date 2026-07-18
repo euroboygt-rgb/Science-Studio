@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240">
+  <rect x="8" y="8" width="344" height="224" rx="26" fill="#e8f4ff" stroke="#111" stroke-width="7"/>
+  <rect x="26" y="24" width="308" height="150" rx="20" fill="white" stroke="#111" stroke-width="4"/>
+  
+  <circle cx="105" cy="85" r="28" fill="#ff6b6b" stroke="#111" stroke-width="5"/>
+  <path d="M70 140 H140" stroke="#111" stroke-width="6"/>
+  <polygon points="140,140 122,128 122,152" fill="#111"/>
+  <path d="M175 55 H255 L230 150 H200 Z" fill="white" stroke="#111" stroke-width="5"/>
+  <path d="M200 100 C215 92 232 110 245 98 L230 150 H200 Z" fill="#74c0fc" stroke="#111" stroke-width="3"/>
+  <text x="105" y="165" text-anchor="middle" font-family="Arial" font-size="17" font-weight="900">sort</text>
+  <text x="220" y="165" text-anchor="middle" font-family="Arial" font-size="17" font-weight="900">filter</text>
+
+  <rect x="38" y="185" width="284" height="32" rx="16" fill="#fff7d6" stroke="#111" stroke-width="3"/>
+  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="900" fill="#111">separation methods</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240">
+  <rect x="8" y="8" width="344" height="224" rx="26" fill="#e8f4ff" stroke="#111" stroke-width="7"/>
+  <rect x="26" y="24" width="308" height="150" rx="20" fill="white" stroke="#111" stroke-width="4"/>
+  
+  <circle cx="180" cy="105" r="28" fill="#adb5bd" stroke="#111" stroke-width="5"/>
+  <path d="M180 77 C215 45 250 75 210 100 Z" fill="#74c0fc" stroke="#111" stroke-width="4"/>
+  <path d="M207 115 C250 125 245 170 198 140 Z" fill="#74c0fc" stroke="#111" stroke-width="4"/>
+  <path d="M160 125 C120 155 90 120 150 105 Z" fill="#74c0fc" stroke="#111" stroke-width="4"/>
+  <rect x="165" y="133" width="30" height="35" fill="#adb5bd" stroke="#111" stroke-width="4"/>
+  <text x="180" y="48" text-anchor="middle" font-family="Arial" font-size="18" font-weight="900">electrical → mechanical</text>
+
+  <rect x="38" y="185" width="284" height="32" rx="16" fill="#fff7d6" stroke="#111" stroke-width="3"/>
+  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="900" fill="#111">fan</text>
+</svg>

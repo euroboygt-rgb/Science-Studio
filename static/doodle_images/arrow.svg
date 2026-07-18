@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240">
+  <rect x="8" y="8" width="344" height="224" rx="26" fill="#fff0d6" stroke="#111" stroke-width="7"/>
+  <rect x="26" y="24" width="308" height="150" rx="20" fill="white" stroke="#111" stroke-width="4"/>
+  
+  <path d="M70 118 H270" stroke="#111" stroke-width="15" stroke-linecap="round"/>
+  <polygon points="270,118 232,92 232,144" fill="#111"/>
+  <text x="180" y="78" text-anchor="middle" font-family="Arial" font-size="24" font-weight="900">energy flows this way</text>
+
+  <rect x="38" y="185" width="284" height="32" rx="16" fill="#fff7d6" stroke="#111" stroke-width="3"/>
+  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="900" fill="#111">arrow</text>
+</svg>

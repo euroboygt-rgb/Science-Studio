@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240">
+  <rect x="8" y="8" width="344" height="224" rx="26" fill="#e8f8e8" stroke="#111" stroke-width="7"/>
+  <rect x="26" y="24" width="308" height="150" rx="20" fill="white" stroke="#111" stroke-width="4"/>
+  
+  <rect x="100" y="105" width="65" height="45" rx="8" fill="#adb5bd" stroke="#111" stroke-width="5"/>
+  <path d="M175 125 C210 80 250 80 285 120" fill="none" stroke="#111" stroke-width="7" stroke-linecap="round"/>
+  <polygon points="285,120 262,112 277,98" fill="#111"/>
+  <text x="190" y="65" text-anchor="middle" font-family="Arial" font-size="20" font-weight="900">speed / direction changes</text>
+
+  <rect x="38" y="185" width="284" height="32" rx="16" fill="#fff7d6" stroke="#111" stroke-width="3"/>
+  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="900" fill="#111">motion changes</text>
+</svg>
