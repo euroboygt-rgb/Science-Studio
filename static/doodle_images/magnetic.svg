@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240">
+  <rect x="8" y="8" width="344" height="224" rx="26" fill="#ffe8e8" stroke="#111" stroke-width="7"/>
+  <rect x="26" y="24" width="308" height="150" rx="20" fill="white" stroke="#111" stroke-width="4"/>
+  
+  <path d="M95 60 V120 C95 145 130 145 130 120 V92 H115 V120 C115 130 122 130 122 120 V60 Z" fill="#ff6b6b" stroke="#111" stroke-width="5"/>
+  <path d="M165 60 V120 C165 130 172 130 172 120 V92 H155 V120 C155 145 190 145 190 120 V60 Z" fill="#4dabf7" stroke="#111" stroke-width="5"/>
+  <rect x="230" y="90" width="55" height="35" rx="6" fill="#adb5bd" stroke="#111" stroke-width="5"/>
+  <path d="M200 108 L225 108" stroke="#111" stroke-width="6"/>
+  <polygon points="225,108 213,98 213,118" fill="#111"/>
+
+  <rect x="38" y="185" width="284" height="32" rx="16" fill="#fff7d6" stroke="#111" stroke-width="3"/>
+  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#111">magnetic</text>
+</svg>

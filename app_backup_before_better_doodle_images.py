@@ -713,13 +713,6 @@ def inject_doodle_resource():
     return dict(get_doodle_resource=get_doodle_resource)
 
 
-
-@app.context_processor
-def inject_doodle_picture_paths():
-    from curriculum.doodle_images import doodle_picture_path
-    return dict(doodle_picture_path=doodle_picture_path)
-
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)

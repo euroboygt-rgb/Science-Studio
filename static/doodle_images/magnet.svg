@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240">
+  <rect x="8" y="8" width="344" height="224" rx="26" fill="#ffe8e8" stroke="#111" stroke-width="7"/>
+  <rect x="26" y="24" width="308" height="150" rx="20" fill="white" stroke="#111" stroke-width="4"/>
+  
+  <path d="M115 55 V110 C115 145 155 145 155 110 V85 H135 V110 C135 122 145 122 145 110 V55 Z" fill="#ff6b6b" stroke="#111" stroke-width="5"/>
+  <path d="M205 55 V110 C205 122 215 122 215 110 V85 H195 V110 C195 145 235 145 235 110 V55 Z" fill="#4dabf7" stroke="#111" stroke-width="5"/>
+  <rect x="115" y="55" width="40" height="30" fill="white" stroke="#111" stroke-width="4"/>
+  <rect x="195" y="55" width="40" height="30" fill="white" stroke="#111" stroke-width="4"/>
+
+  <rect x="38" y="185" width="284" height="32" rx="16" fill="#fff7d6" stroke="#111" stroke-width="3"/>
+  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#111">magnet</text>
+</svg>

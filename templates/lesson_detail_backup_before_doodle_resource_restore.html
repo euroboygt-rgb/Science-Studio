@@ -373,17 +373,6 @@ details summary {
     {% endif %}
 </section>
 
-
-<div class="student-note" id="science-doodle-resource-card">
-    <h3>🧾 Printable Science Doodle Notebook Resource</h3>
-    <p>This is the student notebook form for today’s lesson. Students can print it, glue it into notebooks, or use it as the structure for their science notebook page.</p>
-
-    <a href="/first-nine-weeks/day/{{ lesson_day }}/notebook-resource?view={{ current_view }}" class="btn btn-warning lesson-btn">
-        Print Notebook Resource
-    </a>
-</div>
-
-
 <section class="lesson-card" id="guided-practice">
     <h2>🤝 Guided Practice</h2>
 
@@ -482,12 +471,56 @@ details summary {
     {% endif %}
 </section>
 
-<div class="student-note" id="lab-doodle-resource-card">
-    <h3>📒 Need the printable notebook form?</h3>
-    <a href="/first-nine-weeks/day/{{ lesson_day }}/notebook-resource?view={{ current_view }}" class="btn btn-warning lesson-btn">
-        Print Notebook Resource
+
+{% set resource_support = get_resource_support(lesson_day) %}
+
+<section class="resources-use-card" id="resources-to-use">
+    <h2>🧾 Resources to Use</h2>
+    <p><strong>{{ resource_support.title }}</strong></p>
+    <p>{{ resource_support.student_use }}</p>
+
+    <div class="student-note">
+        <h3>Student Notebook Form</h3>
+        <p>Use this structure in your science notebook or lab notebook:</p>
+
+        <div class="notebook-form-grid">
+            {% for item in resource_support.sections %}
+                <div class="notebook-form-item">☐ {{ item }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="student-note">
+        <h3>Notebook Thinking Prompts</h3>
+        <ul>
+            {% for prompt in resource_support.notebook_prompts %}
+                <li>{{ prompt }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="/first-nine-weeks/day/{{ lesson_day }}/packet?view={{ current_view }}" class="btn btn-warning lesson-btn">
+        Open Printable Student Notebook Page
     </a>
-</div>
+
+    <a href="/resources" class="btn btn-primary lesson-btn">
+        Open Resources Page
+    </a>
+
+    {% if current_view == "teacher" %}
+        <div class="teacher-box">
+            <h3>Teacher Use</h3>
+            <p>{{ resource_support.teacher_use }}</p>
+
+            <h4>Teacher Look-Fors</h4>
+            <ul>
+                {% for item in resource_support.teacher_look_fors %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</section>
 
 
 <section class="lesson-card" id="staar-practice">

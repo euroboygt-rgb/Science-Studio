@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240">
+  <rect x="8" y="8" width="344" height="224" rx="26" fill="#f1e8ff" stroke="#111" stroke-width="7"/>
+  <rect x="26" y="24" width="308" height="150" rx="20" fill="white" stroke="#111" stroke-width="4"/>
+  
+  <path d="M125 55 H235 L220 155 H140 Z" fill="white" stroke="#111" stroke-width="5"/>
+  <path d="M142 110 C165 98 195 125 218 108 L220 155 H140 Z" fill="#bde0fe" stroke="#111" stroke-width="3"/>
+  <circle cx="170" cy="92" r="7" fill="#7b2cbf"/>
+  <circle cx="190" cy="115" r="6" fill="#7b2cbf"/>
+  <circle cx="165" cy="135" r="5" fill="#7b2cbf"/>
+  <path d="M80 65 L130 88" stroke="#111" stroke-width="7" stroke-linecap="round"/>
+
+  <rect x="38" y="185" width="284" height="32" rx="16" fill="#fff7d6" stroke="#111" stroke-width="3"/>
+  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#111">solubility</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240">
+  <rect x="8" y="8" width="344" height="224" rx="26" fill="#f3f3f3" stroke="#111" stroke-width="7"/>
+  <rect x="26" y="24" width="308" height="150" rx="20" fill="white" stroke="#111" stroke-width="4"/>
+  
+  <circle cx="105" cy="72" r="13" fill="#bde0fe" stroke="#111" stroke-width="4"/>
+  <circle cx="250" cy="82" r="15" fill="#bde0fe" stroke="#111" stroke-width="4"/>
+  <circle cx="180" cy="125" r="12" fill="#bde0fe" stroke="#111" stroke-width="4"/>
+  <path d="M135 105 C165 75 195 135 225 105" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>
+  <path d="M105 130 C125 112 145 145 165 127" fill="none" stroke="#111" stroke-width="5" stroke-linecap="round"/>
+
+  <rect x="38" y="185" width="284" height="32" rx="16" fill="#fff7d6" stroke="#111" stroke-width="3"/>
+  <text x="180" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#111">gas</text>
+</svg>
