@@ -199,30 +199,6 @@
     </section>
 
     
-
-    {% set power_frame = get_power_frame(lesson_day) %}
-
-    <section class="doodle-section">
-        <span class="doodle-title">⚡ Power Frame</span>
-
-        <div class="three-col">
-            <div class="box">
-                <strong>I can...</strong>
-                <p>{{ power_frame.i_can }}</p>
-            </div>
-
-            <div class="box">
-                <strong>By...</strong>
-                <p>{{ power_frame.by }}</p>
-            </div>
-
-            <div class="box">
-                <strong>I know I have learned this...</strong>
-                <p>{{ power_frame.success }}</p>
-            </div>
-        </div>
-    </section>
-
     <section class="doodle-section">
         <span class="doodle-title">📌 {{ doodle.title }}</span>
         <p class="small-note">Use the keyword bank, label the pictures, and complete the fill-in-the-blank notes.</p>

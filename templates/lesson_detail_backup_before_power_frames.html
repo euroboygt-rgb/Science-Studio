@@ -193,46 +193,6 @@ details summary {
     }
 }
 
-
-.power-frame-card {
-    background: linear-gradient(135deg, #f5edff 0%, #fff7d6 100%);
-    border: 5px solid #111;
-    border-radius: 22px;
-    padding: 20px;
-    margin: 18px 0;
-    box-shadow: 6px 6px 0 rgba(17,17,17,0.16);
-}
-
-.power-frame-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-}
-
-.power-frame-box {
-    background: white;
-    border: 4px solid #111;
-    border-radius: 18px;
-    padding: 14px;
-}
-
-.power-frame-label {
-    display: inline-block;
-    background: #6f2dbd;
-    color: #ff9f1c;
-    border: 3px solid #111;
-    border-radius: 999px;
-    padding: 6px 12px;
-    font-weight: 1000;
-    margin-bottom: 8px;
-}
-
-@media (max-width: 850px) {
-    .power-frame-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 </style>
 
 <section class="lesson-hero">
@@ -294,32 +254,6 @@ details summary {
         <p>I can explain {{ flow.topic }} using observations, models, data, and science vocabulary.</p>
     {% endif %}
 </section>
-
-
-{% set power_frame = get_power_frame(lesson_day) %}
-
-<section class="power-frame-card" id="power-frame">
-    <h2>⚡ Power Frame</h2>
-    <p><strong>Use this to understand today’s learning goal, how we will learn it, and how you will know you learned it.</strong></p>
-
-    <div class="power-frame-grid">
-        <div class="power-frame-box">
-            <span class="power-frame-label">I can...</span>
-            <p>{{ power_frame.i_can }}</p>
-        </div>
-
-        <div class="power-frame-box">
-            <span class="power-frame-label">By...</span>
-            <p>{{ power_frame.by }}</p>
-        </div>
-
-        <div class="power-frame-box">
-            <span class="power-frame-label">I know I have learned this...</span>
-            <p>{{ power_frame.success }}</p>
-        </div>
-    </div>
-</section>
-
 
 <section class="lesson-card" id="bell-ringer">
     <h2>🔔 Bell Ringer</h2>

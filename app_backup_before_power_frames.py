@@ -741,13 +741,6 @@ def print_center():
     return render_template("print_center.html", lesson_map=lesson_map)
 
 
-
-@app.context_processor
-def inject_power_frames():
-    from curriculum.power_frames import get_power_frame
-    return dict(get_power_frame=get_power_frame)
-
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
