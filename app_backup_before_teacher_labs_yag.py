@@ -375,13 +375,12 @@ def reflection_tracker():
 
 
 
-
 @app.route("/teacher-dashboard")
 def teacher_dashboard():
-    return render_template(
-        "teacher_dashboard.html",
-        lessons=get_first_nine_weeks_lessons()
-    )
+    return render_template("teacher_dashboard.html")
+
+
+
 
 
 @app.route("/go-to-lesson")
