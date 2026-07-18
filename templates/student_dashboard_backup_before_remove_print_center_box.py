@@ -3,6 +3,16 @@
 {% block title %}Student Dashboard{% endblock %}
 
 {% block content %}
+
+<div style="border:4px solid #111; border-radius:18px; padding:16px; margin:16px 0; background:#fff7d6;">
+    <h2>🖨️ Print Center</h2>
+    <p>Open all student doodle notes, teacher keys, and printable packets from one page.</p>
+    <a href="/print-center" class="btn btn-warning" style="border:3px solid #111; font-weight:900;">
+        Open Print Center
+    </a>
+</div>
+
+
 <style>
     .student-hero {
         background: linear-gradient(135deg, #102542 0%, #1b4965 55%, #5fa8d3 100%);

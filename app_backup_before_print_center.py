@@ -720,27 +720,6 @@ def inject_doodle_picture_paths():
     return dict(doodle_picture_path=doodle_picture_path)
 
 
-
-@app.route("/print-center")
-@app.route("/resources/print-center")
-def print_center():
-    from flask import render_template
-    from curriculum.first_nine_weeks import first_nine_weeks_lessons
-
-    lesson_map = {}
-
-    for lesson in first_nine_weeks_lessons:
-        if isinstance(lesson, dict):
-            lesson_map[lesson.get("day")] = lesson
-        else:
-            lesson_map[getattr(lesson, "day", None)] = {
-                "day": getattr(lesson, "day", None),
-                "title": getattr(lesson, "title", "Lesson"),
-            }
-
-    return render_template("print_center.html", lesson_map=lesson_map)
-
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)

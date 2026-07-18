@@ -135,8 +135,7 @@
           <li class="nav-item"><a class="nav-link" href="/teacher-dashboard">Teacher Dashboard</a></li>
           <li class="nav-item"><a class="nav-link" href="/labs">Labs</a></li>
           <li class="nav-item"><a class="nav-link" href="/vocabulary">Vocabulary</a></li>
-          <li class="nav-item"><a class="nav-link" href="/print-center">Print Center</a>
-                    <a class="nav-link" href="/resources">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="/resources">Resources</a></li>
           <li class="nav-item"><a class="nav-link" href="/student-privacy">Privacy</a></li>
           <li class="nav-item"><a class="nav-link" href="/labs/staar-digital-assessment">Assessment</a></li>
           <li class="nav-item"><a class="nav-link" href="/labs/reflection-tracker">Reflection</a></li>
