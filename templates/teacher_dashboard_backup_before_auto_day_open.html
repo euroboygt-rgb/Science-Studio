@@ -3,23 +3,6 @@
 {% block title %}Teacher Dashboard
 
 
-
-
-
-
-<script>
-function toggleFolder(id) {
-    const section = document.getElementById(id);
-
-    if (!section) {
-        alert("Could not find this folder.");
-        return;
-    }
-
-    section.style.display = section.style.display === "none" ? "block" : "none";
-}
-</script>
-
 {% endblock %}
 
 {% block content %}
@@ -154,43 +137,26 @@ function toggleFolder(id) {
 </section>
 
 
-
-
-
-
 <section class="teacher-card" id="teacherQuickLauncher">
     <h2>🚀 Quick Lesson Launcher</h2>
-    <p>Select a day. It will open that lesson in <strong>Teacher View</strong>.</p>
+    <p>Select any lesson day and open the teacher or student view.</p>
 
-    <form action="/go-to-teacher-lesson" method="get">
-        <label for="teacherLessonPicker" class="form-label"><strong>Select lesson day:</strong></label>
+    <label for="teacherLessonPicker" class="form-label"><strong>Select lesson day:</strong></label>
 
-        <select id="teacherLessonPicker" name="day" class="form-select" style="border: 3px solid #111;" onchange="this.form.submit()">
-            <option value="" selected disabled>Choose a lesson day...</option>
-            {% for lesson in lessons|default([]) %}
-                {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
-                {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
-                <option value="{{ lesson_day }}">Day {{ lesson_day }}: {{ lesson_title }}</option>
-            {% endfor %}
-        </select>
+    <select id="teacherLessonPicker" class="form-select" style="border: 3px solid #111;">
+        {% for lesson in lessons|default([]) %}
+            {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
+            {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
+            <option value="{{ lesson_day }}">Day {{ lesson_day }}: {{ lesson_title }}</option>
+        {% endfor %}
+    </select>
 
-        <div class="mt-3">
-            <button type="submit" class="btn btn-success teacher-btn">
-                Open Teacher View
-            </button>
-
-            <button type="submit" formaction="/go-to-student-lesson" class="btn btn-primary teacher-btn">
-                Open Student View
-            </button>
-
-            <a href="/first-nine-weeks" class="btn btn-warning teacher-btn">Open Full Lesson List</a>
-        </div>
-    </form>
+    <div class="mt-3">
+        <button class="btn btn-success teacher-btn" onclick="openTeacherLesson()">Open Teacher View</button>
+        <button class="btn btn-primary teacher-btn" onclick="openStudentLesson()">Open Student View</button>
+        <a href="/first-nine-weeks" class="btn btn-warning teacher-btn">Open Full Lesson List</a>
+    </div>
 </section>
-
-
-
-
 
 
 
@@ -350,6 +316,49 @@ function toggleFolder(id) {
 
 
 
+<script>
+window.toggleFolder = function(id) {
+    const section = document.getElementById(id);
 
+    if (!section) {
+        alert("Could not find this lesson folder: " + id);
+        return;
+    }
+
+    const isHidden = section.style.display === "none";
+    section.style.display = isHidden ? "block" : "none";
+};
+
+window.openTeacherLesson = function() {
+    const picker = document.getElementById("teacherLessonPicker");
+
+    if (!picker || !picker.value) {
+        alert("No lesson days loaded. Restart Flask and try again.");
+        return;
+    }
+
+    window.location.href = "/first-nine-weeks/day/" + picker.value + "?view=teacher";
+};
+
+window.openStudentLesson = function() {
+    const picker = document.getElementById("teacherLessonPicker");
+
+    if (!picker || !picker.value) {
+        alert("No lesson days loaded. Restart Flask and try again.");
+        return;
+    }
+
+    window.location.href = "/first-nine-weeks/day/" + picker.value + "?view=student";
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+    ["classroomBody", "unit1Body", "unit2Body", "unit3Body", "unit4Body", "reviewBody"].forEach(function(id) {
+        const section = document.getElementById(id);
+        if (section) {
+            section.style.display = "block";
+        }
+    });
+});
+</script>
 
 {% endblock %}

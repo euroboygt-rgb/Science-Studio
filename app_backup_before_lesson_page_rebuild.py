@@ -546,31 +546,6 @@ def inject_daily_assessments():
     return dict(get_daily_assessment=get_daily_assessment)
 
 
-
-@app.context_processor
-def inject_lesson_page_helpers():
-    from curriculum.lesson_flow import get_lesson_flow
-    from curriculum.staar_practice import get_staar_question
-    from curriculum.daily_assessments import get_daily_assessment
-    from curriculum.teacher_support import get_teacher_support
-    from curriculum.vocabulary_library import get_vocab_info
-
-    return dict(
-        get_lesson_flow=get_lesson_flow,
-        get_staar_question=get_staar_question,
-        get_daily_assessment=get_daily_assessment,
-        get_teacher_support=get_teacher_support,
-        get_vocab_info=get_vocab_info,
-    )
-
-
-
-@app.context_processor
-def inject_vocab_icon_paths():
-    from curriculum.vocab_icons import vocab_icon_path
-    return dict(vocab_icon_path=vocab_icon_path)
-
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)

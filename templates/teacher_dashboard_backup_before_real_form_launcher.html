@@ -4,10 +4,25 @@
 
 
 
-
-
-
 <script>
+function goToDashboardLesson(view, pickerId) {
+    const picker = document.getElementById(pickerId);
+
+    if (!picker) {
+        alert("The lesson dropdown was not found.");
+        return;
+    }
+
+    const day = picker.value;
+
+    if (!day) {
+        alert("Please choose a lesson day first.");
+        return;
+    }
+
+    window.location.href = "/first-nine-weeks/day/" + day + "?view=" + view;
+}
+
 function toggleFolder(id) {
     const section = document.getElementById(id);
 
@@ -18,6 +33,23 @@ function toggleFolder(id) {
 
     section.style.display = section.style.display === "none" ? "block" : "none";
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const teacherPicker = document.getElementById("teacherLessonPicker");
+
+    if (teacherPicker) {
+        teacherPicker.addEventListener("change", function() {
+            goToDashboardLesson("teacher", "teacherLessonPicker");
+        });
+    }
+
+    ["classroomBody", "unit1Body", "unit2Body", "unit3Body", "unit4Body", "reviewBody"].forEach(function(id) {
+        const section = document.getElementById(id);
+        if (section) {
+            section.style.display = "block";
+        }
+    });
+});
 </script>
 
 {% endblock %}
@@ -155,41 +187,33 @@ function toggleFolder(id) {
 
 
 
-
-
-
 <section class="teacher-card" id="teacherQuickLauncher">
     <h2>🚀 Quick Lesson Launcher</h2>
-    <p>Select a day. It will open that lesson in <strong>Teacher View</strong>.</p>
+    <p>Select a day. It should automatically open in Teacher View.</p>
 
-    <form action="/go-to-teacher-lesson" method="get">
-        <label for="teacherLessonPicker" class="form-label"><strong>Select lesson day:</strong></label>
+    <label for="teacherLessonPicker" class="form-label"><strong>Select lesson day:</strong></label>
 
-        <select id="teacherLessonPicker" name="day" class="form-select" style="border: 3px solid #111;" onchange="this.form.submit()">
-            <option value="" selected disabled>Choose a lesson day...</option>
-            {% for lesson in lessons|default([]) %}
-                {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
-                {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
-                <option value="{{ lesson_day }}">Day {{ lesson_day }}: {{ lesson_title }}</option>
-            {% endfor %}
-        </select>
+    <select id="teacherLessonPicker" class="form-select" style="border: 3px solid #111;">
+        <option value="" selected disabled>Choose a lesson day...</option>
+        {% for lesson in lessons|default([]) %}
+            {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
+            {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
+            <option value="{{ lesson_day }}">Day {{ lesson_day }}: {{ lesson_title }}</option>
+        {% endfor %}
+    </select>
 
-        <div class="mt-3">
-            <button type="submit" class="btn btn-success teacher-btn">
-                Open Teacher View
-            </button>
+    <div class="mt-3">
+        <button type="button" class="btn btn-success teacher-btn" onclick="goToDashboardLesson('teacher', 'teacherLessonPicker')">
+            Open Teacher View
+        </button>
 
-            <button type="submit" formaction="/go-to-student-lesson" class="btn btn-primary teacher-btn">
-                Open Student View
-            </button>
+        <button type="button" class="btn btn-primary teacher-btn" onclick="goToDashboardLesson('student', 'teacherLessonPicker')">
+            Open Student View
+        </button>
 
-            <a href="/first-nine-weeks" class="btn btn-warning teacher-btn">Open Full Lesson List</a>
-        </div>
-    </form>
+        <a href="/first-nine-weeks" class="btn btn-warning teacher-btn">Open Full Lesson List</a>
+    </div>
 </section>
-
-
-
 
 
 

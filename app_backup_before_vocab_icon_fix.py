@@ -564,13 +564,6 @@ def inject_lesson_page_helpers():
     )
 
 
-
-@app.context_processor
-def inject_vocab_icon_paths():
-    from curriculum.vocab_icons import vocab_icon_path
-    return dict(vocab_icon_path=vocab_icon_path)
-
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)

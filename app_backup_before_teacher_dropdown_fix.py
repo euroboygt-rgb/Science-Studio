@@ -376,8 +376,6 @@ def reflection_tracker():
 
 
 
-
-
 @app.route("/teacher-dashboard")
 def teacher_dashboard():
     return render_template(
@@ -394,7 +392,6 @@ def go_to_lesson():
         return redirect("/student-dashboard")
 
     return redirect(f"/first-nine-weeks/day/{day}?view=student")
-
 
 
 
@@ -498,77 +495,6 @@ def lesson_detail(day):
 @app.route("/resources/cmelts-energy-anchor-chart")
 def cmelts_energy_anchor_chart():
     return render_template("cmelts_anchor_chart.html")
-
-
-
-@app.route("/go-to-teacher-lesson")
-def go_to_teacher_lesson():
-    from flask import request, redirect
-
-    day = request.args.get("day", "").strip()
-
-    if not day.isdigit():
-        return redirect("/teacher-dashboard")
-
-    return redirect(f"/first-nine-weeks/day/{int(day)}?view=teacher")
-
-
-@app.route("/go-to-student-lesson")
-def go_to_student_lesson():
-    from flask import request, redirect
-
-    day = request.args.get("day", "").strip()
-
-    if not day.isdigit():
-        return redirect("/student-dashboard")
-
-    return redirect(f"/first-nine-weeks/day/{int(day)}?view=student")
-
-
-
-@app.context_processor
-def inject_teacher_support():
-    from curriculum.teacher_support import get_teacher_support
-    return dict(get_teacher_support=get_teacher_support)
-
-
-
-@app.context_processor
-def inject_staar_practice():
-    from curriculum.staar_practice import get_staar_question
-    return dict(get_staar_question=get_staar_question)
-
-
-
-@app.context_processor
-def inject_daily_assessments():
-    from curriculum.daily_assessments import get_daily_assessment
-    return dict(get_daily_assessment=get_daily_assessment)
-
-
-
-@app.context_processor
-def inject_lesson_page_helpers():
-    from curriculum.lesson_flow import get_lesson_flow
-    from curriculum.staar_practice import get_staar_question
-    from curriculum.daily_assessments import get_daily_assessment
-    from curriculum.teacher_support import get_teacher_support
-    from curriculum.vocabulary_library import get_vocab_info
-
-    return dict(
-        get_lesson_flow=get_lesson_flow,
-        get_staar_question=get_staar_question,
-        get_daily_assessment=get_daily_assessment,
-        get_teacher_support=get_teacher_support,
-        get_vocab_info=get_vocab_info,
-    )
-
-
-
-@app.context_processor
-def inject_vocab_icon_paths():
-    from curriculum.vocab_icons import vocab_icon_path
-    return dict(vocab_icon_path=vocab_icon_path)
 
 
 if __name__ == "__main__":

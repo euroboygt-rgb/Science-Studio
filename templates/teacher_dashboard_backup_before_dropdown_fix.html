@@ -1,26 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Teacher Dashboard
-
-
-
-
-
-
-<script>
-function toggleFolder(id) {
-    const section = document.getElementById(id);
-
-    if (!section) {
-        alert("Could not find this folder.");
-        return;
-    }
-
-    section.style.display = section.style.display === "none" ? "block" : "none";
-}
-</script>
-
-{% endblock %}
+{% block title %}Teacher Dashboard{% endblock %}
 
 {% block content %}
 
@@ -153,47 +133,6 @@ function toggleFolder(id) {
     </p>
 </section>
 
-
-
-
-
-
-<section class="teacher-card" id="teacherQuickLauncher">
-    <h2>🚀 Quick Lesson Launcher</h2>
-    <p>Select a day. It will open that lesson in <strong>Teacher View</strong>.</p>
-
-    <form action="/go-to-teacher-lesson" method="get">
-        <label for="teacherLessonPicker" class="form-label"><strong>Select lesson day:</strong></label>
-
-        <select id="teacherLessonPicker" name="day" class="form-select" style="border: 3px solid #111;" onchange="this.form.submit()">
-            <option value="" selected disabled>Choose a lesson day...</option>
-            {% for lesson in lessons|default([]) %}
-                {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
-                {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
-                <option value="{{ lesson_day }}">Day {{ lesson_day }}: {{ lesson_title }}</option>
-            {% endfor %}
-        </select>
-
-        <div class="mt-3">
-            <button type="submit" class="btn btn-success teacher-btn">
-                Open Teacher View
-            </button>
-
-            <button type="submit" formaction="/go-to-student-lesson" class="btn btn-primary teacher-btn">
-                Open Student View
-            </button>
-
-            <a href="/first-nine-weeks" class="btn btn-warning teacher-btn">Open Full Lesson List</a>
-        </div>
-    </form>
-</section>
-
-
-
-
-
-
-
 <section class="teacher-card">
     <h2>🗺️ 1st 9 Weeks Planning Map</h2>
 
@@ -241,7 +180,7 @@ function toggleFolder(id) {
             <h2>🧰 Classroom Launch</h2>
             <p class="mb-0"><strong>Days 1–2:</strong> Routines, safety, notebooks, tools, and engineering/scientific design</p>
         </div>
-        <button type="button" class="btn btn-light teacher-btn" onclick="toggleFolder('classroomBody')">Open / Close</button>
+        <button class="btn btn-light teacher-btn" onclick="toggleFolder('classroomBody')">Open / Close</button>
     </div>
 
     <div id="classroomBody">
@@ -259,7 +198,7 @@ function toggleFolder(id) {
             <h2>🧪 Unit 1: Physical Properties of Matter</h2>
             <p class="mb-0"><strong>Days 3–16:</strong> Matter, particles, mass, volume, magnetism, relative density, solubility, conductivity, and Unit 1 PA</p>
         </div>
-        <button type="button" class="btn btn-light teacher-btn" onclick="toggleFolder('unit1Body')">Open / Close</button>
+        <button class="btn btn-light teacher-btn" onclick="toggleFolder('unit1Body')">Open / Close</button>
     </div>
 
     <div id="unit1Body">
@@ -277,7 +216,7 @@ function toggleFolder(id) {
             <h2>♻️ Unit 2: Mixtures and Solutions</h2>
             <p class="mb-0"><strong>Days 17–26:</strong> Mixtures, separation, solutions, conservation of matter, and particles too small to see</p>
         </div>
-        <button type="button" class="btn btn-light teacher-btn" onclick="toggleFolder('unit2Body')">Open / Close</button>
+        <button class="btn btn-light teacher-btn" onclick="toggleFolder('unit2Body')">Open / Close</button>
     </div>
 
     <div id="unit2Body">
@@ -295,7 +234,7 @@ function toggleFolder(id) {
             <h2>🏎️ Unit 3: Force and Motion</h2>
             <p class="mb-0"><strong>Days 27–36:</strong> Equal forces, unequal forces, mechanical energy transfer, variables, and investigations</p>
         </div>
-        <button type="button" class="btn btn-light teacher-btn" onclick="toggleFolder('unit3Body')">Open / Close</button>
+        <button class="btn btn-light teacher-btn" onclick="toggleFolder('unit3Body')">Open / Close</button>
     </div>
 
     <div id="unit3Body">
@@ -313,7 +252,7 @@ function toggleFolder(id) {
             <h2>🔦 Unit 4: Energy Transformations</h2>
             <p class="mb-0"><strong>Days 37–43:</strong> Chemical, mechanical, electrical, light, thermal, and sound energy</p>
         </div>
-        <button type="button" class="btn btn-light teacher-btn" onclick="toggleFolder('unit4Body')">Open / Close</button>
+        <button class="btn btn-light teacher-btn" onclick="toggleFolder('unit4Body')">Open / Close</button>
     </div>
 
     <div id="unit4Body">
@@ -335,7 +274,7 @@ function toggleFolder(id) {
             <h2>📝 Review and 9 Weeks Test</h2>
             <p class="mb-0"><strong>Days 44–45:</strong> Review, reteach, assessment, and reflection</p>
         </div>
-        <button type="button" class="btn btn-light teacher-btn" onclick="toggleFolder('reviewBody')">Open / Close</button>
+        <button class="btn btn-light teacher-btn" onclick="toggleFolder('reviewBody')">Open / Close</button>
     </div>
 
     <div id="reviewBody">
@@ -347,9 +286,12 @@ function toggleFolder(id) {
     </div>
 </section>
 
-
-
-
-
+<script>
+function toggleFolder(id) {
+    const section = document.getElementById(id);
+    if (!section) return;
+    section.style.display = section.style.display === "none" ? "block" : "none";
+}
+</script>
 
 {% endblock %}

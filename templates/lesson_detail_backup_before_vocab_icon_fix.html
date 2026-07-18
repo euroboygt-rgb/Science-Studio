@@ -135,34 +135,6 @@ details summary {
         grid-template-columns: 1fr;
     }
 }
-
-.mcgraw-highlight {
-    background: linear-gradient(135deg, #fff3cd 0%, #fff8e8 100%);
-    border: 5px solid #111;
-    border-radius: 22px;
-    padding: 20px;
-    box-shadow: 6px 6px 0 rgba(17,17,17,0.18);
-}
-
-.mcgraw-focus-box {
-    background: white;
-    border: 4px solid #111;
-    border-radius: 16px;
-    padding: 14px;
-    margin-top: 12px;
-}
-
-.mcgraw-badge {
-    display: inline-block;
-    background: #0d6efd;
-    color: white;
-    border: 3px solid #111;
-    border-radius: 999px;
-    padding: 6px 12px;
-    font-weight: 900;
-    margin-bottom: 8px;
-}
-
 </style>
 
 <section class="lesson-hero">
@@ -200,7 +172,11 @@ details summary {
         {% for term in vocab_terms %}
             {% set info = get_vocab_info(term) %}
             <div class="vocab-mini">
-                <img src="{{ vocab_icon_path(term) }}?v=2" alt="{{ term }}" style="max-height:55px; max-width:75px; display:block; margin:0 auto 4px auto;">
+                {% if info.image is defined and info.image %}
+                    <img src="{{ info.image }}" alt="{{ term }}" style="max-height:45px; max-width:70px;">
+                {% else %}
+                    <span class="vocab-icon">{{ info.emoji if info.emoji is defined else "🔬" }}</span>
+                {% endif %}
                 {{ term }}
             </div>
         {% endfor %}
@@ -541,7 +517,9 @@ details summary {
                 <div class="student-note h-100">
                     <h3>{{ info.emoji if info.emoji is defined else "🔬" }} {{ term }}</h3>
 
-                    <img src="{{ vocab_icon_path(term) }}?v=2" alt="{{ term }}" style="max-width:100%; max-height:110px; display:block; margin:0 auto 8px auto;">
+                    {% if info.image is defined and info.image %}
+                        <img src="{{ info.image }}" alt="{{ term }}" style="max-width:100%; max-height:110px;">
+                    {% endif %}
 
                     {% if info.definition is defined %}
                         <p><strong>Definition:</strong> {{ info.definition }}</p>
@@ -556,31 +534,10 @@ details summary {
     </div>
 </section>
 
-
-<section class="lesson-card mcgraw-highlight" id="mcgraw-hill-connection">
-    <span class="mcgraw-badge">📘 McGraw Hill Lesson Connection</span>
-    <h2>McGraw Hill Connection</h2>
-
-    <div class="mcgraw-focus-box">
-        <h3>Highlighted Lesson Focus</h3>
-        <p><strong>{{ flow.mcgraw_connection.title }}</strong></p>
-        <p>{{ flow.mcgraw_connection.focus }}</p>
-    </div>
-
-    {% if current_view == "teacher" %}
-        <div class="teacher-box">
-            <h3>Teacher Use</h3>
-            <p>{{ flow.mcgraw_connection.teacher_use }}</p>
-            <p><strong>Look for:</strong> {{ flow.mcgraw_connection.look_for }}</p>
-        </div>
-    {% else %}
-        <div class="student-note">
-            <h3>Student Use</h3>
-            <p>{{ flow.mcgraw_connection.student_use }}</p>
-        </div>
-    {% endif %}
+<section class="lesson-card" id="mcgraw-hill-connection">
+    <h2>📘 McGraw Hill Connection</h2>
+    <p>{{ flow.mcgraw }}</p>
 </section>
-
 
 {% if current_view == "teacher" %}
 <section class="lesson-card" id="teacher-note">

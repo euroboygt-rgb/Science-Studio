@@ -157,13 +157,13 @@
 
 
 
-
-
 <section class="student-card" id="studentQuickLauncher" style="background:white; border:4px solid #111; border-radius:20px; padding:18px; margin-bottom:20px; box-shadow:5px 5px 0 rgba(17,17,17,0.14);">
     <h2>🚀 Quick Lesson Launcher</h2>
-    <p>Select a day. It will open that lesson in <strong>Student View</strong>.</p>
+    <p>Select a day. It will open the lesson in Student View.</p>
 
-    <form action="/go-to-student-lesson" method="get">
+    <form action="/go-to-lesson" method="get">
+        <input type="hidden" name="view" id="studentViewChoice" value="student">
+
         <label for="studentLessonPicker" class="form-label"><strong>Select lesson day:</strong></label>
 
         <select id="studentLessonPicker" name="day" class="form-select" style="border: 3px solid #111;" onchange="this.form.submit()">
@@ -176,11 +176,11 @@
         </select>
 
         <div class="mt-3">
-            <button type="submit" class="btn btn-primary" style="border:3px solid #111; font-weight:900;">
+            <button type="submit" class="btn btn-primary" style="border:3px solid #111; font-weight:900;" onclick="document.getElementById('studentViewChoice').value='student'">
                 Open Student View
             </button>
 
-            <button type="submit" formaction="/go-to-teacher-lesson" class="btn btn-success" style="border:3px solid #111; font-weight:900;">
+            <button type="submit" class="btn btn-success" style="border:3px solid #111; font-weight:900;" onclick="document.getElementById('studentViewChoice').value='teacher'">
                 Open Teacher View
             </button>
 
@@ -188,8 +188,6 @@
         </div>
     </form>
 </section>
-
-
 
 
 

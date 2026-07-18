@@ -156,13 +156,13 @@ function toggleFolder(id) {
 
 
 
-
-
 <section class="teacher-card" id="teacherQuickLauncher">
     <h2>🚀 Quick Lesson Launcher</h2>
-    <p>Select a day. It will open that lesson in <strong>Teacher View</strong>.</p>
+    <p>Select a day. It will open the lesson in Teacher View.</p>
 
-    <form action="/go-to-teacher-lesson" method="get">
+    <form action="/go-to-lesson" method="get">
+        <input type="hidden" name="view" id="teacherViewChoice" value="teacher">
+
         <label for="teacherLessonPicker" class="form-label"><strong>Select lesson day:</strong></label>
 
         <select id="teacherLessonPicker" name="day" class="form-select" style="border: 3px solid #111;" onchange="this.form.submit()">
@@ -175,11 +175,11 @@ function toggleFolder(id) {
         </select>
 
         <div class="mt-3">
-            <button type="submit" class="btn btn-success teacher-btn">
+            <button type="submit" class="btn btn-success teacher-btn" onclick="document.getElementById('teacherViewChoice').value='teacher'">
                 Open Teacher View
             </button>
 
-            <button type="submit" formaction="/go-to-student-lesson" class="btn btn-primary teacher-btn">
+            <button type="submit" class="btn btn-primary teacher-btn" onclick="document.getElementById('teacherViewChoice').value='student'">
                 Open Student View
             </button>
 
@@ -187,8 +187,6 @@ function toggleFolder(id) {
         </div>
     </form>
 </section>
-
-
 
 
 
