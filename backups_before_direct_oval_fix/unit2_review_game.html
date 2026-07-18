@@ -1,0 +1,360 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Unit 2 Mixtures and Solutions Review Game</h1>
+<p class="lead">
+  Choose the best separation method, physical property, and evidence.
+</p>
+
+<a href="/first-nine-weeks/day/23?view=student" class="btn btn-secondary mb-4">
+  Back to Day 23
+</a>
+
+<style>
+  .game-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
+
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
+  .scenario-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .score-box {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    background: #e9ecef;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  .recycling-bin {
+    min-height: 90px;
+    border: 2px dashed #333;
+    border-radius: 12px;
+    background: white;
+    padding: 12px;
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: bold;
+  }
+</style>
+
+<div class="score-box">
+  Score: <span id="score">0</span> / 15
+</div>
+
+<div class="game-card">
+  <h2>Part 1: Match the Separation Method</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Match each mixture to the best separation method.
+  </div>
+
+  <div class="scenario-card">
+    <h4>1. Gravel and sand</h4>
+    <select id="m1" class="form-select">
+      <option selected>Choose...</option>
+      <option>Use a sieve</option>
+      <option>Use a magnet</option>
+      <option>Use evaporation</option>
+      <option>Use sink or float</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>2. Iron filings and sand</h4>
+    <select id="m2" class="form-select">
+      <option selected>Choose...</option>
+      <option>Use a sieve</option>
+      <option>Use a magnet</option>
+      <option>Use evaporation</option>
+      <option>Use sink or float</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>3. Wood chips and marbles</h4>
+    <select id="m3" class="form-select">
+      <option selected>Choose...</option>
+      <option>Use a sieve</option>
+      <option>Use a magnet</option>
+      <option>Use evaporation</option>
+      <option>Use sink or float</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>4. Salt water</h4>
+    <select id="m4" class="form-select">
+      <option selected>Choose...</option>
+      <option>Use a sieve</option>
+      <option>Use a magnet</option>
+      <option>Use evaporation</option>
+      <option>Use sink or float</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>5. Pasta and water</h4>
+    <select id="m5" class="form-select">
+      <option selected>Choose...</option>
+      <option>Use a strainer</option>
+      <option>Use a magnet</option>
+      <option>Use evaporation</option>
+      <option>Use liquid layers</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" onclick="checkPartOne()">Check Part 1</button>
+  <div id="partOneFeedback"></div>
+</div>
+
+<div class="game-card">
+  <h2>Part 2: Match the Physical Property</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Choose the physical property that makes each separation possible.
+  </div>
+
+  <div class="scenario-card">
+    <h4>A sieve separates gravel from sand because of...</h4>
+    <select id="p1" class="form-select">
+      <option selected>Choose...</option>
+      <option>Particle size</option>
+      <option>Magnetism</option>
+      <option>Solubility</option>
+      <option>Conservation of matter</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>A magnet separates iron filings from sand because of...</h4>
+    <select id="p2" class="form-select">
+      <option selected>Choose...</option>
+      <option>Particle size</option>
+      <option>Magnetism</option>
+      <option>Solubility</option>
+      <option>Evaporation</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>Wood floats and marbles sink because of...</h4>
+    <select id="p3" class="form-select">
+      <option selected>Choose...</option>
+      <option>Relative density</option>
+      <option>Magnetism</option>
+      <option>Conductivity</option>
+      <option>Temperature</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>Salt dissolves in water because of...</h4>
+    <select id="p4" class="form-select">
+      <option selected>Choose...</option>
+      <option>Solubility</option>
+      <option>Magnetism</option>
+      <option>Particle size</option>
+      <option>Conductivity</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>80 g water + 12 g salt = 92 g solution because of...</h4>
+    <select id="p5" class="form-select">
+      <option selected>Choose...</option>
+      <option>Conservation of matter</option>
+      <option>Magnetism</option>
+      <option>Relative density</option>
+      <option>Particle size</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" onclick="checkPartTwo()">Check Part 2</button>
+  <div id="partTwoFeedback"></div>
+</div>
+
+<div class="game-card">
+  <h2>Part 3: Recycling Center Challenge</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Design a process to separate recycling materials using physical properties.
+  </div>
+
+  <div class="scenario-card">
+    <h4>Steel objects mixed with paper and cardboard</h4>
+    <select id="r1" class="form-select">
+      <option selected>Choose...</option>
+      <option>Use a magnet to remove steel</option>
+      <option>Use evaporation</option>
+      <option>Use a thermometer</option>
+      <option>Dissolve everything in water</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>Plastic pieces and glass pieces</h4>
+    <select id="r2" class="form-select">
+      <option selected>Choose...</option>
+      <option>Sort by material properties such as appearance, hardness, or density</option>
+      <option>Use a magnet for both materials</option>
+      <option>Evaporate the glass</option>
+      <option>Use a thermometer only</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>Small paper scraps mixed with larger cardboard pieces</h4>
+    <select id="r3" class="form-select">
+      <option selected>Choose...</option>
+      <option>Use particle size or sorting</option>
+      <option>Use a magnet</option>
+      <option>Use evaporation</option>
+      <option>Use solubility</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>Aluminum and steel objects</h4>
+    <select id="r4" class="form-select">
+      <option selected>Choose...</option>
+      <option>Use a magnet to pull out steel</option>
+      <option>Use evaporation</option>
+      <option>Use a strainer with water only</option>
+      <option>Dissolve both metals in water</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>Mixed materials with different sizes</h4>
+    <select id="r5" class="form-select">
+      <option selected>Choose...</option>
+      <option>Use screens or sieves</option>
+      <option>Use a thermometer</option>
+      <option>Use only evaporation</option>
+      <option>Use a magnet for plastic</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" onclick="checkPartThree()">Check Recycling Plan</button>
+  <div id="partThreeFeedback"></div>
+</div>
+
+<script>
+  let score = 0;
+  let partOneDone = false;
+  let partTwoDone = false;
+  let partThreeDone = false;
+
+  function updateScore(points) {
+    score += points;
+    document.getElementById("score").innerText = score;
+  }
+
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function checkPartOne() {
+    let correct = 0;
+
+    if (document.getElementById("m1").value === "Use a sieve") correct++;
+    if (document.getElementById("m2").value === "Use a magnet") correct++;
+    if (document.getElementById("m3").value === "Use sink or float") correct++;
+    if (document.getElementById("m4").value === "Use evaporation") correct++;
+    if (document.getElementById("m5").value === "Use a strainer") correct++;
+
+    if (!partOneDone) {
+      updateScore(correct);
+      partOneDone = true;
+    }
+
+    if (correct === 5) {
+      showFeedback("partOneFeedback", "Great job! You matched all separation methods.", true);
+    } else {
+      showFeedback("partOneFeedback", "You got " + correct + " out of 5. Match the method to the physical property.", false);
+    }
+  }
+
+  function checkPartTwo() {
+    let correct = 0;
+
+    if (document.getElementById("p1").value === "Particle size") correct++;
+    if (document.getElementById("p2").value === "Magnetism") correct++;
+    if (document.getElementById("p3").value === "Relative density") correct++;
+    if (document.getElementById("p4").value === "Solubility") correct++;
+    if (document.getElementById("p5").value === "Conservation of matter") correct++;
+
+    if (!partTwoDone) {
+      updateScore(correct);
+      partTwoDone = true;
+    }
+
+    if (correct === 5) {
+      showFeedback("partTwoFeedback", "Excellent! You matched all physical properties.", true);
+    } else {
+      showFeedback("partTwoFeedback", "You got " + correct + " out of 5. Look for the property being tested.", false);
+    }
+  }
+
+  function checkPartThree() {
+    let correct = 0;
+
+    if (document.getElementById("r1").value === "Use a magnet to remove steel") correct++;
+    if (document.getElementById("r2").value === "Sort by material properties such as appearance, hardness, or density") correct++;
+    if (document.getElementById("r3").value === "Use particle size or sorting") correct++;
+    if (document.getElementById("r4").value === "Use a magnet to pull out steel") correct++;
+    if (document.getElementById("r5").value === "Use screens or sieves") correct++;
+
+    if (!partThreeDone) {
+      updateScore(correct);
+      partThreeDone = true;
+    }
+
+    if (correct === 5) {
+      showFeedback("partThreeFeedback", "Recycling plan complete! You used physical properties to separate materials.", true);
+    } else {
+      showFeedback("partThreeFeedback", "You got " + correct + " out of 5. Think about what property makes each material different.", false);
+    }
+  }
+</script>
+
+{% endblock %}

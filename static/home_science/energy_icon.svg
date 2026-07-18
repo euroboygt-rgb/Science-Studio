@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 160">
+  <rect x="8" y="8" width="204" height="144" rx="22" fill="#f5edff" stroke="#111" stroke-width="6"/>
+  <path d="M120 28 L72 92 H110 L94 134 L154 70 H116 Z" fill="#ff9f1c" stroke="#111" stroke-width="6"/>
+  <circle cx="162" cy="100" r="24" fill="#fff7d6" stroke="#111" stroke-width="4"/>
+  <path d="M162 64 V48" stroke="#ff9f1c" stroke-width="5"/>
+  <path d="M186 100 H202" stroke="#ff9f1c" stroke-width="5"/>
+  <text x="110" y="143" text-anchor="middle" font-family="Arial" font-size="17" font-weight="900">Energy</text>
+</svg>

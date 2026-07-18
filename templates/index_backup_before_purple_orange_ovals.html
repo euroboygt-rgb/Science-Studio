@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}5th Grade Science Studio{% endblock %}
+
+{% block content %}
+
+<style>
+    .home-hero {
+        background: linear-gradient(135deg, #102542 0%, #1b4965 55%, #5fa8d3 100%);
+        color: white;
+        border: 5px solid #111;
+        border-radius: 28px;
+        padding: 34px;
+        box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+        margin-bottom: 24px;
+    }
+
+    .home-card {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 20px;
+        padding: 20px;
+        height: 100%;
+        box-shadow: 5px 5px 0 rgba(17,17,17,0.14);
+    }
+
+    .unit-path {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 20px;
+        padding: 20px;
+        margin-bottom: 24px;
+        box-shadow: 5px 5px 0 rgba(17,17,17,0.14);
+    }
+
+    .path-pill {
+        display: inline-block;
+        border: 3px solid #111;
+        border-radius: 999px;
+        padding: 9px 14px;
+        margin: 5px;
+        font-weight: 900;
+        background: #d8f3dc;
+    }
+
+    .science-btn-home {
+        border: 3px solid #111;
+        border-radius: 12px;
+        font-weight: 900;
+        box-shadow: 3px 3px 0 rgba(17,17,17,0.2);
+        margin: 4px;
+    }
+</style>
+
+<section class="home-hero">
+    <span class="badge-science">5th Grade Science</span>
+    <span class="badge-science">TEKS-Aligned</span>
+    <span class="badge-science">STAAR Practice</span>
+    <span class="badge-science">Live Classroom Site</span>
+
+    <h1 class="mt-3">Science Studio</h1>
+
+    <p class="lead">
+        Your 1st 9 Weeks science classroom hub with daily lessons, student activities,
+        teacher tools, interactive labs, vocabulary, written CER, exit tickets, and printable resources.
+    </p>
+
+    <a href="/first-nine-weeks" class="btn btn-warning btn-lg science-btn-home">Open All 45 Days</a>
+    <a href="/student-dashboard" class="btn btn-success btn-lg science-btn-home">Student Dashboard</a>
+    <a href="/teacher-dashboard" class="btn btn-light btn-lg science-btn-home">Teacher Dashboard</a>
+</section>
+
+<section class="unit-path">
+    <h2>1st 9 Weeks Learning Path</h2>
+
+    <span class="path-pill">Days 1–2: Classroom Launch</span>
+    <span class="path-pill">Days 3–16: Physical Properties of Matter</span>
+    <span class="path-pill">Days 17–26: Mixtures and Solutions</span>
+    <span class="path-pill">Days 27–36: Force and Motion</span>
+    <span class="path-pill">Days 37–43: Energy Transformations</span>
+    <span class="path-pill">Days 44–45: Review and 9 Weeks Test</span>
+</section>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="home-card">
+            <h2>📚 Daily Lessons</h2>
+            <p>
+                Access all 45 days of the updated 1st 9 Weeks curriculum with student and teacher views.
+            </p>
+            <a href="/first-nine-weeks" class="btn btn-primary science-btn-home">Open Lessons</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="home-card">
+            <h2>🧑‍🔬 Student Dashboard</h2>
+            <p>
+                Student-friendly launch page for lessons, labs, review, vocabulary, and reflection.
+            </p>
+            <a href="/student-dashboard" class="btn btn-success science-btn-home">Open Student View</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="home-card">
+            <h2>🍎 Teacher Dashboard</h2>
+            <p>
+                Teacher planning hub with quick access to lessons, labs, stations, vocabulary, and review tools.
+            </p>
+            <a href="/teacher-dashboard" class="btn btn-warning science-btn-home">Open Teacher Tools</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="home-card">
+            <h2>🔬 Lab Library</h2>
+            <p>
+                Open interactive science labs and simulations for matter, mixtures, force, motion, and review.
+            </p>
+            <a href="/labs" class="btn btn-info science-btn-home">Open Labs</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="home-card">
+            <h2>🧾 Vocabulary</h2>
+            <p>
+                Use vocabulary cards, anchor charts, visuals, examples, and STAAR connections.
+            </p>
+            <a href="/vocabulary" class="btn btn-secondary science-btn-home">Open Vocabulary</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="home-card">
+            <h2>📄 Resources</h2>
+            <p>
+                Open printable foldables, notebook inserts, lab sheets, planning pages, and review pages.
+            </p>
+            <a href="/resources" class="btn btn-danger science-btn-home">Open Resources</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

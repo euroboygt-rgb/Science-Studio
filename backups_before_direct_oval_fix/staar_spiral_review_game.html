@@ -1,0 +1,757 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>STAAR Spiral Review Game</h1>
+<p class="lead">
+  Review Matter, Mixtures, Particles, Force and Motion, Variables, Data, and Evidence.
+</p>
+
+<a href="/first-nine-weeks/day/42?view=student" class="btn btn-secondary mb-4">
+  Back to Day 42
+</a>
+
+<style>
+  .spiral-banner {
+    background: #212529;
+    color: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+
+  .spiral-card {
+    border: 1px solid #ddd;
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
+
+  .badge-pill {
+    display: inline-block;
+    background: #fff3cd;
+    color: #111;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: bold;
+    margin: 5px;
+  }
+
+  .game-board {
+    background:
+      radial-gradient(circle at 15% 20%, white 0 2px, transparent 3px),
+      radial-gradient(circle at 35% 70%, white 0 2px, transparent 3px),
+      radial-gradient(circle at 70% 25%, white 0 2px, transparent 3px),
+      radial-gradient(circle at 90% 75%, white 0 2px, transparent 3px),
+      linear-gradient(180deg, #102542, #1b4965);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .category-button {
+    width: 100%;
+    min-height: 110px;
+    border: 4px solid #111;
+    border-radius: 18px;
+    background: white;
+    color: #111;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .category-button:hover {
+    transform: scale(1.02);
+  }
+
+  .score-box {
+    background: white;
+    color: #111;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .score-number {
+    font-size: 42px;
+    font-weight: bold;
+  }
+
+  .question-box {
+    background: white;
+    color: #111;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 20px;
+    margin-top: 15px;
+  }
+
+  .answer-btn {
+    width: 100%;
+    text-align: left;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 12px;
+    margin: 8px 0;
+    background: #f8f9fa;
+    font-weight: bold;
+  }
+
+  .answer-btn:hover {
+    background: #fff3cd;
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  .warning {
+    background: #fff3cd;
+    color: #664d03;
+  }
+
+  .arcade-screen {
+    height: 260px;
+    background: #eaf6ff;
+    border: 5px solid #111;
+    border-radius: 22px;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .student-avatar {
+    position: absolute;
+    left: 40px;
+    bottom: 45px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #ffccd5;
+    border: 4px solid #111;
+    transition: left 0.6s;
+  }
+
+  .student-avatar::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 58px;
+    width: 20px;
+    height: 70px;
+    background: #111;
+    border-radius: 10px;
+  }
+
+  .finish-flag {
+    position: absolute;
+    right: 45px;
+    bottom: 45px;
+    font-size: 72px;
+  }
+
+  .track {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    bottom: 35px;
+    height: 10px;
+    background: #111;
+    border-radius: 999px;
+  }
+
+  .sparkle {
+    position: absolute;
+    font-size: 30px;
+    animation: pop 1.1s ease-out forwards;
+    pointer-events: none;
+  }
+
+  @keyframes pop {
+    0% { transform: scale(0.2); opacity: 0; }
+    30% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0; }
+  }
+
+  .sort-item {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .boss-box {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 15px;
+  }
+</style>
+
+<div class="spiral-banner">
+  <h2>🕹️ STAAR Spiral Review Arcade</h2>
+  <p class="mb-2">Answer questions, earn points, build a streak, and beat the Review Boss.</p>
+  <span class="badge-pill">Matter</span>
+  <span class="badge-pill">Mixtures</span>
+  <span class="badge-pill">Particles</span>
+  <span class="badge-pill">Force & Motion</span>
+  <span class="badge-pill">Variables & Data</span>
+</div>
+
+<div class="spiral-card">
+  <h2>Part 1: Review Arcade Game</h2>
+
+  <div class="game-board">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="score-box">
+          Score
+          <div id="scoreDisplay" class="score-number">0</div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="score-box">
+          Streak
+          <div id="streakDisplay" class="score-number">0</div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="score-box">
+          Questions
+          <div id="questionCountDisplay" class="score-number">0</div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="score-box">
+          Level
+          <div id="levelDisplay" class="score-number">1</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arcade-screen" id="arcadeScreen">
+      <div class="track"></div>
+      <div id="studentAvatar" class="student-avatar"></div>
+      <div class="finish-flag">🏁</div>
+    </div>
+
+    <h3>Choose a Review Category</h3>
+
+    <div class="row">
+      <div class="col-md-4">
+        <button class="category-button" onclick="chooseCategory('matter')">🧱 Matter</button>
+      </div>
+      <div class="col-md-4">
+        <button class="category-button" onclick="chooseCategory('mixtures')">🧪 Mixtures & Solutions</button>
+      </div>
+      <div class="col-md-4">
+        <button class="category-button" onclick="chooseCategory('particles')">🔬 Particles Too Small to See</button>
+      </div>
+      <div class="col-md-4">
+        <button class="category-button" onclick="chooseCategory('forces')">🚗 Force & Motion</button>
+      </div>
+      <div class="col-md-4">
+        <button class="category-button" onclick="chooseCategory('variables')">📊 Variables & Data</button>
+      </div>
+      <div class="col-md-4">
+        <button class="category-button" onclick="chooseCategory('mixed')">🌟 Mixed STAAR</button>
+      </div>
+    </div>
+
+    <div class="question-box">
+      <h3 id="categoryTitle">Choose a category to begin.</h3>
+      <p id="questionText">Your STAAR review question will appear here.</p>
+
+      <div id="answerChoices"></div>
+
+      <button class="btn btn-warning mt-2" onclick="useHint()">Use Hint</button>
+      <button class="btn btn-primary mt-2" onclick="nextQuestion()">Next Question</button>
+      <button class="btn btn-danger mt-2" onclick="resetGame()">Reset Game</button>
+
+      <div id="gameFeedback"></div>
+      <div id="hintBox"></div>
+    </div>
+  </div>
+</div>
+
+<div class="spiral-card">
+  <h2>Part 2: Vocabulary Sorting Challenge</h2>
+  <p>Choose the best category for each word.</p>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div id="sortWord" class="sort-item">Click Start Sorting.</div>
+      <button class="btn btn-primary" onclick="newSortWord()">Start / Next Word</button>
+    </div>
+
+    <div class="col-md-6">
+      <select id="sortCategory" class="form-select mb-3">
+        <option selected>Choose category...</option>
+        <option>Matter</option>
+        <option>Mixtures and Solutions</option>
+        <option>Particles Too Small to See</option>
+        <option>Force and Motion</option>
+        <option>Variables and Data</option>
+      </select>
+
+      <button class="btn btn-success" onclick="checkSort()">Check Sort</button>
+      <div id="sortFeedback"></div>
+    </div>
+  </div>
+</div>
+
+<div class="spiral-card">
+  <h2>Part 3: Evidence Power Round</h2>
+
+  <p class="alert alert-warning">
+    A rubber ball bounced 74 cm. A foam ball bounced 18 cm. A student claims the rubber ball bounced higher.
+  </p>
+
+  <label class="form-label"><strong>Which sentence is the best evidence?</strong></label>
+  <select id="evidenceAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The rubber ball bounced 74 cm, and the foam ball bounced 18 cm.</option>
+    <option>The rubber ball was a nice color.</option>
+    <option>The foam ball was soft.</option>
+    <option>The student liked the rubber ball.</option>
+  </select>
+
+  <button class="btn btn-success" onclick="checkEvidence()">Check Evidence</button>
+  <div id="evidenceFeedback"></div>
+</div>
+
+<div class="spiral-card">
+  <h2>Part 4: Review Boss Round</h2>
+  <p>Answer all three to beat the Review Boss.</p>
+
+  <div class="boss-box">
+    <label class="form-label"><strong>1. A screen separates gravel from sand. What property is used?</strong></label>
+    <select id="boss1" class="form-select mb-3">
+      <option selected>Choose...</option>
+      <option>Particle size</option>
+      <option>Gravity</option>
+      <option>Electrical conductivity</option>
+      <option>Mechanical energy</option>
+    </select>
+
+    <label class="form-label"><strong>2. Sugar dissolves in water. Why can the sugar no longer be seen?</strong></label>
+    <select id="boss2" class="form-select mb-3">
+      <option selected>Choose...</option>
+      <option>The sugar particles spread out and are too small to see.</option>
+      <option>The sugar disappeared forever.</option>
+      <option>The sugar became a magnet.</option>
+      <option>The sugar turned into plastic.</option>
+    </select>
+
+    <label class="form-label"><strong>3. A rough surface makes a toy car slow down. Which force increased?</strong></label>
+    <select id="boss3" class="form-select mb-3">
+      <option selected>Choose...</option>
+      <option>Friction</option>
+      <option>Light</option>
+      <option>Sound</option>
+      <option>Solubility</option>
+    </select>
+
+    <button class="btn btn-success" onclick="checkBoss()">Beat the Review Boss</button>
+    <div id="bossFeedback"></div>
+  </div>
+</div>
+
+<script>
+  let score = 0;
+  let streak = 0;
+  let questionCount = 0;
+  let level = 1;
+  let currentQuestion = null;
+  let currentSort = null;
+
+  const questions = {
+    matter: [
+      {
+        q: "Which tool would best measure the mass of a small rock?",
+        choices: ["Balance or scale", "Thermometer", "Ruler", "Graduated cylinder only"],
+        answer: "Balance or scale",
+        hint: "Mass is measured with a balance or scale.",
+        explain: "A balance or scale measures mass."
+      },
+      {
+        q: "Which material would most likely conduct electricity?",
+        choices: ["Copper wire", "Rubber band", "Plastic straw", "Wood craft stick"],
+        answer: "Copper wire",
+        hint: "Metals are usually good conductors.",
+        explain: "Copper is a metal and conducts electricity."
+      },
+      {
+        q: "Which property helps explain whether an object sinks or floats?",
+        choices: ["Relative density", "Color", "Shape of the notebook", "Sound"],
+        answer: "Relative density",
+        hint: "Think about whether the object is more or less dense than the liquid.",
+        explain: "Relative density helps explain sinking and floating."
+      }
+    ],
+    mixtures: [
+      {
+        q: "A student separates gravel and sand using a screen. Which property is used?",
+        choices: ["Particle size", "Magnetism", "Solubility", "Temperature"],
+        answer: "Particle size",
+        hint: "Screens separate large pieces from smaller pieces.",
+        explain: "The screen separates materials by particle size."
+      },
+      {
+        q: "A student wants to recover salt from salt water. Which process would help?",
+        choices: ["Evaporation", "Using a magnet", "Sorting by hand", "Using a screen"],
+        answer: "Evaporation",
+        hint: "The water can leave as a gas, and the salt can remain.",
+        explain: "Evaporation removes water and leaves dissolved salt behind."
+      },
+      {
+        q: "A magnet removes iron filings from sand. Which property is used?",
+        choices: ["Magnetism", "Solubility", "Mass", "Volume"],
+        answer: "Magnetism",
+        hint: "The magnet attracts the iron filings.",
+        explain: "Iron filings are magnetic, but sand is not."
+      }
+    ],
+    particles: [
+      {
+        q: "Sugar dissolves in water and can no longer be seen. What happened?",
+        choices: ["Sugar particles spread out and are too small to see", "The sugar disappeared forever", "The sugar became magnetic", "The sugar turned into sand"],
+        answer: "Sugar particles spread out and are too small to see",
+        hint: "Matter does not just disappear.",
+        explain: "The sugar particles are still present but spread through the water."
+      },
+      {
+        q: "Which model best shows salt dissolved in water?",
+        choices: ["Tiny salt particles spread evenly through water", "One giant salt rock floating on top", "Salt particles turning into air", "Water becoming a magnet"],
+        answer: "Tiny salt particles spread evenly through water",
+        hint: "A solution has particles spread throughout.",
+        explain: "Dissolved particles are spread throughout the water."
+      },
+      {
+        q: "Why do scientists use models for particles?",
+        choices: ["Particles can be too small to see", "Particles are always huge", "Models replace evidence", "Models make matter disappear"],
+        answer: "Particles can be too small to see",
+        hint: "Models help explain things we cannot easily see.",
+        explain: "Models help explain tiny particles that cannot be seen with only our eyes."
+      }
+    ],
+    forces: [
+      {
+        q: "A toy car rolls down a ramp. Which force pulls it downward?",
+        choices: ["Gravity", "Friction", "Magnetism", "Electricity"],
+        answer: "Gravity",
+        hint: "This force pulls objects toward Earth.",
+        explain: "Gravity pulls the car downward."
+      },
+      {
+        q: "A rough surface causes a toy car to slow down faster. Which force is greater?",
+        choices: ["Friction", "Gravity", "Magnetism", "Light"],
+        answer: "Friction",
+        hint: "This force acts opposite motion when surfaces touch.",
+        explain: "Rough surfaces usually increase friction."
+      },
+      {
+        q: "Two equal forces push a box in opposite directions. What happens?",
+        choices: ["The box will not move much because forces are balanced", "The box turns into a liquid", "The box becomes soluble", "The box disappears"],
+        answer: "The box will not move much because forces are balanced",
+        hint: "Equal forces in opposite directions are balanced.",
+        explain: "Balanced forces do not cause a big change in motion."
+      }
+    ],
+    variables: [
+      {
+        q: "A student tests how ramp height affects distance traveled. What is the independent variable?",
+        choices: ["Ramp height", "Distance traveled", "Same car", "Same floor"],
+        answer: "Ramp height",
+        hint: "Independent variable means what is changed on purpose.",
+        explain: "Ramp height is changed on purpose."
+      },
+      {
+        q: "In a balloon rocket test, students measure how far the rocket travels. What is the dependent variable?",
+        choices: ["Distance traveled", "Amount of air", "Same straw", "Same string"],
+        answer: "Distance traveled",
+        hint: "Dependent variable means what is measured.",
+        explain: "Distance traveled is the measured result."
+      },
+      {
+        q: "Why should students repeat trials?",
+        choices: ["To make data more reliable", "To change every variable", "To avoid evidence", "To make the test unfair"],
+        answer: "To make data more reliable",
+        hint: "More trials help check whether results are consistent.",
+        explain: "Repeated trials make data more reliable."
+      }
+    ]
+  };
+
+  questions.mixed = [
+    ...questions.matter,
+    ...questions.mixtures,
+    ...questions.particles,
+    ...questions.forces,
+    ...questions.variables
+  ];
+
+  const sortWords = [
+    {word: "mass", category: "Matter"},
+    {word: "volume", category: "Matter"},
+    {word: "conductor", category: "Matter"},
+    {word: "evaporation", category: "Mixtures and Solutions"},
+    {word: "filter", category: "Mixtures and Solutions"},
+    {word: "solution", category: "Mixtures and Solutions"},
+    {word: "dissolved sugar particles", category: "Particles Too Small to See"},
+    {word: "tiny particles model", category: "Particles Too Small to See"},
+    {word: "gravity", category: "Force and Motion"},
+    {word: "friction", category: "Force and Motion"},
+    {word: "balanced forces", category: "Force and Motion"},
+    {word: "independent variable", category: "Variables and Data"},
+    {word: "dependent variable", category: "Variables and Data"},
+    {word: "evidence", category: "Variables and Data"}
+  ];
+
+
+  function shuffleArray(items) {
+    const copy = [...items];
+
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+
+    return copy;
+  }
+
+  function shuffleSelectOptions(selectId) {
+    const select = document.getElementById(selectId);
+    if (!select) return;
+
+    const placeholder = select.options[0];
+    const options = Array.from(select.options).slice(1);
+    const shuffled = shuffleArray(options);
+
+    select.innerHTML = "";
+    select.appendChild(placeholder);
+
+    shuffled.forEach(option => {
+      select.appendChild(option);
+    });
+
+    select.selectedIndex = 0;
+  }
+
+  function randomizeDropdownAnswers() {
+    ["evidenceAnswer", "boss1", "boss2", "boss3"].forEach(shuffleSelectOptions);
+  }
+
+  function showFeedback(elementId, message, kind) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + kind;
+    box.innerHTML = message;
+  }
+
+  function updateDisplays() {
+    document.getElementById("scoreDisplay").innerText = score;
+    document.getElementById("streakDisplay").innerText = streak;
+    document.getElementById("questionCountDisplay").innerText = questionCount;
+    level = Math.max(1, Math.floor(score / 50) + 1);
+    document.getElementById("levelDisplay").innerText = level;
+
+    const progress = Math.min(40 + score * 2.2, 700);
+    document.getElementById("studentAvatar").style.left = progress + "px";
+  }
+
+  function makeSparkles() {
+    const screen = document.getElementById("arcadeScreen");
+    for (let i = 0; i < 6; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.innerText = ["✨", "⭐", "✅", "🚀"][Math.floor(Math.random() * 4)];
+      sparkle.style.left = (100 + Math.random() * 580) + "px";
+      sparkle.style.top = (35 + Math.random() * 130) + "px";
+      screen.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1200);
+    }
+  }
+
+  function chooseCategory(category) {
+    const bank = questions[category];
+    currentQuestion = bank[Math.floor(Math.random() * bank.length)];
+
+    const titles = {
+      matter: "Matter Question",
+      mixtures: "Mixtures and Solutions Question",
+      particles: "Particles Too Small to See Question",
+      forces: "Force and Motion Question",
+      variables: "Variables and Data Question",
+      mixed: "Mixed STAAR Question"
+    };
+
+    document.getElementById("categoryTitle").innerText = titles[category];
+    document.getElementById("questionText").innerText = currentQuestion.q;
+    document.getElementById("hintBox").innerHTML = "";
+    document.getElementById("gameFeedback").innerHTML = "";
+
+    const choicesDiv = document.getElementById("answerChoices");
+    choicesDiv.innerHTML = "";
+
+    shuffleArray(currentQuestion.choices).forEach(choice => {
+      const btn = document.createElement("button");
+      btn.className = "answer-btn";
+      btn.innerText = choice;
+      btn.onclick = () => checkAnswer(choice);
+      choicesDiv.appendChild(btn);
+    });
+  }
+
+  function checkAnswer(choice) {
+    if (!currentQuestion) return;
+
+    questionCount++;
+
+    if (choice === currentQuestion.answer) {
+      streak++;
+      const bonus = streak >= 3 ? 5 : 0;
+      score += 10 + bonus;
+      showFeedback("gameFeedback", "Correct! " + currentQuestion.explain + (bonus ? " Streak bonus!" : ""), "correct");
+      makeSparkles();
+    } else {
+      streak = 0;
+      score = Math.max(0, score - 2);
+      showFeedback("gameFeedback", "Not yet. Correct answer: " + currentQuestion.answer + ". " + currentQuestion.explain, "incorrect");
+    }
+
+    randomizeDropdownAnswers();
+  updateDisplays();
+  }
+
+  function useHint() {
+    if (!currentQuestion) {
+      showFeedback("hintBox", "Choose a category first.", "warning");
+      return;
+    }
+
+    showFeedback("hintBox", "Hint: " + currentQuestion.hint, "warning");
+  }
+
+  function nextQuestion() {
+    document.getElementById("categoryTitle").innerText = "Choose a category.";
+    document.getElementById("questionText").innerText = "Pick a category button for your next question.";
+    document.getElementById("answerChoices").innerHTML = "";
+    document.getElementById("gameFeedback").innerHTML = "";
+    document.getElementById("hintBox").innerHTML = "";
+    currentQuestion = null;
+  }
+
+  function resetGame() {
+    score = 0;
+    streak = 0;
+    questionCount = 0;
+    randomizeDropdownAnswers();
+  updateDisplays();
+    nextQuestion();
+    showFeedback("gameFeedback", "Game reset. Start a new review round.", "warning");
+  }
+
+  function newSortWord() {
+    currentSort = sortWords[Math.floor(Math.random() * sortWords.length)];
+    document.getElementById("sortWord").innerText = currentSort.word;
+    document.getElementById("sortCategory").selectedIndex = 0;
+    document.getElementById("sortFeedback").innerHTML = "";
+  }
+
+  function checkSort() {
+    if (!currentSort) {
+      showFeedback("sortFeedback", "Click Start / Next Word first.", "warning");
+      return;
+    }
+
+    const chosen = document.getElementById("sortCategory").value;
+
+    if (chosen === currentSort.category) {
+      score += 5;
+      streak++;
+      showFeedback("sortFeedback", "Correct sort! " + currentSort.word + " belongs in " + currentSort.category + ".", "correct");
+      randomizeDropdownAnswers();
+  updateDisplays();
+      makeSparkles();
+    } else {
+      streak = 0;
+      showFeedback("sortFeedback", "Not yet. " + currentSort.word + " belongs in " + currentSort.category + ".", "incorrect");
+      randomizeDropdownAnswers();
+  updateDisplays();
+    }
+  }
+
+  function checkEvidence() {
+    const answer = document.getElementById("evidenceAnswer").value;
+
+    if (answer === "The rubber ball bounced 74 cm, and the foam ball bounced 18 cm.") {
+      score += 10;
+      streak++;
+      showFeedback("evidenceFeedback", "Correct! Strong evidence uses data from the question.", "correct");
+      randomizeDropdownAnswers();
+  updateDisplays();
+      makeSparkles();
+    } else {
+      streak = 0;
+      showFeedback("evidenceFeedback", "Not yet. Evidence should use numbers or observations, not opinions.", "incorrect");
+      randomizeDropdownAnswers();
+  updateDisplays();
+    }
+  }
+
+  function checkBoss() {
+    const b1 = document.getElementById("boss1").value;
+    const b2 = document.getElementById("boss2").value;
+    const b3 = document.getElementById("boss3").value;
+
+    if (
+      b1 === "Particle size" &&
+      b2 === "The sugar particles spread out and are too small to see." &&
+      b3 === "Friction"
+    ) {
+      score += 30;
+      streak += 3;
+      showFeedback("bossFeedback", "Review Boss defeated! You used mixture, particle, and force evidence correctly.", "correct");
+      randomizeDropdownAnswers();
+  updateDisplays();
+      makeSparkles();
+    } else {
+      streak = 0;
+      showFeedback("bossFeedback", "The Review Boss is still standing. Check particle size, tiny particles, and friction.", "incorrect");
+      randomizeDropdownAnswers();
+  updateDisplays();
+    }
+  }
+
+  randomizeDropdownAnswers();
+  updateDisplays();
+</script>
+
+{% endblock %}

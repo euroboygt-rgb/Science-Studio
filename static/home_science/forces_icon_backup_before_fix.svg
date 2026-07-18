@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 160">
+  <rect x="8" y="8" width="204" height="144" rx="22" fill="#e8f8e8" stroke="#111" stroke-width="6"/>
+  <rect x="82" y="70" width="58" height="38" rx="8" fill="#adb5bd" stroke="#111" stroke-width="5"/>
+  <path d="M28 90 H76" stroke="#111" stroke-width="8" stroke-linecap="round"/>
+  <polygon points="76,90 58,78 58,102" fill="#111"/>
+  <path d="M192 90 H146" stroke="#111" stroke-width="8" stroke-linecap="round"/>
+  <polygon points="146,90 164,78 164,102" fill="#111"/>
+  <text x="110" y="143" text-anchor="middle" font-family="Arial" font-size="17" font-weight="900">Force & Motion</text>
+</svg>

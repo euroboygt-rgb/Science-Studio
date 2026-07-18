@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day {{ lesson_day }} Student Packet</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: white;
+            color: #111;
+            margin: 24px;
+            font-size: 14px;
+        }
+
+        .packet-page {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .packet-header {
+            border: 4px solid #111;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            background: #eef7ff;
+        }
+
+        .packet-section {
+            border: 3px solid #111;
+            border-radius: 14px;
+            padding: 14px;
+            margin: 14px 0;
+            page-break-inside: avoid;
+        }
+
+        .teacher-key {
+            border: 3px dashed #111;
+            border-radius: 12px;
+            padding: 10px;
+            margin-top: 10px;
+            background: #fff7d6;
+        }
+
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+
+        .line-box {
+            border: 2px solid #111;
+            min-height: 90px;
+            margin-top: 8px;
+            padding: 8px;
+        }
+
+        .short-line {
+            border-bottom: 2px solid #111;
+            height: 28px;
+            margin: 6px 0;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .vocab-card {
+            border: 2px solid #111;
+            border-radius: 10px;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .vocab-card img {
+            max-width: 55px;
+            max-height: 45px;
+            display: block;
+            margin: 0 auto 4px auto;
+        }
+
+        .choice {
+            border: 2px solid #111;
+            border-radius: 8px;
+            padding: 8px;
+            margin: 6px 0;
+        }
+
+        .cer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .print-buttons {
+            margin-bottom: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            border: 3px solid #111;
+            border-radius: 8px;
+            padding: 8px 12px;
+            background: #0d6efd;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 8px;
+        }
+
+        .btn-yellow {
+            background: #ffc107;
+            color: #111;
+        }
+
+        @media print {
+            .print-buttons {
+                display: none;
+            }
+
+            body {
+                margin: 0.35in;
+            }
+
+            .packet-section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="packet-page">
+
+    <div class="print-buttons">
+        <button class="btn btn-yellow" onclick="window.print()">Print Packet</button>
+
+        <a class="btn" href="/print-center">Back to Print Center</a>
+
+
+        {% if current_view == "teacher" %}
+            <a class="btn" href="/first-nine-weeks/day/{{ lesson_day }}?view=teacher">Back to Teacher Lesson</a>
+        {% else %}
+            <a class="btn" href="/first-nine-weeks/day/{{ lesson_day }}?view=student">Back to Student Lesson</a>
+        {% endif %}
+    </div>
+
+    <section class="packet-header">
+        <h1>Day {{ lesson_day }}: {{ lesson_title }}</h1>
+        <p><strong>{{ "Teacher Packet" if current_view == "teacher" else "Student Packet" }}</strong></p>
+        <p><strong>Unit:</strong> {{ flow.unit_name }}</p>
+
+        {% if lesson_teks %}
+            <p><strong>TEKS:</strong> {{ lesson_teks }}</p>
+        {% endif %}
+    </section>
+
+    <section class="packet-section">
+        <h2>🎯 Learning Target</h2>
+        {% if learning_target %}
+            <p>{{ learning_target }}</p>
+        {% else %}
+            <p>I can explain {{ flow.topic }} using observations, models, data, and science vocabulary.</p>
+        {% endif %}
+    </section>
+
+    <section class="packet-section">
+        <h2>📌 Vocabulary</h2>
+        <div class="vocab-grid">
+            {% for term in vocab_terms %}
+                <div class="vocab-card">
+                    <img src="{{ vocab_icon_path(term) }}?v=10" alt="{{ term }}">
+                    {{ term }}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="packet-section">
+        <h2>🔔 Bell Ringer</h2>
+
+        {% if flow.bell_ringer %}
+            <p><strong>Review from Day {{ flow.bell_ringer.previous_day }}:</strong> {{ flow.bell_ringer.topic|capitalize }}</p>
+
+            <h3>1. Multiple Choice Review</h3>
+            <p>{{ flow.bell_ringer.mcq.question }}</p>
+
+            {% for letter, choice in flow.bell_ringer.mcq.choices.items() %}
+                <div class="choice">☐ <strong>{{ letter }}.</strong> {{ choice }}</div>
+            {% endfor %}
+
+            <h3>2. Short Constructed Response</h3>
+            <p>{{ flow.bell_ringer.short_question }}</p>
+            <div class="line-box"></div>
+
+            {% if current_view == "teacher" %}
+                <div class="teacher-key">
+                    <h3>Teacher Answer</h3>
+                    <p><strong>MC:</strong> {{ flow.bell_ringer.mcq.answer }}</p>
+                    <p>{{ flow.bell_ringer.mcq.explanation }}</p>
+                    <p><strong>Short Response:</strong> {{ flow.bell_ringer.short_answer }}</p>
+                </div>
+            {% endif %}
+        {% else %}
+            <p>No bell ringer review today. Day 1 begins with classroom routines, safety, and notebook setup.</p>
+        {% endif %}
+    </section>
+
+    <section class="packet-section">
+        <h2>👩‍🏫 Mini Lesson Notes</h2>
+        <p><strong>Phenomenon / Model:</strong> {{ flow.phenomenon }}</p>
+
+        <ul>
+            {% for item in flow.mini_lesson_student %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+
+        {% if current_view == "teacher" %}
+            <div class="teacher-key">
+                <h3>Teacher: How to Teach</h3>
+                <ul>
+                    {% for item in flow.mini_lesson_teacher %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+
+                <h3>Misconceptions</h3>
+                <ul>
+                    {% for item in flow.teacher_misconceptions %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="packet-section">
+        <h2>📓 Science Notebook</h2>
+        <p>Copy these important ideas:</p>
+
+        <ul>
+            {% for item in flow.science_notebook %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>My model / example:</h3>
+        <div class="line-box"></div>
+    </section>
+
+    <section class="packet-section">
+        <h2>🤝 Guided Practice</h2>
+
+        <ol>
+            {% for item in flow.guided_practice_student %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ol>
+
+        <h3>Practice Response</h3>
+        <div class="line-box"></div>
+
+        {% if current_view == "teacher" %}
+            <div class="teacher-key">
+                <h3>Teacher Moves</h3>
+                <ol>
+                    {% for item in flow.guided_practice_teacher %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ol>
+
+                <h3>Answer / Look-For Guidance</h3>
+                <ul>
+                    {% for item in flow.teacher_answers %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="packet-section">
+        <h2>🔬 Lab / Investigation</h2>
+        <p><strong>Purpose:</strong> {{ flow.lab.purpose }}</p>
+
+        <h3>Student Steps</h3>
+        <ol>
+            {% for item in flow.lab.student_steps %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ol>
+
+        {% if current_view == "teacher" %}
+            <div class="teacher-key">
+                <h3>In-Person Lab Setup</h3>
+
+                <p><strong>Materials:</strong></p>
+                <ul>
+                    {% for item in flow.lab.materials %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+
+                <p><strong>Setup:</strong></p>
+                <ol>
+                    {% for item in flow.lab.setup %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ol>
+
+                <p><strong>During the lab:</strong></p>
+                <ul>
+                    {% for item in flow.lab.teacher_moves %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="packet-section">
+        <h2>📒 Lab Notebook</h2>
+
+        {% for item in flow.lab_notebook %}
+            <p><strong>{{ item }}:</strong></p>
+            <div class="short-line"></div>
+        {% endfor %}
+
+        <h3>Data / Observations</h3>
+        <div class="line-box"></div>
+
+        <h3>Conclusion</h3>
+        <div class="line-box"></div>
+    </section>
+
+
+    {% set resource_support = get_resource_support(lesson_day) %}
+
+    <section class="packet-section">
+        <h2>🧾 Resources to Use: Student Notebook Form</h2>
+        <p><strong>{{ resource_support.title }}</strong></p>
+        <p>{{ resource_support.student_use }}</p>
+
+        {% for item in resource_support.sections %}
+            <p><strong>{{ item }}:</strong></p>
+            <div class="short-line"></div>
+        {% endfor %}
+
+        <h3>Notebook Thinking Prompts</h3>
+        <ul>
+            {% for prompt in resource_support.notebook_prompts %}
+                <li>{{ prompt }}</li>
+            {% endfor %}
+        </ul>
+
+        {% if current_view == "teacher" %}
+            <div class="teacher-key">
+                <h3>Teacher Use</h3>
+                <p>{{ resource_support.teacher_use }}</p>
+
+                <h3>Teacher Look-Fors</h3>
+                <ul>
+                    {% for item in resource_support.teacher_look_fors %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="packet-section">
+        <h2>⭐ STAAR Practice — DOK 2</h2>
+        <p>{{ staar_item.question }}</p>
+
+        {% for letter, choice in staar_item.choices.items() %}
+            <div class="choice">☐ <strong>{{ letter }}.</strong> {{ choice }}</div>
+        {% endfor %}
+
+        <p><strong>Explain your evidence:</strong></p>
+        <div class="line-box"></div>
+
+        {% if current_view == "teacher" %}
+            <div class="teacher-key">
+                <h3>Teacher Answer</h3>
+                <p><strong>Correct answer:</strong> {{ staar_item.answer }}</p>
+                <p>{{ staar_item.explanation }}</p>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="packet-section">
+        <h2>🎟️ Written Exit Ticket</h2>
+        <p>{{ flow.daily.exit_question }}</p>
+        <div class="line-box"></div>
+
+        {% if current_view == "teacher" %}
+            <div class="teacher-key">
+                <h3>Teacher Answer</h3>
+                <p>{{ flow.daily.exit_answer }}</p>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="packet-section">
+        <h2>🧠 CER Response</h2>
+        <p><strong>Question:</strong> {{ flow.daily.cer_question }}</p>
+
+        <div class="cer-grid">
+            <div>
+                <h3>Claim</h3>
+                <div class="line-box"></div>
+            </div>
+
+            <div>
+                <h3>Evidence</h3>
+                <div class="line-box"></div>
+            </div>
+
+            <div>
+                <h3>Reasoning</h3>
+                <div class="line-box"></div>
+            </div>
+        </div>
+
+        <h3>Use Science Vocabulary</h3>
+        <div class="line-box"></div>
+
+        {% if current_view == "teacher" %}
+            <div class="teacher-key">
+                <h3>Teacher Example CER</h3>
+                <p>{{ flow.daily.cer_example }}</p>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="packet-section">
+        <h2>📘 McGraw Hill Connection</h2>
+        <p><strong>{{ flow.mcgraw_connection.title }}</strong></p>
+        <p>{{ flow.mcgraw_connection.focus }}</p>
+
+        {% if current_view == "teacher" %}
+            <div class="teacher-key">
+                <h3>Teacher Use</h3>
+                <p>{{ flow.mcgraw_connection.teacher_use }}</p>
+                <p><strong>Look for:</strong> {{ flow.mcgraw_connection.look_for }}</p>
+            </div>
+        {% else %}
+            <p>{{ flow.mcgraw_connection.student_use }}</p>
+        {% endif %}
+    </section>
+
+</div>
+</body>
+</html>

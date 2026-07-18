@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260">
+  <rect x="10" y="10" width="400" height="240" rx="28" fill="#f5edff" stroke="#111" stroke-width="7"/>
+  <circle cx="95" cy="85" r="34" fill="#ff9f1c" stroke="#111" stroke-width="5"/>
+  <path d="M210 45 H275 L250 145 H235 L220 175 H185 L205 145 H190 Z" fill="#8ecae6" stroke="#111" stroke-width="6"/>
+  <path d="M199 118 C218 105 239 135 258 118 L250 145 H190 Z" fill="#219ebc" stroke="#111" stroke-width="3"/>
+  <rect x="290" y="80" width="65" height="105" rx="12" fill="#6f2dbd" stroke="#111" stroke-width="5"/>
+  <rect x="305" y="60" width="35" height="25" rx="6" fill="#111"/>
+  <text x="95" y="96" text-anchor="middle" font-family="Arial" font-size="42">🔬</text>
+  <text x="210" y="220" text-anchor="middle" font-family="Arial" font-size="28" font-weight="900" fill="#111">5th Grade Science</text>
+</svg>

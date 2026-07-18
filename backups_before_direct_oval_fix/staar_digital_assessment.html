@@ -1,0 +1,870 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>1st 9 Weeks STAAR-Style Digital Assessment</h1>
+<p class="lead">
+  Randomized assessment covering Matter, Mixtures, Particles, Force and Motion, Variables, Data, Graphs, and Evidence.
+</p>
+
+<a href="/first-nine-weeks/day/44?view=student" class="btn btn-secondary mb-4">
+  Back to Day 44
+</a>
+
+<style>
+  .assessment-banner {
+    background: #212529;
+    color: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+
+  .badge-pill {
+    display: inline-block;
+    background: #fff3cd;
+    color: #111;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: bold;
+    margin: 5px;
+  }
+
+  .assessment-card {
+    border: 1px solid #ddd;
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
+
+  .testing-panel {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 18px;
+  }
+
+  .question-box {
+    background: #fff;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 20px;
+    margin: 18px 0;
+  }
+
+  .answer-choice {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #f8f9fa;
+    padding: 12px;
+    margin: 10px 0;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .answer-choice:hover {
+    background: #fff3cd;
+  }
+
+  .answer-choice.selected {
+    background: #cfe2ff;
+  }
+
+  .answer-choice.correct-choice {
+    background: #d1e7dd;
+  }
+
+  .answer-choice.wrong-choice {
+    background: #f8d7da;
+  }
+
+  .score-box {
+    background: white;
+    border: 5px solid #111;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .score-number {
+    font-size: 64px;
+    font-weight: bold;
+  }
+
+  .topic-row {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .progress-track {
+    height: 28px;
+    background: #e9ecef;
+    border: 3px solid #111;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #d1e7dd;
+    transition: width 0.5s;
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  .warning {
+    background: #fff3cd;
+    color: #664d03;
+  }
+
+  .teacher-table {
+    font-size: 14px;
+  }
+
+  .hidden-until-submit {
+    display: none;
+  }
+
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+
+    .assessment-card {
+      page-break-inside: avoid;
+    }
+  }
+</style>
+
+<div class="assessment-banner">
+  <h2>📝 Digital STAAR Assessment</h2>
+  <p class="mb-2">
+    Start the assessment, answer randomized questions, submit, then review your score report.
+  </p>
+  <span class="badge-pill">Random Questions</span>
+  <span class="badge-pill">Random Choices</span>
+  <span class="badge-pill">Score Report</span>
+  <span class="badge-pill">Topic Breakdown</span>
+  <span class="badge-pill">Teacher Review</span>
+</div>
+
+<div class="assessment-card no-print" id="setupCard">
+  <h2>Assessment Setup</h2>
+
+  <div class="row">
+    <div class="col-md-4">
+      <label class="form-label"><strong>Initials or class number — optional:</strong></label>
+      <input id="studentName" class="form-control mb-3" placeholder="Type initials or class number — optional">
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label"><strong>Number of questions:</strong></label>
+      <select id="questionAmount" class="form-select mb-3">
+        <option value="10">10 questions</option>
+        <option value="15">15 questions</option>
+        <option value="20" selected>20 questions</option>
+        <option value="25">25 questions</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label"><strong>Mode:</strong></label>
+      <select id="assessmentMode" class="form-select mb-3">
+        <option value="student" selected>Student Testing Mode</option>
+        <option value="teacher">Teacher Review Mode</option>
+      </select>
+    </div>
+  </div>
+
+  <button class="btn btn-success btn-lg" onclick="startAssessment()">Start Assessment</button>
+  <button class="btn btn-primary btn-lg" onclick="loadLastReport()">Load Last Report</button>
+</div>
+
+<div class="assessment-card" id="testingCard" style="display:none;">
+  <div class="testing-panel">
+    <div class="row">
+      <div class="col-md-4">
+        <strong>Student:</strong> <span id="studentDisplay">Student</span>
+      </div>
+      <div class="col-md-4">
+        <strong>Question:</strong> <span id="questionProgress">1 of 20</span>
+      </div>
+      <div class="col-md-4">
+        <strong>Topic:</strong> <span id="topicDisplay">Topic</span>
+      </div>
+    </div>
+
+    <div class="progress-track mt-3">
+      <div id="assessmentProgressFill" class="progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="question-box">
+    <h3 id="questionTitle">Question 1</h3>
+    <p id="questionText">Question text will appear here.</p>
+    <div id="answerChoices"></div>
+  </div>
+
+  <div class="no-print">
+    <button class="btn btn-secondary" onclick="previousQuestion()">Previous</button>
+    <button class="btn btn-primary" onclick="nextQuestion()">Next</button>
+    <button class="btn btn-warning" onclick="flagQuestion()">Flag Question</button>
+    <button class="btn btn-success" onclick="submitAssessment()">Submit Assessment</button>
+    <button class="btn btn-danger" onclick="restartAssessment()">Restart</button>
+  </div>
+
+  <div id="testingFeedback"></div>
+</div>
+
+<div class="assessment-card hidden-until-submit" id="reportCard">
+  <h2>Score Report</h2>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="score-box">
+        <div id="finalScore" class="score-number">--%</div>
+        <div><strong>Overall Score</strong></div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="score-box">
+        <div id="rawScore" class="score-number">--/--</div>
+        <div><strong>Correct</strong></div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="score-box">
+        <div id="readinessLevel" class="score-number">--</div>
+        <div><strong>Readiness</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="studentReportMessage"></div>
+
+  <h3>Topic Breakdown</h3>
+  <div id="topicBreakdown"></div>
+
+  <h3 class="mt-4">Questions to Review</h3>
+  <div id="reviewList"></div>
+
+  <div class="no-print mt-3">
+    <button class="btn btn-primary" onclick="window.print()">Print Report</button>
+    <button class="btn btn-warning" onclick="showTeacherReview()">Show Teacher Review Mode</button>
+    <button class="btn btn-danger" onclick="restartAssessment()">Restart Assessment</button>
+  </div>
+</div>
+
+<div class="assessment-card hidden-until-submit" id="teacherReviewCard">
+  <h2>Teacher Review Mode</h2>
+  <p>
+    Use this section for answer key review, reteach groups, and item analysis.
+  </p>
+
+  <div id="teacherSummary"></div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered bg-white teacher-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Topic</th>
+          <th>Question</th>
+          <th>Student Answer</th>
+          <th>Correct Answer</th>
+          <th>Result</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody id="teacherReviewTable"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  const questionBank = [
+    {
+      topic: "Matter",
+      q: "A student places an iron nail, a plastic spoon, a wood craft stick, and a paper clip near a magnet. Which objects will most likely be attracted to the magnet?",
+      choices: ["Iron nail and paper clip", "Plastic spoon and wood craft stick", "Wood craft stick and paper clip", "Plastic spoon and iron nail"],
+      answer: "Iron nail and paper clip",
+      explanation: "Iron and steel objects are usually attracted to magnets. Plastic and wood are not."
+    },
+    {
+      topic: "Matter",
+      q: "Which tool would best measure the mass of a small rock?",
+      choices: ["Balance or scale", "Thermometer", "Ruler", "Graduated cylinder only"],
+      answer: "Balance or scale",
+      explanation: "A balance or scale measures mass."
+    },
+    {
+      topic: "Matter",
+      q: "A marble sinks in water. Which property is most related to whether the marble sinks or floats?",
+      choices: ["Relative density", "Magnetism", "Solubility", "Electrical conductivity"],
+      answer: "Relative density",
+      explanation: "Relative density helps explain whether an object sinks or floats in a liquid."
+    },
+    {
+      topic: "Matter",
+      q: "Which material would most likely conduct electricity?",
+      choices: ["Copper wire", "Rubber band", "Plastic straw", "Wood craft stick"],
+      answer: "Copper wire",
+      explanation: "Copper is a metal, and metals usually conduct electricity."
+    },
+    {
+      topic: "Matter",
+      q: "Which property describes how much space matter takes up?",
+      choices: ["Volume", "Magnetism", "Friction", "Evaporation"],
+      answer: "Volume",
+      explanation: "Volume is the amount of space matter takes up."
+    },
+    {
+      topic: "Mixtures and Solutions",
+      q: "A student wants to separate a mixture of gravel and sand. Which property would be most useful?",
+      choices: ["Particle size", "Magnetism", "Electrical conductivity", "Color of the container"],
+      answer: "Particle size",
+      explanation: "Gravel particles are larger than sand particles, so particle size can separate the mixture."
+    },
+    {
+      topic: "Mixtures and Solutions",
+      q: "A student wants to separate iron filings from sand. Which tool would be most useful?",
+      choices: ["Magnet", "Thermometer", "Graduated cylinder", "Balance"],
+      answer: "Magnet",
+      explanation: "Iron filings are magnetic, but sand is not."
+    },
+    {
+      topic: "Mixtures and Solutions",
+      q: "A student mixes salt and water until the salt can no longer be seen. What best describes the salt?",
+      choices: ["The salt dissolved in the water", "The salt became magnetic", "The salt changed into sand", "The salt disappeared from the universe"],
+      answer: "The salt dissolved in the water",
+      explanation: "The salt dissolved and spread through the water."
+    },
+    {
+      topic: "Mixtures and Solutions",
+      q: "A student wants to recover salt from salt water. Which process would be most useful?",
+      choices: ["Evaporation", "Using a magnet", "Filtering with a screen", "Sorting by hand"],
+      answer: "Evaporation",
+      explanation: "Evaporation removes the water and can leave the salt behind."
+    },
+    {
+      topic: "Mixtures and Solutions",
+      q: "Oil floats on top of water. Which property is most useful for separating the oil and water?",
+      choices: ["Relative density", "Magnetism", "Electrical conductivity", "Mass only"],
+      answer: "Relative density",
+      explanation: "Oil and water can separate into layers because they have different relative densities."
+    },
+    {
+      topic: "Particles Too Small to See",
+      q: "Which statement best explains why sugar seems to disappear when mixed into water?",
+      choices: ["Sugar particles spread out in the water and are too small to see", "Sugar turns into air", "Sugar becomes a magnet", "Sugar changes into plastic"],
+      answer: "Sugar particles spread out in the water and are too small to see",
+      explanation: "The sugar is still present, but its particles are spread out and too small to see."
+    },
+    {
+      topic: "Particles Too Small to See",
+      q: "Why do scientists use models to show dissolved sugar particles in water?",
+      choices: ["The particles may be too small to see with only eyes", "The particles are always huge", "Models make evidence unnecessary", "Models show that matter disappears"],
+      answer: "The particles may be too small to see with only eyes",
+      explanation: "Models help explain things that are too small to observe directly."
+    },
+    {
+      topic: "Particles Too Small to See",
+      q: "Which model best shows salt dissolved in water?",
+      choices: ["Tiny salt particles spread evenly through the water", "One large salt cube floating on top", "Salt particles turning into air", "Water becoming magnetic"],
+      answer: "Tiny salt particles spread evenly through the water",
+      explanation: "A solution has dissolved particles spread throughout."
+    },
+    {
+      topic: "Particles Too Small to See",
+      q: "A student says sugar disappeared after dissolving. Which statement is more accurate?",
+      choices: ["The sugar is still there as tiny particles spread through the water", "The sugar became nothing", "The sugar turned into light", "The sugar became a solid rock"],
+      answer: "The sugar is still there as tiny particles spread through the water",
+      explanation: "Matter does not just disappear. It can be present as particles too small to see."
+    },
+    {
+      topic: "Force and Motion",
+      q: "A toy car rolls down a ramp. Which force pulls the car downward?",
+      choices: ["Gravity", "Magnetism", "Light", "Sound"],
+      answer: "Gravity",
+      explanation: "Gravity pulls objects toward Earth."
+    },
+    {
+      topic: "Force and Motion",
+      q: "A rough surface causes a toy car to slow down faster than a smooth surface. Which force is greater on the rough surface?",
+      choices: ["Friction", "Gravity", "Magnetism", "Electricity"],
+      answer: "Friction",
+      explanation: "Rough surfaces usually increase friction, which slows motion."
+    },
+    {
+      topic: "Force and Motion",
+      q: "Two students push a box with equal force in opposite directions. What will most likely happen?",
+      choices: ["The box will not move much because the forces are balanced", "The box will fly upward", "The box will become soluble", "The box will turn into a liquid"],
+      answer: "The box will not move much because the forces are balanced",
+      explanation: "Equal forces in opposite directions are balanced and do not cause much change in motion."
+    },
+    {
+      topic: "Force and Motion",
+      q: "A magnet pulls a paper clip across a table. Which force causes the paper clip to move?",
+      choices: ["Magnetism", "Solubility", "Evaporation", "Insulation"],
+      answer: "Magnetism",
+      explanation: "Magnetism can attract magnetic materials and cause motion."
+    },
+    {
+      topic: "Force and Motion",
+      q: "A moving toy car hits a block and the block moves. What happened?",
+      choices: ["Mechanical energy was transferred", "The block dissolved", "The toy car became magnetic", "The block evaporated"],
+      answer: "Mechanical energy was transferred",
+      explanation: "Energy of motion can transfer from one object to another during contact."
+    },
+    {
+      topic: "Variables and Data",
+      q: "A student tests how ramp height affects the distance a toy car travels. What is the independent variable?",
+      choices: ["Ramp height", "Distance the car travels", "Same toy car", "Same floor surface"],
+      answer: "Ramp height",
+      explanation: "The independent variable is what is changed on purpose."
+    },
+    {
+      topic: "Variables and Data",
+      q: "In a balloon rocket investigation, students measure how far the rocket travels. What is the dependent variable?",
+      choices: ["Distance the rocket travels", "Amount of air in the balloon", "Same straw", "Same string"],
+      answer: "Distance the rocket travels",
+      explanation: "The dependent variable is what is measured."
+    },
+    {
+      topic: "Variables and Data",
+      q: "A student tests how ramp height affects distance. What should stay the same to make the test fair?",
+      choices: ["The toy car used", "The ramp height", "The distance traveled", "The final answer"],
+      answer: "The toy car used",
+      explanation: "Controlled variables are kept the same so the test is fair."
+    },
+    {
+      topic: "Variables and Data",
+      q: "Why should students repeat trials during an investigation?",
+      choices: ["To make the data more reliable", "To change all variables", "To avoid using evidence", "To make the test unfair"],
+      answer: "To make the data more reliable",
+      explanation: "Repeated trials help make results more reliable."
+    },
+    {
+      topic: "Variables and Data",
+      q: "A rubber ball bounced 74 cm and a foam ball bounced 18 cm. Which claim is best supported?",
+      choices: ["The rubber ball bounced higher than the foam ball", "The foam ball bounced higher than the rubber ball", "Both balls bounced the same height", "Ball type did not affect bounce height"],
+      answer: "The rubber ball bounced higher than the foam ball",
+      explanation: "The data supports this claim because 74 cm is greater than 18 cm."
+    },
+    {
+      topic: "Variables and Data",
+      q: "Which sentence is evidence?",
+      choices: ["The toy car traveled 82 cm on the smooth surface", "I liked the toy car best", "The lab was fun", "The graph looked nice"],
+      answer: "The toy car traveled 82 cm on the smooth surface",
+      explanation: "Evidence uses data or observations, not opinions."
+    },
+    {
+      topic: "Variables and Data",
+      q: "A graph shows that a car traveled 90 cm on tile and 35 cm on carpet. Which claim is supported?",
+      choices: ["The car traveled farther on tile", "The car traveled farther on carpet", "The surface did not matter", "No data was collected"],
+      answer: "The car traveled farther on tile",
+      explanation: "The data shows 90 cm on tile and 35 cm on carpet."
+    }
+  ];
+
+  let assessmentQuestions = [];
+  let currentIndex = 0;
+  let studentAnswers = {};
+  let flaggedQuestions = {};
+  let submitted = false;
+
+  function shuffleArray(items) {
+    const copy = [...items];
+
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+
+    return copy;
+  }
+
+  function showFeedback(elementId, message, kind) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + kind;
+    box.innerHTML = message;
+  }
+
+  function startAssessment() {
+    const amount = Number(document.getElementById("questionAmount").value);
+    const mode = document.getElementById("assessmentMode").value;
+    const name = document.getElementById("studentName").value.trim() || "Student";
+
+    assessmentQuestions = shuffleArray(questionBank).slice(0, amount).map((question, index) => {
+      return {
+        ...question,
+        id: index,
+        shuffledChoices: shuffleArray(question.choices)
+      };
+    });
+
+    currentIndex = 0;
+    studentAnswers = {};
+    flaggedQuestions = {};
+    submitted = false;
+
+    document.getElementById("studentDisplay").innerText = name;
+    document.getElementById("setupCard").style.display = "none";
+    document.getElementById("testingCard").style.display = "block";
+    document.getElementById("reportCard").style.display = "none";
+    document.getElementById("teacherReviewCard").style.display = mode === "teacher" ? "block" : "none";
+
+    renderQuestion();
+
+    if (mode === "teacher") {
+      showTeacherAnswerKeyOnly();
+    }
+  }
+
+  function renderQuestion() {
+    const question = assessmentQuestions[currentIndex];
+
+    document.getElementById("questionProgress").innerText = (currentIndex + 1) + " of " + assessmentQuestions.length;
+    document.getElementById("topicDisplay").innerText = question.topic;
+    document.getElementById("questionTitle").innerText = "Question " + (currentIndex + 1) + (flaggedQuestions[currentIndex] ? " 🚩" : "");
+    document.getElementById("questionText").innerText = question.q;
+
+    const percent = Math.round(((currentIndex + 1) / assessmentQuestions.length) * 100);
+    document.getElementById("assessmentProgressFill").style.width = percent + "%";
+
+    const choicesDiv = document.getElementById("answerChoices");
+    choicesDiv.innerHTML = "";
+
+    question.shuffledChoices.forEach(choice => {
+      const button = document.createElement("button");
+      button.className = "answer-choice";
+      button.innerText = choice;
+
+      if (studentAnswers[currentIndex] === choice) {
+        button.classList.add("selected");
+      }
+
+      if (submitted && choice === question.answer) {
+        button.classList.add("correct-choice");
+      }
+
+      if (submitted && studentAnswers[currentIndex] === choice && choice !== question.answer) {
+        button.classList.add("wrong-choice");
+      }
+
+      button.onclick = () => selectAnswer(choice);
+      choicesDiv.appendChild(button);
+    });
+
+    document.getElementById("testingFeedback").innerHTML = "";
+  }
+
+  function selectAnswer(choice) {
+    if (submitted) return;
+
+    studentAnswers[currentIndex] = choice;
+    renderQuestion();
+  }
+
+  function previousQuestion() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      renderQuestion();
+    }
+  }
+
+  function nextQuestion() {
+    if (currentIndex < assessmentQuestions.length - 1) {
+      currentIndex++;
+      renderQuestion();
+    }
+  }
+
+  function flagQuestion() {
+    flaggedQuestions[currentIndex] = !flaggedQuestions[currentIndex];
+    renderQuestion();
+  }
+
+  function submitAssessment() {
+    const unanswered = assessmentQuestions.filter((q, index) => !studentAnswers[index]).length;
+
+    if (unanswered > 0) {
+      const confirmSubmit = confirm("You have " + unanswered + " unanswered question(s). Submit anyway?");
+      if (!confirmSubmit) return;
+    }
+
+    submitted = true;
+
+    const report = calculateReport();
+    saveReport(report);
+    renderReport(report);
+    renderTeacherReview(report);
+
+    document.getElementById("reportCard").style.display = "block";
+    document.getElementById("teacherReviewCard").style.display = "none";
+
+    showFeedback("testingFeedback", "Assessment submitted. Scroll down to see your score report.", "correct");
+    renderQuestion();
+    document.getElementById("reportCard").scrollIntoView({behavior: "smooth"});
+  }
+
+  function calculateReport() {
+    let correct = 0;
+    const topicStats = {};
+    const reviewItems = [];
+
+    assessmentQuestions.forEach((question, index) => {
+      const studentAnswer = studentAnswers[index] || "No answer";
+      const isCorrect = studentAnswer === question.answer;
+
+      if (isCorrect) correct++;
+
+      if (!topicStats[question.topic]) {
+        topicStats[question.topic] = {
+          total: 0,
+          correct: 0
+        };
+      }
+
+      topicStats[question.topic].total++;
+
+      if (isCorrect) {
+        topicStats[question.topic].correct++;
+      } else {
+        reviewItems.push({
+          number: index + 1,
+          topic: question.topic,
+          question: question.q,
+          studentAnswer,
+          correctAnswer: question.answer,
+          explanation: question.explanation
+        });
+      }
+    });
+
+    const percent = Math.round((correct / assessmentQuestions.length) * 100);
+
+    return {
+      studentInitials / Class # — optional: document.getElementById("studentDisplay").innerText,
+      correct,
+      total: assessmentQuestions.length,
+      percent,
+      topicStats,
+      reviewItems,
+      questions: assessmentQuestions,
+      studentAnswers,
+      date: new Date().toLocaleString()
+    };
+  }
+
+  function getReadiness(percent) {
+    if (percent >= 85) return "Ready";
+    if (percent >= 70) return "Close";
+    if (percent >= 50) return "Review";
+    return "Reteach";
+  }
+
+  function renderReport(report) {
+    document.getElementById("finalScore").innerText = report.percent + "%";
+    document.getElementById("rawScore").innerText = report.correct + "/" + report.total;
+    document.getElementById("readinessLevel").innerText = getReadiness(report.percent);
+
+    let message = "";
+
+    if (report.percent >= 85) {
+      message = "Strong work. You are showing readiness across the 1st 9 weeks concepts.";
+      showFeedback("studentReportMessage", message, "correct");
+    } else if (report.percent >= 70) {
+      message = "Good progress. Review the missed topics and practice explaining your evidence.";
+      showFeedback("studentReportMessage", message, "warning");
+    } else {
+      message = "Keep working. Use the topic breakdown to choose what to review next.";
+      showFeedback("studentReportMessage", message, "incorrect");
+    }
+
+    const topicDiv = document.getElementById("topicBreakdown");
+    topicDiv.innerHTML = "";
+
+    Object.keys(report.topicStats).forEach(topic => {
+      const stat = report.topicStats[topic];
+      const topicPercent = Math.round((stat.correct / stat.total) * 100);
+
+      const row = document.createElement("div");
+      row.className = "topic-row";
+      row.innerHTML = `
+        <div class="row">
+          <div class="col-md-4"><strong>${topic}</strong></div>
+          <div class="col-md-3">${stat.correct}/${stat.total}</div>
+          <div class="col-md-3">${topicPercent}%</div>
+          <div class="col-md-2">${topicPercent >= 70 ? "✅" : "🔁 Review"}</div>
+        </div>
+        <div class="progress-track mt-2">
+          <div class="progress-fill" style="width:${topicPercent}%"></div>
+        </div>
+      `;
+      topicDiv.appendChild(row);
+    });
+
+    const reviewDiv = document.getElementById("reviewList");
+    reviewDiv.innerHTML = "";
+
+    if (report.reviewItems.length === 0) {
+      reviewDiv.innerHTML = `<div class="feedback correct">No missed questions. Excellent work.</div>`;
+    } else {
+      report.reviewItems.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "topic-row";
+        div.innerHTML = `
+          <p><strong>Question ${item.number} - ${item.topic}</strong></p>
+          <p>${item.question}</p>
+          <p><strong>Your answer:</strong> ${item.studentAnswer}</p>
+          <p><strong>Review this topic:</strong> ${item.topic}</p>
+        `;
+        reviewDiv.appendChild(div);
+      });
+    }
+  }
+
+  function renderTeacherReview(report) {
+    const table = document.getElementById("teacherReviewTable");
+    table.innerHTML = "";
+
+    let weakestTopic = "None";
+    let weakestScore = 101;
+
+    Object.keys(report.topicStats).forEach(topic => {
+      const stat = report.topicStats[topic];
+      const topicPercent = Math.round((stat.correct / stat.total) * 100);
+
+      if (topicPercent < weakestScore) {
+        weakestScore = topicPercent;
+        weakestTopic = topic;
+      }
+    });
+
+    document.getElementById("teacherSummary").innerHTML = `
+      <div class="feedback warning">
+        <p><strong>Student:</strong> ${report.studentName}</p>
+        <p><strong>Date:</strong> ${report.date}</p>
+        <p><strong>Overall:</strong> ${report.correct}/${report.total} (${report.percent}%)</p>
+        <p><strong>Suggested reteach focus:</strong> ${weakestTopic}</p>
+      </div>
+    `;
+
+    report.questions.forEach((question, index) => {
+      const studentAnswer = report.studentAnswers[index] || "No answer";
+      const isCorrect = studentAnswer === question.answer;
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${question.topic}</td>
+        <td>${question.q}</td>
+        <td>${studentAnswer}</td>
+        <td>${question.answer}</td>
+        <td>${isCorrect ? "✅ Correct" : "❌ Review"}</td>
+        <td>${question.explanation}</td>
+      `;
+      table.appendChild(row);
+    });
+  }
+
+  function showTeacherReview() {
+    const report = calculateReport();
+    renderTeacherReview(report);
+    document.getElementById("teacherReviewCard").style.display = "block";
+    document.getElementById("teacherReviewCard").scrollIntoView({behavior: "smooth"});
+  }
+
+  function showTeacherAnswerKeyOnly() {
+    const fakeReport = {
+      studentInitials / Class # — optional: "Teacher Preview",
+      correct: 0,
+      total: assessmentQuestions.length,
+      percent: 0,
+      topicStats: {},
+      reviewItems: [],
+      questions: assessmentQuestions,
+      studentAnswers: {},
+      date: new Date().toLocaleString()
+    };
+
+    assessmentQuestions.forEach(q => {
+      if (!fakeReport.topicStats[q.topic]) {
+        fakeReport.topicStats[q.topic] = {total: 0, correct: 0};
+      }
+      fakeReport.topicStats[q.topic].total++;
+    });
+
+    renderTeacherReview(fakeReport);
+  }
+
+  function saveReport(report) {
+    localStorage.setItem("day44AssessmentReport", JSON.stringify(report));
+  }
+
+  function loadLastReport() {
+    const saved = localStorage.getItem("day44AssessmentReport");
+
+    if (!saved) {
+      alert("No saved report found on this device.");
+      return;
+    }
+
+    const report = JSON.parse(saved);
+
+    document.getElementById("setupCard").style.display = "none";
+    document.getElementById("testingCard").style.display = "none";
+    document.getElementById("reportCard").style.display = "block";
+    document.getElementById("teacherReviewCard").style.display = "block";
+
+    renderReport(report);
+    renderTeacherReview(report);
+  }
+
+  function restartAssessment() {
+    if (!confirm("Restart the assessment? Current unsaved answers will be cleared.")) return;
+
+    assessmentQuestions = [];
+    currentIndex = 0;
+    studentAnswers = {};
+    flaggedQuestions = {};
+    submitted = false;
+
+    document.getElementById("setupCard").style.display = "block";
+    document.getElementById("testingCard").style.display = "none";
+    document.getElementById("reportCard").style.display = "none";
+    document.getElementById("teacherReviewCard").style.display = "none";
+  }
+</script>
+
+{% endblock %}

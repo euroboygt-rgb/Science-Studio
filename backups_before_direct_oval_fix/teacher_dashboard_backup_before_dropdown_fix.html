@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+
+{% block title %}Teacher Dashboard{% endblock %}
+
+{% block content %}
+
+<style>
+    .teacher-hero {
+        background: linear-gradient(135deg, #102542 0%, #1b4965 55%, #5fa8d3 100%);
+        color: white;
+        border: 5px solid #111;
+        border-radius: 28px;
+        padding: 30px;
+        box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+        margin-bottom: 22px;
+    }
+
+    .teacher-card, .unit-folder {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 20px;
+        padding: 18px;
+        margin-bottom: 18px;
+        box-shadow: 5px 5px 0 rgba(17,17,17,0.14);
+    }
+
+    .teacher-btn {
+        border: 3px solid #111;
+        border-radius: 10px;
+        font-weight: 900;
+        box-shadow: 3px 3px 0 rgba(17,17,17,0.2);
+        margin: 4px;
+    }
+
+    .folder-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 3px solid #111;
+        margin: -18px -18px 18px -18px;
+        padding: 14px 18px;
+        background: #e8f4ff;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .lesson-mini-card {
+        border: 3px solid #111;
+        border-radius: 15px;
+        padding: 12px;
+        background: #f8f9fa;
+        height: 100%;
+    }
+
+    .day-badge {
+        display: inline-block;
+        background: #0d6efd;
+        color: white;
+        border: 2px solid #111;
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-weight: 900;
+        margin-bottom: 8px;
+    }
+
+    .planning-pill {
+        display: inline-block;
+        border: 3px solid #111;
+        border-radius: 999px;
+        padding: 8px 12px;
+        margin: 5px;
+        font-weight: 900;
+        background: #d8f3dc;
+    }
+</style>
+
+{% set classroom_lessons = [] %}
+{% set unit1_lessons = [] %}
+{% set unit2_lessons = [] %}
+{% set unit3_lessons = [] %}
+{% set unit4_lessons = [] %}
+{% set review_lessons = [] %}
+
+{% for lesson in lessons %}
+    {% set d = lesson.day if lesson.day is defined else lesson["day"] %}
+
+    {% if d <= 2 %}
+        {% set _ = classroom_lessons.append(lesson) %}
+    {% elif d <= 16 %}
+        {% set _ = unit1_lessons.append(lesson) %}
+    {% elif d <= 26 %}
+        {% set _ = unit2_lessons.append(lesson) %}
+    {% elif d <= 36 %}
+        {% set _ = unit3_lessons.append(lesson) %}
+    {% elif d <= 43 %}
+        {% set _ = unit4_lessons.append(lesson) %}
+    {% else %}
+        {% set _ = review_lessons.append(lesson) %}
+    {% endif %}
+{% endfor %}
+
+{% macro lesson_card(lesson) %}
+    {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
+    {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
+    {% set lesson_teks = lesson.teks if lesson.teks is defined else lesson.get("teks", "") %}
+
+    <div class="col-md-6 col-xl-4 mb-3">
+        <div class="lesson-mini-card">
+            <span class="day-badge">Day {{ lesson_day }}</span>
+            <h5>{{ lesson_title }}</h5>
+            <p class="small mb-2"><strong>TEKS:</strong> {{ lesson_teks }}</p>
+
+            <a href="/first-nine-weeks/day/{{ lesson_day }}?view=teacher" class="btn btn-success btn-sm teacher-btn">
+                Teacher
+            </a>
+
+            <a href="/first-nine-weeks/day/{{ lesson_day }}?view=student" class="btn btn-primary btn-sm teacher-btn">
+                Student
+            </a>
+        </div>
+    </div>
+{% endmacro %}
+
+<section class="teacher-hero">
+    <span class="badge-science">Teacher Dashboard</span>
+    <span class="badge-science">Updated YAG</span>
+    <span class="badge-science">MP1</span>
+
+    <h1 class="mt-3">Teacher Command Center</h1>
+    <p class="lead mb-0">
+        Use this page to launch lessons, labs, vocabulary, printable resources, assessment tools,
+        review stations, and Unit 4 energy materials.
+    </p>
+</section>
+
+<section class="teacher-card">
+    <h2>🗺️ 1st 9 Weeks Planning Map</h2>
+
+    <span class="planning-pill">Days 1–2: Classroom Launch</span>
+    <span class="planning-pill">Days 3–16: Unit 1 Matter</span>
+    <span class="planning-pill">Days 17–26: Unit 2 Mixtures</span>
+    <span class="planning-pill">Days 27–36: Unit 3 Force and Motion</span>
+    <span class="planning-pill">Days 37–43: Unit 4 Energy Transformations</span>
+    <span class="planning-pill">Days 44–45: Review/Test</span>
+</section>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="teacher-card">
+            <h2>📚 Lesson Tools</h2>
+            <a href="/first-nine-weeks" class="btn btn-primary w-100 teacher-btn">Open All Lessons</a>
+            <a href="/student-dashboard" class="btn btn-success w-100 teacher-btn">Open Student Dashboard</a>
+            <a href="/resources" class="btn btn-warning w-100 teacher-btn">Open Printable Resources</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="teacher-card">
+            <h2>🔬 Science Tools</h2>
+            <a href="/labs" class="btn btn-info w-100 teacher-btn">Open Lab Library</a>
+            <a href="/vocabulary" class="btn btn-secondary w-100 teacher-btn">Open Vocabulary Posters</a>
+            <a href="/resources/cmelts-energy-anchor-chart" class="btn btn-danger w-100 teacher-btn">Open CMELTS Energy Chart</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="teacher-card">
+            <h2>📝 Review Tools</h2>
+            <a href="/labs/staar-spiral-review-game" class="btn btn-light w-100 teacher-btn">STAAR Spiral Review</a>
+            <a href="/labs/science-stations-board" class="btn btn-light w-100 teacher-btn">Science Stations Board</a>
+            <a href="/labs/staar-digital-assessment" class="btn btn-light w-100 teacher-btn">Digital Assessment</a>
+            <a href="/labs/reflection-tracker" class="btn btn-light w-100 teacher-btn">Reflection Tracker</a>
+        </div>
+    </div>
+</div>
+
+<section class="unit-folder">
+    <div class="folder-header">
+        <div>
+            <h2>🧰 Classroom Launch</h2>
+            <p class="mb-0"><strong>Days 1–2:</strong> Routines, safety, notebooks, tools, and engineering/scientific design</p>
+        </div>
+        <button class="btn btn-light teacher-btn" onclick="toggleFolder('classroomBody')">Open / Close</button>
+    </div>
+
+    <div id="classroomBody">
+        <div class="row">
+            {% for lesson in classroom_lessons %}
+                {{ lesson_card(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="unit-folder">
+    <div class="folder-header">
+        <div>
+            <h2>🧪 Unit 1: Physical Properties of Matter</h2>
+            <p class="mb-0"><strong>Days 3–16:</strong> Matter, particles, mass, volume, magnetism, relative density, solubility, conductivity, and Unit 1 PA</p>
+        </div>
+        <button class="btn btn-light teacher-btn" onclick="toggleFolder('unit1Body')">Open / Close</button>
+    </div>
+
+    <div id="unit1Body">
+        <div class="row">
+            {% for lesson in unit1_lessons %}
+                {{ lesson_card(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="unit-folder">
+    <div class="folder-header">
+        <div>
+            <h2>♻️ Unit 2: Mixtures and Solutions</h2>
+            <p class="mb-0"><strong>Days 17–26:</strong> Mixtures, separation, solutions, conservation of matter, and particles too small to see</p>
+        </div>
+        <button class="btn btn-light teacher-btn" onclick="toggleFolder('unit2Body')">Open / Close</button>
+    </div>
+
+    <div id="unit2Body">
+        <div class="row">
+            {% for lesson in unit2_lessons %}
+                {{ lesson_card(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="unit-folder">
+    <div class="folder-header">
+        <div>
+            <h2>🏎️ Unit 3: Force and Motion</h2>
+            <p class="mb-0"><strong>Days 27–36:</strong> Equal forces, unequal forces, mechanical energy transfer, variables, and investigations</p>
+        </div>
+        <button class="btn btn-light teacher-btn" onclick="toggleFolder('unit3Body')">Open / Close</button>
+    </div>
+
+    <div id="unit3Body">
+        <div class="row">
+            {% for lesson in unit3_lessons %}
+                {{ lesson_card(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="unit-folder">
+    <div class="folder-header">
+        <div>
+            <h2>🔦 Unit 4: Energy Transformations</h2>
+            <p class="mb-0"><strong>Days 37–43:</strong> Chemical, mechanical, electrical, light, thermal, and sound energy</p>
+        </div>
+        <button class="btn btn-light teacher-btn" onclick="toggleFolder('unit4Body')">Open / Close</button>
+    </div>
+
+    <div id="unit4Body">
+        <div class="row">
+            {% for lesson in unit4_lessons %}
+                {{ lesson_card(lesson) }}
+            {% endfor %}
+        </div>
+
+        <a href="/resources/cmelts-energy-anchor-chart" class="btn btn-warning teacher-btn">
+            Open / Print CMELTS Anchor Chart
+        </a>
+    </div>
+</section>
+
+<section class="unit-folder">
+    <div class="folder-header">
+        <div>
+            <h2>📝 Review and 9 Weeks Test</h2>
+            <p class="mb-0"><strong>Days 44–45:</strong> Review, reteach, assessment, and reflection</p>
+        </div>
+        <button class="btn btn-light teacher-btn" onclick="toggleFolder('reviewBody')">Open / Close</button>
+    </div>
+
+    <div id="reviewBody">
+        <div class="row">
+            {% for lesson in review_lessons %}
+                {{ lesson_card(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script>
+function toggleFolder(id) {
+    const section = document.getElementById(id);
+    if (!section) return;
+    section.style.display = section.style.display === "none" ? "block" : "none";
+}
+</script>
+
+{% endblock %}

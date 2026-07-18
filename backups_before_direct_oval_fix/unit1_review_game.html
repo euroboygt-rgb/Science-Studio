@@ -1,0 +1,347 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Unit 1 Physical Properties Review Game</h1>
+<p class="lead">
+  Review mass, volume, magnetism, relative density, solubility, and conductivity.
+</p>
+
+<a href="/first-nine-weeks/day/15?view=student" class="btn btn-secondary mb-4">
+  Back to Day 15
+</a>
+
+<style>
+  .game-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
+
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
+  .station-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .score-box {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    background: #e9ecef;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  .performance-box {
+    background: white;
+    border: 2px dashed #333;
+    border-radius: 12px;
+    padding: 18px;
+    margin-top: 15px;
+  }
+</style>
+
+<div class="score-box">
+  Score: <span id="score">0</span> / 10
+</div>
+
+<div class="game-card">
+  <h2>Part 1: Identify the Physical Property</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Read each investigation and choose the physical property being tested.
+  </div>
+
+  <div class="station-card">
+    <h4>Station 1</h4>
+    <p>A student places a rock on a balance and records 42 grams.</p>
+    <select id="q1" class="form-select">
+      <option selected>Choose...</option>
+      <option>Mass</option>
+      <option>Volume</option>
+      <option>Solubility</option>
+      <option>Conductivity</option>
+    </select>
+  </div>
+
+  <div class="station-card">
+    <h4>Station 2</h4>
+    <p>A paper clip moves toward a magnet.</p>
+    <select id="q2" class="form-select">
+      <option selected>Choose...</option>
+      <option>Magnetism</option>
+      <option>Relative density</option>
+      <option>Volume</option>
+      <option>Solubility</option>
+    </select>
+  </div>
+
+  <div class="station-card">
+    <h4>Station 3</h4>
+    <p>Oil forms a layer above water.</p>
+    <select id="q3" class="form-select">
+      <option selected>Choose...</option>
+      <option>Conductivity</option>
+      <option>Relative density</option>
+      <option>Magnetism</option>
+      <option>Mass</option>
+    </select>
+  </div>
+
+  <div class="station-card">
+    <h4>Station 4</h4>
+    <p>Salt disappears after being stirred into water.</p>
+    <select id="q4" class="form-select">
+      <option selected>Choose...</option>
+      <option>Solubility</option>
+      <option>Mass</option>
+      <option>Volume</option>
+      <option>Magnetism</option>
+    </select>
+  </div>
+
+  <div class="station-card">
+    <h4>Station 5</h4>
+    <p>A copper wire is placed in a circuit and the bulb lights.</p>
+    <select id="q5" class="form-select">
+      <option selected>Choose...</option>
+      <option>Relative density</option>
+      <option>Solubility</option>
+      <option>Conductivity</option>
+      <option>Volume</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" onclick="checkPartOne()">Check Part 1</button>
+  <div id="partOneFeedback"></div>
+</div>
+
+<div class="game-card">
+  <h2>Part 2: Choose the Best Tool or Test</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Choose the tool or investigation that best tests each property.
+  </div>
+
+  <div class="station-card">
+    <h4>Mass</h4>
+    <select id="tool1" class="form-select">
+      <option selected>Choose tool or test...</option>
+      <option>Balance</option>
+      <option>Magnet test</option>
+      <option>Graduated cylinder</option>
+      <option>Circuit test</option>
+    </select>
+  </div>
+
+  <div class="station-card">
+    <h4>Volume of a liquid</h4>
+    <select id="tool2" class="form-select">
+      <option selected>Choose tool or test...</option>
+      <option>Balance</option>
+      <option>Graduated cylinder</option>
+      <option>Dissolving test</option>
+      <option>Magnet test</option>
+    </select>
+  </div>
+
+  <div class="station-card">
+    <h4>Magnetism</h4>
+    <select id="tool3" class="form-select">
+      <option selected>Choose tool or test...</option>
+      <option>Circuit test</option>
+      <option>Magnet test</option>
+      <option>Balance</option>
+      <option>Graduated cylinder</option>
+    </select>
+  </div>
+
+  <div class="station-card">
+    <h4>Solubility</h4>
+    <select id="tool4" class="form-select">
+      <option selected>Choose tool or test...</option>
+      <option>Place in water, stir, and observe</option>
+      <option>Place near a magnet</option>
+      <option>Measure with a ruler</option>
+      <option>Place in a circuit</option>
+    </select>
+  </div>
+
+  <div class="station-card">
+    <h4>Conductivity</h4>
+    <select id="tool5" class="form-select">
+      <option selected>Choose tool or test...</option>
+      <option>Balance</option>
+      <option>Sink or float test</option>
+      <option>Circuit test</option>
+      <option>Graduated cylinder</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" onclick="checkPartTwo()">Check Part 2</button>
+  <div id="partTwoFeedback"></div>
+</div>
+
+<div class="game-card">
+  <h2>Part 3: Performance Assessment Game</h2>
+
+  <div class="info-box">
+    <strong>Scenario:</strong> You are a Matter Detective. A mystery box contains different materials. Choose tests that will help identify their physical properties.
+  </div>
+
+  <div class="performance-box">
+    <h4>Mystery Material A</h4>
+    <p>The material is shiny and silver. It is attracted to a magnet. It completes a circuit and lights a bulb.</p>
+
+    <label class="form-label"><strong>Best conclusion:</strong></label>
+    <select id="pa1" class="form-select mb-3">
+      <option selected>Choose...</option>
+      <option>It is magnetic and conducts electricity.</option>
+      <option>It dissolves in water.</option>
+      <option>It is less dense than water.</option>
+      <option>It has no mass.</option>
+    </select>
+  </div>
+
+  <div class="performance-box">
+    <h4>Mystery Material B</h4>
+    <p>The material floats in water, does not dissolve, and does not complete a circuit.</p>
+
+    <label class="form-label"><strong>Best conclusion:</strong></label>
+    <select id="pa2" class="form-select mb-3">
+      <option selected>Choose...</option>
+      <option>It is more dense than water and soluble.</option>
+      <option>It is less dense than water, insoluble, and an insulator.</option>
+      <option>It is magnetic and conductive.</option>
+      <option>It has no volume.</option>
+    </select>
+  </div>
+
+  <div class="performance-box">
+    <h4>Mystery Material C</h4>
+    <p>The material disappears after being stirred into water. The mixture is clear.</p>
+
+    <label class="form-label"><strong>Best conclusion:</strong></label>
+    <select id="pa3" class="form-select mb-3">
+      <option selected>Choose...</option>
+      <option>It is soluble in water.</option>
+      <option>It is magnetic.</option>
+      <option>It is a conductor.</option>
+      <option>It is less dense than water.</option>
+    </select>
+  </div>
+
+  <button class="btn btn-primary" onclick="checkPerformance()">Check Performance Assessment</button>
+  <div id="performanceFeedback"></div>
+</div>
+
+<script>
+  let score = 0;
+  let partOneDone = false;
+  let partTwoDone = false;
+  let performanceDone = false;
+
+  function updateScore(points) {
+    score += points;
+    document.getElementById("score").innerText = score;
+  }
+
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function checkPartOne() {
+    let correct = 0;
+
+    if (document.getElementById("q1").value === "Mass") correct++;
+    if (document.getElementById("q2").value === "Magnetism") correct++;
+    if (document.getElementById("q3").value === "Relative density") correct++;
+    if (document.getElementById("q4").value === "Solubility") correct++;
+    if (document.getElementById("q5").value === "Conductivity") correct++;
+
+    if (!partOneDone) {
+      updateScore(correct);
+      partOneDone = true;
+    }
+
+    if (correct === 5) {
+      showFeedback("partOneFeedback", "Great job! You identified all 5 physical properties.", true);
+    } else {
+      showFeedback("partOneFeedback", "You got " + correct + " out of 5. Review the evidence in each investigation.", false);
+    }
+  }
+
+  function checkPartTwo() {
+    let correct = 0;
+
+    if (document.getElementById("tool1").value === "Balance") correct++;
+    if (document.getElementById("tool2").value === "Graduated cylinder") correct++;
+    if (document.getElementById("tool3").value === "Magnet test") correct++;
+    if (document.getElementById("tool4").value === "Place in water, stir, and observe") correct++;
+    if (document.getElementById("tool5").value === "Circuit test") correct++;
+
+    if (!partTwoDone) {
+      updateScore(correct);
+      partTwoDone = true;
+    }
+
+    if (correct === 5) {
+      showFeedback("partTwoFeedback", "Excellent! You matched all tools and tests correctly.", true);
+    } else {
+      showFeedback("partTwoFeedback", "You got " + correct + " out of 5. Think about which tool or test gives evidence for each property.", false);
+    }
+  }
+
+  function checkPerformance() {
+    let correct = 0;
+
+    if (document.getElementById("pa1").value === "It is magnetic and conducts electricity.") correct++;
+    if (document.getElementById("pa2").value === "It is less dense than water, insoluble, and an insulator.") correct++;
+    if (document.getElementById("pa3").value === "It is soluble in water.") correct++;
+
+    if (!performanceDone) {
+      updateScore(correct);
+      performanceDone = true;
+    }
+
+    if (correct === 3) {
+      showFeedback("performanceFeedback", "Performance assessment complete! You used evidence to support your conclusions.", true);
+    } else {
+      showFeedback("performanceFeedback", "You got " + correct + " out of 3. Go back to the observations and use them as evidence.", false);
+    }
+  }
+</script>
+
+{% endblock %}

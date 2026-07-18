@@ -162,61 +162,60 @@
 
 
 
-
-
-
-<!-- Science Studio title oval fixer FINAL -->
+<!-- Science Studio header-only oval color fixer -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    function applyTitleOvalFix() {
-        document.querySelectorAll("h1").forEach(function (title) {
-            let hero = title.parentElement;
+    function rgbParts(rgbText) {
+        return (rgbText.match(/\d+/g) || []).map(Number).slice(0, 3);
+    }
 
-            // Walk upward until we find the large title/header box.
-            for (let i = 0; i < 8 && hero; i++) {
-                const rect = hero.getBoundingClientRect();
-                const style = window.getComputedStyle(hero);
+    function isBlueHero(el) {
+        const rect = el.getBoundingClientRect();
 
-                const isLargeBox = rect.width > 450 && rect.height > 90;
-                const hasRoundedBorder = parseFloat(style.borderTopLeftRadius) >= 12;
-                const isNearTop = rect.top < 280;
+        if (rect.width < 450 || rect.height < 80) return false;
+        if (rect.top > 260) return false;
 
-                if (isLargeBox && hasRoundedBorder && isNearTop) {
-                    break;
-                }
+        const style = window.getComputedStyle(el);
+        const bg = rgbParts(style.backgroundColor);
 
-                hero = hero.parentElement;
-            }
+        if (bg.length < 3) return false;
 
-            if (!hero) return;
+        const r = bg[0], g = bg[1], b = bg[2];
 
-            const titleRect = title.getBoundingClientRect();
-            const heroRect = hero.getBoundingClientRect();
+        return b > r && b >= g && r < 110 && g < 170;
+    }
 
-            hero.querySelectorAll("span, a, div").forEach(function (el) {
-                const text = (el.textContent || "").trim();
-                const rect = el.getBoundingClientRect();
-                const style = window.getComputedStyle(el);
+    function isSmallOval(el) {
+        const text = (el.textContent || "").trim();
 
-                if (!text) return;
-                if (text.length > 70) return;
+        if (!text || text.length > 65) return false;
 
-                // Only items above the page title.
-                if (rect.bottom > titleRect.top + 8) return;
+        const style = window.getComputedStyle(el);
+        const radius = parseFloat(style.borderTopLeftRadius) || 0;
+        const rect = el.getBoundingClientRect();
 
-                // Only items inside the title box.
-                if (rect.top < heroRect.top || rect.left < heroRect.left || rect.right > heroRect.right) return;
+        if (rect.width > 260 || rect.height > 55) return false;
 
-                // Do not recolor regular buttons.
-                if (el.tagName.toLowerCase() === "button") return;
-                if (el.classList.contains("btn")) return;
+        return radius >= 10;
+    }
 
-                // Must look like a small oval/chip.
-                const radius = parseFloat(style.borderTopLeftRadius) || 0;
-                if (radius < 8) return;
-                if (rect.width < 35 || rect.width > 320) return;
-                if (rect.height < 16 || rect.height > 60) return;
+    function isBeforeTitle(el, hero) {
+        const h = hero.querySelector("h1, h2");
 
+        if (!h) return false;
+
+        const elRect = el.getBoundingClientRect();
+        const hRect = h.getBoundingClientRect();
+
+        return elRect.bottom <= hRect.top + 10;
+    }
+
+    document.querySelectorAll("section, div, header").forEach(function (hero) {
+        if (!isBlueHero(hero)) return;
+
+        hero.querySelectorAll("span, div, p").forEach(function (el) {
+            if (isSmallOval(el) && isBeforeTitle(el, hero)) {
+                el.classList.add("science-title-oval-only");
                 el.style.setProperty("background", "#6f2dbd", "important");
                 el.style.setProperty("background-color", "#6f2dbd", "important");
                 el.style.setProperty("color", "#ff9f1c", "important");
@@ -225,12 +224,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 el.style.setProperty("font-weight", "1000", "important");
                 el.style.setProperty("text-shadow", "none", "important");
                 el.style.setProperty("box-shadow", "3px 3px 0 rgba(0,0,0,0.32)", "important");
-            });
+            }
         });
-    }
-
-    applyTitleOvalFix();
-    setTimeout(applyTitleOvalFix, 250);
+    });
 });
 </script>
 

@@ -28,6 +28,33 @@
 }
 
 
+/* Global Science Studio title-section theme */
+.student-hero,
+.teacher-hero,
+.dashboard-hero,
+.lesson-hero,
+.page-hero,
+.unit-hero,
+.welcome-hero,
+.hero-card,
+.hero-section,
+.lesson-header,
+.page-header,
+.dashboard-header,
+.student-dashboard-hero,
+.teacher-dashboard-hero,
+.first-nine-weeks-hero,
+.title-card,
+.title-banner {
+    background:
+        radial-gradient(circle at 90% 10%, rgba(255,159,28,0.28), transparent 22%),
+        radial-gradient(circle at 10% 95%, rgba(111,45,189,0.42), transparent 30%),
+        linear-gradient(135deg, #12324a 0%, #1d5575 55%, #219ebc 100%) !important;
+    color: white !important;
+    border: 5px solid #111 !important;
+    border-radius: 28px !important;
+    box-shadow: 8px 8px 0 rgba(17,17,17,0.22) !important;
+}
 
 /* Purple/orange oval labels inside page title sections */
 .student-hero .badge,
@@ -161,13 +188,21 @@
 }
 
 
-
-
-
-/* Header-only purple/orange oval style */
-.science-title-oval-only {
+/* Force all title/header oval badges to match homepage */
+.science-purple-badge-fix {
     background: #6f2dbd !important;
-    background-color: #6f2dbd !important;
+    color: #ff9f1c !important;
+    border: 4px solid #111 !important;
+    border-radius: 999px !important;
+    font-weight: 1000 !important;
+    text-shadow: none !important;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.32) !important;
+}
+
+
+/* Final global oval badge style */
+.science-studio-purple-oval {
+    background: #6f2dbd !important;
     color: #ff9f1c !important;
     border: 4px solid #111 !important;
     border-radius: 999px !important;

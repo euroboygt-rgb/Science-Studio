@@ -156,81 +156,77 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   {% block scripts %}{% endblock %}
 
-
-
-
-
-
-
-
-
-
-<!-- Science Studio title oval fixer FINAL -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    function applyTitleOvalFix() {
-        document.querySelectorAll("h1").forEach(function (title) {
-            let hero = title.parentElement;
+    const heroSelectors = [
+        ".science-hero",
+        ".hero-card",
+        ".hero-section",
+        ".teacher-hero",
+        ".student-hero",
+        ".dashboard-hero",
+        ".lesson-hero",
+        ".page-hero",
+        ".unit-hero",
+        ".welcome-hero",
+        ".lesson-header",
+        ".page-header",
+        ".dashboard-header",
+        ".title-card",
+        ".title-banner"
+    ];
 
-            // Walk upward until we find the large title/header box.
-            for (let i = 0; i < 8 && hero; i++) {
-                const rect = hero.getBoundingClientRect();
-                const style = window.getComputedStyle(hero);
+    const badgeWords = [
+        "5th Grade Science",
+        "TEKS-Aligned",
+        "STAAR Practice",
+        "Live Classroom Site",
+        "Teacher Dashboard",
+        "Student Dashboard",
+        "Student Science Hub",
+        "Updated YAG",
+        "MP1",
+        "45 Days",
+        "Lessons",
+        "Labs",
+        "Review",
+        "Day",
+        "Student View",
+        "Teacher View",
+        "Unit"
+    ];
 
-                const isLargeBox = rect.width > 450 && rect.height > 90;
-                const hasRoundedBorder = parseFloat(style.borderTopLeftRadius) >= 12;
-                const isNearTop = rect.top < 280;
+    document.querySelectorAll(heroSelectors.join(",")).forEach(function (hero) {
+        hero.querySelectorAll("span, a, div, p").forEach(function (el) {
+            const text = (el.textContent || "").trim();
 
-                if (isLargeBox && hasRoundedBorder && isNearTop) {
-                    break;
-                }
-
-                hero = hero.parentElement;
+            if (!text || text.length > 65) {
+                return;
             }
 
-            if (!hero) return;
+            const looksLikeOval =
+                el.className.toString().toLowerCase().includes("badge") ||
+                el.className.toString().toLowerCase().includes("pill") ||
+                el.className.toString().toLowerCase().includes("chip") ||
+                window.getComputedStyle(el).borderRadius.includes("999") ||
+                window.getComputedStyle(el).borderRadius.includes("50");
 
-            const titleRect = title.getBoundingClientRect();
-            const heroRect = hero.getBoundingClientRect();
+            const hasBadgeWord = badgeWords.some(function (word) {
+                return text.includes(word);
+            });
 
-            hero.querySelectorAll("span, a, div").forEach(function (el) {
-                const text = (el.textContent || "").trim();
-                const rect = el.getBoundingClientRect();
-                const style = window.getComputedStyle(el);
-
-                if (!text) return;
-                if (text.length > 70) return;
-
-                // Only items above the page title.
-                if (rect.bottom > titleRect.top + 8) return;
-
-                // Only items inside the title box.
-                if (rect.top < heroRect.top || rect.left < heroRect.left || rect.right > heroRect.right) return;
-
-                // Do not recolor regular buttons.
-                if (el.tagName.toLowerCase() === "button") return;
-                if (el.classList.contains("btn")) return;
-
-                // Must look like a small oval/chip.
-                const radius = parseFloat(style.borderTopLeftRadius) || 0;
-                if (radius < 8) return;
-                if (rect.width < 35 || rect.width > 320) return;
-                if (rect.height < 16 || rect.height > 60) return;
-
+            if (looksLikeOval || hasBadgeWord) {
+                el.classList.add("science-purple-badge-fix");
                 el.style.setProperty("background", "#6f2dbd", "important");
-                el.style.setProperty("background-color", "#6f2dbd", "important");
                 el.style.setProperty("color", "#ff9f1c", "important");
                 el.style.setProperty("border", "4px solid #111", "important");
                 el.style.setProperty("border-radius", "999px", "important");
                 el.style.setProperty("font-weight", "1000", "important");
                 el.style.setProperty("text-shadow", "none", "important");
                 el.style.setProperty("box-shadow", "3px 3px 0 rgba(0,0,0,0.32)", "important");
-            });
+            }
         });
-    }
-
-    applyTitleOvalFix();
-    setTimeout(applyTitleOvalFix, 250);
+    });
 });
 </script>
 

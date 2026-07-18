@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 160">
+  <rect x="8" y="8" width="204" height="144" rx="22" fill="#fff7d6" stroke="#111" stroke-width="6"/>
+  <ellipse cx="110" cy="105" rx="70" ry="22" fill="#ffd166" stroke="#111" stroke-width="4"/>
+  <circle cx="75" cy="85" r="14" fill="#ff6b6b" stroke="#111" stroke-width="4"/>
+  <rect x="103" y="65" width="28" height="28" rx="5" fill="#74c69d" stroke="#111" stroke-width="4"/>
+  <circle cx="150" cy="88" r="13" fill="#4dabf7" stroke="#111" stroke-width="4"/>
+  <path d="M52 118 C82 145 145 145 172 118" fill="#f4a261" stroke="#111" stroke-width="4"/>
+  <text x="110" y="143" text-anchor="middle" font-family="Arial" font-size="17" font-weight="900">Mixtures</text>
+</svg>

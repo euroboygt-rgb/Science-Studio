@@ -1,0 +1,29 @@
+
+/* Homepage hero oval labels */
+.hero-badge,
+.hero-pill,
+.studio-badge,
+.feature-pill,
+.badge-pill,
+.top-pill,
+.hero .badge,
+.hero-card .badge,
+.hero-section .badge,
+.hero-card [class*="pill"],
+.hero-card [class*="badge"],
+.hero-section [class*="pill"],
+.hero-section [class*="badge"] {
+    background: #6f2dbd !important;
+    color: #ff9f1c !important;
+    border: 4px solid #111 !important;
+    font-weight: 900 !important;
+    text-shadow: none !important;
+}
+
+/* Keep the main buttons from being changed */
+.hero-card .btn,
+.hero-section .btn,
+.hero .btn {
+    color: inherit;
+}
+

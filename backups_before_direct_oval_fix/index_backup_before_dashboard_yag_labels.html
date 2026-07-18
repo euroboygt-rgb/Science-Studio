@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block title %}Science Studio Home{% endblock %}
+
+{% block content %}
+
+<style>
+  .live-hero {
+    background:
+      radial-gradient(circle at 10% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      radial-gradient(circle at 90% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      linear-gradient(135deg, #102542 0%, #1b4965 55%, #5fa8d3 100%);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 30px;
+    padding: 36px;
+    box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+    margin-bottom: 26px;
+  }
+
+  .live-card {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 24px;
+    padding: 22px;
+    height: 100%;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.14);
+    transition: 0.15s ease;
+  }
+
+  .live-card:hover {
+    transform: translateY(-3px);
+    background: #fff3cd;
+  }
+
+  .live-card h3 {
+    font-weight: 950;
+  }
+
+  .big-launch {
+    display: block;
+    text-decoration: none;
+    color: #111;
+  }
+
+  .science-btn {
+    border: 3px solid #111;
+    border-radius: 14px;
+    font-weight: 900;
+    box-shadow: 3px 3px 0 rgba(17,17,17,0.2);
+    margin: 4px;
+  }
+
+  .unit-strip {
+    background: #f8f9fa;
+    border: 4px solid #111;
+    border-radius: 24px;
+    padding: 22px;
+    margin-bottom: 24px;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.12);
+  }
+
+  .unit-pill {
+    display: inline-block;
+    background: #d1e7dd;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 8px 14px;
+    margin: 4px;
+    font-weight: 900;
+  }
+</style>
+
+<section class="live-hero">
+  <span class="badge-science">5th Grade Science</span>
+  <span class="badge-science">TEKS-Aligned</span>
+  <span class="badge-science">STAAR Practice</span>
+  <span class="badge-science">Live Classroom Site</span>
+
+  <h1 class="mt-3">Science Studio</h1>
+
+  <p class="lead">
+    Your complete 1st 9 Weeks science classroom hub with daily lessons,
+    student activities, teacher tools, interactive labs, vocabulary, STAAR practice,
+    and printable resources.
+  </p>
+
+  <div class="mt-3">
+    <a href="/first-nine-weeks" class="btn btn-warning btn-lg science-btn">Open All 45 Days</a>
+    <a href="/student-dashboard" class="btn btn-success btn-lg science-btn">Student Dashboard</a>
+    <a href="/teacher-dashboard" class="btn btn-light btn-lg science-btn">Teacher Dashboard</a>
+  </div>
+</section>
+
+<section class="unit-strip">
+  <h2>1st 9 Weeks Learning Path</h2>
+
+  <span class="unit-pill">Days 1–4: Classroom Setup</span>
+  <span class="unit-pill">Days 5–15: Matter and Physical Properties</span>
+  <span class="unit-pill">Days 16–25: Mixtures and Solutions</span>
+  <span class="unit-pill">Days 26–41: Force and Motion</span>
+  <span class="unit-pill">Days 42–45: STAAR Review and Reflection</span>
+</section>
+
+<div class="row g-4">
+  <div class="col-md-6 col-xl-4">
+    <a href="/first-nine-weeks" class="big-launch">
+      <div class="live-card">
+        <h3>📚 Daily Lessons</h3>
+        <p>
+          Access all 45 days of the 1st 9 Weeks curriculum with teacher and student views.
+        </p>
+        <button class="btn btn-primary science-btn">Open Lessons</button>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-6 col-xl-4">
+    <a href="/student-dashboard" class="big-launch">
+      <div class="live-card">
+        <h3>🧑‍🔬 Student Dashboard</h3>
+        <p>
+          Student-friendly launch page for lessons, labs, review, vocabulary, and reflection.
+        </p>
+        <button class="btn btn-success science-btn">Open Student View</button>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-6 col-xl-4">
+    <a href="/teacher-dashboard" class="big-launch">
+      <div class="live-card">
+        <h3>🍎 Teacher Dashboard</h3>
+        <p>
+          Teacher planning hub with quick access to lessons, labs, stations, and review tools.
+        </p>
+        <button class="btn btn-warning science-btn">Open Teacher Tools</button>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-6 col-xl-4">
+    <a href="/labs" class="big-launch">
+      <div class="live-card">
+        <h3>🧪 Interactive Labs</h3>
+        <p>
+          Simulations, investigations, review games, digital assessments, and lab tools.
+        </p>
+        <button class="btn btn-info science-btn">Open Labs</button>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-6 col-xl-4">
+    <a href="/resources" class="big-launch">
+      <div class="live-card">
+        <h3>📄 Printable Resources</h3>
+        <p>
+          Original foldables, notebook inserts, lab sheets, planners, and STAAR resources.
+        </p>
+        <button class="btn btn-secondary science-btn">Open Resources</button>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-6 col-xl-4">
+    <a href="/vocabulary" class="big-launch">
+      <div class="live-card">
+        <h3>🧠 Vocabulary</h3>
+        <p>
+          Unit vocabulary posters and science academic language support.
+        </p>
+        <button class="btn btn-danger science-btn">Open Vocabulary</button>
+      </div>
+    </a>
+  </div>
+</div>
+
+<section class="unit-strip mt-4">
+  <h2>District Review</h2>
+  <p>
+    Students are not required to create accounts or enter personal information.
+    Optional student fields should use initials, class number, or be left blank.
+  </p>
+
+  <a href="/student-privacy" class="btn btn-dark science-btn">Student Privacy Page</a>
+</section>
+
+{% endblock %}

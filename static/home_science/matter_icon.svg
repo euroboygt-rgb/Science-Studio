@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 160">
+  <rect x="8" y="8" width="204" height="144" rx="22" fill="#e8f4ff" stroke="#111" stroke-width="6"/>
+  <rect x="42" y="55" width="45" height="45" rx="7" fill="#74c69d" stroke="#111" stroke-width="4"/>
+  <path d="M111 50 H165 L155 115 H121 Z" fill="white" stroke="#111" stroke-width="4"/>
+  <path d="M124 88 C138 80 149 97 160 87 L155 115 H121 Z" fill="#4dabf7" stroke="#111" stroke-width="3"/>
+  <path d="M58 120 C90 100 125 135 162 115" fill="none" stroke="#111" stroke-width="5" stroke-linecap="round"/>
+  <text x="110" y="142" text-anchor="middle" font-family="Arial" font-size="17" font-weight="900">Matter</text>
+</svg>
