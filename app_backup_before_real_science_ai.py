@@ -748,24 +748,6 @@ def inject_power_frames():
     return dict(get_power_frame=get_power_frame)
 
 
-
-@app.route("/api/science-ai", methods=["POST"])
-def api_science_ai():
-    from flask import request, jsonify
-    from curriculum.science_ai_tutor import answer_science_question
-
-    data = request.get_json(silent=True) or {}
-    question = (data.get("question") or "").strip()
-
-    try:
-        answer = answer_science_question(question)
-        return jsonify({"answer": answer})
-    except Exception:
-        return jsonify({
-            "answer": "Science Studio AI is having trouble right now. Try again in a minute."
-        }), 200
-
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)

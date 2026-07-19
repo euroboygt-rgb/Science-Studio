@@ -238,12 +238,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
-
-
-
-
 <!-- Science Studio AI Floating Widget -->
 <style>
 #scienceStudioAiWidget {
@@ -256,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 #scienceStudioAiPanel {
     display: none;
-    width: 380px;
+    width: 360px;
     max-width: calc(100vw - 40px);
     margin-bottom: 14px;
     background: white;
@@ -293,8 +287,6 @@ document.addEventListener("DOMContentLoaded", function () {
 .science-ai-content {
     padding: 14px;
     background: #f7fbff;
-    max-height: 430px;
-    overflow-y: auto;
 }
 
 .science-ai-bubble {
@@ -303,17 +295,102 @@ document.addEventListener("DOMContentLoaded", function () {
     border-radius: 16px;
     padding: 12px;
     margin-bottom: 10px;
-    white-space: pre-wrap;
-}
-
-.science-ai-student {
-    background: #fff7d6;
 }
 
 .science-ai-input-row {
     display: flex;
     gap: 8px;
-    margin-top: 10px;
+}
+
+#scienceStudioAiInput {
+    flex: 1;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 9px;
+}
+
+#scienceStudioAiAsk {
+    background: #ff9f1c;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 9px 12px;
+    font-weight: 1000;
+    cursor: pointer;
+}
+
+@media print {
+    #scienceStudioAiWidget {
+        display: none !important;
+    }
+}
+</style>
+
+
+<!-- End Science Studio AI Floating Widget -->
+
+
+<!-- Science Studio AI Floating Widget -->
+<style>
+#scienceStudioAiWidget {
+    position: fixed !important;
+    right: 24px !important;
+    bottom: 24px !important;
+    z-index: 999999 !important;
+    font-family: Arial, sans-serif !important;
+}
+
+#scienceStudioAiPanel {
+    display: none;
+    width: 360px;
+    max-width: calc(100vw - 40px);
+    margin-bottom: 14px;
+    background: white;
+    border: 5px solid #111;
+    border-radius: 22px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+#scienceStudioAiPanel.open {
+    display: block !important;
+}
+
+#scienceStudioAiButton {
+    background: #6f2dbd !important;
+    color: #ff9f1c !important;
+    border: 5px solid #111 !important;
+    border-radius: 999px !important;
+    padding: 14px 20px !important;
+    font-size: 16px !important;
+    font-weight: 1000 !important;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.35) !important;
+    cursor: pointer !important;
+}
+
+.science-ai-top {
+    background: linear-gradient(135deg, #123f8c, #6f2dbd);
+    color: white;
+    padding: 14px;
+    border-bottom: 4px solid #111;
+    font-weight: 1000;
+}
+
+.science-ai-content {
+    padding: 14px;
+    background: #f7fbff;
+}
+
+.science-ai-bubble {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.science-ai-input-row {
+    display: flex;
+    gap: 8px;
 }
 
 #scienceStudioAiInput {
@@ -348,11 +425,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         <div class="science-ai-content" id="scienceStudioAiContent">
             <div class="science-ai-bubble">
-Hi scientist! Ask me a 5th grade science question. I can help with matter, mixtures, force, motion, energy, labs, vocabulary, and STAAR thinking.
+                Hi scientist! I will help with science questions only. The full AI helper is coming soon.
             </div>
 
             <div class="science-ai-bubble">
-Example: <strong>What makes wood an insulator of electrical and thermal energy?</strong>
+                Example:<br>
+                <strong>What makes wood an insulator of electrical and thermal energy?</strong>
             </div>
 
             <div class="science-ai-input-row">
@@ -372,57 +450,34 @@ document.addEventListener("DOMContentLoaded", function () {
     const input = document.getElementById("scienceStudioAiInput");
     const ask = document.getElementById("scienceStudioAiAsk");
     const content = document.getElementById("scienceStudioAiContent");
-    const inputRow = content.querySelector(".science-ai-input-row");
-
-    function addBubble(text, className) {
-        const bubble = document.createElement("div");
-        bubble.className = "science-ai-bubble " + (className || "");
-        bubble.textContent = text;
-        content.insertBefore(bubble, inputRow);
-        content.scrollTop = content.scrollHeight;
-    }
 
     button.addEventListener("click", function () {
         panel.classList.toggle("open");
     });
 
-    async function askScienceAi() {
+    function reply() {
         const question = input.value.trim();
+        if (!question) return;
 
-        if (!question) {
-            return;
-        }
+        const student = document.createElement("div");
+        student.className = "science-ai-bubble";
+        student.innerHTML = "<strong>You asked:</strong><br>" + question;
 
-        addBubble("You asked:\n" + question, "science-ai-student");
+        const ai = document.createElement("div");
+        ai.className = "science-ai-bubble";
+        ai.innerHTML = "Science Studio AI is not connected yet, but soon I will answer science questions using our 5th grade lessons, vocabulary, labs, and STAAR practice.";
+
+        content.insertBefore(student, content.querySelector(".science-ai-input-row"));
+        content.insertBefore(ai, content.querySelector(".science-ai-input-row"));
+
         input.value = "";
-        input.disabled = true;
-        ask.disabled = true;
-        ask.textContent = "...";
-
-        try {
-            const response = await fetch("/api/science-ai", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({question: question})
-            });
-
-            const data = await response.json();
-            addBubble(data.answer || "I had trouble answering that. Try asking another science question.", "");
-        } catch (error) {
-            addBubble("Science Studio AI is having trouble connecting. Try again in a minute.", "");
-        }
-
-        input.disabled = false;
-        ask.disabled = false;
-        ask.textContent = "Ask";
-        input.focus();
     }
 
-    ask.addEventListener("click", askScienceAi);
+    ask.addEventListener("click", reply);
 
     input.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
-            askScienceAi();
+            reply();
         }
     });
 });
