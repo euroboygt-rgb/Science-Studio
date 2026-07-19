@@ -749,47 +749,10 @@ def inject_power_frames():
 
 
 
-
-
-# Simple in-memory Science Studio AI cost guard.
-# This helps prevent students from clicking too fast or using too many AI questions.
-SCIENCE_AI_REQUESTS = {}
-
-def science_ai_rate_limit_ok(student_key):
-    import time
-
-    now = time.time()
-    window_seconds = 10 * 60
-    max_questions = 10
-    minimum_seconds_between_questions = 4
-
-    old_times = SCIENCE_AI_REQUESTS.get(student_key, [])
-    recent_times = [t for t in old_times if now - t < window_seconds]
-
-    if recent_times and now - recent_times[-1] < minimum_seconds_between_questions:
-        SCIENCE_AI_REQUESTS[student_key] = recent_times
-        return False, "Slow down, scientist. Please wait a few seconds before asking another question."
-
-    if len(recent_times) >= max_questions:
-        SCIENCE_AI_REQUESTS[student_key] = recent_times
-        return False, "You have asked a lot of questions. Take a short break and try again in about 10 minutes."
-
-    recent_times.append(now)
-    SCIENCE_AI_REQUESTS[student_key] = recent_times
-    return True, ""
-
-
 @app.route("/api/science-ai", methods=["POST"])
 def api_science_ai():
     from flask import request, jsonify
     from curriculum.science_ai_tutor import answer_science_question
-
-    forwarded_for = request.headers.get("X-Forwarded-For", "")
-    student_key = forwarded_for.split(",")[0].strip() or request.remote_addr or "unknown"
-
-    ok, message = science_ai_rate_limit_ok(student_key)
-    if not ok:
-        return jsonify({"answer": message}), 200
 
     data = request.get_json(silent=True) or {}
     question = (data.get("question") or "").strip()

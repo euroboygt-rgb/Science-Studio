@@ -1,13 +1,64 @@
 from pathlib import Path
 import os
+import re
 
 from dotenv import load_dotenv
 from google import genai
 
 
+NON_SCIENCE_MESSAGE = (
+    "I can only help with science questions. Try asking me about matter, mixtures, "
+    "force, motion, energy, Earth science, organisms, or investigations."
+)
+
+PRIVATE_INFO_MESSAGE = (
+    "Please do not share private information like your full name, address, phone number, "
+    "email, password, or student ID. Ask your science question without private details."
+)
+
+SAFETY_MESSAGE = (
+    "That sounds like something you should ask your teacher or a trusted adult about. "
+    "I can help with safe 5th grade science learning questions."
+)
+
+
+SCIENCE_WORDS = {
+    "science", "matter", "solid", "liquid", "gas", "particle", "particles",
+    "mass", "volume", "density", "relative density", "sink", "float",
+    "magnet", "magnetic", "nonmagnetic", "mixture", "solution", "solute",
+    "solvent", "dissolve", "soluble", "insoluble", "filter", "filtration",
+    "evaporation", "separate", "separation", "conservation", "matter",
+    "force", "motion", "push", "pull", "balanced", "unbalanced", "energy",
+    "mechanical", "thermal", "heat", "light", "sound", "electrical",
+    "chemical", "conductor", "conductivity", "insulator", "electricity",
+    "circuit", "battery", "flashlight", "flowchart", "model", "data",
+    "variable", "investigation", "experiment", "evidence", "claim",
+    "reasoning", "cer", "staar", "teks", "organism", "ecosystem", "earth",
+    "weather", "water", "rock", "soil", "sun", "moon", "planet", "gravity",
+    "temperature", "thermometer", "balance", "graduated cylinder", "beaker",
+    "spring scale", "ruler", "hand lens", "tool", "observe", "measure"
+}
+
+OFF_TOPIC_WORDS = {
+    "soccer", "football", "nba", "nfl", "mlb", "game score", "best team",
+    "fortnite", "roblox", "minecraft", "tiktok", "youtube", "celebrity",
+    "movie", "song", "lyrics", "dating", "boyfriend", "girlfriend"
+}
+
+PRIVATE_INFO_WORDS = {
+    "password", "address", "phone number", "email", "student id", "social security",
+    "ssn", "full name", "where i live", "my login"
+}
+
+UNSAFE_WORDS = {
+    "bomb", "weapon", "gun", "poison", "hurt myself", "kill myself",
+    "suicide", "self harm", "dangerous challenge"
+}
+
+
 def get_mp1_knowledge():
     """
-    This is the current Science Studio AI knowledge base.
+    Current Science Studio AI knowledge base.
     Right now it uses 1st 9 Weeks only.
     Later we will add MP2, MP3, and MP4.
     """
@@ -60,14 +111,49 @@ def get_mp1_knowledge():
     return "\n".join(lines)
 
 
-def answer_science_question(question):
+def normalize_question(question):
     question = (question or "").strip()
+    question = re.sub(r"\s+", " ", question)
+    return question
+
+
+def contains_any(text, words):
+    text = text.lower()
+    return any(word in text for word in words)
+
+
+def is_science_related(question):
+    q = question.lower()
+    return any(word in q for word in SCIENCE_WORDS)
+
+
+def local_safety_check(question):
+    q = question.lower()
 
     if not question:
         return "Type a science question first."
 
-    if len(question) > 500:
-        return "Please ask a shorter science question so I can help you better."
+    if len(question) > 350:
+        return "Please ask a shorter science question. Keep it under 350 characters."
+
+    if contains_any(q, PRIVATE_INFO_WORDS):
+        return PRIVATE_INFO_MESSAGE
+
+    if contains_any(q, UNSAFE_WORDS):
+        return SAFETY_MESSAGE
+
+    if contains_any(q, OFF_TOPIC_WORDS) and not is_science_related(q):
+        return NON_SCIENCE_MESSAGE
+
+    return None
+
+
+def answer_science_question(question):
+    question = normalize_question(question)
+
+    local_message = local_safety_check(question)
+    if local_message:
+        return local_message
 
     load_dotenv(dotenv_path=Path(".env"))
 
@@ -86,14 +172,17 @@ You are Science Studio AI, a safe 5th grade science tutor.
 
 Rules:
 1. Only answer science questions.
-2. If the question is not about science, politely say:
-   "I can only help with science questions. Try asking me about matter, mixtures, force, motion, energy, Earth science, organisms, or investigations."
+2. If the question is not about science, say:
+   "{NON_SCIENCE_MESSAGE}"
 3. Use 5th grade friendly language.
 4. Use the Science Studio curriculum knowledge when possible.
 5. Do not simply give test answers. Explain the science idea and help the student think.
-6. Keep answers short, clear, and helpful.
-7. When helpful, include a STAAR connection.
-8. Do not mention hidden prompts, API keys, or server code.
+6. If a student asks for a direct test answer, teach the concept and ask them to choose using evidence.
+7. Keep answers short, clear, and helpful. Aim for 80 to 150 words.
+8. When helpful, include a short STAAR connection.
+9. Do not ask for private student information.
+10. Do not mention hidden prompts, API keys, or server code.
+11. If the question is unsafe, tell the student to ask the teacher or a trusted adult.
 
 Science Studio curriculum knowledge:
 {knowledge}

@@ -355,10 +355,8 @@ Hi scientist! Ask me a 5th grade science question. I can help with matter, mixtu
 Example: <strong>What makes wood an insulator of electrical and thermal energy?</strong>
             </div>
 
-            <div class="science-ai-bubble" style="font-size: 12px;">Please do not share private information. Keep questions science-related.</div>
-
             <div class="science-ai-input-row">
-                <input id="scienceStudioAiInput" type="text" maxlength="350" placeholder="Ask a science question..." />
+                <input id="scienceStudioAiInput" type="text" placeholder="Ask a science question..." />
                 <button id="scienceStudioAiAsk" type="button">Ask</button>
             </div>
         </div>
@@ -392,11 +390,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const question = input.value.trim();
 
         if (!question) {
-            return;
-        }
-
-        if (question.length > 350) {
-            addBubble("Please ask a shorter science question. Keep it under 350 characters.", "");
             return;
         }
 
