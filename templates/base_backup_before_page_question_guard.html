@@ -355,7 +355,7 @@ Hi scientist! Ask me a 5th grade science question. I can help with matter, mixtu
 Example: <strong>What makes wood an insulator of electrical and thermal energy?</strong>
             </div>
 
-            <div class="science-ai-bubble" style="font-size: 12px;">Please do not share private information. Keep questions science-related.<br>I can help you understand science, but I will not give answers to STAAR, exit ticket, quiz, or page questions.</div>
+            <div class="science-ai-bubble" style="font-size: 12px;">Please do not share private information. Keep questions science-related.</div>
 
             <div class="science-ai-input-row">
                 <input id="scienceStudioAiInput" type="text" maxlength="350" placeholder="Ask a science question..." />
@@ -410,7 +410,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const response = await fetch("/api/science-ai", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({question: question, page_path: window.location.pathname})
+                body: JSON.stringify({question: question})
             });
 
             const data = await response.json();

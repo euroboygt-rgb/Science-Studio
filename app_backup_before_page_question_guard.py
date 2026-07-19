@@ -793,10 +793,9 @@ def api_science_ai():
 
     data = request.get_json(silent=True) or {}
     question = (data.get("question") or "").strip()
-    page_path = (data.get("page_path") or "").strip()
 
     try:
-        answer = answer_science_question(question, page_path=page_path)
+        answer = answer_science_question(question)
         return jsonify({"answer": answer})
     except Exception:
         return jsonify({
