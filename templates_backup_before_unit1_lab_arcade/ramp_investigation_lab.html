@@ -1,0 +1,652 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Car on a Ramp Investigation Simulator</h1>
+<p class="lead">
+  Test how ramp height affects the distance a toy car travels.
+</p>
+
+<a href="/first-nine-weeks/day/36?view=student" class="btn btn-secondary mb-4">
+  Back to Day 36
+</a>
+
+<style>
+  .sim-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
+
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
+  .track {
+    height: 380px;
+    border: 4px solid #333;
+    border-radius: 15px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .floor {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 65px;
+    height: 6px;
+    background: #333;
+  }
+
+  .ramp {
+    position: absolute;
+    left: 90px;
+    bottom: 70px;
+    width: 290px;
+    height: 18px;
+    background: #333;
+    transform-origin: left center;
+    transform: rotate(-12deg);
+    transition: transform 0.5s;
+  }
+
+  .support {
+    position: absolute;
+    left: 90px;
+    bottom: 70px;
+    width: 55px;
+    height: 70px;
+    border: 4px solid #333;
+    background: #e9ecef;
+    transition: height 0.5s;
+  }
+
+  .car {
+    position: absolute;
+    left: 110px;
+    bottom: 145px;
+    width: 82px;
+    height: 48px;
+    border: 3px solid #333;
+    border-radius: 10px;
+    background: #e9ecef;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 8px;
+    transition: left 1s, bottom 1s;
+    z-index: 3;
+  }
+
+  .distance-line {
+    position: absolute;
+    left: 370px;
+    bottom: 38px;
+    height: 5px;
+    width: 0;
+    background: #333;
+    transition: width 1s;
+  }
+
+  .distance-label {
+    position: absolute;
+    left: 370px;
+    bottom: 10px;
+    font-weight: bold;
+  }
+
+  .force-arrow {
+    position: absolute;
+    left: 205px;
+    top: 130px;
+    font-size: 38px;
+    font-weight: bold;
+    display: none;
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  .graph-box {
+    background: white;
+    border: 4px solid #333;
+    border-radius: 15px;
+    height: 390px;
+    position: relative;
+    margin: 20px 0;
+    overflow: hidden;
+  }
+
+  .y-axis {
+    position: absolute;
+    left: 85px;
+    top: 55px;
+    bottom: 75px;
+    width: 5px;
+    background: #333;
+  }
+
+  .x-axis {
+    position: absolute;
+    left: 85px;
+    right: 55px;
+    bottom: 75px;
+    height: 5px;
+    background: #333;
+  }
+
+  .bar {
+    position: absolute;
+    bottom: 80px;
+    width: 75px;
+    background: #e9ecef;
+    border: 3px solid #333;
+    transition: height 0.7s;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-weight: bold;
+    padding-top: 6px;
+  }
+
+  .bar-label {
+    position: absolute;
+    bottom: 35px;
+    width: 120px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .graph-title {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 23px;
+    font-weight: bold;
+  }
+
+  .x-label {
+    position: absolute;
+    bottom: 5px;
+    left: 150px;
+    right: 50px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .y-label {
+    position: absolute;
+    left: -58px;
+    top: 180px;
+    transform: rotate(-90deg);
+    font-weight: bold;
+    width: 240px;
+    text-align: center;
+  }
+
+  .claim-box {
+    background: white;
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 15px;
+  }
+
+  .scenario-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+</style>
+
+<div class="sim-card">
+  <h2>Part 1: Set Up the Fair Test</h2>
+
+  <div class="info-box">
+    <strong>Investigation Question:</strong> How does ramp height affect the distance a toy car travels?
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <label class="form-label"><strong>Ramp height:</strong></label>
+      <select id="heightSelect" class="form-select mb-3" onchange="setRampHeight(); resetCarOnly();">
+        <option value="low">Low ramp</option>
+        <option value="medium">Medium ramp</option>
+        <option value="high">High ramp</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label"><strong>Release method:</strong></label>
+      <select id="releaseSelect" class="form-select mb-3" onchange="resetCarOnly()">
+        <option value="release">Release without pushing</option>
+        <option value="push">Push the car</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label"><strong>Trial:</strong></label>
+      <select id="trialSelect" class="form-select mb-3">
+        <option value="1">Trial 1</option>
+        <option value="2">Trial 2</option>
+        <option value="3">Trial 3</option>
+      </select>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="runTrial()">Run Trial</button>
+  <button class="btn btn-warning" onclick="showForceArrow()">Show Force Arrow</button>
+  <button class="btn btn-secondary" onclick="resetCarOnly()">Reset Car</button>
+  <button class="btn btn-danger" onclick="clearData()">Clear Data</button>
+
+  <div class="track">
+    <div id="support" class="support"></div>
+    <div id="ramp" class="ramp"></div>
+    <div id="forceArrow" class="force-arrow">Gravity pulls car down ramp →</div>
+    <div id="car" class="car">Car</div>
+    <div class="floor"></div>
+    <div id="distanceLine" class="distance-line"></div>
+    <div id="distanceLabel" class="distance-label">Distance: 0 cm</div>
+  </div>
+
+  <div id="trialFeedback" class="feedback correct">
+    Choose a ramp height and run three fair trials for each height.
+  </div>
+</div>
+
+<div class="sim-card">
+  <h2>Part 2: Data Table</h2>
+
+  <div class="info-box">
+    Run Trial 1, Trial 2, and Trial 3 for low, medium, and high ramp heights.
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered bg-white">
+      <thead>
+        <tr>
+          <th>Ramp Height</th>
+          <th>Trial 1</th>
+          <th>Trial 2</th>
+          <th>Trial 3</th>
+          <th>Average</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Low ramp</strong></td>
+          <td id="low1"></td>
+          <td id="low2"></td>
+          <td id="low3"></td>
+          <td id="lowAvg"></td>
+        </tr>
+        <tr>
+          <td><strong>Medium ramp</strong></td>
+          <td id="medium1"></td>
+          <td id="medium2"></td>
+          <td id="medium3"></td>
+          <td id="mediumAvg"></td>
+        </tr>
+        <tr>
+          <td><strong>High ramp</strong></td>
+          <td id="high1"></td>
+          <td id="high2"></td>
+          <td id="high3"></td>
+          <td id="highAvg"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="btn btn-success" onclick="autoFillFairData()">Auto-Fill Fair Class Data</button>
+  <button class="btn btn-primary" onclick="makeGraph()">Make Graph from Data</button>
+</div>
+
+<div class="sim-card">
+  <h2>Part 3: Graph the Data</h2>
+
+  <div class="graph-box">
+    <div class="graph-title">Effect of Ramp Height on Toy Car Distance</div>
+    <div class="y-axis"></div>
+    <div class="x-axis"></div>
+    <div class="y-label">Distance traveled in cm</div>
+    <div class="x-label">Ramp height</div>
+
+    <div id="barLow" class="bar" style="left: 150px; height: 0;">0</div>
+    <div id="barMedium" class="bar" style="left: 330px; height: 0;">0</div>
+    <div id="barHigh" class="bar" style="left: 510px; height: 0;">0</div>
+
+    <div class="bar-label" style="left: 125px;">Low</div>
+    <div class="bar-label" style="left: 305px;">Medium</div>
+    <div class="bar-label" style="left: 485px;">High</div>
+  </div>
+
+  <div id="graphFeedback"></div>
+</div>
+
+<div class="sim-card">
+  <h2>Part 4: Claim, Evidence, and Reasoning</h2>
+
+  <label class="form-label"><strong>What pattern do you see?</strong></label>
+  <select id="patternAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>As ramp height increased, distance traveled increased.</option>
+    <option>Ramp height did not affect distance.</option>
+    <option>The car traveled the same distance every time.</option>
+    <option>The high ramp made the car travel the shortest distance.</option>
+  </select>
+
+  <label class="form-label"><strong>Best claim:</strong></label>
+  <select id="claimAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Increasing ramp height increased the distance the toy car traveled.</option>
+    <option>Ramp height had no effect on the toy car.</option>
+    <option>The toy car stopped being matter.</option>
+    <option>The car became magnetic on the high ramp.</option>
+  </select>
+
+  <label class="form-label"><strong>Best evidence:</strong></label>
+  <select id="evidenceAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The high ramp average was greater than the low ramp average.</option>
+    <option>The car was a toy car.</option>
+    <option>The ramp was in the classroom.</option>
+    <option>The student used a pencil.</option>
+  </select>
+
+  <button class="btn btn-success" onclick="checkCER()">Check CER</button>
+  <button class="btn btn-primary" onclick="buildCER()">Build CER Paragraph</button>
+
+  <div id="cerFeedback"></div>
+  <div id="cerOutput"></div>
+</div>
+
+<div class="sim-card">
+  <h2>Part 5: STAAR Ramp Investigation Challenge</h2>
+
+  <div class="scenario-card">
+    <p>
+      A student wants to test how ramp height affects the distance a toy car travels.
+      The student uses the same car, same ramp, same surface, and same starting line.
+    </p>
+  </div>
+
+  <label class="form-label"><strong>What is the independent variable?</strong></label>
+  <select id="staar1" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Ramp height</option>
+    <option>Distance traveled</option>
+    <option>Same toy car</option>
+    <option>Same surface</option>
+  </select>
+
+  <label class="form-label"><strong>What is the dependent variable?</strong></label>
+  <select id="staar2" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Distance traveled</option>
+    <option>Ramp height</option>
+    <option>Same starting line</option>
+    <option>Same measuring tool</option>
+  </select>
+
+  <label class="form-label"><strong>Which action would make the test unfair?</strong></label>
+  <select id="staar3" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Pushing the car harder on the high ramp</option>
+    <option>Using the same car every trial</option>
+    <option>Using the same starting line every trial</option>
+    <option>Measuring the distance each trial</option>
+  </select>
+
+  <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
+  <div id="staarFeedback"></div>
+</div>
+
+<script>
+  const data = {
+    low: [null, null, null],
+    medium: [null, null, null],
+    high: [null, null, null]
+  };
+
+  const baseDistances = {
+    low: 40,
+    medium: 65,
+    high: 92
+  };
+
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function setRampHeight() {
+    const height = document.getElementById("heightSelect").value;
+    const ramp = document.getElementById("ramp");
+    const support = document.getElementById("support");
+    const car = document.getElementById("car");
+
+    if (height === "low") {
+      ramp.style.transform = "rotate(-8deg)";
+      support.style.height = "45px";
+      car.style.left = "110px";
+      car.style.bottom = "123px";
+    }
+
+    if (height === "medium") {
+      ramp.style.transform = "rotate(-14deg)";
+      support.style.height = "70px";
+      car.style.left = "110px";
+      car.style.bottom = "145px";
+    }
+
+    if (height === "high") {
+      ramp.style.transform = "rotate(-21deg)";
+      support.style.height = "105px";
+      car.style.left = "110px";
+      car.style.bottom = "176px";
+    }
+  }
+
+  function resetCarOnly() {
+    setRampHeight();
+    document.getElementById("distanceLine").style.width = "0";
+    document.getElementById("distanceLabel").innerText = "Distance: 0 cm";
+    document.getElementById("forceArrow").style.display = "none";
+    showFeedback("trialFeedback", "Ready for the next trial.", true);
+  }
+
+  function showForceArrow() {
+    document.getElementById("forceArrow").style.display = "block";
+  }
+
+  function randomTrialDistance(height, release) {
+    let base = baseDistances[height];
+    let variation = Math.floor(Math.random() * 7) - 3;
+
+    if (release === "push") {
+      base += 30;
+      variation += Math.floor(Math.random() * 12);
+    }
+
+    return base + variation;
+  }
+
+  function runTrial() {
+    const height = document.getElementById("heightSelect").value;
+    const trial = Number(document.getElementById("trialSelect").value);
+    const release = document.getElementById("releaseSelect").value;
+
+    const distance = randomTrialDistance(height, release);
+
+    document.getElementById("car").style.left = Math.min(370 + distance * 2.2, 690) + "px";
+    document.getElementById("car").style.bottom = "70px";
+    document.getElementById("distanceLine").style.width = Math.min(distance * 2.2, 330) + "px";
+    document.getElementById("distanceLabel").innerText = "Distance: " + distance + " cm";
+    showForceArrow();
+
+    data[height][trial - 1] = distance;
+    updateTable();
+
+    if (release === "push") {
+      showFeedback("trialFeedback", "Warning: pushing the car makes this an unfair test because release method changed.", false);
+    } else {
+      showFeedback("trialFeedback", "Trial recorded. Good fair-test release: the car was released without pushing.", true);
+    }
+  }
+
+  function average(values) {
+    const nums = values.filter(v => v !== null);
+    if (nums.length === 0) return null;
+    return Math.round(nums.reduce((a, b) => a + b, 0) / nums.length);
+  }
+
+  function updateTable() {
+    ["low", "medium", "high"].forEach(height => {
+      for (let i = 0; i < 3; i++) {
+        document.getElementById(height + (i + 1)).innerText = data[height][i] === null ? "" : data[height][i] + " cm";
+      }
+
+      const avg = average(data[height]);
+      document.getElementById(height + "Avg").innerText = avg === null ? "" : avg + " cm";
+    });
+  }
+
+  function autoFillFairData() {
+    data.low = [39, 42, 40];
+    data.medium = [64, 66, 65];
+    data.high = [90, 93, 92];
+    updateTable();
+    showFeedback("trialFeedback", "Fair class data added. Now make the graph.", true);
+  }
+
+  function clearData() {
+    data.low = [null, null, null];
+    data.medium = [null, null, null];
+    data.high = [null, null, null];
+    updateTable();
+    makeGraph(true);
+    resetCarOnly();
+  }
+
+  function makeGraph(clearOnly=false) {
+    const lowAvg = average(data.low) || 0;
+    const mediumAvg = average(data.medium) || 0;
+    const highAvg = average(data.high) || 0;
+
+    // Fixed graph scale:
+    // 100 cm = full graph height.
+    // This makes the graph show the real pattern:
+    // low ramp shorter, medium ramp middle, high ramp tallest.
+    const graphMaxCm = 100;
+    const maxPixelHeight = 245;
+
+    const bars = [
+      ["barLow", lowAvg],
+      ["barMedium", mediumAvg],
+      ["barHigh", highAvg]
+    ];
+
+    bars.forEach(([id, value]) => {
+      const bar = document.getElementById(id);
+      const cappedValue = Math.min(value, graphMaxCm);
+      const height = Math.round((cappedValue / graphMaxCm) * maxPixelHeight);
+
+      bar.style.height = height + "px";
+      bar.innerText = value === 0 ? "0" : value + " cm";
+    });
+
+    if (!clearOnly) {
+      if (lowAvg && mediumAvg && highAvg) {
+        showFeedback(
+          "graphFeedback",
+          "Graph created correctly. The bars should show low ramp as shortest, medium ramp as middle, and high ramp as tallest.",
+          true
+        );
+      } else {
+        showFeedback(
+          "graphFeedback",
+          "Graph created, but some data is missing. Run trials or use Auto-Fill Fair Class Data.",
+          false
+        );
+      }
+    }
+  }
+
+  function checkCER() {
+    const pattern = document.getElementById("patternAnswer").value;
+    const claim = document.getElementById("claimAnswer").value;
+    const evidence = document.getElementById("evidenceAnswer").value;
+
+    if (
+      pattern === "As ramp height increased, distance traveled increased." &&
+      claim === "Increasing ramp height increased the distance the toy car traveled." &&
+      evidence === "The high ramp average was greater than the low ramp average."
+    ) {
+      showFeedback("cerFeedback", "Correct! Your pattern, claim, and evidence match the data.", true);
+    } else {
+      showFeedback("cerFeedback", "Not yet. Use the graph pattern and compare the low ramp average to the high ramp average.", false);
+    }
+  }
+
+  function buildCER() {
+    const lowAvg = average(data.low) || 40;
+    const highAvg = average(data.high) || 92;
+
+    document.getElementById("cerOutput").innerHTML = `
+      <div class="claim-box">
+        <h3>My CER Paragraph</h3>
+        <p><strong>Claim:</strong> Increasing ramp height increased the distance the toy car traveled.</p>
+        <p><strong>Evidence:</strong> The low ramp average was about ${lowAvg} cm, while the high ramp average was about ${highAvg} cm.</p>
+        <p><strong>Reasoning:</strong> Ramp height was the independent variable. Distance traveled was the dependent variable. Since the distance increased when the ramp height increased, the data supports the claim.</p>
+      </div>
+    `;
+  }
+
+  function checkSTAAR() {
+    const s1 = document.getElementById("staar1").value;
+    const s2 = document.getElementById("staar2").value;
+    const s3 = document.getElementById("staar3").value;
+
+    if (
+      s1 === "Ramp height" &&
+      s2 === "Distance traveled" &&
+      s3 === "Pushing the car harder on the high ramp"
+    ) {
+      showFeedback("staarFeedback", "Correct! Ramp height is changed, distance is measured, and pushing the car would make the test unfair.", true);
+    } else {
+      showFeedback("staarFeedback", "Not yet. Independent variable = what changed. Dependent variable = what measured. A fair test keeps the release method the same.", false);
+    }
+  }
+
+  setRampHeight();
+  updateTable();
+</script>
+
+{% endblock %}

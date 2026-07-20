@@ -1,0 +1,458 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Liquid Density Lab Simulator</h1>
+<p class="lead">
+  Practice organizing liquids from least dense to most dense using STAAR-style evidence.
+</p>
+
+<a href="/first-nine-weeks/day/12?view=student" class="btn btn-secondary mb-4">
+  Back to Day 12
+</a>
+
+<style>
+  .sim-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
+
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
+  .graduated-cylinder {
+    width: 130px;
+    height: 320px;
+    border-left: 4px solid #333;
+    border-right: 4px solid #333;
+    border-bottom: 4px solid #333;
+    border-radius: 0 0 18px 18px;
+    margin: 20px auto;
+    position: relative;
+    background: white;
+    overflow: hidden;
+  }
+
+  .mini-cylinder {
+    width: 95px;
+    height: 220px;
+    border-left: 4px solid #333;
+    border-right: 4px solid #333;
+    border-bottom: 4px solid #333;
+    border-radius: 0 0 15px 15px;
+    margin: 15px auto;
+    position: relative;
+    background: white;
+    overflow: hidden;
+  }
+
+  .liquid-layer {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    color: #111;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+  }
+
+  .mini-layer {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    color: #111;
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+    padding-top: 8px;
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+  }
+
+  .solid-object {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #795548;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 42px;
+    bottom: 300px;
+    transition: bottom 0.8s;
+    text-align: center;
+    padding: 3px;
+    z-index: 5;
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+</style>
+
+<div class="sim-card">
+  <h2>Part 1: Build a Liquid Density Column</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Pour liquids into the graduated cylinder. Then organize them from least dense to most dense.
+    Remember: the liquid on top is least dense, and the liquid on the bottom is most dense.
+  </div>
+
+  <button class="btn btn-primary mb-3" onclick="pourDensityColumn()">
+    Pour Liquids Into Cylinder
+  </button>
+
+  <button class="btn btn-outline-secondary mb-3" onclick="resetDensityColumn()">
+    Reset
+  </button>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Graduated Cylinder</h4>
+
+      <div id="densityCylinder" class="graduated-cylinder">
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Order the liquids</h4>
+
+      <label class="form-label"><strong>Least dense:</strong></label>
+      <select id="columnLeast" class="form-select mb-2">
+        <option selected>Choose...</option>
+        <option>Oil</option>
+        <option>Water</option>
+        <option>Corn Syrup</option>
+        <option>Honey</option>
+      </select>
+
+      <label class="form-label"><strong>Second:</strong></label>
+      <select id="columnSecond" class="form-select mb-2">
+        <option selected>Choose...</option>
+        <option>Oil</option>
+        <option>Water</option>
+        <option>Corn Syrup</option>
+        <option>Honey</option>
+      </select>
+
+      <label class="form-label"><strong>Third:</strong></label>
+      <select id="columnThird" class="form-select mb-2">
+        <option selected>Choose...</option>
+        <option>Oil</option>
+        <option>Water</option>
+        <option>Corn Syrup</option>
+        <option>Honey</option>
+      </select>
+
+      <label class="form-label"><strong>Most dense:</strong></label>
+      <select id="columnMost" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>Oil</option>
+        <option>Water</option>
+        <option>Corn Syrup</option>
+        <option>Honey</option>
+      </select>
+
+      <button class="btn btn-success" onclick="checkDensityColumnOrder()">
+        Check Order
+      </button>
+
+      <div id="columnFeedback"></div>
+    </div>
+  </div>
+</div>
+
+<div class="sim-card">
+  <h2>Part 2: STAAR-Style 3-Cylinder Comparison</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Use three graduated cylinders to figure out the full density order.
+    Each cylinder gives one piece of evidence.
+  </div>
+
+  <p>
+    <strong>Evidence:</strong>
+    Oil floats on water. Water floats on corn syrup. Corn syrup floats on honey.
+  </p>
+
+  <div class="row text-center">
+    <div class="col-md-4">
+      <h5>Cylinder 1</h5>
+      <div class="mini-cylinder">
+        <div class="mini-layer" style="bottom: 50%; height: 50%; background: #fff176;">Oil</div>
+        <div class="mini-layer" style="bottom: 0%; height: 50%; background: #6ec6ff;">Water</div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <h5>Cylinder 2</h5>
+      <div class="mini-cylinder">
+        <div class="mini-layer" style="bottom: 50%; height: 50%; background: #6ec6ff;">Water</div>
+        <div class="mini-layer" style="bottom: 0%; height: 50%; background: #f4c542;">Corn Syrup</div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <h5>Cylinder 3</h5>
+      <div class="mini-cylinder">
+        <div class="mini-layer" style="bottom: 50%; height: 50%; background: #f4c542;">Corn Syrup</div>
+        <div class="mini-layer" style="bottom: 0%; height: 50%; background: #d99a2b;">Honey</div>
+      </div>
+    </div>
+  </div>
+
+  <h4>Use the evidence to order all four liquids</h4>
+
+  <label class="form-label"><strong>Least dense:</strong></label>
+  <select id="staarLeast" class="form-select mb-2">
+    <option selected>Choose...</option>
+    <option>Oil</option>
+    <option>Water</option>
+    <option>Corn Syrup</option>
+    <option>Honey</option>
+  </select>
+
+  <label class="form-label"><strong>Second:</strong></label>
+  <select id="staarSecond" class="form-select mb-2">
+    <option selected>Choose...</option>
+    <option>Oil</option>
+    <option>Water</option>
+    <option>Corn Syrup</option>
+    <option>Honey</option>
+  </select>
+
+  <label class="form-label"><strong>Third:</strong></label>
+  <select id="staarThird" class="form-select mb-2">
+    <option selected>Choose...</option>
+    <option>Oil</option>
+    <option>Water</option>
+    <option>Corn Syrup</option>
+    <option>Honey</option>
+  </select>
+
+  <label class="form-label"><strong>Most dense:</strong></label>
+  <select id="staarMost" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Oil</option>
+    <option>Water</option>
+    <option>Corn Syrup</option>
+    <option>Honey</option>
+  </select>
+
+  <button class="btn btn-success" onclick="checkStaarOrder()">
+    Check STAAR Order
+  </button>
+
+  <div id="staarFeedback"></div>
+</div>
+
+<div class="sim-card">
+  <h2>Part 3: Solids in Layered Liquids</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Drop a solid into layered liquids. Use where it settles as evidence of its relative density.
+  </div>
+
+  <label class="form-label"><strong>Choose a solid:</strong></label>
+  <select id="solidSelect" class="form-select mb-3" onchange="resetSolidTest()">
+    <option value="top" data-name="Ping Pong Ball" data-reason="The ping pong ball is less dense than all the liquids, so it stays at the top.">Ping Pong Ball</option>
+    <option value="oilwater" data-name="Plastic Bead" data-reason="The plastic bead is more dense than oil but less dense than water, so it settles between oil and water.">Plastic Bead</option>
+    <option value="watercorn" data-name="Grape" data-reason="The grape is more dense than water but less dense than corn syrup, so it settles between water and corn syrup.">Grape</option>
+    <option value="bottom" data-name="Metal Nut" data-reason="The metal nut is more dense than all the liquids, so it sinks to the bottom.">Metal Nut</option>
+  </select>
+
+  <label class="form-label"><strong>Prediction: where will it settle?</strong></label>
+  <select id="solidPrediction" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Top of all liquids</option>
+    <option>Between oil and water</option>
+    <option>Between water and corn syrup</option>
+    <option>Bottom of the cylinder</option>
+  </select>
+
+  <div class="graduated-cylinder">
+    <div class="liquid-layer" style="bottom: 75%; height: 25%; background: #fff176;">Oil</div>
+    <div class="liquid-layer" style="bottom: 50%; height: 25%; background: #6ec6ff;">Water</div>
+    <div class="liquid-layer" style="bottom: 25%; height: 25%; background: #f4c542;">Corn Syrup</div>
+    <div class="liquid-layer" style="bottom: 0%; height: 25%; background: #d99a2b;">Honey</div>
+    <div id="solidObject" class="solid-object">Ball</div>
+  </div>
+
+  <button class="btn btn-warning" onclick="dropSolid()">
+    Drop Solid
+  </button>
+
+  <button class="btn btn-success" onclick="checkSolidPrediction()">
+    Check Prediction
+  </button>
+
+  <div id="solidFeedback"></div>
+</div>
+
+<script>
+  const liquids = [
+    { name: "Honey", color: "#d99a2b", densityRank: 4 },
+    { name: "Corn Syrup", color: "#f4c542", densityRank: 3 },
+    { name: "Water", color: "#6ec6ff", densityRank: 2 },
+    { name: "Oil", color: "#fff176", densityRank: 1 }
+  ];
+
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function resetDensityColumn() {
+    document.getElementById("densityCylinder").innerHTML = "";
+    document.getElementById("columnFeedback").innerHTML = "";
+    document.getElementById("columnFeedback").className = "";
+
+    document.getElementById("columnLeast").value = "Choose...";
+    document.getElementById("columnSecond").value = "Choose...";
+    document.getElementById("columnThird").value = "Choose...";
+    document.getElementById("columnMost").value = "Choose...";
+  }
+
+  function pourDensityColumn() {
+    const cylinder = document.getElementById("densityCylinder");
+    cylinder.innerHTML = "";
+
+    const sortedLiquids = [...liquids].sort((a, b) => b.densityRank - a.densityRank);
+
+    sortedLiquids.forEach(function(liquid, index) {
+      const layer = document.createElement("div");
+      layer.className = "liquid-layer";
+      layer.style.background = liquid.color;
+      layer.style.height = "25%";
+      layer.style.bottom = (index * 25) + "%";
+      layer.innerHTML = liquid.name;
+      cylinder.appendChild(layer);
+    });
+  }
+
+  function checkDensityColumnOrder() {
+    const least = document.getElementById("columnLeast").value;
+    const second = document.getElementById("columnSecond").value;
+    const third = document.getElementById("columnThird").value;
+    const most = document.getElementById("columnMost").value;
+
+    if (least === "Oil" && second === "Water" && third === "Corn Syrup" && most === "Honey") {
+      showFeedback(
+        "columnFeedback",
+        "Correct! From least dense to most dense: Oil, Water, Corn Syrup, Honey.",
+        true
+      );
+    } else {
+      showFeedback(
+        "columnFeedback",
+        "Not yet. Use the layers as evidence: top = least dense and bottom = most dense.",
+        false
+      );
+    }
+  }
+
+  function checkStaarOrder() {
+    const least = document.getElementById("staarLeast").value;
+    const second = document.getElementById("staarSecond").value;
+    const third = document.getElementById("staarThird").value;
+    const most = document.getElementById("staarMost").value;
+
+    if (least === "Oil" && second === "Water" && third === "Corn Syrup" && most === "Honey") {
+      showFeedback(
+        "staarFeedback",
+        "Correct! The cylinders show: Oil floats on water, water floats on corn syrup, and corn syrup floats on honey.",
+        true
+      );
+    } else {
+      showFeedback(
+        "staarFeedback",
+        "Not yet. Read each cylinder as evidence. The liquid on top is less dense than the liquid below it.",
+        false
+      );
+    }
+  }
+
+  function resetSolidTest() {
+    const solidSelect = document.getElementById("solidSelect");
+    const selected = solidSelect.options[solidSelect.selectedIndex];
+
+    document.getElementById("solidObject").innerText = selected.dataset.name;
+    document.getElementById("solidObject").style.bottom = "300px";
+    document.getElementById("solidPrediction").value = "Choose...";
+    document.getElementById("solidFeedback").innerHTML = "";
+    document.getElementById("solidFeedback").className = "";
+  }
+
+  function dropSolid() {
+    const result = document.getElementById("solidSelect").value;
+
+    if (result === "top") {
+      document.getElementById("solidObject").style.bottom = "275px";
+    } else if (result === "oilwater") {
+      document.getElementById("solidObject").style.bottom = "220px";
+    } else if (result === "watercorn") {
+      document.getElementById("solidObject").style.bottom = "145px";
+    } else {
+      document.getElementById("solidObject").style.bottom = "5px";
+    }
+  }
+
+  function checkSolidPrediction() {
+    const result = document.getElementById("solidSelect").value;
+    const prediction = document.getElementById("solidPrediction").value;
+    const selected = document.getElementById("solidSelect").options[document.getElementById("solidSelect").selectedIndex];
+
+    let correctPrediction = "";
+
+    if (result === "top") {
+      correctPrediction = "Top of all liquids";
+    } else if (result === "oilwater") {
+      correctPrediction = "Between oil and water";
+    } else if (result === "watercorn") {
+      correctPrediction = "Between water and corn syrup";
+    } else {
+      correctPrediction = "Bottom of the cylinder";
+    }
+
+    if (prediction === correctPrediction) {
+      showFeedback("solidFeedback", "Correct! " + selected.dataset.reason, true);
+    } else {
+      showFeedback(
+        "solidFeedback",
+        "Not yet. Watch where the solid settles compared to the liquid layers.",
+        false
+      );
+    }
+  }
+
+  resetDensityColumn();
+  resetSolidTest();
+</script>
+
+{% endblock %}

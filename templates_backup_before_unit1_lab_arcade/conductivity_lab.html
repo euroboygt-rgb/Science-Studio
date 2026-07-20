@@ -1,0 +1,400 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Conductivity Lab Simulator</h1>
+<p class="lead">
+  Test materials in a circuit and decide whether they are conductors or insulators.
+</p>
+
+<a href="/first-nine-weeks/day/14?view=student" class="btn btn-secondary mb-4">
+  Back to Day 14
+</a>
+
+<style>
+  .sim-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
+
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
+  .circuit-board {
+    max-width: 520px;
+    height: 280px;
+    margin: 20px auto;
+    border: 3px solid #333;
+    border-radius: 16px;
+    background: white;
+    position: relative;
+  }
+
+  .wire {
+    position: absolute;
+    background: #333;
+  }
+
+  .wire-top {
+    width: 320px;
+    height: 8px;
+    top: 55px;
+    left: 100px;
+  }
+
+  .wire-left {
+    width: 8px;
+    height: 145px;
+    top: 55px;
+    left: 100px;
+  }
+
+  .wire-right {
+    width: 8px;
+    height: 145px;
+    top: 55px;
+    left: 412px;
+  }
+
+  .battery {
+    position: absolute;
+    left: 55px;
+    top: 185px;
+    width: 100px;
+    height: 50px;
+    border: 3px solid #333;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 10px;
+    background: #e9ecef;
+  }
+
+  .bulb {
+    position: absolute;
+    right: 45px;
+    top: 175px;
+    width: 80px;
+    height: 80px;
+    border: 4px solid #333;
+    border-radius: 50%;
+    background: #e9ecef;
+    text-align: center;
+    padding-top: 25px;
+    font-weight: bold;
+  }
+
+  .bulb-on {
+    background: #fff176;
+    box-shadow: 0 0 30px #ffc107;
+  }
+
+  .test-gap {
+    position: absolute;
+    left: 200px;
+    top: 185px;
+    width: 140px;
+    height: 50px;
+    border: 3px dashed #333;
+    border-radius: 8px;
+    text-align: center;
+    padding-top: 10px;
+    background: #f8f9fa;
+    font-weight: bold;
+  }
+
+  .wire-bottom-left {
+    width: 85px;
+    height: 8px;
+    top: 205px;
+    left: 115px;
+  }
+
+  .wire-bottom-right {
+    width: 85px;
+    height: 8px;
+    top: 205px;
+    left: 340px;
+  }
+
+  .heat-bar {
+    width: 100%;
+    height: 30px;
+    background: #dee2e6;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+
+  .heat-fill {
+    width: 0%;
+    height: 100%;
+    background: #ff6b6b;
+    transition: width 0.8s;
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  .mystery-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+</style>
+
+<div class="sim-card">
+  <h2>Part 1: Electrical Conductivity Test</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Place a material in a simple circuit. If the bulb lights, the material is a conductor. If the bulb does not light, the material is an insulator.
+  </div>
+
+  <label class="form-label"><strong>Choose a material:</strong></label>
+  <select id="materialSelect" class="form-select mb-3" onchange="resetCircuit()">
+    <option value="conductor" data-name="Copper Wire" data-reason="Copper wire allows electricity to move through it, so it is a conductor.">Copper Wire</option>
+    <option value="insulator" data-name="Plastic Spoon" data-reason="Plastic does not allow electricity to move through it easily, so it is an insulator.">Plastic Spoon</option>
+    <option value="conductor" data-name="Aluminum Foil" data-reason="Aluminum foil allows electricity to move through it, so it is a conductor.">Aluminum Foil</option>
+    <option value="insulator" data-name="Rubber Band" data-reason="Rubber does not allow electricity to move through it easily, so it is an insulator.">Rubber Band</option>
+    <option value="conductor" data-name="Metal Paper Clip" data-reason="A metal paper clip allows electricity to move through it, so it is a conductor.">Metal Paper Clip</option>
+    <option value="insulator" data-name="Wooden Craft Stick" data-reason="Wood does not allow electricity to move through it easily, so it is an insulator.">Wooden Craft Stick</option>
+    <option value="insulator" data-name="Foam Piece" data-reason="Foam does not allow electricity to move through it easily, so it is an insulator.">Foam Piece</option>
+    <option value="conductor" data-name="Steel Nail" data-reason="A steel nail allows electricity to move through it, so it is a conductor.">Steel Nail</option>
+  </select>
+
+  <label class="form-label"><strong>Your prediction:</strong></label>
+  <select id="predictionSelect" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Conductor</option>
+    <option>Insulator</option>
+  </select>
+
+  <div class="circuit-board">
+    <div class="wire wire-top"></div>
+    <div class="wire wire-left"></div>
+    <div class="wire wire-right"></div>
+    <div class="wire wire-bottom-left"></div>
+    <div class="wire wire-bottom-right"></div>
+
+    <div class="battery">Battery</div>
+    <div id="testGap" class="test-gap">Test Material</div>
+    <div id="bulb" class="bulb">Bulb</div>
+  </div>
+
+  <button class="btn btn-primary" onclick="placeMaterial()">Place Material</button>
+  <button class="btn btn-warning" onclick="closeCircuit()">Close Circuit</button>
+  <button class="btn btn-success" onclick="checkPrediction()">Check Prediction</button>
+
+  <div id="circuitFeedback"></div>
+</div>
+
+<div class="sim-card">
+  <h2>Part 2: Heat Conductivity Test</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Compare how quickly heat moves through different materials.
+  </div>
+
+  <label class="form-label"><strong>Choose a spoon material:</strong></label>
+  <select id="heatSelect" class="form-select mb-3" onchange="resetHeatTest()">
+    <option value="fast" data-name="Metal Spoon" data-reason="Metal conducts heat quickly, so the handle gets warm faster.">Metal Spoon</option>
+    <option value="slow" data-name="Wooden Spoon" data-reason="Wood does not conduct heat well, so it acts as an insulator.">Wooden Spoon</option>
+    <option value="slow" data-name="Plastic Spoon" data-reason="Plastic does not conduct heat well, so it acts as an insulator.">Plastic Spoon</option>
+  </select>
+
+  <button class="btn btn-warning" onclick="runHeatTest()">Place in Warm Water</button>
+
+  <p class="mt-3"><strong>Heat moving through handle:</strong></p>
+  <div class="heat-bar">
+    <div id="heatFill" class="heat-fill"></div>
+  </div>
+
+  <label class="form-label mt-3"><strong>Conclusion:</strong></label>
+  <select id="heatConclusion" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Good conductor of heat</option>
+    <option>Good insulator of heat</option>
+  </select>
+
+  <button class="btn btn-success" onclick="checkHeatConclusion()">Check Heat Conclusion</button>
+
+  <div id="heatFeedback"></div>
+</div>
+
+<div class="sim-card">
+  <h2>Part 3: STAAR Evidence Practice</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Use evidence from a circuit test to classify each mystery material.
+  </div>
+
+  <div class="mystery-card">
+    <h4>Mystery Material A</h4>
+    <p><strong>Observation:</strong> The bulb lights when the material is placed in the circuit.</p>
+
+    <select id="mysteryA" class="form-select mb-2">
+      <option selected>Choose conclusion...</option>
+      <option>Conductor</option>
+      <option>Insulator</option>
+    </select>
+  </div>
+
+  <div class="mystery-card">
+    <h4>Mystery Material B</h4>
+    <p><strong>Observation:</strong> The bulb does not light when the material is placed in the circuit.</p>
+
+    <select id="mysteryB" class="form-select mb-2">
+      <option selected>Choose conclusion...</option>
+      <option>Conductor</option>
+      <option>Insulator</option>
+    </select>
+  </div>
+
+  <div class="mystery-card">
+    <h4>Mystery Material C</h4>
+    <p><strong>Observation:</strong> Heat moves quickly through the material.</p>
+
+    <select id="mysteryC" class="form-select mb-2">
+      <option selected>Choose conclusion...</option>
+      <option>Conductor</option>
+      <option>Insulator</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" onclick="checkMysteries()">Check Mystery Materials</button>
+
+  <div id="mysteryFeedback"></div>
+</div>
+
+<script>
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function resetCircuit() {
+    const materialSelect = document.getElementById("materialSelect");
+    const selected = materialSelect.options[materialSelect.selectedIndex];
+
+    document.getElementById("testGap").innerText = selected.dataset.name;
+    document.getElementById("bulb").className = "bulb";
+    document.getElementById("circuitFeedback").innerHTML = "";
+    document.getElementById("circuitFeedback").className = "";
+    document.getElementById("predictionSelect").value = "Choose...";
+  }
+
+  function placeMaterial() {
+    const materialSelect = document.getElementById("materialSelect");
+    const selected = materialSelect.options[materialSelect.selectedIndex];
+    document.getElementById("testGap").innerText = selected.dataset.name;
+    showFeedback("circuitFeedback", "Material placed in the circuit. Now close the circuit.", true);
+  }
+
+  function closeCircuit() {
+    const result = document.getElementById("materialSelect").value;
+
+    if (result === "conductor") {
+      document.getElementById("bulb").className = "bulb bulb-on";
+      showFeedback("circuitFeedback", "Observation: The bulb lights.", true);
+    } else {
+      document.getElementById("bulb").className = "bulb";
+      showFeedback("circuitFeedback", "Observation: The bulb does not light.", true);
+    }
+  }
+
+  function checkPrediction() {
+    const result = document.getElementById("materialSelect").value;
+    const prediction = document.getElementById("predictionSelect").value;
+    const selected = document.getElementById("materialSelect").options[document.getElementById("materialSelect").selectedIndex];
+
+    let correctAnswer = result === "conductor" ? "Conductor" : "Insulator";
+
+    if (prediction === correctAnswer) {
+      showFeedback("circuitFeedback", "Correct! " + selected.dataset.reason, true);
+    } else {
+      showFeedback("circuitFeedback", "Not yet. Use the bulb as evidence. If the bulb lights, it is a conductor. If it does not light, it is an insulator.", false);
+    }
+  }
+
+  function resetHeatTest() {
+    document.getElementById("heatFill").style.width = "0%";
+    document.getElementById("heatConclusion").value = "Choose...";
+    document.getElementById("heatFeedback").innerHTML = "";
+    document.getElementById("heatFeedback").className = "";
+  }
+
+  function runHeatTest() {
+    const result = document.getElementById("heatSelect").value;
+
+    if (result === "fast") {
+      document.getElementById("heatFill").style.width = "95%";
+      showFeedback("heatFeedback", "Observation: Heat moves quickly through the metal spoon.", true);
+    } else {
+      document.getElementById("heatFill").style.width = "25%";
+      showFeedback("heatFeedback", "Observation: Heat moves slowly through this material.", true);
+    }
+  }
+
+  function checkHeatConclusion() {
+    const result = document.getElementById("heatSelect").value;
+    const conclusion = document.getElementById("heatConclusion").value;
+    const selected = document.getElementById("heatSelect").options[document.getElementById("heatSelect").selectedIndex];
+
+    let correctAnswer = result === "fast" ? "Good conductor of heat" : "Good insulator of heat";
+
+    if (conclusion === correctAnswer) {
+      showFeedback("heatFeedback", "Correct! " + selected.dataset.reason, true);
+    } else {
+      showFeedback("heatFeedback", "Not yet. If heat moves quickly, it is a good conductor. If heat moves slowly, it is a good insulator.", false);
+    }
+  }
+
+  function checkMysteries() {
+    const a = document.getElementById("mysteryA").value;
+    const b = document.getElementById("mysteryB").value;
+    const c = document.getElementById("mysteryC").value;
+
+    if (a === "Conductor" && b === "Insulator" && c === "Conductor") {
+      showFeedback(
+        "mysteryFeedback",
+        "Correct! A conducts electricity, B does not conduct electricity, and C conducts heat.",
+        true
+      );
+    } else {
+      showFeedback(
+        "mysteryFeedback",
+        "Not yet. Use the evidence: bulb lights = conductor, bulb does not light = insulator, heat moves quickly = conductor.",
+        false
+      );
+    }
+  }
+
+  resetCircuit();
+  resetHeatTest();
+</script>
+
+{% endblock %}

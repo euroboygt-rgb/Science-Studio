@@ -355,7 +355,7 @@ Hi scientist! Ask me a 5th grade science question. I can help with matter, mixtu
 Example: <strong>What makes wood an insulator of electrical and thermal energy?</strong>
             </div>
 
-            <div class="science-ai-bubble" style="font-size: 12px;">Please do not share private information. Keep questions science-related.<br>I can help you understand science, but I will not give answers to STAAR, exit ticket, quiz, or page questions.</div>
+            <div class="science-ai-bubble" style="font-size: 12px;">Please do not share private information. Keep questions science-related.</div>
 
             <div class="science-ai-input-row">
                 <input id="scienceStudioAiInput" type="text" maxlength="350" placeholder="Ask a science question..." />
@@ -410,7 +410,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const response = await fetch("/api/science-ai", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({question: question, page_path: window.location.pathname})
+                body: JSON.stringify({question: question})
             });
 
             const data = await response.json();
@@ -435,62 +435,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <!-- End Science Studio AI Floating Widget -->
-
-
-<!-- Unit 1 Matter Lab Arcade Button Router -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
-
-    if (!match) {
-        return;
-    }
-
-    const day = parseInt(match[1], 10);
-
-    const unit1Arcades = {
-        3: {url: "/labs/unit1/arcade/particle-states", text: "Open Particle State Sort"},
-        4: {url: "/labs/unit1/arcade/mass-balance", text: "Open Mass Balance Challenge"},
-        5: {url: "/labs/unit1/arcade/volume-pour", text: "Open Volume Pour Lab"},
-        6: {url: "/labs/unit1/arcade/magnetism-sorter", text: "Open Magnetism Sorter"},
-        7: {url: "/labs/unit1/arcade/density-tank", text: "Open Density Tank"},
-        8: {url: "/labs/unit1/arcade/liquid-layers", text: "Open Liquid Layer Lab"},
-        9: {url: "/labs/unit1/arcade/solubility-mixer", text: "Open Solubility Mixer"},
-        10: {url: "/labs/unit1/arcade/insoluble-lab", text: "Open Insoluble Material Lab"},
-        11: {url: "/labs/unit1/arcade/conductivity-lab", text: "Open Conductor or Insulator Lab"},
-        12: {url: "/labs/unit1/arcade/electrical-conductivity", text: "Open Electrical Circuit Tester"},
-        13: {url: "/labs/unit1/arcade/thermal-conductivity", text: "Open Thermal Energy Race"},
-        14: {url: "/labs/unit1/arcade/property-detective", text: "Open Property Detective"},
-        15: {url: "/labs/unit1/arcade/toy-engineering", text: "Open Toy Engineering Challenge"},
-        16: {url: "/labs/unit1/arcade/unit-review", text: "Open Unit 1 Review Arcade"}
-    };
-
-    const lab = unit1Arcades[day];
-
-    if (!lab) {
-        return;
-    }
-
-    const candidates = Array.from(document.querySelectorAll("a, button")).filter(function (el) {
-        const text = (el.textContent || "").trim().toLowerCase();
-        return text.includes("open lab") || text.includes("open investigation") || text.includes("lab / investigation");
-    });
-
-    candidates.forEach(function (el) {
-        const link = document.createElement("a");
-
-        link.href = lab.url;
-        link.textContent = lab.text;
-        link.className = el.className || "btn btn-success";
-        link.style.cssText = el.style.cssText || "";
-        link.style.display = "inline-block";
-        link.style.textDecoration = "none";
-
-        el.replaceWith(link);
-    });
-});
-</script>
-<!-- End Unit 1 Matter Lab Arcade Button Router -->
 
 </body>
 </html>

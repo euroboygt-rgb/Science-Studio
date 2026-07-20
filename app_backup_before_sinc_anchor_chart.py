@@ -834,13 +834,6 @@ def unit1_lab_arcade_by_day(day):
     return redirect(lab["url"])
 
 
-
-@app.route("/resources/sinc-magnetic-anchor-chart")
-def sinc_magnetic_anchor_chart():
-    from flask import render_template
-    return render_template("sinc_magnetic_anchor_chart.html")
-
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)

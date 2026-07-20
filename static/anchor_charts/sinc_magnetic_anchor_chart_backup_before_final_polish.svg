@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 950">
+  <defs>
+    <linearGradient id="mainBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6f2dbd"/>
+      <stop offset="48%" stop-color="#123f8c"/>
+      <stop offset="100%" stop-color="#00a6d6"/>
+    </linearGradient>
+
+    <filter id="shadow">
+      <feDropShadow dx="8" dy="8" stdDeviation="0" flood-color="#111" flood-opacity=".28"/>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="950" rx="42" fill="#eaf7ff"/>
+  <rect x="45" y="45" width="1310" height="860" rx="38" fill="url(#mainBg)" stroke="#111" stroke-width="12" filter="url(#shadow)"/>
+
+  <text x="700" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="66" font-weight="900" fill="#ffffff">
+    What Materials Are Magnetic?
+  </text>
+
+  <rect x="390" y="160" width="620" height="88" rx="44" fill="#ff9f1c" stroke="#111" stroke-width="8"/>
+  <text x="700" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#111">
+    Remember SINC
+  </text>
+
+  <g transform="translate(95 300)">
+    <rect width="285" height="330" rx="28" fill="#fff7d6" stroke="#111" stroke-width="8"/>
+    <circle cx="142" cy="72" r="48" fill="#b7c4d6" stroke="#111" stroke-width="6"/>
+    <rect x="96" y="112" width="92" height="120" rx="10" fill="#8d99ae" stroke="#111" stroke-width="6"/>
+    <line x1="116" y1="142" x2="168" y2="142" stroke="#ffffff" stroke-width="7"/>
+    <line x1="116" y1="173" x2="168" y2="173" stroke="#ffffff" stroke-width="7"/>
+    <line x1="116" y1="204" x2="168" y2="204" stroke="#ffffff" stroke-width="7"/>
+    <text x="142" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="66" font-weight="900" fill="#6f2dbd">S</text>
+    <text x="142" y="312" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#111">Steel</text>
+  </g>
+
+  <g transform="translate(405 300)">
+    <rect width="285" height="330" rx="28" fill="#fff7d6" stroke="#111" stroke-width="8"/>
+    <path d="M92 118 L192 118 L170 228 L112 228 Z" fill="#9c6644" stroke="#111" stroke-width="6"/>
+    <rect x="112" y="68" width="62" height="62" rx="8" fill="#7f5539" stroke="#111" stroke-width="6"/>
+    <circle cx="142" cy="172" r="22" fill="#c08a5b"/>
+    <text x="142" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="66" font-weight="900" fill="#6f2dbd">I</text>
+    <text x="142" y="312" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#111">Iron</text>
+  </g>
+
+  <g transform="translate(715 300)">
+    <rect width="285" height="330" rx="28" fill="#fff7d6" stroke="#111" stroke-width="8"/>
+    <circle cx="142" cy="152" r="78" fill="#d6d6d6" stroke="#111" stroke-width="7"/>
+    <circle cx="142" cy="152" r="53" fill="#f6f6f6" stroke="#8d99ae" stroke-width="6"/>
+    <text x="142" y="169" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#555">Ni</text>
+    <text x="142" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="66" font-weight="900" fill="#6f2dbd">N</text>
+    <text x="142" y="312" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#111">Nickel</text>
+  </g>
+
+  <g transform="translate(1025 300)">
+    <rect width="285" height="330" rx="28" fill="#fff7d6" stroke="#111" stroke-width="8"/>
+    <polygon points="142,62 208,120 184,224 100,224 76,120" fill="#4361ee" stroke="#111" stroke-width="7"/>
+    <polygon points="142,94 178,130 164,190 120,190 106,130" fill="#4cc9f0" stroke="#111" stroke-width="5"/>
+    <text x="142" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="66" font-weight="900" fill="#6f2dbd">C</text>
+    <text x="142" y="312" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#111">Cobalt</text>
+  </g>
+
+  <rect x="115" y="675" width="1170" height="130" rx="32" fill="#ffffff" stroke="#111" stroke-width="8"/>
+  <text x="700" y="730" text-anchor="middle" font-family="Arial, sans-serif" font-size="38" font-weight="900" fill="#111">
+    Magnetic materials are usually made with
+  </text>
+  <text x="700" y="780" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="900" fill="#6f2dbd">
+    steel, iron, nickel, or cobalt.
+  </text>
+
+  <rect x="180" y="830" width="1040" height="54" rx="27" fill="#ff9f1c" stroke="#111" stroke-width="6"/>
+  <text x="700" y="867" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="900" fill="#111">
+    STAAR clue: If a magnet pulls it, use evidence to classify it as magnetic.
+  </text>
+</svg>

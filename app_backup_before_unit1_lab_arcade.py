@@ -804,43 +804,6 @@ def api_science_ai():
         }), 200
 
 
-
-@app.route("/labs/unit1/arcade/<lab_slug>")
-def unit1_lab_arcade(lab_slug):
-    from flask import render_template, redirect
-    from curriculum.unit1_lab_arcades import get_unit1_arcade_by_slug
-
-    lab = get_unit1_arcade_by_slug(lab_slug)
-
-    if not lab:
-        return redirect("/labs")
-
-    lab = dict(lab)
-    lab["slug"] = lab_slug
-
-    return render_template("unit1_matter_arcade.html", lab=lab)
-
-
-@app.route("/labs/unit1/day/<int:day>")
-def unit1_lab_arcade_by_day(day):
-    from flask import redirect
-    from curriculum.unit1_lab_arcades import get_unit1_arcade_for_day
-
-    lab = get_unit1_arcade_for_day(day)
-
-    if not lab:
-        return redirect("/labs")
-
-    return redirect(lab["url"])
-
-
-
-@app.route("/resources/sinc-magnetic-anchor-chart")
-def sinc_magnetic_anchor_chart():
-    from flask import render_template
-    return render_template("sinc_magnetic_anchor_chart.html")
-
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)

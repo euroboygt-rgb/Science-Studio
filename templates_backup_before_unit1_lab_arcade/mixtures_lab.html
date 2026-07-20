@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Mixtures Lab Simulator</h1>
+<p class="lead">
+  Decide what is a mixture and choose the best way to separate it.
+</p>
+
+<a href="/first-nine-weeks/day/16?view=student" class="btn btn-secondary mb-4">
+  Back to Day 16
+</a>
+
+<style>
+  .sim-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
+
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
+  .mixture-box {
+    min-height: 180px;
+    border: 3px solid #333;
+    border-radius: 15px;
+    background: white;
+    margin: 20px auto;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .item {
+    width: 70px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid #333;
+    text-align: center;
+    font-size: 12px;
+    background: #e9ecef;
+  }
+
+  .sorted-box {
+    min-height: 90px;
+    border: 2px dashed #333;
+    border-radius: 12px;
+    background: white;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  .scenario-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+</style>
+
+<div class="sim-card">
+  <h2>Part 1: Mixture or Not a Mixture?</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> A mixture has two or more substances that can be separated in a physical way.
+  </div>
+
+  <label class="form-label"><strong>Choose an example:</strong></label>
+  <select id="exampleSelect" class="form-select mb-3" onchange="showExample()">
+    <option value="mixture" data-name="Trail Mix" data-parts="Raisins, cereal, pretzels, chocolate" data-reason="Trail mix is a mixture because the parts stay the same and can be separated.">Trail Mix</option>
+    <option value="not" data-name="Copper Wire" data-parts="Copper" data-reason="Copper wire is not this kind of mixture because it is one material in this example.">Copper Wire</option>
+    <option value="mixture" data-name="Sand and Water" data-parts="Sand and water" data-reason="Sand and water is a mixture because the sand and water keep their properties and can be separated.">Sand and Water</option>
+    <option value="mixture" data-name="Beans and Rice" data-parts="Beans and rice" data-reason="Beans and rice is a mixture because the parts can be physically separated.">Beans and Rice</option>
+    <option value="not" data-name="Glass Marble" data-parts="One object" data-reason="A single glass marble is not a visible mixture of different substances in this example.">Glass Marble</option>
+  </select>
+
+  <div class="mixture-box" id="exampleBox"></div>
+
+  <label class="form-label"><strong>Your answer:</strong></label>
+  <select id="mixtureAnswer" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Mixture</option>
+    <option>Not a mixture</option>
+  </select>
+
+  <button class="btn btn-success" onclick="checkMixtureAnswer()">Check Answer</button>
+
+  <div id="mixtureFeedback"></div>
+</div>
+
+<div class="sim-card">
+  <h2>Part 2: Separate by Particle Size</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Choose the best tool to separate a mixture by particle size.
+  </div>
+
+  <p><strong>Mixture:</strong> Gravel and sand</p>
+
+  <div class="mixture-box">
+    <div class="item">Gravel</div>
+    <div class="item">Sand</div>
+    <div class="item">Gravel</div>
+    <div class="item">Sand</div>
+    <div class="item">Gravel</div>
+    <div class="item">Sand</div>
+  </div>
+
+  <label class="form-label"><strong>Best tool:</strong></label>
+  <select id="particleTool" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Sieve or strainer</option>
+    <option>Magnet</option>
+    <option>Balance</option>
+    <option>Thermometer</option>
+  </select>
+
+  <button class="btn btn-primary" onclick="separateParticles()">Separate Mixture</button>
+
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <h5>Large particles</h5>
+      <div id="largeParticles" class="sorted-box"></div>
+    </div>
+
+    <div class="col-md-6">
+      <h5>Small particles</h5>
+      <div id="smallParticles" class="sorted-box"></div>
+    </div>
+  </div>
+
+  <div id="particleFeedback"></div>
+</div>
+
+<div class="sim-card">
+  <h2>Part 3: Recycling Center Challenge</h2>
+
+  <div class="info-box">
+    <strong>Goal:</strong> Choose a physical property or tool to separate each material.
+  </div>
+
+  <div class="scenario-card">
+    <h4>Steel objects mixed with paper</h4>
+    <select id="recycle1" class="form-select">
+      <option selected>Choose separation method...</option>
+      <option>Use a magnet</option>
+      <option>Evaporate the water</option>
+      <option>Use a thermometer</option>
+      <option>Measure with a graduated cylinder</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>Plastic pieces mixed with glass pieces</h4>
+    <select id="recycle2" class="form-select">
+      <option selected>Choose separation method...</option>
+      <option>Sort by material properties such as appearance, hardness, or density</option>
+      <option>Use a magnet for both materials</option>
+      <option>Dissolve both materials in water</option>
+      <option>Measure temperature</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>Gravel mixed with sand</h4>
+    <select id="recycle3" class="form-select">
+      <option selected>Choose separation method...</option>
+      <option>Use a sieve or strainer</option>
+      <option>Use a circuit</option>
+      <option>Use a thermometer</option>
+      <option>Use evaporation</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" onclick="checkRecycling()">Check Recycling Plan</button>
+
+  <div id="recyclingFeedback"></div>
+</div>
+
+<script>
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function showExample() {
+    const select = document.getElementById("exampleSelect");
+    const selected = select.options[select.selectedIndex];
+    const box = document.getElementById("exampleBox");
+
+    box.innerHTML = "";
+
+    selected.dataset.parts.split(",").forEach(function(part) {
+      const div = document.createElement("div");
+      div.className = "item";
+      div.innerText = part.trim();
+      box.appendChild(div);
+    });
+
+    document.getElementById("mixtureFeedback").innerHTML = "";
+    document.getElementById("mixtureFeedback").className = "";
+    document.getElementById("mixtureAnswer").value = "Choose...";
+  }
+
+  function checkMixtureAnswer() {
+    const select = document.getElementById("exampleSelect");
+    const selected = select.options[select.selectedIndex];
+    const correct = select.value === "mixture" ? "Mixture" : "Not a mixture";
+    const answer = document.getElementById("mixtureAnswer").value;
+
+    if (answer === correct) {
+      showFeedback("mixtureFeedback", "Correct! " + selected.dataset.reason, true);
+    } else {
+      showFeedback("mixtureFeedback", "Not yet. A mixture has two or more substances that can be separated physically.", false);
+    }
+  }
+
+  function separateParticles() {
+    const tool = document.getElementById("particleTool").value;
+    const large = document.getElementById("largeParticles");
+    const small = document.getElementById("smallParticles");
+
+    large.innerHTML = "";
+    small.innerHTML = "";
+
+    if (tool === "Sieve or strainer") {
+      for (let i = 0; i < 3; i++) {
+        const gravel = document.createElement("div");
+        gravel.className = "item";
+        gravel.innerText = "Gravel";
+        large.appendChild(gravel);
+
+        const sand = document.createElement("div");
+        sand.className = "item";
+        sand.innerText = "Sand";
+        small.appendChild(sand);
+      }
+
+      showFeedback("particleFeedback", "Correct! A sieve or strainer separates materials by particle size.", true);
+    } else {
+      showFeedback("particleFeedback", "Not yet. Gravel and sand are best separated by particle size.", false);
+    }
+  }
+
+  function checkRecycling() {
+    const r1 = document.getElementById("recycle1").value;
+    const r2 = document.getElementById("recycle2").value;
+    const r3 = document.getElementById("recycle3").value;
+
+    if (
+      r1 === "Use a magnet" &&
+      r2 === "Sort by material properties such as appearance, hardness, or density" &&
+      r3 === "Use a sieve or strainer"
+    ) {
+      showFeedback("recyclingFeedback", "Correct! You used physical properties to separate the mixtures.", true);
+    } else {
+      showFeedback("recyclingFeedback", "Not yet. Think about the physical property that makes each material different.", false);
+    }
+  }
+
+  showExample();
+</script>
+
+{% endblock %}

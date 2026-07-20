@@ -1,0 +1,925 @@
+{% extends "base.html" %}
+
+{% block title %}{{ lab.title }} | Matter Lab Arcade{% endblock %}
+
+{% block content %}
+<style>
+.arcade-wrap {
+    max-width: 1180px;
+    margin: 24px auto;
+}
+
+.arcade-hero {
+    background:
+        radial-gradient(circle at top left, rgba(255,159,28,0.35), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(80,209,255,0.28), transparent 35%),
+        linear-gradient(135deg, #6f2dbd 0%, #123f8c 48%, #07172f 100%);
+    color: white;
+    border: 6px solid #111;
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.28);
+}
+
+.arcade-badge {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ff9f1c;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: 1000;
+    margin: 4px 6px 8px 0;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.32);
+}
+
+.back-btn,
+.reset-btn,
+.next-btn {
+    display: inline-block;
+    background: #ff9f1c;
+    color: #111;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+}
+
+.next-btn {
+    display: none;
+    background: #00c2ff;
+}
+
+.arcade-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.arcade-panel {
+    background: #ffffff;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 18px;
+    box-shadow: 7px 7px 0 rgba(0,0,0,0.18);
+}
+
+.mission-panel {
+    position: sticky;
+    top: 90px;
+    align-self: start;
+}
+
+.arcade-items {
+    display: grid;
+    gap: 10px;
+}
+
+.arcade-item {
+    width: 100%;
+    text-align: left;
+    background: #f4f8ff;
+    border: 4px solid #111;
+    border-radius: 16px;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: 900;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.arcade-item:hover {
+    transform: translateY(-2px);
+}
+
+.arcade-item.selected {
+    background: #fff7d6;
+    outline: 5px solid #ff9f1c;
+}
+
+.arcade-item.completed {
+    background: #d8ffe9;
+}
+
+.score-board {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.score-pill {
+    background: #fff7d6;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-weight: 1000;
+}
+
+.progress-shell {
+    margin-top: 14px;
+    background: #eaf4ff;
+    border: 4px solid #111;
+    border-radius: 999px;
+    overflow: hidden;
+    height: 28px;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff9f1c, #00c2ff, #6f2dbd);
+    transition: width 0.35s ease;
+}
+
+.arcade-screen {
+    min-height: 560px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0)),
+        radial-gradient(circle at 72% 18%, #70ddff 0%, #3b8bd0 38%, #123f8c 100%);
+    border: 6px solid #111;
+    border-radius: 28px;
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+}
+
+.arcade-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 34px 34px;
+    pointer-events: none;
+}
+
+.arcade-hud {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.hud-chip {
+    background: #fff7d6;
+    color: #111;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-weight: 1000;
+}
+
+.arcade-scene {
+    position: relative;
+    z-index: 2;
+    min-height: 310px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arcade-object {
+    font-size: 96px;
+    filter: drop-shadow(6px 8px 0 rgba(0,0,0,0.28));
+    transition: transform 0.55s ease;
+}
+
+.object-name-tag {
+    display: inline-block;
+    background: white;
+    color: #111;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: 1000;
+    margin-top: 8px;
+}
+
+.water-tank {
+    width: 330px;
+    height: 330px;
+    border-left: 9px solid #111;
+    border-right: 9px solid #111;
+    border-bottom: 9px solid #111;
+    border-radius: 0 0 34px 34px;
+    background: linear-gradient(to bottom, transparent 0 24%, rgba(76,201,240,0.88) 24% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.water-tank::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 24%;
+    height: 14px;
+    background: rgba(255,255,255,0.55);
+    border-top: 4px solid rgba(255,255,255,0.4);
+}
+
+.beaker-scene,
+.layer-column,
+.volume-cylinder,
+.circuit-scene,
+.magnet-scene,
+.balance-scene {
+    position: relative;
+    z-index: 2;
+}
+
+.beaker-scene {
+    width: 290px;
+    height: 330px;
+    border: 8px solid #111;
+    border-top: none;
+    border-radius: 0 0 32px 32px;
+    background: linear-gradient(to bottom, transparent 0 22%, #4cc9f0 22% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.magnet-scene {
+    width: 380px;
+    min-height: 260px;
+    display: grid;
+    place-items: center;
+    background: #f6fbff;
+    border: 5px dashed #111;
+    border-radius: 24px;
+}
+
+.big-magnet {
+    font-size: 118px;
+}
+
+.circuit-scene {
+    width: 420px;
+    min-height: 260px;
+    background: #f8fbff;
+    border: 5px solid #111;
+    border-radius: 24px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 18px;
+}
+
+.bulb {
+    font-size: 92px;
+}
+
+.bulb.on {
+    text-shadow: 0 0 18px #ffe66d, 0 0 34px #ffbe0b, 0 0 54px #ffbe0b;
+}
+
+.balance-scene {
+    width: 460px;
+    min-height: 270px;
+    background: #f8fbff;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: end;
+}
+
+.balance-pan {
+    background: #fff7d6;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 16px;
+    text-align: center;
+    font-weight: 1000;
+    font-size: 1.1rem;
+}
+
+.volume-cylinder {
+    width: 190px;
+    height: 340px;
+    border-left: 8px solid #111;
+    border-right: 8px solid #111;
+    border-bottom: 8px solid #111;
+    border-radius: 0 0 24px 24px;
+    background: linear-gradient(to top, #4cc9f0 var(--fill, 20%), transparent var(--fill, 20%));
+}
+
+.volume-label {
+    position: absolute;
+    right: -105px;
+    top: 45%;
+    background: white;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 8px;
+    font-weight: 900;
+}
+
+.layer-column {
+    width: 280px;
+    height: 340px;
+    border: 8px solid #111;
+    border-top: none;
+    border-radius: 0 0 30px 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.layer {
+    height: 33.33%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-weight: 1000;
+    border-top: 3px solid rgba(0,0,0,0.35);
+}
+
+.arcade-controls {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.95);
+    border: 5px solid #111;
+    border-radius: 22px;
+    padding: 16px;
+}
+
+.choice-btn {
+    background: #6f2dbd;
+    color: #ff9f1c;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    margin: 4px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.25);
+}
+
+.choice-btn.selected {
+    background: #ff9f1c;
+    color: #111;
+}
+
+.test-btn {
+    background: #00a878;
+    color: white;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 12px 18px;
+    font-weight: 1000;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+    margin-top: 8px;
+}
+
+.result-badge {
+    display: inline-block;
+    border: 5px solid #111;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    margin-bottom: 8px;
+}
+
+.result-correct {
+    background: #d8ffe9;
+    color: #064d2f;
+}
+
+.result-try {
+    background: #ffe2e2;
+    color: #7a0000;
+}
+
+.feedback {
+    background: #fff;
+    border: 5px solid #111;
+    border-radius: 18px;
+    padding: 14px;
+    margin-top: 12px;
+    font-weight: 800;
+    min-height: 90px;
+}
+
+.splash {
+    animation: splashPop 0.75s ease;
+}
+
+.float-animation {
+    transform: translateY(-76px) scale(1.08);
+}
+
+.sink-animation {
+    transform: translateY(104px) scale(0.96);
+}
+
+.pull-animation {
+    transform: translateY(-72px) scale(1.15) rotate(-5deg);
+}
+
+.bounce-animation {
+    animation: bounceTest 0.65s ease;
+}
+
+.dissolve-animation {
+    opacity: 0.35;
+    transform: scale(0.55);
+}
+
+@keyframes splashPop {
+    0% { box-shadow: inset 0 0 0 rgba(255,255,255,0); }
+    40% { box-shadow: inset 0 0 80px rgba(255,255,255,0.75); }
+    100% { box-shadow: inset 0 0 0 rgba(255,255,255,0); }
+}
+
+@keyframes bounceTest {
+    0% { transform: scale(1); }
+    35% { transform: scale(1.18) rotate(4deg); }
+    70% { transform: scale(0.95) rotate(-2deg); }
+    100% { transform: scale(1); }
+}
+
+.notebook-box {
+    margin-top: 18px;
+    background: #fff7d6;
+    border: 5px solid #111;
+    border-radius: 22px;
+    padding: 16px;
+}
+
+.notebook-lines {
+    background: repeating-linear-gradient(#fff 0 30px, #d9e9ff 31px 32px);
+    border: 3px solid #111;
+    border-radius: 14px;
+    min-height: 130px;
+    padding: 14px;
+}
+
+.mission-complete {
+    display: none;
+    margin-top: 14px;
+    background: #d8ffe9;
+    border: 5px solid #111;
+    border-radius: 18px;
+    padding: 14px;
+    font-weight: 1000;
+}
+
+.mission-complete.show {
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .arcade-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mission-panel {
+        position: static;
+    }
+
+    .water-tank,
+    .beaker-scene,
+    .circuit-scene,
+    .magnet-scene,
+    .balance-scene {
+        width: 100%;
+        max-width: 430px;
+    }
+}
+
+.arcade-icon-img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.arcade-object .arcade-icon-img {
+    width: 125px;
+    height: 100px;
+    margin-right: 0;
+}
+
+.sinc-anchor-card {
+    margin-top: 18px;
+    background: #fff7d6;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 18px;
+    box-shadow: 7px 7px 0 rgba(0,0,0,0.18);
+}
+
+.sinc-anchor-card img {
+    width: 100%;
+    max-width: 900px;
+    display: block;
+    margin: 12px auto;
+    border: 5px solid #111;
+    border-radius: 20px;
+    background: white;
+}
+
+.sinc-anchor-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+</style>
+
+<div class="arcade-wrap">
+    <section class="arcade-hero">
+        <span class="arcade-badge">Matter Lab Arcade</span>
+        <span class="arcade-badge">Unit 1</span>
+        <span class="arcade-badge">Day {{ lab.day }}</span>
+
+        <h1>{{ lab.title }}</h1>
+        <p>{{ lab.subtitle }}</p>
+
+        <a class="back-btn" href="/first-nine-weeks/day/{{ lab.day }}?view=student">← Back to Day {{ lab.day }}</a>
+    </section>
+
+
+    {% if lab.slug == "magnetism-sorter" %}
+    <section class="sinc-anchor-card">
+        <h2>🧲 Magnetic Materials Anchor Chart</h2>
+        <p><strong>Remember SINC:</strong> Steel, Iron, Nickel, and Cobalt are magnetic materials.</p>
+
+        <img src="/static/anchor_charts/sinc_magnetic_anchor_chart.svg" alt="SINC magnetic materials anchor chart">
+
+        <div class="sinc-anchor-actions">
+            <a class="back-btn" href="/resources/sinc-magnetic-anchor-chart">Open Printable SINC Anchor Chart</a>
+            <button class="reset-btn" type="button" onclick="window.print()">Print This Page</button>
+        </div>
+    </section>
+    {% endif %}
+
+
+    <div class="arcade-grid">
+        <aside class="arcade-panel mission-panel">
+            <h2>🎮 Mission</h2>
+            <p>{{ lab.mission }}</p>
+
+            <h3>Choose an item</h3>
+            <div class="arcade-items" id="itemList"></div>
+
+            <div class="score-board">
+                <span class="score-pill">⭐ Score: <span id="score">0</span></span>
+                <span class="score-pill">🔬 Tested: <span id="tested">0</span></span>
+            </div>
+
+            <div class="progress-shell">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="mission-complete" id="missionComplete">
+                🏆 Mission Complete! Write your science conclusion in your lab notebook.
+            </div>
+
+            <button class="reset-btn" type="button" onclick="resetArcade()">Reset Lab</button>
+        </aside>
+
+        <main class="arcade-panel">
+            <div class="arcade-screen" id="arcadeScreen">
+                <div class="arcade-hud">
+                    <span class="hud-chip">Current item: <span id="currentItemName">Choose one</span></span>
+                    <span class="hud-chip">Goal: Use evidence</span>
+                </div>
+
+                <div class="arcade-scene" id="scene"></div>
+
+                <div class="arcade-controls">
+                    <h2 id="challengeTitle">Pick an item to begin.</h2>
+                    <div id="choices"></div>
+                    <button class="test-btn" type="button" onclick="runTest()">Run Test</button>
+                    <button class="next-btn" id="nextBtn" type="button" onclick="nextObject()">Next Object →</button>
+
+                    <div class="feedback" id="feedback">
+                        Select an object, make a prediction, and run the test.
+                    </div>
+                </div>
+            </div>
+
+            <section class="notebook-box">
+                <h2>📝 Lab Notebook Response</h2>
+                <p><strong>Claim:</strong> I think the object/material is __________.</p>
+                <p><strong>Evidence:</strong> I observed that __________.</p>
+                <p><strong>Reasoning:</strong> This shows __________ because __________.</p>
+                <div class="notebook-lines"></div>
+            </section>
+        </main>
+    </div>
+</div>
+
+<script>
+const LAB = {{ lab|tojson }};
+let selectedIndex = 0;
+let selectedChoice = "";
+let score = 0;
+let completed = new Set();
+let correctCompleted = new Set();
+let volumeAmount = 10;
+
+function itemName(item) {
+    return item.name || `${item.left} vs ${item.right}` || item.question || "Challenge";
+}
+
+function itemIcon(item) {
+    if (item.icon_image) {
+        return `<img class="arcade-icon-img" src="${item.icon_image}" alt="${item.name || 'lab item'}">`;
+    }
+
+    return item.icon || item.left_icon || "🔬";
+}
+
+function renderItems() {
+    const list = document.getElementById("itemList");
+    list.innerHTML = "";
+
+    LAB.items.forEach((item, index) => {
+        const button = document.createElement("button");
+        button.className = "arcade-item" + (index === selectedIndex ? " selected" : "") + (completed.has(index) ? " completed" : "");
+        button.type = "button";
+        button.innerHTML = `${completed.has(index) ? "✅" : itemIcon(item)} ${itemName(item)}`;
+        button.onclick = () => {
+            selectedIndex = index;
+            selectedChoice = "";
+            document.getElementById("nextBtn").style.display = "none";
+            renderAll(false);
+        };
+        list.appendChild(button);
+    });
+}
+
+function renderChoices() {
+    const choices = document.getElementById("choices");
+    choices.innerHTML = "";
+
+    if (LAB.mode === "volume") {
+        const item = LAB.items[selectedIndex];
+        choices.innerHTML = `
+            <button class="choice-btn" onclick="pourVolume(5)">Pour +5 mL</button>
+            <button class="choice-btn" onclick="pourVolume(10)">Pour +10 mL</button>
+            <button class="choice-btn" onclick="pourVolume(-5)">Remove -5 mL</button>
+            <button class="choice-btn ${selectedChoice === item.target + ' mL' ? 'selected' : ''}" onclick="chooseAnswer('${item.target} mL')">Set Target: ${item.target} mL</button>
+        `;
+        return;
+    }
+
+    if (LAB.mode === "compare") {
+        [
+            {label: "left", text: "Left object has more mass"},
+            {label: "right", text: "Right object has more mass"}
+        ].forEach(choice => addChoiceButton(choice.label, choice.text));
+        return;
+    }
+
+    if (LAB.mode === "engineering") {
+        LAB.items.forEach((item) => addChoiceButton(item.name, `${item.icon} ${item.name}`));
+        return;
+    }
+
+    if (LAB.mode === "review") {
+        ["magnetism", "solubility", "relative density", "conductivity"].forEach(label => addChoiceButton(label, label));
+        return;
+    }
+
+    LAB.targets.forEach(label => addChoiceButton(label, label));
+}
+
+function addChoiceButton(label, text) {
+    const choices = document.getElementById("choices");
+    const button = document.createElement("button");
+    button.className = "choice-btn" + (selectedChoice === label ? " selected" : "");
+    button.type = "button";
+    button.textContent = text;
+    button.onclick = () => chooseAnswer(label);
+    choices.appendChild(button);
+}
+
+function chooseAnswer(label) {
+    selectedChoice = label;
+    renderChoices();
+}
+
+function renderScene() {
+    const scene = document.getElementById("scene");
+    const item = LAB.items[selectedIndex];
+    const name = itemName(item);
+    const icon = itemIcon(item);
+    document.getElementById("currentItemName").textContent = name;
+
+    if (LAB.mode === "sinkfloat") {
+        scene.innerHTML = `<div class="water-tank" id="waterTank"><div style="text-align:center;"><div id="object" class="arcade-object">${icon}</div><div class="object-name-tag">${name}</div></div></div>`;
+    } else if (LAB.mode === "sort" && LAB.title.toLowerCase().includes("magnet")) {
+        scene.innerHTML = `<div class="magnet-scene"><div style="text-align:center;"><div class="big-magnet">🧲</div><div id="object" class="arcade-object">${icon}</div><div class="object-name-tag">${name}</div></div></div>`;
+    } else if (LAB.mode === "sort" && (LAB.title.toLowerCase().includes("solub") || LAB.title.toLowerCase().includes("insoluble"))) {
+        scene.innerHTML = `<div class="beaker-scene"><div style="text-align:center;"><div id="object" class="arcade-object">${icon}</div><div class="object-name-tag">${name}</div></div></div>`;
+    } else if (LAB.mode === "circuit") {
+        scene.innerHTML = `<div class="circuit-scene"><div><div id="bulb" class="bulb">💡</div><div id="object" class="arcade-object">${icon}</div><div class="object-name-tag">${name}</div></div></div>`;
+    } else if (LAB.mode === "heat") {
+        scene.innerHTML = `<div class="circuit-scene"><div><div class="bulb">🔥</div><div id="object" class="arcade-object">${icon}</div><div class="object-name-tag">${name}</div><div id="heatMeter">Heat meter: ▓░░░░</div></div></div>`;
+    } else if (LAB.mode === "compare") {
+        scene.innerHTML = `<div class="balance-scene">
+            <div class="balance-pan">${item.left_icon}<br>${item.left}<br><small>${item.left_value} g</small></div>
+            <div class="balance-pan">${item.right_icon}<br>${item.right}<br><small>${item.right_value} g</small></div>
+        </div>`;
+    } else if (LAB.mode === "volume") {
+        scene.innerHTML = `<div class="volume-cylinder" id="volumeCylinder" style="--fill:${volumeAmount}%"><div class="volume-label"><span id="volumeReadout">${volumeAmount}</span> mL</div></div>`;
+    } else if (LAB.mode === "layers") {
+        scene.innerHTML = `<div class="layer-column" id="layerColumn">
+            <div class="layer" style="background:#ffd166">Oil<br>Least Dense</div>
+            <div class="layer" style="background:#4cc9f0">Water<br>Middle</div>
+            <div class="layer" style="background:#b5651d;color:white;">Corn Syrup<br>Most Dense</div>
+        </div>`;
+    } else if (LAB.mode === "engineering") {
+        scene.innerHTML = `<div class="circuit-scene"><div><div id="object" class="arcade-object">${icon}</div><div class="object-name-tag">${name}</div><p>Choose the best toy material using evidence.</p></div></div>`;
+    } else if (LAB.mode === "review") {
+        scene.innerHTML = `<div class="circuit-scene"><div><div class="arcade-object">🧠</div><strong>${item.question}</strong></div></div>`;
+    } else {
+        scene.innerHTML = `<div class="circuit-scene"><div><div id="object" class="arcade-object">${icon}</div><div class="object-name-tag">${name}</div></div></div>`;
+    }
+}
+
+function pourVolume(amount) {
+    volumeAmount = Math.max(0, Math.min(80, volumeAmount + amount));
+    const cylinder = document.getElementById("volumeCylinder");
+    const readout = document.getElementById("volumeReadout");
+    if (cylinder) cylinder.style.setProperty("--fill", volumeAmount + "%");
+    if (readout) readout.textContent = volumeAmount;
+}
+
+function runTest() {
+    const item = LAB.items[selectedIndex];
+    const feedback = document.getElementById("feedback");
+
+    if (!selectedChoice && LAB.mode !== "layers") {
+        feedback.innerHTML = `<span class="result-badge result-try">Make a prediction first</span><br>Select one of the purple answer buttons before running the test.`;
+        return;
+    }
+
+    let correct = false;
+    let message = "";
+
+    if (LAB.mode === "volume") {
+        const target = item.target;
+        correct = Math.abs(volumeAmount - target) <= 5;
+        message = correct
+            ? `Great measuring! Your cylinder is close to ${target} mL.`
+            : `Try again. The target is ${target} mL, but your cylinder shows about ${volumeAmount} mL.`;
+    } else if (LAB.mode === "compare") {
+        correct = selectedChoice === item.answer;
+        const winner = item.answer === "left" ? item.left : item.right;
+        message = correct
+            ? `Correct! ${winner} has more mass, so that side of the balance goes lower.`
+            : `Not quite. ${winner} has more mass. Compare the gram measurements.`;
+    } else if (LAB.mode === "engineering") {
+        const selected = LAB.items.find(x => x.name === selectedChoice);
+        correct = selected && selected.score >= 8;
+        message = correct
+            ? `Great engineering choice! ${selected.name} works well because: ${selected.observation}`
+            : `${selected.name} might work sometimes, but another material has better evidence for this toy challenge.`;
+    } else if (LAB.mode === "review") {
+        correct = selectedChoice === item.answer;
+        message = correct
+            ? `Correct! The concept is ${item.answer}.`
+            : `Try again. Look for the property that matches the evidence.`;
+    } else if (LAB.mode === "layers") {
+        correct = true;
+        message = "Correct density column: Oil is least dense, water is in the middle, and corn syrup is most dense.";
+    } else {
+        correct = selectedChoice === item.answer;
+        message = correct
+            ? `Correct! ${item.name}: ${item.observation}`
+            : `Not quite. ${item.name} is ${item.answer}. Evidence: ${item.observation}`;
+    }
+
+    animateResult(item, correct);
+
+    if (!completed.has(selectedIndex)) {
+        completed.add(selectedIndex);
+        if (correct) {
+            correctCompleted.add(selectedIndex);
+            score += 1;
+        }
+    } else if (correct && !correctCompleted.has(selectedIndex)) {
+        correctCompleted.add(selectedIndex);
+        score += 1;
+    }
+
+    updateScore();
+
+    const badgeClass = correct ? "result-correct" : "result-try";
+    const badgeText = correct ? "✅ Correct!" : "🔎 Try Again";
+    feedback.innerHTML = `<span class="result-badge ${badgeClass}">${badgeText}</span><br>${message}<br><br><strong>STAAR connection:</strong> Use the evidence from the test to support your answer.`;
+
+    document.getElementById("nextBtn").style.display = "inline-block";
+
+    if (completed.size >= LAB.items.length) {
+        document.getElementById("missionComplete").classList.add("show");
+    }
+}
+
+function animateResult(item, correct) {
+    const screen = document.getElementById("arcadeScreen");
+    const object = document.getElementById("object");
+    const bulb = document.getElementById("bulb");
+    const heatMeter = document.getElementById("heatMeter");
+
+    screen.classList.remove("splash");
+    void screen.offsetWidth;
+    screen.classList.add("splash");
+
+    if (!object) return;
+
+    object.classList.remove("float-animation", "sink-animation", "pull-animation", "bounce-animation", "dissolve-animation");
+    void object.offsetWidth;
+
+    if (LAB.mode === "sinkfloat") {
+        object.classList.add(item.answer === "floats" ? "float-animation" : "sink-animation");
+    } else if (LAB.mode === "sort" && item.answer === "magnetic") {
+        object.classList.add("pull-animation");
+    } else if (LAB.mode === "sort" && (item.answer === "soluble")) {
+        object.classList.add("dissolve-animation");
+    } else {
+        object.classList.add("bounce-animation");
+    }
+
+    if (LAB.mode === "circuit" && bulb) {
+        if (item.answer === "bulb lights") bulb.classList.add("on");
+        else bulb.classList.remove("on");
+    }
+
+    if (LAB.mode === "heat" && heatMeter) {
+        heatMeter.textContent = item.answer === "thermal conductor"
+            ? "Heat meter: ▓▓▓▓▓"
+            : "Heat meter: ▓▓░░░";
+    }
+}
+
+function nextObject() {
+    selectedIndex = (selectedIndex + 1) % LAB.items.length;
+    selectedChoice = "";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("feedback").textContent = "Select an object, make a prediction, and run the test.";
+    renderAll(false);
+}
+
+function updateScore() {
+    document.getElementById("score").textContent = score;
+    document.getElementById("tested").textContent = completed.size;
+
+    const percent = LAB.items.length ? Math.round((completed.size / LAB.items.length) * 100) : 0;
+    document.getElementById("progressFill").style.width = percent + "%";
+}
+
+function resetArcade() {
+    selectedIndex = 0;
+    selectedChoice = "";
+    score = 0;
+    completed = new Set();
+    correctCompleted = new Set();
+    volumeAmount = 10;
+
+    document.getElementById("feedback").textContent = "Select an object, make a prediction, and run the test.";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("missionComplete").classList.remove("show");
+
+    updateScore();
+    renderAll(false);
+}
+
+function renderAll(resetFeedback=true) {
+    renderItems();
+    renderScene();
+    renderChoices();
+    document.getElementById("challengeTitle").textContent = LAB.mission;
+    updateScore();
+
+    if (resetFeedback) {
+        document.getElementById("feedback").textContent = "Select an object, make a prediction, and run the test.";
+    }
+}
+
+renderAll();
+</script>
+{% endblock %}

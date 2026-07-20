@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}Interactive Lab Library{% endblock %}
+
+{% block content %}
+
+<style>
+    .lab-hero {
+        background: linear-gradient(135deg, #102542 0%, #1b4965 55%, #5fa8d3 100%);
+        color: white;
+        border: 5px solid #111;
+        border-radius: 28px;
+        padding: 30px;
+        box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+        margin-bottom: 22px;
+    }
+
+    .lab-section {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 20px;
+        padding: 18px;
+        margin-bottom: 20px;
+        box-shadow: 5px 5px 0 rgba(17,17,17,0.14);
+    }
+
+    .lab-card {
+        border: 3px solid #111;
+        border-radius: 16px;
+        padding: 14px;
+        background: #f8f9fa;
+        height: 100%;
+    }
+
+    .lab-btn {
+        border: 3px solid #111;
+        border-radius: 10px;
+        font-weight: 900;
+        box-shadow: 3px 3px 0 rgba(17,17,17,0.2);
+        margin-top: 6px;
+    }
+
+    .unit-label {
+        display: inline-block;
+        border: 2px solid #111;
+        border-radius: 999px;
+        padding: 4px 10px;
+        background: #d8f3dc;
+        font-weight: 900;
+        margin-bottom: 8px;
+    }
+</style>
+
+{% macro lab_card(title, description, link, label) %}
+    <div class="col-md-6 col-xl-4 mb-3">
+        <div class="lab-card">
+            <span class="unit-label">{{ label }}</span>
+            <h4>{{ title }}</h4>
+            <p>{{ description }}</p>
+            <a href="{{ link }}" class="btn btn-primary lab-btn">Open Lab</a>
+        </div>
+    </div>
+{% endmacro %}
+
+<section class="lab-hero">
+    <span class="badge-science">Interactive Labs</span>
+    <span class="badge-science">Updated YAG</span>
+    <span class="badge-science">Student Practice</span>
+
+    <h1 class="mt-3">Science Lab Library</h1>
+    <p class="lead mb-0">
+        Labs are organized by the updated 1st 9 Weeks YAG sequence.
+    </p>
+</section>
+
+<section class="lab-section">
+    <h2>🧰 Classroom Launch: Days 1–2</h2>
+    <div class="row">
+        {{ lab_card("Science Tools Practice", "Practice choosing tools for observing, measuring, and collecting data.", "/first-nine-weeks/day/2?view=student", "Days 1–2") }}
+        {{ lab_card("Lab Safety Review", "Review safe choices, science routines, and lab notebook expectations.", "/first-nine-weeks/day/1?view=student", "Days 1–2") }}
+    </div>
+</section>
+
+<section class="lab-section">
+    <h2>🧪 Unit 1: Physical Properties of Matter — Days 3–16</h2>
+    <div class="row">
+        {{ lab_card("Particle Model Lab", "Model matter as particles too small to be seen.", "/labs/particles", "Unit 1") }}
+        {{ lab_card("Balance Scale Mass Simulator", "Measure and compare mass using grams.", "/labs/balance-scale-mass", "Unit 1") }}
+        {{ lab_card("Graduated Cylinder Volume Simulator", "Measure liquid volume and solid volume by displacement.", "/labs/graduated-cylinder-volume", "Unit 1") }}
+        {{ lab_card("Magnetic or Not Lab", "Test and classify objects as magnetic or nonmagnetic.", "/labs/magnetic-or-not", "Unit 1") }}
+        {{ lab_card("Sink or Float Lab", "Compare relative density using water as a reference point.", "/labs/sink-float", "Unit 1") }}
+        {{ lab_card("Liquid Density Lab", "Compare relative density of liquids by observing layers.", "/labs/liquid-density", "Unit 1") }}
+        {{ lab_card("Solubility Lab", "Test soluble and insoluble materials in water.", "/labs/solubility", "Unit 1") }}
+        {{ lab_card("Conductivity Lab", "Compare conductors and insulators of thermal and electrical energy.", "/labs/conductivity", "Unit 1") }}
+        {{ lab_card("Unit 1 Review Game", "Review physical properties of matter before the performance assessment.", "/labs/unit1-review", "Unit 1") }}
+    </div>
+</section>
+
+<section class="lab-section">
+    <h2>♻️ Unit 2: Mixtures and Solutions — Days 17–26</h2>
+    <div class="row">
+        {{ lab_card("Mixtures Lab", "Identify mixtures and explain how components keep physical properties.", "/labs/mixtures", "Unit 2") }}
+        {{ lab_card("Magnet Separation Lab", "Separate mixtures using magnetism.", "/labs/magnet-separation", "Unit 2") }}
+        {{ lab_card("Particle Size Separation Lab", "Separate mixtures by size using screens, sieves, and filters.", "/labs/particle-size", "Unit 2") }}
+        {{ lab_card("Relative Density Mixtures Lab", "Separate mixture components by sinking and floating.", "/labs/relative-density-mixtures", "Unit 2") }}
+        {{ lab_card("Solutions Lab", "Create and compare solutions.", "/labs/solutions", "Unit 2") }}
+        {{ lab_card("Evaporation Lab", "Explore evaporation as a method for separating solutions.", "/labs/evaporation", "Unit 2") }}
+        {{ lab_card("Conservation of Matter Lab", "Use measurement evidence to show matter is conserved in solutions.", "/labs/conservation-matter", "Unit 2") }}
+        {{ lab_card("Unit 2 Review Game", "Review mixtures, solutions, separation methods, and particles.", "/labs/unit2-review", "Unit 2") }}
+        {{ lab_card("Unit 2 Performance Game", "Apply mixture and solution knowledge in a performance task.", "/labs/unit2-performance", "Unit 2") }}
+    </div>
+</section>
+
+<section class="lab-section">
+    <h2>🏎️ Unit 3: Force and Motion — Days 27–36</h2>
+    <div class="row">
+        {{ lab_card("Balanced Forces Lab", "Investigate equal forces and no change in motion.", "/labs/balanced-forces", "Unit 3") }}
+        {{ lab_card("Unequal Forces Lab", "Investigate how unequal forces change motion.", "/labs/unequal-forces", "Unit 3") }}
+        {{ lab_card("Force Strength and Direction Lab", "Explore how force strength and direction affect motion.", "/labs/force-strength-direction", "Unit 3") }}
+        {{ lab_card("Mechanical Energy Transfer Lab", "Model mechanical energy transfer in moving systems.", "/labs/mechanical-energy-transfer", "Unit 3") }}
+        {{ lab_card("Variables Planner", "Plan an investigation by identifying variables.", "/labs/variables-planner", "Unit 3") }}
+        {{ lab_card("Data Graphing Lab", "Graph and analyze force and motion investigation data.", "/labs/data-graphing", "Unit 3") }}
+        {{ lab_card("Ramp Investigation", "Test how ramps affect motion using data.", "/labs/ramp-investigation", "Unit 3") }}
+        {{ lab_card("Balloon Rocket Lab", "Investigate how force affects a balloon rocket system.", "/labs/balloon-rocket", "Unit 3") }}
+        {{ lab_card("Ball Bounce Designer", "Design a simple investigation using variables and data.", "/labs/ball-bounce-designer", "Unit 3") }}
+    </div>
+</section>
+
+<section class="lab-section">
+    <h2>🔦 Unit 4: Energy Transformations — Days 37–43</h2>
+    <div class="row">
+        {{ lab_card("CMELTS Energy Anchor Chart", "Review chemical, mechanical, electrical, light, thermal, and sound energy.", "/resources/cmelts-energy-anchor-chart", "Unit 4") }}
+        {{ lab_card("Day 37: Forms of Energy", "Launch Unit 4 with energy forms and evidence of energy in systems.", "/first-nine-weeks/day/37?view=student", "Unit 4") }}
+        {{ lab_card("Day 40: Flashlight Energy Flow", "Model chemical energy changing to electrical energy and light energy.", "/first-nine-weeks/day/40?view=student", "Unit 4") }}
+        {{ lab_card("Day 41: Energy Flowchart Builder", "Build a flowchart showing energy transformation in a system.", "/first-nine-weeks/day/41?view=student", "Unit 4") }}
+    </div>
+</section>
+
+<section class="lab-section">
+    <h2>📝 Review, Assessment, and Reflection — Days 44–45</h2>
+    <div class="row">
+        {{ lab_card("Science Stations Board", "Use stations to review MP1 concepts.", "/labs/science-stations-board", "Review") }}
+        {{ lab_card("STAAR Spiral Review Game", "Review STAAR-style questions across MP1 standards.", "/labs/staar-spiral-review-game", "Review") }}
+        {{ lab_card("Digital Assessment", "Complete a digital review assessment.", "/labs/staar-digital-assessment", "Review") }}
+        {{ lab_card("Reflection Tracker", "Reflect on strengths, goals, and next steps.", "/labs/reflection-tracker", "Review") }}
+    </div>
+</section>
+
+{% endblock %}

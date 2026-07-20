@@ -1,0 +1,851 @@
+{% extends "base.html" %}
+
+{% block title %}Graduated Cylinder Volume Simulator{% endblock %}
+
+{% block content %}
+
+<h1>Graduated Cylinder Volume Simulator</h1>
+<p class="lead">
+  Pour liquids, read the mL marks, and use displacement to measure object volume.
+</p>
+
+<a href="/first-nine-weeks/day/9?view=student" class="btn btn-secondary mb-4">
+  Back to Day 9
+</a>
+
+<style>
+  .volume-hero {
+    background:
+      radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      radial-gradient(circle at 82% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      linear-gradient(135deg, #102542 0%, #1b4965 58%, #5fa8d3 100%);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+    margin-bottom: 24px;
+  }
+
+  .volume-card {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 22px;
+    padding: 20px;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
+    margin-bottom: 22px;
+  }
+
+  .lab-stage {
+    background:
+      radial-gradient(circle at 15% 18%, rgba(255,255,255,0.9) 0 3px, transparent 4px),
+      radial-gradient(circle at 82% 28%, rgba(255,255,255,0.9) 0 3px, transparent 4px),
+      linear-gradient(180deg, #bde0fe 0%, #eaf6ff 56%, #d1e7dd 56%, #d1e7dd 100%);
+    border: 5px solid #111;
+    border-radius: 24px;
+    min-height: 560px;
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+
+  .readout {
+    background: #111;
+    color: #00ff7f;
+    border: 4px solid #000;
+    border-radius: 16px;
+    padding: 14px;
+    font-family: monospace;
+    font-size: 1.45rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .cylinder-zone {
+    background: rgba(255,255,255,0.72);
+    border: 4px solid #111;
+    border-radius: 24px;
+    min-height: 490px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .graduated-cylinder {
+    width: 210px;
+    height: 410px;
+    border-left: 7px solid #111;
+    border-right: 7px solid #111;
+    border-bottom: 9px solid #111;
+    border-top: 4px solid #111;
+    border-radius: 22px 22px 36px 36px;
+    position: relative;
+    background: rgba(255,255,255,0.5);
+    overflow: hidden;
+    box-shadow: inset 0 0 0 4px rgba(255,255,255,0.45);
+  }
+
+  .cylinder-lip {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 255px;
+    height: 34px;
+    border: 7px solid #111;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.8);
+    z-index: 5;
+  }
+
+  .liquid-fill {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0%;
+    background:
+      linear-gradient(180deg, rgba(79,195,247,0.72), rgba(3,169,244,0.88)),
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0 8px, transparent 8px 16px);
+    transition: height 0.75s ease;
+    z-index: 1;
+  }
+
+  .meniscus {
+    position: absolute;
+    left: 9px;
+    right: 9px;
+    bottom: 0%;
+    height: 18px;
+    border-top: 5px solid #004d80;
+    border-radius: 50%;
+    z-index: 4;
+    transition: bottom 0.75s ease;
+  }
+
+  .measurement-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(255, 193, 7, 0.9);
+    border-top: 2px dashed #111;
+    z-index: 6;
+    transition: bottom 0.75s ease;
+  }
+
+  .measurement-label {
+    position: absolute;
+    right: -145px;
+    background: #fff3cd;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 6px 10px;
+    font-weight: 950;
+    z-index: 7;
+    transition: bottom 0.75s ease;
+    min-width: 126px;
+    text-align: center;
+  }
+
+  .tick {
+    position: absolute;
+    right: 0;
+    height: 3px;
+    background: #111;
+    z-index: 8;
+  }
+
+  .tick.major {
+    width: 54px;
+  }
+
+  .tick.minor {
+    width: 28px;
+  }
+
+  .tick-label {
+    position: absolute;
+    right: 60px;
+    transform: translateY(50%);
+    font-weight: 950;
+    color: #111;
+    z-index: 9;
+    background: rgba(255,255,255,0.75);
+    padding: 0 4px;
+    border-radius: 6px;
+  }
+
+  .falling-object {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 16px;
+    font-size: 42px;
+    z-index: 5;
+    display: none;
+  }
+
+  .pour-stream {
+    position: absolute;
+    top: 20px;
+    right: 190px;
+    width: 24px;
+    height: 180px;
+    background: linear-gradient(180deg, rgba(3,169,244,0.9), rgba(3,169,244,0.15));
+    border: 3px solid #004d80;
+    border-radius: 999px;
+    z-index: 10;
+    display: none;
+    animation: pourPulse 0.35s infinite alternate;
+  }
+
+  @keyframes pourPulse {
+    from { transform: scaleY(0.92); opacity: 0.75; }
+    to { transform: scaleY(1.04); opacity: 1; }
+  }
+
+  .beaker {
+    position: absolute;
+    top: 48px;
+    right: 85px;
+    font-size: 72px;
+    z-index: 11;
+    transform: rotate(-18deg);
+    display: none;
+  }
+
+  .control-button {
+    background: #f8f9fa;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 11px;
+    margin: 5px;
+    font-weight: 900;
+    min-width: 110px;
+  }
+
+  .control-button:hover {
+    background: #fff3cd;
+    transform: translateY(-1px);
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  .warning {
+    background: #fff3cd;
+    color: #664d03;
+  }
+
+  .data-table th,
+  .data-table td {
+    border: 3px solid #111;
+    padding: 10px;
+    background: white;
+  }
+
+  .challenge-box {
+    background: #f8f9fa;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+
+  .object-choice {
+    background: #f8f9fa;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 11px;
+    margin: 5px;
+    font-weight: 900;
+    min-width: 130px;
+  }
+
+  .object-choice:hover {
+    background: #fff3cd;
+  }
+
+  .sparkle {
+    position: absolute;
+    font-size: 28px;
+    animation: pop 1.1s ease-out forwards;
+    pointer-events: none;
+  }
+
+  @keyframes pop {
+    0% { transform: scale(0.2); opacity: 0; }
+    30% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0; }
+  }
+
+  @media (max-width: 900px) {
+    .measurement-label {
+      right: -100px;
+      min-width: 90px;
+      font-size: 0.85rem;
+    }
+
+    .graduated-cylinder {
+      width: 180px;
+    }
+
+    .pour-stream {
+      right: 140px;
+    }
+
+    .beaker {
+      right: 40px;
+    }
+  }
+</style>
+
+<section class="volume-hero">
+  <span class="badge-science">Day 9</span>
+  <span class="badge-science">Volume</span>
+  <span class="badge-science">Milliliters</span>
+  <span class="badge-science">Graduated Cylinder</span>
+
+  <h2 class="mt-3">💧 Volume Measurement Mission</h2>
+  <p class="lead mb-0">
+    Volume is the amount of space matter takes up. Liquids are often measured in milliliters, or mL.
+    Read the measurement at the bottom of the meniscus.
+  </p>
+</section>
+
+<section class="volume-card">
+  <h2>Part 1: Pour Liquid and Read the Measurement</h2>
+  <p>
+    Pour liquid into the graduated cylinder. Watch the blue liquid rise and use the numbered mL marks to read the volume.
+  </p>
+
+  <div class="lab-stage" id="labStage">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="readout" id="readout">CURRENT VOLUME: 0 mL</div>
+
+        <h3>Pour liquid:</h3>
+        <button class="control-button" onclick="pourLiquid(5)">+5 mL</button>
+        <button class="control-button" onclick="pourLiquid(10)">+10 mL</button>
+        <button class="control-button" onclick="pourLiquid(25)">+25 mL</button>
+        <button class="control-button" onclick="pourLiquid(50)">+50 mL</button>
+
+        <hr>
+
+        <h3>Remove liquid:</h3>
+        <button class="control-button" onclick="pourLiquid(-5)">-5 mL</button>
+        <button class="control-button" onclick="pourLiquid(-10)">-10 mL</button>
+
+        <hr>
+
+        <button class="btn btn-danger science-btn" onclick="resetCylinder()">Reset Cylinder</button>
+        <button class="btn btn-success science-btn" onclick="recordLiquidVolume()">Record Liquid Volume</button>
+
+        <div id="liquidFeedback" class="feedback warning">
+          Pour liquid and watch the measurement line move.
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="cylinder-zone">
+          <div class="beaker" id="beaker">🧪</div>
+          <div class="pour-stream" id="pourStream"></div>
+
+          <div style="position: relative;">
+            <div class="cylinder-lip"></div>
+
+            <div class="graduated-cylinder" id="cylinder">
+              <div id="ticks"></div>
+              <div class="liquid-fill" id="liquidFill"></div>
+              <div class="meniscus" id="meniscus"></div>
+              <div class="measurement-line" id="measurementLine"></div>
+              <div class="measurement-label" id="measurementLabel">0 mL</div>
+              <div class="falling-object" id="objectInCylinder">🪨</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="volume-card">
+  <h2>Part 2: My Volume Data Table</h2>
+  <p>Record liquid volume or displacement measurements.</p>
+
+  <div class="table-responsive">
+    <table class="table data-table">
+      <thead>
+        <tr>
+          <th>Test</th>
+          <th>Starting Volume</th>
+          <th>Final Volume</th>
+          <th>Object Volume / Liquid Volume</th>
+          <th>Evidence</th>
+        </tr>
+      </thead>
+      <tbody id="dataBody">
+        <tr>
+          <td colspan="5">No measurements recorded yet.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="btn btn-warning science-btn" onclick="clearData()">Clear Data</button>
+</section>
+
+<section class="volume-card">
+  <h2>Part 3: Water Displacement Challenge</h2>
+  <p>
+    Start with water in the graduated cylinder. Drop an object into the water.
+    The water level rises because the object takes up space.
+  </p>
+
+  <div class="challenge-box">
+    <h3>Step 1: Choose an object</h3>
+    <div id="objectButtons"></div>
+
+    <h3 class="mt-3">Step 2: Drop it into the water</h3>
+    <button class="btn btn-primary science-btn" onclick="dropSelectedObject()">Drop Object</button>
+    <button class="btn btn-warning science-btn" onclick="prepareDisplacement()">Prepare 50 mL Water</button>
+    <button class="btn btn-success science-btn" onclick="recordDisplacement()">Record Displacement</button>
+
+    <div id="displacementFeedback" class="feedback warning">
+      Click Prepare 50 mL Water, choose an object, then drop it in.
+    </div>
+
+    <label class="form-label mt-3"><strong>What is the object's volume?</strong></label>
+    <select id="displacementAnswer" class="form-select mb-3">
+      <option selected>Choose...</option>
+      <option>5 mL</option>
+      <option>10 mL</option>
+      <option>15 mL</option>
+      <option>20 mL</option>
+      <option>25 mL</option>
+      <option>30 mL</option>
+    </select>
+
+    <button class="btn btn-success science-btn" onclick="checkDisplacementAnswer()">Check Object Volume</button>
+    <div id="displacementCheckFeedback"></div>
+  </div>
+</section>
+
+<section class="volume-card">
+  <h2>Part 4: Target Volume Challenge</h2>
+  <p>
+    Try to pour exactly the target volume. The measurement label will show the current mL amount while liquid is poured.
+  </p>
+
+  <div class="challenge-box">
+    <button class="btn btn-primary science-btn" onclick="startTargetChallenge()">New Target</button>
+    <div id="targetFeedback" class="feedback warning">Click New Target.</div>
+
+    <button class="btn btn-success science-btn mt-2" onclick="checkTargetChallenge()">Check Target Volume</button>
+  </div>
+</section>
+
+<section class="volume-card">
+  <h2>Part 5: CER Explanation Builder</h2>
+
+  <div class="challenge-box">
+    <p><strong>Question:</strong> How can water displacement be used to find the volume of an object?</p>
+
+    <label class="form-label"><strong>Claim:</strong></label>
+    <select id="claim" class="form-select mb-3">
+      <option selected>Choose...</option>
+      <option>Water displacement can be used to find the volume of an object.</option>
+      <option>Water displacement can be used to find an object's magnetism.</option>
+      <option>Water displacement can be used to find an object's color.</option>
+    </select>
+
+    <label class="form-label"><strong>Evidence:</strong></label>
+    <select id="evidence" class="form-select mb-3">
+      <option selected>Choose...</option>
+      <option>The water level rises when the object is placed in the graduated cylinder.</option>
+      <option>The water disappears when the object is placed in the graduated cylinder.</option>
+      <option>The object changes the color of the cylinder.</option>
+    </select>
+
+    <label class="form-label"><strong>Reasoning:</strong></label>
+    <select id="reasoning" class="form-select mb-3">
+      <option selected>Choose...</option>
+      <option>The object takes up space, so the increase in water level equals the object's volume.</option>
+      <option>The object takes up no space, so the water level should not change.</option>
+      <option>The object gets heavier when it touches water.</option>
+    </select>
+
+    <button class="btn btn-success science-btn" onclick="checkCER()">Check CER</button>
+    <div id="cerFeedback"></div>
+  </div>
+</section>
+
+<section class="volume-card">
+  <h2>Part 6: STAAR Quick Check</h2>
+
+  <p class="alert alert-warning">
+    A student has 40 mL of water in a graduated cylinder. The student places a small rock in the water.
+    The water level rises to 58 mL.
+  </p>
+
+  <label class="form-label"><strong>What is the volume of the rock?</strong></label>
+  <select id="staar1" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>18 mL</option>
+    <option>40 mL</option>
+    <option>58 mL</option>
+    <option>98 mL</option>
+  </select>
+
+  <label class="form-label"><strong>Which evidence supports the answer?</strong></label>
+  <select id="staar2" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The water level increased from 40 mL to 58 mL.</option>
+    <option>The rock sank to the bottom.</option>
+    <option>The cylinder is made of glass.</option>
+    <option>The water was clear.</option>
+  </select>
+
+  <button class="btn btn-success science-btn" onclick="checkSTAAR()">Check STAAR Quick Check</button>
+  <div id="staarFeedback"></div>
+</section>
+
+<script>
+  let currentVolume = 0;
+  let records = [];
+  let selectedObject = null;
+  let displacementStart = null;
+  let displacementEnd = null;
+  let targetVolume = null;
+
+  const cylinderMax = 100;
+
+  const objects = [
+    { name: "Small rock", emoji: "🪨", volume: 18 },
+    { name: "Marble", emoji: "🔵", volume: 10 },
+    { name: "Metal cube", emoji: "◼️", volume: 25 },
+    { name: "Toy block", emoji: "🧱", volume: 15 },
+    { name: "Shell", emoji: "🐚", volume: 20 },
+    { name: "Rubber ball", emoji: "⚪", volume: 30 }
+  ];
+
+  function showFeedback(elementId, message, kind) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + kind;
+    box.innerHTML = message;
+  }
+
+  function renderTicks() {
+    const ticks = document.getElementById("ticks");
+    ticks.innerHTML = "";
+
+    for (let value = 0; value <= 100; value += 5) {
+      const tick = document.createElement("div");
+      tick.className = value % 10 === 0 ? "tick major" : "tick minor";
+      tick.style.bottom = value + "%";
+      ticks.appendChild(tick);
+
+      if (value % 10 === 0) {
+        const label = document.createElement("div");
+        label.className = "tick-label";
+        label.style.bottom = value + "%";
+        label.innerText = value + " mL";
+        ticks.appendChild(label);
+      }
+    }
+  }
+
+  function updateCylinder() {
+    const percent = Math.max(0, Math.min(100, currentVolume));
+
+    document.getElementById("liquidFill").style.height = percent + "%";
+    document.getElementById("meniscus").style.bottom = percent + "%";
+    document.getElementById("measurementLine").style.bottom = percent + "%";
+    document.getElementById("measurementLabel").style.bottom = "calc(" + percent + "% - 18px)";
+    document.getElementById("measurementLabel").innerText = currentVolume + " mL";
+    document.getElementById("readout").innerText = "CURRENT VOLUME: " + currentVolume + " mL";
+
+    if (currentVolume === 0) {
+      showFeedback("liquidFeedback", "Pour liquid and watch the measurement line move.", "warning");
+    } else if (currentVolume === 100) {
+      showFeedback("liquidFeedback", "The cylinder is full at 100 mL.", "warning");
+    } else {
+      showFeedback("liquidFeedback", "Read the volume at the bottom of the meniscus: " + currentVolume + " mL.", "correct");
+    }
+  }
+
+  function showPourAnimation() {
+    const stream = document.getElementById("pourStream");
+    const beaker = document.getElementById("beaker");
+
+    stream.style.display = "block";
+    beaker.style.display = "block";
+
+    setTimeout(() => {
+      stream.style.display = "none";
+      beaker.style.display = "none";
+    }, 650);
+  }
+
+  function pourLiquid(amount) {
+    const newVolume = Math.max(0, Math.min(cylinderMax, currentVolume + amount));
+
+    if (amount > 0 && newVolume !== currentVolume) {
+      showPourAnimation();
+    }
+
+    currentVolume = newVolume;
+    updateCylinder();
+  }
+
+  function resetCylinder() {
+    currentVolume = 0;
+    selectedObject = null;
+    displacementStart = null;
+    displacementEnd = null;
+    document.getElementById("objectInCylinder").style.display = "none";
+    updateCylinder();
+    showFeedback("displacementFeedback", "Click Prepare 50 mL Water, choose an object, then drop it in.", "warning");
+  }
+
+  function recordLiquidVolume() {
+    if (currentVolume === 0) {
+      showFeedback("liquidFeedback", "Pour liquid first, then record the volume.", "warning");
+      return;
+    }
+
+    records.push({
+      test: "Liquid volume",
+      start: "0 mL",
+      end: currentVolume + " mL",
+      result: currentVolume + " mL",
+      evidence: "The meniscus lines up with the " + currentVolume + " mL mark."
+    });
+
+    renderData();
+    showFeedback("liquidFeedback", "Liquid volume recorded: " + currentVolume + " mL.", "correct");
+    makeSparkles();
+  }
+
+  function renderData() {
+    const body = document.getElementById("dataBody");
+    body.innerHTML = "";
+
+    if (records.length === 0) {
+      body.innerHTML = '<tr><td colspan="5">No measurements recorded yet.</td></tr>';
+      return;
+    }
+
+    records.forEach(row => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${row.test}</td>
+        <td>${row.start}</td>
+        <td>${row.end}</td>
+        <td>${row.result}</td>
+        <td>${row.evidence}</td>
+      `;
+      body.appendChild(tr);
+    });
+  }
+
+  function clearData() {
+    records = [];
+    renderData();
+  }
+
+  function renderObjectButtons() {
+    const area = document.getElementById("objectButtons");
+    area.innerHTML = "";
+
+    objects.forEach((object, index) => {
+      const button = document.createElement("button");
+      button.className = "object-choice";
+      button.innerHTML = object.emoji + "<br>" + object.name;
+      button.onclick = () => chooseObject(index);
+      area.appendChild(button);
+    });
+  }
+
+  function chooseObject(index) {
+    selectedObject = objects[index];
+    showFeedback("displacementFeedback", "Selected: " + selectedObject.name + ". Now drop it into the water.", "warning");
+  }
+
+  function prepareDisplacement() {
+    selectedObject = null;
+    currentVolume = 50;
+    displacementStart = 50;
+    displacementEnd = null;
+    document.getElementById("objectInCylinder").style.display = "none";
+    updateCylinder();
+    showFeedback("displacementFeedback", "Starting volume is 50 mL. Choose an object and drop it in.", "correct");
+  }
+
+  function dropSelectedObject() {
+    if (displacementStart === null) {
+      showFeedback("displacementFeedback", "Click Prepare 50 mL Water first.", "warning");
+      return;
+    }
+
+    if (!selectedObject) {
+      showFeedback("displacementFeedback", "Choose an object first.", "warning");
+      return;
+    }
+
+    displacementEnd = displacementStart + selectedObject.volume;
+    currentVolume = displacementEnd;
+
+    const objectDisplay = document.getElementById("objectInCylinder");
+    objectDisplay.innerText = selectedObject.emoji;
+    objectDisplay.style.display = "block";
+
+    updateCylinder();
+
+    showFeedback(
+      "displacementFeedback",
+      selectedObject.name + " dropped in. The water rose from " + displacementStart + " mL to " + displacementEnd + " mL.",
+      "correct"
+    );
+
+    makeSparkles();
+  }
+
+  function checkDisplacementAnswer() {
+    if (!selectedObject || displacementEnd === null) {
+      showFeedback("displacementCheckFeedback", "Complete the displacement test first.", "warning");
+      return;
+    }
+
+    const answer = document.getElementById("displacementAnswer").value;
+    const correct = selectedObject.volume + " mL";
+
+    if (answer === correct) {
+      showFeedback(
+        "displacementCheckFeedback",
+        "Correct! " + displacementEnd + " mL - " + displacementStart + " mL = " + selectedObject.volume + " mL.",
+        "correct"
+      );
+      makeSparkles();
+    } else {
+      showFeedback(
+        "displacementCheckFeedback",
+        "Not yet. Subtract starting volume from final volume: " + displacementEnd + " mL - " + displacementStart + " mL.",
+        "incorrect"
+      );
+    }
+  }
+
+  function recordDisplacement() {
+    if (!selectedObject || displacementEnd === null) {
+      showFeedback("displacementFeedback", "Drop an object into the water before recording.", "warning");
+      return;
+    }
+
+    records.push({
+      test: "Water displacement: " + selectedObject.name,
+      start: displacementStart + " mL",
+      end: displacementEnd + " mL",
+      result: selectedObject.volume + " mL",
+      evidence: "The water level increased by " + selectedObject.volume + " mL."
+    });
+
+    renderData();
+    showFeedback("displacementFeedback", "Displacement measurement recorded.", "correct");
+  }
+
+  function startTargetChallenge() {
+    const targets = [15, 20, 25, 30, 35, 40, 45, 60, 75, 90];
+    targetVolume = targets[Math.floor(Math.random() * targets.length)];
+
+    resetCylinder();
+    showFeedback("targetFeedback", "Target volume: pour exactly <strong>" + targetVolume + " mL</strong>. Watch the measurement label as you pour.", "warning");
+  }
+
+  function checkTargetChallenge() {
+    if (targetVolume === null) {
+      showFeedback("targetFeedback", "Click New Target first.", "warning");
+      return;
+    }
+
+    if (currentVolume === targetVolume) {
+      showFeedback("targetFeedback", "Perfect! You poured exactly " + targetVolume + " mL.", "correct");
+      makeSparkles();
+    } else {
+      const difference = Math.abs(currentVolume - targetVolume);
+      showFeedback("targetFeedback", "Not yet. Current volume is " + currentVolume + " mL. You are " + difference + " mL away from the target.", "warning");
+    }
+  }
+
+  function checkCER() {
+    const claim = document.getElementById("claim").value;
+    const evidence = document.getElementById("evidence").value;
+    const reasoning = document.getElementById("reasoning").value;
+
+    if (
+      claim === "Water displacement can be used to find the volume of an object." &&
+      evidence === "The water level rises when the object is placed in the graduated cylinder." &&
+      reasoning === "The object takes up space, so the increase in water level equals the object's volume."
+    ) {
+      showFeedback("cerFeedback", "Excellent CER! You connected volume, displacement, and evidence.", "correct");
+      makeSparkles();
+    } else {
+      showFeedback("cerFeedback", "Not yet. Choose the statements that explain how the water level change shows volume.", "incorrect");
+    }
+  }
+
+  function checkSTAAR() {
+    const s1 = document.getElementById("staar1").value;
+    const s2 = document.getElementById("staar2").value;
+
+    if (
+      s1 === "18 mL" &&
+      s2 === "The water level increased from 40 mL to 58 mL."
+    ) {
+      showFeedback("staarFeedback", "Correct! 58 mL - 40 mL = 18 mL. The rock's volume is 18 mL.", "correct");
+      makeSparkles();
+    } else {
+      showFeedback("staarFeedback", "Not yet. Subtract the starting water level from the final water level.", "incorrect");
+    }
+  }
+
+  function makeSparkles() {
+    const stage = document.getElementById("labStage");
+
+    for (let i = 0; i < 10; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.innerText = ["✨", "⭐", "💧", "✅"][Math.floor(Math.random() * 4)];
+      sparkle.style.left = (80 + Math.random() * 760) + "px";
+      sparkle.style.top = (30 + Math.random() * 430) + "px";
+      stage.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1200);
+    }
+  }
+
+  renderTicks();
+  renderObjectButtons();
+  renderData();
+  updateCylinder();
+</script>
+
+{% endblock %}
