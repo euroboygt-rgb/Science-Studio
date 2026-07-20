@@ -1,0 +1,2544 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{# Science Studio Printable Resource Button #}
+{% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
+{% set printable_resource = get_printable_resource_for_day(lesson_day) %}
+
+{% if printable_resource %}
+<section class="card my-4" style="border: 4px solid #111; border-radius: 20px; box-shadow: 5px 5px 0 rgba(17,17,17,0.14);">
+  <div class="card-body">
+    <h2 class="card-title">📄 Printable Resource</h2>
+    <p class="card-text">
+      This lesson has a matching printable foldable, notebook insert, lab sheet, planner, or review page.
+    </p>
+
+    <a href="/resources/{{ printable_resource['slug'] }}" class="btn btn-lg btn-warning" style="border: 3px solid #111; font-weight: 900;">
+      Open Day {{ lesson_day }} Printable Resource
+    </a>
+  </div>
+</section>
+{% endif %}
+
+
+{% set vocab_day = lesson.get("day", 0) %}
+
+{% macro unit_vocab_poster(unit_number, unit_title, filename, anchor) %}
+<div class="card mt-3 mb-3 vocab-poster-card">
+  <div class="card-header bg-primary text-white">
+    Vocabulary Picture Support
+  </div>
+
+  <div class="card-body">
+    <h5>{{ unit_title }}</h5>
+
+    <img src="{{ url_for('static', filename='vocabulary/posters/' ~ filename) }}"
+       alt="{{ unit_title }} vocabulary poster"
+       style="width:100%; max-width:560px; border:3px solid #111; border-radius:16px; display:block; margin:12px auto;">
+
+    <div class="no-print">
+      <a href="/vocabulary#{{ anchor }}" class="btn btn-primary mt-2">
+        Open Printable Poster
+      </a>
+
+      <a href="{{ url_for('static', filename='vocabulary/posters/' ~ filename) }}"
+        class="btn btn-success mt-2"
+        download>
+        Download Poster
+      </a>
+    </div>
+  </div>
+</div>
+{% endmacro %}
+
+<div id="unitVocabPosterBlock">
+  {% if vocab_day >= 5 and vocab_day <= 15 %}
+    {{ unit_vocab_poster(1, "Unit 1: Matter and Physical Properties", "unit1_vocabulary_poster.png", "unit1") }}
+  {% elif vocab_day >= 16 and vocab_day <= 25 %}
+    {{ unit_vocab_poster(2, "Unit 2: Mixtures and Solutions", "unit2_vocabulary_poster.png", "unit2") }}
+  {% elif vocab_day >= 26 and vocab_day <= 41 %}
+    {{ unit_vocab_poster(3, "Unit 3: Force and Motion", "unit3_vocabulary_poster.png", "unit3") }}
+  {% elif vocab_day >= 42 and vocab_day <= 45 %}
+    {{ unit_vocab_poster(1, "Unit 1: Matter and Physical Properties", "unit1_vocabulary_poster.png", "unit1") }}
+    {{ unit_vocab_poster(2, "Unit 2: Mixtures and Solutions", "unit2_vocabulary_poster.png", "unit2") }}
+    {{ unit_vocab_poster(3, "Unit 3: Force and Motion", "unit3_vocabulary_poster.png", "unit3") }}
+  {% endif %}
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const block = document.getElementById("unitVocabPosterBlock");
+  if (!block || block.innerText.trim().length === 0) return;
+
+  const headers = Array.from(document.querySelectorAll(".card-header, h2, h3, h4"));
+  const vocabHeader = headers.find(header =>
+    header.textContent.toLowerCase().includes("vocabulary")
+  );
+
+  if (vocabHeader) {
+    const card = vocabHeader.closest(".card");
+    if (card) {
+      card.appendChild(block);
+    }
+  }
+});
+</script>
+
+
+
+{% if not lesson %}
+
+<div class="alert alert-danger">
+  Lesson not found.
+</div>
+
+<a href="/first-nine-weeks" class="btn btn-secondary">Back to First Nine Weeks</a>
+
+{% else %}
+
+<div class="mb-4">
+  <h1>Day {{ lesson.get("day") }}: {{ lesson.get("title") }}</h1>
+  <p class="lead">{{ lesson.get("unit", "First Nine Weeks") }}</p>
+
+  <div class="mb-3">
+    <a href="/first-nine-weeks/day/{{ lesson.get('day') }}?view=teacher"
+      class="btn btn-sm {% if view_mode == 'teacher' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+      Teacher View
+    </a>
+
+    <a href="/first-nine-weeks/day/{{ lesson.get('day') }}?view=student"
+      class="btn btn-sm {% if view_mode == 'student' %}btn-success{% else %}btn-outline-success{% endif %}">
+      Student View
+    </a>
+  </div>
+
+  {% if view_mode == "student" %}
+  <div class="alert alert-success">
+    Student View: answers and teacher notes are hidden.
+  </div>
+  {% else %}
+  <div class="alert alert-primary">
+    Teacher View: teacher guidance, answers, and notes are visible.
+  </div>
+  {% endif %}
+</div>
+
+<div class="row">
+
+  <div class="col-md-8">
+
+    <div class="card mb-3">
+      <div class="card-header bg-primary text-white">
+        Bell Ringer
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("bell_ringer", "Bell ringer will be added soon.") }}</p>
+
+        {% if view_mode == "student" %}
+        <textarea class="form-control" rows="3" placeholder="Type your response here..."></textarea>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-success text-white">
+        Learning Target
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("learning_target", "Learning target will be added soon.") }}</p>
+
+        {% if view_mode == "student" %}
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="targetCheck">
+          <label class="form-check-label" for="targetCheck">
+            I understand today’s learning target.
+          </label>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-info text-white">
+        Mini Lesson
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("mini_lesson", "Mini lesson will be added soon.") }}</p>
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-warning">
+        Science Notebook
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("science_notebook", "Science notebook activity will be added soon.") }}</p>
+
+        {% if view_mode == "student" %}
+        <textarea class="form-control" rows="4" placeholder="Add your science notebook notes here..."></textarea>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-secondary text-white">
+        Guided Practice
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("guided_practice", "Guided practice will be added soon.") }}</p>
+
+        {% if view_mode == "student" %}
+        <textarea class="form-control" rows="3" placeholder="Write your group answer here..."></textarea>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if lesson.get("interactive_activity") %}
+    <div class="card mb-3">
+      <div class="card-header bg-primary text-white">
+        Interactive Activity
+      </div>
+
+      <div class="card-body">
+        <h4>{{ lesson.get("interactive_activity_title", "Interactive Activity") }}</h4>
+        <p>{{ lesson.get("interactive_activity") }}</p>
+
+        {% if lesson.get("safety_scenarios") %}
+        <div class="row">
+          {% for scenario in lesson.get("safety_scenarios") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Scenario {{ loop.index }}</h5>
+              <p><strong>Situation:</strong> {{ scenario.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ scenario.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Safe or Unsafe?</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Safe</option>
+                <option>Unsafe</option>
+              </select>
+
+              <label class="form-label"><strong>What should happen next?</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Write your answer..."></textarea>
+
+              <label class="form-label"><strong>Which safety rule applies?</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Explain the rule..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Category:</strong> {{ scenario.category }}</p>
+                  <p><strong>Safe Action:</strong> {{ scenario.safe_action }}</p>
+                  <p><strong>Explanation:</strong> {{ scenario.explanation }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("property_sort_cards") %}
+        <div class="row">
+          {% for card in lesson.get("property_sort_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.property }}</h5>
+              <p><strong>Example:</strong> {{ card.object_example }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Sort this property:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Observe</option>
+                <option>Measure</option>
+                <option>Test</option>
+              </select>
+
+              <label class="form-label"><strong>Explain your thinking:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Why did you choose that category?"></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Category:</strong> {{ card.category }}</p>
+                  <p><strong>Explanation:</strong> {{ card.explanation }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("state_sort_cards") %}
+        <div class="row">
+          {% for card in lesson.get("state_sort_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.example }}</h5>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Sort this example:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Solid</option>
+                <option>Liquid</option>
+                <option>Gas</option>
+              </select>
+
+              <label class="form-label"><strong>What is your evidence?</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Explain how you know..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Category:</strong> {{ card.category }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("magnetism_sort_cards") %}
+        <div class="row">
+          {% for card in lesson.get("magnetism_sort_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.object }}</h5>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Prediction:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Magnetic</option>
+                <option>Nonmagnetic</option>
+                <option>Test Needed</option>
+              </select>
+
+              <label class="form-label"><strong>What evidence would prove it?</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Explain what you would observe during the magnet test..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Category:</strong> {{ card.category }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("mass_measurement_cards") %}
+        <div class="row">
+          {% for card in lesson.get("mass_measurement_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Measurement Task {{ loop.index }}</h5>
+              <p><strong>Task:</strong> {{ card.task }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Physical Property:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Mass</option>
+                <option>Volume</option>
+                <option>Temperature</option>
+                <option>Length</option>
+              </select>
+
+              <label class="form-label"><strong>Tool:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Balance</option>
+                <option>Graduated cylinder</option>
+                <option>Thermometer</option>
+                <option>Metric ruler</option>
+              </select>
+
+              <label class="form-label"><strong>Unit:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Grams</option>
+                <option>Milliliters</option>
+                <option>Degrees Celsius</option>
+                <option>Centimeters</option>
+              </select>
+
+              <label class="form-label"><strong>Explain your thinking:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Explain why you chose that tool and unit..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Physical Property:</strong> {{ card.property }}</p>
+                  <p><strong>Tool:</strong> {{ card.tool }}</p>
+                  <p><strong>Unit:</strong> {{ card.unit }}</p>
+                  <p><strong>Explanation:</strong> {{ card.explanation }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("volume_measurement_cards") %}
+        <div class="row">
+          {% for card in lesson.get("volume_measurement_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Volume Task {{ loop.index }}</h5>
+              <p><strong>Task:</strong> {{ card.task }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Physical Property:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Volume</option>
+                <option>Mass</option>
+                <option>Temperature</option>
+                <option>Length</option>
+              </select>
+
+              <label class="form-label"><strong>Tool:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Graduated cylinder</option>
+                <option>Balance</option>
+                <option>Thermometer</option>
+                <option>Metric ruler</option>
+              </select>
+
+              <label class="form-label"><strong>Unit:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Milliliters</option>
+                <option>Grams</option>
+                <option>Degrees Celsius</option>
+                <option>Centimeters</option>
+              </select>
+
+              <label class="form-label"><strong>Explain your thinking:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Explain why you chose that property, tool, and unit..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Physical Property:</strong> {{ card.property }}</p>
+                  <p><strong>Tool:</strong> {{ card.tool }}</p>
+                  <p><strong>Unit:</strong> {{ card.unit }}</p>
+                  <p><strong>Explanation:</strong> {{ card.explanation }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("mass_volume_investigation_cards") %}
+        <div class="row">
+          {% for card in lesson.get("mass_volume_investigation_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Investigation Task {{ loop.index }}</h5>
+              <p><strong>Task:</strong> {{ card.task }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Mass or Volume?</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Mass</option>
+                <option>Volume</option>
+              </select>
+
+              <label class="form-label"><strong>Tool:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Balance</option>
+                <option>Graduated cylinder</option>
+              </select>
+
+              <label class="form-label"><strong>Unit:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Grams</option>
+                <option>Milliliters</option>
+              </select>
+
+              <label class="form-label"><strong>What is your evidence?</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use the tool or unit as evidence..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Property:</strong> {{ card.property }}</p>
+                  <p><strong>Tool:</strong> {{ card.tool }}</p>
+                  <p><strong>Unit:</strong> {{ card.unit }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("sink_float_cards") %}
+        <div class="row">
+          {% for card in lesson.get("sink_float_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.object }}</h5>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Prediction / Observation:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Sink</option>
+                <option>Float</option>
+              </select>
+
+              <label class="form-label"><strong>Relative Density:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Less dense than water</option>
+                <option>More dense than water</option>
+              </select>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use sink or float evidence to explain your answer..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Observation:</strong> {{ card.observation }}</p>
+                  <p><strong>Relative Density:</strong> {{ card.relative_density }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {% if lesson.get("reflection_tasks") %}
+        <div class="row">
+          {% for task in lesson.get("reflection_tasks") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ task.task }}</h5>
+              <p><strong>Description:</strong> {{ task.description }}</p>
+              <p><strong>Student Goal:</strong> {{ task.student_goal }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("notebook_checklist") %}
+        <div class="border rounded p-3 bg-light mb-3">
+          <h5>Notebook Checklist</h5>
+          <ul>
+            {% for item in lesson.get("notebook_checklist") %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        {% if lesson.get("station_rotation") %}
+        <div class="row">
+          {% for station in lesson.get("station_rotation") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ station.station }}: {{ station.title }}</h5>
+              <p><strong>Task:</strong> {{ station.task }}</p>
+              <p><strong>Student Goal:</strong> {{ station.student_goal }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("spiral_review_cards") %}
+        <div class="row">
+          {% for card in lesson.get("spiral_review_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>STAAR Spiral Review Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Unit:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Matter, Mixtures, Particles, Force and Motion, or Variables?"></textarea>
+
+              <label class="form-label"><strong>Science Concept:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What concept is being tested?"></textarea>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What evidence supports the answer?"></textarea>
+
+              <label class="form-label"><strong>STAAR Strategy:</strong></label>
+              <textarea class="form-control" rows="3" placeholder="What strategy would help solve this question?"></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Unit:</strong> {{ card.unit }}</p>
+                  <p><strong>Concept:</strong> {{ card.concept }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                  <p><strong>Strategy:</strong> {{ card.strategy }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("performance_builder_cards") %}
+        <div class="row">
+          {% for card in lesson.get("performance_builder_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Performance Assessment Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Claim:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What is the science claim?"></textarea>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What data or observation supports the claim?"></textarea>
+
+              <label class="form-label"><strong>Reasoning:</strong></label>
+              <textarea class="form-control" rows="3" placeholder="How does force and motion explain the evidence?"></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Claim:</strong> {{ card.claim }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                  <p><strong>Reasoning:</strong> {{ card.reasoning }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("playground_engineering_cards") %}
+        <div class="row">
+          {% for card in lesson.get("playground_engineering_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Playground Engineering Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Design Problem:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What is unsafe or needs improvement?"></textarea>
+
+              <label class="form-label"><strong>Variable Changed:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What one variable should be changed?"></textarea>
+
+              <label class="form-label"><strong>Data to Collect:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What should be measured or observed?"></textarea>
+
+              <label class="form-label"><strong>Safety Explanation:</strong></label>
+              <textarea class="form-control" rows="3" placeholder="Explain how the design affects force, motion, or safety."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Problem:</strong> {{ card.problem }}</p>
+                  <p><strong>Variable Changed:</strong> {{ card.variable_changed }}</p>
+                  <p><strong>Data to Collect:</strong> {{ card.data_to_collect }}</p>
+                  <p><strong>Safe Design Reason:</strong> {{ card.safe_design_reason }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("graphing_analysis_cards") %}
+        <div class="row">
+          {% for card in lesson.get("graphing_analysis_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Data Analysis Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Average:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Find the average or write 'not needed'."></textarea>
+
+              <label class="form-label"><strong>Pattern:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What pattern do you notice?"></textarea>
+
+              <label class="form-label"><strong>Claim:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What claim is supported?"></textarea>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="3" placeholder="Use data as evidence."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Average:</strong> {{ card.average }}</p>
+                  <p><strong>Pattern:</strong> {{ card.pattern }}</p>
+                  <p><strong>Claim:</strong> {{ card.claim }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("ball_bounce_cards") %}
+        <div class="row">
+          {% for card in lesson.get("ball_bounce_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Ball Bounce Lab Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Independent Variable:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What is changed on purpose?"></textarea>
+
+              <label class="form-label"><strong>Dependent Variable:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What is measured?"></textarea>
+
+              <label class="form-label"><strong>Controlled Variables:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What should stay the same?"></textarea>
+
+              <label class="form-label"><strong>Science Explanation:</strong></label>
+              <textarea class="form-control" rows="3" placeholder="Explain the fair test, pattern, claim, or evidence."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Independent Variable:</strong> {{ card.independent_variable }}</p>
+                  <p><strong>Dependent Variable:</strong> {{ card.dependent_variable }}</p>
+                  <p><strong>Controlled Variables:</strong> {{ card.controlled_variables }}</p>
+                  <p><strong>Science Note:</strong> {{ card.science_note }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("balloon_rocket_cards") %}
+        <div class="row">
+          {% for card in lesson.get("balloon_rocket_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Balloon Rocket Mission {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Independent Variable:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What is changed on purpose?"></textarea>
+
+              <label class="form-label"><strong>Dependent Variable:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What is measured?"></textarea>
+
+              <label class="form-label"><strong>Controlled Variables:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What should stay the same?"></textarea>
+
+              <label class="form-label"><strong>Science Explanation:</strong></label>
+              <textarea class="form-control" rows="3" placeholder="Explain the force, motion, fair test, claim, or evidence."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Independent Variable:</strong> {{ card.independent_variable }}</p>
+                  <p><strong>Dependent Variable:</strong> {{ card.dependent_variable }}</p>
+                  <p><strong>Controlled Variables:</strong> {{ card.controlled_variables }}</p>
+                  <p><strong>Science Note:</strong> {{ card.science_note }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("ramp_investigation_cards") %}
+        <div class="row">
+          {% for card in lesson.get("ramp_investigation_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Ramp Investigation Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Independent Variable:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What is changed on purpose?"></textarea>
+
+              <label class="form-label"><strong>Dependent Variable:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What is measured?"></textarea>
+
+              <label class="form-label"><strong>Controlled Variables:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What should stay the same?"></textarea>
+
+              <label class="form-label"><strong>Fair Test / Data Explanation:</strong></label>
+              <textarea class="form-control" rows="3" placeholder="Explain if this is fair, or explain the pattern in the data."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Independent Variable:</strong> {{ card.independent_variable }}</p>
+                  <p><strong>Dependent Variable:</strong> {{ card.dependent_variable }}</p>
+                  <p><strong>Controlled Variables:</strong> {{ card.controlled_variables }}</p>
+                  <p><strong>Fair Test Note:</strong> {{ card.fair_test_note }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("graphing_data_cards") %}
+        <div class="row">
+          {% for card in lesson.get("graphing_data_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Graphing Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Independent Variable:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What was changed on purpose?"></textarea>
+
+              <label class="form-label"><strong>Dependent Variable:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What was measured or observed?"></textarea>
+
+              <label class="form-label"><strong>X-axis Label:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What should go on the x-axis?"></textarea>
+
+              <label class="form-label"><strong>Y-axis Label:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What should go on the y-axis?"></textarea>
+
+              <label class="form-label"><strong>Pattern:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What pattern do you notice in the data?"></textarea>
+
+              <label class="form-label"><strong>Claim and Evidence:</strong></label>
+              <textarea class="form-control" rows="3" placeholder="Write a claim and use data as evidence."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Independent Variable:</strong> {{ card.independent_variable }}</p>
+                  <p><strong>Dependent Variable:</strong> {{ card.dependent_variable }}</p>
+                  <p><strong>X-axis:</strong> {{ card.x_axis }}</p>
+                  <p><strong>Y-axis:</strong> {{ card.y_axis }}</p>
+                  <p><strong>Pattern:</strong> {{ card.pattern }}</p>
+                  <p><strong>Claim:</strong> {{ card.claim }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("variables_cards") %}
+        <div class="row">
+          {% for card in lesson.get("variables_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Variables Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Independent Variable:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What is changed on purpose?"></textarea>
+
+              <label class="form-label"><strong>Dependent Variable:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What is measured or observed?"></textarea>
+
+              <label class="form-label"><strong>Controlled Variables:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What should stay the same?"></textarea>
+
+              <label class="form-label"><strong>Why is this a fair test?</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Explain how only one thing changes."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Independent Variable:</strong> {{ card.independent_variable }}</p>
+                  <p><strong>Dependent Variable:</strong> {{ card.dependent_variable }}</p>
+                  <p><strong>Controlled Variables:</strong> {{ card.controlled_variables }}</p>
+                  <p><strong>Fair Test Reason:</strong> {{ card.fair_test_reason }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("mechanical_energy_cards") %}
+        <div class="row">
+          {% for card in lesson.get("mechanical_energy_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Mechanical Energy Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Moving Object:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which object is moving first?"></textarea>
+
+              <label class="form-label"><strong>Object Receiving Energy:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which object receives energy?"></textarea>
+
+              <label class="form-label"><strong>Contact or Force:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What push, hit, kick, or collision happens?"></textarea>
+
+              <label class="form-label"><strong>Motion Before:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Describe the motion before contact."></textarea>
+
+              <label class="form-label"><strong>Motion After:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Describe the motion after contact."></textarea>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="What evidence shows energy transferred?"></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Moving Object:</strong> {{ card.moving_object }}</p>
+                  <p><strong>Object Receiving Energy:</strong> {{ card.receiving_object }}</p>
+                  <p><strong>Contact or Force:</strong> {{ card.force_or_contact }}</p>
+                  <p><strong>Motion Before:</strong> {{ card.motion_before }}</p>
+                  <p><strong>Motion After:</strong> {{ card.motion_after }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("magnetism_force_cards") %}
+        <div class="row">
+          {% for card in lesson.get("magnetism_force_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Magnetism Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Object or Magnet Test:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What object or magnets are being tested?"></textarea>
+
+              <label class="form-label"><strong>Magnetic or Not?</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Magnetic</option>
+                <option>Not magnetic</option>
+                <option>Magnetic interaction between magnets</option>
+              </select>
+
+              <label class="form-label"><strong>Attract, Repel, or No Effect?</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Attract</option>
+                <option>Repel</option>
+                <option>No effect</option>
+              </select>
+
+              <label class="form-label"><strong>Force Direction:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which direction did the magnetic force act?"></textarea>
+
+              <label class="form-label"><strong>Effect on Motion:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="How did motion change?"></textarea>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="What evidence supports your answer?"></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Object:</strong> {{ card.object }}</p>
+                  <p><strong>Magnetic or Not:</strong> {{ card.magnetic_or_not }}</p>
+                  <p><strong>Attract or Repel:</strong> {{ card.attract_or_repel }}</p>
+                  <p><strong>Force Direction:</strong> {{ card.force_direction }}</p>
+                  <p><strong>Effect on Motion:</strong> {{ card.effect_on_motion }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("friction_cards") %}
+        <div class="row">
+          {% for card in lesson.get("friction_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Friction Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Surface:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What surface is the object moving on?"></textarea>
+
+              <label class="form-label"><strong>Amount of Friction:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Less friction</option>
+                <option>Some friction</option>
+                <option>More friction</option>
+              </select>
+
+              <label class="form-label"><strong>Direction of Motion:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which direction is the object moving?"></textarea>
+
+              <label class="form-label"><strong>Direction of Friction:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which direction does friction act?"></textarea>
+
+              <label class="form-label"><strong>Effect on Motion:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Slows down</option>
+                <option>Stops sooner</option>
+                <option>Travels farther</option>
+                <option>Travels shorter distance</option>
+              </select>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="What evidence supports your answer?"></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Surface:</strong> {{ card.surface }}</p>
+                  <p><strong>Friction Amount:</strong> {{ card.friction_amount }}</p>
+                  <p><strong>Motion Direction:</strong> {{ card.motion_direction }}</p>
+                  <p><strong>Friction Direction:</strong> {{ card.friction_direction }}</p>
+                  <p><strong>Effect on Motion:</strong> {{ card.effect_on_motion }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("gravity_cards") %}
+        <div class="row">
+          {% for card in lesson.get("gravity_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Gravity Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Force:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What force acted on the object?"></textarea>
+
+              <label class="form-label"><strong>Direction:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Downward toward Earth</option>
+                <option>Upward away from Earth</option>
+                <option>Sideways only</option>
+              </select>
+
+              <label class="form-label"><strong>Effect on Motion:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="How did the motion change?"></textarea>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="What evidence shows gravity acted?"></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Force:</strong> {{ card.force }}</p>
+                  <p><strong>Direction:</strong> {{ card.direction }}</p>
+                  <p><strong>Effect on Motion:</strong> {{ card.effect_on_motion }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("force_strength_cards") %}
+        <div class="row">
+          {% for card in lesson.get("force_strength_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Force Strength Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Push or Pull?</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Push</option>
+                <option>Pull</option>
+              </select>
+
+              <label class="form-label"><strong>Force Strength:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Weak force</option>
+                <option>Medium force</option>
+                <option>Strong force</option>
+              </select>
+
+              <label class="form-label"><strong>Direction:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which direction did the force act?"></textarea>
+
+              <label class="form-label"><strong>Effect on Motion:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Starts moving</option>
+                <option>Speeds up</option>
+                <option>Slows down</option>
+                <option>Stops</option>
+                <option>Changes direction</option>
+                <option>Moves farther</option>
+              </select>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="What evidence supports your answer?"></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Push or Pull:</strong> {{ card.push_or_pull }}</p>
+                  <p><strong>Strength:</strong> {{ card.strength }}</p>
+                  <p><strong>Direction:</strong> {{ card.direction }}</p>
+                  <p><strong>Effect on Motion:</strong> {{ card.effect_on_motion }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("unequal_force_cards") %}
+        <div class="row">
+          {% for card in lesson.get("unequal_force_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Unequal Force Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Force 1:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Describe the first force and direction."></textarea>
+
+              <label class="form-label"><strong>Force 2:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Describe the second force and direction."></textarea>
+
+              <label class="form-label"><strong>Stronger Force:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which force is stronger?"></textarea>
+
+              <label class="form-label"><strong>Effect on Motion:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Starts moving</option>
+                <option>Speeds up</option>
+                <option>Slows down</option>
+                <option>Stops</option>
+                <option>Changes direction</option>
+              </select>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use evidence to explain how motion changed."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Force 1:</strong> {{ card.force_1 }}</p>
+                  <p><strong>Force 2:</strong> {{ card.force_2 }}</p>
+                  <p><strong>Stronger Force:</strong> {{ card.stronger_force }}</p>
+                  <p><strong>Effect on Motion:</strong> {{ card.effect_on_motion }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("balanced_force_cards") %}
+        <div class="row">
+          {% for card in lesson.get("balanced_force_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Balanced Force Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Force 1:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Describe the first force and direction."></textarea>
+
+              <label class="form-label"><strong>Force 2:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Describe the second force and direction."></textarea>
+
+              <label class="form-label"><strong>Strength:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Equal strength</option>
+                <option>Unequal strength</option>
+              </select>
+
+              <label class="form-label"><strong>Effect on Motion:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>No change in motion</option>
+                <option>Starts moving</option>
+                <option>Speeds up</option>
+                <option>Slows down</option>
+                <option>Changes direction</option>
+              </select>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use evidence to explain why the forces are balanced."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Force 1:</strong> {{ card.force_1 }}</p>
+                  <p><strong>Force 2:</strong> {{ card.force_2 }}</p>
+                  <p><strong>Strength:</strong> {{ card.strength }}</p>
+                  <p><strong>Effect on Motion:</strong> {{ card.effect_on_motion }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("force_cards") %}
+        <div class="row">
+          {% for card in lesson.get("force_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Force Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Force Type:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Push</option>
+                <option>Pull</option>
+                <option>Gravity</option>
+                <option>Magnetism</option>
+              </select>
+
+              <label class="form-label"><strong>Direction of Force:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which direction did the force act?"></textarea>
+
+              <label class="form-label"><strong>Effect on Motion:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Did the object start, stop, speed up, slow down, or change direction?"></textarea>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="What observation supports your answer?"></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Force Type:</strong> {{ card.force_type }}</p>
+                  <p><strong>Direction:</strong> {{ card.direction }}</p>
+                  <p><strong>Effect on Motion:</strong> {{ card.effect_on_motion }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("unit2_performance_cards") %}
+        <div class="row">
+          {% for card in lesson.get("unit2_performance_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.task }}</h5>
+              <p><strong>Prompt:</strong> {{ card.prompt }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What observations, data, or model evidence supports your answer?"></textarea>
+
+              <label class="form-label"><strong>Physical Property or Model:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Name the physical property or model."></textarea>
+
+              <label class="form-label"><strong>Tool or Method:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What tool, process, or method would you use?"></textarea>
+
+              <label class="form-label"><strong>Explanation:</strong></label>
+              <textarea class="form-control" rows="3" placeholder="Explain your answer using evidence."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                  <p><strong>Physical Property or Model:</strong> {{ card.physical_property_or_model }}</p>
+                  <p><strong>Tool or Method:</strong> {{ card.tool_or_method }}</p>
+                  <p><strong>Teacher Guidance:</strong> {{ card.teacher_guidance }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("particle_model_cards") %}
+        <div class="row">
+          {% for card in lesson.get("particle_model_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Particle Model Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Visible Evidence:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What can you see or observe?"></textarea>
+
+              <label class="form-label"><strong>Particles Present:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What particles are present even if they are too small to see?"></textarea>
+
+              <label class="form-label"><strong>Particle Model:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Describe or draw the model in your notebook."></textarea>
+
+              <label class="form-label"><strong>Explanation:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use evidence to explain how matter is made of particles too small to see."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Visible Evidence:</strong> {{ card.visible_evidence }}</p>
+                  <p><strong>Particles Present:</strong> {{ card.particles_present }}</p>
+                  <p><strong>Model:</strong> {{ card.model }}</p>
+                  <p><strong>Explanation:</strong> {{ card.explanation }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("unit2_review_cards") %}
+        <div class="row">
+          {% for card in lesson.get("unit2_review_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Review Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Best Separation Method:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Use a sieve or screen</option>
+                <option>Use a strainer</option>
+                <option>Use a magnet</option>
+                <option>Place the mixture in water</option>
+                <option>Separate by liquid layers</option>
+                <option>Evaporation</option>
+                <option>Filtering or settling</option>
+                <option>Identify as a solution</option>
+                <option>Use conservation of matter</option>
+              </select>
+
+              <label class="form-label"><strong>Physical Property Used:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Particle size</option>
+                <option>Magnetism</option>
+                <option>Relative density</option>
+                <option>Solubility</option>
+                <option>Evaporation</option>
+                <option>Mass</option>
+                <option>Conservation of matter</option>
+              </select>
+
+              <label class="form-label"><strong>Tool or Process:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What tool or process would you use?"></textarea>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use observations or data as evidence..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Best Method:</strong> {{ card.best_method }}</p>
+                  <p><strong>Physical Property:</strong> {{ card.physical_property }}</p>
+                  <p><strong>Tool or Process:</strong> {{ card.tool }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("conservation_cards") %}
+        <div class="row">
+          {% for card in lesson.get("conservation_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Conservation Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Solute:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What substance dissolves?"></textarea>
+
+              <label class="form-label"><strong>Mass of Solute:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="How many grams of solute?"></textarea>
+
+              <label class="form-label"><strong>Solvent:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What substance does the dissolving?"></textarea>
+
+              <label class="form-label"><strong>Mass of Solvent:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="How many grams of solvent?"></textarea>
+
+              <label class="form-label"><strong>Total Mass:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What should the total mass be?"></textarea>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use mass data to explain conservation of matter..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Solute:</strong> {{ card.solute }}</p>
+                  <p><strong>Mass of Solute:</strong> {{ card.solute_mass }}</p>
+                  <p><strong>Solvent:</strong> {{ card.solvent }}</p>
+                  <p><strong>Mass of Solvent:</strong> {{ card.solvent_mass }}</p>
+                  <p><strong>Total Mass:</strong> {{ card.total_mass }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("evaporation_cards") %}
+        <div class="row">
+          {% for card in lesson.get("evaporation_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Evaporation Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Best Separation Method:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Evaporation</option>
+                <option>Magnetism</option>
+                <option>Filtering or settling first</option>
+                <option>Separate by relative density</option>
+              </select>
+
+              <label class="form-label"><strong>Solute:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What substance dissolved? Write none if nothing dissolved."></textarea>
+
+              <label class="form-label"><strong>Solvent:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What substance did the dissolving?"></textarea>
+
+              <label class="form-label"><strong>What Evaporates?</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What leaves as vapor?"></textarea>
+
+              <label class="form-label"><strong>What Is Left Behind?</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What remains after evaporation?"></textarea>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use evidence to explain your answer..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Best Method:</strong> {{ card.best_method }}</p>
+                  <p><strong>Solute:</strong> {{ card.solute }}</p>
+                  <p><strong>Solvent:</strong> {{ card.solvent }}</p>
+                  <p><strong>What Evaporates:</strong> {{ card.what_evaporates }}</p>
+                  <p><strong>What Is Left Behind:</strong> {{ card.what_is_left }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("solution_cards") %}
+        <div class="row">
+          {% for card in lesson.get("solution_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.mixture }}</h5>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Soluble or Insoluble?</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Soluble</option>
+                <option>Insoluble</option>
+              </select>
+
+              <label class="form-label"><strong>Solute:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What substance dissolves? Write none if nothing dissolves."></textarea>
+
+              <label class="form-label"><strong>Solvent:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="What substance does the dissolving?"></textarea>
+
+              <label class="form-label"><strong>Solution or Not a Solution?</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Solution</option>
+                <option>Not a solution</option>
+              </select>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use evidence from dissolving, settling, floating, or layering..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Soluble or Insoluble:</strong> {{ card.soluble_or_insoluble }}</p>
+                  <p><strong>Solute:</strong> {{ card.solute }}</p>
+                  <p><strong>Solvent:</strong> {{ card.solvent }}</p>
+                  <p><strong>Solution or Not:</strong> {{ card.solution_or_not }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("relative_density_mixture_cards") %}
+        <div class="row">
+          {% for card in lesson.get("relative_density_mixture_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.mixture }}</h5>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Less Dense Part:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which part floats or forms the top layer?"></textarea>
+
+              <label class="form-label"><strong>More Dense Part:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which part sinks or forms the bottom layer?"></textarea>
+
+              <label class="form-label"><strong>Observation:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>One part floats and one part sinks</option>
+                <option>Liquids form layers</option>
+                <option>One part is attracted to a magnet</option>
+                <option>One part dissolves in water</option>
+              </select>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use sinking, floating, or layering as evidence..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Less Dense Part:</strong> {{ card.less_dense_part }}</p>
+                  <p><strong>More Dense Part:</strong> {{ card.more_dense_part }}</p>
+                  <p><strong>Observation:</strong> {{ card.observation }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("magnetic_separation_cards") %}
+        <div class="row">
+          {% for card in lesson.get("magnetic_separation_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.mixture }}</h5>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Can a magnet separate this mixture?</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+
+              <label class="form-label"><strong>Magnetic Part:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which part is attracted to the magnet?"></textarea>
+
+              <label class="form-label"><strong>Nonmagnetic Part:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which part is not attracted to the magnet?"></textarea>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use evidence to explain your answer..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Can Magnet Separate?</strong> {{ card.can_magnet_separate }}</p>
+                  <p><strong>Magnetic Part:</strong> {{ card.magnetic_part }}</p>
+                  <p><strong>Nonmagnetic Part:</strong> {{ card.nonmagnetic_part }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("particle_size_cards") %}
+        <div class="row">
+          {% for card in lesson.get("particle_size_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.mixture }}</h5>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Large Particles:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which part has larger particles?"></textarea>
+
+              <label class="form-label"><strong>Small Particles:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Which part has smaller particles or passes through?"></textarea>
+
+              <label class="form-label"><strong>Best Tool:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Sieve or screen</option>
+                <option>Strainer</option>
+                <option>Filter</option>
+                <option>Magnet</option>
+                <option>Balance</option>
+                <option>Thermometer</option>
+              </select>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Explain how particle size separates the mixture..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Large Particles:</strong> {{ card.large_particles }}</p>
+                  <p><strong>Small Particles:</strong> {{ card.small_particles }}</p>
+                  <p><strong>Best Tool:</strong> {{ card.best_tool }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("mixture_cards") %}
+        <div class="row">
+          {% for card in lesson.get("mixture_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.example }}</h5>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Classification:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Mixture</option>
+                <option>Not a mixture</option>
+              </select>
+
+              <label class="form-label"><strong>Parts:</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="List the parts if it is a mixture..."></textarea>
+
+              <label class="form-label"><strong>Physical Property Used to Separate:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Particle size</option>
+                <option>Shape or color</option>
+                <option>Magnetism</option>
+                <option>Relative density</option>
+                <option>Solubility</option>
+                <option>No separation needed</option>
+              </select>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use evidence to explain your answer..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Classification:</strong> {{ card.classification }}</p>
+                  <p><strong>Parts:</strong> {{ card.parts }}</p>
+                  <p><strong>Separation Property:</strong> {{ card.separation_property }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("unit1_review_cards") %}
+        <div class="row">
+          {% for card in lesson.get("unit1_review_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Review Scenario {{ loop.index }}</h5>
+              <p><strong>Scenario:</strong> {{ card.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Physical Property:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Mass</option>
+                <option>Volume</option>
+                <option>Magnetism</option>
+                <option>Relative density</option>
+                <option>Solubility</option>
+                <option>Conductivity</option>
+              </select>
+
+              <label class="form-label"><strong>Tool or Test:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Balance</option>
+                <option>Graduated cylinder</option>
+                <option>Magnet test</option>
+                <option>Sink, float, or layering test</option>
+                <option>Dissolving test</option>
+                <option>Circuit test</option>
+              </select>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use the observation as evidence..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Physical Property:</strong> {{ card.property }}</p>
+                  <p><strong>Tool or Test:</strong> {{ card.tool_or_test }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("conductor_cards") %}
+        <div class="row">
+          {% for card in lesson.get("conductor_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.material }}</h5>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Prediction / Conclusion:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Conductor</option>
+                <option>Insulator</option>
+              </select>
+
+              <label class="form-label"><strong>Observation:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Bulb lights</option>
+                <option>Bulb does not light</option>
+                <option>Heat moves quickly</option>
+                <option>Heat moves slowly</option>
+              </select>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use your observation as evidence..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Observation:</strong> {{ card.observation }}</p>
+                  <p><strong>Conclusion:</strong> {{ card.conclusion }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("solubility_cards") %}
+        <div class="row">
+          {% for card in lesson.get("solubility_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.material }}</h5>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Prediction / Conclusion:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Soluble</option>
+                <option>Insoluble</option>
+              </select>
+
+              <label class="form-label"><strong>Observation:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Dissolves and can no longer be easily seen</option>
+                <option>Settles at the bottom</option>
+                <option>Floats or remains visible</option>
+                <option>Clouds the water and does not fully dissolve</option>
+              </select>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use your observation as evidence..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Observation:</strong> {{ card.observation }}</p>
+                  <p><strong>Conclusion:</strong> {{ card.conclusion }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("liquid_layer_cards") %}
+        <div class="row">
+          {% for card in lesson.get("liquid_layer_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Liquid Layer Model {{ loop.index }}</h5>
+              <p><strong>Model:</strong> {{ card.model }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+              <label class="form-label"><strong>Least dense liquid:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Oil</option>
+                <option>Vegetable oil</option>
+                <option>Water</option>
+                <option>Corn syrup</option>
+                <option>Honey</option>
+                <option>Dish soap</option>
+                <option>Rubbing alcohol</option>
+              </select>
+
+              <label class="form-label"><strong>Middle liquid:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Oil</option>
+                <option>Vegetable oil</option>
+                <option>Water</option>
+                <option>Corn syrup</option>
+                <option>Honey</option>
+                <option>Dish soap</option>
+                <option>Rubbing alcohol</option>
+              </select>
+
+              <label class="form-label"><strong>Most dense liquid:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Oil</option>
+                <option>Vegetable oil</option>
+                <option>Water</option>
+                <option>Corn syrup</option>
+                <option>Honey</option>
+                <option>Dish soap</option>
+                <option>Rubbing alcohol</option>
+              </select>
+
+              <label class="form-label"><strong>Evidence:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Use top, middle, and bottom layers as evidence..."></textarea>
+              {% else %}
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">Reveal Teacher Guidance</summary>
+                <div class="mt-3">
+                  <p><strong>Least Dense:</strong> {{ card.least_dense }}</p>
+                  <p><strong>Middle:</strong> {{ card.middle_dense }}</p>
+                  <p><strong>Most Dense:</strong> {{ card.most_dense }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+    {% endif %}
+
+    {% if lesson.get("anchor_charts") or lesson.get("teacher_video_link") %}
+    <div class="card mb-3">
+      <div class="card-header bg-info text-white">
+        Teacher Teach, Anchor Charts, and Mini Video
+      </div>
+      <div class="card-body">
+        {% if lesson.get("teacher_video_link") %}
+        <a href="{{ lesson.get('teacher_video_link') }}" class="btn btn-primary btn-lg mb-3">
+          {{ lesson.get("teacher_video_link_text", "Open Teacher Teach Mini Video") }}
+        </a>
+        {% endif %}
+
+        {% if lesson.get("anchor_charts") %}
+        <div class="row">
+          {% for chart in lesson.get("anchor_charts") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ chart.title }}</h5>
+              <img src="{{ chart.image }}" class="img-fluid border rounded mb-2" alt="{{ chart.title }}">
+              <p>{{ chart.description }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+
+
+    <div class="card mb-3">
+      <div class="card-header bg-success text-white">
+        Lab
+      </div>
+      <div class="card-body">
+        {% if lesson.get("lab") %}
+          {% if lesson.get("lab") == True %}
+            <p>Lab activity will be added soon.</p>
+          {% else %}
+            <p>{{ lesson.get("lab") }}</p>
+          {% endif %}
+        {% else %}
+          <p>No lab for this lesson.</p>
+        {% endif %}
+
+        {% if lesson.get("lab_link") %}
+        <a href="{{ lesson.get('lab_link') }}" class="btn btn-lg btn-success mt-3">
+          {{ lesson.get("lab_link_text", "Open Interactive Lab") }}
+        </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-dark text-white">
+        Lab Notebook
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("lab_notebook", "Lab notebook entry will be added soon.") }}</p>
+
+        {% if view_mode == "student" and lesson.get("lab_notebook_table") %}
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              {% for column in lesson.get("lab_notebook_table")["columns"] %}
+              <th>{{ column }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for row in range(lesson.get("lab_notebook_table")["rows"]) %}
+            <tr>
+              {% for column in lesson.get("lab_notebook_table")["columns"] %}
+              <td>
+                <input class="form-control" placeholder="{{ column }}">
+              </td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-danger text-white">
+        STAAR Practice
+      </div>
+
+      <div class="card-body">
+        {% if lesson.get("staar_practice") %}
+          {% for question in lesson.get("staar_practice") %}
+          {% set question_number = loop.index %}
+
+          <div class="border rounded p-3 mb-3">
+            <p><strong>Question {{ question_number }}:</strong> {{ question.question }}</p>
+
+            {% if view_mode == "student" %}
+            {% for choice in question.choices %}
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="question{{ question_number }}">
+              <label class="form-check-label">
+                {{ choice }}
+              </label>
+            </div>
+            {% endfor %}
+            {% else %}
+            <ol type="A">
+              {% for choice in question.choices %}
+              <li>{{ choice }}</li>
+              {% endfor %}
+            </ol>
+
+            <details>
+              <summary class="btn btn-sm btn-outline-success">Reveal Teacher Answer</summary>
+              <p class="text-success mt-3">
+                <strong>Teacher Answer:</strong> {{ question.answer }}
+              </p>
+            </details>
+            {% endif %}
+          </div>
+          {% endfor %}
+        {% else %}
+          <p>STAAR practice questions will be added soon.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-primary text-white">
+        Exit Ticket
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("exit_ticket", "Exit ticket will be added soon.") }}</p>
+
+        {% if view_mode == "student" %}
+        <textarea class="form-control" rows="3" placeholder="Type your exit ticket response here..."></textarea>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-4">
+
+    <div class="card mb-3">
+      <div class="card-header">
+        Lesson Overview
+      </div>
+      <div class="card-body">
+        <p><strong>Week:</strong> {{ lesson.get("week", "Not added yet") }}</p>
+        <p><strong>Time:</strong> 60 minutes</p>
+        <p><strong>Grouping:</strong> Student groups</p>
+
+        {% if lesson.get("teks") %}
+        <p><strong>TEKS:</strong></p>
+        {% for tek in lesson.get("teks") %}
+          <span class="badge bg-primary">{{ tek }}</span>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header">
+        Materials
+      </div>
+      <div class="card-body">
+        {% if lesson.get("materials") %}
+        <ul>
+          {% for material in lesson.get("materials") %}
+          <li>{{ material }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>Materials will be added soon.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header">
+        Vocabulary
+      </div>
+
+      <div class="card-body">
+        {% if lesson.get("vocabulary") %}
+          {% for vocab in lesson.get("vocabulary") %}
+          <div class="border rounded p-2 mb-3">
+            <h5>{{ vocab.term|title }}</h5>
+
+            {% if vocab.get("image") %}
+            <img src="{{ vocab.get('image') }}"
+               alt="{{ vocab.term }} vocabulary image"
+               class="img-fluid rounded border mb-2"
+               style="max-height: 180px;">
+            {% endif %}
+
+            <p><strong>Picture:</strong> {{ vocab.picture }}</p>
+            <p><strong>Definition:</strong> {{ vocab.definition }}</p>
+            <p><strong>Example:</strong> {{ vocab.example }}</p>
+            <p><strong>Science Use:</strong> {{ vocab.science_use }}</p>
+            <p><strong>Real-World Use:</strong> {{ vocab.real_world_use }}</p>
+            <p><strong>STAAR Connection:</strong> {{ vocab.staar_connection }}</p>
+          </div>
+          {% endfor %}
+        {% else %}
+          <p>Vocabulary will be added soon.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if view_mode == "teacher" %}
+    <div class="card mb-3">
+      <div class="card-header">
+        Teacher Notes
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("teacher_notes", "Teacher notes will be added soon.") }}</p>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+
+</div>
+
+<a href="/first-nine-weeks" class="btn btn-secondary mb-4">Back to First Nine Weeks</a>
+
+{% endif %}
+
+
+
+{# Science Studio Written Exit Ticket #}
+{% set exit_lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
+{% set exit_lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
+
+<section class="card my-4" style="border: 4px solid #111; border-radius: 20px; box-shadow: 5px 5px 0 rgba(17,17,17,0.14);">
+    <div class="card-body">
+        <h2 class="card-title">🎟️ Written Exit Ticket</h2>
+
+        <p>
+            Use this exit ticket to show your thinking in your own words.
+            This is not a multiple-choice question.
+        </p>
+
+        <div class="alert alert-success" style="border: 3px solid #111;">
+            <strong>Today's Lesson:</strong>
+            Day {{ exit_lesson_day }}: {{ exit_lesson_title }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label"><strong>1. What is one important science idea you learned today?</strong></label>
+            <textarea id="exitLearned{{ exit_lesson_day }}" class="form-control" rows="4"
+                placeholder="Today I learned..."></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label"><strong>2. What evidence, data, model, or observation helped you understand it?</strong></label>
+            <textarea id="exitEvidence{{ exit_lesson_day }}" class="form-control" rows="4"
+                placeholder="The evidence that helped me was..."></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label"><strong>3. What question do you still have?</strong></label>
+            <textarea id="exitQuestion{{ exit_lesson_day }}" class="form-control" rows="3"
+                placeholder="I still wonder..."></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label"><strong>4. How confident do you feel?</strong></label>
+            <select id="exitConfidence{{ exit_lesson_day }}" class="form-select">
+                <option value="">Choose one...</option>
+                <option>I can teach this to someone else.</option>
+                <option>I understand it with a little help.</option>
+                <option>I am still confused and need more practice.</option>
+            </select>
+        </div>
+
+        <div class="alert alert-warning" style="border: 3px solid #111;">
+            <strong>Teacher Option:</strong>
+            Students may write this response, discuss it with a partner, or record an oral response using a teacher-approved district tool.
+        </div>
+
+        <div class="mt-3 no-print">
+            <button type="button" class="btn btn-success" onclick="saveExitTicket('{{ exit_lesson_day }}')"
+                style="border: 3px solid #111; font-weight: 900;">
+                Save on This Device
+            </button>
+
+            <button type="button" class="btn btn-warning" onclick="window.print()"
+                style="border: 3px solid #111; font-weight: 900;">
+                Print / Save as PDF
+            </button>
+
+            <button type="button" class="btn btn-secondary" onclick="clearExitTicket('{{ exit_lesson_day }}')"
+                style="border: 3px solid #111; font-weight: 900;">
+                Clear Exit Ticket
+            </button>
+        </div>
+
+        <p class="small mt-3 mb-0">
+            Privacy note: This response saves only in this browser on this device. It is not sent to an online student database.
+        </p>
+    </div>
+</section>
+
+<script>
+function getExitField(day, field) {
+    return document.getElementById("exit" + field + day);
+}
+
+function saveExitTicket(day) {
+    const data = {
+        learned: getExitField(day, "Learned")?.value || "",
+        evidence: getExitField(day, "Evidence")?.value || "",
+        question: getExitField(day, "Question")?.value || "",
+        confidence: getExitField(day, "Confidence")?.value || ""
+    };
+
+    localStorage.setItem("scienceStudioExitTicketDay" + day, JSON.stringify(data));
+    alert("Exit ticket saved on this device.");
+}
+
+function loadExitTicket(day) {
+    const saved = localStorage.getItem("scienceStudioExitTicketDay" + day);
+
+    if (!saved) {
+        return;
+    }
+
+    try {
+        const data = JSON.parse(saved);
+
+        if (getExitField(day, "Learned")) getExitField(day, "Learned").value = data.learned || "";
+        if (getExitField(day, "Evidence")) getExitField(day, "Evidence").value = data.evidence || "";
+        if (getExitField(day, "Question")) getExitField(day, "Question").value = data.question || "";
+        if (getExitField(day, "Confidence")) getExitField(day, "Confidence").value = data.confidence || "";
+    } catch (error) {
+        console.log("Could not load saved exit ticket.", error);
+    }
+}
+
+function clearExitTicket(day) {
+    if (!confirm("Clear this exit ticket from this device?")) {
+        return;
+    }
+
+    localStorage.removeItem("scienceStudioExitTicketDay" + day);
+
+    ["Learned", "Evidence", "Question", "Confidence"].forEach(function(field) {
+        const box = getExitField(day, field);
+        if (box) {
+            box.value = "";
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    loadExitTicket("{{ exit_lesson_day }}");
+});
+</script>
+
+{# Science Studio Written CER / Critical Thinking Response #}
+{% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
+{% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
+
+<section class="card my-4" style="border: 4px solid #111; border-radius: 20px; box-shadow: 5px 5px 0 rgba(17,17,17,0.14);">
+    <div class="card-body">
+        <h2 class="card-title">🧠 Explain Your Thinking</h2>
+
+        <p>
+            Use this section to generate your own science response. This is different from
+            STAAR multiple-choice practice. Here, you write or explain your thinking using
+            evidence.
+        </p>
+
+        <div class="alert alert-info" style="border: 3px solid #111;">
+            <strong>Student Task:</strong>
+            Write or orally explain a response connected to today's lesson:
+            <strong>Day {{ lesson_day }}: {{ lesson_title }}</strong>.
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label"><strong>Claim</strong></label>
+                <p class="small">What do you think? Answer the question in a complete sentence.</p>
+                <textarea id="cerClaim{{ lesson_day }}" class="form-control" rows="6"
+                    placeholder="My claim is..."></textarea>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label"><strong>Evidence</strong></label>
+                <p class="small">What data, observation, model, or lab result supports your claim?</p>
+                <textarea id="cerEvidence{{ lesson_day }}" class="form-control" rows="6"
+                    placeholder="My evidence is..."></textarea>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label"><strong>Reasoning</strong></label>
+                <p class="small">Why does your evidence support your claim?</p>
+                <textarea id="cerReasoning{{ lesson_day }}" class="form-control" rows="6"
+                    placeholder="This evidence supports my claim because..."></textarea>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label"><strong>Use Science Vocabulary</strong></label>
+            <textarea id="cerVocabulary{{ lesson_day }}" class="form-control" rows="3"
+                placeholder="Use at least one science vocabulary word from today's lesson."></textarea>
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label"><strong>Oral Response Option</strong></label>
+            <div class="alert alert-warning" style="border: 3px solid #111;">
+                Students may also explain their CER response orally or record it using a
+                teacher-approved district tool. Do not enter personal information.
+            </div>
+        </div>
+
+        <div class="mt-3 no-print">
+            <button type="button" class="btn btn-success" onclick="saveCERResponse('{{ lesson_day }}')"
+                style="border: 3px solid #111; font-weight: 900;">
+                Save on This Device
+            </button>
+
+            <button type="button" class="btn btn-warning" onclick="printCERResponse('{{ lesson_day }}')"
+                style="border: 3px solid #111; font-weight: 900;">
+                Print / Save as PDF
+            </button>
+
+            <button type="button" class="btn btn-secondary" onclick="clearCERResponse('{{ lesson_day }}')"
+                style="border: 3px solid #111; font-weight: 900;">
+                Clear Response
+            </button>
+        </div>
+
+        <p class="small mt-3 mb-0">
+            Privacy note: This response saves only in this browser on this device. It is not sent to an online student database.
+        </p>
+    </div>
+</section>
+
+<script>
+function getCERField(day, field) {
+    return document.getElementById("cer" + field + day);
+}
+
+function saveCERResponse(day) {
+    const data = {
+        claim: getCERField(day, "Claim")?.value || "",
+        evidence: getCERField(day, "Evidence")?.value || "",
+        reasoning: getCERField(day, "Reasoning")?.value || "",
+        vocabulary: getCERField(day, "Vocabulary")?.value || ""
+    };
+
+    localStorage.setItem("scienceStudioCERDay" + day, JSON.stringify(data));
+    alert("CER response saved on this device.");
+}
+
+function loadCERResponse(day) {
+    const saved = localStorage.getItem("scienceStudioCERDay" + day);
+
+    if (!saved) {
+        return;
+    }
+
+    try {
+        const data = JSON.parse(saved);
+
+        if (getCERField(day, "Claim")) getCERField(day, "Claim").value = data.claim || "";
+        if (getCERField(day, "Evidence")) getCERField(day, "Evidence").value = data.evidence || "";
+        if (getCERField(day, "Reasoning")) getCERField(day, "Reasoning").value = data.reasoning || "";
+        if (getCERField(day, "Vocabulary")) getCERField(day, "Vocabulary").value = data.vocabulary || "";
+    } catch (error) {
+        console.log("Could not load saved CER response.", error);
+    }
+}
+
+function clearCERResponse(day) {
+    if (!confirm("Clear this CER response from this device?")) {
+        return;
+    }
+
+    localStorage.removeItem("scienceStudioCERDay" + day);
+
+    ["Claim", "Evidence", "Reasoning", "Vocabulary"].forEach(function(field) {
+        const box = getCERField(day, field);
+        if (box) {
+            box.value = "";
+        }
+    });
+}
+
+function printCERResponse(day) {
+    window.print();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    loadCERResponse("{{ lesson_day }}");
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,532 @@
+{% extends "base.html" %}
+
+{% block title %}States of Matter Match Game{% endblock %}
+
+{% block content %}
+
+<h1>States of Matter Match Game</h1>
+<p class="lead">
+  Match solids, liquids, and gases to their properties, examples, and particle models.
+</p>
+
+<a href="/first-nine-weeks/day/6?view=student" class="btn btn-secondary mb-4">
+  Back to Day 6
+</a>
+
+<style>
+  .states-hero {
+    background:
+      radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      radial-gradient(circle at 80% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      linear-gradient(135deg, #102542 0%, #1b4965 58%, #5fa8d3 100%);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+    margin-bottom: 24px;
+  }
+
+  .states-card {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 22px;
+    padding: 20px;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
+    margin-bottom: 22px;
+  }
+
+  .state-box {
+    background: #f8f9fa;
+    border: 4px solid #111;
+    border-radius: 20px;
+    padding: 18px;
+    height: 100%;
+  }
+
+  .state-emoji {
+    font-size: 48px;
+  }
+
+  .property-pill {
+    display: inline-block;
+    background: #d1e7dd;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 7px 11px;
+    margin: 4px;
+    font-weight: 900;
+  }
+
+  .particle-stage {
+    background:
+      linear-gradient(180deg, #bde0fe 0%, #eaf6ff 60%, #d1e7dd 60%, #d1e7dd 100%);
+    border: 5px solid #111;
+    border-radius: 24px;
+    min-height: 320px;
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+
+  .particle-container {
+    height: 190px;
+    background: rgba(255,255,255,0.65);
+    border: 4px solid #111;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .particle {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #111;
+    border-radius: 50%;
+    background: #fff3cd;
+    position: absolute;
+  }
+
+  .solid-particle {
+    animation: wiggle 0.5s infinite alternate;
+  }
+
+  .liquid-particle {
+    animation: slide 2.2s infinite alternate;
+  }
+
+  .gas-particle {
+    animation: zoom 1.5s infinite alternate;
+  }
+
+  @keyframes wiggle {
+    from { transform: translate(0, 0); }
+    to { transform: translate(2px, -2px); }
+  }
+
+  @keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(35px); }
+  }
+
+  @keyframes zoom {
+    from { transform: translate(0, 0); }
+    to { transform: translate(70px, -35px); }
+  }
+
+  .match-row {
+    background: #f8f9fa;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  .warning {
+    background: #fff3cd;
+    color: #664d03;
+  }
+
+  .sparkle {
+    position: absolute;
+    font-size: 28px;
+    animation: pop 1.1s ease-out forwards;
+    pointer-events: none;
+  }
+
+  @keyframes pop {
+    0% { transform: scale(0.2); opacity: 0; }
+    30% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0; }
+  }
+</style>
+
+<section class="states-hero">
+  <span class="badge-science">Day 6</span>
+  <span class="badge-science">Matter</span>
+  <span class="badge-science">Solids • Liquids • Gases</span>
+
+  <h2 class="mt-3">🧊 Matter Changes How It Acts</h2>
+  <p class="lead mb-0">
+    Matter can be a solid, liquid, or gas. Each state has different properties
+    because the particles are arranged and moving differently.
+  </p>
+</section>
+
+<section class="states-card">
+  <h2>Part 1: Review the Three States</h2>
+
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="state-box">
+        <div class="state-emoji">🧊</div>
+        <h3>Solid</h3>
+        <p>Has a definite shape and definite volume.</p>
+        <span class="property-pill">Particles packed together</span>
+        <span class="property-pill">Particles vibrate</span>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="state-box">
+        <div class="state-emoji">💧</div>
+        <h3>Liquid</h3>
+        <p>Has a definite volume but takes the shape of its container.</p>
+        <span class="property-pill">Particles close together</span>
+        <span class="property-pill">Particles slide past each other</span>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="state-box">
+        <div class="state-emoji">💨</div>
+        <h3>Gas</h3>
+        <p>Does not have a definite shape or definite volume.</p>
+        <span class="property-pill">Particles spread apart</span>
+        <span class="property-pill">Particles move freely</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="states-card">
+  <h2>Part 2: Particle Model Simulator</h2>
+  <p>Choose a state of matter and watch how the particles are arranged and moving.</p>
+
+  <div class="particle-stage" id="particleStage">
+    <div class="row">
+      <div class="col-lg-4">
+        <label class="form-label"><strong>Choose state:</strong></label>
+        <select id="stateSelect" class="form-select mb-3" onchange="showParticles()">
+          <option value="solid">Solid</option>
+          <option value="liquid">Liquid</option>
+          <option value="gas">Gas</option>
+        </select>
+
+        <button class="btn btn-primary science-btn" onclick="showParticles()">Show Model</button>
+
+        <div id="particleExplanation" class="feedback warning">
+          Choose a state and show the model.
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div id="particleContainer" class="particle-container"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="states-card">
+  <h2>Part 3: Match the State of Matter</h2>
+  <p>Read each clue and choose whether it describes a solid, liquid, or gas.</p>
+
+  <div id="matchArea"></div>
+
+  <button class="btn btn-success science-btn" onclick="checkMatches()">Check My Matches</button>
+  <button class="btn btn-warning science-btn" onclick="resetMatches()">Reset</button>
+
+  <div id="matchFeedback"></div>
+</section>
+
+<section class="states-card">
+  <h2>Part 4: Example Sort</h2>
+  <p>Sort each example as solid, liquid, or gas.</p>
+
+  <div id="exampleArea"></div>
+
+  <button class="btn btn-success science-btn" onclick="checkExamples()">Check Example Sort</button>
+  <button class="btn btn-warning science-btn" onclick="resetExamples()">Reset</button>
+
+  <div id="exampleFeedback"></div>
+</section>
+
+<section class="states-card">
+  <h2>Part 5: STAAR Quick Check</h2>
+
+  <p class="alert alert-warning">
+    A student pours juice from a bottle into a cup. The juice keeps the same amount,
+    but it changes shape to fit the cup.
+  </p>
+
+  <label class="form-label"><strong>Which state of matter is the juice?</strong></label>
+  <select id="staar1" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Solid</option>
+    <option>Liquid</option>
+    <option>Gas</option>
+  </select>
+
+  <label class="form-label"><strong>Which evidence supports your answer?</strong></label>
+  <select id="staar2" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>It keeps the same volume but changes shape to fit the cup.</option>
+    <option>It has a definite shape and cannot be poured.</option>
+    <option>It spreads out to fill all the space in the room.</option>
+    <option>It is attracted to a magnet.</option>
+  </select>
+
+  <button class="btn btn-success science-btn" onclick="checkSTAAR()">Check STAAR Quick Check</button>
+  <div id="staarFeedback"></div>
+</section>
+
+<script>
+  const matchItems = [
+    {
+      clue: "Has a definite shape and definite volume.",
+      answer: "Solid"
+    },
+    {
+      clue: "Takes the shape of its container but keeps the same volume.",
+      answer: "Liquid"
+    },
+    {
+      clue: "Spreads out to fill the container.",
+      answer: "Gas"
+    },
+    {
+      clue: "Particles are packed closely and mostly vibrate in place.",
+      answer: "Solid"
+    },
+    {
+      clue: "Particles are close but can slide past each other.",
+      answer: "Liquid"
+    },
+    {
+      clue: "Particles are spread far apart and move freely.",
+      answer: "Gas"
+    }
+  ];
+
+  const exampleItems = [
+    {
+      example: "Ice cube",
+      answer: "Solid"
+    },
+    {
+      example: "Milk",
+      answer: "Liquid"
+    },
+    {
+      example: "Steam",
+      answer: "Gas"
+    },
+    {
+      example: "Pencil",
+      answer: "Solid"
+    },
+    {
+      example: "Air inside a balloon",
+      answer: "Gas"
+    },
+    {
+      example: "Water in a cup",
+      answer: "Liquid"
+    }
+  ];
+
+  function showFeedback(elementId, message, kind) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + kind;
+    box.innerHTML = message;
+  }
+
+  function createParticle(x, y, className) {
+    const p = document.createElement("div");
+    p.className = "particle " + className;
+    p.style.left = x + "px";
+    p.style.top = y + "px";
+    return p;
+  }
+
+  function showParticles() {
+    const state = document.getElementById("stateSelect").value;
+    const container = document.getElementById("particleContainer");
+    container.innerHTML = "";
+
+    if (state === "solid") {
+      let startX = 80;
+      let startY = 40;
+
+      for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 5; col++) {
+          container.appendChild(createParticle(startX + col * 38, startY + row * 38, "solid-particle"));
+        }
+      }
+
+      showFeedback("particleExplanation", "Solid: particles are packed closely and mostly vibrate in place. A solid has a definite shape and definite volume.", "correct");
+    }
+
+    if (state === "liquid") {
+      const spots = [
+        [65, 115], [105, 130], [145, 112], [190, 130], [230, 112],
+        [275, 132], [315, 115], [355, 130], [395, 112], [435, 132]
+      ];
+
+      spots.forEach(([x, y]) => {
+        container.appendChild(createParticle(x, y, "liquid-particle"));
+      });
+
+      showFeedback("particleExplanation", "Liquid: particles are close together but slide past each other. A liquid keeps its volume but takes the shape of its container.", "correct");
+    }
+
+    if (state === "gas") {
+      const spots = [
+        [35, 25], [125, 80], [245, 35], [365, 105], [455, 40],
+        [75, 145], [205, 135], [315, 55], [430, 145]
+      ];
+
+      spots.forEach(([x, y]) => {
+        container.appendChild(createParticle(x, y, "gas-particle"));
+      });
+
+      showFeedback("particleExplanation", "Gas: particles are spread far apart and move freely. A gas fills the space of its container.", "correct");
+    }
+
+    makeSparkles();
+  }
+
+  function renderMatchArea() {
+    const area = document.getElementById("matchArea");
+    area.innerHTML = "";
+
+    matchItems.forEach((item, index) => {
+      const row = document.createElement("div");
+      row.className = "match-row";
+      row.innerHTML = `
+        <div class="row align-items-center">
+          <div class="col-md-7">
+            <strong>Clue:</strong> ${item.clue}
+          </div>
+          <div class="col-md-5">
+            <select id="match${index}" class="form-select">
+              <option selected>Choose...</option>
+              <option>Solid</option>
+              <option>Liquid</option>
+              <option>Gas</option>
+            </select>
+          </div>
+        </div>
+      `;
+      area.appendChild(row);
+    });
+  }
+
+  function checkMatches() {
+    let correct = 0;
+
+    matchItems.forEach((item, index) => {
+      const answer = document.getElementById("match" + index).value;
+      if (answer === item.answer) correct++;
+    });
+
+    if (correct === matchItems.length) {
+      showFeedback("matchFeedback", "Excellent! You matched every property to the correct state of matter.", "correct");
+      makeSparkles();
+    } else {
+      showFeedback("matchFeedback", "You got " + correct + " out of " + matchItems.length + ". Review shape, volume, and particle movement.", "warning");
+    }
+  }
+
+  function resetMatches() {
+    renderMatchArea();
+    document.getElementById("matchFeedback").innerHTML = "";
+  }
+
+  function renderExampleArea() {
+    const area = document.getElementById("exampleArea");
+    area.innerHTML = "";
+
+    exampleItems.forEach((item, index) => {
+      const row = document.createElement("div");
+      row.className = "match-row";
+      row.innerHTML = `
+        <div class="row align-items-center">
+          <div class="col-md-7">
+            <strong>Example:</strong> ${item.example}
+          </div>
+          <div class="col-md-5">
+            <select id="example${index}" class="form-select">
+              <option selected>Choose...</option>
+              <option>Solid</option>
+              <option>Liquid</option>
+              <option>Gas</option>
+            </select>
+          </div>
+        </div>
+      `;
+      area.appendChild(row);
+    });
+  }
+
+  function checkExamples() {
+    let correct = 0;
+
+    exampleItems.forEach((item, index) => {
+      const answer = document.getElementById("example" + index).value;
+      if (answer === item.answer) correct++;
+    });
+
+    if (correct === exampleItems.length) {
+      showFeedback("exampleFeedback", "Great job! You sorted every example correctly.", "correct");
+      makeSparkles();
+    } else {
+      showFeedback("exampleFeedback", "You got " + correct + " out of " + exampleItems.length + ". Think about whether each example has a definite shape, takes the shape of a container, or spreads out.", "warning");
+    }
+  }
+
+  function resetExamples() {
+    renderExampleArea();
+    document.getElementById("exampleFeedback").innerHTML = "";
+  }
+
+  function checkSTAAR() {
+    const s1 = document.getElementById("staar1").value;
+    const s2 = document.getElementById("staar2").value;
+
+    if (s1 === "Liquid" && s2 === "It keeps the same volume but changes shape to fit the cup.") {
+      showFeedback("staarFeedback", "Correct! A liquid keeps its volume but takes the shape of its container.", "correct");
+      makeSparkles();
+    } else {
+      showFeedback("staarFeedback", "Not yet. Look for the evidence about shape and volume.", "incorrect");
+    }
+  }
+
+  function makeSparkles() {
+    const stage = document.getElementById("particleStage");
+
+    for (let i = 0; i < 8; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.innerText = ["✨", "⭐", "🧪", "✅"][Math.floor(Math.random() * 4)];
+      sparkle.style.left = (60 + Math.random() * 760) + "px";
+      sparkle.style.top = (30 + Math.random() * 230) + "px";
+      stage.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1200);
+    }
+  }
+
+  renderMatchArea();
+  renderExampleArea();
+  showParticles();
+</script>
+
+{% endblock %}

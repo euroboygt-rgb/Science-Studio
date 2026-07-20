@@ -1,0 +1,372 @@
+{% extends "base.html" %}
+
+{% block title %}{{ lab.title }} Recording Sheet{% endblock %}
+
+{% block content %}
+<style>
+.recording-page {
+    max-width: 980px;
+    margin: 24px auto;
+    background: #fff7d6;
+    border: 6px solid #111;
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+}
+
+.recording-top {
+    background: linear-gradient(135deg, #6f2dbd, #123f8c, #00a6d6);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+.recording-badge {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ff9f1c;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-weight: 1000;
+    margin: 3px 5px 8px 0;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.35);
+}
+
+.recording-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 14px 0;
+}
+
+.recording-btn {
+    display: inline-block;
+    background: #ff9f1c;
+    color: #111 !important;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    text-decoration: none !important;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+}
+
+.recording-btn.blue {
+    background: #0077ff;
+    color: white !important;
+}
+
+.recording-section {
+    background: white;
+    border: 5px solid #111;
+    border-radius: 22px;
+    padding: 18px;
+    margin: 16px 0;
+}
+
+.student-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.line {
+    border-bottom: 3px solid #111;
+    min-height: 28px;
+}
+
+.recording-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    background: white;
+}
+
+.recording-table th,
+.recording-table td {
+    border: 3px solid #111;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.recording-table th {
+    background: #dff3ff;
+    font-weight: 1000;
+}
+
+.write-lines {
+    background: repeating-linear-gradient(#fff 0 30px, #d9e9ff 31px 32px);
+    border: 3px solid #111;
+    border-radius: 14px;
+    min-height: 115px;
+    padding: 12px;
+}
+
+.answer-key {
+    background: #d8ffe9;
+    border: 5px solid #111;
+    border-radius: 22px;
+    padding: 16px;
+    margin-top: 16px;
+}
+
+.key-pill {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ff9f1c;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-weight: 1000;
+    margin: 3px;
+}
+
+@media print {
+    nav,
+    footer,
+    .recording-actions,
+    #scienceStudioAiWidget {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+    }
+
+    .recording-page {
+        max-width: none;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .recording-section {
+        page-break-inside: avoid;
+    }
+}
+</style>
+
+<section class="recording-page">
+    <div class="recording-top">
+        <span class="recording-badge">Unit 1</span>
+        <span class="recording-badge">Matter Lab Arcade</span>
+        <span class="recording-badge">Day {{ lab.day }}</span>
+        {% if view == "teacher" %}
+            <span class="recording-badge">Teacher Key</span>
+        {% else %}
+            <span class="recording-badge">Student Sheet</span>
+        {% endif %}
+
+        <h1>{{ lab.title }} Recording Sheet</h1>
+        <p>{{ lab.subtitle }}</p>
+    </div>
+
+    <div class="recording-actions">
+        <button class="recording-btn" type="button" onclick="window.print()">Print This Sheet</button>
+        <a class="recording-btn blue" href="/labs/unit1/arcade/{{ lab.slug }}">Back to Arcade Lab</a>
+        <a class="recording-btn blue" href="/first-nine-weeks/day/{{ lab.day }}?view=student">Back to Day {{ lab.day }}</a>
+
+        {% if view == "teacher" %}
+            <a class="recording-btn" href="/labs/unit1/arcade/{{ lab.slug }}/recording-sheet?view=student">Student Version</a>
+        {% else %}
+            <a class="recording-btn" href="/labs/unit1/arcade/{{ lab.slug }}/recording-sheet?view=teacher">Teacher Key</a>
+        {% endif %}
+    </div>
+
+    <section class="recording-section">
+        <h2>👩‍🔬 Scientist Information</h2>
+        <div class="student-info">
+            <div>
+                <strong>Name:</strong>
+                <div class="line"></div>
+            </div>
+            <div>
+                <strong>Date:</strong>
+                <div class="line"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="recording-section">
+        <h2>🎮 Mission</h2>
+        <p><strong>Today’s mission:</strong> {{ lab.mission }}</p>
+        <p><strong>Science focus:</strong> Use observations as evidence to explain a physical property of matter.</p>
+    </section>
+
+    <section class="recording-section">
+        <h2>🔮 Prediction and Evidence Table</h2>
+
+        {% if lab.mode == "compare" %}
+            <table class="recording-table">
+                <thead>
+                    <tr>
+                        <th>Challenge</th>
+                        <th>My Prediction</th>
+                        <th>What happened?</th>
+                        <th>Evidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in lab.items %}
+                    <tr>
+                        <td>{{ item.left }} vs. {{ item.right }}</td>
+                        <td>Left / Right</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        {% elif lab.mode == "volume" %}
+            <table class="recording-table">
+                <thead>
+                    <tr>
+                        <th>Target Volume</th>
+                        <th>My Measurement</th>
+                        <th>Was I close?</th>
+                        <th>Evidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in lab.items %}
+                    <tr>
+                        <td>{{ item.target }} mL</td>
+                        <td>_____ mL</td>
+                        <td>Yes / No</td>
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        {% elif lab.mode == "review" %}
+            <table class="recording-table">
+                <thead>
+                    <tr>
+                        <th>Review Question</th>
+                        <th>My Answer</th>
+                        <th>Science Evidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in lab.items %}
+                    <tr>
+                        <td>{{ item.question }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        {% else %}
+            <table class="recording-table">
+                <thead>
+                    <tr>
+                        <th>Object / Material</th>
+                        <th>My Prediction</th>
+                        <th>Test Result</th>
+                        <th>Evidence / Observation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in lab.items %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>
+                            {% if lab.targets %}
+                                {{ lab.targets|join(" / ") }}
+                            {% else %}
+                                Prediction
+                            {% endif %}
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </section>
+
+    <section class="recording-section">
+        <h2>🧠 Think Like a Scientist</h2>
+        <p><strong>What pattern did you notice in the lab?</strong></p>
+        <div class="write-lines"></div>
+    </section>
+
+    <section class="recording-section">
+        <h2>📝 CER Response</h2>
+        <p><strong>Claim:</strong> What can you say about the object or material?</p>
+        <div class="line"></div>
+
+        <p><strong>Evidence:</strong> What did you observe in the lab?</p>
+        <div class="line"></div>
+
+        <p><strong>Reasoning:</strong> How does your evidence prove your claim?</p>
+        <div class="write-lines"></div>
+    </section>
+
+    <section class="recording-section">
+        <h2>⭐ STAAR Connection</h2>
+        <p>
+            On STAAR, you may need to use evidence from an investigation to classify materials by physical properties.
+            Explain how this lab helps you answer a science question.
+        </p>
+        <div class="write-lines"></div>
+    </section>
+
+    {% if view == "teacher" %}
+    <section class="answer-key">
+        <h2>✅ Teacher Answer Key</h2>
+
+        {% if lab.mode == "compare" %}
+            {% for item in lab.items %}
+                <p>
+                    <span class="key-pill">{{ item.left }} vs. {{ item.right }}</span>
+                    Correct answer:
+                    {% if item.answer == "left" %}
+                        {{ item.left }} has more mass.
+                    {% else %}
+                        {{ item.right }} has more mass.
+                    {% endif %}
+                </p>
+            {% endfor %}
+
+        {% elif lab.mode == "volume" %}
+            {% for item in lab.items %}
+                <p><span class="key-pill">{{ item.target }} mL</span> Students should measure close to {{ item.target }} mL.</p>
+            {% endfor %}
+
+        {% elif lab.mode == "engineering" %}
+            <p><span class="key-pill">Best material</span> Plastic is the strongest answer because it is light, moldable, and an insulator.</p>
+            {% for item in lab.items %}
+                <p><strong>{{ item.name }}:</strong> {{ item.observation }}</p>
+            {% endfor %}
+
+        {% elif lab.mode == "review" %}
+            {% for item in lab.items %}
+                <p><span class="key-pill">{{ item.answer }}</span> {{ item.question }}</p>
+            {% endfor %}
+
+        {% else %}
+            {% for item in lab.items %}
+                <p>
+                    <span class="key-pill">{{ item.name }}</span>
+                    Correct classification: <strong>{{ item.answer }}</strong>.
+                    Evidence: {{ item.observation }}
+                </p>
+            {% endfor %}
+        {% endif %}
+
+        <p><strong>Strong CER example:</strong> My claim matches the test result. My evidence is what I observed in the lab. My reasoning explains how the physical property helped classify the material.</p>
+    </section>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,457 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if not lesson %}
+
+<div class="alert alert-danger">
+  Lesson not found.
+</div>
+
+<a href="/first-nine-weeks" class="btn btn-secondary">Back to First Nine Weeks</a>
+
+{% else %}
+
+<div class="mb-4">
+  <h1>Day {{ lesson.get("day") }}: {{ lesson.get("title") }}</h1>
+  <p class="lead">{{ lesson.get("unit", "First Nine Weeks") }}</p>
+
+  <div class="mb-3">
+    <a href="/first-nine-weeks/day/{{ lesson.get('day') }}?view=teacher"
+      class="btn btn-sm {% if view_mode == 'teacher' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+      Teacher View
+    </a>
+
+    <a href="/first-nine-weeks/day/{{ lesson.get('day') }}?view=student"
+      class="btn btn-sm {% if view_mode == 'student' %}btn-success{% else %}btn-outline-success{% endif %}">
+      Student View
+    </a>
+  </div>
+
+  {% if view_mode == "student" %}
+  <div class="alert alert-success">
+    Student View: answers and teacher notes are hidden.
+  </div>
+  {% else %}
+  <div class="alert alert-primary">
+    Teacher View: teacher guidance, answers, and notes are visible.
+  </div>
+  {% endif %}
+</div>
+
+<div class="row">
+
+  <div class="col-md-8">
+
+    <div class="card mb-3">
+      <div class="card-header bg-primary text-white">
+        Bell Ringer
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("bell_ringer", "Bell ringer will be added soon.") }}</p>
+
+        {% if view_mode == "student" %}
+        <textarea class="form-control" rows="3" placeholder="Type your response here..."></textarea>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-success text-white">
+        Learning Target
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("learning_target", "Learning target will be added soon.") }}</p>
+
+        {% if view_mode == "student" %}
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="targetCheck">
+          <label class="form-check-label" for="targetCheck">
+            I understand today’s learning target.
+          </label>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-info text-white">
+        Mini Lesson
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("mini_lesson", "Mini lesson will be added soon.") }}</p>
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-warning">
+        Science Notebook
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("science_notebook", "Science notebook activity will be added soon.") }}</p>
+
+        {% if view_mode == "student" %}
+        <textarea class="form-control" rows="4" placeholder="Add your science notebook notes here..."></textarea>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-secondary text-white">
+        Guided Practice
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("guided_practice", "Guided practice will be added soon.") }}</p>
+
+        {% if view_mode == "student" %}
+        <textarea class="form-control" rows="3" placeholder="Write your group answer here..."></textarea>
+        {% endif %}
+      </div>
+    </div>
+
+        {% if lesson.get("interactive_activity") %}
+    <div class="card mb-3">
+      <div class="card-header bg-primary text-white">
+        Interactive Activity
+      </div>
+      <div class="card-body">
+        <h4>{{ lesson.get("interactive_activity_title", "Interactive Activity") }}</h4>
+        <p>{{ lesson.get("interactive_activity") }}</p>
+
+        {% if lesson.get("safety_scenarios") %}
+        <div class="row">
+          {% for scenario in lesson.get("safety_scenarios") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>Scenario {{ loop.index }}</h5>
+              <p><strong>Situation:</strong> {{ scenario.scenario }}</p>
+              <p><strong>Student Task:</strong> {{ scenario.student_task }}</p>
+
+              {% if view_mode == "student" %}
+
+              <label class="form-label"><strong>Safe or Unsafe?</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Safe</option>
+                <option>Unsafe</option>
+              </select>
+
+              <label class="form-label"><strong>What should happen next?</strong></label>
+              <textarea class="form-control mb-2" rows="2" placeholder="Write your answer..."></textarea>
+
+              <label class="form-label"><strong>Which safety rule applies?</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Explain the rule..."></textarea>
+
+              {% else %}
+
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">
+                  Reveal Teacher Guidance
+                </summary>
+
+                <div class="mt-3">
+                  <p><strong>Category:</strong> {{ scenario.category }}</p>
+                  <p><strong>Safe Action:</strong> {{ scenario.safe_action }}</p>
+                  <p><strong>Explanation:</strong> {{ scenario.explanation }}</p>
+                </div>
+              </details>
+
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("property_sort_cards") %}
+        <div class="row">
+          {% for card in lesson.get("property_sort_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.property }}</h5>
+              <p><strong>Example:</strong> {{ card.object_example }}</p>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+
+              <label class="form-label"><strong>Sort this property:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Observe</option>
+                <option>Measure</option>
+                <option>Test</option>
+              </select>
+
+              <label class="form-label"><strong>Explain your thinking:</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Why did you choose that category?"></textarea>
+
+              {% else %}
+
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">
+                  Reveal Teacher Guidance
+                </summary>
+
+                <div class="mt-3">
+                  <p><strong>Category:</strong> {{ card.category }}</p>
+                  <p><strong>Explanation:</strong> {{ card.explanation }}</p>
+                </div>
+              </details>
+
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if lesson.get("state_sort_cards") %}
+        <div class="row">
+          {% for card in lesson.get("state_sort_cards") %}
+          <div class="col-md-6 mb-3">
+            <div class="border rounded p-3 h-100 bg-light">
+              <h5>{{ card.example }}</h5>
+              <p><strong>Student Task:</strong> {{ card.student_task }}</p>
+
+              {% if view_mode == "student" %}
+
+              <label class="form-label"><strong>Sort this example:</strong></label>
+              <select class="form-select mb-2">
+                <option selected>Choose...</option>
+                <option>Solid</option>
+                <option>Liquid</option>
+                <option>Gas</option>
+              </select>
+
+              <label class="form-label"><strong>What is your evidence?</strong></label>
+              <textarea class="form-control" rows="2" placeholder="Explain how you know..."></textarea>
+
+              {% else %}
+
+              <details>
+                <summary class="btn btn-sm btn-outline-primary">
+                  Reveal Teacher Guidance
+                </summary>
+
+                <div class="mt-3">
+                  <p><strong>Category:</strong> {{ card.category }}</p>
+                  <p><strong>Evidence:</strong> {{ card.evidence }}</p>
+                </div>
+              </details>
+
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="card mb-3">
+      <div class="card-header bg-success text-white">
+        Lab
+      </div>
+      <div class="card-body">
+        {% if lesson.get("lab") %}
+          {% if lesson.get("lab") == True %}
+            <p>Lab activity will be added soon.</p>
+          {% else %}
+            <p>{{ lesson.get("lab") }}</p>
+          {% endif %}
+        {% else %}
+          <p>No lab for this lesson.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-dark text-white">
+        Lab Notebook
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("lab_notebook", "Lab notebook entry will be added soon.") }}</p>
+
+        {% if view_mode == "student" and lesson.get("lab_notebook_table") %}
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              {% for column in lesson.get("lab_notebook_table").columns %}
+              <th>{{ column }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in range(lesson.get("lab_notebook_table").rows) %}
+            <tr>
+              {% for column in lesson.get("lab_notebook_table").columns %}
+              <td>
+                <input class="form-control" placeholder="{{ column }}">
+              </td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-danger text-white">
+        STAAR Practice
+      </div>
+      <div class="card-body">
+
+        {% if lesson.get("staar_practice") %}
+
+          {% for question in lesson.get("staar_practice") %}
+          <div class="border rounded p-3 mb-3">
+            <p><strong>Question {{ loop.index }}:</strong> {{ question.question }}</p>
+
+            {% if view_mode == "student" %}
+
+            {% for choice in question.choices %}
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="question{{ loop.index }}">
+              <label class="form-check-label">
+                {{ choice }}
+              </label>
+            </div>
+            {% endfor %}
+
+            {% else %}
+
+            <ol type="A">
+              {% for choice in question.choices %}
+              <li>{{ choice }}</li>
+              {% endfor %}
+            </ol>
+
+            <details>
+              <summary class="btn btn-sm btn-outline-success">
+                Reveal Teacher Answer
+              </summary>
+
+              <p class="text-success mt-3">
+                <strong>Teacher Answer:</strong> {{ question.answer }}
+              </p>
+            </details>
+
+            {% endif %}
+          </div>
+          {% endfor %}
+
+        {% else %}
+
+          <p>STAAR practice questions will be added soon.</p>
+
+        {% endif %}
+
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header bg-primary text-white">
+        Exit Ticket
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("exit_ticket", "Exit ticket will be added soon.") }}</p>
+
+        {% if view_mode == "student" %}
+        <textarea class="form-control" rows="3" placeholder="Type your exit ticket response here..."></textarea>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-4">
+
+    <div class="card mb-3">
+      <div class="card-header">
+        Lesson Overview
+      </div>
+      <div class="card-body">
+        <p><strong>Week:</strong> {{ lesson.get("week", "Not added yet") }}</p>
+        <p><strong>Time:</strong> 60 minutes</p>
+        <p><strong>Grouping:</strong> Student groups</p>
+
+        {% if lesson.get("teks") %}
+        <p><strong>TEKS:</strong></p>
+        {% for tek in lesson.get("teks") %}
+          <span class="badge bg-primary">{{ tek }}</span>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header">
+        Materials
+      </div>
+      <div class="card-body">
+        {% if lesson.get("materials") %}
+        <ul>
+          {% for material in lesson.get("materials") %}
+          <li>{{ material }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>Materials will be added soon.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card mb-3">
+      <div class="card-header">
+        Vocabulary
+      </div>
+      <div class="card-body">
+
+        {% if lesson.get("vocabulary") %}
+
+          {% for vocab in lesson.get("vocabulary") %}
+          <div class="border rounded p-2 mb-3">
+            <h5>{{ vocab.term|title }}</h5>
+
+            <p><strong>Picture:</strong> {{ vocab.picture }}</p>
+            <p><strong>Definition:</strong> {{ vocab.definition }}</p>
+            <p><strong>Example:</strong> {{ vocab.example }}</p>
+            <p><strong>Science Use:</strong> {{ vocab.science_use }}</p>
+            <p><strong>Real-World Use:</strong> {{ vocab.real_world_use }}</p>
+            <p><strong>STAAR Connection:</strong> {{ vocab.staar_connection }}</p>
+          </div>
+          {% endfor %}
+
+        {% else %}
+
+          <p>Vocabulary will be added soon.</p>
+
+        {% endif %}
+
+      </div>
+    </div>
+
+    {% if view_mode == "teacher" %}
+    <div class="card mb-3">
+      <div class="card-header">
+        Teacher Notes
+      </div>
+      <div class="card-body">
+        <p>{{ lesson.get("teacher_notes", "Teacher notes will be added soon.") }}</p>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+
+</div>
+
+<a href="/first-nine-weeks" class="btn btn-secondary mb-4">Back to First Nine Weeks</a>
+
+{% endif %}
+
+{% endblock %}

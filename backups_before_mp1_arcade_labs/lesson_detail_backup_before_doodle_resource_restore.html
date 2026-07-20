@@ -1,0 +1,766 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% set lesson_title = lesson.title if lesson.title is defined else "Science Lesson" %}
+    Day {{ lesson.day if lesson.day is defined else "" }} - {{ lesson_title }}
+{% endblock %}
+
+{% block content %}
+
+{% set current_view = view if view is defined else request.args.get("view", "teacher") %}
+{% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
+{% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
+{% set lesson_teks = lesson.teks if lesson.teks is defined else "" %}
+{% set learning_target = lesson.learning_target if lesson.learning_target is defined else lesson.objective if lesson.objective is defined else "" %}
+{% set lesson_description = lesson.description if lesson.description is defined else "" %}
+{% set vocab_terms = lesson.vocabulary if lesson.vocabulary is defined else lesson.vocab if lesson.vocab is defined else [] %}
+{% set flow = get_lesson_flow(lesson_day, lesson_title) %}
+{% set staar_item = get_staar_question(lesson_day) %}
+{% set back_dashboard_url = "/student-dashboard" if current_view == "student" else "/teacher-dashboard" %}
+{% set back_dashboard_text = "← Back to Student Dashboard" if current_view == "student" else "← Back to Teacher Dashboard" %}
+
+{% if not vocab_terms %}
+    {% set vocab_terms = flow.vocabulary %}
+{% endif %}
+
+<style>
+.lesson-hero {
+    background: linear-gradient(135deg, #123b5d 0%, #2d7da8 100%);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 28px;
+    padding: 26px;
+    box-shadow: 7px 7px 0 rgba(17,17,17,0.18);
+    margin-bottom: 20px;
+}
+
+.lesson-card {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 18px 0;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.13);
+}
+
+.anchor-card {
+    background: #fff7d6;
+}
+
+.teacher-box {
+    background: #fff7d6;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 12px;
+    margin-top: 12px;
+}
+
+.student-note {
+    background: #eef7ff;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 12px;
+    margin-top: 12px;
+}
+
+.vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.vocab-mini {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    font-weight: 900;
+}
+
+.vocab-icon {
+    font-size: 1.8rem;
+    display: block;
+}
+
+.response-box {
+    width: 100%;
+    min-height: 115px;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.cer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.choice-card {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+.lesson-btn {
+    border: 3px solid #111;
+    border-radius: 10px;
+    font-weight: 900;
+    box-shadow: 3px 3px 0 rgba(17,17,17,0.2);
+    margin: 4px;
+}
+
+details summary {
+    cursor: pointer;
+    font-weight: 900;
+}
+
+@media print {
+    nav, .lesson-btn, button, .no-print {
+        display: none !important;
+    }
+
+    .lesson-card {
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+}
+
+@media (max-width: 800px) {
+    .cer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mcgraw-highlight {
+    background: linear-gradient(135deg, #fff3cd 0%, #fff8e8 100%);
+    border: 5px solid #111;
+    border-radius: 22px;
+    padding: 20px;
+    box-shadow: 6px 6px 0 rgba(17,17,17,0.18);
+}
+
+.mcgraw-focus-box {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 16px;
+    padding: 14px;
+    margin-top: 12px;
+}
+
+.mcgraw-badge {
+    display: inline-block;
+    background: #0d6efd;
+    color: white;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+
+.resources-use-card {
+    background: #f4fff2;
+    border: 4px solid #111;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 18px 0;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.13);
+}
+
+.notebook-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.notebook-form-item {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 10px;
+    font-weight: 800;
+}
+
+@media (max-width: 800px) {
+    .notebook-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+
+<section class="lesson-hero">
+    <span class="badge-science">Day {{ lesson_day }}</span>
+    <span class="badge-science">{{ "Teacher View" if current_view == "teacher" else "Student View" }}</span>
+    <span class="badge-science">{{ flow.unit_name }}</span>
+
+    <h1 class="mt-3">{{ lesson_title }}</h1>
+
+    {% if lesson_description %}
+        <p>{{ lesson_description }}</p>
+    {% else %}
+        <p>{{ flow.teacher_focus if current_view == "teacher" else flow.topic|capitalize }}</p>
+    {% endif %}
+
+    {% if lesson_teks %}
+        <p><strong>TEKS:</strong> {{ lesson_teks }}</p>
+    {% endif %}
+
+    <a href="{{ back_dashboard_url }}" class="btn btn-light lesson-btn">{{ back_dashboard_text }}</a>
+
+    
+<a href="/first-nine-weeks/day/{{ lesson_day }}/packet?view={{ current_view }}" class="btn btn-warning lesson-btn">
+    Print Student Packet
+</a>
+
+
+    {% if current_view == "teacher" %}
+        <a href="/first-nine-weeks/day/{{ lesson_day }}?view=student" class="btn btn-primary lesson-btn">Student View</a>
+        <a href="/first-nine-weeks/day/{{ lesson_day }}?view=teacher" class="btn btn-success lesson-btn">Teacher View</a>
+    {% else %}
+        <a href="/first-nine-weeks/day/{{ lesson_day }}?view=student" class="btn btn-primary lesson-btn">Student View</a>
+    {% endif %}
+</section>
+
+<section class="lesson-card anchor-card" id="vocabulary-anchor-chart">
+    <h2>📌 Vocabulary Anchor Chart</h2>
+    <p>Use these words during today’s lesson, notebook writing, lab discussion, exit ticket, and CER.</p>
+
+    <div class="vocab-grid">
+        {% for term in vocab_terms %}
+            {% set info = get_vocab_info(term) %}
+            <div class="vocab-mini">
+                <img src="{{ vocab_icon_path(term) }}?v=2" alt="{{ term }}" style="max-height:55px; max-width:75px; display:block; margin:0 auto 4px auto;">
+                {{ term }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <button class="btn btn-warning lesson-btn mt-3" onclick="window.print()">Print This Anchor Chart</button>
+    <a href="/vocabulary" class="btn btn-primary lesson-btn mt-3">Open Full Vocabulary Page</a>
+</section>
+
+<section class="lesson-card" id="learning-target">
+    <h2>🎯 Learning Target</h2>
+    {% if learning_target %}
+        <p>{{ learning_target }}</p>
+    {% else %}
+        <p>I can explain {{ flow.topic }} using observations, models, data, and science vocabulary.</p>
+    {% endif %}
+</section>
+
+<section class="lesson-card" id="bell-ringer">
+    <h2>🔔 Bell Ringer</h2>
+
+    {% if flow.bell_ringer %}
+        <p><strong>Review from Day {{ flow.bell_ringer.previous_day }}:</strong> {{ flow.bell_ringer.topic|capitalize }}</p>
+
+        <div class="student-note">
+            <h3>1. Multiple Choice Review</h3>
+            <p>{{ flow.bell_ringer.mcq.question }}</p>
+
+            {% for letter, choice in flow.bell_ringer.mcq.choices.items() %}
+                <label class="choice-card">
+                    <input type="radio" name="bell_mc_day_{{ lesson_day }}" value="{{ letter }}">
+                    <strong>{{ letter }}.</strong> {{ choice }}
+                </label>
+            {% endfor %}
+
+            {% if current_view == "teacher" %}
+                <details class="teacher-box">
+                    <summary>Teacher Answer</summary>
+                    <p><strong>Correct answer:</strong> {{ flow.bell_ringer.mcq.answer }}</p>
+                    <p>{{ flow.bell_ringer.mcq.explanation }}</p>
+                </details>
+            {% endif %}
+        </div>
+
+        <div class="student-note">
+            <h3>2. Short Constructed Response</h3>
+            <p>{{ flow.bell_ringer.short_question }}</p>
+            <textarea class="response-box" id="bellShortDay{{ lesson_day }}" placeholder="Write your response here..."></textarea>
+
+            {% if current_view == "teacher" %}
+                <details class="teacher-box">
+                    <summary>Teacher Sample Answer</summary>
+                    <p>{{ flow.bell_ringer.short_answer }}</p>
+                </details>
+            {% endif %}
+        </div>
+    {% else %}
+        <p>No bell ringer review today. Day 1 begins with classroom routines, safety, and notebook setup.</p>
+    {% endif %}
+</section>
+
+<section class="lesson-card" id="mini-lesson">
+    <h2>👩‍🏫 Mini Lesson</h2>
+
+    <div class="student-note">
+        <h3>Student Important Notes</h3>
+        <ul>
+            {% for item in flow.mini_lesson_student %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="student-note">
+        <h3>Phenomenon / Model</h3>
+        <p>{{ flow.phenomenon }}</p>
+    </div>
+
+    {% if current_view == "teacher" %}
+        <div class="teacher-box">
+            <h3>Teacher: How to Teach the Mini Lesson</h3>
+            <p><strong>Teacher focus:</strong> {{ flow.teacher_focus }}</p>
+
+            <h4>Introduce</h4>
+            <ul>
+                {% for item in flow.teacher_teach %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+
+            <h4>Connect</h4>
+            <p>Connect today’s topic to the previous day, the vocabulary anchor chart, and the investigation students will complete later.</p>
+
+            <h4>Model</h4>
+            <ul>
+                {% for item in flow.mini_lesson_teacher %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+
+            <details class="teacher-box">
+                <summary>Common Misconceptions</summary>
+                <ul>
+                    {% for item in flow.teacher_misconceptions %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </details>
+        </div>
+    {% endif %}
+</section>
+
+<section class="lesson-card" id="science-notebook">
+    <h2>📓 Science Notebook</h2>
+    <p>Copy these important ideas into your science notebook.</p>
+
+    <div class="student-note">
+        <ul>
+            {% for item in flow.science_notebook %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% if current_view == "teacher" %}
+        <div class="teacher-box">
+            <h3>Teacher Notebook Look-Fors</h3>
+            <ul>
+                <li>Students use today’s vocabulary correctly.</li>
+                <li>Students include a labeled model, table, or example when needed.</li>
+                <li>Students write evidence, not just one-word answers.</li>
+            </ul>
+        </div>
+    {% endif %}
+</section>
+
+<section class="lesson-card" id="guided-practice">
+    <h2>🤝 Guided Practice</h2>
+
+    <div class="student-note">
+        <h3>Student Task</h3>
+        <ol>
+            {% for item in flow.guided_practice_student %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+
+    {% if current_view == "teacher" %}
+        <div class="teacher-box">
+            <h3>Teacher: What To Do and How</h3>
+            <ol>
+                {% for item in flow.guided_practice_teacher %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ol>
+
+            <details class="teacher-box">
+                <summary>Answer / Look-For Guidance</summary>
+                <ul>
+                    {% for item in flow.teacher_answers %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </details>
+        </div>
+    {% endif %}
+</section>
+
+<section class="lesson-card" id="lab-investigation">
+    <h2>🔬 Lab / Investigation</h2>
+    <p><strong>Purpose:</strong> {{ flow.lab.purpose }}</p>
+
+    <div class="student-note">
+        <h3>Student Investigation Steps</h3>
+        <ol>
+            {% for item in flow.lab.student_steps %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+
+    {% if flow.lab.url %}
+        <a href="{{ flow.lab.url }}" class="btn btn-success lesson-btn">{{ flow.lab.button }}</a>
+    {% endif %}
+
+    {% if current_view == "teacher" %}
+        <div class="teacher-box">
+            <h3>Teacher: In-Person Lab Setup</h3>
+
+            <p><strong>Materials:</strong></p>
+            <ul>
+                {% for item in flow.lab.materials %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+
+            <p><strong>Setup:</strong></p>
+            <ol>
+                {% for item in flow.lab.setup %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ol>
+
+            <p><strong>During the lab:</strong></p>
+            <ul>
+                {% for item in flow.lab.teacher_moves %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</section>
+
+<section class="lesson-card" id="lab-notebook">
+    <h2>📒 Lab Notebook</h2>
+    <p>Record your investigation like a scientist.</p>
+
+    <div class="student-note">
+        <ul>
+            {% for item in flow.lab_notebook %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% if current_view == "teacher" %}
+        <div class="teacher-box">
+            <h3>Teacher Check</h3>
+            <p>Students should record observations, data, and a claim that connects back to the learning target.</p>
+        </div>
+    {% endif %}
+</section>
+
+
+{% set resource_support = get_resource_support(lesson_day) %}
+
+<section class="resources-use-card" id="resources-to-use">
+    <h2>🧾 Resources to Use</h2>
+    <p><strong>{{ resource_support.title }}</strong></p>
+    <p>{{ resource_support.student_use }}</p>
+
+    <div class="student-note">
+        <h3>Student Notebook Form</h3>
+        <p>Use this structure in your science notebook or lab notebook:</p>
+
+        <div class="notebook-form-grid">
+            {% for item in resource_support.sections %}
+                <div class="notebook-form-item">☐ {{ item }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="student-note">
+        <h3>Notebook Thinking Prompts</h3>
+        <ul>
+            {% for prompt in resource_support.notebook_prompts %}
+                <li>{{ prompt }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="/first-nine-weeks/day/{{ lesson_day }}/packet?view={{ current_view }}" class="btn btn-warning lesson-btn">
+        Open Printable Student Notebook Page
+    </a>
+
+    <a href="/resources" class="btn btn-primary lesson-btn">
+        Open Resources Page
+    </a>
+
+    {% if current_view == "teacher" %}
+        <div class="teacher-box">
+            <h3>Teacher Use</h3>
+            <p>{{ resource_support.teacher_use }}</p>
+
+            <h4>Teacher Look-Fors</h4>
+            <ul>
+                {% for item in resource_support.teacher_look_fors %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</section>
+
+
+<section class="lesson-card" id="staar-practice">
+    <h2>⭐ STAAR Practice — DOK 2 Multiple Choice</h2>
+    <p><strong>Think like a scientist:</strong> Use evidence from the lesson to choose the best answer.</p>
+
+    <div class="student-note">
+        <p><strong>Question:</strong> {{ staar_item.question }}</p>
+
+        {% for letter, choice in staar_item.choices.items() %}
+            <label class="choice-card">
+                <input type="radio" name="staar_day_{{ lesson_day }}" value="{{ letter }}">
+                <strong>{{ letter }}.</strong> {{ choice }}
+            </label>
+        {% endfor %}
+
+        <button type="button" class="btn btn-primary lesson-btn" onclick="saveSelectedAnswer('staar_day_{{ lesson_day }}', 'staarSaved{{ lesson_day }}')">
+            Save My Answer
+        </button>
+
+        <p id="staarSaved{{ lesson_day }}" class="fw-bold mt-2"></p>
+    </div>
+
+    {% if current_view == "teacher" %}
+        <details class="teacher-box">
+            <summary>Teacher Answer Key / Explanation</summary>
+            <p><strong>Correct answer:</strong> {{ staar_item.answer }}</p>
+            <p><strong>Explanation:</strong> {{ staar_item.explanation }}</p>
+            <p><strong>DOK 2 because:</strong> Students must use reasoning or evidence, not just recall a word.</p>
+        </details>
+    {% endif %}
+</section>
+
+<section class="lesson-card" id="written-exit-ticket">
+    <h2>🎟️ Written Exit Ticket</h2>
+    <p>Use this exit ticket to show your thinking about today’s learning target.</p>
+
+    <div class="student-note">
+        <p><strong>Question:</strong> {{ flow.daily.exit_question }}</p>
+        <textarea class="response-box" id="exitTicketDay{{ lesson_day }}" placeholder="Write your answer here..."></textarea>
+
+        <button type="button" class="btn btn-primary lesson-btn" onclick="saveText('exitTicketDay{{ lesson_day }}', 'exitSaved{{ lesson_day }}')">
+            Save Exit Ticket
+        </button>
+
+        <p id="exitSaved{{ lesson_day }}" class="fw-bold mt-2"></p>
+    </div>
+
+    {% if current_view == "teacher" %}
+        <details class="teacher-box">
+            <summary>Teacher Answer</summary>
+            <p>{{ flow.daily.exit_answer }}</p>
+        </details>
+    {% endif %}
+</section>
+
+<section class="lesson-card" id="cer-response">
+    <h2>🧠 Explain Your Thinking: CER</h2>
+    <p>Use claim, evidence, and reasoning to explain your science thinking.</p>
+
+    <div class="student-note">
+        <p><strong>CER Question:</strong> {{ flow.daily.cer_question }}</p>
+
+        <div class="cer-grid">
+            <div>
+                <p><strong>Claim</strong></p>
+                <textarea class="response-box" id="cerClaimDay{{ lesson_day }}" placeholder="My claim is..."></textarea>
+            </div>
+
+            <div>
+                <p><strong>Evidence</strong></p>
+                <textarea class="response-box" id="cerEvidenceDay{{ lesson_day }}" placeholder="My evidence is..."></textarea>
+            </div>
+
+            <div>
+                <p><strong>Reasoning</strong></p>
+                <textarea class="response-box" id="cerReasoningDay{{ lesson_day }}" placeholder="This evidence supports my claim because..."></textarea>
+            </div>
+        </div>
+
+        <p class="mt-3"><strong>Use Science Vocabulary</strong></p>
+        <textarea class="response-box" id="cerVocabDay{{ lesson_day }}" placeholder="Use at least one science vocabulary word from today's lesson."></textarea>
+
+        <button type="button" class="btn btn-success lesson-btn" onclick="saveCER('{{ lesson_day }}')">
+            Save CER
+        </button>
+
+        <p id="cerSaved{{ lesson_day }}" class="fw-bold mt-2"></p>
+    </div>
+
+    {% if current_view == "teacher" %}
+        <details class="teacher-box">
+            <summary>Teacher Example CER Answer</summary>
+            <p>{{ flow.daily.cer_example }}</p>
+        </details>
+    {% endif %}
+</section>
+
+<section class="lesson-card" id="vocabulary">
+    <h2>🧩 Vocabulary</h2>
+
+    <div class="row">
+        {% for term in vocab_terms %}
+            {% set info = get_vocab_info(term) %}
+            <div class="col-md-6 col-xl-4 mb-3">
+                <div class="student-note h-100">
+                    <h3>{{ info.emoji if info.emoji is defined else "🔬" }} {{ term }}</h3>
+
+                    <img src="{{ vocab_icon_path(term) }}?v=2" alt="{{ term }}" style="max-width:100%; max-height:110px; display:block; margin:0 auto 8px auto;">
+
+                    {% if info.definition is defined %}
+                        <p><strong>Definition:</strong> {{ info.definition }}</p>
+                    {% endif %}
+
+                    {% if info.example is defined %}
+                        <p><strong>Example:</strong> {{ info.example }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+<section class="lesson-card mcgraw-highlight" id="mcgraw-hill-connection">
+    <span class="mcgraw-badge">📘 McGraw Hill Lesson Connection</span>
+    <h2>McGraw Hill Connection</h2>
+
+    <div class="mcgraw-focus-box">
+        <h3>Highlighted Lesson Focus</h3>
+        <p><strong>{{ flow.mcgraw_connection.title }}</strong></p>
+        <p>{{ flow.mcgraw_connection.focus }}</p>
+    </div>
+
+    {% if current_view == "teacher" %}
+        <div class="teacher-box">
+            <h3>Teacher Use</h3>
+            <p>{{ flow.mcgraw_connection.teacher_use }}</p>
+            <p><strong>Look for:</strong> {{ flow.mcgraw_connection.look_for }}</p>
+        </div>
+    {% else %}
+        <div class="student-note">
+            <h3>Student Use</h3>
+            <p>{{ flow.mcgraw_connection.student_use }}</p>
+        </div>
+    {% endif %}
+</section>
+
+
+{% if current_view == "teacher" %}
+<section class="lesson-card" id="teacher-note">
+    <h2>📝 Teacher Note</h2>
+
+    <div class="teacher-box">
+        <h3>Unit Guide Support</h3>
+        <p><strong>Teacher focus:</strong> {{ flow.teacher_focus }}</p>
+
+        <details>
+            <summary>Reteach / Small Group Moves</summary>
+            <ul>
+                {% for item in flow.teacher_reteach %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </details>
+
+        <details class="mt-2">
+            <summary>Misconceptions to Watch For</summary>
+            <ul>
+                {% for item in flow.teacher_misconceptions %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </details>
+    </div>
+</section>
+{% endif %}
+
+<script>
+function saveText(textareaId, messageId) {
+    const box = document.getElementById(textareaId);
+    const message = document.getElementById(messageId);
+
+    if (!box) return;
+
+    localStorage.setItem(textareaId, box.value);
+
+    if (message) {
+        message.textContent = "Saved on this device.";
+    }
+}
+
+function saveCER(day) {
+    const ids = [
+        "cerClaimDay" + day,
+        "cerEvidenceDay" + day,
+        "cerReasoningDay" + day,
+        "cerVocabDay" + day
+    ];
+
+    ids.forEach(function(id) {
+        const box = document.getElementById(id);
+        if (box) {
+            localStorage.setItem(id, box.value);
+        }
+    });
+
+    const message = document.getElementById("cerSaved" + day);
+
+    if (message) {
+        message.textContent = "CER saved on this device.";
+    }
+}
+
+function saveSelectedAnswer(name, messageId) {
+    const selected = document.querySelector('input[name="' + name + '"]:checked');
+    const message = document.getElementById(messageId);
+
+    if (!selected) {
+        if (message) {
+            message.textContent = "Choose an answer first.";
+        }
+        return;
+    }
+
+    localStorage.setItem(name, selected.value);
+
+    if (message) {
+        message.textContent = "Answer saved. Be ready to explain your evidence.";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll("textarea[id]").forEach(function(box) {
+        const saved = localStorage.getItem(box.id);
+        if (saved) {
+            box.value = saved;
+        }
+    });
+});
+</script>
+
+{% endblock %}

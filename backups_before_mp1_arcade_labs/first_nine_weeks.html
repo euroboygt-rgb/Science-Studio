@@ -1,0 +1,324 @@
+{% extends "base.html" %}
+
+{% block title %}1st 9 Weeks Lessons{% endblock %}
+
+{% block content %}
+
+<style>
+    .yag-hero {
+        background: linear-gradient(135deg, #102542 0%, #1b4965 55%, #5fa8d3 100%);
+        color: white;
+        border: 5px solid #111;
+        border-radius: 28px;
+        padding: 30px;
+        box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+        margin-bottom: 24px;
+    }
+
+    .quick-open, .unit-folder {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 20px;
+        padding: 18px;
+        margin-bottom: 20px;
+        box-shadow: 5px 5px 0 rgba(17,17,17,0.14);
+    }
+
+    .unit-folder-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        background: #e8f4ff;
+        border-bottom: 3px solid #111;
+        margin: -18px -18px 18px -18px;
+        padding: 18px;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .lesson-card {
+        border: 3px solid #111;
+        border-radius: 16px;
+        padding: 16px;
+        height: 100%;
+        background: #f8f9fa;
+        box-shadow: 3px 3px 0 rgba(17,17,17,0.12);
+    }
+
+    .day-badge {
+        display: inline-block;
+        background: #0d6efd;
+        color: white;
+        border: 2px solid #111;
+        border-radius: 999px;
+        padding: 5px 12px;
+        font-weight: 900;
+        margin-bottom: 10px;
+    }
+
+    .teks-badge {
+        display: inline-block;
+        background: #d8f3dc;
+        border: 2px solid #111;
+        border-radius: 999px;
+        padding: 4px 10px;
+        margin: 3px 4px 3px 0;
+        font-weight: 850;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    .science-btn-small {
+        border: 3px solid #111;
+        border-radius: 10px;
+        font-weight: 900;
+        box-shadow: 2px 2px 0 rgba(17,17,17,0.18);
+        margin: 3px;
+    }
+
+    .unit-launch { background: #fff3cd; }
+    .unit-one { background: #e8f7ef; }
+    .unit-two { background: #e7f7ff; }
+    .unit-three { background: #fff3cd; }
+    .unit-four { background: #e9ddff; }
+    .unit-review { background: #ffe3e3; }
+</style>
+
+{% macro teks_badges(teks_text) %}
+    {% if teks_text %}
+        {% set text_value = teks_text|string %}
+        {% for item in text_value.split(",") %}
+            {% set clean_item = item|trim %}
+            {% if clean_item %}
+                <span class="teks-badge">TEKS {{ clean_item }}</span>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+{% macro lesson_card(lesson) %}
+    {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
+    {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
+    {% set lesson_teks = lesson.teks if lesson.teks is defined else lesson["teks"] %}
+
+    <div class="col-md-6 col-xl-4 mb-3">
+        <div class="lesson-card">
+            <span class="day-badge">Day {{ lesson_day }}</span>
+            <h4>{{ lesson_title }}</h4>
+
+            <div class="mb-2">
+                {{ teks_badges(lesson_teks) }}
+            </div>
+
+            {% if lesson.get("lab_link") %}
+                <p class="small mb-2"><strong>Includes:</strong> Lab / interactive activity</p>
+            {% else %}
+                <p class="small mb-2"><strong>Includes:</strong> Lesson, notebook, written exit ticket, and CER</p>
+            {% endif %}
+
+            <a class="btn btn-primary btn-sm science-btn-small"
+               href="/first-nine-weeks/day/{{ lesson_day }}?view=student">
+                Student
+            </a>
+
+            <a class="btn btn-success btn-sm science-btn-small"
+               href="/first-nine-weeks/day/{{ lesson_day }}?view=teacher">
+                Teacher
+            </a>
+        </div>
+    </div>
+{% endmacro %}
+
+{% set classroom_lessons = [] %}
+{% set unit1_lessons = [] %}
+{% set unit2_lessons = [] %}
+{% set unit3_lessons = [] %}
+{% set unit4_lessons = [] %}
+{% set review_lessons = [] %}
+
+{% for lesson in lessons %}
+    {% set d = lesson.day if lesson.day is defined else lesson["day"] %}
+
+    {% if d <= 2 %}
+        {% set _ = classroom_lessons.append(lesson) %}
+    {% elif d <= 16 %}
+        {% set _ = unit1_lessons.append(lesson) %}
+    {% elif d <= 26 %}
+        {% set _ = unit2_lessons.append(lesson) %}
+    {% elif d <= 36 %}
+        {% set _ = unit3_lessons.append(lesson) %}
+    {% elif d <= 43 %}
+        {% set _ = unit4_lessons.append(lesson) %}
+    {% else %}
+        {% set _ = review_lessons.append(lesson) %}
+    {% endif %}
+{% endfor %}
+
+<section class="yag-hero">
+    <span class="badge-science">Updated YAG</span>
+    <span class="badge-science">MP1</span>
+    <span class="badge-science">45 Days</span>
+
+    <h1 class="mt-3">1st 9 Weeks Science Lessons</h1>
+    <p class="lead mb-0">
+        Updated pacing map with classroom launch, physical properties of matter,
+        mixtures and solutions, force and motion, energy transformations, review, and testing.
+    </p>
+</section>
+
+<section class="quick-open">
+    <h2>Quick Open</h2>
+
+    <button class="btn btn-primary science-btn-small" onclick="showUnit('classroom')">Classroom Launch</button>
+    <button class="btn btn-success science-btn-small" onclick="showUnit('unit1')">Unit 1</button>
+    <button class="btn btn-info science-btn-small" onclick="showUnit('unit2')">Unit 2</button>
+    <button class="btn btn-warning science-btn-small" onclick="showUnit('unit3')">Unit 3</button>
+    <button class="btn btn-secondary science-btn-small" onclick="showUnit('unit4')">Unit 4</button>
+    <button class="btn btn-danger science-btn-small" onclick="showUnit('review')">Review/Test</button>
+    <button class="btn btn-dark science-btn-small" onclick="showAllUnits()">Open All</button>
+    <button class="btn btn-outline-dark science-btn-small" onclick="hideAllUnits()">Close All</button>
+</section>
+
+<section id="classroom" class="unit-folder unit-launch">
+    <div class="unit-folder-header">
+        <div>
+            <h2>🧰 Classroom Launch</h2>
+            <p class="mb-0"><strong>Days 1–2:</strong> Routines, notebooks, safety, tools, and engineering/scientific design</p>
+        </div>
+        <button class="btn btn-light science-btn-small" onclick="toggleUnit('classroom-body')">Open / Close</button>
+    </div>
+
+    <div id="classroom-body" class="unit-body">
+        <div class="row">
+            {% for lesson in classroom_lessons %}
+                {{ lesson_card(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="unit1" class="unit-folder unit-one">
+    <div class="unit-folder-header">
+        <div>
+            <h2>🧪 Unit 1: Physical Properties of Matter</h2>
+            <p class="mb-0"><strong>Days 3–16:</strong> Matter, particles, mass, volume, magnetism, relative density, solubility, conductivity, and Unit 1 PA</p>
+        </div>
+        <button class="btn btn-light science-btn-small" onclick="toggleUnit('unit1-body')">Open / Close</button>
+    </div>
+
+    <div id="unit1-body" class="unit-body">
+        <div class="row">
+            {% for lesson in unit1_lessons %}
+                {{ lesson_card(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="unit2" class="unit-folder unit-two">
+    <div class="unit-folder-header">
+        <div>
+            <h2>♻️ Unit 2: Mixtures and Solutions</h2>
+            <p class="mb-0"><strong>Days 17–26:</strong> Mixtures, separation methods, solutions, conservation of matter, and particles too small to be seen</p>
+        </div>
+        <button class="btn btn-light science-btn-small" onclick="toggleUnit('unit2-body')">Open / Close</button>
+    </div>
+
+    <div id="unit2-body" class="unit-body">
+        <div class="row">
+            {% for lesson in unit2_lessons %}
+                {{ lesson_card(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="unit3" class="unit-folder unit-three">
+    <div class="unit-folder-header">
+        <div>
+            <h2>🏎️ Unit 3: Force and Motion</h2>
+            <p class="mb-0"><strong>Days 27–36:</strong> Equal forces, unequal forces, mechanical energy transfer, and simple investigations</p>
+        </div>
+        <button class="btn btn-light science-btn-small" onclick="toggleUnit('unit3-body')">Open / Close</button>
+    </div>
+
+    <div id="unit3-body" class="unit-body">
+        <div class="row">
+            {% for lesson in unit3_lessons %}
+                {{ lesson_card(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="unit4" class="unit-folder unit-four">
+    <div class="unit-folder-header">
+        <div>
+            <h2>🔦 Unit 4: Energy Transformations</h2>
+            <p class="mb-0"><strong>Days 37–43:</strong> Energy, systems, chemical energy, electrical energy, light energy, and flashlight energy flow</p>
+        </div>
+        <button class="btn btn-light science-btn-small" onclick="toggleUnit('unit4-body')">Open / Close</button>
+    </div>
+
+    <div id="unit4-body" class="unit-body">
+        <div class="row">
+            {% for lesson in unit4_lessons %}
+                {{ lesson_card(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="review" class="unit-folder unit-review">
+    <div class="unit-folder-header">
+        <div>
+            <h2>📝 Flex, Review, and 9 Weeks Test</h2>
+            <p class="mb-0"><strong>Days 44–45:</strong> Review, reteach, assessment, and reflection</p>
+        </div>
+        <button class="btn btn-light science-btn-small" onclick="toggleUnit('review-body')">Open / Close</button>
+    </div>
+
+    <div id="review-body" class="unit-body">
+        <div class="row">
+            {% for lesson in review_lessons %}
+                {{ lesson_card(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script>
+function toggleUnit(id) {
+    const section = document.getElementById(id);
+    if (!section) return;
+    section.style.display = section.style.display === "none" ? "block" : "none";
+}
+
+function showUnit(unitId) {
+    hideAllUnits();
+    const unit = document.getElementById(unitId);
+    const body = document.getElementById(unitId + "-body");
+
+    if (unit) {
+        unit.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    if (body) {
+        body.style.display = "block";
+    }
+}
+
+function showAllUnits() {
+    document.querySelectorAll(".unit-body").forEach(function(section) {
+        section.style.display = "block";
+    });
+}
+
+function hideAllUnits() {
+    document.querySelectorAll(".unit-body").forEach(function(section) {
+        section.style.display = "none";
+    });
+}
+</script>
+
+{% endblock %}

@@ -492,5 +492,136 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Unit 1 Matter Lab Arcade Button Router -->
 
+
+<!-- MP1 Science Arcade Button Router -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
+
+    if (!match) {
+        return;
+    }
+
+    const day = parseInt(match[1], 10);
+
+    const mp1Arcades = {
+        1: {url: "/labs/mp1/arcade/lab-safety-review", text: "Open Lab Safety Review"},
+        2: {url: "/labs/mp1/arcade/science-tools-practice", text: "Open Science Tools Practice"},
+        17: {url: "/labs/mp1/arcade/mixture-sorter", text: "Open Mixture Sorter"},
+        18: {url: "/labs/mp1/arcade/separation-magnetism-size", text: "Open Separation Tool Challenge"},
+        19: {url: "/labs/mp1/arcade/filtration-evaporation", text: "Open Filtration and Evaporation Lab"},
+        20: {url: "/labs/mp1/arcade/solution-maker", text: "Open Solution Maker"},
+        21: {url: "/labs/mp1/arcade/solution-change-lab", text: "Open Solution Change Lab"},
+        22: {url: "/labs/mp1/arcade/before-after-solution", text: "Open Before and After Solution Lab"},
+        23: {url: "/labs/mp1/arcade/conservation-solution", text: "Open Conservation of Matter Lab"},
+        24: {url: "/labs/mp1/arcade/measuring-conservation", text: "Open Mass Before and After Challenge"},
+        25: {url: "/labs/mp1/arcade/tiny-particle-model", text: "Open Tiny Particle Model"},
+        26: {url: "/labs/mp1/arcade/unit2-performance", text: "Open Unit 2 Review Game"},
+        27: {url: "/labs/mp1/arcade/equal-pull", text: "Open Equal Pull Force Tug"},
+        28: {url: "/labs/mp1/arcade/equal-push", text: "Open Equal Push Force Challenge"},
+        29: {url: "/labs/mp1/arcade/unequal-pull", text: "Open Unequal Pull Force Lab"},
+        30: {url: "/labs/mp1/arcade/unequal-push", text: "Open Unequal Push Force Lab"},
+        31: {url: "/labs/mp1/arcade/mechanical-energy-transfer", text: "Open Mechanical Energy Transfer Lab"},
+        32: {url: "/labs/mp1/arcade/motion-system", text: "Open Motion System Builder"},
+        33: {url: "/labs/mp1/arcade/car-ramp", text: "Open Car on a Ramp Lab"},
+        34: {url: "/labs/mp1/arcade/balloon-rocket", text: "Open Balloon Rocket Launch"},
+        35: {url: "/labs/mp1/arcade/variables-data", text: "Open Variables and Data Lab"},
+        36: {url: "/labs/mp1/arcade/force-motion-performance", text: "Open Force and Motion Performance Game"},
+        37: {url: "/labs/mp1/arcade/forms-of-energy", text: "Open CMELTS Energy Sort"},
+        38: {url: "/labs/mp1/arcade/everyday-transformations", text: "Open Energy Transformation Sorter"},
+        39: {url: "/labs/mp1/arcade/battery-energy", text: "Open Battery Energy Lab"},
+        40: {url: "/labs/mp1/arcade/flashlight-flow", text: "Open Flashlight Energy Flow"},
+        41: {url: "/labs/mp1/arcade/flowchart-builder", text: "Open Energy Flowchart Builder"},
+        42: {url: "/labs/mp1/arcade/multiple-devices", text: "Open Device Energy Detective"},
+        43: {url: "/labs/mp1/arcade/energy-review", text: "Open Energy Transformation Review"},
+        44: {url: "/labs/mp1/arcade/mp1-review-stations", text: "Open MP1 Review Stations Game"},
+        45: {url: "/labs/mp1/arcade/mp1-test-reflection", text: "Open Science Reflection Builder"}
+    };
+
+    const lab = mp1Arcades[day];
+
+    if (!lab) {
+        return;
+    }
+
+    const candidates = Array.from(document.querySelectorAll("a, button")).filter(function (el) {
+        const text = (el.textContent || "").trim().toLowerCase();
+        return text.includes("open lab") || text.includes("open investigation") || text.includes("lab / investigation");
+    });
+
+    candidates.forEach(function (el) {
+        const link = document.createElement("a");
+
+        link.href = lab.url;
+        link.textContent = lab.text;
+        link.className = el.className || "btn btn-success";
+        link.style.cssText = el.style.cssText || "";
+        link.style.display = "inline-block";
+        link.style.textDecoration = "none";
+
+        el.replaceWith(link);
+    });
+});
+</script>
+<!-- End MP1 Science Arcade Button Router -->
+
+
+<!-- Day 40 Flashlight Energy Flow Button Fix -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
+
+    if (!match) {
+        return;
+    }
+
+    const day = parseInt(match[1], 10);
+
+    if (day !== 40) {
+        return;
+    }
+
+    const flashlightUrl = "/labs/mp1/arcade/flashlight-flow";
+    const flashlightText = "Open Flashlight Energy Flow Lab";
+
+    const headings = Array.from(document.querySelectorAll("h2, h3")).filter(function (heading) {
+        return (heading.textContent || "").toLowerCase().includes("lab");
+    });
+
+    headings.forEach(function (heading) {
+        const card = heading.closest("section, .lesson-card, .card, .section-card, div");
+
+        if (!card) {
+            return;
+        }
+
+        const buttons = Array.from(card.querySelectorAll("a, button")).filter(function (el) {
+            const text = (el.textContent || "").trim().toLowerCase();
+            const href = (el.getAttribute("href") || "").toLowerCase();
+
+            return (
+                text.includes("open lab") ||
+                text.includes("open investigation") ||
+                text.includes("anchor chart") ||
+                href.includes("cmelts-energy-anchor-chart") ||
+                href.includes("energy-anchor-chart")
+            );
+        });
+
+        buttons.forEach(function (el) {
+            const link = document.createElement("a");
+            link.href = flashlightUrl;
+            link.textContent = flashlightText;
+            link.className = el.className || "btn btn-success";
+            link.style.cssText = el.style.cssText || "";
+            link.style.display = "inline-block";
+            link.style.textDecoration = "none";
+            el.replaceWith(link);
+        });
+    });
+});
+</script>
+<!-- End Day 40 Flashlight Energy Flow Button Fix -->
+
 </body>
 </html>

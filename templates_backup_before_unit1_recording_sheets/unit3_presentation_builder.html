@@ -1,0 +1,648 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Unit 3 Presentation Builder and Rubric Checker</h1>
+<p class="lead">
+  Build your force and motion performance assessment presentation, check your rubric, and practice before presenting.
+</p>
+
+<a href="/first-nine-weeks/day/41?view=student" class="btn btn-secondary mb-4">
+  Back to Day 41
+</a>
+
+<style>
+  .pa-card {
+    border: 1px solid #ddd;
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
+
+  .mission-banner {
+    background: #212529;
+    color: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+
+  .badge-pill {
+    display: inline-block;
+    background: #fff3cd;
+    color: #111;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: bold;
+    margin: 5px;
+  }
+
+  .builder-box {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 15px;
+    margin-bottom: 18px;
+  }
+
+  .stage {
+    height: 390px;
+    border: 5px solid #111;
+    border-radius: 22px;
+    background:
+      linear-gradient(180deg, #bde0fe 0%, #eaf6ff 60%, #d1e7dd 60%, #d1e7dd 100%);
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .presentation-board {
+    position: absolute;
+    left: 45px;
+    top: 35px;
+    width: 370px;
+    height: 270px;
+    background: white;
+    border: 5px solid #111;
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .board-title {
+    font-size: 23px;
+    font-weight: bold;
+    border-bottom: 3px solid #111;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+
+  .mini-graph {
+    position: absolute;
+    right: 35px;
+    top: 55px;
+    width: 270px;
+    height: 230px;
+    background: white;
+    border: 4px solid #111;
+    border-radius: 16px;
+    padding: 12px;
+  }
+
+  .graph-axis-x {
+    position: absolute;
+    left: 45px;
+    right: 25px;
+    bottom: 42px;
+    height: 4px;
+    background: #111;
+  }
+
+  .graph-axis-y {
+    position: absolute;
+    left: 45px;
+    top: 45px;
+    bottom: 42px;
+    width: 4px;
+    background: #111;
+  }
+
+  .mini-bar {
+    position: absolute;
+    bottom: 46px;
+    width: 55px;
+    background: #e9ecef;
+    border: 3px solid #111;
+    text-align: center;
+    font-weight: bold;
+    transition: height 0.7s;
+  }
+
+  .student {
+    position: absolute;
+    left: 450px;
+    bottom: 60px;
+    width: 65px;
+    height: 65px;
+    background: #ffccd5;
+    border: 4px solid #111;
+    border-radius: 50%;
+  }
+
+  .student::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 58px;
+    width: 20px;
+    height: 70px;
+    background: #111;
+    border-radius: 10px;
+  }
+
+  .speech {
+    position: absolute;
+    left: 525px;
+    bottom: 135px;
+    width: 260px;
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 12px;
+    font-weight: bold;
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  .warning {
+    background: #fff3cd;
+    color: #664d03;
+  }
+
+  .rubric-score {
+    font-size: 54px;
+    font-weight: bold;
+    text-align: center;
+    border: 5px solid #111;
+    border-radius: 18px;
+    background: white;
+    padding: 20px;
+  }
+
+  .script-box {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 15px;
+    margin-top: 15px;
+    white-space: pre-wrap;
+  }
+
+  .check-row {
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+</style>
+
+<div class="mission-banner">
+  <h2>🎤 Unit 3 Performance Assessment Mission</h2>
+  <p class="mb-2">Build a presentation that proves you understand force, motion, variables, and evidence.</p>
+  <span class="badge-pill">Problem</span>
+  <span class="badge-pill">Model</span>
+  <span class="badge-pill">Variable</span>
+  <span class="badge-pill">Data</span>
+  <span class="badge-pill">CER</span>
+  <span class="badge-pill">Rubric Ready</span>
+</div>
+
+<div class="pa-card">
+  <h2>Part 1: Build Your Presentation Information</h2>
+
+  <div class="builder-box">
+    <div class="row">
+      <div class="col-md-4">
+        <label class="form-label"><strong>Playground problem:</strong></label>
+        <select id="problemSelect" class="form-select mb-3" onchange="updatePreview()">
+          <option value="The slide was too steep, so the toy traveled too far.">Slide was too steep</option>
+          <option value="The slide was too slippery, so the toy moved too fast.">Slide was too slippery</option>
+          <option value="The landing area was too hard, so stopping was not safe.">Landing area was too hard</option>
+          <option value="The ramp was too high, so the toy car traveled too far.">Ramp was too high</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label"><strong>Variable changed:</strong></label>
+        <select id="variableSelect" class="form-select mb-3" onchange="updatePreview()">
+          <option value="slide angle">Slide angle</option>
+          <option value="slide surface">Slide surface</option>
+          <option value="landing surface">Landing surface</option>
+          <option value="ramp height">Ramp height</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label"><strong>Main science idea:</strong></label>
+        <select id="scienceIdeaSelect" class="form-select mb-3" onchange="updatePreview()">
+          <option value="friction slowed the motion">Friction slowed the motion</option>
+          <option value="gravity caused the object to move downward">Gravity caused downward motion</option>
+          <option value="changing the force changed the motion">Force changed motion</option>
+          <option value="mechanical energy was transferred during motion">Mechanical energy was transferred</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <label class="form-label"><strong>Before distance:</strong></label>
+        <input id="beforeDistance" type="number" class="form-control mb-3" value="95" min="0" oninput="updatePreview()">
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label"><strong>After distance:</strong></label>
+        <input id="afterDistance" type="number" class="form-control mb-3" value="42" min="0" oninput="updatePreview()">
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label"><strong>Model type:</strong></label>
+        <select id="modelSelect" class="form-select mb-3" onchange="updatePreview()">
+          <option value="drawing">Labeled drawing</option>
+          <option value="physical model">Physical model</option>
+          <option value="digital model">Digital model</option>
+          <option value="data table and graph">Data table and graph</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label"><strong>Presentation style:</strong></label>
+        <select id="styleSelect" class="form-select mb-3" onchange="updatePreview()">
+          <option value="clear">Clear and serious</option>
+          <option value="coach">Coach voice</option>
+          <option value="scientist">Scientist voice</option>
+          <option value="mission">Mission control voice</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn btn-success" onclick="autoFillStrongExample()">Auto-Fill Strong Example</button>
+    <button class="btn btn-primary" onclick="buildScript()">Build My Presentation Script</button>
+    <button class="btn btn-warning" onclick="updatePreview()">Update Preview</button>
+  </div>
+
+  <div class="stage">
+    <div class="presentation-board">
+      <div class="board-title">My Design</div>
+      <p id="boardProblem">Problem: The slide was too steep.</p>
+      <p id="boardVariable">Variable changed: slide angle</p>
+      <p id="boardClaim">Claim: The improved design was safer.</p>
+    </div>
+
+    <div class="mini-graph">
+      <strong>Before / After Data</strong>
+      <div class="graph-axis-y"></div>
+      <div class="graph-axis-x"></div>
+      <div id="beforeBar" class="mini-bar" style="left: 80px; height: 150px;">95</div>
+      <div id="afterBar" class="mini-bar" style="left: 170px; height: 70px;">42</div>
+      <div style="position:absolute; bottom:10px; left:70px; font-weight:bold;">Before</div>
+      <div style="position:absolute; bottom:10px; left:165px; font-weight:bold;">After</div>
+    </div>
+
+    <div class="student"></div>
+    <div id="speechBubble" class="speech">I can explain my design using data!</div>
+  </div>
+
+  <div id="scriptOutput"></div>
+</div>
+
+<div class="pa-card">
+  <h2>Part 2: Claim, Evidence, and Reasoning Builder</h2>
+
+  <label class="form-label"><strong>Claim:</strong></label>
+  <textarea id="claimInput" class="form-control mb-3" rows="2" placeholder="My design is safer because..."></textarea>
+
+  <label class="form-label"><strong>Evidence:</strong></label>
+  <textarea id="evidenceInput" class="form-control mb-3" rows="3" placeholder="My data shows..."></textarea>
+
+  <label class="form-label"><strong>Reasoning:</strong></label>
+  <textarea id="reasoningInput" class="form-control mb-3" rows="3" placeholder="This connects to force and motion because..."></textarea>
+
+  <button class="btn btn-success" onclick="checkCER()">Check My CER</button>
+  <button class="btn btn-primary" onclick="autoBuildCER()">Auto-Build CER from My Data</button>
+
+  <div id="cerFeedback"></div>
+</div>
+
+<div class="pa-card">
+  <h2>Part 3: Vocabulary Power Check</h2>
+  <p>Check the science words you used in your presentation.</p>
+
+  <div class="row">
+    <div class="col-md-4 check-row"><input type="checkbox" class="vocabCheck" value="force"> force</div>
+    <div class="col-md-4 check-row"><input type="checkbox" class="vocabCheck" value="motion"> motion</div>
+    <div class="col-md-4 check-row"><input type="checkbox" class="vocabCheck" value="friction"> friction</div>
+    <div class="col-md-4 check-row"><input type="checkbox" class="vocabCheck" value="gravity"> gravity</div>
+    <div class="col-md-4 check-row"><input type="checkbox" class="vocabCheck" value="mechanical energy"> mechanical energy</div>
+    <div class="col-md-4 check-row"><input type="checkbox" class="vocabCheck" value="independent variable"> independent variable</div>
+    <div class="col-md-4 check-row"><input type="checkbox" class="vocabCheck" value="dependent variable"> dependent variable</div>
+    <div class="col-md-4 check-row"><input type="checkbox" class="vocabCheck" value="controlled variable"> controlled variable</div>
+    <div class="col-md-4 check-row"><input type="checkbox" class="vocabCheck" value="evidence"> evidence</div>
+  </div>
+
+  <button class="btn btn-success mt-3" onclick="checkVocabulary()">Check Vocabulary Power</button>
+  <div id="vocabFeedback"></div>
+</div>
+
+<div class="pa-card">
+  <h2>Part 4: Rubric Checker</h2>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div class="check-row"><input type="checkbox" class="rubricCheck"> I explained the playground safety problem.</div>
+      <div class="check-row"><input type="checkbox" class="rubricCheck"> I included a labeled model, drawing, or graph.</div>
+      <div class="check-row"><input type="checkbox" class="rubricCheck"> I identified one variable that changed.</div>
+      <div class="check-row"><input type="checkbox" class="rubricCheck"> I explained what data was measured.</div>
+      <div class="check-row"><input type="checkbox" class="rubricCheck"> I used force and motion vocabulary correctly.</div>
+      <div class="check-row"><input type="checkbox" class="rubricCheck"> I wrote a clear claim.</div>
+      <div class="check-row"><input type="checkbox" class="rubricCheck"> I included evidence with numbers or observations.</div>
+      <div class="check-row"><input type="checkbox" class="rubricCheck"> I explained why the design is safer.</div>
+
+      <button class="btn btn-primary mt-3" onclick="checkRubric()">Check My Rubric Score</button>
+      <div id="rubricFeedback"></div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="rubric-score">
+        <div id="scoreNumber">--</div>
+        <div style="font-size:22px;">Rubric Score</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pa-card">
+  <h2>Part 5: Presentation Practice Timer</h2>
+
+  <p class="alert alert-warning">Goal: Try to explain your design in about 1 minute.</p>
+
+  <button class="btn btn-success" onclick="startTimer()">Start 60 Second Practice</button>
+  <button class="btn btn-secondary" onclick="resetTimer()">Reset Timer</button>
+
+  <div class="rubric-score mt-3">
+    <div id="timerDisplay">60</div>
+    <div style="font-size:22px;">seconds left</div>
+  </div>
+
+  <div id="timerFeedback"></div>
+</div>
+
+<div class="pa-card">
+  <h2>Part 6: STAAR Performance Assessment Challenge</h2>
+
+  <p class="alert alert-warning">
+    A group changed the surface of a slide to increase friction. The toy traveled 95 cm before the change and 42 cm after the change.
+  </p>
+
+  <label class="form-label"><strong>Which force increased when the surface became rougher?</strong></label>
+  <select id="staar1" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>Friction</option>
+    <option>Magnetism</option>
+    <option>Light</option>
+    <option>Sound</option>
+  </select>
+
+  <label class="form-label"><strong>Which evidence supports the claim that the design was safer?</strong></label>
+  <select id="staar2" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>The toy traveled 42 cm after the change instead of 95 cm before the change.</option>
+    <option>The slide looked colorful.</option>
+    <option>The group liked their project.</option>
+    <option>The toy was small.</option>
+  </select>
+
+  <label class="form-label"><strong>Why should the group change only one variable?</strong></label>
+  <select id="staar3" class="form-select mb-3">
+    <option selected>Choose...</option>
+    <option>So they know which change caused the result.</option>
+    <option>So the data table stays empty.</option>
+    <option>So the model becomes less safe.</option>
+    <option>So they do not need evidence.</option>
+  </select>
+
+  <button class="btn btn-success" onclick="checkSTAAR()">Check STAAR Challenge</button>
+  <div id="staarFeedback"></div>
+</div>
+
+<script>
+  let timer = 60;
+  let timerInterval = null;
+
+  function showFeedback(elementId, message, kind) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + kind;
+    box.innerHTML = message;
+  }
+
+  function getBefore() {
+    return Number(document.getElementById("beforeDistance").value) || 0;
+  }
+
+  function getAfter() {
+    return Number(document.getElementById("afterDistance").value) || 0;
+  }
+
+  function updatePreview() {
+    const problem = document.getElementById("problemSelect").value;
+    const variableChanged = document.getElementById("variableSelect").value;
+    const scienceIdea = document.getElementById("scienceIdeaSelect").value;
+    const before = getBefore();
+    const after = getAfter();
+
+    document.getElementById("boardProblem").innerText = "Problem: " + problem;
+    document.getElementById("boardVariable").innerText = "Variable changed: " + variableChanged;
+    document.getElementById("boardClaim").innerText = "Claim: The improved design was safer.";
+
+    const graphMax = 120;
+    const beforeHeight = Math.round((Math.min(before, graphMax) / graphMax) * 170);
+    const afterHeight = Math.round((Math.min(after, graphMax) / graphMax) * 170);
+
+    document.getElementById("beforeBar").style.height = beforeHeight + "px";
+    document.getElementById("afterBar").style.height = afterHeight + "px";
+    document.getElementById("beforeBar").innerText = before;
+    document.getElementById("afterBar").innerText = after;
+
+    if (after < before) {
+      document.getElementById("speechBubble").innerText = "My data shows the design reduced motion!";
+    } else {
+      document.getElementById("speechBubble").innerText = "I may need to redesign because the distance did not decrease.";
+    }
+  }
+
+  function autoFillStrongExample() {
+    document.getElementById("problemSelect").value = "The slide was too slippery, so the toy moved too fast.";
+    document.getElementById("variableSelect").value = "slide surface";
+    document.getElementById("scienceIdeaSelect").value = "friction slowed the motion";
+    document.getElementById("beforeDistance").value = 95;
+    document.getElementById("afterDistance").value = 42;
+    document.getElementById("modelSelect").value = "data table and graph";
+    updatePreview();
+    autoBuildCER();
+    buildScript();
+  }
+
+  function buildScript() {
+    const problem = document.getElementById("problemSelect").value;
+    const variableChanged = document.getElementById("variableSelect").value;
+    const scienceIdea = document.getElementById("scienceIdeaSelect").value;
+    const modelType = document.getElementById("modelSelect").value;
+    const style = document.getElementById("styleSelect").value;
+    const before = getBefore();
+    const after = getAfter();
+
+    let opener = "Hello, today I will present my Unit 3 force and motion performance assessment.";
+
+    if (style === "coach") {
+      opener = "Team, here is how our playground design improved safety using force and motion.";
+    }
+
+    if (style === "scientist") {
+      opener = "As a student scientist, I tested a playground design using variables, data, and evidence.";
+    }
+
+    if (style === "mission") {
+      opener = "Mission Control, our playground safety design is ready for final review.";
+    }
+
+    const script = `${opener}
+
+The problem was: ${problem}
+
+My model was a ${modelType}. The one variable changed was ${variableChanged}. The data I measured was distance traveled.
+
+Before the design change, the object traveled ${before} cm. After the design change, the object traveled ${after} cm.
+
+My claim is that the improved design was safer because it reduced the distance traveled.
+
+My evidence is that the distance changed from ${before} cm to ${after} cm.
+
+My reasoning is that ${scienceIdea}. This connects to force and motion because changing the design changed how the object moved.
+
+This design is safer because the motion was more controlled.`;
+
+    document.getElementById("scriptOutput").innerHTML = `
+      <div class="script-box">
+        <h3>My Presentation Script</h3>
+        ${script}
+      </div>
+    `;
+  }
+
+  function autoBuildCER() {
+    const before = getBefore();
+    const after = getAfter();
+    const scienceIdea = document.getElementById("scienceIdeaSelect").value;
+
+    document.getElementById("claimInput").value = "My improved playground design is safer because it reduced the distance traveled.";
+    document.getElementById("evidenceInput").value = "My data shows that the object traveled " + before + " cm before the change and " + after + " cm after the change.";
+    document.getElementById("reasoningInput").value = "This connects to force and motion because " + scienceIdea + ". When the motion was reduced or controlled, the design became safer.";
+  }
+
+  function checkCER() {
+    const claim = document.getElementById("claimInput").value.trim();
+    const evidence = document.getElementById("evidenceInput").value.trim();
+    const reasoning = document.getElementById("reasoningInput").value.trim();
+
+    let score = 0;
+    if (claim.length > 20) score++;
+    if (evidence.includes("cm") || evidence.match(/[0-9]/)) score++;
+    if (reasoning.toLowerCase().includes("force") || reasoning.toLowerCase().includes("motion") || reasoning.toLowerCase().includes("friction") || reasoning.toLowerCase().includes("gravity")) score++;
+
+    if (score === 3) {
+      showFeedback("cerFeedback", "Strong CER! You have a claim, number evidence, and science reasoning.", "correct");
+    } else if (score === 2) {
+      showFeedback("cerFeedback", "Almost there. Make sure your CER includes a claim, number evidence, and force/motion reasoning.", "warning");
+    } else {
+      showFeedback("cerFeedback", "Keep building. Your CER needs a claim, evidence with data, and reasoning using science vocabulary.", "incorrect");
+    }
+  }
+
+  function checkVocabulary() {
+    const checked = document.querySelectorAll(".vocabCheck:checked").length;
+
+    if (checked >= 6) {
+      showFeedback("vocabFeedback", "Excellent vocabulary power. Your presentation sounds like a scientist or engineer.", "correct");
+    } else if (checked >= 3) {
+      showFeedback("vocabFeedback", "Good start. Try to use at least 6 science words in your presentation.", "warning");
+    } else {
+      showFeedback("vocabFeedback", "Add more Unit 3 vocabulary. Try force, motion, friction, gravity, data, evidence, and variable.", "incorrect");
+    }
+  }
+
+  function checkRubric() {
+    const checked = document.querySelectorAll(".rubricCheck:checked").length;
+
+    let score = 1;
+    let message = "Needs support. Add more parts before presenting.";
+    let kind = "incorrect";
+
+    if (checked >= 7) {
+      score = 4;
+      message = "Score 4 readiness: Excellent. You included almost everything needed for a strong presentation.";
+      kind = "correct";
+    } else if (checked >= 5) {
+      score = 3;
+      message = "Score 3 readiness: Good. You are close to ready. Check for clear data and reasoning.";
+      kind = "correct";
+    } else if (checked >= 3) {
+      score = 2;
+      message = "Score 2 readiness: Getting there. Add missing data, vocabulary, or evidence.";
+      kind = "warning";
+    }
+
+    document.getElementById("scoreNumber").innerText = score;
+    showFeedback("rubricFeedback", message, kind);
+  }
+
+  function startTimer() {
+    clearInterval(timerInterval);
+    timer = 60;
+    document.getElementById("timerDisplay").innerText = timer;
+    showFeedback("timerFeedback", "Practice started. Explain the problem, variable, data, claim, evidence, and reasoning.", "warning");
+
+    timerInterval = setInterval(() => {
+      timer--;
+      document.getElementById("timerDisplay").innerText = timer;
+
+      if (timer <= 0) {
+        clearInterval(timerInterval);
+        showFeedback("timerFeedback", "Time! Could you explain your design clearly in 60 seconds?", "correct");
+      }
+    }, 1000);
+  }
+
+  function resetTimer() {
+    clearInterval(timerInterval);
+    timer = 60;
+    document.getElementById("timerDisplay").innerText = timer;
+    showFeedback("timerFeedback", "Timer reset.", "warning");
+  }
+
+  function checkSTAAR() {
+    const s1 = document.getElementById("staar1").value;
+    const s2 = document.getElementById("staar2").value;
+    const s3 = document.getElementById("staar3").value;
+
+    if (
+      s1 === "Friction" &&
+      s2 === "The toy traveled 42 cm after the change instead of 95 cm before the change." &&
+      s3 === "So they know which change caused the result."
+    ) {
+      showFeedback("staarFeedback", "Correct! You used force, evidence, and fair-test reasoning.", "correct");
+    } else {
+      showFeedback("staarFeedback", "Not yet. Look for the force, the number evidence, and the reason for changing one variable.", "incorrect");
+    }
+  }
+
+  updatePreview();
+</script>
+
+{% endblock %}

@@ -841,6 +841,103 @@ def sinc_magnetic_anchor_chart():
     return render_template("sinc_magnetic_anchor_chart.html")
 
 
+
+@app.route("/labs/unit1/arcade/<lab_slug>/recording-sheet")
+def unit1_lab_recording_sheet(lab_slug):
+    from flask import render_template, redirect, request
+    from curriculum.unit1_lab_arcades import get_unit1_arcade_by_slug
+
+    lab = get_unit1_arcade_by_slug(lab_slug)
+
+    if not lab:
+        return redirect("/labs")
+
+    lab = dict(lab)
+    lab["slug"] = lab_slug
+
+    view = request.args.get("view", "student").strip().lower()
+
+    if view not in ["student", "teacher"]:
+        view = "student"
+
+    return render_template("unit1_lab_recording_sheet.html", lab=lab, view=view)
+
+
+
+@app.route("/labs/mp1/arcade/<lab_slug>")
+def mp1_science_arcade(lab_slug):
+    from flask import render_template, redirect
+    from curriculum.mp1_lab_arcades import get_mp1_arcade_by_slug
+
+    lab = get_mp1_arcade_by_slug(lab_slug)
+
+    if not lab:
+        return redirect("/labs")
+
+    lab = dict(lab)
+    lab["slug"] = lab_slug
+
+    return render_template("mp1_science_arcade.html", lab=lab)
+
+
+@app.route("/labs/mp1/day/<int:day>")
+def mp1_science_arcade_by_day(day):
+    from flask import redirect
+    from curriculum.mp1_lab_arcades import get_mp1_arcade_for_day
+
+    lab = get_mp1_arcade_for_day(day)
+
+    if not lab:
+        return redirect("/labs")
+
+    return redirect(lab["url"])
+
+
+@app.route("/labs/mp1/arcade/<lab_slug>/recording-sheet")
+def mp1_lab_recording_sheet(lab_slug):
+    from flask import render_template, redirect, request
+    from curriculum.mp1_lab_arcades import get_mp1_arcade_by_slug
+
+    lab = get_mp1_arcade_by_slug(lab_slug)
+
+    if not lab:
+        return redirect("/labs")
+
+    lab = dict(lab)
+    lab["slug"] = lab_slug
+
+    view = request.args.get("view", "student").strip().lower()
+
+    if view not in ["student", "teacher"]:
+        view = "student"
+
+    return render_template("mp1_lab_recording_sheet.html", lab=lab, view=view)
+
+
+
+# Custom Day 40 Flashlight Energy Flow arcade lab
+@app.route("/labs/mp1/arcade/flashlight-flow")
+@app.route("/labs/flashlight-energy-flow")
+@app.route("/labs/flashlight-flow")
+def flashlight_energy_flow_game():
+    from flask import render_template
+    from curriculum.mp1_lab_arcades import get_mp1_arcade_by_slug
+
+    lab = get_mp1_arcade_by_slug("flashlight-flow") or {
+        "day": 40,
+        "unit": "Unit 4",
+        "title": "Flashlight Energy Flow",
+        "subtitle": "Trace chemical, electrical, light, and thermal energy in a flashlight.",
+        "slug": "flashlight-flow",
+    }
+
+    lab = dict(lab)
+    lab["slug"] = "flashlight-flow"
+
+    return render_template("flashlight_energy_flow_game.html", lab=lab)
+# End custom Day 40 Flashlight Energy Flow arcade lab
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)

@@ -1,0 +1,399 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Day 35 Teacher Teach Mini Video</h1>
+<p class="lead">
+  Testing variables, organizing data, and graphing force and motion results.
+</p>
+
+<a href="/first-nine-weeks/day/35?view=student" class="btn btn-secondary mb-4">
+  Back to Day 35
+</a>
+
+<style>
+  .video-card {
+    border: 4px solid #333;
+    border-radius: 18px;
+    background: white;
+    padding: 20px;
+    margin-bottom: 25px;
+  }
+
+  .screen {
+    height: 390px;
+    border: 4px solid #333;
+    border-radius: 15px;
+    background: #f8f9fa;
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .ramp {
+    position: absolute;
+    left: 120px;
+    bottom: 100px;
+    width: 360px;
+    height: 18px;
+    background: #333;
+    transform-origin: left center;
+    transform: rotate(-14deg);
+  }
+
+  .car {
+    position: absolute;
+    left: 130px;
+    bottom: 155px;
+    width: 80px;
+    height: 45px;
+    border: 3px solid #333;
+    border-radius: 10px;
+    background: #e9ecef;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 8px;
+    transition: left 1.4s, bottom 1.4s;
+  }
+
+  .graph {
+    position: absolute;
+    right: 50px;
+    bottom: 55px;
+    width: 250px;
+    height: 230px;
+    background: white;
+    border: 3px solid #333;
+    border-radius: 12px;
+    display: none;
+  }
+
+  .bar {
+    position: absolute;
+    bottom: 45px;
+    width: 45px;
+    background: #e9ecef;
+    border: 3px solid #333;
+  }
+
+  .bar1 { left: 35px; height: 55px; }
+  .bar2 { left: 105px; height: 95px; }
+  .bar3 { left: 175px; height: 140px; }
+
+  .axis-label {
+    position: absolute;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .caption {
+    font-size: 24px;
+    font-weight: bold;
+    min-height: 95px;
+    padding: 15px;
+    background: #fff3cd;
+    border-left: 6px solid #ffc107;
+    border-radius: 10px;
+  }
+
+  .data-table {
+    position: absolute;
+    left: 45px;
+    top: 40px;
+    background: white;
+    border: 3px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    display: none;
+  }
+
+  .label-bubble {
+    position: absolute;
+    padding: 8px 12px;
+    border: 3px solid #333;
+    border-radius: 12px;
+    background: white;
+    font-weight: bold;
+    display: none;
+    max-width: 230px;
+  }
+
+  .iv { left: 35px; bottom: 35px; }
+  .dv { right: 35px; top: 25px; }
+
+  .control-panel {
+    background: #f8f9fa;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+</style>
+
+<div class="video-card">
+  <h2>Mini Lesson Animation with Voice</h2>
+
+  <div class="control-panel">
+    <div class="row">
+      <div class="col-md-4">
+        <label class="form-label"><strong>Silent video speed:</strong></label>
+        <select id="speedSelect" class="form-select">
+          <option value="1">Normal</option>
+          <option value="1.5" selected>Slow</option>
+          <option value="2.2">Extra slow</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label"><strong>Voice speed:</strong></label>
+        <select id="voiceSpeedSelect" class="form-select">
+          <option value="0.85">Normal voice</option>
+          <option value="0.7" selected>Slower voice</option>
+          <option value="0.6">Extra slow voice</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label"><strong>Voice:</strong></label>
+        <select id="voiceSelect" class="form-select">
+          <option value="">Default browser voice</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div id="caption" class="caption">
+    Click Start with Voice or Start Silent.
+  </div>
+
+  <div class="screen">
+    <div id="ivLabel" class="label-bubble iv">Independent variable: ramp height</div>
+    <div id="dvLabel" class="label-bubble dv">Dependent variable: distance traveled</div>
+
+    <div id="dataTable" class="data-table">
+      <table class="table table-bordered table-sm">
+        <tr><th>Ramp height</th><th>Distance</th></tr>
+        <tr><td>Low</td><td>40 cm</td></tr>
+        <tr><td>Medium</td><td>65 cm</td></tr>
+        <tr><td>High</td><td>90 cm</td></tr>
+      </table>
+    </div>
+
+    <div id="ramp" class="ramp"></div>
+    <div id="car" class="car">Car</div>
+
+    <div id="graph" class="graph">
+      <div class="bar bar1"></div>
+      <div class="bar bar2"></div>
+      <div class="bar bar3"></div>
+      <div class="axis-label" style="bottom: 8px; left: 65px;">Ramp height</div>
+      <div class="axis-label" style="top: 80px; left: -35px; transform: rotate(-90deg);">Distance</div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="startMiniLesson(true)">Start with Voice</button>
+  <button class="btn btn-success" onclick="startMiniLesson(false)">Start Silent</button>
+  <button class="btn btn-info" onclick="playCurrentStep()">Repeat Current Step</button>
+  <button class="btn btn-warning" onclick="nextStep()">Next Step</button>
+  <button class="btn btn-danger" onclick="stopVoice()">Stop Voice</button>
+  <button class="btn btn-secondary" onclick="resetMiniLesson()">Reset</button>
+</div>
+
+<div class="video-card">
+  <h2>Teacher Talk Track</h2>
+  <ol>
+    <li><strong>Question:</strong> How does ramp height affect the distance a toy car travels?</li>
+    <li><strong>Independent variable:</strong> ramp height, because that is what we change on purpose.</li>
+    <li><strong>Dependent variable:</strong> distance traveled, because that is what we measure.</li>
+    <li><strong>Controlled variables:</strong> same car, same surface, same starting line, same measuring tool.</li>
+    <li><strong>Data:</strong> collect repeated trials and organize the results in a table.</li>
+    <li><strong>Graph:</strong> x-axis shows ramp height; y-axis shows distance traveled.</li>
+    <li><strong>Claim:</strong> The toy car traveled farther when ramp height increased.</li>
+  </ol>
+</div>
+
+<script>
+  let timers = [];
+  let currentCaption = "Click Start with Voice or Start Silent.";
+  let voices = [];
+  let currentStepIndex = 0;
+  let currentUtterance = null;
+  let runId = 0;
+  let usingVoice = false;
+
+  const steps = [
+    {
+      text: "Step 1: Ask a testable question. How does ramp height affect the distance a toy car travels?",
+      action: () => {}
+    },
+    {
+      text: "Step 2: Change one thing on purpose. Ramp height is the independent variable.",
+      action: () => {
+        document.getElementById("ivLabel").style.display = "block";
+      }
+    },
+    {
+      text: "Step 3: Measure the result. Distance traveled is the dependent variable.",
+      action: () => {
+        document.getElementById("dvLabel").style.display = "block";
+        document.getElementById("car").style.left = "425px";
+        document.getElementById("car").style.bottom = "82px";
+      }
+    },
+    {
+      text: "Step 4: Put the measurements in a data table. Repeated trials make the data more reliable.",
+      action: () => {
+        document.getElementById("dataTable").style.display = "block";
+      }
+    },
+    {
+      text: "Step 5: Make a graph. The x-axis gets the independent variable. The y-axis gets the dependent variable.",
+      action: () => {
+        document.getElementById("graph").style.display = "block";
+      }
+    },
+    {
+      text: "Step 6: Use the graph pattern as evidence for your claim. In this example, the car traveled farther when ramp height increased.",
+      action: () => {}
+    }
+  ];
+
+  function loadVoices() {
+    voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+    const voiceSelect = document.getElementById("voiceSelect");
+
+    if (!voiceSelect) return;
+
+    const oldValue = voiceSelect.value;
+    voiceSelect.innerHTML = '<option value="">Default browser voice</option>';
+
+    voices.forEach((voice, index) => {
+      const option = document.createElement("option");
+      option.value = index;
+      option.textContent = voice.name + " (" + voice.lang + ")";
+      voiceSelect.appendChild(option);
+    });
+
+    voiceSelect.value = oldValue;
+  }
+
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+    loadVoices();
+  }
+
+  function stopTimers() {
+    timers.forEach(timer => clearTimeout(timer));
+    timers = [];
+  }
+
+  function stopVoice() {
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+    currentUtterance = null;
+  }
+
+  function setCaption(text) {
+    currentCaption = text;
+    document.getElementById("caption").innerHTML = text;
+  }
+
+  function speak(text, afterDone) {
+    if (!("speechSynthesis" in window)) {
+      if (afterDone) afterDone();
+      return;
+    }
+
+    stopVoice();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    currentUtterance = utterance;
+
+    utterance.rate = Number(document.getElementById("voiceSpeedSelect").value);
+    utterance.pitch = 1;
+    utterance.volume = 1;
+
+    const voiceChoice = document.getElementById("voiceSelect").value;
+    if (voiceChoice !== "" && voices[Number(voiceChoice)]) {
+      utterance.voice = voices[Number(voiceChoice)];
+    }
+
+    utterance.onend = function() {
+      currentUtterance = null;
+      if (afterDone) afterDone();
+    };
+
+    utterance.onerror = function() {
+      currentUtterance = null;
+      if (afterDone) afterDone();
+    };
+
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function showStep(index, speakIt, autoAdvance, thisRunId) {
+    if (thisRunId !== runId || index >= steps.length) return;
+
+    currentStepIndex = index;
+    steps[index].action();
+    setCaption(steps[index].text);
+
+    if (speakIt) {
+      speak(steps[index].text, () => {
+        if (thisRunId !== runId) return;
+        if (autoAdvance) {
+          const pause = setTimeout(() => {
+            showStep(index + 1, true, true, thisRunId);
+          }, 900);
+          timers.push(pause);
+        }
+      });
+    } else if (autoAdvance) {
+      const speedMultiplier = Number(document.getElementById("speedSelect").value);
+      const timer = setTimeout(() => {
+        showStep(index + 1, false, true, thisRunId);
+      }, 3600 * speedMultiplier);
+      timers.push(timer);
+    }
+  }
+
+  function startMiniLesson(useVoice) {
+    resetMiniLesson();
+    usingVoice = useVoice;
+    runId++;
+    showStep(0, useVoice, true, runId);
+  }
+
+  function playCurrentStep() {
+    runId++;
+    showStep(currentStepIndex, true, false, runId);
+  }
+
+  function nextStep() {
+    runId++;
+    const next = Math.min(currentStepIndex + 1, steps.length - 1);
+    showStep(next, usingVoice, false, runId);
+  }
+
+  function resetMiniLesson() {
+    runId++;
+    stopTimers();
+    stopVoice();
+
+    currentStepIndex = 0;
+    usingVoice = false;
+    setCaption("Click Start with Voice or Start Silent.");
+
+    document.getElementById("ivLabel").style.display = "none";
+    document.getElementById("dvLabel").style.display = "none";
+    document.getElementById("dataTable").style.display = "none";
+    document.getElementById("graph").style.display = "none";
+    document.getElementById("car").style.left = "130px";
+    document.getElementById("car").style.bottom = "155px";
+  }
+
+  resetMiniLesson();
+</script>
+
+{% endblock %}

@@ -1,0 +1,273 @@
+{% extends "base.html" %}
+
+{% block title %}{{ lab["title"] }} Recording Sheet{% endblock %}
+
+{% block content %}
+<style>
+.mp1-recording-page {
+    max-width: 980px;
+    margin: 24px auto;
+    background: #fff7d6;
+    border: 6px solid #111;
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+}
+
+.mp1-recording-top {
+    background: linear-gradient(135deg, #6f2dbd, #123f8c, #00a6d6);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+.mp1-recording-badge {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ff9f1c;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-weight: 1000;
+    margin: 3px 5px 8px 0;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.35);
+}
+
+.mp1-recording-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 14px 0;
+}
+
+.mp1-recording-btn {
+    display: inline-block;
+    background: #ff9f1c;
+    color: #111 !important;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    text-decoration: none !important;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+}
+
+.mp1-recording-btn.blue {
+    background: #0077ff;
+    color: white !important;
+}
+
+.mp1-recording-section {
+    background: white;
+    border: 5px solid #111;
+    border-radius: 22px;
+    padding: 18px;
+    margin: 16px 0;
+}
+
+.mp1-student-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.mp1-line {
+    border-bottom: 3px solid #111;
+    min-height: 28px;
+}
+
+.mp1-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    background: white;
+}
+
+.mp1-table th,
+.mp1-table td {
+    border: 3px solid #111;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.mp1-table th {
+    background: #dff3ff;
+    font-weight: 1000;
+}
+
+.mp1-write-lines {
+    background: repeating-linear-gradient(#fff 0 30px, #d9e9ff 31px 32px);
+    border: 3px solid #111;
+    border-radius: 14px;
+    min-height: 115px;
+    padding: 12px;
+}
+
+.mp1-answer-key {
+    background: #d8ffe9;
+    border: 5px solid #111;
+    border-radius: 22px;
+    padding: 16px;
+    margin-top: 16px;
+}
+
+.mp1-key-pill {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ff9f1c;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-weight: 1000;
+    margin: 3px;
+}
+
+@media print {
+    nav,
+    footer,
+    .mp1-recording-actions,
+    #scienceStudioAiWidget {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+    }
+
+    .mp1-recording-page {
+        max-width: none;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .mp1-recording-section {
+        page-break-inside: avoid;
+    }
+}
+</style>
+
+<section class="mp1-recording-page">
+    <div class="mp1-recording-top">
+        <span class="mp1-recording-badge">{{ lab["unit"] }}</span>
+        <span class="mp1-recording-badge">Science Studio Arcade</span>
+        <span class="mp1-recording-badge">Day {{ lab["day"] }}</span>
+        {% if view == "teacher" %}
+            <span class="mp1-recording-badge">Teacher Key</span>
+        {% else %}
+            <span class="mp1-recording-badge">Student Sheet</span>
+        {% endif %}
+
+        <h1>{{ lab["title"] }} Recording Sheet</h1>
+        <p>{{ lab["subtitle"] }}</p>
+    </div>
+
+    <div class="mp1-recording-actions">
+        <button class="mp1-recording-btn" type="button" onclick="window.print()">Print This Sheet</button>
+        <a class="mp1-recording-btn blue" href="/labs/mp1/arcade/{{ lab['slug'] }}">Back to Arcade Lab</a>
+        <a class="mp1-recording-btn blue" href="/first-nine-weeks/day/{{ lab['day'] }}?view=student">Back to Day {{ lab["day"] }}</a>
+
+        {% if view == "teacher" %}
+            <a class="mp1-recording-btn" href="/labs/mp1/arcade/{{ lab['slug'] }}/recording-sheet?view=student">Student Version</a>
+        {% else %}
+            <a class="mp1-recording-btn" href="/labs/mp1/arcade/{{ lab['slug'] }}/recording-sheet?view=teacher">Teacher Key</a>
+        {% endif %}
+    </div>
+
+    <section class="mp1-recording-section">
+        <h2>👩‍🔬 Scientist Information</h2>
+        <div class="mp1-student-info">
+            <div>
+                <strong>Name:</strong>
+                <div class="mp1-line"></div>
+            </div>
+            <div>
+                <strong>Date:</strong>
+                <div class="mp1-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp1-recording-section">
+        <h2>🎮 Mission</h2>
+        <p><strong>Today’s mission:</strong> {{ lab["mission"] }}</p>
+        <p><strong>Science focus:</strong> Use observations as evidence to explain the science concept.</p>
+    </section>
+
+    <section class="mp1-recording-section">
+        <h2>🔮 Prediction and Evidence Table</h2>
+
+        <table class="mp1-table">
+            <thead>
+                <tr>
+                    <th>Challenge</th>
+                    <th>My Prediction</th>
+                    <th>Test Result</th>
+                    <th>Evidence / Observation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in lab["items"] %}
+                <tr>
+                    <td>{{ item["name"] }}</td>
+                    <td>{{ lab["targets"]|join(" / ") }}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section class="mp1-recording-section">
+        <h2>🧠 Think Like a Scientist</h2>
+        <p><strong>What pattern did you notice in the lab?</strong></p>
+        <div class="mp1-write-lines"></div>
+    </section>
+
+    <section class="mp1-recording-section">
+        <h2>📝 CER Response</h2>
+        <p><strong>Claim:</strong> What can you say about the science concept?</p>
+        <div class="mp1-line"></div>
+
+        <p><strong>Evidence:</strong> What did you observe in the lab?</p>
+        <div class="mp1-line"></div>
+
+        <p><strong>Reasoning:</strong> How does your evidence prove your claim?</p>
+        <div class="mp1-write-lines"></div>
+    </section>
+
+    <section class="mp1-recording-section">
+        <h2>⭐ STAAR Connection</h2>
+        <p>
+            On STAAR, you may need to use observations, data, models, or evidence to explain a science idea.
+            Explain how this lab helps you answer a science question.
+        </p>
+        <div class="mp1-write-lines"></div>
+    </section>
+
+    {% if view == "teacher" %}
+    <section class="mp1-answer-key">
+        <h2>✅ Teacher Answer Key</h2>
+
+        {% for item in lab["items"] %}
+            <p>
+                <span class="mp1-key-pill">{{ item["name"] }}</span>
+                Correct answer: <strong>{{ item["answer"] }}</strong>.
+                Evidence: {{ item["observation"] }}
+            </p>
+        {% endfor %}
+
+        <p>
+            <strong>Strong CER example:</strong>
+            My claim matches the test result. My evidence is what I observed in the lab.
+            My reasoning explains how the evidence supports the science concept.
+        </p>
+    </section>
+    {% endif %}
+</section>
+{% endblock %}

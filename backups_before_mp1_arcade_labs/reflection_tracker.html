@@ -1,0 +1,701 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Reflection Tracker, Notebook Checklist, and Goal-Setting Tool</h1>
+<p class="lead">
+  Use your assessment data, notebook evidence, and confidence ratings to reflect on the 1st 9 weeks.
+</p>
+
+<a href="/first-nine-weeks/day/45?view=student" class="btn btn-secondary mb-4">
+  Back to Day 45
+</a>
+
+<style>
+  .reflection-banner {
+    background: #212529;
+    color: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+
+  .badge-pill {
+    display: inline-block;
+    background: #fff3cd;
+    color: #111;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: bold;
+    margin: 5px;
+  }
+
+  .reflection-card {
+    border: 1px solid #ddd;
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
+
+  .tracker-box {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 16px;
+  }
+
+  .score-box {
+    background: white;
+    border: 5px solid #111;
+    border-radius: 20px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .score-number {
+    font-size: 56px;
+    font-weight: bold;
+  }
+
+  .progress-track {
+    height: 30px;
+    background: #e9ecef;
+    border: 3px solid #111;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #d1e7dd;
+    transition: width 0.5s;
+  }
+
+  .topic-row {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .check-row {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  .warning {
+    background: #fff3cd;
+    color: #664d03;
+  }
+
+  .preview-card {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 16px;
+    margin-bottom: 14px;
+    min-height: 170px;
+  }
+
+  .final-report {
+    background: white;
+    border: 5px solid #111;
+    border-radius: 22px;
+    padding: 20px;
+    white-space: pre-wrap;
+  }
+
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+
+    .reflection-card {
+      page-break-inside: avoid;
+    }
+  }
+</style>
+
+<div class="reflection-banner">
+  <h2>🎯 1st 9 Weeks Reflection Mission</h2>
+  <p class="mb-2">Use evidence from your work to set a strong goal for the next unit.</p>
+  <span class="badge-pill">Assessment Data</span>
+  <span class="badge-pill">Notebook Check</span>
+  <span class="badge-pill">Goal Setting</span>
+  <span class="badge-pill">Next Unit Preview</span>
+  <span class="badge-pill">Print Report</span>
+</div>
+
+<div class="reflection-card">
+  <h2>Part 1: Student Information and Assessment Data</h2>
+
+  <div class="row">
+    <div class="col-md-4">
+      <label class="form-label"><strong>Initials or class number — optional:</strong></label>
+      <input id="studentName" class="form-control mb-3" placeholder="Type initials or class number — optional">
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label"><strong>Day 44 score:</strong></label>
+      <input id="scoreInput" type="number" class="form-control mb-3" placeholder="Example: 85" min="0" max="100" oninput="updateScoreDisplay()">
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label"><strong>Overall confidence:</strong></label>
+      <select id="overallConfidence" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>1 - I need help</option>
+        <option>2 - I am starting to understand</option>
+        <option>3 - I understand most topics</option>
+        <option>4 - I can explain my learning</option>
+      </select>
+    </div>
+  </div>
+
+  <button class="btn btn-primary no-print" onclick="loadAssessmentData()">Load Day 44 Assessment Data</button>
+  <button class="btn btn-success no-print" onclick="saveReflection()">Save Reflection</button>
+  <button class="btn btn-warning no-print" onclick="loadReflection()">Load Saved Reflection</button>
+
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <div class="score-box">
+        <div id="scoreDisplay" class="score-number">--%</div>
+        <div><strong>Assessment Score</strong></div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="tracker-box">
+        <h4>Score Reflection</h4>
+        <div class="progress-track">
+          <div id="scoreFill" class="progress-fill"></div>
+        </div>
+        <div id="scoreFeedback" class="feedback warning">
+          Enter your score or load your Day 44 assessment data.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="reflection-card">
+  <h2>Part 2: Topic Reflection Tracker</h2>
+  <p>Rate yourself for each 1st 9 weeks topic. Use your assessment, notebook, labs, and station work as evidence.</p>
+
+  <div id="topicTracker"></div>
+</div>
+
+<div class="reflection-card">
+  <h2>Part 3: Science Notebook Checklist</h2>
+  <p>Check each item that is complete in your science notebook.</p>
+
+  <div id="notebookChecklist"></div>
+
+  <div class="tracker-box mt-3">
+    <h4>Notebook Completion</h4>
+    <div class="progress-track">
+      <div id="notebookFill" class="progress-fill"></div>
+    </div>
+    <p class="mt-2"><strong id="notebookText">0 of 8 complete</strong></p>
+  </div>
+</div>
+
+<div class="reflection-card">
+  <h2>Part 4: Lab Notebook Checklist</h2>
+  <p>Check each item that is complete in your lab notebook.</p>
+
+  <div id="labChecklist"></div>
+
+  <div class="tracker-box mt-3">
+    <h4>Lab Notebook Completion</h4>
+    <div class="progress-track">
+      <div id="labFill" class="progress-fill"></div>
+    </div>
+    <p class="mt-2"><strong id="labText">0 of 6 complete</strong></p>
+  </div>
+</div>
+
+<div class="reflection-card">
+  <h2>Part 5: Goal-Setting Tool</h2>
+
+  <div class="row">
+    <div class="col-md-4">
+      <label class="form-label"><strong>My strongest topic:</strong></label>
+      <select id="strengthTopic" class="form-select mb-3"></select>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label"><strong>My growth topic:</strong></label>
+      <select id="growthTopic" class="form-select mb-3"></select>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label"><strong>My action step:</strong></label>
+      <select id="actionStep" class="form-select mb-3">
+        <option>I will practice 3 questions about this topic.</option>
+        <option>I will review my notes and vocabulary.</option>
+        <option>I will ask for help during small group.</option>
+        <option>I will explain the topic to a partner.</option>
+        <option>I will redo one lab notebook entry with better evidence.</option>
+        <option>I will practice using data from a table or graph.</option>
+      </select>
+    </div>
+  </div>
+
+  <label class="form-label"><strong>Evidence from my work:</strong></label>
+  <textarea id="goalEvidence" class="form-control mb-3" rows="3" placeholder="Example: I missed variables questions, but I did well on mixtures questions."></textarea>
+
+  <button class="btn btn-success no-print" onclick="buildGoal()">Build My Science Goal</button>
+
+  <div id="goalOutput"></div>
+</div>
+
+<div class="reflection-card">
+  <h2>Part 6: Preview the Next Unit</h2>
+  <p>
+    This preview helps students get ready for the next 9 weeks. The exact title can be edited later when we load the MP2 pacing guide.
+  </p>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="preview-card">
+        <h4>🔎 New Vocabulary</h4>
+        <p>Next units will introduce new science words. Good scientists preview vocabulary before investigations.</p>
+        <label class="form-label"><strong>One word I want to learn:</strong></label>
+        <input id="previewWord" class="form-control" placeholder="Type a science word">
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="preview-card">
+        <h4>🧪 New Investigations</h4>
+        <p>Students will keep using fair tests, data, models, and evidence in new science topics.</p>
+        <label class="form-label"><strong>One investigation skill I want to improve:</strong></label>
+        <select id="previewSkill" class="form-select">
+          <option>Using variables correctly</option>
+          <option>Making better data tables</option>
+          <option>Making better graphs</option>
+          <option>Writing stronger CER responses</option>
+          <option>Using vocabulary in explanations</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="preview-card">
+        <h4>❓ Wonder Question</h4>
+        <p>Write one question you have about science before the next unit begins.</p>
+        <label class="form-label"><strong>My wonder question:</strong></label>
+        <textarea id="wonderQuestion" class="form-control" rows="3" placeholder="I wonder..."></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="reflection-card">
+  <h2>Part 7: Final Reflection Report</h2>
+
+  <button class="btn btn-primary no-print" onclick="buildFinalReport()">Build Final Report</button>
+  <button class="btn btn-success no-print" onclick="window.print()">Print Report</button>
+  <button class="btn btn-danger no-print" onclick="clearReflection()">Clear Saved Reflection</button>
+
+  <div id="finalReport" class="final-report mt-3">
+    Click Build Final Report when finished.
+  </div>
+</div>
+
+<script>
+  const topics = [
+    "Matter and Physical Properties",
+    "Mixtures and Solutions",
+    "Particles Too Small to See",
+    "Force and Motion",
+    "Variables and Fair Tests",
+    "Graphs and Data",
+    "Claim, Evidence, and Reasoning",
+    "Science Vocabulary"
+  ];
+
+  const notebookItems = [
+    "Science notebook has organized pages or a table of contents.",
+    "Vocabulary pages include definitions, examples, and pictures or diagrams.",
+    "Matter notes and examples are complete.",
+    "Mixtures and solutions notes are complete.",
+    "Particles too small to see model or notes are complete.",
+    "Force and motion notes are complete.",
+    "Review pages are complete.",
+    "Reflection page includes strengths, growth areas, evidence, and goal."
+  ];
+
+  const labItems = [
+    "Lab questions are written clearly.",
+    "Materials and procedures are recorded.",
+    "Observations are complete.",
+    "Data tables are complete.",
+    "Graphs have titles, labels, and correct data.",
+    "CER responses include claim, evidence, and reasoning."
+  ];
+
+  function showFeedback(elementId, message, kind) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + kind;
+    box.innerHTML = message;
+  }
+
+  function renderTopicTracker() {
+    const tracker = document.getElementById("topicTracker");
+    tracker.innerHTML = "";
+
+    const strength = document.getElementById("strengthTopic");
+    const growth = document.getElementById("growthTopic");
+
+    strength.innerHTML = "";
+    growth.innerHTML = "";
+
+    topics.forEach((topic, index) => {
+      const option1 = document.createElement("option");
+      option1.value = topic;
+      option1.innerText = topic;
+      strength.appendChild(option1);
+
+      const option2 = document.createElement("option");
+      option2.value = topic;
+      option2.innerText = topic;
+      growth.appendChild(option2);
+
+      const row = document.createElement("div");
+      row.className = "topic-row";
+      row.innerHTML = `
+        <h4>${topic}</h4>
+        <div class="row">
+          <div class="col-md-3">
+            <label class="form-label"><strong>Confidence:</strong></label>
+            <select id="topicConfidence${index}" class="form-select">
+              <option>Choose...</option>
+              <option>1 - I need help</option>
+              <option>2 - I am starting to understand</option>
+              <option>3 - I understand most of it</option>
+              <option>4 - I can explain it</option>
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label"><strong>Evidence from my work:</strong></label>
+            <textarea id="topicEvidence${index}" class="form-control" rows="2" placeholder="Use assessment, notebook, labs, or stations."></textarea>
+          </div>
+
+          <div class="col-md-5">
+            <label class="form-label"><strong>What I need to review:</strong></label>
+            <textarea id="topicReview${index}" class="form-control" rows="2" placeholder="Write what you still need to practice."></textarea>
+          </div>
+        </div>
+      `;
+      tracker.appendChild(row);
+    });
+  }
+
+  function renderChecklist(containerId, items, className, updateFunctionName) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = "";
+
+    items.forEach((item, index) => {
+      const row = document.createElement("div");
+      row.className = "check-row";
+      row.innerHTML = `
+        <label>
+          <input type="checkbox" class="${className}" id="${className}${index}" onchange="${updateFunctionName}()">
+          ${item}
+        </label>
+      `;
+      container.appendChild(row);
+    });
+  }
+
+  function updateScoreDisplay() {
+    const score = Number(document.getElementById("scoreInput").value) || 0;
+
+    document.getElementById("scoreDisplay").innerText = score ? score + "%" : "--%";
+    document.getElementById("scoreFill").style.width = Math.min(score, 100) + "%";
+
+    if (!score) {
+      showFeedback("scoreFeedback", "Enter your score or load your Day 44 assessment data.", "warning");
+    } else if (score >= 85) {
+      showFeedback("scoreFeedback", "Strong work. You are showing readiness across the 1st 9 weeks.", "correct");
+    } else if (score >= 70) {
+      showFeedback("scoreFeedback", "Good progress. Choose one or two topics to review before moving forward.", "warning");
+    } else {
+      showFeedback("scoreFeedback", "Keep working. Your reflection will help you choose a clear action step.", "incorrect");
+    }
+  }
+
+  function updateNotebookProgress() {
+    const checked = document.querySelectorAll(".notebookCheck:checked").length;
+    const percent = Math.round((checked / notebookItems.length) * 100);
+    document.getElementById("notebookFill").style.width = percent + "%";
+    document.getElementById("notebookText").innerText = checked + " of " + notebookItems.length + " complete";
+  }
+
+  function updateLabProgress() {
+    const checked = document.querySelectorAll(".labCheck:checked").length;
+    const percent = Math.round((checked / labItems.length) * 100);
+    document.getElementById("labFill").style.width = percent + "%";
+    document.getElementById("labText").innerText = checked + " of " + labItems.length + " complete";
+  }
+
+  function loadAssessmentData() {
+    const saved = localStorage.getItem("day44AssessmentReport");
+
+    if (!saved) {
+      alert("No Day 44 assessment report found on this device. You can type the score manually.");
+      return;
+    }
+
+    const report = JSON.parse(saved);
+
+    document.getElementById("studentName").value = report.studentName || "";
+    document.getElementById("scoreInput").value = report.percent || "";
+    updateScoreDisplay();
+
+    if (report.topicStats) {
+      const topicMap = {
+        "Matter": "Matter and Physical Properties",
+        "Mixtures and Solutions": "Mixtures and Solutions",
+        "Particles Too Small to See": "Particles Too Small to See",
+        "Force and Motion": "Force and Motion",
+        "Variables and Data": "Variables and Fair Tests"
+      };
+
+      Object.keys(report.topicStats).forEach(reportTopic => {
+        const matchingTopic = topicMap[reportTopic] || reportTopic;
+        const index = topics.indexOf(matchingTopic);
+
+        if (index >= 0) {
+          const stat = report.topicStats[reportTopic];
+          const percent = Math.round((stat.correct / stat.total) * 100);
+
+          let confidence = "2 - I am starting to understand";
+          if (percent >= 85) confidence = "4 - I can explain it";
+          else if (percent >= 70) confidence = "3 - I understand most of it";
+          else if (percent < 50) confidence = "1 - I need help";
+
+          document.getElementById("topicConfidence" + index).value = confidence;
+          document.getElementById("topicEvidence" + index).value = "Day 44 assessment: " + stat.correct + "/" + stat.total + " correct (" + percent + "%).";
+          document.getElementById("topicReview" + index).value = percent >= 70 ? "Keep practicing with STAAR-style questions." : "Review this topic with notes, labs, and practice questions.";
+        }
+      });
+    }
+
+    showFeedback("scoreFeedback", "Day 44 assessment data loaded.", "correct");
+  }
+
+  function buildGoal() {
+    const strength = document.getElementById("strengthTopic").value;
+    const growth = document.getElementById("growthTopic").value;
+    const action = document.getElementById("actionStep").value;
+    const evidence = document.getElementById("goalEvidence").value.trim();
+
+    const goal = `My science strength is ${strength}. My growth topic is ${growth}. My evidence is: ${evidence || "I will add evidence from my assessment, notebook, or lab work."} My goal for the next unit is to improve in ${growth}. My action step is: ${action}`;
+
+    document.getElementById("goalOutput").innerHTML = `
+      <div class="feedback correct">
+        <h4>My Science Goal</h4>
+        <p>${goal}</p>
+      </div>
+    `;
+  }
+
+  function collectReflectionData() {
+    const data = {
+      studentInitials / Class # — optional: document.getElementById("studentName").value,
+      score: document.getElementById("scoreInput").value,
+      overallConfidence: document.getElementById("overallConfidence").value,
+      topics: [],
+      notebook: [],
+      lab: [],
+      strengthTopic: document.getElementById("strengthTopic").value,
+      growthTopic: document.getElementById("growthTopic").value,
+      actionStep: document.getElementById("actionStep").value,
+      goalEvidence: document.getElementById("goalEvidence").value,
+      previewWord: document.getElementById("previewWord").value,
+      previewSkill: document.getElementById("previewSkill").value,
+      wonderQuestion: document.getElementById("wonderQuestion").value
+    };
+
+    topics.forEach((topic, index) => {
+      data.topics.push({
+        topic,
+        confidence: document.getElementById("topicConfidence" + index).value,
+        evidence: document.getElementById("topicEvidence" + index).value,
+        review: document.getElementById("topicReview" + index).value
+      });
+    });
+
+    notebookItems.forEach((item, index) => {
+      data.notebook.push({
+        item,
+        checked: document.getElementById("notebookCheck" + index).checked
+      });
+    });
+
+    labItems.forEach((item, index) => {
+      data.lab.push({
+        item,
+        checked: document.getElementById("labCheck" + index).checked
+      });
+    });
+
+    return data;
+  }
+
+  function saveReflection() {
+    const data = collectReflectionData();
+    localStorage.setItem("day45ReflectionData", JSON.stringify(data));
+    alert("Reflection saved on this device.");
+  }
+
+  function loadReflection() {
+    const saved = localStorage.getItem("day45ReflectionData");
+
+    if (!saved) {
+      alert("No saved Day 45 reflection found on this device.");
+      return;
+    }
+
+    const data = JSON.parse(saved);
+
+    document.getElementById("studentName").value = data.studentName || "";
+    document.getElementById("scoreInput").value = data.score || "";
+    document.getElementById("overallConfidence").value = data.overallConfidence || "Choose...";
+    updateScoreDisplay();
+
+    if (data.topics) {
+      data.topics.forEach((item, index) => {
+        if (document.getElementById("topicConfidence" + index)) {
+          document.getElementById("topicConfidence" + index).value = item.confidence || "Choose...";
+          document.getElementById("topicEvidence" + index).value = item.evidence || "";
+          document.getElementById("topicReview" + index).value = item.review || "";
+        }
+      });
+    }
+
+    if (data.notebook) {
+      data.notebook.forEach((item, index) => {
+        if (document.getElementById("notebookCheck" + index)) {
+          document.getElementById("notebookCheck" + index).checked = item.checked;
+        }
+      });
+    }
+
+    if (data.lab) {
+      data.lab.forEach((item, index) => {
+        if (document.getElementById("labCheck" + index)) {
+          document.getElementById("labCheck" + index).checked = item.checked;
+        }
+      });
+    }
+
+    document.getElementById("strengthTopic").value = data.strengthTopic || topics[0];
+    document.getElementById("growthTopic").value = data.growthTopic || topics[0];
+    document.getElementById("actionStep").value = data.actionStep || "I will practice 3 questions about this topic.";
+    document.getElementById("goalEvidence").value = data.goalEvidence || "";
+    document.getElementById("previewWord").value = data.previewWord || "";
+    document.getElementById("previewSkill").value = data.previewSkill || "Using variables correctly";
+    document.getElementById("wonderQuestion").value = data.wonderQuestion || "";
+
+    updateNotebookProgress();
+    updateLabProgress();
+
+    alert("Reflection loaded.");
+  }
+
+  function buildFinalReport() {
+    const data = collectReflectionData();
+
+    const notebookComplete = data.notebook.filter(item => item.checked).length;
+    const labComplete = data.lab.filter(item => item.checked).length;
+
+    const lowTopics = data.topics
+      .filter(item => item.confidence.includes("1 -") || item.confidence.includes("2 -"))
+      .map(item => item.topic);
+
+    const report = `
+1st 9 Weeks Science Reflection Report
+
+Student: ${data.studentName || "Student"}
+Assessment Score: ${data.score || "Not entered"}%
+Overall Confidence: ${data.overallConfidence}
+
+Strongest Topic:
+${data.strengthTopic}
+
+Growth Topic:
+${data.growthTopic}
+
+Evidence From My Work:
+${data.goalEvidence || "No evidence entered yet."}
+
+My Science Goal:
+I will improve in ${data.growthTopic}. My action step is: ${data.actionStep}
+
+Notebook Check:
+Science Notebook: ${notebookComplete} of ${notebookItems.length} complete
+Lab Notebook: ${labComplete} of ${labItems.length} complete
+
+Topics I Need to Review:
+${lowTopics.length ? lowTopics.join(", ") : "No low-confidence topics selected."}
+
+Next Unit Preview:
+New word I want to learn: ${data.previewWord || "Not entered yet."}
+Investigation skill I want to improve: ${data.previewSkill}
+Wonder question: ${data.wonderQuestion || "Not entered yet."}
+
+Final Reflection:
+I used my assessment data, notebook evidence, and confidence ratings to make a plan for the next unit.
+`;
+
+    document.getElementById("finalReport").innerText = report;
+    saveReflection();
+  }
+
+  function clearReflection() {
+    if (!confirm("Clear saved Day 45 reflection on this device?")) return;
+    localStorage.removeItem("day45ReflectionData");
+    alert("Saved reflection cleared. Refresh the page to start over.");
+  }
+
+  renderTopicTracker();
+  renderChecklist("notebookChecklist", notebookItems, "notebookCheck", "updateNotebookProgress");
+  renderChecklist("labChecklist", labItems, "labCheck", "updateLabProgress");
+  updateNotebookProgress();
+  updateLabProgress();
+  updateScoreDisplay();
+</script>
+
+{% endblock %}

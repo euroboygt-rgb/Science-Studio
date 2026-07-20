@@ -1,0 +1,422 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Unit 2 Performance Assessment Game</h1>
+<p class="lead">
+  Complete the recycling center, solution, conservation of matter, and particle model challenges.
+</p>
+
+<a href="/first-nine-weeks/day/25?view=student" class="btn btn-secondary mb-4">
+  Back to Day 25
+</a>
+
+<style>
+  .game-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
+
+  .info-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
+  .score-box {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    background: #e9ecef;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .scenario-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  .model-box {
+    border: 3px solid #333;
+    border-radius: 12px;
+    background: white;
+    min-height: 180px;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+
+  .particle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #6f42c1;
+    border: 1px solid #333;
+    position: absolute;
+  }
+
+  .balloon-model {
+    width: 150px;
+    height: 190px;
+    border: 4px solid #333;
+    border-radius: 60% 60% 55% 55%;
+    background: #f8d7da;
+    margin: 10px auto;
+    position: relative;
+  }
+
+  .air-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #333;
+    position: absolute;
+  }
+</style>
+
+<div class="score-box">
+  Performance Score: <span id="score">0</span> / 20
+</div>
+
+<div class="game-card">
+  <h2>Part 1: Recycling Center Separation Plan</h2>
+
+  <div class="info-box">
+    <strong>Task:</strong> Separate steel paper clips, gravel, sand, wood chips, and marbles using physical properties.
+  </div>
+
+  <div class="scenario-card">
+    <h4>Step 1: Remove steel paper clips</h4>
+    <select id="recycle1" class="form-select">
+      <option selected>Choose...</option>
+      <option>Use a magnet because steel is magnetic</option>
+      <option>Use evaporation because steel dissolves</option>
+      <option>Use a thermometer because steel is cold</option>
+      <option>Use food coloring because steel has particles</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>Step 2: Separate gravel from sand</h4>
+    <select id="recycle2" class="form-select">
+      <option selected>Choose...</option>
+      <option>Use a sieve because the particles have different sizes</option>
+      <option>Use a magnet because sand is magnetic</option>
+      <option>Use evaporation because gravel dissolves</option>
+      <option>Use a balance because all matter disappears</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>Step 3: Separate wood chips from marbles</h4>
+    <select id="recycle3" class="form-select">
+      <option selected>Choose...</option>
+      <option>Use water because wood chips float and marbles sink</option>
+      <option>Use a magnet because wood is magnetic</option>
+      <option>Use evaporation because marbles dissolve</option>
+      <option>Use a ruler because all objects float</option>
+    </select>
+  </div>
+
+  <div class="scenario-card">
+    <h4>Best evidence statement</h4>
+    <select id="recycle4" class="form-select">
+      <option selected>Choose...</option>
+      <option>The plan uses magnetism, particle size, and relative density to separate materials.</option>
+      <option>The plan works because all materials dissolve in water.</option>
+      <option>The plan works because matter disappears when mixed.</option>
+      <option>The plan works because every object is magnetic.</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" onclick="checkRecycling()">Check Recycling Plan</button>
+  <div id="recyclingFeedback"></div>
+</div>
+
+<div class="game-card">
+  <h2>Part 2: Solution and Evaporation Challenge</h2>
+
+  <div class="info-box">
+    <strong>Task:</strong> Explain salt water as a solution and choose how to get the salt back.
+  </div>
+
+  <div class="scenario-card">
+    <h4>Salt water</h4>
+
+    <label class="form-label">Solute:</label>
+    <select id="soluteAnswer" class="form-select mb-2">
+      <option selected>Choose...</option>
+      <option>Salt</option>
+      <option>Water</option>
+      <option>Cup</option>
+    </select>
+
+    <label class="form-label">Solvent:</label>
+    <select id="solventAnswer" class="form-select mb-2">
+      <option selected>Choose...</option>
+      <option>Salt</option>
+      <option>Water</option>
+      <option>Spoon</option>
+    </select>
+
+    <label class="form-label">Best way to get salt back:</label>
+    <select id="evapAnswer" class="form-select mb-2">
+      <option selected>Choose...</option>
+      <option>Evaporation</option>
+      <option>Magnetism</option>
+      <option>Sink or float</option>
+    </select>
+
+    <label class="form-label">Best explanation:</label>
+    <select id="solutionExplain" class="form-select">
+      <option selected>Choose...</option>
+      <option>The salt dissolved, but it is still present. Water can evaporate and leave salt behind.</option>
+      <option>The salt disappeared forever when it dissolved.</option>
+      <option>The water became salt.</option>
+      <option>The salt became magnetic.</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" onclick="checkSolution()">Check Solution Challenge</button>
+  <div id="solutionFeedback"></div>
+</div>
+
+<div class="game-card">
+  <h2>Part 3: Conservation of Matter Challenge</h2>
+
+  <div class="info-box">
+    <strong>Task:</strong> Use mass data as evidence.
+  </div>
+
+  <div class="scenario-card">
+    <p>A student mixes <strong>80 g of water</strong> with <strong>12 g of salt</strong>. Nothing spills.</p>
+
+    <label class="form-label">What should the final mass be?</label>
+    <input id="massAnswer" class="form-control mb-2" type="number" placeholder="grams">
+
+    <label class="form-label">Best evidence:</label>
+    <select id="massEvidence" class="form-select">
+      <option selected>Choose...</option>
+      <option>80 g + 12 g = 92 g, so matter was conserved.</option>
+      <option>The salt disappeared, so the mass is 80 g.</option>
+      <option>The water disappeared, so the mass is 12 g.</option>
+      <option>The mass cannot be measured.</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" onclick="checkMass()">Check Conservation Challenge</button>
+  <div id="massFeedback"></div>
+</div>
+
+<div class="game-card">
+  <h2>Part 4: Particle Model Challenge</h2>
+
+  <div class="info-box">
+    <strong>Task:</strong> Match evidence to the best particle model.
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="model-box">
+        <h5>Food Coloring Model</h5>
+        <div class="particle" style="left:30px; top:70px;"></div>
+        <div class="particle" style="left:90px; top:120px;"></div>
+        <div class="particle" style="left:160px; top:60px;"></div>
+        <div class="particle" style="left:220px; top:140px;"></div>
+        <div class="particle" style="left:130px; top:155px;"></div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="model-box">
+        <h5>Air in Balloon Model</h5>
+        <div class="balloon-model">
+          <div class="air-dot" style="left:35px; top:40px;"></div>
+          <div class="air-dot" style="left:80px; top:70px;"></div>
+          <div class="air-dot" style="left:55px; top:115px;"></div>
+          <div class="air-dot" style="left:105px; top:135px;"></div>
+          <div class="air-dot" style="left:25px; top:145px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scenario-card">
+    <label class="form-label">Food coloring spreading through water shows that...</label>
+    <select id="particle1" class="form-select mb-2">
+      <option selected>Choose...</option>
+      <option>Particles move and spread through the water.</option>
+      <option>Particles disappear forever.</option>
+      <option>Water becomes a solid.</option>
+      <option>Food coloring becomes magnetic.</option>
+    </select>
+
+    <label class="form-label">A balloon getting larger when air is added shows that...</label>
+    <select id="particle2" class="form-select mb-2">
+      <option selected>Choose...</option>
+      <option>Air particles take up space inside the balloon.</option>
+      <option>Air is not matter.</option>
+      <option>The balloon is empty.</option>
+      <option>Air has no particles.</option>
+    </select>
+
+    <label class="form-label">Scientists use dots in particle models because...</label>
+    <select id="particle3" class="form-select">
+      <option selected>Choose...</option>
+      <option>Real particles are too small to see directly.</option>
+      <option>Real particles are larger than the container.</option>
+      <option>Dots show that matter has no mass.</option>
+      <option>Dots show that particles disappear.</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" onclick="checkParticles()">Check Particle Model</button>
+  <div id="particleFeedback"></div>
+</div>
+
+<div class="game-card">
+  <h2>Final Written Response Practice</h2>
+
+  <div class="info-box">
+    <strong>Use this frame:</strong> The best method is ___ because ___. My evidence is ___.
+  </div>
+
+  <textarea class="form-control mb-3" rows="5" placeholder="Write your final performance assessment explanation here..."></textarea>
+
+  <div class="scenario-card">
+    <h4>Checklist</h4>
+    <p>Before submitting, make sure your answer includes:</p>
+    <ul>
+      <li>A physical property or particle model</li>
+      <li>A tool or separation method</li>
+      <li>Evidence from observations, data, or the model</li>
+      <li>A clear explanation</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  let score = 0;
+  let recyclingDone = false;
+  let solutionDone = false;
+  let massDone = false;
+  let particlesDone = false;
+
+  function updateScore(points) {
+    score += points;
+    document.getElementById("score").innerText = score;
+  }
+
+  function showFeedback(elementId, message, isCorrect) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+    box.innerHTML = message;
+  }
+
+  function checkRecycling() {
+    let points = 0;
+
+    if (document.getElementById("recycle1").value === "Use a magnet because steel is magnetic") points++;
+    if (document.getElementById("recycle2").value === "Use a sieve because the particles have different sizes") points++;
+    if (document.getElementById("recycle3").value === "Use water because wood chips float and marbles sink") points++;
+    if (document.getElementById("recycle4").value === "The plan uses magnetism, particle size, and relative density to separate materials.") points += 2;
+
+    if (!recyclingDone) {
+      updateScore(points);
+      recyclingDone = true;
+    }
+
+    if (points === 5) {
+      showFeedback("recyclingFeedback", "Excellent! Your recycling plan uses physical properties and evidence.", true);
+    } else {
+      showFeedback("recyclingFeedback", "You earned " + points + " out of 5. Match each material to the physical property that separates it.", false);
+    }
+  }
+
+  function checkSolution() {
+    let points = 0;
+
+    if (document.getElementById("soluteAnswer").value === "Salt") points++;
+    if (document.getElementById("solventAnswer").value === "Water") points++;
+    if (document.getElementById("evapAnswer").value === "Evaporation") points++;
+    if (document.getElementById("solutionExplain").value === "The salt dissolved, but it is still present. Water can evaporate and leave salt behind.") points += 2;
+
+    if (!solutionDone) {
+      updateScore(points);
+      solutionDone = true;
+    }
+
+    if (points === 5) {
+      showFeedback("solutionFeedback", "Correct! Salt is still present, and evaporation can separate it from water.", true);
+    } else {
+      showFeedback("solutionFeedback", "You earned " + points + " out of 5. Remember: solute dissolves, solvent does the dissolving.", false);
+    }
+  }
+
+  function checkMass() {
+    let points = 0;
+
+    if (Number(document.getElementById("massAnswer").value) === 92) points += 2;
+    if (document.getElementById("massEvidence").value === "80 g + 12 g = 92 g, so matter was conserved.") points += 3;
+
+    if (!massDone) {
+      updateScore(points);
+      massDone = true;
+    }
+
+    if (points === 5) {
+      showFeedback("massFeedback", "Correct! The total mass stays the same if nothing spills or leaves the system.", true);
+    } else {
+      showFeedback("massFeedback", "You earned " + points + " out of 5. Add the mass of the water and salt.", false);
+    }
+  }
+
+  function checkParticles() {
+    let points = 0;
+
+    if (document.getElementById("particle1").value === "Particles move and spread through the water.") points++;
+    if (document.getElementById("particle2").value === "Air particles take up space inside the balloon.") points += 2;
+    if (document.getElementById("particle3").value === "Real particles are too small to see directly.") points += 2;
+
+    if (!particlesDone) {
+      updateScore(points);
+      particlesDone = true;
+    }
+
+    if (points === 5) {
+      showFeedback("particleFeedback", "Correct! Your particle model explanations use evidence.", true);
+    } else {
+      showFeedback("particleFeedback", "You earned " + points + " out of 5. Models help show particles too small to see.", false);
+    }
+  }
+</script>
+
+{% endblock %}

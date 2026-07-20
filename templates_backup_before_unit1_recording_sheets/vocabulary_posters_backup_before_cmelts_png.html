@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block title %}Vocabulary Posters
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .vocab-hero {
+    background:
+      radial-gradient(circle at 12% 20%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      radial-gradient(circle at 82% 35%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+      linear-gradient(135deg, #102542 0%, #1b4965 58%, #5fa8d3 100%);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 28px;
+    padding: 32px;
+    box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+    margin-bottom: 24px;
+  }
+
+  .poster-card {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 22px;
+    padding: 20px;
+    box-shadow: 5px 5px 0 rgba(17,17,17,0.15);
+    margin-bottom: 24px;
+  }
+
+  .poster-img {
+    width: 100%;
+    max-width: 760px;
+    border: 4px solid #111;
+    border-radius: 18px;
+    display: block;
+    margin: 0 auto 18px;
+    background: white;
+  }
+
+  .science-btn-small {
+    border: 3px solid #111;
+    border-radius: 12px;
+    font-weight: 850;
+    box-shadow: 2px 2px 0 rgba(17,17,17,0.2);
+    margin: 4px;
+  }
+
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+
+    .poster-card {
+      box-shadow: none;
+      border: none;
+      page-break-after: always;
+    }
+
+    .poster-img {
+      max-width: 100%;
+      border: none;
+    }
+  }
+
+
+    .cmelts-poster-card {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 22px;
+        padding: 22px;
+        margin: 24px 0;
+        box-shadow: 6px 6px 0 rgba(17,17,17,0.14);
+    }
+
+    .cmelts-poster-img {
+        width: 100%;
+        max-width: 700px;
+        display: block;
+        margin: 16px auto;
+        border: 4px solid #111;
+        border-radius: 18px;
+        background: white;
+    }
+
+    .cmelts-btn {
+        border: 3px solid #111;
+        border-radius: 12px;
+        font-weight: 900;
+        box-shadow: 3px 3px 0 rgba(17,17,17,0.2);
+        margin: 4px;
+    }
+
+
+</style>
+
+<section class="vocab-hero">
+  <span class="badge-science">Vocabulary</span>
+  <span class="badge-science">Printable Posters</span>
+  <span class="badge-science">Student Support</span>
+
+  <h1 class="mt-3">Science Vocabulary Posters</h1>
+  <p class="lead mb-0">
+    Use these posters for vocabulary review, anchor charts, notebooks, small group reteach,
+    or printable student reference pages.
+  </p>
+</section>
+
+
+
+
+
+<section id="unit1" class="poster-card">
+  <h2>Unit 1: Matter and Physical Properties</h2>
+
+  <img class="poster-img"
+     src="{{ url_for('static', filename='vocabulary/posters/unit1_vocabulary_poster.png') }}"
+     alt="Unit 1 Matter and Physical Properties vocabulary poster">
+
+  <div class="no-print">
+    <a class="btn btn-primary science-btn-small"
+      href="{{ url_for('static', filename='vocabulary/posters/unit1_vocabulary_poster.png') }}"
+      download>
+      Download Unit 1 Poster
+    </a>
+  </div>
+</section>
+
+<section id="unit2" class="poster-card">
+  <h2>Unit 2: Mixtures and Solutions</h2>
+
+  <img class="poster-img"
+     src="{{ url_for('static', filename='vocabulary/posters/unit2_vocabulary_poster.png') }}"
+     alt="Unit 2 Mixtures and Solutions vocabulary poster">
+
+  <div class="no-print">
+    <a class="btn btn-primary science-btn-small"
+      href="{{ url_for('static', filename='vocabulary/posters/unit2_vocabulary_poster.png') }}"
+      download>
+      Download Unit 2 Poster
+    </a>
+  </div>
+</section>
+
+<section id="unit3" class="poster-card">
+  <h2>Unit 3: Force and Motion</h2>
+
+  <img class="poster-img"
+     src="{{ url_for('static', filename='vocabulary/posters/unit3_vocabulary_poster.png') }}"
+     alt="Unit 3 Force and Motion vocabulary poster">
+
+  <div class="no-print">
+    <a class="btn btn-primary science-btn-small"
+      href="{{ url_for('static', filename='vocabulary/posters/unit3_vocabulary_poster.png') }}"
+      download>
+      Download Unit 3 Poster
+    </a>
+  </div>
+</section>
+
+
+{# CMELTS Unit 4 Energy Vocabulary Poster #}
+<section style="background:white; border:4px solid #111; border-radius:22px; padding:22px; margin:24px 0; box-shadow:6px 6px 0 rgba(17,17,17,0.14);">
+    <h2>Unit 4: CMELTS Forms of Energy</h2>
+
+    <p>
+        Use this anchor chart to help students remember:
+        <strong>Chemical, Mechanical, Electrical, Light, Thermal, and Sound energy.</strong>
+    </p>
+
+    <img
+        src="/static/vocabulary/posters/cmelts_forms_of_energy.svg?v=10"
+        alt="CMELTS Forms of Energy Vocabulary Poster"
+        style="width:100%; max-width:700px; display:block; margin:16px auto; border:4px solid #111; border-radius:18px; background:white;"
+    >
+
+    <div class="no-print">
+        <a href="/resources/cmelts-energy-anchor-chart" class="btn btn-warning" style="border:3px solid #111; font-weight:900; margin:4px;">
+            Open / Print Full Page Poster
+        </a>
+
+        <a href="/static/vocabulary/posters/cmelts_forms_of_energy.svg?v=10" class="btn btn-primary" style="border:3px solid #111; font-weight:900; margin:4px;" target="_blank">
+            Open Image File
+        </a>
+
+        <a href="/first-nine-weeks/day/37?view=teacher" class="btn btn-success" style="border:3px solid #111; font-weight:900; margin:4px;">
+            Open Unit 4 Lesson
+        </a>
+    </div>
+</section>
+
+{% endblock %}

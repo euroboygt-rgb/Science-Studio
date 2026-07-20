@@ -1,0 +1,611 @@
+{% extends "base.html" %}
+
+{% block title %}{{ lab.title }} | Matter Lab Arcade{% endblock %}
+
+{% block content %}
+<style>
+.arcade-wrap {
+    max-width: 1150px;
+    margin: 24px auto;
+}
+
+.arcade-hero {
+    background: radial-gradient(circle at top left, #6f2dbd 0%, #123f8c 42%, #07172f 100%);
+    color: white;
+    border: 6px solid #111;
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.28);
+}
+
+.arcade-badge {
+    display: inline-block;
+    background: #ff9f1c;
+    color: #111;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: 1000;
+    margin: 4px 6px 8px 0;
+}
+
+.arcade-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.arcade-panel {
+    background: #ffffff;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 18px;
+    box-shadow: 7px 7px 0 rgba(0,0,0,0.18);
+}
+
+.arcade-items {
+    display: grid;
+    gap: 10px;
+}
+
+.arcade-item {
+    width: 100%;
+    text-align: left;
+    background: #f4f8ff;
+    border: 4px solid #111;
+    border-radius: 16px;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: 900;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+}
+
+.arcade-item.selected {
+    background: #fff7d6;
+    transform: translateY(-2px);
+}
+
+.arcade-screen {
+    min-height: 450px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0)),
+        radial-gradient(circle at 70% 18%, #50d1ff 0%, #3b8bd0 38%, #123f8c 100%);
+    border: 6px solid #111;
+    border-radius: 28px;
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+}
+
+.arcade-scene {
+    min-height: 255px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arcade-object {
+    font-size: 82px;
+    filter: drop-shadow(5px 7px 0 rgba(0,0,0,0.25));
+    transition: transform 0.35s ease;
+}
+
+.arcade-object.tested-float {
+    transform: translateY(-34px);
+}
+
+.arcade-object.tested-sink {
+    transform: translateY(75px);
+}
+
+.water-tank {
+    width: 250px;
+    height: 270px;
+    border-left: 8px solid #111;
+    border-right: 8px solid #111;
+    border-bottom: 8px solid #111;
+    border-radius: 0 0 28px 28px;
+    background: linear-gradient(to bottom, transparent 0 25%, rgba(76,201,240,0.82) 25% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.magnet-scene {
+    width: 280px;
+    height: 210px;
+    display: grid;
+    place-items: center;
+    background: #f6fbff;
+    border: 5px dashed #111;
+    border-radius: 24px;
+}
+
+.big-magnet {
+    font-size: 100px;
+}
+
+.beaker-scene {
+    width: 230px;
+    height: 270px;
+    border: 7px solid #111;
+    border-top: none;
+    border-radius: 0 0 28px 28px;
+    background: linear-gradient(to bottom, transparent 0 22%, #4cc9f0 22% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circuit-scene {
+    width: 320px;
+    min-height: 220px;
+    background: #f8fbff;
+    border: 5px solid #111;
+    border-radius: 24px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.bulb {
+    font-size: 80px;
+}
+
+.bulb.on {
+    text-shadow: 0 0 18px #ffe66d, 0 0 34px #ffbe0b;
+}
+
+.balance-scene {
+    width: 360px;
+    height: 250px;
+    background: #f8fbff;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: end;
+}
+
+.balance-pan {
+    background: #fff7d6;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 16px;
+    text-align: center;
+    font-weight: 1000;
+}
+
+.volume-cylinder {
+    width: 150px;
+    height: 300px;
+    border-left: 7px solid #111;
+    border-right: 7px solid #111;
+    border-bottom: 7px solid #111;
+    border-radius: 0 0 22px 22px;
+    background: linear-gradient(to top, #4cc9f0 var(--fill, 20%), transparent var(--fill, 20%));
+    position: relative;
+}
+
+.volume-label {
+    position: absolute;
+    right: -95px;
+    top: 45%;
+    background: white;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 8px;
+    font-weight: 900;
+}
+
+.layer-column {
+    width: 230px;
+    height: 300px;
+    border: 7px solid #111;
+    border-top: none;
+    border-radius: 0 0 28px 28px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.layer {
+    height: 33.33%;
+    display: grid;
+    place-items: center;
+    font-weight: 1000;
+    border-top: 3px solid rgba(0,0,0,0.35);
+}
+
+.arcade-controls {
+    background: rgba(255,255,255,0.92);
+    border: 5px solid #111;
+    border-radius: 22px;
+    padding: 14px;
+}
+
+.choice-btn {
+    background: #6f2dbd;
+    color: #ff9f1c;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.choice-btn.selected {
+    background: #ff9f1c;
+    color: #111;
+}
+
+.test-btn {
+    background: #00a878;
+    color: white;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 12px 18px;
+    font-weight: 1000;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+}
+
+.reset-btn,
+.back-btn {
+    display: inline-block;
+    background: #ff9f1c;
+    color: #111;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.feedback {
+    background: #fff;
+    border: 5px solid #111;
+    border-radius: 18px;
+    padding: 14px;
+    margin-top: 12px;
+    font-weight: 800;
+    min-height: 70px;
+}
+
+.score-board {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.score-pill {
+    background: #fff7d6;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-weight: 1000;
+}
+
+.notebook-box {
+    margin-top: 18px;
+    background: #fff7d6;
+    border: 5px solid #111;
+    border-radius: 22px;
+    padding: 16px;
+}
+
+.notebook-lines {
+    background: repeating-linear-gradient(#fff 0 30px, #d9e9ff 31px 32px);
+    border: 3px solid #111;
+    border-radius: 14px;
+    min-height: 130px;
+    padding: 14px;
+}
+
+@media (max-width: 900px) {
+    .arcade-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<div class="arcade-wrap">
+    <section class="arcade-hero">
+        <span class="arcade-badge">Matter Lab Arcade</span>
+        <span class="arcade-badge">Unit 1</span>
+        <span class="arcade-badge">Day {{ lab.day }}</span>
+
+        <h1>{{ lab.title }}</h1>
+        <p>{{ lab.subtitle }}</p>
+
+        <a class="back-btn" href="/first-nine-weeks/day/{{ lab.day }}?view=student">← Back to Day {{ lab.day }}</a>
+    </section>
+
+    <div class="arcade-grid">
+        <aside class="arcade-panel">
+            <h2>🎮 Mission</h2>
+            <p>{{ lab.mission }}</p>
+
+            <h3>Choose an item</h3>
+            <div class="arcade-items" id="itemList"></div>
+
+            <div class="score-board">
+                <span class="score-pill">⭐ Score: <span id="score">0</span></span>
+                <span class="score-pill">🔬 Tested: <span id="tested">0</span></span>
+            </div>
+
+            <button class="reset-btn" type="button" onclick="resetArcade()">Reset Lab</button>
+        </aside>
+
+        <main class="arcade-panel">
+            <div class="arcade-screen">
+                <div class="arcade-scene" id="scene"></div>
+
+                <div class="arcade-controls">
+                    <h2 id="challengeTitle">Pick an item to begin.</h2>
+                    <div id="choices"></div>
+                    <button class="test-btn" type="button" onclick="runTest()">Run Test</button>
+                    <div class="feedback" id="feedback">
+                        Select an object, make a prediction, and run the test.
+                    </div>
+                </div>
+            </div>
+
+            <section class="notebook-box">
+                <h2>📝 Lab Notebook Response</h2>
+                <p><strong>Claim:</strong> I think the object/material is __________.</p>
+                <p><strong>Evidence:</strong> I observed that __________.</p>
+                <p><strong>Reasoning:</strong> This shows __________ because __________.</p>
+                <div class="notebook-lines"></div>
+            </section>
+        </main>
+    </div>
+</div>
+
+<script>
+const LAB = {{ lab|tojson }};
+let selectedIndex = 0;
+let selectedChoice = "";
+let score = 0;
+let tested = 0;
+let volumeAmount = 10;
+
+function itemName(item) {
+    return item.name || `${item.left} vs ${item.right}` || item.question || "Challenge";
+}
+
+function itemIcon(item) {
+    return item.icon || item.left_icon || "🔬";
+}
+
+function renderItems() {
+    const list = document.getElementById("itemList");
+    list.innerHTML = "";
+
+    LAB.items.forEach((item, index) => {
+        const button = document.createElement("button");
+        button.className = "arcade-item" + (index === selectedIndex ? " selected" : "");
+        button.type = "button";
+        button.innerHTML = `${itemIcon(item)} ${itemName(item)}`;
+        button.onclick = () => {
+            selectedIndex = index;
+            selectedChoice = "";
+            renderAll();
+        };
+        list.appendChild(button);
+    });
+}
+
+function renderChoices() {
+    const choices = document.getElementById("choices");
+    choices.innerHTML = "";
+
+    if (LAB.mode === "volume") {
+        const item = LAB.items[selectedIndex];
+        choices.innerHTML = `
+            <button class="choice-btn" onclick="pourVolume(5)">Pour +5 mL</button>
+            <button class="choice-btn" onclick="pourVolume(10)">Pour +10 mL</button>
+            <button class="choice-btn" onclick="pourVolume(-5)">Remove -5 mL</button>
+            <button class="choice-btn" onclick="chooseAnswer('${item.target} mL')">Set prediction: ${item.target} mL</button>
+        `;
+        return;
+    }
+
+    if (LAB.mode === "compare") {
+        [
+            {label: "left", text: "Left object has more mass"},
+            {label: "right", text: "Right object has more mass"}
+        ].forEach(choice => addChoiceButton(choice.label, choice.text));
+        return;
+    }
+
+    if (LAB.mode === "engineering") {
+        LAB.items.forEach((item, index) => addChoiceButton(item.name, `${item.icon} ${item.name}`));
+        return;
+    }
+
+    if (LAB.mode === "review") {
+        ["magnetism", "solubility", "relative density", "conductivity"].forEach(label => addChoiceButton(label, label));
+        return;
+    }
+
+    LAB.targets.forEach(label => addChoiceButton(label, label));
+}
+
+function addChoiceButton(label, text) {
+    const choices = document.getElementById("choices");
+    const button = document.createElement("button");
+    button.className = "choice-btn" + (selectedChoice === label ? " selected" : "");
+    button.type = "button";
+    button.textContent = text;
+    button.onclick = () => chooseAnswer(label);
+    choices.appendChild(button);
+}
+
+function chooseAnswer(label) {
+    selectedChoice = label;
+    renderChoices();
+}
+
+function renderScene() {
+    const scene = document.getElementById("scene");
+    const item = LAB.items[selectedIndex];
+    const name = itemName(item);
+    const icon = itemIcon(item);
+
+    if (LAB.mode === "sinkfloat") {
+        scene.innerHTML = `<div class="water-tank"><div id="object" class="arcade-object">${icon}</div></div>`;
+    } else if (LAB.mode === "sort" && LAB.title.toLowerCase().includes("magnet")) {
+        scene.innerHTML = `<div class="magnet-scene"><div><div class="big-magnet">🧲</div><div id="object" class="arcade-object">${icon}</div></div></div>`;
+    } else if (LAB.mode === "sort" && LAB.title.toLowerCase().includes("solub")) {
+        scene.innerHTML = `<div class="beaker-scene"><div id="object" class="arcade-object">${icon}</div></div>`;
+    } else if (LAB.mode === "circuit") {
+        scene.innerHTML = `<div class="circuit-scene"><div><div id="bulb" class="bulb">💡</div><div id="object" class="arcade-object">${icon}</div><strong>${name}</strong></div></div>`;
+    } else if (LAB.mode === "heat") {
+        scene.innerHTML = `<div class="circuit-scene"><div><div class="bulb">🔥</div><div id="object" class="arcade-object">${icon}</div><strong>${name}</strong><div id="heatMeter">Heat meter: ▓░░░░</div></div></div>`;
+    } else if (LAB.mode === "compare") {
+        scene.innerHTML = `<div class="balance-scene">
+            <div class="balance-pan">${item.left_icon}<br>${item.left}<br><small>${item.left_value} g</small></div>
+            <div class="balance-pan">${item.right_icon}<br>${item.right}<br><small>${item.right_value} g</small></div>
+        </div>`;
+    } else if (LAB.mode === "volume") {
+        scene.innerHTML = `<div class="volume-cylinder" id="volumeCylinder" style="--fill:${volumeAmount}%"><div class="volume-label"><span id="volumeReadout">${volumeAmount}</span> mL</div></div>`;
+    } else if (LAB.mode === "layers") {
+        scene.innerHTML = `<div class="layer-column" id="layerColumn">
+            <div class="layer" style="background:#ffd166">Oil<br>Least Dense</div>
+            <div class="layer" style="background:#4cc9f0">Water<br>Middle</div>
+            <div class="layer" style="background:#b5651d;color:white;">Corn Syrup<br>Most Dense</div>
+        </div>`;
+    } else if (LAB.mode === "engineering") {
+        scene.innerHTML = `<div class="circuit-scene"><div><div id="object" class="arcade-object">${icon}</div><strong>${name}</strong><p>Choose the best toy material using evidence.</p></div></div>`;
+    } else if (LAB.mode === "review") {
+        scene.innerHTML = `<div class="circuit-scene"><div><div class="arcade-object">🧠</div><strong>${item.question}</strong></div></div>`;
+    } else {
+        scene.innerHTML = `<div class="circuit-scene"><div id="object" class="arcade-object">${icon}</div><strong>${name}</strong></div>`;
+    }
+}
+
+function pourVolume(amount) {
+    volumeAmount = Math.max(0, Math.min(80, volumeAmount + amount));
+    const cylinder = document.getElementById("volumeCylinder");
+    const readout = document.getElementById("volumeReadout");
+    if (cylinder) cylinder.style.setProperty("--fill", volumeAmount + "%");
+    if (readout) readout.textContent = volumeAmount;
+}
+
+function runTest() {
+    const item = LAB.items[selectedIndex];
+    const feedback = document.getElementById("feedback");
+
+    if (!selectedChoice && LAB.mode !== "layers") {
+        feedback.textContent = "Make a prediction first.";
+        return;
+    }
+
+    let correct = false;
+    let message = "";
+
+    if (LAB.mode === "volume") {
+        const target = item.target;
+        correct = Math.abs(volumeAmount - target) <= 5;
+        message = correct
+            ? `Great measuring! Your cylinder is close to ${target} mL.`
+            : `Try again. The target is ${target} mL, but your cylinder shows about ${volumeAmount} mL.`;
+    } else if (LAB.mode === "compare") {
+        correct = selectedChoice === item.answer;
+        const winner = item.answer === "left" ? item.left : item.right;
+        message = correct
+            ? `Correct! ${winner} has more mass, so that side of the balance goes lower.`
+            : `Not quite. ${winner} has more mass. Compare the gram measurements.`;
+    } else if (LAB.mode === "engineering") {
+        const selected = LAB.items.find(x => x.name === selectedChoice);
+        correct = selected && selected.score >= 8;
+        message = correct
+            ? `Great engineering choice! ${selected.name} works well because: ${selected.observation}`
+            : `${selected.name} might work sometimes, but another material has better evidence for this toy challenge.`;
+    } else if (LAB.mode === "review") {
+        correct = selectedChoice === item.answer;
+        message = correct
+            ? `Correct! The concept is ${item.answer}.`
+            : `Try again. Look for the property that matches the evidence.`;
+    } else if (LAB.mode === "layers") {
+        correct = true;
+        message = "Correct density column: Oil is least dense, water is in the middle, and corn syrup is most dense.";
+    } else {
+        correct = selectedChoice === item.answer;
+        message = correct
+            ? `Correct! ${item.name}: ${item.observation}`
+            : `Not quite. ${item.name} is ${item.answer}. Evidence: ${item.observation}`;
+    }
+
+    animateResult(item);
+
+    tested += 1;
+    if (correct) score += 1;
+
+    document.getElementById("score").textContent = score;
+    document.getElementById("tested").textContent = tested;
+    feedback.textContent = message + " STAAR connection: Use the evidence from the test to support your answer.";
+}
+
+function animateResult(item) {
+    const object = document.getElementById("object");
+    const bulb = document.getElementById("bulb");
+    const heatMeter = document.getElementById("heatMeter");
+
+    if (!object) return;
+
+    object.classList.remove("tested-float", "tested-sink");
+
+    if (LAB.mode === "sinkfloat") {
+        object.classList.add(item.answer === "floats" ? "tested-float" : "tested-sink");
+    }
+
+    if (LAB.mode === "sort" && item.answer === "magnetic") {
+        object.style.transform = "translateY(-50px) scale(1.12)";
+    } else if (LAB.mode === "sort") {
+        object.style.transform = "translateY(20px)";
+    }
+
+    if (LAB.mode === "circuit" && bulb) {
+        if (item.answer === "bulb lights") bulb.classList.add("on");
+        else bulb.classList.remove("on");
+    }
+
+    if (LAB.mode === "heat" && heatMeter) {
+        heatMeter.textContent = item.answer === "thermal conductor"
+            ? "Heat meter: ▓▓▓▓▓"
+            : "Heat meter: ▓▓░░░";
+    }
+}
+
+function resetArcade() {
+    selectedIndex = 0;
+    selectedChoice = "";
+    score = 0;
+    tested = 0;
+    volumeAmount = 10;
+    document.getElementById("score").textContent = "0";
+    document.getElementById("tested").textContent = "0";
+    document.getElementById("feedback").textContent = "Select an object, make a prediction, and run the test.";
+    renderAll();
+}
+
+function renderAll() {
+    renderItems();
+    renderScene();
+    renderChoices();
+    document.getElementById("challengeTitle").textContent = LAB.mission;
+}
+
+renderAll();
+</script>
+{% endblock %}

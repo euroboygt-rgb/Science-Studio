@@ -1,0 +1,379 @@
+{% extends "base.html" %}
+
+{% block title %}Science Studio{% endblock %}
+
+{% block content %}
+<style>
+    :root {
+        --science-purple: #6f2dbd;
+        --science-orange: #ff9f1c;
+        --science-blue: #12324a;
+        --science-teal: #219ebc;
+        --science-green: #2a9d8f;
+        --paper: #fffdf4;
+    }
+
+    .science-home {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .science-hero {
+        position: relative;
+        overflow: hidden;
+        border: 6px solid #111;
+        border-radius: 28px;
+        padding: 34px;
+        margin: 24px 0;
+        color: white;
+        background:
+            radial-gradient(circle at 90% 10%, rgba(255,159,28,0.35), transparent 20%),
+            radial-gradient(circle at 10% 95%, rgba(111,45,189,0.5), transparent 28%),
+            linear-gradient(135deg, #12324a 0%, #1d5575 55%, #219ebc 100%);
+        box-shadow: 9px 9px 0 rgba(17,17,17,0.25);
+    }
+
+    .science-hero::after {
+        content: "⚛️ 🧲 🔬 ⚡ 🧪 📊";
+        position: absolute;
+        right: 28px;
+        bottom: 18px;
+        font-size: 2.4rem;
+        opacity: 0.24;
+        letter-spacing: 10px;
+    }
+
+    .hero-layout {
+        display: grid;
+        grid-template-columns: 1.5fr 0.8fr;
+        gap: 24px;
+        align-items: center;
+    }
+
+    .science-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .science-badge {
+        background: var(--science-purple);
+        color: var(--science-orange);
+        border: 4px solid #111;
+        border-radius: 999px;
+        padding: 9px 15px;
+        font-weight: 1000;
+        box-shadow: 3px 3px 0 rgba(0,0,0,0.35);
+        text-shadow: none;
+    }
+
+    .science-hero h1 {
+        font-size: 3rem;
+        font-weight: 1000;
+        margin-bottom: 12px;
+    }
+
+    .science-hero p {
+        font-size: 1.25rem;
+        line-height: 1.55;
+        max-width: 850px;
+    }
+
+    .hero-image {
+        background: white;
+        border: 5px solid #111;
+        border-radius: 24px;
+        padding: 12px;
+        box-shadow: 6px 6px 0 rgba(0,0,0,0.25);
+    }
+
+    .hero-image img {
+        width: 100%;
+        display: block;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 22px;
+    }
+
+    .home-btn {
+        display: inline-block;
+        border: 4px solid #111;
+        border-radius: 12px;
+        padding: 12px 18px;
+        font-weight: 1000;
+        color: #111;
+        text-decoration: none;
+        box-shadow: 4px 4px 0 rgba(0,0,0,0.32);
+        transition: transform 0.08s ease;
+    }
+
+    .home-btn:hover {
+        transform: translateY(-2px);
+        color: #111;
+    }
+
+    .btn-orange {
+        background: var(--science-orange);
+    }
+
+    .btn-green {
+        background: #06a77d;
+        color: white;
+    }
+
+    .btn-purple {
+        background: var(--science-purple);
+        color: var(--science-orange);
+    }
+
+    .section-card {
+        border: 4px solid #111;
+        border-radius: 24px;
+        padding: 24px;
+        margin: 22px 0;
+        background: white;
+        box-shadow: 6px 6px 0 rgba(17,17,17,0.15);
+    }
+
+    .learning-path {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+    }
+
+    .unit-tile {
+        border: 4px solid #111;
+        border-radius: 18px;
+        padding: 14px;
+        background: #f7fbff;
+        text-align: center;
+        min-height: 190px;
+    }
+
+    .unit-tile img {
+        width: 100%;
+        max-height: 105px;
+        object-fit: contain;
+        margin-bottom: 8px;
+    }
+
+    .unit-tile strong {
+        display: block;
+        font-size: 1rem;
+    }
+
+    .unit-tile span {
+        display: block;
+        margin-top: 5px;
+        font-weight: 800;
+        color: #333;
+    }
+
+    .quick-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .quick-card {
+        border: 4px solid #111;
+        border-radius: 22px;
+        padding: 18px;
+        background: var(--paper);
+        min-height: 230px;
+        box-shadow: 5px 5px 0 rgba(17,17,17,0.16);
+    }
+
+    .quick-card h3 {
+        font-size: 1.55rem;
+        font-weight: 1000;
+        margin-bottom: 10px;
+    }
+
+    .quick-card img {
+        width: 88px;
+        height: 70px;
+        object-fit: contain;
+        float: right;
+        margin-left: 8px;
+    }
+
+    .quick-card p {
+        min-height: 58px;
+    }
+
+    .mini-btn {
+        display: inline-block;
+        border: 3px solid #111;
+        border-radius: 10px;
+        padding: 8px 12px;
+        font-weight: 1000;
+        color: #111;
+        text-decoration: none;
+        box-shadow: 3px 3px 0 rgba(0,0,0,0.25);
+        background: var(--science-orange);
+    }
+
+    .mini-btn:hover {
+        color: #111;
+        transform: translateY(-1px);
+    }
+
+    .doodle-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+    }
+
+    .doodle-chip {
+        background: #f5edff;
+        color: #111;
+        border: 3px solid #111;
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-weight: 900;
+    }
+
+    @media (max-width: 900px) {
+        .hero-layout,
+        .learning-path,
+        .quick-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .science-hero h1 {
+            font-size: 2.2rem;
+        }
+    }
+</style>
+
+<div class="science-home">
+
+    <section class="science-hero">
+        <div class="hero-layout">
+            <div>
+                <div class="science-badges">
+                    <span class="science-badge">5th Grade Science</span>
+                    <span class="science-badge">TEKS-Aligned</span>
+                    <span class="science-badge">STAAR Practice</span>
+                    <span class="science-badge">Live Classroom Site</span>
+                </div>
+
+                <h1>Science Studio</h1>
+
+                <p>
+                    Your 1st 9 Weeks science classroom hub with daily lessons, student activities,
+                    teacher tools, interactive labs, vocabulary, written CER, exit tickets, printable packets,
+                    and science doodle notebook resources.
+                </p>
+
+                <div class="hero-buttons">
+                    <a class="home-btn btn-orange" href="/first-nine-weeks">Open All 45 Days</a>
+                    <a class="home-btn btn-green" href="/student-dashboard">Student Dashboard</a>
+                    <a class="home-btn btn-purple" href="/teacher-dashboard">Teacher Dashboard</a>
+                    <a class="home-btn btn-orange" href="/print-center">Print Center</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="/static/home_science/science_lab.svg" alt="5th Grade Science Lab">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-card">
+        <h2>🧭 1st 9 Weeks Learning Path</h2>
+        <p>Follow the science journey from matter to mixtures, force and motion, energy transformations, review, and testing.</p>
+
+        <div class="learning-path">
+            <div class="unit-tile">
+                <img src="/static/home_science/matter_icon.svg" alt="Matter">
+                <strong>Days 3–16</strong>
+                <span>Physical Properties of Matter</span>
+            </div>
+
+            <div class="unit-tile">
+                <img src="/static/home_science/mixtures_icon.svg" alt="Mixtures">
+                <strong>Days 17–26</strong>
+                <span>Mixtures and Solutions</span>
+            </div>
+
+            <div class="unit-tile">
+                <img src="/static/home_science/forces_icon.svg" alt="Force and Motion">
+                <strong>Days 27–36</strong>
+                <span>Force and Motion</span>
+            </div>
+
+            <div class="unit-tile">
+                <img src="/static/home_science/energy_icon.svg" alt="Energy">
+                <strong>Days 37–43</strong>
+                <span>Energy Transformations</span>
+            </div>
+        </div>
+
+        <div class="doodle-strip">
+            <span class="doodle-chip">🔬 Labs</span>
+            <span class="doodle-chip">📓 Notebook Notes</span>
+            <span class="doodle-chip">🧠 CER</span>
+            <span class="doodle-chip">⭐ STAAR DOK 2</span>
+            <span class="doodle-chip">🖨️ Printables</span>
+        </div>
+    </section>
+
+    <section class="section-card">
+        <h2>🚀 Quick Launch</h2>
+
+        <div class="quick-grid">
+            <div class="quick-card">
+                <img src="/static/home_science/matter_icon.svg" alt="Lessons">
+                <h3>Daily Lessons</h3>
+                <p>Access all 45 days of the updated 1st 9 Weeks curriculum with student and teacher views.</p>
+                <a class="mini-btn" href="/first-nine-weeks">Open Lessons</a>
+            </div>
+
+            <div class="quick-card">
+                <img src="/static/home_science/science_lab.svg" alt="Student Dashboard">
+                <h3>Student Dashboard</h3>
+                <p>Student-friendly launch page for lessons, labs, vocabulary, review, and reflection.</p>
+                <a class="mini-btn" href="/student-dashboard">Open Student View</a>
+            </div>
+
+            <div class="quick-card">
+                <img src="/static/home_science/print_icon.svg" alt="Print Center">
+                <h3>Print Center</h3>
+                <p>Print student doodle notes, teacher keys, notebook resources, and lesson packets from one place.</p>
+                <a class="mini-btn" href="/print-center">Open Print Center</a>
+            </div>
+
+            <div class="quick-card">
+                <img src="/static/home_science/forces_icon.svg" alt="Labs">
+                <h3>Lab Library</h3>
+                <p>Open interactive science labs and simulations for matter, mixtures, force, motion, and review.</p>
+                <a class="mini-btn" href="/labs">Open Labs</a>
+            </div>
+
+            <div class="quick-card">
+                <img src="/static/home_science/energy_icon.svg" alt="Vocabulary">
+                <h3>Vocabulary</h3>
+                <p>Use vocabulary cards, anchor charts, visuals, examples, and STAAR connections.</p>
+                <a class="mini-btn" href="/vocabulary">Open Vocabulary</a>
+            </div>
+
+            <div class="quick-card">
+                <img src="/static/home_science/mixtures_icon.svg" alt="Resources">
+                <h3>Teacher Tools</h3>
+                <p>Open teacher planning tools, printable resources, labs, stations, and review supports.</p>
+                <a class="mini-btn" href="/teacher-dashboard">Open Teacher Tools</a>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock %}

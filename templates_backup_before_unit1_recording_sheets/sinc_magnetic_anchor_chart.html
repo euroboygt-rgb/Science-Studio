@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}SINC Magnetic Materials Anchor Chart{% endblock %}
+
+{% block content %}
+<style>
+.sinc-page {
+    max-width: 1000px;
+    margin: 24px auto;
+    background: #fff7d6;
+    border: 6px solid #111;
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+}
+
+.sinc-page h1 {
+    margin-top: 0;
+}
+
+.sinc-page img {
+    width: 100%;
+    border: 5px solid #111;
+    border-radius: 22px;
+    background: white;
+}
+
+.sinc-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+}
+
+.sinc-btn {
+    display: inline-block;
+    background: #ff9f1c;
+    color: #111;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media print {
+    nav,
+    footer,
+    .sinc-actions,
+    #scienceStudioAiWidget {
+        display: none !important;
+    }
+
+    .sinc-page {
+        border: none;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .sinc-page img {
+        border: none;
+    }
+}
+</style>
+
+<section class="sinc-page">
+    <h1>🧲 SINC Magnetic Materials Anchor Chart</h1>
+    <p><strong>SINC</strong> helps students remember the common magnetic materials: <strong>Steel, Iron, Nickel, and Cobalt.</strong></p>
+
+    <div class="sinc-actions">
+        <button class="sinc-btn" type="button" onclick="window.print()">Print Anchor Chart</button>
+        <a class="sinc-btn" href="/labs/unit1/arcade/magnetism-sorter">Back to Magnetism Sorter</a>
+    </div>
+
+    <img src="/static/anchor_charts/sinc_magnetic_anchor_chart.svg" alt="SINC magnetic materials anchor chart">
+</section>
+{% endblock %}

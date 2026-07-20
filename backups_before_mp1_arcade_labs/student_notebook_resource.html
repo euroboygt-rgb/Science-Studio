@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day {{ lesson_day }} Notebook Resource</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+            color: #111;
+            margin: 20px;
+        }
+
+        .page {
+            max-width: 950px;
+            margin: 0 auto;
+            border: 5px solid #111;
+            border-radius: 24px;
+            padding: 20px;
+        }
+
+        .top-buttons {
+            margin-bottom: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            border: 3px solid #111;
+            border-radius: 10px;
+            padding: 8px 12px;
+            background: #ffc107;
+            color: #111;
+            font-weight: 900;
+            text-decoration: none;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .header {
+            border: 4px solid #111;
+            border-radius: 18px;
+            padding: 16px;
+            background: #e8f4ff;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        .doodle-section {
+            border: 4px solid #111;
+            border-radius: 18px;
+            padding: 14px;
+            margin: 14px 0;
+            page-break-inside: avoid;
+        }
+
+        .doodle-title {
+            display: inline-block;
+            border: 3px solid #111;
+            border-radius: 999px;
+            padding: 6px 12px;
+            background: #fff7d6;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .three-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .box {
+            border: 3px solid #111;
+            border-radius: 14px;
+            min-height: 95px;
+            padding: 10px;
+            background: white;
+        }
+
+        .big-box {
+            min-height: 145px;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .vocab-box {
+            border: 3px solid #111;
+            border-radius: 14px;
+            padding: 8px;
+            min-height: 190px;
+            text-align: center;
+        }
+
+        .vocab-box img {
+            max-width: 65px;
+            max-height: 48px;
+            display: block;
+            margin: 0 auto 5px auto;
+        }
+
+        .line {
+            border-bottom: 2px solid #111;
+            height: 26px;
+            margin: 6px 0;
+        }
+
+        .teacher-key {
+            border: 3px dashed #111;
+            border-radius: 14px;
+            padding: 10px;
+            margin-top: 10px;
+            background: #fff7d6;
+        }
+
+        .sketch-space {
+            min-height: 160px;
+            border: 3px dashed #111;
+            border-radius: 14px;
+            background:
+                linear-gradient(90deg, transparent 95%, rgba(0,0,0,0.06) 95%),
+                linear-gradient(transparent 95%, rgba(0,0,0,0.06) 95%);
+            background-size: 22px 22px;
+        }
+
+        .small-note {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        @media print {
+            .top-buttons {
+                display: none;
+            }
+
+            body {
+                margin: 0.25in;
+            }
+
+            .page {
+                border: none;
+                padding: 0;
+            }
+
+            .doodle-section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .two-col, .three-col, .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="page">
+{% set doodle = get_doodle_resource(lesson_day) %}
+
+    <div class="top-buttons">
+        <button class="btn" onclick="window.print()">Print Resource</button>
+
+        <a class="btn" href="/print-center">Back to Print Center</a>
+
+
+        {% if current_view == "teacher" %}
+            <a class="btn" href="/first-nine-weeks/day/{{ lesson_day }}?view=teacher">Back to Teacher Lesson</a>
+        {% else %}
+            <a class="btn" href="/first-nine-weeks/day/{{ lesson_day }}?view=student">Back to Student Lesson</a>
+        {% endif %}
+    </div>
+
+    <section class="header">
+        <h1>Science Notebook Doodle Resource</h1>
+        <h2>Day {{ lesson_day }}: {{ lesson_title }}</h2>
+        <p><strong>Topic:</strong> {{ flow.topic|capitalize }}</p>
+        <p><strong>Name:</strong> ____________________________ <strong>Date:</strong> ____________________</p>
+    </section>
+
+    <section class="doodle-section">
+        <span class="doodle-title">🎯 Learning Target</span>
+        {% if learning_target %}
+            <p>{{ learning_target }}</p>
+        {% else %}
+            <p>I can explain {{ flow.topic }} using observations, models, data, and science vocabulary.</p>
+        {% endif %}
+    </section>
+
+    
+
+    {% set power_frame = get_power_frame(lesson_day) %}
+
+    <section class="doodle-section">
+        <span class="doodle-title">⚡ Power Frame</span>
+
+        <div class="three-col">
+            <div class="box">
+                <strong>I can...</strong>
+                <p>{{ power_frame.i_can }}</p>
+            </div>
+
+            <div class="box">
+                <strong>By...</strong>
+                <p>{{ power_frame.by }}</p>
+            </div>
+
+            <div class="box">
+                <strong>I know I have learned this...</strong>
+                <p>{{ power_frame.success }}</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="doodle-section">
+        <span class="doodle-title">📌 {{ doodle.title }}</span>
+        <p class="small-note">Use the keyword bank, label the pictures, and complete the fill-in-the-blank notes.</p>
+
+        <div class="doodle-section" style="background:#fffbe8;">
+            <span class="doodle-title">🔑 Keyword Bank</span>
+            <p>
+                {% for word in doodle.word_bank %}
+                    <span style="display:inline-block; border:2px solid #111; border-radius:999px; padding:5px 9px; margin:4px; font-weight:900;">
+                        {{ word }}
+                    </span>
+                {% endfor %}
+            </p>
+        </div>
+
+        <div class="doodle-section" style="background:#eef7ff;">
+            <span class="doodle-title">🏷️ Label the Pictures</span>
+            <p class="small-note">Use the keyword bank. Write the correct label under each picture.</p>
+
+            <div class="vocab-grid">
+                {% for item in doodle.label_pictures %}
+                    <div class="vocab-box">
+                        <img src="{{ doodle_picture_path(item.icon) }}?v=1" alt="{{ item.icon }}" style="max-width:100%; max-height:120px;">
+                        <p><strong>Clue:</strong> {{ item.clue }}</p>
+                        <p><strong>Label:</strong></p>
+                        <div class="line"></div>
+
+                        {% if current_view == "teacher" %}
+                            <div class="teacher-key">
+                                <strong>Answer:</strong> {{ item.answer }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="doodle-section" style="background:#f4fff2;">
+            <span class="doodle-title">✏️ Fill in the Blank Notes</span>
+
+            {% for item in doodle.fill_blanks %}
+                <div class="box" style="min-height:65px; margin-bottom:10px;">
+                    <p>{{ item.sentence }}</p>
+
+                    {% if current_view == "teacher" %}
+                        <div class="teacher-key">
+                            <strong>Answer:</strong> {{ item.answer }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="doodle-section" style="background:#fff3f3;">
+            <span class="doodle-title">🎨 Draw and Label the Model</span>
+            <p>{{ doodle.model_prompt }}</p>
+            <div class="sketch-space"></div>
+
+            <p class="small-note">Labels I used:</p>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </section>
+
+
+    <section class="doodle-section">
+        <span class="doodle-title">👀 Phenomenon / Model</span>
+        <p>{{ flow.phenomenon }}</p>
+
+        <div class="two-col">
+            <div class="box big-box">
+                <strong>Draw what you notice:</strong>
+                <div class="sketch-space"></div>
+            </div>
+
+            <div class="box big-box">
+                <strong>Write what you wonder:</strong>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="doodle-section">
+        <span class="doodle-title">📓 Important Notes to Copy</span>
+
+        {% for item in flow.science_notebook %}
+            <p>☐ {{ item }}</p>
+        {% endfor %}
+
+        <div class="box">
+            <strong>My own example or connection:</strong>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+
+        {% if current_view == "teacher" %}
+            <div class="teacher-key">
+                <h3>Teacher Look-Fors</h3>
+                <ul>
+                    <li>Students use today’s vocabulary correctly.</li>
+                    <li>Students connect the note to the learning target.</li>
+                    <li>Students include a sketch, model, or example when appropriate.</li>
+                </ul>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="doodle-section">
+        <span class="doodle-title">🔬 Lab Notebook Organizer</span>
+
+        <div class="two-col">
+            <div class="box">
+                <strong>Investigation Question:</strong>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+
+            <div class="box">
+                <strong>Prediction:</strong>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+
+        <div class="two-col" style="margin-top:12px;">
+            <div class="box big-box">
+                <strong>Data / Observations:</strong>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+
+            <div class="box big-box">
+                <strong>Labeled Model / Diagram:</strong>
+                <div class="sketch-space"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="doodle-section">
+        <span class="doodle-title">🧠 Claim, Evidence, Reasoning</span>
+        <p><strong>CER Question:</strong> {{ flow.daily.cer_question }}</p>
+
+        <div class="three-col">
+            <div class="box big-box">
+                <strong>Claim</strong>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+
+            <div class="box big-box">
+                <strong>Evidence</strong>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+
+            <div class="box big-box">
+                <strong>Reasoning</strong>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+
+        {% if current_view == "teacher" %}
+            <div class="teacher-key">
+                <h3>Teacher Example CER</h3>
+                <p>{{ flow.daily.cer_example }}</p>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="doodle-section">
+        <span class="doodle-title">🎟️ Exit Ticket</span>
+        <p>{{ flow.daily.exit_question }}</p>
+
+        <div class="box">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+
+        {% if current_view == "teacher" %}
+            <div class="teacher-key">
+                <h3>Teacher Answer</h3>
+                <p>{{ flow.daily.exit_answer }}</p>
+            </div>
+        {% endif %}
+    </section>
+
+</div>
+</body>
+</html>

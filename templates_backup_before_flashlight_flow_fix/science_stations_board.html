@@ -1,0 +1,1687 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Digital Science Stations Rotation Board</h1>
+<p class="lead">
+  Pick a station, watch the voice demo, try the activity, answer the quick check, and mark it complete.
+</p>
+
+<a href="/first-nine-weeks/day/43?view=student" class="btn btn-secondary mb-4">
+  Back to Day 43
+</a>
+
+<style>
+  .station-banner {
+    background: #212529;
+    color: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+
+  .badge-pill {
+    display: inline-block;
+    background: #fff3cd;
+    color: #111;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: bold;
+    margin: 5px;
+  }
+
+  .work-card {
+    border: 1px solid #ddd;
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+  }
+
+  .station-card {
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 15px;
+    background: white;
+    margin-bottom: 15px;
+    min-height: 155px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .station-card:hover {
+    transform: scale(1.02);
+    background: #fff3cd;
+  }
+
+  .station-card.complete {
+    background: #d1e7dd;
+  }
+
+  .station-card.active {
+    background: #cfe2ff;
+  }
+
+  .control-screen {
+    background:
+      radial-gradient(circle at 12% 20%, white 0 2px, transparent 3px),
+      radial-gradient(circle at 35% 70%, white 0 2px, transparent 3px),
+      radial-gradient(circle at 70% 25%, white 0 2px, transparent 3px),
+      radial-gradient(circle at 90% 75%, white 0 2px, transparent 3px),
+      linear-gradient(180deg, #102542, #1b4965);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .timer-box, .progress-box {
+    background: white;
+    color: #111;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .timer-number {
+    font-size: 52px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .progress-track {
+    height: 32px;
+    background: #e9ecef;
+    border: 3px solid #111;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #d1e7dd;
+    transition: width 0.5s;
+  }
+
+  .student-path {
+    height: 125px;
+    background: #eaf6ff;
+    border: 4px solid #111;
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .track {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    height: 8px;
+    background: #111;
+    border-radius: 999px;
+  }
+
+  .avatar {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #ffccd5;
+    border: 4px solid #111;
+    transition: left 0.5s;
+  }
+
+  .avatar::after {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 52px;
+    width: 18px;
+    height: 42px;
+    background: #111;
+    border-radius: 10px;
+  }
+
+  .flag {
+    position: absolute;
+    right: 25px;
+    bottom: 22px;
+    font-size: 58px;
+  }
+
+  .station-tabs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+
+  .station-tab {
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 10px 16px;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .station-tab.active {
+    background: #fff3cd;
+  }
+
+  .demo-stage {
+    background:
+      linear-gradient(180deg, #bde0fe 0%, #eaf6ff 58%, #d1e7dd 58%, #d1e7dd 100%);
+    border: 5px solid #111;
+    border-radius: 22px;
+    min-height: 360px;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+
+  .demo-board {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 16px;
+    max-width: 520px;
+    min-height: 260px;
+  }
+
+  .demo-title {
+    font-size: 26px;
+    font-weight: bold;
+    border-bottom: 3px solid #111;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+
+  .demo-visual {
+    position: absolute;
+    right: 35px;
+    top: 45px;
+    width: 260px;
+    height: 240px;
+    background: white;
+    border: 4px solid #111;
+    border-radius: 20px;
+    padding: 15px;
+    font-size: 48px;
+    text-align: center;
+  }
+
+  .demo-step-number {
+    position: absolute;
+    right: 35px;
+    bottom: 25px;
+    background: #fff3cd;
+    color: #111;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-weight: bold;
+  }
+
+  .try-box {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 15px;
+  }
+
+  .sim-panel {
+    background: #f8f9fa;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 15px;
+    margin-top: 12px;
+  }
+
+  .sim-stage {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    min-height: 210px;
+    padding: 18px;
+    margin: 12px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sim-object {
+    display: inline-block;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 15px;
+    margin: 8px;
+    background: #fff3cd;
+    font-weight: bold;
+    min-width: 110px;
+    text-align: center;
+  }
+
+  .mini-beaker {
+    width: 180px;
+    height: 190px;
+    border: 5px solid #111;
+    border-top: none;
+    border-radius: 0 0 22px 22px;
+    margin: 10px auto;
+    background: #bde0fe;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .particle-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #111;
+    border-radius: 50%;
+    transition: all 1s;
+  }
+
+  .mini-track {
+    height: 80px;
+    background: #d1e7dd;
+    border: 4px solid #111;
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 12px;
+  }
+
+  .mini-car {
+    position: absolute;
+    left: 20px;
+    bottom: 18px;
+    font-size: 42px;
+    transition: left 1s ease-out;
+  }
+
+  .mini-graph {
+    height: 230px;
+    border: 4px solid #111;
+    border-radius: 18px;
+    background: white;
+    position: relative;
+    margin-top: 12px;
+  }
+
+  .mini-bar {
+    position: absolute;
+    bottom: 35px;
+    width: 58px;
+    background: #e9ecef;
+    border: 3px solid #111;
+    text-align: center;
+    font-weight: bold;
+    transition: height 0.6s;
+  }
+
+  .feedback {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .correct {
+    background: #d1e7dd;
+    color: #0f5132;
+  }
+
+  .incorrect {
+    background: #f8d7da;
+    color: #842029;
+  }
+
+  .warning {
+    background: #fff3cd;
+    color: #664d03;
+  }
+
+  .summary-input {
+    min-width: 180px;
+    font-size: 14px;
+  }
+
+  .summary-evidence {
+    min-width: 240px;
+    font-size: 14px;
+  }
+
+  .summary-action-btn {
+    margin: 2px;
+    white-space: nowrap;
+  }
+
+  .sparkle {
+    position: absolute;
+    font-size: 28px;
+    animation: pop 1.1s ease-out forwards;
+    pointer-events: none;
+  }
+
+  @keyframes pop {
+    0% { transform: scale(0.2); opacity: 0; }
+    30% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0; }
+  }
+</style>
+
+<div class="station-banner">
+  <h2>🧭 1st 9 Weeks Science Stations</h2>
+  <p class="mb-2">
+    Each station now has a voice demo and a Try It activity.
+  </p>
+  <span class="badge-pill">Watch Demo</span>
+  <span class="badge-pill">Try It</span>
+  <span class="badge-pill">Quick Check</span>
+  <span class="badge-pill">Evidence</span>
+  <span class="badge-pill">Confidence</span>
+</div>
+
+<div class="control-screen">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="timer-box">
+        <h4>Station Timer</h4>
+        <div id="timerDisplay" class="timer-number">08:00</div>
+        <button class="btn btn-success" onclick="startTimer()">Start</button>
+        <button class="btn btn-warning" onclick="pauseTimer()">Pause</button>
+        <button class="btn btn-secondary" onclick="resetTimer()">Reset</button>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="progress-box">
+        <h4>Station Progress</h4>
+        <div class="progress-track">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <p class="mt-2 mb-0"><strong id="progressText">0 of 8 stations complete</strong></p>
+      </div>
+
+      <div class="student-path" id="studentPath">
+        <div class="track"></div>
+        <div id="avatar" class="avatar"></div>
+        <div class="flag">🏁</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="work-card">
+  <h2>Part 1: Pick a Station</h2>
+  <div class="row" id="stationGrid"></div>
+</div>
+
+<div class="work-card">
+  <h2 id="stationTitle">Choose a station to begin.</h2>
+
+  <div class="station-tabs">
+    <button id="demoTab" class="station-tab active" onclick="showMode('demo')">▶ Watch Demo</button>
+    <button id="tryTab" class="station-tab" onclick="showMode('try')">🧪 Try It</button>
+    <button id="workTab" class="station-tab" onclick="showMode('work')">📝 Evidence Tracker</button>
+  </div>
+
+  <div id="demoMode">
+    <div class="demo-stage">
+      <div class="demo-board">
+        <div id="demoStepTitle" class="demo-title">Station Demo</div>
+        <p id="demoNarration">Pick a station above, then press Start Voice Demo.</p>
+      </div>
+
+      <div id="demoVisual" class="demo-visual">🔬</div>
+      <div id="demoStepNumber" class="demo-step-number">Step 0 of 0</div>
+    </div>
+
+    <button class="btn btn-success" onclick="startVoiceDemo()">Start Voice Demo</button>
+    <button class="btn btn-primary" onclick="startSilentDemo()">Start Silent Demo</button>
+    <button class="btn btn-warning" onclick="repeatDemoStep()">Repeat Step</button>
+    <button class="btn btn-secondary" onclick="previousDemoStep()">Previous</button>
+    <button class="btn btn-secondary" onclick="nextDemoStep()">Next</button>
+    <button class="btn btn-danger" onclick="stopVoice()">Stop Voice</button>
+
+    <div class="mt-3">
+      <label class="form-label"><strong>Voice speed:</strong></label>
+      <select id="voiceSpeed" class="form-select" style="max-width: 220px;">
+        <option value="0.85">Slow</option>
+        <option value="1" selected>Normal</option>
+        <option value="1.15">Fast</option>
+      </select>
+    </div>
+
+    <div id="demoFeedback"></div>
+  </div>
+
+  <div id="tryMode" style="display:none;">
+    <div class="try-box">
+      <h3 id="tryTitle">Try It Mini-Simulator</h3>
+      <p id="tryTask">Pick a station to see the activity.</p>
+
+      <div id="miniSimulatorArea" class="mt-3"></div>
+
+      <button class="btn btn-primary mt-3" onclick="showHint()">Show Hint</button>
+      <div id="tryFeedback"></div>
+    </div>
+
+    <div class="try-box">
+      <h3>Quick Check</h3>
+      <p id="quickQuestion">The station question will appear here.</p>
+
+      <select id="quickAnswer" class="form-select mb-3">
+        <option selected>Choose...</option>
+      </select>
+
+      <button class="btn btn-success" onclick="checkQuickAnswer()">Check Quick Check</button>
+      <div id="quickFeedback"></div>
+    </div>
+  </div>
+
+  <div id="workMode" style="display:none;">
+    <div class="try-box">
+      <h3>Evidence and Confidence Tracker</h3>
+
+      <label class="form-label"><strong>My answer or idea:</strong></label>
+      <textarea id="studentAnswer" class="form-control mb-3" rows="2" placeholder="Write your answer or idea here."></textarea>
+
+      <label class="form-label"><strong>Evidence or reasoning:</strong></label>
+      <textarea id="studentEvidence" class="form-control mb-3" rows="3" placeholder="Use science vocabulary, data, or observations."></textarea>
+
+      <label class="form-label"><strong>Confidence rating:</strong></label>
+      <select id="confidenceRating" class="form-select mb-3">
+        <option selected>Choose...</option>
+        <option>1 - I need help</option>
+        <option>2 - I am starting to understand</option>
+        <option>3 - I understand most of it</option>
+        <option>4 - I can explain it to someone else</option>
+      </select>
+
+      <button class="btn btn-primary" onclick="saveStationWork()">Save Station Work</button>
+      <button class="btn btn-warning" onclick="markComplete()">Mark Station Complete</button>
+
+      <div id="saveFeedback"></div>
+    </div>
+  </div>
+</div>
+
+<div class="work-card">
+  <h2>Part 2: My Station Summary</h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered bg-white">
+      <thead>
+        <tr>
+          <th>Station</th>
+          <th>Topic</th>
+          <th>My Answer</th>
+          <th>Evidence or Reasoning</th>
+          <th>Confidence</th>
+          <th>Complete?</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="summaryTable"></tbody>
+    </table>
+  </div>
+
+  <button class="btn btn-danger" onclick="clearAllWork()">Clear All Station Work</button>
+  <button class="btn btn-primary" onclick="window.print()">Print Station Summary</button>
+</div>
+
+<script>
+  const stations = [
+    {
+      id: 1,
+      title: "Physical Properties of Matter",
+      emoji: "🧱",
+      topic: "Matter",
+      demoVisual: "🧲⚖️💧",
+      task: "Sort objects or cards by mass, volume, magnetism, solubility, density, conductivity, and insulation.",
+      goal: "Explain which physical property was used to classify each item.",
+      strategy: "Look for what can be observed, measured, or tested.",
+      demoSteps: [
+        ["Physical Properties", "A physical property is a characteristic of matter that can be observed or measured.", "🧱"],
+        ["Examples", "Mass, volume, magnetism, solubility, density, conductivity, and insulation are physical properties.", "⚖️"],
+        ["How This Station Works", "At this station, students decide which property is being tested or used to sort objects.", "🧲"],
+        ["STAAR Tip", "On STAAR, ask yourself: What property helps me describe, compare, or classify this material?", "⭐"]
+      ],
+      tryTask: "Which property explains whether a material is attracted to a magnet?",
+      tryChoices: ["Magnetism", "Solubility", "Volume", "Temperature"],
+      tryAnswer: "Magnetism",
+      hint: "A magnet tests whether an object is magnetic.",
+      question: "Which property explains whether a material is attracted to a magnet?",
+      choices: ["Magnetism", "Solubility", "Volume", "Temperature"],
+      answer: "Magnetism"
+    },
+    {
+      id: 2,
+      title: "Separating Mixtures",
+      emoji: "🧪",
+      topic: "Mixtures and Solutions",
+      demoVisual: "🧲🪨💧",
+      task: "Choose the best method to separate mixtures using particle size, magnetism, relative density, solubility, or evaporation.",
+      goal: "Match each mixture to the best separation method and explain why.",
+      strategy: "Ask: What property is different between the materials?",
+      demoSteps: [
+        ["Mixture Review", "A mixture has two or more materials that keep their own properties.", "🥣"],
+        ["Separation Methods", "Mixtures can be separated by particle size, magnetism, relative density, solubility, or evaporation.", "🧲"],
+        ["How This Station Works", "Students choose the best tool or process to separate each mixture.", "🪨"],
+        ["STAAR Tip", "Look for clues like screen, magnet, floating, dissolving, or evaporating.", "⭐"]
+      ],
+      tryTask: "A screen separates gravel from sand. Which property is used?",
+      tryChoices: ["Particle size", "Gravity", "Electrical conductivity", "Mechanical energy"],
+      tryAnswer: "Particle size",
+      hint: "Screens separate larger pieces from smaller pieces.",
+      question: "A screen separates gravel from sand. Which property is used?",
+      choices: ["Particle size", "Gravity", "Electrical conductivity", "Mechanical energy"],
+      answer: "Particle size"
+    },
+    {
+      id: 3,
+      title: "Particles Too Small to See",
+      emoji: "🔬",
+      topic: "Particles",
+      demoVisual: "💧✨🔬",
+      task: "Use models to explain what happens when salt or sugar dissolves in water.",
+      goal: "Explain that matter is still present even when particles are too small to see.",
+      strategy: "Do not choose answers that say matter disappeared.",
+      demoSteps: [
+        ["Tiny Particles", "Matter can be made of particles that are too small to see with only your eyes.", "🔬"],
+        ["Dissolving", "When sugar dissolves in water, tiny sugar particles spread throughout the water.", "💧"],
+        ["Important Idea", "The sugar did not disappear. It is still there, but the particles are too small to see.", "✨"],
+        ["STAAR Tip", "Never choose an answer that says matter disappeared forever.", "⭐"]
+      ],
+      tryTask: "Sugar dissolves in water. Why can the sugar no longer be seen?",
+      tryChoices: ["The sugar particles spread out and are too small to see", "The sugar disappeared forever", "The sugar turned into plastic", "The sugar became magnetic"],
+      tryAnswer: "The sugar particles spread out and are too small to see",
+      hint: "Matter does not disappear. Think tiny particles.",
+      question: "Sugar dissolves in water. Why can the sugar no longer be seen?",
+      choices: ["The sugar particles spread out and are too small to see", "The sugar disappeared forever", "The sugar turned into plastic", "The sugar became magnetic"],
+      answer: "The sugar particles spread out and are too small to see"
+    },
+    {
+      id: 4,
+      title: "Force and Motion",
+      emoji: "🚗",
+      topic: "Force and Motion",
+      demoVisual: "🚗⬇️🛑",
+      task: "Analyze examples of gravity, friction, magnetism, balanced forces, and unequal forces.",
+      goal: "Identify the force and explain how it affects motion.",
+      strategy: "Look for words like push, pull, slow down, fall, roll, attract, or repel.",
+      demoSteps: [
+        ["Force", "A force is a push or pull that can change motion.", "💪"],
+        ["Gravity", "Gravity pulls objects toward Earth, like a car moving down a ramp.", "⬇️"],
+        ["Friction", "Friction acts against motion when surfaces touch. Rough surfaces usually make more friction.", "🛑"],
+        ["STAAR Tip", "Look for clues like rough, smooth, slow down, fall, push, or pull.", "⭐"]
+      ],
+      tryTask: "A rough surface makes a toy car slow down faster. Which force increased?",
+      tryChoices: ["Friction", "Light", "Sound", "Solubility"],
+      tryAnswer: "Friction",
+      hint: "This force acts opposite motion when surfaces touch.",
+      question: "A rough surface makes a toy car slow down faster. Which force increased?",
+      choices: ["Friction", "Light", "Sound", "Solubility"],
+      answer: "Friction"
+    },
+    {
+      id: 5,
+      title: "Variables and Fair Tests",
+      emoji: "📊",
+      topic: "Variables",
+      demoVisual: "📏🚗📊",
+      task: "Read investigation scenarios and identify independent variables, dependent variables, and controlled variables.",
+      goal: "Explain how to make each investigation a fair test.",
+      strategy: "Changed on purpose = independent. Measured result = dependent. Same things = controls.",
+      demoSteps: [
+        ["Independent Variable", "The independent variable is the one thing changed on purpose.", "🔁"],
+        ["Dependent Variable", "The dependent variable is what is measured or observed.", "📏"],
+        ["Controlled Variables", "Controlled variables stay the same to make the test fair.", "✅"],
+        ["STAAR Tip", "Changed equals independent. Measured equals dependent. Same equals controlled.", "⭐"]
+      ],
+      tryTask: "A student tests how ramp height affects distance. What is the independent variable?",
+      tryChoices: ["Ramp height", "Distance traveled", "Same toy car", "Same floor"],
+      tryAnswer: "Ramp height",
+      hint: "Independent variable means what is changed on purpose.",
+      question: "A student tests how ramp height affects distance. What is the independent variable?",
+      choices: ["Ramp height", "Distance traveled", "Same toy car", "Same floor"],
+      answer: "Ramp height"
+    },
+    {
+      id: 6,
+      title: "Graphs and Data",
+      emoji: "📈",
+      topic: "Graphs and Data",
+      demoVisual: "📊🏀✅",
+      task: "Read data tables and graphs from ramp, balloon rocket, and ball bounce investigations.",
+      goal: "Use data to identify patterns and support claims.",
+      strategy: "Use numbers from the table or graph as evidence.",
+      demoSteps: [
+        ["Graphs Show Data", "Graphs help scientists see patterns in data.", "📊"],
+        ["Axis Review", "The x-axis usually shows what changed. The y-axis usually shows what was measured.", "📈"],
+        ["Evidence", "Strong science answers use numbers from the table or graph.", "🔢"],
+        ["STAAR Tip", "Find the tallest bar, shortest bar, or pattern before choosing your answer.", "⭐"]
+      ],
+      tryTask: "A rubber ball bounced 74 cm and a foam ball bounced 18 cm. Which claim is supported?",
+      tryChoices: ["The rubber ball bounced higher", "The foam ball bounced higher", "Both bounced the same", "No data was collected"],
+      tryAnswer: "The rubber ball bounced higher",
+      hint: "Compare the numbers. 74 cm is greater than 18 cm.",
+      question: "A rubber ball bounced 74 cm and a foam ball bounced 18 cm. Which claim is supported?",
+      choices: ["The rubber ball bounced higher", "The foam ball bounced higher", "Both bounced the same", "No data was collected"],
+      answer: "The rubber ball bounced higher"
+    },
+    {
+      id: 7,
+      title: "Claim, Evidence, and Reasoning",
+      emoji: "📝",
+      topic: "CER",
+      demoVisual: "📝🔢💭",
+      task: "Write short CER responses using data from matter, mixtures, and force and motion investigations.",
+      goal: "Write a claim supported by number evidence or observations.",
+      strategy: "Claim answers the question. Evidence proves it. Reasoning explains why.",
+      demoSteps: [
+        ["Claim", "A claim is your answer to the science question.", "📝"],
+        ["Evidence", "Evidence is data or observations that support your claim.", "🔢"],
+        ["Reasoning", "Reasoning explains why the evidence supports the claim using science ideas.", "💭"],
+        ["STAAR Tip", "A strong response uses data, not just an opinion.", "⭐"]
+      ],
+      tryTask: "Which sentence is evidence?",
+      tryChoices: ["The toy car traveled 82 cm", "The lab was fun", "I liked the toy car", "The graph looked nice"],
+      tryAnswer: "The toy car traveled 82 cm",
+      hint: "Evidence uses data or observations.",
+      question: "Which sentence is evidence?",
+      choices: ["The toy car traveled 82 cm", "The lab was fun", "I liked the toy car", "The graph looked nice"],
+      answer: "The toy car traveled 82 cm"
+    },
+    {
+      id: 8,
+      title: "Vocabulary Power",
+      emoji: "💪",
+      topic: "Vocabulary",
+      demoVisual: "💪📚⭐",
+      task: "Match vocabulary words to definitions, examples, and STAAR-style clues.",
+      goal: "Review key words from Units 1, 2, and 3.",
+      strategy: "Use clue words in the question to connect to vocabulary.",
+      demoSteps: [
+        ["Vocabulary Helps", "Science vocabulary helps you understand what the question is asking.", "📚"],
+        ["Clue Words", "Words like push, pull, dissolve, screen, rough, and measure give clues.", "🔍"],
+        ["Connect Ideas", "Match vocabulary to examples from investigations and labs.", "🔗"],
+        ["STAAR Tip", "When stuck, ask: What science word does this example show?", "⭐"]
+      ],
+      tryTask: "Which word means a push or pull?",
+      tryChoices: ["Force", "Solution", "Mass", "Evaporation"],
+      tryAnswer: "Force",
+      hint: "This word belongs to force and motion.",
+      question: "Which word means a push or pull?",
+      choices: ["Force", "Solution", "Mass", "Evaporation"],
+      answer: "Force"
+    }
+  ];
+
+  let currentStationId = null;
+  let currentDemoStep = 0;
+  let demoInterval = null;
+  let work = {};
+  let secondsLeft = 480;
+  let timerInterval = null;
+
+  function shuffleArray(items) {
+    const copy = [...items];
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  function showFeedback(elementId, message, kind) {
+    const box = document.getElementById(elementId);
+    box.className = "feedback " + kind;
+    box.innerHTML = message;
+  }
+
+  function getStation() {
+    return stations.find(s => s.id === currentStationId);
+  }
+
+  function renderStations() {
+    const grid = document.getElementById("stationGrid");
+    grid.innerHTML = "";
+
+    stations.forEach(station => {
+      const complete = work[station.id]?.complete;
+      const active = currentStationId === station.id;
+
+      const div = document.createElement("div");
+      div.className = "col-md-3";
+      div.innerHTML = `
+        <div class="station-card ${complete ? "complete" : ""} ${active ? "active" : ""}" onclick="selectStation(${station.id})">
+          <h4>${station.emoji} Station ${station.id}</h4>
+          <p><strong>${station.title}</strong></p>
+          <p>${complete ? "✅ Complete" : "Watch Demo / Try It"}</p>
+        </div>
+      `;
+      grid.appendChild(div);
+    });
+  }
+
+  function selectStation(id) {
+    stopVoice();
+    currentStationId = id;
+    currentDemoStep = 0;
+
+    const station = getStation();
+
+    document.getElementById("stationTitle").innerText = "Station " + station.id + ": " + station.title;
+    document.getElementById("tryTitle").innerText = station.title + " Mini-Simulator";
+    document.getElementById("tryTask").innerText = station.tryTask;
+    document.getElementById("quickQuestion").innerText = station.question;
+
+    renderMiniSimulator(station.id);
+    fillSelect("quickAnswer", station.choices);
+
+    const saved = work[id] || {};
+    document.getElementById("studentAnswer").value = saved.answer || "";
+    document.getElementById("studentEvidence").value = saved.evidence || "";
+    document.getElementById("confidenceRating").value = saved.confidence || "Choose...";
+
+    document.getElementById("tryFeedback").innerHTML = "";
+    document.getElementById("quickFeedback").innerHTML = "";
+    document.getElementById("saveFeedback").innerHTML = "";
+    document.getElementById("demoFeedback").innerHTML = "";
+
+    renderDemoStep();
+    showMode("demo");
+    renderStations();
+  }
+
+  function fillSelect(id, choices) {
+    const select = document.getElementById(id);
+    select.innerHTML = "<option selected>Choose...</option>";
+
+    shuffleArray(choices).forEach(choice => {
+      const option = document.createElement("option");
+      option.innerText = choice;
+      option.value = choice;
+      select.appendChild(option);
+    });
+  }
+
+  function showMode(mode) {
+    document.getElementById("demoMode").style.display = mode === "demo" ? "block" : "none";
+    document.getElementById("tryMode").style.display = mode === "try" ? "block" : "none";
+    document.getElementById("workMode").style.display = mode === "work" ? "block" : "none";
+
+    document.getElementById("demoTab").classList.toggle("active", mode === "demo");
+    document.getElementById("tryTab").classList.toggle("active", mode === "try");
+    document.getElementById("workTab").classList.toggle("active", mode === "work");
+  }
+
+  function renderDemoStep() {
+    const station = getStation();
+
+    if (!station) {
+      document.getElementById("demoStepTitle").innerText = "Station Demo";
+      document.getElementById("demoNarration").innerText = "Pick a station above, then press Start Voice Demo.";
+      document.getElementById("demoVisual").innerText = "🔬";
+      document.getElementById("demoStepNumber").innerText = "Step 0 of 0";
+      return;
+    }
+
+    const step = station.demoSteps[currentDemoStep];
+    document.getElementById("demoStepTitle").innerText = step[0];
+    document.getElementById("demoNarration").innerText = step[1];
+    document.getElementById("demoVisual").innerText = step[2];
+    document.getElementById("demoStepNumber").innerText = "Step " + (currentDemoStep + 1) + " of " + station.demoSteps.length;
+  }
+
+  function speak(text) {
+    stopVoice();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = Number(document.getElementById("voiceSpeed").value);
+    utterance.pitch = 1;
+    utterance.volume = 1;
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function startVoiceDemo() {
+    const station = getStation();
+
+    if (!station) {
+      showFeedback("demoFeedback", "Choose a station first.", "warning");
+      return;
+    }
+
+    clearInterval(demoInterval);
+    currentDemoStep = 0;
+    renderDemoStep();
+    speak(station.demoSteps[currentDemoStep][1]);
+
+    demoInterval = setInterval(() => {
+      if (window.speechSynthesis.speaking) return;
+
+      if (currentDemoStep < station.demoSteps.length - 1) {
+        currentDemoStep++;
+        renderDemoStep();
+        speak(station.demoSteps[currentDemoStep][1]);
+      } else {
+        clearInterval(demoInterval);
+        showFeedback("demoFeedback", "Demo complete. Now click Try It.", "correct");
+      }
+    }, 800);
+  }
+
+  function startSilentDemo() {
+    const station = getStation();
+
+    if (!station) {
+      showFeedback("demoFeedback", "Choose a station first.", "warning");
+      return;
+    }
+
+    stopVoice();
+    clearInterval(demoInterval);
+    currentDemoStep = 0;
+    renderDemoStep();
+
+    demoInterval = setInterval(() => {
+      if (currentDemoStep < station.demoSteps.length - 1) {
+        currentDemoStep++;
+        renderDemoStep();
+      } else {
+        clearInterval(demoInterval);
+        showFeedback("demoFeedback", "Silent demo complete. Now click Try It.", "correct");
+      }
+    }, 3200);
+  }
+
+  function repeatDemoStep() {
+    const station = getStation();
+    if (!station) return;
+    renderDemoStep();
+    speak(station.demoSteps[currentDemoStep][1]);
+  }
+
+  function nextDemoStep() {
+    const station = getStation();
+    if (!station) return;
+    stopVoice();
+
+    if (currentDemoStep < station.demoSteps.length - 1) {
+      currentDemoStep++;
+    }
+
+    renderDemoStep();
+  }
+
+  function previousDemoStep() {
+    const station = getStation();
+    if (!station) return;
+    stopVoice();
+
+    if (currentDemoStep > 0) {
+      currentDemoStep--;
+    }
+
+    renderDemoStep();
+  }
+
+  function stopVoice() {
+    clearInterval(demoInterval);
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+  }
+
+  function renderMiniSimulator(stationId) {
+    const area = document.getElementById("miniSimulatorArea");
+
+    if (stationId === 1) {
+      area.innerHTML = `
+        <div class="sim-panel">
+          <h4>Test Physical Properties</h4>
+          <p>Choose an object and a test. Then decide which property is being tested.</p>
+
+          <div class="row">
+            <div class="col-md-4">
+              <label class="form-label"><strong>Object:</strong></label>
+              <select id="propObject" class="form-select">
+                <option value="iron nail">Iron nail</option>
+                <option value="plastic spoon">Plastic spoon</option>
+                <option value="sugar">Sugar</option>
+                <option value="copper wire">Copper wire</option>
+                <option value="cork">Cork</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label"><strong>Test:</strong></label>
+              <select id="propTest" class="form-select">
+                <option value="magnet">Place near a magnet</option>
+                <option value="water">Place in water</option>
+                <option value="electricity">Test with a circuit</option>
+                <option value="dissolve">Stir into water</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label"><strong>Property:</strong></label>
+              <select id="propAnswer" class="form-select">
+                <option selected>Choose...</option>
+                <option>Magnetism</option>
+                <option>Relative density</option>
+                <option>Electrical conductivity</option>
+                <option>Solubility</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="sim-stage">
+            <span class="sim-object">🧲 Magnet</span>
+            <span class="sim-object">💧 Water</span>
+            <span class="sim-object">💡 Circuit</span>
+            <span class="sim-object">🥄 Stir</span>
+            <p id="propResult" class="mt-3"><strong>Result:</strong> Run a test.</p>
+          </div>
+
+          <button class="btn btn-primary" onclick="runPropertyTest()">Run Test</button>
+          <button class="btn btn-success" onclick="checkPropertyStation()">Check Property</button>
+        </div>
+      `;
+    }
+
+    if (stationId === 2) {
+      area.innerHTML = `
+        <div class="sim-panel">
+          <h4>Separate the Mixture</h4>
+          <p>Choose the best tool or process for each mixture.</p>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label"><strong>Mixture:</strong></label>
+              <select id="mixtureSelect" class="form-select">
+                <option value="gravel and sand">Gravel and sand</option>
+                <option value="iron filings and sand">Iron filings and sand</option>
+                <option value="salt water">Salt water</option>
+                <option value="oil and water">Oil and water</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><strong>Tool or process:</strong></label>
+              <select id="toolSelect" class="form-select">
+                <option selected>Choose...</option>
+                <option>Screen or filter by size</option>
+                <option>Magnet</option>
+                <option>Evaporation</option>
+                <option>Separate by relative density</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="sim-stage">
+            <span class="sim-object">🪨 Gravel</span>
+            <span class="sim-object">🏖️ Sand</span>
+            <span class="sim-object">🧲 Magnet</span>
+            <span class="sim-object">💧 Liquid</span>
+            <p id="mixtureResult" class="mt-3"><strong>Result:</strong> Choose a tool and test it.</p>
+          </div>
+
+          <button class="btn btn-success" onclick="checkMixtureStation()">Test Separation Method</button>
+        </div>
+      `;
+    }
+
+    if (stationId === 3) {
+      area.innerHTML = `
+        <div class="sim-panel">
+          <h4>Build a Particle Model</h4>
+          <p>Mix sugar into water. Watch the particles spread out.</p>
+
+          <div class="mini-beaker" id="particleBeaker">
+            <div class="particle-dot" style="left:78px; top:145px;"></div>
+            <div class="particle-dot" style="left:92px; top:148px;"></div>
+            <div class="particle-dot" style="left:66px; top:158px;"></div>
+            <div class="particle-dot" style="left:104px; top:160px;"></div>
+            <div class="particle-dot" style="left:86px; top:168px;"></div>
+          </div>
+
+          <label class="form-label"><strong>Best explanation:</strong></label>
+          <select id="particleAnswer" class="form-select mb-3">
+            <option selected>Choose...</option>
+            <option>The sugar particles spread out and are too small to see.</option>
+            <option>The sugar disappeared forever.</option>
+            <option>The sugar became a magnet.</option>
+            <option>The sugar turned into plastic.</option>
+          </select>
+
+          <button class="btn btn-primary" onclick="mixParticles()">Mix Sugar and Water</button>
+          <button class="btn btn-success" onclick="checkParticleStation()">Check Model</button>
+        </div>
+      `;
+    }
+
+    if (stationId === 4) {
+      area.innerHTML = `
+        <div class="sim-panel">
+          <h4>Test Force and Motion</h4>
+          <p>Choose a surface and run the car. Rougher surfaces should create more friction.</p>
+
+          <label class="form-label"><strong>Surface:</strong></label>
+          <select id="surfaceSelect" class="form-select mb-3">
+            <option value="tile">Smooth tile</option>
+            <option value="carpet">Rough carpet</option>
+            <option value="sandpaper">Very rough sandpaper</option>
+          </select>
+
+          <div class="mini-track">
+            <div id="forceCar" class="mini-car">🚗</div>
+          </div>
+
+          <p id="forceResult" class="mt-3"><strong>Distance:</strong> 0 cm</p>
+
+          <label class="form-label"><strong>Which force slows the car?</strong></label>
+          <select id="forceAnswer" class="form-select mb-3">
+            <option selected>Choose...</option>
+            <option>Friction</option>
+            <option>Solubility</option>
+            <option>Evaporation</option>
+            <option>Volume</option>
+          </select>
+
+          <button class="btn btn-primary" onclick="runForceCar()">Run Car</button>
+          <button class="btn btn-success" onclick="checkForceStation()">Check Force</button>
+        </div>
+      `;
+    }
+
+    if (stationId === 5) {
+      area.innerHTML = `
+        <div class="sim-panel">
+          <h4>Fix the Fair Test</h4>
+          <p>A student tests how ramp height affects distance traveled.</p>
+
+          <div class="alert alert-warning">
+            Scenario: The student changes ramp height and measures how far the toy car travels.
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <label class="form-label"><strong>Independent variable:</strong></label>
+              <select id="ivAnswer" class="form-select">
+                <option selected>Choose...</option>
+                <option>Ramp height</option>
+                <option>Distance traveled</option>
+                <option>Same toy car</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label"><strong>Dependent variable:</strong></label>
+              <select id="dvAnswer" class="form-select">
+                <option selected>Choose...</option>
+                <option>Distance traveled</option>
+                <option>Ramp height</option>
+                <option>Same floor</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label"><strong>Controlled variable:</strong></label>
+              <select id="cvAnswer" class="form-select">
+                <option selected>Choose...</option>
+                <option>Same toy car</option>
+                <option>Ramp height</option>
+                <option>Distance traveled</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn btn-success mt-3" onclick="checkVariableStation()">Check Variables</button>
+        </div>
+      `;
+    }
+
+    if (stationId === 6) {
+      area.innerHTML = `
+        <div class="sim-panel">
+          <h4>Build a Graph From Data</h4>
+          <p>Use the ball bounce data to make a bar graph and choose the best claim.</p>
+
+          <table class="table table-bordered bg-white">
+            <tr><th>Ball</th><th>Average Bounce Height</th></tr>
+            <tr><td>Foam</td><td>18 cm</td></tr>
+            <tr><td>Tennis</td><td>48 cm</td></tr>
+            <tr><td>Rubber</td><td>74 cm</td></tr>
+          </table>
+
+          <div class="mini-graph">
+            <div id="foamMiniBar" class="mini-bar" style="left:60px; height:0;">0</div>
+            <div id="tennisMiniBar" class="mini-bar" style="left:150px; height:0;">0</div>
+            <div id="rubberMiniBar" class="mini-bar" style="left:240px; height:0;">0</div>
+            <div style="position:absolute; bottom:8px; left:60px; font-weight:bold;">Foam</div>
+            <div style="position:absolute; bottom:8px; left:145px; font-weight:bold;">Tennis</div>
+            <div style="position:absolute; bottom:8px; left:235px; font-weight:bold;">Rubber</div>
+          </div>
+
+          <label class="form-label mt-3"><strong>Best claim:</strong></label>
+          <select id="graphClaimAnswer" class="form-select mb-3">
+            <option selected>Choose...</option>
+            <option>The rubber ball bounced the highest.</option>
+            <option>The foam ball bounced the highest.</option>
+            <option>All balls bounced the same.</option>
+            <option>No data was collected.</option>
+          </select>
+
+          <button class="btn btn-primary" onclick="makeStationGraph()">Make Graph</button>
+          <button class="btn btn-success" onclick="checkGraphStation()">Check Claim</button>
+        </div>
+      `;
+    }
+
+    if (stationId === 7) {
+      area.innerHTML = `
+        <div class="sim-panel">
+          <h4>Build a CER</h4>
+          <p>Use the data to choose the best claim, evidence, and reasoning.</p>
+
+          <div class="alert alert-warning">
+            Data: A toy car traveled 82 cm on smooth tile and 35 cm on rough carpet.
+          </div>
+
+          <label class="form-label"><strong>Claim:</strong></label>
+          <select id="cerClaim" class="form-select mb-3">
+            <option selected>Choose...</option>
+            <option>The toy car traveled farther on smooth tile.</option>
+            <option>The toy car traveled farther on rough carpet.</option>
+            <option>The surface did not affect motion.</option>
+          </select>
+
+          <label class="form-label"><strong>Evidence:</strong></label>
+          <select id="cerEvidence" class="form-select mb-3">
+            <option selected>Choose...</option>
+            <option>The car traveled 82 cm on tile and 35 cm on carpet.</option>
+            <option>The car looked cool.</option>
+            <option>The lab was fun.</option>
+          </select>
+
+          <label class="form-label"><strong>Reasoning:</strong></label>
+          <select id="cerReasoning" class="form-select mb-3">
+            <option selected>Choose...</option>
+            <option>Carpet has more friction, so it slowed the car more.</option>
+            <option>Color changes motion.</option>
+            <option>Data is not needed.</option>
+          </select>
+
+          <button class="btn btn-success" onclick="checkCERStation()">Check CER</button>
+          <button class="btn btn-primary" onclick="buildStationCER()">Build CER Paragraph</button>
+          <div id="stationCerOutput"></div>
+        </div>
+      `;
+    }
+
+    if (stationId === 8) {
+      area.innerHTML = `
+        <div class="sim-panel">
+          <h4>Vocabulary Match</h4>
+          <p>Read the clue and choose the correct vocabulary word.</p>
+
+          <div class="alert alert-warning" id="vocabClue">
+            Clue: A push or pull that can change motion.
+          </div>
+
+          <label class="form-label"><strong>Vocabulary word:</strong></label>
+          <select id="vocabAnswer" class="form-select mb-3">
+            <option selected>Choose...</option>
+            <option>Force</option>
+            <option>Solution</option>
+            <option>Evaporation</option>
+            <option>Mass</option>
+          </select>
+
+          <button class="btn btn-success" onclick="checkVocabStation()">Check Vocabulary</button>
+          <button class="btn btn-primary" onclick="newVocabClue()">New Clue</button>
+        </div>
+      `;
+    }
+  }
+
+  function runPropertyTest() {
+    const object = document.getElementById("propObject").value;
+    const test = document.getElementById("propTest").value;
+    let result = "";
+
+    if (test === "magnet") {
+      result = object === "iron nail" ? "The iron nail is attracted to the magnet." : "This object is not attracted to the magnet.";
+    }
+    if (test === "water") {
+      result = object === "cork" ? "The cork floats in water." : "This object does not float like cork.";
+    }
+    if (test === "electricity") {
+      result = object === "copper wire" ? "The copper wire completes the circuit." : "This object does not conduct electricity well.";
+    }
+    if (test === "dissolve") {
+      result = object === "sugar" ? "The sugar dissolves in water." : "This object does not dissolve like sugar.";
+    }
+
+    document.getElementById("propResult").innerHTML = "<strong>Result:</strong> " + result;
+  }
+
+  function checkPropertyStation() {
+    const test = document.getElementById("propTest").value;
+    const answer = document.getElementById("propAnswer").value;
+    const correct = {
+      magnet: "Magnetism",
+      water: "Relative density",
+      electricity: "Electrical conductivity",
+      dissolve: "Solubility"
+    }[test];
+
+    if (answer === correct) {
+      showFeedback("tryFeedback", "Correct! That test is checking " + correct + ".", "correct");
+      makeSparkles();
+    } else {
+      showFeedback("tryFeedback", "Not yet. This test is checking " + correct + ".", "incorrect");
+    }
+  }
+
+  function checkMixtureStation() {
+    const mixture = document.getElementById("mixtureSelect").value;
+    const tool = document.getElementById("toolSelect").value;
+    const correct = {
+      "gravel and sand": "Screen or filter by size",
+      "iron filings and sand": "Magnet",
+      "salt water": "Evaporation",
+      "oil and water": "Separate by relative density"
+    }[mixture];
+
+    if (tool === correct) {
+      document.getElementById("mixtureResult").innerHTML = "<strong>Result:</strong> The mixture can be separated using " + correct + ".";
+      showFeedback("tryFeedback", "Correct separation method!", "correct");
+      makeSparkles();
+    } else {
+      document.getElementById("mixtureResult").innerHTML = "<strong>Result:</strong> That tool does not best separate this mixture.";
+      showFeedback("tryFeedback", "Not yet. Best method: " + correct + ".", "incorrect");
+    }
+  }
+
+  function mixParticles() {
+    const dots = document.querySelectorAll(".particle-dot");
+    const positions = [
+      [25, 35], [120, 42], [60, 85], [135, 112], [45, 145]
+    ];
+
+    dots.forEach((dot, i) => {
+      dot.style.left = positions[i][0] + "px";
+      dot.style.top = positions[i][1] + "px";
+    });
+  }
+
+  function checkParticleStation() {
+    const answer = document.getElementById("particleAnswer").value;
+
+    if (answer === "The sugar particles spread out and are too small to see.") {
+      showFeedback("tryFeedback", "Correct! The sugar did not disappear. The particles spread out.", "correct");
+      makeSparkles();
+    } else {
+      showFeedback("tryFeedback", "Not yet. Matter does not disappear. Think tiny particles.", "incorrect");
+    }
+  }
+
+  function runForceCar() {
+    const surface = document.getElementById("surfaceSelect").value;
+    const distances = {tile: 90, carpet: 45, sandpaper: 25};
+    const distance = distances[surface];
+
+    document.getElementById("forceCar").style.left = (20 + distance * 3) + "px";
+    document.getElementById("forceResult").innerHTML = "<strong>Distance:</strong> " + distance + " cm";
+  }
+
+  function checkForceStation() {
+    const answer = document.getElementById("forceAnswer").value;
+
+    if (answer === "Friction") {
+      showFeedback("tryFeedback", "Correct! Friction slows the car when surfaces touch.", "correct");
+      makeSparkles();
+    } else {
+      showFeedback("tryFeedback", "Not yet. The force that slows motion on a surface is friction.", "incorrect");
+    }
+  }
+
+  function checkVariableStation() {
+    const iv = document.getElementById("ivAnswer").value;
+    const dv = document.getElementById("dvAnswer").value;
+    const cv = document.getElementById("cvAnswer").value;
+
+    if (iv === "Ramp height" && dv === "Distance traveled" && cv === "Same toy car") {
+      showFeedback("tryFeedback", "Correct! Changed = ramp height, measured = distance, same = toy car.", "correct");
+      makeSparkles();
+    } else {
+      showFeedback("tryFeedback", "Not yet. Independent = changed. Dependent = measured. Controlled = kept the same.", "incorrect");
+    }
+  }
+
+  function makeStationGraph() {
+    document.getElementById("foamMiniBar").style.height = "45px";
+    document.getElementById("foamMiniBar").innerText = "18";
+    document.getElementById("tennisMiniBar").style.height = "110px";
+    document.getElementById("tennisMiniBar").innerText = "48";
+    document.getElementById("rubberMiniBar").style.height = "170px";
+    document.getElementById("rubberMiniBar").innerText = "74";
+  }
+
+  function checkGraphStation() {
+    const answer = document.getElementById("graphClaimAnswer").value;
+
+    if (answer === "The rubber ball bounced the highest.") {
+      showFeedback("tryFeedback", "Correct! The rubber ball has the tallest bar and greatest number.", "correct");
+      makeSparkles();
+    } else {
+      showFeedback("tryFeedback", "Not yet. Look for the greatest value and tallest bar.", "incorrect");
+    }
+  }
+
+  function checkCERStation() {
+    const claim = document.getElementById("cerClaim").value;
+    const evidence = document.getElementById("cerEvidence").value;
+    const reasoning = document.getElementById("cerReasoning").value;
+
+    if (
+      claim === "The toy car traveled farther on smooth tile." &&
+      evidence === "The car traveled 82 cm on tile and 35 cm on carpet." &&
+      reasoning === "Carpet has more friction, so it slowed the car more."
+    ) {
+      showFeedback("tryFeedback", "Correct CER! Claim, evidence, and reasoning all match.", "correct");
+      makeSparkles();
+    } else {
+      showFeedback("tryFeedback", "Not yet. Use the data and connect it to friction.", "incorrect");
+    }
+  }
+
+  function buildStationCER() {
+    document.getElementById("stationCerOutput").innerHTML = `
+      <div class="feedback correct">
+        <strong>Sample CER:</strong><br>
+        The toy car traveled farther on smooth tile. The evidence is that the car traveled 82 cm on tile and 35 cm on carpet. Carpet has more friction, so it slowed the car more than the smooth tile.
+      </div>
+    `;
+  }
+
+  const vocabClues = [
+    ["A push or pull that can change motion.", "Force", ["Force", "Solution", "Evaporation", "Mass"]],
+    ["A mixture where one substance dissolves evenly in another.", "Solution", ["Force", "Solution", "Friction", "Gravity"]],
+    ["The process that can separate salt from salt water.", "Evaporation", ["Evaporation", "Magnetism", "Volume", "Motion"]],
+    ["The amount of matter in an object.", "Mass", ["Mass", "Solubility", "Friction", "Evidence"]]
+  ];
+  let currentVocab = vocabClues[0];
+
+  function newVocabClue() {
+    currentVocab = vocabClues[Math.floor(Math.random() * vocabClues.length)];
+    document.getElementById("vocabClue").innerText = "Clue: " + currentVocab[0];
+
+    const select = document.getElementById("vocabAnswer");
+    select.innerHTML = "<option selected>Choose...</option>";
+    shuffleArray(currentVocab[2]).forEach(choice => {
+      const option = document.createElement("option");
+      option.value = choice;
+      option.innerText = choice;
+      select.appendChild(option);
+    });
+  }
+
+  function checkVocabStation() {
+    const answer = document.getElementById("vocabAnswer").value;
+
+    if (answer === currentVocab[1]) {
+      showFeedback("tryFeedback", "Correct vocabulary match!", "correct");
+      makeSparkles();
+    } else {
+      showFeedback("tryFeedback", "Not yet. Correct word: " + currentVocab[1] + ".", "incorrect");
+    }
+  }
+
+  function showHint() {
+    const station = getStation();
+    if (!station) {
+      showFeedback("tryFeedback", "Choose a station first.", "warning");
+      return;
+    }
+    showFeedback("tryFeedback", "Hint: " + station.hint, "warning");
+  }
+
+  function checkQuickAnswer() {
+    const station = getStation();
+
+    if (!station) {
+      showFeedback("quickFeedback", "Choose a station first.", "warning");
+      return;
+    }
+
+    const chosen = document.getElementById("quickAnswer").value;
+
+    if (chosen === station.answer) {
+      showFeedback("quickFeedback", "Correct! " + station.strategy, "correct");
+      makeSparkles();
+    } else {
+      showFeedback("quickFeedback", "Not yet. Correct answer: " + station.answer + ".", "incorrect");
+    }
+  }
+
+  function saveStationWork() {
+    if (!currentStationId) {
+      showFeedback("saveFeedback", "Choose a station first.", "warning");
+      return;
+    }
+
+    const station = getStation();
+
+    work[currentStationId] = {
+      topic: station.topic,
+      answer: document.getElementById("studentAnswer").value,
+      evidence: document.getElementById("studentEvidence").value,
+      confidence: document.getElementById("confidenceRating").value,
+      complete: work[currentStationId]?.complete || false
+    };
+
+    saveToStorage();
+    updateSummary();
+    showFeedback("saveFeedback", "Station work saved.", "correct");
+  }
+
+  function markComplete() {
+    if (!currentStationId) {
+      showFeedback("saveFeedback", "Choose a station first.", "warning");
+      return;
+    }
+
+    saveStationWork();
+    work[currentStationId].complete = true;
+    saveToStorage();
+    updateSummary();
+    updateProgress();
+    renderStations();
+    showFeedback("saveFeedback", "Station marked complete. Great work!", "correct");
+    makeSparkles();
+  }
+
+  function updateSummary() {
+    const body = document.getElementById("summaryTable");
+    body.innerHTML = "";
+
+    stations.forEach(station => {
+      const saved = work[station.id] || {};
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td><strong>Station ${station.id}</strong></td>
+        <td>${station.topic}</td>
+        <td>
+          <textarea id="summaryAnswer${station.id}" class="form-control summary-input" rows="2" placeholder="Type answer">${saved.answer || ""}</textarea>
+        </td>
+        <td>
+          <textarea id="summaryEvidence${station.id}" class="form-control summary-evidence" rows="2" placeholder="Type evidence">${saved.evidence || ""}</textarea>
+        </td>
+        <td>
+          <select id="summaryConfidence${station.id}" class="form-select summary-input">
+            <option ${!saved.confidence || saved.confidence === "Choose..." ? "selected" : ""}>Choose...</option>
+            <option ${saved.confidence === "1 - I need help" ? "selected" : ""}>1 - I need help</option>
+            <option ${saved.confidence === "2 - I am starting to understand" ? "selected" : ""}>2 - I am starting to understand</option>
+            <option ${saved.confidence === "3 - I understand most of it" ? "selected" : ""}>3 - I understand most of it</option>
+            <option ${saved.confidence === "4 - I can explain it to someone else" ? "selected" : ""}>4 - I can explain it to someone else</option>
+          </select>
+        </td>
+        <td id="summaryComplete${station.id}">${saved.complete ? "✅ Yes" : ""}</td>
+        <td>
+          <button class="btn btn-sm btn-secondary summary-action-btn" onclick="openStationFromSummary(${station.id})">Open</button>
+          <button class="btn btn-sm btn-success summary-action-btn" onclick="saveSummaryRow(${station.id})">Save</button>
+          <button class="btn btn-sm btn-warning summary-action-btn" onclick="markSummaryComplete(${station.id})">Complete</button>
+        </td>
+      `;
+
+      body.appendChild(row);
+    });
+  }
+
+  function saveSummaryRow(stationId) {
+    const station = stations.find(s => s.id === stationId);
+
+    work[stationId] = {
+      topic: station.topic,
+      answer: document.getElementById("summaryAnswer" + stationId).value,
+      evidence: document.getElementById("summaryEvidence" + stationId).value,
+      confidence: document.getElementById("summaryConfidence" + stationId).value,
+      complete: work[stationId]?.complete || false
+    };
+
+    saveToStorage();
+    updateProgress();
+    renderStations();
+
+    if (currentStationId === stationId) {
+      document.getElementById("studentAnswer").value = work[stationId].answer;
+      document.getElementById("studentEvidence").value = work[stationId].evidence;
+      document.getElementById("confidenceRating").value = work[stationId].confidence;
+    }
+
+    showFeedback("saveFeedback", "Station " + stationId + " summary row saved.", "correct");
+  }
+
+  function markSummaryComplete(stationId) {
+    saveSummaryRow(stationId);
+    work[stationId].complete = true;
+
+    saveToStorage();
+    updateSummary();
+    updateProgress();
+    renderStations();
+
+    showFeedback("saveFeedback", "Station " + stationId + " marked complete from the summary table.", "correct");
+    makeSparkles();
+  }
+
+  function openStationFromSummary(stationId) {
+    selectStation(stationId);
+    document.getElementById("stationTitle").scrollIntoView({behavior: "smooth", block: "start"});
+  }
+
+  function updateProgress() {
+    const completeCount = stations.filter(station => work[station.id]?.complete).length;
+    const percent = Math.round((completeCount / stations.length) * 100);
+
+    document.getElementById("progressFill").style.width = percent + "%";
+    document.getElementById("progressText").innerText = completeCount + " of 8 stations complete";
+
+    const avatarLeft = 30 + percent * 6.3;
+    document.getElementById("avatar").style.left = avatarLeft + "px";
+  }
+
+  function saveToStorage() {
+    localStorage.setItem("day43ScienceStationsWork", JSON.stringify(work));
+  }
+
+  function loadFromStorage() {
+    const saved = localStorage.getItem("day43ScienceStationsWork");
+    if (saved) {
+      work = JSON.parse(saved);
+    }
+  }
+
+  function clearAllWork() {
+    if (!confirm("Clear all station work on this device?")) return;
+
+    work = {};
+    localStorage.removeItem("day43ScienceStationsWork");
+    currentStationId = null;
+    stopVoice();
+
+    renderStations();
+    updateSummary();
+    updateProgress();
+    renderDemoStep();
+
+    document.getElementById("stationTitle").innerText = "Choose a station to begin.";
+    document.getElementById("tryTask").innerText = "Pick a station to see the activity.";
+    document.getElementById("quickQuestion").innerText = "The station question will appear here.";
+  }
+
+  function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return String(minutes).padStart(2, "0") + ":" + String(secs).padStart(2, "0");
+  }
+
+  function startTimer() {
+    clearInterval(timerInterval);
+
+    timerInterval = setInterval(() => {
+      secondsLeft--;
+      document.getElementById("timerDisplay").innerText = formatTime(secondsLeft);
+
+      if (secondsLeft <= 0) {
+        clearInterval(timerInterval);
+        showFeedback("saveFeedback", "Station time is up. Rotate to the next station.", "warning");
+        secondsLeft = 0;
+      }
+    }, 1000);
+  }
+
+  function pauseTimer() {
+    clearInterval(timerInterval);
+  }
+
+  function resetTimer() {
+    clearInterval(timerInterval);
+    secondsLeft = 480;
+    document.getElementById("timerDisplay").innerText = formatTime(secondsLeft);
+  }
+
+  function makeSparkles() {
+    const path = document.getElementById("studentPath");
+
+    for (let i = 0; i < 8; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.innerText = ["✨", "⭐", "✅", "🔬"][Math.floor(Math.random() * 4)];
+      sparkle.style.left = (80 + Math.random() * 620) + "px";
+      sparkle.style.top = (15 + Math.random() * 65) + "px";
+      path.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1200);
+    }
+  }
+
+  loadFromStorage();
+  renderStations();
+  updateSummary();
+  updateProgress();
+  renderDemoStep();
+  document.getElementById("timerDisplay").innerText = formatTime(secondsLeft);
+</script>
+
+{% endblock %}
