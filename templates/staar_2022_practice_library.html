@@ -46,6 +46,7 @@
     font-weight: 1000;
     text-decoration: none !important;
     box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+    margin: 4px 4px 0 0;
 }
 
 .staar-btn.blue {
@@ -53,11 +54,78 @@
     color: white !important;
 }
 
+.grade-dropdown {
+    background: white;
+    border: 6px solid #111;
+    border-radius: 28px;
+    margin-top: 22px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.18);
+    overflow: hidden;
+}
+
+.grade-dropdown summary {
+    list-style: none;
+    cursor: pointer;
+    background: #fff7d6;
+    padding: 18px 22px;
+    font-size: 1.55rem;
+    font-weight: 1000;
+    border-bottom: 5px solid #111;
+}
+
+.grade-dropdown summary::-webkit-details-marker {
+    display: none;
+}
+
+.grade-dropdown summary::after {
+    content: " ▼";
+    float: right;
+    font-size: 1.2rem;
+}
+
+.grade-dropdown[open] summary::after {
+    content: " ▲";
+}
+
+.grade-content {
+    padding: 18px;
+}
+
+.teks-jump-box {
+    background: #eef8ff;
+    border: 5px solid #111;
+    border-radius: 22px;
+    padding: 16px;
+    margin-bottom: 18px;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.12);
+}
+
+.teks-section {
+    background: white;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 16px;
+    margin-top: 18px;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.14);
+}
+
+.teks-heading {
+    background: #fff7d6;
+    border: 4px solid #111;
+    border-radius: 20px;
+    padding: 14px;
+    margin-bottom: 14px;
+}
+
+.teks-heading h2 {
+    margin: 0;
+}
+
 .staar-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
     gap: 18px;
-    margin-top: 20px;
+    margin-top: 12px;
 }
 
 .staar-card {
@@ -78,20 +146,27 @@
     margin: 3px 4px 8px 0;
 }
 
-.staar-topic-heading {
-    margin-top: 28px;
-    background: white;
+.staar-year {
+    background: #6f2dbd;
+    color: #ff9f1c;
+}
+
+.empty-card {
+    background: #fff7d6;
     border: 5px solid #111;
-    border-radius: 20px;
-    padding: 14px;
+    border-radius: 24px;
+    padding: 18px;
+    margin-top: 18px;
 }
 </style>
+
+{% set grouped_grades = group_staar_questions_by_grade_and_teks(questions) %}
 
 <div class="staar-wrap">
     <section class="staar-hero">
         <span class="staar-pill">STAAR Practice</span>
-        <span class="staar-pill">2022-Aligned</span>
-        <span class="staar-pill">Original Questions</span>
+        <span class="staar-pill">Grouped by Grade</span>
+        <span class="staar-pill">Grouped by TEKS</span>
 
         <h1>{{ page_title }}</h1>
         <p>{{ page_subtitle }}</p>
@@ -104,33 +179,66 @@
     </section>
 
     {% if not questions %}
-        <section class="staar-card">
+        <section class="empty-card">
             <h2>No STAAR-style questions are connected to this day yet.</h2>
             <p>Use the full STAAR Practice library instead.</p>
             <a class="staar-btn" href="/staar-practice/2022">Open STAAR Practice Library</a>
         </section>
-    {% endif %}
+    {% else %}
 
-    <div class="staar-grid">
-        {% for question in questions %}
-        <article class="staar-card">
-            <span class="staar-mini">Item {{ question["item"] }}</span>
-            <span class="staar-mini">TEKS {{ question["source_teks"] }}</span>
-            <span class="staar-mini">{{ question["readiness"] }}</span>
+        {% for grade_group in grouped_grades %}
+        <details class="grade-dropdown" {% if "5th" in grade_group["grade_label"] %}open{% endif %}>
+            <summary>
+                {{ grade_group["grade_label"] }}
+                — {{ grade_group["question_count"] }} question{% if grade_group["question_count"] != 1 %}s{% endif %}
+            </summary>
 
-            {% if question["day"] %}
-                <span class="staar-mini">Day {{ question["day"] }}</span>
-            {% else %}
-                <span class="staar-mini">Spiral Review</span>
-            {% endif %}
+            <div class="grade-content">
+                <section class="teks-jump-box">
+                    <h2>{{ grade_group["grade_label"] }} Groups</h2>
+                    <p>Open a TEKS group below or jump directly to one.</p>
 
-            <h2>{{ question["topic"] }}</h2>
-            <p>{{ question["prompt"] }}</p>
+                    {% for group in grade_group["teks_groups"] %}
+                        <a class="staar-btn" href="#teks-{{ group['teks']|replace('.', '-') }}">
+                            {{ group["teks"] }} — {{ group["questions"]|length }} question{% if group["questions"]|length != 1 %}s{% endif %}
+                        </a>
+                    {% endfor %}
+                </section>
 
-            <a class="staar-btn" href="/staar-practice/2022/item/{{ question['item'] }}?view=student">Student Practice</a>
-            <a class="staar-btn blue" href="/staar-practice/2022/item/{{ question['item'] }}?view=teacher">Teacher Rationale</a>
-        </article>
+                {% for group in grade_group["teks_groups"] %}
+                <section class="teks-section" id="teks-{{ group['teks']|replace('.', '-') }}">
+                    <div class="teks-heading">
+                        <h2>TEKS {{ group["teks"] }}</h2>
+                        <p>{{ group["questions"]|length }} question{% if group["questions"]|length != 1 %}s{% endif %} in this TEKS group</p>
+                    </div>
+
+                    <div class="staar-grid">
+                        {% for question in group["questions"] %}
+                        <article class="staar-card">
+                            <span class="staar-mini staar-year">{{ question.get("year", "2022") }}</span>
+                            <span class="staar-mini">Item {{ question["item"] }}</span>
+                            <span class="staar-mini">TEKS {{ question["source_teks"] }}</span>
+                            <span class="staar-mini">{{ question["readiness"] }}</span>
+
+                            {% if question["day"] %}
+                                <span class="staar-mini">Day {{ question["day"] }}</span>
+                            {% else %}
+                                <span class="staar-mini">Spiral Review</span>
+                            {% endif %}
+
+                            <h3>{{ question["topic"] }}</h3>
+                            <p>{{ question["prompt"] }}</p>
+
+                            <a class="staar-btn" href="/staar-practice/2022/item/{{ question['item'] }}?view=student">Student Practice</a>
+                            <a class="staar-btn blue" href="/staar-practice/2022/item/{{ question['item'] }}?view=teacher">Teacher Rationale</a>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endfor %}
+            </div>
+        </details>
         {% endfor %}
-    </div>
+    {% endif %}
 </div>
 {% endblock %}

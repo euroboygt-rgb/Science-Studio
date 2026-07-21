@@ -1073,13 +1073,6 @@ def inject_staar_teks_grouping_helper():
     return dict(group_staar_questions_by_teks=group_staar_questions_by_teks)
 
 
-
-@app.context_processor
-def inject_staar_grade_dropdown_grouping_helper():
-    from curriculum.staar_2022_practice import group_staar_questions_by_grade_and_teks
-    return dict(group_staar_questions_by_grade_and_teks=group_staar_questions_by_grade_and_teks)
-
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
