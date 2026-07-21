@@ -350,49 +350,6 @@ details summary {
 </section>
 
 
-<!-- Science Video Support Section -->
-{% set lesson_videos = get_videos_for_day(lesson_day) %}
-{% if lesson_videos %}
-<section class="lesson-card science-video-support-card" id="science-video-support">
-    <h2>🎥 Science Video Support</h2>
-    <p>
-        Watch the video connected to today’s TEKS, then use the note-taker to answer questions using science evidence.
-    </p>
-
-    <div class="science-video-grid">
-        {% for video in lesson_videos %}
-        <article class="science-video-card">
-            <span class="science-video-pill">{{ video["unit"] }}</span>
-            <span class="science-video-pill">TEKS {{ video["teks"] }}</span>
-
-            <div class="science-video-frame">
-                <iframe
-                    src="{{ video['embed_url'] }}"
-                    title="{{ video['title'] }}"
-                    allowfullscreen>
-                </iframe>
-            </div>
-
-            <h3>{{ video["title"] }}</h3>
-            <p><strong>Source:</strong> {{ video["source"] }}</p>
-            <p>{{ video["focus"] }}</p>
-
-            <a class="science-video-btn" href="/first-nine-weeks/day/{{ lesson_day }}/video-notes/{{ video['slug'] }}?view=student">
-                Student Video Note-Taker
-            </a>
-
-            <a class="science-video-btn blue" href="/first-nine-weeks/day/{{ lesson_day }}/video-notes/{{ video['slug'] }}?view=teacher">
-                Teacher Key
-            </a>
-        </article>
-        {% endfor %}
-    </div>
-</section>
-{% endif %}
-<!-- End Science Video Support Section -->
-
-
-
 <section class="lesson-card" id="bell-ringer">
     <h2>🔔 Bell Ringer</h2>
 
@@ -658,47 +615,6 @@ details summary {
         </details>
     {% endif %}
 </section>
-
-
-<!-- 2022-Aligned STAAR-Style Practice Section -->
-{% set staar_2022_questions = get_staar_2022_questions_for_day(lesson_day) %}
-{% if staar_2022_questions %}
-<section class="lesson-card staar-2022-lesson-card" id="staar-2022-practice">
-    <h2>⭐ 2022-Aligned STAAR-Style Practice</h2>
-    <p>
-        These are original practice questions matched to the same skills and rationale style as the 2022 released STAAR test.
-    </p>
-
-    <div class="staar-2022-grid">
-        {% for question in staar_2022_questions %}
-        <article class="staar-2022-mini-card">
-            <span class="staar-2022-pill">Item {{ question["item"] }}</span>
-            <span class="staar-2022-pill">TEKS {{ question["source_teks"] }}</span>
-            <span class="staar-2022-pill">{{ question["readiness"] }}</span>
-
-            <h3>{{ question["topic"] }}</h3>
-            <p>{{ question["prompt"] }}</p>
-
-            <a class="staar-2022-btn" href="/staar-practice/2022/item/{{ question['item'] }}?view=student">
-                Student Practice
-            </a>
-
-            <a class="staar-2022-btn blue" href="/staar-practice/2022/item/{{ question['item'] }}?view=teacher">
-                Teacher Rationale
-            </a>
-        </article>
-        {% endfor %}
-    </div>
-
-    <p style="margin-top:14px;">
-        <a class="staar-2022-btn blue" href="/staar-practice/2022/day/{{ lesson_day }}">
-            Open All Day {{ lesson_day }} STAAR Practice
-        </a>
-    </p>
-</section>
-{% endif %}
-<!-- End 2022-Aligned STAAR-Style Practice Section -->
-
 
 <section class="lesson-card" id="written-exit-ticket">
     <h2>🎟️ Written Exit Ticket</h2>

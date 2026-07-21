@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block title %}STAAR Practice Item {{ question["item"] }}{% endblock %}
+
+{% block content %}
+<style>
+.staar-question-page {
+    max-width: 960px;
+    margin: 24px auto;
+}
+
+.staar-question-card {
+    background: #fff7d6;
+    border: 6px solid #111;
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+}
+
+.staar-top {
+    background: linear-gradient(135deg, #6f2dbd, #123f8c, #00a6d6);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+.staar-badge {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ff9f1c;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-weight: 1000;
+    margin: 3px 5px 8px 0;
+}
+
+.staar-btn {
+    display: inline-block;
+    background: #ff9f1c;
+    color: #111 !important;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    text-decoration: none !important;
+    cursor: pointer;
+    margin: 6px 6px 0 0;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+}
+
+.staar-btn.blue {
+    background: #0077ff;
+    color: white !important;
+}
+
+.choice {
+    display: block;
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 14px;
+    margin: 12px 0;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.choice:hover {
+    background: #eaf4ff;
+}
+
+.feedback {
+    display: none;
+    background: white;
+    border: 5px solid #111;
+    border-radius: 20px;
+    padding: 16px;
+    margin-top: 18px;
+}
+
+.feedback.show {
+    display: block;
+}
+
+.teacher-key {
+    background: #d8ffe9;
+    border: 5px solid #111;
+    border-radius: 20px;
+    padding: 16px;
+    margin-top: 18px;
+}
+
+@media print {
+    nav,
+    footer,
+    .screen-actions,
+    #scienceStudioAiWidget {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+    }
+
+    .staar-question-card {
+        border: none;
+        box-shadow: none;
+    }
+}
+</style>
+
+<div class="staar-question-page">
+    <section class="staar-question-card">
+        <div class="staar-top">
+            <span class="staar-badge">STAAR Practice</span>
+            <span class="staar-badge">Item {{ question["item"] }}</span>
+            <span class="staar-badge">TEKS {{ question["source_teks"] }}</span>
+            <span class="staar-badge">{{ question["readiness"] }}</span>
+
+            {% if view == "teacher" %}
+                <span class="staar-badge">Teacher View</span>
+            {% else %}
+                <span class="staar-badge">Student View</span>
+            {% endif %}
+
+            <h1>{{ question["topic"] }}</h1>
+            <p>Original STAAR-style practice based on the 2022 released-test skill pattern.</p>
+        </div>
+
+        <div class="screen-actions">
+            <a class="staar-btn blue" href="/staar-practice/2022">Back to STAAR Practice</a>
+
+            {% if question["day"] %}
+                <a class="staar-btn blue" href="/first-nine-weeks/day/{{ question['day'] }}?view=student">Back to Day {{ question["day"] }}</a>
+            {% endif %}
+
+            {% if view == "teacher" %}
+                <a class="staar-btn" href="/staar-practice/2022/item/{{ question['item'] }}?view=student">Student View</a>
+            {% else %}
+                <a class="staar-btn" href="/staar-practice/2022/item/{{ question['item'] }}?view=teacher">Teacher View</a>
+            {% endif %}
+        </div>
+
+        <h2>Question</h2>
+        <p style="font-size:1.15rem; font-weight:900;">{{ question["prompt"] }}</p>
+
+        <form id="practiceForm">
+            {% for option in question["options"] %}
+            <label class="choice">
+                <input type="radio" name="answer" value="{{ option['label'] }}">
+                <strong>{{ option["label"] }}.</strong> {{ option["text"] }}
+            </label>
+            {% endfor %}
+        </form>
+
+        <button class="staar-btn" type="button" onclick="checkAnswer()">Check Answer</button>
+
+        <div class="feedback" id="feedback"></div>
+
+        {% if view == "teacher" %}
+        <section class="teacher-key">
+            <h2>✅ Teacher Rationale</h2>
+            <p><strong>Correct Answer:</strong> {{ question["answer"] }}</p>
+            <p><strong>Rationale:</strong> {{ question["rationale"] }}</p>
+
+            <h3>Answer Choice Rationales</h3>
+            {% for label, reason in question["rationales"].items() %}
+                <p><strong>{{ label }}:</strong> {{ reason }}</p>
+            {% endfor %}
+
+            <p><strong>Reporting Category:</strong> {{ question["reporting_category"] }}</p>
+            <p><strong>Content TEKS from 2022 key:</strong> {{ question["source_teks"] }}</p>
+            {% if question["process_teks"] %}
+                <p><strong>Process TEKS:</strong> {{ question["process_teks"] }}</p>
+            {% endif %}
+        </section>
+        {% endif %}
+    </section>
+</div>
+
+<script>
+const CORRECT_ANSWER = {{ question["answer"]|tojson }};
+const RATIONALES = {{ question["rationales"]|tojson }};
+const MAIN_RATIONALE = {{ question["rationale"]|tojson }};
+
+function checkAnswer() {
+    const selected = document.querySelector('input[name="answer"]:checked');
+    const feedback = document.getElementById("feedback");
+
+    if (!selected) {
+        feedback.classList.add("show");
+        feedback.innerHTML = "<h2>Choose an answer first.</h2><p>Select A, B, C, or D/F, G, H, or J, then check your answer.</p>";
+        return;
+    }
+
+    const value = selected.value;
+    const correct = value === CORRECT_ANSWER;
+
+    if (correct) {
+        feedback.innerHTML = `<h2>✅ Correct!</h2><p>${MAIN_RATIONALE}</p><p><strong>Why ${value} works:</strong> ${RATIONALES[value]}</p>`;
+    } else {
+        feedback.innerHTML = `<h2>🔎 Not yet.</h2><p><strong>Your answer:</strong> ${value}</p><p>${RATIONALES[value]}</p><p><strong>Correct answer:</strong> ${CORRECT_ANSWER}</p><p>${MAIN_RATIONALE}</p>`;
+    }
+
+    feedback.classList.add("show");
+}
+</script>
+{% endblock %}

@@ -659,47 +659,6 @@ details summary {
     {% endif %}
 </section>
 
-
-<!-- 2022-Aligned STAAR-Style Practice Section -->
-{% set staar_2022_questions = get_staar_2022_questions_for_day(lesson_day) %}
-{% if staar_2022_questions %}
-<section class="lesson-card staar-2022-lesson-card" id="staar-2022-practice">
-    <h2>⭐ 2022-Aligned STAAR-Style Practice</h2>
-    <p>
-        These are original practice questions matched to the same skills and rationale style as the 2022 released STAAR test.
-    </p>
-
-    <div class="staar-2022-grid">
-        {% for question in staar_2022_questions %}
-        <article class="staar-2022-mini-card">
-            <span class="staar-2022-pill">Item {{ question["item"] }}</span>
-            <span class="staar-2022-pill">TEKS {{ question["source_teks"] }}</span>
-            <span class="staar-2022-pill">{{ question["readiness"] }}</span>
-
-            <h3>{{ question["topic"] }}</h3>
-            <p>{{ question["prompt"] }}</p>
-
-            <a class="staar-2022-btn" href="/staar-practice/2022/item/{{ question['item'] }}?view=student">
-                Student Practice
-            </a>
-
-            <a class="staar-2022-btn blue" href="/staar-practice/2022/item/{{ question['item'] }}?view=teacher">
-                Teacher Rationale
-            </a>
-        </article>
-        {% endfor %}
-    </div>
-
-    <p style="margin-top:14px;">
-        <a class="staar-2022-btn blue" href="/staar-practice/2022/day/{{ lesson_day }}">
-            Open All Day {{ lesson_day }} STAAR Practice
-        </a>
-    </p>
-</section>
-{% endif %}
-<!-- End 2022-Aligned STAAR-Style Practice Section -->
-
-
 <section class="lesson-card" id="written-exit-ticket">
     <h2>🎟️ Written Exit Ticket</h2>
     <p>Use this exit ticket to show your thinking about today’s learning target.</p>

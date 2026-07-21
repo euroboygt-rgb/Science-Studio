@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}STAAR Practice Printable{% endblock %}
+
+{% block content %}
+<style>
+.printable-staar {
+    max-width: 1000px;
+    margin: 24px auto;
+    background: white;
+    border: 6px solid #111;
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+}
+
+.print-top {
+    background: #fff7d6;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 18px;
+    margin-bottom: 18px;
+}
+
+.print-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 14px 0;
+}
+
+.print-btn {
+    display: inline-block;
+    background: #ff9f1c;
+    color: #111 !important;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    text-decoration: none !important;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+}
+
+.question-print {
+    border: 4px solid #111;
+    border-radius: 20px;
+    padding: 16px;
+    margin: 16px 0;
+    page-break-inside: avoid;
+}
+
+.answer-line {
+    border-bottom: 3px solid #111;
+    min-height: 28px;
+    margin: 10px 0;
+}
+
+.teacher-key {
+    background: #d8ffe9;
+    border: 4px solid #111;
+    border-radius: 16px;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+@media print {
+    nav,
+    footer,
+    .print-actions,
+    #scienceStudioAiWidget {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+    }
+
+    .printable-staar {
+        border: none;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+</style>
+
+<section class="printable-staar">
+    <div class="print-top">
+        <h1>STAAR Practice Printable</h1>
+        <p>Original 2022-aligned STAAR-style Grade 5 Science practice.</p>
+
+        {% if view == "teacher" %}
+            <p><strong>Version:</strong> Teacher Key</p>
+        {% else %}
+            <p><strong>Version:</strong> Student Practice</p>
+        {% endif %}
+
+        <p><strong>Name:</strong> ________________________________________</p>
+        <p><strong>Date:</strong> _________________________________________</p>
+    </div>
+
+    <div class="print-actions">
+        <button class="print-btn" type="button" onclick="window.print()">Print</button>
+
+        {% if view == "teacher" %}
+            <a class="print-btn" href="/staar-practice/2022/printable?view=student">Student Version</a>
+        {% else %}
+            <a class="print-btn" href="/staar-practice/2022/printable?view=teacher">Teacher Key</a>
+        {% endif %}
+
+        <a class="print-btn" href="/staar-practice/2022">Back to STAAR Practice</a>
+    </div>
+
+    {% for question in questions %}
+    <article class="question-print">
+        <h2>Item {{ question["item"] }} — {{ question["topic"] }}</h2>
+        <p><strong>TEKS:</strong> {{ question["source_teks"] }} | <strong>{{ question["readiness"] }}</strong></p>
+        <p><strong>{{ question["prompt"] }}</strong></p>
+
+        {% for option in question["options"] %}
+            <p><strong>{{ option["label"] }}.</strong> {{ option["text"] }}</p>
+        {% endfor %}
+
+        <p><strong>Student answer:</strong></p>
+        <div class="answer-line"></div>
+
+        <p><strong>Evidence or reason:</strong></p>
+        <div class="answer-line"></div>
+
+        {% if view == "teacher" %}
+        <div class="teacher-key">
+            <p><strong>Correct answer:</strong> {{ question["answer"] }}</p>
+            <p><strong>Rationale:</strong> {{ question["rationale"] }}</p>
+        </div>
+        {% endif %}
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}
