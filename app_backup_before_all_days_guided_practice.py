@@ -1092,9 +1092,6 @@ def inject_staar_grade_dropdown_grouping_helper():
 
 
 
-
-
-
 @app.context_processor
 def inject_guided_practice_scenario_helpers():
     from curriculum.guided_practice_scenarios import get_guided_practice_scenario, is_circuit_lesson

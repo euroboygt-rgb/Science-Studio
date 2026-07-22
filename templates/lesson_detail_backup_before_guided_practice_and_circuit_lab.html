@@ -7,103 +7,6 @@
 
 {% block content %}
 
-<!-- Science Studio Guided Practice Scenario Upgrade -->
-{% set guided_scenario = get_guided_practice_scenario(lesson_day, lesson) %}
-<section class="lesson-card science-studio-guided-practice-enhanced" id="scienceStudioGuidedPracticeScenario">
-    <div class="guided-practice-topline">
-        <span class="guided-practice-badge">Before the Lab</span>
-        <span class="guided-practice-badge orange">Guided Practice Scenario</span>
-    </div>
-
-    <h2>Guided Practice: {{ guided_scenario["title"] }}</h2>
-
-    <div class="guided-practice-panel">
-        <h3>1. Scenario / Investigation Setup</h3>
-        <p>{{ guided_scenario["scenario"] }}</p>
-    </div>
-
-    <div class="guided-practice-panel">
-        <h3>2. Talk About the Lesson</h3>
-        <p>{{ guided_scenario["teacher_talk"] }}</p>
-    </div>
-
-    <div class="guided-practice-panel">
-        <h3>3. Examples to Show Students</h3>
-        <ul>
-            {% for example in guided_scenario["examples"] %}
-                <li>{{ example }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-
-    <div class="guided-practice-panel">
-        <h3>4. Student Task Before the Lab</h3>
-        <p>{{ guided_scenario["before_lab_task"] }}</p>
-    </div>
-
-    {% if is_circuit_lesson(lesson_day, lesson) %}
-    <div class="guided-practice-panel circuit-practice-callout">
-        <h3>⚡ Circuit Lab Connection</h3>
-        <p>
-            This lesson connects to conductors, insulators, circuits, or energy flow.
-            Students can test materials in a simple circuit before or during the lab.
-        </p>
-        <a class="guided-practice-btn" href="/labs/circuit-conductor-tester">
-            Open Circuit Conductor Tester
-        </a>
-    </div>
-    {% endif %}
-</section>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const scenarioCard = document.getElementById("scienceStudioGuidedPracticeScenario");
-
-    if (!scenarioCard) {
-        return;
-    }
-
-    const headings = Array.from(document.querySelectorAll("h1, h2, h3"));
-
-    const labHeading = headings.find(function (heading) {
-        const text = heading.textContent.trim().toLowerCase();
-
-        return (
-            (text.includes("lab") || text.includes("investigation")) &&
-            !text.includes("lab notebook") &&
-            !text.includes("before the lab") &&
-            !text.includes("guided practice") &&
-            !text.includes("scenario / investigation setup") &&
-            !text.includes("circuit lab connection")
-        );
-    });
-
-    if (labHeading) {
-        const labCard = labHeading.closest("section, article, .lesson-card, .card, div");
-
-        if (labCard && labCard.parentNode && labCard !== scenarioCard) {
-            labCard.parentNode.insertBefore(scenarioCard, labCard);
-            return;
-        }
-    }
-
-    const guidedHeading = headings.find(function (heading) {
-        return heading.textContent.trim().toLowerCase() === "guided practice";
-    });
-
-    if (guidedHeading) {
-        const guidedCard = guidedHeading.closest("section, article, .lesson-card, .card, div");
-
-        if (guidedCard && guidedCard.parentNode && guidedCard !== scenarioCard) {
-            guidedCard.parentNode.insertBefore(scenarioCard, guidedCard.nextSibling);
-        }
-    }
-});
-</script>
-<!-- End Science Studio Guided Practice Scenario Upgrade -->
-
-
-
 {% set current_view = view if view is defined else request.args.get("view", "teacher") %}
 {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
 {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
@@ -1005,8 +908,5 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
-
-
-
 
 {% endblock %}

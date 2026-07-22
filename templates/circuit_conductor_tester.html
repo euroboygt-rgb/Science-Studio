@@ -1,0 +1,439 @@
+{% extends "base.html" %}
+
+{% block title %}Circuit Conductor Tester{% endblock %}
+
+{% block content %}
+<style>
+.circuit-lab-wrap {
+    max-width: 1180px;
+    margin: 24px auto;
+}
+
+.circuit-hero {
+    background: linear-gradient(135deg, #123f8c, #6f2dbd, #00a6d6);
+    color: white;
+    border: 6px solid #111;
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.25);
+}
+
+.circuit-pill {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ff9f1c;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: 1000;
+    margin: 4px 6px 8px 0;
+}
+
+.circuit-card {
+    background: #fff7d6;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 18px;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.18);
+    margin-top: 18px;
+}
+
+.circuit-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 18px;
+    align-items: start;
+}
+
+.circuit-stage {
+    background: white;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 12px;
+    min-height: 420px;
+}
+
+.circuit-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.wire-line {
+    fill: none;
+    stroke: #0077aa;
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.test-gap {
+    stroke: #111;
+    stroke-width: 7;
+    stroke-linecap: round;
+}
+
+.bulb-glass {
+    fill: #e8f7ff;
+    stroke: #111;
+    stroke-width: 5;
+}
+
+.bulb-glow {
+    fill: #ffd166;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.bulb-glow.on {
+    opacity: 0.85;
+}
+
+.switch-arm {
+    stroke: #111;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: transform 0.25s ease;
+    transform-origin: 727px 263px;
+}
+
+.switch-arm.closed {
+    transform: rotate(28deg);
+}
+
+.test-object-box {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 14px;
+    margin-top: 12px;
+}
+
+.item-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.item-btn {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 16px;
+    padding: 10px;
+    font-weight: 1000;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.18);
+}
+
+.item-btn.active {
+    background: #ff9f1c;
+}
+
+.switch-btn {
+    background: #00a86b;
+    color: white;
+    border: 5px solid #111;
+    border-radius: 18px;
+    padding: 12px 18px;
+    font-weight: 1000;
+    cursor: pointer;
+    margin-top: 12px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.22);
+}
+
+.switch-btn.open {
+    background: #d62828;
+}
+
+.result-box {
+    background: white;
+    border: 5px solid #111;
+    border-radius: 20px;
+    padding: 16px;
+    margin-top: 14px;
+    font-size: 1.1rem;
+    font-weight: 900;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin-top: 12px;
+}
+
+.data-table th,
+.data-table td {
+    border: 3px solid #111;
+    padding: 10px;
+    text-align: left;
+}
+
+.lab-link-btn {
+    display: inline-block;
+    background: #ff9f1c;
+    color: #111 !important;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    text-decoration: none !important;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+    margin: 6px 6px 0 0;
+}
+
+.lab-link-btn.blue {
+    background: #0077ff;
+    color: white !important;
+}
+
+@media (max-width: 850px) {
+    .circuit-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media print {
+    nav,
+    footer,
+    .item-buttons,
+    .switch-btn,
+    .lab-link-btn,
+    #scienceStudioAiWidget {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+    }
+
+    .circuit-card,
+    .circuit-hero {
+        box-shadow: none;
+    }
+}
+</style>
+
+<div class="circuit-lab-wrap">
+    <section class="circuit-hero">
+        <span class="circuit-pill">Interactive Lab</span>
+        <span class="circuit-pill">Conductors & Insulators</span>
+        <span class="circuit-pill">Circuit Test</span>
+
+        <h1>Circuit Conductor Tester</h1>
+        <p>
+            Replace the test material, close the switch, and observe whether the bulb lights.
+            If the bulb lights, the material is an electrical conductor. If it does not light,
+            the material is an electrical insulator.
+        </p>
+
+        <a class="lab-link-btn" href="/labs">Back to Labs</a>
+        <a class="lab-link-btn blue" href="/first-nine-weeks">Back to Lessons</a>
+    </section>
+
+    <section class="circuit-card">
+        <h2>Focus Question</h2>
+        <p><strong>Which materials allow electric current to flow through a circuit?</strong></p>
+
+        <div class="circuit-grid">
+            <div class="circuit-stage">
+                <svg class="circuit-svg" viewBox="0 0 900 520" role="img" aria-label="Simple circuit with battery, bulb, switch, and replaceable test object">
+                    <defs>
+                        <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#fff176"/>
+                            <stop offset="65%" stop-color="#ffd166"/>
+                            <stop offset="100%" stop-color="#ffffff"/>
+                        </radialGradient>
+                    </defs>
+
+                    <circle id="bulbGlow" class="bulb-glow" cx="440" cy="118" r="95" fill="url(#glow)"></circle>
+
+                    <path class="wire-line" d="M155 300 C155 130 310 120 372 120"></path>
+                    <path class="wire-line" d="M508 120 C655 120 730 170 730 260"></path>
+                    <path class="wire-line" d="M730 294 C730 420 585 425 525 425"></path>
+                    <path class="wire-line" d="M375 425 C260 425 155 410 155 335"></path>
+
+                    <rect x="88" y="245" width="90" height="120" rx="16" fill="#d8e9ff" stroke="#111" stroke-width="5"></rect>
+                    <rect x="118" y="230" width="30" height="18" fill="#111"></rect>
+                    <text x="114" y="285" font-size="32" font-weight="900">+</text>
+                    <text x="122" y="340" font-size="38" font-weight="900">−</text>
+                    <text x="82" y="392" font-size="24" font-weight="900">Battery</text>
+
+                    <circle class="bulb-glass" cx="440" cy="118" r="58"></circle>
+                    <rect x="407" y="170" width="66" height="38" rx="8" fill="#ff6b35" stroke="#111" stroke-width="5"></rect>
+                    <path d="M420 120 C430 90 450 90 460 120" fill="none" stroke="#111" stroke-width="5"></path>
+                    <text x="397" y="238" font-size="24" font-weight="900">Bulb</text>
+
+                    <line x1="705" y1="284" x2="752" y2="284" class="test-gap"></line>
+                    <circle cx="702" cy="284" r="9" fill="#111"></circle>
+                    <circle cx="755" cy="284" r="9" fill="#111"></circle>
+                    <line id="switchArm" x1="702" y1="264" x2="748" y2="235" class="switch-arm"></line>
+                    <text x="675" y="340" font-size="24" font-weight="900">Switch</text>
+
+                    <line x1="375" y1="425" x2="420" y2="425" class="test-gap"></line>
+                    <line x1="480" y1="425" x2="525" y2="425" class="test-gap"></line>
+                    <circle cx="420" cy="425" r="9" fill="#111"></circle>
+                    <circle cx="480" cy="425" r="9" fill="#111"></circle>
+
+                    <rect id="testMaterialRect" x="421" y="397" width="58" height="56" rx="10" fill="#f4a261" stroke="#111" stroke-width="5"></rect>
+                    <text id="testMaterialShort" x="450" y="433" text-anchor="middle" font-size="18" font-weight="900">Cu</text>
+                    <text x="353" y="485" font-size="24" font-weight="900">Replaceable Test Material</text>
+                </svg>
+
+                <button id="switchButton" class="switch-btn open" type="button" onclick="toggleSwitch()">Close Switch</button>
+
+                <div id="resultBox" class="result-box">
+                    Choose a material, then close the switch.
+                </div>
+            </div>
+
+            <div>
+                <div class="test-object-box">
+                    <h2>1. Choose the test material</h2>
+                    <p>Only the test material changes. The battery, wires, bulb, and switch stay the same.</p>
+
+                    <div class="item-buttons" id="itemButtons"></div>
+                </div>
+
+                <div class="test-object-box">
+                    <h2>2. Record your evidence</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th>Bulb Lights?</th>
+                                <th>Classification</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataTableBody">
+                            <tr>
+                                <td colspan="3">Run tests to fill in the table.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="circuit-card">
+        <h2>Lab Notebook Response</h2>
+        <p><strong>Claim:</strong> Which materials were conductors?</p>
+        <p><strong>Evidence:</strong> How did the bulb help you know?</p>
+        <p><strong>Reasoning:</strong> Why does a conductor make the bulb light in a closed circuit?</p>
+    </section>
+
+    <section class="circuit-card">
+        <h2>STAAR Connection</h2>
+        <p>
+            STAAR often asks students to decide whether a circuit is complete and whether a material
+            allows electric current to flow. Look for the evidence: closed path, working power source,
+            and a conductor in the path.
+        </p>
+    </section>
+</div>
+
+<script>
+const materials = [
+    { name: "Copper wire", short: "Cu", conductor: true, color: "#f4a261", reason: "Copper is a metal that allows electric current to flow." },
+    { name: "Steel paper clip", short: "Fe", conductor: true, color: "#adb5bd", reason: "Steel contains iron and conducts electricity." },
+    { name: "Aluminum foil", short: "Al", conductor: true, color: "#ced4da", reason: "Aluminum is a metal conductor." },
+    { name: "Wood stick", short: "Wood", conductor: false, color: "#a47148", reason: "Dry wood is an insulator and does not complete the circuit." },
+    { name: "Plastic strip", short: "Plastic", conductor: false, color: "#90e0ef", reason: "Plastic is an insulator." },
+    { name: "Rubber band", short: "Rubber", conductor: false, color: "#222", reason: "Rubber is an insulator." },
+    { name: "Paper", short: "Paper", conductor: false, color: "#fff3b0", reason: "Paper is an insulator." },
+    { name: "Glass", short: "Glass", conductor: false, color: "#caf0f8", reason: "Glass is an insulator." },
+];
+
+let selectedIndex = 0;
+let switchClosed = false;
+let results = {};
+
+function renderButtons() {
+    const holder = document.getElementById("itemButtons");
+    holder.innerHTML = "";
+
+    materials.forEach((material, index) => {
+        const button = document.createElement("button");
+        button.className = "item-btn" + (index === selectedIndex ? " active" : "");
+        button.type = "button";
+        button.textContent = material.name;
+        button.onclick = () => selectMaterial(index);
+        holder.appendChild(button);
+    });
+}
+
+function selectMaterial(index) {
+    selectedIndex = index;
+    switchClosed = false;
+    updateCircuit();
+    renderButtons();
+}
+
+function toggleSwitch() {
+    switchClosed = !switchClosed;
+    updateCircuit();
+
+    if (switchClosed) {
+        const material = materials[selectedIndex];
+        results[material.name] = {
+            lights: material.conductor ? "Yes" : "No",
+            type: material.conductor ? "Conductor" : "Insulator",
+        };
+        renderTable();
+    }
+}
+
+function updateCircuit() {
+    const material = materials[selectedIndex];
+    const bulbGlow = document.getElementById("bulbGlow");
+    const switchArm = document.getElementById("switchArm");
+    const switchButton = document.getElementById("switchButton");
+    const resultBox = document.getElementById("resultBox");
+    const rect = document.getElementById("testMaterialRect");
+    const shortText = document.getElementById("testMaterialShort");
+
+    rect.setAttribute("fill", material.color);
+    shortText.textContent = material.short;
+
+    if (switchClosed) {
+        switchArm.classList.add("closed");
+        switchButton.classList.remove("open");
+        switchButton.textContent = "Open Switch";
+
+        if (material.conductor) {
+            bulbGlow.classList.add("on");
+            resultBox.innerHTML = `💡 <strong>The bulb lights!</strong><br>${material.name} is an electrical conductor. ${material.reason}`;
+        } else {
+            bulbGlow.classList.remove("on");
+            resultBox.innerHTML = `🔎 <strong>The bulb does not light.</strong><br>${material.name} is an electrical insulator. ${material.reason}`;
+        }
+    } else {
+        switchArm.classList.remove("closed");
+        switchButton.classList.add("open");
+        switchButton.textContent = "Close Switch";
+        bulbGlow.classList.remove("on");
+        resultBox.innerHTML = `Current test material: <strong>${material.name}</strong><br>Close the switch to test it.`;
+    }
+}
+
+function renderTable() {
+    const body = document.getElementById("dataTableBody");
+    const names = Object.keys(results);
+
+    if (names.length === 0) {
+        body.innerHTML = `<tr><td colspan="3">Run tests to fill in the table.</td></tr>`;
+        return;
+    }
+
+    body.innerHTML = names.map(name => {
+        const result = results[name];
+        return `<tr><td>${name}</td><td>${result.lights}</td><td>${result.type}</td></tr>`;
+    }).join("");
+}
+
+renderButtons();
+updateCircuit();
+</script>
+{% endblock %}

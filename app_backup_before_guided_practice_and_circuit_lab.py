@@ -805,17 +805,6 @@ def api_science_ai():
 
 
 
-
-# Circuit Conductor Tester routes
-@app.route("/labs/circuit-conductor-tester")
-@app.route("/labs/conductor-insulator-circuit")
-@app.route("/labs/unit1/arcade/electrical-conductivity")
-@app.route("/labs/unit1/arcade/conductivity-lab")
-def circuit_conductor_tester():
-    from flask import render_template
-    return render_template("circuit_conductor_tester.html")
-# End Circuit Conductor Tester routes
-
 @app.route("/labs/unit1/arcade/<lab_slug>")
 def unit1_lab_arcade(lab_slug):
     from flask import render_template, redirect
@@ -1089,19 +1078,6 @@ def inject_staar_teks_grouping_helper():
 def inject_staar_grade_dropdown_grouping_helper():
     from curriculum.staar_2022_practice import group_staar_questions_by_grade_and_teks
     return dict(group_staar_questions_by_grade_and_teks=group_staar_questions_by_grade_and_teks)
-
-
-
-
-
-
-@app.context_processor
-def inject_guided_practice_scenario_helpers():
-    from curriculum.guided_practice_scenarios import get_guided_practice_scenario, is_circuit_lesson
-    return dict(
-        get_guided_practice_scenario=get_guided_practice_scenario,
-        is_circuit_lesson=is_circuit_lesson
-    )
 
 
 if __name__ == "__main__":
