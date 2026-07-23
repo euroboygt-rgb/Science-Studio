@@ -108,9 +108,9 @@ SCIENCE_VIDEO_LIBRARY = {
         ],
     },
     "solubility-miscibility": {
-        "title": "Solubility and Dissolving in Water",
-        "youtube_id": "JGkmGQ89_SE",
-        "source": "Science Video Support",
+        "title": "Solubility and Miscibility - 5th Grade",
+        "youtube_id": "n5WUSU_k-NA",
+        "source": "Le Catalyseur",
         "unit": "Unit 1 and Unit 2",
         "teks": "5.6A, 5.6B, 5.6C",
         "focus": "Solubility, insoluble materials, mixtures, and solutions",
