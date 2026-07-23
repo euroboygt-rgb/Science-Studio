@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 580" role="img" aria-label="A ramp investigation with a toy car, books, and measuring tape">
+  <rect width="950" height="580" fill="#ffffff"/>
+  <text x="475" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800">Ramp Force Investigation</text>
+
+  <rect x="125" y="360" width="115" height="45" fill="#7c3f24" stroke="#111" stroke-width="4"/>
+  <rect x="125" y="315" width="115" height="45" fill="#a35d2d" stroke="#111" stroke-width="4"/>
+  <rect x="125" y="270" width="115" height="45" fill="#7c3f24" stroke="#111" stroke-width="4"/>
+  <text x="182" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800">Books</text>
+
+  <polygon points="235,285 725,405 725,435 235,315" fill="#d7e3fc" stroke="#111" stroke-width="5"/>
+  <text x="470" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800" transform="rotate(14 470 335)">Ramp</text>
+
+  <g transform="translate(610 348) rotate(14)">
+    <rect x="0" y="0" width="110" height="55" rx="12" fill="#ff9f1c" stroke="#111" stroke-width="4"/>
+    <circle cx="28" cy="58" r="15" fill="#111"/>
+    <circle cx="85" cy="58" r="15" fill="#111"/>
+    <text x="55" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="800">car</text>
+  </g>
+
+  <line x1="260" y1="485" x2="820" y2="485" stroke="#111" stroke-width="5"/>
+  <g font-family="Arial, sans-serif" font-size="18" font-weight="800">
+    <text x="260" y="525" text-anchor="middle">0 cm</text>
+    <text x="450" y="525" text-anchor="middle">50 cm</text>
+    <text x="640" y="525" text-anchor="middle">100 cm</text>
+    <text x="820" y="525" text-anchor="middle">150 cm</text>
+  </g>
+  <text x="545" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800">What variable should be changed? What data should be measured?</text>
+</svg>

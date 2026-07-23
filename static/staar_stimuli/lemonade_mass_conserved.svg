@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" role="img" aria-label="Lemon juice and sugar mixed with water to make lemonade">
+  <rect width="900" height="540" fill="#ffffff"/>
+  <text x="450" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800">Making Lemonade</text>
+
+  <rect x="100" y="120" width="170" height="250" rx="25" fill="#fff7d6" stroke="#111" stroke-width="5"/>
+  <path d="M120 260 Q185 285 250 260 L250 350 Q185 380 120 350 Z" fill="#f6d365" opacity="0.85"/>
+  <text x="185" y="415" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800">Lemon juice</text>
+
+  <rect x="350" y="125" width="160" height="110" rx="15" fill="#fff5d6" stroke="#111" stroke-width="5"/>
+  <circle cx="390" cy="165" r="7" fill="#ffffff" stroke="#111" stroke-width="1"/>
+  <circle cx="435" cy="190" r="7" fill="#ffffff" stroke="#111" stroke-width="1"/>
+  <circle cx="475" cy="160" r="7" fill="#ffffff" stroke="#111" stroke-width="1"/>
+  <text x="430" y="415" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800">Sugar</text>
+
+  <path d="M535 225 C590 225 605 250 645 260" fill="none" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#111"/>
+    </marker>
+  </defs>
+
+  <rect x="650" y="110" width="170" height="270" rx="25" fill="#fff7d6" stroke="#111" stroke-width="5"/>
+  <path d="M665 230 Q735 260 805 230 L805 360 Q735 390 665 360 Z" fill="#f6d365" opacity="0.65"/>
+  <text x="735" y="415" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800">Lemonade</text>
+
+  <rect x="210" y="465" width="480" height="45" rx="18" fill="#d8f3dc" stroke="#111" stroke-width="4"/>
+  <text x="450" y="496" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800">Mass stays the same even when materials mix.</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-label="Salt dissolves in water but the total mass still includes the salt">
+  <rect width="900" height="560" fill="#ffffff"/>
+  <text x="450" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800">Mass of a Salt Solution</text>
+
+  <rect x="90" y="120" width="250" height="300" rx="24" fill="#eef9ff" stroke="#111" stroke-width="5"/>
+  <path d="M110 245 Q215 280 320 245 L320 390 Q215 430 110 390 Z" fill="#bcd7e6" opacity="0.72"/>
+  <text x="215" y="468" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800">100 g water</text>
+
+  <rect x="375" y="135" width="150" height="110" rx="14" fill="#fff5d6" stroke="#111" stroke-width="5"/>
+  <circle cx="410" cy="176" r="6" fill="#f8f8f8" stroke="#111" stroke-width="1"/>
+  <circle cx="450" cy="195" r="6" fill="#f8f8f8" stroke="#111" stroke-width="1"/>
+  <circle cx="490" cy="170" r="6" fill="#f8f8f8" stroke="#111" stroke-width="1"/>
+  <text x="450" y="282" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800">12 g salt</text>
+
+  <path d="M535 240 C590 240 600 270 645 275" fill="none" stroke="#111" stroke-width="5" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#111"/>
+    </marker>
+  </defs>
+
+  <rect x="650" y="120" width="180" height="300" rx="24" fill="#eef9ff" stroke="#111" stroke-width="5"/>
+  <path d="M665 245 Q740 280 815 245 L815 390 Q740 425 665 390 Z" fill="#bcd7e6" opacity="0.5"/>
+  <text x="740" y="468" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800">solution</text>
+
+  <rect x="580" y="485" width="320" height="50" rx="18" fill="#d8f3dc" stroke="#111" stroke-width="4"/>
+  <text x="740" y="518" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="800">Total mass ≈ 112 g</text>
+
+  <text x="290" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700">The salt cannot be seen, but its matter is still present.</text>
+</svg>

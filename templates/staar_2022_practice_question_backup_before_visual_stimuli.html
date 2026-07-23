@@ -5,7 +5,7 @@
 {% block content %}
 <style>
 .staar-question-page {
-    max-width: 980px;
+    max-width: 960px;
     margin: 24px auto;
 }
 
@@ -54,48 +54,6 @@
 .staar-btn.blue {
     background: #0077ff;
     color: white !important;
-}
-
-.stimulus-card {
-    background: white;
-    border: 5px solid #111;
-    border-radius: 22px;
-    padding: 16px;
-    margin: 18px 0;
-    box-shadow: 5px 5px 0 rgba(0,0,0,0.16);
-}
-
-.stimulus-card h2 {
-    margin-top: 0;
-}
-
-.stimulus-image {
-    display: block;
-    width: 100%;
-    max-height: 520px;
-    object-fit: contain;
-    border: 4px solid #111;
-    border-radius: 18px;
-    background: white;
-}
-
-.stimulus-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    margin-top: 10px;
-}
-
-.stimulus-table th,
-.stimulus-table td {
-    border: 3px solid #111;
-    padding: 12px;
-    text-align: center;
-    font-weight: 800;
-}
-
-.stimulus-table th {
-    background: #dff3ff;
 }
 
 .choice {
@@ -161,10 +119,6 @@
             <span class="staar-badge">TEKS {{ question["source_teks"] }}</span>
             <span class="staar-badge">{{ question["readiness"] }}</span>
 
-            {% if question.get("stimulus_type") and question.get("stimulus_type") != "none" %}
-                <span class="staar-badge">Visual Stimulus</span>
-            {% endif %}
-
             {% if view == "teacher" %}
                 <span class="staar-badge">Teacher View</span>
             {% else %}
@@ -189,41 +143,6 @@
             {% endif %}
         </div>
 
-        {% if question.get("stimulus_image") or question.get("stimulus_table") %}
-        <section class="stimulus-card">
-            <h2>Stimulus</h2>
-
-            {% if question.get("stimulus_title") %}
-                <p><strong>{{ question["stimulus_title"] }}</strong></p>
-            {% endif %}
-
-            {% if question.get("stimulus_image") %}
-                <img class="stimulus-image" src="{{ question['stimulus_image'] }}" alt="{{ question.get('stimulus_alt', 'Science stimulus image') }}">
-            {% endif %}
-
-            {% if question.get("stimulus_table") %}
-                <table class="stimulus-table">
-                    <thead>
-                        <tr>
-                            {% for header in question["stimulus_table"]["headers"] %}
-                                <th>{{ header }}</th>
-                            {% endfor %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for row in question["stimulus_table"]["rows"] %}
-                            <tr>
-                                {% for cell in row %}
-                                    <td>{{ cell }}</td>
-                                {% endfor %}
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% endif %}
-        </section>
-        {% endif %}
-
         <h2>Question</h2>
         <p style="font-size:1.15rem; font-weight:900;">{{ question["prompt"] }}</p>
 
@@ -247,12 +166,12 @@
             <p><strong>Rationale:</strong> {{ question["rationale"] }}</p>
 
             <h3>Answer Choice Rationales</h3>
-            {% for label, reason in question.get("rationales", {}).items() %}
+            {% for label, reason in question["rationales"].items() %}
                 <p><strong>{{ label }}:</strong> {{ reason }}</p>
             {% endfor %}
 
             <p><strong>Reporting Category:</strong> {{ question["reporting_category"] }}</p>
-            <p><strong>Content TEKS:</strong> {{ question["source_teks"] }}</p>
+            <p><strong>Content TEKS from 2022 key:</strong> {{ question["source_teks"] }}</p>
             {% if question["process_teks"] %}
                 <p><strong>Process TEKS:</strong> {{ question["process_teks"] }}</p>
             {% endif %}
@@ -263,7 +182,7 @@
 
 <script>
 const CORRECT_ANSWER = {{ question["answer"]|tojson }};
-const RATIONALES = {{ question.get("rationales", {})|tojson }};
+const RATIONALES = {{ question["rationales"]|tojson }};
 const MAIN_RATIONALE = {{ question["rationale"]|tojson }};
 
 function checkAnswer() {
@@ -272,18 +191,17 @@ function checkAnswer() {
 
     if (!selected) {
         feedback.classList.add("show");
-        feedback.innerHTML = "<h2>Choose an answer first.</h2><p>Select an answer, then check your answer.</p>";
+        feedback.innerHTML = "<h2>Choose an answer first.</h2><p>Select A, B, C, or D/F, G, H, or J, then check your answer.</p>";
         return;
     }
 
     const value = selected.value;
     const correct = value === CORRECT_ANSWER;
-    const choiceReason = RATIONALES[value] || "";
 
     if (correct) {
-        feedback.innerHTML = `<h2>✅ Correct!</h2><p>${MAIN_RATIONALE}</p><p><strong>Why ${value} works:</strong> ${choiceReason}</p>`;
+        feedback.innerHTML = `<h2>✅ Correct!</h2><p>${MAIN_RATIONALE}</p><p><strong>Why ${value} works:</strong> ${RATIONALES[value]}</p>`;
     } else {
-        feedback.innerHTML = `<h2>🔎 Not yet.</h2><p><strong>Your answer:</strong> ${value}</p><p>${choiceReason}</p><p><strong>Correct answer:</strong> ${CORRECT_ANSWER}</p><p>${MAIN_RATIONALE}</p>`;
+        feedback.innerHTML = `<h2>🔎 Not yet.</h2><p><strong>Your answer:</strong> ${value}</p><p>${RATIONALES[value]}</p><p><strong>Correct answer:</strong> ${CORRECT_ANSWER}</p><p>${MAIN_RATIONALE}</p>`;
     }
 
     feedback.classList.add("show");

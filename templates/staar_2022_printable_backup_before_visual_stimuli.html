@@ -50,33 +50,6 @@
     page-break-inside: avoid;
 }
 
-.print-stimulus {
-    border: 3px solid #111;
-    border-radius: 16px;
-    padding: 10px;
-    margin: 10px 0;
-    background: #fff;
-}
-
-.print-stimulus img {
-    width: 100%;
-    max-height: 360px;
-    object-fit: contain;
-}
-
-.print-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 8px;
-}
-
-.print-table th,
-.print-table td {
-    border: 2px solid #111;
-    padding: 8px;
-    text-align: center;
-}
-
 .answer-line {
     border-bottom: 3px solid #111;
     min-height: 28px;
@@ -115,7 +88,7 @@
 <section class="printable-staar">
     <div class="print-top">
         <h1>STAAR Practice Printable</h1>
-        <p>Original STAAR-style Grade 5 Science practice with visual stimuli when needed.</p>
+        <p>Original 2022/2025-aligned STAAR-style Grade 5 Science practice.</p>
 
         {% if view == "teacher" %}
             <p><strong>Version:</strong> Teacher Key</p>
@@ -143,38 +116,6 @@
     <article class="question-print">
         <h2>Item {{ question["item"] }} — {{ question["topic"] }}</h2>
         <p><strong>TEKS:</strong> {{ question["source_teks"] }} | <strong>{{ question["readiness"] }}</strong></p>
-
-        {% if question.get("stimulus_image") or question.get("stimulus_table") %}
-        <div class="print-stimulus">
-            <p><strong>Stimulus:</strong> {{ question.get("stimulus_title", "") }}</p>
-
-            {% if question.get("stimulus_image") %}
-                <img src="{{ question['stimulus_image'] }}" alt="{{ question.get('stimulus_alt', 'Science stimulus image') }}">
-            {% endif %}
-
-            {% if question.get("stimulus_table") %}
-                <table class="print-table">
-                    <thead>
-                        <tr>
-                            {% for header in question["stimulus_table"]["headers"] %}
-                                <th>{{ header }}</th>
-                            {% endfor %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for row in question["stimulus_table"]["rows"] %}
-                            <tr>
-                                {% for cell in row %}
-                                    <td>{{ cell }}</td>
-                                {% endfor %}
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% endif %}
-        </div>
-        {% endif %}
-
         <p><strong>{{ question["prompt"] }}</strong></p>
 
         {% for option in question["options"] %}
