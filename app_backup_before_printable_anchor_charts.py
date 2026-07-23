@@ -1104,44 +1104,6 @@ def inject_guided_practice_scenario_helpers():
     )
 
 
-
-
-
-
-# Science Studio printable lesson anchor chart routes
-@app.context_processor
-def inject_lesson_anchor_chart_helpers():
-    from curriculum.lesson_anchor_charts import get_lesson_anchor_chart_for_day, get_all_lesson_anchor_charts
-    return dict(
-        get_lesson_anchor_chart_for_day=get_lesson_anchor_chart_for_day,
-        get_all_lesson_anchor_charts=get_all_lesson_anchor_charts
-    )
-
-@app.route("/resources/anchor-charts")
-@app.route("/anchor-charts")
-def lesson_anchor_chart_library():
-    from flask import render_template
-    from curriculum.lesson_anchor_charts import get_all_lesson_anchor_charts
-    return render_template(
-        "lesson_anchor_chart_library.html",
-        charts=get_all_lesson_anchor_charts()
-    )
-
-@app.route("/resources/anchor-chart/<chart_slug>")
-def lesson_anchor_chart_print(chart_slug):
-    from flask import render_template, request, redirect
-    from curriculum.lesson_anchor_charts import get_anchor_chart_by_slug
-    chart = get_anchor_chart_by_slug(chart_slug)
-    if not chart:
-        return redirect("/resources/anchor-charts")
-    return render_template(
-        "lesson_anchor_chart_print.html",
-        chart=chart,
-        autoprint=request.args.get("print") == "1"
-    )
-# End Science Studio printable lesson anchor chart routes
-
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)

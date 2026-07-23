@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Anchor Chart Library{% endblock %}
+
+{% block content %}
+<style>
+.anchor-library-wrap {
+    max-width: 1180px;
+    margin: 24px auto;
+}
+
+.anchor-library-hero {
+    background: linear-gradient(135deg, #123f8c, #6f2dbd, #00a6d6);
+    color: white;
+    border: 6px solid #111;
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.25);
+}
+
+.anchor-library-pill {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ff9f1c;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: 1000;
+    margin: 4px 6px 8px 0;
+}
+
+.anchor-library-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.anchor-library-card {
+    background: #fff7d6;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 16px;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.18);
+}
+
+.anchor-library-image {
+    width: 100%;
+    max-height: 360px;
+    object-fit: contain;
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    margin: 10px 0;
+}
+
+.anchor-library-btn {
+    display: inline-block;
+    background: #ff9f1c;
+    color: #111 !important;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    text-decoration: none !important;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+    margin: 5px 5px 0 0;
+}
+
+.anchor-library-btn.blue {
+    background: #0077ff;
+    color: white !important;
+}
+</style>
+
+<div class="anchor-library-wrap">
+    <section class="anchor-library-hero">
+        <span class="anchor-library-pill">Science Studio</span>
+        <span class="anchor-library-pill">Printable</span>
+        <span class="anchor-library-pill">Anchor Charts</span>
+
+        <h1>Anchor Chart Library</h1>
+        <p>Open, display, or print classroom anchor charts for the Science Studio lessons.</p>
+
+        <a class="anchor-library-btn" href="/print-center">Back to Print Center</a>
+        <a class="anchor-library-btn blue" href="/first-nine-weeks">Back to Lessons</a>
+    </section>
+
+    <section class="anchor-library-grid">
+        {% for chart in charts %}
+        <article class="anchor-library-card">
+            <h2>{{ chart["title"] }}</h2>
+            <p><strong>{{ chart["unit"] }}</strong></p>
+            <p>{{ chart["description"] }}</p>
+
+            <img class="anchor-library-image" src="{{ chart['image'] }}" alt="{{ chart['title'] }}">
+
+            <a class="anchor-library-btn" href="/resources/anchor-chart/{{ chart['slug'] }}">Open Printable Chart</a>
+            <a class="anchor-library-btn blue" href="/resources/anchor-chart/{{ chart['slug'] }}?print=1" target="_blank" rel="noopener noreferrer">Print Chart</a>
+        </article>
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}

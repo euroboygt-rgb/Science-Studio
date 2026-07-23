@@ -7,6 +7,79 @@
 
 {% block content %}
 
+<!-- Science Studio Printable Lesson Anchor Chart Section -->
+{% set lesson_anchor_chart = get_lesson_anchor_chart_for_day(lesson_day) %}
+{% if lesson_anchor_chart %}
+<section class="lesson-card printable-lesson-anchor-chart-section" id="scienceStudioLessonAnchorChart">
+    <div class="anchor-chart-topline">
+        <span class="anchor-chart-badge">Anchor Chart</span>
+        <span class="anchor-chart-badge orange">Printable</span>
+        <span class="anchor-chart-badge blue">{{ lesson_anchor_chart["unit"] }}</span>
+    </div>
+
+    <h2>🖼️ {{ lesson_anchor_chart["title"] }}</h2>
+    <p>{{ lesson_anchor_chart["description"] }}</p>
+
+    <div class="lesson-anchor-chart-poster-card">
+        <img
+            src="{{ lesson_anchor_chart['image'] }}"
+            alt="{{ lesson_anchor_chart['title'] }}"
+            class="lesson-anchor-chart-poster-image"
+        >
+    </div>
+
+    <div class="lesson-anchor-chart-button-row">
+        <a
+            class="lesson-anchor-chart-btn"
+            href="/resources/anchor-chart/{{ lesson_anchor_chart['slug'] }}"
+        >
+            Open Printable Anchor Chart
+        </a>
+
+        <a
+            class="lesson-anchor-chart-btn blue"
+            href="/resources/anchor-chart/{{ lesson_anchor_chart['slug'] }}?print=1"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Print This Anchor Chart
+        </a>
+
+        <a
+            class="lesson-anchor-chart-btn purple"
+            href="/resources/anchor-charts"
+        >
+            Anchor Chart Library
+        </a>
+    </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const anchorChartCard = document.getElementById("scienceStudioLessonAnchorChart");
+
+    if (!anchorChartCard) {
+        return;
+    }
+
+    const headings = Array.from(document.querySelectorAll("h1, h2, h3"));
+
+    const vocabularyAnchorHeading = headings.find(function (heading) {
+        const text = heading.textContent.trim().toLowerCase();
+        return text.includes("vocabulary anchor chart");
+    });
+
+    if (vocabularyAnchorHeading) {
+        const vocabularyCard = vocabularyAnchorHeading.closest("section, article, .lesson-card, .card, div");
+
+        if (vocabularyCard && vocabularyCard.parentNode && vocabularyCard !== anchorChartCard) {
+            vocabularyCard.parentNode.insertBefore(anchorChartCard, vocabularyCard.nextSibling);
+        }
+    }
+});
+</script>
+{% endif %}
+<!-- End Science Studio Printable Lesson Anchor Chart Section -->
 
 
 
@@ -385,46 +458,6 @@ details summary {
     <button class="btn btn-warning lesson-btn mt-3" onclick="window.print()">Print This Anchor Chart</button>
     <a href="/vocabulary" class="btn btn-primary lesson-btn mt-3">Open Full Vocabulary Page</a>
 </section>
-
-<!-- Science Studio Printable Lesson Anchor Chart Section -->
-{% set lesson_anchor_chart = get_lesson_anchor_chart_for_day(lesson_day) %}
-{% if lesson_anchor_chart %}
-<section class="lesson-card printable-lesson-anchor-chart-section" id="scienceStudioLessonAnchorChart">
-    <div class="anchor-chart-topline">
-        <span class="anchor-chart-badge">Anchor Chart</span>
-        <span class="anchor-chart-badge orange">Printable</span>
-        <span class="anchor-chart-badge blue">{{ lesson_anchor_chart["unit"] }}</span>
-    </div>
-
-    <h2>🖼️ {{ lesson_anchor_chart["title"] }}</h2>
-    <p>{{ lesson_anchor_chart["description"] }}</p>
-
-    <div class="lesson-anchor-chart-poster-card">
-        <img
-            src="{{ lesson_anchor_chart['image'] }}"
-            alt="{{ lesson_anchor_chart['title'] }}"
-            class="lesson-anchor-chart-poster-image"
-        >
-    </div>
-
-    <div class="lesson-anchor-chart-button-row">
-        <a class="lesson-anchor-chart-btn" href="/resources/anchor-chart/{{ lesson_anchor_chart['slug'] }}">
-            Open Printable Anchor Chart
-        </a>
-
-        <a class="lesson-anchor-chart-btn blue" href="/resources/anchor-chart/{{ lesson_anchor_chart['slug'] }}?print=1" target="_blank" rel="noopener noreferrer">
-            Print This Anchor Chart
-        </a>
-
-        <a class="lesson-anchor-chart-btn purple" href="/resources/anchor-charts">
-            Anchor Chart Library
-        </a>
-    </div>
-</section>
-{% endif %}
-<!-- End Science Studio Printable Lesson Anchor Chart Section -->
-
-
 
 
 {% if lesson_day|int == 6 %}

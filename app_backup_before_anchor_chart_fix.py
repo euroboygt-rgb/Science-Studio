@@ -1105,9 +1105,6 @@ def inject_guided_practice_scenario_helpers():
 
 
 
-
-
-
 # Science Studio printable lesson anchor chart routes
 @app.context_processor
 def inject_lesson_anchor_chart_helpers():

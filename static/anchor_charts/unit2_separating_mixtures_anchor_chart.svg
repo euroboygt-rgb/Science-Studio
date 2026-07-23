@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1055 1491" role="img" aria-label="Separating mixtures and solutions anchor chart">
+<rect width="1055" height="1491" fill="#fff"/>
+<text x="527" y="80" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="70" font-weight="900" fill="#2563eb">Separating</text>
+<text x="527" y="150" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="58" font-weight="900" fill="#16a34a">Mixtures and Solutions</text>
+<text x="527" y="210" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="36" font-weight="800" fill="#111">Different ways to separate materials.</text>
+
+<g font-family="Comic Sans MS, Arial" stroke="#111" stroke-width="5">
+<rect x="55" y="270" width="450" height="260" rx="26" fill="#fff1f2"/>
+<text x="90" y="335" font-size="48" font-weight="900" fill="#e11d48" stroke="none">1. Filter</text>
+<text x="90" y="390" font-size="32" fill="#111" stroke="none">separates solids from liquids</text>
+<path d="M330 340 h100 l-35 95 v45 h-30 v-45z" fill="#fff"/>
+<path d="M345 400 h70" stroke="#38bdf8" stroke-width="9"/>
+<path d="M365 495 h40" stroke="#38bdf8" stroke-width="9"/>
+<text x="90" y="480" font-size="28" font-weight="900" fill="#e11d48" stroke="none">Example: sand and water</text>
+
+<rect x="550" y="270" width="450" height="260" rx="26" fill="#f0fdf4"/>
+<text x="585" y="335" font-size="48" font-weight="900" fill="#16a34a" stroke="none">2. Sieve</text>
+<text x="585" y="390" font-size="32" fill="#111" stroke="none">separates large solids from small solids</text>
+<ellipse cx="830" cy="405" rx="90" ry="38" fill="#e5e7eb"/>
+<ellipse cx="830" cy="390" rx="90" ry="38" fill="#fff"/>
+<line x1="760" y1="390" x2="900" y2="390"/><line x1="775" y1="370" x2="885" y2="410"/><line x1="775" y1="410" x2="885" y2="370"/>
+<circle cx="810" cy="385" r="12" fill="#6b7280"/><circle cx="850" cy="405" r="12" fill="#6b7280"/>
+<text x="585" y="480" font-size="28" font-weight="900" fill="#16a34a" stroke="none">Example: rocks and sand</text>
+
+<rect x="55" y="570" width="450" height="260" rx="26" fill="#eff6ff"/>
+<text x="90" y="635" font-size="48" font-weight="900" fill="#2563eb" stroke="none">3. Magnetism</text>
+<text x="90" y="690" font-size="32" fill="#111" stroke="none">separates magnetic items</text>
+<path d="M320 690 a60 60 0 0 1 120 0 v55 h-38 v-55 a22 22 0 0 0 -44 0 v55 h-38z" fill="#dc2626"/>
+<circle cx="345" cy="785" r="9" fill="#555"/><circle cx="385" cy="790" r="9" fill="#555"/><circle cx="425" cy="785" r="9" fill="#555"/>
+<text x="90" y="780" font-size="28" font-weight="900" fill="#2563eb" stroke="none">Example: paper clips and beans</text>
+
+<rect x="550" y="570" width="450" height="260" rx="26" fill="#fff7ed"/>
+<text x="585" y="635" font-size="48" font-weight="900" fill="#ea580c" stroke="none">4. Density</text>
+<text x="585" y="690" font-size="32" fill="#111" stroke="none">some items float and some sink</text>
+<rect x="790" y="675" width="110" height="105" rx="14" fill="#bfdbfe"/>
+<path d="M790 725 q55 24 110 0 v55 h-110z" fill="#60a5fa"/>
+<circle cx="835" cy="720" r="20" fill="#a16207"/>
+<circle cx="865" cy="765" r="22" fill="#6b7280"/>
+<text x="585" y="780" font-size="28" font-weight="900" fill="#ea580c" stroke="none">Example: cork and rock in water</text>
+
+<rect x="55" y="870" width="450" height="260" rx="26" fill="#f0fdfa"/>
+<text x="90" y="935" font-size="48" font-weight="900" fill="#0f766e" stroke="none">5. Sorting Tools</text>
+<text x="90" y="990" font-size="32" fill="#111" stroke="none">separate by size or shape</text>
+<path d="M340 940 l110 -70 l20 28 l-112 70z" fill="#d1d5db"/>
+<circle cx="315" cy="1030" r="14" fill="#22c55e"/><circle cx="355" cy="1035" r="14" fill="#22c55e"/>
+<rect x="395" y="1015" width="28" height="28" fill="#a855f7"/>
+<polygon points="450,1048 475,1008 500,1048" fill="#f97316"/>
+<text x="90" y="1080" font-size="28" font-weight="900" fill="#0f766e" stroke="none">Example: beads by shape</text>
+
+<rect x="550" y="870" width="450" height="260" rx="26" fill="#faf5ff"/>
+<text x="585" y="935" font-size="48" font-weight="900" fill="#7e22ce" stroke="none">6. Evaporation</text>
+<text x="585" y="990" font-size="32" fill="#111" stroke="none">uses heat to separate dissolved solids</text>
+<rect x="765" y="1040" width="150" height="55" rx="12" fill="#333"/>
+<ellipse cx="840" cy="1015" rx="95" ry="30" fill="#bfdbfe"/>
+<path d="M755 990 q85 45 170 0" fill="none" stroke="#0284c7" stroke-width="9"/>
+<path d="M780 950 q-15 -40 15 -70 M835 950 q-15 -40 15 -70 M890 950 q-15 -40 15 -70" fill="none" stroke="#0284c7" stroke-width="7"/>
+<text x="585" y="1080" font-size="28" font-weight="900" fill="#7e22ce" stroke="none">Example: salt water</text>
+
+<rect x="90" y="1210" width="875" height="145" rx="35" fill="#fff7d6"/>
+<text x="527" y="1275" text-anchor="middle" font-size="38" font-weight="900" fill="#111" stroke="none">Mixtures can be separated because the materials</text>
+<text x="527" y="1325" text-anchor="middle" font-size="38" font-weight="900" fill="#2563eb" stroke="none">have different physical properties!</text>
+</g>
+</svg>

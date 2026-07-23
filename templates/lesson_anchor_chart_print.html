@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}{{ chart["title"] }}{% endblock %}
+
+{% block content %}
+<style>
+.anchor-print-page {
+    max-width: 1050px;
+    margin: 24px auto;
+    background: white;
+    border: 6px solid #111;
+    border-radius: 28px;
+    padding: 20px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+}
+
+.anchor-print-top {
+    background: #fff7d6;
+    border: 5px solid #111;
+    border-radius: 22px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.anchor-print-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.anchor-print-btn {
+    display: inline-block;
+    background: #ff9f1c;
+    color: #111 !important;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    text-decoration: none !important;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+}
+
+.anchor-print-btn.blue {
+    background: #0077ff;
+    color: white !important;
+}
+
+.anchor-print-image-wrap {
+    text-align: center;
+}
+
+.anchor-print-image {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    border: 4px solid #111;
+    border-radius: 18px;
+    background: white;
+}
+
+@media print {
+    nav,
+    footer,
+    .anchor-print-top,
+    #scienceStudioAiWidget {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        margin: 0 !important;
+    }
+
+    .anchor-print-page {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    .anchor-print-image {
+        width: 100%;
+        max-width: 100%;
+        border: none;
+        border-radius: 0;
+        page-break-inside: avoid;
+    }
+}
+</style>
+
+<section class="anchor-print-page">
+    <div class="anchor-print-top">
+        <h1>{{ chart["title"] }}</h1>
+        <p>{{ chart["description"] }}</p>
+
+        <div class="anchor-print-actions">
+            <button class="anchor-print-btn" type="button" onclick="window.print()">Print Anchor Chart</button>
+            <a class="anchor-print-btn blue" href="/resources/anchor-charts">Back to Anchor Charts</a>
+            <a class="anchor-print-btn blue" href="/print-center">Back to Print Center</a>
+        </div>
+    </div>
+
+    <div class="anchor-print-image-wrap">
+        <img class="anchor-print-image" src="{{ chart['image'] }}" alt="{{ chart['title'] }}">
+    </div>
+</section>
+
+{% if autoprint %}
+<script>
+window.addEventListener("load", function () {
+    setTimeout(function () {
+        window.print();
+    }, 400);
+});
+</script>
+{% endif %}
+{% endblock %}
