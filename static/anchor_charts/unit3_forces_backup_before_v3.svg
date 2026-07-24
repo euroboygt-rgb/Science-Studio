@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-label="Forces anchor chart">
+<rect width="1200" height="1600" fill="#ffffff"/>
+<style>
+.title{font-family:Arial,sans-serif;font-size:78px;font-weight:900}
+.subtitle{font-family:Arial,sans-serif;font-size:32px;font-weight:800;fill:#111}
+.head{font-family:Arial,sans-serif;font-size:34px;font-weight:900}
+.text{font-family:Arial,sans-serif;font-size:25px;font-weight:700;fill:#111}
+.small{font-family:Arial,sans-serif;font-size:21px;font-weight:700;fill:#111}
+.tiny{font-family:Arial,sans-serif;font-size:18px;font-weight:700;fill:#111}
+.box{stroke:#111;stroke-width:6}
+</style>
+<text x="600" y="100" text-anchor="middle" font-family="Arial,sans-serif" font-size="98" font-weight="900" fill="#2563eb">Forces</text>
+<path d="M330 145 Q600 185 870 145" fill="none" stroke="#16a34a" stroke-width="10"/>
+<text x="600" y="220" text-anchor="middle" font-family="Arial,sans-serif" font-size="36" font-weight="900" fill="#111">Forces can be balanced or unbalanced.</text>
+<rect x="110" y="300" width="980" height="240" rx="36" fill="#faf5ff" stroke="#111" stroke-width="6"/>
+<text x="600" y="375" text-anchor="middle" font-family="Arial,sans-serif" font-size="50" font-weight="900" fill="#111">A force is a PUSH or a PULL.</text>
+
+        <rect x="310" y="460" width="110" height="72" fill="#a16207" stroke="#111" stroke-width="5"/>
+        <line x1="225" y1="496" x2="320" y2="496" stroke="#7e22ce" stroke-width="12"/>
+        <polygon points="320,466 365,496 320,526" fill="#7e22ce" stroke="#111" stroke-width="4"/>
+        
+<g transform="translate(760 495) scale(-1 1)">
+        <rect x="105" y="-35" width="110" height="72" fill="#a16207" stroke="#111" stroke-width="5"/>
+        <line x1="20" y1="1" x2="115" y2="1" stroke="#7e22ce" stroke-width="12"/>
+        <polygon points="115,-29 160,1 115,31" fill="#7e22ce" stroke="#111" stroke-width="4"/>
+        </g>
+<rect class="box" x="90" y="620" width="460" height="320" rx="28" fill="#f0fdf4"/>
+<text x="320" y="680" text-anchor="middle" font-family="Arial,sans-serif" font-size="36" font-weight="900" fill="#16a34a">
+<tspan x="320" dy="0">Balanced Forces</tspan>
+</text>
+<text x="320" y="732" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#111">
+<tspan x="320" dy="0">Equal size, opposite</tspan>
+<tspan x="320" dy="31">directions. Object stays</tspan>
+<tspan x="320" dy="31">still or moves the same.</tspan>
+</text>
+
+        <rect x="285" y="850" width="110" height="72" fill="#a16207" stroke="#111" stroke-width="5"/>
+        <line x1="200" y1="886" x2="295" y2="886" stroke="#7e22ce" stroke-width="12"/>
+        <polygon points="295,856 340,886 295,916" fill="#7e22ce" stroke="#111" stroke-width="4"/>
+        
+<rect class="box" x="650" y="620" width="460" height="320" rx="28" fill="#fff1f2"/>
+<text x="880" y="680" text-anchor="middle" font-family="Arial,sans-serif" font-size="36" font-weight="900" fill="#dc2626">
+<tspan x="880" dy="0">Unbalanced Forces</tspan>
+</text>
+<text x="880" y="732" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#111">
+<tspan x="880" dy="0">Forces are not equal. Motion</tspan>
+<tspan x="880" dy="31">changes.</tspan>
+</text>
+
+        <rect x="845" y="850" width="110" height="72" fill="#a16207" stroke="#111" stroke-width="5"/>
+        <line x1="760" y1="886" x2="855" y2="886" stroke="#7e22ce" stroke-width="12"/>
+        <polygon points="855,856 900,886 855,916" fill="#7e22ce" stroke="#111" stroke-width="4"/>
+        
+<rect class="box" x="90" y="1010" width="460" height="320" rx="28" fill="#eff6ff"/>
+<text x="320" y="1070" text-anchor="middle" font-family="Arial,sans-serif" font-size="36" font-weight="900" fill="#2563eb">
+<tspan x="320" dy="0">Friction</tspan>
+</text>
+<text x="320" y="1122" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#111">
+<tspan x="320" dy="0">A force between surfaces</tspan>
+<tspan x="320" dy="31">that rub. It slows motion.</tspan>
+</text>
+
+        <rect x="245" y="1290" width="210" height="45" rx="20" fill="#ef4444" stroke="#111" stroke-width="5"/>
+        <circle cx="290" cy="1345" r="19" fill="#111"/>
+        <circle cx="410" cy="1345" r="19" fill="#111"/>
+        <rect x="330" y="1245" width="85" height="45" fill="#f97316" stroke="#111" stroke-width="5"/>
+        
+<rect class="box" x="650" y="1010" width="460" height="320" rx="28" fill="#faf5ff"/>
+<text x="880" y="1070" text-anchor="middle" font-family="Arial,sans-serif" font-size="36" font-weight="900" fill="#7e22ce">
+<tspan x="880" dy="0">Gravity</tspan>
+</text>
+<text x="880" y="1122" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#111">
+<tspan x="880" dy="0">A force that pulls objects</tspan>
+<tspan x="880" dy="31">toward Earth.</tspan>
+</text>
+
+        <circle cx="845" cy="1285" r="35" fill="#ef4444" stroke="#111" stroke-width="5"/>
+        <line x1="845" y1="1210" x2="845" y2="1250" stroke="#7e22ce" stroke-width="8"/>
+        <polygon points="825,1245 845,1280 865,1245" fill="#7e22ce"/>
+        <circle cx="1000" cy="1285" r="62" fill="#38bdf8" stroke="#111" stroke-width="5"/>
+        
+<text x="600" y="1450" text-anchor="middle" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="#6f2dbd">Forces are all around us!</text>
+</svg>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-label="CMELTS forms of energy anchor chart">
+<rect width="1200" height="1600" fill="#ffffff"/>
+<style>
+.title{font-family:Arial,sans-serif;font-size:78px;font-weight:900}
+.subtitle{font-family:Arial,sans-serif;font-size:32px;font-weight:800;fill:#111}
+.head{font-family:Arial,sans-serif;font-size:34px;font-weight:900}
+.text{font-family:Arial,sans-serif;font-size:25px;font-weight:700;fill:#111}
+.small{font-family:Arial,sans-serif;font-size:21px;font-weight:700;fill:#111}
+.tiny{font-family:Arial,sans-serif;font-size:18px;font-weight:700;fill:#111}
+.box{stroke:#111;stroke-width:6}
+</style>
+<text x="600" y="95" text-anchor="middle" font-family="Arial,sans-serif" font-size="82" font-weight="900" fill="#6f2dbd">Forms of Energy</text>
+<path d="M230 135 Q600 180 970 135" fill="none" stroke="#00a6d6" stroke-width="10"/>
+<text x="600" y="210" text-anchor="middle" font-family="Arial,sans-serif" font-size="34" font-weight="900" fill="#111">Remember the forms of energy with CMELTS.</text>
+<rect class="box" x="75" y="285" width="500" height="255" rx="28" fill="#fff7ed"/>
+<text x="120" y="355" text-anchor="start" font-family="Arial,sans-serif" font-size="58" font-weight="900" fill="#ea580c">C</text>
+<text x="205" y="350" text-anchor="start" font-family="Arial,sans-serif" font-size="34" font-weight="900" fill="#ea580c">Chemical</text>
+<text x="205" y="400" text-anchor="start" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#111">
+<tspan x="205" dy="0">stored energy in food,</tspan>
+<tspan x="205" dy="29">fuel, batteries, and</tspan>
+<tspan x="205" dy="29">living things</tspan>
+</text>
+
+        <rect x="415" y="440" width="50" height="75" rx="10" fill="#9ca3af" stroke="#111" stroke-width="5"/>
+        <circle cx="530" cy="462" r="34" fill="#fde047" stroke="#111" stroke-width="5"/>
+        <path d="M460 475 C495 400 565 400 600 475" fill="none" stroke="#0284c7" stroke-width="8"/>
+        <path d="M460 490 C495 548 565 548 600 490" fill="none" stroke="#0284c7" stroke-width="8"/>
+        
+<rect class="box" x="625" y="285" width="500" height="255" rx="28" fill="#f0fdf4"/>
+<text x="670" y="355" text-anchor="start" font-family="Arial,sans-serif" font-size="58" font-weight="900" fill="#16a34a">M</text>
+<text x="755" y="350" text-anchor="start" font-family="Arial,sans-serif" font-size="34" font-weight="900" fill="#16a34a">Mechanical</text>
+<text x="755" y="400" text-anchor="start" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#111">
+<tspan x="755" dy="0">energy of motion,</tspan>
+<tspan x="755" dy="29">position, pushes,</tspan>
+<tspan x="755" dy="29">pulls, and moving parts</tspan>
+</text>
+
+        <rect x="1030" y="420" width="110" height="72" fill="#a16207" stroke="#111" stroke-width="5"/>
+        <line x1="945" y1="456" x2="1040" y2="456" stroke="#7e22ce" stroke-width="12"/>
+        <polygon points="1040,426 1085,456 1040,486" fill="#7e22ce" stroke="#111" stroke-width="4"/>
+        
+<rect class="box" x="75" y="585" width="500" height="255" rx="28" fill="#eff6ff"/>
+<text x="120" y="655" text-anchor="start" font-family="Arial,sans-serif" font-size="58" font-weight="900" fill="#2563eb">E</text>
+<text x="205" y="650" text-anchor="start" font-family="Arial,sans-serif" font-size="34" font-weight="900" fill="#2563eb">Electrical</text>
+<text x="205" y="700" text-anchor="start" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#111">
+<tspan x="205" dy="0">energy moving through a</tspan>
+<tspan x="205" dy="29">closed circuit</tspan>
+</text>
+
+        <rect x="415" y="740" width="50" height="75" rx="10" fill="#9ca3af" stroke="#111" stroke-width="5"/>
+        <circle cx="530" cy="762" r="34" fill="#fde047" stroke="#111" stroke-width="5"/>
+        <path d="M460 775 C495 700 565 700 600 775" fill="none" stroke="#0284c7" stroke-width="8"/>
+        <path d="M460 790 C495 848 565 848 600 790" fill="none" stroke="#0284c7" stroke-width="8"/>
+        
+<rect class="box" x="625" y="585" width="500" height="255" rx="28" fill="#fff1f2"/>
+<text x="670" y="655" text-anchor="start" font-family="Arial,sans-serif" font-size="58" font-weight="900" fill="#dc2626">L</text>
+<text x="755" y="650" text-anchor="start" font-family="Arial,sans-serif" font-size="34" font-weight="900" fill="#dc2626">Light</text>
+<text x="755" y="700" text-anchor="start" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#111">
+<tspan x="755" dy="0">energy we can see</tspan>
+</text>
+
+        <circle cx="1065" cy="755" r="42" fill="#fde047" stroke="#111" stroke-width="5"/>
+        <line x1="1065" y1="675" x2="1065" y2="625" stroke="#f59e0b" stroke-width="8"/>
+        <line x1="1065" y1="835" x2="1065" y2="885" stroke="#f59e0b" stroke-width="8"/>
+        <line x1="985" y1="755" x2="935" y2="755" stroke="#f59e0b" stroke-width="8"/>
+        <line x1="1145" y1="755" x2="1195" y2="755" stroke="#f59e0b" stroke-width="8"/>
+        
+<rect class="box" x="75" y="885" width="500" height="255" rx="28" fill="#faf5ff"/>
+<text x="120" y="955" text-anchor="start" font-family="Arial,sans-serif" font-size="58" font-weight="900" fill="#7e22ce">T</text>
+<text x="205" y="950" text-anchor="start" font-family="Arial,sans-serif" font-size="34" font-weight="900" fill="#7e22ce">Thermal</text>
+<text x="205" y="1000" text-anchor="start" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#111">
+<tspan x="205" dy="0">heat energy from moving</tspan>
+<tspan x="205" dy="29">particles</tspan>
+</text>
+
+        <ellipse cx="530" cy="1030" rx="105" ry="32" fill="#bfdbfe" stroke="#111" stroke-width="5"/>
+        <path d="M455 1005 Q530 1045 605 1005" fill="none" stroke="#0284c7" stroke-width="8"/>
+        <rect x="450" y="1062" width="160" height="58" rx="12" fill="#333" stroke="#111" stroke-width="5"/>
+        <path d="M470 975 q-15 -38 15 -72 M530 975 q-15 -38 15 -72 M590 975 q-15 -38 15 -72" fill="none" stroke="#0284c7" stroke-width="6"/>
+        
+<rect class="box" x="625" y="885" width="500" height="255" rx="28" fill="#f0fdfa"/>
+<text x="670" y="955" text-anchor="start" font-family="Arial,sans-serif" font-size="58" font-weight="900" fill="#0f766e">S</text>
+<text x="755" y="950" text-anchor="start" font-family="Arial,sans-serif" font-size="34" font-weight="900" fill="#0f766e">Sound</text>
+<text x="755" y="1000" text-anchor="start" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#111">
+<tspan x="755" dy="0">energy we hear from</tspan>
+<tspan x="755" dy="29">vibrations</tspan>
+</text>
+
+        <rect x="960" y="980" width="120" height="130" rx="14" fill="#bfdbfe" stroke="#111" stroke-width="5"/>
+        <path d="M960 1042 Q1020 1068 1080 1042 L1080 1110 L960 1110 Z" fill="#60a5fa"/>
+        
+<rect x="120" y="1240" width="960" height="185" rx="36" fill="#fff7d6" stroke="#111" stroke-width="6"/>
+<text x="600" y="1310" text-anchor="middle" font-family="Arial,sans-serif" font-size="40" font-weight="900" fill="#6f2dbd">Energy Transformation</text>
+<text x="600" y="1365" text-anchor="middle" font-family="Arial,sans-serif" font-size="31" font-weight="900" fill="#111">Energy can change from one form to another.</text>
+<text x="600" y="1410" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" font-weight="800" fill="#111">Battery → electrical energy → light and thermal energy</text>
+</svg>

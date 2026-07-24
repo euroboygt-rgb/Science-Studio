@@ -1,62 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1055 1491" role="img" aria-label="Mixtures anchor chart">
-<rect width="1055" height="1491" fill="#fff"/>
-<text x="527" y="95" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="92" font-weight="900" fill="#6f2dbd">Mixtures</text>
-<path d="M180 130 Q527 170 875 130" fill="none" stroke="#00a6d6" stroke-width="12"/>
-<text x="527" y="205" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="40" font-weight="800" fill="#111">A mixture is made when two or more materials are combined,</text>
-<text x="527" y="260" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="40" font-weight="800" fill="#111">but each material keeps its own physical properties.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-label="Mixtures anchor chart">
+  <rect width="1200" height="1600" fill="#ffffff"/>
+  <style>
+    .title{font-family:Arial,sans-serif;font-size:88px;font-weight:900;fill:#6f2dbd}
+    .subtitle{font-family:Arial,sans-serif;font-size:34px;font-weight:900;fill:#111}
+    .head{font-family:Arial,sans-serif;font-size:34px;font-weight:900}
+    .text{font-family:Arial,sans-serif;font-size:24px;font-weight:800;fill:#111}
+    .box{stroke:#111;stroke-width:6;rx:28}
+    .art{opacity:.25}
+  </style>
 
-<g font-family="Comic Sans MS, Arial" stroke="#111" stroke-width="5">
-<rect x="55" y="330" width="440" height="265" rx="28" fill="#f0fdf4"/>
-<text x="275" y="390" text-anchor="middle" font-size="46" font-weight="900" fill="#16a34a">Ingredients stay the same</text>
-<circle cx="165" cy="485" r="50" fill="#f6b35d"/>
-<circle cx="145" cy="470" r="8" fill="#4b2e1e"/><circle cx="170" cy="505" r="8" fill="#4b2e1e"/><circle cx="190" cy="465" r="8" fill="#4b2e1e"/>
-<ellipse cx="320" cy="485" rx="42" ry="26" fill="#6d28d9"/>
-<ellipse cx="370" cy="500" rx="42" ry="26" fill="#6d28d9"/>
-<text x="275" y="560" text-anchor="middle" font-size="30" fill="#111" stroke="none">cookie + raisins still keep their properties</text>
+  <text x="600" y="100" text-anchor="middle" class="title">Mixtures</text>
+  <path d="M260 140 Q600 180 940 140" fill="none" stroke="#00a6d6" stroke-width="10"/>
+  <text x="600" y="215" text-anchor="middle" class="subtitle">A mixture combines two or more materials.</text>
+  <text x="600" y="265" text-anchor="middle" class="subtitle">Each material keeps its own physical properties.</text>
 
-<rect x="560" y="330" width="440" height="265" rx="28" fill="#eff6ff"/>
-<text x="780" y="390" text-anchor="middle" font-size="46" font-weight="900" fill="#2563eb">Examples</text>
-<ellipse cx="690" cy="475" rx="95" ry="42" fill="#60a5fa"/>
-<ellipse cx="690" cy="445" rx="95" ry="32" fill="#93c5fd"/>
-<circle cx="650" cy="435" r="13" fill="#ef4444"/><circle cx="690" cy="425" r="13" fill="#f59e0b"/><circle cx="735" cy="445" r="13" fill="#22c55e"/><circle cx="715" cy="465" r="13" fill="#a855f7"/>
-<rect x="830" y="420" width="75" height="115" rx="12" fill="#bfdbfe"/>
-<path d="M830 485 q38 22 75 0 v50 h-75z" fill="#d6a85c"/>
-<text x="780" y="560" text-anchor="middle" font-size="30" fill="#111" stroke="none">trail mix • sand and water</text>
+  <g>
+    <rect class="box" x="90" y="345" width="460" height="270" fill="#f0fdf4"/>
+    <g class="art">
+      <circle cx="225" cy="500" r="55" fill="#f6b35d" stroke="#111" stroke-width="6"/>
+      <circle cx="205" cy="485" r="9" fill="#4b2e1e"/>
+      <circle cx="245" cy="525" r="9" fill="#4b2e1e"/>
+      <ellipse cx="385" cy="500" rx="55" ry="33" fill="#6d28d9" stroke="#111" stroke-width="6"/>
+      <ellipse cx="455" cy="520" rx="55" ry="33" fill="#6d28d9" stroke="#111" stroke-width="6"/>
+    </g>
+    <text x="320" y="410" text-anchor="middle" class="head" fill="#16a34a">Ingredients Stay the Same</text>
+    <text x="320" y="560" text-anchor="middle" class="text">A cookie and raisins keep properties.</text>
 
-<rect x="55" y="650" width="440" height="320" rx="28" fill="#fff7ed"/>
-<text x="275" y="710" text-anchor="middle" font-size="46" font-weight="900" fill="#ea580c">Can often be separated</text>
-<path d="M170 820 h95 v55 h-95z" fill="#ef4444"/>
-<path d="M265 820 h30 v55 h-30z" fill="#2563eb"/>
-<circle cx="160" cy="910" r="10" fill="#555"/><circle cx="195" cy="920" r="10" fill="#555"/><circle cx="230" cy="910" r="10" fill="#555"/>
-<path d="M340 790 h95 l-35 95 v55 h-25 v-55z" fill="#fff" stroke="#111"/>
-<path d="M355 835 h65" stroke="#38bdf8" stroke-width="10"/>
-<text x="275" y="945" text-anchor="middle" font-size="30" fill="#111" stroke="none">use magnets, filters, sieves, or sorting</text>
+    <rect class="box" x="650" y="345" width="460" height="270" fill="#eff6ff"/>
+    <g class="art">
+      <ellipse cx="770" cy="500" rx="90" ry="38" fill="#60a5fa" stroke="#111" stroke-width="6"/>
+      <circle cx="735" cy="465" r="13" fill="#ef4444" stroke="#111" stroke-width="4"/>
+      <circle cx="775" cy="455" r="13" fill="#f59e0b" stroke="#111" stroke-width="4"/>
+      <circle cx="820" cy="475" r="13" fill="#22c55e" stroke="#111" stroke-width="4"/>
+      <rect x="940" y="430" width="70" height="105" rx="12" fill="#bfdbfe" stroke="#111" stroke-width="6"/>
+      <path d="M940 490 q35 22 70 0 v45 h-70z" fill="#d6a85c"/>
+    </g>
+    <text x="880" y="410" text-anchor="middle" class="head" fill="#2563eb">Examples</text>
+    <text x="880" y="560" text-anchor="middle" class="text">trail mix • sand and water</text>
 
-<rect x="560" y="650" width="440" height="320" rx="28" fill="#fdf2f8"/>
-<text x="780" y="710" text-anchor="middle" font-size="46" font-weight="900" fill="#db2777">Particles mix, not change</text>
-<circle cx="705" cy="830" r="75" fill="#fff" stroke="#2563eb"/>
-<circle cx="680" cy="810" r="12" fill="#60a5fa"/><circle cx="715" cy="850" r="12" fill="#d6a85c"/><circle cx="730" cy="805" r="12" fill="#60a5fa"/><circle cx="690" cy="865" r="12" fill="#d6a85c"/>
-<path d="M800 830 h80" stroke="#111" stroke-width="8"/>
-<path d="M870 805 l45 25 l-45 25z" fill="#111"/>
-<circle cx="925" cy="830" r="75" fill="#fff" stroke="#db2777"/>
-<circle cx="900" cy="810" r="12" fill="#60a5fa"/><circle cx="935" cy="850" r="12" fill="#d6a85c"/><circle cx="950" cy="805" r="12" fill="#60a5fa"/><circle cx="910" cy="865" r="12" fill="#d6a85c"/>
-<text x="780" y="945" text-anchor="middle" font-size="30" fill="#111" stroke="none">materials are mixed, but not chemically changed</text>
+    <rect class="box" x="90" y="680" width="460" height="270" fill="#fff7ed"/>
+    <g class="art">
+      <rect x="190" y="790" width="110" height="65" fill="#ef4444" stroke="#111" stroke-width="6"/>
+      <rect x="300" y="790" width="35" height="65" fill="#2563eb" stroke="#111" stroke-width="6"/>
+      <circle cx="175" cy="900" r="12" fill="#555" stroke="#111" stroke-width="4"/>
+      <circle cx="215" cy="910" r="12" fill="#555" stroke="#111" stroke-width="4"/>
+      <circle cx="255" cy="900" r="12" fill="#555" stroke="#111" stroke-width="4"/>
+      <path d="M390 760 h95 l-35 95 v55 h-25 v-55z" fill="#fff" stroke="#111" stroke-width="6"/>
+      <path d="M405 805 h65" stroke="#38bdf8" stroke-width="10"/>
+    </g>
+    <text x="320" y="745" text-anchor="middle" class="head" fill="#ea580c">Can Often Be Separated</text>
+    <text x="320" y="905" text-anchor="middle" class="text">use magnets, filters, sieves, or sorting</text>
 
-<rect x="80" y="1040" width="895" height="320" rx="35" fill="#fff7d6"/>
-<text x="527" y="1100" text-anchor="middle" font-size="54" font-weight="900" fill="#6f2dbd">Mixtures in Action</text>
-<rect x="135" y="1155" width="125" height="135" rx="14" fill="#bfdbfe"/>
-<path d="M135 1240 q63 30 125 0 v50 h-125z" fill="#d6a85c"/>
-<text x="197" y="1325" text-anchor="middle" font-size="26" fill="#111" stroke="none">sand</text>
-<text x="315" y="1235" text-anchor="middle" font-size="60" fill="#111" stroke="none">+</text>
-<rect x="390" y="1155" width="125" height="135" rx="14" fill="#bfdbfe"/>
-<path d="M390 1215 q63 30 125 0 v75 h-125z" fill="#60a5fa"/>
-<text x="452" y="1325" text-anchor="middle" font-size="26" fill="#111" stroke="none">water</text>
-<text x="565" y="1235" text-anchor="middle" font-size="60" fill="#111" stroke="none">→</text>
-<rect x="650" y="1155" width="160" height="135" rx="14" fill="#bfdbfe"/>
-<path d="M650 1225 q80 30 160 0 v65 h-160z" fill="#d6a85c"/>
-<line x1="745" y1="1150" x2="705" y2="1290" stroke="#8b5a2b" stroke-width="12"/>
-<text x="730" y="1325" text-anchor="middle" font-size="26" fill="#111" stroke="none">mixture</text>
-</g>
+    <rect class="box" x="650" y="680" width="460" height="270" fill="#fdf2f8"/>
+    <g class="art">
+      <circle cx="785" cy="820" r="65" fill="#fff" stroke="#2563eb" stroke-width="6"/>
+      <circle cx="760" cy="800" r="11" fill="#60a5fa" stroke="#111" stroke-width="3"/>
+      <circle cx="795" cy="840" r="11" fill="#d6a85c" stroke="#111" stroke-width="3"/>
+      <path d="M865 820 h60" stroke="#111" stroke-width="7"/>
+      <path d="M915 797 l40 23 l-40 23z" fill="#111"/>
+      <circle cx="1010" cy="820" r="65" fill="#fff" stroke="#db2777" stroke-width="6"/>
+      <circle cx="985" cy="800" r="11" fill="#60a5fa" stroke="#111" stroke-width="3"/>
+      <circle cx="1020" cy="840" r="11" fill="#d6a85c" stroke="#111" stroke-width="3"/>
+    </g>
+    <text x="880" y="745" text-anchor="middle" class="head" fill="#db2777">Particles Mix, Not Change</text>
+    <text x="880" y="905" text-anchor="middle" class="text">mixed, not chemically changed</text>
+  </g>
 
-<text x="527" y="1430" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="38" font-weight="900" fill="#111">Remember: mixtures can often be separated because properties are different!</text>
+  <rect x="130" y="1040" width="940" height="320" rx="36" fill="#fff7d6" stroke="#111" stroke-width="6"/>
+  <g class="art">
+    <rect x="245" y="1170" width="125" height="130" rx="14" fill="#bfdbfe" stroke="#111" stroke-width="6"/>
+    <path d="M245 1245 q63 30 125 0 v55 h-125z" fill="#d6a85c"/>
+    <rect x="535" y="1170" width="125" height="130" rx="14" fill="#bfdbfe" stroke="#111" stroke-width="6"/>
+    <path d="M535 1225 q63 25 125 0 v75 h-125z" fill="#60a5fa"/>
+    <path d="M830 1170 h95 l-35 95 v55 h-25 v-55z" fill="#fff" stroke="#111" stroke-width="6"/>
+  </g>
+  <text x="600" y="1110" text-anchor="middle" class="head" fill="#6f2dbd">Mixtures in Action</text>
+  <text x="405" y="1240" text-anchor="middle" font-family="Arial,sans-serif" font-size="58" font-weight="900">+</text>
+  <text x="735" y="1240" text-anchor="middle" font-family="Arial,sans-serif" font-size="58" font-weight="900">→</text>
+  <text x="307" y="1330" text-anchor="middle" class="text">sand</text>
+  <text x="597" y="1330" text-anchor="middle" class="text">water</text>
+  <text x="880" y="1330" text-anchor="middle" class="text">separate</text>
+  <text x="600" y="1480" text-anchor="middle" class="subtitle">Mixtures can often be separated because properties are different.</text>
 </svg>

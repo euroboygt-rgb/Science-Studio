@@ -1,54 +1,71 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1055 1491" role="img" aria-label="Solutions and solubility anchor chart">
-<rect width="1055" height="1491" fill="#fff"/>
-<text x="527" y="90" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="78" font-weight="900" fill="#2563eb">Solutions and Solubility</text>
-<path d="M120 125 Q527 165 935 125" fill="none" stroke="#6f2dbd" stroke-width="10"/>
-<text x="527" y="205" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="42" font-weight="900" fill="#111">A solution forms when a solute dissolves in a solvent.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-label="Solutions and Solubility anchor chart">
+  <rect width="1200" height="1600" fill="#ffffff"/>
+  <style>
+    .title{font-family:Arial,sans-serif;font-size:76px;font-weight:900;fill:#2563eb}
+    .head{font-family:Arial,sans-serif;font-size:44px;font-weight:900}
+    .text{font-family:Arial,sans-serif;font-size:30px;font-weight:700;fill:#111}
+    .small{font-family:Arial,sans-serif;font-size:24px;font-weight:700;fill:#111}
+    .box{stroke:#111;stroke-width:6;rx:30}
+  </style>
 
-<g font-family="Comic Sans MS, Arial" stroke="#111" stroke-width="5">
-<rect x="70" y="280" width="915" height="290" rx="28" fill="#eef9ff"/>
-<text x="205" y="360" text-anchor="middle" font-size="42" font-weight="900" fill="#db2777">Solute</text>
-<path d="M145 430 q65 -45 130 0 q-40 55 -130 0" fill="#fff"/>
-<circle cx="165" cy="420" r="4" fill="#111"/><circle cx="190" cy="405" r="4" fill="#111"/><circle cx="220" cy="420" r="4" fill="#111"/>
-<text x="205" y="505" text-anchor="middle" font-size="28" fill="#111" stroke="none">what dissolves</text>
-<text x="335" y="445" text-anchor="middle" font-size="62" fill="#111" stroke="none">+</text>
-<text x="475" y="360" text-anchor="middle" font-size="42" font-weight="900" fill="#2563eb">Solvent</text>
-<rect x="415" y="400" width="120" height="105" rx="14" fill="#bfdbfe"/>
-<path d="M415 455 q60 25 120 0 v50 h-120z" fill="#60a5fa"/>
-<text x="475" y="535" text-anchor="middle" font-size="28" fill="#111" stroke="none">does dissolving</text>
-<text x="610" y="445" text-anchor="middle" font-size="62" fill="#111" stroke="none">→</text>
-<text x="785" y="360" text-anchor="middle" font-size="42" font-weight="900" fill="#16a34a">Solution</text>
-<rect x="720" y="400" width="130" height="105" rx="14" fill="#bfdbfe"/>
-<path d="M720 455 q65 25 130 0 v50 h-130z" fill="#93c5fd"/>
-<text x="785" y="535" text-anchor="middle" font-size="28" fill="#111" stroke="none">even throughout</text>
+  <text x="600" y="95" text-anchor="middle" class="title">Solutions and Solubility</text>
+  <path d="M150 130 Q600 178 1050 130" fill="none" stroke="#6f2dbd" stroke-width="10"/>
+  <text x="600" y="205" text-anchor="middle" class="text">A solution forms when a solute dissolves in a solvent.</text>
 
-<rect x="70" y="630" width="440" height="360" rx="28" fill="#f0fdf4"/>
-<text x="290" y="700" text-anchor="middle" font-size="56" font-weight="900" fill="#16a34a">Soluble</text>
-<text x="290" y="755" text-anchor="middle" font-size="34" font-weight="900" fill="#111">can dissolve</text>
-<path d="M130 830 q45 -35 90 0 q-30 40 -90 0" fill="#fff"/>
-<text x="250" y="845" text-anchor="middle" font-size="54" fill="#111" stroke="none">+</text>
-<rect x="310" y="800" width="85" height="100" rx="12" fill="#bfdbfe"/>
-<path d="M310 850 q43 20 85 0 v50 h-85z" fill="#60a5fa"/>
-<text x="425" y="845" text-anchor="middle" font-size="54" fill="#111" stroke="none">→</text>
-<rect x="210" y="910" width="160" height="65" rx="20" fill="#d8f3dc"/>
-<text x="290" y="953" text-anchor="middle" font-size="28" fill="#111" stroke="none">sugar mixes evenly</text>
+  <g>
+    <rect class="box" x="80" y="280" width="1040" height="300" fill="#eef9ff"/>
+    <text x="235" y="350" text-anchor="middle" class="head" fill="#db2777">Solute</text>
+    <path d="M160 455 q70 -45 140 0 q-45 55 -140 0" fill="#fff" stroke="#111" stroke-width="5"/>
+    <circle cx="180" cy="445" r="4" fill="#111"/>
+    <circle cx="215" cy="425" r="4" fill="#111"/>
+    <circle cx="255" cy="445" r="4" fill="#111"/>
+    <text x="235" y="525" text-anchor="middle" class="small">what dissolves</text>
 
-<rect x="545" y="630" width="440" height="360" rx="28" fill="#fdf2f8"/>
-<text x="765" y="700" text-anchor="middle" font-size="56" font-weight="900" fill="#db2777">Insoluble</text>
-<text x="765" y="755" text-anchor="middle" font-size="34" font-weight="900" fill="#111">cannot dissolve</text>
-<path d="M610 845 q45 -35 90 0 q-30 40 -90 0" fill="#d6a85c"/>
-<text x="725" y="845" text-anchor="middle" font-size="54" fill="#111" stroke="none">+</text>
-<rect x="785" y="800" width="85" height="100" rx="12" fill="#bfdbfe"/>
-<path d="M785 850 q43 20 85 0 v50 h-85z" fill="#60a5fa"/>
-<text x="900" y="845" text-anchor="middle" font-size="54" fill="#111" stroke="none">→</text>
-<rect x="690" y="910" width="180" height="65" rx="20" fill="#ffe4e6"/>
-<text x="780" y="953" text-anchor="middle" font-size="28" fill="#111" stroke="none">sand stays separate</text>
+    <text x="385" y="465" text-anchor="middle" font-family="Arial,sans-serif" font-size="62" font-weight="900">+</text>
 
-<rect x="95" y="1060" width="865" height="310" rx="35" fill="#fff7d6"/>
-<text x="527" y="1120" text-anchor="middle" font-size="54" font-weight="900" fill="#6f2dbd">Vocabulary</text>
-<text x="150" y="1185" font-size="32" font-weight="900" fill="#db2777" stroke="none">Solute</text><text x="320" y="1185" font-size="30" fill="#111" stroke="none">the substance that is dissolved</text>
-<text x="150" y="1235" font-size="32" font-weight="900" fill="#2563eb" stroke="none">Solvent</text><text x="320" y="1235" font-size="30" fill="#111" stroke="none">the liquid that does the dissolving</text>
-<text x="150" y="1285" font-size="32" font-weight="900" fill="#16a34a" stroke="none">Solution</text><text x="320" y="1285" font-size="30" fill="#111" stroke="none">a mixture even throughout</text>
-<text x="150" y="1335" font-size="32" font-weight="900" fill="#6f2dbd" stroke="none">Dissolve</text><text x="320" y="1335" font-size="30" fill="#111" stroke="none">to spread out evenly in a liquid</text>
-</g>
-<text x="527" y="1435" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="36" font-weight="900" fill="#111">Not all substances dissolve in water!</text>
+    <text x="540" y="350" text-anchor="middle" class="head" fill="#2563eb">Solvent</text>
+    <rect x="475" y="405" width="130" height="115" rx="16" fill="#bfdbfe" stroke="#111" stroke-width="5"/>
+    <path d="M475 460 q65 25 130 0 v60 h-130z" fill="#60a5fa"/>
+    <text x="540" y="545" text-anchor="middle" class="small">does dissolving</text>
+
+    <text x="690" y="465" text-anchor="middle" font-family="Arial,sans-serif" font-size="62" font-weight="900">→</text>
+
+    <text x="895" y="350" text-anchor="middle" class="head" fill="#16a34a">Solution</text>
+    <rect x="825" y="405" width="140" height="115" rx="16" fill="#bfdbfe" stroke="#111" stroke-width="5"/>
+    <path d="M825 460 q70 25 140 0 v60 h-140z" fill="#93c5fd"/>
+    <text x="895" y="545" text-anchor="middle" class="small">even throughout</text>
+
+    <rect class="box" x="80" y="650" width="500" height="365" fill="#f0fdf4"/>
+    <text x="330" y="725" text-anchor="middle" class="head" fill="#16a34a">Soluble</text>
+    <text x="330" y="780" text-anchor="middle" class="text">can dissolve</text>
+    <path d="M165 865 q45 -35 90 0 q-30 40 -90 0" fill="#fff" stroke="#111" stroke-width="5"/>
+    <text x="300" y="870" text-anchor="middle" font-family="Arial,sans-serif" font-size="55" font-weight="900">+</text>
+    <rect x="365" y="825" width="90" height="105" rx="12" fill="#bfdbfe" stroke="#111" stroke-width="5"/>
+    <path d="M365 875 q45 22 90 0 v55 h-90z" fill="#60a5fa"/>
+    <text x="500" y="870" text-anchor="middle" font-family="Arial,sans-serif" font-size="55" font-weight="900">→</text>
+    <text x="330" y="970" text-anchor="middle" class="text">sugar mixes evenly</text>
+
+    <rect class="box" x="620" y="650" width="500" height="365" fill="#fdf2f8"/>
+    <text x="870" y="725" text-anchor="middle" class="head" fill="#db2777">Insoluble</text>
+    <text x="870" y="780" text-anchor="middle" class="text">cannot dissolve</text>
+    <path d="M700 865 q45 -35 90 0 q-30 40 -90 0" fill="#d6a85c" stroke="#111" stroke-width="5"/>
+    <text x="835" y="870" text-anchor="middle" font-family="Arial,sans-serif" font-size="55" font-weight="900">+</text>
+    <rect x="900" y="825" width="90" height="105" rx="12" fill="#bfdbfe" stroke="#111" stroke-width="5"/>
+    <path d="M900 875 q45 22 90 0 v55 h-90z" fill="#60a5fa"/>
+    <text x="1030" y="870" text-anchor="middle" font-family="Arial,sans-serif" font-size="55" font-weight="900">→</text>
+    <text x="870" y="970" text-anchor="middle" class="text">sand stays separate</text>
+
+    <rect class="box" x="110" y="1085" width="980" height="330" fill="#fff7d6"/>
+    <text x="600" y="1160" text-anchor="middle" class="head" fill="#6f2dbd">Vocabulary</text>
+    <text x="185" y="1230" class="text" fill="#db2777">Solute</text>
+    <text x="390" y="1230" class="text">the substance that is dissolved</text>
+    <text x="185" y="1285" class="text" fill="#2563eb">Solvent</text>
+    <text x="390" y="1285" class="text">the liquid that does the dissolving</text>
+    <text x="185" y="1340" class="text" fill="#16a34a">Solution</text>
+    <text x="390" y="1340" class="text">a mixture even throughout</text>
+    <text x="185" y="1395" class="text" fill="#6f2dbd">Dissolve</text>
+    <text x="390" y="1395" class="text">to spread out evenly in a liquid</text>
+  </g>
+
+  <text x="600" y="1510" text-anchor="middle" class="text">Remember: not all substances dissolve in water!</text>
 </svg>

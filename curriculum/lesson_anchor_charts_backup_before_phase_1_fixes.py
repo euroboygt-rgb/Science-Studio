@@ -34,13 +34,6 @@ ANCHOR_CHARTS = {
         "image": "/static/anchor_charts/unit3_forces_anchor_chart.svg",
         "unit": "Unit 3",
     },
-    "cmelts-energy": {
-        "slug": "cmelts-energy",
-        "title": "CMELTS Forms of Energy Anchor Chart",
-        "description": "Use this chart to review chemical, mechanical, electrical, light, thermal, and sound energy.",
-        "image": "/static/anchor_charts/unit4_cmelts_energy_anchor_chart.svg",
-        "unit": "Unit 4",
-    },
 }
 
 DAY_TO_ANCHOR_CHART = {
@@ -80,14 +73,6 @@ DAY_TO_ANCHOR_CHART = {
     34: "forces",
     35: "forces",
     36: "forces",
-
-    37: "cmelts-energy",
-    38: "cmelts-energy",
-    39: "cmelts-energy",
-    40: "cmelts-energy",
-    41: "cmelts-energy",
-    42: "cmelts-energy",
-    43: "cmelts-energy",
 }
 
 

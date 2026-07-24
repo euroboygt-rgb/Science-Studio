@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-label="Separating mixtures and solutions anchor chart">
+<rect width="1200" height="1600" fill="#ffffff"/>
+<style>
+.title{font-family:Arial,sans-serif;font-size:78px;font-weight:900}
+.subtitle{font-family:Arial,sans-serif;font-size:32px;font-weight:800;fill:#111}
+.head{font-family:Arial,sans-serif;font-size:34px;font-weight:900}
+.text{font-family:Arial,sans-serif;font-size:25px;font-weight:700;fill:#111}
+.small{font-family:Arial,sans-serif;font-size:21px;font-weight:700;fill:#111}
+.tiny{font-family:Arial,sans-serif;font-size:18px;font-weight:700;fill:#111}
+.box{stroke:#111;stroke-width:6}
+</style>
+<text x="600" y="85" text-anchor="middle" font-family="Arial,sans-serif" font-size="72" font-weight="900" fill="#2563eb">Separating</text>
+<text x="600" y="155" text-anchor="middle" font-family="Arial,sans-serif" font-size="58" font-weight="900" fill="#16a34a">Mixtures and Solutions</text>
+<text x="600" y="220" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" font-weight="800" fill="#111">Different ways to separate materials.</text>
+<rect class="box" x="75" y="290" width="500" height="255" rx="28" fill="#fff1f2"/>
+<text x="110" y="350" text-anchor="start" font-family="Arial,sans-serif" font-size="38" font-weight="900" fill="#e11d48">1. Filter</text>
+<text x="110" y="400" text-anchor="start" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="#111">
+<tspan x="110" dy="0">Separates solids</tspan>
+<tspan x="110" dy="30">from liquids.</tspan>
+</text>
+
+        <path d="M425 375 H540 L495 480 V535 H470 V485 Z" fill="#fff" stroke="#111" stroke-width="5"/>
+        <path d="M440 430 H525" stroke="#38bdf8" stroke-width="10"/>
+        
+<text x="110" y="505" text-anchor="start" font-family="Arial,sans-serif" font-size="22" font-weight="800" fill="#e11d48">
+<tspan x="110" dy="0">Example: sand and water</tspan>
+</text>
+<rect class="box" x="625" y="290" width="500" height="255" rx="28" fill="#f0fdf4"/>
+<text x="660" y="350" text-anchor="start" font-family="Arial,sans-serif" font-size="38" font-weight="900" fill="#16a34a">2. Sieve</text>
+<text x="660" y="400" text-anchor="start" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="#111">
+<tspan x="660" dy="0">Separates large</tspan>
+<tspan x="660" dy="30">solids from small</tspan>
+<tspan x="660" dy="30">solids.</tspan>
+</text>
+
+        <ellipse cx="1045" cy="427" rx="95" ry="42" fill="#fff" stroke="#111" stroke-width="5"/>
+        <line x1="965" y1="427" x2="1125" y2="427" stroke="#777" stroke-width="3"/>
+        <line x1="985" y1="400" x2="1105" y2="455" stroke="#777" stroke-width="3"/>
+        <line x1="985" y1="455" x2="1105" y2="400" stroke="#777" stroke-width="3"/>
+        <circle cx="1020" cy="420" r="12" fill="#6b7280" stroke="#111" stroke-width="4"/>
+        <circle cx="1065" cy="445" r="12" fill="#6b7280" stroke="#111" stroke-width="4"/>
+        
+<text x="660" y="505" text-anchor="start" font-family="Arial,sans-serif" font-size="22" font-weight="800" fill="#16a34a">
+<tspan x="660" dy="0">Example: rocks and sand</tspan>
+</text>
+<rect class="box" x="75" y="590" width="500" height="255" rx="28" fill="#eff6ff"/>
+<text x="110" y="650" text-anchor="start" font-family="Arial,sans-serif" font-size="38" font-weight="900" fill="#2563eb">3. Magnetism</text>
+<text x="110" y="700" text-anchor="start" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="#111">
+<tspan x="110" dy="0">Separates magnetic</tspan>
+<tspan x="110" dy="30">items.</tspan>
+</text>
+
+        <path d="M400 725 a70 70 0 0 1 140 0 v55 h-42 v-55 a28 28 0 0 0 -56 0 v55 h-42z" fill="#dc2626" stroke="#111" stroke-width="5"/>
+        <rect x="400" y="780" width="42" height="38" fill="#d1d5db" stroke="#111" stroke-width="5"/>
+        <rect x="498" y="780" width="42" height="38" fill="#d1d5db" stroke="#111" stroke-width="5"/>
+        
+<text x="110" y="805" text-anchor="start" font-family="Arial,sans-serif" font-size="22" font-weight="800" fill="#2563eb">
+<tspan x="110" dy="0">Example: paper clips and beans</tspan>
+</text>
+<rect class="box" x="625" y="590" width="500" height="255" rx="28" fill="#fff7ed"/>
+<text x="660" y="650" text-anchor="start" font-family="Arial,sans-serif" font-size="38" font-weight="900" fill="#ea580c">4. Density</text>
+<text x="660" y="700" text-anchor="start" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="#111">
+<tspan x="660" dy="0">Some items float and</tspan>
+<tspan x="660" dy="30">some sink.</tspan>
+</text>
+
+        <rect x="935" y="675" width="120" height="130" rx="14" fill="#bfdbfe" stroke="#111" stroke-width="5"/>
+        <path d="M935 737 Q995 763 1055 737 L1055 805 L935 805 Z" fill="#60a5fa"/>
+        
+<text x="660" y="805" text-anchor="start" font-family="Arial,sans-serif" font-size="22" font-weight="800" fill="#ea580c">
+<tspan x="660" dy="0">Example: cork and rock in water</tspan>
+</text>
+<rect class="box" x="75" y="890" width="500" height="255" rx="28" fill="#f0fdfa"/>
+<text x="110" y="950" text-anchor="start" font-family="Arial,sans-serif" font-size="38" font-weight="900" fill="#0f766e">5. Sorting Tools</text>
+<text x="110" y="1000" text-anchor="start" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="#111">
+<tspan x="110" dy="0">Separate by size or</tspan>
+<tspan x="110" dy="30">shape.</tspan>
+</text>
+
+        <circle cx="415" cy="1030" r="45" fill="#f97316" stroke="#111" stroke-width="5"/>
+        <rect x="495" y="1005" width="88" height="60" fill="#c2410c" stroke="#111" stroke-width="5"/>
+        <circle cx="525" cy="1035" r="8" fill="#fff7d6"/>
+        <circle cx="560" cy="1045" r="8" fill="#fff7d6"/>
+        <path d="M390 1100 Q485 1057 585 1100" fill="none" stroke="#111" stroke-width="5"/>
+        
+<text x="110" y="1105" text-anchor="start" font-family="Arial,sans-serif" font-size="22" font-weight="800" fill="#0f766e">
+<tspan x="110" dy="0">Example: beads by shape</tspan>
+</text>
+<rect class="box" x="625" y="890" width="500" height="255" rx="28" fill="#faf5ff"/>
+<text x="660" y="950" text-anchor="start" font-family="Arial,sans-serif" font-size="38" font-weight="900" fill="#7e22ce">6. Evaporation</text>
+<text x="660" y="1000" text-anchor="start" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="#111">
+<tspan x="660" dy="0">Uses heat to</tspan>
+<tspan x="660" dy="30">separate dissolved</tspan>
+<tspan x="660" dy="30">solids.</tspan>
+</text>
+
+        <ellipse cx="1055" cy="1025" rx="105" ry="32" fill="#bfdbfe" stroke="#111" stroke-width="5"/>
+        <path d="M980 1000 Q1055 1040 1130 1000" fill="none" stroke="#0284c7" stroke-width="8"/>
+        <rect x="975" y="1057" width="160" height="58" rx="12" fill="#333" stroke="#111" stroke-width="5"/>
+        <path d="M995 970 q-15 -38 15 -72 M1055 970 q-15 -38 15 -72 M1115 970 q-15 -38 15 -72" fill="none" stroke="#0284c7" stroke-width="6"/>
+        
+<text x="660" y="1105" text-anchor="start" font-family="Arial,sans-serif" font-size="22" font-weight="800" fill="#7e22ce">
+<tspan x="660" dy="0">Example: salt water</tspan>
+</text>
+<rect x="120" y="1245" width="960" height="160" rx="36" fill="#fff7d6" stroke="#111" stroke-width="6"/>
+<text x="600" y="1310" text-anchor="middle" font-family="Arial,sans-serif" font-size="31" font-weight="900" fill="#111">Materials can be separated because they have</text>
+<text x="600" y="1360" text-anchor="middle" font-family="Arial,sans-serif" font-size="34" font-weight="900" fill="#2563eb">different physical properties!</text>
+</svg>

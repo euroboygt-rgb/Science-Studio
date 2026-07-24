@@ -759,25 +759,3 @@
 }
 /* End Science Studio Phase 1 Fixes */
 
-
-/* Science Studio Dashboard V3 Repair */
-.science-studio-complete-button-done {
-    background: #00a86b !important;
-    color: white !important;
-    border-color: #111 !important;
-}
-
-.progress-bar {
-    transition: width 0.25s ease;
-}
-
-.lesson-anchor-chart-poster-image {
-    max-width: 100%;
-    max-height: 900px;
-    height: auto;
-    border-radius: 14px;
-    display: inline-block;
-    background: white;
-}
-/* End Science Studio Dashboard V3 Repair */
-

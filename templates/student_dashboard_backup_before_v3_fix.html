@@ -386,12 +386,9 @@
 
 
 
-
-
-
-<!-- Science Studio Student Dashboard Button Fix V3 -->
+<!-- Science Studio Student Dashboard Button Fix V2 -->
 <script>
-(function () {
+document.addEventListener("DOMContentLoaded", function () {
     const completedKey = "scienceStudioCompletedLessons";
 
     function getCompletedLessons() {
@@ -409,95 +406,72 @@
     function extractDay(value) {
         const text = String(value || "");
 
-        let match = text.match(/first-nine-weeks\/day\/(\d{1,2})/i);
-        if (match) return Number(match[1]);
+        let match = text.match(/day\/(\d{1,2})/i);
+        if (match) return parseInt(match[1], 10);
 
-        match = text.match(/day\/(\d{1,2})/i);
-        if (match) return Number(match[1]);
+        match = text.match(/\bday\s*(\d{1,2})\b/i);
+        if (match) return parseInt(match[1], 10);
 
-        match = text.match(/\bDay\s*(\d{1,2})\b/i);
-        if (match) return Number(match[1]);
-
-        match = text.match(/\bLesson\s*(\d{1,2})\b/i);
-        if (match) return Number(match[1]);
-
-        return null;
-    }
-
-    function getSelectedDayFromControls() {
-        const controls = Array.from(document.querySelectorAll("select, input"));
-
-        for (const control of controls) {
-            const labelText = [
-                control.id || "",
-                control.name || "",
-                control.getAttribute("aria-label") || "",
-                control.closest("label") ? control.closest("label").textContent : "",
-                control.closest("div") ? control.closest("div").textContent : ""
-            ].join(" ").toLowerCase();
-
-            const looksLikeDayControl =
-                labelText.includes("day") ||
-                labelText.includes("lesson") ||
-                extractDay(control.value) !== null;
-
-            if (!looksLikeDayControl) {
-                continue;
-            }
-
-            if (control.tagName.toLowerCase() === "select") {
-                const selected = control.options[control.selectedIndex];
-                const day =
-                    extractDay(control.value) ||
-                    extractDay(selected ? selected.value : "") ||
-                    extractDay(selected ? selected.textContent : "");
-
-                if (day && day >= 1 && day <= 45) {
-                    return day;
-                }
-            } else {
-                const day = extractDay(control.value);
-                if (day && day >= 1 && day <= 45) {
-                    return day;
-                }
-            }
+        match = text.match(/\b(\d{1,2})\b/);
+        if (match) {
+            const day = parseInt(match[1], 10);
+            if (day >= 1 && day <= 45) return day;
         }
 
         return null;
     }
 
-    function getSelectedDayFromActiveElement() {
-        const activeSelectors = [
-            "[aria-selected='true']",
-            ".active",
-            ".selected",
-            ".current",
-            "[data-selected='true']"
-        ];
-
-        for (const selector of activeSelectors) {
-            const elements = Array.from(document.querySelectorAll(selector));
-            for (const element of elements) {
-                const day =
-                    extractDay(element.dataset ? element.dataset.day : "") ||
-                    extractDay(element.getAttribute("href") || "") ||
-                    extractDay(element.textContent || "");
-
-                if (day && day >= 1 && day <= 45) {
-                    return day;
-                }
-            }
-        }
-
-        return null;
+    function closestUsefulContainer(element) {
+        return element.closest("section, article, .card, .lesson-card, .dashboard-card, .start-learning-card, .learning-card, .content-card, .student-card, div");
     }
 
-    function getDayNearButton(button) {
-        const container = button.closest("section, article, .card, .lesson-card, .dashboard-card, .start-learning-card, .learning-card, .content-card, div");
+    function selectLooksLikeDaySelector(select) {
+        if (!select) return false;
+
+        const labelText = [
+            select.id || "",
+            select.name || "",
+            select.getAttribute("aria-label") || "",
+            select.closest("label") ? select.closest("label").textContent : "",
+            select.closest("div") ? select.closest("div").textContent : ""
+        ].join(" ").toLowerCase();
+
+        if (labelText.includes("day") || labelText.includes("lesson")) {
+            return true;
+        }
+
+        const selectedOption = select.options[select.selectedIndex];
+        const selectedText = selectedOption ? selectedOption.textContent : "";
+        return extractDay(select.value) !== null || extractDay(selectedText) !== null;
+    }
+
+    function findNearestDaySelect(button) {
+        const container = closestUsefulContainer(button);
+
+        if (container) {
+            const selects = Array.from(container.querySelectorAll("select"));
+            const match = selects.find(selectLooksLikeDaySelector);
+            if (match) return match;
+        }
+
+        const allSelects = Array.from(document.querySelectorAll("select"));
+        return allSelects.find(selectLooksLikeDaySelector) || null;
+    }
+
+    function getDayFromSelect(select) {
+        if (!select) return null;
+
+        const selectedOption = select.options[select.selectedIndex];
+        const selectedText = selectedOption ? selectedOption.textContent : "";
+
+        return extractDay(select.value) || extractDay(selectedText);
+    }
+
+    function getCardSpecificDay(button) {
+        const container = closestUsefulContainer(button);
 
         if (button.dataset && button.dataset.day) {
-            const day = extractDay(button.dataset.day);
-            if (day) return day;
+            return extractDay(button.dataset.day);
         }
 
         if (button.getAttribute("href")) {
@@ -505,19 +479,20 @@
             if (day) return day;
         }
 
-        if (container) {
-            if (container.dataset && container.dataset.day) {
-                const day = extractDay(container.dataset.day);
-                if (day) return day;
-            }
+        if (container && container.dataset && container.dataset.day) {
+            const day = extractDay(container.dataset.day);
+            if (day) return day;
+        }
 
-            const link = container.querySelector("a[href*='first-nine-weeks/day'], a[href*='day/']");
+        if (container) {
+            const link = container.querySelector('a[href*="/first-nine-weeks/day/"]');
             if (link) {
                 const day = extractDay(link.getAttribute("href"));
                 if (day) return day;
             }
 
-            const day = extractDay(container.textContent || "");
+            const text = container.textContent || "";
+            const day = extractDay(text);
             if (day) return day;
         }
 
@@ -525,63 +500,51 @@
     }
 
     function getActiveDay(button) {
-        return (
-            getSelectedDayFromControls() ||
-            getSelectedDayFromActiveElement() ||
-            getDayNearButton(button) ||
-            1
-        );
+        const select = findNearestDaySelect(button);
+        const selectedDay = getDayFromSelect(select);
+
+        if (selectedDay) return selectedDay;
+
+        const cardDay = getCardSpecificDay(button);
+        if (cardDay) return cardDay;
+
+        return 1;
     }
 
-    function isOpenLesson(element) {
-        return /open\s+lesson/i.test(element.textContent || "");
+    function isOpenLessonButton(button) {
+        return (button.textContent || "").trim().toLowerCase().includes("open lesson");
     }
 
-    function isMarkComplete(element) {
-        return /mark\s+complete|completed/i.test(element.textContent || "");
+    function isMarkCompleteButton(button) {
+        const label = (button.textContent || "").trim().toLowerCase();
+        return label.includes("mark complete") || label.includes("completed");
     }
 
-    function isResetProgress(element) {
-        return /reset/i.test(element.textContent || "");
+    function getOpenLessonButtons() {
+        return Array.from(document.querySelectorAll("a, button")).filter(isOpenLessonButton);
     }
 
-    function updateProgressDisplay() {
+    function getCompleteButtons() {
+        return Array.from(document.querySelectorAll("a, button")).filter(isMarkCompleteButton);
+    }
+
+    function updateButtonStates() {
         const completed = getCompletedLessons();
-        const totalLessons = 45;
-        const percent = Math.round((completed.length / totalLessons) * 100);
 
-        document.querySelectorAll("progress").forEach(function (bar) {
-            bar.max = totalLessons;
-            bar.value = completed.length;
-        });
-
-        document.querySelectorAll("[role='progressbar']").forEach(function (bar) {
-            bar.setAttribute("aria-valuenow", String(percent));
-            bar.style.width = percent + "%";
-        });
-
-        document.querySelectorAll(".progress-bar").forEach(function (bar) {
-            bar.style.width = percent + "%";
-            bar.textContent = percent + "%";
-        });
-
-        const bodyTextTargets = Array.from(document.querySelectorAll("p, span, div, strong")).filter(function (el) {
-            const text = (el.textContent || "").trim();
-            return /^0\s*of\s*\d+|^\d+\s*of\s*\d+|^\d+%$/.test(text);
-        });
-
-        bodyTextTargets.slice(0, 4).forEach(function (el) {
-            if (/of/i.test(el.textContent || "")) {
-                el.textContent = completed.length + " of " + totalLessons + " complete";
-            } else if (/%/.test(el.textContent || "")) {
-                el.textContent = percent + "%";
-            }
-        });
-
-        document.querySelectorAll("a, button").forEach(function (button) {
-            if (!isMarkComplete(button)) return;
-
+        getOpenLessonButtons().forEach(function (button) {
             const day = getActiveDay(button);
+            const url = `/first-nine-weeks/day/${day}?view=student`;
+
+            if (button.tagName.toLowerCase() === "a") {
+                button.setAttribute("href", url);
+            }
+
+            button.dataset.activeDay = String(day);
+        });
+
+        getCompleteButtons().forEach(function (button) {
+            const day = getActiveDay(button);
+            button.dataset.activeDay = String(day);
 
             if (completed.includes(day)) {
                 button.textContent = "Completed ✓";
@@ -593,24 +556,19 @@
         });
     }
 
-    document.addEventListener("click", function (event) {
-        const button = event.target.closest("a, button");
-        if (!button) return;
-
-        if (isOpenLesson(button)) {
-            event.preventDefault();
-            event.stopPropagation();
-            event.stopImmediatePropagation();
-
+    getOpenLessonButtons().forEach(function (button) {
+        button.addEventListener("click", function (event) {
             const day = getActiveDay(button);
-            window.location.href = `/first-nine-weeks/day/${day}?view=student`;
-            return;
-        }
+            const url = `/first-nine-weeks/day/${day}?view=student`;
 
-        if (isMarkComplete(button)) {
             event.preventDefault();
-            event.stopPropagation();
-            event.stopImmediatePropagation();
+            window.location.href = url;
+        });
+    });
+
+    getCompleteButtons().forEach(function (button) {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
 
             const day = getActiveDay(button);
             const completed = getCompletedLessons();
@@ -621,33 +579,17 @@
                 saveCompletedLessons(completed);
             }
 
-            updateProgressDisplay();
-            return;
-        }
+            updateButtonStates();
+        });
+    });
 
-        if (isResetProgress(button)) {
-            event.preventDefault();
-            event.stopPropagation();
-            event.stopImmediatePropagation();
+    document.querySelectorAll("select").forEach(function (select) {
+        select.addEventListener("change", updateButtonStates);
+        select.addEventListener("input", updateButtonStates);
+    });
 
-            localStorage.removeItem(completedKey);
-            updateProgressDisplay();
-            return;
-        }
-    }, true);
-
-    document.addEventListener("change", function () {
-        setTimeout(updateProgressDisplay, 50);
-    }, true);
-
-    document.addEventListener("input", function () {
-        setTimeout(updateProgressDisplay, 50);
-    }, true);
-
-    window.addEventListener("load", updateProgressDisplay);
-    setTimeout(updateProgressDisplay, 100);
-    setTimeout(updateProgressDisplay, 600);
-})();
+    updateButtonStates();
+});
 </script>
 <!-- End Science Studio Student Dashboard Button Fix -->
 

@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-label="Properties of Matter anchor chart">
+<rect width="1200" height="1600" fill="#ffffff"/>
+<style>
+.title{font-family:Arial,sans-serif;font-size:78px;font-weight:900}
+.subtitle{font-family:Arial,sans-serif;font-size:32px;font-weight:800;fill:#111}
+.head{font-family:Arial,sans-serif;font-size:34px;font-weight:900}
+.text{font-family:Arial,sans-serif;font-size:25px;font-weight:700;fill:#111}
+.small{font-family:Arial,sans-serif;font-size:21px;font-weight:700;fill:#111}
+.tiny{font-family:Arial,sans-serif;font-size:18px;font-weight:700;fill:#111}
+.box{stroke:#111;stroke-width:6}
+</style>
+<text x="600" y="90" text-anchor="middle" font-family="Arial,sans-serif" font-size="72" font-weight="900" fill="#6f2dbd">Properties of Matter</text>
+<path d="M220 125 Q600 170 980 125" fill="none" stroke="#00a6d6" stroke-width="10"/>
+<text x="600" y="195" text-anchor="middle" font-family="Arial,sans-serif" font-size="34" font-weight="800" fill="#111">Matter takes up space and has mass.</text>
+<text x="600" y="245" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" font-weight="800" fill="#111">We identify matter by its physical properties.</text>
+<rect class="box" x="75" y="315" width="330" height="250" rx="28" fill="#fff7d6"/>
+<text x="240" y="367" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" font-weight="900" fill="#0f766e">Mass</text>
+
+        <line x1="150" y1="455" x2="300" y2="455" stroke="#111" stroke-width="5"/>
+        <rect x="212" y="410" width="26" height="120" fill="#555" stroke="#111" stroke-width="5"/>
+        <rect x="180" y="447" width="92" height="38" fill="#ddd" stroke="#111" stroke-width="5"/>
+        <circle cx="165" cy="510" r="30" fill="#9ca3af" stroke="#111" stroke-width="5"/>
+        <circle cx="295" cy="510" r="26" fill="#f97316" stroke="#111" stroke-width="5"/>
+        
+<text x="240" y="535" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">
+<tspan x="240" dy="0">amount of matter</tspan>
+</text>
+<rect class="box" x="435" y="315" width="330" height="250" rx="28" fill="#eef9ff"/>
+<text x="600" y="367" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" font-weight="900" fill="#1d4ed8">Density</text>
+
+        <rect x="525" y="415" width="120" height="130" rx="14" fill="#bfdbfe" stroke="#111" stroke-width="5"/>
+        <path d="M525 477 Q585 503 645 477 L645 545 L525 545 Z" fill="#60a5fa"/>
+        
+<text x="600" y="535" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">
+<tspan x="600" dy="0">float or sink in water</tspan>
+</text>
+<rect class="box" x="795" y="315" width="330" height="250" rx="28" fill="#fff7ed"/>
+<text x="960" y="367" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" font-weight="900" fill="#9333ea">Volume</text>
+
+        <path d="M905 410 H995 L975 545 Q950 565 925 545 Z" fill="#dbeafe" stroke="#111" stroke-width="5"/>
+        <path d="M917 485 Q950 507 983 485 L975 545 Q950 565 925 545 Z" fill="#0284c7"/>
+        <line x1="980" y1="435" x2="955" y2="435" stroke="#111" stroke-width="4"/>
+        <line x1="975" y1="463" x2="955" y2="463" stroke="#111" stroke-width="4"/>
+        
+<text x="960" y="535" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">
+<tspan x="960" dy="0">space matter takes up</tspan>
+</text>
+<rect class="box" x="75" y="610" width="330" height="250" rx="28" fill="#fdf2f8"/>
+<text x="240" y="662" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" font-weight="900" fill="#db2777">Temperature</text>
+
+        <rect x="195" y="715" width="45" height="110" rx="18" fill="#fff" stroke="#111" stroke-width="5"/>
+        <rect x="210" y="745" width="15" height="62" fill="#ef4444"/>
+        <circle cx="218" cy="830" r="27" fill="#ef4444" stroke="#111" stroke-width="5"/>
+        <circle cx="285" cy="735" r="25" fill="#fde047" stroke="#111" stroke-width="5"/>
+        
+<text x="240" y="830" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">
+<tspan x="240" dy="0">hot or cold</tspan>
+</text>
+<rect class="box" x="435" y="610" width="330" height="250" rx="28" fill="#fff7d6"/>
+<text x="600" y="662" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" font-weight="900" fill="#ea580c">Texture</text>
+
+        <circle cx="555" cy="765" r="45" fill="#f97316" stroke="#111" stroke-width="5"/>
+        <rect x="635" y="740" width="88" height="60" fill="#c2410c" stroke="#111" stroke-width="5"/>
+        <circle cx="665" cy="770" r="8" fill="#fff7d6"/>
+        <circle cx="700" cy="780" r="8" fill="#fff7d6"/>
+        <path d="M530 835 Q625 792 725 835" fill="none" stroke="#111" stroke-width="5"/>
+        
+<text x="600" y="830" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">
+<tspan x="600" dy="0">smooth, rough, soft</tspan>
+</text>
+<rect class="box" x="795" y="610" width="330" height="250" rx="28" fill="#f0fdf4"/>
+<text x="960" y="662" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" font-weight="900" fill="#854d0e">Conductivity</text>
+
+        <rect x="890" y="770" width="50" height="75" rx="10" fill="#9ca3af" stroke="#111" stroke-width="5"/>
+        <circle cx="1005" cy="792" r="34" fill="#fde047" stroke="#111" stroke-width="5"/>
+        <path d="M935 805 C970 730 1040 730 1075 805" fill="none" stroke="#0284c7" stroke-width="8"/>
+        <path d="M935 820 C970 878 1040 878 1075 820" fill="none" stroke="#0284c7" stroke-width="8"/>
+        
+<text x="960" y="830" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">
+<tspan x="960" dy="0">energy flows or is</tspan>
+<tspan x="960" dy="25">blocked</tspan>
+</text>
+<rect class="box" x="75" y="905" width="330" height="250" rx="28" fill="#f5f3ff"/>
+<text x="240" y="957" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" font-weight="900" fill="#4f46e5">Magnetism</text>
+
+        <path d="M180 1055 a70 70 0 0 1 140 0 v55 h-42 v-55 a28 28 0 0 0 -56 0 v55 h-42z" fill="#dc2626" stroke="#111" stroke-width="5"/>
+        <rect x="180" y="1110" width="42" height="38" fill="#d1d5db" stroke="#111" stroke-width="5"/>
+        <rect x="278" y="1110" width="42" height="38" fill="#d1d5db" stroke="#111" stroke-width="5"/>
+        
+<text x="240" y="1125" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">
+<tspan x="240" dy="0">attract or repel</tspan>
+</text>
+<rect class="box" x="435" y="905" width="330" height="250" rx="28" fill="#eff6ff"/>
+<text x="600" y="957" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" font-weight="900" fill="#0284c7">Solubility</text>
+
+        <rect x="530" y="1005" width="90" height="120" rx="12" fill="#bfdbfe" stroke="#111" stroke-width="5"/>
+        <path d="M530 1080 Q575 1105 620 1080 L620 1125 L530 1125 Z" fill="#d6a85c"/>
+        <rect x="660" y="1005" width="90" height="120" rx="12" fill="#bfdbfe" stroke="#111" stroke-width="5"/>
+        <path d="M660 1050 Q705 1070 750 1050 L750 1125 L660 1125 Z" fill="#60a5fa"/>
+        
+<text x="600" y="1125" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">
+<tspan x="600" dy="0">dissolves or does not</tspan>
+<tspan x="600" dy="25">dissolve</tspan>
+</text>
+<rect class="box" x="795" y="905" width="330" height="250" rx="28" fill="#ecfdf5"/>
+<text x="960" y="957" text-anchor="middle" font-family="Arial,sans-serif" font-size="32" font-weight="900" fill="#16a34a">Physical State</text>
+
+        <rect x="885" y="1005" width="120" height="130" rx="14" fill="#bfdbfe" stroke="#111" stroke-width="5"/>
+        <path d="M885 1067 Q945 1093 1005 1067 L1005 1135 L885 1135 Z" fill="#60a5fa"/>
+        
+<text x="960" y="1125" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">
+<tspan x="960" dy="0">solid, liquid, gas</tspan>
+</text>
+<rect x="130" y="1250" width="940" height="190" rx="36" fill="#fff7d6" stroke="#111" stroke-width="6"/>
+<text x="600" y="1320" text-anchor="middle" font-family="Arial,sans-serif" font-size="38" font-weight="900" fill="#6f2dbd">Remember!</text>
+<text x="600" y="1375" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" font-weight="800" fill="#111">Physical properties can be observed or measured</text>
+<text x="600" y="1420" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" font-weight="800" fill="#111">without changing what the matter is.</text>
+</svg>
