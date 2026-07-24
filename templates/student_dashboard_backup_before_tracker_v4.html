@@ -1,0 +1,654 @@
+{% extends "base.html" %}
+
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+<style>
+    .student-hero {
+        background: linear-gradient(135deg, #102542 0%, #1b4965 55%, #5fa8d3 100%);
+        color: white;
+        border: 5px solid #111;
+        border-radius: 28px;
+        padding: 30px;
+        box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
+        margin-bottom: 22px;
+    }
+
+    .student-card {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 20px;
+        padding: 18px;
+        height: 100%;
+        box-shadow: 5px 5px 0 rgba(17,17,17,0.14);
+        margin-bottom: 18px;
+    }
+
+    .start-card {
+        background: #fff3cd;
+    }
+
+    .student-btn {
+        border: 3px solid #111;
+        border-radius: 10px;
+        font-weight: 900;
+        box-shadow: 3px 3px 0 rgba(17,17,17,0.2);
+        margin: 4px;
+    }
+
+    .student-folder {
+        background: white;
+        border: 4px solid #111;
+        border-radius: 20px;
+        padding: 16px;
+        margin-bottom: 18px;
+        box-shadow: 5px 5px 0 rgba(17,17,17,0.14);
+    }
+
+    .folder-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 3px solid #111;
+        margin: -16px -16px 16px -16px;
+        padding: 14px 16px;
+        background: #e8f4ff;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .lesson-link-card {
+        border: 3px solid #111;
+        border-radius: 15px;
+        padding: 12px;
+        background: #f8f9fa;
+        height: 100%;
+    }
+
+    .day-badge {
+        display: inline-block;
+        background: #0d6efd;
+        color: white;
+        border: 2px solid #111;
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-weight: 900;
+        margin-bottom: 8px;
+    }
+
+    .progress-number {
+        font-size: 2.5rem;
+        font-weight: 950;
+        line-height: 1;
+    }
+
+    .progress-bar-outline {
+        border: 3px solid #111;
+        border-radius: 999px;
+        height: 24px;
+        overflow: hidden;
+        background: #e9ecef;
+    }
+
+    .progress-bar-fill {
+        height: 100%;
+        width: 0%;
+        background: #198754;
+    }
+</style>
+
+{% set classroom_lessons = [] %}
+{% set unit1_lessons = [] %}
+{% set unit2_lessons = [] %}
+{% set unit3_lessons = [] %}
+{% set unit4_lessons = [] %}
+{% set review_lessons = [] %}
+
+{% for lesson in lessons %}
+    {% set d = lesson.day if lesson.day is defined else lesson["day"] %}
+
+    {% if d <= 2 %}
+        {% set _ = classroom_lessons.append(lesson) %}
+    {% elif d <= 16 %}
+        {% set _ = unit1_lessons.append(lesson) %}
+    {% elif d <= 26 %}
+        {% set _ = unit2_lessons.append(lesson) %}
+    {% elif d <= 36 %}
+        {% set _ = unit3_lessons.append(lesson) %}
+    {% elif d <= 43 %}
+        {% set _ = unit4_lessons.append(lesson) %}
+    {% else %}
+        {% set _ = review_lessons.append(lesson) %}
+    {% endif %}
+{% endfor %}
+
+{% macro lesson_button(lesson) %}
+    {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
+    {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
+
+    <div class="col-md-6 col-xl-4 mb-3">
+        <div class="lesson-link-card">
+            <span class="day-badge">Day {{ lesson_day }}</span>
+            <h5>{{ lesson_title }}</h5>
+
+            <a href="/first-nine-weeks/day/{{ lesson_day }}?view=student" class="btn btn-primary btn-sm student-btn">
+                Open Lesson
+            </a>
+
+            <button type="button" class="btn btn-success btn-sm student-btn" onclick="markComplete({{ lesson_day }})">
+                Mark Complete
+            </button>
+        </div>
+    </div>
+{% endmacro %}
+
+<section class="student-hero">
+    <span class="badge-science">Student Science Hub</span>
+    <span class="badge-science">Lessons</span>
+    <span class="badge-science">Labs</span>
+    <span class="badge-science">Review</span>
+
+    <h1 class="mt-3">Welcome, Scientist!</h1>
+    <p class="lead mb-0">
+        Choose your lesson, open a lab, review vocabulary, check your progress, and explain your thinking with evidence.
+    </p>
+</section>
+
+
+
+
+
+<section class="student-card" id="studentQuickLauncher" style="background:white; border:4px solid #111; border-radius:20px; padding:18px; margin-bottom:20px; box-shadow:5px 5px 0 rgba(17,17,17,0.14);">
+    <h2>🚀 Quick Lesson Launcher</h2>
+    <p>Select a day. It will open that lesson in <strong>Student View</strong>.</p>
+
+    <form action="/go-to-student-lesson" method="get">
+        <label for="studentLessonPicker" class="form-label"><strong>Select lesson day:</strong></label>
+
+        <select id="studentLessonPicker" name="day" class="form-select" style="border: 3px solid #111;" onchange="this.form.submit()">
+            <option value="" selected disabled>Choose a lesson day...</option>
+            {% for lesson in lessons|default([]) %}
+                {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
+                {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
+                <option value="{{ lesson_day }}">Day {{ lesson_day }}: {{ lesson_title }}</option>
+            {% endfor %}
+        </select>
+
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary" style="border:3px solid #111; font-weight:900;">
+                Open Student View
+            </button>
+
+            <button type="submit" formaction="/go-to-teacher-lesson" class="btn btn-success" style="border:3px solid #111; font-weight:900;">
+                Open Teacher View
+            </button>
+
+            <a href="/first-nine-weeks" class="btn btn-warning" style="border:3px solid #111; font-weight:900;">Open Full Lesson List</a>
+        </div>
+    </form>
+</section>
+
+
+
+
+
+
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="student-card start-card">
+            <h2>🚀 Start Learning</h2>
+            <p>Pick the lesson day your teacher gives you.</p>
+
+            <label for="lessonPicker" class="form-label"><strong>Choose your day:</strong></label>
+            <select id="lessonPicker" class="form-select" style="border: 3px solid #111;">
+                {% for lesson in lessons %}
+                    {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
+                    {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
+                    <option value="{{ lesson_day }}">Day {{ lesson_day }}: {{ lesson_title }}</option>
+                {% endfor %}
+            </select>
+
+            <div class="mt-3">
+                <button class="btn btn-primary student-btn" onclick="openSelectedLesson()">Open Lesson</button>
+                <button class="btn btn-success student-btn" onclick="markSelectedComplete()">Mark Complete</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="student-card">
+            <h2>📊 My Progress</h2>
+
+            <div class="row align-items-center">
+                <div class="col-4 text-center">
+                    <div id="completeCount" class="progress-number">0</div>
+                    <strong>Lessons Complete</strong>
+                </div>
+
+                <div class="col-8">
+                    <div class="progress-bar-outline">
+                        <div id="progressFill" class="progress-bar-fill"></div>
+                    </div>
+                    <p id="progressText" class="mt-2 mb-0"><strong>0 of 45 lessons complete</strong></p>
+                </div>
+            </div>
+
+            <button class="btn btn-warning student-btn mt-3" onclick="resetProgress()">Reset My Progress</button>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="student-card">
+            <h2>🎮 Review Tools</h2>
+            <a href="/labs/staar-spiral-review-game" class="btn btn-light w-100 student-btn">STAAR Spiral Review Game</a>
+            <a href="/labs/science-stations-board" class="btn btn-light w-100 student-btn">Science Stations Board</a>
+            <a href="/labs/staar-digital-assessment" class="btn btn-light w-100 student-btn">Digital Assessment</a>
+            <a href="/labs/reflection-tracker" class="btn btn-light w-100 student-btn">Reflection Tracker</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="student-card">
+            <h2>🔬 Lab Tools</h2>
+            <a href="/labs" class="btn btn-light w-100 student-btn">Open Full Lab Library</a>
+            <a href="/labs/particles" class="btn btn-light w-100 student-btn">Particle Model Lab</a>
+            <a href="/labs/solutions" class="btn btn-light w-100 student-btn">Solutions Lab</a>
+            <a href="/labs/ramp-investigation" class="btn btn-light w-100 student-btn">Ramp Investigation</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="student-card">
+            <h2>🧠 Science Habits</h2>
+            <p><strong>1.</strong> Read carefully.</p>
+            <p><strong>2.</strong> Use science vocabulary.</p>
+            <p><strong>3.</strong> Use evidence from data.</p>
+            <p><strong>4.</strong> Explain your reasoning.</p>
+            <p><strong>5.</strong> Ask questions like a scientist.</p>
+        </div>
+    </div>
+</div>
+
+<section class="student-folder" id="classroom">
+    <div class="folder-header">
+        <div>
+            <h2>🧰 Classroom Launch</h2>
+            <p class="mb-0"><strong>Days 1–2:</strong> Routines, safety, notebooks, tools, and engineering/scientific design</p>
+        </div>
+        <button class="btn btn-light student-btn" onclick="toggleFolder('classroomBody')">Open / Close</button>
+    </div>
+
+    <div id="classroomBody">
+        <div class="row">
+            {% for lesson in classroom_lessons %}
+                {{ lesson_button(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="student-folder" id="unit1">
+    <div class="folder-header">
+        <div>
+            <h2>🧪 Unit 1: Physical Properties of Matter</h2>
+            <p class="mb-0"><strong>Days 3–16:</strong> Matter, particles, mass, volume, magnetism, density, solubility, and conductivity</p>
+        </div>
+        <button class="btn btn-light student-btn" onclick="toggleFolder('unit1Body')">Open / Close</button>
+    </div>
+
+    <div id="unit1Body">
+        <div class="row">
+            {% for lesson in unit1_lessons %}
+                {{ lesson_button(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="student-folder" id="unit2">
+    <div class="folder-header">
+        <div>
+            <h2>♻️ Unit 2: Mixtures and Solutions</h2>
+            <p class="mb-0"><strong>Days 17–26:</strong> Mixtures, separation, solutions, conservation of matter, and particles</p>
+        </div>
+        <button class="btn btn-light student-btn" onclick="toggleFolder('unit2Body')">Open / Close</button>
+    </div>
+
+    <div id="unit2Body">
+        <div class="row">
+            {% for lesson in unit2_lessons %}
+                {{ lesson_button(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="student-folder" id="unit3">
+    <div class="folder-header">
+        <div>
+            <h2>🏎️ Unit 3: Force and Motion</h2>
+            <p class="mb-0"><strong>Days 27–36:</strong> Equal forces, unequal forces, mechanical energy, and simple investigations</p>
+        </div>
+        <button class="btn btn-light student-btn" onclick="toggleFolder('unit3Body')">Open / Close</button>
+    </div>
+
+    <div id="unit3Body">
+        <div class="row">
+            {% for lesson in unit3_lessons %}
+                {{ lesson_button(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="student-folder" id="unit4">
+    <div class="folder-header">
+        <div>
+            <h2>🔦 Unit 4: Energy Transformations</h2>
+            <p class="mb-0"><strong>Days 37–43:</strong> Energy, systems, chemical energy, electrical energy, and light energy</p>
+        </div>
+        <button class="btn btn-light student-btn" onclick="toggleFolder('unit4Body')">Open / Close</button>
+    </div>
+
+    <div id="unit4Body">
+        <div class="row">
+            {% for lesson in unit4_lessons %}
+                {{ lesson_button(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="student-folder" id="review">
+    <div class="folder-header">
+        <div>
+            <h2>📝 Review and 9 Weeks Test</h2>
+            <p class="mb-0"><strong>Days 44–45:</strong> Flex, review, test, and reflection</p>
+        </div>
+        <button class="btn btn-light student-btn" onclick="toggleFolder('reviewBody')">Open / Close</button>
+    </div>
+
+    <div id="reviewBody">
+        <div class="row">
+            {% for lesson in review_lessons %}
+                {{ lesson_button(lesson) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Science Studio Student Dashboard Button Fix V3 -->
+<script>
+(function () {
+    const completedKey = "scienceStudioCompletedLessons";
+
+    function getCompletedLessons() {
+        try {
+            return JSON.parse(localStorage.getItem(completedKey) || "[]");
+        } catch (error) {
+            return [];
+        }
+    }
+
+    function saveCompletedLessons(days) {
+        localStorage.setItem(completedKey, JSON.stringify(days));
+    }
+
+    function extractDay(value) {
+        const text = String(value || "");
+
+        let match = text.match(/first-nine-weeks\/day\/(\d{1,2})/i);
+        if (match) return Number(match[1]);
+
+        match = text.match(/day\/(\d{1,2})/i);
+        if (match) return Number(match[1]);
+
+        match = text.match(/\bDay\s*(\d{1,2})\b/i);
+        if (match) return Number(match[1]);
+
+        match = text.match(/\bLesson\s*(\d{1,2})\b/i);
+        if (match) return Number(match[1]);
+
+        return null;
+    }
+
+    function getSelectedDayFromControls() {
+        const controls = Array.from(document.querySelectorAll("select, input"));
+
+        for (const control of controls) {
+            const labelText = [
+                control.id || "",
+                control.name || "",
+                control.getAttribute("aria-label") || "",
+                control.closest("label") ? control.closest("label").textContent : "",
+                control.closest("div") ? control.closest("div").textContent : ""
+            ].join(" ").toLowerCase();
+
+            const looksLikeDayControl =
+                labelText.includes("day") ||
+                labelText.includes("lesson") ||
+                extractDay(control.value) !== null;
+
+            if (!looksLikeDayControl) {
+                continue;
+            }
+
+            if (control.tagName.toLowerCase() === "select") {
+                const selected = control.options[control.selectedIndex];
+                const day =
+                    extractDay(control.value) ||
+                    extractDay(selected ? selected.value : "") ||
+                    extractDay(selected ? selected.textContent : "");
+
+                if (day && day >= 1 && day <= 45) {
+                    return day;
+                }
+            } else {
+                const day = extractDay(control.value);
+                if (day && day >= 1 && day <= 45) {
+                    return day;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    function getSelectedDayFromActiveElement() {
+        const activeSelectors = [
+            "[aria-selected='true']",
+            ".active",
+            ".selected",
+            ".current",
+            "[data-selected='true']"
+        ];
+
+        for (const selector of activeSelectors) {
+            const elements = Array.from(document.querySelectorAll(selector));
+            for (const element of elements) {
+                const day =
+                    extractDay(element.dataset ? element.dataset.day : "") ||
+                    extractDay(element.getAttribute("href") || "") ||
+                    extractDay(element.textContent || "");
+
+                if (day && day >= 1 && day <= 45) {
+                    return day;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    function getDayNearButton(button) {
+        const container = button.closest("section, article, .card, .lesson-card, .dashboard-card, .start-learning-card, .learning-card, .content-card, div");
+
+        if (button.dataset && button.dataset.day) {
+            const day = extractDay(button.dataset.day);
+            if (day) return day;
+        }
+
+        if (button.getAttribute("href")) {
+            const day = extractDay(button.getAttribute("href"));
+            if (day) return day;
+        }
+
+        if (container) {
+            if (container.dataset && container.dataset.day) {
+                const day = extractDay(container.dataset.day);
+                if (day) return day;
+            }
+
+            const link = container.querySelector("a[href*='first-nine-weeks/day'], a[href*='day/']");
+            if (link) {
+                const day = extractDay(link.getAttribute("href"));
+                if (day) return day;
+            }
+
+            const day = extractDay(container.textContent || "");
+            if (day) return day;
+        }
+
+        return null;
+    }
+
+    function getActiveDay(button) {
+        return (
+            getSelectedDayFromControls() ||
+            getSelectedDayFromActiveElement() ||
+            getDayNearButton(button) ||
+            1
+        );
+    }
+
+    function isOpenLesson(element) {
+        return /open\s+lesson/i.test(element.textContent || "");
+    }
+
+    function isMarkComplete(element) {
+        return /mark\s+complete|completed/i.test(element.textContent || "");
+    }
+
+    function isResetProgress(element) {
+        return /reset/i.test(element.textContent || "");
+    }
+
+    function updateProgressDisplay() {
+        const completed = getCompletedLessons();
+        const totalLessons = 45;
+        const percent = Math.round((completed.length / totalLessons) * 100);
+
+        document.querySelectorAll("progress").forEach(function (bar) {
+            bar.max = totalLessons;
+            bar.value = completed.length;
+        });
+
+        document.querySelectorAll("[role='progressbar']").forEach(function (bar) {
+            bar.setAttribute("aria-valuenow", String(percent));
+            bar.style.width = percent + "%";
+        });
+
+        document.querySelectorAll(".progress-bar").forEach(function (bar) {
+            bar.style.width = percent + "%";
+            bar.textContent = percent + "%";
+        });
+
+        const bodyTextTargets = Array.from(document.querySelectorAll("p, span, div, strong")).filter(function (el) {
+            const text = (el.textContent || "").trim();
+            return /^0\s*of\s*\d+|^\d+\s*of\s*\d+|^\d+%$/.test(text);
+        });
+
+        bodyTextTargets.slice(0, 4).forEach(function (el) {
+            if (/of/i.test(el.textContent || "")) {
+                el.textContent = completed.length + " of " + totalLessons + " complete";
+            } else if (/%/.test(el.textContent || "")) {
+                el.textContent = percent + "%";
+            }
+        });
+
+        document.querySelectorAll("a, button").forEach(function (button) {
+            if (!isMarkComplete(button)) return;
+
+            const day = getActiveDay(button);
+
+            if (completed.includes(day)) {
+                button.textContent = "Completed ✓";
+                button.classList.add("science-studio-complete-button-done");
+            } else {
+                button.textContent = "Mark Complete";
+                button.classList.remove("science-studio-complete-button-done");
+            }
+        });
+    }
+
+    document.addEventListener("click", function (event) {
+        const button = event.target.closest("a, button");
+        if (!button) return;
+
+        if (isOpenLesson(button)) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
+            const day = getActiveDay(button);
+            window.location.href = `/first-nine-weeks/day/${day}?view=student`;
+            return;
+        }
+
+        if (isMarkComplete(button)) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
+            const day = getActiveDay(button);
+            const completed = getCompletedLessons();
+
+            if (!completed.includes(day)) {
+                completed.push(day);
+                completed.sort(function (a, b) { return a - b; });
+                saveCompletedLessons(completed);
+            }
+
+            updateProgressDisplay();
+            return;
+        }
+
+        if (isResetProgress(button)) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
+            localStorage.removeItem(completedKey);
+            updateProgressDisplay();
+            return;
+        }
+    }, true);
+
+    document.addEventListener("change", function () {
+        setTimeout(updateProgressDisplay, 50);
+    }, true);
+
+    document.addEventListener("input", function () {
+        setTimeout(updateProgressDisplay, 50);
+    }, true);
+
+    window.addEventListener("load", updateProgressDisplay);
+    setTimeout(updateProgressDisplay, 100);
+    setTimeout(updateProgressDisplay, 600);
+})();
+</script>
+<!-- End Science Studio Student Dashboard Button Fix -->
+
+{% endblock %}

@@ -4,262 +4,250 @@
 
 {% block content %}
 <style>
-    .student-hero {
-        background: linear-gradient(135deg, #102542 0%, #1b4965 55%, #5fa8d3 100%);
-        color: white;
-        border: 5px solid #111;
-        border-radius: 28px;
-        padding: 30px;
-        box-shadow: 8px 8px 0 rgba(17,17,17,0.18);
-        margin-bottom: 22px;
-    }
+.student-dashboard-wrap {
+    max-width: 1180px;
+    margin: 20px auto;
+}
 
-    .student-card {
-        background: white;
-        border: 4px solid #111;
-        border-radius: 20px;
-        padding: 18px;
-        height: 100%;
-        box-shadow: 5px 5px 0 rgba(17,17,17,0.14);
-        margin-bottom: 18px;
-    }
+.student-hero {
+    background: linear-gradient(135deg, #14324f, #246d94, #69b5df);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 26px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+    margin-bottom: 22px;
+}
 
-    .start-card {
-        background: #fff3cd;
-    }
+.student-pill {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ffcc00;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: 1000;
+    margin: 4px 6px 10px 0;
+    text-decoration: none;
+}
 
-    .student-btn {
-        border: 3px solid #111;
-        border-radius: 10px;
-        font-weight: 900;
-        box-shadow: 3px 3px 0 rgba(17,17,17,0.2);
-        margin: 4px;
-    }
+.student-card {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.16);
+    margin-bottom: 20px;
+}
 
-    .student-folder {
-        background: white;
-        border: 4px solid #111;
-        border-radius: 20px;
-        padding: 16px;
-        margin-bottom: 18px;
-        box-shadow: 5px 5px 0 rgba(17,17,17,0.14);
-    }
+.student-card.yellow {
+    background: #fff7d6;
+}
 
-    .folder-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        border-bottom: 3px solid #111;
-        margin: -16px -16px 16px -16px;
-        padding: 14px 16px;
-        background: #e8f4ff;
-        border-radius: 16px 16px 0 0;
-    }
+.student-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
 
-    .lesson-link-card {
-        border: 3px solid #111;
-        border-radius: 15px;
-        padding: 12px;
-        background: #f8f9fa;
-        height: 100%;
-    }
+.student-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
 
-    .day-badge {
-        display: inline-block;
-        background: #0d6efd;
-        color: white;
-        border: 2px solid #111;
-        border-radius: 999px;
-        padding: 4px 10px;
-        font-weight: 900;
-        margin-bottom: 8px;
-    }
+.student-btn {
+    display: inline-block;
+    background: #0077ff;
+    color: white !important;
+    border: 4px solid #111;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    text-decoration: none !important;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.22);
+    margin: 5px 5px 5px 0;
+}
 
-    .progress-number {
-        font-size: 2.5rem;
-        font-weight: 950;
-        line-height: 1;
-    }
+.student-btn.green {
+    background: #009966;
+}
 
-    .progress-bar-outline {
-        border: 3px solid #111;
-        border-radius: 999px;
-        height: 24px;
-        overflow: hidden;
-        background: #e9ecef;
-    }
+.student-btn.yellow {
+    background: #ffcc00;
+    color: #111 !important;
+}
 
-    .progress-bar-fill {
-        height: 100%;
-        width: 0%;
-        background: #198754;
+.student-btn.red {
+    background: #e63946;
+}
+
+.student-select {
+    width: 100%;
+    padding: 12px;
+    border: 4px solid #111;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin: 8px 0 12px 0;
+    background: white;
+}
+
+.progress-number {
+    font-size: 3rem;
+    line-height: 1;
+    font-weight: 1000;
+    text-align: center;
+}
+
+.progress-track {
+    width: 100%;
+    height: 24px;
+    border: 3px solid #111;
+    border-radius: 999px;
+    background: white;
+    overflow: hidden;
+    margin: 12px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #00a86b;
+    transition: width 0.25s ease;
+}
+
+.progress-summary {
+    font-weight: 900;
+}
+
+.completed-days {
+    font-weight: 800;
+    margin-top: 8px;
+}
+
+.tool-btn {
+    display: block;
+    width: 100%;
+    background: white;
+    border: 4px solid #111;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 8px 0;
+    font-weight: 1000;
+    text-align: center;
+    text-decoration: none !important;
+    color: #111 !important;
+}
+
+.unit-box {
+    background: #eaf7ff;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.lesson-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.lesson-chip {
+    display: block;
+    background: white;
+    border: 3px solid #111;
+    border-radius: 10px;
+    padding: 10px;
+    color: #111 !important;
+    text-decoration: none !important;
+    font-weight: 800;
+}
+
+.lesson-chip.completed {
+    background: #d8ffe9;
+}
+
+@media (max-width: 850px) {
+    .student-grid-2,
+    .student-grid-3 {
+        grid-template-columns: 1fr;
     }
+}
 </style>
 
-{% set classroom_lessons = [] %}
-{% set unit1_lessons = [] %}
-{% set unit2_lessons = [] %}
-{% set unit3_lessons = [] %}
-{% set unit4_lessons = [] %}
-{% set review_lessons = [] %}
+<div class="student-dashboard-wrap">
+    <section class="student-hero">
+        <a class="student-pill" href="/student-dashboard">Student Science Hub</a>
+        <a class="student-pill" href="/first-nine-weeks">Lessons</a>
+        <a class="student-pill" href="/labs">Labs</a>
+        <a class="student-pill" href="/staar-practice/2022">Review</a>
 
-{% for lesson in lessons %}
-    {% set d = lesson.day if lesson.day is defined else lesson["day"] %}
+        <h1>Welcome, Scientist!</h1>
+        <p>Choose your lesson, open a lab, review vocabulary, check your progress, and explain your thinking with evidence.</p>
+    </section>
 
-    {% if d <= 2 %}
-        {% set _ = classroom_lessons.append(lesson) %}
-    {% elif d <= 16 %}
-        {% set _ = unit1_lessons.append(lesson) %}
-    {% elif d <= 26 %}
-        {% set _ = unit2_lessons.append(lesson) %}
-    {% elif d <= 36 %}
-        {% set _ = unit3_lessons.append(lesson) %}
-    {% elif d <= 43 %}
-        {% set _ = unit4_lessons.append(lesson) %}
-    {% else %}
-        {% set _ = review_lessons.append(lesson) %}
-    {% endif %}
-{% endfor %}
+    <section class="student-card">
+        <h2>🚀 Quick Lesson Launcher</h2>
+        <p>Select a day. It will open that lesson in <strong>Student View</strong>.</p>
 
-{% macro lesson_button(lesson) %}
-    {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
-    {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
+        <label for="quickLessonSelect"><strong>Select lesson day:</strong></label>
+        <select id="quickLessonSelect" class="student-select"></select>
 
-    <div class="col-md-6 col-xl-4 mb-3">
-        <div class="lesson-link-card">
-            <span class="day-badge">Day {{ lesson_day }}</span>
-            <h5>{{ lesson_title }}</h5>
+        <button class="student-btn" type="button" id="openQuickStudent">Open Student View</button>
+        <button class="student-btn green" type="button" id="openQuickTeacher">Open Teacher View</button>
+        <a class="student-btn yellow" href="/first-nine-weeks">Open Full Lesson List</a>
+    </section>
 
-            <a href="/first-nine-weeks/day/{{ lesson_day }}?view=student" class="btn btn-primary btn-sm student-btn">
-                Open Lesson
-            </a>
-
-            <button type="button" class="btn btn-success btn-sm student-btn" onclick="markComplete({{ lesson_day }})">
-                Mark Complete
-            </button>
-        </div>
-    </div>
-{% endmacro %}
-
-<section class="student-hero">
-    <span class="badge-science">Student Science Hub</span>
-    <span class="badge-science">Lessons</span>
-    <span class="badge-science">Labs</span>
-    <span class="badge-science">Review</span>
-
-    <h1 class="mt-3">Welcome, Scientist!</h1>
-    <p class="lead mb-0">
-        Choose your lesson, open a lab, review vocabulary, check your progress, and explain your thinking with evidence.
-    </p>
-</section>
-
-
-
-
-
-<section class="student-card" id="studentQuickLauncher" style="background:white; border:4px solid #111; border-radius:20px; padding:18px; margin-bottom:20px; box-shadow:5px 5px 0 rgba(17,17,17,0.14);">
-    <h2>🚀 Quick Lesson Launcher</h2>
-    <p>Select a day. It will open that lesson in <strong>Student View</strong>.</p>
-
-    <form action="/go-to-student-lesson" method="get">
-        <label for="studentLessonPicker" class="form-label"><strong>Select lesson day:</strong></label>
-
-        <select id="studentLessonPicker" name="day" class="form-select" style="border: 3px solid #111;" onchange="this.form.submit()">
-            <option value="" selected disabled>Choose a lesson day...</option>
-            {% for lesson in lessons|default([]) %}
-                {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
-                {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
-                <option value="{{ lesson_day }}">Day {{ lesson_day }}: {{ lesson_title }}</option>
-            {% endfor %}
-        </select>
-
-        <div class="mt-3">
-            <button type="submit" class="btn btn-primary" style="border:3px solid #111; font-weight:900;">
-                Open Student View
-            </button>
-
-            <button type="submit" formaction="/go-to-teacher-lesson" class="btn btn-success" style="border:3px solid #111; font-weight:900;">
-                Open Teacher View
-            </button>
-
-            <a href="/first-nine-weeks" class="btn btn-warning" style="border:3px solid #111; font-weight:900;">Open Full Lesson List</a>
-        </div>
-    </form>
-</section>
-
-
-
-
-
-
-<div class="row g-4">
-    <div class="col-lg-6">
-        <div class="student-card start-card">
+    <section class="student-grid-2">
+        <div class="student-card yellow">
             <h2>🚀 Start Learning</h2>
             <p>Pick the lesson day your teacher gives you.</p>
 
-            <label for="lessonPicker" class="form-label"><strong>Choose your day:</strong></label>
-            <select id="lessonPicker" class="form-select" style="border: 3px solid #111;">
-                {% for lesson in lessons %}
-                    {% set lesson_day = lesson.day if lesson.day is defined else lesson["day"] %}
-                    {% set lesson_title = lesson.title if lesson.title is defined else lesson["title"] %}
-                    <option value="{{ lesson_day }}">Day {{ lesson_day }}: {{ lesson_title }}</option>
-                {% endfor %}
-            </select>
+            <label for="startLearningSelect"><strong>Choose your day:</strong></label>
+            <select id="startLearningSelect" class="student-select"></select>
 
-            <div class="mt-3">
-                <button class="btn btn-primary student-btn" onclick="openSelectedLesson()">Open Lesson</button>
-                <button class="btn btn-success student-btn" onclick="markSelectedComplete()">Mark Complete</button>
-            </div>
+            <button class="student-btn" type="button" id="openStartLesson">Open Lesson</button>
+            <button class="student-btn green" type="button" id="markLessonComplete">Mark Complete</button>
         </div>
-    </div>
 
-    <div class="col-lg-6">
-        <div class="student-card">
+        <div class="student-card" id="myProgressCard">
             <h2>📊 My Progress</h2>
 
-            <div class="row align-items-center">
-                <div class="col-4 text-center">
-                    <div id="completeCount" class="progress-number">0</div>
-                    <strong>Lessons Complete</strong>
-                </div>
+            <div class="progress-number" id="progressNumber">0</div>
+            <div style="text-align:center; font-weight:1000;">Lessons Complete</div>
 
-                <div class="col-8">
-                    <div class="progress-bar-outline">
-                        <div id="progressFill" class="progress-bar-fill"></div>
-                    </div>
-                    <p id="progressText" class="mt-2 mb-0"><strong>0 of 45 lessons complete</strong></p>
-                </div>
+            <div class="progress-summary" id="progressSummary">0 of 45 complete</div>
+
+            <div class="progress-track" aria-label="lesson progress">
+                <div class="progress-fill" id="progressFill"></div>
             </div>
 
-            <button class="btn btn-warning student-btn mt-3" onclick="resetProgress()">Reset My Progress</button>
-        </div>
-    </div>
-</div>
+            <div class="completed-days" id="completedDays">No lessons completed yet.</div>
 
-<div class="row g-4">
-    <div class="col-md-4">
+            <button class="student-btn yellow" type="button" id="resetProgress">Reset My Progress</button>
+        </div>
+    </section>
+
+    <section class="student-grid-3">
         <div class="student-card">
             <h2>🎮 Review Tools</h2>
-            <a href="/labs/staar-spiral-review-game" class="btn btn-light w-100 student-btn">STAAR Spiral Review Game</a>
-            <a href="/labs/science-stations-board" class="btn btn-light w-100 student-btn">Science Stations Board</a>
-            <a href="/labs/staar-digital-assessment" class="btn btn-light w-100 student-btn">Digital Assessment</a>
-            <a href="/labs/reflection-tracker" class="btn btn-light w-100 student-btn">Reflection Tracker</a>
+            <a class="tool-btn" href="/staar-practice/2022">STAAR Spiral Review Game</a>
+            <a class="tool-btn" href="/resources/anchor-charts">Science Stations Board</a>
+            <a class="tool-btn" href="/staar-practice/2022/printable?view=student">Digital Assessment</a>
+            <a class="tool-btn" href="/reflection">Reflection Tracker</a>
         </div>
-    </div>
 
-    <div class="col-md-4">
         <div class="student-card">
             <h2>🔬 Lab Tools</h2>
-            <a href="/labs" class="btn btn-light w-100 student-btn">Open Full Lab Library</a>
-            <a href="/labs/particles" class="btn btn-light w-100 student-btn">Particle Model Lab</a>
-            <a href="/labs/solutions" class="btn btn-light w-100 student-btn">Solutions Lab</a>
-            <a href="/labs/ramp-investigation" class="btn btn-light w-100 student-btn">Ramp Investigation</a>
+            <a class="tool-btn" href="/labs">Open Full Lab Library</a>
+            <a class="tool-btn" href="/labs/unit1/day/3">Particle Model Lab</a>
+            <a class="tool-btn" href="/labs/mp1/day/20">Solutions Lab</a>
+            <a class="tool-btn" href="/labs/mp1/day/33">Ramp Investigation</a>
         </div>
-    </div>
 
-    <div class="col-md-4">
         <div class="student-card">
             <h2>🧠 Science Habits</h2>
             <p><strong>1.</strong> Read carefully.</p>
@@ -268,387 +256,242 @@
             <p><strong>4.</strong> Explain your reasoning.</p>
             <p><strong>5.</strong> Ask questions like a scientist.</p>
         </div>
-    </div>
+    </section>
+
+    <section class="unit-box">
+        <h2>🧰 Classroom Launch</h2>
+        <p><strong>Days 1–2:</strong> Routines, safety, notebooks, tools, and engineering/scientific design.</p>
+        <div class="lesson-list" id="launchLessons"></div>
+    </section>
+
+    <section class="unit-box">
+        <h2>🧪 Unit 1: Physical Properties of Matter</h2>
+        <p><strong>Days 3–16:</strong> Matter, mass, volume, density, magnetism, solubility, conductivity, and engineering design.</p>
+        <div class="lesson-list" id="unit1Lessons"></div>
+    </section>
+
+    <section class="unit-box">
+        <h2>🥣 Unit 2: Mixtures and Solutions</h2>
+        <p><strong>Days 17–26:</strong> Mixtures, solutions, separation methods, and conservation of matter.</p>
+        <div class="lesson-list" id="unit2Lessons"></div>
+    </section>
+
+    <section class="unit-box">
+        <h2>🏎️ Unit 3: Force and Motion</h2>
+        <p><strong>Days 27–36:</strong> Balanced and unbalanced forces, friction, motion, variables, and data.</p>
+        <div class="lesson-list" id="unit3Lessons"></div>
+    </section>
+
+    <section class="unit-box">
+        <h2>⚡ Unit 4: Forms of Energy</h2>
+        <p><strong>Days 37–43:</strong> CMELTS, circuits, energy flow, and transformations.</p>
+        <div class="lesson-list" id="unit4Lessons"></div>
+    </section>
+
+    <section class="unit-box">
+        <h2>🎯 Review and Reflection</h2>
+        <p><strong>Days 44–45:</strong> Review, digital assessment, reflection, notebook checklist, and goal setting.</p>
+        <div class="lesson-list" id="reviewLessons"></div>
+    </section>
 </div>
 
-<section class="student-folder" id="classroom">
-    <div class="folder-header">
-        <div>
-            <h2>🧰 Classroom Launch</h2>
-            <p class="mb-0"><strong>Days 1–2:</strong> Routines, safety, notebooks, tools, and engineering/scientific design</p>
-        </div>
-        <button class="btn btn-light student-btn" onclick="toggleFolder('classroomBody')">Open / Close</button>
-    </div>
-
-    <div id="classroomBody">
-        <div class="row">
-            {% for lesson in classroom_lessons %}
-                {{ lesson_button(lesson) }}
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="student-folder" id="unit1">
-    <div class="folder-header">
-        <div>
-            <h2>🧪 Unit 1: Physical Properties of Matter</h2>
-            <p class="mb-0"><strong>Days 3–16:</strong> Matter, particles, mass, volume, magnetism, density, solubility, and conductivity</p>
-        </div>
-        <button class="btn btn-light student-btn" onclick="toggleFolder('unit1Body')">Open / Close</button>
-    </div>
-
-    <div id="unit1Body">
-        <div class="row">
-            {% for lesson in unit1_lessons %}
-                {{ lesson_button(lesson) }}
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="student-folder" id="unit2">
-    <div class="folder-header">
-        <div>
-            <h2>♻️ Unit 2: Mixtures and Solutions</h2>
-            <p class="mb-0"><strong>Days 17–26:</strong> Mixtures, separation, solutions, conservation of matter, and particles</p>
-        </div>
-        <button class="btn btn-light student-btn" onclick="toggleFolder('unit2Body')">Open / Close</button>
-    </div>
-
-    <div id="unit2Body">
-        <div class="row">
-            {% for lesson in unit2_lessons %}
-                {{ lesson_button(lesson) }}
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="student-folder" id="unit3">
-    <div class="folder-header">
-        <div>
-            <h2>🏎️ Unit 3: Force and Motion</h2>
-            <p class="mb-0"><strong>Days 27–36:</strong> Equal forces, unequal forces, mechanical energy, and simple investigations</p>
-        </div>
-        <button class="btn btn-light student-btn" onclick="toggleFolder('unit3Body')">Open / Close</button>
-    </div>
-
-    <div id="unit3Body">
-        <div class="row">
-            {% for lesson in unit3_lessons %}
-                {{ lesson_button(lesson) }}
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="student-folder" id="unit4">
-    <div class="folder-header">
-        <div>
-            <h2>🔦 Unit 4: Energy Transformations</h2>
-            <p class="mb-0"><strong>Days 37–43:</strong> Energy, systems, chemical energy, electrical energy, and light energy</p>
-        </div>
-        <button class="btn btn-light student-btn" onclick="toggleFolder('unit4Body')">Open / Close</button>
-    </div>
-
-    <div id="unit4Body">
-        <div class="row">
-            {% for lesson in unit4_lessons %}
-                {{ lesson_button(lesson) }}
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="student-folder" id="review">
-    <div class="folder-header">
-        <div>
-            <h2>📝 Review and 9 Weeks Test</h2>
-            <p class="mb-0"><strong>Days 44–45:</strong> Flex, review, test, and reflection</p>
-        </div>
-        <button class="btn btn-light student-btn" onclick="toggleFolder('reviewBody')">Open / Close</button>
-    </div>
-
-    <div id="reviewBody">
-        <div class="row">
-            {% for lesson in review_lessons %}
-                {{ lesson_button(lesson) }}
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-<!-- Science Studio Student Dashboard Button Fix V3 -->
 <script>
 (function () {
+    const TOTAL_LESSONS = 45;
     const completedKey = "scienceStudioCompletedLessons";
 
-    function getCompletedLessons() {
+    const lessons = [
+        [1, "Classroom Rituals, Routines, and Safety"],
+        [2, "Science Tools, Measuring Tools, and Engineering Design"],
+        [3, "Matter and Physical Properties"],
+        [4, "Mass: Measuring Solids, Liquids, and Gases"],
+        [5, "Volume: Measuring Liquids and Solids"],
+        [6, "Magnetism and Physical Properties"],
+        [7, "Density: Sink, Float, and Compare"],
+        [8, "Density and Relative Density Review"],
+        [9, "Solubility: Soluble and Insoluble Materials"],
+        [10, "Dissolving and Insoluble Materials"],
+        [11, "Electrical Conductivity"],
+        [12, "Conductors and Insulators"],
+        [13, "Thermal Conductivity"],
+        [14, "Property Detective"],
+        [15, "Toy Material Engineering Challenge"],
+        [16, "Unit 1 Review and Performance Task"],
+        [17, "What Is a Mixture?"],
+        [18, "Separating Mixtures by Properties"],
+        [19, "Filtration and Evaporation"],
+        [20, "What Is a Solution? Create and Compare Solutions"],
+        [21, "Properties Before and After Mixing"],
+        [22, "Solutions and Conservation of Matter"],
+        [23, "Mass of Mixtures and Solutions"],
+        [24, "Measuring Conservation of Matter"],
+        [25, "Tiny Particle Model"],
+        [26, "Unit 2 Review and Performance Task"],
+        [27, "Balanced Forces"],
+        [28, "Equal Pushes and Pulls"],
+        [29, "Unequal Pulls"],
+        [30, "Unequal Pushes"],
+        [31, "Mechanical Energy Transfer"],
+        [32, "Motion Systems"],
+        [33, "Car Ramp Investigation"],
+        [34, "Balloon Rocket Investigation"],
+        [35, "Variables and Data"],
+        [36, "Force and Motion Performance Task"],
+        [37, "Forms of Energy"],
+        [38, "Energy Transformations"],
+        [39, "Battery Energy"],
+        [40, "Flashlight Energy Flow"],
+        [41, "Energy Flowchart Builder"],
+        [42, "Multiple Energy Devices"],
+        [43, "Energy Review"],
+        [44, "1st 9 Weeks STAAR-Style Digital Assessment"],
+        [45, "Reflection Tracker, Notebook Checklist, and Goal Setting"]
+    ];
+
+    function cleanDays(days) {
+        return days
+            .map(Number)
+            .filter(day => day >= 1 && day <= TOTAL_LESSONS)
+            .filter((day, index, array) => array.indexOf(day) === index)
+            .sort((a, b) => a - b);
+    }
+
+    function getCompleted() {
         try {
-            return JSON.parse(localStorage.getItem(completedKey) || "[]");
-        } catch (error) {
+            return cleanDays(JSON.parse(localStorage.getItem(completedKey) || "[]"));
+        } catch {
             return [];
         }
     }
 
-    function saveCompletedLessons(days) {
-        localStorage.setItem(completedKey, JSON.stringify(days));
+    function saveCompleted(days) {
+        const clean = cleanDays(days);
+        localStorage.setItem(completedKey, JSON.stringify(clean));
+        return clean;
     }
 
-    function extractDay(value) {
-        const text = String(value || "");
-
-        let match = text.match(/first-nine-weeks\/day\/(\d{1,2})/i);
-        if (match) return Number(match[1]);
-
-        match = text.match(/day\/(\d{1,2})/i);
-        if (match) return Number(match[1]);
-
-        match = text.match(/\bDay\s*(\d{1,2})\b/i);
-        if (match) return Number(match[1]);
-
-        match = text.match(/\bLesson\s*(\d{1,2})\b/i);
-        if (match) return Number(match[1]);
-
-        return null;
+    function selectedDay(selectId) {
+        const select = document.getElementById(selectId);
+        const day = Number(select ? select.value : 1);
+        return day >= 1 && day <= TOTAL_LESSONS ? day : 1;
     }
 
-    function getSelectedDayFromControls() {
-        const controls = Array.from(document.querySelectorAll("select, input"));
-
-        for (const control of controls) {
-            const labelText = [
-                control.id || "",
-                control.name || "",
-                control.getAttribute("aria-label") || "",
-                control.closest("label") ? control.closest("label").textContent : "",
-                control.closest("div") ? control.closest("div").textContent : ""
-            ].join(" ").toLowerCase();
-
-            const looksLikeDayControl =
-                labelText.includes("day") ||
-                labelText.includes("lesson") ||
-                extractDay(control.value) !== null;
-
-            if (!looksLikeDayControl) {
-                continue;
-            }
-
-            if (control.tagName.toLowerCase() === "select") {
-                const selected = control.options[control.selectedIndex];
-                const day =
-                    extractDay(control.value) ||
-                    extractDay(selected ? selected.value : "") ||
-                    extractDay(selected ? selected.textContent : "");
-
-                if (day && day >= 1 && day <= 45) {
-                    return day;
-                }
-            } else {
-                const day = extractDay(control.value);
-                if (day && day >= 1 && day <= 45) {
-                    return day;
-                }
-            }
-        }
-
-        return null;
+    function studentUrl(day) {
+        return `/first-nine-weeks/day/${day}?view=student`;
     }
 
-    function getSelectedDayFromActiveElement() {
-        const activeSelectors = [
-            "[aria-selected='true']",
-            ".active",
-            ".selected",
-            ".current",
-            "[data-selected='true']"
-        ];
-
-        for (const selector of activeSelectors) {
-            const elements = Array.from(document.querySelectorAll(selector));
-            for (const element of elements) {
-                const day =
-                    extractDay(element.dataset ? element.dataset.day : "") ||
-                    extractDay(element.getAttribute("href") || "") ||
-                    extractDay(element.textContent || "");
-
-                if (day && day >= 1 && day <= 45) {
-                    return day;
-                }
-            }
-        }
-
-        return null;
+    function teacherUrl(day) {
+        return `/first-nine-weeks/day/${day}?view=teacher`;
     }
 
-    function getDayNearButton(button) {
-        const container = button.closest("section, article, .card, .lesson-card, .dashboard-card, .start-learning-card, .learning-card, .content-card, div");
+    function fillSelect(selectId) {
+        const select = document.getElementById(selectId);
+        if (!select) return;
 
-        if (button.dataset && button.dataset.day) {
-            const day = extractDay(button.dataset.day);
-            if (day) return day;
-        }
+        select.innerHTML = "";
 
-        if (button.getAttribute("href")) {
-            const day = extractDay(button.getAttribute("href"));
-            if (day) return day;
-        }
-
-        if (container) {
-            if (container.dataset && container.dataset.day) {
-                const day = extractDay(container.dataset.day);
-                if (day) return day;
-            }
-
-            const link = container.querySelector("a[href*='first-nine-weeks/day'], a[href*='day/']");
-            if (link) {
-                const day = extractDay(link.getAttribute("href"));
-                if (day) return day;
-            }
-
-            const day = extractDay(container.textContent || "");
-            if (day) return day;
-        }
-
-        return null;
-    }
-
-    function getActiveDay(button) {
-        return (
-            getSelectedDayFromControls() ||
-            getSelectedDayFromActiveElement() ||
-            getDayNearButton(button) ||
-            1
-        );
-    }
-
-    function isOpenLesson(element) {
-        return /open\s+lesson/i.test(element.textContent || "");
-    }
-
-    function isMarkComplete(element) {
-        return /mark\s+complete|completed/i.test(element.textContent || "");
-    }
-
-    function isResetProgress(element) {
-        return /reset/i.test(element.textContent || "");
-    }
-
-    function updateProgressDisplay() {
-        const completed = getCompletedLessons();
-        const totalLessons = 45;
-        const percent = Math.round((completed.length / totalLessons) * 100);
-
-        document.querySelectorAll("progress").forEach(function (bar) {
-            bar.max = totalLessons;
-            bar.value = completed.length;
-        });
-
-        document.querySelectorAll("[role='progressbar']").forEach(function (bar) {
-            bar.setAttribute("aria-valuenow", String(percent));
-            bar.style.width = percent + "%";
-        });
-
-        document.querySelectorAll(".progress-bar").forEach(function (bar) {
-            bar.style.width = percent + "%";
-            bar.textContent = percent + "%";
-        });
-
-        const bodyTextTargets = Array.from(document.querySelectorAll("p, span, div, strong")).filter(function (el) {
-            const text = (el.textContent || "").trim();
-            return /^0\s*of\s*\d+|^\d+\s*of\s*\d+|^\d+%$/.test(text);
-        });
-
-        bodyTextTargets.slice(0, 4).forEach(function (el) {
-            if (/of/i.test(el.textContent || "")) {
-                el.textContent = completed.length + " of " + totalLessons + " complete";
-            } else if (/%/.test(el.textContent || "")) {
-                el.textContent = percent + "%";
-            }
-        });
-
-        document.querySelectorAll("a, button").forEach(function (button) {
-            if (!isMarkComplete(button)) return;
-
-            const day = getActiveDay(button);
-
-            if (completed.includes(day)) {
-                button.textContent = "Completed ✓";
-                button.classList.add("science-studio-complete-button-done");
-            } else {
-                button.textContent = "Mark Complete";
-                button.classList.remove("science-studio-complete-button-done");
-            }
+        lessons.forEach(([day, title]) => {
+            const option = document.createElement("option");
+            option.value = String(day);
+            option.textContent = `Day ${day}: ${title}`;
+            select.appendChild(option);
         });
     }
 
-    document.addEventListener("click", function (event) {
-        const button = event.target.closest("a, button");
-        if (!button) return;
+    function makeLessonChip(day, title) {
+        const completed = getCompleted();
+        const link = document.createElement("a");
+        link.href = studentUrl(day);
+        link.className = "lesson-chip" + (completed.includes(day) ? " completed" : "");
+        link.textContent = `Day ${day}: ${title}`;
+        return link;
+    }
 
-        if (isOpenLesson(button)) {
-            event.preventDefault();
-            event.stopPropagation();
-            event.stopImmediatePropagation();
+    function fillLessonList(elementId, start, end) {
+        const box = document.getElementById(elementId);
+        if (!box) return;
 
-            const day = getActiveDay(button);
-            window.location.href = `/first-nine-weeks/day/${day}?view=student`;
-            return;
+        box.innerHTML = "";
+
+        lessons
+            .filter(([day]) => day >= start && day <= end)
+            .forEach(([day, title]) => {
+                box.appendChild(makeLessonChip(day, title));
+            });
+    }
+
+    function updateProgress() {
+        const completed = getCompleted();
+        const count = completed.length;
+        const percent = Math.round((count / TOTAL_LESSONS) * 100);
+
+        document.getElementById("progressNumber").textContent = String(count);
+        document.getElementById("progressSummary").textContent = `${count} of ${TOTAL_LESSONS} complete`;
+        document.getElementById("progressFill").style.width = percent + "%";
+
+        const completedDays = document.getElementById("completedDays");
+
+        if (count === 0) {
+            completedDays.textContent = "No lessons completed yet.";
+        } else {
+            completedDays.textContent = "Completed: Day " + completed.join(", Day ");
         }
 
-        if (isMarkComplete(button)) {
-            event.preventDefault();
-            event.stopPropagation();
-            event.stopImmediatePropagation();
+        const currentDay = selectedDay("startLearningSelect");
+        const completeBtn = document.getElementById("markLessonComplete");
 
-            const day = getActiveDay(button);
-            const completed = getCompletedLessons();
-
-            if (!completed.includes(day)) {
-                completed.push(day);
-                completed.sort(function (a, b) { return a - b; });
-                saveCompletedLessons(completed);
-            }
-
-            updateProgressDisplay();
-            return;
+        if (completed.includes(currentDay)) {
+            completeBtn.textContent = "Completed ✓";
+            completeBtn.classList.add("green");
+        } else {
+            completeBtn.textContent = "Mark Complete";
+            completeBtn.classList.add("green");
         }
 
-        if (isResetProgress(button)) {
-            event.preventDefault();
-            event.stopPropagation();
-            event.stopImmediatePropagation();
+        fillLessonList("launchLessons", 1, 2);
+        fillLessonList("unit1Lessons", 3, 16);
+        fillLessonList("unit2Lessons", 17, 26);
+        fillLessonList("unit3Lessons", 27, 36);
+        fillLessonList("unit4Lessons", 37, 43);
+        fillLessonList("reviewLessons", 44, 45);
+    }
 
-            localStorage.removeItem(completedKey);
-            updateProgressDisplay();
-            return;
+    fillSelect("quickLessonSelect");
+    fillSelect("startLearningSelect");
+
+    document.getElementById("openQuickStudent").addEventListener("click", () => {
+        window.location.href = studentUrl(selectedDay("quickLessonSelect"));
+    });
+
+    document.getElementById("openQuickTeacher").addEventListener("click", () => {
+        window.location.href = teacherUrl(selectedDay("quickLessonSelect"));
+    });
+
+    document.getElementById("openStartLesson").addEventListener("click", () => {
+        window.location.href = studentUrl(selectedDay("startLearningSelect"));
+    });
+
+    document.getElementById("markLessonComplete").addEventListener("click", () => {
+        const day = selectedDay("startLearningSelect");
+        const completed = getCompleted();
+
+        if (!completed.includes(day)) {
+            completed.push(day);
         }
-    }, true);
 
-    document.addEventListener("change", function () {
-        setTimeout(updateProgressDisplay, 50);
-    }, true);
+        saveCompleted(completed);
+        updateProgress();
+    });
 
-    document.addEventListener("input", function () {
-        setTimeout(updateProgressDisplay, 50);
-    }, true);
+    document.getElementById("resetProgress").addEventListener("click", () => {
+        localStorage.removeItem(completedKey);
+        updateProgress();
+    });
 
-    window.addEventListener("load", updateProgressDisplay);
-    setTimeout(updateProgressDisplay, 100);
-    setTimeout(updateProgressDisplay, 600);
+    document.getElementById("startLearningSelect").addEventListener("change", updateProgress);
+    window.addEventListener("storage", updateProgress);
+
+    updateProgress();
 })();
 </script>
-<!-- End Science Studio Student Dashboard Button Fix -->
-
 {% endblock %}
