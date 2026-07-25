@@ -1,0 +1,599 @@
+{% extends "base.html" %}
+
+{% block title %}Digital Science Assessment{% endblock %}
+
+{% block content %}
+<style>
+.assessment-wrap {
+    max-width: 1180px;
+    margin: 24px auto;
+}
+
+.assessment-hero {
+    background: linear-gradient(135deg, #14213d, #1d3557, #457b9d);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+    margin-bottom: 22px;
+}
+
+.assessment-card {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.16);
+    margin-bottom: 20px;
+}
+
+.assessment-card.yellow {
+    background: #fff7d6;
+}
+
+.assessment-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.assessment-select,
+.assessment-input {
+    width: 100%;
+    padding: 10px;
+    border: 3px solid #111;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+}
+
+.assessment-btn {
+    display: inline-block;
+    background: #0077ff;
+    color: white !important;
+    border: 4px solid #111;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 1000;
+    text-decoration: none !important;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.22);
+    margin: 6px 6px 6px 0;
+}
+
+.assessment-btn.green {
+    background: #00a86b;
+}
+
+.assessment-btn.yellow {
+    background: #ffcc00;
+    color: #111 !important;
+}
+
+.assessment-btn.purple {
+    background: #6f2dbd;
+}
+
+.assessment-question {
+    background: #f8fbff;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    margin: 18px 0;
+}
+
+.assessment-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.assessment-pill {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ffcc00;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-weight: 1000;
+    font-size: 0.9rem;
+}
+
+.assessment-prompt {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.assessment-stimulus {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 12px;
+    margin: 12px 0;
+    text-align: center;
+}
+
+.assessment-stimulus img {
+    max-width: 100%;
+    max-height: 460px;
+    object-fit: contain;
+}
+
+.assessment-option {
+    display: block;
+    background: white;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.assessment-option input {
+    margin-right: 10px;
+}
+
+.assessment-option.correct {
+    background: #d8ffe9;
+}
+
+.assessment-option.incorrect {
+    background: #ffe1e1;
+}
+
+.assessment-result-box {
+    background: #fff7d6;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 16px;
+    margin: 18px 0;
+}
+
+.assessment-score-big {
+    font-size: 4rem;
+    font-weight: 1000;
+    line-height: 1;
+}
+
+.assessment-rationale {
+    background: white;
+    border-left: 8px solid #6f2dbd;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 12px;
+    font-weight: 800;
+}
+
+.assessment-warning {
+    background: #ffe1e1;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 14px;
+    font-weight: 1000;
+    margin: 14px 0;
+}
+
+@media (max-width: 900px) {
+    .assessment-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<div class="assessment-wrap">
+    <section class="assessment-hero">
+        <h1>📝 1st 9 Weeks Digital Science Assessment</h1>
+        <p>Generate a STAAR-style assessment by grade level, TEKS, and number of questions. Submit answers, get a score, and review rationales.</p>
+        <a class="assessment-btn yellow" href="/student-dashboard">Back to Student Dashboard</a>
+        <a class="assessment-btn yellow" href="/first-nine-weeks/day/45?view=student">Back to Day 45 Reflection</a>
+    </section>
+
+    <section class="assessment-card yellow">
+        <h2>Assessment Setup</h2>
+
+        <div class="assessment-grid">
+            <div>
+                <label for="studentInitials"><strong>Initials or class number</strong></label>
+                <input id="studentInitials" class="assessment-input" placeholder="optional">
+            </div>
+
+            <div>
+                <label for="gradeFilter"><strong>Grade Level</strong></label>
+                <select id="gradeFilter" class="assessment-select">
+                    <option value="all">All available grades</option>
+                    <option value="3">3rd Grade TEKS</option>
+                    <option value="4">4th Grade TEKS</option>
+                    <option value="5">5th Grade TEKS</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="teksFilter"><strong>TEKS</strong></label>
+                <select id="teksFilter" class="assessment-select">
+                    <option value="all">All TEKS</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="questionCount"><strong>Number of Questions</strong></label>
+                <select id="questionCount" class="assessment-select">
+                    <option value="5">5 questions</option>
+                    <option value="10">10 questions</option>
+                    <option value="15">15 questions</option>
+                    <option value="20" selected>20 questions</option>
+                    <option value="30">30 questions</option>
+                    <option value="45">All available</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="margin-top: 14px;">
+            <button class="assessment-btn green" id="generateAssessment" type="button">Generate Assessment</button>
+            <button class="assessment-btn purple" id="randomizeAssessment" type="button">Random Questions</button>
+            <button class="assessment-btn yellow" id="clearAssessment" type="button">Clear</button>
+        </div>
+
+        <div id="assessmentSetupMessage"></div>
+    </section>
+
+    <section class="assessment-card" id="assessmentArea">
+        <h2>Assessment</h2>
+        <p>Choose your settings, then click <strong>Generate Assessment</strong>.</p>
+    </section>
+
+    <section class="assessment-card" id="assessmentResults" style="display:none;"></section>
+</div>
+
+<script>
+const QUESTION_BANK = {{ questions|tojson }};
+
+let currentAssessment = [];
+let submitted = false;
+
+function cleanTeks(teks) {
+    return String(teks || "Unlisted").replace(/[()]/g, "").toUpperCase().trim();
+}
+
+function gradeFromTeks(teks) {
+    const clean = cleanTeks(teks);
+    if (clean.startsWith("3.")) return "3";
+    if (clean.startsWith("4.")) return "4";
+    if (clean.startsWith("5.")) return "5";
+    return "other";
+}
+
+function shuffle(array) {
+    const copy = [...array];
+
+    for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+
+    return copy;
+}
+
+function getFilteredQuestions() {
+    const grade = document.getElementById("gradeFilter").value;
+    const teks = document.getElementById("teksFilter").value;
+
+    return QUESTION_BANK.filter(question => {
+        const questionGrade = gradeFromTeks(question.source_teks);
+        const questionTeks = cleanTeks(question.source_teks);
+
+        if (grade !== "all" && questionGrade !== grade) {
+            return false;
+        }
+
+        if (teks !== "all" && questionTeks !== teks) {
+            return false;
+        }
+
+        return true;
+    });
+}
+
+function updateTeksOptions() {
+    const grade = document.getElementById("gradeFilter").value;
+    const teksSelect = document.getElementById("teksFilter");
+
+    const selectedBefore = teksSelect.value;
+
+    const available = QUESTION_BANK
+        .filter(question => {
+            const questionGrade = gradeFromTeks(question.source_teks);
+            return grade === "all" || questionGrade === grade;
+        })
+        .map(question => cleanTeks(question.source_teks))
+        .filter((value, index, array) => value && array.indexOf(value) === index)
+        .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+    teksSelect.innerHTML = '<option value="all">All TEKS</option>';
+
+    available.forEach(teks => {
+        const option = document.createElement("option");
+        option.value = teks;
+        option.textContent = `TEKS ${teks}`;
+        teksSelect.appendChild(option);
+    });
+
+    if (available.includes(selectedBefore)) {
+        teksSelect.value = selectedBefore;
+    }
+}
+
+function showSetupMessage(message, bad = false) {
+    const box = document.getElementById("assessmentSetupMessage");
+
+    if (!message) {
+        box.innerHTML = "";
+        return;
+    }
+
+    box.innerHTML = `<div class="${bad ? "assessment-warning" : "assessment-result-box"}">${message}</div>`;
+}
+
+function optionHtml(question, option) {
+    const name = `question_${question.item}`;
+    const id = `q_${question.item}_${option.letter}`;
+
+    return `
+        <label class="assessment-option" id="label_${id}">
+            <input type="radio" name="${name}" id="${id}" value="${option.letter}">
+            <strong>${option.letter}.</strong> ${option.text}
+        </label>
+    `;
+}
+
+function stimulusHtml(question) {
+    if (question.image) {
+        return `
+            <div class="assessment-stimulus">
+                <img src="${question.image}" alt="Question stimulus">
+            </div>
+        `;
+    }
+
+    if (question.stimulus) {
+        return `
+            <div class="assessment-stimulus">
+                ${question.stimulus}
+            </div>
+        `;
+    }
+
+    return "";
+}
+
+function renderAssessment() {
+    submitted = false;
+
+    const area = document.getElementById("assessmentArea");
+    const results = document.getElementById("assessmentResults");
+
+    results.style.display = "none";
+    results.innerHTML = "";
+
+    if (currentAssessment.length === 0) {
+        area.innerHTML = `
+            <h2>Assessment</h2>
+            <p>No questions were generated. Choose different settings and try again.</p>
+        `;
+        return;
+    }
+
+    area.innerHTML = `
+        <h2>Assessment</h2>
+        <p><strong>${currentAssessment.length}</strong> questions generated. Answer each question, then click submit.</p>
+
+        ${currentAssessment.map((question, index) => `
+            <article class="assessment-question" id="question_${question.item}">
+                <div class="assessment-meta">
+                    <span class="assessment-pill">Question ${index + 1}</span>
+                    <span class="assessment-pill">TEKS ${cleanTeks(question.source_teks)}</span>
+                    <span class="assessment-pill">${question.topic || "Science Review"}</span>
+                    ${question.source_item ? `<span class="assessment-pill">Aligned Item ${question.source_item}</span>` : ""}
+                </div>
+
+                ${stimulusHtml(question)}
+
+                <div class="assessment-prompt">${question.prompt}</div>
+
+                <div class="assessment-options">
+                    ${question.options.map(option => optionHtml(question, option)).join("")}
+                </div>
+
+                <div class="assessment-rationale" id="rationale_${question.item}" style="display:none;"></div>
+            </article>
+        `).join("")}
+
+        <button class="assessment-btn green" id="submitAssessment" type="button">Submit Assessment</button>
+        <button class="assessment-btn yellow" id="regenerateAssessment" type="button">Generate New Assessment</button>
+    `;
+
+    document.getElementById("submitAssessment").addEventListener("click", submitAssessment);
+    document.getElementById("regenerateAssessment").addEventListener("click", generateAssessment);
+}
+
+function generateAssessment(randomize = true) {
+    const filtered = getFilteredQuestions();
+    const requested = Number(document.getElementById("questionCount").value || 20);
+
+    if (filtered.length === 0) {
+        currentAssessment = [];
+        showSetupMessage("No questions match those settings yet. Try All Grades or All TEKS.", true);
+        renderAssessment();
+        return;
+    }
+
+    const pool = randomize ? shuffle(filtered) : filtered;
+    currentAssessment = pool.slice(0, Math.min(requested, pool.length));
+
+    if (currentAssessment.length < requested) {
+        showSetupMessage(`Only ${currentAssessment.length} question(s) are available for those settings right now. More questions can be added later.`);
+    } else {
+        showSetupMessage(`Generated ${currentAssessment.length} question(s).`);
+    }
+
+    renderAssessment();
+}
+
+function getSelectedAnswer(question) {
+    const selected = document.querySelector(`input[name="question_${question.item}"]:checked`);
+    return selected ? selected.value : "";
+}
+
+function rationalesFor(question, selected) {
+    if (question.rationales && question.rationales[selected]) {
+        return question.rationales[selected];
+    }
+
+    if (question.rationale) {
+        return question.rationale;
+    }
+
+    return "Review the question, the stimulus, and the physical evidence. Choose the answer supported by the data.";
+}
+
+function submitAssessment() {
+    if (currentAssessment.length === 0) {
+        return;
+    }
+
+    let correct = 0;
+    let unanswered = 0;
+    const missed = [];
+
+    currentAssessment.forEach(question => {
+        const selected = getSelectedAnswer(question);
+        const answer = String(question.answer || "").trim().toUpperCase();
+
+        if (!selected) {
+            unanswered += 1;
+        }
+
+        const isCorrect = selected === answer;
+
+        if (isCorrect) {
+            correct += 1;
+        } else {
+            missed.push({
+                question,
+                selected,
+                answer
+            });
+        }
+
+        question.options.forEach(option => {
+            const label = document.getElementById(`label_q_${question.item}_${option.letter}`);
+            if (!label) return;
+
+            label.classList.remove("correct", "incorrect");
+
+            if (option.letter === answer) {
+                label.classList.add("correct");
+            }
+
+            if (selected && option.letter === selected && selected !== answer) {
+                label.classList.add("incorrect");
+            }
+        });
+
+        const rationaleBox = document.getElementById(`rationale_${question.item}`);
+
+        if (rationaleBox) {
+            if (!isCorrect) {
+                rationaleBox.style.display = "block";
+                rationaleBox.innerHTML = `
+                    <strong>Review:</strong>
+                    ${selected ? `You chose ${selected}.` : "You did not choose an answer."}
+                    The correct answer is <strong>${answer}</strong>.<br>
+                    <strong>Rationale:</strong> ${rationalesFor(question, selected)}
+                `;
+            } else {
+                rationaleBox.style.display = "none";
+            }
+        }
+    });
+
+    const total = currentAssessment.length;
+    const percent = Math.round((correct / total) * 100);
+
+    const report = {
+        initials: document.getElementById("studentInitials").value || "",
+        correct,
+        total,
+        percent,
+        gradeFilter: document.getElementById("gradeFilter").value,
+        teksFilter: document.getElementById("teksFilter").value,
+        submittedAt: new Date().toISOString(),
+        missed: missed.map(item => ({
+            item: item.question.item,
+            source_item: item.question.source_item,
+            teks: item.question.source_teks,
+            selected: item.selected,
+            answer: item.answer,
+            topic: item.question.topic,
+            rationale: rationalesFor(item.question, item.selected)
+        }))
+    };
+
+    localStorage.setItem("scienceStudioDay44AssessmentReport", JSON.stringify(report));
+    localStorage.setItem("scienceStudioLastAssessmentReport", JSON.stringify(report));
+    localStorage.setItem("scienceStudioDay44Score", String(percent));
+
+    const results = document.getElementById("assessmentResults");
+    results.style.display = "block";
+
+    results.innerHTML = `
+        <h2>Score Report</h2>
+        <div class="assessment-result-box">
+            <div class="assessment-score-big">${percent}%</div>
+            <p><strong>${correct} of ${total}</strong> correct</p>
+            ${unanswered ? `<p><strong>${unanswered}</strong> question(s) were unanswered.</p>` : ""}
+            <p>This score was saved on this device so the Reflection Tracker can load it.</p>
+            <a class="assessment-btn green" href="/labs/reflection-tracker">Open Reflection Tracker</a>
+            <button class="assessment-btn yellow" type="button" onclick="window.print()">Print Score Report</button>
+        </div>
+
+        ${
+            missed.length === 0
+                ? `<div class="assessment-result-box"><h3>Great job!</h3><p>No missed questions. Explain the strategies that helped you succeed.</p></div>`
+                : `<div class="assessment-result-box">
+                    <h3>Review Missed Questions</h3>
+                    <p>Use the rationales below to understand the questions you missed.</p>
+                    ${missed.map(item => `
+                        <div class="assessment-rationale">
+                            <strong>Question aligned to TEKS ${cleanTeks(item.question.source_teks)}</strong><br>
+                            You chose: <strong>${item.selected || "No answer"}</strong><br>
+                            Correct answer: <strong>${item.answer}</strong><br>
+                            ${rationalesFor(item.question, item.selected)}
+                        </div>
+                    `).join("")}
+                </div>`
+        }
+    `;
+
+    results.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+document.getElementById("gradeFilter").addEventListener("change", updateTeksOptions);
+document.getElementById("generateAssessment").addEventListener("click", () => generateAssessment(true));
+document.getElementById("randomizeAssessment").addEventListener("click", () => generateAssessment(true));
+document.getElementById("clearAssessment").addEventListener("click", () => {
+    currentAssessment = [];
+    document.getElementById("assessmentArea").innerHTML = `
+        <h2>Assessment</h2>
+        <p>Choose your settings, then click <strong>Generate Assessment</strong>.</p>
+    `;
+    document.getElementById("assessmentResults").style.display = "none";
+    showSetupMessage("");
+});
+
+updateTeksOptions();
+</script>
+{% endblock %}

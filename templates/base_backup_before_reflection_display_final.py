@@ -628,311 +628,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
-
-
-
-
-<!-- Science Studio Reflection Tracker Clean Final Fix -->
+<!-- Science Studio Reflection Tracker Phase 2 Score Fix -->
 <script>
 (function () {
-    const reflectionKey = "scienceStudioReflectionTrackerCleanV1";
+    const reflectionKey = "scienceStudioReflectionTrackerDataV2";
 
     function isReflectionPage() {
         const path = window.location.pathname.toLowerCase();
-        const pageText = document.body ? document.body.innerText || "" : "";
+        const text = document.body ? document.body.innerText || "" : "";
 
         return (
             path.includes("reflection") ||
-            pageText.includes("Reflection Tracker") ||
-            pageText.includes("Notebook Checklist") ||
-            pageText.includes("Goal-Setting Tool")
+            text.includes("Reflection Tracker") ||
+            text.includes("Notebook Checklist") ||
+            text.includes("Goal-Setting Tool") ||
+            text.includes("Goal Setting") ||
+            text.includes("Topic Reflection Tracker")
         );
-    }
-
-    function parseScore(value) {
-        const match = String(value || "").match(/\d+(\.\d+)?/);
-        if (!match) return null;
-
-        const score = Math.round(Number(match[0]));
-        if (Number.isNaN(score)) return null;
-
-        return Math.max(0, Math.min(100, score));
-    }
-
-    function fieldContext(field) {
-        return [
-            field.id || "",
-            field.name || "",
-            field.placeholder || "",
-            field.getAttribute("aria-label") || "",
-            field.closest("label") ? field.closest("label").innerText : "",
-            field.closest("div") ? field.closest("div").innerText.slice(0, 350) : "",
-            field.closest("section") ? field.closest("section").innerText.slice(0, 500) : ""
-        ].join(" ").toLowerCase();
-    }
-
-    function usableFields() {
-        return Array.from(document.querySelectorAll("input, select, textarea")).filter(function (field) {
-            const type = (field.type || "").toLowerCase();
-            return !["button", "submit", "reset", "hidden"].includes(type);
-        });
-    }
-
-    function fieldKey(field, index) {
-        if (field.id) return "id:" + field.id;
-        if (field.name) return "name:" + field.name;
-
-        const context = fieldContext(field).replace(/\s+/g, " ").trim().slice(0, 80);
-        return "field:" + index + ":" + context;
-    }
-
-    function findDay44ScoreField() {
-        const fields = usableFields();
-
-        return fields.find(function (field) {
-            const text = fieldContext(field);
-            return text.includes("day 44") && text.includes("score");
-        }) || fields.find(function (field) {
-            const text = fieldContext(field);
-            return text.includes("score") && !text.includes("confidence") && !text.includes("initial");
-        });
-    }
-
-    function getScoreFromField() {
-        const field = findDay44ScoreField();
-        if (!field) return null;
-        return parseScore(field.value);
-    }
-
-    function searchObjectForScore(value) {
-        if (typeof value === "number" || typeof value === "string") {
-            return parseScore(value);
-        }
-
-        if (!value || typeof value !== "object") {
-            return null;
-        }
-
-        const directKeys = [
-            "percent",
-            "percentage",
-            "scorePercent",
-            "score_percentage",
-            "finalPercent",
-            "finalScore",
-            "score"
-        ];
-
-        for (const key of directKeys) {
-            if (key in value) {
-                const found = searchObjectForScore(value[key]);
-                if (found !== null) return found;
-            }
-        }
-
-        if (typeof value.correct === "number" && typeof value.total === "number" && value.total > 0) {
-            return Math.round((value.correct / value.total) * 100);
-        }
-
-        for (const key of Object.keys(value)) {
-            const found = searchObjectForScore(value[key]);
-            if (found !== null) return found;
-        }
-
-        return null;
-    }
-
-    function findSavedAssessmentScore() {
-        const preferredKeys = [
-            "scienceStudioDay44AssessmentReport",
-            "scienceStudioAssessmentReport",
-            "scienceStudioAssessmentResults",
-            "scienceStudioAssessmentData",
-            "scienceStudioDay44Score",
-            "scienceStudioLastAssessmentReport"
-        ];
-
-        for (const key of preferredKeys) {
-            const raw = localStorage.getItem(key);
-            if (!raw) continue;
-
-            const direct = parseScore(raw);
-            if (direct !== null) return direct;
-
-            try {
-                const parsed = JSON.parse(raw);
-                const found = searchObjectForScore(parsed);
-                if (found !== null) return found;
-            } catch (error) {}
-        }
-
-        for (let index = 0; index < localStorage.length; index++) {
-            const key = localStorage.key(index);
-
-            if (!/assessment|day44|staar/i.test(key)) continue;
-
-            const raw = localStorage.getItem(key);
-
-            try {
-                const parsed = JSON.parse(raw);
-                const found = searchObjectForScore(parsed);
-                if (found !== null) return found;
-            } catch (error) {
-                const found = parseScore(raw);
-                if (found !== null) return found;
-            }
-        }
-
-        return null;
-    }
-
-    function getPart1Card() {
-        const cards = Array.from(document.querySelectorAll("section, article, div"));
-
-        const matches = cards.filter(function (card) {
-            const text = card.innerText || "";
-            return text.includes("Part 1") && text.includes("Student Information") && text.includes("Assessment Data");
-        });
-
-        matches.sort(function (a, b) {
-            return (a.innerText || "").length - (b.innerText || "").length;
-        });
-
-        return matches[0] || null;
-    }
-
-    function scoreMessage(score) {
-        if (score === null) {
-            return "Enter your score or load your Day 44 assessment data.";
-        }
-
-        if (score >= 90) {
-            return "Excellent evidence of learning. Explain what strategies helped you succeed.";
-        }
-
-        if (score >= 80) {
-            return "Strong work! Use your evidence to explain what helped you succeed.";
-        }
-
-        if (score >= 70) {
-            return "Good progress. Choose one topic to review and improve.";
-        }
-
-        if (score >= 60) {
-            return "You are building skill. Pick one TEKS to practice again.";
-        }
-
-        return "This is useful evidence. Pick one skill to practice and grow.";
-    }
-
-    function findButtonRow(card) {
-        const buttons = Array.from(card.querySelectorAll("button, a"));
-
-        const targetButton = buttons.find(function (button) {
-            const text = button.innerText || button.textContent || "";
-            return (
-                text.includes("Load Day 44") ||
-                text.includes("Save Reflection") ||
-                text.includes("Load Saved Reflection")
-            );
-        });
-
-        if (!targetButton) return null;
-
-        return targetButton.closest("div") || targetButton.parentElement;
-    }
-
-    function cleanOldScoreVisuals(card) {
-        const oldClean = document.getElementById("scienceStudioCleanReflectionScoreRow");
-        if (oldClean) oldClean.remove();
-
-        const oldIds = [
-            "scienceStudioLiveAssessmentScore",
-            "scienceStudioLiveScoreReflection",
-            "scienceStudioScoreReflectionAuto",
-            "scienceStudioLiveScoreFill",
-            "scienceStudioLiveScoreMessage",
-            "scienceStudioScoreFill",
-            "scienceStudioScoreMessage"
-        ];
-
-        oldIds.forEach(function (id) {
-            const element = document.getElementById(id);
-            if (element) {
-                const parent = element.closest(".science-studio-live-score-reflection, .science-studio-score-reflection-auto");
-                if (parent) {
-                    parent.remove();
-                } else {
-                    element.remove();
-                }
-            }
-        });
-
-        const candidates = Array.from(card.querySelectorAll("section, article, div")).filter(function (element) {
-            const text = element.innerText || "";
-
-            if (!text.includes("Assessment Score") && !text.includes("Score Reflection")) {
-                return false;
-            }
-
-            if (element.querySelector("input, select, textarea, button, a")) {
-                return false;
-            }
-
-            return true;
-        });
-
-        candidates.sort(function (a, b) {
-            return (b.innerText || "").length - (a.innerText || "").length;
-        });
-
-        candidates.forEach(function (element) {
-            if (element.isConnected) {
-                element.remove();
-            }
-        });
-    }
-
-    function renderScoreVisuals() {
-        if (!isReflectionPage()) return;
-
-        const card = getPart1Card();
-        if (!card) return;
-
-        const score = getScoreFromField();
-        const width = score === null ? 0 : score;
-        const scoreText = score === null ? "--%" : score + "%";
-
-        cleanOldScoreVisuals(card);
-
-        const row = document.createElement("div");
-        row.id = "scienceStudioCleanReflectionScoreRow";
-        row.className = "science-studio-clean-reflection-score-row";
-
-        row.innerHTML = `
-            <div class="science-studio-clean-score-box">
-                <div class="science-studio-clean-score-number">${scoreText}</div>
-                <div class="science-studio-clean-score-label">Assessment Score</div>
-            </div>
-
-            <div class="science-studio-clean-score-reflection-box">
-                <h3>Score Reflection</h3>
-                <div class="science-studio-clean-score-track">
-                    <div class="science-studio-clean-score-fill" style="width: ${width}%"></div>
-                </div>
-                <div class="science-studio-clean-score-message">${scoreMessage(score)}</div>
-            </div>
-        `;
-
-        const buttonRow = findButtonRow(card);
-
-        if (buttonRow && buttonRow.parentNode) {
-            buttonRow.insertAdjacentElement("afterend", row);
-        } else {
-            card.appendChild(row);
-        }
     }
 
     function showMessage(message, good = true) {
@@ -951,6 +663,244 @@ document.addEventListener("DOMContentLoaded", function () {
         box.classList.toggle("bad", !good);
     }
 
+    function usableFields() {
+        return Array.from(document.querySelectorAll("input, select, textarea")).filter(field => {
+            const type = (field.type || "").toLowerCase();
+            return !["button", "submit", "reset", "hidden"].includes(type);
+        });
+    }
+
+    function fieldContext(field) {
+        return [
+            field.id || "",
+            field.name || "",
+            field.placeholder || "",
+            field.getAttribute("aria-label") || "",
+            field.closest("label") ? field.closest("label").innerText : "",
+            field.closest("div") ? field.closest("div").innerText.slice(0, 250) : "",
+            field.closest("section") ? field.closest("section").innerText.slice(0, 350) : ""
+        ].join(" ").toLowerCase();
+    }
+
+    function fieldKey(field, index) {
+        if (field.id) return "id:" + field.id;
+        if (field.name) return "name:" + field.name;
+
+        const context = fieldContext(field)
+            .replace(/\s+/g, " ")
+            .trim()
+            .slice(0, 80);
+
+        return "field:" + index + ":" + context;
+    }
+
+    function parseScore(value) {
+        const match = String(value || "").match(/\d+(\.\d+)?/);
+        if (!match) return null;
+
+        const score = Math.round(Number(match[0]));
+        if (Number.isNaN(score)) return null;
+
+        return Math.max(0, Math.min(100, score));
+    }
+
+    function findDay44ScoreField() {
+        const fields = usableFields();
+
+        return fields.find(field => {
+            const text = fieldContext(field);
+            return text.includes("day 44") && text.includes("score");
+        }) || fields.find(field => {
+            const text = fieldContext(field);
+            return text.includes("score") && !text.includes("confidence") && !text.includes("initial");
+        });
+    }
+
+    function getScoreFromPage() {
+        const field = findDay44ScoreField();
+        if (!field) return null;
+        return parseScore(field.value);
+    }
+
+    function findSavedAssessmentScore() {
+        const keys = [
+            "scienceStudioDay44AssessmentReport",
+            "scienceStudioAssessmentReport",
+            "scienceStudioAssessmentResults",
+            "scienceStudioAssessmentData",
+            "scienceStudioDay44Score",
+            "scienceStudioLastAssessmentReport"
+        ];
+
+        function searchObject(value) {
+            if (typeof value === "number") {
+                return parseScore(value);
+            }
+
+            if (typeof value === "string") {
+                return parseScore(value);
+            }
+
+            if (!value || typeof value !== "object") {
+                return null;
+            }
+
+            const directKeys = [
+                "percent",
+                "percentage",
+                "scorePercent",
+                "score_percentage",
+                "finalPercent",
+                "finalScore",
+                "score"
+            ];
+
+            for (const key of directKeys) {
+                if (key in value) {
+                    const found = searchObject(value[key]);
+                    if (found !== null) return found;
+                }
+            }
+
+            if (typeof value.correct === "number" && typeof value.total === "number" && value.total > 0) {
+                return Math.round((value.correct / value.total) * 100);
+            }
+
+            for (const key of Object.keys(value)) {
+                const found = searchObject(value[key]);
+                if (found !== null) return found;
+            }
+
+            return null;
+        }
+
+        for (const key of keys) {
+            const raw = localStorage.getItem(key);
+            if (!raw) continue;
+
+            const direct = parseScore(raw);
+            if (direct !== null) return direct;
+
+            try {
+                const parsed = JSON.parse(raw);
+                const found = searchObject(parsed);
+                if (found !== null) return found;
+            } catch (error) {}
+        }
+
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+
+            if (!/assessment|day44|staar/i.test(key)) continue;
+
+            const raw = localStorage.getItem(key);
+
+            try {
+                const parsed = JSON.parse(raw);
+                const found = searchObject(parsed);
+                if (found !== null) return found;
+            } catch (error) {
+                const found = parseScore(raw);
+                if (found !== null) return found;
+            }
+        }
+
+        return null;
+    }
+
+    function replaceScoreTextNodes(score) {
+        const scoreText = score === null ? "--%" : score + "%";
+
+        const walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT,
+            null
+        );
+
+        const nodes = [];
+
+        while (walker.nextNode()) {
+            const node = walker.currentNode;
+            const value = node.nodeValue.trim();
+
+            if (value === "--%" || /^\d{1,3}%$/.test(value)) {
+                const parentText = node.parentElement ? node.parentElement.closest("section, article, div")?.innerText || "" : "";
+
+                if (
+                    parentText.includes("Assessment Score") ||
+                    parentText.includes("Score Reflection") ||
+                    parentText.includes("Assessment Data")
+                ) {
+                    nodes.push(node);
+                }
+            }
+        }
+
+        nodes.forEach(node => {
+            node.nodeValue = node.nodeValue.replace(/--%|\d{1,3}%/, scoreText);
+        });
+    }
+
+    function findScoreReflectionCard() {
+        const cards = Array.from(document.querySelectorAll("section, article, .card, .content-card, div"));
+
+        return cards.find(card => {
+            const text = card.innerText || "";
+            return text.includes("Score Reflection");
+        }) || null;
+    }
+
+    function updateScoreReflectionPanel(score) {
+        const card = findScoreReflectionCard();
+
+        if (!card) {
+            return;
+        }
+
+        let panel = document.getElementById("scienceStudioScoreReflectionAuto");
+
+        if (!panel) {
+            panel = document.createElement("div");
+            panel.id = "scienceStudioScoreReflectionAuto";
+            panel.className = "science-studio-score-reflection-auto";
+            panel.innerHTML = `
+                <div class="science-studio-score-track">
+                    <div class="science-studio-score-fill" id="scienceStudioScoreFill"></div>
+                </div>
+                <div class="science-studio-score-message" id="scienceStudioScoreMessage"></div>
+            `;
+            card.appendChild(panel);
+        }
+
+        const fill = document.getElementById("scienceStudioScoreFill");
+        const message = document.getElementById("scienceStudioScoreMessage");
+
+        if (score === null) {
+            if (fill) fill.style.width = "0%";
+            if (message) message.textContent = "Enter your score or load your Day 44 assessment data.";
+            return;
+        }
+
+        if (fill) fill.style.width = score + "%";
+
+        if (message) {
+            if (score >= 80) {
+                message.textContent = "Strong work! Use your evidence to explain what helped you succeed.";
+            } else if (score >= 60) {
+                message.textContent = "You are building skill. Choose one topic to review and improve.";
+            } else {
+                message.textContent = "This is useful evidence. Pick one skill to practice again and grow.";
+            }
+        }
+    }
+
+    function updateScoreVisuals() {
+        const score = getScoreFromPage();
+
+        replaceScoreTextNodes(score);
+        updateScoreReflectionPanel(score);
+    }
+
     function saveReflection() {
         const fields = usableFields();
         const data = {
@@ -959,7 +909,7 @@ document.addEventListener("DOMContentLoaded", function () {
             radios: {}
         };
 
-        fields.forEach(function (field, index) {
+        fields.forEach((field, index) => {
             const type = (field.type || "").toLowerCase();
             const key = fieldKey(field, index);
 
@@ -979,7 +929,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         localStorage.setItem(reflectionKey, JSON.stringify(data));
-        renderScoreVisuals();
+        updateScoreVisuals();
         updateNotebookProgress();
         showMessage("Reflection saved on this device.");
     }
@@ -1001,7 +951,9 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        usableFields().forEach(function (field, index) {
+        const fields = usableFields();
+
+        fields.forEach((field, index) => {
             const type = (field.type || "").toLowerCase();
             const key = fieldKey(field, index);
 
@@ -1022,42 +974,42 @@ document.addEventListener("DOMContentLoaded", function () {
             field.dispatchEvent(new Event("change", { bubbles: true }));
         });
 
-        renderScoreVisuals();
+        updateScoreVisuals();
         updateNotebookProgress();
         showMessage("Saved reflection loaded.");
     }
 
     function loadDay44AssessmentData() {
         const score = findSavedAssessmentScore();
-        const field = findDay44ScoreField();
+        const scoreField = findDay44ScoreField();
 
         if (score === null) {
             showMessage("No Day 44 assessment score was found on this device yet.", false);
-            renderScoreVisuals();
             return;
         }
 
-        if (!field) {
+        if (!scoreField) {
             showMessage("I found a score, but I could not find the Day 44 score box.", false);
-            renderScoreVisuals();
             return;
         }
 
-        field.value = String(score);
-        field.dispatchEvent(new Event("input", { bubbles: true }));
-        field.dispatchEvent(new Event("change", { bubbles: true }));
+        scoreField.value = String(score);
+        scoreField.dispatchEvent(new Event("input", { bubbles: true }));
+        scoreField.dispatchEvent(new Event("change", { bubbles: true }));
 
-        renderScoreVisuals();
+        updateScoreVisuals();
         showMessage("Day 44 assessment score loaded: " + score + "%.");
     }
 
     function updateNotebookProgress() {
         const sections = Array.from(document.querySelectorAll("section, article, .card, .content-card, div"));
 
-        sections.forEach(function (section) {
+        sections.forEach(section => {
             const text = section.innerText || "";
 
-            if (!/Notebook Checklist|Notebook Completion/i.test(text)) return;
+            if (!/Notebook Checklist|Notebook Completion/i.test(text)) {
+                return;
+            }
 
             const checkboxes = Array.from(section.querySelectorAll("input[type='checkbox']"));
             if (checkboxes.length === 0) return;
@@ -1066,15 +1018,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const total = checkboxes.length;
 
             const progress = section.querySelector("progress");
+
             if (progress) {
                 progress.max = total;
                 progress.value = complete;
-            }
-
-            const progressBar = section.querySelector(".progress-bar, [role='progressbar']");
-            if (progressBar) {
-                progressBar.style.width = Math.round((complete / total) * 100) + "%";
-                progressBar.setAttribute("aria-valuenow", String(Math.round((complete / total) * 100)));
             }
 
             const textTargets = Array.from(section.querySelectorAll("p, span, div, strong"));
@@ -1097,7 +1044,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const list = patterns[kind] || [];
         const sections = Array.from(document.querySelectorAll("section, article, .card, .content-card, div"));
 
-        const section = sections.find(function (section) {
+        const section = sections.find(section => {
             const text = section.innerText || "";
             return list.some(pattern => pattern.test(text));
         });
@@ -1165,48 +1112,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.addEventListener("input", function () {
         if (!isReflectionPage()) return;
-        setTimeout(renderScoreVisuals, 50);
-        setTimeout(updateNotebookProgress, 50);
+        updateScoreVisuals();
+        updateNotebookProgress();
     }, true);
 
     document.addEventListener("change", function () {
         if (!isReflectionPage()) return;
-        setTimeout(renderScoreVisuals, 50);
-        setTimeout(updateNotebookProgress, 50);
+        updateScoreVisuals();
+        updateNotebookProgress();
     }, true);
 
     window.addEventListener("load", function () {
         if (!isReflectionPage()) return;
-        setTimeout(renderScoreVisuals, 100);
-        setTimeout(updateNotebookProgress, 100);
-        setTimeout(renderScoreVisuals, 500);
+        updateScoreVisuals();
+        updateNotebookProgress();
     });
 
     setTimeout(function () {
         if (!isReflectionPage()) return;
-        renderScoreVisuals();
+        updateScoreVisuals();
         updateNotebookProgress();
     }, 250);
 })();
 </script>
-<!-- End Science Studio Reflection Tracker Clean Final Fix -->
-
-
-
-
-<!-- Science Studio Assessment Link Router -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll("a").forEach(function (link) {
-        const label = (link.textContent || "").trim().toLowerCase();
-
-        if (label === "assessment" || label === "digital assessment") {
-            link.setAttribute("href", "/science-assessment");
-        }
-    });
-});
-</script>
-<!-- End Science Studio Assessment Link Router -->
+<!-- End Science Studio Reflection Tracker Phase 2 -->
 
 </body>
 </html>

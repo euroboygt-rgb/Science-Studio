@@ -926,7 +926,7 @@
 /* End Science Studio Progress Tracker V5 */
 
 
-/* Science Studio Reflection Tracker Clean Final Fix */
+/* Science Studio Reflection Tracker Phase 2 */
 .science-studio-reflection-message {
     background: #d8ffe9;
     border: 4px solid #111;
@@ -942,72 +942,64 @@
     background: #ffe1e1;
 }
 
-.science-studio-clean-reflection-score-row {
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    gap: 18px;
-    margin-top: 18px;
-    align-items: stretch;
-}
+@media print {
+    .science-studio-reflection-message,
+    nav,
+    footer,
+    #scienceStudioAiWidget {
+        display: none !important;
+    }
 
-.science-studio-clean-score-box {
+    body {
+        background: white !important;
+    }
+}
+/* End Science Studio Reflection Tracker Phase 2 */
+
+
+/* Science Studio Reflection Tracker Score Fix */
+.science-studio-reflection-message {
+    background: #d8ffe9;
     border: 4px solid #111;
     border-radius: 16px;
-    background: white;
-    padding: 22px;
-    text-align: center;
-}
-
-.science-studio-clean-score-number {
-    font-size: 4.2rem;
-    line-height: 1;
+    padding: 12px 16px;
+    margin: 14px auto;
+    max-width: 1050px;
     font-weight: 1000;
-    margin-bottom: 12px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.18);
 }
 
-.science-studio-clean-score-label {
-    font-weight: 1000;
+.science-studio-reflection-message.bad {
+    background: #ffe1e1;
 }
 
-.science-studio-clean-score-reflection-box {
-    border: 4px solid #111;
-    border-radius: 16px;
-    background: white;
-    padding: 18px;
+.science-studio-score-reflection-auto {
+    margin-top: 12px;
+    background: #fff7d6;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 10px;
 }
 
-.science-studio-clean-score-reflection-box h3 {
-    margin-top: 0;
-    margin-bottom: 12px;
-}
-
-.science-studio-clean-score-track {
+.science-studio-score-track {
     width: 100%;
-    height: 28px;
-    border: 4px solid #111;
+    height: 22px;
+    border: 3px solid #111;
     border-radius: 999px;
     background: white;
     overflow: hidden;
 }
 
-.science-studio-clean-score-fill {
+.science-studio-score-fill {
+    width: 0%;
     height: 100%;
     background: #00a86b;
     transition: width 0.3s ease;
 }
 
-.science-studio-clean-score-message {
-    margin-top: 12px;
-    background: #fff7d6;
-    border-radius: 10px;
-    padding: 10px;
+.science-studio-score-message {
+    margin-top: 8px;
     font-weight: 900;
-}
-
-@media (max-width: 800px) {
-    .science-studio-clean-reflection-score-row {
-        grid-template-columns: 1fr;
-    }
 }
 
 @media print {
@@ -1022,5 +1014,49 @@
         background: white !important;
     }
 }
-/* End Science Studio Reflection Tracker Clean Final Fix */
+/* End Science Studio Reflection Tracker Score Fix */
+
+
+/* Science Studio Reflection Score Final Display Fix */
+.science-studio-old-score-hidden {
+    display: none !important;
+}
+
+.science-studio-live-assessment-score {
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: 1000;
+    text-align: center;
+    margin: 10px 0 8px 0;
+}
+
+.science-studio-live-score-reflection {
+    margin-top: 12px;
+    background: #fff7d6;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 10px;
+}
+
+.science-studio-live-score-track {
+    width: 100%;
+    height: 24px;
+    border: 3px solid #111;
+    border-radius: 999px;
+    background: white;
+    overflow: hidden;
+}
+
+.science-studio-live-score-fill {
+    width: 0%;
+    height: 100%;
+    background: #00a86b;
+    transition: width 0.3s ease;
+}
+
+.science-studio-live-score-message {
+    margin-top: 8px;
+    font-weight: 900;
+}
+/* End Science Studio Reflection Score Final Display Fix */
 

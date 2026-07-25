@@ -626,55 +626,51 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- End Day 40 Flashlight Energy Flow Button Fix -->
 
 
-
-
-
-
-
-
-
-
-<!-- Science Studio Reflection Tracker Clean Final Fix -->
+<!-- Science Studio Reflection Tracker Phase 2 -->
 <script>
 (function () {
-    const reflectionKey = "scienceStudioReflectionTrackerCleanV1";
+    const reflectionKey = "scienceStudioReflectionTrackerDataV1";
+    const assessmentKeysToTry = [
+        "scienceStudioDay44AssessmentReport",
+        "scienceStudioAssessmentReport",
+        "scienceStudioAssessmentResults",
+        "scienceStudioAssessmentData",
+        "scienceStudioDay44Score",
+        "scienceStudioLastAssessmentReport"
+    ];
 
-    function isReflectionPage() {
-        const path = window.location.pathname.toLowerCase();
-        const pageText = document.body ? document.body.innerText || "" : "";
-
+    function pageLooksLikeReflectionTracker() {
+        const text = document.body ? document.body.innerText || "" : "";
         return (
-            path.includes("reflection") ||
-            pageText.includes("Reflection Tracker") ||
-            pageText.includes("Notebook Checklist") ||
-            pageText.includes("Goal-Setting Tool")
+            text.includes("Reflection Tracker") ||
+            text.includes("Notebook Checklist") ||
+            text.includes("Goal-Setting Tool") ||
+            text.includes("Goal Setting") ||
+            text.includes("Topic Reflection Tracker")
         );
     }
 
-    function parseScore(value) {
-        const match = String(value || "").match(/\d+(\.\d+)?/);
-        if (!match) return null;
+    function showReflectionMessage(message, good = true) {
+        let box = document.getElementById("scienceStudioReflectionMessage");
 
-        const score = Math.round(Number(match[0]));
-        if (Number.isNaN(score)) return null;
+        if (!box) {
+            box = document.createElement("div");
+            box.id = "scienceStudioReflectionMessage";
+            box.className = "science-studio-reflection-message";
 
-        return Math.max(0, Math.min(100, score));
+            const firstCard = document.querySelector("main, .container, .page-shell, .student-dashboard-wrap, body");
+            firstCard.prepend(box);
+        }
+
+        box.textContent = message;
+        box.classList.toggle("bad", !good);
+        box.scrollIntoView({ behavior: "smooth", block: "center" });
     }
 
-    function fieldContext(field) {
-        return [
-            field.id || "",
-            field.name || "",
-            field.placeholder || "",
-            field.getAttribute("aria-label") || "",
-            field.closest("label") ? field.closest("label").innerText : "",
-            field.closest("div") ? field.closest("div").innerText.slice(0, 350) : "",
-            field.closest("section") ? field.closest("section").innerText.slice(0, 500) : ""
-        ].join(" ").toLowerCase();
-    }
+    function getReflectionFields() {
+        const fields = Array.from(document.querySelectorAll("input, select, textarea"));
 
-    function usableFields() {
-        return Array.from(document.querySelectorAll("input, select, textarea")).filter(function (field) {
+        return fields.filter(field => {
             const type = (field.type || "").toLowerCase();
             return !["button", "submit", "reset", "hidden"].includes(type);
         });
@@ -684,31 +680,93 @@ document.addEventListener("DOMContentLoaded", function () {
         if (field.id) return "id:" + field.id;
         if (field.name) return "name:" + field.name;
 
-        const context = fieldContext(field).replace(/\s+/g, " ").trim().slice(0, 80);
-        return "field:" + index + ":" + context;
+        if (!field.dataset.reflectionKey) {
+            field.dataset.reflectionKey = "field:" + index;
+        }
+
+        return field.dataset.reflectionKey;
     }
 
-    function findDay44ScoreField() {
-        const fields = usableFields();
+    function saveReflection() {
+        const fields = getReflectionFields();
+        const data = {
+            savedAt: new Date().toISOString(),
+            fields: {},
+            radios: {}
+        };
 
-        return fields.find(function (field) {
-            const text = fieldContext(field);
-            return text.includes("day 44") && text.includes("score");
-        }) || fields.find(function (field) {
-            const text = fieldContext(field);
-            return text.includes("score") && !text.includes("confidence") && !text.includes("initial");
+        fields.forEach((field, index) => {
+            const type = (field.type || "").toLowerCase();
+            const key = fieldKey(field, index);
+
+            if (type === "radio") {
+                const name = field.name || key;
+                if (field.checked) {
+                    data.radios[name] = field.value;
+                }
+                return;
+            }
+
+            if (type === "checkbox") {
+                data.fields[key] = field.checked;
+                return;
+            }
+
+            data.fields[key] = field.value;
         });
+
+        localStorage.setItem(reflectionKey, JSON.stringify(data));
+        updateNotebookProgress();
+        showReflectionMessage("Reflection saved on this device.");
     }
 
-    function getScoreFromField() {
-        const field = findDay44ScoreField();
-        if (!field) return null;
-        return parseScore(field.value);
+    function loadReflection() {
+        const saved = localStorage.getItem(reflectionKey);
+
+        if (!saved) {
+            showReflectionMessage("No saved reflection found yet on this device.", false);
+            return;
+        }
+
+        let data;
+
+        try {
+            data = JSON.parse(saved);
+        } catch (error) {
+            showReflectionMessage("Saved reflection data could not be loaded.", false);
+            return;
+        }
+
+        const fields = getReflectionFields();
+
+        fields.forEach((field, index) => {
+            const type = (field.type || "").toLowerCase();
+            const key = fieldKey(field, index);
+
+            if (type === "radio") {
+                const name = field.name || key;
+                field.checked = data.radios && data.radios[name] === field.value;
+                return;
+            }
+
+            if (!(key in (data.fields || {}))) {
+                return;
+            }
+
+            if (type === "checkbox") {
+                field.checked = Boolean(data.fields[key]);
+            } else {
+                field.value = data.fields[key];
+            }
+        });
+
+        updateNotebookProgress();
+        showReflectionMessage("Saved reflection loaded.");
     }
 
-    function searchObjectForScore(value) {
-        if (typeof value === "number" || typeof value === "string") {
-            return parseScore(value);
+    function findScoreValue(value) {
+        if (typeof value === "number" && value >= 0 && value <= 100) {
+            return value;
         }
 
         if (!value || typeof value !== "object") {
@@ -726,9 +784,14 @@ document.addEventListener("DOMContentLoaded", function () {
         ];
 
         for (const key of directKeys) {
-            if (key in value) {
-                const found = searchObjectForScore(value[key]);
-                if (found !== null) return found;
+            if (typeof value[key] === "number") {
+                if (value[key] <= 1) return Math.round(value[key] * 100);
+                if (value[key] <= 100) return Math.round(value[key]);
+            }
+
+            if (typeof value[key] === "string") {
+                const match = value[key].match(/\d+(\.\d+)?/);
+                if (match) return Math.round(Number(match[0]));
             }
         }
 
@@ -737,35 +800,31 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         for (const key of Object.keys(value)) {
-            const found = searchObjectForScore(value[key]);
+            const found = findScoreValue(value[key]);
             if (found !== null) return found;
         }
 
         return null;
     }
 
-    function findSavedAssessmentScore() {
-        const preferredKeys = [
-            "scienceStudioDay44AssessmentReport",
-            "scienceStudioAssessmentReport",
-            "scienceStudioAssessmentResults",
-            "scienceStudioAssessmentData",
-            "scienceStudioDay44Score",
-            "scienceStudioLastAssessmentReport"
-        ];
-
-        for (const key of preferredKeys) {
+    function findAssessmentScore() {
+        for (const key of assessmentKeysToTry) {
             const raw = localStorage.getItem(key);
+
             if (!raw) continue;
 
-            const direct = parseScore(raw);
-            if (direct !== null) return direct;
+            if (/^\d+(\.\d+)?$/.test(raw.trim())) {
+                return Math.round(Number(raw.trim()));
+            }
 
             try {
                 const parsed = JSON.parse(raw);
-                const found = searchObjectForScore(parsed);
-                if (found !== null) return found;
-            } catch (error) {}
+                const score = findScoreValue(parsed);
+                if (score !== null) return score;
+            } catch (error) {
+                const match = raw.match(/\d+(\.\d+)?/);
+                if (match) return Math.round(Number(match[0]));
+            }
         }
 
         for (let index = 0; index < localStorage.length; index++) {
@@ -777,269 +836,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
             try {
                 const parsed = JSON.parse(raw);
-                const found = searchObjectForScore(parsed);
-                if (found !== null) return found;
+                const score = findScoreValue(parsed);
+                if (score !== null) return score;
             } catch (error) {
-                const found = parseScore(raw);
-                if (found !== null) return found;
+                const match = String(raw || "").match(/\d+(\.\d+)?/);
+                if (match) return Math.round(Number(match[0]));
             }
         }
 
         return null;
     }
 
-    function getPart1Card() {
-        const cards = Array.from(document.querySelectorAll("section, article, div"));
-
-        const matches = cards.filter(function (card) {
-            const text = card.innerText || "";
-            return text.includes("Part 1") && text.includes("Student Information") && text.includes("Assessment Data");
-        });
-
-        matches.sort(function (a, b) {
-            return (a.innerText || "").length - (b.innerText || "").length;
-        });
-
-        return matches[0] || null;
-    }
-
-    function scoreMessage(score) {
-        if (score === null) {
-            return "Enter your score or load your Day 44 assessment data.";
-        }
-
-        if (score >= 90) {
-            return "Excellent evidence of learning. Explain what strategies helped you succeed.";
-        }
-
-        if (score >= 80) {
-            return "Strong work! Use your evidence to explain what helped you succeed.";
-        }
-
-        if (score >= 70) {
-            return "Good progress. Choose one topic to review and improve.";
-        }
-
-        if (score >= 60) {
-            return "You are building skill. Pick one TEKS to practice again.";
-        }
-
-        return "This is useful evidence. Pick one skill to practice and grow.";
-    }
-
-    function findButtonRow(card) {
-        const buttons = Array.from(card.querySelectorAll("button, a"));
-
-        const targetButton = buttons.find(function (button) {
-            const text = button.innerText || button.textContent || "";
-            return (
-                text.includes("Load Day 44") ||
-                text.includes("Save Reflection") ||
-                text.includes("Load Saved Reflection")
-            );
-        });
-
-        if (!targetButton) return null;
-
-        return targetButton.closest("div") || targetButton.parentElement;
-    }
-
-    function cleanOldScoreVisuals(card) {
-        const oldClean = document.getElementById("scienceStudioCleanReflectionScoreRow");
-        if (oldClean) oldClean.remove();
-
-        const oldIds = [
-            "scienceStudioLiveAssessmentScore",
-            "scienceStudioLiveScoreReflection",
-            "scienceStudioScoreReflectionAuto",
-            "scienceStudioLiveScoreFill",
-            "scienceStudioLiveScoreMessage",
-            "scienceStudioScoreFill",
-            "scienceStudioScoreMessage"
+    function fieldLabelText(field) {
+        const pieces = [
+            field.id || "",
+            field.name || "",
+            field.placeholder || "",
+            field.getAttribute("aria-label") || "",
+            field.closest("label") ? field.closest("label").innerText : "",
+            field.closest("div") ? field.closest("div").innerText : "",
+            field.closest("section") ? field.closest("section").innerText.slice(0, 300) : ""
         ];
 
-        oldIds.forEach(function (id) {
-            const element = document.getElementById(id);
-            if (element) {
-                const parent = element.closest(".science-studio-live-score-reflection, .science-studio-score-reflection-auto");
-                if (parent) {
-                    parent.remove();
-                } else {
-                    element.remove();
-                }
-            }
-        });
-
-        const candidates = Array.from(card.querySelectorAll("section, article, div")).filter(function (element) {
-            const text = element.innerText || "";
-
-            if (!text.includes("Assessment Score") && !text.includes("Score Reflection")) {
-                return false;
-            }
-
-            if (element.querySelector("input, select, textarea, button, a")) {
-                return false;
-            }
-
-            return true;
-        });
-
-        candidates.sort(function (a, b) {
-            return (b.innerText || "").length - (a.innerText || "").length;
-        });
-
-        candidates.forEach(function (element) {
-            if (element.isConnected) {
-                element.remove();
-            }
-        });
+        return pieces.join(" ").toLowerCase();
     }
 
-    function renderScoreVisuals() {
-        if (!isReflectionPage()) return;
+    function findDay44ScoreField() {
+        const fields = getReflectionFields();
 
-        const card = getPart1Card();
-        if (!card) return;
-
-        const score = getScoreFromField();
-        const width = score === null ? 0 : score;
-        const scoreText = score === null ? "--%" : score + "%";
-
-        cleanOldScoreVisuals(card);
-
-        const row = document.createElement("div");
-        row.id = "scienceStudioCleanReflectionScoreRow";
-        row.className = "science-studio-clean-reflection-score-row";
-
-        row.innerHTML = `
-            <div class="science-studio-clean-score-box">
-                <div class="science-studio-clean-score-number">${scoreText}</div>
-                <div class="science-studio-clean-score-label">Assessment Score</div>
-            </div>
-
-            <div class="science-studio-clean-score-reflection-box">
-                <h3>Score Reflection</h3>
-                <div class="science-studio-clean-score-track">
-                    <div class="science-studio-clean-score-fill" style="width: ${width}%"></div>
-                </div>
-                <div class="science-studio-clean-score-message">${scoreMessage(score)}</div>
-            </div>
-        `;
-
-        const buttonRow = findButtonRow(card);
-
-        if (buttonRow && buttonRow.parentNode) {
-            buttonRow.insertAdjacentElement("afterend", row);
-        } else {
-            card.appendChild(row);
-        }
-    }
-
-    function showMessage(message, good = true) {
-        let box = document.getElementById("scienceStudioReflectionMessage");
-
-        if (!box) {
-            box = document.createElement("div");
-            box.id = "scienceStudioReflectionMessage";
-            box.className = "science-studio-reflection-message";
-
-            const main = document.querySelector("main, .container, .page-shell, body");
-            main.prepend(box);
-        }
-
-        box.textContent = message;
-        box.classList.toggle("bad", !good);
-    }
-
-    function saveReflection() {
-        const fields = usableFields();
-        const data = {
-            savedAt: new Date().toISOString(),
-            fields: {},
-            radios: {}
-        };
-
-        fields.forEach(function (field, index) {
-            const type = (field.type || "").toLowerCase();
-            const key = fieldKey(field, index);
-
-            if (type === "radio") {
-                if (field.checked) {
-                    data.radios[field.name || key] = field.value;
-                }
-                return;
-            }
-
-            if (type === "checkbox") {
-                data.fields[key] = field.checked;
-                return;
-            }
-
-            data.fields[key] = field.value;
+        return fields.find(field => {
+            const text = fieldLabelText(field);
+            return (
+                text.includes("day 44") &&
+                text.includes("score")
+            );
+        }) || fields.find(field => {
+            const text = fieldLabelText(field);
+            return text.includes("score") && !text.includes("confidence") && !text.includes("initial");
         });
-
-        localStorage.setItem(reflectionKey, JSON.stringify(data));
-        renderScoreVisuals();
-        updateNotebookProgress();
-        showMessage("Reflection saved on this device.");
-    }
-
-    function loadReflection() {
-        const raw = localStorage.getItem(reflectionKey);
-
-        if (!raw) {
-            showMessage("No saved reflection found yet on this device.", false);
-            return;
-        }
-
-        let data;
-
-        try {
-            data = JSON.parse(raw);
-        } catch (error) {
-            showMessage("Saved reflection data could not be loaded.", false);
-            return;
-        }
-
-        usableFields().forEach(function (field, index) {
-            const type = (field.type || "").toLowerCase();
-            const key = fieldKey(field, index);
-
-            if (type === "radio") {
-                field.checked = data.radios && data.radios[field.name || key] === field.value;
-                return;
-            }
-
-            if (!(key in (data.fields || {}))) return;
-
-            if (type === "checkbox") {
-                field.checked = Boolean(data.fields[key]);
-            } else {
-                field.value = data.fields[key];
-            }
-
-            field.dispatchEvent(new Event("input", { bubbles: true }));
-            field.dispatchEvent(new Event("change", { bubbles: true }));
-        });
-
-        renderScoreVisuals();
-        updateNotebookProgress();
-        showMessage("Saved reflection loaded.");
     }
 
     function loadDay44AssessmentData() {
-        const score = findSavedAssessmentScore();
+        const score = findAssessmentScore();
         const field = findDay44ScoreField();
 
         if (score === null) {
-            showMessage("No Day 44 assessment score was found on this device yet.", false);
-            renderScoreVisuals();
+            showReflectionMessage("No Day 44 assessment score was found on this device yet.", false);
             return;
         }
 
         if (!field) {
-            showMessage("I found a score, but I could not find the Day 44 score box.", false);
-            renderScoreVisuals();
+            showReflectionMessage("I found an assessment score, but I could not find the Day 44 score box on this page.", false);
             return;
         }
 
@@ -1047,20 +894,64 @@ document.addEventListener("DOMContentLoaded", function () {
         field.dispatchEvent(new Event("input", { bubbles: true }));
         field.dispatchEvent(new Event("change", { bubbles: true }));
 
-        renderScoreVisuals();
-        showMessage("Day 44 assessment score loaded: " + score + "%.");
+        updateNotebookProgress();
+        showReflectionMessage("Day 44 assessment score loaded: " + score + "%.");
+    }
+
+    function sectionText(section) {
+        return section ? section.innerText || "" : "";
+    }
+
+    function findSectionByText(patterns) {
+        const sections = Array.from(document.querySelectorAll("section, article, .card, .content-card, div"));
+
+        return sections.find(section => {
+            const text = sectionText(section);
+            return patterns.some(pattern => pattern.test(text));
+        });
+    }
+
+    function scrollToReflectionPart(kind) {
+        let section = null;
+
+        if (kind === "assessment") {
+            section = findSectionByText([/Part\s*1/i, /Student Information/i, /Assessment Data/i]);
+        }
+
+        if (kind === "notebook") {
+            section = findSectionByText([/Science Notebook Checklist/i, /Lab Notebook Checklist/i, /Notebook Check/i]);
+        }
+
+        if (kind === "goal") {
+            section = findSectionByText([/Goal Setting/i, /Goal-Setting/i, /Goal/i]);
+        }
+
+        if (kind === "next") {
+            section = findSectionByText([/Next Unit/i, /Preview/i]);
+        }
+
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+            showReflectionMessage("That section is not on this page yet.", false);
+        }
     }
 
     function updateNotebookProgress() {
-        const sections = Array.from(document.querySelectorAll("section, article, .card, .content-card, div"));
+        const possibleSections = Array.from(document.querySelectorAll("section, article, .card, .content-card, div"));
 
-        sections.forEach(function (section) {
+        possibleSections.forEach(section => {
             const text = section.innerText || "";
 
-            if (!/Notebook Checklist|Notebook Completion/i.test(text)) return;
+            if (!/Notebook Checklist|Notebook Completion/i.test(text)) {
+                return;
+            }
 
             const checkboxes = Array.from(section.querySelectorAll("input[type='checkbox']"));
-            if (checkboxes.length === 0) return;
+
+            if (checkboxes.length === 0) {
+                return;
+            }
 
             const complete = checkboxes.filter(box => box.checked).length;
             const total = checkboxes.length;
@@ -1086,29 +977,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function scrollToSection(kind) {
-        const patterns = {
-            assessment: [/Part\s*1/i, /Student Information/i, /Assessment Data/i],
-            notebook: [/Notebook Checklist/i, /Notebook Check/i],
-            goal: [/Goal Setting/i, /Goal-Setting/i],
-            next: [/Next Unit/i, /Preview/i]
-        };
-
-        const list = patterns[kind] || [];
-        const sections = Array.from(document.querySelectorAll("section, article, .card, .content-card, div"));
-
-        const section = sections.find(function (section) {
-            const text = section.innerText || "";
-            return list.some(pattern => pattern.test(text));
-        });
-
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-    }
-
     document.addEventListener("click", function (event) {
-        if (!isReflectionPage()) return;
+        if (!pageLooksLikeReflectionTracker()) return;
 
         const button = event.target.closest("a, button");
         if (!button) return;
@@ -1133,27 +1003,27 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        if (label.includes("assessment data")) {
+        if (label === "assessment data" || label.includes("assessment data")) {
             event.preventDefault();
-            scrollToSection("assessment");
+            scrollToReflectionPart("assessment");
             return;
         }
 
         if (label.includes("notebook check")) {
             event.preventDefault();
-            scrollToSection("notebook");
+            scrollToReflectionPart("notebook");
             return;
         }
 
         if (label.includes("goal setting")) {
             event.preventDefault();
-            scrollToSection("goal");
+            scrollToReflectionPart("goal");
             return;
         }
 
         if (label.includes("next unit")) {
             event.preventDefault();
-            scrollToSection("next");
+            scrollToReflectionPart("next");
             return;
         }
 
@@ -1164,49 +1034,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }, true);
 
     document.addEventListener("input", function () {
-        if (!isReflectionPage()) return;
-        setTimeout(renderScoreVisuals, 50);
-        setTimeout(updateNotebookProgress, 50);
+        if (pageLooksLikeReflectionTracker()) {
+            updateNotebookProgress();
+        }
     }, true);
 
     document.addEventListener("change", function () {
-        if (!isReflectionPage()) return;
-        setTimeout(renderScoreVisuals, 50);
-        setTimeout(updateNotebookProgress, 50);
+        if (pageLooksLikeReflectionTracker()) {
+            updateNotebookProgress();
+        }
     }, true);
 
     window.addEventListener("load", function () {
-        if (!isReflectionPage()) return;
-        setTimeout(renderScoreVisuals, 100);
-        setTimeout(updateNotebookProgress, 100);
-        setTimeout(renderScoreVisuals, 500);
-    });
-
-    setTimeout(function () {
-        if (!isReflectionPage()) return;
-        renderScoreVisuals();
-        updateNotebookProgress();
-    }, 250);
-})();
-</script>
-<!-- End Science Studio Reflection Tracker Clean Final Fix -->
-
-
-
-
-<!-- Science Studio Assessment Link Router -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll("a").forEach(function (link) {
-        const label = (link.textContent || "").trim().toLowerCase();
-
-        if (label === "assessment" || label === "digital assessment") {
-            link.setAttribute("href", "/science-assessment");
+        if (pageLooksLikeReflectionTracker()) {
+            updateNotebookProgress();
         }
     });
-});
+})();
 </script>
-<!-- End Science Studio Assessment Link Router -->
+<!-- End Science Studio Reflection Tracker Phase 2 -->
 
 </body>
 </html>
