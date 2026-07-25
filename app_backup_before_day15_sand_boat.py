@@ -1242,22 +1242,6 @@ def science_studio_assessment_builder():
 # End Science Studio Phase 3A Digital Assessment Builder
 
 
-
-# Day 15 Sand Boat Engineering Challenge routes
-@app.route("/labs/day15/sand-boat")
-@app.route("/labs/sand-boat-engineering")
-@app.route("/labs/unit1/arcade/sand-boat-engineering")
-def sand_boat_engineering_challenge():
-    from flask import render_template
-    return render_template("sand_boat_engineering_challenge.html")
-
-@app.route("/labs/unit1/day/15")
-def unit1_day15_sand_boat_redirect():
-    from flask import redirect
-    return redirect("/labs/unit1/arcade/sand-boat-engineering")
-# End Day 15 Sand Boat Engineering Challenge routes
-
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)

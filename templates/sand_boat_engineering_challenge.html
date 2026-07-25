@@ -1,0 +1,868 @@
+{% extends "base.html" %}
+
+{% block title %}Day 15 Sand Boat Engineering Challenge{% endblock %}
+
+{% block content %}
+<style>
+.sand-lab-wrap {
+    max-width: 1200px;
+    margin: 24px auto;
+}
+
+.sand-hero {
+    background: linear-gradient(135deg, #7c3f00, #d97706, #facc15);
+    color: white;
+    border: 6px solid #111;
+    border-radius: 28px;
+    padding: 24px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+    margin-bottom: 22px;
+}
+
+.sand-pill {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ffcc00;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-weight: 1000;
+    margin: 4px 6px 8px 0;
+}
+
+.sand-card {
+    background: white;
+    border: 5px solid #111;
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.16);
+    margin-bottom: 20px;
+}
+
+.sand-card.yellow {
+    background: #fff7d6;
+}
+
+.sand-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 22px;
+}
+
+.material-section {
+    background: #fff7d6;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 14px;
+    margin-bottom: 14px;
+}
+
+.material-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: white;
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 8px 0;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.16);
+}
+
+.material-btn:hover {
+    transform: translateY(-1px);
+}
+
+.material-btn.selected {
+    background: #d8ffe9;
+    outline: 4px solid #00a86b;
+}
+
+.material-properties {
+    font-size: 0.85rem;
+    margin-top: 4px;
+    font-weight: 700;
+}
+
+.sand-stage {
+    position: relative;
+    min-height: 560px;
+    border: 6px solid #111;
+    border-radius: 24px;
+    background:
+        radial-gradient(circle at 10% 90%, rgba(255,255,255,0.35), transparent 18%),
+        linear-gradient(#bde7ff 0 44%, #f5c66f 44% 100%);
+    overflow: hidden;
+}
+
+.sun {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    width: 75px;
+    height: 75px;
+    background: #fde047;
+    border: 5px solid #111;
+    border-radius: 50%;
+}
+
+.school {
+    position: absolute;
+    right: 35px;
+    bottom: 115px;
+    width: 150px;
+    height: 120px;
+    background: white;
+    border: 5px solid #111;
+    border-radius: 14px;
+    text-align: center;
+    font-weight: 1000;
+    padding-top: 18px;
+}
+
+.school::before {
+    content: "";
+    position: absolute;
+    left: 25px;
+    top: -48px;
+    width: 95px;
+    height: 65px;
+    background: #ef4444;
+    border: 5px solid #111;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.road-label {
+    position: absolute;
+    bottom: 42px;
+    left: 30px;
+    right: 30px;
+    background: rgba(255,255,255,0.85);
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 8px;
+    text-align: center;
+    font-weight: 1000;
+}
+
+.sand-track {
+    position: absolute;
+    left: 40px;
+    right: 210px;
+    bottom: 120px;
+    height: 22px;
+    background: repeating-linear-gradient(
+        90deg,
+        #b45309 0 18px,
+        #facc15 18px 36px
+    );
+    border: 4px solid #111;
+    border-radius: 999px;
+}
+
+.wind {
+    position: absolute;
+    left: -190px;
+    top: 140px;
+    width: 170px;
+    height: 90px;
+    border-top: 9px solid #38bdf8;
+    border-bottom: 9px solid #38bdf8;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.wind.on {
+    animation: windBlow 1.2s linear infinite;
+    opacity: 1;
+}
+
+@keyframes windBlow {
+    from { transform: translateX(0); }
+    to { transform: translateX(1200px); }
+}
+
+.boat {
+    position: absolute;
+    left: 70px;
+    bottom: 145px;
+    width: 230px;
+    height: 190px;
+    transition: transform 2.8s ease;
+}
+
+.boat.success {
+    transform: translateX(650px);
+}
+
+.boat.partial {
+    transform: translateX(340px) rotate(-3deg);
+}
+
+.boat.fail {
+    transform: translateX(120px) rotate(12deg);
+}
+
+.boat-hull {
+    position: absolute;
+    bottom: 18px;
+    left: 25px;
+    width: 185px;
+    height: 70px;
+    background: #c084fc;
+    border: 5px solid #111;
+    border-radius: 0 0 80px 80px;
+    clip-path: polygon(0 0, 100% 0, 82% 100%, 18% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #111;
+    font-weight: 1000;
+    font-size: 0.82rem;
+    text-align: center;
+    padding: 6px;
+}
+
+.boat-mast {
+    position: absolute;
+    right: 112px;
+    left: auto;
+    bottom: 80px;
+    width: 12px;
+    height: 110px;
+    background: #8b5a2b;
+    border: 3px solid #111;
+}
+
+.boat-sail {
+    position: absolute;
+    right: 122px;
+    left: auto;
+    bottom: 88px;
+    width: 90px;
+    height: 95px;
+    background: rgba(255,255,255,0.9);
+    border: 5px solid #111;
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 1000;
+    font-size: 0.72rem;
+    text-align: center;
+    padding-right: 8px;
+}
+
+.boat-rudder {
+    position: absolute;
+    left: 5px;
+    right: auto;
+    bottom: 20px;
+    width: 45px;
+    height: 65px;
+    background: #93c5fd;
+    border: 5px solid #111;
+    transform: rotate(-10deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 1000;
+    text-align: center;
+}
+
+.boat-part-empty {
+    background: repeating-linear-gradient(
+        45deg,
+        #e5e7eb 0 8px,
+        #ffffff 8px 16px
+    ) !important;
+    color: #555;
+}
+
+.control-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.sand-btn {
+    background: #0077ff;
+    color: white !important;
+    border: 4px solid #111;
+    border-radius: 12px;
+    padding: 11px 15px;
+    font-weight: 1000;
+    cursor: pointer;
+    text-decoration: none !important;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.22);
+}
+
+.sand-btn.green {
+    background: #00a86b;
+}
+
+.sand-btn.yellow {
+    background: #ffcc00;
+    color: #111 !important;
+}
+
+.sand-btn.purple {
+    background: #6f2dbd;
+}
+
+.feedback-box {
+    background: #fff7d6;
+    border: 5px solid #111;
+    border-radius: 18px;
+    padding: 14px;
+    margin-top: 16px;
+    font-weight: 900;
+}
+
+.feedback-box.success {
+    background: #d8ffe9;
+}
+
+.feedback-box.partial {
+    background: #fff7d6;
+}
+
+.feedback-box.fail {
+    background: #ffe1e1;
+}
+
+.score-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.score-card {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 12px;
+    font-weight: 900;
+}
+
+.notebook-area textarea {
+    width: 100%;
+    min-height: 95px;
+    border: 4px solid #111;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+@media (max-width: 950px) {
+    .sand-grid,
+    .score-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<div class="sand-lab-wrap">
+    <section class="sand-hero">
+        <span class="sand-pill">Day 15</span>
+        <span class="sand-pill">Engineering Design</span>
+        <span class="sand-pill">Physical Properties</span>
+
+        <h1>🏜️ Sand Boat Engineering Challenge</h1>
+        <p>
+            The roads in our desert community have turned to deep sand. You still want to get to school to keep learning.
+            Build a sand boat that can glide across the desert using wind power.
+        </p>
+
+        <a class="sand-btn yellow" href="/first-nine-weeks/day/15?view=student">Back to Day 15 Lesson</a>
+        <a class="sand-btn yellow" href="/labs">Back to Lab Library</a>
+    </section>
+
+    <section class="sand-card yellow">
+        <h2>Mission Scenario</h2>
+        <p>
+            Your team must design a <strong>sand boat</strong>. It needs a body shell, sail, and rudder.
+            Each part must be made from a material with helpful physical properties.
+        </p>
+        <p>
+            Think like an engineer: choose materials based on <strong>state of matter, texture, mass, flexibility, strength, and ability to catch wind</strong>.
+        </p>
+    </section>
+
+    <section class="sand-grid">
+        <aside>
+            <div class="material-section">
+                <h2>1. Choose Body Shell</h2>
+                <p>The body must be solid, sturdy, and able to glide on sand.</p>
+                <div id="bodyChoices"></div>
+            </div>
+
+            <div class="material-section">
+                <h2>2. Choose Sail</h2>
+                <p>The sail should be light and catch the wind.</p>
+                <div id="sailChoices"></div>
+            </div>
+
+            <div class="material-section">
+                <h2>3. Choose Rudder</h2>
+                <p>The rudder helps steer and should be stiff enough to guide the boat.</p>
+                <div id="rudderChoices"></div>
+            </div>
+        </aside>
+
+        <main>
+            <div class="sand-stage">
+                <div class="sun"></div>
+                <div class="wind" id="windOne"></div>
+                <div class="wind" id="windTwo" style="top: 230px; animation-delay: .35s;"></div>
+                <div class="school">🏫<br>Science<br>School</div>
+                <div class="sand-track"></div>
+
+                <div class="boat" id="sandBoat">
+                    <div class="boat-mast"></div>
+                    <div class="boat-sail boat-part-empty" id="boatSail">Sail?</div>
+                    <div class="boat-hull boat-part-empty" id="boatHull">Body?</div>
+                    <div class="boat-rudder boat-part-empty" id="boatRudder">Rudder?</div>
+                </div>
+
+                <div class="road-label">Desert road turned into sand — test if your boat can glide to school!</div>
+            </div>
+
+            <div class="control-row">
+                <button class="sand-btn green" id="testBoat" type="button">Turn On Wind</button>
+                <button class="sand-btn yellow" id="resetBoat" type="button">Reset Design</button>
+                <button class="sand-btn purple" id="saveDesign" type="button">Save Design</button>
+                <button class="sand-btn yellow" onclick="window.print()" type="button">Print Lab Report</button>
+            </div>
+
+            <div class="feedback-box" id="feedbackBox">
+                Choose one material for each part, then turn on the wind.
+            </div>
+
+            <div class="score-grid" id="scoreGrid">
+                <div class="score-card">Body Shell: not chosen yet</div>
+                <div class="score-card">Sail: not chosen yet</div>
+                <div class="score-card">Rudder: not chosen yet</div>
+            </div>
+        </main>
+    </section>
+
+    <section class="sand-card notebook-area">
+        <h2>Science Notebook: CER Engineering Reflection</h2>
+
+        <p><strong>Claim:</strong> Did your sand boat reach school? Why or why not?</p>
+        <textarea id="claimBox" placeholder="My sand boat did / did not reach school because..."></textarea>
+
+        <p><strong>Evidence:</strong> Which materials did you choose? What physical properties helped or hurt the design?</p>
+        <textarea id="evidenceBox" placeholder="The body shell was made of... The sail was made of... The rudder was made of..."></textarea>
+
+        <p><strong>Reasoning:</strong> Explain how physical properties affected the boat’s performance.</p>
+        <textarea id="reasoningBox" placeholder="This worked because solids can... flexible materials can... heavy materials can..."></textarea>
+    </section>
+
+    <section class="sand-card yellow">
+        <h2>Teacher / Student Discussion Questions</h2>
+        <p><strong>1.</strong> Why would a rock body shell be a poor engineering choice for a sand boat?</p>
+        <p><strong>2.</strong> Why might hard plastic or wood work better than a plastic bag?</p>
+        <p><strong>3.</strong> Which physical property mattered most for the sail?</p>
+        <p><strong>4.</strong> How is this similar to choosing materials for real objects?</p>
+    </section>
+</div>
+
+<script>
+const materials = {
+    body: [
+        {
+            id: "hard-plastic",
+            name: "Hard Plastic Tray",
+            properties: "solid, light, smooth, waterproof, sturdy",
+            color: "#93c5fd",
+            score: 3,
+            feedback: "Great body shell. Hard plastic is solid, sturdy, light, and smooth enough to glide."
+        },
+        {
+            id: "wood",
+            name: "Lightweight Wood",
+            properties: "solid, sturdy, light, can glide",
+            color: "#a16207",
+            score: 3,
+            feedback: "Great body shell. Wood is a solid material that can support the boat and move across sand."
+        },
+        {
+            id: "metal",
+            name: "Thin Metal Pan",
+            properties: "solid, sturdy, smooth, heavier",
+            color: "#9ca3af",
+            score: 2,
+            feedback: "Good body shell. Metal is solid and sturdy, but it may be heavier than wood or plastic."
+        },
+        {
+            id: "rock",
+            name: "Rock Slab",
+            properties: "solid, hard, rough, very heavy",
+            color: "#6b7280",
+            score: 0,
+            feedback: "Poor body shell. Rock is solid, but it is too heavy and rough to glide well across sand."
+        },
+        {
+            id: "plastic-bag",
+            name: "Plastic Bag",
+            properties: "solid, flexible, light, not sturdy",
+            color: "#d8b4fe",
+            score: 0,
+            feedback: "Poor body shell. A plastic bag is too flexible and cannot hold the boat shape."
+        },
+        {
+            id: "water",
+            name: "Water",
+            properties: "liquid, flows, no fixed shape",
+            color: "#38bdf8",
+            score: 0,
+            feedback: "Poor body shell. Water is a liquid and does not keep a fixed shape for a boat body."
+        }
+    ],
+    sail: [
+        {
+            id: "cloth",
+            name: "Cloth Fabric",
+            properties: "solid, flexible, light, catches wind",
+            color: "#ffffff",
+            score: 3,
+            feedback: "Great sail. Cloth is light and flexible, so it can catch wind."
+        },
+        {
+            id: "plastic-sheet",
+            name: "Plastic Sheet",
+            properties: "solid, light, flexible, catches wind",
+            color: "#bae6fd",
+            score: 3,
+            feedback: "Great sail. A plastic sheet is light and can catch wind."
+        },
+        {
+            id: "paper",
+            name: "Thick Paper",
+            properties: "solid, light, catches wind, may bend",
+            color: "#fef3c7",
+            score: 2,
+            feedback: "Good sail. Paper is light and catches wind, but it may bend or tear."
+        },
+        {
+            id: "metal-sheet",
+            name: "Metal Sheet",
+            properties: "solid, stiff, heavy",
+            color: "#cbd5e1",
+            score: 1,
+            feedback: "Weak sail. Metal is solid and stiff, but it is too heavy to be the best sail."
+        },
+        {
+            id: "rock-sail",
+            name: "Rock",
+            properties: "solid, hard, very heavy, does not catch wind",
+            color: "#78716c",
+            score: 0,
+            feedback: "Poor sail. Rock does not catch wind and is too heavy."
+        },
+        {
+            id: "water-sail",
+            name: "Water",
+            properties: "liquid, flows, no fixed shape",
+            color: "#38bdf8",
+            score: 0,
+            feedback: "Poor sail. Water is a liquid and cannot hold a sail shape."
+        }
+    ],
+    rudder: [
+        {
+            id: "plastic-card",
+            name: "Plastic Card",
+            properties: "solid, stiff, light, smooth",
+            color: "#60a5fa",
+            score: 3,
+            feedback: "Great rudder. A plastic card is stiff enough to steer and light enough for the boat."
+        },
+        {
+            id: "wood-strip",
+            name: "Wood Strip",
+            properties: "solid, stiff, sturdy",
+            color: "#92400e",
+            score: 3,
+            feedback: "Great rudder. Wood is stiff and sturdy, so it can help guide the boat."
+        },
+        {
+            id: "cardboard",
+            name: "Cardboard",
+            properties: "solid, light, somewhat stiff",
+            color: "#d6a85c",
+            score: 2,
+            feedback: "Good rudder. Cardboard is light and somewhat stiff, but it may bend."
+        },
+        {
+            id: "paper-towel",
+            name: "Paper Towel",
+            properties: "solid, soft, flexible, absorbs water",
+            color: "#fefce8",
+            score: 0,
+            feedback: "Poor rudder. A paper towel is too soft and flexible to steer well."
+        },
+        {
+            id: "rock-rudder",
+            name: "Rock",
+            properties: "solid, hard, very heavy",
+            color: "#6b7280",
+            score: 0,
+            feedback: "Poor rudder. Rock is too heavy and not a good steering material."
+        },
+        {
+            id: "water-rudder",
+            name: "Water",
+            properties: "liquid, flows, no fixed shape",
+            color: "#38bdf8",
+            score: 0,
+            feedback: "Poor rudder. Water is a liquid and cannot stay in the shape of a rudder."
+        }
+    ]
+};
+
+const design = {
+    body: null,
+    sail: null,
+    rudder: null
+};
+
+function renderChoices(type, containerId) {
+    const container = document.getElementById(containerId);
+
+    container.innerHTML = materials[type].map(material => `
+        <button class="material-btn" type="button" data-type="${type}" data-id="${material.id}">
+            ${material.name}
+            <div class="material-properties">${material.properties}</div>
+        </button>
+    `).join("");
+
+    container.querySelectorAll(".material-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            selectMaterial(button.dataset.type, button.dataset.id);
+        });
+    });
+}
+
+function selectMaterial(type, id) {
+    design[type] = materials[type].find(material => material.id === id);
+
+    document.querySelectorAll(`.material-btn[data-type="${type}"]`).forEach(button => {
+        button.classList.toggle("selected", button.dataset.id === id);
+    });
+
+    updateBoatVisual();
+    updateScoreCards();
+    updateFeedback("Material selected. Keep building your sand boat.", "");
+}
+
+function updateBoatVisual() {
+    const hull = document.getElementById("boatHull");
+    const sail = document.getElementById("boatSail");
+    const rudder = document.getElementById("boatRudder");
+
+    if (design.body) {
+        hull.textContent = design.body.name;
+        hull.style.background = design.body.color;
+        hull.classList.remove("boat-part-empty");
+    } else {
+        hull.textContent = "Body?";
+        hull.style.background = "";
+        hull.classList.add("boat-part-empty");
+    }
+
+    if (design.sail) {
+        sail.textContent = design.sail.name;
+        sail.style.background = design.sail.color;
+        sail.classList.remove("boat-part-empty");
+    } else {
+        sail.textContent = "Sail?";
+        sail.style.background = "";
+        sail.classList.add("boat-part-empty");
+    }
+
+    if (design.rudder) {
+        rudder.textContent = design.rudder.name;
+        rudder.style.background = design.rudder.color;
+        rudder.classList.remove("boat-part-empty");
+    } else {
+        rudder.textContent = "Rudder?";
+        rudder.style.background = "";
+        rudder.classList.add("boat-part-empty");
+    }
+}
+
+function updateScoreCards() {
+    const grid = document.getElementById("scoreGrid");
+
+    const parts = [
+        ["Body Shell", design.body],
+        ["Sail", design.sail],
+        ["Rudder", design.rudder]
+    ];
+
+    grid.innerHTML = parts.map(([label, material]) => {
+        if (!material) {
+            return `<div class="score-card">${label}: not chosen yet</div>`;
+        }
+
+        return `
+            <div class="score-card">
+                <strong>${label}: ${material.name}</strong><br>
+                ${material.properties}<br>
+                Score: ${material.score}/3
+            </div>
+        `;
+    }).join("");
+}
+
+function updateFeedback(message, status) {
+    const box = document.getElementById("feedbackBox");
+
+    box.className = "feedback-box";
+
+    if (status) {
+        box.classList.add(status);
+    }
+
+    box.innerHTML = message;
+}
+
+function totalScore() {
+    return ["body", "sail", "rudder"].reduce((sum, type) => {
+        return sum + (design[type] ? design[type].score : 0);
+    }, 0);
+}
+
+function missingParts() {
+    return ["body", "sail", "rudder"].filter(type => !design[type]);
+}
+
+function testBoat() {
+    const missing = missingParts();
+
+    if (missing.length > 0) {
+        updateFeedback(`Choose a material for every part before testing. Missing: ${missing.join(", ")}.`, "fail");
+        return;
+    }
+
+    const boat = document.getElementById("sandBoat");
+    const windOne = document.getElementById("windOne");
+    const windTwo = document.getElementById("windTwo");
+
+    boat.classList.remove("success", "partial", "fail");
+    windOne.classList.add("on");
+    windTwo.classList.add("on");
+
+    const score = totalScore();
+    let status = "fail";
+
+    if (score >= 8) {
+        status = "success";
+    } else if (score >= 5) {
+        status = "partial";
+    }
+
+    setTimeout(() => {
+        boat.classList.add(status);
+    }, 150);
+
+    setTimeout(() => {
+        windOne.classList.remove("on");
+        windTwo.classList.remove("on");
+
+        const feedbackParts = [
+            `<strong>Total design score:</strong> ${score}/9`,
+            `<strong>Body:</strong> ${design.body.feedback}`,
+            `<strong>Sail:</strong> ${design.sail.feedback}`,
+            `<strong>Rudder:</strong> ${design.rudder.feedback}`
+        ];
+
+        if (status === "success") {
+            feedbackParts.unshift("✅ <strong>Success!</strong> Your sand boat glided across the desert and reached school.");
+        } else if (status === "partial") {
+            feedbackParts.unshift("⚠️ <strong>Almost!</strong> Your sand boat moved across the sand, but it did not reach school.");
+        } else {
+            feedbackParts.unshift("❌ <strong>Redesign needed.</strong> Your sand boat could not travel far enough across the sand.");
+        }
+
+        updateFeedback(feedbackParts.join("<br><br>"), status);
+        autofillNotebook(status, score);
+    }, 3100);
+}
+
+function autofillNotebook(status, score) {
+    const claimBox = document.getElementById("claimBox");
+    const evidenceBox = document.getElementById("evidenceBox");
+    const reasoningBox = document.getElementById("reasoningBox");
+
+    if (!claimBox.value.trim()) {
+        if (status === "success") {
+            claimBox.value = "My sand boat reached school because the materials had helpful physical properties.";
+        } else if (status === "partial") {
+            claimBox.value = "My sand boat moved but did not reach school because one or more materials needed improvement.";
+        } else {
+            claimBox.value = "My sand boat did not reach school because the materials were not the best choices for the design.";
+        }
+    }
+
+    if (!evidenceBox.value.trim()) {
+        evidenceBox.value = `I chose ${design.body.name} for the body shell, ${design.sail.name} for the sail, and ${design.rudder.name} for the rudder. The total score was ${score}/9.`;
+    }
+
+    if (!reasoningBox.value.trim()) {
+        reasoningBox.value = "Physical properties matter in engineering because materials must match the job. A good body shell needs to be solid and sturdy, a good sail needs to catch wind, and a good rudder needs to be stiff enough to steer.";
+    }
+}
+
+function resetBoat() {
+    design.body = null;
+    design.sail = null;
+    design.rudder = null;
+
+    document.querySelectorAll(".material-btn").forEach(button => {
+        button.classList.remove("selected");
+    });
+
+    const boat = document.getElementById("sandBoat");
+    boat.classList.remove("success", "partial", "fail");
+
+    updateBoatVisual();
+    updateScoreCards();
+    updateFeedback("Choose one material for each part, then turn on the wind.", "");
+}
+
+function saveDesign() {
+    const report = {
+        savedAt: new Date().toISOString(),
+        body: design.body,
+        sail: design.sail,
+        rudder: design.rudder,
+        totalScore: totalScore(),
+        claim: document.getElementById("claimBox").value,
+        evidence: document.getElementById("evidenceBox").value,
+        reasoning: document.getElementById("reasoningBox").value
+    };
+
+    localStorage.setItem("scienceStudioDay15SandBoatDesign", JSON.stringify(report));
+    updateFeedback("💾 Design saved on this device. You can print your lab report or discuss your redesign.", "success");
+}
+
+renderChoices("body", "bodyChoices");
+renderChoices("sail", "sailChoices");
+renderChoices("rudder", "rudderChoices");
+updateBoatVisual();
+updateScoreCards();
+
+document.getElementById("testBoat").addEventListener("click", testBoat);
+document.getElementById("resetBoat").addEventListener("click", resetBoat);
+document.getElementById("saveDesign").addEventListener("click", saveDesign);
+</script>
+{% endblock %}

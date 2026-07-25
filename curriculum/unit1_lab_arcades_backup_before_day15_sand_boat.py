@@ -174,9 +174,9 @@ UNIT1_LAB_ARCADES = {
             {"name": "It lets electricity flow.", "icon": "💡", "answer": "conductivity", "observation": "Allowing energy flow is conductivity."},
         ],
     },
-    "sand-boat-engineering": {
+    "toy-engineering": {
         "day": 15,
-        "title": "Sand Boat Engineering Challenge",
+        "title": "Toy Material Engineering Challenge",
         "subtitle": "Choose the best material for a toy using physical properties.",
         "mission": "Use evidence to select the best material.",
         "mode": "engineering",
@@ -217,7 +217,7 @@ DAY_TO_SLUG = {
     12: "electrical-conductivity",
     13: "thermal-conductivity",
     14: "property-detective",
-    15: "sand-boat-engineering",
+    15: "toy-engineering",
     16: "unit-review",
 }
 

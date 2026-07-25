@@ -1208,46 +1208,5 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio Assessment Link Router -->
 
-
-<!-- Science Studio Day 15 Sand Boat Lab Router -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const path = window.location.pathname;
-
-    if (!path.includes("/first-nine-weeks/day/15")) {
-        return;
-    }
-
-    document.querySelectorAll("a, button").forEach(function (element) {
-        const label = (element.textContent || "").trim().toLowerCase();
-        const href = element.getAttribute ? (element.getAttribute("href") || "") : "";
-
-        const looksLikeLabButton =
-            label.includes("open lab") ||
-            label.includes("open investigation") ||
-            label.includes("lab / investigation") ||
-            label.includes("toy") ||
-            href.includes("/labs/unit1/day/15") ||
-            href.includes("toy-engineering");
-
-        if (!looksLikeLabButton) {
-            return;
-        }
-
-        if (element.tagName.toLowerCase() === "a") {
-            element.setAttribute("href", "/labs/unit1/arcade/sand-boat-engineering");
-            element.textContent = "Open Sand Boat Engineering Challenge";
-        } else {
-            element.textContent = "Open Sand Boat Engineering Challenge";
-            element.addEventListener("click", function (event) {
-                event.preventDefault();
-                window.location.href = "/labs/unit1/arcade/sand-boat-engineering";
-            });
-        }
-    });
-});
-</script>
-<!-- End Science Studio Day 15 Sand Boat Lab Router -->
-
 </body>
 </html>
