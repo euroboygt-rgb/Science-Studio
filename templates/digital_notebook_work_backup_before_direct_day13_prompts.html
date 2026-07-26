@@ -1,0 +1,973 @@
+{% extends "base.html" %}
+
+{% block title %}Digital Notebook Work
+
+
+<!-- Digital Notebook Original Prompt Rescue -->
+<script>
+(function () {
+    const FALLBACK_PROMPTS = {
+        "13": [
+            "Thermal energy is often described as ___ energy.",
+            "A thermal conductor allows heat to transfer ___.",
+            "A thermal insulator ___ heat transfer.",
+            "Oven mitts are useful because they act as thermal ___."
+        ]
+    };
+
+    function escapeHtml(value) {
+        return String(value || "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
+
+    function getDayFromPath() {
+        const match = window.location.pathname.match(/day\/(\d+)/i);
+        return match ? match[1] : null;
+    }
+
+    function getViewFromQuery() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("view") || "student";
+    }
+
+    function cleanText(value) {
+        return String(value || "")
+            .replace(/\s+/g, " ")
+            .replace(/\s+([.?!])/g, "$1")
+            .trim();
+    }
+
+    function uniqueList(items) {
+        const seen = new Set();
+        const output = [];
+
+        items.forEach(function (item) {
+            const clean = cleanText(item);
+
+            if (!clean) return;
+            if (seen.has(clean)) return;
+
+            seen.add(clean);
+            output.push(clean);
+        });
+
+        return output;
+    }
+
+    function extractFillBlankQuestions(doc) {
+        const possibleSections = Array.from(doc.querySelectorAll("section, article, div"));
+
+        const sections = possibleSections.filter(function (section) {
+            const text = section.textContent || "";
+            return text.includes("Fill in the Blank Notes");
+        });
+
+        sections.sort(function (a, b) {
+            return (a.textContent || "").length - (b.textContent || "").length;
+        });
+
+        const sourceText = sections.length
+            ? sections[0].textContent || ""
+            : doc.body.textContent || "";
+
+        let questions = [];
+
+        sourceText.split(/\n+/).forEach(function (line) {
+            const clean = cleanText(line);
+
+            if (!clean) return;
+            if (/fill in the blank notes/i.test(clean)) return;
+            if (/^answer$/i.test(clean)) return;
+            if (/^label:?$/i.test(clean)) return;
+            if (/keyword bank/i.test(clean)) return;
+
+            if (clean.includes("__")) {
+                questions.push(clean);
+            }
+        });
+
+        if (questions.length < 4) {
+            const matches = sourceText.match(/[A-Z][^.\n]{5,180}_{2,}[^.\n]{0,120}[.?!]/g) || [];
+            questions = questions.concat(matches.map(cleanText));
+        }
+
+        return uniqueList(questions).slice(0, 4);
+    }
+
+    function updateFillBlankLabels(questions) {
+        const backup = [
+            "Answer the first fill-in-the-blank question from the printable notebook page.",
+            "Answer the second fill-in-the-blank question from the printable notebook page.",
+            "Answer the third fill-in-the-blank question from the printable notebook page.",
+            "Answer the fourth fill-in-the-blank question from the printable notebook page."
+        ];
+
+        for (let index = 0; index < 4; index++) {
+            const number = index + 1;
+            const label = document.querySelector(`label[for="blank${number}"]`);
+            const box = document.getElementById(`blank${number}`);
+            const question = questions[index] || backup[index];
+
+            if (!label || !box) continue;
+
+            label.innerHTML = `<span class="digital-question-number">${number}.</span> ${escapeHtml(question)}`;
+            box.placeholder = "Type your answer here...";
+        }
+    }
+
+    async function loadOriginalNotebookPrompts() {
+        const day = getDayFromPath();
+        const view = getViewFromQuery();
+
+        if (!day) return;
+
+        let questions = [];
+
+        try {
+            const response = await fetch(`/first-nine-weeks/day/${day}/notebook-resource?view=${view}`, {
+                cache: "no-store"
+            });
+
+            const html = await response.text();
+            const doc = new DOMParser().parseFromString(html, "text/html");
+
+            questions = extractFillBlankQuestions(doc);
+        } catch (error) {
+            console.warn("Could not load original notebook prompts.", error);
+        }
+
+        if (!questions.length && FALLBACK_PROMPTS[day]) {
+            questions = FALLBACK_PROMPTS[day];
+        }
+
+        updateFillBlankLabels(questions);
+    }
+
+    window.addEventListener("load", loadOriginalNotebookPrompts);
+    setTimeout(loadOriginalNotebookPrompts, 250);
+    setTimeout(loadOriginalNotebookPrompts, 800);
+})();
+</script>
+<!-- End Digital Notebook Original Prompt Rescue -->
+
+{% endblock %}
+
+{% block content %}
+<style>
+.digital-notebook-wrap {
+    max-width: 1050px;
+    margin: 24px auto;
+}
+
+.digital-notebook-hero {
+    background: linear-gradient(135deg, #14324f, #246d94, #69b5df);
+    color: white;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+    margin-bottom: 20px;
+}
+
+.digital-pill {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ffcc00;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-weight: 1000;
+    margin: 4px 6px 8px 0;
+}
+
+.digital-card {
+    background: white;
+    border: 5px solid #111;
+    border-radius: 20px;
+    padding: 18px;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.16);
+    margin-bottom: 18px;
+}
+
+.digital-card.yellow {
+    background: #fff7d6;
+}
+
+.digital-toolbar {
+    background: #fff7d6;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 12px;
+    margin: 14px 0 18px 0;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.18);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.digital-btn {
+    border: 4px solid #111;
+    border-radius: 12px;
+    padding: 9px 13px;
+    font-weight: 1000;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.22);
+}
+
+.digital-btn.green { background: #00a86b; color: white; }
+.digital-btn.blue { background: #0077ff; color: white; }
+.digital-btn.yellow { background: #ffcc00; color: #111; }
+.digital-btn.red { background: #e63946; color: white; }
+.digital-btn.purple { background: #6f2dbd; color: white; }
+
+.digital-status {
+    display: none;
+    background: #d8ffe9;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 10px 12px;
+    margin: 10px 0 14px 0;
+    font-weight: 1000;
+}
+
+.digital-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.digital-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.digital-field label {
+    display: block;
+    font-weight: 1000;
+    margin-bottom: 6px;
+}
+
+.digital-input,
+.digital-textarea {
+    display: block;
+    width: 100%;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 12px;
+    font-size: 1rem;
+    line-height: 1.4;
+    background: white !important;
+    color: #111 !important;
+    font-family: inherit;
+    box-sizing: border-box;
+    pointer-events: auto !important;
+    user-select: text !important;
+    position: relative;
+    z-index: 5;
+}
+
+.digital-textarea {
+    min-height: 95px;
+    resize: vertical;
+}
+
+.digital-textarea.big {
+    min-height: 150px;
+}
+
+.digital-input:focus,
+.digital-textarea:focus {
+    outline: 4px solid #00a6d6;
+}
+
+.canvas-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.canvas-tools button {
+    border: 3px solid #111;
+    border-radius: 10px;
+    padding: 7px 10px;
+    font-weight: 1000;
+    background: #fff7d6;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.18);
+}
+
+.digital-canvas {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 330px;
+    background: white;
+    border: 4px dashed #111;
+    border-radius: 14px;
+    touch-action: none;
+    cursor: crosshair;
+}
+
+@media (max-width: 850px) {
+    .digital-grid-2,
+    .digital-grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media print {
+    nav,
+    header,
+    footer,
+    .navbar,
+    .site-header,
+    .digital-toolbar,
+    .digital-status,
+    #scienceStudioAiWidget,
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .digital-notebook-wrap {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .digital-notebook-hero,
+    .digital-card {
+        box-shadow: none !important;
+        border: 3px solid #111 !important;
+        page-break-inside: avoid;
+    }
+
+    .digital-notebook-hero {
+        color: black !important;
+        background: white !important;
+    }
+
+    .digital-input,
+    .digital-textarea {
+        border: 2px solid #111 !important;
+        background: white !important;
+        color: black !important;
+        min-height: 0.45in;
+    }
+
+    .digital-textarea {
+        min-height: 0.75in;
+    }
+
+    .canvas-tools {
+        display: none !important;
+    }
+
+    .digital-canvas {
+        height: 2.6in !important;
+        border: 2px dashed #111 !important;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+}
+</style>
+
+<style>
+/* Digital Notebook Original Prompt Styling */
+.digital-original-question-label {
+    font-weight: 1000;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.digital-question-number {
+    color: #6f2dbd;
+    font-weight: 1000;
+}
+
+@media print {
+    .digital-original-question-label {
+        font-size: 9px !important;
+        line-height: 1.05 !important;
+        margin-bottom: 2px !important;
+    }
+}
+/* End Digital Notebook Original Prompt Styling */
+</style>
+
+
+<style>
+/* Digital Notebook Compact Reference Upgrade */
+.digital-reference-bank {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.digital-reference-item {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 8px;
+    text-align: center;
+    font-weight: 900;
+    min-height: 120px;
+}
+
+.digital-reference-item img,
+.digital-reference-item svg {
+    max-width: 100%;
+    max-height: 95px;
+    object-fit: contain;
+}
+
+.reference-note {
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.digital-compact-print .digital-card,
+.digital-compact-print .digital-notebook-hero {
+    box-shadow: none !important;
+}
+
+@media print {
+    @page {
+        size: Letter portrait;
+        margin: 0.25in;
+    }
+
+    body.digital-compact-print {
+        font-size: 9px !important;
+        line-height: 1.08 !important;
+        background: white !important;
+    }
+
+    body.digital-compact-print .digital-notebook-wrap {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    body.digital-compact-print .digital-notebook-hero {
+        display: none !important;
+    }
+
+    body.digital-compact-print .digital-card {
+        border: 2px solid #111 !important;
+        border-radius: 8px !important;
+        padding: 5px !important;
+        margin: 0 0 5px 0 !important;
+        box-shadow: none !important;
+        page-break-inside: auto !important;
+        break-inside: auto !important;
+    }
+
+    body.digital-compact-print .digital-card h2 {
+        font-size: 14px !important;
+        margin: 0 0 4px 0 !important;
+    }
+
+    body.digital-compact-print .digital-card h3 {
+        font-size: 11px !important;
+        margin: 0 0 3px 0 !important;
+    }
+
+    body.digital-compact-print p,
+    body.digital-compact-print label,
+    body.digital-compact-print strong {
+        font-size: 8.8px !important;
+        line-height: 1.05 !important;
+        margin: 1px 0 !important;
+    }
+
+    body.digital-compact-print .digital-grid-2 {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 5px !important;
+    }
+
+    body.digital-compact-print .digital-grid-4 {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 5px !important;
+    }
+
+    body.digital-compact-print .digital-field {
+        margin: 2px 0 !important;
+    }
+
+    body.digital-compact-print .digital-input {
+        min-height: 0.28in !important;
+        height: 0.28in !important;
+        padding: 2px 4px !important;
+        border: 1.5px solid #111 !important;
+        border-radius: 5px !important;
+        font-size: 8.8px !important;
+    }
+
+    body.digital-compact-print .digital-textarea {
+        min-height: 0.42in !important;
+        height: 0.42in !important;
+        padding: 2px 4px !important;
+        border: 1.5px solid #111 !important;
+        border-radius: 5px !important;
+        font-size: 8.8px !important;
+        line-height: 1.05 !important;
+    }
+
+    body.digital-compact-print .digital-textarea.big {
+        min-height: 0.62in !important;
+        height: 0.62in !important;
+    }
+
+    body.digital-compact-print .digital-reference-bank {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 4px !important;
+        margin: 3px 0 !important;
+    }
+
+    body.digital-compact-print .digital-reference-item {
+        border: 1.5px solid #111 !important;
+        border-radius: 6px !important;
+        padding: 3px !important;
+        min-height: 0.72in !important;
+        font-size: 7.8px !important;
+    }
+
+    body.digital-compact-print .digital-reference-item img,
+    body.digital-compact-print .digital-reference-item svg {
+        max-height: 0.55in !important;
+    }
+
+    body.digital-compact-print .canvas-tools {
+        display: none !important;
+    }
+
+    body.digital-compact-print .digital-canvas {
+        height: 1.35in !important;
+        border: 1.5px dashed #111 !important;
+    }
+
+    body.digital-compact-print .digital-pill,
+    body.digital-compact-print .digital-note,
+    body.digital-compact-print .reference-note,
+    body.digital-compact-print .digital-btn,
+    body.digital-compact-print .no-print {
+        display: none !important;
+    }
+
+    body.digital-compact-print h1,
+    body.digital-compact-print h2,
+    body.digital-compact-print h3 {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+    }
+}
+/* End Digital Notebook Compact Reference Upgrade */
+</style>
+
+
+<div class="digital-notebook-wrap">
+    <section class="digital-notebook-hero">
+        <span class="digital-pill">Digital Notebook</span>
+        <span class="digital-pill">Day {{ day }}</span>
+        <span class="digital-pill">{{ view|capitalize }} View</span>
+
+        <h1>✍️ Day {{ day }} Digital Notebook Work</h1>
+        <p>{{ lesson_title }}</p>
+
+        <a class="digital-btn yellow no-print" href="/first-nine-weeks/day/{{ day }}/notebook-resource?view={{ view }}">Back to Printable Notebook</a>
+        <a class="digital-btn yellow no-print" href="/first-nine-weeks/day/{{ day }}?view={{ view }}">Back to Lesson</a>
+    </section>
+
+    <div class="digital-toolbar no-print">
+        <button type="button" class="digital-btn green" id="saveDigitalNotebook">Save Work</button>
+        <button type="button" class="digital-btn blue" id="loadDigitalNotebook">Load Saved Work</button>
+        <button type="button" class="digital-btn yellow" id="printDigitalNotebook">Print Work</button>
+        <button type="button" class="digital-btn red" id="clearDigitalNotebook">Clear Saved Work</button>
+    </div>
+
+    <div class="digital-status" id="digitalNotebookStatus"></div>
+
+    <section class="digital-card">
+        <h2>👩‍🔬 Scientist Information</h2>
+        <div class="digital-grid-2">
+            <div class="digital-field">
+                <label for="studentName">Name</label>
+                <input id="studentName" class="digital-input" data-save-field="studentName" placeholder="Type your name">
+            </div>
+            <div class="digital-field">
+                <label for="studentDate">Date</label>
+                <input id="studentDate" class="digital-input" data-save-field="studentDate" placeholder="Type the date">
+            </div>
+        </div>
+    </section>
+
+    <section class="digital-card yellow" id="digitalNotebookReferenceCard">
+        <h2>🖼️ Notebook Picture Reference</h2>
+        <p class="reference-note">Use these pictures from the printable notebook page to help with your labels.</p>
+        <div id="digitalNotebookReferenceBank" class="digital-reference-bank">
+            Loading picture reference...
+        </div>
+        <a class="digital-btn yellow no-print" href="/first-nine-weeks/day/{{ day }}/notebook-resource?view={{ view }}" target="_blank">
+            Open Original Printable Notebook
+        </a>
+    </section>
+
+    <section class="digital-card yellow">
+        <h2>🔑 Vocabulary / Picture Labels</h2>
+        <p>Use these boxes to label the pictures or vocabulary cards from the printable notebook page.</p>
+        <div class="digital-grid-4">
+            <div class="digital-field">
+                <label for="label1">Label 1</label>
+                <input id="label1" class="digital-input" data-save-field="label1">
+            </div>
+            <div class="digital-field">
+                <label for="label2">Label 2</label>
+                <input id="label2" class="digital-input" data-save-field="label2">
+            </div>
+            <div class="digital-field">
+                <label for="label3">Label 3</label>
+                <input id="label3" class="digital-input" data-save-field="label3">
+            </div>
+            <div class="digital-field">
+                <label for="label4">Label 4</label>
+                <input id="label4" class="digital-input" data-save-field="label4">
+            </div>
+        </div>
+    </section>
+
+    <section class="digital-card">
+        <h2>📝 Fill in the Blank Notes</h2>
+        <div class="digital-field">
+            <label for="blank1" class="digital-original-question-label">1. Loading original notebook question...</label>
+            <textarea id="blank1" class="digital-textarea" data-save-field="blank1" placeholder="Type your answer here..."></textarea>
+        </div>
+        <div class="digital-field">
+            <label for="blank2" class="digital-original-question-label">2. Loading original notebook question...</label>
+            <textarea id="blank2" class="digital-textarea" data-save-field="blank2" placeholder="Type your answer here..."></textarea>
+        </div>
+        <div class="digital-field">
+            <label for="blank3" class="digital-original-question-label">3. Loading original notebook question...</label>
+            <textarea id="blank3" class="digital-textarea" data-save-field="blank3" placeholder="Type your answer here..."></textarea>
+        </div>
+        <div class="digital-field">
+            <label for="blank4" class="digital-original-question-label">4. Loading original notebook question...</label>
+            <textarea id="blank4" class="digital-textarea" data-save-field="blank4" placeholder="Type your answer here..."></textarea>
+        </div>
+    </section>
+
+    <section class="digital-card yellow">
+        <h2>🎨 Draw and Label the Model</h2>
+        <p>Use the pen tools to draw your model. Use the text box below to type labels used.</p>
+
+        <div class="canvas-tools no-print">
+            <button type="button" data-color="#111111">Black</button>
+            <button type="button" data-color="#1d4ed8">Blue</button>
+            <button type="button" data-color="#dc2626">Red</button>
+            <button type="button" data-color="#16a34a">Green</button>
+            <button type="button" data-color="#eab308">Yellow</button>
+            <button type="button" data-eraser="true">Eraser</button>
+            <button type="button" data-clear="true">Clear Drawing</button>
+        </div>
+
+        <canvas id="modelCanvas" class="digital-canvas" width="1000" height="330"></canvas>
+
+        <div class="digital-field">
+            <label for="drawingLabels">Labels used</label>
+            <textarea id="drawingLabels" class="digital-textarea" data-save-field="drawingLabels" placeholder="Type labels used in your drawing..."></textarea>
+        </div>
+    </section>
+
+    <section class="digital-card">
+        <h2>👀 Phenomenon / Model</h2>
+        <div class="digital-grid-2">
+            <div class="digital-field">
+                <label for="noticeBox">What do you notice?</label>
+                <textarea id="noticeBox" class="digital-textarea big" data-save-field="noticeBox" placeholder="Type what you notice..."></textarea>
+            </div>
+            <div class="digital-field">
+                <label for="wonderBox">What do you wonder?</label>
+                <textarea id="wonderBox" class="digital-textarea big" data-save-field="wonderBox" placeholder="Type what you wonder..."></textarea>
+            </div>
+        </div>
+    </section>
+
+    <section class="digital-card yellow">
+        <h2>🧠 CER Reflection</h2>
+        <div class="digital-field">
+            <label for="claimBox">Claim</label>
+            <textarea id="claimBox" class="digital-textarea" data-save-field="claimBox" placeholder="My claim is..."></textarea>
+        </div>
+        <div class="digital-field">
+            <label for="evidenceBox">Evidence</label>
+            <textarea id="evidenceBox" class="digital-textarea" data-save-field="evidenceBox" placeholder="My evidence is..."></textarea>
+        </div>
+        <div class="digital-field">
+            <label for="reasoningBox">Reasoning</label>
+            <textarea id="reasoningBox" class="digital-textarea" data-save-field="reasoningBox" placeholder="This evidence supports my claim because..."></textarea>
+        </div>
+    </section>
+</div>
+
+<script>
+(function () {
+    const storageKey = "scienceStudioStandaloneDigitalNotebook:day{{ day }}:{{ view }}";
+
+    const canvas = document.getElementById("modelCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let drawing = false;
+    let penColor = "#111111";
+    let penWidth = 4;
+
+    function showStatus(message, good = true) {
+        const box = document.getElementById("digitalNotebookStatus");
+        box.style.display = "block";
+        box.textContent = message;
+        box.style.background = good ? "#d8ffe9" : "#ffe1e1";
+    }
+
+    function clearCanvas() {
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function getPosition(event) {
+        const rect = canvas.getBoundingClientRect();
+        const source = event.touches ? event.touches[0] : event;
+
+        return {
+            x: (source.clientX - rect.left) * (canvas.width / rect.width),
+            y: (source.clientY - rect.top) * (canvas.height / rect.height)
+        };
+    }
+
+    function startDraw(event) {
+        drawing = true;
+        const pos = getPosition(event);
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+        event.preventDefault();
+    }
+
+    function draw(event) {
+        if (!drawing) return;
+
+        const pos = getPosition(event);
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.strokeStyle = penColor;
+        ctx.lineWidth = penWidth;
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+        event.preventDefault();
+    }
+
+    function stopDraw() {
+        if (!drawing) return;
+        drawing = false;
+        saveWork(false);
+    }
+
+    function fields() {
+        return Array.from(document.querySelectorAll("[data-save-field]"));
+    }
+
+    function saveWork(show = true) {
+        const data = {
+            savedAt: new Date().toISOString(),
+            fields: {},
+            canvas: canvas.toDataURL("image/png")
+        };
+
+        fields().forEach(field => {
+            data.fields[field.dataset.saveField] = field.value;
+        });
+
+        localStorage.setItem(storageKey, JSON.stringify(data));
+
+        if (show) {
+            showStatus("Digital notebook work saved on this device.");
+        }
+    }
+
+    function loadWork() {
+        const raw = localStorage.getItem(storageKey);
+
+        if (!raw) {
+            showStatus("No saved work found yet for this day.", false);
+            return;
+        }
+
+        let data;
+
+        try {
+            data = JSON.parse(raw);
+        } catch (error) {
+            showStatus("Saved work could not be loaded.", false);
+            return;
+        }
+
+        fields().forEach(field => {
+            const key = field.dataset.saveField;
+            if (data.fields && key in data.fields) {
+                field.value = data.fields[key];
+            }
+        });
+
+        if (data.canvas) {
+            const image = new Image();
+            image.onload = function () {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+            };
+            image.src = data.canvas;
+        }
+
+        showStatus("Saved digital notebook work loaded.");
+    }
+
+    function clearWork() {
+        if (!confirm("Clear saved work for this digital notebook page?")) {
+            return;
+        }
+
+        fields().forEach(field => field.value = "");
+        clearCanvas();
+        localStorage.removeItem(storageKey);
+        showStatus("Digital notebook work cleared.");
+    }
+
+
+    async function loadNotebookPictureReference() {
+        const bank = document.getElementById("digitalNotebookReferenceBank");
+        if (!bank) return;
+
+        try {
+            const response = await fetch(`/first-nine-weeks/day/{{ day }}/notebook-resource?view={{ view }}`);
+            const html = await response.text();
+            const doc = new DOMParser().parseFromString(html, "text/html");
+
+            const visualNodes = Array.from(doc.querySelectorAll("img, svg"))
+                .filter(node => {
+                    const src = node.getAttribute("src") || "";
+                    const text = node.closest("section, article, div") ? node.closest("section, article, div").innerText || "" : "";
+
+                    if (src.includes("youtube")) return false;
+                    if (text.length > 600) return false;
+
+                    return true;
+                })
+                .slice(0, 4);
+
+            if (visualNodes.length === 0) {
+                bank.innerHTML = `
+                    <div class="digital-reference-item">Picture 1</div>
+                    <div class="digital-reference-item">Picture 2</div>
+                    <div class="digital-reference-item">Picture 3</div>
+                    <div class="digital-reference-item">Picture 4</div>
+                `;
+                return;
+            }
+
+            bank.innerHTML = visualNodes.map((node, index) => {
+                const clone = node.cloneNode(true);
+
+                if (clone.tagName && clone.tagName.toLowerCase() === "img") {
+                    const src = clone.getAttribute("src") || "";
+                    if (src.startsWith("/")) {
+                        clone.setAttribute("src", src);
+                    }
+                }
+
+                return `
+                    <div class="digital-reference-item">
+                        ${clone.outerHTML}
+                        <div>Picture ${index + 1}</div>
+                    </div>
+                `;
+            }).join("");
+        } catch (error) {
+            bank.innerHTML = `
+                <div class="digital-reference-item">Picture 1</div>
+                <div class="digital-reference-item">Picture 2</div>
+                <div class="digital-reference-item">Picture 3</div>
+                <div class="digital-reference-item">Picture 4</div>
+            `;
+        }
+    }
+
+    function setTodayIfBlank() {
+        const dateField = document.getElementById("studentDate");
+        if (dateField && !dateField.value.trim()) {
+            dateField.value = new Date().toLocaleDateString();
+        }
+    }
+
+    canvas.addEventListener("mousedown", startDraw);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", stopDraw);
+    canvas.addEventListener("mouseleave", stopDraw);
+
+    canvas.addEventListener("touchstart", startDraw, { passive: false });
+    canvas.addEventListener("touchmove", draw, { passive: false });
+    canvas.addEventListener("touchend", stopDraw, { passive: false });
+
+    document.querySelectorAll(".canvas-tools button").forEach(button => {
+        button.addEventListener("click", function () {
+            if (button.dataset.clear) {
+                clearCanvas();
+                saveWork(false);
+                showStatus("Drawing cleared.");
+                return;
+            }
+
+            if (button.dataset.eraser) {
+                penColor = "#ffffff";
+                penWidth = 22;
+                showStatus("Eraser selected.");
+                return;
+            }
+
+            penColor = button.dataset.color || "#111111";
+            penWidth = 4;
+            showStatus(button.textContent + " pen selected.");
+        });
+    });
+
+    fields().forEach(field => {
+        field.addEventListener("input", () => showStatus("Unsaved changes."));
+    });
+
+    document.getElementById("saveDigitalNotebook").addEventListener("click", () => saveWork(true));
+    document.getElementById("loadDigitalNotebook").addEventListener("click", loadWork);
+    document.getElementById("clearDigitalNotebook").addEventListener("click", clearWork);
+    document.getElementById("printDigitalNotebook").addEventListener("click", function () {
+        saveWork(false);
+        document.body.classList.add("digital-compact-print");
+        window.print();
+    });
+
+    window.addEventListener("afterprint", function () {
+        document.body.classList.remove("digital-compact-print");
+    });
+
+    clearCanvas();
+    setTodayIfBlank();
+    loadNotebookPictureReference();
+    setTimeout(loadWork, 150);
+})();
+</script>
+{% endblock %}

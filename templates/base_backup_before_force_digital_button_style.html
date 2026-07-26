@@ -1873,58 +1873,5 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio Lesson Page Digital Notebook Button -->
 
-
-<!-- Science Studio Force Digital Notebook Button Style -->
-<script>
-(function () {
-    function shouldStyleDigitalNotebookLinks() {
-        const path = window.location.pathname.toLowerCase();
-        return (
-            path.includes("/first-nine-weeks/day/") &&
-            !path.includes("/digital-notebook")
-        );
-    }
-
-    function forceButtonStyle(link) {
-        if (!link) return;
-
-        const text = (link.textContent || "").trim().toLowerCase();
-        const href = link.getAttribute("href") || "";
-
-        if (!href.includes("/digital-notebook")) return;
-
-        link.textContent = "✍️ Open Digital Notebook Work Page";
-        link.classList.add("science-digital-notebook-force-btn");
-
-        link.style.setProperty("display", "inline-block", "important");
-        link.style.setProperty("background", "#00a86b", "important");
-        link.style.setProperty("color", "white", "important");
-        link.style.setProperty("border", "4px solid #111", "important");
-        link.style.setProperty("border-radius", "12px", "important");
-        link.style.setProperty("padding", "10px 14px", "important");
-        link.style.setProperty("margin", "8px 0 8px 10px", "important");
-        link.style.setProperty("font-weight", "1000", "important");
-        link.style.setProperty("text-decoration", "none", "important");
-        link.style.setProperty("box-shadow", "4px 4px 0 rgba(0,0,0,0.22)", "important");
-        link.style.setProperty("line-height", "1.1", "important");
-        link.style.setProperty("font-size", "0.95rem", "important");
-    }
-
-    function run() {
-        if (!shouldStyleDigitalNotebookLinks()) return;
-
-        document.querySelectorAll('a[href*="/digital-notebook"]').forEach(forceButtonStyle);
-    }
-
-    window.addEventListener("load", run);
-    document.addEventListener("DOMContentLoaded", run);
-
-    setTimeout(run, 100);
-    setTimeout(run, 400);
-    setTimeout(run, 1000);
-})();
-</script>
-<!-- End Science Studio Force Digital Notebook Button Style -->
-
 </body>
 </html>

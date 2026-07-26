@@ -1220,345 +1220,153 @@
 /* End Science Studio Notebook Print Phase 5B */
 
 
-/* Science Studio Notebook Digital Rescue Fix */
-.science-notebook-digital-panel {
-    background: #fff7d6;
-    border: 5px solid #111;
-    border-radius: 22px;
-    padding: 18px;
-    margin: 18px auto;
-    max-width: 980px;
-    box-shadow: 6px 6px 0 rgba(0,0,0,0.18);
-}
-
-.science-notebook-digital-panel h2 {
-    margin-top: 0;
-}
-
-.digital-note {
-    font-weight: 800;
-}
-
-.notebook-digital-toolbar {
+/* Science Studio Notebook Write Draw Phase 5C */
+.science-notebook-work-toolbar {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
     align-items: center;
-    background: white;
-    border: 3px solid #111;
-    border-radius: 14px;
-    padding: 10px;
-    margin: 12px 0;
-}
-
-.digital-btn {
-    border: 3px solid #111;
-    border-radius: 10px;
-    padding: 8px 10px;
-    font-weight: 1000;
-    cursor: pointer;
-    box-shadow: 3px 3px 0 rgba(0,0,0,0.18);
-}
-
-.digital-btn.green { background: #00a86b; color: white; }
-.digital-btn.blue { background: #0077ff; color: white; }
-.digital-btn.orange { background: #f59e0b; color: #111; }
-.digital-btn.purple { background: #6f2dbd; color: white; }
-.digital-btn.yellow { background: #ffcc00; color: #111; }
-
-#notebookDigitalStatus {
-    font-weight: 1000;
-}
-
-.notebook-digital-grid {
-    display: grid;
-    gap: 12px;
-    margin: 12px 0;
-}
-
-.notebook-digital-grid.two {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.notebook-digital-grid.four {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.notebook-digital-card {
-    background: white;
-    border: 4px solid #111;
-    border-radius: 18px;
-    padding: 14px;
-    margin: 14px 0;
-}
-
-.notebook-digital-card label,
-.science-notebook-digital-panel label {
-    display: block;
-    font-weight: 900;
-    margin: 8px 0;
-}
-
-.digital-input,
-.digital-textarea {
-    display: block;
-    width: 100%;
-    border: 3px solid #111;
-    border-radius: 12px;
-    padding: 10px;
-    font-size: 1rem;
-    font-family: inherit;
-    background: white;
-    color: #111;
-    box-sizing: border-box;
-}
-
-.digital-textarea {
-    min-height: 80px;
-    resize: vertical;
-}
-
-.digital-input:focus,
-.digital-textarea:focus {
-    outline: 4px solid #38bdf8;
-}
-
-.notebook-digital-canvas-tools {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
-.notebook-digital-canvas-tools button {
-    border: 3px solid #111;
-    border-radius: 10px;
-    padding: 7px 10px;
-    font-weight: 1000;
-    background: #fff7d6;
-    cursor: pointer;
-    box-shadow: 2px 2px 0 rgba(0,0,0,0.18);
-}
-
-.digital-canvas {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    height: 330px;
-    background: white;
-    border: 4px dashed #111;
-    border-radius: 14px;
-    touch-action: none;
-}
-
-@media (max-width: 800px) {
-    .notebook-digital-grid.two,
-    .notebook-digital-grid.four {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media print {
-    .science-notebook-digital-page nav,
-    .science-notebook-digital-page header,
-    .science-notebook-digital-page footer,
-    .science-notebook-digital-page .navbar,
-    .science-notebook-digital-page .site-header,
-    .science-notebook-digital-page #scienceStudioAiWidget,
-    .science-notebook-digital-page .notebook-digital-toolbar,
-    .science-notebook-digital-page .digital-note,
-    .science-notebook-digital-page .no-print {
-        display: none !important;
-    }
-
-    body.science-notebook-print-digital-only > *:not(.science-notebook-digital-panel),
-    body.science-notebook-print-digital-only main > *:not(.science-notebook-digital-panel),
-    body.science-notebook-print-digital-only .container > *:not(.science-notebook-digital-panel) {
-        display: none !important;
-    }
-
-    .science-notebook-digital-panel {
-        display: block !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 8px !important;
-        border: 3px solid #111 !important;
-        border-radius: 10px !important;
-        box-shadow: none !important;
-        background: white !important;
-        page-break-inside: auto !important;
-    }
-
-    .science-notebook-digital-panel h2 {
-        font-size: 18px !important;
-        margin: 0 0 6px 0 !important;
-    }
-
-    .notebook-digital-card {
-        border: 2px solid #111 !important;
-        border-radius: 8px !important;
-        padding: 6px !important;
-        margin: 6px 0 !important;
-        page-break-inside: avoid !important;
-        background: white !important;
-    }
-
-    .notebook-digital-card h3 {
-        font-size: 13px !important;
-        margin: 0 0 4px 0 !important;
-    }
-
-    .digital-input,
-    .digital-textarea {
-        border: 1.5px solid #111 !important;
-        border-radius: 6px !important;
-        padding: 4px !important;
-        min-height: 0.35in !important;
-        font-size: 10px !important;
-        background: white !important;
-        color: black !important;
-    }
-
-    .digital-textarea {
-        min-height: 0.55in !important;
-    }
-
-    .notebook-digital-canvas-tools {
-        display: none !important;
-    }
-
-    .digital-canvas {
-        height: 2.3in !important;
-        border: 1.5px dashed #111 !important;
-        page-break-inside: avoid !important;
-    }
-}
-/* End Science Studio Notebook Digital Rescue Fix */
-
-
-/* Science Studio Standalone Digital Notebook Link */
-.standalone-digital-notebook-link {
     background: #fff7d6;
     border: 4px solid #111;
     border-radius: 16px;
     padding: 12px;
     margin: 12px 0 18px 0;
     box-shadow: 4px 4px 0 rgba(0,0,0,0.18);
+}
+
+.science-notebook-tool-btn {
+    border: 3px solid #111;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.20);
+}
+
+.science-notebook-tool-btn.green { background: #16a34a; color: white; }
+.science-notebook-tool-btn.blue { background: #2563eb; color: white; }
+.science-notebook-tool-btn.orange { background: #f59e0b; color: #111; }
+.science-notebook-tool-btn.purple { background: #7c3aed; color: white; }
+
+.science-notebook-status {
+    font-weight: 800;
+    font-size: 0.95rem;
+}
+
+.science-notebook-field-row {
     display: flex;
-    gap: 12px;
     align-items: center;
+    gap: 10px;
+    margin: 6px 0 10px 0;
     flex-wrap: wrap;
 }
 
-.standalone-digital-notebook-link a {
-    display: inline-block;
-    background: #00a86b;
-    color: white !important;
-    border: 4px solid #111;
-    border-radius: 12px;
-    padding: 10px 14px;
-    font-weight: 1000;
-    text-decoration: none !important;
-    box-shadow: 3px 3px 0 rgba(0,0,0,0.22);
-}
-
-.standalone-digital-notebook-link span {
+.science-notebook-field-label {
     font-weight: 900;
+    min-width: 60px;
 }
 
-@media print {
-    .standalone-digital-notebook-link {
-        display: none !important;
-    }
+.science-notebook-inline-input,
+.science-notebook-small-input,
+.science-notebook-textarea {
+    border: 3px solid #111;
+    border-radius: 10px;
+    background: #ffffff;
+    font-size: 1rem;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.06);
 }
-/* End Science Studio Standalone Digital Notebook Link */
 
+.science-notebook-inline-input {
+    width: min(420px, 95%);
+}
 
-/* Science Studio Lesson Page Digital Notebook Button */
-.science-digital-notebook-lesson-btn {
-    display: inline-block;
-    background: #00a86b;
-    color: white !important;
-    border: 4px solid #111;
+.science-notebook-small-answer,
+.science-notebook-answer-wrap {
+    margin: 6px 0 12px 0;
+}
+
+.science-notebook-small-input {
+    width: 100%;
+    max-width: 220px;
+}
+
+.science-notebook-textarea {
+    width: 100%;
+    min-height: 84px;
+    resize: vertical;
+    line-height: 1.4;
+}
+
+.science-notebook-canvas-wrap {
+    background: #f8fafc;
+    border: 3px solid #111;
+    border-radius: 14px;
+    padding: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.science-notebook-canvas-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.science-notebook-canvas-btn {
+    border: 3px solid #111;
+    border-radius: 10px;
+    padding: 6px 10px;
+    font-weight: 900;
+    cursor: pointer;
+    background: #fff8dc;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.18);
+}
+
+.science-notebook-canvas {
+    width: 100%;
+    max-width: 100%;
+    min-height: 260px;
+    background: #ffffff;
+    border: 3px dashed #111;
     border-radius: 12px;
-    padding: 10px 14px;
-    margin: 8px 0 8px 10px;
-    font-weight: 1000;
-    text-decoration: none !important;
-    box-shadow: 4px 4px 0 rgba(0,0,0,0.22);
-}
-
-.science-digital-notebook-lesson-btn:hover {
-    transform: translateY(-1px);
-}
-
-.science-digital-notebook-lesson-box {
-    background: #fff7d6;
-    border: 4px solid #111;
-    border-radius: 18px;
-    padding: 14px;
-    margin: 14px 0;
-    box-shadow: 4px 4px 0 rgba(0,0,0,0.18);
+    touch-action: none;
+    display: block;
 }
 
 @media print {
-    .science-digital-notebook-lesson-btn,
-    .science-digital-notebook-lesson-box {
+    .science-notebook-work-toolbar,
+    .science-notebook-tool-btn,
+    .science-notebook-status,
+    #scienceStudioAiWidget,
+    .science-ai-widget,
+    .no-print {
         display: none !important;
     }
-}
-/* End Science Studio Lesson Page Digital Notebook Button */
 
+    .science-notebook-inline-input,
+    .science-notebook-small-input,
+    .science-notebook-textarea {
+        border: 1.5px solid #111 !important;
+        background: white !important;
+        color: black !important;
+    }
 
-/* Digital Notebook Lesson Button Polish */
-#openDigitalNotebookFromLesson,
-a#openDigitalNotebookFromLesson,
-a[href*="/digital-notebook"] {
-    display: inline-block !important;
-    background: #00a86b !important;
-    color: white !important;
-    border: 4px solid #111 !important;
-    border-radius: 12px !important;
-    padding: 10px 14px !important;
-    margin: 8px 0 8px 10px !important;
-    font-weight: 1000 !important;
-    text-decoration: none !important;
-    box-shadow: 4px 4px 0 rgba(0,0,0,0.22) !important;
-}
+    .science-notebook-canvas-wrap {
+        border: 1.5px solid #111 !important;
+        background: white !important;
+    }
 
-#openDigitalNotebookFromLesson:hover,
-a#openDigitalNotebookFromLesson:hover,
-a[href*="/digital-notebook"]:hover {
-    transform: translateY(-1px);
-}
-
-@media print {
-    #openDigitalNotebookFromLesson,
-    a#openDigitalNotebookFromLesson,
-    a[href*="/digital-notebook"] {
+    .science-notebook-canvas-tools {
         display: none !important;
     }
-}
-/* End Digital Notebook Lesson Button Polish */
 
-/* Force Digital Notebook Button Style */
-.science-digital-notebook-force-btn {
-    display: inline-block !important;
-    background: #00a86b !important;
-    color: white !important;
-    border: 4px solid #111 !important;
-    border-radius: 12px !important;
-    padding: 10px 14px !important;
-    margin: 8px 0 8px 10px !important;
-    font-weight: 1000 !important;
-    text-decoration: none !important;
-    box-shadow: 4px 4px 0 rgba(0,0,0,0.22) !important;
-    line-height: 1.1 !important;
-}
-
-@media print {
-    .science-digital-notebook-force-btn {
-        display: none !important;
+    .science-notebook-canvas {
+        border: 1.5px dashed #111 !important;
+        background: white !important;
     }
 }
-/* End Force Digital Notebook Button Style */
+/* End Science Studio Notebook Write Draw Phase 5C */
+

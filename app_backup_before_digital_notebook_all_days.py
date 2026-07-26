@@ -1277,14 +1277,11 @@ def standalone_digital_notebook_work(day):
 
     view = request.args.get("view", "student")
 
-    from curriculum.digital_notebook_prompts import get_digital_notebook_prompts
-
     return render_template(
         "digital_notebook_work.html",
         day=day,
         view=view,
         lesson_title=lesson_title,
-        notebook_prompts=get_digital_notebook_prompts(day),
     )
 # End Standalone Digital Notebook Work route
 

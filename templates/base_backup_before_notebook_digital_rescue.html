@@ -1366,565 +1366,405 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- End Science Studio Notebook Print Phase 5B -->
 
 
-
-
-<!-- Science Studio Notebook Digital Rescue Fix -->
+<!-- Science Studio Notebook Write Draw Phase 5C -->
 <script>
 (function () {
-    const STORAGE_PREFIX = "scienceStudioNotebookDigitalWork:";
-
-    function isNotebookPage() {
-        return window.location.pathname.toLowerCase().includes("/notebook-resource");
+    function isNotebookResourcePage() {
+        const path = window.location.pathname.toLowerCase();
+        return path.includes("/notebook-resource");
     }
 
-    function storageKey() {
-        return STORAGE_PREFIX + window.location.pathname + window.location.search;
+    function getPageKey() {
+        return "scienceStudioNotebookWork::" + window.location.pathname + window.location.search;
     }
 
-    function showStatus(message) {
-        const status = document.getElementById("notebookDigitalStatus");
+    function getSavedData() {
+        try {
+            return JSON.parse(localStorage.getItem(getPageKey()) || "{}");
+        } catch (e) {
+            return {};
+        }
+    }
+
+    function saveData(data) {
+        localStorage.setItem(getPageKey(), JSON.stringify(data));
+    }
+
+    function setStatus(message) {
+        const status = document.getElementById("scienceNotebookStatus");
         if (status) {
             status.textContent = message;
         }
     }
 
-    function getFields() {
-        return Array.from(document.querySelectorAll("#scienceNotebookDigitalPanel [data-digital-field]"));
+    function makeId(prefix, index) {
+        return prefix + "-" + index;
     }
 
-    function saveWork() {
-        const data = {
-            savedAt: new Date().toISOString(),
-            fields: {},
-            drawings: {}
-        };
+    function addToolbar() {
+        if (document.getElementById("scienceNotebookWorkToolbar")) return;
 
-        getFields().forEach(function (field) {
-            data.fields[field.dataset.digitalField] = field.value;
+        const toolbar = document.createElement("div");
+        toolbar.id = "scienceNotebookWorkToolbar";
+        toolbar.className = "science-notebook-work-toolbar";
+        toolbar.innerHTML = `
+            <strong>Notebook Work Tools:</strong>
+            <button type="button" class="science-notebook-tool-btn green" id="scienceNotebookSaveBtn">Save Work</button>
+            <button type="button" class="science-notebook-tool-btn blue" id="scienceNotebookLoadBtn">Load Work</button>
+            <button type="button" class="science-notebook-tool-btn orange" id="scienceNotebookClearBtn">Clear Work</button>
+            <button type="button" class="science-notebook-tool-btn purple" id="scienceNotebookPrintBtn">Print Work</button>
+            <span id="scienceNotebookStatus" class="science-notebook-status">Ready.</span>
+        `;
+
+        const firstHeading = document.querySelector("h1, h2");
+        if (firstHeading) {
+            firstHeading.insertAdjacentElement("afterend", toolbar);
+        } else {
+            document.body.prepend(toolbar);
+        }
+
+        document.getElementById("scienceNotebookSaveBtn").addEventListener("click", saveAllFields);
+        document.getElementById("scienceNotebookLoadBtn").addEventListener("click", loadAllFields);
+        document.getElementById("scienceNotebookClearBtn").addEventListener("click", clearAllFields);
+        document.getElementById("scienceNotebookPrintBtn").addEventListener("click", function () {
+            window.print();
         });
-
-        document.querySelectorAll("#scienceNotebookDigitalPanel canvas[data-digital-canvas]").forEach(function (canvas) {
-            data.drawings[canvas.dataset.digitalCanvas] = canvas.toDataURL("image/png");
-        });
-
-        localStorage.setItem(storageKey(), JSON.stringify(data));
-        showStatus("Saved on this device.");
     }
 
-    function loadWork() {
-        const raw = localStorage.getItem(storageKey());
+    function createTextInput(id, placeholder, cls) {
+        const input = document.createElement("input");
+        input.type = "text";
+        input.className = cls || "science-notebook-inline-input";
+        input.placeholder = placeholder || "";
+        input.setAttribute("data-notebook-id", id);
+        return input;
+    }
 
-        if (!raw) {
-            showStatus("No saved work found for this notebook page yet.");
-            return;
+    function createTextarea(id, placeholder, rows) {
+        const textarea = document.createElement("textarea");
+        textarea.className = "science-notebook-textarea";
+        textarea.placeholder = placeholder || "";
+        textarea.rows = rows || 3;
+        textarea.setAttribute("data-notebook-id", id);
+        return textarea;
+    }
+
+    function createFieldRow(labelText, id, placeholder) {
+        const row = document.createElement("div");
+        row.className = "science-notebook-field-row";
+
+        const label = document.createElement("label");
+        label.className = "science-notebook-field-label";
+        label.textContent = labelText;
+
+        const input = createTextInput(id, placeholder, "science-notebook-inline-input");
+
+        row.appendChild(label);
+        row.appendChild(input);
+
+        return row;
+    }
+
+    function enhanceNameAndDate() {
+        const blocks = Array.from(document.querySelectorAll("div, p, li, span"));
+        let nameDone = false;
+        let dateDone = false;
+
+        blocks.forEach((el, idx) => {
+            const text = (el.textContent || "").trim();
+
+            if (!nameDone && /^Name:/i.test(text) && !el.closest(".science-notebook-field-row")) {
+                const row = createFieldRow("Name:", makeId("name", idx), "Type your name");
+                el.insertAdjacentElement("afterend", row);
+                nameDone = true;
+            }
+
+            if (!dateDone && /^Date:/i.test(text) && !el.closest(".science-notebook-field-row")) {
+                const row = createFieldRow("Date:", makeId("date", idx), "Type the date");
+                el.insertAdjacentElement("afterend", row);
+                dateDone = true;
+            }
+        });
+    }
+
+    function enhanceLabelPrompts() {
+        const nodes = Array.from(document.querySelectorAll("div, p, span"));
+        let count = 0;
+
+        nodes.forEach((el) => {
+            const text = (el.textContent || "").trim();
+
+            if (text === "Label:" && !el.dataset.notebookEnhanced) {
+                count += 1;
+                const wrapper = document.createElement("div");
+                wrapper.className = "science-notebook-small-answer";
+
+                const input = createTextInput("label-" + count, "Type label here", "science-notebook-small-input");
+                wrapper.appendChild(input);
+
+                el.insertAdjacentElement("afterend", wrapper);
+                el.dataset.notebookEnhanced = "true";
+            }
+        });
+    }
+
+    function enhanceBlankAnswerAreas() {
+        const nodes = Array.from(document.querySelectorAll("div, p, li"));
+        let count = 0;
+
+        nodes.forEach((el) => {
+            const text = (el.textContent || "").trim();
+            if (!text) return;
+            if (el.dataset.answerEnhanced === "true") return;
+            if (el.querySelector("input, textarea, canvas")) return;
+
+            const underscoreCount = (text.match(/_{3,}/g) || []).length;
+
+            if (underscoreCount > 0) {
+                count += 1;
+
+                const area = createTextarea(
+                    "response-" + count,
+                    "Type your answer here...",
+                    Math.min(underscoreCount + 1, 4)
+                );
+
+                const wrapper = document.createElement("div");
+                wrapper.className = "science-notebook-answer-wrap";
+                wrapper.appendChild(area);
+
+                el.insertAdjacentElement("afterend", wrapper);
+                el.dataset.answerEnhanced = "true";
+            }
+        });
+    }
+
+    function createCanvasToolButton(label, color, type) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "science-notebook-canvas-btn";
+        btn.textContent = label;
+        if (color) btn.dataset.color = color;
+        if (type) btn.dataset.type = type;
+        return btn;
+    }
+
+    function enhanceDrawSections() {
+        const headings = Array.from(document.querySelectorAll("h1, h2, h3, h4, .section-title, strong"));
+        let drawCount = 0;
+
+        headings.forEach((heading) => {
+            const text = (heading.textContent || "").toLowerCase();
+
+            if (
+                (text.includes("draw and label") || text.includes("draw") || text.includes("model")) &&
+                !heading.dataset.drawEnhanced
+            ) {
+                drawCount += 1;
+
+                let section = heading.parentElement;
+                if (!section) return;
+
+                if (section.querySelector(".science-notebook-canvas-wrap")) {
+                    heading.dataset.drawEnhanced = "true";
+                    return;
+                }
+
+                const wrap = document.createElement("div");
+                wrap.className = "science-notebook-canvas-wrap";
+
+                const tools = document.createElement("div");
+                tools.className = "science-notebook-canvas-tools";
+
+                const canvasId = "draw-canvas-" + drawCount;
+
+                tools.appendChild(createCanvasToolButton("Black", "#111111", "color"));
+                tools.appendChild(createCanvasToolButton("Blue", "#1d4ed8", "color"));
+                tools.appendChild(createCanvasToolButton("Red", "#dc2626", "color"));
+                tools.appendChild(createCanvasToolButton("Green", "#16a34a", "color"));
+                tools.appendChild(createCanvasToolButton("Yellow", "#eab308", "color"));
+                tools.appendChild(createCanvasToolButton("Eraser", "#ffffff", "eraser"));
+                tools.appendChild(createCanvasToolButton("Clear Drawing", "", "clear"));
+
+                const canvas = document.createElement("canvas");
+                canvas.className = "science-notebook-canvas";
+                canvas.width = 900;
+                canvas.height = 260;
+                canvas.setAttribute("data-notebook-id", canvasId);
+
+                wrap.appendChild(tools);
+                wrap.appendChild(canvas);
+                section.appendChild(wrap);
+
+                setupCanvas(canvas, tools);
+                heading.dataset.drawEnhanced = "true";
+            }
+        });
+    }
+
+    function setupCanvas(canvas, tools) {
+        const ctx = canvas.getContext("2d");
+        let drawing = false;
+        let currentColor = "#111111";
+        let currentLineWidth = 3;
+
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        function getPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            if (e.touches && e.touches[0]) {
+                return {
+                    x: (e.touches[0].clientX - rect.left) * (canvas.width / rect.width),
+                    y: (e.touches[0].clientY - rect.top) * (canvas.height / rect.height)
+                };
+            }
+            return {
+                x: (e.clientX - rect.left) * (canvas.width / rect.width),
+                y: (e.clientY - rect.top) * (canvas.height / rect.height)
+            };
         }
 
-        let data;
-
-        try {
-            data = JSON.parse(raw);
-        } catch (error) {
-            showStatus("Saved work could not be loaded.");
-            return;
+        function startDraw(e) {
+            drawing = true;
+            const pos = getPos(e);
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+            e.preventDefault();
         }
 
-        getFields().forEach(function (field) {
-            const key = field.dataset.digitalField;
-            if (data.fields && key in data.fields) {
-                field.value = data.fields[key];
+        function draw(e) {
+            if (!drawing) return;
+            const pos = getPos(e);
+            ctx.lineCap = "round";
+            ctx.lineJoin = "round";
+            ctx.strokeStyle = currentColor;
+            ctx.lineWidth = currentLineWidth;
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            e.preventDefault();
+        }
+
+        function endDraw() {
+            drawing = false;
+            saveAllFields();
+        }
+
+        canvas.addEventListener("mousedown", startDraw);
+        canvas.addEventListener("mousemove", draw);
+        canvas.addEventListener("mouseup", endDraw);
+        canvas.addEventListener("mouseleave", endDraw);
+
+        canvas.addEventListener("touchstart", startDraw, { passive: false });
+        canvas.addEventListener("touchmove", draw, { passive: false });
+        canvas.addEventListener("touchend", endDraw, { passive: false });
+
+        tools.querySelectorAll(".science-notebook-canvas-btn").forEach((btn) => {
+            btn.addEventListener("click", function () {
+                const type = btn.dataset.type;
+
+                if (type === "clear") {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = "#ffffff";
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    saveAllFields();
+                    return;
+                }
+
+                if (type === "eraser") {
+                    currentColor = "#ffffff";
+                    currentLineWidth = 18;
+                    return;
+                }
+
+                currentColor = btn.dataset.color || "#111111";
+                currentLineWidth = 3;
+            });
+        });
+    }
+
+    function saveAllFields() {
+        const data = {};
+
+        document.querySelectorAll("[data-notebook-id]").forEach((el) => {
+            const id = el.getAttribute("data-notebook-id");
+            if (!id) return;
+
+            if (el.tagName === "CANVAS") {
+                data[id] = el.toDataURL("image/png");
+            } else {
+                data[id] = el.value;
             }
         });
 
-        document.querySelectorAll("#scienceNotebookDigitalPanel canvas[data-digital-canvas]").forEach(function (canvas) {
-            const key = canvas.dataset.digitalCanvas;
-            if (!data.drawings || !(key in data.drawings)) return;
+        saveData(data);
+        setStatus("Work saved on this device.");
+    }
 
-            const ctx = canvas.getContext("2d");
-            const img = new Image();
+    function loadAllFields() {
+        const data = getSavedData();
 
-            img.onload = function () {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            };
+        document.querySelectorAll("[data-notebook-id]").forEach((el) => {
+            const id = el.getAttribute("data-notebook-id");
+            if (!id || !(id in data)) return;
 
-            img.src = data.drawings[key];
+            if (el.tagName === "CANVAS") {
+                const ctx = el.getContext("2d");
+                const img = new Image();
+                img.onload = function () {
+                    ctx.clearRect(0, 0, el.width, el.height);
+                    ctx.drawImage(img, 0, 0, el.width, el.height);
+                };
+                img.src = data[id];
+            } else {
+                el.value = data[id];
+            }
         });
 
-        showStatus("Saved work loaded.");
+        setStatus("Saved work loaded.");
     }
 
-    function clearWork() {
-        if (!confirm("Clear all digital writing and drawing on this notebook page?")) {
-            return;
-        }
+    function clearAllFields() {
+        if (!confirm("Clear all saved writing and drawing on this notebook page?")) return;
 
-        getFields().forEach(function (field) {
-            field.value = "";
+        document.querySelectorAll("[data-notebook-id]").forEach((el) => {
+            if (el.tagName === "CANVAS") {
+                const ctx = el.getContext("2d");
+                ctx.clearRect(0, 0, el.width, el.height);
+                ctx.fillStyle = "#ffffff";
+                ctx.fillRect(0, 0, el.width, el.height);
+            } else {
+                el.value = "";
+            }
         });
 
-        document.querySelectorAll("#scienceNotebookDigitalPanel canvas[data-digital-canvas]").forEach(function (canvas) {
-            clearCanvas(canvas);
-        });
-
-        localStorage.removeItem(storageKey());
-        showStatus("Digital notebook work cleared.");
+        localStorage.removeItem(getPageKey());
+        setStatus("Notebook page cleared.");
     }
 
-    function clearCanvas(canvas) {
-        const ctx = canvas.getContext("2d");
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    function autoLoadAfterBuild() {
+        setTimeout(loadAllFields, 250);
     }
 
-    function printStudentWorkOnly() {
-        saveWork();
-        document.body.classList.add("science-notebook-print-digital-only");
-        window.print();
-    }
-
-    function printFullNotebook() {
-        saveWork();
-        document.body.classList.remove("science-notebook-print-digital-only");
-        window.print();
-    }
-
-    function setupCanvas(canvas) {
-        const ctx = canvas.getContext("2d");
-        let drawing = false;
-        let color = "#111111";
-        let width = 4;
-
-        clearCanvas(canvas);
-
-        function position(event) {
-            const rect = canvas.getBoundingClientRect();
-            const source = event.touches ? event.touches[0] : event;
-
-            return {
-                x: (source.clientX - rect.left) * (canvas.width / rect.width),
-                y: (source.clientY - rect.top) * (canvas.height / rect.height)
-            };
-        }
-
-        function start(event) {
-            drawing = true;
-            const pos = position(event);
-            ctx.beginPath();
-            ctx.moveTo(pos.x, pos.y);
-            event.preventDefault();
-        }
-
-        function move(event) {
-            if (!drawing) return;
-
-            const pos = position(event);
-            ctx.lineCap = "round";
-            ctx.lineJoin = "round";
-            ctx.strokeStyle = color;
-            ctx.lineWidth = width;
-            ctx.lineTo(pos.x, pos.y);
-            ctx.stroke();
-            event.preventDefault();
-        }
-
-        function stop() {
-            if (!drawing) return;
-            drawing = false;
-            saveWork();
-        }
-
-        canvas.addEventListener("mousedown", start);
-        canvas.addEventListener("mousemove", move);
-        canvas.addEventListener("mouseup", stop);
-        canvas.addEventListener("mouseleave", stop);
-
-        canvas.addEventListener("touchstart", start, { passive: false });
-        canvas.addEventListener("touchmove", move, { passive: false });
-        canvas.addEventListener("touchend", stop, { passive: false });
-
-        const tools = canvas.closest(".notebook-digital-draw-box").querySelectorAll("[data-pen-color], [data-pen-tool]");
-
-        tools.forEach(function (button) {
-            button.addEventListener("click", function () {
-                if (button.dataset.penTool === "eraser") {
-                    color = "#ffffff";
-                    width = 22;
-                    showStatus("Eraser selected.");
-                    return;
-                }
-
-                if (button.dataset.penTool === "clear") {
-                    clearCanvas(canvas);
-                    saveWork();
-                    showStatus("Drawing cleared.");
-                    return;
-                }
-
-                color = button.dataset.penColor || "#111111";
-                width = 4;
-                showStatus(button.textContent + " pen selected.");
-            });
-        });
-    }
-
-    function addDigitalPanel() {
-        if (!isNotebookPage()) return;
-        if (document.getElementById("scienceNotebookDigitalPanel")) return;
-
-        document.body.classList.add("science-notebook-digital-page");
-
-        const panel = document.createElement("section");
-        panel.id = "scienceNotebookDigitalPanel";
-        panel.className = "science-notebook-digital-panel";
-
-        panel.innerHTML = `
-            <h2>✍️ Digital Notebook Work</h2>
-            <p class="digital-note">
-                Use this section if students are completing the notebook online. It saves on this device and can print with student work.
-            </p>
-
-            <div class="notebook-digital-toolbar">
-                <button type="button" class="digital-btn green" id="notebookSaveWork">Save Work</button>
-                <button type="button" class="digital-btn blue" id="notebookLoadWork">Load Work</button>
-                <button type="button" class="digital-btn orange" id="notebookClearWork">Clear Work</button>
-                <button type="button" class="digital-btn purple" id="notebookPrintStudentWork">Print Student Work Only</button>
-                <button type="button" class="digital-btn yellow" id="notebookPrintFullPage">Print Full Notebook Page</button>
-                <span id="notebookDigitalStatus">Ready.</span>
-            </div>
-
-            <div class="notebook-digital-grid two">
-                <label>
-                    <strong>Name</strong>
-                    <input data-digital-field="studentName" class="digital-input" placeholder="Type your name">
-                </label>
-
-                <label>
-                    <strong>Date</strong>
-                    <input data-digital-field="studentDate" class="digital-input" placeholder="Type the date">
-                </label>
-            </div>
-
-            <div class="notebook-digital-card">
-                <h3>Picture Labels</h3>
-                <div class="notebook-digital-grid four">
-                    <label>Label 1<input data-digital-field="label1" class="digital-input"></label>
-                    <label>Label 2<input data-digital-field="label2" class="digital-input"></label>
-                    <label>Label 3<input data-digital-field="label3" class="digital-input"></label>
-                    <label>Label 4<input data-digital-field="label4" class="digital-input"></label>
-                </div>
-            </div>
-
-            <div class="notebook-digital-card">
-                <h3>Fill in the Blank Notes</h3>
-                <label>
-                    1. Answer
-                    <textarea data-digital-field="blank1" class="digital-textarea" placeholder="Type your answer..."></textarea>
-                </label>
-                <label>
-                    2. Answer
-                    <textarea data-digital-field="blank2" class="digital-textarea" placeholder="Type your answer..."></textarea>
-                </label>
-                <label>
-                    3. Answer
-                    <textarea data-digital-field="blank3" class="digital-textarea" placeholder="Type your answer..."></textarea>
-                </label>
-                <label>
-                    4. Answer
-                    <textarea data-digital-field="blank4" class="digital-textarea" placeholder="Type your answer..."></textarea>
-                </label>
-            </div>
-
-            <div class="notebook-digital-card notebook-digital-draw-box">
-                <h3>Draw and Label the Model</h3>
-                <div class="notebook-digital-canvas-tools">
-                    <button type="button" data-pen-color="#111111">Black</button>
-                    <button type="button" data-pen-color="#1d4ed8">Blue</button>
-                    <button type="button" data-pen-color="#dc2626">Red</button>
-                    <button type="button" data-pen-color="#16a34a">Green</button>
-                    <button type="button" data-pen-color="#eab308">Yellow</button>
-                    <button type="button" data-pen-tool="eraser">Eraser</button>
-                    <button type="button" data-pen-tool="clear">Clear Drawing</button>
-                </div>
-                <canvas data-digital-canvas="mainDrawing" class="digital-canvas" width="1000" height="330"></canvas>
-                <label>
-                    Labels used
-                    <textarea data-digital-field="drawingLabels" class="digital-textarea" placeholder="Type labels used in your drawing..."></textarea>
-                </label>
-            </div>
-
-            <div class="notebook-digital-card">
-                <h3>Phenomenon / Model</h3>
-                <label>
-                    Draw or write what you notice
-                    <textarea data-digital-field="notice" class="digital-textarea" placeholder="What do you notice?"></textarea>
-                </label>
-                <label>
-                    Write what you wonder
-                    <textarea data-digital-field="wonder" class="digital-textarea" placeholder="What do you wonder?"></textarea>
-                </label>
-            </div>
-
-            <div class="notebook-digital-card">
-                <h3>CER Reflection</h3>
-                <label>
-                    Claim
-                    <textarea data-digital-field="claim" class="digital-textarea" placeholder="My claim is..."></textarea>
-                </label>
-                <label>
-                    Evidence
-                    <textarea data-digital-field="evidence" class="digital-textarea" placeholder="My evidence is..."></textarea>
-                </label>
-                <label>
-                    Reasoning
-                    <textarea data-digital-field="reasoning" class="digital-textarea" placeholder="This evidence supports my claim because..."></textarea>
-                </label>
-            </div>
-        `;
-
-        const firstHeading = document.querySelector("h1, h2");
-        if (firstHeading) {
-            firstHeading.insertAdjacentElement("afterend", panel);
-        } else {
-            document.body.prepend(panel);
-        }
-
-        document.getElementById("notebookSaveWork").addEventListener("click", saveWork);
-        document.getElementById("notebookLoadWork").addEventListener("click", loadWork);
-        document.getElementById("notebookClearWork").addEventListener("click", clearWork);
-        document.getElementById("notebookPrintStudentWork").addEventListener("click", printStudentWorkOnly);
-        document.getElementById("notebookPrintFullPage").addEventListener("click", printFullNotebook);
-
-        panel.querySelectorAll("canvas[data-digital-canvas]").forEach(setupCanvas);
-
-        panel.querySelectorAll("[data-digital-field]").forEach(function (field) {
-            field.addEventListener("input", function () {
-                showStatus("Unsaved changes.");
-            });
-        });
-
-        loadWork();
-    }
-
-    window.addEventListener("load", addDigitalPanel);
-    window.addEventListener("afterprint", function () {
-        document.body.classList.remove("science-notebook-print-digital-only");
-    });
-
-    setTimeout(addDigitalPanel, 250);
-    setTimeout(addDigitalPanel, 750);
-})();
-</script>
-<!-- End Science Studio Notebook Digital Rescue Fix -->
-
-
-<!-- Science Studio Standalone Digital Notebook Link -->
-<script>
-(function () {
-    function isNotebookResourcePage() {
-        return window.location.pathname.toLowerCase().includes("/notebook-resource");
-    }
-
-    function getDayFromPath() {
-        const match = window.location.pathname.match(/day\/(\d+)/i);
-        return match ? match[1] : null;
-    }
-
-    function addDigitalNotebookButton() {
+    function boot() {
         if (!isNotebookResourcePage()) return;
-        if (document.getElementById("openStandaloneDigitalNotebook")) return;
 
-        const day = getDayFromPath();
-        if (!day) return;
+        document.body.classList.add("science-notebook-write-draw-page");
 
-        const params = new URLSearchParams(window.location.search);
-        const view = params.get("view") || "student";
-
-        const box = document.createElement("div");
-        box.className = "standalone-digital-notebook-link no-print";
-        box.innerHTML = `
-            <a id="openStandaloneDigitalNotebook" href="/first-nine-weeks/day/${day}/digital-notebook?view=${view}">
-                ✍️ Open Digital Notebook Work Page
-            </a>
-            <span>Use this for typing, drawing, saving, loading, and printing student work.</span>
-        `;
-
-        const firstHeading = document.querySelector("h1, h2");
-        if (firstHeading) {
-            firstHeading.insertAdjacentElement("afterend", box);
-        } else {
-            document.body.prepend(box);
-        }
+        addToolbar();
+        enhanceNameAndDate();
+        enhanceLabelPrompts();
+        enhanceBlankAnswerAreas();
+        enhanceDrawSections();
+        autoLoadAfterBuild();
     }
 
-    window.addEventListener("load", addDigitalNotebookButton);
-    setTimeout(addDigitalNotebookButton, 250);
+    window.addEventListener("load", boot);
+    setTimeout(boot, 300);
+    setTimeout(boot, 900);
 })();
 </script>
-<!-- End Science Studio Standalone Digital Notebook Link -->
-
-
-<!-- Science Studio Lesson Page Digital Notebook Button -->
-<script>
-(function () {
-    function isMainLessonPage() {
-        const path = window.location.pathname.toLowerCase();
-
-        if (!path.includes("/first-nine-weeks/day/")) return false;
-        if (path.includes("/notebook-resource")) return false;
-        if (path.includes("/digital-notebook")) return false;
-        if (path.includes("/packet")) return false;
-        if (path.includes("/video-notes")) return false;
-
-        return /\/first-nine-weeks\/day\/\d+\/?$/.test(path);
-    }
-
-    function getDayFromPath() {
-        const match = window.location.pathname.match(/\/day\/(\d+)/i);
-        return match ? match[1] : null;
-    }
-
-    function getView() {
-        const params = new URLSearchParams(window.location.search);
-        return params.get("view") || "student";
-    }
-
-    function makeDigitalNotebookButton(day, view) {
-        const link = document.createElement("a");
-        link.id = "openDigitalNotebookFromLesson";
-        link.className = "science-digital-notebook-lesson-btn";
-        link.href = `/first-nine-weeks/day/${day}/digital-notebook?view=${view}`;
-        link.textContent = "✍️ Open Digital Notebook Work Page";
-        return link;
-    }
-
-    function findNotebookCard() {
-        const cards = Array.from(document.querySelectorAll("section, article, div"));
-
-        const matches = cards.filter(function (card) {
-            const text = card.innerText || "";
-            return (
-                text.includes("Printable Science Doodle Notebook Resource") ||
-                text.includes("Need the printable notebook form") ||
-                text.includes("Print Notebook Resource")
-            );
-        });
-
-        matches.sort(function (a, b) {
-            return (a.innerText || "").length - (b.innerText || "").length;
-        });
-
-        return matches[0] || null;
-    }
-
-    function findPrintNotebookButton() {
-        return Array.from(document.querySelectorAll("a, button")).find(function (element) {
-            const text = (element.innerText || element.textContent || "").trim();
-            const href = element.getAttribute ? element.getAttribute("href") || "" : "";
-
-            return (
-                text.includes("Print Notebook Resource") ||
-                href.includes("/notebook-resource")
-            );
-        });
-    }
-
-    function addDigitalNotebookButton() {
-        if (!isMainLessonPage()) return;
-        if (document.getElementById("openDigitalNotebookFromLesson")) return;
-
-        const day = getDayFromPath();
-        const view = getView();
-
-        if (!day) return;
-
-        const button = makeDigitalNotebookButton(day, view);
-        const printButton = findPrintNotebookButton();
-
-        if (printButton && printButton.parentElement) {
-            printButton.insertAdjacentElement("afterend", button);
-            return;
-        }
-
-        const notebookCard = findNotebookCard();
-
-        if (notebookCard) {
-            notebookCard.appendChild(button);
-            return;
-        }
-
-        const fallback = document.querySelector("main, .container, .page-shell, body");
-
-        if (fallback) {
-            const box = document.createElement("div");
-            box.className = "science-digital-notebook-lesson-box";
-            box.innerHTML = `
-                <h2>✍️ Digital Notebook Work</h2>
-                <p>Students can type, draw, save, load, and print their notebook work for this lesson.</p>
-            `;
-            box.appendChild(button);
-            fallback.prepend(box);
-        }
-    }
-
-    window.addEventListener("load", addDigitalNotebookButton);
-    setTimeout(addDigitalNotebookButton, 250);
-    setTimeout(addDigitalNotebookButton, 750);
-})();
-</script>
-<!-- End Science Studio Lesson Page Digital Notebook Button -->
-
-
-<!-- Science Studio Force Digital Notebook Button Style -->
-<script>
-(function () {
-    function shouldStyleDigitalNotebookLinks() {
-        const path = window.location.pathname.toLowerCase();
-        return (
-            path.includes("/first-nine-weeks/day/") &&
-            !path.includes("/digital-notebook")
-        );
-    }
-
-    function forceButtonStyle(link) {
-        if (!link) return;
-
-        const text = (link.textContent || "").trim().toLowerCase();
-        const href = link.getAttribute("href") || "";
-
-        if (!href.includes("/digital-notebook")) return;
-
-        link.textContent = "✍️ Open Digital Notebook Work Page";
-        link.classList.add("science-digital-notebook-force-btn");
-
-        link.style.setProperty("display", "inline-block", "important");
-        link.style.setProperty("background", "#00a86b", "important");
-        link.style.setProperty("color", "white", "important");
-        link.style.setProperty("border", "4px solid #111", "important");
-        link.style.setProperty("border-radius", "12px", "important");
-        link.style.setProperty("padding", "10px 14px", "important");
-        link.style.setProperty("margin", "8px 0 8px 10px", "important");
-        link.style.setProperty("font-weight", "1000", "important");
-        link.style.setProperty("text-decoration", "none", "important");
-        link.style.setProperty("box-shadow", "4px 4px 0 rgba(0,0,0,0.22)", "important");
-        link.style.setProperty("line-height", "1.1", "important");
-        link.style.setProperty("font-size", "0.95rem", "important");
-    }
-
-    function run() {
-        if (!shouldStyleDigitalNotebookLinks()) return;
-
-        document.querySelectorAll('a[href*="/digital-notebook"]').forEach(forceButtonStyle);
-    }
-
-    window.addEventListener("load", run);
-    document.addEventListener("DOMContentLoaded", run);
-
-    setTimeout(run, 100);
-    setTimeout(run, 400);
-    setTimeout(run, 1000);
-})();
-</script>
-<!-- End Science Studio Force Digital Notebook Button Style -->
+<!-- End Science Studio Notebook Write Draw Phase 5C -->
 
 </body>
 </html>

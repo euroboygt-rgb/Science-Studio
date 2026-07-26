@@ -1,0 +1,285 @@
+DIGITAL_NOTEBOOK_PROMPTS = {
+    1: {
+        "blank1": "1. A safe scientist follows ___ and listens to directions.",
+        "blank2": "2. Goggles protect your ___ during investigations.",
+        "blank3": "3. Scientists use evidence from ___ to support their ideas.",
+        "blank4": "4. A science notebook helps record observations, data, and ___.",
+    },
+    2: {
+        "blank1": "1. A balance measures the ___ of an object.",
+        "blank2": "2. A graduated cylinder measures liquid ___.",
+        "blank3": "3. A thermometer measures ___.",
+        "blank4": "4. Engineers test and improve a design using ___.",
+    },
+    3: {
+        "blank1": "1. Matter is anything that has mass and takes up ___.",
+        "blank2": "2. A physical property can be observed or measured without changing the ___.",
+        "blank3": "3. Solids, liquids, and gases are states of ___.",
+        "blank4": "4. Scientists classify matter by its physical ___.",
+    },
+    4: {
+        "blank1": "1. Mass is the amount of matter in an ___.",
+        "blank2": "2. A balance can be used to measure ___.",
+        "blank3": "3. Mass is often measured in grams or ___.",
+        "blank4": "4. Objects with more matter usually have more ___.",
+    },
+    5: {
+        "blank1": "1. Volume is the amount of space matter ___.",
+        "blank2": "2. Liquid volume can be measured with a graduated ___.",
+        "blank3": "3. Water displacement can help measure the volume of some ___.",
+        "blank4": "4. Volume is often measured in milliliters or cubic ___.",
+    },
+    6: {
+        "blank1": "1. Magnetism is a physical property because it can be ___ without changing the material.",
+        "blank2": "2. Magnetic materials are attracted to a ___.",
+        "blank3": "3. SINC helps us remember steel, iron, nickel, and ___.",
+        "blank4": "4. Nonmagnetic materials are not strongly attracted to ___.",
+    },
+    7: {
+        "blank1": "1. Density describes how much mass is packed into a certain ___.",
+        "blank2": "2. An object that is less dense than a liquid will usually ___.",
+        "blank3": "3. An object that is more dense than a liquid will usually ___.",
+        "blank4": "4. Density can help explain why some materials float or ___.",
+    },
+    8: {
+        "blank1": "1. Relative density compares whether a material will float or ___.",
+        "blank2": "2. Liquids can form layers because they have different ___.",
+        "blank3": "3. The least dense liquid usually stays on the ___.",
+        "blank4": "4. The most dense liquid usually stays on the ___.",
+    },
+    9: {
+        "blank1": "1. Solubility describes whether a substance can ___ in a liquid.",
+        "blank2": "2. A soluble material dissolves and spreads out ___.",
+        "blank3": "3. An insoluble material does not ___ in the liquid.",
+        "blank4": "4. Sugar is soluble in water, but sand is usually ___.",
+    },
+    10: {
+        "blank1": "1. Dissolving means a substance spreads evenly through a ___.",
+        "blank2": "2. A solution forms when a solute dissolves in a ___.",
+        "blank3": "3. Insoluble materials stay ___ instead of dissolving.",
+        "blank4": "4. Scientists compare properties before and after materials are ___.",
+    },
+    11: {
+        "blank1": "1. Electrical conductivity describes whether energy can move through a ___.",
+        "blank2": "2. A conductor lets electric current ___.",
+        "blank3": "3. An insulator slows or blocks electric ___.",
+        "blank4": "4. A closed circuit is needed for a bulb to ___.",
+    },
+    12: {
+        "blank1": "1. A conductor allows electric current to ___ through it.",
+        "blank2": "2. An insulator does not allow current to flow ___.",
+        "blank3": "3. Metals are often good electrical ___.",
+        "blank4": "4. Plastic and rubber are often electrical ___.",
+    },
+    13: {
+        "blank1": "1. Thermal energy is often described as ___ energy.",
+        "blank2": "2. A thermal conductor allows heat to transfer ___.",
+        "blank3": "3. A thermal insulator ___ heat transfer.",
+        "blank4": "4. Oven mitts are useful because they act as thermal ___.",
+    },
+    14: {
+        "blank1": "1. A property detective identifies materials by observing physical ___.",
+        "blank2": "2. Texture describes how a material feels, such as smooth or ___.",
+        "blank3": "3. Conductivity, magnetism, and density are physical ___.",
+        "blank4": "4. Scientists use evidence to identify unknown ___.",
+    },
+    15: {
+        "blank1": "1. Engineers choose materials based on their physical ___.",
+        "blank2": "2. A good sand boat shell should be solid and ___.",
+        "blank3": "3. A good sail should be light and able to catch ___.",
+        "blank4": "4. Testing a design gives evidence for how to ___ it.",
+    },
+    16: {
+        "blank1": "1. Physical properties can be observed or measured without changing the ___.",
+        "blank2": "2. Matter can be described by mass, volume, density, and ___.",
+        "blank3": "3. A model can help explain what happened during an ___.",
+        "blank4": "4. A good CER uses claim, evidence, and ___.",
+    },
+    17: {
+        "blank1": "1. A mixture forms when two or more materials are ___.",
+        "blank2": "2. In a mixture, each material keeps its own physical ___.",
+        "blank3": "3. Trail mix is an example of a ___.",
+        "blank4": "4. Many mixtures can be separated by physical ___.",
+    },
+    18: {
+        "blank1": "1. Mixtures can be separated using properties like size, magnetism, and ___.",
+        "blank2": "2. A magnet can separate magnetic materials from ___ materials.",
+        "blank3": "3. A sieve can separate solids by ___.",
+        "blank4": "4. Sorting is a separation method based on observable ___.",
+    },
+    19: {
+        "blank1": "1. Filtration separates solids from ___.",
+        "blank2": "2. Evaporation can separate a dissolved solid from a ___.",
+        "blank3": "3. A filter traps some particles while liquid passes ___.",
+        "blank4": "4. Salt water can be separated by using ___.",
+    },
+    20: {
+        "blank1": "1. A solution forms when a solute dissolves in a ___.",
+        "blank2": "2. The solute is the substance that gets ___.",
+        "blank3": "3. The solvent is the liquid that does the ___.",
+        "blank4": "4. A solution is evenly mixed ___.",
+    },
+    21: {
+        "blank1": "1. Some properties stay the same after materials are ___.",
+        "blank2": "2. Dissolving changes how a substance looks, but the material may still be ___.",
+        "blank3": "3. Scientists compare materials before and after mixing to look for ___.",
+        "blank4": "4. Evidence helps show whether properties changed or stayed the ___.",
+    },
+    22: {
+        "blank1": "1. Conservation of matter means matter is not created or ___.",
+        "blank2": "2. When sugar dissolves, the particles are still in the ___.",
+        "blank3": "3. The total mass should stay the same in a closed ___.",
+        "blank4": "4. Dissolved does not mean the substance ___.",
+    },
+    23: {
+        "blank1": "1. The mass of a mixture equals the mass of all the parts ___.",
+        "blank2": "2. A balance can provide evidence about conservation of ___.",
+        "blank3": "3. Dissolved salt still adds to the total ___.",
+        "blank4": "4. Data can help prove that matter is ___.",
+    },
+    24: {
+        "blank1": "1. Scientists measure before and after to compare ___.",
+        "blank2": "2. If no matter leaves the system, total mass should stay the ___.",
+        "blank3": "3. Accurate measurement gives stronger ___.",
+        "blank4": "4. Conservation of matter can be supported with ___.",
+    },
+    25: {
+        "blank1": "1. Tiny particles can spread out when a substance ___.",
+        "blank2": "2. A particle model can explain why a solution looks ___.",
+        "blank3": "3. Particles in a solution are mixed throughout the ___.",
+        "blank4": "4. Models help scientists explain things too small to ___.",
+    },
+    26: {
+        "blank1": "1. Mixtures can often be separated by physical ___.",
+        "blank2": "2. Solutions are mixtures that are evenly ___.",
+        "blank3": "3. Matter is conserved when materials are mixed in a closed ___.",
+        "blank4": "4. Strong science answers use vocabulary and ___.",
+    },
+    27: {
+        "blank1": "1. A force is a push or a ___.",
+        "blank2": "2. Balanced forces are equal in size and opposite in ___.",
+        "blank3": "3. Balanced forces do not change an object’s ___.",
+        "blank4": "4. A stationary object can stay still when forces are ___.",
+    },
+    28: {
+        "blank1": "1. Equal pushes in opposite directions are ___ forces.",
+        "blank2": "2. If forces are balanced, motion does not ___.",
+        "blank3": "3. A fair test changes only one ___.",
+        "blank4": "4. Evidence from repeated trials can support a ___.",
+    },
+    29: {
+        "blank1": "1. Unequal pulls create ___ forces.",
+        "blank2": "2. Unbalanced forces can change an object’s ___.",
+        "blank3": "3. A stronger pull can make an object start ___.",
+        "blank4": "4. Force arrows can show direction and ___.",
+    },
+    30: {
+        "blank1": "1. Unequal pushes can cause a change in ___.",
+        "blank2": "2. Unbalanced forces can make objects speed up, slow down, or ___.",
+        "blank3": "3. The larger force usually determines the direction of ___.",
+        "blank4": "4. Motion changes when forces are not ___.",
+    },
+    31: {
+        "blank1": "1. Mechanical energy is energy of motion or ___.",
+        "blank2": "2. A moving object can transfer energy to another ___.",
+        "blank3": "3. Pushes and pulls can transfer mechanical ___.",
+        "blank4": "4. Collisions can show evidence of energy ___.",
+    },
+    32: {
+        "blank1": "1. A system is made of parts that work ___.",
+        "blank2": "2. Forces can affect the motion of objects in a ___.",
+        "blank3": "3. Changing one part of a system can affect the ___.",
+        "blank4": "4. Models help show how forces and motion are ___.",
+    },
+    33: {
+        "blank1": "1. A ramp investigation can test how height affects ___.",
+        "blank2": "2. The variable changed on purpose is the ___ variable.",
+        "blank3": "3. The variable measured is the ___ variable.",
+        "blank4": "4. A controlled investigation keeps other variables the ___.",
+    },
+    34: {
+        "blank1": "1. A balloon rocket moves because air pushes out in one ___.",
+        "blank2": "2. The rocket moves in the opposite direction because of a ___.",
+        "blank3": "3. Engineers use tests to improve a ___.",
+        "blank4": "4. Motion data can be used as ___.",
+    },
+    35: {
+        "blank1": "1. A variable is something that can ___.",
+        "blank2": "2. A fair investigation changes only one ___ at a time.",
+        "blank3": "3. Data tables help organize investigation ___.",
+        "blank4": "4. Graphs can help scientists see patterns in ___.",
+    },
+    36: {
+        "blank1": "1. Balanced forces do not change an object’s motion because they are ___.",
+        "blank2": "2. Unbalanced forces can cause motion to ___.",
+        "blank3": "3. Friction is a force that slows motion between ___.",
+        "blank4": "4. A complete explanation uses evidence and ___.",
+    },
+    37: {
+        "blank1": "1. CMELTS helps us remember chemical, mechanical, electrical, light, thermal, and ___.",
+        "blank2": "2. Light energy is energy we can ___.",
+        "blank3": "3. Sound energy is energy we can hear from ___.",
+        "blank4": "4. Thermal energy is related to heat and moving ___.",
+    },
+    38: {
+        "blank1": "1. Energy can change from one form to ___.",
+        "blank2": "2. A toaster changes electrical energy into thermal and ___ energy.",
+        "blank3": "3. A battery-powered device often starts with chemical ___.",
+        "blank4": "4. An energy transformation shows how energy ___.",
+    },
+    39: {
+        "blank1": "1. A battery stores chemical ___.",
+        "blank2": "2. In a circuit, electrical energy moves through the ___.",
+        "blank3": "3. A bulb changes electrical energy into light and ___ energy.",
+        "blank4": "4. A switch can open or close a ___.",
+    },
+    40: {
+        "blank1": "1. A flashlight changes chemical energy to electrical energy to light and ___ energy.",
+        "blank2": "2. The battery provides stored ___ energy.",
+        "blank3": "3. The wires carry ___ energy through the circuit.",
+        "blank4": "4. The bulb gives off light and heat, which is ___ energy.",
+    },
+    41: {
+        "blank1": "1. An energy flowchart shows the order of energy ___.",
+        "blank2": "2. Arrows in a flowchart show the direction energy ___.",
+        "blank3": "3. Devices can transform energy into more than one ___.",
+        "blank4": "4. Evidence helps support an energy ___.",
+    },
+    42: {
+        "blank1": "1. Many devices use electrical energy to produce light, sound, thermal, or mechanical ___.",
+        "blank2": "2. A fan changes electrical energy into mechanical energy and ___.",
+        "blank3": "3. A speaker changes electrical energy into ___ energy.",
+        "blank4": "4. Comparing devices helps identify energy ___.",
+    },
+    43: {
+        "blank1": "1. Energy is never destroyed, but it can change ___.",
+        "blank2": "2. CMELTS stands for chemical, mechanical, electrical, light, thermal, and ___.",
+        "blank3": "3. Energy evidence can include light, sound, heat, or ___.",
+        "blank4": "4. Scientists use models to show energy ___.",
+    },
+    44: {
+        "blank1": "1. Read each question carefully and use the stimulus as ___.",
+        "blank2": "2. Eliminate answers that do not match the ___.",
+        "blank3": "3. A strong answer is supported by science ___.",
+        "blank4": "4. After an assessment, students can review mistakes and set ___.",
+    },
+    45: {
+        "blank1": "1. Reflection helps students think about what they learned and how they ___.",
+        "blank2": "2. A goal should be specific and connected to evidence from ___.",
+        "blank3": "3. Notebook evidence can show growth in vocabulary, labs, and ___.",
+        "blank4": "4. Scientists improve by using feedback and ___.",
+    },
+}
+
+DEFAULT_DIGITAL_NOTEBOOK_PROMPTS = {
+    "blank1": "1. Answer the first fill-in-the-blank question from the printable notebook page.",
+    "blank2": "2. Answer the second fill-in-the-blank question from the printable notebook page.",
+    "blank3": "3. Answer the third fill-in-the-blank question from the printable notebook page.",
+    "blank4": "4. Answer the fourth fill-in-the-blank question from the printable notebook page.",
+}
+
+
+def get_digital_notebook_prompts(day):
+    prompts = dict(DEFAULT_DIGITAL_NOTEBOOK_PROMPTS)
+    prompts.update(DIGITAL_NOTEBOOK_PROMPTS.get(int(day), {}))
+    return prompts

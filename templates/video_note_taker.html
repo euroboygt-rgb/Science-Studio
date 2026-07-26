@@ -1,258 +1,537 @@
 {% extends "base.html" %}
 
-{% block title %}{{ video["title"] }} Video Notes{% endblock %}
+{% block title %}Video Note-Taker{% endblock %}
 
 {% block content %}
+{% set v = video if video is defined else {} %}
+{% set video_title = v.get("title", "Science Video Note-Taker") %}
+{% set video_source = v.get("source", "Science Studio") %}
+{% set video_embed = v.get("embed_url", "") %}
+{% set video_watch = v.get("watch_url", "") %}
+{% set video_unit = v.get("unit", "Science Review") %}
+{% set video_teks = v.get("teks", []) %}
+{% set watch_for = v.get("watch_for", []) %}
+{% set video_topic = v.get("topic", video_title) %}
+{% set day_num = day if day is defined else lesson_day if lesson_day is defined else none %}
+{% set current_view = request.args.get("view", "student") %}
+
 <style>
-.video-notes-page {
+.video-note-wrap {
     max-width: 1000px;
-    margin: 24px auto;
-    background: #fff7d6;
-    border: 6px solid #111;
-    border-radius: 28px;
-    padding: 24px;
-    box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+    margin: 22px auto;
 }
 
-.video-notes-top {
-    background: linear-gradient(135deg, #6f2dbd, #123f8c, #00a6d6);
+.video-note-hero {
+    background: linear-gradient(135deg, #14324f, #246d94, #69b5df);
     color: white;
     border: 5px solid #111;
     border-radius: 24px;
-    padding: 20px;
+    padding: 24px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.22);
+    margin-bottom: 20px;
+}
+
+.video-note-pill {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ffcc00;
+    border: 3px solid #111;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-weight: 1000;
+    margin: 4px 6px 8px 0;
+}
+
+.video-note-card {
+    background: white;
+    border: 5px solid #111;
+    border-radius: 20px;
+    padding: 18px;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.16);
     margin-bottom: 18px;
 }
 
-.video-notes-badge {
-    display: inline-block;
-    background: #6f2dbd;
-    color: #ff9f1c;
-    border: 4px solid #111;
-    border-radius: 999px;
-    padding: 7px 12px;
-    font-weight: 1000;
-    margin: 3px 5px 8px 0;
+.video-note-card.yellow {
+    background: #fff7d6;
 }
 
-.video-actions {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin: 14px 0;
-}
-
-.video-btn {
-    display: inline-block;
-    background: #ff9f1c;
-    color: #111 !important;
-    border: 4px solid #111;
-    border-radius: 14px;
-    padding: 10px 14px;
-    font-weight: 1000;
-    text-decoration: none !important;
-    cursor: pointer;
-    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
-}
-
-.video-btn.blue {
-    background: #0077ff;
-    color: white !important;
-}
-
-.video-frame-big {
-    aspect-ratio: 16 / 9;
-    border: 5px solid #111;
-    border-radius: 22px;
-    overflow: hidden;
-    background: #111;
-    margin: 16px 0;
-}
-
-.video-frame-big iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-.notes-section {
-    background: white;
-    border: 5px solid #111;
-    border-radius: 22px;
-    padding: 18px;
-    margin: 16px 0;
-}
-
-.note-lines {
-    background: repeating-linear-gradient(#fff 0 30px, #d9e9ff 31px 32px);
-    border: 3px solid #111;
-    border-radius: 14px;
-    min-height: 110px;
-    padding: 12px;
-}
-
-.question-box {
+.video-note-actions {
+    background: #fff7d6;
     border: 4px solid #111;
     border-radius: 18px;
     padding: 12px;
-    margin: 12px 0;
-    background: #f8fbff;
+    margin: 14px 0 18px 0;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.18);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
-.answer-key {
+.video-note-btn {
+    border: 4px solid #111;
+    border-radius: 12px;
+    padding: 9px 13px;
+    font-weight: 1000;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.22);
+}
+
+.video-note-btn.green {
+    background: #00a86b;
+    color: white;
+}
+
+.video-note-btn.blue {
+    background: #0077ff;
+    color: white;
+}
+
+.video-note-btn.yellow {
+    background: #ffcc00;
+    color: #111;
+}
+
+.video-note-btn.red {
+    background: #e63946;
+    color: white;
+}
+
+.video-note-btn.purple {
+    background: #6f2dbd;
+    color: white;
+}
+
+.video-note-message {
+    display: none;
     background: #d8ffe9;
     border: 4px solid #111;
-    border-radius: 16px;
+    border-radius: 14px;
+    padding: 10px 12px;
+    margin: 10px 0 14px 0;
+    font-weight: 1000;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+}
+
+.video-note-message.bad {
+    background: #ffe1e1;
+}
+
+.video-frame {
+    border: 5px solid #111;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #111;
+}
+
+.video-frame iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+}
+
+.video-note-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.video-note-input {
+    width: 100%;
+    border: 3px solid #111;
+    border-radius: 10px;
     padding: 10px;
-    margin-top: 8px;
+    font-size: 1rem;
+    background: white;
+}
+
+.video-note-write-box {
+    margin: 14px 0;
+}
+
+.video-note-write-box label {
+    display: block;
+    font-weight: 1000;
+    margin-bottom: 6px;
+}
+
+.video-note-textarea {
+    display: block;
+    width: 100%;
+    min-height: 115px;
+    resize: vertical;
+    border: 4px solid #111;
+    border-radius: 14px;
+    padding: 12px;
+    font-size: 1rem;
+    line-height: 1.4;
+    background: white;
+    color: #111;
+    font-family: inherit;
+}
+
+.video-note-textarea.big {
+    min-height: 170px;
+}
+
+.video-note-textarea:focus,
+.video-note-input:focus {
+    outline: 4px solid #00a6d6;
+}
+
+.video-print-response {
+    display: none;
+}
+
+.teacher-key-box {
+    background: #f5f3ff;
+    border: 4px solid #111;
+    border-radius: 16px;
+    padding: 14px;
+    margin-top: 12px;
+}
+
+@media (max-width: 800px) {
+    .video-note-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media print {
     nav,
+    header,
     footer,
-    .video-actions,
-    .video-frame-big,
-    #scienceStudioAiWidget {
+    .navbar,
+    .site-header,
+    .video-note-actions,
+    .video-note-message,
+    .video-frame,
+    #scienceStudioAiWidget,
+    .no-print {
         display: none !important;
     }
 
     body {
         background: white !important;
+        color: black !important;
     }
 
-    .video-notes-page {
-        border: none;
-        box-shadow: none;
+    .video-note-wrap {
+        max-width: 100%;
         margin: 0;
-        padding: 0;
     }
 
-    .notes-section {
+    .video-note-hero,
+    .video-note-card {
+        box-shadow: none !important;
+        border: 3px solid #111 !important;
         page-break-inside: avoid;
+    }
+
+    .video-note-hero {
+        color: black !important;
+        background: white !important;
+    }
+
+    .video-note-textarea,
+    .video-note-input {
+        display: none !important;
+    }
+
+    .video-print-response {
+        display: block !important;
+        min-height: 42px;
+        border: 3px solid #111;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 8px 0 14px 0;
+        white-space: pre-wrap;
+        font-weight: 700;
+        background: white;
+        color: black;
+        page-break-inside: avoid;
+    }
+
+    h1,
+    h2,
+    h3 {
+        page-break-after: avoid;
     }
 }
 </style>
 
-<section class="video-notes-page">
-    <div class="video-notes-top">
-        <span class="video-notes-badge">Video Notes</span>
-        <span class="video-notes-badge">{{ video["unit"] }}</span>
-        <span class="video-notes-badge">TEKS {{ video["teks"] }}</span>
-        {% if day %}
-            <span class="video-notes-badge">Day {{ day }}</span>
-        {% endif %}
-        {% if view == "teacher" %}
-            <span class="video-notes-badge">Teacher Key</span>
-        {% else %}
-            <span class="video-notes-badge">Student Page</span>
+<div class="video-note-wrap">
+    <section class="video-note-hero">
+        <span class="video-note-pill">Video Note-Taker</span>
+        <span class="video-note-pill">{{ video_unit }}</span>
+        {% if day_num %}
+            <span class="video-note-pill">Day {{ day_num }}</span>
         {% endif %}
 
-        <h1>{{ video["title"] }}</h1>
-        <p><strong>Source:</strong> {{ video["source"] }}</p>
-        <p><strong>Focus:</strong> {{ video["focus"] }}</p>
-    </div>
+        <h1>{{ video_title }}</h1>
+        <p>Watch the video, take notes, answer questions, and explain your thinking with science evidence.</p>
 
-    <div class="video-actions">
-        <button class="video-btn" type="button" onclick="window.print()">Print Notes</button>
-
-        {% if day %}
-            <a class="video-btn blue" href="/first-nine-weeks/day/{{ day }}?view=student">Back to Day {{ day }}</a>
-            {% if view == "teacher" %}
-                <a class="video-btn" href="/first-nine-weeks/day/{{ day }}/video-notes/{{ video['slug'] }}?view=student">Student Version</a>
-            {% else %}
-                <a class="video-btn" href="/first-nine-weeks/day/{{ day }}/video-notes/{{ video['slug'] }}?view=teacher">Teacher Key</a>
-            {% endif %}
-        {% else %}
-            <a class="video-btn blue" href="/video-library">Back to Video Library</a>
-            {% if view == "teacher" %}
-                <a class="video-btn" href="/video-library/{{ video['slug'] }}/notes?view=student">Student Version</a>
-            {% else %}
-                <a class="video-btn" href="/video-library/{{ video['slug'] }}/notes?view=teacher">Teacher Key</a>
-            {% endif %}
+        {% if day_num %}
+            <a class="video-note-btn yellow no-print" href="/first-nine-weeks/day/{{ day_num }}?view=student">Back to Day {{ day_num }}</a>
         {% endif %}
+        <a class="video-note-btn yellow no-print" href="/video-library">Back to Video Library</a>
+    </section>
+
+    <div class="video-note-actions no-print">
+        <button type="button" class="video-note-btn green" id="videoNotesSaveBtn">Save Notes</button>
+        <button type="button" class="video-note-btn blue" id="videoNotesLoadBtn">Load Saved Notes</button>
+        <button type="button" class="video-note-btn yellow" id="videoNotesPrintBtn">Print Notes</button>
+        <button type="button" class="video-note-btn red" id="videoNotesClearBtn">Clear Saved Notes</button>
     </div>
 
-    <div class="video-frame-big">
-        <iframe
-            src="{{ video['embed_url'] }}"
-            title="{{ video['title'] }}"
-            allowfullscreen>
-        </iframe>
-    </div>
+    <div class="video-note-message" id="videoNotesMessage"></div>
 
-    <section class="notes-section">
+    {% if video_embed %}
+    <section class="video-note-card">
+        <h2>🎬 Watch the Video</h2>
+        <div class="video-frame">
+            <iframe src="{{ video_embed }}" title="{{ video_title }}" allowfullscreen></iframe>
+        </div>
+    </section>
+    {% elif video_watch %}
+    <section class="video-note-card">
+        <h2>🎬 Watch the Video</h2>
+        <p><a class="video-note-btn blue" href="{{ video_watch }}" target="_blank" rel="noopener">Open Video</a></p>
+    </section>
+    {% endif %}
+
+    <section class="video-note-card">
         <h2>👩‍🔬 Scientist Information</h2>
-        <p><strong>Name:</strong> _______________________________________</p>
-        <p><strong>Date:</strong> ________________________________________</p>
+        <div class="video-note-grid">
+            <div>
+                <label for="studentName"><strong>Name:</strong></label>
+                <input id="studentName" class="video-note-input" data-save-field="studentName" placeholder="Type your name">
+                <div class="video-print-response" data-print-for="studentName"></div>
+            </div>
+
+            <div>
+                <label for="studentDate"><strong>Date:</strong></label>
+                <input id="studentDate" class="video-note-input" data-save-field="studentDate" placeholder="Type the date">
+                <div class="video-print-response" data-print-for="studentDate"></div>
+            </div>
+        </div>
     </section>
 
-    <section class="notes-section">
+    <section class="video-note-card">
         <h2>🎯 Learning Connection</h2>
-        <p><strong>TEKS:</strong> {{ video["teks"] }}</p>
-        <p><strong>Today I am learning about:</strong> {{ video["focus"] }}</p>
+        <p>
+            <strong>TEKS:</strong>
+            {% if video_teks is string %}
+                {{ video_teks }}
+            {% elif video_teks %}
+                {{ video_teks|join(", ") }}
+            {% else %}
+                Science TEKS Review
+            {% endif %}
+        </p>
+        <p><strong>Today I am learning about:</strong> {{ video_topic }}</p>
     </section>
 
-    <section class="notes-section">
+    <section class="video-note-card">
         <h2>👀 Watch For</h2>
-        <ul>
-            {% for item in video["watch_for"] %}
-            <li>{{ item }}</li>
-            {% endfor %}
-        </ul>
+        {% if watch_for %}
+            <ul>
+                {% for item in watch_for %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <ul>
+                <li>Main science idea</li>
+                <li>Important vocabulary</li>
+                <li>Evidence or examples from the video</li>
+            </ul>
+        {% endif %}
     </section>
 
-    <section class="notes-section">
+    <section class="video-note-card">
         <h2>📝 Video Notes</h2>
-        <p>Write 3 important science ideas from the video.</p>
-        <div class="note-lines"></div>
+
+        <div class="video-note-write-box">
+            <label for="videoNotesMain">Write 3 important science ideas from the video.</label>
+            <textarea id="videoNotesMain" class="video-note-textarea big" data-save-field="videoNotesMain" placeholder="Type your notes here..."></textarea>
+            <div class="video-print-response" data-print-for="videoNotesMain"></div>
+        </div>
     </section>
 
-    <section class="notes-section">
+    <section class="video-note-card">
         <h2>🔎 Video Questions</h2>
 
-        {% for question in video["questions"] %}
-        <div class="question-box">
-            <p><strong>{{ loop.index }}. {{ question["q"] }}</strong></p>
-            <div class="note-lines"></div>
-
-            {% if view == "teacher" %}
-            <div class="answer-key">
-                <strong>Teacher answer:</strong> {{ question["a"] }}
-            </div>
-            {% endif %}
+        <div class="video-note-write-box">
+            <label for="videoQuestion1">1. What is the main science idea?</label>
+            <textarea id="videoQuestion1" class="video-note-textarea" data-save-field="videoQuestion1" placeholder="Type your answer here..."></textarea>
+            <div class="video-print-response" data-print-for="videoQuestion1"></div>
         </div>
-        {% endfor %}
+
+        <div class="video-note-write-box">
+            <label for="videoQuestion2">2. What evidence or example did the video show?</label>
+            <textarea id="videoQuestion2" class="video-note-textarea" data-save-field="videoQuestion2" placeholder="Type your answer here..."></textarea>
+            <div class="video-print-response" data-print-for="videoQuestion2"></div>
+        </div>
+
+        <div class="video-note-write-box">
+            <label for="videoQuestion3">3. What vocabulary word from the lesson connects to this video?</label>
+            <textarea id="videoQuestion3" class="video-note-textarea" data-save-field="videoQuestion3" placeholder="Type your answer here..."></textarea>
+            <div class="video-print-response" data-print-for="videoQuestion3"></div>
+        </div>
     </section>
 
-    <section class="notes-section">
+    <section class="video-note-card">
         <h2>⭐ STAAR Connection</h2>
-        <p>
-            How could this video help you answer a STAAR-style science question?
-            Use science vocabulary and evidence.
-        </p>
-        <div class="note-lines"></div>
 
-        {% if view == "teacher" %}
-        <div class="answer-key">
-            <strong>Teacher answer:</strong>
-            Students should connect the video to the TEKS, use vocabulary from the lesson,
-            and explain how evidence supports a science claim.
+        <div class="video-note-write-box">
+            <label for="videoStaarConnection">How could this video help you answer a STAAR-style science question?</label>
+            <textarea id="videoStaarConnection" class="video-note-textarea" data-save-field="videoStaarConnection" placeholder="Type your STAAR connection here..."></textarea>
+            <div class="video-print-response" data-print-for="videoStaarConnection"></div>
         </div>
-        {% endif %}
     </section>
 
-    <section class="notes-section">
-        <h2>🧠 CER Video Response</h2>
-        <p><strong>Claim:</strong> What science idea did you learn from the video?</p>
-        <p><strong>Evidence:</strong> What example from the video supports your claim?</p>
-        <p><strong>Reasoning:</strong> How does your evidence prove your claim?</p>
-        <div class="note-lines"></div>
+    <section class="video-note-card yellow">
+        <h2>🧠 CER Reflection</h2>
 
-        {% if view == "teacher" %}
-        <div class="answer-key">
-            <strong>Teacher look-for:</strong>
-            Claim names a science idea, evidence comes from the video, and reasoning explains why the evidence supports the claim.
+        <div class="video-note-write-box">
+            <label for="videoClaim">Claim</label>
+            <textarea id="videoClaim" class="video-note-textarea" data-save-field="videoClaim" placeholder="Write a claim about what you learned..."></textarea>
+            <div class="video-print-response" data-print-for="videoClaim"></div>
         </div>
-        {% endif %}
+
+        <div class="video-note-write-box">
+            <label for="videoEvidence">Evidence</label>
+            <textarea id="videoEvidence" class="video-note-textarea" data-save-field="videoEvidence" placeholder="Write evidence from the video..."></textarea>
+            <div class="video-print-response" data-print-for="videoEvidence"></div>
+        </div>
+
+        <div class="video-note-write-box">
+            <label for="videoReasoning">Reasoning</label>
+            <textarea id="videoReasoning" class="video-note-textarea" data-save-field="videoReasoning" placeholder="Explain how your evidence supports your claim..."></textarea>
+            <div class="video-print-response" data-print-for="videoReasoning"></div>
+        </div>
     </section>
-</section>
+
+    {% if current_view == "teacher" %}
+    <section class="video-note-card">
+        <h2>Teacher Notes</h2>
+        <div class="teacher-key-box">
+            <p><strong>Look for:</strong> student responses that use science vocabulary, evidence from the video, and a clear explanation.</p>
+            <p><strong>Quick check:</strong> Students should connect the video to the lesson TEKS and use examples from what they watched.</p>
+        </div>
+    </section>
+    {% endif %}
+</div>
+
+<script>
+(function () {
+    const storageKey = "scienceStudioCleanVideoNotes:" + window.location.pathname;
+
+    function fields() {
+        return Array.from(document.querySelectorAll("[data-save-field]"));
+    }
+
+    function showMessage(message, good = true) {
+        const box = document.getElementById("videoNotesMessage");
+        if (!box) return;
+
+        box.style.display = "block";
+        box.textContent = message;
+        box.classList.toggle("bad", !good);
+    }
+
+    function updatePrintMirrors() {
+        fields().forEach(function (field) {
+            const key = field.dataset.saveField;
+            const mirror = document.querySelector(`[data-print-for="${key}"]`);
+
+            if (!mirror) return;
+
+            mirror.textContent = field.value.trim() || "No response typed yet.";
+        });
+    }
+
+    function saveNotes() {
+        const data = {
+            savedAt: new Date().toISOString(),
+            values: {}
+        };
+
+        fields().forEach(function (field) {
+            data.values[field.dataset.saveField] = field.value;
+        });
+
+        localStorage.setItem(storageKey, JSON.stringify(data));
+        updatePrintMirrors();
+        showMessage("Video notes saved on this device.");
+    }
+
+    function loadNotes() {
+        const raw = localStorage.getItem(storageKey);
+
+        if (!raw) {
+            showMessage("No saved notes found for this video yet.", false);
+            return;
+        }
+
+        let data;
+
+        try {
+            data = JSON.parse(raw);
+        } catch (error) {
+            showMessage("Saved notes could not be loaded.", false);
+            return;
+        }
+
+        fields().forEach(function (field) {
+            const key = field.dataset.saveField;
+            if (data.values && key in data.values) {
+                field.value = data.values[key];
+            }
+        });
+
+        updatePrintMirrors();
+        showMessage("Saved video notes loaded.");
+    }
+
+    function clearNotes() {
+        if (!window.confirm("Clear saved notes for this video page?")) {
+            return;
+        }
+
+        localStorage.removeItem(storageKey);
+
+        fields().forEach(function (field) {
+            field.value = "";
+        });
+
+        updatePrintMirrors();
+        showMessage("Video notes cleared.");
+    }
+
+    function setTodayIfBlank() {
+        const dateField = document.getElementById("studentDate");
+
+        if (dateField && !dateField.value.trim()) {
+            const today = new Date();
+            dateField.value = today.toLocaleDateString();
+        }
+    }
+
+    document.getElementById("videoNotesSaveBtn").addEventListener("click", saveNotes);
+    document.getElementById("videoNotesLoadBtn").addEventListener("click", loadNotes);
+    document.getElementById("videoNotesClearBtn").addEventListener("click", clearNotes);
+    document.getElementById("videoNotesPrintBtn").addEventListener("click", function () {
+        updatePrintMirrors();
+        window.print();
+    });
+
+    document.addEventListener("input", updatePrintMirrors, true);
+    window.addEventListener("beforeprint", updatePrintMirrors);
+
+    setTodayIfBlank();
+    updatePrintMirrors();
+})();
+</script>
 {% endblock %}

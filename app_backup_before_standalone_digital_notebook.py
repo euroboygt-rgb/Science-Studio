@@ -1258,37 +1258,6 @@ def unit1_day15_sand_boat_redirect():
 # End Day 15 Sand Boat Engineering Challenge routes
 
 
-
-# Standalone Digital Notebook Work route
-@app.route("/first-nine-weeks/day/<int:day>/digital-notebook")
-def standalone_digital_notebook_work(day):
-    from flask import render_template, request
-    try:
-        from curriculum.first_nine_weeks import first_nine_weeks_lessons
-        lesson = first_nine_weeks_lessons.get(day, {})
-    except Exception:
-        lesson = {}
-
-    lesson_title = (
-        lesson.get("title")
-        or lesson.get("lesson_title")
-        or f"Day {day} Science Notebook"
-    )
-
-    view = request.args.get("view", "student")
-
-    from curriculum.digital_notebook_prompts import get_digital_notebook_prompts
-
-    return render_template(
-        "digital_notebook_work.html",
-        day=day,
-        view=view,
-        lesson_title=lesson_title,
-        notebook_prompts=get_digital_notebook_prompts(day),
-    )
-# End Standalone Digital Notebook Work route
-
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
