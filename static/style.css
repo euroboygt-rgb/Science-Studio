@@ -1562,3 +1562,202 @@ a[href*="/digital-notebook"]:hover {
     }
 }
 /* End Force Digital Notebook Button Style */
+
+
+/* Science Studio Safe Phenomenon Mission V2 */
+.ss-safe-phen-card {
+    background: #fff7d6;
+    border: 5px solid #111;
+    border-radius: 24px;
+    padding: 20px;
+    margin: 18px 0;
+    box-shadow: 7px 7px 0 rgba(0,0,0,0.18);
+}
+
+.ss-safe-phen-pill {
+    display: inline-block;
+    background: #6f2dbd;
+    color: #ffcc00;
+    border: 4px solid #111;
+    border-radius: 999px;
+    padding: 7px 13px;
+    font-weight: 1000;
+    margin-bottom: 8px;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.22);
+}
+
+.ss-safe-phen-title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 1000;
+    color: #111;
+    line-height: 1.05;
+}
+
+.ss-safe-phen-tag {
+    margin: 6px 0 12px 0;
+    font-weight: 1000;
+    color: #14324f;
+}
+
+.ss-safe-phen-image-box {
+    background: white;
+    border: 4px solid #111;
+    border-radius: 20px;
+    padding: 12px;
+    margin: 14px 0;
+}
+
+.ss-safe-phen-image {
+    display: block;
+    width: 100%;
+    max-width: 950px;
+    max-height: 520px;
+    object-fit: contain;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 14px;
+}
+
+.ss-safe-phen-focus,
+.ss-safe-phen-mini,
+.ss-safe-phen-cer {
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.10);
+}
+
+.ss-safe-phen-focus {
+    background: #eaf6ff;
+    margin-bottom: 14px;
+}
+
+.ss-safe-phen-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 14px 0;
+}
+
+.ss-safe-phen-mini {
+    background: #eaf6ff;
+}
+
+.ss-safe-phen-cer {
+    background: #f5f3ff;
+    margin-top: 14px;
+}
+
+.ss-safe-phen-focus h3,
+.ss-safe-phen-mini h3,
+.ss-safe-phen-cer h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+    font-weight: 1000;
+    color: #111;
+}
+
+.ss-safe-phen-focus p,
+.ss-safe-phen-mini p,
+.ss-safe-phen-cer p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #111;
+}
+
+@media (max-width: 900px) {
+    .ss-safe-phen-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media print {
+    .ss-safe-phen-card {
+        box-shadow: none;
+        border: 3px solid #111;
+        page-break-inside: avoid;
+    }
+
+    .ss-safe-phen-image {
+        max-height: 3.5in;
+    }
+
+    .ss-safe-phen-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+}
+/* End Science Studio Safe Phenomenon Mission V2 */
+
+
+/* Phenomenon Mission Box Only Fix */
+#safePhenomenonMissionV2.ss-safe-phen-card {
+    background: #fff7d6 !important;
+    border: 5px solid #111 !important;
+    border-radius: 24px !important;
+    padding: 20px !important;
+    margin: 18px 0 !important;
+    box-shadow: 7px 7px 0 rgba(0,0,0,0.18) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+}
+
+#safePhenomenonMissionV2 .ss-safe-phen-pill {
+    display: inline-block !important;
+    background: #6f2dbd !important;
+    color: #ffcc00 !important;
+    border: 4px solid #111 !important;
+    border-radius: 999px !important;
+    padding: 7px 13px !important;
+    font-weight: 1000 !important;
+    margin-bottom: 8px !important;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.22) !important;
+}
+
+#safePhenomenonMissionV2 .ss-safe-phen-image-box {
+    background: white !important;
+    border: 4px solid #111 !important;
+    border-radius: 20px !important;
+    padding: 12px !important;
+    margin: 14px 0 !important;
+    overflow: hidden !important;
+}
+
+#safePhenomenonMissionV2 .ss-safe-phen-image {
+    display: block !important;
+    width: 100% !important;
+    max-width: 950px !important;
+    max-height: 520px !important;
+    object-fit: contain !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    border-radius: 14px !important;
+}
+
+#safePhenomenonMissionV2 .ss-safe-phen-focus,
+#safePhenomenonMissionV2 .ss-safe-phen-mini,
+#safePhenomenonMissionV2 .ss-safe-phen-cer {
+    border: 4px solid #111 !important;
+    border-radius: 18px !important;
+    padding: 14px !important;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.10) !important;
+}
+
+#safePhenomenonMissionV2 .ss-safe-phen-focus,
+#safePhenomenonMissionV2 .ss-safe-phen-mini {
+    background: #eaf6ff !important;
+}
+
+#safePhenomenonMissionV2 .ss-safe-phen-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    margin: 14px 0 !important;
+}
+
+#safePhenomenonMissionV2 .ss-safe-phen-cer {
+    background: #f5f3ff !important;
+}
+/* End Phenomenon Mission Box Only Fix */

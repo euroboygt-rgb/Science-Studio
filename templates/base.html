@@ -116,6 +116,171 @@
   </style>
 
   {% block head %}{% endblock %}
+
+<!-- Science Studio Phenomenon Box Runtime Style Fix -->
+<script>
+(function () {
+    function addPhenomenonRuntimeStyles() {
+        if (document.getElementById("scienceStudioPhenomenonRuntimeStyles")) return;
+
+        const style = document.createElement("style");
+        style.id = "scienceStudioPhenomenonRuntimeStyles";
+        style.textContent = `
+            #safePhenomenonMissionV2.ss-safe-phen-card {
+                background: #fff7d6 !important;
+                border: 5px solid #111 !important;
+                border-radius: 24px !important;
+                padding: 20px !important;
+                margin: 18px 0 !important;
+                box-shadow: 7px 7px 0 rgba(0,0,0,0.18) !important;
+                box-sizing: border-box !important;
+                width: 100% !important;
+            }
+
+            #safePhenomenonMissionV2 .ss-safe-phen-top {
+                margin-bottom: 12px !important;
+            }
+
+            #safePhenomenonMissionV2 .ss-safe-phen-pill {
+                display: inline-block !important;
+                background: #6f2dbd !important;
+                color: #ffcc00 !important;
+                border: 4px solid #111 !important;
+                border-radius: 999px !important;
+                padding: 7px 13px !important;
+                font-weight: 1000 !important;
+                margin-bottom: 8px !important;
+                box-shadow: 3px 3px 0 rgba(0,0,0,0.22) !important;
+                font-size: 0.95rem !important;
+                line-height: 1.1 !important;
+            }
+
+            #safePhenomenonMissionV2 .ss-safe-phen-title {
+                margin: 0 !important;
+                font-size: 2rem !important;
+                font-weight: 1000 !important;
+                color: #111 !important;
+                line-height: 1.05 !important;
+            }
+
+            #safePhenomenonMissionV2 .ss-safe-phen-tag {
+                margin: 6px 0 12px 0 !important;
+                font-weight: 1000 !important;
+                color: #14324f !important;
+                font-size: 1rem !important;
+            }
+
+            #safePhenomenonMissionV2 .ss-safe-phen-image-box {
+                background: white !important;
+                border: 4px solid #111 !important;
+                border-radius: 20px !important;
+                padding: 12px !important;
+                margin: 14px 0 !important;
+                box-sizing: border-box !important;
+                overflow: hidden !important;
+                text-align: center !important;
+            }
+
+            #safePhenomenonMissionV2 .ss-safe-phen-image {
+                display: block !important;
+                width: 100% !important;
+                max-width: 950px !important;
+                max-height: 520px !important;
+                object-fit: contain !important;
+                height: auto !important;
+                margin: 0 auto !important;
+                border-radius: 14px !important;
+            }
+
+            #safePhenomenonMissionV2 .ss-safe-phen-focus,
+            #safePhenomenonMissionV2 .ss-safe-phen-mini,
+            #safePhenomenonMissionV2 .ss-safe-phen-cer {
+                border: 4px solid #111 !important;
+                border-radius: 18px !important;
+                padding: 14px !important;
+                box-shadow: 4px 4px 0 rgba(0,0,0,0.10) !important;
+                box-sizing: border-box !important;
+            }
+
+            #safePhenomenonMissionV2 .ss-safe-phen-focus {
+                background: #eaf6ff !important;
+                margin-bottom: 14px !important;
+            }
+
+            #safePhenomenonMissionV2 .ss-safe-phen-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 14px !important;
+                margin: 14px 0 !important;
+            }
+
+            #safePhenomenonMissionV2 .ss-safe-phen-mini {
+                background: #eaf6ff !important;
+            }
+
+            #safePhenomenonMissionV2 .ss-safe-phen-cer {
+                background: #f5f3ff !important;
+                margin-top: 14px !important;
+            }
+
+            #safePhenomenonMissionV2 .ss-safe-phen-focus h3,
+            #safePhenomenonMissionV2 .ss-safe-phen-mini h3,
+            #safePhenomenonMissionV2 .ss-safe-phen-cer h3 {
+                margin: 0 0 8px 0 !important;
+                font-size: 1.25rem !important;
+                font-weight: 1000 !important;
+                color: #111 !important;
+                line-height: 1.15 !important;
+            }
+
+            #safePhenomenonMissionV2 .ss-safe-phen-focus p,
+            #safePhenomenonMissionV2 .ss-safe-phen-mini p,
+            #safePhenomenonMissionV2 .ss-safe-phen-cer p {
+                margin: 0 !important;
+                font-size: 1rem !important;
+                line-height: 1.4 !important;
+                color: #111 !important;
+            }
+
+            @media (max-width: 900px) {
+                #safePhenomenonMissionV2 .ss-safe-phen-grid {
+                    grid-template-columns: 1fr !important;
+                }
+
+                #safePhenomenonMissionV2 .ss-safe-phen-title {
+                    font-size: 1.6rem !important;
+                }
+            }
+
+            @media print {
+                #safePhenomenonMissionV2.ss-safe-phen-card {
+                    box-shadow: none !important;
+                    border: 3px solid #111 !important;
+                    page-break-inside: avoid !important;
+                }
+
+                #safePhenomenonMissionV2 .ss-safe-phen-image {
+                    max-height: 3.5in !important;
+                }
+
+                #safePhenomenonMissionV2 .ss-safe-phen-grid {
+                    grid-template-columns: 1fr 1fr !important;
+                    gap: 8px !important;
+                }
+            }
+        `;
+
+        document.head.appendChild(style);
+    }
+
+    window.addEventListener("load", addPhenomenonRuntimeStyles);
+    document.addEventListener("DOMContentLoaded", addPhenomenonRuntimeStyles);
+    setTimeout(addPhenomenonRuntimeStyles, 100);
+    setTimeout(addPhenomenonRuntimeStyles, 500);
+})();
+</script>
+<!-- End Science Studio Phenomenon Box Runtime Style Fix -->
+
 </head>
 
 <body>
@@ -1925,6 +2090,157 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 </script>
 <!-- End Science Studio Force Digital Notebook Button Style -->
+
+
+<!-- Science Studio Safe Phenomenon Mission V2 -->
+<script>
+(function () {
+    function isLessonPage() {
+        const path = window.location.pathname.toLowerCase();
+
+        return (
+            path.includes("/first-nine-weeks/day/") &&
+            !path.includes("/digital-notebook") &&
+            !path.includes("/notebook-resource") &&
+            !path.includes("/packet") &&
+            !path.includes("/video-notes")
+        );
+    }
+
+    function getDayFromPath() {
+        const match = window.location.pathname.match(/\/day\/(\d+)/i);
+        return match ? match[1] : null;
+    }
+
+    function escapeHtml(value) {
+        return String(value || "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
+
+    function findBlueLessonHeader() {
+        const candidates = Array.from(document.querySelectorAll("section, article, div, header"));
+
+        const matches = candidates.filter(function (element) {
+            const text = element.innerText || "";
+            const rect = element.getBoundingClientRect();
+
+            const looksLikeHeader =
+                text.includes("TEKS:") &&
+                (
+                    text.includes("Student View") ||
+                    text.includes("Teacher View")
+                );
+
+            const notHuge = text.length < 1800;
+            const nearTop = rect.top < 700;
+
+            return looksLikeHeader && notHuge && nearTop;
+        });
+
+        matches.sort(function (a, b) {
+            return (a.innerText || "").length - (b.innerText || "").length;
+        });
+
+        return matches[0] || null;
+    }
+
+    function buildPhenomenonCard(mission) {
+        const card = document.createElement("section");
+        card.id = "safePhenomenonMissionV2";
+        card.className = "ss-safe-phen-card";
+
+        const imagePath = "/static/" + mission.image;
+
+        card.innerHTML = `
+            <div class="ss-safe-phen-top">
+                <div>
+                    <span class="ss-safe-phen-pill">🔎 Phenomenon Mission</span>
+                    <h2 class="ss-safe-phen-title">${escapeHtml(mission.title)}</h2>
+                    <p class="ss-safe-phen-tag">${escapeHtml(mission.tag)}</p>
+                </div>
+            </div>
+
+            <div class="ss-safe-phen-image-box">
+                <img
+                    src="${escapeHtml(imagePath)}"
+                    alt="${escapeHtml(mission.title)} phenomenon image"
+                    class="ss-safe-phen-image"
+                >
+            </div>
+
+            <div class="ss-safe-phen-focus">
+                <h3>❓ Focus Question</h3>
+                <p>${escapeHtml(mission.focus_question)}</p>
+            </div>
+
+            <div class="ss-safe-phen-grid">
+                <div class="ss-safe-phen-mini">
+                    <h3>👀 Notice</h3>
+                    <p>${escapeHtml(mission.notice)}</p>
+                </div>
+
+                <div class="ss-safe-phen-mini">
+                    <h3>🤔 Wonder</h3>
+                    <p>${escapeHtml(mission.wonder)}</p>
+                </div>
+
+                <div class="ss-safe-phen-mini">
+                    <h3>🧪 Quick Explore</h3>
+                    <p>${escapeHtml(mission.quick_explore)}</p>
+                </div>
+
+                <div class="ss-safe-phen-mini">
+                    <h3>📊 Evidence Tracker</h3>
+                    <p>${escapeHtml(mission.evidence)}</p>
+                </div>
+            </div>
+
+            <div class="ss-safe-phen-cer">
+                <h3>🧠 CER Starter</h3>
+                <p>${escapeHtml(mission.cer)}</p>
+            </div>
+        `;
+
+        return card;
+    }
+
+    async function addPhenomenonMission() {
+        if (!isLessonPage()) return;
+        if (document.getElementById("safePhenomenonMissionV2")) return;
+
+        const day = getDayFromPath();
+        if (!day) return;
+
+        const header = findBlueLessonHeader();
+        if (!header) return;
+
+        try {
+            const response = await fetch(`/api/phenomenon-mission/${day}`, {
+                cache: "no-store"
+            });
+
+            if (!response.ok) return;
+
+            const mission = await response.json();
+            const card = buildPhenomenonCard(mission);
+
+            header.insertAdjacentElement("afterend", card);
+        } catch (error) {
+            console.warn("Could not load Phenomenon Mission.", error);
+        }
+    }
+
+    window.addEventListener("load", addPhenomenonMission);
+    document.addEventListener("DOMContentLoaded", addPhenomenonMission);
+    setTimeout(addPhenomenonMission, 250);
+    setTimeout(addPhenomenonMission, 800);
+})();
+</script>
+<!-- End Science Studio Safe Phenomenon Mission V2 -->
 
 </body>
 </html>

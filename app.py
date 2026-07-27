@@ -1295,6 +1295,18 @@ def standalone_digital_notebook_work(day):
 # End Standalone Digital Notebook Work route
 
 
+
+# Safe Phenomenon Mission API
+@app.route("/api/phenomenon-mission/<int:day>")
+def api_phenomenon_mission(day):
+    from flask import jsonify
+    from curriculum.phenomenon_missions import get_phenomenon_mission
+
+    mission = get_phenomenon_mission(day)
+    return jsonify(mission)
+# End Safe Phenomenon Mission API
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
