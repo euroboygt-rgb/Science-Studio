@@ -53,6 +53,12 @@ from curriculum.printable_resources import resource_folders, printable_resources
 app = Flask(__name__)
 
 
+
+@app.context_processor
+def inject_phenomenon_missions():
+    from curriculum.phenomenon_missions import get_phenomenon_mission
+    return dict(get_phenomenon_mission=get_phenomenon_mission)
+
 @app.context_processor
 def inject_vocabulary_helpers():
     return dict(get_vocab_info=get_vocab_info)
