@@ -155,3 +155,86 @@ def get_phenomenon_mission(day):
         mission["focus_question"] = DAY_FOCUS_OVERRIDES[day]
 
     return mission
+
+
+# Matter Phenomenon Mission Text Polish Days 3-8
+DAY_MATTER_PHENOMENON_POLISH = {
+    3: {
+        "title": "Mystery Matter: What Is Matter?",
+        "tag": "Unit 1 • Matter, Physical States, and Particles",
+        "focus_question": "How can matter be described using observable and measurable properties?",
+        "notice": "Look at the objects in the image. Notice that each object takes up space and has mass.",
+        "wonder": "How could we tell whether each object is a solid, liquid, or gas?",
+        "quick_explore": "Choose one object in the image and describe it using state of matter, shape, texture, and size.",
+        "evidence": "Record one observation that proves the object is matter, such as it has mass, takes up space, or has a physical state.",
+        "cer": "The object is matter because..."
+    },
+    4: {
+        "title": "Mystery Matter: Mass Check",
+        "tag": "Unit 1 • Mass and Measuring Matter",
+        "focus_question": "How can mass help us compare different materials?",
+        "notice": "Look for the balance in the image. Notice that scientists use tools to compare how much matter objects have.",
+        "wonder": "Which object in the image do you think has the greatest mass, and what evidence could you collect?",
+        "quick_explore": "Pick two objects from the image. Predict which one would have more mass, then explain why.",
+        "evidence": "Record the tool you would use to measure mass and the unit you would use.",
+        "cer": "I can compare the mass of two objects by..."
+    },
+    5: {
+        "title": "Mystery Matter: Volume Clues",
+        "tag": "Unit 1 • Volume and Space Matter Takes Up",
+        "focus_question": "How can volume help us describe the amount of space matter takes up?",
+        "notice": "Look for the graduated cylinder and the objects that could be placed in water.",
+        "wonder": "How could water displacement help us find the volume of an irregular solid?",
+        "quick_explore": "Choose one solid object from the image. Predict whether it would make the water level rise a little or a lot.",
+        "evidence": "Record what measurement would change in the graduated cylinder when the object is added.",
+        "cer": "The object has volume because..."
+    },
+    6: {
+        "title": "Mystery Matter: Magnetic or Not?",
+        "tag": "Unit 1 • Magnetism as a Physical Property",
+        "focus_question": "How can magnetism help us identify and classify materials?",
+        "notice": "Look for the magnet and the different materials. Some materials may be attracted to the magnet, and some may not.",
+        "wonder": "Which materials in the image might be magnetic? Which materials might be nonmagnetic?",
+        "quick_explore": "Choose three objects from the image and predict whether each one would be attracted to a magnet.",
+        "evidence": "Record whether the object is attracted or not attracted. Use the evidence to classify it as magnetic or nonmagnetic.",
+        "cer": "This material is magnetic or nonmagnetic because..."
+    },
+    7: {
+        "title": "Mystery Matter: Float or Sink?",
+        "tag": "Unit 1 • Density and Relative Density",
+        "focus_question": "How can density help explain why some objects float and some objects sink?",
+        "notice": "Look at the objects and imagine placing them in water. Some objects may float, sink, or stay suspended.",
+        "wonder": "Which object would be less dense than water? Which object would be more dense than water?",
+        "quick_explore": "Pick two objects from the image. Predict which one would float and which one would sink.",
+        "evidence": "Record the result you would look for: floats, sinks, or stays suspended in water.",
+        "cer": "The object floated or sank because..."
+    },
+    8: {
+        "title": "Mystery Matter: Compare the Layers",
+        "tag": "Unit 1 • Relative Density of Solids and Liquids",
+        "focus_question": "How can relative density help us compare liquids and solids?",
+        "notice": "Think about what would happen if different liquids or objects were placed together in a clear container.",
+        "wonder": "Why do some materials stay on top while others move to the bottom?",
+        "quick_explore": "Predict how two liquids or two objects would arrange themselves based on relative density.",
+        "evidence": "Record which material would be least dense, most dense, or about the same density.",
+        "cer": "The materials formed layers or changed position because..."
+    },
+}
+
+
+def get_phenomenon_mission(day):
+    day = int(day)
+    key = DAY_TO_PHENOMENON.get(day, "mystery_matter")
+    mission = dict(PHENOMENON_IMAGE_SETS[key])
+    mission["day"] = day
+    mission["key"] = key
+
+    if day in DAY_FOCUS_OVERRIDES:
+        mission["focus_question"] = DAY_FOCUS_OVERRIDES[day]
+
+    if day in DAY_MATTER_PHENOMENON_POLISH:
+        mission.update(DAY_MATTER_PHENOMENON_POLISH[day])
+
+    return mission
+# End Matter Phenomenon Mission Text Polish Days 3-8
+
