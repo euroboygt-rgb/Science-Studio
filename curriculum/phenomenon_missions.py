@@ -343,3 +343,131 @@ def get_phenomenon_mission(day):
     return mission
 # End Unit 1 Phenomenon Mission Text Polish Days 9-16
 
+
+# Unit 2 Phenomenon Mission Text Polish Days 17-26
+DAY_UNIT2_PHENOMENON_POLISH = {
+    17: {
+        "title": "Beach Mixtures: What Happens When Materials Combine?",
+        "tag": "Unit 2 • Mixtures",
+        "focus_question": "What happens when two or more materials are combined into a mixture?",
+        "notice": "Look at the different beach materials. Some materials can be mixed together but still keep their own properties.",
+        "wonder": "How can we tell that sand, shells, salt, or water are still the same materials after they are combined?",
+        "quick_explore": "Predict what will happen when two solid materials are combined. Will they change or keep their properties?",
+        "evidence": "Record what you can still observe after the materials are mixed, such as color, size, shape, texture, or state of matter.",
+        "cer": "The materials formed a mixture because..."
+    },
+    18: {
+        "title": "Beach Mixtures: How Can We Separate Them?",
+        "tag": "Unit 2 • Separating Mixtures",
+        "focus_question": "How can physical properties help us separate mixtures?",
+        "notice": "Look for materials that could be separated by size, magnetism, density, or filtering.",
+        "wonder": "Which tool or property would work best to separate each mixture?",
+        "quick_explore": "Choose a mixture and decide whether you would separate it with a magnet, sieve, filter, or by sorting.",
+        "evidence": "Record the physical property that helped separate the materials.",
+        "cer": "This mixture can be separated because..."
+    },
+    19: {
+        "title": "Beach Mixtures: Filter, Sieve, or Evaporate?",
+        "tag": "Unit 2 • Separation Methods",
+        "focus_question": "How can filtering, sieving, and evaporation separate different mixtures?",
+        "notice": "Look at the tools in the image. Filters, sieves, and evaporation dishes separate materials in different ways.",
+        "wonder": "Why does one separation method work for some mixtures but not others?",
+        "quick_explore": "Match each mixture to the best separation method: filter, sieve, evaporation, magnetism, or sorting.",
+        "evidence": "Record which method separated the materials and what property made it work.",
+        "cer": "The best way to separate this mixture is ___ because..."
+    },
+    20: {
+        "title": "Beach Mixtures: What Is a Solution?",
+        "tag": "Unit 2 • Solutions",
+        "focus_question": "What makes a solution different from other mixtures?",
+        "notice": "Look at materials mixed with water. Some materials dissolve and spread evenly through the liquid.",
+        "wonder": "How can a material seem to disappear but still be part of the mixture?",
+        "quick_explore": "Predict whether salt, sugar, sand, or gravel will form a solution when mixed with water.",
+        "evidence": "Record whether the material dissolved evenly or stayed visible in the water.",
+        "cer": "A solution forms when..."
+    },
+    21: {
+        "title": "Beach Mixtures: Properties Before and After Mixing",
+        "tag": "Unit 2 • Properties of Ingredients in Solutions",
+        "focus_question": "Which properties stay the same when materials are mixed into a solution?",
+        "notice": "Think about the ingredients before they are mixed and what you observe after mixing.",
+        "wonder": "Does dissolving change what the ingredient is, or does it only spread the particles out?",
+        "quick_explore": "Choose one solute and one solvent. Predict which properties can still be identified after mixing.",
+        "evidence": "Record evidence that the ingredients are still present, even if they look different.",
+        "cer": "The ingredients keep important properties because..."
+    },
+    22: {
+        "title": "Beach Mixtures: Where Did the Solute Go?",
+        "tag": "Unit 2 • Dissolving and Particle Models",
+        "focus_question": "Where does a material go when it dissolves in water?",
+        "notice": "Look at the cup after mixing. A dissolved material may no longer be easy to see.",
+        "wonder": "If the solute is not visible, how can we know it is still there?",
+        "quick_explore": "Draw or describe a particle model showing solute particles spreading through water.",
+        "evidence": "Record evidence such as taste, mass, evaporation results, or particles spread evenly in the liquid.",
+        "cer": "The dissolved material is still present because..."
+    },
+    23: {
+        "title": "Beach Mixtures: Does Matter Disappear?",
+        "tag": "Unit 2 • Conservation of Matter in Solutions",
+        "focus_question": "How can mass show that matter is conserved when a solution forms?",
+        "notice": "Think about measuring the mass before and after a solute dissolves in water.",
+        "wonder": "If the solute is no longer visible, should the total mass change?",
+        "quick_explore": "Predict the total mass after mixing water and a dissolving material.",
+        "evidence": "Record the mass before mixing, the mass after mixing, and whether the total changed.",
+        "cer": "Matter was conserved because..."
+    },
+    24: {
+        "title": "Beach Mixtures: Measuring Before and After",
+        "tag": "Unit 2 • Measurement Evidence",
+        "focus_question": "How can measuring before and after mixing provide evidence about matter?",
+        "notice": "Scientists use measurements, not just observations, to support claims about matter.",
+        "wonder": "Which measurement gives stronger evidence: what you see, or the mass before and after?",
+        "quick_explore": "Compare observations and mass data from a mixture or solution.",
+        "evidence": "Record the measurement that supports whether matter was conserved.",
+        "cer": "The measurement evidence shows..."
+    },
+    25: {
+        "title": "Beach Mixtures: Tiny Particle Model",
+        "tag": "Unit 2 • Particles in Solutions",
+        "focus_question": "How can a particle model explain a solution?",
+        "notice": "A solution looks even throughout because tiny particles are spread through the solvent.",
+        "wonder": "How could we draw particles to show a solute dissolved in water?",
+        "quick_explore": "Create a simple particle model showing solute particles evenly spread in a solvent.",
+        "evidence": "Use your model to show that the solute particles are still present and spread evenly.",
+        "cer": "The particle model explains the solution because..."
+    },
+    26: {
+        "title": "Beach Mixtures: Unit 2 Evidence Challenge",
+        "tag": "Unit 2 • Mixtures and Solutions Review",
+        "focus_question": "How can evidence help us explain mixtures, solutions, separation, and conservation of matter?",
+        "notice": "Look back at the tools and materials from the unit. Each investigation gives evidence about how matter behaves.",
+        "wonder": "Which evidence would best support a STAAR-style answer about mixtures or solutions?",
+        "quick_explore": "Choose one mixture or solution and explain it using vocabulary from the unit.",
+        "evidence": "Record evidence using words such as mixture, solution, solute, solvent, dissolve, separate, filter, sieve, evaporate, and conserve.",
+        "cer": "I can explain mixtures and solutions using evidence because..."
+    },
+}
+
+
+def get_phenomenon_mission(day):
+    day = int(day)
+    key = DAY_TO_PHENOMENON.get(day, "mystery_matter")
+    mission = dict(PHENOMENON_IMAGE_SETS[key])
+    mission["day"] = day
+    mission["key"] = key
+
+    if day in DAY_FOCUS_OVERRIDES:
+        mission["focus_question"] = DAY_FOCUS_OVERRIDES[day]
+
+    if "DAY_MATTER_PHENOMENON_POLISH" in globals() and day in DAY_MATTER_PHENOMENON_POLISH:
+        mission.update(DAY_MATTER_PHENOMENON_POLISH[day])
+
+    if "DAY_UNIT1_PHENOMENON_POLISH" in globals() and day in DAY_UNIT1_PHENOMENON_POLISH:
+        mission.update(DAY_UNIT1_PHENOMENON_POLISH[day])
+
+    if day in DAY_UNIT2_PHENOMENON_POLISH:
+        mission.update(DAY_UNIT2_PHENOMENON_POLISH[day])
+
+    return mission
+# End Unit 2 Phenomenon Mission Text Polish Days 17-26
+
