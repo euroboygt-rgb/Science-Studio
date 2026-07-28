@@ -238,3 +238,108 @@ def get_phenomenon_mission(day):
     return mission
 # End Matter Phenomenon Mission Text Polish Days 3-8
 
+
+# Unit 1 Phenomenon Mission Text Polish Days 9-16
+DAY_UNIT1_PHENOMENON_POLISH = {
+    9: {
+        "title": "Beach Mixtures: Dissolve or Stay Separate?",
+        "tag": "Unit 1 • Solubility",
+        "focus_question": "Why do some materials dissolve in water while others stay separate?",
+        "notice": "Look at the cups with different materials. Some materials spread evenly in water, while others remain visible.",
+        "wonder": "What makes sugar or salt dissolve, but sand or gravel stay separate?",
+        "quick_explore": "Predict what will happen when sugar, salt, sand, and gravel are stirred into water.",
+        "evidence": "Record whether each material dissolves, settles, floats, or stays visible after stirring.",
+        "cer": "A material is soluble or insoluble because..."
+    },
+    10: {
+        "title": "Beach Mixtures: Insoluble Evidence",
+        "tag": "Unit 1 • Soluble and Insoluble Materials",
+        "focus_question": "How can we tell whether a material dissolved or stayed separate?",
+        "notice": "Look for evidence that a material is still visible after mixing with water.",
+        "wonder": "If a material disappears from sight, did it dissolve, melt, or just spread out?",
+        "quick_explore": "Compare one material that dissolves with one material that stays separate in water.",
+        "evidence": "Record observations such as clear liquid, cloudy liquid, particles at the bottom, or particles floating.",
+        "cer": "The evidence shows the material did or did not dissolve because..."
+    },
+    11: {
+        "title": "Circuit Mystery: Will It Light?",
+        "tag": "Unit 1 • Electrical Conductivity",
+        "focus_question": "How can a circuit show whether a material conducts electricity?",
+        "notice": "Look at the battery, bulb, wires, switch, and test material in the circuit.",
+        "wonder": "Why does the bulb light with some materials but not with others?",
+        "quick_explore": "Predict whether metal, wood, plastic, and paper will complete the circuit.",
+        "evidence": "Record whether the bulb lights. A lit bulb is evidence that electric current can flow.",
+        "cer": "The test material is a conductor or insulator because..."
+    },
+    12: {
+        "title": "Circuit Mystery: Conductors and Insulators",
+        "tag": "Unit 1 • Electrical Conductors and Insulators",
+        "focus_question": "Why do conductors let electricity flow while insulators do not?",
+        "notice": "Look at the circuit gap where different materials can be placed.",
+        "wonder": "Which physical property helps determine whether the bulb will light?",
+        "quick_explore": "Choose two materials. Predict which one is a conductor and which one is an insulator.",
+        "evidence": "Use the bulb as evidence. If it lights, the material allowed electric current to flow.",
+        "cer": "The bulb lit or did not light because..."
+    },
+    13: {
+        "title": "Heat Transfer Mystery",
+        "tag": "Unit 1 • Thermal Conductors and Insulators",
+        "focus_question": "How do conductors and insulators affect the transfer of thermal energy?",
+        "notice": "Think about materials that get hot quickly and materials that protect your hand from heat.",
+        "wonder": "Why does a metal spoon get hot faster than a plastic spoon or wooden handle?",
+        "quick_explore": "Compare metal, plastic, wood, and cloth. Predict which would transfer heat fastest.",
+        "evidence": "Record which material would allow heat to move quickly and which would slow heat transfer.",
+        "cer": "The material is a thermal conductor or thermal insulator because..."
+    },
+    14: {
+        "title": "Mystery Matter: Property Detective",
+        "tag": "Unit 1 • Identifying Unknown Materials",
+        "focus_question": "How can scientists use several physical properties to identify an unknown material?",
+        "notice": "Look at the objects and tools. Each test can give a different clue about the material.",
+        "wonder": "Which clues would be most helpful: mass, texture, magnetism, density, solubility, or conductivity?",
+        "quick_explore": "Choose one mystery object and decide which three physical properties you would test first.",
+        "evidence": "Record evidence from more than one property test before making a claim.",
+        "cer": "The mystery material is most likely ___ because..."
+    },
+    15: {
+        "title": "Sand Boat Engineering Challenge",
+        "tag": "Unit 1 • Engineering with Physical Properties",
+        "focus_question": "How can engineers choose the best materials for a design?",
+        "notice": "Think about a desert road that has turned to sand. A sand boat needs a body, sail, and rudder.",
+        "wonder": "Which materials would be strong, light, smooth, flexible, or able to catch wind?",
+        "quick_explore": "Choose materials for a boat body, sail, and rudder. Predict whether the design will glide across sand.",
+        "evidence": "Record which properties helped the boat succeed or caused the boat to fail.",
+        "cer": "The best material choices for the sand boat were ___ because..."
+    },
+    16: {
+        "title": "Mystery Matter: Unit 1 Evidence Review",
+        "tag": "Unit 1 • Physical Properties Review",
+        "focus_question": "How can evidence from physical properties help us explain and classify matter?",
+        "notice": "Look across the investigation tools and property clues from the unit.",
+        "wonder": "Which physical properties are easiest to observe, and which need tools to measure?",
+        "quick_explore": "Pick one object and describe it using at least four physical properties from the unit.",
+        "evidence": "Record evidence using science vocabulary: mass, volume, density, magnetism, solubility, conductivity, texture, or physical state.",
+        "cer": "I can classify and describe matter using physical properties because..."
+    },
+}
+
+
+def get_phenomenon_mission(day):
+    day = int(day)
+    key = DAY_TO_PHENOMENON.get(day, "mystery_matter")
+    mission = dict(PHENOMENON_IMAGE_SETS[key])
+    mission["day"] = day
+    mission["key"] = key
+
+    if day in DAY_FOCUS_OVERRIDES:
+        mission["focus_question"] = DAY_FOCUS_OVERRIDES[day]
+
+    if "DAY_MATTER_PHENOMENON_POLISH" in globals() and day in DAY_MATTER_PHENOMENON_POLISH:
+        mission.update(DAY_MATTER_PHENOMENON_POLISH[day])
+
+    if day in DAY_UNIT1_PHENOMENON_POLISH:
+        mission.update(DAY_UNIT1_PHENOMENON_POLISH[day])
+
+    return mission
+# End Unit 1 Phenomenon Mission Text Polish Days 9-16
+
