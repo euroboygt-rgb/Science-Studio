@@ -2242,5 +2242,137 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio Safe Phenomenon Mission V2 -->
 
+
+<!-- Science Studio Phenomenon Placement Repair -->
+<script>
+(function () {
+  function getDayFromUrl() {
+    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
+    return match ? Number(match[1]) : null;
+  }
+
+  function isLessonPage() {
+    return /\/first-nine-weeks\/day\/\d+/.test(window.location.pathname);
+  }
+
+  function findBlueLessonTitleCard(day) {
+    const candidates = Array.from(document.querySelectorAll("section, article, div"))
+      .filter(el => {
+        const txt = (el.innerText || "").trim();
+        if (!txt.includes("Day " + day)) return false;
+        if (txt.includes("Phenomenon Mission")) return false;
+        if (!txt.includes("TEKS")) return false;
+        return true;
+      })
+      .map(el => {
+        const rect = el.getBoundingClientRect();
+        const style = window.getComputedStyle(el);
+        const bg = style.backgroundColor || "";
+        const blueScore =
+          bg.includes("33") || bg.includes("34") || bg.includes("35") ||
+          bg.includes("36") || bg.includes("37") || bg.includes("38") ||
+          bg.includes("39") || bg.includes("40") || bg.includes("41") ||
+          bg.includes("42") || bg.includes("43") || bg.includes("44");
+        return {
+          el,
+          area: rect.width * rect.height,
+          top: rect.top,
+          blueScore: blueScore ? 1 : 0
+        };
+      })
+      .filter(item => item.area > 20000)
+      .sort((a, b) => {
+        if (b.blueScore !== a.blueScore) return b.blueScore - a.blueScore;
+        return a.top - b.top;
+      });
+
+    return candidates.length ? candidates[0].el : null;
+  }
+
+  function makeCard(mission) {
+    const section = document.createElement("section");
+    section.id = "safePhenomenonMissionV2";
+    section.className = "ss-safe-phen-card";
+
+    const imgSrc = "/static/" + mission.image;
+
+    section.innerHTML = `
+      <div class="ss-safe-phen-top">
+        <span class="ss-safe-phen-pill">🔎 Phenomenon Mission</span>
+      </div>
+
+      <h2 class="ss-safe-phen-title">${mission.title || "Phenomenon Mission"}</h2>
+      <div class="ss-safe-phen-tag">${mission.tag || ""}</div>
+
+      <div class="ss-safe-phen-image-box">
+        <img class="ss-safe-phen-image" src="${imgSrc}" alt="${mission.title || "Phenomenon Mission"}">
+      </div>
+
+      <div class="ss-safe-phen-focus">
+        <strong>❓ Focus Question</strong>
+        <p>${mission.focus_question || ""}</p>
+      </div>
+
+      <div class="ss-safe-phen-grid">
+        <div class="ss-safe-phen-mini">
+          <strong>👀 Notice</strong>
+          <p>${mission.notice || ""}</p>
+        </div>
+        <div class="ss-safe-phen-mini">
+          <strong>🤔 Wonder</strong>
+          <p>${mission.wonder || ""}</p>
+        </div>
+        <div class="ss-safe-phen-mini">
+          <strong>🧪 Quick Explore</strong>
+          <p>${mission.quick_explore || ""}</p>
+        </div>
+        <div class="ss-safe-phen-mini">
+          <strong>📊 Evidence Tracker</strong>
+          <p>${mission.evidence || ""}</p>
+        </div>
+      </div>
+
+      <div class="ss-safe-phen-cer">
+        <strong>🧠 CER Starter</strong>
+        <p>${mission.cer || ""}</p>
+      </div>
+    `;
+
+    return section;
+  }
+
+  async function repairPhenomenonPlacement() {
+    if (!isLessonPage()) return;
+
+    const day = getDayFromUrl();
+    if (!day) return;
+
+    const titleCard = findBlueLessonTitleCard(day);
+    if (!titleCard) return;
+
+    const oldCards = Array.from(document.querySelectorAll("#safePhenomenonMissionV2"));
+    oldCards.forEach(card => card.remove());
+
+    try {
+      const response = await fetch("/api/phenomenon-mission/" + day);
+      if (!response.ok) return;
+
+      const mission = await response.json();
+      const card = makeCard(mission);
+
+      titleCard.insertAdjacentElement("afterend", card);
+    } catch (error) {
+      console.warn("Phenomenon placement repair skipped.", error);
+    }
+  }
+
+  window.addEventListener("load", function () {
+    setTimeout(repairPhenomenonPlacement, 250);
+    setTimeout(repairPhenomenonPlacement, 900);
+  });
+})();
+</script>
+<!-- End Science Studio Phenomenon Placement Repair -->
+
 </body>
 </html>

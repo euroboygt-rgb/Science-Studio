@@ -471,3 +471,181 @@ def get_phenomenon_mission(day):
     return mission
 # End Unit 2 Phenomenon Mission Text Polish Days 17-26
 
+
+# Unit 3 Phenomenon Mission Text Polish Days 27-36
+DAY_UNIT3_PHENOMENON_POLISH = {
+    27: {
+        "title": "Friction Track: What Makes Objects Move?",
+        "tag": "Unit 3 • Force and Motion",
+        "focus_question": "How can forces change the motion of an object?",
+        "notice": "Look at the object on the track. A push or pull can start motion, stop motion, or change how an object moves.",
+        "wonder": "What would happen if the same object was pushed with more force?",
+        "quick_explore": "Choose one object in the image and predict how it would move after a gentle push and a stronger push.",
+        "evidence": "Record evidence such as distance traveled, speed, direction, or whether the object started or stopped moving.",
+        "cer": "A force changed the object's motion because..."
+    },
+    28: {
+        "title": "Friction Track: Pushes and Pulls",
+        "tag": "Unit 3 • Push and Pull Forces",
+        "focus_question": "How are pushes and pulls used to change an object's motion?",
+        "notice": "A push moves an object away from the force. A pull moves an object toward the force.",
+        "wonder": "Can the same object move differently depending on the direction of the push or pull?",
+        "quick_explore": "Pick one object and describe how a push and a pull would move it in different directions.",
+        "evidence": "Record the direction of the force and the direction the object moved.",
+        "cer": "The object moved because the force was a push or pull that..."
+    },
+    29: {
+        "title": "Friction Track: Balanced Forces",
+        "tag": "Unit 3 • Balanced Forces",
+        "focus_question": "What happens when forces on an object are balanced?",
+        "notice": "When equal forces act in opposite directions, the object may stay still or keep moving the same way.",
+        "wonder": "Why does an object not move when the pushes or pulls are equal?",
+        "quick_explore": "Imagine two teams pulling with equal strength. Predict what happens to the object between them.",
+        "evidence": "Record whether the object moved, stayed still, or kept moving at the same speed.",
+        "cer": "The forces were balanced because..."
+    },
+    30: {
+        "title": "Friction Track: Unbalanced Forces",
+        "tag": "Unit 3 • Unbalanced Forces",
+        "focus_question": "What happens when forces on an object are unbalanced?",
+        "notice": "When one force is stronger than another, the object's motion can change.",
+        "wonder": "How can an unbalanced force change speed, direction, or position?",
+        "quick_explore": "Predict what happens when one side pushes harder than the other side.",
+        "evidence": "Record how the object's motion changed after the stronger force acted on it.",
+        "cer": "The forces were unbalanced because..."
+    },
+    31: {
+        "title": "Friction Track: Surface Challenge",
+        "tag": "Unit 3 • Friction",
+        "focus_question": "How does the surface affect the motion of an object?",
+        "notice": "Different surfaces can make an object slow down more quickly or move farther.",
+        "wonder": "Would the object travel farther on a smooth surface or a rough surface?",
+        "quick_explore": "Compare two surfaces and predict which one will create more friction.",
+        "evidence": "Record the distance the object traveled on each surface.",
+        "cer": "The surface with more friction was ___ because..."
+    },
+    32: {
+        "title": "Friction Track: Gravity Pull",
+        "tag": "Unit 3 • Gravity",
+        "focus_question": "How does gravity affect objects on Earth?",
+        "notice": "Gravity is a force that pulls objects toward Earth.",
+        "wonder": "How would the object's motion change if the track was tilted?",
+        "quick_explore": "Predict what happens when an object is placed at the top of a ramp.",
+        "evidence": "Record how the object moved and explain how gravity affected the motion.",
+        "cer": "Gravity affected the object because..."
+    },
+    33: {
+        "title": "Friction Track: Speed and Direction",
+        "tag": "Unit 3 • Changes in Motion",
+        "focus_question": "How can force change an object's speed or direction?",
+        "notice": "A force can make an object speed up, slow down, stop, or change direction.",
+        "wonder": "What kind of force would be needed to make an object turn?",
+        "quick_explore": "Choose one object and describe a force that would make it speed up, slow down, and change direction.",
+        "evidence": "Record the motion before and after the force acted on the object.",
+        "cer": "The object's motion changed because..."
+    },
+    34: {
+        "title": "Friction Track: Motion Data Test",
+        "tag": "Unit 3 • Measuring Motion",
+        "focus_question": "How can data help us compare the motion of objects?",
+        "notice": "Scientists use measurements like distance and time to compare motion.",
+        "wonder": "How can we use distance data to tell which object moved faster or farther?",
+        "quick_explore": "Run a pretend test with two objects. Predict which one will travel farther in the same amount of time.",
+        "evidence": "Record distance, time, and observations from each trial.",
+        "cer": "The data shows the object moved faster or farther because..."
+    },
+    35: {
+        "title": "Friction Track: Engineering a Better Ride",
+        "tag": "Unit 3 • Engineering with Forces",
+        "focus_question": "How can engineers use forces and friction to improve a design?",
+        "notice": "Engineers can change materials, surfaces, wheels, ramps, or shapes to control motion.",
+        "wonder": "Would you want more friction or less friction for a vehicle moving across a track?",
+        "quick_explore": "Choose one design change that could help an object move farther, slower, safer, or straighter.",
+        "evidence": "Record which design change improved the motion and what force or surface property caused the improvement.",
+        "cer": "The best design change was ___ because..."
+    },
+    36: {
+        "title": "Friction Track: Unit 3 Evidence Review",
+        "tag": "Unit 3 • Force and Motion Review",
+        "focus_question": "How can evidence help us explain force, motion, friction, gravity, and balanced or unbalanced forces?",
+        "notice": "Look back at the force and motion investigations. Each test gives evidence about how objects move.",
+        "wonder": "Which evidence would best support a STAAR-style answer about force and motion?",
+        "quick_explore": "Choose one object and explain its motion using vocabulary from the unit.",
+        "evidence": "Record evidence using words such as force, motion, push, pull, balanced force, unbalanced force, friction, gravity, speed, and direction.",
+        "cer": "I can explain force and motion using evidence because..."
+    },
+}
+
+
+def get_phenomenon_mission(day):
+    day = int(day)
+    key = DAY_TO_PHENOMENON.get(day, "mystery_matter")
+    mission = dict(PHENOMENON_IMAGE_SETS[key])
+    mission["day"] = day
+    mission["key"] = key
+
+    if day in DAY_FOCUS_OVERRIDES:
+        mission["focus_question"] = DAY_FOCUS_OVERRIDES[day]
+
+    if "DAY_MATTER_PHENOMENON_POLISH" in globals() and day in DAY_MATTER_PHENOMENON_POLISH:
+        mission.update(DAY_MATTER_PHENOMENON_POLISH[day])
+
+    if "DAY_UNIT1_PHENOMENON_POLISH" in globals() and day in DAY_UNIT1_PHENOMENON_POLISH:
+        mission.update(DAY_UNIT1_PHENOMENON_POLISH[day])
+
+    if "DAY_UNIT2_PHENOMENON_POLISH" in globals() and day in DAY_UNIT2_PHENOMENON_POLISH:
+        mission.update(DAY_UNIT2_PHENOMENON_POLISH[day])
+
+    if day in DAY_UNIT3_PHENOMENON_POLISH:
+        mission.update(DAY_UNIT3_PHENOMENON_POLISH[day])
+
+    return mission
+# End Unit 3 Phenomenon Mission Text Polish Days 27-36
+
+
+# Phenomenon Mission Repair Days 31 35 36
+DAY_UNIT3_PHENOMENON_REPAIR = {
+    31: {
+        "title": "Energy Transfer Track: How Does Motion Pass Energy?",
+        "tag": "Unit 3 • Transfer of Mechanical Energy",
+        "focus_question": "How can mechanical energy transfer from one object to another?",
+        "notice": "Look at the moving object on the track. When it hits or pushes another object, motion energy can be transferred.",
+        "wonder": "What happens to the second object when the first moving object touches it?",
+        "quick_explore": "Predict how energy could transfer from one moving object to another object on the track.",
+        "evidence": "Record what happened before and after contact, such as speed, distance, direction, or movement.",
+        "cer": "Mechanical energy transferred because..."
+    },
+    35: {
+        "title": "Investigation Track: Variables and Data",
+        "tag": "Unit 3 • Simple Investigation",
+        "focus_question": "How can variables and data help scientists test force and motion?",
+        "notice": "A fair test changes one variable at a time and uses data as evidence.",
+        "wonder": "Which variable should we change, and which variables should stay the same?",
+        "quick_explore": "Choose one variable to test, such as surface type, ramp height, push strength, or object type.",
+        "evidence": "Record the data you would collect during each trial, such as distance traveled or time.",
+        "cer": "The data supports the claim because..."
+    },
+    36: {
+        "title": "Performance Task: Force and Motion Evidence",
+        "tag": "Unit 3 • Force and Motion Investigation",
+        "focus_question": "How can evidence from an investigation explain force and motion?",
+        "notice": "A strong investigation uses a question, prediction, variables, data, and evidence.",
+        "wonder": "Which evidence best explains how force changed the object's motion?",
+        "quick_explore": "Review the investigation setup and decide what data would help prove your claim.",
+        "evidence": "Record evidence using words such as force, motion, friction, gravity, variable, data, trial, claim, and evidence.",
+        "cer": "The force and motion investigation shows..."
+    },
+}
+
+_PREVIOUS_GET_PHENOMENON_MISSION_FOR_REPAIR = get_phenomenon_mission
+
+def get_phenomenon_mission(day):
+    day = int(day)
+    mission = _PREVIOUS_GET_PHENOMENON_MISSION_FOR_REPAIR(day)
+
+    if day in DAY_UNIT3_PHENOMENON_REPAIR:
+        mission.update(DAY_UNIT3_PHENOMENON_REPAIR[day])
+
+    return mission
+# End Phenomenon Mission Repair Days 31 35 36
+
