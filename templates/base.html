@@ -2374,5 +2374,65 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio Phenomenon Placement Repair -->
 
+
+<!-- Science Studio Guided Practice Placement Fix -->
+<script>
+(function () {
+  function isLessonPage() {
+    return /\/first-nine-weeks\/day\/\d+/.test(window.location.pathname);
+  }
+
+  function findGuidedPracticeScenarioBox() {
+    const candidates = Array.from(document.querySelectorAll("section, article, div"))
+      .filter(el => {
+        const txt = (el.innerText || "").trim();
+
+        if (!txt.includes("Guided Practice: Science Investigation Scenario")) return false;
+        if (!txt.includes("Before the Lab Guided Practice Scenario")) return false;
+        if (txt.includes("Phenomenon Mission")) return false;
+
+        const rect = el.getBoundingClientRect();
+        if (rect.width < 300) return false;
+        if (rect.height < 100) return false;
+
+        return true;
+      });
+
+    if (!candidates.length) return null;
+
+    // Pick the smallest complete box so we do not move the whole page container.
+    candidates.sort((a, b) => {
+      const ar = a.getBoundingClientRect();
+      const br = b.getBoundingClientRect();
+      return (ar.width * ar.height) - (br.width * br.height);
+    });
+
+    return candidates[0];
+  }
+
+  function moveGuidedPracticeBelowPhenomenon() {
+    if (!isLessonPage()) return;
+
+    const phenomenon = document.querySelector("#safePhenomenonMissionV2");
+    if (!phenomenon) return;
+
+    const guidedBox = findGuidedPracticeScenarioBox();
+    if (!guidedBox) return;
+
+    // Already directly under the phenomenon card.
+    if (phenomenon.nextElementSibling === guidedBox) return;
+
+    phenomenon.insertAdjacentElement("afterend", guidedBox);
+  }
+
+  window.addEventListener("load", function () {
+    setTimeout(moveGuidedPracticeBelowPhenomenon, 600);
+    setTimeout(moveGuidedPracticeBelowPhenomenon, 1400);
+    setTimeout(moveGuidedPracticeBelowPhenomenon, 2400);
+  });
+})();
+</script>
+<!-- End Science Studio Guided Practice Placement Fix -->
+
 </body>
 </html>
