@@ -736,3 +736,40 @@ def get_phenomenon_mission(day):
     return mission
 # End Unit 4 Phenomenon Mission Text Polish Days 37-43
 
+
+# Review Phenomenon Mission Text Polish Days 44-45
+DAY_REVIEW_PHENOMENON_POLISH = {
+    44: {
+        "title": "Mission Review: Evidence From Every Unit",
+        "tag": "First Nine Weeks • STAAR-Style Review",
+        "focus_question": "How can evidence from investigations help us explain matter, mixtures, force, motion, and energy?",
+        "notice": "Look back at the science tools, models, and investigations from the first nine weeks. Each unit gave evidence about how the world works.",
+        "wonder": "Which science vocabulary words and evidence would help answer a STAAR-style question?",
+        "quick_explore": "Choose one investigation from matter, mixtures, force and motion, or energy. Explain what was tested and what evidence was collected.",
+        "evidence": "Record evidence using important vocabulary from the first nine weeks, such as property, mixture, solution, force, motion, friction, gravity, energy, transfer, and transform.",
+        "cer": "The evidence from our investigation supports the answer because..."
+    },
+    45: {
+        "title": "Mission Complete: First Nine Weeks Science Challenge",
+        "tag": "First Nine Weeks • Review and Test",
+        "focus_question": "How can I use science evidence and vocabulary to show what I learned?",
+        "notice": "A strong scientist reads carefully, studies the model or data, uses vocabulary, and chooses the answer supported by evidence.",
+        "wonder": "What clues in the question, picture, table, graph, or model can help me avoid distractor answers?",
+        "quick_explore": "Pick one review topic and explain it with a claim, evidence, and reasoning before answering.",
+        "evidence": "Record the clue or data point that supports your answer. Do not choose only because an answer sounds familiar.",
+        "cer": "My answer is supported by evidence because..."
+    },
+}
+
+_PREVIOUS_GET_PHENOMENON_MISSION_FOR_REVIEW = get_phenomenon_mission
+
+def get_phenomenon_mission(day):
+    day = int(day)
+    mission = _PREVIOUS_GET_PHENOMENON_MISSION_FOR_REVIEW(day)
+
+    if day in DAY_REVIEW_PHENOMENON_POLISH:
+        mission.update(DAY_REVIEW_PHENOMENON_POLISH[day])
+
+    return mission
+# End Review Phenomenon Mission Text Polish Days 44-45
+
