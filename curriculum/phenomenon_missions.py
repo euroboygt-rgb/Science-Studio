@@ -649,3 +649,90 @@ def get_phenomenon_mission(day):
     return mission
 # End Phenomenon Mission Repair Days 31 35 36
 
+
+# Unit 4 Phenomenon Mission Text Polish Days 37-43
+DAY_UNIT4_PHENOMENON_POLISH = {
+    37: {
+        "title": "Energy Circuit: Where Does the Energy Go?",
+        "tag": "Unit 4 • Forms of Energy",
+        "focus_question": "How can we identify different forms of energy in a system?",
+        "notice": "Look at the battery, wires, switch, and light. Energy can be observed in different forms.",
+        "wonder": "What forms of energy can you find when the circuit is working?",
+        "quick_explore": "Identify examples of light, thermal, electrical, mechanical, and sound energy in the image or classroom.",
+        "evidence": "Record evidence for each form of energy you observe, such as light from a bulb or warmth from a device.",
+        "cer": "This system shows different forms of energy because..."
+    },
+    38: {
+        "title": "Energy Circuit: Electrical Energy Flow",
+        "tag": "Unit 4 • Electrical Energy",
+        "focus_question": "How does electrical energy move through a complete circuit?",
+        "notice": "A complete circuit gives electrical energy a path to travel from the energy source to the device.",
+        "wonder": "Why does the bulb turn on only when the circuit is complete?",
+        "quick_explore": "Trace the path of electrical energy from the battery through the wire, switch, and bulb.",
+        "evidence": "Record whether the circuit is open or closed and whether the bulb lights.",
+        "cer": "Electrical energy flowed through the circuit because..."
+    },
+    39: {
+        "title": "Energy Circuit: Light and Thermal Energy",
+        "tag": "Unit 4 • Light and Thermal Energy",
+        "focus_question": "How can electrical energy transform into light and thermal energy?",
+        "notice": "When the bulb turns on, it gives off light. It may also become warmer.",
+        "wonder": "Why can one device produce more than one form of energy?",
+        "quick_explore": "Predict what energy forms are produced by a lamp, flashlight, toaster, or screen.",
+        "evidence": "Record the input energy and the output energy forms you observe.",
+        "cer": "Electrical energy transformed into light and thermal energy because..."
+    },
+    40: {
+        "title": "Energy Circuit: Flashlight Energy Flow",
+        "tag": "Unit 4 • Energy Transformations",
+        "focus_question": "How does energy change form inside a flashlight?",
+        "notice": "A flashlight has a battery, switch, wires, and bulb. Each part helps energy move or transform.",
+        "wonder": "Where does the energy start, and what forms of energy come out?",
+        "quick_explore": "Trace the energy flow: chemical energy in the battery, electrical energy in the circuit, and light energy from the bulb.",
+        "evidence": "Record the energy input, energy pathway, and energy output from the flashlight.",
+        "cer": "The flashlight works because energy changes from..."
+    },
+    41: {
+        "title": "Energy Circuit: Sound and Vibration",
+        "tag": "Unit 4 • Sound Energy",
+        "focus_question": "How is sound energy produced and transferred?",
+        "notice": "Sound energy is produced when objects vibrate. The vibrations travel through matter.",
+        "wonder": "What would happen to the sound if the vibration changed?",
+        "quick_explore": "Choose an object that makes sound and identify what part vibrates.",
+        "evidence": "Record evidence of vibration, volume, pitch, or sound traveling through air or another material.",
+        "cer": "Sound energy was produced because..."
+    },
+    42: {
+        "title": "Energy Circuit: Energy Transfer in Systems",
+        "tag": "Unit 4 • Energy Transfer",
+        "focus_question": "How does energy transfer from one object or part of a system to another?",
+        "notice": "Energy can move from a source to other parts of a system, such as from a battery to a bulb.",
+        "wonder": "How can we follow the path of energy through a system?",
+        "quick_explore": "Choose a system and draw arrows to show where energy starts, where it moves, and what it does.",
+        "evidence": "Record the energy source, the path energy follows, and the output energy.",
+        "cer": "Energy transferred through the system because..."
+    },
+    43: {
+        "title": "Energy Circuit: Unit 4 Evidence Review",
+        "tag": "Unit 4 • Energy Review",
+        "focus_question": "How can evidence help us explain energy forms, transfers, and transformations?",
+        "notice": "Look back at the energy investigations. Each system gives evidence about how energy moves or changes.",
+        "wonder": "Which evidence would best support a STAAR-style answer about energy?",
+        "quick_explore": "Choose one system and explain the energy forms, transfers, and transformations using science vocabulary.",
+        "evidence": "Record evidence using words such as light, sound, thermal, electrical, mechanical, transfer, transform, source, circuit, input, and output.",
+        "cer": "I can explain energy using evidence because..."
+    },
+}
+
+_PREVIOUS_GET_PHENOMENON_MISSION_FOR_UNIT4 = get_phenomenon_mission
+
+def get_phenomenon_mission(day):
+    day = int(day)
+    mission = _PREVIOUS_GET_PHENOMENON_MISSION_FOR_UNIT4(day)
+
+    if day in DAY_UNIT4_PHENOMENON_POLISH:
+        mission.update(DAY_UNIT4_PHENOMENON_POLISH[day])
+
+    return mission
+# End Unit 4 Phenomenon Mission Text Polish Days 37-43
+
