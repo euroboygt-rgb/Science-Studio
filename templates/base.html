@@ -2434,5 +2434,143 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio Guided Practice Placement Fix -->
 
+
+<!-- Science Studio Bell Ringer Save Button -->
+<script>
+(function () {
+  function isLessonPage() {
+    return /\/first-nine-weeks\/day\/\d+/.test(window.location.pathname);
+  }
+
+  function storageKey() {
+    return "scienceStudioBellRinger:" + window.location.pathname + ":" + (new URLSearchParams(window.location.search).get("view") || "student");
+  }
+
+  function findBellRingerBox() {
+    const headings = Array.from(document.querySelectorAll("h1, h2, h3, h4, h5"))
+      .filter(h => (h.innerText || "").trim().toLowerCase().includes("bell ringer"));
+
+    for (const heading of headings) {
+      let current = heading.parentElement;
+
+      for (let i = 0; i < 8 && current; i++) {
+        const txt = (current.innerText || "").trim();
+        const rect = current.getBoundingClientRect();
+
+        const looksLikeBellRinger =
+          txt.includes("Bell Ringer") &&
+          (
+            txt.includes("Multiple Choice Review") ||
+            txt.includes("Short Constructed Response") ||
+            current.querySelector("textarea") ||
+            current.querySelector("input[type='radio']")
+          ) &&
+          rect.width > 300 &&
+          rect.height > 120;
+
+        if (looksLikeBellRinger) {
+          return current;
+        }
+
+        current = current.parentElement;
+      }
+    }
+
+    return null;
+  }
+
+  function collectBellRingerData(box) {
+    const radios = Array.from(box.querySelectorAll("input[type='radio']"));
+    const textareas = Array.from(box.querySelectorAll("textarea"));
+
+    return {
+      radios: radios.map(radio => radio.checked),
+      textareas: textareas.map(area => area.value)
+    };
+  }
+
+  function loadBellRingerData(box) {
+    const saved = localStorage.getItem(storageKey());
+    if (!saved) return;
+
+    try {
+      const data = JSON.parse(saved);
+
+      const radios = Array.from(box.querySelectorAll("input[type='radio']"));
+      const textareas = Array.from(box.querySelectorAll("textarea"));
+
+      if (Array.isArray(data.radios)) {
+        data.radios.forEach((checked, index) => {
+          if (radios[index]) radios[index].checked = !!checked;
+        });
+      }
+
+      if (Array.isArray(data.textareas)) {
+        data.textareas.forEach((value, index) => {
+          if (textareas[index]) textareas[index].value = value || "";
+        });
+      }
+    } catch (error) {
+      console.warn("Bell Ringer saved data could not be loaded.", error);
+    }
+  }
+
+  function addBellRingerSaveButton() {
+    if (!isLessonPage()) return;
+
+    const box = findBellRingerBox();
+    if (!box) return;
+
+    if (box.querySelector(".science-studio-bell-ringer-save-row")) {
+      loadBellRingerData(box);
+      return;
+    }
+
+    const saveRow = document.createElement("div");
+    saveRow.className = "science-studio-bell-ringer-save-row";
+    saveRow.style.marginTop = "10px";
+
+    const saveButton = document.createElement("button");
+    saveButton.type = "button";
+    saveButton.textContent = "Save Bell Ringer";
+    saveButton.style.background = "#0d6efd";
+    saveButton.style.color = "white";
+    saveButton.style.border = "2px solid black";
+    saveButton.style.borderRadius = "6px";
+    saveButton.style.padding = "7px 12px";
+    saveButton.style.fontWeight = "700";
+    saveButton.style.boxShadow = "2px 2px 0 rgba(0,0,0,.35)";
+    saveButton.style.cursor = "pointer";
+
+    const status = document.createElement("span");
+    status.style.marginLeft = "10px";
+    status.style.fontWeight = "700";
+    status.style.color = "#0f5132";
+
+    saveButton.addEventListener("click", function () {
+      const data = collectBellRingerData(box);
+      localStorage.setItem(storageKey(), JSON.stringify(data));
+
+      status.textContent = "Saved!";
+      setTimeout(() => {
+        status.textContent = "";
+      }, 1800);
+    });
+
+    saveRow.appendChild(saveButton);
+    saveRow.appendChild(status);
+    box.appendChild(saveRow);
+
+    loadBellRingerData(box);
+  }
+
+  window.addEventListener("load", function () {
+    setTimeout(addBellRingerSaveButton, 500);
+    setTimeout(addBellRingerSaveButton, 1200);
+  });
+})();
+</script>
+<!-- End Science Studio Bell Ringer Save Button -->
+
 </body>
 </html>
