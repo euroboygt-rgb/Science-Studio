@@ -2572,5 +2572,109 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio Bell Ringer Save Button -->
 
+
+<!-- Science Studio States of Matter Anchor Chart -->
+<script>
+(function () {
+  function isDay3LessonPage() {
+    return window.location.pathname === "/first-nine-weeks/day/3";
+  }
+
+  function makeStatesOfMatterChart() {
+    const section = document.createElement("section");
+    section.id = "statesOfMatterChangesAnchorChart";
+    section.style.background = "#fff7d6";
+    section.style.border = "3px solid black";
+    section.style.borderRadius = "14px";
+    section.style.padding = "16px";
+    section.style.margin = "18px auto";
+    section.style.maxWidth = "960px";
+    section.style.boxShadow = "5px 5px 0 rgba(0,0,0,.18)";
+
+    section.innerHTML = `
+      <div style="font-size: 1.45rem; font-weight: 900; margin-bottom: 4px;">
+        🧊 States of Matter & Changes Anchor Chart
+      </div>
+
+      <p style="margin: 0 0 12px 0;">
+        Use this chart to review solids, liquids, gases, and how adding or removing heat can change matter.
+      </p>
+
+      <div style="background: white; border: 2px solid black; border-radius: 12px; padding: 10px; text-align: center;">
+        <img
+          src="/static/anchor_charts/states_of_matter_changes_anchor_chart.png"
+          alt="States of Matter and Changes Anchor Chart"
+          style="width: 100%; max-width: 760px; height: auto; border-radius: 8px;"
+        >
+      </div>
+
+      <div style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
+        <button
+          onclick="window.print()"
+          style="background: #ffc107; color: black; border: 2px solid black; border-radius: 8px; padding: 8px 12px; font-weight: 900; box-shadow: 2px 2px 0 rgba(0,0,0,.35); cursor: pointer;"
+        >
+          Print This Anchor Chart
+        </button>
+
+        <a
+          href="/static/anchor_charts/states_of_matter_changes_anchor_chart.png"
+          target="_blank"
+          style="background: #0d6efd; color: white; border: 2px solid black; border-radius: 8px; padding: 8px 12px; font-weight: 900; text-decoration: none; box-shadow: 2px 2px 0 rgba(0,0,0,.35);"
+        >
+          Open Full Chart
+        </a>
+      </div>
+    `;
+
+    return section;
+  }
+
+  function findPropertiesOfMatterAnchorChart() {
+    const candidates = Array.from(document.querySelectorAll("section, article, div"))
+      .filter(el => {
+        const txt = (el.innerText || "").trim();
+
+        if (!txt.includes("Properties of Matter Anchor Chart")) return false;
+        if (txt.includes("States of Matter & Changes Anchor Chart")) return false;
+
+        const rect = el.getBoundingClientRect();
+        if (rect.width < 300) return false;
+        if (rect.height < 150) return false;
+
+        return true;
+      });
+
+    if (!candidates.length) return null;
+
+    candidates.sort((a, b) => {
+      const ar = a.getBoundingClientRect();
+      const br = b.getBoundingClientRect();
+      return (ar.width * ar.height) - (br.width * br.height);
+    });
+
+    return candidates[0];
+  }
+
+  function addStatesOfMatterChart() {
+    if (!isDay3LessonPage()) return;
+
+    if (document.querySelector("#statesOfMatterChangesAnchorChart")) return;
+
+    const propertiesChart = findPropertiesOfMatterAnchorChart();
+    if (!propertiesChart) return;
+
+    const newChart = makeStatesOfMatterChart();
+    propertiesChart.insertAdjacentElement("afterend", newChart);
+  }
+
+  window.addEventListener("load", function () {
+    setTimeout(addStatesOfMatterChart, 600);
+    setTimeout(addStatesOfMatterChart, 1400);
+    setTimeout(addStatesOfMatterChart, 2400);
+  });
+})();
+</script>
+<!-- End Science Studio States of Matter Anchor Chart -->
+
 </body>
 </html>
