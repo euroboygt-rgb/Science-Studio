@@ -2676,5 +2676,119 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio States of Matter Anchor Chart -->
 
+
+<!-- Science Studio States of Matter Anchor Chart Library Card -->
+<script>
+(function () {
+  function isAnchorChartLibraryPage() {
+    const pageText = (document.body.innerText || "").trim();
+    return (
+      pageText.includes("Anchor Chart Library") &&
+      pageText.includes("Properties of Matter")
+    );
+  }
+
+  function makeStatesMatterLibraryCard() {
+    const card = document.createElement("section");
+    card.id = "statesOfMatterChangesLibraryCard";
+    card.style.background = "#fff7d6";
+    card.style.border = "3px solid black";
+    card.style.borderRadius = "14px";
+    card.style.padding = "16px";
+    card.style.margin = "18px auto";
+    card.style.maxWidth = "960px";
+    card.style.boxShadow = "5px 5px 0 rgba(0,0,0,.18)";
+
+    card.innerHTML = `
+      <div style="font-size: 1.45rem; font-weight: 900; margin-bottom: 4px;">
+        🧊 States of Matter & Changes Anchor Chart
+      </div>
+
+      <p style="margin: 0 0 12px 0;">
+        Use this chart with the Properties of Matter chart to review solids, liquids, gases, melting, freezing, evaporation, and condensation.
+      </p>
+
+      <div style="background: white; border: 2px solid black; border-radius: 12px; padding: 10px; text-align: center;">
+        <img
+          src="/static/anchor_charts/states_of_matter_changes_anchor_chart.png"
+          alt="States of Matter and Changes Anchor Chart"
+          style="width: 100%; max-width: 760px; height: auto; border-radius: 8px;"
+        >
+      </div>
+
+      <div style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
+        <a
+          href="/static/anchor_charts/states_of_matter_changes_anchor_chart.png"
+          target="_blank"
+          style="background: #ffc107; color: black; border: 2px solid black; border-radius: 8px; padding: 8px 12px; font-weight: 900; text-decoration: none; box-shadow: 2px 2px 0 rgba(0,0,0,.35);"
+        >
+          Print / Open Chart
+        </a>
+
+        <a
+          href="/static/anchor_charts/states_of_matter_changes_anchor_chart.png"
+          download
+          style="background: #0d6efd; color: white; border: 2px solid black; border-radius: 8px; padding: 8px 12px; font-weight: 900; text-decoration: none; box-shadow: 2px 2px 0 rgba(0,0,0,.35);"
+        >
+          Download Chart
+        </a>
+      </div>
+    `;
+
+    return card;
+  }
+
+  function findPropertiesMatterLibraryCard() {
+    const candidates = Array.from(document.querySelectorAll("section, article, div"))
+      .filter(el => {
+        const txt = (el.innerText || "").trim();
+
+        if (!txt.includes("Properties of Matter")) return false;
+        if (txt.includes("States of Matter & Changes Anchor Chart")) return false;
+
+        const rect = el.getBoundingClientRect();
+        if (rect.width < 250) return false;
+        if (rect.height < 80) return false;
+
+        return true;
+      });
+
+    if (!candidates.length) return null;
+
+    candidates.sort((a, b) => {
+      const ar = a.getBoundingClientRect();
+      const br = b.getBoundingClientRect();
+
+      const aScore = (a.innerText || "").includes("Properties of Matter Anchor Chart") ? 0 : 1;
+      const bScore = (b.innerText || "").includes("Properties of Matter Anchor Chart") ? 0 : 1;
+
+      if (aScore !== bScore) return aScore - bScore;
+      return (ar.width * ar.height) - (br.width * br.height);
+    });
+
+    return candidates[0];
+  }
+
+  function addStatesMatterToLibrary() {
+    if (!isAnchorChartLibraryPage()) return;
+
+    if (document.querySelector("#statesOfMatterChangesLibraryCard")) return;
+
+    const propertiesCard = findPropertiesMatterLibraryCard();
+    if (!propertiesCard) return;
+
+    const newCard = makeStatesMatterLibraryCard();
+    propertiesCard.insertAdjacentElement("afterend", newCard);
+  }
+
+  window.addEventListener("load", function () {
+    setTimeout(addStatesMatterToLibrary, 600);
+    setTimeout(addStatesMatterToLibrary, 1400);
+    setTimeout(addStatesMatterToLibrary, 2400);
+  });
+})();
+</script>
+<!-- End Science Studio States of Matter Anchor Chart Library Card -->
+
 </body>
 </html>
