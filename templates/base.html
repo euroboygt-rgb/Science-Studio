@@ -2790,5 +2790,214 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio States of Matter Anchor Chart Library Card -->
 
+
+<!-- Science Studio Mission Brief Animation -->
+<script>
+(function () {
+  function isLessonPage() {
+    return /\/first-nine-weeks\/day\/\d+/.test(window.location.pathname);
+  }
+
+  function getDayFromUrl() {
+    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
+    return match ? Number(match[1]) : null;
+  }
+
+  function makeMissionBriefCard(brief) {
+    const section = document.createElement("section");
+    section.id = "scienceStudioMissionBriefAnimation";
+    section.style.background = "linear-gradient(135deg, #eef6ff, #fff7d6)";
+    section.style.border = "3px solid black";
+    section.style.borderRadius = "16px";
+    section.style.padding = "16px";
+    section.style.margin = "18px auto";
+    section.style.maxWidth = "960px";
+    section.style.boxShadow = "5px 5px 0 rgba(0,0,0,.18)";
+
+    const slides = brief.slides || [];
+
+    section.innerHTML = `
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div>
+          <div style="display:inline-block; background:#6f42c1; color:white; border:2px solid black; border-radius:999px; padding:5px 12px; font-weight:900;">
+            🎬 Mission Brief Animation
+          </div>
+          <h2 style="margin:10px 0 2px 0; font-size:1.7rem; font-weight:900;">
+            ${brief.title || "Mission Brief"}
+          </h2>
+          <div style="font-weight:800; color:#495057;">
+            ${brief.subtitle || ""}
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="ss-mission-brief-play"
+          style="background:#ffc107; color:black; border:2px solid black; border-radius:10px; padding:9px 14px; font-weight:900; box-shadow:2px 2px 0 rgba(0,0,0,.35); cursor:pointer;"
+        >
+          ▶ Play Mission Brief
+        </button>
+      </div>
+
+      <div
+        class="ss-mission-brief-stage"
+        style="margin-top:14px; background:white; border:2px solid black; border-radius:14px; min-height:250px; display:flex; align-items:center; justify-content:center; padding:18px; text-align:center; overflow:hidden;"
+      >
+        <div class="ss-mission-brief-slide" style="max-width:760px;">
+          <div class="ss-mission-brief-icon" style="font-size:4rem; margin-bottom:8px;">${slides[0]?.icon || "🚀"}</div>
+          <h3 class="ss-mission-brief-heading" style="font-size:1.9rem; font-weight:900; margin:0 0 10px 0;">${slides[0]?.heading || ""}</h3>
+          <p class="ss-mission-brief-text" style="font-size:1.35rem; font-weight:800; margin:0 0 10px 0;">${slides[0]?.text || ""}</p>
+          <p class="ss-mission-brief-caption" style="font-size:1rem; margin:0; color:#495057;">${slides[0]?.caption || ""}</p>
+        </div>
+      </div>
+
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+        <div class="ss-mission-brief-progress" style="font-weight:900;">
+          Slide 1 of ${slides.length}
+        </div>
+
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button
+            type="button"
+            class="ss-mission-brief-back"
+            style="background:#e9ecef; color:black; border:2px solid black; border-radius:8px; padding:7px 11px; font-weight:900; cursor:pointer;"
+          >
+            ◀ Back
+          </button>
+
+          <button
+            type="button"
+            class="ss-mission-brief-next"
+            style="background:#0d6efd; color:white; border:2px solid black; border-radius:8px; padding:7px 11px; font-weight:900; cursor:pointer;"
+          >
+            Next ▶
+          </button>
+
+          <button
+            type="button"
+            class="ss-mission-brief-restart"
+            style="background:#198754; color:white; border:2px solid black; border-radius:8px; padding:7px 11px; font-weight:900; cursor:pointer;"
+          >
+            Restart
+          </button>
+        </div>
+      </div>
+    `;
+
+    let currentSlide = 0;
+    let playTimer = null;
+
+    const icon = section.querySelector(".ss-mission-brief-icon");
+    const heading = section.querySelector(".ss-mission-brief-heading");
+    const text = section.querySelector(".ss-mission-brief-text");
+    const caption = section.querySelector(".ss-mission-brief-caption");
+    const progress = section.querySelector(".ss-mission-brief-progress");
+    const slideBox = section.querySelector(".ss-mission-brief-slide");
+
+    function showSlide(index) {
+      if (!slides.length) return;
+
+      currentSlide = Math.max(0, Math.min(index, slides.length - 1));
+      const slide = slides[currentSlide];
+
+      slideBox.style.opacity = "0";
+      slideBox.style.transform = "translateY(12px)";
+
+      setTimeout(function () {
+        icon.textContent = slide.icon || "🔎";
+        heading.textContent = slide.heading || "";
+        text.textContent = slide.text || "";
+        caption.textContent = slide.caption || "";
+        progress.textContent = "Slide " + (currentSlide + 1) + " of " + slides.length;
+
+        slideBox.style.transition = "opacity .35s ease, transform .35s ease";
+        slideBox.style.opacity = "1";
+        slideBox.style.transform = "translateY(0)";
+      }, 140);
+    }
+
+    function stopPlay() {
+      if (playTimer) {
+        clearInterval(playTimer);
+        playTimer = null;
+      }
+    }
+
+    function startPlay() {
+      stopPlay();
+      showSlide(0);
+
+      playTimer = setInterval(function () {
+        if (currentSlide >= slides.length - 1) {
+          stopPlay();
+          return;
+        }
+
+        showSlide(currentSlide + 1);
+      }, 3600);
+    }
+
+    section.querySelector(".ss-mission-brief-play").addEventListener("click", startPlay);
+
+    section.querySelector(".ss-mission-brief-next").addEventListener("click", function () {
+      stopPlay();
+      showSlide(currentSlide + 1);
+    });
+
+    section.querySelector(".ss-mission-brief-back").addEventListener("click", function () {
+      stopPlay();
+      showSlide(currentSlide - 1);
+    });
+
+    section.querySelector(".ss-mission-brief-restart").addEventListener("click", function () {
+      stopPlay();
+      showSlide(0);
+    });
+
+    showSlide(0);
+    return section;
+  }
+
+  function addMissionBriefAnimation() {
+    if (!isLessonPage()) return;
+
+    const day = getDayFromUrl();
+    if (!day) return;
+
+    if (document.querySelector("#scienceStudioMissionBriefAnimation")) return;
+
+    fetch("/api/mission-brief/" + day)
+      .then(response => response.json())
+      .then(brief => {
+        if (!brief || !brief.available) return;
+
+        const card = makeMissionBriefCard(brief);
+
+        const phenomenon = document.querySelector("#safePhenomenonMissionV2");
+        const guidedPractice = Array.from(document.querySelectorAll("section, article, div")).find(el => {
+          const txt = (el.innerText || "").trim();
+          return txt.includes("Guided Practice: Science Investigation Scenario") &&
+                 txt.includes("Before the Lab Guided Practice Scenario") &&
+                 !txt.includes("Mission Brief Animation");
+        });
+
+        if (phenomenon) {
+          phenomenon.insertAdjacentElement("afterend", card);
+        } else if (guidedPractice) {
+          guidedPractice.insertAdjacentElement("beforebegin", card);
+        }
+      })
+      .catch(error => console.warn("Mission Brief Animation skipped.", error));
+  }
+
+  window.addEventListener("load", function () {
+    setTimeout(addMissionBriefAnimation, 900);
+    setTimeout(addMissionBriefAnimation, 1800);
+    setTimeout(addMissionBriefAnimation, 2800);
+  });
+})();
+</script>
+<!-- End Science Studio Mission Brief Animation -->
+
 </body>
 </html>

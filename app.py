@@ -1307,6 +1307,24 @@ def api_phenomenon_mission(day):
 # End Safe Phenomenon Mission API
 
 
+
+# Science Studio Mission Brief Animation API
+@app.route("/api/mission-brief/<int:day>")
+def api_mission_brief(day):
+    from flask import jsonify
+    from curriculum.mission_brief_animations import get_mission_brief
+
+    brief = get_mission_brief(day)
+
+    if not brief:
+        return jsonify({"available": False, "day": day})
+
+    result = dict(brief)
+    result["available"] = True
+    result["day"] = day
+    return jsonify(result)
+# End Science Studio Mission Brief Animation API
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
