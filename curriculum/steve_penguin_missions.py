@@ -299,3 +299,36 @@ STEVE_PENGUIN_MISSIONS[11] = {
 }
 # End Day 11 Steve the Penguin STAAR Mission
 
+
+# Day 12 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[12] = {
+    "title": "Steve the Penguin’s Conductor or Insulator Mission",
+    "subtitle": "Day 12 • Electrical Conductors and Insulators",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin tests four materials in a simple circuit. The bulb lights when he tests a metal paper clip. The bulb does not light when he tests a plastic straw, a rubber band, or a wooden craft stick.",
+    "question": "Which conclusion is best supported by Steve’s circuit evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The plastic straw is a conductor because it is smooth."
+        },
+        {
+            "letter": "B",
+            "text": "The wooden craft stick is a conductor because it is solid."
+        },
+        {
+            "letter": "C",
+            "text": "The metal paper clip is a conductor because it allowed the bulb to light."
+        },
+        {
+            "letter": "D",
+            "text": "The rubber band is a conductor because it can stretch."
+        }
+    ],
+    "correct_answer": "C",
+    "explanation": "Steve should choose C. The bulb lit only when the metal paper clip was tested, so the paper clip allowed electrical energy to flow. The plastic straw, rubber band, and wooden craft stick did not make the bulb light, so they acted as insulators.",
+    "staar_tip": "For electrical conductivity questions, match the answer to the circuit evidence. A material that makes the bulb light is a conductor. A material that does not make the bulb light is an insulator.",
+    "vocabulary": ["conductor", "insulator", "electrical energy", "circuit", "bulb", "metal", "plastic", "rubber", "wood"]
+}
+# End Day 12 Steve the Penguin STAAR Mission
+

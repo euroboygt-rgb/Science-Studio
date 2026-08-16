@@ -425,3 +425,50 @@ MISSION_BRIEF_ANIMATIONS[11] = {
 }
 # End Day 11 Mission Brief Animation
 
+
+# Day 12 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[12] = {
+    "title": "Mission Brief: Conductors and Insulators",
+    "subtitle": "Day 12 • Electrical Conductors and Insulators",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "⚡",
+            "heading": "Today’s Mission",
+            "text": "Today we will compare materials that conduct electricity with materials that insulate electricity.",
+            "caption": "A material’s ability to conduct or insulate electricity is a physical property."
+        },
+        {
+            "icon": "💡",
+            "heading": "Conductors",
+            "text": "Electrical conductors allow electrical energy to flow through them.",
+            "caption": "If the bulb lights in a circuit test, the material is acting as a conductor."
+        },
+        {
+            "icon": "🧤",
+            "heading": "Insulators",
+            "text": "Electrical insulators do not allow electrical energy to flow easily.",
+            "caption": "If the bulb does not light, the material is acting as an insulator."
+        },
+        {
+            "icon": "🔌",
+            "heading": "Real-World Safety",
+            "text": "Electrical wires often have metal inside and plastic outside.",
+            "caption": "The metal conducts electricity. The plastic helps protect us because it insulates."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "Why would a metal paper clip make a bulb light, but a plastic straw would not?",
+            "caption": "Use the words conductor and insulator in your answer."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about conductors and insulators, use the circuit result as evidence.",
+            "caption": "Bulb lights = conductor. Bulb does not light = insulator."
+        }
+    ]
+}
+# End Day 12 Mission Brief Animation
+
