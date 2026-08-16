@@ -728,3 +728,36 @@ STEVE_PENGUIN_MISSIONS[24] = {
 }
 # End Day 24 Steve the Penguin STAAR Mission
 
+
+# Day 25 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[25] = {
+    "title": "Steve the Penguin’s Lab Evidence Mission",
+    "subtitle": "Day 25 • Mixtures and Solutions Review",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin reviews lab results from four cups. Cup 1 has gravel and water; the gravel stays visible. Cup 2 has salt and water; the salt spreads evenly and is no longer visible. Cup 3 has iron filings and sand; a magnet removes the iron filings. Cup 4 has sand and water; the sand settles at the bottom.",
+    "question": "Which conclusion is best supported by Steve’s lab evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Cup 1 is a solution because the gravel stayed visible in the water."
+        },
+        {
+            "letter": "B",
+            "text": "Cup 4 is a solution because the sand settled at the bottom."
+        },
+        {
+            "letter": "C",
+            "text": "Cup 2 is a solution because the salt dissolved and spread evenly through the water."
+        },
+        {
+            "letter": "D",
+            "text": "Cup 3 is a solution because the iron filings were removed with a magnet."
+        }
+    ],
+    "correct_answer": "C",
+    "explanation": "Steve should choose C. Cup 2 is the best evidence of a solution because the salt dissolved and spread evenly through the water. Cup 1 and Cup 4 have visible materials, and Cup 3 is a mixture that can be separated using magnetism.",
+    "staar_tip": "For STAAR evidence questions, read the results carefully. A solution has material dissolved and spread evenly. A mixture may have visible parts or parts that can be separated using physical properties.",
+    "vocabulary": ["mixture", "solution", "dissolve", "spread evenly", "magnetism", "separate", "physical properties", "evidence", "data"]
+}
+# End Day 25 Steve the Penguin STAAR Mission
+

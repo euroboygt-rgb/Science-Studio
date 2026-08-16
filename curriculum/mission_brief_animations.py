@@ -1036,3 +1036,50 @@ MISSION_BRIEF_ANIMATIONS[24] = {
 }
 # End Day 24 Mission Brief Animation
 
+
+# Day 25 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[25] = {
+    "title": "Mission Brief: Mixtures and Solutions Lab Review",
+    "subtitle": "Day 25 • STAAR Evidence Practice",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🧪",
+            "heading": "Today’s Mission",
+            "text": "Today we will use lab evidence to review mixtures, solutions, and separating materials.",
+            "caption": "Scientists use evidence before making a claim."
+        },
+        {
+            "icon": "🥣",
+            "heading": "Mixture Review",
+            "text": "A mixture forms when materials are combined but still keep their own physical properties.",
+            "caption": "The parts may still be visible, sorted, filtered, or separated."
+        },
+        {
+            "icon": "🥤",
+            "heading": "Solution Review",
+            "text": "A solution forms when one material dissolves and spreads evenly through another material.",
+            "caption": "The parts are not easy to see separately."
+        },
+        {
+            "icon": "🧲",
+            "heading": "Separation Review",
+            "text": "Mixtures can be separated using physical properties such as magnetism, size, density, and solubility.",
+            "caption": "Choose the method that matches the evidence."
+        },
+        {
+            "icon": "📊",
+            "heading": "Real-World Example",
+            "text": "A water treatment plant separates materials by using screens, filters, settling tanks, and other tools based on physical properties.",
+            "caption": "Engineers use evidence to decide which separation method works best."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a STAAR question gives a table or investigation, match the claim to the data.",
+            "caption": "The best answer should use the evidence, not just a vocabulary word."
+        }
+    ]
+}
+# End Day 25 Mission Brief Animation
+
