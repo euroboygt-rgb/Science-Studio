@@ -1412,3 +1412,50 @@ MISSION_BRIEF_ANIMATIONS[32] = {
 }
 # End Day 32 Mission Brief Animation
 
+
+# Day 33 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[33] = {
+    "title": "Mission Brief: Patterns of Motion",
+    "subtitle": "Day 33 • Position Over Time",
+    "theme": "force",
+    "slides": [
+        {
+            "icon": "📍",
+            "heading": "Today’s Mission",
+            "text": "Today we will use position and time evidence to identify patterns of motion.",
+            "caption": "Motion can be described by how an object’s position changes over time."
+        },
+        {
+            "icon": "🕒",
+            "heading": "Position Over Time",
+            "text": "Scientists can record where an object is at different times to understand its motion.",
+            "caption": "A table or graph can show how motion changes."
+        },
+        {
+            "icon": "📊",
+            "heading": "Look for Patterns",
+            "text": "If an object moves the same distance during each equal time interval, the motion is steady.",
+            "caption": "Equal distance in equal time can show a pattern."
+        },
+        {
+            "icon": "🚗",
+            "heading": "Changing Motion",
+            "text": "If an object travels more distance during each equal time interval, it may be speeding up.",
+            "caption": "If it travels less distance each time, it may be slowing down."
+        },
+        {
+            "icon": "🚦",
+            "heading": "Real-World Example",
+            "text": "Traffic apps use position over time to show whether a car is moving steadily, speeding up, slowing down, or stopped.",
+            "caption": "The app compares where the car is at different times."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question gives a table or graph about motion, compare the position changes for each time interval.",
+            "caption": "Use the data pattern before choosing your answer."
+        }
+    ]
+}
+# End Day 33 Mission Brief Animation
+

@@ -992,3 +992,36 @@ STEVE_PENGUIN_MISSIONS[32] = {
 }
 # End Day 32 Steve the Penguin STAAR Mission
 
+
+# Day 33 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[33] = {
+    "title": "Steve the Penguin’s Motion Pattern Mission",
+    "subtitle": "Day 33 • Position Over Time Evidence",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin records the position of a toy car every 2 seconds. At 0 seconds, the car is at 0 cm. At 2 seconds, it is at 20 cm. At 4 seconds, it is at 40 cm. At 6 seconds, it is at 60 cm.",
+    "question": "Which conclusion is best supported by Steve’s data?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The car stopped moving after 2 seconds."
+        },
+        {
+            "letter": "B",
+            "text": "The car slowed down because it moved less distance each time."
+        },
+        {
+            "letter": "C",
+            "text": "The car moved at a steady speed because it traveled the same distance during each 2-second interval."
+        },
+        {
+            "letter": "D",
+            "text": "The car changed into a new substance because its position changed."
+        }
+    ],
+    "correct_answer": "C",
+    "explanation": "Steve should choose C. The car moved 20 cm during each 2-second interval. Since the distance changed by the same amount during each equal time interval, the data show a steady pattern of motion.",
+    "staar_tip": "When a STAAR question gives position and time data, compare each time interval. Equal distance in equal time shows steady motion. Greater distance each time may show speeding up, and less distance each time may show slowing down.",
+    "vocabulary": ["motion", "position", "time", "distance", "speed", "pattern", "data", "evidence", "steady motion"]
+}
+# End Day 33 Steve the Penguin STAAR Mission
+
