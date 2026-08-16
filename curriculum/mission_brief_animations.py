@@ -1553,3 +1553,50 @@ MISSION_BRIEF_ANIMATIONS[35] = {
 }
 # End Day 35 Mission Brief Animation
 
+
+# Day 36 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[36] = {
+    "title": "Mission Brief: Force and Motion Evidence Review",
+    "subtitle": "Day 36 • Unit 3 STAAR Evidence Practice",
+    "theme": "force",
+    "slides": [
+        {
+            "icon": "🏁",
+            "heading": "Today’s Mission",
+            "text": "Today we will review force and motion by using evidence from investigations, data tables, and real-world examples.",
+            "caption": "The best science answers are supported by evidence."
+        },
+        {
+            "icon": "💪",
+            "heading": "Forces Change Motion",
+            "text": "A force is a push or pull that can change an object's speed, direction, position, or distance moved.",
+            "caption": "Look for what happened before and after the force."
+        },
+        {
+            "icon": "⚖️",
+            "heading": "Balanced and Unbalanced Forces",
+            "text": "Balanced forces do not cause a change in motion. Unbalanced forces can cause a change in motion.",
+            "caption": "No change = balanced. Change in motion = unbalanced."
+        },
+        {
+            "icon": "🌎",
+            "heading": "Gravity and Friction",
+            "text": "Gravity pulls objects toward Earth. Friction acts against motion when surfaces rub together.",
+            "caption": "Gravity pulls downward. Friction can slow or stop motion."
+        },
+        {
+            "icon": "📊",
+            "heading": "Data and Variables",
+            "text": "In investigations, scientists identify what changed, what was measured, and what stayed the same.",
+            "caption": "Independent = changed. Dependent = measured. Control = stayed the same."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "For review questions, read the evidence first. Then match the answer to the force, motion, data, or variable shown.",
+            "caption": "Do not guess from one word. Use the investigation results."
+        }
+    ]
+}
+# End Day 36 Mission Brief Animation
+

@@ -1091,3 +1091,36 @@ STEVE_PENGUIN_MISSIONS[35] = {
 }
 # End Day 35 Steve the Penguin STAAR Mission
 
+
+# Day 36 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[36] = {
+    "title": "Steve the Penguin’s Force and Motion Review Mission",
+    "subtitle": "Day 36 • Unit 3 Evidence Review",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin reviews results from a force and motion investigation. He rolls the same toy car down the same ramp onto three surfaces. On tile, the car travels 120 cm. On carpet, the car travels 70 cm. On sandpaper, the car travels 35 cm. Steve keeps the ramp height, toy car, and starting point the same each time.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The sandpaper had the least friction because the car traveled the shortest distance."
+        },
+        {
+            "letter": "B",
+            "text": "The rougher surfaces created more friction, causing the toy car to travel shorter distances."
+        },
+        {
+            "letter": "C",
+            "text": "The toy car changed mass each time because it traveled different distances."
+        },
+        {
+            "letter": "D",
+            "text": "The investigation was unfair because Steve kept the ramp height, toy car, and starting point the same."
+        }
+    ],
+    "correct_answer": "B",
+    "explanation": "Steve should choose B. The toy car traveled farthest on tile and shortest on sandpaper. Since the same car, ramp height, and starting point were used, the evidence shows that the rougher surfaces created more friction and slowed the car sooner.",
+    "staar_tip": "For STAAR review questions, match the answer to the data. Also check the variables: what changed, what was measured, and what stayed the same.",
+    "vocabulary": ["force", "motion", "friction", "surface", "distance", "fair test", "control variable", "independent variable", "dependent variable", "evidence"]
+}
+# End Day 36 Steve the Penguin STAAR Mission
+
