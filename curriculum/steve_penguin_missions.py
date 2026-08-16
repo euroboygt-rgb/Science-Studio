@@ -332,3 +332,36 @@ STEVE_PENGUIN_MISSIONS[12] = {
 }
 # End Day 12 Steve the Penguin STAAR Mission
 
+
+# Day 13 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[13] = {
+    "title": "Steve the Penguin’s Heat Transfer Mission",
+    "subtitle": "Day 13 • Thermal Conductors and Insulators",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin places four spoons into a cup of warm water. After a few minutes, the metal spoon feels the warmest. The wooden spoon, plastic spoon, and rubber-coated spoon do not feel as warm.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The wooden spoon is the best thermal conductor because it came from a tree."
+        },
+        {
+            "letter": "B",
+            "text": "The plastic spoon is the best thermal conductor because it is smooth."
+        },
+        {
+            "letter": "C",
+            "text": "The rubber-coated spoon is the best thermal conductor because it bends."
+        },
+        {
+            "letter": "D",
+            "text": "The metal spoon is the best thermal conductor because it transferred heat fastest."
+        }
+    ],
+    "correct_answer": "D",
+    "explanation": "Steve should choose D. The metal spoon felt the warmest after sitting in warm water, so the evidence shows that heat moved through the metal fastest. The wooden, plastic, and rubber-coated spoons slowed heat transfer, so they acted more like thermal insulators.",
+    "staar_tip": "When a STAAR question asks about thermal conductors and insulators, use temperature or heat-transfer evidence. A material that gets hot quickly is usually a thermal conductor. A material that slows heat transfer is an insulator.",
+    "vocabulary": ["thermal energy", "heat transfer", "thermal conductor", "thermal insulator", "metal", "wood", "plastic", "rubber"]
+}
+# End Day 13 Steve the Penguin STAAR Mission
+

@@ -472,3 +472,50 @@ MISSION_BRIEF_ANIMATIONS[12] = {
 }
 # End Day 12 Mission Brief Animation
 
+
+# Day 13 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[13] = {
+    "title": "Mission Brief: Heat Transfer",
+    "subtitle": "Day 13 • Thermal Conductors and Insulators",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "🔥",
+            "heading": "Today’s Mission",
+            "text": "Today we will compare materials that transfer heat quickly with materials that slow heat transfer.",
+            "caption": "Thermal energy is energy related to heat."
+        },
+        {
+            "icon": "🥄",
+            "heading": "Thermal Conductors",
+            "text": "A thermal conductor allows heat to move through it easily.",
+            "caption": "Metal is often a good thermal conductor."
+        },
+        {
+            "icon": "🧤",
+            "heading": "Thermal Insulators",
+            "text": "A thermal insulator slows the transfer of heat.",
+            "caption": "Wood, plastic, cloth, and rubber can act as thermal insulators."
+        },
+        {
+            "icon": "🍳",
+            "heading": "Real-World Example",
+            "text": "A metal pan gets hot quickly, but many pan handles are covered with plastic, wood, or rubber.",
+            "caption": "The handle material helps protect your hand from heat."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "Why would a metal spoon feel hotter than a wooden spoon in warm water?",
+            "caption": "Use the words thermal conductor and thermal insulator."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about heat transfer, look for which material gets hot fastest or protects from heat best.",
+            "caption": "Fast heat transfer = thermal conductor. Slow heat transfer = thermal insulator."
+        }
+    ]
+}
+# End Day 13 Mission Brief Animation
+
