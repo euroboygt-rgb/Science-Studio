@@ -68,3 +68,36 @@ STEVE_PENGUIN_MISSIONS[4] = {
 }
 # End Day 4 Steve the Penguin STAAR Mission
 
+
+# Day 5 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[5] = {
+    "title": "Steve the Penguin’s Volume Mission",
+    "subtitle": "Day 5 • Measuring Volume",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin places a small rock into a graduated cylinder. The water level starts at 40 mL. After Steve adds the rock, the water level rises to 55 mL.",
+    "question": "What is the volume of the rock?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "15 mL, because 55 mL - 40 mL = 15 mL."
+        },
+        {
+            "letter": "B",
+            "text": "40 mL, because that was the starting water level."
+        },
+        {
+            "letter": "C",
+            "text": "55 mL, because that was the ending water level."
+        },
+        {
+            "letter": "D",
+            "text": "95 mL, because 40 mL + 55 mL = 95 mL."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. The rock caused the water level to rise from 40 mL to 55 mL. The difference is 15 mL, so the volume of the rock is 15 mL.",
+    "staar_tip": "When a STAAR question shows displacement, subtract the starting water level from the ending water level.",
+    "vocabulary": ["volume", "graduated cylinder", "milliliters", "mL", "displacement", "matter"]
+}
+# End Day 5 Steve the Penguin STAAR Mission
+

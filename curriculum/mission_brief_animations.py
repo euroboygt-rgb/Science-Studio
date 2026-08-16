@@ -96,3 +96,50 @@ MISSION_BRIEF_ANIMATIONS[4] = {
 }
 # End Day 4 Mission Brief Animation
 
+
+# Day 5 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[5] = {
+    "title": "Mission Brief: Measuring Volume",
+    "subtitle": "Day 5 • Volume and Space Matter Takes Up",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🧪",
+            "heading": "Today’s Mission",
+            "text": "Today we will measure and compare the volume of matter.",
+            "caption": "Volume tells how much space matter takes up."
+        },
+        {
+            "icon": "📦",
+            "heading": "What Is Volume?",
+            "text": "Volume is the amount of space an object or substance takes up.",
+            "caption": "Solids, liquids, and gases all have volume."
+        },
+        {
+            "icon": "🌊",
+            "heading": "Liquid Volume",
+            "text": "Scientists use a graduated cylinder to measure the volume of liquids.",
+            "caption": "Liquid volume is often measured in milliliters, or mL."
+        },
+        {
+            "icon": "🪨",
+            "heading": "Irregular Solids",
+            "text": "Water displacement can help measure the volume of an irregular solid.",
+            "caption": "When an object is placed in water, the water level rises."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "If a rock makes the water level rise, what does that tell us about the rock?",
+            "caption": "Hint: The rock takes up space."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question shows water levels before and after, subtract to find the object’s volume.",
+            "caption": "Final water level minus starting water level equals the object’s volume."
+        }
+    ]
+}
+# End Day 5 Mission Brief Animation
+
