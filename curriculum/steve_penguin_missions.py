@@ -266,3 +266,36 @@ STEVE_PENGUIN_MISSIONS[10] = {
 }
 # End Day 10 Steve the Penguin STAAR Mission
 
+
+# Day 11 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[11] = {
+    "title": "Steve the Penguin’s Circuit Mission",
+    "subtitle": "Day 11 • Electrical Conductivity",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin tests four materials in a simple circuit with a battery, wires, and a bulb. The bulb lights when Steve tests copper wire and aluminum foil. The bulb does not light when Steve tests a plastic straw or a wooden craft stick.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "All solid materials are electrical conductors."
+        },
+        {
+            "letter": "B",
+            "text": "Copper wire and aluminum foil are electrical conductors because they allowed the bulb to light."
+        },
+        {
+            "letter": "C",
+            "text": "Plastic is an electrical conductor because it is used around wires."
+        },
+        {
+            "letter": "D",
+            "text": "Wood is an electrical conductor because it came from a tree."
+        }
+    ],
+    "correct_answer": "B",
+    "explanation": "Steve should choose B. The bulb lit when copper wire and aluminum foil were placed in the circuit, so the evidence shows those materials allowed electrical energy to flow. The plastic straw and wooden craft stick did not allow the bulb to light, so they acted as insulators.",
+    "staar_tip": "When a STAAR question asks about electrical conductors and insulators, use the circuit evidence. If the bulb lights, the material is a conductor. If the bulb does not light, the material is an insulator.",
+    "vocabulary": ["electrical conductivity", "conductor", "insulator", "circuit", "bulb", "battery", "electrical energy"]
+}
+# End Day 11 Steve the Penguin STAAR Mission
+

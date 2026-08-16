@@ -378,3 +378,50 @@ MISSION_BRIEF_ANIMATIONS[10] = {
 }
 # End Day 10 Mission Brief Animation
 
+
+# Day 11 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[11] = {
+    "title": "Mission Brief: Will It Light?",
+    "subtitle": "Day 11 • Electrical Conductivity",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "💡",
+            "heading": "Today’s Mission",
+            "text": "Today we will test materials to see if they allow electrical energy to flow.",
+            "caption": "This property is called electrical conductivity."
+        },
+        {
+            "icon": "🔌",
+            "heading": "What Is a Conductor?",
+            "text": "An electrical conductor is a material that allows electrical energy to flow through it.",
+            "caption": "Many metals are good electrical conductors."
+        },
+        {
+            "icon": "🧤",
+            "heading": "What Is an Insulator?",
+            "text": "An electrical insulator is a material that does not allow electrical energy to flow easily.",
+            "caption": "Plastic, rubber, and wood are often insulators."
+        },
+        {
+            "icon": "🔋",
+            "heading": "Use a Circuit Test",
+            "text": "A complete circuit can show whether a material is a conductor or an insulator.",
+            "caption": "If the bulb lights, electrical energy flowed through the material."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "Why are many electrical wires covered with plastic?",
+            "caption": "Think about conductors, insulators, and safety."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about electrical conductivity, look for evidence that the bulb lit or did not light.",
+            "caption": "The test result is stronger evidence than the way the material looks."
+        }
+    ]
+}
+# End Day 11 Mission Brief Animation
+
