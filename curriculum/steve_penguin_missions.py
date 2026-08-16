@@ -101,3 +101,36 @@ STEVE_PENGUIN_MISSIONS[5] = {
 }
 # End Day 5 Steve the Penguin STAAR Mission
 
+
+# Day 6 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[6] = {
+    "title": "Steve the Penguin’s Magnetism Mission",
+    "subtitle": "Day 6 • Magnetic and Nonmagnetic Materials",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin tests four classroom objects with a magnet. The paper clip is attracted to the magnet. The wooden craft stick, plastic spoon, and rubber eraser are not attracted to the magnet.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The paper clip is magnetic because it was attracted to the magnet."
+        },
+        {
+            "letter": "B",
+            "text": "The wooden craft stick is magnetic because it is solid."
+        },
+        {
+            "letter": "C",
+            "text": "The plastic spoon is magnetic because it is smooth."
+        },
+        {
+            "letter": "D",
+            "text": "The rubber eraser is magnetic because it can move."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. The paper clip was attracted to the magnet, so the evidence shows that it is magnetic. The other objects were not attracted, so they are nonmagnetic.",
+    "staar_tip": "When a STAAR question asks about magnetism, use the test result. A material is magnetic if it is attracted to a magnet.",
+    "vocabulary": ["magnet", "magnetism", "magnetic", "nonmagnetic", "attracted", "physical property", "SINC"]
+}
+# End Day 6 Steve the Penguin STAAR Mission
+

@@ -143,3 +143,50 @@ MISSION_BRIEF_ANIMATIONS[5] = {
 }
 # End Day 5 Mission Brief Animation
 
+
+# Day 6 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[6] = {
+    "title": "Mission Brief: Magnetic or Nonmagnetic?",
+    "subtitle": "Day 6 • Magnetism as a Physical Property",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🧲",
+            "heading": "Today’s Mission",
+            "text": "Today we will test materials to see if they are magnetic or nonmagnetic.",
+            "caption": "Magnetism is a physical property of matter."
+        },
+        {
+            "icon": "🔎",
+            "heading": "What Is Magnetism?",
+            "text": "Magnetism is the ability of a material to be attracted to a magnet.",
+            "caption": "If a material sticks to a magnet, it is magnetic."
+        },
+        {
+            "icon": "🧪",
+            "heading": "Test With Evidence",
+            "text": "Scientists test materials and record whether they are attracted or not attracted.",
+            "caption": "We use observations as evidence."
+        },
+        {
+            "icon": "🔤",
+            "heading": "SINC Materials",
+            "text": "Steel, iron, nickel, and cobalt are materials that can be magnetic.",
+            "caption": "Remember SINC: Steel, Iron, Nickel, Cobalt."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "Would a wooden pencil, paper clip, plastic spoon, or iron nail be magnetic?",
+            "caption": "Explain your prediction before testing."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks if a material is magnetic, look for evidence that it is attracted to a magnet.",
+            "caption": "Do not choose only because the object looks shiny. Use the test result."
+        }
+    ]
+}
+# End Day 6 Mission Brief Animation
+
