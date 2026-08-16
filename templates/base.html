@@ -2999,5 +2999,210 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio Mission Brief Animation -->
 
+
+<!-- Science Studio Steve Penguin STAAR Mission -->
+<script>
+(function () {
+  function isLessonPage() {
+    return /\/first-nine-weeks\/day\/\d+/.test(window.location.pathname);
+  }
+
+  function getDayFromUrl() {
+    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
+    return match ? Number(match[1]) : null;
+  }
+
+  function makeSteveMissionCard(mission) {
+    const section = document.createElement("section");
+    section.id = "scienceStudioStevePenguinMission";
+    section.style.background = "linear-gradient(135deg, #e9f7ff, #ffffff)";
+    section.style.border = "3px solid black";
+    section.style.borderRadius = "16px";
+    section.style.padding = "16px";
+    section.style.margin = "18px auto";
+    section.style.maxWidth = "960px";
+    section.style.boxShadow = "5px 5px 0 rgba(0,0,0,.18)";
+
+    const options = mission.options || [];
+
+    section.innerHTML = `
+      <div style="display:flex; gap:14px; align-items:flex-start; flex-wrap:wrap;">
+        <div style="font-size:4rem; line-height:1;">🐧</div>
+
+        <div style="flex:1; min-width:260px;">
+          <div style="display:inline-block; background:#0d6efd; color:white; border:2px solid black; border-radius:999px; padding:5px 12px; font-weight:900;">
+            🐧 Steve the Penguin’s STAAR Mission
+          </div>
+
+          <h2 style="margin:10px 0 2px 0; font-size:1.65rem; font-weight:900;">
+            ${mission.title || "Steve the Penguin’s STAAR Mission"}
+          </h2>
+
+          <div style="font-weight:800; color:#495057; margin-bottom:12px;">
+            ${mission.subtitle || ""}
+          </div>
+
+          <div style="background:#fff7d6; border:2px solid black; border-radius:12px; padding:12px; margin-bottom:12px;">
+            <strong>Steve’s Scenario:</strong>
+            <p style="margin:6px 0 0 0;">${mission.scenario || ""}</p>
+          </div>
+
+          <div style="background:white; border:2px solid black; border-radius:12px; padding:12px;">
+            <strong>STAAR-Style Question:</strong>
+            <p style="margin:6px 0 12px 0; font-weight:800;">${mission.question || ""}</p>
+
+            <div class="ss-steve-options" style="display:grid; gap:8px;">
+              ${options.map(option => `
+                <button
+                  type="button"
+                  class="ss-steve-option"
+                  data-answer="${option.letter}"
+                  style="text-align:left; background:#f8f9fa; color:black; border:2px solid black; border-radius:10px; padding:9px 11px; font-weight:800; cursor:pointer;"
+                >
+                  <strong>${option.letter}.</strong> ${option.text}
+                </button>
+              `).join("")}
+            </div>
+
+            <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+              <button
+                type="button"
+                class="ss-steve-check"
+                style="background:#ffc107; color:black; border:2px solid black; border-radius:8px; padding:8px 12px; font-weight:900; box-shadow:2px 2px 0 rgba(0,0,0,.35); cursor:pointer;"
+              >
+                Check Answer
+              </button>
+
+              <button
+                type="button"
+                class="ss-steve-reset"
+                style="background:#e9ecef; color:black; border:2px solid black; border-radius:8px; padding:8px 12px; font-weight:900; cursor:pointer;"
+              >
+                Reset
+              </button>
+
+              <span class="ss-steve-status" style="font-weight:900;"></span>
+            </div>
+
+            <div
+              class="ss-steve-explanation"
+              style="display:none; margin-top:12px; background:#e8f5e9; border:2px solid black; border-radius:10px; padding:11px;"
+            >
+              <strong>🐧 Steve Explains the Evidence:</strong>
+              <p style="margin:6px 0 0 0;">${mission.explanation || ""}</p>
+            </div>
+
+            <div
+              class="ss-steve-tip"
+              style="display:none; margin-top:10px; background:#eef6ff; border:2px solid black; border-radius:10px; padding:11px;"
+            >
+              <strong>⭐ STAAR Tip:</strong>
+              <p style="margin:6px 0 0 0;">${mission.staar_tip || ""}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    let selectedAnswer = null;
+
+    const optionButtons = Array.from(section.querySelectorAll(".ss-steve-option"));
+    const status = section.querySelector(".ss-steve-status");
+    const explanation = section.querySelector(".ss-steve-explanation");
+    const tip = section.querySelector(".ss-steve-tip");
+
+    optionButtons.forEach(button => {
+      button.addEventListener("click", function () {
+        selectedAnswer = button.dataset.answer;
+
+        optionButtons.forEach(btn => {
+          btn.style.background = "#f8f9fa";
+          btn.style.color = "black";
+        });
+
+        button.style.background = "#dbeafe";
+        button.style.color = "black";
+        status.textContent = "";
+      });
+    });
+
+    section.querySelector(".ss-steve-check").addEventListener("click", function () {
+      if (!selectedAnswer) {
+        status.textContent = "Choose an answer first.";
+        status.style.color = "#842029";
+        return;
+      }
+
+      optionButtons.forEach(btn => {
+        if (btn.dataset.answer === mission.correct_answer) {
+          btn.style.background = "#d1e7dd";
+        } else if (btn.dataset.answer === selectedAnswer) {
+          btn.style.background = "#f8d7da";
+        }
+      });
+
+      if (selectedAnswer === mission.correct_answer) {
+        status.textContent = "Correct! Steve found the evidence.";
+        status.style.color = "#0f5132";
+      } else {
+        status.textContent = "Good try. Check Steve’s evidence.";
+        status.style.color = "#842029";
+      }
+
+      explanation.style.display = "block";
+      tip.style.display = "block";
+    });
+
+    section.querySelector(".ss-steve-reset").addEventListener("click", function () {
+      selectedAnswer = null;
+      status.textContent = "";
+      explanation.style.display = "none";
+      tip.style.display = "none";
+
+      optionButtons.forEach(btn => {
+        btn.style.background = "#f8f9fa";
+        btn.style.color = "black";
+      });
+    });
+
+    return section;
+  }
+
+  function addStevePenguinMission() {
+    if (!isLessonPage()) return;
+
+    const day = getDayFromUrl();
+    if (!day) return;
+
+    if (document.querySelector("#scienceStudioStevePenguinMission")) return;
+
+    fetch("/api/steve-penguin-mission/" + day)
+      .then(response => response.json())
+      .then(mission => {
+        if (!mission || !mission.available) return;
+
+        const card = makeSteveMissionCard(mission);
+
+        const missionBrief = document.querySelector("#scienceStudioMissionBriefAnimation");
+        const phenomenon = document.querySelector("#safePhenomenonMissionV2");
+
+        if (missionBrief) {
+          missionBrief.insertAdjacentElement("afterend", card);
+        } else if (phenomenon) {
+          phenomenon.insertAdjacentElement("afterend", card);
+        }
+      })
+      .catch(error => console.warn("Steve Penguin Mission skipped.", error));
+  }
+
+  window.addEventListener("load", function () {
+    setTimeout(addStevePenguinMission, 1200);
+    setTimeout(addStevePenguinMission, 2200);
+    setTimeout(addStevePenguinMission, 3400);
+  });
+})();
+</script>
+<!-- End Science Studio Steve Penguin STAAR Mission -->
+
 </body>
 </html>

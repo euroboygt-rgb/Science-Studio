@@ -1325,6 +1325,24 @@ def api_mission_brief(day):
     return jsonify(result)
 # End Science Studio Mission Brief Animation API
 
+
+# Science Studio Steve Penguin Mission API
+@app.route("/api/steve-penguin-mission/<int:day>")
+def api_steve_penguin_mission(day):
+    from flask import jsonify
+    from curriculum.steve_penguin_missions import get_steve_penguin_mission
+
+    mission = get_steve_penguin_mission(day)
+
+    if not mission:
+        return jsonify({"available": False, "day": day})
+
+    result = dict(mission)
+    result["available"] = True
+    result["day"] = day
+    return jsonify(result)
+# End Science Studio Steve Penguin Mission API
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
