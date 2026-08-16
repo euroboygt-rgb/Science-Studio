@@ -134,3 +134,36 @@ STEVE_PENGUIN_MISSIONS[6] = {
 }
 # End Day 6 Steve the Penguin STAAR Mission
 
+
+# Day 7 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[7] = {
+    "title": "Steve the Penguin’s Float or Sink Mission",
+    "subtitle": "Day 7 • Relative Density",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin places four objects in a tub of water. A cork and a plastic bottle cap float. A metal washer and a small rock sink.",
+    "question": "Which statement best explains Steve’s results?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The cork and bottle cap are less dense than water, so they float."
+        },
+        {
+            "letter": "B",
+            "text": "The metal washer floats because it is shiny."
+        },
+        {
+            "letter": "C",
+            "text": "The rock sinks because it is smaller than the cork."
+        },
+        {
+            "letter": "D",
+            "text": "All solid objects sink in water."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. Objects that are less dense than water usually float. Objects that are more dense than water usually sink. The cork and bottle cap floated, so they were less dense than water.",
+    "staar_tip": "When a STAAR question asks about floating or sinking, do not choose based only on size, shape, or color. Compare the object's density to water.",
+    "vocabulary": ["density", "relative density", "float", "sink", "less dense", "more dense", "water"]
+}
+# End Day 7 Steve the Penguin STAAR Mission
+

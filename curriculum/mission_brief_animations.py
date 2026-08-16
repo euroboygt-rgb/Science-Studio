@@ -190,3 +190,50 @@ MISSION_BRIEF_ANIMATIONS[6] = {
 }
 # End Day 6 Mission Brief Animation
 
+
+# Day 7 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[7] = {
+    "title": "Mission Brief: Float or Sink?",
+    "subtitle": "Day 7 • Density and Relative Density",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🌊",
+            "heading": "Today’s Mission",
+            "text": "Today we will investigate why some objects float and some objects sink.",
+            "caption": "Floating and sinking are clues about relative density."
+        },
+        {
+            "icon": "⚖️",
+            "heading": "What Is Density?",
+            "text": "Density compares how much matter is packed into a certain amount of space.",
+            "caption": "Density connects mass and volume."
+        },
+        {
+            "icon": "🪵",
+            "heading": "Less Dense Than Water",
+            "text": "Objects that are less dense than water usually float.",
+            "caption": "Wood and foam often float because they are less dense than water."
+        },
+        {
+            "icon": "🪨",
+            "heading": "More Dense Than Water",
+            "text": "Objects that are more dense than water usually sink.",
+            "caption": "Rocks and many metals sink because they are more dense than water."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "A big beach ball floats, but a tiny pebble sinks. Why?",
+            "caption": "Size alone does not decide floating or sinking. Density matters."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks why something floats or sinks, compare its density to water.",
+            "caption": "Less dense floats. More dense sinks."
+        }
+    ]
+}
+# End Day 7 Mission Brief Animation
+
