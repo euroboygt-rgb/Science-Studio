@@ -629,3 +629,36 @@ STEVE_PENGUIN_MISSIONS[21] = {
 }
 # End Day 21 Steve the Penguin STAAR Mission
 
+
+# Day 22 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[22] = {
+    "title": "Steve the Penguin’s Separating Solutions Mission",
+    "subtitle": "Day 22 • Evaporation Separates Salt Water",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin has a cup of salt water. The salt has dissolved and spread evenly through the water. Steve pours the salt water through a coffee filter, but the liquid passes through and the salt does not stay on the filter.",
+    "question": "Which method would best help Steve separate the salt from the water?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Use a magnet to pull the salt out of the water."
+        },
+        {
+            "letter": "B",
+            "text": "Let the water evaporate so the salt is left behind."
+        },
+        {
+            "letter": "C",
+            "text": "Use a screen to catch the dissolved salt pieces."
+        },
+        {
+            "letter": "D",
+            "text": "Shake the cup until the salt changes into sand."
+        }
+    ],
+    "correct_answer": "B",
+    "explanation": "Steve should choose B. The salt dissolved in the water, so a filter or screen would not easily catch it. If the water evaporates, the water leaves as vapor and the salt can be left behind.",
+    "staar_tip": "When a STAAR question asks how to separate a solution, look for whether the material is dissolved. Dissolved salt can often be recovered by evaporating the water.",
+    "vocabulary": ["solution", "solute", "solvent", "dissolved", "evaporation", "filter", "separate", "evidence"]
+}
+# End Day 22 Steve the Penguin STAAR Mission
+

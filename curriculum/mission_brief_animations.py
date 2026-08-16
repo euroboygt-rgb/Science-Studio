@@ -895,3 +895,50 @@ MISSION_BRIEF_ANIMATIONS[21] = {
 }
 # End Day 21 Mission Brief Animation
 
+
+# Day 22 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[22] = {
+    "title": "Mission Brief: Separating Solutions",
+    "subtitle": "Day 22 • Recovering Dissolved Materials",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🥤",
+            "heading": "Today’s Mission",
+            "text": "Today we will learn how some solutions can be separated by removing the solvent.",
+            "caption": "A solution is a mixture, so its parts can sometimes be separated."
+        },
+        {
+            "icon": "🔎",
+            "heading": "Why Solutions Are Tricky",
+            "text": "In a solution, the solute spreads evenly through the solvent, so the parts are not easy to see.",
+            "caption": "Salt water looks like one liquid, but salt is still mixed with the water."
+        },
+        {
+            "icon": "⚗️",
+            "heading": "Filters Do Not Catch Everything",
+            "text": "A filter can catch large visible particles, but it usually cannot catch a material dissolved in water.",
+            "caption": "A coffee filter can catch sand, but dissolved salt can pass through with the water."
+        },
+        {
+            "icon": "☀️",
+            "heading": "Evaporation Can Separate",
+            "text": "Evaporation can remove water from a solution and leave the dissolved material behind.",
+            "caption": "When salt water evaporates, salt crystals can remain."
+        },
+        {
+            "icon": "🌊",
+            "heading": "Real-World Example",
+            "text": "People can collect salt from seawater by letting the sun evaporate the water in shallow ponds.",
+            "caption": "The water leaves as vapor, and salt crystals are left behind."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks how to separate a solution, think about whether the material is dissolved or still visible.",
+            "caption": "Visible solid? Filter it. Dissolved material? Evaporation may help recover it."
+        }
+    ]
+}
+# End Day 22 Mission Brief Animation
+
