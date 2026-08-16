@@ -613,3 +613,50 @@ MISSION_BRIEF_ANIMATIONS[15] = {
 }
 # End Day 15 Mission Brief Animation
 
+
+# Day 16 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[16] = {
+    "title": "Mission Brief: Unit 1 Evidence Review",
+    "subtitle": "Day 16 • Physical Properties of Matter Review",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🧪",
+            "heading": "Today’s Mission",
+            "text": "Today we will review how scientists use physical properties to describe, compare, and classify matter.",
+            "caption": "A strong scientist uses evidence from observations and measurements."
+        },
+        {
+            "icon": "🔎",
+            "heading": "Physical Properties",
+            "text": "Physical properties can be observed or measured without changing the material into something new.",
+            "caption": "Examples include mass, volume, state of matter, texture, magnetism, density, solubility, and conductivity."
+        },
+        {
+            "icon": "📊",
+            "heading": "Use Data as Evidence",
+            "text": "Measurements and test results help scientists support their claims.",
+            "caption": "Data from tools, tables, models, and investigations can help you choose the best answer."
+        },
+        {
+            "icon": "🕵️",
+            "heading": "Real-World Example",
+            "text": "Scientists and engineers identify materials before using them to build tools, wires, containers, clothing, cars, and buildings.",
+            "caption": "They choose materials based on properties like strength, mass, conductivity, flexibility, and resistance to heat."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "Why is one clue sometimes not enough to identify an unknown material?",
+            "caption": "Think about how several materials can share one property but not all properties."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "For review questions, match the evidence to the science vocabulary before choosing your answer.",
+            "caption": "The best answer should be supported by the data, not just by a word that sounds familiar."
+        }
+    ]
+}
+# End Day 16 Mission Brief Animation
+

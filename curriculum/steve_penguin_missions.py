@@ -431,3 +431,36 @@ STEVE_PENGUIN_MISSIONS[15] = {
 }
 # End Day 15 Steve the Penguin STAAR Mission
 
+
+# Day 16 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[16] = {
+    "title": "Steve the Penguin’s Unit 1 Evidence Mission",
+    "subtitle": "Day 16 • Physical Properties Review",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin is reviewing evidence from a mystery material investigation. The material is solid, attracted to a magnet, sinks in water, does not dissolve in water, and allows a bulb to light in a circuit.",
+    "question": "Which claim is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The material is probably a metal because it is magnetic, more dense than water, insoluble, and conducts electricity."
+        },
+        {
+            "letter": "B",
+            "text": "The material is probably sugar because it does not dissolve in water."
+        },
+        {
+            "letter": "C",
+            "text": "The material is probably plastic because all plastics are magnetic and conduct electricity."
+        },
+        {
+            "letter": "D",
+            "text": "The material is probably air because it is solid and sinks in water."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. The evidence shows that the material is solid, magnetic, more dense than water, insoluble, and an electrical conductor. Those properties best support that the material is probably a metal.",
+    "staar_tip": "On a STAAR-style review question, use every piece of evidence. Cross out answer choices that do not match the data from the investigation.",
+    "vocabulary": ["physical properties", "evidence", "matter", "magnetic", "density", "solubility", "conductivity", "conductor", "metal"]
+}
+# End Day 16 Steve the Penguin STAAR Mission
+
