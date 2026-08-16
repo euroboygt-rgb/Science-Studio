@@ -827,3 +827,36 @@ STEVE_PENGUIN_MISSIONS[27] = {
 }
 # End Day 27 Steve the Penguin STAAR Mission
 
+
+# Day 28 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[28] = {
+    "title": "Steve the Penguin’s Net Force Mission",
+    "subtitle": "Day 28 • Balanced and Unbalanced Forces",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin tests forces on a box. In Trial 1, Steve pushes the box from the left with the same strength that his friend pushes from the right. The box does not move. In Trial 2, Steve pushes from the left with more strength than his friend pushes from the right. The box moves to the right.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The forces in Trial 1 were unbalanced because the box did not move."
+        },
+        {
+            "letter": "B",
+            "text": "The forces in Trial 1 were balanced, and the forces in Trial 2 were unbalanced."
+        },
+        {
+            "letter": "C",
+            "text": "The box moved in Trial 2 because its mass disappeared."
+        },
+        {
+            "letter": "D",
+            "text": "Balanced forces always make objects speed up."
+        }
+    ],
+    "correct_answer": "B",
+    "explanation": "Steve should choose B. In Trial 1, the forces were equal and opposite, so the box did not move. Those forces were balanced. In Trial 2, Steve pushed with more force, so the forces were unbalanced and the box moved to the right.",
+    "staar_tip": "For STAAR force questions, look for the change in motion. If equal opposite forces do not change motion, the forces are balanced. If unequal forces change motion, the forces are unbalanced.",
+    "vocabulary": ["force", "balanced forces", "unbalanced forces", "net force", "push", "pull", "motion", "direction", "evidence"]
+}
+# End Day 28 Steve the Penguin STAAR Mission
+

@@ -1177,3 +1177,50 @@ MISSION_BRIEF_ANIMATIONS[27] = {
 }
 # End Day 27 Mission Brief Animation
 
+
+# Day 28 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[28] = {
+    "title": "Mission Brief: Balanced and Unbalanced Forces",
+    "subtitle": "Day 28 • Net Force and Changes in Motion",
+    "theme": "force",
+    "slides": [
+        {
+            "icon": "⚖️",
+            "heading": "Today’s Mission",
+            "text": "Today we will compare balanced and unbalanced forces and explain how they affect motion.",
+            "caption": "Forces can work together or against each other."
+        },
+        {
+            "icon": "↔️",
+            "heading": "Balanced Forces",
+            "text": "Balanced forces are equal in strength and opposite in direction.",
+            "caption": "Balanced forces do not cause a change in motion."
+        },
+        {
+            "icon": "➡️",
+            "heading": "Unbalanced Forces",
+            "text": "Unbalanced forces are not equal. They can cause an object to start moving, stop, speed up, slow down, or change direction.",
+            "caption": "Unbalanced forces cause a change in motion."
+        },
+        {
+            "icon": "🧠",
+            "heading": "Net Force",
+            "text": "Net force is the overall force on an object after all pushes and pulls are combined.",
+            "caption": "If the net force is not zero, the forces are unbalanced."
+        },
+        {
+            "icon": "🪢",
+            "heading": "Real-World Example",
+            "text": "In tug-of-war, if both teams pull with equal force, the rope does not move. If one team pulls harder, the rope moves toward that team.",
+            "caption": "Equal forces are balanced. Unequal forces are unbalanced."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about balanced or unbalanced forces, look for evidence about equal forces, unequal forces, and changes in motion.",
+            "caption": "No change in motion = balanced. Change in motion = unbalanced."
+        }
+    ]
+}
+# End Day 28 Mission Brief Animation
+
