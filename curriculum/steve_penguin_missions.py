@@ -398,3 +398,36 @@ STEVE_PENGUIN_MISSIONS[14] = {
 }
 # End Day 14 Steve the Penguin STAAR Mission
 
+
+# Day 15 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[15] = {
+    "title": "Steve the Penguin’s Sand Boat Mission",
+    "subtitle": "Day 15 • Engineering with Physical Properties",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin is building a sand boat for a Science Studio engineering challenge. The boat needs to move across a sandy surface when air pushes against the sail. Steve can choose different materials for the boat body and sail.",
+    "question": "Which material choice would most likely help Steve’s sand boat move across the sand?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "A heavy metal block for the body and a small wooden cube for the sail."
+        },
+        {
+            "letter": "B",
+            "text": "A rough rock for the body and a wet paper towel for the sail."
+        },
+        {
+            "letter": "C",
+            "text": "A lightweight smooth plastic tray for the body and a wide paper sail to catch the air."
+        },
+        {
+            "letter": "D",
+            "text": "A glass jar for the body and a rubber eraser for the sail."
+        }
+    ],
+    "correct_answer": "C",
+    "explanation": "Steve should choose C. A lightweight smooth plastic tray would be easier to move across sand than a heavy or rough object. A wide paper sail could catch moving air and help push the boat forward. Steve’s design uses physical properties to solve the engineering problem.",
+    "staar_tip": "When a STAAR question asks about engineering materials, look for the material properties needed for the job. For this sand boat, useful properties include low mass, smooth texture, and a sail that can catch moving air.",
+    "vocabulary": ["engineering", "physical properties", "mass", "texture", "friction", "force", "motion", "material choice", "evidence"]
+}
+# End Day 15 Steve the Penguin STAAR Mission
+

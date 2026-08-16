@@ -566,3 +566,50 @@ MISSION_BRIEF_ANIMATIONS[14] = {
 }
 # End Day 14 Mission Brief Animation
 
+
+# Day 15 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[15] = {
+    "title": "Mission Brief: Sand Boat Engineering Challenge",
+    "subtitle": "Day 15 • Engineering with Physical Properties",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🏜️",
+            "heading": "Today’s Mission",
+            "text": "Today we will use physical properties to design a sand boat that can move across a sandy surface.",
+            "caption": "Engineers choose materials based on how the materials behave."
+        },
+        {
+            "icon": "🧠",
+            "heading": "Think Like an Engineer",
+            "text": "Engineers do not choose materials randomly. They choose materials that match the job.",
+            "caption": "A good design uses evidence from material properties."
+        },
+        {
+            "icon": "🛷",
+            "heading": "Body Material",
+            "text": "The boat body should be lightweight, smooth, and able to slide across sand.",
+            "caption": "A heavy or rough material may create more friction and slow the boat down."
+        },
+        {
+            "icon": "⛵",
+            "heading": "Sail Material",
+            "text": "The sail should be light, wide, and able to catch moving air.",
+            "caption": "A good sail helps transfer energy from air movement to the boat."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "Would a heavy metal block or a lightweight plastic tray make a better sand boat body?",
+            "caption": "Use properties like mass, texture, and friction to explain your thinking."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks you to choose the best material, match the material’s properties to the job it needs to do.",
+            "caption": "The best answer explains why the material works."
+        }
+    ]
+}
+# End Day 15 Mission Brief Animation
+
