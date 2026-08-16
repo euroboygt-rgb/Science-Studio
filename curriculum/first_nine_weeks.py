@@ -626,3 +626,37 @@ first_nine_weeks_lessons = [
 first_nine_weeks = first_nine_weeks_lessons
 lessons = first_nine_weeks_lessons
 all_lessons = first_nine_weeks_lessons
+
+
+# Science Studio Day 20 and Day 21 Solution Pacing Fix
+def _science_studio_update_lesson_day(_day, _updates):
+    for _lesson in first_nine_weeks_lessons:
+        if isinstance(_lesson, dict):
+            if str(_lesson.get("day")) == str(_day):
+                _lesson.update(_updates)
+                return
+        else:
+            if str(getattr(_lesson, "day", None)) == str(_day):
+                for _key, _value in _updates.items():
+                    setattr(_lesson, _key, _value)
+                return
+
+_science_studio_update_lesson_day(20, {
+    "title": "What Is a Solution? Create and Compare Solutions",
+    "unit": "Unit 2: Mixtures and Solutions",
+    "teks": "5.6C",
+    "learning_target": "I can explain that a solution forms when one material dissolves and spreads evenly through another material.",
+    "essential_question": "What makes a solution different from other mixtures?",
+    "vocabulary": ["solution", "dissolve", "solute", "solvent", "mixture", "evidence", "compare"],
+})
+
+_science_studio_update_lesson_day(21, {
+    "title": "Solution Evidence: Compare Solutions",
+    "unit": "Unit 2: Mixtures and Solutions",
+    "teks": "5.6C",
+    "learning_target": "I can compare solutions using evidence from observations and data.",
+    "essential_question": "How can evidence show that a mixture is a solution?",
+    "vocabulary": ["solution", "dissolve", "solute", "solvent", "mixture", "data", "evidence", "compare"],
+})
+# End Science Studio Day 20 and Day 21 Solution Pacing Fix
+

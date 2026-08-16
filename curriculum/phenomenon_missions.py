@@ -773,3 +773,51 @@ def get_phenomenon_mission(day):
     return mission
 # End Review Phenomenon Mission Text Polish Days 44-45
 
+
+# Science Studio Day 20 and Day 21 Phenomenon Pacing Fix
+_science_studio_original_get_phenomenon_mission_day20_21 = get_phenomenon_mission
+
+def get_phenomenon_mission(day):
+    _mission = _science_studio_original_get_phenomenon_mission_day20_21(day)
+
+    if not _mission:
+        return _mission
+
+    try:
+        _day = int(day)
+    except Exception:
+        return _mission
+
+    if _day == 20:
+        _mission.update({
+            "title": "Beach Mixtures: What Is a Solution?",
+            "tag": "Unit 2 • Solutions",
+            "unit_label": "Unit 2 • Solutions",
+            "focus_question": "What makes a solution different from other mixtures?",
+            "focus": "What makes a solution different from other mixtures?",
+            "notice": "Look at materials mixed with water. Some materials spread evenly through the liquid.",
+            "wonder": "How can a material seem to disappear but still be part of the mixture?",
+            "quick_explore": "Predict whether each cup shows a solution or a mixture where the parts are still visible.",
+            "evidence_tracker": "Record whether the material spread evenly through the water or stayed visible.",
+            "cer_starter": "A solution forms when...",
+            "cer": "A solution forms when...",
+        })
+
+    if _day == 21:
+        _mission.update({
+            "title": "Beach Mixtures: Solution Evidence",
+            "tag": "Unit 2 • Comparing Solutions",
+            "unit_label": "Unit 2 • Comparing Solutions",
+            "focus_question": "How can evidence show that a mixture is a solution?",
+            "focus": "How can evidence show that a mixture is a solution?",
+            "notice": "Compare the cups. In a solution, the material spreads evenly through the water.",
+            "wonder": "Can two solutions look different but still both be solutions?",
+            "quick_explore": "Compare two solutions and describe the evidence that shows each one is a solution.",
+            "evidence_tracker": "Record color, visibility of particles, and whether the material spread evenly.",
+            "cer_starter": "The evidence shows this mixture is a solution because...",
+            "cer": "The evidence shows this mixture is a solution because...",
+        })
+
+    return _mission
+# End Science Studio Day 20 and Day 21 Phenomenon Pacing Fix
+

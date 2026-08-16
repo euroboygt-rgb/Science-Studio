@@ -566,33 +566,66 @@ STEVE_PENGUIN_MISSIONS[19] = {
 
 # Day 20 Steve the Penguin STAAR Mission
 STEVE_PENGUIN_MISSIONS[20] = {
-    "title": "Steve the Penguin’s Fair-Test Solubility Mission",
-    "subtitle": "Day 20 • Which Material Dissolves the Most?",
+    "title": "Steve the Penguin’s Solution Mission",
+    "subtitle": "Day 20 • Create and Compare Solutions",
     "character": "Steve the Penguin",
-    "scenario": "Steve the Penguin wants to compare how well four materials dissolve in water. He puts 100 mL of water into each cup. Then he adds 1 spoonful of a different material to each cup and stirs each cup for 30 seconds. His results are shown below: salt dissolved completely, baking soda partly dissolved, flour made the water cloudy, and sand settled at the bottom.",
-    "question": "Which conclusion is best supported by Steve’s fair-test evidence?",
+    "scenario": "Steve the Penguin creates two cups. In Cup 1, he stirs sugar into water until the liquid looks clear. In Cup 2, he stirs drink powder into water until the color is spread evenly through the whole cup.",
+    "question": "Which statement best explains why both cups are examples of solutions?",
     "options": [
         {
             "letter": "A",
-            "text": "Sand dissolved the best because it settled at the bottom."
+            "text": "Both cups are solutions because all mixtures are always solutions."
         },
         {
             "letter": "B",
-            "text": "Flour dissolved completely because it made the water cloudy."
+            "text": "Both cups are solutions because the materials changed into brand-new substances."
         },
         {
             "letter": "C",
-            "text": "Baking soda was insoluble because part of it dissolved."
+            "text": "Both cups are solutions because the materials stayed in large visible pieces."
         },
         {
             "letter": "D",
-            "text": "Salt was the most soluble because it dissolved completely in the same amount of water and stirring time."
+            "text": "Both cups are solutions because a material dissolved and spread evenly through the water."
         }
     ],
     "correct_answer": "D",
-    "explanation": "Steve should choose D. This was a fair test because Steve used the same amount of water, the same amount of material, and the same stirring time. Salt dissolved completely, so the evidence shows it was the most soluble material in this investigation.",
-    "staar_tip": "For STAAR investigation questions, check two things: Was the test fair? Does the conclusion match the data? The best answer should use the results from the investigation.",
-    "vocabulary": ["solubility", "fair test", "variable", "dissolve", "soluble", "insoluble", "data", "evidence", "conclusion"]
+    "explanation": "Steve should choose D. In both cups, a material dissolved and spread evenly through the water. That evidence shows both cups are solutions. A solution is still a mixture, but the parts are spread evenly and are not easy to see separately.",
+    "staar_tip": "When a STAAR question asks about solutions, look for evidence that one material dissolved and spread evenly through another material.",
+    "vocabulary": ["solution", "dissolve", "solute", "solvent", "mixture", "evidence", "compare"]
 }
 # End Day 20 Steve the Penguin STAAR Mission
+
+
+# Day 21 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[21] = {
+    "title": "Steve the Penguin’s Solution Evidence Mission",
+    "subtitle": "Day 21 • Compare Solutions",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin compares four cups after different materials are stirred into water. Cup 1 has sugar water that looks clear. Cup 2 has drink powder that makes the whole cup evenly colored. Cup 3 has sand sitting at the bottom. Cup 4 has pepper floating on top.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Cups 3 and 4 are solutions because the sand and pepper are still visible."
+        },
+        {
+            "letter": "B",
+            "text": "Only Cup 3 is a solution because the sand settled at the bottom."
+        },
+        {
+            "letter": "C",
+            "text": "Cups 1 and 2 are solutions because the materials spread evenly through the water."
+        },
+        {
+            "letter": "D",
+            "text": "All four cups are solutions because all four materials were mixed with water."
+        }
+    ],
+    "correct_answer": "C",
+    "explanation": "Steve should choose C. Cup 1 and Cup 2 are solutions because the materials spread evenly through the water. Cup 3 and Cup 4 are not solutions because the sand and pepper stayed visible instead of spreading evenly through the liquid.",
+    "staar_tip": "When a STAAR question asks you to compare solutions, use the evidence. A solution has material spread evenly through the liquid. If particles are floating, sinking, or still visible, it is not the best evidence of a solution.",
+    "vocabulary": ["solution", "mixture", "dissolve", "spread evenly", "evidence", "compare", "data"]
+}
+# End Day 21 Steve the Penguin STAAR Mission
 

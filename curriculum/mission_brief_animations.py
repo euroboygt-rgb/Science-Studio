@@ -804,47 +804,94 @@ MISSION_BRIEF_ANIMATIONS[19] = {
 
 # Day 20 Mission Brief Animation
 MISSION_BRIEF_ANIMATIONS[20] = {
-    "title": "Mission Brief: Solubility Fair Test",
-    "subtitle": "Day 20 • Comparing How Materials Dissolve",
+    "title": "Mission Brief: Create and Compare Solutions",
+    "subtitle": "Day 20 • What Is a Solution?",
     "theme": "matter",
     "slides": [
         {
-            "icon": "🧪",
+            "icon": "🥤",
             "heading": "Today’s Mission",
-            "text": "Today we will plan and use a fair test to compare how different materials dissolve in water.",
-            "caption": "Scientists keep most things the same so the results are fair."
+            "text": "Today we will create and compare solutions to understand how they are different from other mixtures.",
+            "caption": "A solution is a special kind of mixture."
         },
         {
-            "icon": "⚖️",
-            "heading": "Fair Test Rules",
-            "text": "Use the same amount of water, the same amount of material, the same cup size, and the same stirring time.",
-            "caption": "The material being tested should be the main thing that changes."
+            "icon": "💧",
+            "heading": "Solution Clue",
+            "text": "In a solution, one material dissolves and spreads evenly through another material.",
+            "caption": "The parts are mixed so evenly that they are not easy to separate by hand."
         },
         {
-            "icon": "📊",
-            "heading": "Collect Evidence",
-            "text": "Scientists use observations and data to decide which material dissolved completely, partly, or not at all.",
-            "caption": "Good evidence can come from a table, drawing, or careful observation."
+            "icon": "🧂",
+            "heading": "Solute and Solvent",
+            "text": "The solute is the material that dissolves. The solvent is the material that does the dissolving.",
+            "caption": "In salt water, salt is the solute and water is the solvent."
         },
         {
-            "icon": "🥣",
+            "icon": "🍋",
             "heading": "Real-World Example",
-            "text": "A chef testing drink mixes must compare powders fairly. Each cup needs the same amount of water and the same stirring time.",
-            "caption": "That way the chef knows which powder dissolves best, not just which cup was stirred longer."
+            "text": "Lemonade can be a solution when sugar and flavor mix evenly through the water.",
+            "caption": "Every sip tastes similar because the materials are spread throughout the drink."
         },
         {
             "icon": "🤔",
             "heading": "Pause and Think",
-            "text": "Why would it be unfair to stir one cup for 10 seconds and another cup for 60 seconds?",
-            "caption": "Changing more than one variable can make the results unreliable."
+            "text": "How is sugar water different from sand and water?",
+            "caption": "Think about which mixture has parts that spread evenly and which has parts you can still see."
         },
         {
             "icon": "⭐",
             "heading": "STAAR Tip",
-            "text": "When a question asks about an investigation, check whether the test is fair and whether the conclusion matches the data.",
-            "caption": "Same water, same amount, same stirring time, different material."
+            "text": "When a question asks about solutions, look for evidence that the material spread evenly through the liquid.",
+            "caption": "The best answer should describe the evidence."
         }
     ]
 }
 # End Day 20 Mission Brief Animation
+
+
+# Day 21 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[21] = {
+    "title": "Mission Brief: Solution Evidence",
+    "subtitle": "Day 21 • Compare Solutions",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🔬",
+            "heading": "Today’s Mission",
+            "text": "Today we will compare mixtures and use evidence to decide which ones are solutions.",
+            "caption": "A solution is a mixture with parts spread evenly throughout."
+        },
+        {
+            "icon": "🥤",
+            "heading": "Solution Evidence",
+            "text": "A solution forms when a material dissolves and spreads evenly through another material.",
+            "caption": "The parts are not easy to see separately."
+        },
+        {
+            "icon": "👀",
+            "heading": "Not Every Mixture Is a Solution",
+            "text": "Some mixtures have parts that stay visible, float, sink, or settle at the bottom.",
+            "caption": "Those mixtures are not solutions because the parts are not spread evenly."
+        },
+        {
+            "icon": "🏪",
+            "heading": "Real-World Example",
+            "text": "A sports drink can be a solution when the drink powder spreads evenly through the water.",
+            "caption": "Every sip tastes similar because the material is spread throughout the liquid."
+        },
+        {
+            "icon": "📊",
+            "heading": "Compare the Evidence",
+            "text": "Scientists can use a table to compare what happened in each cup.",
+            "caption": "Look for words like clear, evenly colored, particles visible, settled, or floating."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks which mixture is a solution, choose the answer where the material spread evenly through the liquid.",
+            "caption": "The answer must match the evidence."
+        }
+    ]
+}
+# End Day 21 Mission Brief Animation
 
