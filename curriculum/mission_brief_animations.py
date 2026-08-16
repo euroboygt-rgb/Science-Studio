@@ -1459,3 +1459,50 @@ MISSION_BRIEF_ANIMATIONS[33] = {
 }
 # End Day 33 Mission Brief Animation
 
+
+# Day 34 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[34] = {
+    "title": "Mission Brief: Changes in Motion",
+    "subtitle": "Day 34 • Direction and Speed Evidence",
+    "theme": "force",
+    "slides": [
+        {
+            "icon": "🔄",
+            "heading": "Today’s Mission",
+            "text": "Today we will use evidence to explain how forces can change an object’s motion.",
+            "caption": "A force can change speed, direction, or both."
+        },
+        {
+            "icon": "⚡",
+            "heading": "Change in Speed",
+            "text": "A force can make an object speed up or slow down.",
+            "caption": "Look for evidence that the object moved faster or slower."
+        },
+        {
+            "icon": "↩️",
+            "heading": "Change in Direction",
+            "text": "A force can also make an object change direction.",
+            "caption": "A moving object can turn, bounce, or roll a different way."
+        },
+        {
+            "icon": "🏀",
+            "heading": "Contact Forces",
+            "text": "A push, pull, kick, hit, or collision can change the motion of an object.",
+            "caption": "The force must match the change in motion."
+        },
+        {
+            "icon": "🎾",
+            "heading": "Real-World Example",
+            "text": "When a tennis player hits a moving ball, the racket can change the ball’s speed and send it in a new direction.",
+            "caption": "The ball’s motion changes because a force acts on it."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about changes in motion, look for what happened before and after the force.",
+            "caption": "Did the object speed up, slow down, stop, start, or change direction?"
+        }
+    ]
+}
+# End Day 34 Mission Brief Animation
+

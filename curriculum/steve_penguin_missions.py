@@ -1025,3 +1025,36 @@ STEVE_PENGUIN_MISSIONS[33] = {
 }
 # End Day 33 Steve the Penguin STAAR Mission
 
+
+# Day 34 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[34] = {
+    "title": "Steve the Penguin’s Motion Change Mission",
+    "subtitle": "Day 34 • Direction and Speed Evidence",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin rolls a toy car straight across the floor. The car bumps into a block. After the collision, the car slows down and rolls in a different direction.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The car’s motion did not change because it was still the same car."
+        },
+        {
+            "letter": "B",
+            "text": "The block made gravity stop acting on the car."
+        },
+        {
+            "letter": "C",
+            "text": "The car changed into a new substance when it touched the block."
+        },
+        {
+            "letter": "D",
+            "text": "The collision applied a force that changed the car’s speed and direction."
+        }
+    ],
+    "correct_answer": "D",
+    "explanation": "Steve should choose D. The toy car slowed down and rolled in a different direction after it hit the block. That evidence shows that the collision applied a force and changed the car’s motion.",
+    "staar_tip": "When a STAAR question asks about a change in motion, compare what happened before and after the force. Look for changes in speed, direction, position, or distance moved.",
+    "vocabulary": ["force", "motion", "speed", "direction", "collision", "push", "change in motion", "evidence"]
+}
+# End Day 34 Steve the Penguin STAAR Mission
+
