@@ -563,3 +563,36 @@ STEVE_PENGUIN_MISSIONS[19] = {
 }
 # End Day 19 Steve the Penguin STAAR Mission
 
+
+# Day 20 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[20] = {
+    "title": "Steve the Penguin’s Fair-Test Solubility Mission",
+    "subtitle": "Day 20 • Which Material Dissolves the Most?",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin wants to compare how well four materials dissolve in water. He puts 100 mL of water into each cup. Then he adds 1 spoonful of a different material to each cup and stirs each cup for 30 seconds. His results are shown below: salt dissolved completely, baking soda partly dissolved, flour made the water cloudy, and sand settled at the bottom.",
+    "question": "Which conclusion is best supported by Steve’s fair-test evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Sand dissolved the best because it settled at the bottom."
+        },
+        {
+            "letter": "B",
+            "text": "Flour dissolved completely because it made the water cloudy."
+        },
+        {
+            "letter": "C",
+            "text": "Baking soda was insoluble because part of it dissolved."
+        },
+        {
+            "letter": "D",
+            "text": "Salt was the most soluble because it dissolved completely in the same amount of water and stirring time."
+        }
+    ],
+    "correct_answer": "D",
+    "explanation": "Steve should choose D. This was a fair test because Steve used the same amount of water, the same amount of material, and the same stirring time. Salt dissolved completely, so the evidence shows it was the most soluble material in this investigation.",
+    "staar_tip": "For STAAR investigation questions, check two things: Was the test fair? Does the conclusion match the data? The best answer should use the results from the investigation.",
+    "vocabulary": ["solubility", "fair test", "variable", "dissolve", "soluble", "insoluble", "data", "evidence", "conclusion"]
+}
+# End Day 20 Steve the Penguin STAAR Mission
+

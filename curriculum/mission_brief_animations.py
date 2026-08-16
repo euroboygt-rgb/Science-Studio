@@ -801,3 +801,50 @@ MISSION_BRIEF_ANIMATIONS[19] = {
 }
 # End Day 19 Mission Brief Animation
 
+
+# Day 20 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[20] = {
+    "title": "Mission Brief: Solubility Fair Test",
+    "subtitle": "Day 20 • Comparing How Materials Dissolve",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🧪",
+            "heading": "Today’s Mission",
+            "text": "Today we will plan and use a fair test to compare how different materials dissolve in water.",
+            "caption": "Scientists keep most things the same so the results are fair."
+        },
+        {
+            "icon": "⚖️",
+            "heading": "Fair Test Rules",
+            "text": "Use the same amount of water, the same amount of material, the same cup size, and the same stirring time.",
+            "caption": "The material being tested should be the main thing that changes."
+        },
+        {
+            "icon": "📊",
+            "heading": "Collect Evidence",
+            "text": "Scientists use observations and data to decide which material dissolved completely, partly, or not at all.",
+            "caption": "Good evidence can come from a table, drawing, or careful observation."
+        },
+        {
+            "icon": "🥣",
+            "heading": "Real-World Example",
+            "text": "A chef testing drink mixes must compare powders fairly. Each cup needs the same amount of water and the same stirring time.",
+            "caption": "That way the chef knows which powder dissolves best, not just which cup was stirred longer."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "Why would it be unfair to stir one cup for 10 seconds and another cup for 60 seconds?",
+            "caption": "Changing more than one variable can make the results unreliable."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about an investigation, check whether the test is fair and whether the conclusion matches the data.",
+            "caption": "Same water, same amount, same stirring time, different material."
+        }
+    ]
+}
+# End Day 20 Mission Brief Animation
+
