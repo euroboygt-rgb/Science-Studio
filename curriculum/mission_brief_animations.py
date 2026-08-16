@@ -331,3 +331,50 @@ MISSION_BRIEF_ANIMATIONS[9] = {
 }
 # End Day 9 Mission Brief Animation
 
+
+# Day 10 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[10] = {
+    "title": "Mission Brief: Insoluble Evidence",
+    "subtitle": "Day 10 • Soluble and Insoluble Materials",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🔎",
+            "heading": "Today’s Mission",
+            "text": "Today we will use evidence to decide whether materials dissolve or stay separate in water.",
+            "caption": "Good scientists use observations after mixing and stirring."
+        },
+        {
+            "icon": "💧",
+            "heading": "Soluble Review",
+            "text": "A soluble material dissolves in water and spreads evenly through the liquid.",
+            "caption": "Salt and sugar can dissolve in water."
+        },
+        {
+            "icon": "🏖️",
+            "heading": "Insoluble Materials",
+            "text": "An insoluble material does not dissolve in water.",
+            "caption": "Sand, gravel, and many small rocks usually stay visible."
+        },
+        {
+            "icon": "🧪",
+            "heading": "Look for Evidence",
+            "text": "If particles are still visible, floating, or settled at the bottom, the material did not dissolve.",
+            "caption": "The observation after stirring is the evidence."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "If sand settles at the bottom after stirring, is it soluble or insoluble?",
+            "caption": "Use the evidence, not just the material’s name."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "Do not confuse sinking with dissolving. A material can sink and still be insoluble.",
+            "caption": "Dissolving means the material spreads evenly and is no longer visible."
+        }
+    ]
+}
+# End Day 10 Mission Brief Animation
+
