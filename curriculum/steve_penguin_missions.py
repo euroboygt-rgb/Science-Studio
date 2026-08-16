@@ -695,3 +695,36 @@ STEVE_PENGUIN_MISSIONS[23] = {
 }
 # End Day 23 Steve the Penguin STAAR Mission
 
+
+# Day 24 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[24] = {
+    "title": "Steve the Penguin’s Physical Change Mission",
+    "subtitle": "Day 24 • Did a New Substance Form?",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin investigates changes in mixtures and solutions. He mixes cereal and raisins in a bowl. He stirs drink powder into water until the color spreads evenly. He also sorts a cup of buttons and paper clips back into separate groups.",
+    "question": "Which statement best explains Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "A new substance formed every time Steve mixed materials together."
+        },
+        {
+            "letter": "B",
+            "text": "The materials stopped having physical properties after they were mixed."
+        },
+        {
+            "letter": "C",
+            "text": "The materials changed state because they were placed in cups and bowls."
+        },
+        {
+            "letter": "D",
+            "text": "The materials had physical changes because they were mixed, dissolved, or separated without becoming brand-new substances."
+        }
+    ],
+    "correct_answer": "D",
+    "explanation": "Steve should choose D. Mixing cereal and raisins, dissolving drink powder in water, and sorting buttons and paper clips are examples where the materials changed appearance, arrangement, or location. The evidence does not show that brand-new substances formed.",
+    "staar_tip": "When a STAAR question asks about changes in matter, use the evidence. If materials are only mixed, dissolved, sorted, or separated, the change is usually a physical change.",
+    "vocabulary": ["physical change", "mixture", "solution", "dissolve", "separate", "physical properties", "evidence", "new substance"]
+}
+# End Day 24 Steve the Penguin STAAR Mission
+

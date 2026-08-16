@@ -989,3 +989,50 @@ MISSION_BRIEF_ANIMATIONS[23] = {
 }
 # End Day 23 Mission Brief Animation
 
+
+# Day 24 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[24] = {
+    "title": "Mission Brief: Physical Changes in Mixtures and Solutions",
+    "subtitle": "Day 24 • Did a New Substance Form?",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🧪",
+            "heading": "Today’s Mission",
+            "text": "Today we will explain how materials can change when they are mixed or dissolved without becoming a brand-new substance.",
+            "caption": "Scientists look for evidence before deciding what kind of change happened."
+        },
+        {
+            "icon": "🔄",
+            "heading": "Physical Change",
+            "text": "A physical change can change how matter looks, moves, mixes, dissolves, or separates.",
+            "caption": "The material is still the same kind of matter."
+        },
+        {
+            "icon": "🥣",
+            "heading": "Mixtures Can Change Appearance",
+            "text": "When materials are mixed together, they may look different as a group, but each material can still keep important properties.",
+            "caption": "Trail mix looks different after mixing, but the ingredients are still there."
+        },
+        {
+            "icon": "🥤",
+            "heading": "Solutions Can Look Different",
+            "text": "When a material dissolves in water, it may seem to disappear, but it has spread evenly through the water.",
+            "caption": "The dissolved material is still part of the solution."
+        },
+        {
+            "icon": "🍫",
+            "heading": "Real-World Example",
+            "text": "When chocolate chips are stirred into cookie dough, the dough looks different, but the chocolate chips and dough have not become a brand-new substance.",
+            "caption": "Mixing changes the arrangement of materials."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about a change in matter, ask: Did the material only change how it looks or where it is, or did evidence show a new substance formed?",
+            "caption": "For mixtures and solutions, use the evidence from the investigation."
+        }
+    ]
+}
+# End Day 24 Mission Brief Animation
+
