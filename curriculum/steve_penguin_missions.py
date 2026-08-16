@@ -497,3 +497,36 @@ STEVE_PENGUIN_MISSIONS[17] = {
 }
 # End Day 17 Steve the Penguin STAAR Mission
 
+
+# Day 18 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[18] = {
+    "title": "Steve the Penguin’s Separation Mission",
+    "subtitle": "Day 18 • Choosing the Best Separation Method",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin has a mixture of sand, pebbles, iron filings, and salt. He needs to separate the materials using their physical properties.",
+    "question": "Which plan would best help Steve separate the mixture?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Use a magnet to remove the iron filings, use a screen to separate the pebbles, then use water to dissolve the salt and separate it from the sand."
+        },
+        {
+            "letter": "B",
+            "text": "Use a thermometer to separate all the materials because they are different temperatures."
+        },
+        {
+            "letter": "C",
+            "text": "Put the mixture in the freezer because freezing will separate all solids into groups."
+        },
+        {
+            "letter": "D",
+            "text": "Shake the mixture faster because shaking changes the materials into new substances."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. The best plan uses the physical properties of the materials. Iron filings are magnetic, pebbles are larger than sand, and salt dissolves in water while sand does not.",
+    "staar_tip": "When a STAAR question asks how to separate a mixture, look for the property that is different between the materials. Then choose the tool or method that matches that property.",
+    "vocabulary": ["mixture", "separate", "physical properties", "magnetism", "particle size", "solubility", "filter", "screen", "evidence"]
+}
+# End Day 18 Steve the Penguin STAAR Mission
+

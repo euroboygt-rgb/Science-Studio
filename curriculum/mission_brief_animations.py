@@ -707,3 +707,50 @@ MISSION_BRIEF_ANIMATIONS[17] = {
 }
 # End Day 17 Mission Brief Animation
 
+
+# Day 18 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[18] = {
+    "title": "Mission Brief: Separating Mixtures",
+    "subtitle": "Day 18 • Separating Mixtures by Physical Properties",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🧪",
+            "heading": "Today’s Mission",
+            "text": "Today we will learn how mixtures can be separated using the physical properties of their parts.",
+            "caption": "A mixture can often be separated because each part keeps its own properties."
+        },
+        {
+            "icon": "🧲",
+            "heading": "Use Magnetism",
+            "text": "If one part of a mixture is magnetic, a magnet can help separate it from nonmagnetic materials.",
+            "caption": "Iron filings can be removed from sand with a magnet."
+        },
+        {
+            "icon": "🪨",
+            "heading": "Use Particle Size",
+            "text": "If the parts have different sizes, a screen, sieve, or filter can help separate them.",
+            "caption": "Pebbles can be separated from sand with a screen."
+        },
+        {
+            "icon": "💧",
+            "heading": "Use Solubility",
+            "text": "If one material dissolves in water and another does not, water can help separate them.",
+            "caption": "Salt dissolves in water, but sand does not."
+        },
+        {
+            "icon": "♻️",
+            "heading": "Real-World Example",
+            "text": "Recycling centers separate mixtures of materials by using properties like magnetism, size, shape, and density.",
+            "caption": "Machines can pull out metals, sort plastics, and separate materials so they can be reused."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks how to separate a mixture, match the method to the physical property.",
+            "caption": "Magnetism uses a magnet. Size uses a screen. Solubility uses water."
+        }
+    ]
+}
+# End Day 18 Mission Brief Animation
+
