@@ -1600,3 +1600,50 @@ MISSION_BRIEF_ANIMATIONS[36] = {
 }
 # End Day 36 Mission Brief Animation
 
+
+# Day 37 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[37] = {
+    "title": "Mission Brief: Forms of Energy",
+    "subtitle": "Day 37 • Chemical, Mechanical, Electrical, Light, Thermal, and Sound",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "⚡",
+            "heading": "Today’s Mission",
+            "text": "Today we will identify and describe different forms of energy using real-world examples.",
+            "caption": "Energy is the ability to cause change or do work."
+        },
+        {
+            "icon": "🧠",
+            "heading": "Remember CMELTS",
+            "text": "CMELTS can help us remember common forms of energy: chemical, mechanical, electrical, light, thermal, and sound.",
+            "caption": "Each form of energy can be observed in different systems."
+        },
+        {
+            "icon": "🔋",
+            "heading": "Chemical and Electrical",
+            "text": "Chemical energy is stored in materials like food, batteries, and fuel. Electrical energy moves through circuits and wires.",
+            "caption": "A battery stores chemical energy and can provide electrical energy to a circuit."
+        },
+        {
+            "icon": "🏃",
+            "heading": "Mechanical Energy",
+            "text": "Mechanical energy is energy of motion or position.",
+            "caption": "Moving wheels, rolling balls, spinning fans, and swinging objects show mechanical energy."
+        },
+        {
+            "icon": "💡",
+            "heading": "Light, Thermal, and Sound",
+            "text": "Light energy helps us see. Thermal energy is related to heat. Sound energy comes from vibrations.",
+            "caption": "A lamp gives light, a stove gives heat, and a speaker gives sound."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about forms of energy, match the evidence to what you can observe: light, heat, sound, motion, electricity, or stored energy.",
+            "caption": "Use the example, not just the object name."
+        }
+    ]
+}
+# End Day 37 Mission Brief Animation
+

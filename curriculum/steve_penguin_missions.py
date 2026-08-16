@@ -1124,3 +1124,36 @@ STEVE_PENGUIN_MISSIONS[36] = {
 }
 # End Day 36 Steve the Penguin STAAR Mission
 
+
+# Day 37 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[37] = {
+    "title": "Steve the Penguin’s Forms of Energy Mission",
+    "subtitle": "Day 37 • Identify Energy Forms",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin observes different objects in the Science Studio lab. A flashlight shines on the table. A speaker plays music. A fan spins in the corner. A warm mug gives off heat.",
+    "question": "Which statement correctly identifies forms of energy Steve observed?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The flashlight shows sound energy because it shines on the table."
+        },
+        {
+            "letter": "B",
+            "text": "The speaker shows thermal energy because it plays music."
+        },
+        {
+            "letter": "C",
+            "text": "The flashlight shows light energy, the speaker shows sound energy, the fan shows mechanical energy, and the warm mug shows thermal energy."
+        },
+        {
+            "letter": "D",
+            "text": "The fan shows chemical energy because its blades are moving."
+        }
+    ],
+    "correct_answer": "C",
+    "explanation": "Steve should choose C. The flashlight gives off light energy, the speaker gives off sound energy, the fan shows mechanical energy because its blades move, and the warm mug shows thermal energy because it gives off heat.",
+    "staar_tip": "When a STAAR question asks about forms of energy, connect the evidence to the form: shining means light, vibrating or music means sound, moving parts mean mechanical, heat means thermal, wires or circuits mean electrical, and stored energy in food, fuel, or batteries can be chemical.",
+    "vocabulary": ["energy", "chemical energy", "mechanical energy", "electrical energy", "light energy", "thermal energy", "sound energy", "CMELTS", "evidence"]
+}
+# End Day 37 Steve the Penguin STAAR Mission
+
