@@ -1224,3 +1224,50 @@ MISSION_BRIEF_ANIMATIONS[28] = {
 }
 # End Day 28 Mission Brief Animation
 
+
+# Day 29 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[29] = {
+    "title": "Mission Brief: Gravity and Motion",
+    "subtitle": "Day 29 • Gravity Pulls Objects Toward Earth",
+    "theme": "force",
+    "slides": [
+        {
+            "icon": "🌎",
+            "heading": "Today’s Mission",
+            "text": "Today we will investigate how gravity affects the motion of objects.",
+            "caption": "Gravity is a force."
+        },
+        {
+            "icon": "⬇️",
+            "heading": "What Is Gravity?",
+            "text": "Gravity is a force that pulls objects toward Earth.",
+            "caption": "When something falls, gravity pulls it downward."
+        },
+        {
+            "icon": "🏀",
+            "heading": "Gravity Changes Motion",
+            "text": "When a ball is dropped, gravity causes the ball to move downward toward the ground.",
+            "caption": "The ball changes position because a force is acting on it."
+        },
+        {
+            "icon": "🚀",
+            "heading": "Gravity Is Always Pulling",
+            "text": "Even when an object is thrown upward, gravity pulls it back toward Earth.",
+            "caption": "That is why the object slows down, stops rising, and falls back down."
+        },
+        {
+            "icon": "🎢",
+            "heading": "Real-World Example",
+            "text": "On a playground slide or roller coaster hill, gravity helps pull people and objects downward.",
+            "caption": "Gravity can cause objects to speed up as they move downward."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about gravity, look for evidence that an object is falling, moving downward, or being pulled toward Earth.",
+            "caption": "Gravity is a pull toward Earth."
+        }
+    ]
+}
+# End Day 29 Mission Brief Animation
+

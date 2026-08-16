@@ -860,3 +860,36 @@ STEVE_PENGUIN_MISSIONS[28] = {
 }
 # End Day 28 Steve the Penguin STAAR Mission
 
+
+# Day 29 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[29] = {
+    "title": "Steve the Penguin’s Gravity Mission",
+    "subtitle": "Day 29 • Gravity Pulls Objects Toward Earth",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin holds a rubber ball above the floor and lets go. The ball falls downward and hits the ground. Then Steve tosses the ball upward. The ball rises, slows down, stops for a moment, and falls back down.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The ball fell because gravity pushed it away from Earth."
+        },
+        {
+            "letter": "B",
+            "text": "The ball stopped moving because gravity disappeared."
+        },
+        {
+            "letter": "C",
+            "text": "Gravity pulled the ball toward Earth and affected the ball’s motion."
+        },
+        {
+            "letter": "D",
+            "text": "Gravity only works on objects that are not moving."
+        }
+    ],
+    "correct_answer": "C",
+    "explanation": "Steve should choose C. Gravity is a force that pulls objects toward Earth. The ball fell downward when Steve let go, and when he tossed it upward, gravity pulled it back down.",
+    "staar_tip": "When a STAAR question asks about gravity, remember that gravity is a force that pulls objects toward Earth. Look for evidence of falling, downward motion, or an object returning to the ground.",
+    "vocabulary": ["gravity", "force", "motion", "pull", "Earth", "downward", "position", "speed", "evidence"]
+}
+# End Day 29 Steve the Penguin STAAR Mission
+
