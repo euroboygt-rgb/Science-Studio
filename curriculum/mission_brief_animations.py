@@ -1271,3 +1271,50 @@ MISSION_BRIEF_ANIMATIONS[29] = {
 }
 # End Day 29 Mission Brief Animation
 
+
+# Day 30 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[30] = {
+    "title": "Mission Brief: Friction and Motion",
+    "subtitle": "Day 30 • Surfaces, Speed, and Distance",
+    "theme": "force",
+    "slides": [
+        {
+            "icon": "🛞",
+            "heading": "Today’s Mission",
+            "text": "Today we will investigate how friction affects the motion of objects.",
+            "caption": "Friction is a force that can slow or stop motion."
+        },
+        {
+            "icon": "✋",
+            "heading": "What Is Friction?",
+            "text": "Friction is a force that happens when two surfaces rub against each other.",
+            "caption": "Friction acts against motion."
+        },
+        {
+            "icon": "🧱",
+            "heading": "Surface Texture Matters",
+            "text": "Rough surfaces usually create more friction than smooth surfaces.",
+            "caption": "More friction can make an object slow down faster."
+        },
+        {
+            "icon": "🧊",
+            "heading": "Less Friction",
+            "text": "Smooth surfaces usually create less friction, so objects may slide or roll farther.",
+            "caption": "Less friction can allow more motion."
+        },
+        {
+            "icon": "🚲",
+            "heading": "Real-World Example",
+            "text": "Bike brakes use friction to slow the wheels. Shoe soles use friction to help people grip the ground instead of slipping.",
+            "caption": "Sometimes friction helps us stop, grip, or stay safe."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about friction, look for evidence about the surface and how far or fast the object moved.",
+            "caption": "Rougher surface = more friction. Smoother surface = less friction."
+        }
+    ]
+}
+# End Day 30 Mission Brief Animation
+

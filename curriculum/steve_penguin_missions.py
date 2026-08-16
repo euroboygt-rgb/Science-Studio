@@ -893,3 +893,36 @@ STEVE_PENGUIN_MISSIONS[29] = {
 }
 # End Day 29 Steve the Penguin STAAR Mission
 
+
+# Day 30 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[30] = {
+    "title": "Steve the Penguin’s Friction Mission",
+    "subtitle": "Day 30 • Surface Evidence",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin rolls the same toy car down the same ramp three times. In Trial 1, the car rolls onto smooth tile and travels the farthest. In Trial 2, the car rolls onto carpet and travels a shorter distance. In Trial 3, the car rolls onto sandpaper and travels the shortest distance.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The sandpaper had the least friction because the car traveled the shortest distance."
+        },
+        {
+            "letter": "B",
+            "text": "The tile had the most friction because the car traveled the farthest."
+        },
+        {
+            "letter": "C",
+            "text": "The surface did not affect the motion of the toy car."
+        },
+        {
+            "letter": "D",
+            "text": "The rougher surfaces created more friction and caused the toy car to travel a shorter distance."
+        }
+    ],
+    "correct_answer": "D",
+    "explanation": "Steve should choose D. The same toy car rolled down the same ramp, but it traveled different distances on different surfaces. The car traveled farthest on smooth tile and shortest on sandpaper. This evidence shows that rougher surfaces created more friction and slowed the car down sooner.",
+    "staar_tip": "When a STAAR question asks about friction, compare the surfaces and the motion. More friction usually makes an object slow down faster or travel a shorter distance.",
+    "vocabulary": ["friction", "force", "motion", "surface", "texture", "rough", "smooth", "distance", "evidence"]
+}
+# End Day 30 Steve the Penguin STAAR Mission
+
