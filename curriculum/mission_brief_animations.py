@@ -754,3 +754,50 @@ MISSION_BRIEF_ANIMATIONS[18] = {
 }
 # End Day 18 Mission Brief Animation
 
+
+# Day 19 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[19] = {
+    "title": "Mission Brief: Solutions and Dissolving",
+    "subtitle": "Day 19 • Solutions",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🥤",
+            "heading": "Today’s Mission",
+            "text": "Today we will investigate solutions and how some materials dissolve in water.",
+            "caption": "A solution is a special kind of mixture."
+        },
+        {
+            "icon": "💧",
+            "heading": "What Is Dissolving?",
+            "text": "Dissolving happens when one material spreads evenly through another material, such as water.",
+            "caption": "The material may seem to disappear, but it is still there."
+        },
+        {
+            "icon": "🧂",
+            "heading": "Solute and Solvent",
+            "text": "The solute is the material that dissolves. The solvent is the material that does the dissolving.",
+            "caption": "In salt water, salt is the solute and water is the solvent."
+        },
+        {
+            "icon": "🏃",
+            "heading": "Real-World Example",
+            "text": "Sports drink powder can dissolve in water to make a solution. The color and flavor spread evenly through the drink.",
+            "caption": "You cannot easily pick the powder back out after it dissolves."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "How can you tell the difference between sand mixed in water and sugar dissolved in water?",
+            "caption": "Look for whether the material spreads evenly or stays visible."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about a solution, look for evidence that a material dissolved and spread evenly through water.",
+            "caption": "A solution is still a mixture, but the parts are not easy to see."
+        }
+    ]
+}
+# End Day 19 Mission Brief Animation
+

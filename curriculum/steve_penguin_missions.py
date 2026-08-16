@@ -530,3 +530,36 @@ STEVE_PENGUIN_MISSIONS[18] = {
 }
 # End Day 18 Steve the Penguin STAAR Mission
 
+
+# Day 19 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[19] = {
+    "title": "Steve the Penguin’s Solution Mission",
+    "subtitle": "Day 19 • Identifying a Solution",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin tests four materials by stirring each one into a cup of water. The sand stays at the bottom, the paper pieces float, the gravel stays visible, and the sugar seems to disappear after stirring.",
+    "question": "Which material most likely formed a solution with the water?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Sand, because it stayed at the bottom of the cup."
+        },
+        {
+            "letter": "B",
+            "text": "Sugar, because it dissolved and spread evenly through the water."
+        },
+        {
+            "letter": "C",
+            "text": "Paper pieces, because they floated on top of the water."
+        },
+        {
+            "letter": "D",
+            "text": "Gravel, because the pieces stayed visible in the water."
+        }
+    ],
+    "correct_answer": "B",
+    "explanation": "Steve should choose B. The sugar dissolved and spread evenly through the water, so it formed a solution. The sand, paper pieces, and gravel stayed visible, so they did not dissolve.",
+    "staar_tip": "When a STAAR question asks which material formed a solution, look for the material that dissolved and was no longer easy to see. Materials that sink, float, or stay visible usually did not form a solution.",
+    "vocabulary": ["solution", "dissolve", "solute", "solvent", "mixture", "water", "soluble", "evidence"]
+}
+# End Day 19 Steve the Penguin STAAR Mission
+
