@@ -942,3 +942,50 @@ MISSION_BRIEF_ANIMATIONS[22] = {
 }
 # End Day 22 Mission Brief Animation
 
+
+# Day 23 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[23] = {
+    "title": "Mission Brief: Mixtures and Solutions Evidence Check",
+    "subtitle": "Day 23 • Classify Using Evidence",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🧪",
+            "heading": "Today’s Mission",
+            "text": "Today we will use evidence to classify mixtures and solutions.",
+            "caption": "Scientists use observations and data before making a claim."
+        },
+        {
+            "icon": "🥣",
+            "heading": "Mixture Evidence",
+            "text": "A mixture is made when materials are combined but still keep their own properties.",
+            "caption": "The parts may still be visible or easy to separate."
+        },
+        {
+            "icon": "🥤",
+            "heading": "Solution Evidence",
+            "text": "A solution forms when one material dissolves and spreads evenly through another material.",
+            "caption": "The parts are not easy to see separately."
+        },
+        {
+            "icon": "🔎",
+            "heading": "Compare the Clues",
+            "text": "If the particles are visible, floating, sinking, or settling, the mixture may not be a solution.",
+            "caption": "If the material spreads evenly, it may be a solution."
+        },
+        {
+            "icon": "🍲",
+            "heading": "Real-World Example",
+            "text": "Soup with noodles and vegetables is a mixture because the parts are still visible. A sports drink is a solution when the powder spreads evenly through the water.",
+            "caption": "Both are mixtures, but only one is a solution."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks you to classify a mixture or solution, choose the answer that matches the evidence.",
+            "caption": "Do not guess from the name. Use what happened in the investigation."
+        }
+    ]
+}
+# End Day 23 Mission Brief Animation
+

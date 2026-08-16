@@ -662,3 +662,36 @@ STEVE_PENGUIN_MISSIONS[22] = {
 }
 # End Day 22 Steve the Penguin STAAR Mission
 
+
+# Day 23 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[23] = {
+    "title": "Steve the Penguin’s Evidence Check Mission",
+    "subtitle": "Day 23 • Mixtures and Solutions Review",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin compares four cups after materials are mixed with water. Cup 1 has sand settled at the bottom. Cup 2 has pepper floating on top. Cup 3 has sugar water that looks clear. Cup 4 has small beads that are still visible.",
+    "question": "Which claim is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Cup 3 is a solution because the sugar dissolved and spread evenly through the water."
+        },
+        {
+            "letter": "B",
+            "text": "Cup 1 is a solution because the sand settled at the bottom."
+        },
+        {
+            "letter": "C",
+            "text": "Cup 2 is a solution because the pepper stayed floating on top of the water."
+        },
+        {
+            "letter": "D",
+            "text": "Cup 4 is a solution because the beads were still visible after mixing."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. Cup 3 is the best evidence of a solution because the sugar dissolved and spread evenly through the water. The sand, pepper, and beads stayed visible, so those cups show mixtures where the parts can still be observed.",
+    "staar_tip": "For STAAR evidence questions, match the claim to the data. A solution has material spread evenly through the liquid. Visible particles, floating pieces, or settled material are not the best evidence of a solution.",
+    "vocabulary": ["mixture", "solution", "dissolve", "spread evenly", "visible particles", "evidence", "claim", "data"]
+}
+# End Day 23 Steve the Penguin STAAR Mission
+
