@@ -660,3 +660,50 @@ MISSION_BRIEF_ANIMATIONS[16] = {
 }
 # End Day 16 Mission Brief Animation
 
+
+# Day 17 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[17] = {
+    "title": "Mission Brief: What Is a Mixture?",
+    "subtitle": "Day 17 • Mixtures",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🥣",
+            "heading": "Today’s Mission",
+            "text": "Today we will investigate mixtures and how materials can be combined without becoming a new substance.",
+            "caption": "A mixture is made when two or more materials are combined."
+        },
+        {
+            "icon": "🔎",
+            "heading": "Mixtures Keep Properties",
+            "text": "In a mixture, the materials usually keep their own physical properties.",
+            "caption": "You can often still observe color, size, shape, texture, or state of matter."
+        },
+        {
+            "icon": "🥨",
+            "heading": "Real-World Example",
+            "text": "Trail mix is a mixture because nuts, raisins, pretzels, and chocolate pieces are combined but still keep their properties.",
+            "caption": "You can still identify and separate the different ingredients."
+        },
+        {
+            "icon": "🏖️",
+            "heading": "Science Example",
+            "text": "Sand and shells can form a mixture because both materials can be mixed together and still be identified.",
+            "caption": "The materials did not change into something new."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "If you mix paper clips and buttons, is that a mixture? How do you know?",
+            "caption": "Use evidence from the materials’ properties."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about mixtures, look for materials that are combined but still keep their properties.",
+            "caption": "If the parts can still be identified or separated, it is likely a mixture."
+        }
+    ]
+}
+# End Day 17 Mission Brief Animation
+

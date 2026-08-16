@@ -464,3 +464,36 @@ STEVE_PENGUIN_MISSIONS[16] = {
 }
 # End Day 16 Steve the Penguin STAAR Mission
 
+
+# Day 17 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[17] = {
+    "title": "Steve the Penguin’s Mixture Mission",
+    "subtitle": "Day 17 • Mixtures Keep Their Properties",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin makes a classroom mixture using paper clips, buttons, small cubes, and rubber bands. After mixing them together, Steve can still see each material and sort the materials back into separate groups.",
+    "question": "Which statement is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The materials formed a new substance because they were placed in the same container."
+        },
+        {
+            "letter": "B",
+            "text": "The materials dissolved because Steve could sort them into groups."
+        },
+        {
+            "letter": "C",
+            "text": "The materials changed state because they were mixed together."
+        },
+        {
+            "letter": "D",
+            "text": "The materials formed a mixture because they were combined but still kept their own properties."
+        }
+    ],
+    "correct_answer": "D",
+    "explanation": "Steve should choose D. The paper clips, buttons, cubes, and rubber bands were combined, but Steve could still identify and separate each material. That evidence shows the materials formed a mixture and kept their own physical properties.",
+    "staar_tip": "When a STAAR question asks about mixtures, look for evidence that the parts are combined but still keep their properties. If the parts can still be identified or separated, the materials formed a mixture.",
+    "vocabulary": ["mixture", "physical properties", "combine", "separate", "sort", "materials", "evidence"]
+}
+# End Day 17 Steve the Penguin STAAR Mission
+
