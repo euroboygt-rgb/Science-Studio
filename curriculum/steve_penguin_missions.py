@@ -365,3 +365,36 @@ STEVE_PENGUIN_MISSIONS[13] = {
 }
 # End Day 13 Steve the Penguin STAAR Mission
 
+
+# Day 14 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[14] = {
+    "title": "Steve the Penguin’s Mystery Material Mission",
+    "subtitle": "Day 14 • Property Detective",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin finds an unknown material on the Science Studio lab table. He observes that it is shiny, solid, attracted to a magnet, sinks in water, and allows a bulb to light in a circuit test.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The material is probably plastic because plastic is shiny and sinks in water."
+        },
+        {
+            "letter": "B",
+            "text": "The material is probably a metal because it is magnetic and conducts electricity."
+        },
+        {
+            "letter": "C",
+            "text": "The material is probably wood because wood is solid and can sink in water."
+        },
+        {
+            "letter": "D",
+            "text": "The material is probably paper because paper can be tested with a magnet."
+        }
+    ],
+    "correct_answer": "B",
+    "explanation": "Steve should choose B. The unknown material was attracted to a magnet and allowed the bulb to light. Those clues support that the material is probably a metal. Steve used more than one physical property to identify the mystery material.",
+    "staar_tip": "When a STAAR question asks you to identify an unknown material, use all the evidence given. Look for clues such as magnetism, density, solubility, and conductivity before choosing an answer.",
+    "vocabulary": ["physical property", "evidence", "magnetism", "density", "conductivity", "conductor", "metal", "unknown material"]
+}
+# End Day 14 Steve the Penguin STAAR Mission
+

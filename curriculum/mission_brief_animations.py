@@ -519,3 +519,50 @@ MISSION_BRIEF_ANIMATIONS[13] = {
 }
 # End Day 13 Mission Brief Animation
 
+
+# Day 14 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[14] = {
+    "title": "Mission Brief: Property Detective",
+    "subtitle": "Day 14 • Identifying Unknown Materials",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🕵️",
+            "heading": "Today’s Mission",
+            "text": "Today we will act like science detectives and use physical properties to identify unknown materials.",
+            "caption": "A mystery material can be identified by testing more than one property."
+        },
+        {
+            "icon": "🔎",
+            "heading": "Use Property Clues",
+            "text": "Physical properties are clues you can observe or measure without changing what the material is.",
+            "caption": "Color, texture, state of matter, mass, volume, density, magnetism, solubility, and conductivity can all be clues."
+        },
+        {
+            "icon": "🧪",
+            "heading": "Test More Than One Property",
+            "text": "One clue may not be enough. Scientists collect several pieces of evidence before making a claim.",
+            "caption": "A strong claim is supported by more than one observation or measurement."
+        },
+        {
+            "icon": "🚗",
+            "heading": "Real-World Example",
+            "text": "Engineers choose materials for cars, wires, tools, and sports equipment based on their physical properties.",
+            "caption": "A car part may need to be strong, lightweight, heat resistant, or able to conduct electricity."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "If a mystery object is shiny, magnetic, sinks in water, and conducts electricity, what type of material might it be?",
+            "caption": "Use all the clues together before making your claim."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks you to identify a material, match the evidence to the physical properties.",
+            "caption": "The best answer should explain the evidence, not just name the material."
+        }
+    ]
+}
+# End Day 14 Mission Brief Animation
+
