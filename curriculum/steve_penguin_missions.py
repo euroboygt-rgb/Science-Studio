@@ -200,3 +200,36 @@ STEVE_PENGUIN_MISSIONS[8] = {
 }
 # End Day 8 Steve the Penguin STAAR Mission
 
+
+# Day 9 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[9] = {
+    "title": "Steve the Penguin’s Solubility Mission",
+    "subtitle": "Day 9 • Soluble and Insoluble Materials",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin tests four materials in cups of water. After stirring, the salt and sugar are no longer visible. The sand and gravel are still visible and settle at the bottom of the cups.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "All solid materials dissolve in water."
+        },
+        {
+            "letter": "B",
+            "text": "Sand is soluble because it settled at the bottom of the cup."
+        },
+        {
+            "letter": "C",
+            "text": "Salt and sugar are soluble because they dissolved in the water."
+        },
+        {
+            "letter": "D",
+            "text": "Gravel dissolved because it was placed in water."
+        }
+    ],
+    "correct_answer": "C",
+    "explanation": "Steve should choose C. Salt and sugar were no longer visible after stirring, so the evidence shows they dissolved in the water. Sand and gravel stayed visible, so they are insoluble in this test.",
+    "staar_tip": "When a STAAR question asks about solubility, use the observation after stirring. If the material dissolves evenly, it is soluble. If it stays visible, floats, or settles, it is insoluble.",
+    "vocabulary": ["solubility", "soluble", "insoluble", "dissolve", "solution", "water", "evidence"]
+}
+# End Day 9 Steve the Penguin STAAR Mission
+

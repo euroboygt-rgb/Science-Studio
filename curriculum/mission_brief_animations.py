@@ -284,3 +284,50 @@ MISSION_BRIEF_ANIMATIONS[8] = {
 }
 # End Day 8 Mission Brief Animation
 
+
+# Day 9 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[9] = {
+    "title": "Mission Brief: Dissolve or Stay Separate?",
+    "subtitle": "Day 9 • Solubility",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🥄",
+            "heading": "Today’s Mission",
+            "text": "Today we will investigate which materials dissolve in water and which materials stay separate.",
+            "caption": "This property is called solubility."
+        },
+        {
+            "icon": "💧",
+            "heading": "What Is Solubility?",
+            "text": "Solubility is the ability of a material to dissolve in water.",
+            "caption": "If a material dissolves, it spreads evenly through the water."
+        },
+        {
+            "icon": "🧂",
+            "heading": "Soluble Materials",
+            "text": "A soluble material dissolves in water.",
+            "caption": "Salt and sugar are common examples of materials that can dissolve in water."
+        },
+        {
+            "icon": "🏖️",
+            "heading": "Insoluble Materials",
+            "text": "An insoluble material does not dissolve in water.",
+            "caption": "Sand and gravel usually stay visible or settle at the bottom."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "If a material is still visible after stirring, did it dissolve?",
+            "caption": "Use your observation as evidence."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about solubility, look for evidence that the material disappeared evenly into the water or stayed visible.",
+            "caption": "Do not confuse dissolving with melting or sinking."
+        }
+    ]
+}
+# End Day 9 Mission Brief Animation
+
