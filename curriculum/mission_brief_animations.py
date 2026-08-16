@@ -1083,3 +1083,50 @@ MISSION_BRIEF_ANIMATIONS[25] = {
 }
 # End Day 25 Mission Brief Animation
 
+
+# Day 26 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[26] = {
+    "title": "Mission Brief: Unit 2 Review",
+    "subtitle": "Day 26 • Mixtures and Solutions Assessment Prep",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🧪",
+            "heading": "Today’s Mission",
+            "text": "Today we will review mixtures, solutions, and how materials can be separated using physical properties.",
+            "caption": "Use evidence before choosing an answer."
+        },
+        {
+            "icon": "🥣",
+            "heading": "Mixture Review",
+            "text": "A mixture is made when materials are combined but still keep their own properties.",
+            "caption": "The parts may still be visible or easy to separate."
+        },
+        {
+            "icon": "🥤",
+            "heading": "Solution Review",
+            "text": "A solution is a special mixture where a material dissolves and spreads evenly through another material.",
+            "caption": "The dissolved material is not easy to see separately."
+        },
+        {
+            "icon": "🧲",
+            "heading": "Separation Review",
+            "text": "Mixtures and some solutions can be separated using properties like magnetism, particle size, and evaporation.",
+            "caption": "Match the separation method to the evidence."
+        },
+        {
+            "icon": "🏭",
+            "heading": "Real-World Example",
+            "text": "Factories, recycling centers, and water treatment plants separate materials by using their physical properties.",
+            "caption": "They may sort by size, use magnets, filter solids, or evaporate water."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "For assessment questions, read the data first. Then decide if the evidence shows a mixture, solution, or separation method.",
+            "caption": "Claim + evidence = stronger answer."
+        }
+    ]
+}
+# End Day 26 Mission Brief Animation
+

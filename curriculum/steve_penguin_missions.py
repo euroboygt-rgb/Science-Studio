@@ -761,3 +761,36 @@ STEVE_PENGUIN_MISSIONS[25] = {
 }
 # End Day 25 Steve the Penguin STAAR Mission
 
+
+# Day 26 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[26] = {
+    "title": "Steve the Penguin’s Unit 2 Review Mission",
+    "subtitle": "Day 26 • Mixtures, Solutions, and Separation Evidence",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin reviews four investigation results. Cup 1 has sand and water, and the sand settles at the bottom. Cup 2 has salt and water, and the salt spreads evenly through the water. Cup 3 has iron filings and sand, and a magnet removes the iron filings. Cup 4 has pebbles and sand, and a screen separates the larger pebbles.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Cup 1 is a solution because the sand settled at the bottom."
+        },
+        {
+            "letter": "B",
+            "text": "Cup 2 is a solution because the salt dissolved and spread evenly through the water."
+        },
+        {
+            "letter": "C",
+            "text": "Cup 3 formed a new substance because the magnet removed the iron filings."
+        },
+        {
+            "letter": "D",
+            "text": "Cup 4 is a solution because a screen separated the pebbles from the sand."
+        }
+    ],
+    "correct_answer": "B",
+    "explanation": "Steve should choose B. Cup 2 is the best evidence of a solution because the salt dissolved and spread evenly through the water. Cup 1, Cup 3, and Cup 4 are mixtures with parts that remain visible or can be separated using physical properties.",
+    "staar_tip": "For STAAR review questions, match each answer to the evidence. A solution has material dissolved and spread evenly. Mixtures may have visible parts or parts that can be separated by magnetism, particle size, filtering, or evaporation.",
+    "vocabulary": ["mixture", "solution", "dissolve", "spread evenly", "separate", "magnetism", "particle size", "evidence", "claim"]
+}
+# End Day 26 Steve the Penguin STAAR Mission
+
