@@ -167,3 +167,36 @@ STEVE_PENGUIN_MISSIONS[7] = {
 }
 # End Day 7 Steve the Penguin STAAR Mission
 
+
+# Day 8 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[8] = {
+    "title": "Steve the Penguin’s Density Layers Mission",
+    "subtitle": "Day 8 • Relative Density",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin carefully pours three liquids into a clear cup. The oil forms the top layer, the water forms the middle layer, and the syrup forms the bottom layer.",
+    "question": "Which conclusion is best supported by Steve’s observation?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Oil is the least dense liquid, and syrup is the most dense liquid."
+        },
+        {
+            "letter": "B",
+            "text": "Syrup is the least dense liquid because it is on the bottom."
+        },
+        {
+            "letter": "C",
+            "text": "Water is the most dense liquid because it is in the middle."
+        },
+        {
+            "letter": "D",
+            "text": "All three liquids have the same density because they are all liquids."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. In a liquid layer model, the least dense liquid usually stays on top, and the most dense liquid usually settles on the bottom. Oil was on top, so it was least dense. Syrup was on the bottom, so it was most dense.",
+    "staar_tip": "When a STAAR question shows density layers, use the order of the layers as evidence. Top usually means least dense. Bottom usually means most dense.",
+    "vocabulary": ["density", "relative density", "least dense", "most dense", "layers", "float", "sink"]
+}
+# End Day 8 Steve the Penguin STAAR Mission
+

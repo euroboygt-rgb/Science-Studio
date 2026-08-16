@@ -237,3 +237,50 @@ MISSION_BRIEF_ANIMATIONS[7] = {
 }
 # End Day 7 Mission Brief Animation
 
+
+# Day 8 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[8] = {
+    "title": "Mission Brief: Density Layers",
+    "subtitle": "Day 8 • Relative Density of Solids and Liquids",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🌈",
+            "heading": "Today’s Mission",
+            "text": "Today we will compare materials by relative density.",
+            "caption": "Relative density helps explain why materials layer, float, or sink."
+        },
+        {
+            "icon": "💧",
+            "heading": "What Is Relative Density?",
+            "text": "Relative density compares how dense one material is compared to another material.",
+            "caption": "In our investigations, we often compare objects or liquids to water."
+        },
+        {
+            "icon": "⬆️",
+            "heading": "Less Dense Materials",
+            "text": "Less dense materials usually stay above more dense materials.",
+            "caption": "A liquid that floats on another liquid is less dense."
+        },
+        {
+            "icon": "⬇️",
+            "heading": "More Dense Materials",
+            "text": "More dense materials usually move below less dense materials.",
+            "caption": "A solid that sinks in a liquid is more dense than that liquid."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "If oil floats on water, which liquid is less dense?",
+            "caption": "Use the position of the liquid layer as evidence."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question shows layers, the least dense material is usually on top and the most dense material is usually on bottom.",
+            "caption": "Use the diagram as evidence before choosing an answer."
+        }
+    ]
+}
+# End Day 8 Mission Brief Animation
+
