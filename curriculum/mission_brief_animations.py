@@ -1365,3 +1365,50 @@ MISSION_BRIEF_ANIMATIONS[31] = {
 }
 # End Day 31 Mission Brief Animation
 
+
+# Day 32 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[32] = {
+    "title": "Mission Brief: Speed and Motion Evidence",
+    "subtitle": "Day 32 • Distance, Time, and Speed",
+    "theme": "force",
+    "slides": [
+        {
+            "icon": "🏁",
+            "heading": "Today’s Mission",
+            "text": "Today we will use distance and time evidence to compare the speed of moving objects.",
+            "caption": "Speed describes how fast an object moves."
+        },
+        {
+            "icon": "📏",
+            "heading": "Distance",
+            "text": "Distance tells how far an object moves from one place to another.",
+            "caption": "Scientists can measure distance with tools like rulers, meter sticks, or measuring tapes."
+        },
+        {
+            "icon": "⏱️",
+            "heading": "Time",
+            "text": "Time tells how long it takes an object to move a certain distance.",
+            "caption": "Scientists can measure time with a stopwatch or timer."
+        },
+        {
+            "icon": "🚗",
+            "heading": "Compare Speed",
+            "text": "If objects move for the same amount of time, the object that travels farther is moving faster.",
+            "caption": "Same time, greater distance = faster speed."
+        },
+        {
+            "icon": "🏎️",
+            "heading": "Real-World Example",
+            "text": "In a race, the runner or car that covers more distance in the same time is moving faster.",
+            "caption": "Race results use both distance and time as evidence."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about speed, compare distance and time. Do not guess from the picture alone.",
+            "caption": "Use the data table, graph, or investigation results."
+        }
+    ]
+}
+# End Day 32 Mission Brief Animation
+

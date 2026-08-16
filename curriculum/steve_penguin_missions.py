@@ -959,3 +959,36 @@ STEVE_PENGUIN_MISSIONS[31] = {
 }
 # End Day 31 Steve the Penguin STAAR Mission
 
+
+# Day 32 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[32] = {
+    "title": "Steve the Penguin’s Speed Evidence Mission",
+    "subtitle": "Day 32 • Compare Speed Using Distance and Time",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin tests three toy cars. Each car rolls for 5 seconds. Car A travels 60 cm. Car B travels 95 cm. Car C travels 40 cm.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Car C was the fastest because it traveled the shortest distance."
+        },
+        {
+            "letter": "B",
+            "text": "Car B was the fastest because it traveled the greatest distance in the same amount of time."
+        },
+        {
+            "letter": "C",
+            "text": "All three cars moved at the same speed because they all moved for 5 seconds."
+        },
+        {
+            "letter": "D",
+            "text": "Car A was the fastest because it was tested first."
+        }
+    ],
+    "correct_answer": "B",
+    "explanation": "Steve should choose B. All three cars moved for the same amount of time, 5 seconds. Car B traveled the greatest distance, 95 cm, so the evidence shows that Car B was the fastest.",
+    "staar_tip": "When a STAAR question asks about speed, compare distance and time. If the time is the same, the object that travels the greatest distance is moving the fastest.",
+    "vocabulary": ["speed", "motion", "distance", "time", "compare", "data", "evidence", "fastest", "slowest"]
+}
+# End Day 32 Steve the Penguin STAAR Mission
+
