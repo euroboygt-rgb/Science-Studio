@@ -1506,3 +1506,50 @@ MISSION_BRIEF_ANIMATIONS[34] = {
 }
 # End Day 34 Mission Brief Animation
 
+
+# Day 35 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[35] = {
+    "title": "Mission Brief: Variables in Investigations",
+    "subtitle": "Day 35 • Control, Independent, and Dependent Variables",
+    "theme": "force",
+    "slides": [
+        {
+            "icon": "🧪",
+            "heading": "Today’s Mission",
+            "text": "Today we will identify control variables, independent variables, and dependent variables in force and motion investigations.",
+            "caption": "Variables help scientists design fair tests."
+        },
+        {
+            "icon": "🎯",
+            "heading": "Independent Variable",
+            "text": "The independent variable is the one thing changed on purpose in an investigation.",
+            "caption": "Example: changing the ramp height, changing the surface, or changing the mass of the car."
+        },
+        {
+            "icon": "📏",
+            "heading": "Dependent Variable",
+            "text": "The dependent variable is what scientists measure or observe as the result.",
+            "caption": "Example: measuring distance traveled, speed, or time."
+        },
+        {
+            "icon": "🔒",
+            "heading": "Control Variables",
+            "text": "Control variables are the things kept the same so the test is fair.",
+            "caption": "Example: using the same car, same ramp, same starting point, or same surface."
+        },
+        {
+            "icon": "🛝",
+            "heading": "Real-World Example",
+            "text": "If Steve tests ramp height, he changes only the height. He measures how far the car travels. He keeps the car, surface, and starting point the same.",
+            "caption": "Independent = ramp height. Dependent = distance traveled. Controls = car, surface, starting point."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "For variable questions, ask three questions: What changed? What was measured? What stayed the same?",
+            "caption": "Changed = independent. Measured = dependent. Same = controls."
+        }
+    ]
+}
+# End Day 35 Mission Brief Animation
+

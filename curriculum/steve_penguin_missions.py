@@ -1058,3 +1058,36 @@ STEVE_PENGUIN_MISSIONS[34] = {
 }
 # End Day 34 Steve the Penguin STAAR Mission
 
+
+# Day 35 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[35] = {
+    "title": "Steve the Penguin’s Variable Detective Mission",
+    "subtitle": "Day 35 • Control, Independent, and Dependent Variables",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin wants to test how the surface affects the distance a toy car travels. He uses the same toy car, same ramp height, same starting point, and same push each time. He changes only the surface: tile, carpet, and sandpaper. After each trial, he measures the distance the toy car travels.",
+    "question": "Which answer correctly identifies the variables in Steve’s investigation?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The surface is the independent variable, the distance traveled is the dependent variable, and the car, ramp height, starting point, and push are control variables."
+        },
+        {
+            "letter": "B",
+            "text": "The distance traveled is the independent variable, and the surface is the dependent variable."
+        },
+        {
+            "letter": "C",
+            "text": "The toy car’s mass is the independent variable because Steve kept the same car each time."
+        },
+        {
+            "letter": "D",
+            "text": "The starting point is the dependent variable because Steve kept it the same."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. The independent variable is the one thing Steve changed on purpose: the surface. The dependent variable is what Steve measured: the distance the toy car traveled. The control variables are what Steve kept the same: the toy car, ramp height, starting point, and push.",
+    "staar_tip": "For STAAR variable questions, use this shortcut: independent variable = what changed on purpose, dependent variable = what was measured, control variables = what stayed the same.",
+    "vocabulary": ["variable", "independent variable", "dependent variable", "control variable", "fair test", "surface", "distance", "mass", "ramp height", "evidence"]
+}
+# End Day 35 Steve the Penguin STAAR Mission
+
