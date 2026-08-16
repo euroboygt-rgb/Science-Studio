@@ -1318,3 +1318,50 @@ MISSION_BRIEF_ANIMATIONS[30] = {
 }
 # End Day 30 Mission Brief Animation
 
+
+# Day 31 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[31] = {
+    "title": "Mission Brief: Transfer of Mechanical Energy",
+    "subtitle": "Day 31 • Energy Transfer Through Motion",
+    "theme": "force",
+    "slides": [
+        {
+            "icon": "🎳",
+            "heading": "Today’s Mission",
+            "text": "Today we will investigate how mechanical energy can transfer from one object to another.",
+            "caption": "Mechanical energy is connected to motion and position."
+        },
+        {
+            "icon": "🏃",
+            "heading": "Mechanical Energy",
+            "text": "An object has mechanical energy when it is moving or has the ability to move.",
+            "caption": "A rolling ball, moving car, and swinging pendulum all have mechanical energy."
+        },
+        {
+            "icon": "💥",
+            "heading": "Energy Transfer",
+            "text": "Mechanical energy can transfer when one object touches or collides with another object.",
+            "caption": "A moving object can cause another object to start moving."
+        },
+        {
+            "icon": "📊",
+            "heading": "Evidence of Transfer",
+            "text": "Evidence of energy transfer can include a change in motion, speed, direction, or distance moved.",
+            "caption": "Look for what happened after the objects touched."
+        },
+        {
+            "icon": "🎱",
+            "heading": "Real-World Example",
+            "text": "When a bowling ball hits bowling pins, mechanical energy transfers from the moving ball to the pins.",
+            "caption": "The pins move because energy was transferred during the collision."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about mechanical energy transfer, look for one moving object causing another object to move.",
+            "caption": "Use the evidence from before and after the objects touch."
+        }
+    ]
+}
+# End Day 31 Mission Brief Animation
+

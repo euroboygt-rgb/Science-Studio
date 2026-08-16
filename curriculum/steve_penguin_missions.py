@@ -926,3 +926,36 @@ STEVE_PENGUIN_MISSIONS[30] = {
 }
 # End Day 30 Steve the Penguin STAAR Mission
 
+
+# Day 31 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[31] = {
+    "title": "Steve the Penguin’s Energy Transfer Mission",
+    "subtitle": "Day 31 • Transfer of Mechanical Energy",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin rolls Marble A toward Marble B, which is sitting still on the table. When Marble A hits Marble B, Marble A slows down and Marble B starts moving forward. When Steve rolls Marble A faster, Marble B moves a greater distance.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Mechanical energy transferred from the moving marble to the marble that was sitting still."
+        },
+        {
+            "letter": "B",
+            "text": "Mechanical energy disappeared when the two marbles touched."
+        },
+        {
+            "letter": "C",
+            "text": "Marble B moved because gravity stopped pulling on it."
+        },
+        {
+            "letter": "D",
+            "text": "The marbles formed a solution when they collided."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. Marble A was moving and had mechanical energy. When it hit Marble B, some mechanical energy transferred to Marble B and caused Marble B to start moving. The faster Marble A moved, the farther Marble B traveled.",
+    "staar_tip": "When a STAAR question asks about mechanical energy transfer, look for evidence that one moving object caused another object to move, speed up, slow down, or change direction.",
+    "vocabulary": ["mechanical energy", "energy transfer", "motion", "force", "collision", "speed", "distance", "evidence"]
+}
+# End Day 31 Steve the Penguin STAAR Mission
+
