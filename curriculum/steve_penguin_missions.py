@@ -794,3 +794,36 @@ STEVE_PENGUIN_MISSIONS[26] = {
 }
 # End Day 26 Steve the Penguin STAAR Mission
 
+
+# Day 27 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[27] = {
+    "title": "Steve the Penguin’s Force and Motion Mission",
+    "subtitle": "Day 27 • Pushes, Pulls, and Motion Evidence",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin tests how a toy car moves on the classroom floor. First, he gives the car a gentle push. The car moves a short distance. Next, he gives the same car a stronger push in the same direction. The car moves farther and faster.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "A stronger force caused a greater change in the toy car’s motion."
+        },
+        {
+            "letter": "B",
+            "text": "The toy car moved farther because its mass disappeared."
+        },
+        {
+            "letter": "C",
+            "text": "The toy car moved only because gravity stopped working."
+        },
+        {
+            "letter": "D",
+            "text": "The gentle push and stronger push caused the exact same motion."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. The stronger push made the same toy car move farther and faster. That evidence shows that a stronger force caused a greater change in the car’s motion.",
+    "staar_tip": "When a STAAR question asks about force and motion, compare the evidence. Look for how the force changed the object’s speed, distance, direction, or position.",
+    "vocabulary": ["force", "motion", "push", "pull", "speed", "distance", "direction", "position", "evidence"]
+}
+# End Day 27 Steve the Penguin STAAR Mission
+

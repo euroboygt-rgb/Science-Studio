@@ -1130,3 +1130,50 @@ MISSION_BRIEF_ANIMATIONS[26] = {
 }
 # End Day 26 Mission Brief Animation
 
+
+# Day 27 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[27] = {
+    "title": "Mission Brief: Force and Motion",
+    "subtitle": "Day 27 • Pushes, Pulls, and Movement",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "🚗",
+            "heading": "Today’s Mission",
+            "text": "Today we will investigate how forces can change the motion of objects.",
+            "caption": "A force is a push or a pull."
+        },
+        {
+            "icon": "👉",
+            "heading": "What Is a Force?",
+            "text": "A force is a push or pull that can make an object start moving, stop moving, speed up, slow down, or change direction.",
+            "caption": "Forces affect motion."
+        },
+        {
+            "icon": "🏃",
+            "heading": "What Is Motion?",
+            "text": "Motion is the change in an object’s position over time.",
+            "caption": "If an object changes where it is, it is in motion."
+        },
+        {
+            "icon": "💪",
+            "heading": "Strength of Force",
+            "text": "A stronger push or pull can cause a bigger change in an object’s motion.",
+            "caption": "More force can make an object move faster or farther."
+        },
+        {
+            "icon": "⚽",
+            "heading": "Real-World Example",
+            "text": "A soccer ball moves when a player kicks it. A gentle kick may move it a short distance, while a stronger kick may move it farther or faster.",
+            "caption": "The size and direction of the force affect the ball’s motion."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about force and motion, look for evidence about the push, pull, speed, direction, or distance moved.",
+            "caption": "The best answer should match what happened to the object."
+        }
+    ]
+}
+# End Day 27 Mission Brief Animation
+
