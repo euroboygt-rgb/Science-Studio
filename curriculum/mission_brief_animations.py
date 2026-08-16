@@ -48,3 +48,51 @@ MISSION_BRIEF_ANIMATIONS = {
 def get_mission_brief(day):
     day = int(day)
     return MISSION_BRIEF_ANIMATIONS.get(day)
+
+
+# Day 4 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[4] = {
+    "title": "Mission Brief: Measuring Mass",
+    "subtitle": "Day 4 • Mass and Science Tools",
+    "theme": "matter",
+    "slides": [
+        {
+            "icon": "⚖️",
+            "heading": "Today’s Mission",
+            "text": "Today we will measure and compare the mass of different objects.",
+            "caption": "Mass tells how much matter something has."
+        },
+        {
+            "icon": "🧱",
+            "heading": "What Is Mass?",
+            "text": "Mass is the amount of matter in an object.",
+            "caption": "An object with more matter usually has greater mass."
+        },
+        {
+            "icon": "🔬",
+            "heading": "Science Tool",
+            "text": "Scientists use a balance or scale to measure mass.",
+            "caption": "A balance helps compare how much matter objects have."
+        },
+        {
+            "icon": "📏",
+            "heading": "Measurement Units",
+            "text": "Mass is often measured in grams or kilograms.",
+            "caption": "Small classroom objects are usually measured in grams."
+        },
+        {
+            "icon": "🤔",
+            "heading": "Pause and Think",
+            "text": "Which has more mass: a pencil or a science textbook?",
+            "caption": "Explain your answer using evidence, not just a guess."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about mass, look for the tool, the unit, and the data.",
+            "caption": "The best answer should match the measurement evidence."
+        }
+    ]
+}
+# End Day 4 Mission Brief Animation
+

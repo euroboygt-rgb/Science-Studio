@@ -34,3 +34,37 @@ STEVE_PENGUIN_MISSIONS = {
 def get_steve_penguin_mission(day):
     day = int(day)
     return STEVE_PENGUIN_MISSIONS.get(day)
+
+
+# Day 4 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[4] = {
+    "title": "Steve the Penguin’s Mass Mission",
+    "subtitle": "Day 4 • Measuring Mass",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin is helping in the Science Studio lab. He has a pencil, a rock, and a science notebook. Steve wants to know which object has the greatest mass.",
+    "question": "Which tool should Steve use to compare the mass of the objects?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "A thermometer, because it measures temperature."
+        },
+        {
+            "letter": "B",
+            "text": "A balance, because it measures or compares mass."
+        },
+        {
+            "letter": "C",
+            "text": "A hand lens, because it makes objects look larger."
+        },
+        {
+            "letter": "D",
+            "text": "A ruler, because it measures length."
+        }
+    ],
+    "correct_answer": "B",
+    "explanation": "Steve should choose B. A balance is the best tool for comparing or measuring mass. A thermometer measures temperature, a hand lens helps observe details, and a ruler measures length.",
+    "staar_tip": "When a STAAR question asks which tool to use, match the tool to the property being measured. Mass goes with a balance or scale.",
+    "vocabulary": ["mass", "matter", "balance", "scale", "grams", "kilograms", "measure"]
+}
+# End Day 4 Steve the Penguin STAAR Mission
+
