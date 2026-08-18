@@ -1694,3 +1694,50 @@ MISSION_BRIEF_ANIMATIONS[38] = {
 }
 # End Day 38 Mission Brief Animation
 
+
+# Day 39 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[39] = {
+    "title": "Mission Brief: Light Energy",
+    "subtitle": "Day 39 • Light, Shadows, and Reflection",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "💡",
+            "heading": "Today’s Mission",
+            "text": "Today we will investigate light energy and use evidence to explain how light interacts with objects.",
+            "caption": "Light energy helps us see objects."
+        },
+        {
+            "icon": "☀️",
+            "heading": "Sources of Light",
+            "text": "Light comes from sources such as the Sun, flashlights, lamps, and screens.",
+            "caption": "Objects are easier to see when light reflects from them to our eyes."
+        },
+        {
+            "icon": "🔦",
+            "heading": "Light Travels",
+            "text": "Light travels away from a light source and can interact with different materials.",
+            "caption": "Some materials let light pass through, while others block light."
+        },
+        {
+            "icon": "🌑",
+            "heading": "Shadows",
+            "text": "A shadow forms when an object blocks light from reaching a surface.",
+            "caption": "Opaque objects block most light and can make darker shadows."
+        },
+        {
+            "icon": "🪞",
+            "heading": "Real-World Example",
+            "text": "A mirror reflects light, a window lets light pass through, and a cardboard box blocks light and makes a shadow.",
+            "caption": "Different materials interact with light in different ways."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about light energy, look for evidence about light passing through, being blocked, making shadows, or reflecting.",
+            "caption": "Use what happened to the light as your evidence."
+        }
+    ]
+}
+# End Day 39 Mission Brief Animation
+

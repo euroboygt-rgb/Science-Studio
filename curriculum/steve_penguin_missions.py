@@ -1190,3 +1190,36 @@ STEVE_PENGUIN_MISSIONS[38] = {
 }
 # End Day 38 Steve the Penguin STAAR Mission
 
+
+# Day 39 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[39] = {
+    "title": "Steve the Penguin’s Light Energy Mission",
+    "subtitle": "Day 39 • Light, Shadows, and Reflection Evidence",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin shines a flashlight at three materials. The light passes through a clear plastic sheet. The light bounces off a mirror and changes direction. The light is blocked by cardboard, and a dark shadow forms behind the cardboard.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Different materials interact with light in different ways: clear plastic lets light pass through, a mirror reflects light, and cardboard blocks light to make a shadow."
+        },
+        {
+            "letter": "B",
+            "text": "All materials let the same amount of light pass through."
+        },
+        {
+            "letter": "C",
+            "text": "A shadow forms when light passes completely through an object."
+        },
+        {
+            "letter": "D",
+            "text": "The mirror absorbed all the light because the light changed direction."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. The clear plastic allowed light to pass through, the mirror reflected light, and the cardboard blocked light and made a shadow. The evidence shows that different materials interact with light in different ways.",
+    "staar_tip": "When a STAAR question asks about light, focus on the evidence. Light may pass through, reflect, or be blocked. Shadows form when an object blocks light.",
+    "vocabulary": ["light energy", "light source", "reflect", "reflection", "shadow", "opaque", "transparent", "block light", "evidence"]
+}
+# End Day 39 Steve the Penguin STAAR Mission
+
