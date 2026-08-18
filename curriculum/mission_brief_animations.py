@@ -1835,3 +1835,50 @@ MISSION_BRIEF_ANIMATIONS[41] = {
 }
 # End Day 41 Mission Brief Animation
 
+
+# Day 42 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[42] = {
+    "title": "Mission Brief: Thermal Energy",
+    "subtitle": "Day 42 • Heat Transfer, Conductors, and Insulators",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "🌡️",
+            "heading": "Today’s Mission",
+            "text": "Today we will explain thermal energy and use evidence to describe how heat moves between materials.",
+            "caption": "Thermal energy is energy related to heat."
+        },
+        {
+            "icon": "🔥",
+            "heading": "What Is Thermal Energy?",
+            "text": "Thermal energy is connected to how warm or hot something is. Objects with more thermal energy usually feel warmer.",
+            "caption": "Temperature helps us compare how hot or cold materials are."
+        },
+        {
+            "icon": "➡️",
+            "heading": "Heat Moves",
+            "text": "Thermal energy moves from warmer objects or materials to cooler objects or materials.",
+            "caption": "Heat moves from warmer to cooler."
+        },
+        {
+            "icon": "🥄",
+            "heading": "Thermal Conductors",
+            "text": "A thermal conductor is a material that lets thermal energy move through it easily.",
+            "caption": "Many metals are good thermal conductors."
+        },
+        {
+            "icon": "🧤",
+            "heading": "Thermal Insulators",
+            "text": "A thermal insulator is a material that slows the movement of thermal energy.",
+            "caption": "Plastic, wood, cloth, and foam can act as insulators."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about thermal energy, look for evidence about what became warmer, what stayed cooler, or which material transferred heat faster.",
+            "caption": "Conductor = heat moves easily. Insulator = heat moves slowly."
+        }
+    ]
+}
+# End Day 42 Mission Brief Animation
+

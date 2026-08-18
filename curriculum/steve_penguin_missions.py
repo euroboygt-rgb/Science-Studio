@@ -1289,3 +1289,36 @@ STEVE_PENGUIN_MISSIONS[41] = {
 }
 # End Day 41 Steve the Penguin STAAR Mission
 
+
+# Day 42 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[42] = {
+    "title": "Steve the Penguin’s Thermal Energy Mission",
+    "subtitle": "Day 42 • Heat Transfer Evidence",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin places a metal spoon and a plastic spoon into the same cup of warm water. After two minutes, the handle of the metal spoon feels much warmer than the handle of the plastic spoon. The water temperature, cup, and time are the same for both spoons.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The plastic spoon is a better thermal conductor because its handle stayed cooler."
+        },
+        {
+            "letter": "B",
+            "text": "Thermal energy cannot move through any solid materials."
+        },
+        {
+            "letter": "C",
+            "text": "Cold moved from the plastic spoon into the warm water and made the spoon stay cooler."
+        },
+        {
+            "letter": "D",
+            "text": "The metal spoon conducted thermal energy faster than the plastic spoon, while the plastic spoon acted more like an insulator."
+        }
+    ],
+    "correct_answer": "D",
+    "explanation": "Steve should choose D. The metal spoon handle became warmer faster, which is evidence that thermal energy moved through the metal more easily. The plastic spoon handle stayed cooler, so the plastic slowed the movement of thermal energy and acted more like an insulator.",
+    "staar_tip": "For STAAR thermal energy questions, compare the evidence. A conductor lets heat move through easily. An insulator slows the movement of heat.",
+    "vocabulary": ["thermal energy", "heat", "temperature", "conductor", "insulator", "metal", "plastic", "evidence", "heat transfer"]
+}
+# End Day 42 Steve the Penguin STAAR Mission
+
