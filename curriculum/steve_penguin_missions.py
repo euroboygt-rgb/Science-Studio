@@ -1157,3 +1157,36 @@ STEVE_PENGUIN_MISSIONS[37] = {
 }
 # End Day 37 Steve the Penguin STAAR Mission
 
+
+# Day 38 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[38] = {
+    "title": "Steve the Penguin’s Circuit Mission",
+    "subtitle": "Day 38 • Complete Circuit Evidence",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin builds four circuits with a battery, wires, a bulb, and a switch. In Circuit 1, one wire is not connected to the battery. In Circuit 2, the switch is open. In Circuit 3, the bulb is not connected to both sides of the circuit. In Circuit 4, the battery, wires, bulb, and closed switch make a complete path.",
+    "question": "Which circuit will most likely light the bulb?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Circuit 1, because one wire is not connected to the battery."
+        },
+        {
+            "letter": "B",
+            "text": "Circuit 2, because an open switch lets electrical energy move through the circuit."
+        },
+        {
+            "letter": "C",
+            "text": "Circuit 3, because the bulb does not need to be part of the complete path."
+        },
+        {
+            "letter": "D",
+            "text": "Circuit 4, because it has a complete closed path for electrical energy to move through the bulb."
+        }
+    ],
+    "correct_answer": "D",
+    "explanation": "Steve should choose D. A bulb lights when electrical energy can move through a complete closed circuit. Circuit 4 has the battery, wires, bulb, and closed switch connected in a complete path. The other circuits have open or missing connections.",
+    "staar_tip": "When a STAAR question asks about circuits, trace the path. Electrical energy needs a complete closed path from the energy source, through the device, and back to the source.",
+    "vocabulary": ["electrical energy", "circuit", "complete circuit", "closed circuit", "open circuit", "battery", "wire", "bulb", "switch", "energy flow"]
+}
+# End Day 38 Steve the Penguin STAAR Mission
+

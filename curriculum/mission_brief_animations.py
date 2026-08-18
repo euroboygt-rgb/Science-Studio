@@ -1647,3 +1647,50 @@ MISSION_BRIEF_ANIMATIONS[37] = {
 }
 # End Day 37 Mission Brief Animation
 
+
+# Day 38 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[38] = {
+    "title": "Mission Brief: Electrical Energy and Circuits",
+    "subtitle": "Day 38 • Complete Paths and Energy Flow",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "⚡",
+            "heading": "Today’s Mission",
+            "text": "Today we will explain how electrical energy moves through a complete circuit.",
+            "caption": "Electrical energy can move through wires and power devices."
+        },
+        {
+            "icon": "🔋",
+            "heading": "Energy Source",
+            "text": "A battery is an energy source in a simple circuit.",
+            "caption": "The battery provides electrical energy."
+        },
+        {
+            "icon": "🔌",
+            "heading": "Complete Circuit",
+            "text": "A complete circuit has a closed path for electrical energy to move through.",
+            "caption": "If the path is broken or open, the device will not work."
+        },
+        {
+            "icon": "💡",
+            "heading": "Energy Receiver",
+            "text": "A bulb, buzzer, or motor can use electrical energy from a circuit.",
+            "caption": "A bulb changes electrical energy into light and thermal energy."
+        },
+        {
+            "icon": "🏠",
+            "heading": "Real-World Example",
+            "text": "When you flip a light switch on, the circuit closes and electrical energy can move to the light.",
+            "caption": "When the switch is off, the circuit is open and the light does not turn on."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks why a bulb lights, look for a complete path from the battery through the wires and device.",
+            "caption": "Closed circuit = energy can flow. Open circuit = energy cannot flow."
+        }
+    ]
+}
+# End Day 38 Mission Brief Animation
+
