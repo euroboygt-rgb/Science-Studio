@@ -1322,3 +1322,36 @@ STEVE_PENGUIN_MISSIONS[42] = {
 }
 # End Day 42 Steve the Penguin STAAR Mission
 
+
+# Day 43 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[43] = {
+    "title": "Steve the Penguin’s CMELTS Review Mission",
+    "subtitle": "Day 43 • Match Evidence to Energy Forms",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin tests a battery-powered toy car with a small light and buzzer. When Steve flips the switch, the toy car moves forward, the light turns on, the buzzer makes noise, and the motor feels slightly warm after running. The toy uses batteries as its energy source.",
+    "question": "Which explanation best matches the energy evidence in Steve’s toy car?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Chemical energy stored in the batteries changes to electrical energy. The toy then produces mechanical energy, light energy, sound energy, and some thermal energy."
+        },
+        {
+            "letter": "B",
+            "text": "The toy car only uses sound energy because the buzzer makes noise."
+        },
+        {
+            "letter": "C",
+            "text": "The toy car begins with light energy stored inside the batteries."
+        },
+        {
+            "letter": "D",
+            "text": "The motor feels warm because cold energy moves from the air into the toy car."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. The batteries store chemical energy. When the switch closes the circuit, electrical energy moves through the toy. The moving car shows mechanical energy, the light shows light energy, the buzzer shows sound energy, and the warm motor shows thermal energy.",
+    "staar_tip": "For STAAR energy review questions, do not stop at one clue. Track the whole system and match each piece of evidence to the correct energy form.",
+    "vocabulary": ["CMELTS", "chemical energy", "mechanical energy", "electrical energy", "light energy", "thermal energy", "sound energy", "energy transformation", "battery", "evidence"]
+}
+# End Day 43 Steve the Penguin STAAR Mission
+

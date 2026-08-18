@@ -1882,3 +1882,50 @@ MISSION_BRIEF_ANIMATIONS[42] = {
 }
 # End Day 42 Mission Brief Animation
 
+
+# Day 43 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[43] = {
+    "title": "Mission Brief: CMELTS Evidence Review",
+    "subtitle": "Day 43 • Energy Forms and Energy Transformations Review",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "⭐",
+            "heading": "Today’s Mission",
+            "text": "Today we will review energy forms and use evidence to identify energy transformations in real-world systems.",
+            "caption": "Good scientists match answers to evidence."
+        },
+        {
+            "icon": "🧠",
+            "heading": "Remember CMELTS",
+            "text": "CMELTS stands for chemical, mechanical, electrical, light, thermal, and sound energy.",
+            "caption": "These are common forms of energy we can observe or describe."
+        },
+        {
+            "icon": "🔋",
+            "heading": "Chemical and Electrical",
+            "text": "Chemical energy is stored in food, fuel, or batteries. Electrical energy moves through wires and circuits.",
+            "caption": "Battery-powered devices often begin with chemical energy and use electrical energy."
+        },
+        {
+            "icon": "🏃",
+            "heading": "Mechanical, Light, and Sound",
+            "text": "Mechanical energy is energy of motion or position. Light energy helps us see. Sound energy is produced by vibrations.",
+            "caption": "Look for movement, shining, or vibrating."
+        },
+        {
+            "icon": "🌡️",
+            "heading": "Thermal Energy",
+            "text": "Thermal energy is related to heat. It can move from warmer materials to cooler materials.",
+            "caption": "Conductors transfer thermal energy easily. Insulators slow thermal energy transfer."
+        },
+        {
+            "icon": "🎯",
+            "heading": "STAAR Tip",
+            "text": "For energy review questions, follow the evidence in order. Identify the starting energy, then the energy forms you can observe.",
+            "caption": "Example: chemical → electrical → light, thermal, sound, or mechanical."
+        }
+    ]
+}
+# End Day 43 Mission Brief Animation
+
