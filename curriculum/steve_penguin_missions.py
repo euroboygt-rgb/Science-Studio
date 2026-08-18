@@ -1223,3 +1223,36 @@ STEVE_PENGUIN_MISSIONS[39] = {
 }
 # End Day 39 Steve the Penguin STAAR Mission
 
+
+# Day 40 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[40] = {
+    "title": "Steve the Penguin’s Flashlight Energy Flow Mission",
+    "subtitle": "Day 40 • Energy Transformations",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin turns on a flashlight during a dark Science Studio mission. The flashlight has batteries, wires, a switch, and a bulb. When Steve closes the switch, the bulb shines and later feels warm.",
+    "question": "Which energy transformation best explains what happens in Steve’s flashlight?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Light energy changes into chemical energy, then the battery stores the light."
+        },
+        {
+            "letter": "B",
+            "text": "Chemical energy stored in the battery changes to electrical energy, then electrical energy changes to light energy and thermal energy in the bulb."
+        },
+        {
+            "letter": "C",
+            "text": "Sound energy from the switch changes into mechanical energy in the battery."
+        },
+        {
+            "letter": "D",
+            "text": "Thermal energy from the bulb changes into chemical energy before the flashlight turns on."
+        }
+    ],
+    "correct_answer": "B",
+    "explanation": "Steve should choose B. The battery stores chemical energy. When the circuit is closed, electrical energy moves through the wires to the bulb. The bulb changes electrical energy into light energy, and some energy also becomes thermal energy because the bulb can get warm.",
+    "staar_tip": "For STAAR energy transformation questions, follow the energy path in order. In a flashlight, the battery starts with chemical energy, the circuit carries electrical energy, and the bulb produces light and thermal energy.",
+    "vocabulary": ["energy transformation", "chemical energy", "electrical energy", "light energy", "thermal energy", "battery", "circuit", "switch", "bulb", "energy flow"]
+}
+# End Day 40 Steve the Penguin STAAR Mission
+

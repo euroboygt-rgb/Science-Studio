@@ -1741,3 +1741,50 @@ MISSION_BRIEF_ANIMATIONS[39] = {
 }
 # End Day 39 Mission Brief Animation
 
+
+# Day 40 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[40] = {
+    "title": "Mission Brief: Energy Transformations",
+    "subtitle": "Day 40 • Flashlight Energy Flow",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "🔦",
+            "heading": "Today’s Mission",
+            "text": "Today we will explain how energy changes forms in a system, using a flashlight as our main example.",
+            "caption": "Energy can change from one form to another."
+        },
+        {
+            "icon": "🔋",
+            "heading": "Chemical Energy",
+            "text": "A battery stores chemical energy. This stored energy is the starting point for many battery-powered devices.",
+            "caption": "Battery = stored chemical energy."
+        },
+        {
+            "icon": "⚡",
+            "heading": "Electrical Energy",
+            "text": "When the circuit is complete, electrical energy moves from the battery through the wires.",
+            "caption": "Closed circuit = electrical energy can flow."
+        },
+        {
+            "icon": "💡",
+            "heading": "Light Energy",
+            "text": "The bulb or LED changes electrical energy into light energy so the flashlight can shine.",
+            "caption": "Light energy helps us see."
+        },
+        {
+            "icon": "🌡️",
+            "heading": "Thermal Energy",
+            "text": "Some electrical energy also changes into thermal energy. That is why a bulb or device may feel warm after being on.",
+            "caption": "Thermal energy is related to heat."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "For energy transformation questions, follow the path: stored energy, moving energy, and the energy you can observe.",
+            "caption": "Flashlight example: chemical → electrical → light and thermal."
+        }
+    ]
+}
+# End Day 40 Mission Brief Animation
+
