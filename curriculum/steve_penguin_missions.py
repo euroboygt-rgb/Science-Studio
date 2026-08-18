@@ -1412,3 +1412,36 @@ STEVE_PENGUIN_MISSIONS[44] = {
 }
 # End Day 44 Steve the Penguin STAAR Mission
 
+
+# Day 45 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[45] = {
+    "title": "Steve the Penguin’s Final Review Mission",
+    "subtitle": "Day 45 • First Nine Weeks Evidence Check",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin visits four final review stations before the first nine weeks assessment. Station 1: A metal paper clip sticks to a magnet, but a plastic button does not. Station 2: Salt dissolves in water and is later separated by evaporating the water. Station 3: A toy car travels farther on tile than on carpet. Station 4: A battery-powered toy moves, lights up, makes sound, and the motor feels warm after running.",
+    "question": "Which answer best matches Steve’s evidence to the correct science concepts?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Station 1 shows solubility, Station 2 shows gravity, Station 3 shows sound energy, and Station 4 shows only light energy."
+        },
+        {
+            "letter": "B",
+            "text": "Station 1 shows that all solids are magnetic, Station 2 shows that salt disappears forever, Station 3 shows that surfaces do not affect motion, and Station 4 shows no energy changes."
+        },
+        {
+            "letter": "C",
+            "text": "Station 1 shows magnetism as a physical property, Station 2 shows a solution that can be separated by evaporation, Station 3 shows friction affects motion, and Station 4 shows energy transformations."
+        },
+        {
+            "letter": "D",
+            "text": "Station 1 shows thermal insulation, Station 2 shows a mixture that cannot be separated, Station 3 shows balanced forces, and Station 4 shows that batteries store light energy."
+        }
+    ],
+    "correct_answer": "C",
+    "explanation": "Steve should choose C. The paper clip sticking to the magnet is evidence of magnetism. Salt dissolving in water forms a solution, and evaporation can separate the salt from the water. The toy car traveling a shorter distance on carpet shows that friction affects motion. The battery-powered toy shows energy transformations because stored chemical energy changes into electrical, mechanical, light, sound, and thermal energy.",
+    "staar_tip": "For review questions, match each piece of evidence to the correct unit idea. Do not choose an answer just because one part sounds right. Every part of the answer must match the evidence.",
+    "vocabulary": ["physical property", "magnetism", "solution", "evaporation", "friction", "force", "motion", "energy transformation", "CMELTS", "evidence"]
+}
+# End Day 45 Steve the Penguin STAAR Mission
+

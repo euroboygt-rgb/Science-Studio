@@ -2000,3 +2000,86 @@ MISSION_BRIEF_ANIMATIONS[44] = {
 }
 # End Day 44 Mission Brief Animation
 
+
+# Day 45 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[45] = {
+    "title": "Mission Brief: First Nine Weeks Test Review",
+    "subtitle": "Day 45 • Final Mission Before the Assessment",
+    "theme": "review",
+    "slides": [
+        {
+            "icon": "🚀",
+            "heading": "Final Mission",
+            "text": "Today we will review the biggest science ideas from the first nine weeks and prepare to prove what we know on the assessment.",
+            "caption": "Your job is to use evidence, vocabulary, and careful thinking."
+        },
+        {
+            "icon": "🧱",
+            "heading": "Matter Review",
+            "text": "Matter can be compared by physical properties such as mass, volume, magnetism, relative density, state of matter, solubility, and conductivity.",
+            "caption": "Physical properties can be observed, measured, or tested."
+        },
+        {
+            "icon": "⚖️",
+            "heading": "Mass, Volume, and Density",
+            "text": "Mass tells how much matter an object has. Volume tells how much space it takes up. Relative density helps explain sinking, floating, and liquid layers.",
+            "caption": "Use measurements and observations as evidence."
+        },
+        {
+            "icon": "🧲",
+            "heading": "Magnetism and Conductivity",
+            "text": "Some materials are magnetic and some are not. Some materials conduct electricity or thermal energy, while others act as insulators.",
+            "caption": "Metals often conduct energy. Many plastics, rubber, wood, and foam act as insulators."
+        },
+        {
+            "icon": "🥣",
+            "heading": "Mixtures Review",
+            "text": "A mixture forms when substances are combined but keep their own properties. Mixtures can often be separated using physical properties.",
+            "caption": "Examples include trail mix, sand and iron filings, and gravel in water."
+        },
+        {
+            "icon": "💧",
+            "heading": "Solutions Review",
+            "text": "A solution is a special mixture where one substance dissolves evenly in another. Salt water and sugar water are common examples.",
+            "caption": "Dissolving does not mean the material disappeared."
+        },
+        {
+            "icon": "🧪",
+            "heading": "Separating Mixtures and Solutions",
+            "text": "Sieving, filtration, magnetism, and evaporation can separate different mixtures and solutions.",
+            "caption": "Choose the method based on the property of the material."
+        },
+        {
+            "icon": "🏎️",
+            "heading": "Force and Motion Review",
+            "text": "A force is a push or pull. Forces can change an object's speed, direction, position, or distance moved.",
+            "caption": "Unbalanced forces change motion. Balanced forces do not."
+        },
+        {
+            "icon": "🌎",
+            "heading": "Gravity and Friction",
+            "text": "Gravity pulls objects toward Earth. Friction acts against motion when surfaces rub together.",
+            "caption": "Rougher surfaces usually create more friction and can slow objects faster."
+        },
+        {
+            "icon": "📊",
+            "heading": "Variables and Data",
+            "text": "A fair test changes one independent variable, measures the dependent variable, and keeps control variables the same.",
+            "caption": "Changed = independent. Measured = dependent. Same = control."
+        },
+        {
+            "icon": "⚡",
+            "heading": "Energy Review",
+            "text": "CMELTS helps us remember chemical, mechanical, electrical, light, thermal, and sound energy.",
+            "caption": "Energy can change forms in systems like flashlights, toy cars, circuits, and speakers."
+        },
+        {
+            "icon": "🎯",
+            "heading": "Final STAAR Strategy",
+            "text": "Read the question, study every table or image, underline the evidence, eliminate wrong answers, and choose the answer that best matches the science.",
+            "caption": "Evidence first. Vocabulary second. Answer last."
+        }
+    ]
+}
+# End Day 45 Mission Brief Animation
+
