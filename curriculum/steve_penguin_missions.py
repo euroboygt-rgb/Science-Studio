@@ -1355,3 +1355,60 @@ STEVE_PENGUIN_MISSIONS[43] = {
 }
 # End Day 43 Steve the Penguin STAAR Mission
 
+
+# Day 44 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[44] = {
+    "title": "Steve the Penguin’s First Nine Weeks Review Mission",
+    "subtitle": "Day 44 • Circuit Conductivity Review",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin builds two simple circuits. In Circuit A, the test material is plastic. In Circuit B, the test material is copper. Both circuits use the same battery, bulb, and closed switch. Use the circuit image to answer the review question.",
+    "stimulus_image": "/static/mission_stimuli/day44_circuit_review.svg",
+    "stimulus_caption": "Circuit A uses plastic. Circuit B uses copper.",
+    "question": "Which circuit will light the bulb?",
+    "part_a_question": "Part A: Which circuit will light the bulb?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Circuit A will light because plastic is a strong electrical conductor."
+        },
+        {
+            "letter": "B",
+            "text": "Circuit B will light because copper is an electrical conductor that allows electrical energy to flow through the closed circuit."
+        },
+        {
+            "letter": "C",
+            "text": "Circuit A and Circuit B will both light because all solid materials conduct electricity the same way."
+        },
+        {
+            "letter": "D",
+            "text": "Neither circuit will light because batteries cannot move electrical energy through wires."
+        }
+    ],
+    "correct_answer": "B",
+    "part_b_question": "Part B: What material, other than copper, could be used and the light bulb would still light up?",
+    "part_b_options": [
+        {
+            "letter": "A",
+            "text": "Aluminum foil, because it is a metal conductor."
+        },
+        {
+            "letter": "B",
+            "text": "A rubber band, because rubber allows electrical energy to flow easily."
+        },
+        {
+            "letter": "C",
+            "text": "A plastic straw, because plastic is a strong electrical conductor."
+        },
+        {
+            "letter": "D",
+            "text": "A wooden craft stick, because wood lets electricity flow through a closed circuit."
+        }
+    ],
+    "part_b_correct_answer": "A",
+    "explanation": "Steve should choose B for Part A. Circuit B lights because copper is an electrical conductor. Conductors allow electrical energy to flow through a closed circuit. Plastic is an insulator, so Circuit A would not light the bulb.",
+    "part_b_explanation": "The best answer for Part B is A. Aluminum foil could be used because aluminum is a metal conductor. Conductors allow electrical energy to flow through a closed circuit. Rubber, plastic, and wood are insulators, so they do not allow electricity to flow easily.",
+    "staar_tip": "Use the circuit image as evidence. A light bulb will only light when electrical energy can move through a complete closed circuit and through a conducting material.",
+    "vocabulary": ["circuit", "electrical energy", "conductor", "insulator", "copper", "aluminum", "plastic", "rubber", "wood", "closed circuit", "evidence", "Part A", "Part B"]
+}
+# End Day 44 Steve the Penguin STAAR Mission
+

@@ -3204,5 +3204,305 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio Steve Penguin STAAR Mission -->
 
+
+
+
+
+
+<!-- Day 44 Steve Final Two-Part Layout Fix -->
+<script>
+(function () {
+  function getDayNumber() {
+    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
+    return match ? Number(match[1]) : null;
+  }
+
+  function makeText(tag, text, styles) {
+    const element = document.createElement(tag);
+    element.textContent = text || "";
+    Object.assign(element.style, styles || {});
+    return element;
+  }
+
+  function makeBox(background) {
+    const box = document.createElement("div");
+    Object.assign(box.style, {
+      background: background || "#ffffff",
+      border: "2px solid #111",
+      borderRadius: "10px",
+      padding: "12px",
+      margin: "12px 0"
+    });
+    return box;
+  }
+
+  function makeOption(option, correctLetter) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.answer = option.letter;
+    button.textContent = option.letter + ". " + option.text;
+
+    Object.assign(button.style, {
+      display: "block",
+      width: "100%",
+      textAlign: "left",
+      margin: "8px 0",
+      padding: "10px",
+      border: "2px solid #111",
+      borderRadius: "8px",
+      background: "#f7f7f7",
+      fontWeight: "800",
+      cursor: "pointer"
+    });
+
+    button.addEventListener("click", function () {
+      const section = button.closest(".day44-final-question-section");
+
+      section.querySelectorAll("button[data-answer]").forEach(function (btn) {
+        btn.style.background = "#f7f7f7";
+        btn.style.borderColor = "#111";
+      });
+
+      button.style.background = "#dff3e6";
+      button.style.borderColor = "#087a35";
+      section.dataset.selected = option.letter;
+    });
+
+    return button;
+  }
+
+  function makeQuestionSection(title, question, options, correctLetter, explanationText, onCorrect) {
+    const section = makeBox("#ffffff");
+    section.className = "day44-final-question-section";
+
+    section.appendChild(makeText("div", title, {
+      fontWeight: "900",
+      color: "#2d2a6e",
+      marginBottom: "6px"
+    }));
+
+    if (question) {
+      section.appendChild(makeText("div", question, {
+        fontWeight: "900",
+        marginBottom: "8px"
+      }));
+    }
+
+    options.forEach(function (option) {
+      section.appendChild(makeOption(option, correctLetter));
+    });
+
+    const checkButton = document.createElement("button");
+    checkButton.type = "button";
+    checkButton.textContent = "Check " + title;
+    Object.assign(checkButton.style, {
+      background: "#ffc400",
+      border: "2px solid #111",
+      borderRadius: "8px",
+      padding: "8px 12px",
+      fontWeight: "900",
+      marginTop: "6px",
+      cursor: "pointer"
+    });
+
+    const resultBox = makeText("div", "", {
+      marginTop: "8px",
+      fontWeight: "900"
+    });
+
+    const explanation = makeBox("#eaf7ed");
+    explanation.textContent = explanationText || "";
+    explanation.style.display = "none";
+
+    checkButton.addEventListener("click", function () {
+      const selected = section.dataset.selected;
+
+      if (!selected) {
+        resultBox.textContent = "Choose an answer first.";
+        resultBox.style.color = "#9a5b00";
+        return;
+      }
+
+      section.querySelectorAll("button[data-answer]").forEach(function (btn) {
+        if (btn.dataset.answer === correctLetter) {
+          btn.style.background = "#dff3e6";
+          btn.style.borderColor = "#087a35";
+        } else if (btn.dataset.answer === selected) {
+          btn.style.background = "#ffe1e1";
+          btn.style.borderColor = "#b00020";
+        }
+      });
+
+      explanation.style.display = "block";
+
+      if (selected === correctLetter) {
+        resultBox.textContent = "Correct! Steve found the evidence.";
+        resultBox.style.color = "#087a35";
+        section.dataset.correct = "yes";
+        if (onCorrect) onCorrect();
+      } else {
+        resultBox.textContent = "Try again. Look back at the image and the science evidence.";
+        resultBox.style.color = "#b00020";
+      }
+    });
+
+    section.appendChild(checkButton);
+    section.appendChild(resultBox);
+    section.appendChild(explanation);
+
+    return section;
+  }
+
+  function renderDay44(data) {
+    const card = document.querySelector("#scienceStudioStevePenguinMission");
+    if (!card || card.dataset.day44FinalReady === "yes") return;
+
+    card.dataset.day44FinalReady = "yes";
+    card.innerHTML = "";
+
+    const badge = makeText("div", "🐧 Steve the Penguin’s STAAR Mission", {
+      display: "inline-block",
+      background: "#0d6efd",
+      color: "#ffffff",
+      padding: "6px 12px",
+      borderRadius: "18px",
+      fontWeight: "900",
+      marginBottom: "8px"
+    });
+
+    const title = makeText("h2", data.title, {
+      margin: "4px 0 0",
+      fontWeight: "900"
+    });
+
+    const subtitle = makeText("div", data.subtitle, {
+      fontWeight: "800",
+      color: "#2d2a6e",
+      marginBottom: "10px"
+    });
+
+    const scenario = makeBox("#fff7d6");
+    scenario.appendChild(makeText("div", "Steve’s Scenario:", {
+      fontWeight: "900",
+      marginBottom: "6px"
+    }));
+    scenario.appendChild(makeText("div", data.scenario, {}));
+
+    const imageBox = makeBox("#ffffff");
+    imageBox.appendChild(makeText("div", "Circuit Stimulus Image:", {
+      fontWeight: "900",
+      marginBottom: "8px"
+    }));
+
+    const img = document.createElement("img");
+    img.src = data.stimulus_image;
+    img.alt = data.stimulus_caption || "Circuit stimulus image";
+    Object.assign(img.style, {
+      width: "100%",
+      maxWidth: "900px",
+      display: "block",
+      margin: "0 auto",
+      border: "2px solid #d7def7",
+      borderRadius: "12px",
+      background: "#f6fbff"
+    });
+    imageBox.appendChild(img);
+
+    imageBox.appendChild(makeText("div", data.stimulus_caption, {
+      textAlign: "center",
+      fontWeight: "800",
+      color: "#2d2a6e",
+      marginTop: "6px"
+    }));
+
+    const mainQuestion = makeBox("#ffffff");
+    mainQuestion.appendChild(makeText("div", "STAAR-Style Question:", {
+      fontWeight: "900",
+      marginBottom: "6px"
+    }));
+    mainQuestion.appendChild(makeText("div", data.question, {
+      fontWeight: "900"
+    }));
+
+    const staarTip = makeBox("#eef6ff");
+    staarTip.style.display = "none";
+    staarTip.appendChild(makeText("div", "⭐ STAAR Tip:", {
+      fontWeight: "900",
+      marginBottom: "6px"
+    }));
+    staarTip.appendChild(makeText("div", data.staar_tip, {}));
+
+    function revealTipIfBothDone() {
+      const sections = card.querySelectorAll(".day44-final-question-section");
+      const bothCorrect = Array.from(sections).every(function (section) {
+        return section.dataset.correct === "yes";
+      });
+      if (bothCorrect) {
+        staarTip.style.display = "block";
+      }
+    }
+
+    const partA = makeQuestionSection(
+      "Part A",
+      data.part_a_question || "Part A: Which circuit will light the bulb?",
+      data.options || [],
+      data.correct_answer,
+      data.explanation,
+      revealTipIfBothDone
+    );
+
+    const partB = makeQuestionSection(
+      "Part B",
+      data.part_b_question,
+      data.part_b_options || [],
+      data.part_b_correct_answer,
+      data.part_b_explanation,
+      revealTipIfBothDone
+    );
+
+    card.appendChild(badge);
+    card.appendChild(title);
+    card.appendChild(subtitle);
+    card.appendChild(scenario);
+    card.appendChild(imageBox);
+    card.appendChild(mainQuestion);
+    card.appendChild(partA);
+    card.appendChild(partB);
+    card.appendChild(staarTip);
+  }
+
+  function tryRender(retriesLeft) {
+    if (getDayNumber() !== 44) return;
+
+    const card = document.querySelector("#scienceStudioStevePenguinMission");
+    if (!card) {
+      if (retriesLeft > 0) {
+        setTimeout(function () {
+          tryRender(retriesLeft - 1);
+        }, 300);
+      }
+      return;
+    }
+
+    fetch("/api/steve-penguin-mission/44")
+      .then(function (response) { return response.json(); })
+      .then(function (data) {
+        if (!data || !data.available) return;
+        renderDay44(data);
+      })
+      .catch(function () {});
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    tryRender(30);
+  });
+
+  setTimeout(function () {
+    tryRender(30);
+  }, 700);
+})();
+</script>
+<!-- End Day 44 Steve Final Two-Part Layout Fix -->
+
 </body>
 </html>

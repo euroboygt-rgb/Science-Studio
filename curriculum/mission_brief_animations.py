@@ -1929,3 +1929,74 @@ MISSION_BRIEF_ANIMATIONS[43] = {
 }
 # End Day 43 Mission Brief Animation
 
+
+# Day 44 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[44] = {
+    "title": "Mission Brief: First Nine Weeks Review",
+    "subtitle": "Day 44 • Matter, Mixtures, Force & Motion, and Energy Review",
+    "theme": "review",
+    "slides": [
+        {
+            "icon": "🚀",
+            "heading": "Today’s Mission",
+            "text": "Today we will review the biggest science ideas from the first nine weeks and use evidence to answer STAAR-style questions.",
+            "caption": "We are reviewing all four major units from the nine weeks."
+        },
+        {
+            "icon": "🧱",
+            "heading": "Unit 1: Matter and Physical Properties",
+            "text": "Matter has physical properties such as mass, volume, magnetism, physical state, solubility, and the ability to conduct or insulate thermal and electrical energy.",
+            "caption": "Scientists compare matter by observing and testing its properties."
+        },
+        {
+            "icon": "⚖️",
+            "heading": "Unit 1 Review Focus",
+            "text": "Mass is how much matter is in an object. Volume is how much space it takes up. Density helps explain sinking, floating, and layering in liquids.",
+            "caption": "Use evidence from measurements and observations."
+        },
+        {
+            "icon": "🥣",
+            "heading": "Unit 2: Mixtures and Solutions",
+            "text": "A mixture is made when substances are combined but keep their own properties. A solution forms when one substance dissolves evenly in another.",
+            "caption": "Not all mixtures are solutions."
+        },
+        {
+            "icon": "🧲",
+            "heading": "Unit 2 Review Focus",
+            "text": "Mixtures and solutions can be separated using physical methods such as sieving, magnetism, filtration, evaporation, or other physical processes.",
+            "caption": "Think about the properties of the materials when choosing a separation method."
+        },
+        {
+            "icon": "🏎️",
+            "heading": "Unit 3: Force and Motion",
+            "text": "Forces such as pushes and pulls can change how an object moves. Balanced forces do not change motion, while unbalanced forces do.",
+            "caption": "Gravity, friction, and surface type affect motion."
+        },
+        {
+            "icon": "📈",
+            "heading": "Unit 3 Review Focus",
+            "text": "A fair test changes one variable at a time. Scientists use tables and graphs to organize data and identify patterns.",
+            "caption": "Independent, dependent, and control variables matter."
+        },
+        {
+            "icon": "⚡",
+            "heading": "Unit 4: Energy",
+            "text": "CMELTS helps us remember common forms of energy: chemical, mechanical, electrical, light, thermal, and sound.",
+            "caption": "Energy can change from one form to another."
+        },
+        {
+            "icon": "🔦",
+            "heading": "Unit 4 Review Focus",
+            "text": "In circuits, electrical energy flows through conductors. Materials like copper allow electrical energy to move, while materials like plastic act as insulators.",
+            "caption": "A complete circuit with a conductor helps the bulb light."
+        },
+        {
+            "icon": "🎯",
+            "heading": "STAAR Strategy Review",
+            "text": "Read the question carefully, study the stimulus or image, look for evidence, and connect the evidence to the correct science idea before answering.",
+            "caption": "Use science evidence to prove your answer."
+        }
+    ]
+}
+# End Day 44 Mission Brief Animation
+
