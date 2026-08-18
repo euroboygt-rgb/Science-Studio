@@ -1788,3 +1788,50 @@ MISSION_BRIEF_ANIMATIONS[40] = {
 }
 # End Day 40 Mission Brief Animation
 
+
+# Day 41 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[41] = {
+    "title": "Mission Brief: Sound Energy",
+    "subtitle": "Day 41 • Vibrations and Evidence",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "🔊",
+            "heading": "Today’s Mission",
+            "text": "Today we will explain sound energy by using evidence from vibrations and real-world examples.",
+            "caption": "Sound energy is produced when matter vibrates."
+        },
+        {
+            "icon": "〰️",
+            "heading": "Sound Starts with Vibrations",
+            "text": "A vibration is a quick back-and-forth movement. When an object vibrates, it can produce sound.",
+            "caption": "No vibration means no sound is produced."
+        },
+        {
+            "icon": "🥁",
+            "heading": "Real-World Examples",
+            "text": "A drum makes sound when its surface vibrates. A guitar string makes sound when the string vibrates. A speaker makes sound when part of it vibrates.",
+            "caption": "Look for what is vibrating."
+        },
+        {
+            "icon": "💨",
+            "heading": "Sound Travels Through Matter",
+            "text": "Sound energy travels through matter such as air, water, and solids.",
+            "caption": "The sound reaches your ears because vibrations move through matter."
+        },
+        {
+            "icon": "📊",
+            "heading": "Evidence of Sound Energy",
+            "text": "Scientists can use evidence such as seeing rice jump on a speaker, feeling a throat vibrate, or watching a rubber band move after being plucked.",
+            "caption": "Visible movement can be evidence of vibration."
+        },
+        {
+            "icon": "⭐",
+            "heading": "STAAR Tip",
+            "text": "When a question asks about sound energy, look for the object that vibrates and the evidence that shows vibration.",
+            "caption": "Sound energy = vibrations moving through matter."
+        }
+    ]
+}
+# End Day 41 Mission Brief Animation
+

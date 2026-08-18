@@ -1256,3 +1256,36 @@ STEVE_PENGUIN_MISSIONS[40] = {
 }
 # End Day 40 Steve the Penguin STAAR Mission
 
+
+# Day 41 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[41] = {
+    "title": "Steve the Penguin’s Sound Energy Mission",
+    "subtitle": "Day 41 • Sound, Vibrations, and Evidence",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin investigates sound energy in the Science Studio lab. He plucks a rubber band and hears a sound. He notices the rubber band moves back and forth quickly. Then he places a few grains of rice on a speaker. When music plays, the rice jumps because the speaker is vibrating.",
+    "question": "Which conclusion is best supported by Steve’s evidence?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Sound energy is produced when objects stay completely still."
+        },
+        {
+            "letter": "B",
+            "text": "The rice jumped because light energy from the speaker pushed it upward."
+        },
+        {
+            "letter": "C",
+            "text": "Sound energy is produced by vibrations, and the moving rubber band and jumping rice are evidence of those vibrations."
+        },
+        {
+            "letter": "D",
+            "text": "The rubber band made sound because it changed into a gas."
+        }
+    ],
+    "correct_answer": "C",
+    "explanation": "Steve should choose C. Sound energy is produced when matter vibrates. The rubber band moved back and forth quickly after being plucked, and the rice jumped because the speaker was vibrating. Both observations are evidence of vibrations causing sound.",
+    "staar_tip": "For STAAR sound questions, ask: What object is vibrating? What evidence shows the vibration? Sound energy is connected to vibrations moving through matter.",
+    "vocabulary": ["sound energy", "vibration", "matter", "evidence", "speaker", "rubber band", "energy", "observe", "movement"]
+}
+# End Day 41 Steve the Penguin STAAR Mission
+
