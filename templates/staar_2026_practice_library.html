@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}2026 STAAR-Style Practice{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+  <div class="p-4 rounded-4 border border-dark shadow-sm" style="background:#f6fbff;">
+    <h1 class="fw-bold">2026 STAAR-Style Practice</h1>
+    <p class="lead mb-1">Original Science Studio questions aligned to the new 2026 released-question patterns.</p>
+    <p class="mb-0"><strong>Teacher note:</strong> These are not copied screenshots. The questions and images are original practice items built from the tested skill patterns.</p>
+  </div>
+
+  <div class="row mt-4 g-3">
+    {% for q in questions %}
+      <div class="col-md-6">
+        <div class="card h-100 border-dark shadow-sm">
+          <div class="card-body">
+            <div class="badge bg-primary mb-2">Item {{ q.item_number }}</div>
+            <h4 class="card-title fw-bold">{{ q.title }}</h4>
+            <p class="mb-1"><strong>TEKS:</strong> {{ q.teks }}</p>
+            <p class="mb-1"><strong>Focus:</strong> {{ q.skill_focus }}</p>
+            <p class="small text-muted mb-3">{{ q.source_pattern }}</p>
+            <a class="btn btn-warning fw-bold border-dark" href="{{ url_for('staar_2026_practice_question', item_number=q.item_number) }}">Open Practice Question</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

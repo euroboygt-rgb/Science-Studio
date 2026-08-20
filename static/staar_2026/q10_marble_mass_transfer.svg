@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+  <rect width="1000" height="620" fill="#f6fbff"/>
+
+  <text x="500" y="45" text-anchor="middle" font-size="30" font-family="Arial, sans-serif" font-weight="700" fill="#2d2a6e">
+    Marble Ramp Investigation
+  </text>
+
+  <!-- Ramp setup -->
+  <line x1="115" y1="475" x2="875" y2="475" stroke="#333333" stroke-width="5"/>
+  <rect x="135" y="190" width="50" height="285" fill="#cccccc" stroke="#333333" stroke-width="4"/>
+  <line x1="185" y1="205" x2="610" y2="425" stroke="#333333" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="320" cy="274" r="25" fill="#888888" stroke="#333333" stroke-width="4"/>
+  <text x="320" y="240" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="700">Marble</text>
+
+  <rect x="700" y="380" width="115" height="95" fill="#c9c9c9" stroke="#333333" stroke-width="4"/>
+  <text x="757" y="510" text-anchor="middle" font-size="20" font-family="Arial, sans-serif" font-weight="700">Box</text>
+
+  <!-- Clean data table -->
+  <rect x="590" y="120" width="330" height="170" rx="10" fill="#ffffff" stroke="#333333" stroke-width="4"/>
+  <rect x="590" y="120" width="330" height="42" rx="10" fill="#fff7d6" stroke="#333333" stroke-width="4"/>
+  <text x="755" y="148" text-anchor="middle" font-size="22" font-family="Arial, sans-serif" font-weight="700">
+    Data Table
+  </text>
+
+  <line x1="590" y1="162" x2="920" y2="162" stroke="#333333" stroke-width="3"/>
+  <line x1="590" y1="205" x2="920" y2="205" stroke="#333333" stroke-width="3"/>
+  <line x1="590" y1="248" x2="920" y2="248" stroke="#333333" stroke-width="3"/>
+  <line x1="755" y1="162" x2="755" y2="290" stroke="#333333" stroke-width="3"/>
+
+  <text x="672" y="190" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="700">Mass of Marble</text>
+  <text x="837" y="190" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" font-weight="700">Box Distance</text>
+
+  <text x="672" y="235" text-anchor="middle" font-size="20" font-family="Arial, sans-serif">2 g</text>
+  <text x="837" y="235" text-anchor="middle" font-size="20" font-family="Arial, sans-serif">15 cm</text>
+
+  <text x="672" y="277" text-anchor="middle" font-size="20" font-family="Arial, sans-serif">4 g</text>
+  <text x="837" y="277" text-anchor="middle" font-size="20" font-family="Arial, sans-serif">28 cm</text>
+
+  <rect x="180" y="525" width="640" height="50" rx="14" fill="#ede9ff" stroke="#b9a7ff" stroke-width="3"/>
+  <text x="500" y="558" text-anchor="middle" font-size="22" font-family="Arial, sans-serif" font-weight="700" fill="#2d2a6e">
+    Greater marble mass moved the box farther.
+  </text>
+</svg>

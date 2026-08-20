@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="620" viewBox="0 0 900 620">
+  <rect width="900" height="620" fill="#f6fbff"/>
+
+  <text x="450" y="45" text-anchor="middle" font-size="30" font-family="Arial, sans-serif" font-weight="700" fill="#2d2a6e">
+    Liquid Density Tower
+  </text>
+
+  <text x="450" y="80" text-anchor="middle" font-size="20" font-family="Arial, sans-serif" font-weight="700" fill="#2d2a6e">
+    Three different liquids are poured into a glass.
+  </text>
+
+  <!-- Glass -->
+  <path d="M285 115 Q450 90 615 115 L570 540 Q450 585 330 540 Z" fill="#ffffff" stroke="#333333" stroke-width="5"/>
+  <ellipse cx="450" cy="115" rx="165" ry="25" fill="#ffffff" stroke="#333333" stroke-width="5"/>
+
+  <!-- Liquid layers -->
+  <path d="M318 210 L582 210 L568 300 L332 300 Z" fill="#ffeaa8" opacity="0.9"/>
+  <path d="M332 300 L568 300 L558 390 L342 390 Z" fill="#bfe6ff" opacity="0.9"/>
+  <path d="M342 390 L558 390 L548 520 Q450 555 352 520 Z" fill="#d8c6ff" opacity="0.9"/>
+
+  <line x1="318" y1="210" x2="582" y2="210" stroke="#333333" stroke-width="3"/>
+  <line x1="332" y1="300" x2="568" y2="300" stroke="#333333" stroke-width="3"/>
+  <line x1="342" y1="390" x2="558" y2="390" stroke="#333333" stroke-width="3"/>
+
+  <text x="255" y="260" text-anchor="middle" font-size="24" font-family="Arial, sans-serif" font-weight="700" fill="#7a5c00">Liquid L</text>
+  <text x="255" y="350" text-anchor="middle" font-size="24" font-family="Arial, sans-serif" font-weight="700" fill="#005789">Water</text>
+  <text x="255" y="465" text-anchor="middle" font-size="24" font-family="Arial, sans-serif" font-weight="700" fill="#4c2aa8">Liquid M</text>
+
+  <!-- Sponge -->
+  <rect x="425" y="145" width="80" height="95" rx="18" fill="#e8e8e8" stroke="#333333" stroke-width="4"/>
+  <circle cx="445" cy="165" r="7" fill="#b9b9b9"/>
+  <circle cx="475" cy="170" r="7" fill="#b9b9b9"/>
+  <circle cx="458" cy="193" r="7" fill="#b9b9b9"/>
+  <circle cx="488" cy="205" r="7" fill="#b9b9b9"/>
+  <circle cx="440" cy="220" r="7" fill="#b9b9b9"/>
+  <text x="465" y="137" text-anchor="middle" font-size="22" font-family="Arial, sans-serif" font-weight="700">Sponge</text>
+
+  <!-- Bottle cap -->
+  <ellipse cx="500" cy="285" rx="65" ry="18" fill="#777777" stroke="#333333" stroke-width="3"/>
+  <rect x="435" y="250" width="130" height="35" fill="#999999" stroke="#333333" stroke-width="3"/>
+  <line x1="448" y1="252" x2="448" y2="285" stroke="#555555" stroke-width="2"/>
+  <line x1="465" y1="252" x2="465" y2="285" stroke="#555555" stroke-width="2"/>
+  <line x1="482" y1="252" x2="482" y2="285" stroke="#555555" stroke-width="2"/>
+  <line x1="499" y1="252" x2="499" y2="285" stroke="#555555" stroke-width="2"/>
+  <line x1="516" y1="252" x2="516" y2="285" stroke="#555555" stroke-width="2"/>
+  <line x1="533" y1="252" x2="533" y2="285" stroke="#555555" stroke-width="2"/>
+  <text x="610" y="280" font-size="22" font-family="Arial, sans-serif" font-weight="700">Bottle cap</text>
+
+  <!-- Coin -->
+  <ellipse cx="470" cy="510" rx="65" ry="16" fill="#c9c9c9" stroke="#333333" stroke-width="3"/>
+  <ellipse cx="470" cy="500" rx="45" ry="10" fill="#eeeeee" stroke="#999999" stroke-width="2"/>
+  <text x="575" y="512" font-size="22" font-family="Arial, sans-serif" font-weight="700">Coin</text>
+</svg>

@@ -1343,9 +1343,65 @@ def api_steve_penguin_mission(day):
     return jsonify(result)
 # End Science Studio Steve Penguin Mission API
 
+
+@app.route("/staar-practice/2026")
+@app.route("/staar-practice-2026")
+def staar_2026_practice_library():
+    from flask import render_template
+    from curriculum.staar_2026_practice import STAAR_2026_PRACTICE
+    return render_template(
+        "staar_2026_practice_library.html",
+        questions=STAAR_2026_PRACTICE
+    )
+
+
+@app.route("/staar-practice/2026/item/<int:item_number>")
+def staar_2026_practice_question(item_number):
+    from flask import abort, render_template
+    from curriculum.staar_2026_practice import STAAR_2026_PRACTICE, get_staar_2026_question
+
+    question = get_staar_2026_question(item_number)
+    if not question:
+        abort(404)
+
+    return render_template(
+        "staar_2026_practice_question.html",
+        question=question,
+        questions=STAAR_2026_PRACTICE
+    )
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
+
+
+@app.route("/staar-practice/2026")
+@app.route("/staar-practice-2026")
+def staar_2026_practice_library():
+    from flask import render_template
+    from curriculum.staar_2026_practice import STAAR_2026_PRACTICE
+    return render_template(
+        "staar_2026_practice_library.html",
+        questions=STAAR_2026_PRACTICE
+    )
+
+
+@app.route("/staar-practice/2026/item/<int:item_number>")
+def staar_2026_practice_question(item_number):
+    from flask import abort, render_template
+    from curriculum.staar_2026_practice import STAAR_2026_PRACTICE, get_staar_2026_question
+
+    question = get_staar_2026_question(item_number)
+    if not question:
+        abort(404)
+
+    return render_template(
+        "staar_2026_practice_question.html",
+        question=question,
+        questions=STAAR_2026_PRACTICE
+    )
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

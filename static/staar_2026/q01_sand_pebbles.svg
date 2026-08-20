@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <rect width="900" height="500" fill="#f6fbff"/>
+
+  <text x="450" y="45" text-anchor="middle" font-size="30" font-family="Arial, sans-serif" font-weight="700" fill="#2d2a6e">
+    Sand and Pebbles in Water
+  </text>
+
+  <rect x="145" y="75" width="610" height="56" rx="14" fill="#fff7d6" stroke="#2d2a6e" stroke-width="3"/>
+  <text x="450" y="110" text-anchor="middle" font-size="22" font-family="Arial, sans-serif" font-weight="700" fill="#2d2a6e">
+    Both materials stay at the bottom and do not dissolve.
+  </text>
+
+  <rect x="260" y="155" width="380" height="275" rx="18" fill="#ffffff" stroke="#333333" stroke-width="4"/>
+  <rect x="282" y="225" width="336" height="175" fill="#bfe6ff" opacity="0.72"/>
+  <line x1="282" y1="225" x2="618" y2="225" stroke="#4e9ed6" stroke-width="5"/>
+
+  <ellipse cx="450" cy="400" rx="170" ry="28" fill="#d7b56d"/>
+
+  <circle cx="385" cy="377" r="18" fill="#777777" stroke="#444444" stroke-width="2"/>
+  <circle cx="435" cy="374" r="15" fill="#888888" stroke="#444444" stroke-width="2"/>
+  <circle cx="492" cy="379" r="20" fill="#666666" stroke="#444444" stroke-width="2"/>
+  <circle cx="535" cy="386" r="13" fill="#999999" stroke="#444444" stroke-width="2"/>
+
+  <text x="335" y="470" text-anchor="middle" font-size="20" font-family="Arial, sans-serif" font-weight="700" fill="#6d4d00">
+    Sand settles
+  </text>
+  <text x="565" y="470" text-anchor="middle" font-size="20" font-family="Arial, sans-serif" font-weight="700" fill="#333333">
+    Pebbles settle
+  </text>
+</svg>

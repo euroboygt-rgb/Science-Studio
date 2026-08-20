@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+  <rect width="1000" height="620" fill="#f6fbff"/>
+  <text x="500" y="45" text-anchor="middle" font-size="30" font-family="Arial" font-weight="700" fill="#2d2a6e">
+    Comparing Relative Density of Liquids
+  </text>
+  <text x="500" y="80" text-anchor="middle" font-size="19" font-family="Arial" font-weight="700" fill="#2d2a6e">
+    In each beaker, the liquid on top is less dense than the liquid below it.
+  </text>
+
+  <g transform="translate(90,130)">
+    <path d="M20 0 L180 0 L165 235 Q100 260 35 235 Z" fill="#fff" stroke="#333" stroke-width="4"/>
+    <path d="M34 95 L166 95 L160 230 Q100 250 40 230 Z" fill="#d8c6ff"/>
+    <path d="M26 30 L174 30 L166 95 L34 95 Z" fill="#ffeaa8"/>
+    <line x1="26" y1="30" x2="174" y2="30" stroke="#333" stroke-width="3"/>
+    <line x1="34" y1="95" x2="166" y2="95" stroke="#333" stroke-width="3"/>
+    <text x="100" y="70" text-anchor="middle" font-size="32" font-family="Arial" font-weight="700">L</text>
+    <text x="100" y="165" text-anchor="middle" font-size="32" font-family="Arial" font-weight="700">M</text>
+    <text x="100" y="295" text-anchor="middle" font-size="20" font-family="Arial" font-weight="700">L above M</text>
+  </g>
+
+  <g transform="translate(325,130)">
+    <path d="M20 0 L180 0 L165 235 Q100 260 35 235 Z" fill="#fff" stroke="#333" stroke-width="4"/>
+    <path d="M34 95 L166 95 L160 230 Q100 250 40 230 Z" fill="#d1f2d1"/>
+    <path d="M26 30 L174 30 L166 95 L34 95 Z" fill="#d8c6ff"/>
+    <line x1="26" y1="30" x2="174" y2="30" stroke="#333" stroke-width="3"/>
+    <line x1="34" y1="95" x2="166" y2="95" stroke="#333" stroke-width="3"/>
+    <text x="100" y="70" text-anchor="middle" font-size="32" font-family="Arial" font-weight="700">M</text>
+    <text x="100" y="165" text-anchor="middle" font-size="32" font-family="Arial" font-weight="700">O</text>
+    <text x="100" y="295" text-anchor="middle" font-size="20" font-family="Arial" font-weight="700">M above O</text>
+  </g>
+
+  <g transform="translate(560,130)">
+    <path d="M20 0 L180 0 L165 235 Q100 260 35 235 Z" fill="#fff" stroke="#333" stroke-width="4"/>
+    <path d="M34 95 L166 95 L160 230 Q100 250 40 230 Z" fill="#ffd0d0"/>
+    <path d="M26 30 L174 30 L166 95 L34 95 Z" fill="#d8c6ff"/>
+    <line x1="26" y1="30" x2="174" y2="30" stroke="#333" stroke-width="3"/>
+    <line x1="34" y1="95" x2="166" y2="95" stroke="#333" stroke-width="3"/>
+    <text x="100" y="70" text-anchor="middle" font-size="32" font-family="Arial" font-weight="700">M</text>
+    <text x="100" y="165" text-anchor="middle" font-size="32" font-family="Arial" font-weight="700">N</text>
+    <text x="100" y="295" text-anchor="middle" font-size="20" font-family="Arial" font-weight="700">M above N</text>
+  </g>
+
+  <g transform="translate(795,130)">
+    <path d="M20 0 L180 0 L165 235 Q100 260 35 235 Z" fill="#fff" stroke="#333" stroke-width="4"/>
+    <path d="M34 95 L166 95 L160 230 Q100 250 40 230 Z" fill="#ffd0d0"/>
+    <path d="M26 30 L174 30 L166 95 L34 95 Z" fill="#d1f2d1"/>
+    <line x1="26" y1="30" x2="174" y2="30" stroke="#333" stroke-width="3"/>
+    <line x1="34" y1="95" x2="166" y2="95" stroke="#333" stroke-width="3"/>
+    <text x="100" y="70" text-anchor="middle" font-size="32" font-family="Arial" font-weight="700">O</text>
+    <text x="100" y="165" text-anchor="middle" font-size="32" font-family="Arial" font-weight="700">N</text>
+    <text x="100" y="295" text-anchor="middle" font-size="20" font-family="Arial" font-weight="700">O above N</text>
+  </g>
+
+  <rect x="160" y="515" width="680" height="48" rx="12" fill="#ede9ff" stroke="#b9a7ff" stroke-width="3"/>
+  <text x="500" y="546" text-anchor="middle" font-size="21" font-family="Arial" font-weight="700" fill="#2d2a6e">
+    Use the layers to order the liquids from least dense to most dense.
+  </text>
+</svg>

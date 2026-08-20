@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" fill="#f6fbff"/>
+  <text x="450" y="42" text-anchor="middle" font-size="30" font-family="Arial" font-weight="700" fill="#2d2a6e">Rainbow After Rain</text>
+  <circle cx="135" cy="115" r="48" fill="#ffd95a" stroke="#d19700" stroke-width="4"/>
+  <path d="M190 355 A260 260 0 0 1 710 355" fill="none" stroke="#ff4d4d" stroke-width="16"/>
+  <path d="M215 355 A235 235 0 0 1 685 355" fill="none" stroke="#ffa64d" stroke-width="16"/>
+  <path d="M240 355 A210 210 0 0 1 660 355" fill="none" stroke="#ffeb4d" stroke-width="16"/>
+  <path d="M265 355 A185 185 0 0 1 635 355" fill="none" stroke="#5ad96d" stroke-width="16"/>
+  <path d="M290 355 A160 160 0 0 1 610 355" fill="none" stroke="#5a9dff" stroke-width="16"/>
+  <path d="M315 355 A135 135 0 0 1 585 355" fill="none" stroke="#8b5cff" stroke-width="16"/>
+  <ellipse cx="445" cy="380" rx="330" ry="45" fill="#9fd0ff" opacity="0.25"/>
+  <path d="M250 125 C290 75 350 80 375 130 C410 90 470 95 500 145 C540 115 605 130 620 180 C680 178 720 210 725 255 L235 255 C220 205 220 160 250 125Z" fill="#fff" stroke="#c9d7ea" stroke-width="4"/>
+  <text x="450" y="455" text-anchor="middle" font-size="22" font-family="Arial" font-weight="700" fill="#2d2a6e">Light changes direction as it moves through water droplets.</text>
+</svg>
