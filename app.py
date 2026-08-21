@@ -1415,3 +1415,19 @@ def inject_staar_practice_additions():
     }
 # End Science Studio STAAR Practice Additions Injector
 
+
+# Science Studio Assessment Additions Debug Route
+@app.route("/api/staar-assessment-additions-count")
+def api_staar_assessment_additions_count():
+    from flask import jsonify
+    from curriculum.staar_assessment_additions import STAAR_ASSESSMENT_ADDITIONS
+
+    return jsonify({
+        "count": len(STAAR_ASSESSMENT_ADDITIONS),
+        "teks_counts": {
+            teks: len([q for q in STAAR_ASSESSMENT_ADDITIONS if q.get("teks") == teks])
+            for teks in sorted({q.get("teks") for q in STAAR_ASSESSMENT_ADDITIONS})
+        }
+    })
+# End Science Studio Assessment Additions Debug Route
+

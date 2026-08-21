@@ -264,16 +264,25 @@
 
 
 
-<!-- Science Studio 2026 TEKS Group Inserter -->
+
+
+<!-- Science Studio Strong TEKS Card Inserter -->
 <style>
+  .science-studio-added-staar-section {
+    width: 100%;
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 2px dashed #111;
+  }
+
   .science-studio-added-staar-card {
     background: #fff7d6;
     border: 2px solid #111;
     border-radius: 14px;
     padding: 12px;
-    margin: 10px;
+    margin: 8px;
     box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
-    width: min(280px, 100%);
+    width: min(285px, 100%);
     display: inline-block;
     vertical-align: top;
   }
@@ -285,7 +294,7 @@
     border: 1px solid #111;
     border-radius: 999px;
     padding: 3px 8px;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 900;
     margin-bottom: 6px;
   }
@@ -293,10 +302,12 @@
   .science-studio-added-staar-card h4 {
     font-weight: 900;
     margin: 4px 0 6px;
+    font-size: 1rem;
   }
 
   .science-studio-added-staar-card p {
     margin-bottom: 5px;
+    font-size: 0.85rem;
   }
 
   .science-studio-added-staar-card .practice-btn {
@@ -309,10 +320,6 @@
     text-decoration: none;
     font-weight: 900;
     margin-top: 6px;
-  }
-
-  .science-studio-added-staar-grid {
-    margin-top: 10px;
   }
 </style>
 
@@ -338,55 +345,6 @@
     });
   }
 
-  function directText(element) {
-    return Array.from(element.childNodes)
-      .filter(function (node) { return node.nodeType === Node.TEXT_NODE; })
-      .map(function (node) { return node.nodeValue.trim(); })
-      .join(" ")
-      .trim();
-  }
-
-  function findTeksBox(teks) {
-    const target = "TEKS " + teks;
-    const candidates = Array.from(document.querySelectorAll("h1,h2,h3,h4,h5,div,section,article"));
-
-    let header = candidates.find(function (element) {
-      const text = directText(element) || element.textContent.trim();
-      return text.startsWith(target);
-    });
-
-    if (!header) {
-      header = candidates.find(function (element) {
-        const text = element.textContent || "";
-        return text.includes(target) && text.length < 200;
-      });
-    }
-
-    if (!header) return null;
-
-    let box = header;
-
-    for (let i = 0; i < 6; i++) {
-      if (!box.parentElement) break;
-
-      const parent = box.parentElement;
-      const parentText = parent.textContent || "";
-
-      if (parentText.includes(target) && parentText.length > 150) {
-        box = parent;
-      } else {
-        box = parent;
-      }
-
-      const rect = box.getBoundingClientRect();
-      if (rect.width > 300 && rect.height > 120) {
-        break;
-      }
-    }
-
-    return box;
-  }
-
   function makeCard(question) {
     const card = document.createElement("div");
     card.className = "science-studio-added-staar-card";
@@ -405,10 +363,6 @@
     const focus = document.createElement("p");
     focus.innerHTML = "<strong>Focus:</strong> " + question.skill_focus;
 
-    const imageNote = document.createElement("p");
-    imageNote.className = "small text-success fw-bold";
-    imageNote.textContent = question.stimulus_image ? "Includes stimulus image" : "";
-
     const link = document.createElement("a");
     link.className = "practice-btn";
     link.href = "/staar-practice/2026/item/" + question.item_number;
@@ -420,6 +374,9 @@
     card.appendChild(focus);
 
     if (question.stimulus_image) {
+      const imageNote = document.createElement("p");
+      imageNote.className = "small text-success fw-bold";
+      imageNote.textContent = "Includes stimulus image";
       card.appendChild(imageNote);
     }
 
@@ -428,46 +385,95 @@
     return card;
   }
 
-  function insertAddedQuestionsIntoTeksBoxes() {
+  function getDirectText(element) {
+    return Array.from(element.childNodes)
+      .filter(function (node) { return node.nodeType === Node.TEXT_NODE; })
+      .map(function (node) { return node.nodeValue.trim(); })
+      .join(" ")
+      .trim();
+  }
+
+  function findExactTeksHeader(teks) {
+    const target = "TEKS " + teks;
+    const all = Array.from(document.querySelectorAll("h1,h2,h3,h4,h5,div"));
+
+    return all.find(function (element) {
+      const direct = getDirectText(element);
+      const full = (element.textContent || "").trim();
+
+      return direct === target || full.startsWith(target + "\n") || full === target;
+    });
+  }
+
+  function findTeksGroupContainer(header) {
+    let current = header.parentElement;
+
+    for (let i = 0; i < 5 && current; i++) {
+      const text = current.textContent || "";
+      const rect = current.getBoundingClientRect();
+
+      const hasStudentPractice = text.includes("Student Practice");
+      const isReasonableBox = rect.width > 300 && rect.width < 900 && rect.height > 80;
+
+      if (hasStudentPractice && isReasonableBox) {
+        return current;
+      }
+
+      current = current.parentElement;
+    }
+
+    return header.parentElement || header;
+  }
+
+  function insertCards() {
     if (!Array.isArray(addedQuestions) || addedQuestions.length === 0) return;
 
-    const grouped = {};
-
-    addedQuestions.forEach(function (question) {
-      if (!question || !question.teks) return;
-      grouped[question.teks] = grouped[question.teks] || [];
-      grouped[question.teks].push(question);
+    document.querySelectorAll(".science-studio-added-staar-section").forEach(function (oldSection) {
+      oldSection.remove();
     });
 
-    Object.keys(grouped).forEach(function (teks) {
-      const box = findTeksBox(teks);
-      if (!box) return;
+    const groups = {};
+    addedQuestions.forEach(function (question) {
+      if (!question || !question.teks) return;
+      groups[question.teks] = groups[question.teks] || [];
+      groups[question.teks].push(question);
+    });
 
-      if (box.querySelector('[data-science-studio-added-teks="' + teks + '"]')) return;
+    Object.keys(groups).forEach(function (teks) {
+      const header = findExactTeksHeader(teks);
+      if (!header) return;
 
-      const grid = document.createElement("div");
-      grid.className = "science-studio-added-staar-grid";
-      grid.dataset.scienceStudioAddedTeks = teks;
+      const groupBox = findTeksGroupContainer(header);
 
-      grouped[teks].forEach(function (question) {
-        grid.appendChild(makeCard(question));
+      const section = document.createElement("div");
+      section.className = "science-studio-added-staar-section";
+      section.dataset.teks = teks;
+
+      const label = document.createElement("div");
+      label.style.fontWeight = "900";
+      label.style.margin = "4px 8px 8px";
+      label.textContent = "Added STAAR Practice for TEKS " + teks;
+      section.appendChild(label);
+
+      groups[teks].forEach(function (question) {
+        section.appendChild(makeCard(question));
       });
 
-      box.appendChild(grid);
+      groupBox.appendChild(section);
     });
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     cleanYearText();
-    setTimeout(insertAddedQuestionsIntoTeksBoxes, 300);
+    setTimeout(insertCards, 500);
   });
 
   setTimeout(function () {
     cleanYearText();
-    insertAddedQuestionsIntoTeksBoxes();
-  }, 900);
+    insertCards();
+  }, 1200);
 })();
 </script>
-<!-- End Science Studio 2026 TEKS Group Inserter -->
+<!-- End Science Studio Strong TEKS Card Inserter -->
 
 {% endblock %}

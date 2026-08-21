@@ -164,43 +164,46 @@ def get_daily_assessment(day):
 try:
     from curriculum.staar_assessment_additions import STAAR_ASSESSMENT_ADDITIONS
 
-    def _science_studio_add_2026_questions_to_assessment_lists():
-        additions = list(STAAR_ASSESSMENT_ADDITIONS)
+    def _science_studio_question_key(question):
+        if not isinstance(question, dict):
+            return None
 
-        for variable_name, value in list(globals().items()):
-            if not isinstance(value, list):
-                continue
+        return (
+            question.get("title") or question.get("name"),
+            question.get("question") or question.get("prompt") or question.get("stem") or question.get("text"),
+            question.get("teks") or question.get("TEKS"),
+        )
 
-            if value and not all(isinstance(item, dict) for item in value[:5]):
-                continue
+    def _science_studio_extend_question_list(question_list):
+        if not isinstance(question_list, list):
+            return
 
-            variable_name_upper = variable_name.upper()
-            if not any(word in variable_name_upper for word in ["QUESTION", "ASSESSMENT", "ITEM", "BANK", "POOL"]):
-                continue
+        existing = set()
+        for question in question_list:
+            key = _science_studio_question_key(question)
+            if key:
+                existing.add(key)
 
-            existing_keys = set()
-            for question in value:
-                if isinstance(question, dict):
-                    existing_keys.add((
-                        question.get("title"),
-                        question.get("question") or question.get("prompt") or question.get("stem"),
-                        question.get("teks"),
-                    ))
+        for addition in STAAR_ASSESSMENT_ADDITIONS:
+            key = _science_studio_question_key(addition)
+            if key and key not in existing:
+                question_list.append(dict(addition))
+                existing.add(key)
 
-            for addition in additions:
-                key = (
-                    addition.get("title"),
-                    addition.get("question") or addition.get("prompt") or addition.get("stem"),
-                    addition.get("teks"),
-                )
+    # Add to every obvious question list in this module.
+    for _name, _value in list(globals().items()):
+        if isinstance(_value, list):
+            if not _value or all(isinstance(_item, dict) for _item in _value[:10]):
+                _science_studio_extend_question_list(_value)
 
-                if key not in existing_keys:
-                    value.append(dict(addition))
-                    existing_keys.add(key)
+    # Add to every obvious dictionary of lists in this module.
+    for _name, _value in list(globals().items()):
+        if isinstance(_value, dict):
+            for _key, _inner_value in list(_value.items()):
+                if isinstance(_inner_value, list):
+                    _science_studio_extend_question_list(_inner_value)
 
-    _science_studio_add_2026_questions_to_assessment_lists()
-
-except Exception:
-    pass
+except Exception as _science_studio_assessment_patch_error:
+    print("Science Studio 2026 assessment additions skipped:", _science_studio_assessment_patch_error)
 # End Science Studio 2026 Assessment Pool Additions
 
