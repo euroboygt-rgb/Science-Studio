@@ -3507,6 +3507,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
+
 <!-- Science Studio Clean Assessment Pool Inserter -->
 <style>
   #scienceStudioAddedAssessmentPool {
@@ -3559,24 +3561,18 @@ document.addEventListener("DOMContentLoaded", function () {
 (function () {
   if (!window.location.pathname.includes("/science-assessment")) return;
 
-  let addedQuestions = [];
+  let staarPoolQuestions = [];
 
-  function selectedTeksValue() {
+  function getSelectedTeks() {
     const selects = Array.from(document.querySelectorAll("select"));
 
     for (const select of selects) {
-      const optionTexts = Array.from(select.options).map(function (option) {
-        return (option.value + " " + option.textContent).trim();
-      }).join(" ");
+      const selectedOption = select.options[select.selectedIndex];
+      const selectedText = ((select.value || "") + " " + (selectedOption ? selectedOption.textContent : "")).trim();
+      const match = selectedText.match(/5\.\d+[A-Z]/);
 
-      if (optionTexts.includes("5.6A") || optionTexts.includes("5.6B") || optionTexts.includes("5.8B")) {
-        const chosen = select.options[select.selectedIndex];
-        const combined = ((select.value || "") + " " + (chosen ? chosen.textContent : "")).trim();
-
-        if (combined.toLowerCase().includes("all")) return "";
-
-        const match = combined.match(/5\.\d+[A-Z]/);
-        return match ? match[0] : "";
+      if (match) {
+        return match[0];
       }
     }
 
@@ -3585,15 +3581,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function findAssessmentBox() {
     const all = Array.from(document.querySelectorAll("div, section, article"));
-
-    const best = all.reverse().find(function (element) {
+    const boxes = all.filter(function (element) {
       const text = element.textContent || "";
       const rect = element.getBoundingClientRect();
-
       return text.includes("Assessment") && rect.width > 300 && rect.height > 100;
     });
 
-    return best || document.querySelector("main") || document.body;
+    return boxes[boxes.length - 1] || document.querySelector("main") || document.body;
   }
 
   function createHost() {
@@ -3603,39 +3597,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     host = document.createElement("div");
     host.id = "scienceStudioAddedAssessmentPool";
-
     findAssessmentBox().appendChild(host);
 
     return host;
   }
 
-  function buildQuestionCard(question, number) {
-    const card = document.createElement("div");
-    card.className = "science-studio-added-assessment-card";
-
-    const label = document.createElement("div");
-    label.style.fontWeight = "900";
-    label.style.color = "#2d2a6e";
-    label.textContent = "Added STAAR Question " + number + " • " + question.teks;
-    card.appendChild(label);
-
-    const title = document.createElement("h4");
-    title.style.fontWeight = "900";
-    title.textContent = question.title;
-    card.appendChild(title);
-
-    if (question.stimulus_image) {
-      const img = document.createElement("img");
-      img.src = question.stimulus_image;
-      img.alt = "STAAR stimulus image";
-      card.appendChild(img);
+  function getQuestionPrompt(question, part) {
+    if (part) {
+      return (question.prompt || "") + " " + (part.prompt || "");
     }
 
-    const prompt = document.createElement("p");
-    prompt.style.fontWeight = "900";
-    prompt.textContent = question.prompt + (question.sentence_prompt ? " " + question.sentence_prompt : "");
-    card.appendChild(prompt);
+    return (question.prompt || "") + (question.sentence_prompt ? " " + question.sentence_prompt : "");
+  }
 
+  function makeAnswerSection(card, options, correctAnswer, explanationText) {
     const result = document.createElement("div");
     result.style.fontWeight = "900";
     result.style.marginTop = "8px";
@@ -3647,9 +3622,9 @@ document.addEventListener("DOMContentLoaded", function () {
     explanation.style.border = "1px solid #111";
     explanation.style.borderRadius = "8px";
     explanation.style.background = "#eaf7ed";
-    explanation.textContent = question.explanation || "";
+    explanation.textContent = explanationText || "";
 
-    (question.options || []).forEach(function (option) {
+    (options || []).forEach(function (option) {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "science-studio-added-assessment-option";
@@ -3686,7 +3661,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       card.querySelectorAll(".science-studio-added-assessment-option").forEach(function (btn) {
-        if (btn.dataset.answer === question.correct_answer) {
+        if (btn.dataset.answer === correctAnswer) {
           btn.style.background = "#dff3e6";
           btn.style.borderColor = "#087a35";
         } else if (btn.dataset.answer === selected) {
@@ -3697,7 +3672,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       explanation.style.display = "block";
 
-      if (selected === question.correct_answer) {
+      if (selected === correctAnswer) {
         result.textContent = "Correct! You found the evidence.";
         result.style.color = "#087a35";
       } else {
@@ -3709,57 +3684,109 @@ document.addEventListener("DOMContentLoaded", function () {
     card.appendChild(check);
     card.appendChild(result);
     card.appendChild(explanation);
+  }
+
+  function buildQuestionCard(question, displayNumber, part) {
+    const card = document.createElement("div");
+    card.className = "science-studio-added-assessment-card";
+
+    const label = document.createElement("div");
+    label.style.fontWeight = "900";
+    label.style.color = "#2d2a6e";
+    label.textContent = "STAAR Practice Question " + displayNumber + " • " + question.teks;
+    card.appendChild(label);
+
+    const title = document.createElement("h4");
+    title.style.fontWeight = "900";
+    title.textContent = part ? question.title + " - " + part.label : question.title;
+    card.appendChild(title);
+
+    if (question.stimulus_image) {
+      const img = document.createElement("img");
+      img.src = question.stimulus_image;
+      img.alt = "STAAR stimulus image";
+      card.appendChild(img);
+    }
+
+    const prompt = document.createElement("p");
+    prompt.style.fontWeight = "900";
+    prompt.textContent = getQuestionPrompt(question, part);
+    card.appendChild(prompt);
+
+    if (part) {
+      makeAnswerSection(card, part.options || [], part.correct_answer, part.explanation || "");
+    } else {
+      makeAnswerSection(card, question.options || [], question.correct_answer, question.explanation || "");
+    }
 
     return card;
   }
 
-  function renderAddedQuestions() {
+  function flattenQuestionMatches(questions) {
+    const flat = [];
+
+    questions.forEach(function (question) {
+      if (Array.isArray(question.parts) && question.parts.length > 0) {
+        question.parts.forEach(function (part) {
+          flat.push({ question: question, part: part });
+        });
+      } else {
+        flat.push({ question: question, part: null });
+      }
+    });
+
+    return flat;
+  }
+
+  function renderPoolQuestions() {
     const host = createHost();
     host.innerHTML = "";
 
-    const selectedTeks = selectedTeksValue();
+    const selectedTeks = getSelectedTeks();
 
-    let matchingQuestions = addedQuestions.filter(function (question) {
+    let matches = staarPoolQuestions.filter(function (question) {
       if (!selectedTeks) return true;
       return question.teks === selectedTeks;
     });
 
+    const flatMatches = flattenQuestionMatches(matches);
+
     const heading = document.createElement("h3");
     heading.style.fontWeight = "900";
     heading.textContent = selectedTeks
-      ? "Added STAAR Pool Questions for TEKS " + selectedTeks
-      : "Added STAAR Pool Questions";
+      ? "STAAR Practice Questions for TEKS " + selectedTeks
+      : "STAAR Practice Questions from the Question Pool";
     host.appendChild(heading);
 
     const note = document.createElement("p");
     note.style.fontWeight = "800";
 
-    if (matchingQuestions.length === 0) {
-      note.textContent = "No added STAAR questions match this TEKS yet.";
+    if (flatMatches.length === 0) {
+      note.textContent = "No question-pool items match this TEKS yet.";
       host.appendChild(note);
       return;
     }
 
-    note.textContent = matchingQuestions.length + " added STAAR question(s) are connected to this assessment.";
+    note.textContent = flatMatches.length + " question-pool item(s) are available for this selection.";
     host.appendChild(note);
 
-    matchingQuestions.forEach(function (question, index) {
-      host.appendChild(buildQuestionCard(question, index + 1));
+    flatMatches.forEach(function (item, index) {
+      host.appendChild(buildQuestionCard(item.question, index + 1, item.part));
     });
   }
 
-  function hookButtons() {
+  function hookGenerateButton() {
     const buttons = Array.from(document.querySelectorAll("button, input[type='button'], input[type='submit']"));
 
     buttons.forEach(function (button) {
       const label = (button.textContent || button.value || "").toLowerCase();
 
-      if (label.includes("generate assessment") && !button.dataset.scienceStudioAddedPoolHook) {
-        button.dataset.scienceStudioAddedPoolHook = "yes";
+      if (label.includes("generate assessment") && !button.dataset.scienceStudioPoolHooked) {
+        button.dataset.scienceStudioPoolHooked = "yes";
 
         button.addEventListener("click", function () {
-          setTimeout(renderAddedQuestions, 700);
-          setTimeout(renderAddedQuestions, 1600);
+          setTimeout(renderPoolQuestions, 700);
+          setTimeout(renderPoolQuestions, 1600);
         });
       }
     });
@@ -3768,7 +3795,7 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("/api/staar-assessment-additions")
     .then(function (response) { return response.json(); })
     .then(function (data) {
-      addedQuestions = data && data.questions ? data.questions : [];
+      staarPoolQuestions = data && data.questions ? data.questions : [];
 
       const setupBox = Array.from(document.querySelectorAll("div, section, article")).find(function (element) {
         return (element.textContent || "").includes("Assessment Setup");
@@ -3783,18 +3810,18 @@ document.addEventListener("DOMContentLoaded", function () {
         status.style.borderRadius = "8px";
         status.style.background = "#eaf7ed";
         status.style.fontWeight = "800";
-        status.textContent = addedQuestions.length + " added STAAR questions are connected.";
+        status.textContent = staarPoolQuestions.length + " STAAR question-pool items are connected.";
         setupBox.appendChild(status);
       }
 
-      hookButtons();
+      hookGenerateButton();
     })
     .catch(function () {
-      hookButtons();
+      hookGenerateButton();
     });
 
-  document.addEventListener("DOMContentLoaded", hookButtons);
-  setTimeout(hookButtons, 1000);
+  document.addEventListener("DOMContentLoaded", hookGenerateButton);
+  setTimeout(hookGenerateButton, 1000);
 })();
 </script>
 <!-- End Science Studio Clean Assessment Pool Inserter -->
