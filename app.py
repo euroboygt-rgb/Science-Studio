@@ -1401,3 +1401,17 @@ def staar_question_pool_question(pool_id):
     )
 # End Science Studio Combined STAAR Pool Routes
 
+
+# Science Studio STAAR Practice Additions Injector
+@app.context_processor
+def inject_staar_practice_additions():
+    try:
+        from curriculum.staar_2026_practice import STAAR_2026_PRACTICE
+    except Exception:
+        STAAR_2026_PRACTICE = []
+
+    return {
+        "staar_2026_questions": STAAR_2026_PRACTICE
+    }
+# End Science Studio STAAR Practice Additions Injector
+
