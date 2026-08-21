@@ -1370,3 +1370,34 @@ def staar_2026_practice_question(item_number):
         questions=STAAR_2026_PRACTICE
     )
 
+
+# Science Studio Combined STAAR Pool Routes
+@app.route("/staar-practice/pool")
+@app.route("/staar-question-pool")
+def staar_question_pool_library():
+    from flask import render_template
+    from curriculum.staar_question_pool import STAAR_QUESTION_POOL
+
+    return render_template(
+        "staar_question_pool_library.html",
+        questions=STAAR_QUESTION_POOL
+    )
+
+
+@app.route("/staar-practice/pool/item/<int:pool_id>")
+@app.route("/staar-question-pool/item/<int:pool_id>")
+def staar_question_pool_question(pool_id):
+    from flask import abort, render_template
+    from curriculum.staar_question_pool import STAAR_QUESTION_POOL, get_staar_pool_question
+
+    question = get_staar_pool_question(pool_id)
+    if not question:
+        abort(404)
+
+    return render_template(
+        "staar_question_pool_question.html",
+        question=question,
+        questions=STAAR_QUESTION_POOL
+    )
+# End Science Studio Combined STAAR Pool Routes
+
