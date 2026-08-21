@@ -1416,51 +1416,22 @@ def inject_staar_practice_additions():
 # End Science Studio STAAR Practice Additions Injector
 
 
-# Science Studio Assessment Additions Debug Route
+# Science Studio Clean STAAR Assessment Additions API
+@app.route("/api/staar-assessment-addition")
+@app.route("/api/staar-assessment-additions")
 @app.route("/api/staar-assessment-additions-count")
-def api_staar_assessment_additions_count():
+def api_science_studio_staar_assessment_additions():
     from flask import jsonify
-    from curriculum.staar_assessment_additions import STAAR_ASSESSMENT_ADDITIONS
+    from curriculum.staar_2026_practice import STAAR_2026_PRACTICE
 
     return jsonify({
-        "count": len(STAAR_ASSESSMENT_ADDITIONS),
+        "available": True,
+        "count": len(STAAR_2026_PRACTICE),
+        "questions": STAAR_2026_PRACTICE,
         "teks_counts": {
-            teks: len([q for q in STAAR_ASSESSMENT_ADDITIONS if q.get("teks") == teks])
-            for teks in sorted({q.get("teks") for q in STAAR_ASSESSMENT_ADDITIONS})
+            teks: len([q for q in STAAR_2026_PRACTICE if q.get("teks") == teks])
+            for teks in sorted({q.get("teks") for q in STAAR_2026_PRACTICE})
         }
     })
-# End Science Studio Assessment Additions Debug Route
-
-
-# Science Studio Direct STAAR Assessment Additions API
-@app.route("/api/staar-assessment-additions-count")
-@app.route("/api/staar-assessment-addition")
-def api_staar_assessment_additions_count():
-    from flask import jsonify
-    from curriculum.staar_2026_practice import STAAR_2026_PRACTICE
-
-    teks_counts = {}
-    for question in STAAR_2026_PRACTICE:
-        teks = question.get("teks", "Unknown")
-        teks_counts[teks] = teks_counts.get(teks, 0) + 1
-
-    return jsonify({
-        "available": True,
-        "count": len(STAAR_2026_PRACTICE),
-        "teks_counts": teks_counts
-    })
-
-
-@app.route("/api/staar-assessment-additions")
-@app.route("/api/staar-assessment-added-questions")
-def api_staar_assessment_additions():
-    from flask import jsonify
-    from curriculum.staar_2026_practice import STAAR_2026_PRACTICE
-
-    return jsonify({
-        "available": True,
-        "count": len(STAAR_2026_PRACTICE),
-        "questions": STAAR_2026_PRACTICE
-    })
-# End Science Studio Direct STAAR Assessment Additions API
+# End Science Studio Clean STAAR Assessment Additions API
 
