@@ -266,13 +266,23 @@
 
 
 
-<!-- Science Studio Strong TEKS Card Inserter -->
+
+
+<!-- Science Studio Precise TEKS Card Inserter -->
 <style>
   .science-studio-added-staar-section {
     width: 100%;
-    margin-top: 12px;
-    padding-top: 8px;
-    border-top: 2px dashed #111;
+    margin: 10px 0 12px;
+    padding: 10px;
+    border: 2px dashed #111;
+    border-radius: 14px;
+    background: #f6fbff;
+  }
+
+  .science-studio-added-staar-section-label {
+    font-weight: 900;
+    margin: 2px 8px 8px;
+    color: #2d2a6e;
   }
 
   .science-studio-added-staar-card {
@@ -385,51 +395,28 @@
     return card;
   }
 
-  function getDirectText(element) {
-    return Array.from(element.childNodes)
-      .filter(function (node) { return node.nodeType === Node.TEXT_NODE; })
-      .map(function (node) { return node.nodeValue.trim(); })
-      .join(" ")
-      .trim();
-  }
-
-  function findExactTeksHeader(teks) {
+  function findTeksHeader(teks) {
     const target = "TEKS " + teks;
-    const all = Array.from(document.querySelectorAll("h1,h2,h3,h4,h5,div"));
+    const all = Array.from(document.querySelectorAll("h1,h2,h3,h4,h5,div,section,article"));
+
+    const exactSmall = all.find(function (element) {
+      const text = (element.textContent || "").replace(/\s+/g, " ").trim();
+      return text.startsWith(target) && text.length < 90;
+    });
+
+    if (exactSmall) return exactSmall;
 
     return all.find(function (element) {
-      const direct = getDirectText(element);
-      const full = (element.textContent || "").trim();
-
-      return direct === target || full.startsWith(target + "\n") || full === target;
+      const text = (element.textContent || "").replace(/\s+/g, " ").trim();
+      return text.includes(target) && text.length < 140;
     });
   }
 
-  function findTeksGroupContainer(header) {
-    let current = header.parentElement;
-
-    for (let i = 0; i < 5 && current; i++) {
-      const text = current.textContent || "";
-      const rect = current.getBoundingClientRect();
-
-      const hasStudentPractice = text.includes("Student Practice");
-      const isReasonableBox = rect.width > 300 && rect.width < 900 && rect.height > 80;
-
-      if (hasStudentPractice && isReasonableBox) {
-        return current;
-      }
-
-      current = current.parentElement;
-    }
-
-    return header.parentElement || header;
-  }
-
-  function insertCards() {
+  function insertCardsUnderExactTeksHeaders() {
     if (!Array.isArray(addedQuestions) || addedQuestions.length === 0) return;
 
-    document.querySelectorAll(".science-studio-added-staar-section").forEach(function (oldSection) {
-      oldSection.remove();
+    document.querySelectorAll(".science-studio-added-staar-section").forEach(function (section) {
+      section.remove();
     });
 
     const groups = {};
@@ -440,18 +427,15 @@
     });
 
     Object.keys(groups).forEach(function (teks) {
-      const header = findExactTeksHeader(teks);
+      const header = findTeksHeader(teks);
       if (!header) return;
-
-      const groupBox = findTeksGroupContainer(header);
 
       const section = document.createElement("div");
       section.className = "science-studio-added-staar-section";
       section.dataset.teks = teks;
 
       const label = document.createElement("div");
-      label.style.fontWeight = "900";
-      label.style.margin = "4px 8px 8px";
+      label.className = "science-studio-added-staar-section-label";
       label.textContent = "Added STAAR Practice for TEKS " + teks;
       section.appendChild(label);
 
@@ -459,21 +443,21 @@
         section.appendChild(makeCard(question));
       });
 
-      groupBox.appendChild(section);
+      header.insertAdjacentElement("afterend", section);
     });
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     cleanYearText();
-    setTimeout(insertCards, 500);
+    setTimeout(insertCardsUnderExactTeksHeaders, 500);
   });
 
   setTimeout(function () {
     cleanYearText();
-    insertCards();
+    insertCardsUnderExactTeksHeaders();
   }, 1200);
 })();
 </script>
-<!-- End Science Studio Strong TEKS Card Inserter -->
+<!-- End Science Studio Precise TEKS Card Inserter -->
 
 {% endblock %}

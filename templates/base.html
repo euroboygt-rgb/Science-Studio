@@ -3504,5 +3504,303 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Day 44 Steve Final Two-Part Layout Fix -->
 
+
+<!-- Science Studio Direct Assessment Pool Inserter -->
+<style>
+  .science-studio-added-assessment-section {
+    margin-top: 14px;
+    padding: 12px;
+    border: 2px solid #111;
+    border-radius: 14px;
+    background: #f6fbff;
+  }
+
+  .science-studio-added-assessment-card {
+    margin-top: 12px;
+    padding: 12px;
+    border: 2px solid #111;
+    border-radius: 12px;
+    background: #ffffff;
+  }
+
+  .science-studio-added-assessment-card img {
+    max-width: 100%;
+    border: 1px solid #111;
+    border-radius: 10px;
+    background: white;
+  }
+
+  .science-studio-added-assessment-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 7px 0;
+    padding: 9px;
+    border: 2px solid #111;
+    border-radius: 8px;
+    background: #f7f7f7;
+    font-weight: 800;
+  }
+
+  .science-studio-added-assessment-check {
+    margin-top: 8px;
+    padding: 7px 11px;
+    border: 2px solid #111;
+    border-radius: 8px;
+    background: #ffc400;
+    font-weight: 900;
+  }
+</style>
+
+<script>
+(function () {
+  if (!window.location.pathname.includes("/science-assessment")) return;
+
+  let addedQuestions = [];
+
+  function getSelectedTeks() {
+    const selects = Array.from(document.querySelectorAll("select"));
+
+    const teksSelect = selects.find(function (select) {
+      return Array.from(select.options).some(function (option) {
+        return (option.textContent || "").includes("5.") || (option.value || "").includes("5.");
+      });
+    });
+
+    if (!teksSelect) return "";
+
+    const selectedOption = teksSelect.options[teksSelect.selectedIndex];
+    const value = (teksSelect.value || "").trim();
+    const text = selectedOption ? (selectedOption.textContent || "").trim() : "";
+
+    if (!value || value.toLowerCase().includes("all") || text.toLowerCase().includes("all")) {
+      return "";
+    }
+
+    const match = (value + " " + text).match(/5\.\d+[A-Z]/);
+    return match ? match[0] : value;
+  }
+
+  function getAssessmentHost() {
+    let host = document.querySelector("#scienceStudioAddedAssessmentPool");
+
+    if (host) return host;
+
+    const cards = Array.from(document.querySelectorAll("div,section,article"));
+    const assessmentBox = cards.reverse().find(function (element) {
+      const text = (element.textContent || "").trim();
+      const rect = element.getBoundingClientRect();
+      return text.includes("Assessment") && rect.width > 300 && rect.height > 80;
+    });
+
+    host = document.createElement("div");
+    host.id = "scienceStudioAddedAssessmentPool";
+    host.className = "science-studio-added-assessment-section";
+
+    if (assessmentBox) {
+      assessmentBox.appendChild(host);
+    } else {
+      document.body.appendChild(host);
+    }
+
+    return host;
+  }
+
+  function makeOptionButton(option, correctAnswer, resultBox, explanationBox) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "science-studio-added-assessment-option";
+    button.dataset.answer = option.letter;
+    button.textContent = option.letter + ". " + option.text;
+
+    button.addEventListener("click", function () {
+      const section = button.closest(".science-studio-added-assessment-card");
+
+      section.querySelectorAll(".science-studio-added-assessment-option").forEach(function (btn) {
+        btn.style.background = "#f7f7f7";
+        btn.style.borderColor = "#111";
+      });
+
+      button.style.background = "#dff3e6";
+      button.style.borderColor = "#087a35";
+      section.dataset.selected = option.letter;
+    });
+
+    return button;
+  }
+
+  function makeSingleQuestionCard(question, displayNumber) {
+    const card = document.createElement("div");
+    card.className = "science-studio-added-assessment-card";
+
+    const badge = document.createElement("div");
+    badge.style.fontWeight = "900";
+    badge.style.color = "#2d2a6e";
+    badge.textContent = "Added STAAR Pool Question " + displayNumber + " • " + question.teks;
+    card.appendChild(badge);
+
+    const title = document.createElement("h4");
+    title.style.fontWeight = "900";
+    title.textContent = question.title;
+    card.appendChild(title);
+
+    if (question.stimulus_image) {
+      const img = document.createElement("img");
+      img.src = question.stimulus_image;
+      img.alt = "STAAR stimulus image";
+      card.appendChild(img);
+    }
+
+    const prompt = document.createElement("p");
+    prompt.style.fontWeight = "900";
+    prompt.style.marginTop = "10px";
+    prompt.textContent = question.prompt + (question.sentence_prompt ? " " + question.sentence_prompt : "");
+    card.appendChild(prompt);
+
+    const result = document.createElement("div");
+    result.style.fontWeight = "900";
+    result.style.marginTop = "8px";
+
+    const explanation = document.createElement("div");
+    explanation.style.display = "none";
+    explanation.style.marginTop = "8px";
+    explanation.style.padding = "10px";
+    explanation.style.border = "1px solid #111";
+    explanation.style.borderRadius = "8px";
+    explanation.style.background = "#eaf7ed";
+    explanation.textContent = question.explanation || "";
+
+    (question.options || []).forEach(function (option) {
+      card.appendChild(makeOptionButton(option, question.correct_answer, result, explanation));
+    });
+
+    const check = document.createElement("button");
+    check.type = "button";
+    check.className = "science-studio-added-assessment-check";
+    check.textContent = "Check Answer";
+
+    check.addEventListener("click", function () {
+      const selected = card.dataset.selected;
+
+      if (!selected) {
+        result.textContent = "Choose an answer first.";
+        result.style.color = "#9a5b00";
+        return;
+      }
+
+      card.querySelectorAll(".science-studio-added-assessment-option").forEach(function (btn) {
+        if (btn.dataset.answer === question.correct_answer) {
+          btn.style.background = "#dff3e6";
+          btn.style.borderColor = "#087a35";
+        } else if (btn.dataset.answer === selected) {
+          btn.style.background = "#ffe1e1";
+          btn.style.borderColor = "#b00020";
+        }
+      });
+
+      explanation.style.display = "block";
+
+      if (selected === question.correct_answer) {
+        result.textContent = "Correct! You found the evidence.";
+        result.style.color = "#087a35";
+      } else {
+        result.textContent = "Try again. Match the evidence to the science idea.";
+        result.style.color = "#b00020";
+      }
+    });
+
+    card.appendChild(check);
+    card.appendChild(result);
+    card.appendChild(explanation);
+
+    return card;
+  }
+
+  function renderAddedAssessmentQuestions() {
+    const host = getAssessmentHost();
+    host.innerHTML = "";
+
+    const selectedTeks = getSelectedTeks();
+
+    let matches = addedQuestions.filter(function (question) {
+      if (!selectedTeks) return true;
+      return question.teks === selectedTeks;
+    });
+
+    const header = document.createElement("h3");
+    header.style.fontWeight = "900";
+    header.textContent = selectedTeks
+      ? "Added STAAR Pool Questions for TEKS " + selectedTeks
+      : "Added STAAR Pool Questions";
+    host.appendChild(header);
+
+    const note = document.createElement("p");
+    note.style.fontWeight = "700";
+
+    if (matches.length === 0) {
+      note.textContent = "No added STAAR pool questions match this TEKS yet.";
+      host.appendChild(note);
+      return;
+    }
+
+    note.textContent = matches.length + " added question(s) from the STAAR pool are connected to this assessment.";
+    host.appendChild(note);
+
+    matches.forEach(function (question, index) {
+      host.appendChild(makeSingleQuestionCard(question, index + 1));
+    });
+  }
+
+  function hookGenerateButton() {
+    const buttons = Array.from(document.querySelectorAll("button,input[type='button'],input[type='submit']"));
+
+    buttons.forEach(function (button) {
+      const text = (button.textContent || button.value || "").toLowerCase();
+
+      if (text.includes("generate assessment") && !button.dataset.scienceStudioAssessmentHooked) {
+        button.dataset.scienceStudioAssessmentHooked = "yes";
+
+        button.addEventListener("click", function () {
+          setTimeout(renderAddedAssessmentQuestions, 900);
+          setTimeout(renderAddedAssessmentQuestions, 1800);
+        });
+      }
+    });
+  }
+
+  fetch("/api/staar-assessment-additions")
+    .then(function (response) { return response.json(); })
+    .then(function (data) {
+      addedQuestions = data && data.questions ? data.questions : [];
+      hookGenerateButton();
+
+      const status = document.createElement("div");
+      status.id = "scienceStudioAssessmentPoolStatus";
+      status.style.marginTop = "8px";
+      status.style.padding = "8px";
+      status.style.border = "1px solid #111";
+      status.style.borderRadius = "8px";
+      status.style.background = "#eaf7ed";
+      status.style.fontWeight = "800";
+      status.textContent = addedQuestions.length + " added STAAR pool questions are connected.";
+
+      const setupBox = Array.from(document.querySelectorAll("div,section,article")).find(function (element) {
+        return (element.textContent || "").includes("Assessment Setup");
+      });
+
+      if (setupBox && !document.querySelector("#scienceStudioAssessmentPoolStatus")) {
+        setupBox.appendChild(status);
+      }
+    })
+    .catch(function () {
+      hookGenerateButton();
+    });
+
+  document.addEventListener("DOMContentLoaded", hookGenerateButton);
+  setTimeout(hookGenerateButton, 1000);
+})();
+</script>
+<!-- End Science Studio Direct Assessment Pool Inserter -->
+
 </body>
 </html>

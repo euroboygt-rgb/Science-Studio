@@ -1431,3 +1431,36 @@ def api_staar_assessment_additions_count():
     })
 # End Science Studio Assessment Additions Debug Route
 
+
+# Science Studio Direct STAAR Assessment Additions API
+@app.route("/api/staar-assessment-additions-count")
+@app.route("/api/staar-assessment-addition")
+def api_staar_assessment_additions_count():
+    from flask import jsonify
+    from curriculum.staar_2026_practice import STAAR_2026_PRACTICE
+
+    teks_counts = {}
+    for question in STAAR_2026_PRACTICE:
+        teks = question.get("teks", "Unknown")
+        teks_counts[teks] = teks_counts.get(teks, 0) + 1
+
+    return jsonify({
+        "available": True,
+        "count": len(STAAR_2026_PRACTICE),
+        "teks_counts": teks_counts
+    })
+
+
+@app.route("/api/staar-assessment-additions")
+@app.route("/api/staar-assessment-added-questions")
+def api_staar_assessment_additions():
+    from flask import jsonify
+    from curriculum.staar_2026_practice import STAAR_2026_PRACTICE
+
+    return jsonify({
+        "available": True,
+        "count": len(STAAR_2026_PRACTICE),
+        "questions": STAAR_2026_PRACTICE
+    })
+# End Science Studio Direct STAAR Assessment Additions API
+
