@@ -262,37 +262,64 @@
     {% endif %}
 </div>
 
-<!-- Science Studio Additional STAAR Practice Questions -->
-<section class="mt-4 p-3 rounded-4 border border-dark shadow-sm" style="background:#f6fbff;">
-  <div class="p-3 rounded-3 border border-dark mb-3" style="background:#fff7d6;">
-    <h2 class="fw-bold mb-1">Additional STAAR Practice Questions</h2>
-    <p class="mb-0">These questions are part of the same practice pool. Students do not need to worry about the release year.</p>
-  </div>
 
-  <div class="row g-3">
-    {% for q in staar_2026_questions %}
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 border-dark shadow-sm" style="background:#fff7d6;">
-          <div class="card-body">
-            <div class="badge bg-primary mb-2">Practice Item {{ q.item_number }}</div>
-            <h4 class="card-title fw-bold">{{ q.title }}</h4>
-            <p class="mb-1"><strong>TEKS:</strong> {{ q.teks }}</p>
-            <p class="mb-1"><strong>Focus:</strong> {{ q.skill_focus }}</p>
-            {% if q.stimulus_image %}
-              <p class="small text-success fw-bold mb-2">Includes stimulus image</p>
-            {% endif %}
-            <a class="btn btn-warning fw-bold border-dark" href="/staar-practice/2026/item/{{ q.item_number }}">
-              Student Practice
-            </a>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-</section>
+
+<!-- Science Studio 2026 TEKS Group Inserter -->
+<style>
+  .science-studio-added-staar-card {
+    background: #fff7d6;
+    border: 2px solid #111;
+    border-radius: 14px;
+    padding: 12px;
+    margin: 10px;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+    width: min(280px, 100%);
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .science-studio-added-staar-card .added-badge {
+    display: inline-block;
+    background: #7b1cff;
+    color: #fff;
+    border: 1px solid #111;
+    border-radius: 999px;
+    padding: 3px 8px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    margin-bottom: 6px;
+  }
+
+  .science-studio-added-staar-card h4 {
+    font-weight: 900;
+    margin: 4px 0 6px;
+  }
+
+  .science-studio-added-staar-card p {
+    margin-bottom: 5px;
+  }
+
+  .science-studio-added-staar-card .practice-btn {
+    display: inline-block;
+    background: #ffc400;
+    color: #111;
+    border: 2px solid #111;
+    border-radius: 8px;
+    padding: 6px 10px;
+    text-decoration: none;
+    font-weight: 900;
+    margin-top: 6px;
+  }
+
+  .science-studio-added-staar-grid {
+    margin-top: 10px;
+  }
+</style>
 
 <script>
 (function () {
+  const addedQuestions = {{ staar_2026_questions|default([], true)|tojson|safe }};
+
   function cleanYearText() {
     const root = document.querySelector("main") || document.body;
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
@@ -311,9 +338,136 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", cleanYearText);
+  function directText(element) {
+    return Array.from(element.childNodes)
+      .filter(function (node) { return node.nodeType === Node.TEXT_NODE; })
+      .map(function (node) { return node.nodeValue.trim(); })
+      .join(" ")
+      .trim();
+  }
+
+  function findTeksBox(teks) {
+    const target = "TEKS " + teks;
+    const candidates = Array.from(document.querySelectorAll("h1,h2,h3,h4,h5,div,section,article"));
+
+    let header = candidates.find(function (element) {
+      const text = directText(element) || element.textContent.trim();
+      return text.startsWith(target);
+    });
+
+    if (!header) {
+      header = candidates.find(function (element) {
+        const text = element.textContent || "";
+        return text.includes(target) && text.length < 200;
+      });
+    }
+
+    if (!header) return null;
+
+    let box = header;
+
+    for (let i = 0; i < 6; i++) {
+      if (!box.parentElement) break;
+
+      const parent = box.parentElement;
+      const parentText = parent.textContent || "";
+
+      if (parentText.includes(target) && parentText.length > 150) {
+        box = parent;
+      } else {
+        box = parent;
+      }
+
+      const rect = box.getBoundingClientRect();
+      if (rect.width > 300 && rect.height > 120) {
+        break;
+      }
+    }
+
+    return box;
+  }
+
+  function makeCard(question) {
+    const card = document.createElement("div");
+    card.className = "science-studio-added-staar-card";
+    card.dataset.addedStaarItem = question.item_number;
+
+    const badge = document.createElement("div");
+    badge.className = "added-badge";
+    badge.textContent = "Added Practice • Item " + question.item_number;
+
+    const title = document.createElement("h4");
+    title.textContent = question.title;
+
+    const teks = document.createElement("p");
+    teks.innerHTML = "<strong>TEKS:</strong> " + question.teks;
+
+    const focus = document.createElement("p");
+    focus.innerHTML = "<strong>Focus:</strong> " + question.skill_focus;
+
+    const imageNote = document.createElement("p");
+    imageNote.className = "small text-success fw-bold";
+    imageNote.textContent = question.stimulus_image ? "Includes stimulus image" : "";
+
+    const link = document.createElement("a");
+    link.className = "practice-btn";
+    link.href = "/staar-practice/2026/item/" + question.item_number;
+    link.textContent = "Student Practice";
+
+    card.appendChild(badge);
+    card.appendChild(title);
+    card.appendChild(teks);
+    card.appendChild(focus);
+
+    if (question.stimulus_image) {
+      card.appendChild(imageNote);
+    }
+
+    card.appendChild(link);
+
+    return card;
+  }
+
+  function insertAddedQuestionsIntoTeksBoxes() {
+    if (!Array.isArray(addedQuestions) || addedQuestions.length === 0) return;
+
+    const grouped = {};
+
+    addedQuestions.forEach(function (question) {
+      if (!question || !question.teks) return;
+      grouped[question.teks] = grouped[question.teks] || [];
+      grouped[question.teks].push(question);
+    });
+
+    Object.keys(grouped).forEach(function (teks) {
+      const box = findTeksBox(teks);
+      if (!box) return;
+
+      if (box.querySelector('[data-science-studio-added-teks="' + teks + '"]')) return;
+
+      const grid = document.createElement("div");
+      grid.className = "science-studio-added-staar-grid";
+      grid.dataset.scienceStudioAddedTeks = teks;
+
+      grouped[teks].forEach(function (question) {
+        grid.appendChild(makeCard(question));
+      });
+
+      box.appendChild(grid);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    cleanYearText();
+    setTimeout(insertAddedQuestionsIntoTeksBoxes, 300);
+  });
+
+  setTimeout(function () {
+    cleanYearText();
+    insertAddedQuestionsIntoTeksBoxes();
+  }, 900);
 })();
 </script>
-<!-- End Science Studio Additional STAAR Practice Questions -->
+<!-- End Science Studio 2026 TEKS Group Inserter -->
 
 {% endblock %}

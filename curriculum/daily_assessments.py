@@ -158,3 +158,49 @@ def get_daily_assessment(day):
         "cer_question": cer_question,
         "cer_example": cer_example,
     }
+
+
+# Science Studio 2026 Assessment Pool Additions
+try:
+    from curriculum.staar_assessment_additions import STAAR_ASSESSMENT_ADDITIONS
+
+    def _science_studio_add_2026_questions_to_assessment_lists():
+        additions = list(STAAR_ASSESSMENT_ADDITIONS)
+
+        for variable_name, value in list(globals().items()):
+            if not isinstance(value, list):
+                continue
+
+            if value and not all(isinstance(item, dict) for item in value[:5]):
+                continue
+
+            variable_name_upper = variable_name.upper()
+            if not any(word in variable_name_upper for word in ["QUESTION", "ASSESSMENT", "ITEM", "BANK", "POOL"]):
+                continue
+
+            existing_keys = set()
+            for question in value:
+                if isinstance(question, dict):
+                    existing_keys.add((
+                        question.get("title"),
+                        question.get("question") or question.get("prompt") or question.get("stem"),
+                        question.get("teks"),
+                    ))
+
+            for addition in additions:
+                key = (
+                    addition.get("title"),
+                    addition.get("question") or addition.get("prompt") or addition.get("stem"),
+                    addition.get("teks"),
+                )
+
+                if key not in existing_keys:
+                    value.append(dict(addition))
+                    existing_keys.add(key)
+
+    _science_studio_add_2026_questions_to_assessment_lists()
+
+except Exception:
+    pass
+# End Science Studio 2026 Assessment Pool Additions
+
