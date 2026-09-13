@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" fill="#f6fbff"/>
+  <text x="600" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="38" font-weight="900" fill="#2d2a6e">Phenomenon Mission: Wind-Up Emergency Radio</text>
+  <text x="600" y="92" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#2d2a6e">How does one crank make sound and light?</text>
+
+  <rect x="130" y="165" width="430" height="315" rx="30" fill="#26364d" stroke="#111" stroke-width="6"/>
+  <rect x="170" y="205" width="210" height="120" rx="16" fill="#101820" stroke="#eee" stroke-width="4"/>
+  <text x="275" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="900" fill="#6df3ff">WEATHER</text>
+  <text x="275" y="304" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="800" fill="#fff">ALERT RADIO</text>
+
+  <circle cx="455" cy="265" r="62" fill="#455a70" stroke="#111" stroke-width="5"/>
+  <circle cx="455" cy="265" r="42" fill="#7d8fa3" stroke="#111" stroke-width="4"/>
+  <line x1="410" y1="265" x2="500" y2="265" stroke="#111" stroke-width="5"/>
+  <line x1="455" y1="220" x2="455" y2="310" stroke="#111" stroke-width="5"/>
+  <text x="455" y="358" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="900" fill="#fff">Speaker</text>
+
+  <circle cx="130" cy="320" r="56" fill="#ffc400" stroke="#111" stroke-width="5"/>
+  <rect x="70" y="302" width="130" height="36" rx="18" fill="#ffc400" stroke="#111" stroke-width="5"/>
+  <circle cx="72" cy="320" r="20" fill="#fff7d6" stroke="#111" stroke-width="4"/>
+  <text x="130" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="900" fill="#111">Crank</text>
+
+  <rect x="210" y="395" width="270" height="45" rx="12" fill="#00b894" stroke="#111" stroke-width="4"/>
+  <text x="345" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="900" fill="#fff">Generator Inside</text>
+
+  <circle cx="520" cy="185" r="28" fill="#fff7a6" stroke="#111" stroke-width="4"/>
+  <path d="M520 140 L520 115 M555 150 L578 127 M565 185 L598 185" stroke="#ffc400" stroke-width="7" stroke-linecap="round"/>
+  <text x="520" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="900" fill="#2d2a6e">Light</text>
+
+  <path d="M610 320 C680 250 770 250 840 320" fill="none" stroke="#f08a24" stroke-width="10" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M610 390 C700 455 790 455 880 390" fill="none" stroke="#f08a24" stroke-width="10" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L11,4 z" fill="#f08a24"/>
+    </marker>
+  </defs>
+
+  <rect x="725" y="145" width="350" height="390" rx="26" fill="#fff7d6" stroke="#111" stroke-width="5"/>
+  <text x="900" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="900" fill="#2d2a6e">Energy Flow</text>
+
+  <rect x="775" y="220" width="250" height="48" rx="14" fill="#ede9ff" stroke="#2d2a6e" stroke-width="3"/>
+  <text x="900" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="900">Mechanical Energy</text>
+
+  <text x="900" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="900" fill="#f08a24">↓</text>
+
+  <rect x="775" y="330" width="250" height="48" rx="14" fill="#eaf7ed" stroke="#087a35" stroke-width="3"/>
+  <text x="900" y="362" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="900">Electrical Energy</text>
+
+  <text x="900" y="415" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="900" fill="#f08a24">↓</text>
+
+  <rect x="752" y="440" width="296" height="62" rx="14" fill="#fff" stroke="#111" stroke-width="3"/>
+  <text x="900" y="466" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="900">Sound Energy + Light Energy</text>
+  <text x="900" y="492" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700">and some thermal energy</text>
+
+  <rect x="175" y="555" width="850" height="70" rx="18" fill="#dff3ff" stroke="#2d2a6e" stroke-width="4"/>
+  <text x="600" y="585" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="900" fill="#2d2a6e">Question: Where does the energy start, and what forms does it become?</text>
+  <text x="600" y="613" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#2d2a6e">Use evidence from the crank, generator, speaker, and light.</text>
+</svg>

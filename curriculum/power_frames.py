@@ -234,3 +234,73 @@ def get_power_frame(day):
         "by": "By using observations, models, data, vocabulary, and evidence.",
         "success": "When I can explain my thinking clearly using science evidence."
     })
+
+
+# Science Studio Second Nine Weeks Power Frames
+POWER_FRAMES.update({
+    46: {
+        "i_can": "I can investigate and describe how energy transforms in a wind-up emergency radio system.",
+        "by": "by tracing the energy flow from the crank, to the generator, to the speaker and light.",
+        "i_know": "I know I have learned this when I can explain that mechanical energy changes into electrical energy, and electrical energy can change into sound, light, and thermal energy.",
+        "i_know_i_have_learned": "I know I have learned this when I can explain that mechanical energy changes into electrical energy, and electrical energy can change into sound, light, and thermal energy.",
+        "we_will": "We will investigate and describe energy transformations in a wind-up emergency radio system.",
+        "learning_target": "We will investigate and describe how energy transforms in a wind-up emergency radio system.",
+        "success_criteria": "I can trace energy through the parts of the system using evidence and science vocabulary."
+    },
+    47: {
+        "i_can": "I can describe how energy transforms in a flashlight system.",
+        "by": "by explaining how the battery, wires, switch, and bulb work together.",
+        "i_know": "I know I have learned this when I can trace chemical energy to electrical energy to light and thermal energy.",
+        "i_know_i_have_learned": "I know I have learned this when I can trace chemical energy to electrical energy to light and thermal energy.",
+        "we_will": "We will describe how energy transforms in a flashlight system.",
+        "learning_target": "We will describe how energy transforms in a flashlight system.",
+        "success_criteria": "I can explain why a flashlight needs a complete circuit to produce light."
+    },
+    48: {
+        "i_can": "I can identify the requirements for a functioning electrical circuit.",
+        "by": "by checking for a power source, conductors, and a complete closed path.",
+        "i_know": "I know I have learned this when I can tell whether a circuit will work and explain why.",
+        "i_know_i_have_learned": "I know I have learned this when I can tell whether a circuit will work and explain why.",
+        "we_will": "We will identify the requirements for a functioning electrical circuit.",
+        "learning_target": "We will identify the requirements for a functioning electrical circuit.",
+        "success_criteria": "I can compare complete and incomplete circuits."
+    },
+    49: {
+        "i_can": "I can demonstrate that electrical energy can transform into motion.",
+        "by": "by building or modeling a circuit with a motor or fan.",
+        "i_know": "I know I have learned this when I can explain how electrical energy causes a motor or fan to move.",
+        "i_know_i_have_learned": "I know I have learned this when I can explain how electrical energy causes a motor or fan to move.",
+        "we_will": "We will demonstrate electrical energy transforming into motion.",
+        "learning_target": "We will demonstrate how electrical energy can transform into motion.",
+        "success_criteria": "I can identify the input energy and output energy in a motor system."
+    },
+    50: {
+        "i_can": "I can demonstrate that electrical energy can transform into sound.",
+        "by": "by building or modeling a circuit with a buzzer or speaker.",
+        "i_know": "I know I have learned this when I can explain that a buzzer or speaker produces sound energy when the circuit is complete.",
+        "i_know_i_have_learned": "I know I have learned this when I can explain that a buzzer or speaker produces sound energy when the circuit is complete.",
+        "we_will": "We will demonstrate electrical energy transforming into sound.",
+        "learning_target": "We will demonstrate how electrical energy can transform into sound.",
+        "success_criteria": "I can use vibration as evidence that sound energy is produced."
+    },
+    51: {
+        "i_can": "I can identify evidence that electrical energy can transform into thermal energy.",
+        "by": "by observing safe examples of devices that become warmer when they are used.",
+        "i_know": "I know I have learned this when I can explain why some electrical devices produce heat.",
+        "i_know_i_have_learned": "I know I have learned this when I can explain why some electrical devices produce heat.",
+        "we_will": "We will identify evidence of electrical energy transforming into thermal energy.",
+        "learning_target": "We will identify evidence that electrical energy can transform into thermal energy.",
+        "success_criteria": "I can describe thermal energy as an output of a system."
+    },
+    52: {
+        "i_can": "I can troubleshoot a circuit system using evidence.",
+        "by": "by checking the power source, path, switch, conductors, and energy-transforming object.",
+        "i_know": "I know I have learned this when I can explain what part of a circuit is not working and how to fix it.",
+        "i_know_i_have_learned": "I know I have learned this when I can explain what part of a circuit is not working and how to fix it.",
+        "we_will": "We will troubleshoot circuit systems and explain energy transformations.",
+        "learning_target": "We will use evidence to troubleshoot circuit systems and explain energy transformations.",
+        "success_criteria": "I can explain how the parts of a circuit system depend on each other."
+    }
+})
+# End Science Studio Second Nine Weeks Power Frames
+

@@ -821,3 +821,28 @@ def get_phenomenon_mission(day):
     return _mission
 # End Science Studio Day 20 and Day 21 Phenomenon Pacing Fix
 
+
+# Day 46 Phenomenon Mission
+DAY_46_PHENOMENON_MISSION = {
+    "title": "Wind-Up Emergency Radio Mission",
+    "subtitle": "How does one crank make sound and light?",
+    "unit": "Unit 4: Energy Transformations Through Circuits",
+    "image": "/static/phenomenon/day46_windup_radio_energy.svg",
+    "prompt": "Steve finds a wind-up emergency radio. When he turns the crank, the radio can play sound and turn on a small light. How can the motion of his hand become sound and light?",
+    "observe": [
+        "The crank moves when Steve turns it.",
+        "Parts inside the radio spin.",
+        "The speaker makes sound.",
+        "The small light turns on."
+    ],
+    "wonder": [
+        "Where does the energy start?",
+        "What parts of the system transfer the energy?",
+        "What forms of energy are produced?"
+    ],
+    "mission": "Trace the energy flow through the wind-up emergency radio system."
+}
+
+PHENOMENON_IMAGE_SETS[46] = DAY_46_PHENOMENON_MISSION
+# End Day 46 Phenomenon Mission
+

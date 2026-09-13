@@ -1445,3 +1445,36 @@ STEVE_PENGUIN_MISSIONS[45] = {
 }
 # End Day 45 Steve the Penguin STAAR Mission
 
+
+# Day 46 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[46] = {
+    "title": "Steve the Penguin’s Wind-Up Radio Mission",
+    "subtitle": "Day 46 • Energy Transformations in a System",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin turns the crank on a wind-up emergency radio. After he cranks it, the radio speaker plays a weather alert and a small flashlight on the radio turns on. The radio also feels a little warm after being used.",
+    "question": "Which sequence best describes the energy transformations in Steve’s wind-up emergency radio?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Light energy changes into sound energy, then sound energy changes into mechanical energy."
+        },
+        {
+            "letter": "B",
+            "text": "Electrical energy changes into chemical energy before Steve turns the crank."
+        },
+        {
+            "letter": "C",
+            "text": "Thermal energy changes into light energy, and the crank does not transfer energy."
+        },
+        {
+            "letter": "D",
+            "text": "Mechanical energy from the crank changes into electrical energy, and the electrical energy changes into sound, light, and some thermal energy."
+        }
+    ],
+    "correct_answer": "D",
+    "explanation": "Steve should choose D. Turning the crank is mechanical energy. The moving parts spin a generator that produces electrical energy. The electrical energy then powers the speaker and light, producing sound energy, light energy, and some thermal energy.",
+    "staar_tip": "For energy transformation questions, trace the energy in order. Ask: What energy form starts the system? What part changes it? What energy forms are produced?",
+    "vocabulary": ["mechanical energy", "electrical energy", "sound energy", "light energy", "thermal energy", "energy transformation", "system", "generator"]
+}
+# End Day 46 Steve the Penguin STAAR Mission
+

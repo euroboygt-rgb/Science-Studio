@@ -1,0 +1,142 @@
+SECOND_NINE_WEEKS_LESSONS = {
+    46: {
+        "day": 46,
+        "title": "Energy Transfer: Wind-Up Emergency Radio",
+        "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+        "unit_title": "Unit 4: Investigating Energy Transformations Through Circuits",
+        "teks": "5.8A, 5.8B, 5.5D, 5.1F",
+        "focus": "Energy transformations in a crank radio system",
+        "learning_target": "We will investigate and describe how energy transforms in a wind-up emergency radio system.",
+        "success_criteria": "I can trace energy from the crank to the generator, then to the speaker and light, using science vocabulary and evidence.",
+        "essential_question": "How can mechanical energy from a crank become electrical energy, sound energy, light energy, and thermal energy?",
+        "vocabulary": [
+            "energy transformation",
+            "mechanical energy",
+            "electrical energy",
+            "sound energy",
+            "light energy",
+            "thermal energy",
+            "system",
+            "generator",
+            "circuit",
+            "energy flow"
+        ],
+        "anchor_chart": "CMELTS Energy Transformation Flow Chart",
+        "bell_ringer": "A student turns the crank on a wind-up radio and then hears sound from the speaker. What energy form did the student use first, and what energy form did the radio produce?",
+        "mini_lesson": [
+            "A system is made of parts that work together.",
+            "In a wind-up emergency radio, the crank is the input part students can observe.",
+            "Turning the crank uses mechanical energy.",
+            "Inside the radio, the moving parts spin a generator.",
+            "The generator changes mechanical energy into electrical energy.",
+            "Electrical energy can then change into sound energy in the speaker, light energy in the flashlight, and some thermal energy as parts warm up."
+        ],
+        "science_notebook": "Create a flow map: hand crank → moving gears → generator → electrical energy → speaker/light. Label each energy transformation.",
+        "guided_practice": "Students sort device cards into energy-flow sequences. Example: crank radio, flashlight, fan, buzzer, lamp.",
+        "lab": "Crank Radio Energy Flow Challenge: Students build a paper model of a wind-up emergency radio, arrange energy cards in the correct order, and explain which part of the system causes each transformation.",
+        "lab_notebook": "Record the input energy, the part of the system, the output energy, and evidence observed.",
+        "staar_practice": "A wind-up emergency radio is cranked by hand. The radio then powers a speaker and a small light. Which sequence best describes the energy transformations?",
+        "exit_ticket": "Explain how one device can produce more than one form of energy.",
+        "cer": {
+            "claim": "A wind-up emergency radio transforms energy through several parts of a system.",
+            "evidence": "The crank moves, the generator spins, the speaker makes sound, and the light turns on.",
+            "reasoning": "Mechanical energy can be transformed into electrical energy, and electrical energy can be transformed into sound, light, and thermal energy."
+        },
+        "mcgraw_hill_connection": "Use district-approved McGraw Hill Chapter 4: Electricity and Light and Chapter 5: Energy Transformation resources for additional support.",
+        "teacher_note": "Do not focus on electrons, voltage calculations, or kinetic/potential energy. Keep the lesson at the Grade 5 observable energy transformation level."
+    },
+    47: {
+        "day": 47,
+        "title": "Flashlight Energy Flow Review",
+        "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+        "teks": "5.8A, 5.8B",
+        "focus": "Chemical → electrical → light and thermal energy",
+        "learning_target": "We will describe how energy transforms in a flashlight system.",
+        "success_criteria": "I can explain how the battery, wires, switch, and bulb work together to make light.",
+        "vocabulary": ["chemical energy", "electrical energy", "light energy", "thermal energy", "circuit", "battery", "switch", "bulb"],
+        "bell_ringer": "What has to happen before a flashlight bulb can light?",
+        "mini_lesson": ["A battery stores chemical energy.", "A closed circuit allows electrical energy to flow.", "A bulb changes electrical energy into light and thermal energy."],
+        "lab": "Flashlight Troubleshooting Stations",
+        "staar_practice": "Which energy transformation happens when a flashlight turns on?",
+        "exit_ticket": "Why does a flashlight need a complete circuit?"
+    },
+    48: {
+        "day": 48,
+        "title": "Complete and Incomplete Circuits",
+        "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+        "teks": "5.8B",
+        "focus": "Requirements for a functioning electrical circuit",
+        "learning_target": "We will identify the requirements for a functioning electrical circuit.",
+        "success_criteria": "I can tell whether a circuit will work by checking for a power source, conductors, and a complete closed path.",
+        "vocabulary": ["complete circuit", "closed circuit", "open circuit", "incomplete circuit", "current", "conductor", "insulator"],
+        "bell_ringer": "What happens if a switch is open in a circuit?",
+        "mini_lesson": ["A complete circuit has a closed path.", "An open circuit has a gap.", "Electrical energy flows only when the path is complete."],
+        "lab": "Will It Light? Circuit Sorting Lab",
+        "staar_practice": "Which circuit will light the bulb?",
+        "exit_ticket": "Name one reason a circuit might not work."
+    },
+    49: {
+        "day": 49,
+        "title": "Electrical Energy to Motion",
+        "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+        "teks": "5.8B",
+        "focus": "Electrical energy transforming into motion",
+        "learning_target": "We will demonstrate how electrical energy in a complete circuit can transform into motion.",
+        "success_criteria": "I can explain how a motor or fan uses electrical energy to produce motion.",
+        "vocabulary": ["electrical energy", "mechanical energy", "motion", "motor", "fan", "complete circuit"],
+        "bell_ringer": "What part of a toy car changes electrical energy into motion?",
+        "mini_lesson": ["Motors transform electrical energy into mechanical energy.", "Fans and toy cars show electrical energy changing into motion."],
+        "lab": "Mini Motor Spin Test",
+        "staar_practice": "A motor spins when connected to a battery in a closed circuit. Which energy transformation occurs?",
+        "exit_ticket": "How does a motor show energy transformation?"
+    },
+    50: {
+        "day": 50,
+        "title": "Electrical Energy to Sound",
+        "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+        "teks": "5.8B",
+        "focus": "Electrical energy transforming into sound",
+        "learning_target": "We will demonstrate how electrical energy can transform into sound energy.",
+        "success_criteria": "I can explain how a buzzer or speaker changes electrical energy into sound energy.",
+        "vocabulary": ["electrical energy", "sound energy", "vibration", "buzzer", "speaker", "complete circuit"],
+        "bell_ringer": "What evidence shows that sound energy is being produced?",
+        "mini_lesson": ["Sound energy is observed when matter vibrates.", "Buzzers and speakers use electrical energy to create vibrations."],
+        "lab": "Buzzer Circuit Challenge",
+        "staar_practice": "Which device changes electrical energy into sound energy?",
+        "exit_ticket": "What is vibrating when a speaker makes sound?"
+    },
+    51: {
+        "day": 51,
+        "title": "Electrical Energy to Thermal Energy",
+        "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+        "teks": "5.8B",
+        "focus": "Electrical energy transforming into thermal energy",
+        "learning_target": "We will identify evidence that electrical energy can transform into thermal energy.",
+        "success_criteria": "I can explain why some devices get warm when electrical energy flows through them.",
+        "vocabulary": ["electrical energy", "thermal energy", "heat", "system", "energy transformation"],
+        "bell_ringer": "Why might a light bulb or battery feel warm after being used?",
+        "mini_lesson": ["Many electrical devices produce some thermal energy.", "Thermal energy can be evidence of energy transformation."],
+        "lab": "Safe Temperature Observation Demo",
+        "staar_practice": "A device gets warmer after being turned on. Which energy form is being produced?",
+        "exit_ticket": "What is one piece of evidence that thermal energy is present?"
+    },
+    52: {
+        "day": 52,
+        "title": "Circuit System Troubleshooting",
+        "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+        "teks": "5.8A, 5.8B, 5.5D",
+        "focus": "Circuit systems and troubleshooting",
+        "learning_target": "We will use evidence to troubleshoot circuit systems and explain energy transformations.",
+        "success_criteria": "I can identify what part of a circuit system is not working and explain how to fix it.",
+        "vocabulary": ["system", "component", "complete circuit", "open circuit", "conductor", "insulator", "energy transformation"],
+        "bell_ringer": "A flashlight does not turn on. What are three things you should check?",
+        "mini_lesson": ["A circuit is a system.", "If one required part is missing or not connected, the system may not function.", "Troubleshooting means using evidence to find the problem."],
+        "lab": "Flashlight Fix-It Engineering Challenge",
+        "staar_practice": "Which problem would keep a circuit from working?",
+        "exit_ticket": "How do the parts of a circuit depend on each other?"
+    }
+}
+
+
+def get_second_nine_weeks_lesson(day):
+    return SECOND_NINE_WEEKS_LESSONS.get(day)

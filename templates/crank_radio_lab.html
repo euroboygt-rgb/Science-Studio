@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block title %}Crank Emergency Radio Lab{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+  <a class="btn btn-outline-primary fw-bold mb-3" href="/second-nine-weeks/day/46?view=student">← Back to Day 46</a>
+
+  <div class="p-4 rounded-4 border border-dark shadow-sm" style="background:linear-gradient(135deg,#243b6b,#118ab2); color:white;">
+    <div class="badge rounded-pill text-bg-warning border border-dark mb-2">Interactive Lab</div>
+    <h1 class="fw-bold">Crank Emergency Radio Lab</h1>
+    <p class="lead mb-0">Click each section of the radio to explain the energy transformation.</p>
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3" style="background:#fff7d6;">
+    <h2 class="fw-bold">Lab Mission</h2>
+    <p class="mb-0">
+      A wind-up emergency radio uses a crank, gears, generator, wires, speaker, light, and warm components.
+      Your job is to trace the energy path through the system.
+    </p>
+  </div>
+
+  <div class="row g-3 mt-2">
+    <div class="col-lg-8">
+      <div class="p-3 rounded-4 border border-dark shadow-sm bg-white">
+        <h2 class="fw-bold">Schematic View</h2>
+        <p class="fw-bold">Click a numbered section.</p>
+
+        <svg id="crankRadioLabSvg" viewBox="0 0 1100 650" style="width:100%; border:3px solid #111; border-radius:18px; background:#f6fbff;">
+          <text x="550" y="45" text-anchor="middle" font-size="34" font-family="Arial" font-weight="900" fill="#2d2a6e">Crank Emergency Radio Lab</text>
+          <text x="550" y="78" text-anchor="middle" font-size="18" font-family="Arial" font-weight="700" fill="#2d2a6e">Click each section to trace the energy transformation.</text>
+
+          <!-- radio body -->
+          <rect x="170" y="180" width="760" height="330" rx="35" fill="#e94d35" stroke="#111" stroke-width="6"/>
+          <rect x="235" y="230" width="580" height="220" rx="18" fill="#26364d" stroke="#111" stroke-width="5"/>
+          <rect x="380" y="120" width="340" height="70" rx="28" fill="#e94d35" stroke="#111" stroke-width="6"/>
+          <rect x="430" y="118" width="240" height="35" rx="12" fill="#26364d" stroke="#111" stroke-width="4"/>
+
+          <!-- crank -->
+          <g class="hotspot" data-part="crank">
+            <circle cx="165" cy="345" r="58" fill="#78d66b" stroke="#111" stroke-width="5"/>
+            <line x1="165" y1="345" x2="245" y2="430" stroke="#222" stroke-width="20" stroke-linecap="round"/>
+            <circle cx="245" cy="430" r="22" fill="#111"/>
+            <circle cx="165" cy="345" r="17" fill="#fff" stroke="#111" stroke-width="4"/>
+            <text x="80" y="210" font-size="24" font-family="Arial" font-weight="900" fill="#188a2e">1 Hand Crank</text>
+            <text x="80" y="240" font-size="18" font-family="Arial" font-weight="700">Mechanical Energy In</text>
+          </g>
+
+          <!-- gears -->
+          <g class="hotspot" data-part="gears">
+            <circle cx="360" cy="330" r="60" fill="#dddddd" stroke="#111" stroke-width="5"/>
+            <circle cx="445" cy="370" r="36" fill="#cccccc" stroke="#111" stroke-width="5"/>
+            <circle cx="320" cy="388" r="34" fill="#cccccc" stroke="#111" stroke-width="5"/>
+            <text x="315" y="155" font-size="24" font-family="Arial" font-weight="900" fill="#d97b00">2 Gears</text>
+            <text x="315" y="185" font-size="18" font-family="Arial" font-weight="700">Mechanical Energy Transfer</text>
+          </g>
+
+          <!-- generator -->
+          <g class="hotspot" data-part="generator">
+            <rect x="510" y="270" width="160" height="105" rx="20" fill="#bfe6ff" stroke="#111" stroke-width="5"/>
+            <rect x="545" y="282" width="90" height="82" rx="10" fill="#f08a24" stroke="#111" stroke-width="4"/>
+            <line x1="560" y1="285" x2="560" y2="362" stroke="#7a3b00" stroke-width="3"/>
+            <line x1="580" y1="285" x2="580" y2="362" stroke="#7a3b00" stroke-width="3"/>
+            <line x1="600" y1="285" x2="600" y2="362" stroke="#7a3b00" stroke-width="3"/>
+            <line x1="620" y1="285" x2="620" y2="362" stroke="#7a3b00" stroke-width="3"/>
+            <text x="520" y="155" font-size="24" font-family="Arial" font-weight="900" fill="#006fbf">3 Generator</text>
+            <text x="520" y="185" font-size="18" font-family="Arial" font-weight="700">Mechanical → Electrical</text>
+          </g>
+
+          <!-- circuit board -->
+          <g class="hotspot" data-part="circuit">
+            <rect x="720" y="270" width="130" height="95" rx="12" fill="#39b56a" stroke="#111" stroke-width="5"/>
+            <rect x="760" y="298" width="40" height="35" fill="#111"/>
+            <circle cx="742" cy="292" r="8" fill="#ffc400"/>
+            <circle cx="825" cy="340" r="7" fill="#ffc400"/>
+            <path d="M670 320 C690 320 700 320 720 320" stroke="#ffcc00" stroke-width="8" fill="none" marker-end="url(#arrow)"/>
+            <text x="705" y="155" font-size="24" font-family="Arial" font-weight="900" fill="#7b1cff">4 Circuit / Wires</text>
+            <text x="705" y="185" font-size="18" font-family="Arial" font-weight="700">Electrical Energy Flow</text>
+          </g>
+
+          <!-- speaker -->
+          <g class="hotspot" data-part="speaker">
+            <circle cx="820" cy="430" r="60" fill="#333" stroke="#111" stroke-width="5"/>
+            <circle cx="820" cy="430" r="38" fill="#666" stroke="#111" stroke-width="4"/>
+            <circle cx="820" cy="430" r="16" fill="#111"/>
+            <path d="M900 400 C935 425 935 435 900 460" stroke="#ff3333" stroke-width="7" fill="none"/>
+            <path d="M920 382 C975 425 975 435 920 478" stroke="#ff3333" stroke-width="7" fill="none"/>
+            <text x="905" y="385" font-size="24" font-family="Arial" font-weight="900" fill="#c70039">5 Speaker</text>
+            <text x="905" y="415" font-size="18" font-family="Arial" font-weight="700">Electrical → Sound</text>
+          </g>
+
+          <!-- lamp -->
+          <g class="hotspot" data-part="lamp">
+            <circle cx="935" cy="285" r="55" fill="#fff7a6" stroke="#111" stroke-width="5"/>
+            <path d="M985 250 L1050 220 M995 285 L1070 285 M985 320 L1050 350" stroke="#ffc400" stroke-width="10" stroke-linecap="round"/>
+            <text x="880" y="100" font-size="24" font-family="Arial" font-weight="900" fill="#d99a00">6 Flashlight / Lamp</text>
+            <text x="880" y="130" font-size="18" font-family="Arial" font-weight="700">Electrical → Light</text>
+          </g>
+
+          <!-- thermal -->
+          <g class="hotspot" data-part="thermal">
+            <rect x="620" y="420" width="110" height="45" rx="10" fill="#ffb3d9" stroke="#111" stroke-width="5"/>
+            <path d="M640 410 C630 390 655 390 645 370 M675 410 C665 390 690 390 680 370 M710 410 C700 390 725 390 715 370" stroke="#ff7a00" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <text x="520" y="555" font-size="24" font-family="Arial" font-weight="900" fill="#c2185b">7 Warm Component</text>
+            <text x="520" y="585" font-size="18" font-family="Arial" font-weight="700">Some Energy → Thermal</text>
+          </g>
+
+          <!-- flow arrows -->
+          <path d="M260 350 L300 350" stroke="#ffc400" stroke-width="9" fill="none" marker-end="url(#arrow)"/>
+          <path d="M465 350 L505 350" stroke="#ffc400" stroke-width="9" fill="none" marker-end="url(#arrow)"/>
+          <path d="M850 310 L890 295" stroke="#ffc400" stroke-width="9" fill="none" marker-end="url(#arrow)"/>
+          <path d="M800 365 L810 385" stroke="#ffc400" stroke-width="9" fill="none" marker-end="url(#arrow)"/>
+
+          <defs>
+            <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="5" orient="auto">
+              <path d="M0,0 L0,10 L14,5 z" fill="#ffc400"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="p-3 rounded-4 border border-dark shadow-sm" style="background:#fff7d6;">
+        <h2 class="fw-bold" id="partTitle">Choose a section</h2>
+        <p id="partExplanation">Click a section of the radio to learn what energy transformation happens there.</p>
+
+        <div class="p-3 rounded-3 border border-dark bg-white">
+          <label class="fw-bold" for="studentExplain">Student explanation:</label>
+          <textarea id="studentExplain" class="form-control mt-2" rows="5" placeholder="This part transforms energy because..."></textarea>
+          <button class="btn btn-warning fw-bold border-dark mt-2" id="saveExplanation">Save Explanation</button>
+          <div id="saveMessage" class="fw-bold mt-2"></div>
+        </div>
+
+        <div class="p-3 rounded-3 border border-dark bg-white mt-3">
+          <h3 class="fw-bold">Energy Path Checklist</h3>
+          <ol class="mb-0">
+            <li>Mechanical energy starts with the crank.</li>
+            <li>Gears transfer mechanical energy.</li>
+            <li>The generator changes mechanical energy into electrical energy.</li>
+            <li>Electrical energy flows through the circuit.</li>
+            <li>Electrical energy changes into sound, light, and thermal energy.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3" style="background:#f6fbff;">
+    <h2 class="fw-bold">Lab CER</h2>
+    <p><strong>Claim:</strong> A crank emergency radio transforms energy through a system.</p>
+    <p><strong>Evidence:</strong> The crank moves, gears spin, the generator produces electrical energy, the speaker makes sound, the lamp gives off light, and some parts warm up.</p>
+    <p class="mb-0"><strong>Reasoning:</strong> Mechanical energy can transform into electrical energy, and electrical energy can transform into sound, light, and thermal energy.</p>
+  </div>
+</div>
+
+<script>
+const labParts = {
+  crank: {
+    title: "1. Hand Crank",
+    explanation: "The hand crank is where the energy starts. Your hand uses mechanical energy to turn the crank."
+  },
+  gears: {
+    title: "2. Gears",
+    explanation: "The gears transfer mechanical energy through the device. The moving parts help carry energy to the generator."
+  },
+  generator: {
+    title: "3. Generator",
+    explanation: "The generator transforms mechanical energy from the moving gears into electrical energy."
+  },
+  circuit: {
+    title: "4. Circuit / Wires",
+    explanation: "The wires and circuit allow electrical energy to flow through a complete path to the parts that need energy."
+  },
+  speaker: {
+    title: "5. Speaker",
+    explanation: "The speaker transforms electrical energy into sound energy. Sound is evidence of vibrations."
+  },
+  lamp: {
+    title: "6. Flashlight / Lamp",
+    explanation: "The lamp transforms electrical energy into light energy so the radio can be used like a flashlight."
+  },
+  thermal: {
+    title: "7. Warm Component",
+    explanation: "Some electrical energy transforms into thermal energy. This is why some parts may feel warm after the radio is used."
+  }
+};
+
+let currentPart = null;
+
+document.querySelectorAll(".hotspot").forEach(function(part) {
+  part.style.cursor = "pointer";
+
+  part.addEventListener("click", function() {
+    currentPart = part.dataset.part;
+    const info = labParts[currentPart];
+
+    document.querySelector("#partTitle").textContent = info.title;
+    document.querySelector("#partExplanation").textContent = info.explanation;
+    document.querySelector("#studentExplain").value = localStorage.getItem("crankRadioLab_" + currentPart) || "";
+    document.querySelector("#saveMessage").textContent = "";
+
+    document.querySelectorAll(".hotspot").forEach(function(p) {
+      p.style.opacity = "0.55";
+    });
+
+    part.style.opacity = "1";
+  });
+});
+
+document.querySelector("#saveExplanation").addEventListener("click", function() {
+  if (!currentPart) {
+    document.querySelector("#saveMessage").textContent = "Click a radio section first.";
+    document.querySelector("#saveMessage").style.color = "#9a5b00";
+    return;
+  }
+
+  localStorage.setItem("crankRadioLab_" + currentPart, document.querySelector("#studentExplain").value);
+  document.querySelector("#saveMessage").textContent = "Saved!";
+  document.querySelector("#saveMessage").style.color = "#087a35";
+});
+</script>
+{% endblock %}

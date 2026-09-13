@@ -2083,3 +2083,68 @@ MISSION_BRIEF_ANIMATIONS[45] = {
 }
 # End Day 45 Mission Brief Animation
 
+
+# Day 46 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[46] = {
+    "title": "Mission Brief: Wind-Up Radio Energy Transfer",
+    "subtitle": "Day 46 • Second 9 Weeks • Unit 4",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "🚨",
+            "heading": "Today’s Mission",
+            "text": "Today we will investigate how energy transforms in a wind-up emergency radio system.",
+            "caption": "One system can produce more than one form of energy."
+        },
+        {
+            "icon": "🌀",
+            "heading": "Start with Mechanical Energy",
+            "text": "When a person turns the crank, the hand and crank are moving. This is mechanical energy.",
+            "caption": "Mechanical energy is energy observed in motion or position."
+        },
+        {
+            "icon": "⚙️",
+            "heading": "Mechanical Energy Moves Parts",
+            "text": "The crank turns gears inside the radio. The moving gears transfer mechanical energy through the system.",
+            "caption": "The parts work together like a system."
+        },
+        {
+            "icon": "⚡",
+            "heading": "Generator Makes Electrical Energy",
+            "text": "Inside the device, a generator changes the motion from the crank into electrical energy.",
+            "caption": "Mechanical energy can transform into electrical energy."
+        },
+        {
+            "icon": "🔊",
+            "heading": "Electrical Energy to Sound",
+            "text": "When the radio speaker turns on, electrical energy transforms into sound energy.",
+            "caption": "Sound energy is evidence that matter is vibrating."
+        },
+        {
+            "icon": "💡",
+            "heading": "Electrical Energy to Light",
+            "text": "When the small flashlight turns on, electrical energy transforms into light energy.",
+            "caption": "Light energy is evidence that the system is working."
+        },
+        {
+            "icon": "🔥",
+            "heading": "Some Thermal Energy",
+            "text": "Many devices also produce a small amount of thermal energy as parts work and warm up.",
+            "caption": "Energy transformations often produce more than one output."
+        },
+        {
+            "icon": "🧠",
+            "heading": "STAAR Thinking",
+            "text": "Trace the energy in order: input energy, system part, output energy. Then match the evidence to the correct vocabulary.",
+            "caption": "Crank → generator → speaker/light."
+        },
+        {
+            "icon": "🎯",
+            "heading": "Mission Complete",
+            "text": "A wind-up emergency radio changes mechanical energy into electrical energy, then electrical energy into sound, light, and thermal energy.",
+            "caption": "Use the system parts as evidence."
+        }
+    ]
+}
+# End Day 46 Mission Brief Animation
+

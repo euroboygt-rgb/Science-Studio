@@ -281,6 +281,144 @@
 </script>
 <!-- End Science Studio Phenomenon Box Runtime Style Fix -->
 
+
+
+
+<!-- Science Studio Second Nine Weeks Homepage Polish -->
+<style>
+  #scienceStudioSecondNineWeeksHome {
+    margin-top: 1.25rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  #scienceStudioSecondNineWeeksHome .second-nine-weeks-card {
+    background: linear-gradient(135deg, #fff7d6 0%, #f6fbff 100%);
+    border: 4px solid #111;
+    border-radius: 22px;
+    padding: 22px;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.18);
+  }
+
+  #scienceStudioSecondNineWeeksHome .second-nine-weeks-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: center;
+    background: linear-gradient(135deg, #253b70, #118ab2);
+    color: white;
+    border: 3px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.22);
+  }
+
+  #scienceStudioSecondNineWeeksHome .second-nine-weeks-icon {
+    min-width: 92px;
+    min-height: 92px;
+    display: grid;
+    place-items: center;
+    font-size: 3.5rem;
+    background: #fff7d6;
+    border: 4px solid #111;
+    border-radius: 20px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+  }
+
+  #scienceStudioSecondNineWeeksHome .second-nine-weeks-focus {
+    background: #ffffff;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  #scienceStudioSecondNineWeeksHome .second-nine-weeks-mini-card {
+    height: 100%;
+    background: #ffffff;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.18);
+  }
+
+  #scienceStudioSecondNineWeeksHome .second-nine-weeks-mini-card p {
+    margin-bottom: 0;
+  }
+
+  #scienceStudioSecondNineWeeksHome .mini-icon {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    background: #ede9ff;
+    border: 2px solid #111;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 768px) {
+    #scienceStudioSecondNineWeeksHome .second-nine-weeks-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    #scienceStudioSecondNineWeeksHome .second-nine-weeks-icon {
+      min-width: 72px;
+      min-height: 72px;
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  function homepageOnly() {
+    return window.location.pathname === "/" || window.location.pathname === "/index";
+  }
+
+  function findCardByText(textToFind) {
+    const candidates = Array.from(document.querySelectorAll("section, .container, div"));
+
+    return candidates
+      .filter(function (element) {
+        const text = (element.textContent || "").replace(/\s+/g, " ").trim();
+        const rect = element.getBoundingClientRect();
+        return text.includes(textToFind) && rect.width > 300 && rect.height > 80;
+      })
+      .sort(function (a, b) {
+        return a.getBoundingClientRect().height - b.getBoundingClientRect().height;
+      })[0] || null;
+  }
+
+  function separateSecondNineWeeksCard() {
+    if (!homepageOnly()) return;
+
+    const second = document.querySelector("#scienceStudioSecondNineWeeksHome");
+    if (!second) return;
+
+    const firstCard = findCardByText("1st 9 Weeks Learning Path");
+    const quickCard = findCardByText("Quick Launch");
+
+    if (firstCard && firstCard !== second && firstCard.nextElementSibling !== second) {
+      firstCard.insertAdjacentElement("afterend", second);
+    }
+
+    if (quickCard && quickCard.contains(second)) {
+      quickCard.insertAdjacentElement("beforebegin", second);
+    }
+
+    second.style.display = "block";
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(separateSecondNineWeeksCard, 250);
+    setTimeout(separateSecondNineWeeksCard, 800);
+    setTimeout(separateSecondNineWeeksCard, 1400);
+  });
+})();
+</script>
+<!-- End Science Studio Second Nine Weeks Homepage Polish -->
+
 </head>
 
 <body>
@@ -607,7 +745,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- Unit 1 Matter Lab Arcade Button Router -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
+    const match = window.location.pathname.match(/\/(?:first|second)-nine-weeks\/day\/(\d+)/);
 
     if (!match) {
         return;
@@ -663,7 +801,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- MP1 Science Arcade Button Router -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
+    const match = window.location.pathname.match(/\/(?:first|second)-nine-weeks\/day\/(\d+)/);
 
     if (!match) {
         return;
@@ -736,7 +874,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- Day 40 Flashlight Energy Flow Button Fix -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
+    const match = window.location.pathname.match(/\/(?:first|second)-nine-weeks\/day\/(\d+)/);
 
     if (!match) {
         return;
@@ -2247,7 +2385,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 (function () {
   function getDayFromUrl() {
-    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
+    const match = window.location.pathname.match(/\/(?:first|second)-nine-weeks\/day\/(\d+)/);
     return match ? Number(match[1]) : null;
   }
 
@@ -2799,7 +2937,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function getDayFromUrl() {
-    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
+    const match = window.location.pathname.match(/\/(?:first|second)-nine-weeks\/day\/(\d+)/);
     return match ? Number(match[1]) : null;
   }
 
@@ -3008,7 +3146,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function getDayFromUrl() {
-    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
+    const match = window.location.pathname.match(/\/(?:first|second)-nine-weeks\/day\/(\d+)/);
     return match ? Number(match[1]) : null;
   }
 
@@ -3213,7 +3351,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 (function () {
   function getDayNumber() {
-    const match = window.location.pathname.match(/\/first-nine-weeks\/day\/(\d+)/);
+    const match = window.location.pathname.match(/\/(?:first|second)-nine-weeks\/day\/(\d+)/);
     return match ? Number(match[1]) : null;
   }
 
@@ -3827,6 +3965,1055 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 </script>
 <!-- End Science Studio Clean Assessment Pool Inserter -->
+
+
+
+
+<!-- Science Studio Second Nine Weeks Lesson Page Builder -->
+<style>
+  .science-studio-second9-card {
+    max-width: 980px;
+    margin: 16px auto;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.18);
+    background: #fff7d6;
+  }
+
+  .science-studio-second9-card h2,
+  .science-studio-second9-card h3,
+  .science-studio-second9-card h4 {
+    font-weight: 900;
+  }
+
+  .science-studio-second9-badge {
+    display: inline-block;
+    background: #7b1cff;
+    color: #fff200;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .science-studio-power-grid,
+  .science-studio-thinking-grid,
+  .science-studio-lab-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .science-studio-power-box,
+  .science-studio-thinking-box,
+  .science-studio-lab-box {
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 13px;
+  }
+
+  .science-studio-power-box .label {
+    display: inline-block;
+    background: #7b1cff;
+    color: #fff200;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 4px 9px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .science-studio-phenomenon-image {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: white;
+    padding: 8px;
+  }
+
+  .science-studio-mission-slide {
+    min-height: 220px;
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 24px;
+    text-align: center;
+    display: grid;
+    place-items: center;
+  }
+
+  .science-studio-mission-slide .slide-icon {
+    font-size: 4rem;
+    margin-bottom: 8px;
+  }
+
+  .science-studio-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 8px 0;
+    padding: 10px;
+    border: 2px solid #111;
+    border-radius: 10px;
+    background: #f7f7f7;
+    font-weight: 900;
+  }
+
+  .science-studio-check-btn,
+  .science-studio-nav-btn {
+    background: #ffc400;
+    color: #111;
+    border: 2px solid #111;
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-weight: 900;
+    margin: 4px;
+  }
+
+  .science-studio-lab-hero {
+    background: linear-gradient(135deg, #243b6b, #118ab2);
+    color: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .science-studio-lab-sequence {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .science-studio-energy-pill {
+    background: #ede9ff;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-weight: 900;
+  }
+
+  @media (max-width: 800px) {
+    .science-studio-power-grid,
+    .science-studio-thinking-grid,
+    .science-studio-lab-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  const dayMatch = window.location.pathname.match(/\/second-nine-weeks\/day\/(\d+)/);
+  if (!dayMatch) return;
+
+  const day = Number(dayMatch[1]);
+
+  const secondNineWeeksData = {
+    46: {
+      title: "Energy Transfer: Wind-Up Emergency Radio",
+      power: {
+        iCan: "I can investigate and describe how energy transforms in a wind-up emergency radio system.",
+        by: "by tracing the energy flow from the crank, to the generator, to the speaker and light.",
+        iKnow: "I know I have learned this when I can explain that mechanical energy changes into electrical energy, and electrical energy can change into sound, light, and thermal energy."
+      },
+      phenomenon: {
+        title: "Wind-Up Emergency Radio Mission",
+        subtitle: "How does one crank make sound and light?",
+        image: "/static/phenomenon/day46_windup_radio_energy.svg",
+        focus: "How can the motion of a hand crank become sound and light?",
+        notice: "The crank moves, parts inside the radio spin, the speaker makes sound, and the small light turns on.",
+        wonder: "Where does the energy start? What part changes the energy? What energy forms are produced?",
+        explore: "Trace the system: hand crank → moving gears → generator → speaker/light.",
+        evidence: "Record the input energy, the system part, the output energy, and the evidence you can observe.",
+        cer: "The wind-up radio transforms energy because..."
+      },
+      missionBrief: {
+        title: "Mission Brief: Wind-Up Radio Energy Transfer",
+        subtitle: "Day 46 • Unit 4 • Energy Transformations",
+        slides: [
+          {
+            icon: "🚨",
+            heading: "Today’s Mission",
+            text: "Investigate how energy transforms in a wind-up emergency radio system.",
+            caption: "One system can produce more than one form of energy."
+          },
+          {
+            icon: "🌀",
+            heading: "Mechanical Energy Starts It",
+            text: "When a person turns the crank, the hand and crank are moving. This is mechanical energy.",
+            caption: "Mechanical energy is energy observed in motion or position."
+          },
+          {
+            icon: "⚙️",
+            heading: "Moving Parts Transfer Energy",
+            text: "The crank turns gears inside the radio. The moving parts transfer mechanical energy through the system.",
+            caption: "The system has parts that work together."
+          },
+          {
+            icon: "⚡",
+            heading: "Generator Changes the Energy",
+            text: "Inside the device, the generator changes mechanical energy into electrical energy.",
+            caption: "Mechanical energy can transform into electrical energy."
+          },
+          {
+            icon: "🔊",
+            heading: "Electrical Energy to Sound",
+            text: "The speaker uses electrical energy to produce sound energy.",
+            caption: "Sound is evidence that matter is vibrating."
+          },
+          {
+            icon: "💡",
+            heading: "Electrical Energy to Light",
+            text: "The small flashlight uses electrical energy to produce light energy.",
+            caption: "Light is evidence that the circuit is working."
+          },
+          {
+            icon: "🔥",
+            heading: "Some Thermal Energy",
+            text: "Some parts may get a little warm, so some energy also transforms into thermal energy.",
+            caption: "Many systems produce more than one output energy form."
+          },
+          {
+            icon: "🎯",
+            heading: "STAAR Strategy",
+            text: "Trace the energy in order: input energy, system part, output energy, and evidence.",
+            caption: "Crank → generator → speaker/light."
+          }
+        ]
+      },
+      steve: {
+        title: "Steve the Penguin’s Wind-Up Radio STAAR Mission",
+        subtitle: "Day 46 • Energy Transformations in a System",
+        scenario: "Steve the Penguin turns the crank on a wind-up emergency radio. After he cranks it, the radio speaker plays a weather alert and a small flashlight on the radio turns on. The radio also feels a little warm after being used.",
+        question: "Which sequence best describes the energy transformations in Steve’s wind-up emergency radio?",
+        options: [
+          ["A", "Light energy changes into sound energy, then sound energy changes into mechanical energy."],
+          ["B", "Electrical energy changes into chemical energy before Steve turns the crank."],
+          ["C", "Thermal energy changes into light energy, and the crank does not transfer energy."],
+          ["D", "Mechanical energy from the crank changes into electrical energy, and the electrical energy changes into sound, light, and some thermal energy."]
+        ],
+        correct: "D",
+        explanation: "Steve should choose D. Turning the crank is mechanical energy. The moving parts spin a generator that produces electrical energy. The electrical energy powers the speaker and light, producing sound energy, light energy, and some thermal energy.",
+        tip: "For energy transformation questions, trace the energy in order and match each system part to the energy it produces."
+      },
+      lab: {
+        title: "Crank Radio Rescue Lab",
+        subtitle: "Mission Lab: Restore emergency power before the storm arrives!",
+        question: "How does a wind-up emergency radio transfer and transform energy?",
+        materials: [
+          "Wind-up radio or teacher demo video/picture",
+          "Energy cards: mechanical, electrical, sound, light, thermal",
+          "System cards: hand crank, gears, generator, speaker, light",
+          "Lab notebook recording sheet",
+          "Optional: flashlight, buzzer, motor, battery, wires, switch"
+        ],
+        steps: [
+          "Observe the crank radio system.",
+          "Identify the input energy.",
+          "Match each system part to the energy it transfers or produces.",
+          "Build an energy flow map.",
+          "Test your explanation with a partner.",
+          "Write a CER explaining the energy transformations."
+        ],
+        staarCheck: {
+          question: "Which flow map best matches the wind-up radio system?",
+          options: [
+            ["A", "Light → sound → mechanical → electrical"],
+            ["B", "Mechanical → electrical → sound/light/thermal"],
+            ["C", "Thermal → electrical → mechanical → sound"],
+            ["D", "Sound → light → electrical → mechanical"]
+          ],
+          correct: "B",
+          explanation: "The crank starts with mechanical energy. The generator changes mechanical energy into electrical energy. The electrical energy can then become sound, light, and some thermal energy."
+        }
+      }
+    }
+  };
+
+  const data = secondNineWeeksData[day];
+  if (!data) return;
+
+  function findTitleCard() {
+    const headings = Array.from(document.querySelectorAll("h1"));
+    let h1 = headings.find(function (heading) {
+      return (heading.textContent || "").includes(data.title);
+    }) || headings[0];
+
+    if (!h1) return document.querySelector("main") || document.body;
+
+    let current = h1;
+    for (let i = 0; i < 6 && current.parentElement; i++) {
+      current = current.parentElement;
+      const rect = current.getBoundingClientRect();
+      const text = current.textContent || "";
+      if (rect.width > 400 && rect.height > 80 && text.includes(data.title)) {
+        return current;
+      }
+    }
+
+    return h1;
+  }
+
+  function findFirstSectionAfterTitle() {
+    const titleCard = findTitleCard();
+    let next = titleCard.nextElementSibling;
+
+    while (next) {
+      if (next.offsetParent !== null && next.textContent.trim().length > 10) {
+        return next;
+      }
+      next = next.nextElementSibling;
+    }
+
+    return null;
+  }
+
+  function hideOldPowerFramePieces() {
+    const exactTexts = [
+      data.power.iCan,
+      data.power.by,
+      data.power.iKnow
+    ];
+
+    Array.from(document.querySelectorAll("div,section,article,.card")).forEach(function (element) {
+      if (element.closest("#scienceStudioSecond9PowerFrame")) return;
+
+      const text = (element.textContent || "").replace(/\s+/g, " ").trim();
+      const rect = element.getBoundingClientRect();
+
+      if (rect.width < 80 || rect.height < 20) return;
+
+      const hasExactPowerText = exactTexts.some(function (piece) {
+        return text.includes(piece);
+      });
+
+      const isBlankPowerFrame = text.includes("Power Frame") &&
+        text.includes("Use this to understand") &&
+        !text.includes(data.power.iCan);
+
+      if ((hasExactPowerText && text.length < 650) || isBlankPowerFrame) {
+        element.style.display = "none";
+      }
+    });
+  }
+
+  function createPowerFrame() {
+    if (document.querySelector("#scienceStudioSecond9PowerFrame")) return;
+
+    const titleCard = findTitleCard();
+
+    const card = document.createElement("section");
+    card.id = "scienceStudioSecond9PowerFrame";
+    card.className = "science-studio-second9-card";
+    card.style.background = "linear-gradient(135deg,#fff7d6,#f6fbff)";
+
+    card.innerHTML = `
+      <span class="science-studio-second9-badge">⚡ Power Frame</span>
+      <h2>Today’s Learning Power Frame</h2>
+      <p><strong>Use this before the phenomenon mission.</strong> This tells students what they are learning, how they will learn it, and how they know they mastered it.</p>
+      <div class="science-studio-power-grid">
+        <div class="science-studio-power-box">
+          <div class="label">I can...</div>
+          <p>${data.power.iCan}</p>
+        </div>
+        <div class="science-studio-power-box">
+          <div class="label">By...</div>
+          <p>${data.power.by}</p>
+        </div>
+        <div class="science-studio-power-box">
+          <div class="label">I know I have learned this...</div>
+          <p>${data.power.iKnow}</p>
+        </div>
+      </div>
+    `;
+
+    titleCard.insertAdjacentElement("afterend", card);
+  }
+
+  function createPhenomenonMission() {
+    if (document.querySelector("#scienceStudioSecond9Phenomenon")) return;
+
+    const powerFrame = document.querySelector("#scienceStudioSecond9PowerFrame");
+    const card = document.createElement("section");
+    card.id = "scienceStudioSecond9Phenomenon";
+    card.className = "science-studio-second9-card";
+
+    card.innerHTML = `
+      <span class="science-studio-second9-badge">🔎 Phenomenon Mission</span>
+      <h2>${data.phenomenon.title}</h2>
+      <p><strong>${data.phenomenon.subtitle}</strong></p>
+      <img class="science-studio-phenomenon-image" src="${data.phenomenon.image}" alt="Wind-up emergency radio energy transformation phenomenon">
+      <div class="mt-3 p-3 rounded-3 border border-dark bg-white">
+        <h4>❓ Focus Question</h4>
+        <p class="mb-0">${data.phenomenon.focus}</p>
+      </div>
+      <div class="science-studio-thinking-grid mt-3">
+        <div class="science-studio-thinking-box">
+          <h4>👀 Notice</h4>
+          <p>${data.phenomenon.notice}</p>
+        </div>
+        <div class="science-studio-thinking-box">
+          <h4>🤔 Wonder</h4>
+          <p>${data.phenomenon.wonder}</p>
+        </div>
+        <div class="science-studio-thinking-box">
+          <h4>🧪 Quick Explore</h4>
+          <p>${data.phenomenon.explore}</p>
+        </div>
+        <div class="science-studio-thinking-box">
+          <h4>📊 Evidence Tracker</h4>
+          <p>${data.phenomenon.evidence}</p>
+        </div>
+        <div class="science-studio-thinking-box">
+          <h4>💬 CER Starter</h4>
+          <p>${data.phenomenon.cer}</p>
+        </div>
+      </div>
+    `;
+
+    powerFrame.insertAdjacentElement("afterend", card);
+  }
+
+  function createMissionBrief() {
+    if (document.querySelector("#scienceStudioSecond9MissionBrief")) return;
+
+    const phenomenon = document.querySelector("#scienceStudioSecond9Phenomenon");
+    const card = document.createElement("section");
+    card.id = "scienceStudioSecond9MissionBrief";
+    card.className = "science-studio-second9-card";
+    card.dataset.slideIndex = "0";
+
+    card.innerHTML = `
+      <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+        <div>
+          <span class="science-studio-second9-badge">🎬 Mission Brief Animation</span>
+          <h2>${data.missionBrief.title}</h2>
+          <p><strong>${data.missionBrief.subtitle}</strong></p>
+        </div>
+        <button type="button" class="science-studio-nav-btn" id="second9PlayMissionBrief">▶ Play Mission Brief</button>
+      </div>
+
+      <div class="science-studio-mission-slide" id="second9MissionSlide"></div>
+
+      <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap gap-2">
+        <strong id="second9SlideCounter"></strong>
+        <div>
+          <button type="button" class="science-studio-nav-btn" id="second9BackSlide">⬅ Back</button>
+          <button type="button" class="science-studio-nav-btn" id="second9NextSlide">Next ➡</button>
+          <button type="button" class="science-studio-nav-btn" id="second9RestartSlide" style="background:#0b8f4d;color:white;">Restart</button>
+        </div>
+      </div>
+    `;
+
+    phenomenon.insertAdjacentElement("afterend", card);
+
+    let index = 0;
+    let timer = null;
+
+    function renderSlide() {
+      const slide = data.missionBrief.slides[index];
+      document.querySelector("#second9MissionSlide").innerHTML = `
+        <div>
+          <div class="slide-icon">${slide.icon}</div>
+          <h3>${slide.heading}</h3>
+          <p class="fs-5 fw-bold">${slide.text}</p>
+          <p class="mb-0">${slide.caption}</p>
+        </div>
+      `;
+      document.querySelector("#second9SlideCounter").textContent = "Slide " + (index + 1) + " of " + data.missionBrief.slides.length;
+    }
+
+    function nextSlide() {
+      index = (index + 1) % data.missionBrief.slides.length;
+      renderSlide();
+    }
+
+    document.querySelector("#second9BackSlide").addEventListener("click", function () {
+      index = (index - 1 + data.missionBrief.slides.length) % data.missionBrief.slides.length;
+      renderSlide();
+    });
+
+    document.querySelector("#second9NextSlide").addEventListener("click", nextSlide);
+
+    document.querySelector("#second9RestartSlide").addEventListener("click", function () {
+      index = 0;
+      renderSlide();
+    });
+
+    document.querySelector("#second9PlayMissionBrief").addEventListener("click", function () {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+        this.textContent = "▶ Play Mission Brief";
+      } else {
+        timer = setInterval(nextSlide, 10000);
+        this.textContent = "⏸ Pause Mission Brief";
+      }
+    });
+
+    renderSlide();
+  }
+
+  function createSteveMission() {
+    if (document.querySelector("#scienceStudioSecond9SteveMission")) return;
+
+    const missionBrief = document.querySelector("#scienceStudioSecond9MissionBrief");
+    const card = document.createElement("section");
+    card.id = "scienceStudioSecond9SteveMission";
+    card.className = "science-studio-second9-card";
+    card.style.background = "#f6fbff";
+
+    const optionButtons = data.steve.options.map(function (option) {
+      return `<button type="button" class="science-studio-option" data-answer="${option[0]}">${option[0]}. ${option[1]}</button>`;
+    }).join("");
+
+    card.innerHTML = `
+      <span class="science-studio-second9-badge">🐧 Steve the Penguin’s STAAR Mission</span>
+      <h2>${data.steve.title}</h2>
+      <p><strong>${data.steve.subtitle}</strong></p>
+
+      <div class="p-3 rounded-3 border border-dark mb-3" style="background:#fff7d6;">
+        <strong>Steve’s Scenario:</strong>
+        <p class="mb-0">${data.steve.scenario}</p>
+      </div>
+
+      <div class="p-3 rounded-3 border border-dark bg-white">
+        <strong>STAAR-Style Question:</strong>
+        <p class="fw-bold">${data.steve.question}</p>
+        ${optionButtons}
+        <button type="button" class="science-studio-check-btn" id="second9SteveCheck">Check Answer</button>
+        <button type="button" class="science-studio-check-btn" id="second9SteveReset" style="background:#f7f7f7;">Reset</button>
+        <span id="second9SteveResult" class="fw-bold ms-2"></span>
+
+        <div id="second9SteveExplanation" class="mt-3 p-3 rounded-3 border border-dark" style="display:none;background:#eaf7ed;">
+          <strong>🐧 Steve Explains the Evidence:</strong>
+          <p class="mb-0">${data.steve.explanation}</p>
+        </div>
+
+        <div class="mt-3 p-3 rounded-3 border border-dark" style="background:#eef6ff;">
+          <strong>⭐ STAAR Tip:</strong>
+          <p class="mb-0">${data.steve.tip}</p>
+        </div>
+      </div>
+    `;
+
+    missionBrief.insertAdjacentElement("afterend", card);
+
+    let selected = null;
+
+    card.querySelectorAll(".science-studio-option").forEach(function (button) {
+      button.addEventListener("click", function () {
+        selected = button.dataset.answer;
+        card.querySelectorAll(".science-studio-option").forEach(function (btn) {
+          btn.style.background = "#f7f7f7";
+          btn.style.borderColor = "#111";
+        });
+        button.style.background = "#dff3e6";
+        button.style.borderColor = "#087a35";
+      });
+    });
+
+    card.querySelector("#second9SteveCheck").addEventListener("click", function () {
+      const result = card.querySelector("#second9SteveResult");
+      const explanation = card.querySelector("#second9SteveExplanation");
+
+      if (!selected) {
+        result.textContent = "Choose an answer first.";
+        result.style.color = "#9a5b00";
+        return;
+      }
+
+      card.querySelectorAll(".science-studio-option").forEach(function (btn) {
+        if (btn.dataset.answer === data.steve.correct) {
+          btn.style.background = "#dff3e6";
+          btn.style.borderColor = "#087a35";
+        } else if (btn.dataset.answer === selected) {
+          btn.style.background = "#ffe1e1";
+          btn.style.borderColor = "#b00020";
+        }
+      });
+
+      explanation.style.display = "block";
+
+      if (selected === data.steve.correct) {
+        result.textContent = "Correct! Steve found the energy path.";
+        result.style.color = "#087a35";
+      } else {
+        result.textContent = "Try again. Trace the energy from the crank.";
+        result.style.color = "#b00020";
+      }
+    });
+
+    card.querySelector("#second9SteveReset").addEventListener("click", function () {
+      selected = null;
+      card.querySelector("#second9SteveResult").textContent = "";
+      card.querySelector("#second9SteveExplanation").style.display = "none";
+      card.querySelectorAll(".science-studio-option").forEach(function (btn) {
+        btn.style.background = "#f7f7f7";
+        btn.style.borderColor = "#111";
+      });
+    });
+  }
+
+  function createLabInvestigation() {
+    if (document.querySelector("#scienceStudioSecond9Lab")) return;
+
+    const steve = document.querySelector("#scienceStudioSecond9SteveMission");
+    const lab = data.lab;
+
+    const card = document.createElement("section");
+    card.id = "scienceStudioSecond9Lab";
+    card.className = "science-studio-second9-card";
+
+    card.innerHTML = `
+      <div class="science-studio-lab-hero">
+        <span class="science-studio-second9-badge">🧪 Lab Investigation</span>
+        <h2>${lab.title}</h2>
+        <p class="fs-5 fw-bold mb-0">${lab.subtitle}</p>
+      </div>
+
+      <div class="p-3 rounded-3 border border-dark bg-white mb-3">
+        <h3>Investigation Question</h3>
+        <p class="fw-bold mb-0">${lab.question}</p>
+      </div>
+
+      <div class="science-studio-lab-grid">
+        <div class="science-studio-lab-box">
+          <h4>Materials</h4>
+          <ul>${lab.materials.map(item => `<li>${item}</li>`).join("")}</ul>
+        </div>
+        <div class="science-studio-lab-box">
+          <h4>Mission Steps</h4>
+          <ol>${lab.steps.map(item => `<li>${item}</li>`).join("")}</ol>
+        </div>
+        <div class="science-studio-lab-box">
+          <h4>Lab Notebook</h4>
+          <p><strong>Table columns:</strong></p>
+          <p>System Part | Input Energy | Output Energy | Evidence</p>
+          <p class="mb-0"><strong>CER:</strong> The evidence shows energy transformed because...</p>
+        </div>
+      </div>
+
+      <div class="mt-3 p-3 rounded-3 border border-dark bg-white">
+        <h3>Interactive Energy Path Builder</h3>
+        <p class="fw-bold">${lab.staarCheck.question}</p>
+
+        <div class="science-studio-lab-sequence mb-2">
+          <span class="science-studio-energy-pill">Hand Crank</span>
+          <span>➡</span>
+          <span class="science-studio-energy-pill">Moving Gears</span>
+          <span>➡</span>
+          <span class="science-studio-energy-pill">Generator</span>
+          <span>➡</span>
+          <span class="science-studio-energy-pill">Speaker + Light</span>
+        </div>
+
+        <div id="second9LabOptions"></div>
+
+        <button type="button" class="science-studio-check-btn" id="second9LabCheck">Check Lab Thinking</button>
+        <span id="second9LabResult" class="fw-bold ms-2"></span>
+
+        <div id="second9LabExplanation" class="mt-3 p-3 rounded-3 border border-dark" style="display:none;background:#eaf7ed;">
+          ${lab.staarCheck.explanation}
+        </div>
+      </div>
+    `;
+
+    steve.insertAdjacentElement("afterend", card);
+
+    const optionHost = card.querySelector("#second9LabOptions");
+    let selected = null;
+
+    lab.staarCheck.options.forEach(function (option) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "science-studio-option";
+      btn.dataset.answer = option[0];
+      btn.textContent = option[0] + ". " + option[1];
+
+      btn.addEventListener("click", function () {
+        selected = option[0];
+        card.querySelectorAll(".science-studio-option").forEach(function (button) {
+          button.style.background = "#f7f7f7";
+          button.style.borderColor = "#111";
+        });
+        btn.style.background = "#dff3e6";
+        btn.style.borderColor = "#087a35";
+      });
+
+      optionHost.appendChild(btn);
+    });
+
+    card.querySelector("#second9LabCheck").addEventListener("click", function () {
+      const result = card.querySelector("#second9LabResult");
+      const explanation = card.querySelector("#second9LabExplanation");
+
+      if (!selected) {
+        result.textContent = "Choose an answer first.";
+        result.style.color = "#9a5b00";
+        return;
+      }
+
+      card.querySelectorAll(".science-studio-option").forEach(function (btn) {
+        if (btn.dataset.answer === lab.staarCheck.correct) {
+          btn.style.background = "#dff3e6";
+          btn.style.borderColor = "#087a35";
+        } else if (btn.dataset.answer === selected) {
+          btn.style.background = "#ffe1e1";
+          btn.style.borderColor = "#b00020";
+        }
+      });
+
+      explanation.style.display = "block";
+
+      if (selected === lab.staarCheck.correct) {
+        result.textContent = "Correct! Your lab model follows the energy path.";
+        result.style.color = "#087a35";
+      } else {
+        result.textContent = "Try again. Start with the crank and follow the system parts.";
+        result.style.color = "#b00020";
+      }
+    });
+  }
+
+  function buildSecondNineWeeksLessonPage() {
+    hideOldPowerFramePieces();
+    createPowerFrame();
+    hideOldPowerFramePieces();
+    createPhenomenonMission();
+    createMissionBrief();
+    createSteveMission();
+    createLabInvestigation();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(buildSecondNineWeeksLessonPage, 300);
+    setTimeout(buildSecondNineWeeksLessonPage, 900);
+    setTimeout(buildSecondNineWeeksLessonPage, 1600);
+  });
+})();
+</script>
+<!-- End Science Studio Second Nine Weeks Lesson Page Builder -->
+
+
+<!-- Science Studio Day 46 Lab Button Override -->
+<style>
+  #scienceStudioDay46LabLaunch {
+    max-width: 980px;
+    margin: 16px auto;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.18);
+    background: linear-gradient(135deg,#fff7d6,#f6fbff);
+  }
+
+  #scienceStudioDay46LabLaunch .lab-launch-inner {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 16px;
+    align-items: center;
+  }
+
+  #scienceStudioDay46LabLaunch .lab-launch-button {
+    display: inline-block;
+    background: #12a150;
+    color: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 14px 18px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.2rem;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+  }
+
+  #scienceStudioDay46LabLaunch .mini-schematic {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+    font-weight: 900;
+  }
+
+  @media (max-width: 800px) {
+    #scienceStudioDay46LabLaunch .lab-launch-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  if (!window.location.pathname.includes("/second-nine-weeks/day/46")) return;
+
+  function hideGenericLabBox() {
+    const cards = Array.from(document.querySelectorAll("section,div,article,.card"));
+
+    cards.forEach(function(card) {
+      const text = (card.textContent || "").replace(/\s+/g, " ").trim();
+      const rect = card.getBoundingClientRect();
+
+      if (rect.width > 300 && text.includes("Lab / Investigation") && text.includes("Student Investigation Steps")) {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  function addLabButton() {
+    if (document.querySelector("#scienceStudioDay46LabLaunch")) return;
+
+    const steve = document.querySelector("#scienceStudioSecond9SteveMission");
+    const missionBrief = document.querySelector("#scienceStudioSecond9MissionBrief");
+    const insertAfter = steve || missionBrief;
+
+    if (!insertAfter) return;
+
+    const section = document.createElement("section");
+    section.id = "scienceStudioDay46LabLaunch";
+    section.innerHTML = `
+      <div class="lab-launch-inner">
+        <div>
+          <div class="badge rounded-pill text-bg-warning border border-dark mb-2">🧪 Interactive Lab</div>
+          <h2 class="fw-bold">Crank Emergency Radio Lab</h2>
+          <p class="fw-bold">
+            Students open a schematic view of a crank emergency radio, click each part, and explain the energy transformation.
+          </p>
+          <p>
+            Crank → gears → generator → circuit → speaker/light/warm component
+          </p>
+          <a class="lab-launch-button" href="/labs/crank-emergency-radio">▶ Start Interactive Lab</a>
+        </div>
+        <div class="mini-schematic">
+          ⚙️ → ⚡ → 🔊 💡 🔥
+          <br>
+          Click. Explain. Prove with evidence.
+        </div>
+      </div>
+    `;
+
+    insertAfter.insertAdjacentElement("afterend", section);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+      hideGenericLabBox();
+      addLabButton();
+    }, 700);
+
+    setTimeout(function () {
+      hideGenericLabBox();
+      addLabButton();
+    }, 1600);
+  });
+})();
+</script>
+<!-- End Science Studio Day 46 Lab Button Override -->
+
+
+<!-- Science Studio Universal Power Frame Fix -->
+<style>
+  #scienceStudioUniversalPowerFrame {
+    max-width: 980px;
+    margin: 16px auto;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.18);
+    background: linear-gradient(135deg,#fff7d6,#f6fbff);
+  }
+
+  #scienceStudioUniversalPowerFrame h2 {
+    font-weight: 900;
+    margin-bottom: 6px;
+  }
+
+  #scienceStudioUniversalPowerFrame .power-frame-badge {
+    display: inline-block;
+    background: #7b1cff;
+    color: #fff200;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  #scienceStudioUniversalPowerFrame .power-frame-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  #scienceStudioUniversalPowerFrame .power-frame-box {
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 14px;
+    min-height: 120px;
+  }
+
+  #scienceStudioUniversalPowerFrame .power-frame-label {
+    display: inline-block;
+    background: #7b1cff;
+    color: #fff200;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  #scienceStudioUniversalPowerFrame p {
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 850px) {
+    #scienceStudioUniversalPowerFrame .power-frame-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  const lessonMatch = window.location.pathname.match(/\/(?:first|second)-nine-weeks\/day\/(\d+)/);
+  if (!lessonMatch) return;
+
+  const day = Number(lessonMatch[1]);
+
+  function findTitleCard() {
+    const h1 = document.querySelector("h1");
+    if (!h1) return document.querySelector("main") || document.body;
+
+    let current = h1;
+
+    for (let i = 0; i < 7 && current.parentElement; i++) {
+      current = current.parentElement;
+      const text = current.textContent || "";
+      const rect = current.getBoundingClientRect();
+
+      if (rect.width > 350 && rect.height > 70 && text.includes(h1.textContent.trim())) {
+        return current;
+      }
+    }
+
+    return h1;
+  }
+
+  function hideBrokenPowerFrames(powerFrameData) {
+    const iCan = powerFrameData.i_can || powerFrameData.learning_target || "";
+    const byText = powerFrameData.by || "";
+    const iKnow = powerFrameData.i_know || powerFrameData.i_know_i_have_learned || powerFrameData.success_criteria || "";
+
+    const importantPieces = [iCan, byText, iKnow].filter(Boolean);
+
+    document.querySelectorAll("section, article, .card, div").forEach(function (element) {
+      if (element.id === "scienceStudioUniversalPowerFrame") return;
+      if (element.closest("#scienceStudioUniversalPowerFrame")) return;
+
+      const text = (element.textContent || "").replace(/\s+/g, " ").trim();
+      const rect = element.getBoundingClientRect();
+
+      if (rect.width < 100 || rect.height < 25) return;
+      if (rect.height > 360 || text.length > 1400) return;
+
+      const looksLikePowerFrameCard =
+        text.includes("Power Frame") ||
+        text.includes("I can...") ||
+        text.includes("I know I have learned this") ||
+        text.includes("I know I have learned this...");
+
+      const hasPowerFrameText = importantPieces.some(function (piece) {
+        return piece && text.includes(piece.substring(0, Math.min(piece.length, 50)));
+      });
+
+      if (looksLikePowerFrameCard || hasPowerFrameText) {
+        element.style.display = "none";
+      }
+    });
+  }
+
+  function createUniversalPowerFrame(powerFrameData) {
+    const iCan = powerFrameData.i_can || powerFrameData.learning_target || "I can explain today's science learning target.";
+    const byText = powerFrameData.by || "by using evidence, vocabulary, models, and investigation data.";
+    const iKnow = powerFrameData.i_know || powerFrameData.i_know_i_have_learned || powerFrameData.success_criteria || "I know I have learned this when I can explain my thinking using evidence.";
+
+    let card = document.querySelector("#scienceStudioUniversalPowerFrame");
+
+    if (!card) {
+      card = document.createElement("section");
+      card.id = "scienceStudioUniversalPowerFrame";
+      const titleCard = findTitleCard();
+      titleCard.insertAdjacentElement("afterend", card);
+    }
+
+    card.style.display = "block";
+
+    card.innerHTML = `
+      <span class="power-frame-badge">⚡ Power Frame</span>
+      <h2>Today’s Learning Power Frame</h2>
+      <p><strong>Use this before the phenomenon mission.</strong> This tells students what they are learning, how they will learn it, and how they know they mastered it.</p>
+
+      <div class="power-frame-grid">
+        <div class="power-frame-box">
+          <div class="power-frame-label">I can...</div>
+          <p>${iCan}</p>
+        </div>
+
+        <div class="power-frame-box">
+          <div class="power-frame-label">By...</div>
+          <p>${byText}</p>
+        </div>
+
+        <div class="power-frame-box">
+          <div class="power-frame-label">I know I have learned this...</div>
+          <p>${iKnow}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  function fixPowerFrame() {
+    fetch("/api/power-frame/" + day)
+      .then(function (response) { return response.json(); })
+      .then(function (data) {
+        if (!data || !data.available) return;
+
+        createUniversalPowerFrame(data);
+
+        setTimeout(function () {
+          hideBrokenPowerFrames(data);
+          createUniversalPowerFrame(data);
+        }, 250);
+
+        setTimeout(function () {
+          hideBrokenPowerFrames(data);
+          createUniversalPowerFrame(data);
+        }, 1000);
+      })
+      .catch(function () {});
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(fixPowerFrame, 250);
+    setTimeout(fixPowerFrame, 900);
+    setTimeout(fixPowerFrame, 1600);
+  });
+})();
+</script>
+<!-- End Science Studio Universal Power Frame Fix -->
 
 </body>
 </html>

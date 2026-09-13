@@ -1435,3 +1435,96 @@ def api_science_studio_staar_assessment_additions():
     })
 # End Science Studio Clean STAAR Assessment Additions API
 
+
+# Science Studio Second Nine Weeks Routes
+try:
+    from curriculum.first_nine_weeks import first_nine_weeks_lessons
+    from curriculum.second_nine_weeks import SECOND_NINE_WEEKS_LESSONS
+
+    if isinstance(first_nine_weeks_lessons, dict):
+        first_nine_weeks_lessons.update(SECOND_NINE_WEEKS_LESSONS)
+    elif isinstance(first_nine_weeks_lessons, list):
+        existing_days = set()
+        for lesson in first_nine_weeks_lessons:
+            if isinstance(lesson, dict):
+                existing_days.add(lesson.get("day"))
+        for day, lesson in SECOND_NINE_WEEKS_LESSONS.items():
+            if day not in existing_days:
+                first_nine_weeks_lessons.append(lesson)
+except Exception as second_nine_weeks_registration_error:
+    print("Second 9 Weeks lesson registration skipped:", second_nine_weeks_registration_error)
+
+
+@app.route("/second-nine-weeks")
+@app.route("/2nd-nine-weeks")
+def second_nine_weeks():
+    from flask import render_template
+    from curriculum.second_nine_weeks import SECOND_NINE_WEEKS_LESSONS
+
+    return render_template(
+        "second_nine_weeks.html",
+        lessons=SECOND_NINE_WEEKS_LESSONS
+    )
+
+
+@app.route("/second-nine-weeks/day/<int:day>")
+@app.route("/2nd-nine-weeks/day/<int:day>")
+def second_nine_weeks_day(day):
+    from flask import abort, render_template, request
+    from curriculum.second_nine_weeks import SECOND_NINE_WEEKS_LESSONS
+
+    lesson = SECOND_NINE_WEEKS_LESSONS.get(day)
+    if not lesson:
+        abort(404)
+
+    view = request.args.get("view", "student")
+
+    return render_template(
+        "lesson_detail.html",
+        lesson=lesson,
+        day=day,
+        view=view,
+        lessons=SECOND_NINE_WEEKS_LESSONS
+    )
+# End Science Studio Second Nine Weeks Routes
+
+# Science Studio Guaranteed Local Run Block
+
+# Science Studio Crank Radio Lab Route
+@app.route("/labs/crank-emergency-radio")
+@app.route("/labs/day46-crank-radio")
+def crank_emergency_radio_lab():
+    from flask import render_template
+    return render_template("crank_radio_lab.html")
+# End Science Studio Crank Radio Lab Route
+
+
+
+# Science Studio Universal Power Frame API
+@app.route("/api/power-frame/<int:day>")
+def api_power_frame(day):
+    from flask import jsonify
+    from curriculum.power_frames import get_power_frame
+
+    power_frame = get_power_frame(day)
+
+    if not power_frame:
+        return jsonify({
+            "available": False,
+            "day": day
+        })
+
+    result = dict(power_frame)
+    result["available"] = True
+    result["day"] = day
+
+    return jsonify(result)
+# End Science Studio Universal Power Frame API
+
+
+if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    print(f"Starting Science Studio on http://127.0.0.1:{port}")
+    app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
+
