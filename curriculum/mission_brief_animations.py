@@ -2148,3 +2148,56 @@ MISSION_BRIEF_ANIMATIONS[46] = {
 }
 # End Day 46 Mission Brief Animation
 
+
+# Day 47 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[47] = {
+    "title": "Mission Brief: Flashlight Energy Flow",
+    "subtitle": "Day 47 • Chemical → Electrical → Light + Thermal",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "🔦",
+            "heading": "Today’s Mission",
+            "text": "Today we will describe how energy transforms in a flashlight system.",
+            "caption": "A flashlight is a system with parts that work together."
+        },
+        {
+            "icon": "🔋",
+            "heading": "Battery: Chemical Energy",
+            "text": "The battery stores chemical energy. This is the starting energy source for the flashlight.",
+            "caption": "The energy starts in the battery."
+        },
+        {
+            "icon": "🔘",
+            "heading": "Switch: Complete the Path",
+            "text": "When the switch is closed, the circuit has a complete path.",
+            "caption": "Electrical energy can flow only when the path is complete."
+        },
+        {
+            "icon": "⚡",
+            "heading": "Circuit: Electrical Energy",
+            "text": "Electrical energy flows through the conductors in the circuit.",
+            "caption": "Wires help electrical energy move through the system."
+        },
+        {
+            "icon": "💡",
+            "heading": "Bulb: Light Energy",
+            "text": "The bulb changes electrical energy into light energy.",
+            "caption": "The shining bulb is evidence of light energy."
+        },
+        {
+            "icon": "🔥",
+            "heading": "Bulb: Thermal Energy",
+            "text": "The bulb also produces some thermal energy, so it may feel warm after being used.",
+            "caption": "Many energy transformations produce more than one output."
+        },
+        {
+            "icon": "🧠",
+            "heading": "STAAR Thinking",
+            "text": "Trace the energy in order: chemical energy in the battery, electrical energy in the circuit, then light and thermal energy from the bulb.",
+            "caption": "Use the diagram as evidence."
+        }
+    ]
+}
+# End Day 47 Mission Brief Animation
+

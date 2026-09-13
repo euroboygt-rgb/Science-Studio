@@ -140,3 +140,51 @@ SECOND_NINE_WEEKS_LESSONS = {
 
 def get_second_nine_weeks_lesson(day):
     return SECOND_NINE_WEEKS_LESSONS.get(day)
+
+
+# Science Studio Day 47 Full Lesson Update
+SECOND_NINE_WEEKS_LESSONS[47].update({
+    "title": "Flashlight Energy Flow",
+    "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+    "unit_title": "Unit 4: Investigating Energy Transformations Through Circuits",
+    "teks": "5.8A, 5.8B, 5.5D, 5.1F",
+    "focus": "Chemical energy to electrical energy to light and thermal energy",
+    "learning_target": "We will describe how energy transforms in a flashlight system.",
+    "success_criteria": "I can trace chemical energy from the battery to electrical energy in the circuit, then to light and thermal energy in the bulb.",
+    "essential_question": "How does a flashlight system transform energy when the circuit is complete?",
+    "vocabulary": [
+        "chemical energy",
+        "electrical energy",
+        "light energy",
+        "thermal energy",
+        "energy transformation",
+        "battery",
+        "bulb",
+        "switch",
+        "complete circuit",
+        "system"
+    ],
+    "anchor_chart": "Flashlight Energy Flow Anchor Chart",
+    "bell_ringer": "A flashlight turns on when the switch is closed. What energy form is stored in the battery, and what energy form does the bulb produce?",
+    "mini_lesson": [
+        "A flashlight is a system with parts that work together.",
+        "The battery stores chemical energy.",
+        "When the switch is closed, the circuit is complete.",
+        "Electrical energy flows through conductors in the circuit.",
+        "The bulb changes electrical energy into light energy and thermal energy."
+    ],
+    "science_notebook": "Create a flow map: battery chemical energy → electrical energy in the circuit → light energy and thermal energy from the bulb.",
+    "guided_practice": "Students analyze flashlight diagrams and decide whether each circuit is complete or incomplete.",
+    "lab": "Flashlight Energy Flow Lab: Students click each part of a flashlight schematic and explain the energy transformation.",
+    "lab_notebook": "Record each system part, the energy input, the energy output, and the evidence that shows energy transformed.",
+    "staar_practice": "A flashlight turns on when the switch is closed. Which sequence best describes the energy transformation?",
+    "exit_ticket": "Explain why the battery, switch, wires, and bulb must work together for the flashlight to produce light.",
+    "cer": {
+        "claim": "A flashlight transforms energy when the circuit is complete.",
+        "evidence": "The battery, wires, switch, and bulb work together. The bulb shines and may get warm.",
+        "reasoning": "Chemical energy in the battery changes to electrical energy in the circuit. The bulb changes electrical energy into light and thermal energy."
+    },
+    "mcgraw_hill_connection": "Use district-approved McGraw Hill electricity and energy transformation resources for flashlight systems, circuits, and energy flow."
+})
+# End Science Studio Day 47 Full Lesson Update
+

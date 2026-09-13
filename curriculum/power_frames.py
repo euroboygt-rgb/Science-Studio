@@ -304,3 +304,16 @@ POWER_FRAMES.update({
 })
 # End Science Studio Second Nine Weeks Power Frames
 
+
+# Science Studio Day 47 Power Frame Fix
+POWER_FRAMES[47] = {
+    "i_can": "I can describe how energy transforms in a flashlight system.",
+    "by": "by tracing energy from the battery, through the complete circuit, to the bulb.",
+    "i_know": "I know I have learned this when I can explain that chemical energy changes into electrical energy, and electrical energy changes into light and thermal energy.",
+    "i_know_i_have_learned": "I know I have learned this when I can explain that chemical energy changes into electrical energy, and electrical energy changes into light and thermal energy.",
+    "we_will": "We will describe how energy transforms in a flashlight system.",
+    "learning_target": "We will describe how energy transforms in a flashlight system.",
+    "success_criteria": "I can trace chemical energy to electrical energy to light and thermal energy using a flashlight model."
+}
+# End Science Studio Day 47 Power Frame Fix
+

@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}Day 47 Flashlight System Lab{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+  <a class="btn btn-outline-primary fw-bold mb-3" href="/second-nine-weeks/day/47?view=student">← Back to Day 47</a>
+
+  <div class="p-4 rounded-4 border border-dark shadow-sm" style="background:linear-gradient(135deg,#243b6b,#118ab2); color:white;">
+    <div class="badge rounded-pill text-bg-warning border border-dark mb-2">Day 47 Interactive Lab</div>
+    <h1 class="fw-bold">Flashlight System Energy Lab</h1>
+    <p class="lead mb-0">Click each part of the flashlight system and explain how energy moves or transforms.</p>
+  </div>
+
+  <div class="row g-3 mt-3">
+    <div class="col-lg-8">
+      <div class="p-3 rounded-4 border border-dark shadow-sm bg-white">
+        <h2 class="fw-bold">Flashlight Schematic View</h2>
+        <p class="fw-bold">Click a numbered section.</p>
+
+        <svg id="day47FlashlightLabSvg" viewBox="0 0 1100 650" style="width:100%; border:3px solid #111; border-radius:18px; background:#f6fbff;">
+          <text x="550" y="45" text-anchor="middle" font-size="34" font-family="Arial" font-weight="900" fill="#2d2a6e">Flashlight System Energy Lab</text>
+          <text x="550" y="78" text-anchor="middle" font-size="18" font-family="Arial" font-weight="700" fill="#2d2a6e">Chemical Energy → Electrical Energy → Light Energy + Thermal Energy</text>
+
+          <rect x="140" y="235" width="700" height="220" rx="55" fill="#26364d" stroke="#111" stroke-width="6"/>
+          <rect x="830" y="270" width="120" height="145" rx="20" fill="#d9e8ff" stroke="#111" stroke-width="6"/>
+          <circle cx="945" cy="340" r="70" fill="#fff7a6" stroke="#111" stroke-width="6"/>
+
+          <g class="day47-hotspot" data-part="battery">
+            <rect x="200" y="295" width="150" height="90" rx="14" fill="#ffc400" stroke="#111" stroke-width="5"/>
+            <text x="275" y="330" text-anchor="middle" font-size="22" font-family="Arial" font-weight="900">Battery</text>
+            <text x="275" y="360" text-anchor="middle" font-size="17" font-family="Arial" font-weight="700">Chemical Energy</text>
+            <text x="135" y="180" font-size="24" font-family="Arial" font-weight="900" fill="#d97b00">1 Battery</text>
+            <text x="135" y="210" font-size="18" font-family="Arial" font-weight="700">Energy starts here</text>
+          </g>
+
+          <g class="day47-hotspot" data-part="switch">
+            <rect x="455" y="295" width="135" height="88" rx="12" fill="#ffffff" stroke="#111" stroke-width="5"/>
+            <line x1="475" y1="360" x2="565" y2="312" stroke="#111" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="475" cy="360" r="8" fill="#111"/>
+            <circle cx="565" cy="312" r="8" fill="#111"/>
+            <text x="430" y="180" font-size="24" font-family="Arial" font-weight="900" fill="#7b1cff">2 Closed Switch</text>
+            <text x="430" y="210" font-size="18" font-family="Arial" font-weight="700">Completes the circuit</text>
+          </g>
+
+          <g class="day47-hotspot" data-part="wires">
+            <path d="M350 340 L455 340" stroke="#f08a24" stroke-width="10" fill="none" marker-end="url(#arrow)"/>
+            <path d="M590 340 L830 340" stroke="#f08a24" stroke-width="10" fill="none" marker-end="url(#arrow)"/>
+            <path d="M830 400 C690 515 360 505 275 385" stroke="#f08a24" stroke-width="10" fill="none" marker-end="url(#arrow)"/>
+            <text x="650" y="180" font-size="24" font-family="Arial" font-weight="900" fill="#006fbf">3 Wires</text>
+            <text x="650" y="210" font-size="18" font-family="Arial" font-weight="700">Electrical energy flows</text>
+          </g>
+
+          <g class="day47-hotspot" data-part="bulb">
+            <circle cx="830" cy="340" r="38" fill="#fff7a6" stroke="#111" stroke-width="5"/>
+            <path d="M810 340 Q830 305 850 340 Q830 370 810 340" fill="none" stroke="#f08a24" stroke-width="4"/>
+            <text x="760" y="505" font-size="24" font-family="Arial" font-weight="900" fill="#c2185b">4 Bulb</text>
+            <text x="760" y="535" font-size="18" font-family="Arial" font-weight="700">Energy transforms here</text>
+          </g>
+
+          <g class="day47-hotspot" data-part="light">
+            <path d="M965 260 L1050 200 M990 340 L1080 340 M965 420 L1050 480" stroke="#ffc400" stroke-width="14" stroke-linecap="round"/>
+            <text x="815" y="120" font-size="24" font-family="Arial" font-weight="900" fill="#d99a00">5 Light Energy</text>
+            <text x="815" y="150" font-size="18" font-family="Arial" font-weight="700">Evidence: it shines</text>
+          </g>
+
+          <g class="day47-hotspot" data-part="thermal">
+            <path d="M790 260 C775 235 805 235 790 210 M825 260 C810 235 840 235 825 210 M860 260 C845 235 875 235 860 210" stroke="#ff7a00" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <text x="540" y="575" font-size="24" font-family="Arial" font-weight="900" fill="#c70039">6 Thermal Energy</text>
+            <text x="540" y="605" font-size="18" font-family="Arial" font-weight="700">Evidence: bulb warms up</text>
+          </g>
+
+          <defs>
+            <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="5" orient="auto">
+              <path d="M0,0 L0,10 L14,5 z" fill="#f08a24"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="p-3 rounded-4 border border-dark shadow-sm" style="background:#fff7d6;">
+        <h2 class="fw-bold" id="partTitle">Choose a part</h2>
+        <p id="partExplanation">Click a part of the flashlight to learn how energy moves or transforms there.</p>
+
+        <div class="p-3 rounded-3 border border-dark bg-white">
+          <label class="fw-bold" for="studentExplain">Student explanation:</label>
+          <textarea id="studentExplain" class="form-control mt-2" rows="5" placeholder="This part helps transform energy because..."></textarea>
+          <button class="btn btn-warning fw-bold border-dark mt-2" id="saveExplanation">Save Explanation</button>
+          <div id="saveMessage" class="fw-bold mt-2"></div>
+        </div>
+
+        <div class="p-3 rounded-3 border border-dark bg-white mt-3">
+          <h3 class="fw-bold">Energy Path</h3>
+          <ol class="mb-0">
+            <li>Battery stores chemical energy.</li>
+            <li>Closed switch completes the circuit.</li>
+            <li>Wires carry electrical energy.</li>
+            <li>Bulb changes electrical energy into light and thermal energy.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3" style="background:#f6fbff;">
+    <h2 class="fw-bold">Lab CER</h2>
+    <p><strong>Claim:</strong> A flashlight transforms energy when the circuit is complete.</p>
+    <p><strong>Evidence:</strong> The battery, switch, wires, and bulb work together. The bulb shines and may feel warm.</p>
+    <p class="mb-0"><strong>Reasoning:</strong> Chemical energy in the battery changes to electrical energy in the circuit. The bulb changes electrical energy into light energy and thermal energy.</p>
+  </div>
+</div>
+
+<script>
+const labParts = {
+  battery: {
+    title: "1. Battery",
+    explanation: "The battery stores chemical energy. This is the starting energy source for the flashlight system."
+  },
+  switch: {
+    title: "2. Closed Switch",
+    explanation: "The switch completes the path. When the switch is closed, electrical energy can flow through the circuit."
+  },
+  wires: {
+    title: "3. Wires",
+    explanation: "The wires are conductors. They allow electrical energy to flow through the complete circuit."
+  },
+  bulb: {
+    title: "4. Bulb",
+    explanation: "The bulb is where electrical energy transforms into light energy and thermal energy."
+  },
+  light: {
+    title: "5. Light Energy",
+    explanation: "The shining bulb is evidence that electrical energy transformed into light energy."
+  },
+  thermal: {
+    title: "6. Thermal Energy",
+    explanation: "The bulb may feel warm. That warmth is evidence that some electrical energy transformed into thermal energy."
+  }
+};
+
+let currentPart = null;
+
+document.querySelectorAll(".day47-hotspot").forEach(function(part) {
+  part.style.cursor = "pointer";
+
+  part.addEventListener("click", function() {
+    currentPart = part.dataset.part;
+    const info = labParts[currentPart];
+
+    document.querySelector("#partTitle").textContent = info.title;
+    document.querySelector("#partExplanation").textContent = info.explanation;
+    document.querySelector("#studentExplain").value = localStorage.getItem("day47FlashlightLab_" + currentPart) || "";
+    document.querySelector("#saveMessage").textContent = "";
+
+    document.querySelectorAll(".day47-hotspot").forEach(function(p) {
+      p.style.opacity = "0.5";
+    });
+
+    part.style.opacity = "1";
+  });
+});
+
+document.querySelector("#saveExplanation").addEventListener("click", function() {
+  if (!currentPart) {
+    document.querySelector("#saveMessage").textContent = "Click a flashlight part first.";
+    document.querySelector("#saveMessage").style.color = "#9a5b00";
+    return;
+  }
+
+  localStorage.setItem("day47FlashlightLab_" + currentPart, document.querySelector("#studentExplain").value);
+  document.querySelector("#saveMessage").textContent = "Saved!";
+  document.querySelector("#saveMessage").style.color = "#087a35";
+});
+</script>
+{% endblock %}

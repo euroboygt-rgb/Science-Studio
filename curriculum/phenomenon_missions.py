@@ -846,3 +846,28 @@ DAY_46_PHENOMENON_MISSION = {
 PHENOMENON_IMAGE_SETS[46] = DAY_46_PHENOMENON_MISSION
 # End Day 46 Phenomenon Mission
 
+
+# Day 47 Phenomenon Mission
+DAY_47_PHENOMENON_MISSION = {
+    "title": "Flashlight Energy Flow Mission",
+    "subtitle": "How does a battery make a bulb shine?",
+    "unit": "Unit 4: Energy Transformations Through Circuits",
+    "image": "/static/phenomenon/day47_flashlight_energy_flow.svg",
+    "prompt": "Steve turns on a flashlight. The bulb shines and the bulb feels a little warm after it has been on. What energy transformations happened inside the flashlight system?",
+    "observe": [
+        "The battery is inside the flashlight.",
+        "The switch must be closed.",
+        "The bulb shines.",
+        "The bulb may feel warm after it is used."
+    ],
+    "wonder": [
+        "What energy is stored in the battery?",
+        "Why does the circuit need to be complete?",
+        "What forms of energy come out of the bulb?"
+    ],
+    "mission": "Trace the energy flow through the flashlight system."
+}
+
+PHENOMENON_IMAGE_SETS[47] = DAY_47_PHENOMENON_MISSION
+# End Day 47 Phenomenon Mission
+

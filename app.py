@@ -1522,6 +1522,19 @@ def api_power_frame(day):
 # End Science Studio Universal Power Frame API
 
 
+
+
+
+
+# Science Studio Day 47 Unique Flashlight Lab Route
+@app.route("/labs/day47-flashlight-system-lab")
+@app.route("/labs/day47-flashlight-energy-flow")
+def day47_flashlight_system_lab():
+    from flask import render_template
+    return render_template("day47_flashlight_system_lab.html")
+# End Science Studio Day 47 Unique Flashlight Lab Route
+
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))

@@ -5015,5 +5015,486 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio Universal Power Frame Fix -->
 
+
+
+
+<!-- Science Studio Day 47 Full Page Builder -->
+<style>
+  .day47-energy-card {
+    max-width: 980px;
+    margin: 16px auto;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.18);
+    background: #fff7d6;
+  }
+
+  .day47-energy-card h2,
+  .day47-energy-card h3,
+  .day47-energy-card h4 {
+    font-weight: 900;
+  }
+
+  .day47-badge {
+    display: inline-block;
+    background: #7b1cff;
+    color: #fff200;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .day47-thinking-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .day47-thinking-box {
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 13px;
+  }
+
+  .day47-phenomenon-image {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: white;
+    padding: 8px;
+  }
+
+  .day47-mission-slide {
+    min-height: 220px;
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 24px;
+    text-align: center;
+    display: grid;
+    place-items: center;
+  }
+
+  .day47-mission-slide .slide-icon {
+    font-size: 4rem;
+    margin-bottom: 8px;
+  }
+
+  .day47-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 8px 0;
+    padding: 10px;
+    border: 2px solid #111;
+    border-radius: 10px;
+    background: #f7f7f7;
+    font-weight: 900;
+  }
+
+  .day47-check-btn,
+  .day47-nav-btn {
+    background: #ffc400;
+    color: #111;
+    border: 2px solid #111;
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-weight: 900;
+    margin: 4px;
+  }
+
+  #scienceStudioDay47LabLaunch {
+    background: linear-gradient(135deg,#fff7d6,#f6fbff);
+  }
+
+  #scienceStudioDay47LabLaunch .lab-launch-inner {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 16px;
+    align-items: center;
+  }
+
+  #scienceStudioDay47LabLaunch .lab-launch-button {
+    display: inline-block;
+    background: #12a150;
+    color: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 14px 18px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.2rem;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+  }
+
+  #scienceStudioDay47LabLaunch .mini-schematic {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+    font-weight: 900;
+  }
+
+  @media (max-width: 800px) {
+    .day47-thinking-grid,
+    #scienceStudioDay47LabLaunch .lab-launch-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  if (!window.location.pathname.includes("/second-nine-weeks/day/47")) return;
+
+  const day47Data = {
+    phenomenon: {
+      title: "Flashlight Energy Flow Mission",
+      subtitle: "How does a battery make a bulb shine?",
+      image: "/static/phenomenon/day47_flashlight_energy_flow.svg",
+      focus: "How does a flashlight system transform energy when the circuit is complete?",
+      notice: "The battery is inside the flashlight. The switch must be closed. The bulb shines and may feel warm after being used.",
+      wonder: "What energy is stored in the battery? Why does the circuit need to be complete? What energy forms come out of the bulb?",
+      explore: "Trace the system: battery → switch → wires → bulb → light and thermal energy.",
+      evidence: "Record each system part, the input energy, the output energy, and the evidence you observe.",
+      cer: "The flashlight transforms energy because..."
+    },
+    missionBrief: {
+      title: "Mission Brief: Flashlight Energy Flow",
+      subtitle: "Day 47 • Chemical → Electrical → Light + Thermal",
+      slides: [
+        ["🔦", "Today’s Mission", "Describe how energy transforms in a flashlight system.", "A flashlight is a system with parts that work together."],
+        ["🔋", "Battery: Chemical Energy", "The battery stores chemical energy. This is the starting energy source.", "Energy starts in the battery."],
+        ["🔘", "Switch: Complete the Path", "When the switch is closed, the circuit has a complete path.", "Electrical energy can flow only when the path is complete."],
+        ["⚡", "Wires: Electrical Energy", "Electrical energy flows through conductors in the circuit.", "Wires help electrical energy move through the system."],
+        ["💡", "Bulb: Light Energy", "The bulb changes electrical energy into light energy.", "The shining bulb is evidence of light energy."],
+        ["🔥", "Bulb: Thermal Energy", "The bulb also produces some thermal energy, so it may feel warm.", "Many transformations produce more than one output."],
+        ["🎯", "STAAR Strategy", "Trace the energy in order: chemical, electrical, then light and thermal.", "Use the diagram as evidence."]
+      ]
+    },
+    steve: {
+      title: "Steve the Penguin’s Flashlight Energy Mission",
+      subtitle: "Day 47 • Chemical, Electrical, Light, and Thermal Energy",
+      scenario: "Steve the Penguin puts batteries into a flashlight and closes the switch. The bulb turns on and shines. After the flashlight stays on for a while, the bulb feels warm.",
+      question: "Which statement best describes the energy transformations in Steve’s flashlight?",
+      options: [
+        ["A", "Chemical energy in the battery changes into electrical energy, and electrical energy changes into light energy and thermal energy in the bulb."],
+        ["B", "Light energy in the bulb changes into chemical energy stored in the battery."],
+        ["C", "Thermal energy from the bulb changes into electrical energy before the switch is closed."],
+        ["D", "Sound energy changes into light energy because all flashlights produce sound."]
+      ],
+      correct: "A",
+      explanation: "Steve should choose A. The battery stores chemical energy. When the switch closes the circuit, electrical energy flows. The bulb changes electrical energy into light energy and some thermal energy.",
+      tip: "For flashlight questions, look for the battery, closed circuit, and bulb. Then trace chemical energy to electrical energy to light and thermal energy."
+    }
+  };
+
+  function findPowerFrame() {
+    return document.querySelector("#scienceStudioUniversalPowerFrame");
+  }
+
+  function findTitleCard() {
+    const h1 = document.querySelector("h1");
+    if (!h1) return document.querySelector("main") || document.body;
+
+    let current = h1;
+    for (let i = 0; i < 7 && current.parentElement; i++) {
+      current = current.parentElement;
+      const rect = current.getBoundingClientRect();
+      if (rect.width > 350 && rect.height > 70) return current;
+    }
+    return h1;
+  }
+
+  function insertAfterTop(element) {
+    const powerFrame = findPowerFrame();
+    const titleCard = findTitleCard();
+
+    if (powerFrame) {
+      powerFrame.insertAdjacentElement("afterend", element);
+    } else {
+      titleCard.insertAdjacentElement("afterend", element);
+    }
+  }
+
+  function createPhenomenon() {
+    if (document.querySelector("#scienceStudioDay47Phenomenon")) return;
+
+    const card = document.createElement("section");
+    card.id = "scienceStudioDay47Phenomenon";
+    card.className = "day47-energy-card";
+
+    card.innerHTML = `
+      <span class="day47-badge">🔎 Phenomenon Mission</span>
+      <h2>${day47Data.phenomenon.title}</h2>
+      <p><strong>${day47Data.phenomenon.subtitle}</strong></p>
+      <img class="day47-phenomenon-image" src="${day47Data.phenomenon.image}" alt="Flashlight energy flow phenomenon">
+      <div class="mt-3 p-3 rounded-3 border border-dark bg-white">
+        <h4>❓ Focus Question</h4>
+        <p class="mb-0">${day47Data.phenomenon.focus}</p>
+      </div>
+      <div class="day47-thinking-grid mt-3">
+        <div class="day47-thinking-box"><h4>👀 Notice</h4><p>${day47Data.phenomenon.notice}</p></div>
+        <div class="day47-thinking-box"><h4>🤔 Wonder</h4><p>${day47Data.phenomenon.wonder}</p></div>
+        <div class="day47-thinking-box"><h4>🧪 Quick Explore</h4><p>${day47Data.phenomenon.explore}</p></div>
+        <div class="day47-thinking-box"><h4>📊 Evidence Tracker</h4><p>${day47Data.phenomenon.evidence}</p></div>
+        <div class="day47-thinking-box"><h4>💬 CER Starter</h4><p>${day47Data.phenomenon.cer}</p></div>
+      </div>
+    `;
+
+    insertAfterTop(card);
+  }
+
+  function createMissionBrief() {
+    if (document.querySelector("#scienceStudioDay47MissionBrief")) return;
+
+    const phenomenon = document.querySelector("#scienceStudioDay47Phenomenon");
+    if (!phenomenon) return;
+
+    const card = document.createElement("section");
+    card.id = "scienceStudioDay47MissionBrief";
+    card.className = "day47-energy-card";
+
+    card.innerHTML = `
+      <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+        <div>
+          <span class="day47-badge">🎬 Mission Brief Animation</span>
+          <h2>${day47Data.missionBrief.title}</h2>
+          <p><strong>${day47Data.missionBrief.subtitle}</strong></p>
+        </div>
+        <button type="button" class="day47-nav-btn" id="day47PlayMissionBrief">▶ Play Mission Brief</button>
+      </div>
+
+      <div class="day47-mission-slide" id="day47MissionSlide"></div>
+
+      <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap gap-2">
+        <strong id="day47SlideCounter"></strong>
+        <div>
+          <button type="button" class="day47-nav-btn" id="day47BackSlide">⬅ Back</button>
+          <button type="button" class="day47-nav-btn" id="day47NextSlide">Next ➡</button>
+          <button type="button" class="day47-nav-btn" id="day47RestartSlide" style="background:#0b8f4d;color:white;">Restart</button>
+        </div>
+      </div>
+    `;
+
+    phenomenon.insertAdjacentElement("afterend", card);
+
+    let index = 0;
+    let timer = null;
+
+    function renderSlide() {
+      const slide = day47Data.missionBrief.slides[index];
+      document.querySelector("#day47MissionSlide").innerHTML = `
+        <div>
+          <div class="slide-icon">${slide[0]}</div>
+          <h3>${slide[1]}</h3>
+          <p class="fs-5 fw-bold">${slide[2]}</p>
+          <p class="mb-0">${slide[3]}</p>
+        </div>
+      `;
+      document.querySelector("#day47SlideCounter").textContent = "Slide " + (index + 1) + " of " + day47Data.missionBrief.slides.length;
+    }
+
+    function nextSlide() {
+      index = (index + 1) % day47Data.missionBrief.slides.length;
+      renderSlide();
+    }
+
+    document.querySelector("#day47BackSlide").addEventListener("click", function () {
+      index = (index - 1 + day47Data.missionBrief.slides.length) % day47Data.missionBrief.slides.length;
+      renderSlide();
+    });
+
+    document.querySelector("#day47NextSlide").addEventListener("click", nextSlide);
+
+    document.querySelector("#day47RestartSlide").addEventListener("click", function () {
+      index = 0;
+      renderSlide();
+    });
+
+    document.querySelector("#day47PlayMissionBrief").addEventListener("click", function () {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+        this.textContent = "▶ Play Mission Brief";
+      } else {
+        timer = setInterval(nextSlide, 10000);
+        this.textContent = "⏸ Pause Mission Brief";
+      }
+    });
+
+    renderSlide();
+  }
+
+  function createSteveMission() {
+    if (document.querySelector("#scienceStudioDay47SteveMission")) return;
+
+    const missionBrief = document.querySelector("#scienceStudioDay47MissionBrief");
+    if (!missionBrief) return;
+
+    const card = document.createElement("section");
+    card.id = "scienceStudioDay47SteveMission";
+    card.className = "day47-energy-card";
+    card.style.background = "#f6fbff";
+
+    const optionButtons = day47Data.steve.options.map(function (option) {
+      return `<button type="button" class="day47-option" data-answer="${option[0]}">${option[0]}. ${option[1]}</button>`;
+    }).join("");
+
+    card.innerHTML = `
+      <span class="day47-badge">🐧 Steve the Penguin’s STAAR Mission</span>
+      <h2>${day47Data.steve.title}</h2>
+      <p><strong>${day47Data.steve.subtitle}</strong></p>
+
+      <div class="p-3 rounded-3 border border-dark mb-3" style="background:#fff7d6;">
+        <strong>Steve’s Scenario:</strong>
+        <p class="mb-0">${day47Data.steve.scenario}</p>
+      </div>
+
+      <div class="p-3 rounded-3 border border-dark bg-white">
+        <strong>STAAR-Style Question:</strong>
+        <p class="fw-bold">${day47Data.steve.question}</p>
+        ${optionButtons}
+        <button type="button" class="day47-check-btn" id="day47SteveCheck">Check Answer</button>
+        <button type="button" class="day47-check-btn" id="day47SteveReset" style="background:#f7f7f7;">Reset</button>
+        <span id="day47SteveResult" class="fw-bold ms-2"></span>
+
+        <div id="day47SteveExplanation" class="mt-3 p-3 rounded-3 border border-dark" style="display:none;background:#eaf7ed;">
+          <strong>🐧 Steve Explains the Evidence:</strong>
+          <p class="mb-0">${day47Data.steve.explanation}</p>
+        </div>
+
+        <div class="mt-3 p-3 rounded-3 border border-dark" style="background:#eef6ff;">
+          <strong>⭐ STAAR Tip:</strong>
+          <p class="mb-0">${day47Data.steve.tip}</p>
+        </div>
+      </div>
+    `;
+
+    missionBrief.insertAdjacentElement("afterend", card);
+
+    let selected = null;
+
+    card.querySelectorAll(".day47-option").forEach(function (button) {
+      button.addEventListener("click", function () {
+        selected = button.dataset.answer;
+        card.querySelectorAll(".day47-option").forEach(function (btn) {
+          btn.style.background = "#f7f7f7";
+          btn.style.borderColor = "#111";
+        });
+        button.style.background = "#dff3e6";
+        button.style.borderColor = "#087a35";
+      });
+    });
+
+    card.querySelector("#day47SteveCheck").addEventListener("click", function () {
+      const result = card.querySelector("#day47SteveResult");
+      const explanation = card.querySelector("#day47SteveExplanation");
+
+      if (!selected) {
+        result.textContent = "Choose an answer first.";
+        result.style.color = "#9a5b00";
+        return;
+      }
+
+      card.querySelectorAll(".day47-option").forEach(function (btn) {
+        if (btn.dataset.answer === day47Data.steve.correct) {
+          btn.style.background = "#dff3e6";
+          btn.style.borderColor = "#087a35";
+        } else if (btn.dataset.answer === selected) {
+          btn.style.background = "#ffe1e1";
+          btn.style.borderColor = "#b00020";
+        }
+      });
+
+      explanation.style.display = "block";
+
+      if (selected === day47Data.steve.correct) {
+        result.textContent = "Correct! Steve traced the energy path.";
+        result.style.color = "#087a35";
+      } else {
+        result.textContent = "Try again. Start with the battery.";
+        result.style.color = "#b00020";
+      }
+    });
+
+    card.querySelector("#day47SteveReset").addEventListener("click", function () {
+      selected = null;
+      card.querySelector("#day47SteveResult").textContent = "";
+      card.querySelector("#day47SteveExplanation").style.display = "none";
+      card.querySelectorAll(".day47-option").forEach(function (btn) {
+        btn.style.background = "#f7f7f7";
+        btn.style.borderColor = "#111";
+      });
+    });
+  }
+
+  function createLabLaunch() {
+    if (document.querySelector("#scienceStudioDay47LabLaunch")) return;
+
+    const steve = document.querySelector("#scienceStudioDay47SteveMission");
+    if (!steve) return;
+
+    const section = document.createElement("section");
+    section.id = "scienceStudioDay47LabLaunch";
+    section.className = "day47-energy-card";
+
+    section.innerHTML = `
+      <div class="lab-launch-inner">
+        <div>
+          <div class="badge rounded-pill text-bg-warning border border-dark mb-2">🧪 Interactive Lab</div>
+          <h2 class="fw-bold">Flashlight System Energy Lab</h2>
+          <p class="fw-bold">
+            Students open a schematic view of a flashlight, click each part, and explain the energy transformation.
+          </p>
+          <p>Battery → closed switch → wires → bulb → light energy + thermal energy</p>
+          <a class="lab-launch-button" href="/labs/day47-flashlight-system-lab">▶ Start Interactive Lab</a>
+        </div>
+        <div class="mini-schematic">
+          🔋 → ⚡ → 💡 + 🔥
+          <br>
+          Click. Explain. Prove with evidence.
+        </div>
+      </div>
+    `;
+
+    steve.insertAdjacentElement("afterend", section);
+  }
+
+  function hideGenericLabBox() {
+    document.querySelectorAll("section,div,article,.card").forEach(function(card) {
+      const text = (card.textContent || "").replace(/\s+/g, " ").trim();
+      const rect = card.getBoundingClientRect();
+
+      if (rect.width > 300 && text.includes("Lab / Investigation") && text.includes("Student Investigation Steps")) {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  function buildDay47() {
+    createPhenomenon();
+    createMissionBrief();
+    createSteveMission();
+    createLabLaunch();
+    hideGenericLabBox();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(buildDay47, 500);
+    setTimeout(buildDay47, 1200);
+    setTimeout(buildDay47, 2200);
+  });
+})();
+</script>
+<!-- End Science Studio Day 47 Full Page Builder -->
+
 </body>
 </html>

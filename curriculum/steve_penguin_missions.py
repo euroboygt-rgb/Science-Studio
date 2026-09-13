@@ -1478,3 +1478,36 @@ STEVE_PENGUIN_MISSIONS[46] = {
 }
 # End Day 46 Steve the Penguin STAAR Mission
 
+
+# Day 47 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[47] = {
+    "title": "Steve the Penguin’s Flashlight Energy Mission",
+    "subtitle": "Day 47 • Chemical, Electrical, Light, and Thermal Energy",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin puts batteries into a flashlight and closes the switch. The bulb turns on and shines. After the flashlight stays on for a while, the bulb feels warm.",
+    "question": "Which statement best describes the energy transformations in Steve’s flashlight?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Chemical energy in the battery changes into electrical energy, and electrical energy changes into light energy and thermal energy in the bulb."
+        },
+        {
+            "letter": "B",
+            "text": "Light energy in the bulb changes into chemical energy stored in the battery."
+        },
+        {
+            "letter": "C",
+            "text": "Thermal energy from the bulb changes into electrical energy before the switch is closed."
+        },
+        {
+            "letter": "D",
+            "text": "Sound energy changes into light energy because all flashlights produce sound."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. The battery stores chemical energy. When the switch closes the circuit, electrical energy flows. The bulb changes electrical energy into light energy and some thermal energy.",
+    "staar_tip": "For flashlight questions, look for the battery, closed circuit, and bulb. Then trace chemical energy to electrical energy to light and thermal energy.",
+    "vocabulary": ["chemical energy", "electrical energy", "light energy", "thermal energy", "complete circuit", "energy transformation"]
+}
+# End Day 47 Steve the Penguin STAAR Mission
+
