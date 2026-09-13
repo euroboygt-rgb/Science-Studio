@@ -2201,3 +2201,62 @@ MISSION_BRIEF_ANIMATIONS[47] = {
 }
 # End Day 47 Mission Brief Animation
 
+
+# Day 48 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[48] = {
+    "title": "Mission Brief: Complete and Incomplete Circuits",
+    "subtitle": "Day 48 • Requirements for a Functioning Circuit",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "🔌",
+            "heading": "Today’s Mission",
+            "text": "Today we will identify the requirements for a functioning electrical circuit.",
+            "caption": "A circuit is a system with parts that must work together."
+        },
+        {
+            "icon": "🔋",
+            "heading": "Requirement 1: Power Source",
+            "text": "A circuit needs a power source, such as a battery.",
+            "caption": "The battery provides electrical energy when the path is complete."
+        },
+        {
+            "icon": "🧵",
+            "heading": "Requirement 2: Conducting Path",
+            "text": "A circuit needs conductors, such as wires, so electrical energy can flow.",
+            "caption": "Conductors allow electrical energy to move through the path."
+        },
+        {
+            "icon": "💡",
+            "heading": "Requirement 3: Energy Receiver",
+            "text": "A circuit needs a load, such as a bulb, buzzer, or motor, that transforms electrical energy.",
+            "caption": "A bulb changes electrical energy into light and thermal energy."
+        },
+        {
+            "icon": "🔘",
+            "heading": "Requirement 4: Closed Path",
+            "text": "The circuit path must be complete and closed with no gaps.",
+            "caption": "An open switch creates a gap."
+        },
+        {
+            "icon": "🚫",
+            "heading": "Incomplete Circuit",
+            "text": "If there is a gap or an insulator in the path, electrical energy will not flow easily.",
+            "caption": "No complete path means the bulb will not light."
+        },
+        {
+            "icon": "✅",
+            "heading": "Complete Circuit",
+            "text": "When the path is closed and made of conductors, electrical energy can flow and the bulb can light.",
+            "caption": "Battery + wires + bulb + closed path."
+        },
+        {
+            "icon": "🎯",
+            "heading": "STAAR Strategy",
+            "text": "Trace the path from the battery, through the circuit parts, and back to the battery. Look for gaps and insulators.",
+            "caption": "Use the diagram as evidence."
+        }
+    ]
+}
+# End Day 48 Mission Brief Animation
+

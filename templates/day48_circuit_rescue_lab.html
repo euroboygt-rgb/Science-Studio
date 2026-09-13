@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block title %}Day 48 Circuit Rescue Lab{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+  <a class="btn btn-outline-primary fw-bold mb-3" href="/second-nine-weeks/day/48?view=student">← Back to Day 48</a>
+
+  <div class="p-4 rounded-4 border border-dark shadow-sm" style="background:linear-gradient(135deg,#243b6b,#118ab2); color:white;">
+    <div class="badge rounded-pill text-bg-warning border border-dark mb-2">Day 48 Interactive Lab</div>
+    <h1 class="fw-bold">Circuit Rescue Lab</h1>
+    <p class="lead mb-0">Click each circuit part, diagnose the problem, and decide if the bulb will light.</p>
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3" style="background:#fff7d6;">
+    <h2 class="fw-bold">Mission</h2>
+    <p class="mb-0">Steve has three circuit builds. Your job is to inspect the battery, wires, switch, bulb, and material in the path to decide whether electrical energy can flow through a complete circuit.</p>
+  </div>
+
+  <div class="row g-3 mt-2">
+    <div class="col-lg-8">
+      <div class="p-3 rounded-4 border border-dark shadow-sm bg-white">
+        <h2 class="fw-bold">Circuit Schematic</h2>
+        <p class="fw-bold">Click a circuit part to explain its job.</p>
+
+        <svg id="day48CircuitLabSvg" viewBox="0 0 1100 650" style="width:100%; border:3px solid #111; border-radius:18px; background:#f6fbff;">
+          <text x="550" y="45" text-anchor="middle" font-size="34" font-family="Arial" font-weight="900" fill="#2d2a6e">Circuit Rescue Lab</text>
+          <text x="550" y="78" text-anchor="middle" font-size="18" font-family="Arial" font-weight="700" fill="#2d2a6e">A complete circuit lets electrical energy flow from the battery, through the path, and back.</text>
+
+          <rect x="140" y="155" width="820" height="395" rx="26" fill="#ffffff" stroke="#d7def7" stroke-width="5"/>
+
+          <g class="day48-hotspot" data-part="battery">
+            <rect x="220" y="370" width="85" height="120" rx="8" fill="#ffc400" stroke="#111" stroke-width="5"/>
+            <line x1="245" y1="350" x2="245" y2="370" stroke="#111" stroke-width="5"/>
+            <line x1="280" y1="338" x2="280" y2="370" stroke="#111" stroke-width="5"/>
+            <text x="262" y="522" text-anchor="middle" font-size="20" font-family="Arial" font-weight="900">Battery</text>
+            <text x="165" y="125" font-size="22" font-family="Arial" font-weight="900" fill="#d97b00">1 Battery</text>
+            <text x="165" y="150" font-size="16" font-family="Arial" font-weight="700">Power source</text>
+          </g>
+
+          <g class="day48-hotspot" data-part="wires">
+            <path d="M280 338 L280 235 L770 235" stroke="#f08a24" stroke-width="10" fill="none"/>
+            <path d="M850 312 L850 450 L540 450" stroke="#f08a24" stroke-width="10" fill="none"/>
+            <path d="M435 450 L305 450" stroke="#f08a24" stroke-width="10" fill="none"/>
+            <text x="410" y="125" font-size="22" font-family="Arial" font-weight="900" fill="#006fbf">2 Conducting Wires</text>
+            <text x="410" y="150" font-size="16" font-family="Arial" font-weight="700">Pathway for electrical energy</text>
+          </g>
+
+          <g class="day48-hotspot" data-part="bulb">
+            <circle cx="820" cy="235" r="52" fill="#fff7a6" stroke="#111" stroke-width="5"/>
+            <path d="M795 235 Q820 195 845 235 Q820 275 795 235" fill="none" stroke="#f08a24" stroke-width="4"/>
+            <path d="M868 185 L930 140 M882 235 L955 235 M868 285 L930 330" stroke="#ffc400" stroke-width="9" stroke-linecap="round"/>
+            <text x="755" y="125" font-size="22" font-family="Arial" font-weight="900" fill="#d99a00">3 Bulb</text>
+            <text x="755" y="150" font-size="16" font-family="Arial" font-weight="700">Electrical → light + thermal</text>
+          </g>
+
+          <g class="day48-hotspot" data-part="switch">
+            <rect x="435" y="400" width="105" height="95" rx="10" fill="#ffffff" stroke="#111" stroke-width="5"/>
+            <line x1="455" y1="465" x2="520" y2="430" stroke="#111" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="455" cy="465" r="8" fill="#111"/>
+            <circle cx="535" cy="465" r="8" fill="#111"/>
+            <text x="420" y="575" font-size="22" font-family="Arial" font-weight="900" fill="#7b1cff">4 Switch</text>
+            <text x="420" y="602" font-size="16" font-family="Arial" font-weight="700">Open switch makes a gap</text>
+          </g>
+
+          <g class="day48-hotspot" data-part="gap">
+            <circle cx="610" cy="450" r="32" fill="#ffe1e1" stroke="#b00020" stroke-width="5"/>
+            <text x="610" y="457" text-anchor="middle" font-size="30" font-family="Arial" font-weight="900" fill="#b00020">?</text>
+            <text x="585" y="575" font-size="22" font-family="Arial" font-weight="900" fill="#b00020">5 Test Spot</text>
+            <text x="585" y="602" font-size="16" font-family="Arial" font-weight="700">Conductor or insulator?</text>
+          </g>
+
+          <rect x="225" y="555" width="650" height="52" rx="14" fill="#ede9ff" stroke="#2d2a6e" stroke-width="3"/>
+          <text x="550" y="588" text-anchor="middle" font-size="20" font-family="Arial" font-weight="900" fill="#2d2a6e">Question: Is the path closed with conductors all the way around?</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="p-3 rounded-4 border border-dark shadow-sm" style="background:#fff7d6;">
+        <h2 class="fw-bold" id="partTitle">Choose a part</h2>
+        <p id="partExplanation">Click a circuit part to learn why it matters.</p>
+
+        <div class="p-3 rounded-3 border border-dark bg-white">
+          <label class="fw-bold" for="studentExplain">Student explanation:</label>
+          <textarea id="studentExplain" class="form-control mt-2" rows="5" placeholder="This part helps the circuit work because..."></textarea>
+          <button class="btn btn-warning fw-bold border-dark mt-2" id="saveExplanation">Save Explanation</button>
+          <div id="saveMessage" class="fw-bold mt-2"></div>
+        </div>
+
+        <div class="p-3 rounded-3 border border-dark bg-white mt-3">
+          <h3 class="fw-bold">Circuit Requirements</h3>
+          <ol class="mb-0">
+            <li>Power source, such as a battery</li>
+            <li>Conducting path, such as wires</li>
+            <li>Energy receiver, such as a bulb</li>
+            <li>Closed path with no gaps</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3" style="background:#f6fbff;">
+    <h2 class="fw-bold">Circuit Rescue Challenge</h2>
+    <p class="fw-bold">Choose the build that will light the bulb.</p>
+
+    <div class="row g-3">
+      <div class="col-md-4">
+        <button class="rescue-choice w-100 p-3 rounded-3 border border-dark fw-bold" data-answer="A">A. Battery, bulb, wires, and an open switch</button>
+      </div>
+      <div class="col-md-4">
+        <button class="rescue-choice w-100 p-3 rounded-3 border border-dark fw-bold" data-answer="B">B. Battery, bulb, wires, and a closed switch</button>
+      </div>
+      <div class="col-md-4">
+        <button class="rescue-choice w-100 p-3 rounded-3 border border-dark fw-bold" data-answer="C">C. Battery, bulb, string, and a closed switch</button>
+      </div>
+    </div>
+
+    <button class="btn btn-warning fw-bold border-dark mt-3" id="checkRescue">Check Rescue Choice</button>
+    <span id="rescueResult" class="fw-bold ms-2"></span>
+
+    <div id="rescueExplanation" class="mt-3 p-3 rounded-3 border border-dark" style="display:none;background:#eaf7ed;">
+      Correct answer: B. The bulb lights because the circuit has a battery, conducting wires, a bulb, and a complete closed path. The open switch in A creates a gap. The string in C is an insulator, so electrical energy does not flow easily.
+    </div>
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3" style="background:#fff7d6;">
+    <h2 class="fw-bold">Lab CER</h2>
+    <p><strong>Claim:</strong> A bulb lights only when electrical energy can flow through a complete circuit.</p>
+    <p><strong>Evidence:</strong> The working build has a battery, wires, a closed switch, and a bulb connected in one complete path.</p>
+    <p class="mb-0"><strong>Reasoning:</strong> Electrical energy needs a closed conducting path. If there is a gap or an insulator in the path, the circuit is incomplete and the bulb will not light.</p>
+  </div>
+</div>
+
+<script>
+const labParts = {
+  battery: {
+    title: "1. Battery",
+    explanation: "The battery is the power source. It provides the electrical energy that can flow when the circuit is complete."
+  },
+  wires: {
+    title: "2. Conducting Wires",
+    explanation: "Wires are conductors. They allow electrical energy to flow around the circuit."
+  },
+  bulb: {
+    title: "3. Bulb",
+    explanation: "The bulb is the energy receiver. It changes electrical energy into light energy and thermal energy."
+  },
+  switch: {
+    title: "4. Switch",
+    explanation: "A closed switch completes the path. An open switch creates a gap, so the bulb will not light."
+  },
+  gap: {
+    title: "5. Test Spot",
+    explanation: "The test spot must be filled with a conductor. If an insulator is placed there, electrical energy will not flow easily."
+  }
+};
+
+let currentPart = null;
+let selectedRescue = null;
+
+document.querySelectorAll(".day48-hotspot").forEach(function(part) {
+  part.style.cursor = "pointer";
+
+  part.addEventListener("click", function() {
+    currentPart = part.dataset.part;
+    const info = labParts[currentPart];
+
+    document.querySelector("#partTitle").textContent = info.title;
+    document.querySelector("#partExplanation").textContent = info.explanation;
+    document.querySelector("#studentExplain").value = localStorage.getItem("day48CircuitLab_" + currentPart) || "";
+    document.querySelector("#saveMessage").textContent = "";
+
+    document.querySelectorAll(".day48-hotspot").forEach(function(p) {
+      p.style.opacity = "0.5";
+    });
+
+    part.style.opacity = "1";
+  });
+});
+
+document.querySelector("#saveExplanation").addEventListener("click", function() {
+  if (!currentPart) {
+    document.querySelector("#saveMessage").textContent = "Click a circuit part first.";
+    document.querySelector("#saveMessage").style.color = "#9a5b00";
+    return;
+  }
+
+  localStorage.setItem("day48CircuitLab_" + currentPart, document.querySelector("#studentExplain").value);
+  document.querySelector("#saveMessage").textContent = "Saved!";
+  document.querySelector("#saveMessage").style.color = "#087a35";
+});
+
+document.querySelectorAll(".rescue-choice").forEach(function(button) {
+  button.addEventListener("click", function() {
+    selectedRescue = button.dataset.answer;
+
+    document.querySelectorAll(".rescue-choice").forEach(function(btn) {
+      btn.style.background = "#ffffff";
+      btn.style.borderColor = "#111";
+    });
+
+    button.style.background = "#dff3e6";
+    button.style.borderColor = "#087a35";
+  });
+});
+
+document.querySelector("#checkRescue").addEventListener("click", function() {
+  const result = document.querySelector("#rescueResult");
+  const explanation = document.querySelector("#rescueExplanation");
+
+  if (!selectedRescue) {
+    result.textContent = "Choose a build first.";
+    result.style.color = "#9a5b00";
+    return;
+  }
+
+  document.querySelectorAll(".rescue-choice").forEach(function(btn) {
+    if (btn.dataset.answer === "B") {
+      btn.style.background = "#dff3e6";
+      btn.style.borderColor = "#087a35";
+    } else if (btn.dataset.answer === selectedRescue) {
+      btn.style.background = "#ffe1e1";
+      btn.style.borderColor = "#b00020";
+    }
+  });
+
+  explanation.style.display = "block";
+
+  if (selectedRescue === "B") {
+    result.textContent = "Correct! This circuit has a complete conducting path.";
+    result.style.color = "#087a35";
+  } else {
+    result.textContent = "Try again. Check for gaps and conductors.";
+    result.style.color = "#b00020";
+  }
+});
+</script>
+{% endblock %}

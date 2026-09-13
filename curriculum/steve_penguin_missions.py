@@ -1511,3 +1511,36 @@ STEVE_PENGUIN_MISSIONS[47] = {
 }
 # End Day 47 Steve the Penguin STAAR Mission
 
+
+# Day 48 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[48] = {
+    "title": "Steve the Penguin’s Circuit Rescue Mission",
+    "subtitle": "Day 48 • Complete and Incomplete Circuits",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin builds four circuits. Circuit 1 has a battery, wires, bulb, and closed switch. Circuit 2 has an open switch. Circuit 3 has a gap in one wire. Circuit 4 has string in part of the path instead of wire.",
+    "question": "Which circuit will most likely light the bulb?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "Circuit 1, because it has a battery, conducting wires, a bulb, and a complete closed path."
+        },
+        {
+            "letter": "B",
+            "text": "Circuit 2, because an open switch helps electrical energy flow faster."
+        },
+        {
+            "letter": "C",
+            "text": "Circuit 3, because a gap in the wire makes the bulb brighter."
+        },
+        {
+            "letter": "D",
+            "text": "Circuit 4, because string is the best conductor for electrical energy."
+        }
+    ],
+    "correct_answer": "A",
+    "explanation": "Steve should choose A. Circuit 1 has all the requirements for a functioning circuit: a battery, conducting wires, a bulb, and a complete closed path. An open switch, a gap, or an insulator would stop electrical energy from flowing easily.",
+    "staar_tip": "For circuit questions, trace the path from the battery all the way around. If you find a gap or an insulator, the bulb will not light.",
+    "vocabulary": ["complete circuit", "incomplete circuit", "closed circuit", "open circuit", "conductor", "insulator", "battery", "bulb"]
+}
+# End Day 48 Steve the Penguin STAAR Mission
+

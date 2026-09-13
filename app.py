@@ -1535,6 +1535,16 @@ def day47_flashlight_system_lab():
 # End Science Studio Day 47 Unique Flashlight Lab Route
 
 
+
+# Science Studio Day 48 Circuit Rescue Lab Route
+@app.route("/labs/day48-circuit-rescue-lab")
+@app.route("/labs/day48-complete-circuit-lab")
+def day48_circuit_rescue_lab():
+    from flask import render_template
+    return render_template("day48_circuit_rescue_lab.html")
+# End Science Studio Day 48 Circuit Rescue Lab Route
+
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))

@@ -188,3 +188,51 @@ SECOND_NINE_WEEKS_LESSONS[47].update({
 })
 # End Science Studio Day 47 Full Lesson Update
 
+
+# Science Studio Day 48 Full Lesson Update
+SECOND_NINE_WEEKS_LESSONS[48].update({
+    "title": "Complete and Incomplete Circuits",
+    "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+    "unit_title": "Unit 4: Investigating Energy Transformations Through Circuits",
+    "teks": "5.8B, 5.5D, 5.1F",
+    "focus": "Requirements for a functioning electrical circuit",
+    "learning_target": "We will identify the requirements for a functioning electrical circuit.",
+    "success_criteria": "I can explain why a bulb will or will not light by checking for a battery, conductors, a load, and a complete closed path.",
+    "essential_question": "What does an electrical circuit need in order to function?",
+    "vocabulary": [
+        "complete circuit",
+        "incomplete circuit",
+        "open circuit",
+        "closed circuit",
+        "battery",
+        "wire",
+        "switch",
+        "bulb",
+        "conductor",
+        "insulator"
+    ],
+    "anchor_chart": "Complete Circuit Requirements Anchor Chart",
+    "bell_ringer": "A student builds a circuit with a battery, wires, and a bulb, but the switch is open. Will the bulb light? Explain your evidence.",
+    "mini_lesson": [
+        "A circuit is a system with parts that must work together.",
+        "A functioning circuit needs a power source, such as a battery.",
+        "It needs a conducting path, such as wires.",
+        "It needs a load or energy receiver, such as a bulb, buzzer, or motor.",
+        "The path must be complete and closed with no gaps.",
+        "If the switch is open or an insulator is in the path, electrical energy will not flow easily."
+    ],
+    "science_notebook": "Draw two circuits. Label one complete circuit and one incomplete circuit. Explain what makes each circuit work or not work.",
+    "guided_practice": "Students inspect circuit diagrams and sort them into will light and will not light groups.",
+    "lab": "Circuit Rescue Lab: Students click each part of a circuit schematic, diagnose the problem, and decide which build will light the bulb.",
+    "lab_notebook": "Record each build, whether the path is complete or incomplete, and the evidence that supports your answer.",
+    "staar_practice": "Students build three circuits. Which circuit will light the bulb?",
+    "exit_ticket": "Name the four things a functioning circuit needs.",
+    "cer": {
+        "claim": "A bulb lights only when a circuit has a complete closed conducting path.",
+        "evidence": "The working circuit has a battery, wires, a closed switch, and a bulb connected in one path.",
+        "reasoning": "Electrical energy can flow through conductors only when the circuit path is complete. A gap or an insulator prevents the bulb from lighting."
+    },
+    "mcgraw_hill_connection": "Use district-approved McGraw Hill electricity resources for complete circuits, switches, conductors, insulators, bulbs, and batteries."
+})
+# End Science Studio Day 48 Full Lesson Update
+

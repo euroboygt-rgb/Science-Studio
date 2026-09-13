@@ -5496,5 +5496,485 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio Day 47 Full Page Builder -->
 
+
+<!-- Science Studio Day 48 Full Page Builder -->
+<style>
+  .day48-circuit-card {
+    max-width: 980px;
+    margin: 16px auto;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.18);
+    background: #fff7d6;
+  }
+
+  .day48-circuit-card h2,
+  .day48-circuit-card h3,
+  .day48-circuit-card h4 {
+    font-weight: 900;
+  }
+
+  .day48-badge {
+    display: inline-block;
+    background: #7b1cff;
+    color: #fff200;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .day48-thinking-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .day48-thinking-box {
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 13px;
+  }
+
+  .day48-phenomenon-image {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: white;
+    padding: 8px;
+  }
+
+  .day48-mission-slide {
+    min-height: 220px;
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 24px;
+    text-align: center;
+    display: grid;
+    place-items: center;
+  }
+
+  .day48-mission-slide .slide-icon {
+    font-size: 4rem;
+    margin-bottom: 8px;
+  }
+
+  .day48-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 8px 0;
+    padding: 10px;
+    border: 2px solid #111;
+    border-radius: 10px;
+    background: #f7f7f7;
+    font-weight: 900;
+  }
+
+  .day48-check-btn,
+  .day48-nav-btn {
+    background: #ffc400;
+    color: #111;
+    border: 2px solid #111;
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-weight: 900;
+    margin: 4px;
+  }
+
+  #scienceStudioDay48LabLaunch {
+    background: linear-gradient(135deg,#fff7d6,#f6fbff);
+  }
+
+  #scienceStudioDay48LabLaunch .lab-launch-inner {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 16px;
+    align-items: center;
+  }
+
+  #scienceStudioDay48LabLaunch .lab-launch-button {
+    display: inline-block;
+    background: #12a150;
+    color: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 14px 18px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.2rem;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+  }
+
+  #scienceStudioDay48LabLaunch .mini-schematic {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+    font-weight: 900;
+  }
+
+  @media (max-width: 800px) {
+    .day48-thinking-grid,
+    #scienceStudioDay48LabLaunch .lab-launch-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  if (!window.location.pathname.includes("/second-nine-weeks/day/48")) return;
+
+  const day48Data = {
+    phenomenon: {
+      title: "Will the Bulb Light?",
+      subtitle: "Complete and incomplete circuit evidence",
+      image: "/static/phenomenon/day48_complete_circuit_mission.svg",
+      focus: "What does an electrical circuit need in order for the bulb to light?",
+      notice: "Circuit A has an open switch. Circuit B has a closed switch. Both circuits have a battery, wires, and a bulb.",
+      wonder: "Why does one bulb light and the other does not? What evidence shows the path is complete?",
+      explore: "Trace each circuit from the battery, through the wires, through the bulb and switch, and back to the battery.",
+      evidence: "Record whether each circuit has a power source, conductors, a load, and a complete closed path.",
+      cer: "The bulb lights in Circuit ___ because..."
+    },
+    missionBrief: {
+      title: "Mission Brief: Complete and Incomplete Circuits",
+      subtitle: "Day 48 • Requirements for a Functioning Circuit",
+      slides: [
+        ["🔌", "Today’s Mission", "Identify the requirements for a functioning electrical circuit.", "A circuit is a system with parts that must work together."],
+        ["🔋", "Power Source", "A circuit needs a power source, such as a battery.", "The battery provides electrical energy."],
+        ["🧵", "Conducting Path", "A circuit needs conductors, such as wires, so electrical energy can flow.", "Conductors allow energy to move."],
+        ["💡", "Energy Receiver", "A circuit needs a load, such as a bulb, buzzer, or motor.", "The load transforms electrical energy."],
+        ["🔘", "Closed Path", "The path must be complete and closed with no gaps.", "An open switch creates a gap."],
+        ["🚫", "Incomplete Circuit", "If there is a gap or an insulator, electrical energy will not flow easily.", "The bulb will not light."],
+        ["✅", "Complete Circuit", "A complete conducting path lets electrical energy flow and the bulb can light.", "Battery + wires + bulb + closed path."],
+        ["🎯", "STAAR Strategy", "Trace the path all the way around. Look for gaps and insulators.", "Use the diagram as evidence."]
+      ]
+    },
+    steve: {
+      title: "Steve the Penguin’s Circuit Rescue Mission",
+      subtitle: "Day 48 • Complete and Incomplete Circuits",
+      scenario: "Steve the Penguin builds four circuits. Circuit 1 has a battery, wires, bulb, and closed switch. Circuit 2 has an open switch. Circuit 3 has a gap in one wire. Circuit 4 has string in part of the path instead of wire.",
+      question: "Which circuit will most likely light the bulb?",
+      options: [
+        ["A", "Circuit 1, because it has a battery, conducting wires, a bulb, and a complete closed path."],
+        ["B", "Circuit 2, because an open switch helps electrical energy flow faster."],
+        ["C", "Circuit 3, because a gap in the wire makes the bulb brighter."],
+        ["D", "Circuit 4, because string is the best conductor for electrical energy."]
+      ],
+      correct: "A",
+      explanation: "Steve should choose A. Circuit 1 has a battery, conducting wires, a bulb, and a complete closed path. An open switch, a gap, or an insulator would stop electrical energy from flowing easily.",
+      tip: "For circuit questions, trace the path from the battery all the way around. If you find a gap or an insulator, the bulb will not light."
+    }
+  };
+
+  function findPowerFrame() {
+    return document.querySelector("#scienceStudioUniversalPowerFrame");
+  }
+
+  function findTitleCard() {
+    const h1 = document.querySelector("h1");
+    if (!h1) return document.querySelector("main") || document.body;
+
+    let current = h1;
+    for (let i = 0; i < 7 && current.parentElement; i++) {
+      current = current.parentElement;
+      const rect = current.getBoundingClientRect();
+      if (rect.width > 350 && rect.height > 70) return current;
+    }
+    return h1;
+  }
+
+  function insertAfterTop(element) {
+    const powerFrame = findPowerFrame();
+    const titleCard = findTitleCard();
+
+    if (powerFrame) {
+      powerFrame.insertAdjacentElement("afterend", element);
+    } else {
+      titleCard.insertAdjacentElement("afterend", element);
+    }
+  }
+
+  function createPhenomenon() {
+    if (document.querySelector("#scienceStudioDay48Phenomenon")) return;
+
+    const card = document.createElement("section");
+    card.id = "scienceStudioDay48Phenomenon";
+    card.className = "day48-circuit-card";
+
+    card.innerHTML = `
+      <span class="day48-badge">🔎 Phenomenon Mission</span>
+      <h2>${day48Data.phenomenon.title}</h2>
+      <p><strong>${day48Data.phenomenon.subtitle}</strong></p>
+      <img class="day48-phenomenon-image" src="${day48Data.phenomenon.image}" alt="Complete and incomplete circuit phenomenon">
+      <div class="mt-3 p-3 rounded-3 border border-dark bg-white">
+        <h4>❓ Focus Question</h4>
+        <p class="mb-0">${day48Data.phenomenon.focus}</p>
+      </div>
+      <div class="day48-thinking-grid mt-3">
+        <div class="day48-thinking-box"><h4>👀 Notice</h4><p>${day48Data.phenomenon.notice}</p></div>
+        <div class="day48-thinking-box"><h4>🤔 Wonder</h4><p>${day48Data.phenomenon.wonder}</p></div>
+        <div class="day48-thinking-box"><h4>🧪 Quick Explore</h4><p>${day48Data.phenomenon.explore}</p></div>
+        <div class="day48-thinking-box"><h4>📊 Evidence Tracker</h4><p>${day48Data.phenomenon.evidence}</p></div>
+        <div class="day48-thinking-box"><h4>💬 CER Starter</h4><p>${day48Data.phenomenon.cer}</p></div>
+      </div>
+    `;
+
+    insertAfterTop(card);
+  }
+
+  function createMissionBrief() {
+    if (document.querySelector("#scienceStudioDay48MissionBrief")) return;
+
+    const phenomenon = document.querySelector("#scienceStudioDay48Phenomenon");
+    if (!phenomenon) return;
+
+    const card = document.createElement("section");
+    card.id = "scienceStudioDay48MissionBrief";
+    card.className = "day48-circuit-card";
+
+    card.innerHTML = `
+      <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+        <div>
+          <span class="day48-badge">🎬 Mission Brief Animation</span>
+          <h2>${day48Data.missionBrief.title}</h2>
+          <p><strong>${day48Data.missionBrief.subtitle}</strong></p>
+        </div>
+        <button type="button" class="day48-nav-btn" id="day48PlayMissionBrief">▶ Play Mission Brief</button>
+      </div>
+
+      <div class="day48-mission-slide" id="day48MissionSlide"></div>
+
+      <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap gap-2">
+        <strong id="day48SlideCounter"></strong>
+        <div>
+          <button type="button" class="day48-nav-btn" id="day48BackSlide">⬅ Back</button>
+          <button type="button" class="day48-nav-btn" id="day48NextSlide">Next ➡</button>
+          <button type="button" class="day48-nav-btn" id="day48RestartSlide" style="background:#0b8f4d;color:white;">Restart</button>
+        </div>
+      </div>
+    `;
+
+    phenomenon.insertAdjacentElement("afterend", card);
+
+    let index = 0;
+    let timer = null;
+
+    function renderSlide() {
+      const slide = day48Data.missionBrief.slides[index];
+      document.querySelector("#day48MissionSlide").innerHTML = `
+        <div>
+          <div class="slide-icon">${slide[0]}</div>
+          <h3>${slide[1]}</h3>
+          <p class="fs-5 fw-bold">${slide[2]}</p>
+          <p class="mb-0">${slide[3]}</p>
+        </div>
+      `;
+      document.querySelector("#day48SlideCounter").textContent = "Slide " + (index + 1) + " of " + day48Data.missionBrief.slides.length;
+    }
+
+    function nextSlide() {
+      index = (index + 1) % day48Data.missionBrief.slides.length;
+      renderSlide();
+    }
+
+    document.querySelector("#day48BackSlide").addEventListener("click", function () {
+      index = (index - 1 + day48Data.missionBrief.slides.length) % day48Data.missionBrief.slides.length;
+      renderSlide();
+    });
+
+    document.querySelector("#day48NextSlide").addEventListener("click", nextSlide);
+
+    document.querySelector("#day48RestartSlide").addEventListener("click", function () {
+      index = 0;
+      renderSlide();
+    });
+
+    document.querySelector("#day48PlayMissionBrief").addEventListener("click", function () {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+        this.textContent = "▶ Play Mission Brief";
+      } else {
+        timer = setInterval(nextSlide, 10000);
+        this.textContent = "⏸ Pause Mission Brief";
+      }
+    });
+
+    renderSlide();
+  }
+
+  function createSteveMission() {
+    if (document.querySelector("#scienceStudioDay48SteveMission")) return;
+
+    const missionBrief = document.querySelector("#scienceStudioDay48MissionBrief");
+    if (!missionBrief) return;
+
+    const card = document.createElement("section");
+    card.id = "scienceStudioDay48SteveMission";
+    card.className = "day48-circuit-card";
+    card.style.background = "#f6fbff";
+
+    const optionButtons = day48Data.steve.options.map(function (option) {
+      return `<button type="button" class="day48-option" data-answer="${option[0]}">${option[0]}. ${option[1]}</button>`;
+    }).join("");
+
+    card.innerHTML = `
+      <span class="day48-badge">🐧 Steve the Penguin’s STAAR Mission</span>
+      <h2>${day48Data.steve.title}</h2>
+      <p><strong>${day48Data.steve.subtitle}</strong></p>
+
+      <div class="p-3 rounded-3 border border-dark mb-3" style="background:#fff7d6;">
+        <strong>Steve’s Scenario:</strong>
+        <p class="mb-0">${day48Data.steve.scenario}</p>
+      </div>
+
+      <div class="p-3 rounded-3 border border-dark bg-white">
+        <strong>STAAR-Style Question:</strong>
+        <p class="fw-bold">${day48Data.steve.question}</p>
+        ${optionButtons}
+        <button type="button" class="day48-check-btn" id="day48SteveCheck">Check Answer</button>
+        <button type="button" class="day48-check-btn" id="day48SteveReset" style="background:#f7f7f7;">Reset</button>
+        <span id="day48SteveResult" class="fw-bold ms-2"></span>
+
+        <div id="day48SteveExplanation" class="mt-3 p-3 rounded-3 border border-dark" style="display:none;background:#eaf7ed;">
+          <strong>🐧 Steve Explains the Evidence:</strong>
+          <p class="mb-0">${day48Data.steve.explanation}</p>
+        </div>
+
+        <div class="mt-3 p-3 rounded-3 border border-dark" style="background:#eef6ff;">
+          <strong>⭐ STAAR Tip:</strong>
+          <p class="mb-0">${day48Data.steve.tip}</p>
+        </div>
+      </div>
+    `;
+
+    missionBrief.insertAdjacentElement("afterend", card);
+
+    let selected = null;
+
+    card.querySelectorAll(".day48-option").forEach(function (button) {
+      button.addEventListener("click", function () {
+        selected = button.dataset.answer;
+        card.querySelectorAll(".day48-option").forEach(function (btn) {
+          btn.style.background = "#f7f7f7";
+          btn.style.borderColor = "#111";
+        });
+        button.style.background = "#dff3e6";
+        button.style.borderColor = "#087a35";
+      });
+    });
+
+    card.querySelector("#day48SteveCheck").addEventListener("click", function () {
+      const result = card.querySelector("#day48SteveResult");
+      const explanation = card.querySelector("#day48SteveExplanation");
+
+      if (!selected) {
+        result.textContent = "Choose an answer first.";
+        result.style.color = "#9a5b00";
+        return;
+      }
+
+      card.querySelectorAll(".day48-option").forEach(function (btn) {
+        if (btn.dataset.answer === day48Data.steve.correct) {
+          btn.style.background = "#dff3e6";
+          btn.style.borderColor = "#087a35";
+        } else if (btn.dataset.answer === selected) {
+          btn.style.background = "#ffe1e1";
+          btn.style.borderColor = "#b00020";
+        }
+      });
+
+      explanation.style.display = "block";
+
+      if (selected === day48Data.steve.correct) {
+        result.textContent = "Correct! Steve found the complete circuit.";
+        result.style.color = "#087a35";
+      } else {
+        result.textContent = "Try again. Look for the complete closed path.";
+        result.style.color = "#b00020";
+      }
+    });
+
+    card.querySelector("#day48SteveReset").addEventListener("click", function () {
+      selected = null;
+      card.querySelector("#day48SteveResult").textContent = "";
+      card.querySelector("#day48SteveExplanation").style.display = "none";
+      card.querySelectorAll(".day48-option").forEach(function (btn) {
+        btn.style.background = "#f7f7f7";
+        btn.style.borderColor = "#111";
+      });
+    });
+  }
+
+  function createLabLaunch() {
+    if (document.querySelector("#scienceStudioDay48LabLaunch")) return;
+
+    const steve = document.querySelector("#scienceStudioDay48SteveMission");
+    if (!steve) return;
+
+    const section = document.createElement("section");
+    section.id = "scienceStudioDay48LabLaunch";
+    section.className = "day48-circuit-card";
+
+    section.innerHTML = `
+      <div class="lab-launch-inner">
+        <div>
+          <div class="badge rounded-pill text-bg-warning border border-dark mb-2">🧪 Interactive Lab</div>
+          <h2 class="fw-bold">Circuit Rescue Lab</h2>
+          <p class="fw-bold">
+            Students inspect a circuit schematic, click each part, and decide whether the bulb will light.
+          </p>
+          <p>Battery + conductors + bulb + closed path = functioning circuit.</p>
+          <a class="lab-launch-button" href="/labs/day48-circuit-rescue-lab">▶ Start Interactive Lab</a>
+        </div>
+        <div class="mini-schematic">
+          🔋 → 🔘 → 💡
+          <br>
+          Trace the path. Find the gap. Prove it.
+        </div>
+      </div>
+    `;
+
+    steve.insertAdjacentElement("afterend", section);
+  }
+
+  function hideGenericLabBox() {
+    document.querySelectorAll("section,div,article,.card").forEach(function(card) {
+      const text = (card.textContent || "").replace(/\s+/g, " ").trim();
+      const rect = card.getBoundingClientRect();
+
+      if (rect.width > 300 && text.includes("Lab / Investigation") && text.includes("Student Investigation Steps")) {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  function buildDay48() {
+    createPhenomenon();
+    createMissionBrief();
+    createSteveMission();
+    createLabLaunch();
+    hideGenericLabBox();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(buildDay48, 500);
+    setTimeout(buildDay48, 1200);
+    setTimeout(buildDay48, 2200);
+  });
+})();
+</script>
+<!-- End Science Studio Day 48 Full Page Builder -->
+
 </body>
 </html>

@@ -317,3 +317,16 @@ POWER_FRAMES[47] = {
 }
 # End Science Studio Day 47 Power Frame Fix
 
+
+# Science Studio Day 48 Power Frame Fix
+POWER_FRAMES[48] = {
+    "i_can": "I can identify the requirements for a functioning electrical circuit.",
+    "by": "by checking for a battery, conductors, a load, and a complete closed path.",
+    "i_know": "I know I have learned this when I can explain why a bulb will or will not light using evidence from a circuit diagram.",
+    "i_know_i_have_learned": "I know I have learned this when I can explain why a bulb will or will not light using evidence from a circuit diagram.",
+    "we_will": "We will identify the requirements for a functioning electrical circuit.",
+    "learning_target": "We will identify the requirements for a functioning electrical circuit.",
+    "success_criteria": "I can use evidence from a circuit model to decide if electrical energy can flow."
+}
+# End Science Studio Day 48 Power Frame Fix
+

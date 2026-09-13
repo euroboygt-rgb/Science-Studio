@@ -871,3 +871,28 @@ DAY_47_PHENOMENON_MISSION = {
 PHENOMENON_IMAGE_SETS[47] = DAY_47_PHENOMENON_MISSION
 # End Day 47 Phenomenon Mission
 
+
+# Day 48 Phenomenon Mission
+DAY_48_PHENOMENON_MISSION = {
+    "title": "Will the Bulb Light?",
+    "subtitle": "Complete and incomplete circuit evidence",
+    "unit": "Unit 4: Energy Transformations Through Circuits",
+    "image": "/static/phenomenon/day48_complete_circuit_mission.svg",
+    "prompt": "Steve compares two circuits. One circuit has an open switch and the other has a closed switch. Which circuit will light the bulb, and what evidence proves it?",
+    "observe": [
+        "Circuit A has an open switch.",
+        "Circuit B has a closed switch.",
+        "Both circuits have a battery, wires, and a bulb.",
+        "Only one circuit has a complete path."
+    ],
+    "wonder": [
+        "What makes a circuit complete?",
+        "Why does an open switch stop the bulb from lighting?",
+        "What evidence shows electrical energy can flow?"
+    ],
+    "mission": "Use circuit evidence to decide which bulb will light."
+}
+
+PHENOMENON_IMAGE_SETS[48] = DAY_48_PHENOMENON_MISSION
+# End Day 48 Phenomenon Mission
+
