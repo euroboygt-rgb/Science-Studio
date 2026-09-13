@@ -5976,5 +5976,485 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio Day 48 Full Page Builder -->
 
+
+<!-- Science Studio Day 49 Full Page Builder -->
+<style>
+  .day49-motion-card {
+    max-width: 980px;
+    margin: 16px auto;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.18);
+    background: #fff7d6;
+  }
+
+  .day49-motion-card h2,
+  .day49-motion-card h3,
+  .day49-motion-card h4 {
+    font-weight: 900;
+  }
+
+  .day49-badge {
+    display: inline-block;
+    background: #7b1cff;
+    color: #fff200;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .day49-thinking-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .day49-thinking-box {
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 13px;
+  }
+
+  .day49-phenomenon-image {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: white;
+    padding: 8px;
+  }
+
+  .day49-mission-slide {
+    min-height: 220px;
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 24px;
+    text-align: center;
+    display: grid;
+    place-items: center;
+  }
+
+  .day49-mission-slide .slide-icon {
+    font-size: 4rem;
+    margin-bottom: 8px;
+  }
+
+  .day49-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 8px 0;
+    padding: 10px;
+    border: 2px solid #111;
+    border-radius: 10px;
+    background: #f7f7f7;
+    font-weight: 900;
+  }
+
+  .day49-check-btn,
+  .day49-nav-btn {
+    background: #ffc400;
+    color: #111;
+    border: 2px solid #111;
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-weight: 900;
+    margin: 4px;
+  }
+
+  #scienceStudioDay49LabLaunch {
+    background: linear-gradient(135deg,#fff7d6,#f6fbff);
+  }
+
+  #scienceStudioDay49LabLaunch .lab-launch-inner {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 16px;
+    align-items: center;
+  }
+
+  #scienceStudioDay49LabLaunch .lab-launch-button {
+    display: inline-block;
+    background: #12a150;
+    color: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 14px 18px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.2rem;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+  }
+
+  #scienceStudioDay49LabLaunch .mini-schematic {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+    font-weight: 900;
+  }
+
+  @media (max-width: 800px) {
+    .day49-thinking-grid,
+    #scienceStudioDay49LabLaunch .lab-launch-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  if (!window.location.pathname.includes("/second-nine-weeks/day/49")) return;
+
+  const day49Data = {
+    phenomenon: {
+      title: "Why Does the Fan Spin?",
+      subtitle: "Electrical energy to motion evidence",
+      image: "/static/phenomenon/day49_motor_motion_mission.svg",
+      focus: "How can electrical energy in a complete circuit cause an object to move?",
+      notice: "The circuit has a battery, conducting wires, a closed switch, a motor, and a fan blade. When the switch is closed, the fan blade spins.",
+      wonder: "What energy flows through the circuit? What part changes the energy? What evidence shows motion?",
+      explore: "Trace the system: battery → wires → closed switch → motor → spinning fan blade.",
+      evidence: "Record each circuit part, its job, and the evidence that electrical energy transformed into motion.",
+      cer: "The fan blade spins because..."
+    },
+    missionBrief: {
+      title: "Mission Brief: Electrical Energy to Motion",
+      subtitle: "Day 49 • Motor Circuits",
+      slides: [
+        ["⚙️", "Today’s Mission", "Demonstrate that electrical energy in a complete circuit can transform into motion.", "A motor circuit is a system with parts that work together."],
+        ["🔋", "Battery Starts the Circuit", "The battery is the power source for the circuit.", "The battery provides electrical energy when the path is complete."],
+        ["🔘", "Closed Switch", "A closed switch completes the circuit path.", "Electrical energy can flow through a closed path."],
+        ["🧵", "Wires Carry Energy", "Wires are conductors that allow electrical energy to flow to the motor.", "Conductors help energy move through the system."],
+        ["🌀", "Motor Transforms Energy", "The motor changes electrical energy into motion energy.", "The motor is the transformation part."],
+        ["🌬️", "Fan Blade Moves", "The fan blade spins because the motor produces motion.", "The spinning blade is evidence of motion energy."],
+        ["🚫", "What If the Path Is Open?", "If the switch is open or there is a gap, electrical energy will not flow to the motor.", "No complete circuit means no motion."],
+        ["🎯", "STAAR Strategy", "Trace the circuit from the battery to the motor. Then identify the output energy you can observe.", "Electrical energy → motion energy."]
+      ]
+    },
+    steve: {
+      title: "Steve the Penguin’s Motor Motion Mission",
+      subtitle: "Day 49 • Electrical Energy to Motion",
+      scenario: "Steve the Penguin builds a circuit with a battery, conducting wires, a closed switch, and a small motor connected to a fan blade. When Steve closes the switch, the fan blade spins.",
+      question: "Which statement best explains why the fan blade spins?",
+      options: [
+        ["A", "The fan blade spins because light energy from the room changes into sound energy."],
+        ["B", "The fan blade spins because electrical energy flows through the complete circuit to the motor, and the motor transforms electrical energy into motion."],
+        ["C", "The fan blade spins because an open switch stops electrical energy from reaching the motor."],
+        ["D", "The fan blade spins because the wires change motion energy into chemical energy."]
+      ],
+      correct: "B",
+      explanation: "Steve should choose B. The complete circuit allows electrical energy to flow to the motor. The motor transforms electrical energy into motion, causing the fan blade to spin.",
+      tip: "For motor questions, look for a complete circuit and identify the part that moves. The moving part is evidence that electrical energy transformed into motion."
+    }
+  };
+
+  function findPowerFrame() {
+    return document.querySelector("#scienceStudioUniversalPowerFrame");
+  }
+
+  function findTitleCard() {
+    const h1 = document.querySelector("h1");
+    if (!h1) return document.querySelector("main") || document.body;
+
+    let current = h1;
+    for (let i = 0; i < 7 && current.parentElement; i++) {
+      current = current.parentElement;
+      const rect = current.getBoundingClientRect();
+      if (rect.width > 350 && rect.height > 70) return current;
+    }
+    return h1;
+  }
+
+  function insertAfterTop(element) {
+    const powerFrame = findPowerFrame();
+    const titleCard = findTitleCard();
+
+    if (powerFrame) {
+      powerFrame.insertAdjacentElement("afterend", element);
+    } else {
+      titleCard.insertAdjacentElement("afterend", element);
+    }
+  }
+
+  function createPhenomenon() {
+    if (document.querySelector("#scienceStudioDay49Phenomenon")) return;
+
+    const card = document.createElement("section");
+    card.id = "scienceStudioDay49Phenomenon";
+    card.className = "day49-motion-card";
+
+    card.innerHTML = `
+      <span class="day49-badge">🔎 Phenomenon Mission</span>
+      <h2>${day49Data.phenomenon.title}</h2>
+      <p><strong>${day49Data.phenomenon.subtitle}</strong></p>
+      <img class="day49-phenomenon-image" src="${day49Data.phenomenon.image}" alt="Motor circuit motion phenomenon">
+      <div class="mt-3 p-3 rounded-3 border border-dark bg-white">
+        <h4>❓ Focus Question</h4>
+        <p class="mb-0">${day49Data.phenomenon.focus}</p>
+      </div>
+      <div class="day49-thinking-grid mt-3">
+        <div class="day49-thinking-box"><h4>👀 Notice</h4><p>${day49Data.phenomenon.notice}</p></div>
+        <div class="day49-thinking-box"><h4>🤔 Wonder</h4><p>${day49Data.phenomenon.wonder}</p></div>
+        <div class="day49-thinking-box"><h4>🧪 Quick Explore</h4><p>${day49Data.phenomenon.explore}</p></div>
+        <div class="day49-thinking-box"><h4>📊 Evidence Tracker</h4><p>${day49Data.phenomenon.evidence}</p></div>
+        <div class="day49-thinking-box"><h4>💬 CER Starter</h4><p>${day49Data.phenomenon.cer}</p></div>
+      </div>
+    `;
+
+    insertAfterTop(card);
+  }
+
+  function createMissionBrief() {
+    if (document.querySelector("#scienceStudioDay49MissionBrief")) return;
+
+    const phenomenon = document.querySelector("#scienceStudioDay49Phenomenon");
+    if (!phenomenon) return;
+
+    const card = document.createElement("section");
+    card.id = "scienceStudioDay49MissionBrief";
+    card.className = "day49-motion-card";
+
+    card.innerHTML = `
+      <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+        <div>
+          <span class="day49-badge">🎬 Mission Brief Animation</span>
+          <h2>${day49Data.missionBrief.title}</h2>
+          <p><strong>${day49Data.missionBrief.subtitle}</strong></p>
+        </div>
+        <button type="button" class="day49-nav-btn" id="day49PlayMissionBrief">▶ Play Mission Brief</button>
+      </div>
+
+      <div class="day49-mission-slide" id="day49MissionSlide"></div>
+
+      <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap gap-2">
+        <strong id="day49SlideCounter"></strong>
+        <div>
+          <button type="button" class="day49-nav-btn" id="day49BackSlide">⬅ Back</button>
+          <button type="button" class="day49-nav-btn" id="day49NextSlide">Next ➡</button>
+          <button type="button" class="day49-nav-btn" id="day49RestartSlide" style="background:#0b8f4d;color:white;">Restart</button>
+        </div>
+      </div>
+    `;
+
+    phenomenon.insertAdjacentElement("afterend", card);
+
+    let index = 0;
+    let timer = null;
+
+    function renderSlide() {
+      const slide = day49Data.missionBrief.slides[index];
+      document.querySelector("#day49MissionSlide").innerHTML = `
+        <div>
+          <div class="slide-icon">${slide[0]}</div>
+          <h3>${slide[1]}</h3>
+          <p class="fs-5 fw-bold">${slide[2]}</p>
+          <p class="mb-0">${slide[3]}</p>
+        </div>
+      `;
+      document.querySelector("#day49SlideCounter").textContent = "Slide " + (index + 1) + " of " + day49Data.missionBrief.slides.length;
+    }
+
+    function nextSlide() {
+      index = (index + 1) % day49Data.missionBrief.slides.length;
+      renderSlide();
+    }
+
+    document.querySelector("#day49BackSlide").addEventListener("click", function () {
+      index = (index - 1 + day49Data.missionBrief.slides.length) % day49Data.missionBrief.slides.length;
+      renderSlide();
+    });
+
+    document.querySelector("#day49NextSlide").addEventListener("click", nextSlide);
+
+    document.querySelector("#day49RestartSlide").addEventListener("click", function () {
+      index = 0;
+      renderSlide();
+    });
+
+    document.querySelector("#day49PlayMissionBrief").addEventListener("click", function () {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+        this.textContent = "▶ Play Mission Brief";
+      } else {
+        timer = setInterval(nextSlide, 10000);
+        this.textContent = "⏸ Pause Mission Brief";
+      }
+    });
+
+    renderSlide();
+  }
+
+  function createSteveMission() {
+    if (document.querySelector("#scienceStudioDay49SteveMission")) return;
+
+    const missionBrief = document.querySelector("#scienceStudioDay49MissionBrief");
+    if (!missionBrief) return;
+
+    const card = document.createElement("section");
+    card.id = "scienceStudioDay49SteveMission";
+    card.className = "day49-motion-card";
+    card.style.background = "#f6fbff";
+
+    const optionButtons = day49Data.steve.options.map(function (option) {
+      return `<button type="button" class="day49-option" data-answer="${option[0]}">${option[0]}. ${option[1]}</button>`;
+    }).join("");
+
+    card.innerHTML = `
+      <span class="day49-badge">🐧 Steve the Penguin’s STAAR Mission</span>
+      <h2>${day49Data.steve.title}</h2>
+      <p><strong>${day49Data.steve.subtitle}</strong></p>
+
+      <div class="p-3 rounded-3 border border-dark mb-3" style="background:#fff7d6;">
+        <strong>Steve’s Scenario:</strong>
+        <p class="mb-0">${day49Data.steve.scenario}</p>
+      </div>
+
+      <div class="p-3 rounded-3 border border-dark bg-white">
+        <strong>STAAR-Style Question:</strong>
+        <p class="fw-bold">${day49Data.steve.question}</p>
+        ${optionButtons}
+        <button type="button" class="day49-check-btn" id="day49SteveCheck">Check Answer</button>
+        <button type="button" class="day49-check-btn" id="day49SteveReset" style="background:#f7f7f7;">Reset</button>
+        <span id="day49SteveResult" class="fw-bold ms-2"></span>
+
+        <div id="day49SteveExplanation" class="mt-3 p-3 rounded-3 border border-dark" style="display:none;background:#eaf7ed;">
+          <strong>🐧 Steve Explains the Evidence:</strong>
+          <p class="mb-0">${day49Data.steve.explanation}</p>
+        </div>
+
+        <div class="mt-3 p-3 rounded-3 border border-dark" style="background:#eef6ff;">
+          <strong>⭐ STAAR Tip:</strong>
+          <p class="mb-0">${day49Data.steve.tip}</p>
+        </div>
+      </div>
+    `;
+
+    missionBrief.insertAdjacentElement("afterend", card);
+
+    let selected = null;
+
+    card.querySelectorAll(".day49-option").forEach(function (button) {
+      button.addEventListener("click", function () {
+        selected = button.dataset.answer;
+        card.querySelectorAll(".day49-option").forEach(function (btn) {
+          btn.style.background = "#f7f7f7";
+          btn.style.borderColor = "#111";
+        });
+        button.style.background = "#dff3e6";
+        button.style.borderColor = "#087a35";
+      });
+    });
+
+    card.querySelector("#day49SteveCheck").addEventListener("click", function () {
+      const result = card.querySelector("#day49SteveResult");
+      const explanation = card.querySelector("#day49SteveExplanation");
+
+      if (!selected) {
+        result.textContent = "Choose an answer first.";
+        result.style.color = "#9a5b00";
+        return;
+      }
+
+      card.querySelectorAll(".day49-option").forEach(function (btn) {
+        if (btn.dataset.answer === day49Data.steve.correct) {
+          btn.style.background = "#dff3e6";
+          btn.style.borderColor = "#087a35";
+        } else if (btn.dataset.answer === selected) {
+          btn.style.background = "#ffe1e1";
+          btn.style.borderColor = "#b00020";
+        }
+      });
+
+      explanation.style.display = "block";
+
+      if (selected === day49Data.steve.correct) {
+        result.textContent = "Correct! Steve found the energy transformation.";
+        result.style.color = "#087a35";
+      } else {
+        result.textContent = "Try again. Look for the complete circuit and the moving part.";
+        result.style.color = "#b00020";
+      }
+    });
+
+    card.querySelector("#day49SteveReset").addEventListener("click", function () {
+      selected = null;
+      card.querySelector("#day49SteveResult").textContent = "";
+      card.querySelector("#day49SteveExplanation").style.display = "none";
+      card.querySelectorAll(".day49-option").forEach(function (btn) {
+        btn.style.background = "#f7f7f7";
+        btn.style.borderColor = "#111";
+      });
+    });
+  }
+
+  function createLabLaunch() {
+    if (document.querySelector("#scienceStudioDay49LabLaunch")) return;
+
+    const steve = document.querySelector("#scienceStudioDay49SteveMission");
+    if (!steve) return;
+
+    const section = document.createElement("section");
+    section.id = "scienceStudioDay49LabLaunch";
+    section.className = "day49-motion-card";
+
+    section.innerHTML = `
+      <div class="lab-launch-inner">
+        <div>
+          <div class="badge rounded-pill text-bg-warning border border-dark mb-2">🧪 Interactive Lab</div>
+          <h2 class="fw-bold">Motor Motion Lab</h2>
+          <p class="fw-bold">
+            Students inspect a motor circuit schematic, click each part, and explain how electrical energy transforms into motion.
+          </p>
+          <p>Battery + closed switch + wires + motor = spinning fan blade.</p>
+          <a class="lab-launch-button" href="/labs/day49-motor-motion-lab">▶ Start Interactive Lab</a>
+        </div>
+        <div class="mini-schematic">
+          🔋 → ⚡ → ⚙️ → 🌀
+          <br>
+          Complete circuit. Motor moves. Prove it.
+        </div>
+      </div>
+    `;
+
+    steve.insertAdjacentElement("afterend", section);
+  }
+
+  function hideGenericLabBox() {
+    document.querySelectorAll("section,div,article,.card").forEach(function(card) {
+      const text = (card.textContent || "").replace(/\s+/g, " ").trim();
+      const rect = card.getBoundingClientRect();
+
+      if (rect.width > 300 && text.includes("Lab / Investigation") && text.includes("Student Investigation Steps")) {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  function buildDay49() {
+    createPhenomenon();
+    createMissionBrief();
+    createSteveMission();
+    createLabLaunch();
+    hideGenericLabBox();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(buildDay49, 500);
+    setTimeout(buildDay49, 1200);
+    setTimeout(buildDay49, 2200);
+  });
+})();
+</script>
+<!-- End Science Studio Day 49 Full Page Builder -->
+
 </body>
 </html>

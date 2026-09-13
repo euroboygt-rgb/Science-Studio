@@ -1544,3 +1544,36 @@ STEVE_PENGUIN_MISSIONS[48] = {
 }
 # End Day 48 Steve the Penguin STAAR Mission
 
+
+# Day 49 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[49] = {
+    "title": "Steve the Penguin’s Motor Motion Mission",
+    "subtitle": "Day 49 • Electrical Energy to Motion",
+    "character": "Steve the Penguin",
+    "scenario": "Steve the Penguin builds a circuit with a battery, conducting wires, a closed switch, and a small motor connected to a fan blade. When Steve closes the switch, the fan blade spins.",
+    "question": "Which statement best explains why the fan blade spins?",
+    "options": [
+        {
+            "letter": "A",
+            "text": "The fan blade spins because light energy from the room changes into sound energy."
+        },
+        {
+            "letter": "B",
+            "text": "The fan blade spins because electrical energy flows through the complete circuit to the motor, and the motor transforms electrical energy into motion."
+        },
+        {
+            "letter": "C",
+            "text": "The fan blade spins because an open switch stops electrical energy from reaching the motor."
+        },
+        {
+            "letter": "D",
+            "text": "The fan blade spins because the wires change motion energy into chemical energy."
+        }
+    ],
+    "correct_answer": "B",
+    "explanation": "Steve should choose B. The complete circuit allows electrical energy to flow to the motor. The motor transforms electrical energy into motion, causing the fan blade to spin.",
+    "staar_tip": "For motor questions, look for a complete circuit and identify the part that moves. The moving part is evidence that electrical energy transformed into motion.",
+    "vocabulary": ["electrical energy", "motion energy", "motor", "fan", "complete circuit", "closed switch", "energy transformation"]
+}
+# End Day 49 Steve the Penguin STAAR Mission
+

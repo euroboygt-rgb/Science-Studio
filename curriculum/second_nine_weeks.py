@@ -236,3 +236,50 @@ SECOND_NINE_WEEKS_LESSONS[48].update({
 })
 # End Science Studio Day 48 Full Lesson Update
 
+
+# Science Studio Day 49 Full Lesson Update
+SECOND_NINE_WEEKS_LESSONS[49].update({
+    "title": "Electrical Energy to Motion",
+    "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+    "unit_title": "Unit 4: Investigating Energy Transformations Through Circuits",
+    "teks": "5.8B, 5.5D, 5.1F",
+    "focus": "Electrical energy transforming into motion energy",
+    "learning_target": "We will demonstrate how electrical energy in a complete circuit can transform into motion.",
+    "success_criteria": "I can explain how a motor uses electrical energy to produce motion when the circuit is complete.",
+    "essential_question": "How can electrical energy in a circuit cause an object to move?",
+    "vocabulary": [
+        "electrical energy",
+        "motion energy",
+        "mechanical energy",
+        "motor",
+        "fan",
+        "complete circuit",
+        "closed circuit",
+        "battery",
+        "wire",
+        "switch"
+    ],
+    "anchor_chart": "Electrical Energy to Motion Anchor Chart",
+    "bell_ringer": "A small fan starts spinning when it is connected to a battery with wires and a closed switch. What energy transformation is happening?",
+    "mini_lesson": [
+        "A motor is a device that can transform electrical energy into motion.",
+        "A fan circuit needs a battery, wires, switch, and motor.",
+        "When the circuit path is closed, electrical energy flows to the motor.",
+        "The motor changes electrical energy into motion energy.",
+        "The spinning fan blade is evidence that energy transformed."
+    ],
+    "science_notebook": "Create a flow map: battery → electrical energy in complete circuit → motor → motion of fan blade.",
+    "guided_practice": "Students compare motor circuit diagrams and decide which fan will spin and which fan will not spin.",
+    "lab": "Motor Motion Lab: Students click each part of a motor circuit schematic and explain how electrical energy transforms into motion.",
+    "lab_notebook": "Record each circuit part, its job, the energy input, the energy output, and the evidence of motion.",
+    "staar_practice": "A student connects a battery, wires, closed switch, and motor. The fan blade spins. Which energy transformation occurred?",
+    "exit_ticket": "Explain why the fan blade only spins when the circuit is complete.",
+    "cer": {
+        "claim": "Electrical energy can transform into motion energy in a complete circuit.",
+        "evidence": "The fan spins when the battery, wires, switch, and motor are connected in a complete path.",
+        "reasoning": "Electrical energy flows through the circuit to the motor. The motor transforms electrical energy into motion energy."
+    },
+    "mcgraw_hill_connection": "Use district-approved McGraw Hill electricity and energy transformation resources for motors, complete circuits, and motion output."
+})
+# End Science Studio Day 49 Full Lesson Update
+

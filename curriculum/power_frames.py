@@ -330,3 +330,16 @@ POWER_FRAMES[48] = {
 }
 # End Science Studio Day 48 Power Frame Fix
 
+
+# Science Studio Day 49 Power Frame Fix
+POWER_FRAMES[49] = {
+    "i_can": "I can demonstrate that electrical energy can transform into motion.",
+    "by": "by tracing energy through a complete motor circuit with a battery, wires, switch, and motor.",
+    "i_know": "I know I have learned this when I can explain that electrical energy flows to the motor and the motor changes that energy into motion.",
+    "i_know_i_have_learned": "I know I have learned this when I can explain that electrical energy flows to the motor and the motor changes that energy into motion.",
+    "we_will": "We will demonstrate electrical energy transforming into motion.",
+    "learning_target": "We will demonstrate how electrical energy in a complete circuit can transform into motion.",
+    "success_criteria": "I can use evidence from a motor circuit to explain why a fan spins."
+}
+# End Science Studio Day 49 Power Frame Fix
+

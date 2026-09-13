@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" fill="#f6fbff"/>
+  <text x="600" y="50" text-anchor="middle" font-family="Arial" font-size="38" font-weight="900" fill="#2d2a6e">Phenomenon Mission: Why Does the Fan Spin?</text>
+  <text x="600" y="88" text-anchor="middle" font-family="Arial" font-size="22" font-weight="700" fill="#2d2a6e">A complete circuit can make a motor move.</text>
+
+  <rect x="130" y="155" width="940" height="415" rx="26" fill="#ffffff" stroke="#d7def7" stroke-width="5"/>
+
+  <!-- Battery -->
+  <rect x="210" y="370" width="85" height="120" rx="8" fill="#ffc400" stroke="#111" stroke-width="5"/>
+  <line x1="235" y1="345" x2="235" y2="370" stroke="#111" stroke-width="5"/>
+  <line x1="270" y1="330" x2="270" y2="370" stroke="#111" stroke-width="5"/>
+  <text x="252" y="525" text-anchor="middle" font-family="Arial" font-size="20" font-weight="900">Battery</text>
+
+  <!-- Switch -->
+  <rect x="410" y="385" width="135" height="88" rx="12" fill="#ffffff" stroke="#111" stroke-width="5"/>
+  <line x1="430" y1="450" x2="520" y2="405" stroke="#111" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="430" cy="450" r="8" fill="#111"/>
+  <circle cx="520" cy="405" r="8" fill="#111"/>
+  <text x="478" y="510" text-anchor="middle" font-family="Arial" font-size="20" font-weight="900">Closed Switch</text>
+
+  <!-- Motor -->
+  <rect x="685" y="330" width="150" height="120" rx="22" fill="#bfe6ff" stroke="#111" stroke-width="5"/>
+  <circle cx="760" cy="390" r="35" fill="#ffffff" stroke="#111" stroke-width="4"/>
+  <text x="760" y="396" text-anchor="middle" font-family="Arial" font-size="22" font-weight="900">M</text>
+  <text x="760" y="485" text-anchor="middle" font-family="Arial" font-size="20" font-weight="900">Motor</text>
+
+  <!-- Fan blade -->
+  <circle cx="925" cy="280" r="38" fill="#ffffff" stroke="#111" stroke-width="5"/>
+  <path d="M925 280 C900 220 950 220 925 280" fill="#7bdff2" stroke="#111" stroke-width="4"/>
+  <path d="M925 280 C985 255 985 305 925 280" fill="#7bdff2" stroke="#111" stroke-width="4"/>
+  <path d="M925 280 C900 340 950 340 925 280" fill="#7bdff2" stroke="#111" stroke-width="4"/>
+  <path d="M925 280 C865 255 865 305 925 280" fill="#7bdff2" stroke="#111" stroke-width="4"/>
+  <path d="M880 190 C950 150 1010 185 1020 250" fill="none" stroke="#13a10e" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1020 250 L1042 228 L1048 265" fill="#13a10e"/>
+  <text x="925" y="380" text-anchor="middle" font-family="Arial" font-size="20" font-weight="900">Fan Spins</text>
+
+  <!-- Wires -->
+  <path d="M270 330 L270 245 L685 245 L685 365" stroke="#f08a24" stroke-width="10" fill="none"/>
+  <path d="M835 390 L900 390 L900 320" stroke="#f08a24" stroke-width="10" fill="none"/>
+  <path d="M925 320 L925 545 L478 545 L478 473" stroke="#f08a24" stroke-width="10" fill="none"/>
+  <path d="M410 430 L295 430" stroke="#f08a24" stroke-width="10" fill="none"/>
+
+  <!-- labels -->
+  <rect x="175" y="115" width="225" height="52" rx="14" fill="#fff7d6" stroke="#111" stroke-width="3"/>
+  <text x="287" y="148" text-anchor="middle" font-family="Arial" font-size="18" font-weight="900">Power source: battery</text>
+
+  <rect x="440" y="115" width="270" height="52" rx="14" fill="#ede9ff" stroke="#111" stroke-width="3"/>
+  <text x="575" y="148" text-anchor="middle" font-family="Arial" font-size="18" font-weight="900">Closed circuit: energy flows</text>
+
+  <rect x="750" y="115" width="275" height="52" rx="14" fill="#eaf7ed" stroke="#111" stroke-width="3"/>
+  <text x="888" y="148" text-anchor="middle" font-family="Arial" font-size="18" font-weight="900">Motor output: motion</text>
+
+  <rect x="240" y="605" width="720" height="52" rx="16" fill="#fff7d6" stroke="#2d2a6e" stroke-width="3"/>
+  <text x="600" y="638" text-anchor="middle" font-family="Arial" font-size="20" font-weight="900" fill="#2d2a6e">Focus Question: How does electrical energy make the fan move?</text>
+</svg>

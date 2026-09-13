@@ -1545,6 +1545,16 @@ def day48_circuit_rescue_lab():
 # End Science Studio Day 48 Circuit Rescue Lab Route
 
 
+
+# Science Studio Day 49 Motor Motion Lab Route
+@app.route("/labs/day49-motor-motion-lab")
+@app.route("/labs/day49-electrical-motion-lab")
+def day49_motor_motion_lab():
+    from flask import render_template
+    return render_template("day49_motor_motion_lab.html")
+# End Science Studio Day 49 Motor Motion Lab Route
+
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))

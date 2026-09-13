@@ -896,3 +896,28 @@ DAY_48_PHENOMENON_MISSION = {
 PHENOMENON_IMAGE_SETS[48] = DAY_48_PHENOMENON_MISSION
 # End Day 48 Phenomenon Mission
 
+
+# Day 49 Phenomenon Mission
+DAY_49_PHENOMENON_MISSION = {
+    "title": "Why Does the Fan Spin?",
+    "subtitle": "Electrical energy to motion evidence",
+    "unit": "Unit 4: Energy Transformations Through Circuits",
+    "image": "/static/phenomenon/day49_motor_motion_mission.svg",
+    "prompt": "Steve connects a battery, wires, a closed switch, and a small motor with a fan blade. The fan blade starts to spin. What energy transformation caused the motion?",
+    "observe": [
+        "The circuit includes a battery, wires, switch, motor, and fan blade.",
+        "The switch is closed.",
+        "The fan blade spins.",
+        "The motor is the part connected to the fan blade."
+    ],
+    "wonder": [
+        "What energy flows through the circuit?",
+        "What part changes electrical energy into motion?",
+        "What evidence shows motion energy was produced?"
+    ],
+    "mission": "Trace how electrical energy moves through the circuit and transforms into motion."
+}
+
+PHENOMENON_IMAGE_SETS[49] = DAY_49_PHENOMENON_MISSION
+# End Day 49 Phenomenon Mission
+

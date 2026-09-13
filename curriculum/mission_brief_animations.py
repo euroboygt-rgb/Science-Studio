@@ -2260,3 +2260,62 @@ MISSION_BRIEF_ANIMATIONS[48] = {
 }
 # End Day 48 Mission Brief Animation
 
+
+# Day 49 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[49] = {
+    "title": "Mission Brief: Electrical Energy to Motion",
+    "subtitle": "Day 49 • Motor Circuits",
+    "theme": "energy",
+    "slides": [
+        {
+            "icon": "⚙️",
+            "heading": "Today’s Mission",
+            "text": "Today we will demonstrate that electrical energy in a complete circuit can transform into motion.",
+            "caption": "A motor circuit is a system with parts that work together."
+        },
+        {
+            "icon": "🔋",
+            "heading": "Battery Starts the Circuit",
+            "text": "The battery is the power source for the circuit.",
+            "caption": "The battery provides electrical energy when the path is complete."
+        },
+        {
+            "icon": "🔘",
+            "heading": "Closed Switch",
+            "text": "A closed switch completes the circuit path.",
+            "caption": "Electrical energy can flow through a closed path."
+        },
+        {
+            "icon": "🧵",
+            "heading": "Wires Carry Energy",
+            "text": "Wires are conductors that allow electrical energy to flow to the motor.",
+            "caption": "Conductors help energy move through the system."
+        },
+        {
+            "icon": "🌀",
+            "heading": "Motor Transforms Energy",
+            "text": "The motor changes electrical energy into motion energy.",
+            "caption": "The motor is the transformation part."
+        },
+        {
+            "icon": "🌬️",
+            "heading": "Fan Blade Moves",
+            "text": "The fan blade spins because the motor produces motion.",
+            "caption": "The spinning blade is evidence of motion energy."
+        },
+        {
+            "icon": "🚫",
+            "heading": "What If the Path Is Open?",
+            "text": "If the switch is open or there is a gap, electrical energy will not flow to the motor.",
+            "caption": "No complete circuit means no motion."
+        },
+        {
+            "icon": "🎯",
+            "heading": "STAAR Strategy",
+            "text": "Trace the circuit from the battery to the motor. Then identify the output energy you can observe.",
+            "caption": "Electrical energy → motion energy."
+        }
+    ]
+}
+# End Day 49 Mission Brief Animation
+
