@@ -535,3 +535,153 @@
   transform-origin: 0 0;
 }
 
+
+
+/* Science Studio Magnetic Connection System V7 */
+
+.cb-magnet-indicator {
+  display: inline-block;
+  margin-top: 3px;
+  padding: 3px 8px;
+  border: 1px solid #673ab7;
+  border-radius: 999px;
+  background: #f2eaff;
+  color: #4b238e;
+  font-size: .74rem;
+  font-weight: 900;
+}
+
+
+/* =========================================================
+   TERMINAL MAGNET FIELD
+   ========================================================= */
+
+.cb-terminal.available {
+  fill: #fff5a8;
+  stroke: #7137cf;
+  stroke-width: 7;
+  filter:
+    drop-shadow(0 0 5px rgba(113,55,207,.95))
+    drop-shadow(0 0 10px rgba(113,55,207,.55));
+
+  animation:
+    cbMagnetTerminalGlow .45s ease-in-out infinite alternate;
+}
+
+
+.cb-terminal-help-ring.magnet-active {
+  fill: rgba(121, 72, 209, .10);
+  stroke: #9b6ae2;
+  stroke-width: 7;
+  opacity: 1;
+
+  animation:
+    cbMagnetFieldPulse .65s ease-in-out infinite alternate;
+}
+
+
+@keyframes cbMagnetTerminalGlow {
+  from {
+    stroke-width: 5;
+    opacity: .82;
+  }
+
+  to {
+    stroke-width: 9;
+    opacity: 1;
+  }
+}
+
+
+@keyframes cbMagnetFieldPulse {
+  from {
+    stroke-width: 4;
+    opacity: .32;
+  }
+
+  to {
+    stroke-width: 9;
+    opacity: .9;
+  }
+}
+
+
+/* =========================================================
+   WIRE END WHILE INSIDE MAGNETIC FIELD
+   ========================================================= */
+
+.cb-wire-end.cb-magnetic-end {
+  fill: #fff5a8;
+  stroke: #7137cf;
+  stroke-width: 6;
+
+  filter:
+    drop-shadow(0 0 5px rgba(113,55,207,.8));
+}
+
+
+/* =========================================================
+   SNAP CONFIRMATION
+   ========================================================= */
+
+.cb-terminal.cb-snap-pop {
+  fill: #caffd5 !important;
+  stroke: #087a35 !important;
+
+  animation:
+    cbSnapTerminal .55s ease-out;
+}
+
+
+@keyframes cbSnapTerminal {
+  0% {
+    stroke-width: 5;
+    opacity: .6;
+  }
+
+  35% {
+    stroke-width: 13;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-width: 5;
+    opacity: 1;
+  }
+}
+
+
+.cb-snap-label {
+  font-size: 17px;
+  font-weight: 900;
+  fill: #087a35;
+  stroke: #ffffff;
+  stroke-width: 4;
+  paint-order: stroke;
+  pointer-events: none;
+
+  animation:
+    cbSnapLabel .72s ease-out forwards;
+}
+
+
+@keyframes cbSnapLabel {
+  0% {
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* End Science Studio Magnetic Connection System V7 */
+

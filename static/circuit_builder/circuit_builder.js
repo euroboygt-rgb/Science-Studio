@@ -1,29 +1,63 @@
 (function () {
-  const root = document.querySelector("#scienceStudioCircuitBuilder");
-  if (!root || root.dataset.initialized === "true") return;
 
-  root.dataset.initialized = "true";
+  const root =
+    document.querySelector("#scienceStudioCircuitBuilder");
 
-  const board = root.querySelector("#cbBoard");
-  const componentLayer = root.querySelector("#cbComponentLayer");
-  const wireLayer = root.querySelector("#cbWireLayer");
-  const emptyMessage = root.querySelector("#cbEmptyMessage");
+  if (!root) return;
 
-  const testButton = root.querySelector("#cbTestCircuit");
-  const toggleSwitchButton = root.querySelector("#cbToggleSwitch");
-  const deleteButton = root.querySelector("#cbDeleteSelected");
-  const resetButton = root.querySelector("#cbResetBoard");
+  const board =
+    root.querySelector("#cbBoard");
 
-  const statusElement = root.querySelector("#cbCircuitStatus");
-  const countElement = root.querySelector("#cbObjectCount");
+  const componentLayer =
+    root.querySelector("#cbComponentLayer");
 
-  const inspectorEmpty = root.querySelector("#cbInspectorEmpty");
-  const inspectorContent = root.querySelector("#cbInspectorContent");
-  const inspectorTitle = root.querySelector("#cbInspectorTitle");
-  const inspectorDescription = root.querySelector("#cbInspectorDescription");
-  const inspectorTerminals = root.querySelector("#cbInspectorTerminals");
+  const wireLayer =
+    root.querySelector("#cbWireLayer");
 
-  const NS = "http://www.w3.org/2000/svg";
+  const emptyMessage =
+    root.querySelector("#cbEmptyMessage");
+
+  const testButton =
+    root.querySelector("#cbTestCircuit");
+
+  const toggleSwitchButton =
+    root.querySelector("#cbToggleSwitch");
+
+  const rotateButton =
+    root.querySelector("#cbRotateSelected");
+
+  const deleteButton =
+    root.querySelector("#cbDeleteSelected");
+
+  const resetButton =
+    root.querySelector("#cbResetBoard");
+
+  const statusElement =
+    root.querySelector("#cbCircuitStatus");
+
+  const countElement =
+    root.querySelector("#cbObjectCount");
+
+  const inspectorEmpty =
+    root.querySelector("#cbInspectorEmpty");
+
+  const inspectorContent =
+    root.querySelector("#cbInspectorContent");
+
+  const inspectorTitle =
+    root.querySelector("#cbInspectorTitle");
+
+  const inspectorDescription =
+    root.querySelector("#cbInspectorDescription");
+
+  const inspectorTerminals =
+    root.querySelector("#cbInspectorTerminals");
+
+  const NS =
+    "http://www.w3.org/2000/svg";
+
+  const MAGNET_RADIUS = 105;
+  const HARD_SNAP_RADIUS = 30;
 
   let nextId = 1;
 
@@ -32,102 +66,683 @@
     wires: [],
     selected: null,
     interaction: null,
+    snapCandidate: null,
     tested: false
   };
 
+
+  // =========================================================
+  // COMPONENT DEFINITIONS
+  // =========================================================
+
   const componentDefinitions = {
+
     battery: {
       label: "Battery",
-      description: "Power source with a positive (+) terminal and negative (−) terminal.",
+      description:
+        "Power source with a positive (+) terminal and negative (−) terminal.",
+
       terminals: [
-        { id: "positive", x: 0, y: -58, label: "+" },
-        { id: "negative", x: 0, y: 58, label: "−" }
+        {
+          id: "positive",
+          x: 0,
+          y: -58,
+          label: "+"
+        },
+        {
+          id: "negative",
+          x: 0,
+          y: 58,
+          label: "−"
+        }
       ]
     },
 
     bulb: {
       label: "Bulb",
-      description: "A load that transforms electrical energy into light and thermal energy.",
+      description:
+        "A load that transforms electrical energy into light and thermal energy.",
+
       terminals: [
-        { id: "a", x: -48, y: 32, label: "Terminal A" },
-        { id: "b", x: 48, y: 32, label: "Terminal B" }
+        {
+          id: "a",
+          x: -48,
+          y: 32,
+          label: "Terminal A"
+        },
+        {
+          id: "b",
+          x: 48,
+          y: 32,
+          label: "Terminal B"
+        }
       ]
     },
 
     switch: {
       label: "Switch",
-      description: "Controls whether the conducting path is open or closed.",
+      description:
+        "Controls whether the conducting path is open or closed.",
+
       terminals: [
-        { id: "a", x: -55, y: 12, label: "Terminal A" },
-        { id: "b", x: 55, y: 12, label: "Terminal B" }
+        {
+          id: "a",
+          x: -55,
+          y: 12,
+          label: "Terminal A"
+        },
+        {
+          id: "b",
+          x: 55,
+          y: 12,
+          label: "Terminal B"
+        }
       ]
     },
 
     motor: {
       label: "Motor",
-      description: "A load that transforms electrical energy into motion.",
+      description:
+        "A load that transforms electrical energy into motion.",
+
       terminals: [
-        { id: "a", x: -52, y: 36, label: "Terminal A" },
-        { id: "b", x: 52, y: 36, label: "Terminal B" }
+        {
+          id: "a",
+          x: -52,
+          y: 36,
+          label: "Terminal A"
+        },
+        {
+          id: "b",
+          x: 52,
+          y: 36,
+          label: "Terminal B"
+        }
       ]
     },
 
     speaker: {
       label: "Speaker",
-      description: "A load that transforms electrical energy into sound.",
+      description:
+        "A load that transforms electrical energy into sound.",
+
       terminals: [
-        { id: "a", x: -52, y: 34, label: "Terminal A" },
-        { id: "b", x: 52, y: 34, label: "Terminal B" }
+        {
+          id: "a",
+          x: -52,
+          y: 34,
+          label: "Terminal A"
+        },
+        {
+          id: "b",
+          x: 52,
+          y: 34,
+          label: "Terminal B"
+        }
       ]
     }
   };
 
-  function svgPoint(event) {
-    const pt = board.createSVGPoint();
-    pt.x = event.clientX;
-    pt.y = event.clientY;
 
-    const matrix = board.getScreenCTM();
-    if (!matrix) return { x: 500, y: 325 };
-
-    const transformed = pt.matrixTransform(matrix.inverse());
-
-    return {
-      x: Math.max(20, Math.min(980, transformed.x)),
-      y: Math.max(20, Math.min(630, transformed.y))
-    };
-  }
+  // =========================================================
+  // BASIC HELPERS
+  // =========================================================
 
   function uid(prefix) {
     return prefix + "-" + nextId++;
   }
 
-  function addComponent(type, x = 500, y = 325) {
-    if (!componentDefinitions[type]) return;
 
-    const component = {
-      id: uid(type),
-      type,
-      x,
-      y,
-      closed: type === "switch" ? false : undefined
+  function createSvg(tag, attrs = {}) {
+
+    const node =
+      document.createElementNS(
+        NS,
+        tag
+      );
+
+    Object.entries(attrs)
+      .forEach(
+        ([key, value]) => {
+          node.setAttribute(
+            key,
+            value
+          );
+        }
+      );
+
+    return node;
+  }
+
+
+  function textNode(
+    x,
+    y,
+    text,
+    options = {}
+  ) {
+
+    const node =
+      createSvg(
+        "text",
+        {
+          x,
+          y,
+
+          "text-anchor":
+            options.anchor ||
+            "middle",
+
+          "font-size":
+            options.size ||
+            16,
+
+          "font-weight":
+            options.weight ||
+            800,
+
+          fill:
+            options.fill ||
+            "#111"
+        }
+      );
+
+    node.textContent =
+      text;
+
+    return node;
+  }
+
+
+  function svgPoint(event) {
+
+    const pt =
+      board.createSVGPoint();
+
+    pt.x =
+      event.clientX;
+
+    pt.y =
+      event.clientY;
+
+    const matrix =
+      board.getScreenCTM();
+
+    if (!matrix) {
+      return {
+        x: 500,
+        y: 325
+      };
+    }
+
+    const transformed =
+      pt.matrixTransform(
+        matrix.inverse()
+      );
+
+    return {
+      x:
+        Math.max(
+          20,
+          Math.min(
+            980,
+            transformed.x
+          )
+        ),
+
+      y:
+        Math.max(
+          20,
+          Math.min(
+            630,
+            transformed.y
+          )
+        )
+    };
+  }
+
+
+  function getComponent(id) {
+
+    return state.components.find(
+      item =>
+        item.id === id
+    );
+  }
+
+
+  function getWire(id) {
+
+    return state.wires.find(
+      item =>
+        item.id === id
+    );
+  }
+
+
+  function terminalKey(
+    componentId,
+    terminalId
+  ) {
+
+    return (
+      componentId +
+      ":" +
+      terminalId
+    );
+  }
+
+
+  // =========================================================
+  // ONE AUTHORITATIVE ROTATION CALCULATION
+  // =========================================================
+
+  function rotateLocalPoint(
+    x,
+    y,
+    degrees
+  ) {
+
+    const radians =
+      degrees *
+      Math.PI /
+      180;
+
+    return {
+
+      x:
+        x *
+        Math.cos(radians)
+        -
+        y *
+        Math.sin(radians),
+
+      y:
+        x *
+        Math.sin(radians)
+        +
+        y *
+        Math.cos(radians)
+    };
+  }
+
+
+  // =========================================================
+  // ONE AUTHORITATIVE TERMINAL POSITION
+  // =========================================================
+
+  function terminalPosition(key) {
+
+    if (!key) return null;
+
+    const divider =
+      key.indexOf(":");
+
+    if (divider < 0) {
+      return null;
+    }
+
+    const componentId =
+      key.slice(
+        0,
+        divider
+      );
+
+    const terminalId =
+      key.slice(
+        divider + 1
+      );
+
+    const component =
+      getComponent(
+        componentId
+      );
+
+    if (!component) {
+      return null;
+    }
+
+    const definition =
+      componentDefinitions[
+        component.type
+      ];
+
+    if (!definition) {
+      return null;
+    }
+
+    const terminal =
+      definition.terminals.find(
+        item =>
+          item.id === terminalId
+      );
+
+    if (!terminal) {
+      return null;
+    }
+
+    const rotated =
+      rotateLocalPoint(
+        terminal.x,
+        terminal.y,
+        Number(
+          component.rotation ||
+          0
+        )
+      );
+
+    return {
+
+      x:
+        component.x +
+        rotated.x,
+
+      y:
+        component.y +
+        rotated.y
+    };
+  }
+
+
+  function terminalConnections(key) {
+
+    let count = 0;
+
+    state.wires.forEach(
+      wire => {
+
+        if (
+          wire.a.terminal === key
+        ) {
+          count += 1;
+        }
+
+        if (
+          wire.b.terminal === key
+        ) {
+          count += 1;
+        }
+      }
+    );
+
+    return count;
+  }
+
+
+  function nearestTerminal(
+    point,
+    radius = MAGNET_RADIUS
+  ) {
+
+    let closest = null;
+    let closestDistance = radius;
+
+    state.components.forEach(
+      component => {
+
+        const definition =
+          componentDefinitions[
+            component.type
+          ];
+
+        definition.terminals.forEach(
+          terminal => {
+
+            const key =
+              terminalKey(
+                component.id,
+                terminal.id
+              );
+
+            const position =
+              terminalPosition(
+                key
+              );
+
+            if (!position) return;
+
+            const distance =
+              Math.hypot(
+                position.x -
+                point.x,
+
+                position.y -
+                point.y
+              );
+
+            if (
+              distance <
+              closestDistance
+            ) {
+
+              closestDistance =
+                distance;
+
+              closest =
+                key;
+            }
+          }
+        );
+      }
+    );
+
+    return closest;
+  }
+
+
+  // =========================================================
+  // WIRE DISPLAY POSITION
+  // =========================================================
+
+  function wireEndpointPosition(
+    wire,
+    endName
+  ) {
+
+    const endpoint =
+      wire[endName];
+
+    /*
+      CONNECTED WIRE:
+      Always use current terminal coordinates.
+
+      Stored endpoint.x/y are ignored completely.
+    */
+
+    if (endpoint.terminal) {
+
+      const exact =
+        terminalPosition(
+          endpoint.terminal
+        );
+
+      if (exact) {
+        return exact;
+      }
+
+      endpoint.terminal =
+        null;
+    }
+
+
+    const normal = {
+
+      x:
+        Number(
+          endpoint.x
+        ) || 0,
+
+      y:
+        Number(
+          endpoint.y
+        ) || 0
     };
 
-    state.components.push(component);
-    state.tested = false;
 
-    selectObject("component", component.id);
+    /*
+      Magnetic attraction only applies
+      to the wire end currently being dragged.
+    */
+
+    if (
+      !state.interaction ||
+      state.interaction.type !==
+        "wire-end" ||
+      state.interaction.id !==
+        wire.id ||
+      state.interaction.end !==
+        endName ||
+      !state.snapCandidate
+    ) {
+
+      return normal;
+    }
+
+
+    const target =
+      terminalPosition(
+        state.snapCandidate
+      );
+
+    if (!target) {
+      return normal;
+    }
+
+
+    const dx =
+      target.x -
+      normal.x;
+
+    const dy =
+      target.y -
+      normal.y;
+
+    const distance =
+      Math.hypot(
+        dx,
+        dy
+      );
+
+
+    if (
+      distance <=
+      HARD_SNAP_RADIUS
+    ) {
+
+      return {
+        x: target.x,
+        y: target.y
+      };
+    }
+
+
+    if (
+      distance >=
+      MAGNET_RADIUS
+    ) {
+
+      return normal;
+    }
+
+
+    const closeness =
+      1 -
+      distance /
+      MAGNET_RADIUS;
+
+
+    const pull =
+      0.10 +
+      (
+        0.78 *
+        Math.pow(
+          closeness,
+          1.4
+        )
+      );
+
+
+    return {
+
+      x:
+        normal.x +
+        dx * pull,
+
+      y:
+        normal.y +
+        dy * pull
+    };
+  }
+
+
+  // =========================================================
+  // ADD OBJECTS
+  // =========================================================
+
+  function addComponent(
+    type,
+    x = 500,
+    y = 325
+  ) {
+
+    if (
+      !componentDefinitions[type]
+    ) {
+      return;
+    }
+
+    const component = {
+
+      id:
+        uid(type),
+
+      type,
+
+      x,
+
+      y,
+
+      rotation: 0,
+
+      closed:
+        type === "switch"
+          ? false
+          : undefined
+    };
+
+
+    state.components.push(
+      component
+    );
+
+    state.tested =
+      false;
+
+    state.selected = {
+      kind: "component",
+      id: component.id
+    };
+
     render();
   }
 
-  function addWire(x = 500, y = 325) {
+
+  function addWire(
+    x = 500,
+    y = 325
+  ) {
+
     const wire = {
-      id: uid("wire"),
+
+      id:
+        uid("wire"),
+
       a: {
         x: x - 70,
         y,
         terminal: null
       },
+
       b: {
         x: x + 70,
         y,
@@ -135,1649 +750,904 @@
       }
     };
 
-    state.wires.push(wire);
-    state.tested = false;
 
-    selectObject("wire", wire.id);
+    state.wires.push(
+      wire
+    );
+
+    state.tested =
+      false;
+
+    state.selected = {
+      kind: "wire",
+      id: wire.id
+    };
+
     render();
   }
 
-  function getComponent(id) {
-    return state.components.find(c => c.id === id);
-  }
 
-  function getWire(id) {
-    return state.wires.find(w => w.id === id);
-  }
+  // =========================================================
+  // SELECTION / STATUS / INSPECTOR
+  // =========================================================
 
-  function terminalKey(componentId, terminalId) {
-    return componentId + ":" + terminalId;
-  }
+  function setStatus(
+    message,
+    type = ""
+  ) {
 
-  function terminalPosition(key) {
-    const parts = key.split(":");
-    const component = getComponent(parts[0]);
+    statusElement.textContent =
+      message;
 
-    if (!component) return null;
+    statusElement.classList.remove(
+      "success",
+      "error"
+    );
 
-    const definition = componentDefinitions[component.type];
-
-    const terminal = definition.terminals.find(t => t.id === parts[1]);
-
-    if (!terminal) return null;
-
-    return {
-      x: component.x + terminal.x,
-      y: component.y + terminal.y
-    };
-  }
-
-  function endpointPosition(endpoint) {
-    if (endpoint.terminal) {
-      const snapped = terminalPosition(endpoint.terminal);
-
-      if (snapped) {
-        return snapped;
-      }
-
-      endpoint.terminal = null;
+    if (type) {
+      statusElement.classList.add(
+        type
+      );
     }
+  }
 
-    return {
-      x: endpoint.x,
-      y: endpoint.y
+
+  function selectObject(
+    kind,
+    id
+  ) {
+
+    state.selected = {
+      kind,
+      id
     };
+
+    render();
   }
 
-  function terminalConnections(key) {
-    let count = 0;
-
-    state.wires.forEach(wire => {
-      if (wire.a.terminal === key) count += 1;
-      if (wire.b.terminal === key) count += 1;
-    });
-
-    return count;
-  }
-
-  function nearestTerminal(point, maximumDistance = 35) {
-    let best = null;
-    let bestDistance = maximumDistance;
-
-    state.components.forEach(component => {
-      const definition = componentDefinitions[component.type];
-
-      definition.terminals.forEach(terminal => {
-        const key = terminalKey(component.id, terminal.id);
-
-        const pos = terminalPosition(key);
-
-        const distance = Math.hypot(
-          pos.x - point.x,
-          pos.y - point.y
-        );
-
-        if (distance < bestDistance) {
-          bestDistance = distance;
-          best = key;
-        }
-      });
-    });
-
-    return best;
-  }
-
-  function selectObject(kind, id) {
-    state.selected = { kind, id };
-    updateToolbar();
-    updateInspector();
-  }
 
   function clearSelection() {
-    state.selected = null;
-    updateToolbar();
-    updateInspector();
+
+    state.selected =
+      null;
+
+    render();
   }
 
-  function updateToolbar() {
-    const selected = state.selected;
 
-    deleteButton.disabled = !selected;
+  function updateToolbar() {
+
+    const selected =
+      state.selected;
+
+    deleteButton.disabled =
+      !selected;
+
+
+    /*
+      Keep rotate clickable.
+      It explains what to do if nothing is selected.
+    */
+
+    rotateButton.disabled =
+      false;
+
 
     if (
       selected &&
-      selected.kind === "component"
+      selected.kind ===
+        "component"
     ) {
-      const component = getComponent(selected.id);
+
+      const component =
+        getComponent(
+          selected.id
+        );
+
+
+      if (
+        component &&
+        component.type ===
+          "switch"
+      ) {
+
+        toggleSwitchButton.disabled =
+          false;
+
+        toggleSwitchButton.textContent =
+          component.closed
+            ? "Open Switch"
+            : "Close Switch";
+      }
+
+      else {
+
+        toggleSwitchButton.disabled =
+          true;
+
+        toggleSwitchButton.textContent =
+          "Toggle Switch";
+      }
+    }
+
+    else {
 
       toggleSwitchButton.disabled =
-        !component || component.type !== "switch";
-    } else {
-      toggleSwitchButton.disabled = true;
+        true;
+
+      toggleSwitchButton.textContent =
+        "Toggle Switch";
     }
   }
+
 
   function updateInspector() {
+
     if (!state.selected) {
-      inspectorEmpty.hidden = false;
-      inspectorContent.hidden = true;
+
+      inspectorEmpty.hidden =
+        false;
+
+      inspectorContent.hidden =
+        true;
+
       return;
     }
 
-    inspectorEmpty.hidden = true;
-    inspectorContent.hidden = false;
 
-    if (state.selected.kind === "wire") {
-      const wire = getWire(state.selected.id);
+    inspectorEmpty.hidden =
+      true;
+
+    inspectorContent.hidden =
+      false;
+
+
+    if (
+      state.selected.kind ===
+      "wire"
+    ) {
+
+      const wire =
+        getWire(
+          state.selected.id
+        );
 
       if (!wire) {
-        clearSelection();
-        return;
-      }
 
-      inspectorTitle.textContent = "Wire";
+        state.selected =
+          null;
 
-      inspectorDescription.textContent =
-        "Drag either round endpoint onto a component terminal. Connected endpoints turn green.";
-
-      inspectorTerminals.innerHTML = `
-        <div>
-          End A:
-          <strong>${wire.a.terminal ? "Connected" : "Not connected"}</strong>
-        </div>
-        <div>
-          End B:
-          <strong>${wire.b.terminal ? "Connected" : "Not connected"}</strong>
-        </div>
-      `;
-
-      return;
-    }
-
-    const component = getComponent(state.selected.id);
-
-    if (!component) {
-      clearSelection();
-      return;
-    }
-
-    const definition = componentDefinitions[component.type];
-
-    inspectorTitle.textContent = definition.label;
-    inspectorDescription.textContent = definition.description;
-
-    inspectorTerminals.innerHTML = definition.terminals.map(terminal => {
-      const key = terminalKey(component.id, terminal.id);
-      const count = terminalConnections(key);
-
-      return `
-        <div>
-          ${terminal.label}:
-          <strong>${count ? count + " wire connection" + (count === 1 ? "" : "s") : "not connected"}</strong>
-        </div>
-      `;
-    }).join("");
-
-    if (component.type === "switch") {
-      inspectorTerminals.innerHTML += `
-        <div>
-          Switch state:
-          <strong>${component.closed ? "CLOSED" : "OPEN"}</strong>
-        </div>
-      `;
-    }
-  }
-
-  function setStatus(message, type = "") {
-    statusElement.textContent = message;
-    statusElement.classList.remove("success", "error");
-
-    if (type) {
-      statusElement.classList.add(type);
-    }
-  }
-
-  function setSvgAttributes(node, attributes) {
-    Object.entries(attributes).forEach(([key, value]) => {
-      node.setAttribute(key, value);
-    });
-  }
-
-  function createSvg(tag, attributes = {}) {
-    const node = document.createElementNS(NS, tag);
-    setSvgAttributes(node, attributes);
-    return node;
-  }
-
-  function textNode(x, y, text, options = {}) {
-    const node = createSvg("text", {
-      x,
-      y,
-      "text-anchor": options.anchor || "middle",
-      "font-size": options.size || 16,
-      "font-weight": options.weight || 800,
-      fill: options.fill || "#111"
-    });
-
-    node.textContent = text;
-
-    return node;
-  }
-
-  function renderBattery(group, component) {
-    group.appendChild(createSvg("rect", {
-      x: -34,
-      y: -50,
-      width: 68,
-      height: 100,
-      rx: 12,
-      fill: "#ffc400",
-      stroke: "#111",
-      "stroke-width": 4
-    }));
-
-    group.appendChild(createSvg("rect", {
-      x: -14,
-      y: -63,
-      width: 28,
-      height: 13,
-      rx: 3,
-      fill: "#333",
-      stroke: "#111",
-      "stroke-width": 2
-    }));
-
-    group.appendChild(createSvg("rect", {
-      x: -14,
-      y: 50,
-      width: 28,
-      height: 13,
-      rx: 3,
-      fill: "#333",
-      stroke: "#111",
-      "stroke-width": 2
-    }));
-
-    group.appendChild(textNode(
-      0,
-      -18,
-      "BATTERY",
-      { size: 13 }
-    ));
-
-    group.appendChild(textNode(
-      0,
-      10,
-      "POWER",
-      { size: 12 }
-    ));
-
-    group.appendChild(textNode(
-      27,
-      -55,
-      "+",
-      {
-        size: 26,
-        fill: "#087a35",
-        weight: 900
-      }
-    ));
-
-    group.appendChild(textNode(
-      27,
-      64,
-      "−",
-      {
-        size: 26,
-        fill: "#b00020",
-        weight: 900
-      }
-    ));
-  }
-
-  function renderBulb(group) {
-    group.appendChild(createSvg("circle", {
-      cx: 0,
-      cy: -8,
-      r: 38,
-      class: "cb-bulb-glass"
-    }));
-
-    group.appendChild(createSvg("path", {
-      d: "M -14 -8 Q 0 -32 14 -8 Q 0 16 -14 -8",
-      fill: "none",
-      stroke: "#555",
-      "stroke-width": 4
-    }));
-
-    group.appendChild(createSvg("rect", {
-      x: -25,
-      y: 27,
-      width: 50,
-      height: 25,
-      rx: 5,
-      fill: "#f08a24",
-      stroke: "#111",
-      "stroke-width": 4
-    }));
-
-    group.appendChild(textNode(
-      0,
-      76,
-      "BULB",
-      { size: 15 }
-    ));
-  }
-
-  function renderSwitch(group, component) {
-    group.appendChild(createSvg("rect", {
-      x: -65,
-      y: -30,
-      width: 130,
-      height: 75,
-      rx: 14,
-      fill: "#fff",
-      stroke: "#111",
-      "stroke-width": 4
-    }));
-
-    group.appendChild(createSvg("circle", {
-      cx: -35,
-      cy: 12,
-      r: 7,
-      fill: "#111"
-    }));
-
-    group.appendChild(createSvg("circle", {
-      cx: 35,
-      cy: 12,
-      r: 7,
-      fill: "#111"
-    }));
-
-    group.appendChild(createSvg("line", {
-      x1: -35,
-      y1: 12,
-      x2: component.closed ? 35 : 28,
-      y2: component.closed ? 12 : -18,
-      stroke: "#111",
-      "stroke-width": 7,
-      "stroke-linecap": "round"
-    }));
-
-    group.appendChild(textNode(
-      0,
-      70,
-      component.closed ? "SWITCH CLOSED" : "SWITCH OPEN",
-      {
-        size: 14,
-        fill: component.closed ? "#087a35" : "#b00020"
-      }
-    ));
-  }
-
-  function renderMotor(group) {
-    group.appendChild(createSvg("rect", {
-      x: -55,
-      y: -42,
-      width: 110,
-      height: 82,
-      rx: 18,
-      fill: "#cfeaff",
-      stroke: "#111",
-      "stroke-width": 4
-    }));
-
-    group.appendChild(createSvg("circle", {
-      cx: 0,
-      cy: -2,
-      r: 28,
-      fill: "white",
-      stroke: "#111",
-      "stroke-width": 3
-    }));
-
-    const rotor = createSvg("g", {
-      class: "cb-motor-rotor"
-    });
-
-    rotor.appendChild(createSvg("line", {
-      x1: -20,
-      y1: -2,
-      x2: 20,
-      y2: -2,
-      stroke: "#4d8eaa",
-      "stroke-width": 6,
-      "stroke-linecap": "round"
-    }));
-
-    rotor.appendChild(createSvg("line", {
-      x1: 0,
-      y1: -22,
-      x2: 0,
-      y2: 18,
-      stroke: "#4d8eaa",
-      "stroke-width": 6,
-      "stroke-linecap": "round"
-    }));
-
-    group.appendChild(rotor);
-
-    group.appendChild(textNode(
-      0,
-      70,
-      "MOTOR",
-      { size: 15 }
-    ));
-  }
-
-  function renderSpeaker(group) {
-    group.appendChild(createSvg("rect", {
-      x: -55,
-      y: -42,
-      width: 110,
-      height: 80,
-      rx: 16,
-      fill: "#e1ddff",
-      stroke: "#111",
-      "stroke-width": 4
-    }));
-
-    group.appendChild(createSvg("circle", {
-      cx: -5,
-      cy: -2,
-      r: 26,
-      fill: "#444",
-      stroke: "#111",
-      "stroke-width": 3
-    }));
-
-    group.appendChild(createSvg("path", {
-      d: "M 26 -25 C 55 -15 55 10 26 20",
-      fill: "none",
-      stroke: "#a23ab8",
-      "stroke-width": 6,
-      class: "cb-speaker-wave"
-    }));
-
-    group.appendChild(createSvg("path", {
-      d: "M 36 -34 C 78 -18 78 15 36 30",
-      fill: "none",
-      stroke: "#a23ab8",
-      "stroke-width": 6,
-      class: "cb-speaker-wave"
-    }));
-
-    group.appendChild(textNode(
-      0,
-      70,
-      "SPEAKER",
-      { size: 15 }
-    ));
-  }
-
-  function renderComponent(component, poweredSet) {
-    const group = createSvg("g", {
-      class:
-        "cb-component" +
-        (
-          state.selected &&
-          state.selected.kind === "component" &&
-          state.selected.id === component.id
-            ? " selected"
-            : ""
-        ) +
-        (
-          poweredSet.has(component.id)
-            ? " powered"
-            : ""
-        ),
-      "data-id": component.id,
-      transform: `translate(${component.x} ${component.y})`
-    });
-
-    group.appendChild(createSvg("rect", {
-      x: -78,
-      y: -82,
-      width: 156,
-      height: 170,
-      rx: 18,
-      class: "cb-select-ring"
-    }));
-
-    if (component.type === "battery") {
-      renderBattery(group, component);
-    }
-
-    if (component.type === "bulb") {
-      renderBulb(group);
-    }
-
-    if (component.type === "switch") {
-      renderSwitch(group, component);
-    }
-
-    if (component.type === "motor") {
-      renderMotor(group);
-    }
-
-    if (component.type === "speaker") {
-      renderSpeaker(group);
-    }
-
-    const definition = componentDefinitions[component.type];
-
-    definition.terminals.forEach(terminal => {
-      const key = terminalKey(component.id, terminal.id);
-
-      const circle = createSvg("circle", {
-        cx: terminal.x,
-        cy: terminal.y,
-        r: 10,
-        class:
-          "cb-terminal" +
-          (
-            terminalConnections(key)
-              ? " connected"
-              : ""
-          ),
-        "data-terminal": key
-      });
-
-      group.appendChild(circle);
-    });
-
-    return group;
-  }
-
-  function renderWire(wire) {
-    const a = endpointPosition(wire.a);
-    const b = endpointPosition(wire.b);
-
-    const group = createSvg("g", {
-      class:
-        "cb-wire" +
-        (
-          state.selected &&
-          state.selected.kind === "wire" &&
-          state.selected.id === wire.id
-            ? " selected"
-            : ""
-        ),
-      "data-id": wire.id
-    });
-
-    const pathString =
-      `M ${a.x} ${a.y} ` +
-      `C ${(a.x + b.x) / 2} ${a.y}, ` +
-      `${(a.x + b.x) / 2} ${b.y}, ` +
-      `${b.x} ${b.y}`;
-
-    group.appendChild(createSvg("path", {
-      d: pathString,
-      class: "cb-wire-visible"
-    }));
-
-    group.appendChild(createSvg("path", {
-      d: pathString,
-      class: "cb-wire-hit",
-      "data-wire-body": wire.id
-    }));
-
-    group.appendChild(createSvg("circle", {
-      cx: a.x,
-      cy: a.y,
-      r: 11,
-      class:
-        "cb-wire-end" +
-        (wire.a.terminal ? " connected" : ""),
-      "data-wire": wire.id,
-      "data-end": "a"
-    }));
-
-    group.appendChild(createSvg("circle", {
-      cx: b.x,
-      cy: b.y,
-      r: 11,
-      class:
-        "cb-wire-end" +
-        (wire.b.terminal ? " connected" : ""),
-      "data-wire": wire.id,
-      "data-end": "b"
-    }));
-
-    return group;
-  }
-
-  function buildGraph(excludedInternalComponentId = null) {
-    const graph = new Map();
-
-    function ensure(node) {
-      if (!graph.has(node)) {
-        graph.set(node, new Set());
-      }
-    }
-
-    function connect(a, b) {
-      ensure(a);
-      ensure(b);
-
-      graph.get(a).add(b);
-      graph.get(b).add(a);
-    }
-
-    state.components.forEach(component => {
-      const definition = componentDefinitions[component.type];
-
-      definition.terminals.forEach(terminal => {
-        ensure(terminalKey(component.id, terminal.id));
-      });
-
-      if (
-        component.id === excludedInternalComponentId ||
-        component.type === "battery"
-      ) {
-        return;
-      }
-
-      if (
-        component.type === "switch" &&
-        !component.closed
-      ) {
-        return;
-      }
-
-      const terminals = definition.terminals;
-
-      if (terminals.length >= 2) {
-        connect(
-          terminalKey(component.id, terminals[0].id),
-          terminalKey(component.id, terminals[1].id)
-        );
-      }
-    });
-
-    state.wires.forEach(wire => {
-      if (wire.a.terminal && wire.b.terminal) {
-        connect(
-          wire.a.terminal,
-          wire.b.terminal
-        );
-      }
-    });
-
-    return graph;
-  }
-
-  function reachable(graph, start, target) {
-    if (!start || !target) return false;
-    if (start === target) return true;
-
-    const queue = [start];
-    const visited = new Set([start]);
-
-    while (queue.length) {
-      const current = queue.shift();
-
-      for (const next of graph.get(current) || []) {
-        if (next === target) {
-          return true;
-        }
-
-        if (!visited.has(next)) {
-          visited.add(next);
-          queue.push(next);
-        }
-      }
-    }
-
-    return false;
-  }
-
-  function evaluateCircuit() {
-    const batteries =
-      state.components.filter(c => c.type === "battery");
-
-    const loads =
-      state.components.filter(c =>
-        ["bulb", "motor", "speaker"].includes(c.type)
-      );
-
-    const fullGraph = buildGraph();
-
-    let completeCircuit = false;
-
-    for (const battery of batteries) {
-      const positive =
-        terminalKey(battery.id, "positive");
-
-      const negative =
-        terminalKey(battery.id, "negative");
-
-      if (reachable(fullGraph, positive, negative)) {
-        completeCircuit = true;
-        break;
-      }
-    }
-
-    const poweredLoads = new Set();
-
-    loads.forEach(load => {
-      const definition =
-        componentDefinitions[load.type];
-
-      const loadA =
-        terminalKey(load.id, definition.terminals[0].id);
-
-      const loadB =
-        terminalKey(load.id, definition.terminals[1].id);
-
-      const graphWithoutLoad =
-        buildGraph(load.id);
-
-      batteries.forEach(battery => {
-        const positive =
-          terminalKey(battery.id, "positive");
-
-        const negative =
-          terminalKey(battery.id, "negative");
-
-        const directionOne =
-          reachable(graphWithoutLoad, positive, loadA) &&
-          reachable(graphWithoutLoad, loadB, negative);
-
-        const directionTwo =
-          reachable(graphWithoutLoad, positive, loadB) &&
-          reachable(graphWithoutLoad, loadA, negative);
-
-        if (directionOne || directionTwo) {
-          poweredLoads.add(load.id);
-        }
-      });
-    });
-
-    const batteryExists = batteries.length > 0;
-
-    const positiveConnected = batteries.some(battery =>
-      terminalConnections(
-        terminalKey(battery.id, "positive")
-      ) > 0
-    );
-
-    const negativeConnected = batteries.some(battery =>
-      terminalConnections(
-        terminalKey(battery.id, "negative")
-      ) > 0
-    );
-
-    return {
-      completeCircuit,
-      poweredLoads,
-      batteryExists,
-      positiveConnected,
-      negativeConnected,
-      loadExists: loads.length > 0
-    };
-  }
-
-  function updateMissionChecks(result) {
-    const checks = [
-      ["#cbCheckBattery", result.batteryExists, "Battery on board"],
-      ["#cbCheckPositive", result.positiveConnected, "Wire connected to +"],
-      ["#cbCheckNegative", result.negativeConnected, "Wire connected to −"],
-      ["#cbCheckLoad", result.loadExists, "Load in the circuit"],
-      ["#cbCheckComplete", result.completeCircuit, "Complete conducting path"]
-    ];
-
-    checks.forEach(([selector, passed, text]) => {
-      const element = root.querySelector(selector);
-
-      element.textContent =
-        (passed ? "✓ " : "○ ") + text;
-
-      element.style.color =
-        passed ? "#087a35" : "";
-    });
-  }
-
-  function testCircuit() {
-    state.tested = true;
-
-    const result = evaluateCircuit();
-
-    updateMissionChecks(result);
-
-    if (!result.batteryExists) {
-      setStatus(
-        "Add a battery first. A circuit needs a power source.",
-        "error"
-      );
-    }
-
-    else if (!result.positiveConnected) {
-      setStatus(
-        "Connect a wire to the battery's positive (+) terminal.",
-        "error"
-      );
-    }
-
-    else if (!result.negativeConnected) {
-      setStatus(
-        "Your circuit needs a return wire connected to the battery's negative (−) terminal.",
-        "error"
-      );
-    }
-
-    else if (!result.loadExists) {
-      setStatus(
-        "Add a load such as a bulb, motor, or speaker.",
-        "error"
-      );
-    }
-
-    else if (!result.completeCircuit) {
-      setStatus(
-        "The path is incomplete. Check for loose wire ends and open switches.",
-        "error"
-      );
-    }
-
-    else if (!result.poweredLoads.size) {
-      setStatus(
-        "A complete path exists, but no load is correctly placed in the powered path.",
-        "error"
-      );
-    }
-
-    else {
-      const names = [];
-
-      result.poweredLoads.forEach(id => {
-        const component = getComponent(id);
-
-        if (component) {
-          names.push(
-            componentDefinitions[component.type].label
-          );
-        }
-      });
-
-      setStatus(
-        "Circuit complete! Powered load" +
-        (names.length === 1 ? ": " : "s: ") +
-        names.join(", ") +
-        ".",
-        "success"
-      );
-    }
-
-    render(result.poweredLoads);
-  }
-
-  function render(poweredLoadsOverride = null) {
-    const result =
-      poweredLoadsOverride === null
-        ? (
-            state.tested
-              ? evaluateCircuit()
-              : { poweredLoads: new Set() }
-          )
-        : { poweredLoads: poweredLoadsOverride };
-
-    wireLayer.innerHTML = "";
-    componentLayer.innerHTML = "";
-
-    state.wires.forEach(wire => {
-      wireLayer.appendChild(
-        renderWire(wire)
-      );
-    });
-
-    state.components.forEach(component => {
-      componentLayer.appendChild(
-        renderComponent(
-          component,
-          result.poweredLoads
-        )
-      );
-    });
-
-    emptyMessage.style.display =
-      (
-        state.components.length === 0 &&
-        state.wires.length === 0
-      )
-        ? ""
-        : "none";
-
-    countElement.textContent =
-      state.components.length +
-      " part" +
-      (state.components.length === 1 ? "" : "s") +
-      " • " +
-      state.wires.length +
-      " wire" +
-      (state.wires.length === 1 ? "" : "s");
-
-    updateToolbar();
-    updateInspector();
-
-    if (!state.tested) {
-      updateMissionChecks(
-        evaluateCircuit()
-      );
-    }
-  }
-
-  function deleteSelected() {
-    if (!state.selected) return;
-
-    if (state.selected.kind === "wire") {
-      state.wires =
-        state.wires.filter(
-          wire => wire.id !== state.selected.id
-        );
-    }
-
-    else {
-      const componentId =
-        state.selected.id;
-
-      state.components =
-        state.components.filter(
-          component => component.id !== componentId
-        );
-
-      state.wires.forEach(wire => {
-        if (
-          wire.a.terminal &&
-          wire.a.terminal.startsWith(componentId + ":")
-        ) {
-          const old = endpointPosition(wire.a);
-          wire.a.terminal = null;
-          wire.a.x = old.x;
-          wire.a.y = old.y;
-        }
-
-        if (
-          wire.b.terminal &&
-          wire.b.terminal.startsWith(componentId + ":")
-        ) {
-          const old = endpointPosition(wire.b);
-          wire.b.terminal = null;
-          wire.b.x = old.x;
-          wire.b.y = old.y;
-        }
-      });
-    }
-
-    state.selected = null;
-    state.tested = false;
-
-    setStatus(
-      "Item deleted. Test the circuit again when ready."
-    );
-
-    render();
-  }
-
-  function resetBoard() {
-    if (
-      state.components.length ||
-      state.wires.length
-    ) {
-      const okay =
-        window.confirm(
-          "Clear every component and wire from the Circuit Builder?"
-        );
-
-      if (!okay) return;
-    }
-
-    state.components = [];
-    state.wires = [];
-    state.selected = null;
-    state.interaction = null;
-    state.tested = false;
-
-    setStatus(
-      "Board reset. Add parts to begin."
-    );
-
-    render();
-  }
-
-  function toggleSelectedSwitch() {
-    if (
-      !state.selected ||
-      state.selected.kind !== "component"
-    ) {
-      return;
-    }
-
-    const component =
-      getComponent(state.selected.id);
-
-    if (
-      !component ||
-      component.type !== "switch"
-    ) {
-      return;
-    }
-
-    component.closed =
-      !component.closed;
-
-    state.tested = false;
-
-    setStatus(
-      component.closed
-        ? "Switch closed. Test the circuit."
-        : "Switch opened. The path through this switch is now broken."
-    );
-
-    render();
-  }
-
-  function beginComponentDrag(componentId, point) {
-    const component =
-      getComponent(componentId);
-
-    if (!component) return;
-
-    state.interaction = {
-      type: "component",
-      id: componentId,
-      offsetX: point.x - component.x,
-      offsetY: point.y - component.y
-    };
-
-    selectObject("component", componentId);
-  }
-
-  function beginWireEndpointDrag(wireId, endName) {
-    const wire = getWire(wireId);
-
-    if (!wire) return;
-
-    const endpoint =
-      wire[endName];
-
-    const pos =
-      endpointPosition(endpoint);
-
-    endpoint.terminal = null;
-    endpoint.x = pos.x;
-    endpoint.y = pos.y;
-
-    state.interaction = {
-      type: "wire-end",
-      id: wireId,
-      end: endName
-    };
-
-    selectObject("wire", wireId);
-    state.tested = false;
-  }
-
-  function beginWireBodyDrag(wireId, point) {
-    const wire = getWire(wireId);
-
-    if (!wire) return;
-
-    const a =
-      endpointPosition(wire.a);
-
-    const b =
-      endpointPosition(wire.b);
-
-    if (wire.a.terminal || wire.b.terminal) {
-      selectObject("wire", wireId);
-
-      setStatus(
-        "Disconnect both wire ends before moving the entire wire."
-      );
-
-      return;
-    }
-
-    state.interaction = {
-      type: "wire-body",
-      id: wireId,
-      startX: point.x,
-      startY: point.y,
-      aStart: { ...a },
-      bStart: { ...b }
-    };
-
-    selectObject("wire", wireId);
-  }
-
-  board.addEventListener("pointerdown", event => {
-    const point = svgPoint(event);
-
-    const endpoint =
-      event.target.closest(".cb-wire-end");
-
-    if (endpoint) {
-      beginWireEndpointDrag(
-        endpoint.dataset.wire,
-        endpoint.dataset.end
-      );
-
-      board.setPointerCapture?.(event.pointerId);
-      event.preventDefault();
-      return;
-    }
-
-    const wireBody =
-      event.target.closest(".cb-wire-hit");
-
-    if (wireBody) {
-      beginWireBodyDrag(
-        wireBody.dataset.wireBody,
-        point
-      );
-
-      board.setPointerCapture?.(event.pointerId);
-      event.preventDefault();
-      return;
-    }
-
-    const component =
-      event.target.closest(".cb-component");
-
-    if (component) {
-      beginComponentDrag(
-        component.dataset.id,
-        point
-      );
-
-      board.setPointerCapture?.(event.pointerId);
-      event.preventDefault();
-      return;
-    }
-
-    clearSelection();
-    render();
-  });
-
-  board.addEventListener("pointermove", event => {
-    if (!state.interaction) return;
-
-    const point =
-      svgPoint(event);
-
-    if (state.interaction.type === "component") {
-      const component =
-        getComponent(state.interaction.id);
-
-      if (!component) return;
-
-      component.x =
-        Math.max(
-          90,
-          Math.min(
-            910,
-            point.x - state.interaction.offsetX
-          )
-        );
-
-      component.y =
-        Math.max(
-          90,
-          Math.min(
-            560,
-            point.y - state.interaction.offsetY
-          )
-        );
-    }
-
-    if (state.interaction.type === "wire-end") {
-      const wire =
-        getWire(state.interaction.id);
-
-      if (!wire) return;
-
-      const endpoint =
-        wire[state.interaction.end];
-
-      endpoint.x = point.x;
-      endpoint.y = point.y;
-    }
-
-    if (state.interaction.type === "wire-body") {
-      const wire =
-        getWire(state.interaction.id);
-
-      if (!wire) return;
-
-      const dx =
-        point.x - state.interaction.startX;
-
-      const dy =
-        point.y - state.interaction.startY;
-
-      wire.a.x =
-        state.interaction.aStart.x + dx;
-
-      wire.a.y =
-        state.interaction.aStart.y + dy;
-
-      wire.b.x =
-        state.interaction.bStart.x + dx;
-
-      wire.b.y =
-        state.interaction.bStart.y + dy;
-    }
-
-    state.tested = false;
-    render();
-  });
-
-  function finishInteraction(event) {
-    if (!state.interaction) return;
-
-    if (state.interaction.type === "wire-end") {
-      const wire =
-        getWire(state.interaction.id);
-
-      if (wire) {
-        const endpoint =
-          wire[state.interaction.end];
-
-        const point =
-          endpointPosition(endpoint);
-
-        const terminal =
-          nearestTerminal(point, 38);
-
-        if (terminal) {
-          endpoint.terminal =
-            terminal;
-
-          const snap =
-            terminalPosition(terminal);
-
-          endpoint.x =
-            snap.x;
-
-          endpoint.y =
-            snap.y;
-
-          setStatus(
-            "Wire snapped to terminal."
-          );
-        }
-      }
-    }
-
-    state.interaction = null;
-    state.tested = false;
-
-    try {
-      board.releasePointerCapture?.(
-        event.pointerId
-      );
-    } catch (_) {}
-
-    render();
-  }
-
-  board.addEventListener(
-    "pointerup",
-    finishInteraction
-  );
-
-  board.addEventListener(
-    "pointercancel",
-    finishInteraction
-  );
-
-  root.querySelectorAll(".cb-part").forEach(button => {
-    const type =
-      button.dataset.component;
-
-    button.addEventListener("click", () => {
-      if (type === "wire") {
-        addWire();
-      } else {
-        addComponent(type);
-      }
-    });
-
-    button.addEventListener("dragstart", event => {
-      event.dataTransfer.setData(
-        "text/plain",
-        type
-      );
-
-      event.dataTransfer.effectAllowed =
-        "copy";
-    });
-  });
-
-  board.addEventListener("dragover", event => {
-    event.preventDefault();
-    event.dataTransfer.dropEffect = "copy";
-  });
-
-  board.addEventListener("drop", event => {
-    event.preventDefault();
-
-    const type =
-      event.dataTransfer.getData("text/plain");
-
-    if (!type) return;
-
-    const point =
-      svgPoint(event);
-
-    if (type === "wire") {
-      addWire(point.x, point.y);
-    } else {
-      addComponent(
-        type,
-        Math.max(90, Math.min(910, point.x)),
-        Math.max(90, Math.min(560, point.y))
-      );
-    }
-  });
-
-  testButton.addEventListener(
-    "click",
-    testCircuit
-  );
-
-  toggleSwitchButton.addEventListener(
-    "click",
-    toggleSelectedSwitch
-  );
-
-  deleteButton.addEventListener(
-    "click",
-    deleteSelected
-  );
-
-  resetButton.addEventListener(
-    "click",
-    resetBoard
-  );
-
-  root.addEventListener("keydown", event => {
-    const tag =
-      event.target.tagName.toLowerCase();
-
-    if (
-      tag === "input" ||
-      tag === "textarea" ||
-      tag === "select"
-    ) {
-      return;
-    }
-
-    if (
-      event.key === "Delete" ||
-      event.key === "Backspace"
-    ) {
-      if (state.selected) {
-        event.preventDefault();
-        deleteSelected();
-      }
-    }
-  });
-
-
-  // Science Studio Single Rotation Controller V4
-
-  /*
-    Earlier development versions attached more than one Rotate handler.
-
-    We clone the button here. Cloning removes every old direct click listener.
-    Then our new listener stops the click before any older delegated listener
-    can receive it.
-
-    Result: ONE click = exactly 90 degrees.
-  */
-
-  const oldRotateControl =
-    root.querySelector("#cbRotateSelected");
-
-  if (oldRotateControl) {
-    const cleanRotateControl =
-      oldRotateControl.cloneNode(true);
-
-    oldRotateControl.replaceWith(
-      cleanRotateControl
-    );
-
-    cleanRotateControl.disabled = false;
-
-    cleanRotateControl.addEventListener(
-      "click",
-      function(event) {
-        event.preventDefault();
-
-        /*
-          Critical:
-          prevent old delegated Rotate handlers on #scienceStudioCircuitBuilder
-          from also firing.
-        */
-        event.stopPropagation();
-        event.stopImmediatePropagation();
-
-        if (
-          !state.selected ||
-          state.selected.kind !== "component"
-        ) {
-          setStatus(
-            "Select a battery, bulb, switch, motor, or speaker first.",
-            "error"
-          );
-
-          return;
-        }
-
-        const component =
-          getComponent(
-            state.selected.id
-          );
-
-        if (!component) {
-          setStatus(
-            "Click the component again, then press Rotate 90°.",
-            "error"
-          );
-
-          return;
-        }
-
-        const oldAngle =
-          Number(component.rotation || 0);
-
-        const newAngle =
-          (oldAngle + 90) % 360;
-
-        component.rotation =
-          newAngle;
-
-        state.tested = false;
-
-        /*
-          Preserve selection.
-        */
-        state.selected = {
-          kind: "component",
-          id: component.id
-        };
-
-        /*
-          Redraw the component AND every attached wire.
-        */
-        render();
-
-        /*
-          Refresh controls and Inspector after redraw.
-        */
-        updateToolbar();
         updateInspector();
 
-        setStatus(
-          componentDefinitions[component.type].label +
-          " rotated: " +
-          oldAngle +
-          "° → " +
-          newAngle +
-          "°",
-          "success"
-        );
-
-        console.log(
-          "Science Studio rotation:",
-          component.id,
-          oldAngle,
-          "->",
-          newAngle
-        );
+        return;
       }
-    );
-  }
-
-  // End Science Studio Single Rotation Controller V4
 
 
-  // Science Studio Authoritative Rotating Renderer V6
+      inspectorTitle.textContent =
+        "Wire";
 
-  /*
-    This replaces the visual component renderer used by render().
-
-    OUTER GROUP:
-      controls where the item sits on the board.
-
-    INNER GROUP:
-      physically rotates the item around its own center.
-
-    The component body AND its electrical terminals are inside
-    the rotating group, so the picture and connection points
-    always rotate together.
-  */
-
-  renderComponent = function(component, poweredSet) {
-
-    const angle =
-      Number(component.rotation || 0);
-
-    const isSelected =
-      state.selected &&
-      state.selected.kind === "component" &&
-      state.selected.id === component.id;
-
-    const isPowered =
-      poweredSet.has(component.id);
-
-    // --------------------------------------------------------
-    // POSITION GROUP
-    // --------------------------------------------------------
-
-    const positionGroup = createSvg("g", {
-      class:
-        "cb-component" +
-        (isSelected ? " selected" : "") +
-        (isPowered ? " powered" : ""),
-
-      "data-id": component.id,
-      "data-rotation": angle,
-
-      transform:
-        "translate(" +
-        component.x +
-        " " +
-        component.y +
-        ")"
-    });
+      inspectorDescription.textContent =
+        "Drag either round endpoint near a terminal. Magnetic terminals pull the wire into place.";
 
 
-    // --------------------------------------------------------
-    // ROTATION GROUP
-    // --------------------------------------------------------
+      inspectorTerminals.innerHTML =
+        `
+          <div>
+            End A:
+            <strong>
+              ${
+                wire.a.terminal
+                  ? "Connected"
+                  : "Not connected"
+              }
+            </strong>
+          </div>
 
-    const rotationGroup = createSvg("g", {
-      class: "cb-component-visual-rotation-v6",
+          <div>
+            End B:
+            <strong>
+              ${
+                wire.b.terminal
+                  ? "Connected"
+                  : "Not connected"
+              }
+            </strong>
+          </div>
+        `;
 
-      "data-angle": angle,
-
-      transform:
-        "rotate(" +
-        angle +
-        " 0 0)"
-    });
-
-
-    // --------------------------------------------------------
-    // SELECTION BOX
-    // --------------------------------------------------------
-
-    rotationGroup.appendChild(
-      createSvg("rect", {
-        x: -78,
-        y: -82,
-        width: 156,
-        height: 170,
-        rx: 18,
-        class: "cb-select-ring"
-      })
-    );
-
-
-    // --------------------------------------------------------
-    // DRAW COMPONENT
-    // --------------------------------------------------------
-
-    if (component.type === "battery") {
-      renderBattery(
-        rotationGroup,
-        component
-      );
-    }
-
-    else if (component.type === "bulb") {
-      renderBulb(
-        rotationGroup
-      );
-    }
-
-    else if (component.type === "switch") {
-      renderSwitch(
-        rotationGroup,
-        component
-      );
-    }
-
-    else if (component.type === "motor") {
-      renderMotor(
-        rotationGroup
-      );
-    }
-
-    else if (component.type === "speaker") {
-      renderSpeaker(
-        rotationGroup
-      );
+      return;
     }
 
 
-    // --------------------------------------------------------
-    // DRAW ELECTRICAL TERMINALS
-    // Terminals rotate with the component.
-    // --------------------------------------------------------
+    const component =
+      getComponent(
+        state.selected.id
+      );
+
+    if (!component) {
+
+      state.selected =
+        null;
+
+      updateInspector();
+
+      return;
+    }
+
 
     const definition =
       componentDefinitions[
         component.type
       ];
 
+
+    inspectorTitle.textContent =
+      definition.label;
+
+    inspectorDescription.textContent =
+      definition.description;
+
+
+    inspectorTerminals.innerHTML =
+      definition.terminals
+        .map(
+          terminal => {
+
+            const key =
+              terminalKey(
+                component.id,
+                terminal.id
+              );
+
+            const count =
+              terminalConnections(
+                key
+              );
+
+            return `
+              <div>
+                ${terminal.label}:
+                <strong>
+                  ${
+                    count
+                      ? count +
+                        " wire connection" +
+                        (
+                          count === 1
+                            ? ""
+                            : "s"
+                        )
+                      : "not connected"
+                  }
+                </strong>
+              </div>
+            `;
+          }
+        )
+        .join("");
+
+
+    inspectorTerminals.innerHTML +=
+      `
+        <div>
+          Rotation:
+          <strong>
+            ${component.rotation}°
+          </strong>
+        </div>
+      `;
+
+
+    if (
+      component.type ===
+      "switch"
+    ) {
+
+      inspectorTerminals.innerHTML +=
+        `
+          <div>
+            Switch:
+            <strong>
+              ${
+                component.closed
+                  ? "CLOSED"
+                  : "OPEN"
+              }
+            </strong>
+          </div>
+        `;
+    }
+  }
+
+
+  // =========================================================
+  // COMPONENT DRAWINGS
+  // =========================================================
+
+  function renderBattery(group) {
+
+    group.appendChild(
+      createSvg(
+        "rect",
+        {
+          x: -34,
+          y: -50,
+          width: 68,
+          height: 100,
+          rx: 12,
+          fill: "#ffc400",
+          stroke: "#111",
+          "stroke-width": 4
+        }
+      )
+    );
+
+
+    group.appendChild(
+      createSvg(
+        "rect",
+        {
+          x: -14,
+          y: -63,
+          width: 28,
+          height: 13,
+          rx: 3,
+          fill: "#333",
+          stroke: "#111",
+          "stroke-width": 2
+        }
+      )
+    );
+
+
+    group.appendChild(
+      createSvg(
+        "rect",
+        {
+          x: -14,
+          y: 50,
+          width: 28,
+          height: 13,
+          rx: 3,
+          fill: "#333",
+          stroke: "#111",
+          "stroke-width": 2
+        }
+      )
+    );
+
+
+    group.appendChild(
+      textNode(
+        0,
+        -18,
+        "BATTERY",
+        {
+          size: 13
+        }
+      )
+    );
+
+
+    group.appendChild(
+      textNode(
+        0,
+        10,
+        "POWER",
+        {
+          size: 12
+        }
+      )
+    );
+
+
+    group.appendChild(
+      textNode(
+        27,
+        -55,
+        "+",
+        {
+          size: 26,
+          fill: "#087a35"
+        }
+      )
+    );
+
+
+    group.appendChild(
+      textNode(
+        27,
+        64,
+        "−",
+        {
+          size: 26,
+          fill: "#b00020"
+        }
+      )
+    );
+  }
+
+
+  function renderBulb(group) {
+
+    group.appendChild(
+      createSvg(
+        "circle",
+        {
+          cx: 0,
+          cy: -8,
+          r: 38,
+          class: "cb-bulb-glass"
+        }
+      )
+    );
+
+
+    group.appendChild(
+      createSvg(
+        "path",
+        {
+          d:
+            "M -14 -8 Q 0 -32 14 -8 Q 0 16 -14 -8",
+
+          fill: "none",
+          stroke: "#555",
+          "stroke-width": 4
+        }
+      )
+    );
+
+
+    group.appendChild(
+      createSvg(
+        "rect",
+        {
+          x: -25,
+          y: 27,
+          width: 50,
+          height: 25,
+          rx: 5,
+          fill: "#f08a24",
+          stroke: "#111",
+          "stroke-width": 4
+        }
+      )
+    );
+
+
+    group.appendChild(
+      textNode(
+        0,
+        76,
+        "BULB",
+        {
+          size: 15
+        }
+      )
+    );
+  }
+
+
+  function renderSwitch(
+    group,
+    component
+  ) {
+
+    group.appendChild(
+      createSvg(
+        "rect",
+        {
+          x: -65,
+          y: -30,
+          width: 130,
+          height: 75,
+          rx: 14,
+          fill: "#fff",
+          stroke: "#111",
+          "stroke-width": 4
+        }
+      )
+    );
+
+
+    group.appendChild(
+      createSvg(
+        "circle",
+        {
+          cx: -35,
+          cy: 12,
+          r: 7,
+          fill: "#111"
+        }
+      )
+    );
+
+
+    group.appendChild(
+      createSvg(
+        "circle",
+        {
+          cx: 35,
+          cy: 12,
+          r: 7,
+          fill: "#111"
+        }
+      )
+    );
+
+
+    group.appendChild(
+      createSvg(
+        "line",
+        {
+          x1: -35,
+          y1: 12,
+
+          x2:
+            component.closed
+              ? 35
+              : 28,
+
+          y2:
+            component.closed
+              ? 12
+              : -18,
+
+          stroke: "#111",
+
+          "stroke-width": 7,
+
+          "stroke-linecap":
+            "round"
+        }
+      )
+    );
+
+
+    group.appendChild(
+      textNode(
+        0,
+        70,
+
+        component.closed
+          ? "SWITCH CLOSED"
+          : "SWITCH OPEN",
+
+        {
+          size: 14,
+
+          fill:
+            component.closed
+              ? "#087a35"
+              : "#b00020"
+        }
+      )
+    );
+
+
+    group.appendChild(
+      createSvg(
+        "rect",
+        {
+          x: -42,
+          y: -27,
+          width: 84,
+          height: 62,
+          rx: 12,
+          fill: "transparent",
+          "data-switch-toggle":
+            component.id,
+          class:
+            "cb-switch-toggle-hit"
+        }
+      )
+    );
+  }
+
+
+  function renderMotor(group) {
+
+    group.appendChild(
+      createSvg(
+        "rect",
+        {
+          x: -55,
+          y: -42,
+          width: 110,
+          height: 82,
+          rx: 18,
+          fill: "#cfeaff",
+          stroke: "#111",
+          "stroke-width": 4
+        }
+      )
+    );
+
+
+    group.appendChild(
+      createSvg(
+        "circle",
+        {
+          cx: 0,
+          cy: -2,
+          r: 28,
+          fill: "white",
+          stroke: "#111",
+          "stroke-width": 3
+        }
+      )
+    );
+
+
+    const rotor =
+      createSvg(
+        "g",
+        {
+          class:
+            "cb-motor-rotor"
+        }
+      );
+
+
+    rotor.appendChild(
+      createSvg(
+        "line",
+        {
+          x1: -20,
+          y1: -2,
+          x2: 20,
+          y2: -2,
+          stroke: "#4d8eaa",
+          "stroke-width": 6,
+          "stroke-linecap":
+            "round"
+        }
+      )
+    );
+
+
+    rotor.appendChild(
+      createSvg(
+        "line",
+        {
+          x1: 0,
+          y1: -22,
+          x2: 0,
+          y2: 18,
+          stroke: "#4d8eaa",
+          "stroke-width": 6,
+          "stroke-linecap":
+            "round"
+        }
+      )
+    );
+
+
+    group.appendChild(
+      rotor
+    );
+
+
+    group.appendChild(
+      textNode(
+        0,
+        70,
+        "MOTOR",
+        {
+          size: 15
+        }
+      )
+    );
+  }
+
+
+  function renderSpeaker(group) {
+
+    group.appendChild(
+      createSvg(
+        "rect",
+        {
+          x: -55,
+          y: -42,
+          width: 110,
+          height: 80,
+          rx: 16,
+          fill: "#e1ddff",
+          stroke: "#111",
+          "stroke-width": 4
+        }
+      )
+    );
+
+
+    group.appendChild(
+      createSvg(
+        "circle",
+        {
+          cx: -5,
+          cy: -2,
+          r: 26,
+          fill: "#444",
+          stroke: "#111",
+          "stroke-width": 3
+        }
+      )
+    );
+
+
+    group.appendChild(
+      createSvg(
+        "path",
+        {
+          d:
+            "M 26 -25 C 55 -15 55 10 26 20",
+
+          fill: "none",
+          stroke: "#a23ab8",
+          "stroke-width": 6,
+          class:
+            "cb-speaker-wave"
+        }
+      )
+    );
+
+
+    group.appendChild(
+      textNode(
+        0,
+        70,
+        "SPEAKER",
+        {
+          size: 15
+        }
+      )
+    );
+  }
+
+
+  // =========================================================
+  // ONE COMPONENT RENDERER
+  // =========================================================
+
+  function renderComponent(
+    component,
+    poweredLoads
+  ) {
+
+    const selected =
+      state.selected &&
+      state.selected.kind ===
+        "component" &&
+      state.selected.id ===
+        component.id;
+
+
+    const powered =
+      poweredLoads.has(
+        component.id
+      );
+
+
+    const outer =
+      createSvg(
+        "g",
+        {
+          class:
+            "cb-component" +
+            (
+              selected
+                ? " selected"
+                : ""
+            ) +
+            (
+              powered
+                ? " powered"
+                : ""
+            ),
+
+          "data-id":
+            component.id,
+
+          transform:
+            "translate(" +
+            component.x +
+            " " +
+            component.y +
+            ")"
+        }
+      );
+
+
+    const rotation =
+      createSvg(
+        "g",
+        {
+          class:
+            "cb-component-rotation-layer",
+
+          transform:
+            "rotate(" +
+            component.rotation +
+            " 0 0)"
+        }
+      );
+
+
+    rotation.appendChild(
+      createSvg(
+        "rect",
+        {
+          x: -78,
+          y: -82,
+          width: 156,
+          height: 170,
+          rx: 18,
+          class:
+            "cb-select-ring"
+        }
+      )
+    );
+
+
+    if (
+      component.type ===
+      "battery"
+    ) {
+      renderBattery(
+        rotation
+      );
+    }
+
+
+    if (
+      component.type ===
+      "bulb"
+    ) {
+      renderBulb(
+        rotation
+      );
+    }
+
+
+    if (
+      component.type ===
+      "switch"
+    ) {
+      renderSwitch(
+        rotation,
+        component
+      );
+    }
+
+
+    if (
+      component.type ===
+      "motor"
+    ) {
+      renderMotor(
+        rotation
+      );
+    }
+
+
+    if (
+      component.type ===
+      "speaker"
+    ) {
+      renderSpeaker(
+        rotation
+      );
+    }
+
+
+    const definition =
+      componentDefinitions[
+        component.type
+      ];
+
+
     definition.terminals.forEach(
-      function(terminal) {
+      terminal => {
 
         const key =
           terminalKey(
@@ -1785,20 +1655,35 @@
             terminal.id
           );
 
-        const helpRing =
-          createSvg("circle", {
-            cx: terminal.x,
-            cy: terminal.y,
-            r: 22,
-            class: "cb-terminal-help-ring"
-          });
 
-        rotationGroup.appendChild(
+        const helpRing =
+          createSvg(
+            "circle",
+            {
+              cx: terminal.x,
+              cy: terminal.y,
+              r: 23,
+
+              class:
+                "cb-terminal-help-ring" +
+                (
+                  state.snapCandidate ===
+                  key
+                    ? " magnet-active"
+                    : ""
+                )
+            }
+          );
+
+
+        rotation.appendChild(
           helpRing
         );
 
+
         let terminalClass =
           "cb-terminal";
+
 
         if (
           terminalConnections(key)
@@ -1807,6 +1692,7 @@
             " connected";
         }
 
+
         if (
           state.snapCandidate === key
         ) {
@@ -1814,38 +1700,2216 @@
             " available";
         }
 
-        const terminalCircle =
-          createSvg("circle", {
-            cx: terminal.x,
-            cy: terminal.y,
-            r: 13,
 
-            class:
-              terminalClass,
+        rotation.appendChild(
+          createSvg(
+            "circle",
+            {
+              cx: terminal.x,
+              cy: terminal.y,
+              r: 13,
 
-            "data-terminal":
-              key
-          });
+              class:
+                terminalClass,
 
-        rotationGroup.appendChild(
-          terminalCircle
+              "data-terminal":
+                key
+            }
+          )
         );
       }
     );
 
 
-    // --------------------------------------------------------
-    // PUT ROTATING PICTURE INSIDE POSITION GROUP
-    // --------------------------------------------------------
-
-    positionGroup.appendChild(
-      rotationGroup
+    outer.appendChild(
+      rotation
     );
 
-    return positionGroup;
-  };
+    return outer;
+  }
 
-  // End Science Studio Authoritative Rotating Renderer V6
+
+  // =========================================================
+  // ONE WIRE RENDERER
+  // =========================================================
+
+  function renderWire(wire) {
+
+    const a =
+      wireEndpointPosition(
+        wire,
+        "a"
+      );
+
+    const b =
+      wireEndpointPosition(
+        wire,
+        "b"
+      );
+
+
+    const selected =
+      state.selected &&
+      state.selected.kind ===
+        "wire" &&
+      state.selected.id ===
+        wire.id;
+
+
+    const group =
+      createSvg(
+        "g",
+        {
+          class:
+            "cb-wire" +
+            (
+              selected
+                ? " selected"
+                : ""
+            ),
+
+          "data-id":
+            wire.id
+        }
+      );
+
+
+    const middleX =
+      (
+        a.x +
+        b.x
+      ) / 2;
+
+
+    const pathString =
+      "M " +
+      a.x +
+      " " +
+      a.y +
+
+      " C " +
+      middleX +
+      " " +
+      a.y +
+
+      ", " +
+      middleX +
+      " " +
+      b.y +
+
+      ", " +
+      b.x +
+      " " +
+      b.y;
+
+
+    group.appendChild(
+      createSvg(
+        "path",
+        {
+          d:
+            pathString,
+
+          class:
+            "cb-wire-visible"
+        }
+      )
+    );
+
+
+    group.appendChild(
+      createSvg(
+        "path",
+        {
+          d:
+            pathString,
+
+          class:
+            "cb-wire-hit",
+
+          "data-wire-body":
+            wire.id
+        }
+      )
+    );
+
+
+    let classA =
+      "cb-wire-end";
+
+
+    if (
+      wire.a.terminal
+    ) {
+      classA +=
+        " connected";
+    }
+
+
+    if (
+      state.interaction &&
+      state.interaction.type ===
+        "wire-end" &&
+      state.interaction.id ===
+        wire.id &&
+      state.interaction.end ===
+        "a" &&
+      state.snapCandidate
+    ) {
+
+      classA +=
+        " cb-magnetic-end";
+    }
+
+
+    group.appendChild(
+      createSvg(
+        "circle",
+        {
+          cx: a.x,
+          cy: a.y,
+          r: 14,
+
+          class:
+            classA,
+
+          "data-wire":
+            wire.id,
+
+          "data-end":
+            "a"
+        }
+      )
+    );
+
+
+    let classB =
+      "cb-wire-end";
+
+
+    if (
+      wire.b.terminal
+    ) {
+      classB +=
+        " connected";
+    }
+
+
+    if (
+      state.interaction &&
+      state.interaction.type ===
+        "wire-end" &&
+      state.interaction.id ===
+        wire.id &&
+      state.interaction.end ===
+        "b" &&
+      state.snapCandidate
+    ) {
+
+      classB +=
+        " cb-magnetic-end";
+    }
+
+
+    group.appendChild(
+      createSvg(
+        "circle",
+        {
+          cx: b.x,
+          cy: b.y,
+          r: 14,
+
+          class:
+            classB,
+
+          "data-wire":
+            wire.id,
+
+          "data-end":
+            "b"
+        }
+      )
+    );
+
+
+    return group;
+  }
+
+
+  // =========================================================
+  // GRAPH / CIRCUIT ANALYSIS
+  // =========================================================
+
+  function buildGraph(
+    excludedComponentId =
+      null
+  ) {
+
+    const graph =
+      new Map();
+
+
+    function ensure(node) {
+
+      if (
+        !graph.has(node)
+      ) {
+
+        graph.set(
+          node,
+          new Set()
+        );
+      }
+    }
+
+
+    function connect(
+      a,
+      b
+    ) {
+
+      ensure(a);
+      ensure(b);
+
+      graph.get(a).add(b);
+      graph.get(b).add(a);
+    }
+
+
+    state.components.forEach(
+      component => {
+
+        const definition =
+          componentDefinitions[
+            component.type
+          ];
+
+
+        definition.terminals.forEach(
+          terminal => {
+
+            ensure(
+              terminalKey(
+                component.id,
+                terminal.id
+              )
+            );
+          }
+        );
+
+
+        if (
+          component.id ===
+            excludedComponentId ||
+          component.type ===
+            "battery"
+        ) {
+
+          return;
+        }
+
+
+        if (
+          component.type ===
+            "switch" &&
+          !component.closed
+        ) {
+
+          return;
+        }
+
+
+        if (
+          definition.terminals.length >=
+          2
+        ) {
+
+          connect(
+            terminalKey(
+              component.id,
+              definition.terminals[0].id
+            ),
+
+            terminalKey(
+              component.id,
+              definition.terminals[1].id
+            )
+          );
+        }
+      }
+    );
+
+
+    state.wires.forEach(
+      wire => {
+
+        if (
+          wire.a.terminal &&
+          wire.b.terminal
+        ) {
+
+          connect(
+            wire.a.terminal,
+            wire.b.terminal
+          );
+        }
+      }
+    );
+
+
+    return graph;
+  }
+
+
+  function reachable(
+    graph,
+    start,
+    target
+  ) {
+
+    if (
+      !start ||
+      !target
+    ) {
+
+      return false;
+    }
+
+
+    if (
+      start === target
+    ) {
+
+      return true;
+    }
+
+
+    const queue =
+      [start];
+
+    const visited =
+      new Set(
+        [start]
+      );
+
+
+    while (
+      queue.length
+    ) {
+
+      const current =
+        queue.shift();
+
+
+      for (
+        const next of
+        graph.get(current) ||
+        []
+      ) {
+
+        if (
+          next === target
+        ) {
+
+          return true;
+        }
+
+
+        if (
+          !visited.has(next)
+        ) {
+
+          visited.add(next);
+          queue.push(next);
+        }
+      }
+    }
+
+
+    return false;
+  }
+
+
+  function evaluateCircuit() {
+
+    const batteries =
+      state.components.filter(
+        component =>
+          component.type ===
+          "battery"
+      );
+
+
+    const loads =
+      state.components.filter(
+        component =>
+          [
+            "bulb",
+            "motor",
+            "speaker"
+          ].includes(
+            component.type
+          )
+      );
+
+
+    const graph =
+      buildGraph();
+
+
+    let completeCircuit =
+      false;
+
+
+    batteries.forEach(
+      battery => {
+
+        const positive =
+          terminalKey(
+            battery.id,
+            "positive"
+          );
+
+        const negative =
+          terminalKey(
+            battery.id,
+            "negative"
+          );
+
+
+        if (
+          reachable(
+            graph,
+            positive,
+            negative
+          )
+        ) {
+
+          completeCircuit =
+            true;
+        }
+      }
+    );
+
+
+    const poweredLoads =
+      new Set();
+
+
+    loads.forEach(
+      load => {
+
+        const definition =
+          componentDefinitions[
+            load.type
+          ];
+
+
+        const loadA =
+          terminalKey(
+            load.id,
+            definition.terminals[0].id
+          );
+
+        const loadB =
+          terminalKey(
+            load.id,
+            definition.terminals[1].id
+          );
+
+
+        const graphWithoutLoad =
+          buildGraph(
+            load.id
+          );
+
+
+        batteries.forEach(
+          battery => {
+
+            const positive =
+              terminalKey(
+                battery.id,
+                "positive"
+              );
+
+            const negative =
+              terminalKey(
+                battery.id,
+                "negative"
+              );
+
+
+            const directionOne =
+              reachable(
+                graphWithoutLoad,
+                positive,
+                loadA
+              )
+              &&
+              reachable(
+                graphWithoutLoad,
+                loadB,
+                negative
+              );
+
+
+            const directionTwo =
+              reachable(
+                graphWithoutLoad,
+                positive,
+                loadB
+              )
+              &&
+              reachable(
+                graphWithoutLoad,
+                loadA,
+                negative
+              );
+
+
+            if (
+              directionOne ||
+              directionTwo
+            ) {
+
+              poweredLoads.add(
+                load.id
+              );
+            }
+          }
+        );
+      }
+    );
+
+
+    const batteryExists =
+      batteries.length >
+      0;
+
+
+    const positiveConnected =
+      batteries.some(
+        battery =>
+          terminalConnections(
+            terminalKey(
+              battery.id,
+              "positive"
+            )
+          ) >
+          0
+      );
+
+
+    const negativeConnected =
+      batteries.some(
+        battery =>
+          terminalConnections(
+            terminalKey(
+              battery.id,
+              "negative"
+            )
+          ) >
+          0
+      );
+
+
+    return {
+      batteryExists,
+      positiveConnected,
+      negativeConnected,
+      loadExists:
+        loads.length > 0,
+      completeCircuit,
+      poweredLoads
+    };
+  }
+
+
+  // =========================================================
+  // MISSION CHECKS
+  // =========================================================
+
+  function updateMissionChecks(
+    result
+  ) {
+
+    const checks = [
+
+      [
+        "#cbCheckBattery",
+        result.batteryExists,
+        "Battery on board"
+      ],
+
+      [
+        "#cbCheckPositive",
+        result.positiveConnected,
+        "Wire connected to +"
+      ],
+
+      [
+        "#cbCheckNegative",
+        result.negativeConnected,
+        "Wire connected to −"
+      ],
+
+      [
+        "#cbCheckLoad",
+        result.loadExists,
+        "Load in the circuit"
+      ],
+
+      [
+        "#cbCheckComplete",
+        result.completeCircuit,
+        "Complete conducting path"
+      ]
+    ];
+
+
+    checks.forEach(
+      item => {
+
+        const element =
+          root.querySelector(
+            item[0]
+          );
+
+
+        if (!element) return;
+
+
+        element.textContent =
+          (
+            item[1]
+              ? "✓ "
+              : "○ "
+          )
+          +
+          item[2];
+
+
+        element.style.color =
+          item[1]
+            ? "#087a35"
+            : "";
+      }
+    );
+  }
+
+
+  // =========================================================
+  // SNAP FEEDBACK
+  // =========================================================
+
+  function showSnapFeedback(
+    terminalKeyValue
+  ) {
+
+    setTimeout(
+      function() {
+
+        const terminal =
+          Array.from(
+            board.querySelectorAll(
+              ".cb-terminal"
+            )
+          ).find(
+            node =>
+              node.dataset.terminal ===
+              terminalKeyValue
+          );
+
+
+        if (!terminal) {
+          return;
+        }
+
+
+        terminal.classList.add(
+          "cb-snap-pop"
+        );
+
+
+        const x =
+          Number(
+            terminal.getAttribute(
+              "cx"
+            )
+          ) || 0;
+
+        const y =
+          Number(
+            terminal.getAttribute(
+              "cy"
+            )
+          ) || 0;
+
+
+        const label =
+          createSvg(
+            "text",
+            {
+              x,
+              y: y - 30,
+
+              "text-anchor":
+                "middle",
+
+              class:
+                "cb-snap-label"
+            }
+          );
+
+
+        label.textContent =
+          "✓ SNAP!";
+
+
+        terminal.parentNode.appendChild(
+          label
+        );
+
+
+        setTimeout(
+          function() {
+
+            label.remove();
+
+            terminal.classList.remove(
+              "cb-snap-pop"
+            );
+
+          },
+          750
+        );
+
+      },
+      0
+    );
+  }
+
+
+  // =========================================================
+  // RENDER EVERYTHING
+  // =========================================================
+
+  function render() {
+
+    const result =
+      state.tested
+        ? evaluateCircuit()
+        : {
+            poweredLoads:
+              new Set()
+          };
+
+
+    wireLayer.innerHTML =
+      "";
+
+    componentLayer.innerHTML =
+      "";
+
+
+    state.wires.forEach(
+      wire => {
+
+        wireLayer.appendChild(
+          renderWire(
+            wire
+          )
+        );
+      }
+    );
+
+
+    state.components.forEach(
+      component => {
+
+        componentLayer.appendChild(
+          renderComponent(
+            component,
+            result.poweredLoads
+          )
+        );
+      }
+    );
+
+
+    emptyMessage.style.display =
+      (
+        state.components.length ===
+          0 &&
+        state.wires.length ===
+          0
+      )
+        ? ""
+        : "none";
+
+
+    countElement.textContent =
+      state.components.length +
+      " part" +
+      (
+        state.components.length === 1
+          ? ""
+          : "s"
+      )
+      +
+      " • "
+      +
+      state.wires.length +
+      " wire" +
+      (
+        state.wires.length === 1
+          ? ""
+          : "s"
+      );
+
+
+    updateToolbar();
+    updateInspector();
+
+
+    if (!state.tested) {
+      updateMissionChecks(
+        evaluateCircuit()
+      );
+    }
+  }
+
+
+  // =========================================================
+  // TEST CIRCUIT
+  // =========================================================
+
+  function testCircuit() {
+
+    state.tested =
+      true;
+
+    const result =
+      evaluateCircuit();
+
+    updateMissionChecks(
+      result
+    );
+
+
+    if (
+      !result.batteryExists
+    ) {
+
+      setStatus(
+        "Add a battery first.",
+        "error"
+      );
+    }
+
+
+    else if (
+      !result.positiveConnected
+    ) {
+
+      setStatus(
+        "Connect a wire to the battery's positive (+) terminal.",
+        "error"
+      );
+    }
+
+
+    else if (
+      !result.negativeConnected
+    ) {
+
+      setStatus(
+        "Connect a return wire to the battery's negative (−) terminal.",
+        "error"
+      );
+    }
+
+
+    else if (
+      !result.loadExists
+    ) {
+
+      setStatus(
+        "Add a bulb, motor, or speaker.",
+        "error"
+      );
+    }
+
+
+    else if (
+      !result.completeCircuit
+    ) {
+
+      setStatus(
+        "The path is incomplete. Check wire connections and open switches.",
+        "error"
+      );
+    }
+
+
+    else if (
+      !result.poweredLoads.size
+    ) {
+
+      setStatus(
+        "The circuit is complete, but no load is correctly connected.",
+        "error"
+      );
+    }
+
+
+    else {
+
+      const names =
+        [];
+
+
+      result.poweredLoads.forEach(
+        id => {
+
+          const component =
+            getComponent(id);
+
+          if (component) {
+
+            names.push(
+              componentDefinitions[
+                component.type
+              ].label
+            );
+          }
+        }
+      );
+
+
+      setStatus(
+        "Circuit complete! Powered load" +
+        (
+          names.length === 1
+            ? ": "
+            : "s: "
+        )
+        +
+        names.join(", ")
+        +
+        ".",
+
+        "success"
+      );
+    }
+
+
+    render();
+  }
+
+
+  // =========================================================
+  // ROTATION
+  // =========================================================
+
+  function rotateSelected() {
+
+    if (
+      !state.selected ||
+      state.selected.kind !==
+        "component"
+    ) {
+
+      setStatus(
+        "Select a component first.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    const component =
+      getComponent(
+        state.selected.id
+      );
+
+
+    if (!component) {
+      return;
+    }
+
+
+    const oldRotation =
+      component.rotation;
+
+
+    component.rotation =
+      (
+        component.rotation +
+        90
+      ) %
+      360;
+
+
+    state.tested =
+      false;
+
+
+    setStatus(
+      componentDefinitions[
+        component.type
+      ].label
+      +
+      " rotated: "
+      +
+      oldRotation
+      +
+      "° → "
+      +
+      component.rotation
+      +
+      "°",
+
+      "success"
+    );
+
+
+    /*
+      THIS render redraws both:
+      - the rotated component
+      - connected wires at new terminal coordinates
+    */
+
+    render();
+  }
+
+
+  // =========================================================
+  // SWITCH
+  // =========================================================
+
+  function toggleSwitch(
+    componentId
+  ) {
+
+    const component =
+      getComponent(
+        componentId
+      );
+
+
+    if (
+      !component ||
+      component.type !==
+        "switch"
+    ) {
+
+      return;
+    }
+
+
+    component.closed =
+      !component.closed;
+
+
+    state.selected = {
+      kind: "component",
+      id: component.id
+    };
+
+
+    state.tested =
+      false;
+
+
+    setStatus(
+      component.closed
+        ? "Switch CLOSED."
+        : "Switch OPEN."
+    );
+
+
+    render();
+  }
+
+
+  // =========================================================
+  // DELETE
+  // =========================================================
+
+  function deleteSelected() {
+
+    if (!state.selected) {
+      return;
+    }
+
+
+    if (
+      state.selected.kind ===
+      "wire"
+    ) {
+
+      state.wires =
+        state.wires.filter(
+          wire =>
+            wire.id !==
+            state.selected.id
+        );
+    }
+
+
+    else {
+
+      const componentId =
+        state.selected.id;
+
+
+      state.components =
+        state.components.filter(
+          component =>
+            component.id !==
+            componentId
+        );
+
+
+      state.wires.forEach(
+        wire => {
+
+          ["a", "b"].forEach(
+            endName => {
+
+              const endpoint =
+                wire[endName];
+
+
+              if (
+                endpoint.terminal &&
+                endpoint.terminal.startsWith(
+                  componentId +
+                  ":"
+                )
+              ) {
+
+                const last =
+                  wireEndpointPosition(
+                    wire,
+                    endName
+                  );
+
+
+                endpoint.terminal =
+                  null;
+
+                endpoint.x =
+                  last.x;
+
+                endpoint.y =
+                  last.y;
+              }
+            }
+          );
+        }
+      );
+    }
+
+
+    state.selected =
+      null;
+
+    state.tested =
+      false;
+
+
+    setStatus(
+      "Item deleted. Test the circuit again when ready."
+    );
+
+
+    render();
+  }
+
+
+  // =========================================================
+  // RESET
+  // =========================================================
+
+  function resetBoard() {
+
+    if (
+      state.components.length ||
+      state.wires.length
+    ) {
+
+      if (
+        !window.confirm(
+          "Clear the entire Circuit Builder?"
+        )
+      ) {
+
+        return;
+      }
+    }
+
+
+    state.components =
+      [];
+
+    state.wires =
+      [];
+
+    state.selected =
+      null;
+
+    state.interaction =
+      null;
+
+    state.snapCandidate =
+      null;
+
+    state.tested =
+      false;
+
+
+    setStatus(
+      "Board reset."
+    );
+
+
+    render();
+  }
+
+
+  // =========================================================
+  // EASY CLICK-TO-CONNECT
+  // =========================================================
+
+  function connectSelectedWireToTerminal(
+    key
+  ) {
+
+    if (
+      !state.selected ||
+      state.selected.kind !==
+        "wire"
+    ) {
+
+      const componentId =
+        key.split(":")[0];
+
+
+      state.selected = {
+        kind: "component",
+        id: componentId
+      };
+
+
+      setStatus(
+        "Terminal selected. Select or add a wire to connect it."
+      );
+
+
+      render();
+
+      return;
+    }
+
+
+    const wire =
+      getWire(
+        state.selected.id
+      );
+
+
+    if (!wire) return;
+
+
+    let endName =
+      null;
+
+
+    if (
+      !wire.a.terminal
+    ) {
+
+      endName =
+        "a";
+    }
+
+
+    else if (
+      !wire.b.terminal
+    ) {
+
+      endName =
+        "b";
+    }
+
+
+    if (!endName) {
+
+      setStatus(
+        "Both ends of this wire are already connected."
+      );
+
+      return;
+    }
+
+
+    const endpoint =
+      wire[endName];
+
+
+    endpoint.terminal =
+      key;
+
+
+    const position =
+      terminalPosition(
+        key
+      );
+
+
+    if (position) {
+
+      endpoint.x =
+        position.x;
+
+      endpoint.y =
+        position.y;
+    }
+
+
+    state.tested =
+      false;
+
+
+    setStatus(
+      "✓ SNAP! Wire connected securely to the terminal.",
+      "success"
+    );
+
+
+    render();
+
+    showSnapFeedback(
+      key
+    );
+  }
+
+
+  // =========================================================
+  // POINTER INTERACTIONS
+  // =========================================================
+
+  board.addEventListener(
+    "pointerdown",
+    function(event) {
+
+      const point =
+        svgPoint(
+          event
+        );
+
+
+      // -----------------------------------------------------
+      // SWITCH LEVER
+      // -----------------------------------------------------
+
+      const switchHit =
+        event.target.closest(
+          "[data-switch-toggle]"
+        );
+
+
+      if (switchHit) {
+
+        event.preventDefault();
+
+        toggleSwitch(
+          switchHit.dataset.switchToggle
+        );
+
+        return;
+      }
+
+
+      // -----------------------------------------------------
+      // TERMINAL CLICK
+      // -----------------------------------------------------
+
+      const terminal =
+        event.target.closest(
+          ".cb-terminal"
+        );
+
+
+      if (terminal) {
+
+        event.preventDefault();
+
+        connectSelectedWireToTerminal(
+          terminal.dataset.terminal
+        );
+
+        return;
+      }
+
+
+      // -----------------------------------------------------
+      // WIRE END
+      // -----------------------------------------------------
+
+      const wireEnd =
+        event.target.closest(
+          ".cb-wire-end"
+        );
+
+
+      if (wireEnd) {
+
+        const wire =
+          getWire(
+            wireEnd.dataset.wire
+          );
+
+
+        if (!wire) return;
+
+
+        const endName =
+          wireEnd.dataset.end;
+
+
+        const current =
+          wireEndpointPosition(
+            wire,
+            endName
+          );
+
+
+        /*
+          Detach it first,
+          but preserve current visual position.
+        */
+
+        wire[endName].terminal =
+          null;
+
+        wire[endName].x =
+          current.x;
+
+        wire[endName].y =
+          current.y;
+
+
+        state.selected = {
+          kind: "wire",
+          id: wire.id
+        };
+
+
+        state.interaction = {
+          type: "wire-end",
+          id: wire.id,
+          end: endName
+        };
+
+
+        state.snapCandidate =
+          null;
+
+        state.tested =
+          false;
+
+
+        board.setPointerCapture?.(
+          event.pointerId
+        );
+
+
+        event.preventDefault();
+
+        render();
+
+        return;
+      }
+
+
+      // -----------------------------------------------------
+      // WIRE BODY
+      // -----------------------------------------------------
+
+      const wireBody =
+        event.target.closest(
+          ".cb-wire-hit"
+        );
+
+
+      if (wireBody) {
+
+        const wire =
+          getWire(
+            wireBody.dataset.wireBody
+          );
+
+
+        if (!wire) return;
+
+
+        state.selected = {
+          kind: "wire",
+          id: wire.id
+        };
+
+
+        /*
+          Only move whole wire if both ends are free.
+        */
+
+        if (
+          wire.a.terminal ||
+          wire.b.terminal
+        ) {
+
+          setStatus(
+            "Disconnect both ends before moving the entire wire."
+          );
+
+          render();
+
+          return;
+        }
+
+
+        state.interaction = {
+          type: "wire-body",
+
+          id:
+            wire.id,
+
+          startX:
+            point.x,
+
+          startY:
+            point.y,
+
+          aStart: {
+            x: wire.a.x,
+            y: wire.a.y
+          },
+
+          bStart: {
+            x: wire.b.x,
+            y: wire.b.y
+          }
+        };
+
+
+        board.setPointerCapture?.(
+          event.pointerId
+        );
+
+
+        event.preventDefault();
+
+        render();
+
+        return;
+      }
+
+
+      // -----------------------------------------------------
+      // COMPONENT
+      // -----------------------------------------------------
+
+      const componentNode =
+        event.target.closest(
+          ".cb-component"
+        );
+
+
+      if (componentNode) {
+
+        const component =
+          getComponent(
+            componentNode.dataset.id
+          );
+
+
+        if (!component) return;
+
+
+        state.selected = {
+          kind: "component",
+          id: component.id
+        };
+
+
+        state.interaction = {
+          type: "component",
+
+          id:
+            component.id,
+
+          offsetX:
+            point.x -
+            component.x,
+
+          offsetY:
+            point.y -
+            component.y
+        };
+
+
+        board.setPointerCapture?.(
+          event.pointerId
+        );
+
+
+        event.preventDefault();
+
+        render();
+
+        return;
+      }
+
+
+      state.selected =
+        null;
+
+      render();
+    }
+  );
+
+
+  board.addEventListener(
+    "pointermove",
+    function(event) {
+
+      if (!state.interaction) {
+        return;
+      }
+
+
+      const point =
+        svgPoint(
+          event
+        );
+
+
+      // -----------------------------------------------------
+      // COMPONENT MOVE
+      // -----------------------------------------------------
+
+      if (
+        state.interaction.type ===
+        "component"
+      ) {
+
+        const component =
+          getComponent(
+            state.interaction.id
+          );
+
+
+        if (!component) return;
+
+
+        component.x =
+          Math.max(
+            90,
+
+            Math.min(
+              910,
+
+              point.x -
+              state.interaction.offsetX
+            )
+          );
+
+
+        component.y =
+          Math.max(
+            90,
+
+            Math.min(
+              560,
+
+              point.y -
+              state.interaction.offsetY
+            )
+          );
+      }
+
+
+      // -----------------------------------------------------
+      // WIRE END MOVE
+      // -----------------------------------------------------
+
+      if (
+        state.interaction.type ===
+        "wire-end"
+      ) {
+
+        const wire =
+          getWire(
+            state.interaction.id
+          );
+
+
+        if (!wire) return;
+
+
+        const endpoint =
+          wire[
+            state.interaction.end
+          ];
+
+
+        endpoint.x =
+          point.x;
+
+        endpoint.y =
+          point.y;
+
+
+        state.snapCandidate =
+          nearestTerminal(
+            point,
+            MAGNET_RADIUS
+          );
+      }
+
+
+      // -----------------------------------------------------
+      // WHOLE WIRE MOVE
+      // -----------------------------------------------------
+
+      if (
+        state.interaction.type ===
+        "wire-body"
+      ) {
+
+        const wire =
+          getWire(
+            state.interaction.id
+          );
+
+
+        if (!wire) return;
+
+
+        const dx =
+          point.x -
+          state.interaction.startX;
+
+
+        const dy =
+          point.y -
+          state.interaction.startY;
+
+
+        wire.a.x =
+          state.interaction.aStart.x +
+          dx;
+
+
+        wire.a.y =
+          state.interaction.aStart.y +
+          dy;
+
+
+        wire.b.x =
+          state.interaction.bStart.x +
+          dx;
+
+
+        wire.b.y =
+          state.interaction.bStart.y +
+          dy;
+      }
+
+
+      state.tested =
+        false;
+
+
+      render();
+    }
+  );
+
+
+  function finishPointer(
+    event
+  ) {
+
+    if (!state.interaction) {
+      return;
+    }
+
+
+    let snappedTerminal =
+      null;
+
+
+    if (
+      state.interaction.type ===
+      "wire-end"
+    ) {
+
+      const wire =
+        getWire(
+          state.interaction.id
+        );
+
+
+      if (wire) {
+
+        const endpoint =
+          wire[
+            state.interaction.end
+          ];
+
+
+        const candidate =
+          state.snapCandidate ||
+          nearestTerminal(
+            {
+              x: endpoint.x,
+              y: endpoint.y
+            },
+
+            MAGNET_RADIUS
+          );
+
+
+        if (candidate) {
+
+          const position =
+            terminalPosition(
+              candidate
+            );
+
+
+          endpoint.terminal =
+            candidate;
+
+
+          if (position) {
+
+            endpoint.x =
+              position.x;
+
+            endpoint.y =
+              position.y;
+          }
+
+
+          snappedTerminal =
+            candidate;
+        }
+      }
+    }
+
+
+    state.interaction =
+      null;
+
+    state.snapCandidate =
+      null;
+
+    state.tested =
+      false;
+
+
+    try {
+
+      board.releasePointerCapture?.(
+        event.pointerId
+      );
+
+    }
+
+    catch (_) {}
+
+
+    render();
+
+
+    if (snappedTerminal) {
+
+      setStatus(
+        "✓ SNAP! Wire connected securely to the terminal.",
+        "success"
+      );
+
+
+      showSnapFeedback(
+        snappedTerminal
+      );
+    }
+  }
+
+
+  board.addEventListener(
+    "pointerup",
+    finishPointer
+  );
+
+
+  board.addEventListener(
+    "pointercancel",
+    finishPointer
+  );
+
+
+  // =========================================================
+  // PARTS TRAY
+  // =========================================================
+
+  root.querySelectorAll(
+    ".cb-part"
+  )
+  .forEach(
+    button => {
+
+      const type =
+        button.dataset.component;
+
+
+      button.addEventListener(
+        "click",
+        function() {
+
+          if (
+            type ===
+            "wire"
+          ) {
+
+            addWire();
+          }
+
+          else {
+
+            addComponent(
+              type
+            );
+          }
+        }
+      );
+
+
+      button.addEventListener(
+        "dragstart",
+        function(event) {
+
+          event.dataTransfer.setData(
+            "text/plain",
+            type
+          );
+
+
+          event.dataTransfer.effectAllowed =
+            "copy";
+        }
+      );
+    }
+  );
+
+
+  board.addEventListener(
+    "dragover",
+    function(event) {
+
+      event.preventDefault();
+
+      event.dataTransfer.dropEffect =
+        "copy";
+    }
+  );
+
+
+  board.addEventListener(
+    "drop",
+    function(event) {
+
+      event.preventDefault();
+
+
+      const type =
+        event.dataTransfer.getData(
+          "text/plain"
+        );
+
+
+      if (!type) return;
+
+
+      const point =
+        svgPoint(
+          event
+        );
+
+
+      if (
+        type ===
+        "wire"
+      ) {
+
+        addWire(
+          point.x,
+          point.y
+        );
+      }
+
+
+      else {
+
+        addComponent(
+          type,
+
+          Math.max(
+            90,
+            Math.min(
+              910,
+              point.x
+            )
+          ),
+
+          Math.max(
+            90,
+            Math.min(
+              560,
+              point.y
+            )
+          )
+        );
+      }
+    }
+  );
+
+
+  // =========================================================
+  // TOOLBAR
+  // =========================================================
+
+  testButton.onclick =
+    function(event) {
+
+      event.preventDefault();
+
+      testCircuit();
+    };
+
+
+  rotateButton.onclick =
+    function(event) {
+
+      event.preventDefault();
+
+      rotateSelected();
+    };
+
+
+  toggleSwitchButton.onclick =
+    function(event) {
+
+      event.preventDefault();
+
+
+      if (
+        !state.selected ||
+        state.selected.kind !==
+          "component"
+      ) {
+
+        return;
+      }
+
+
+      toggleSwitch(
+        state.selected.id
+      );
+    };
+
+
+  deleteButton.onclick =
+    function(event) {
+
+      event.preventDefault();
+
+      deleteSelected();
+    };
+
+
+  resetButton.onclick =
+    function(event) {
+
+      event.preventDefault();
+
+      resetBoard();
+    };
+
+
+  // =========================================================
+  // KEYBOARD
+  // =========================================================
+
+  root.addEventListener(
+    "keydown",
+    function(event) {
+
+      const tag =
+        event.target.tagName
+          .toLowerCase();
+
+
+      if (
+        tag === "input" ||
+        tag === "textarea"
+      ) {
+
+        return;
+      }
+
+
+      if (
+        event.key ===
+          "Delete" ||
+        event.key ===
+          "Backspace"
+      ) {
+
+        if (
+          state.selected
+        ) {
+
+          event.preventDefault();
+
+          deleteSelected();
+        }
+      }
+
+
+      if (
+        event.key.toLowerCase() ===
+        "r"
+      ) {
+
+        event.preventDefault();
+
+        rotateSelected();
+      }
+    }
+  );
+
+
+  // =========================================================
+  // INITIALIZE
+  // =========================================================
 
   render();
+
 })();
