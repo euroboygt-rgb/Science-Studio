@@ -283,3 +283,61 @@ SECOND_NINE_WEEKS_LESSONS[49].update({
 })
 # End Science Studio Day 49 Full Lesson Update
 
+
+# Science Studio Day 50 Full Lesson Update
+SECOND_NINE_WEEKS_LESSONS[50].update({
+    "title": "Electrical Energy to Sound",
+    "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+    "unit_title": "Unit 4: Investigating Energy Transformations Through Circuits",
+    "teks": "5.8B, 5.5D, 5.1F",
+    "focus": "Electrical energy transforming into sound energy",
+    "learning_target": "We will demonstrate how electrical energy in a complete circuit can transform into sound.",
+    "success_criteria": "I can explain how a speaker or buzzer uses electrical energy to produce sound.",
+    "essential_question": "How can electrical energy in a circuit produce sound?",
+    "vocabulary": [
+        "electrical energy",
+        "sound energy",
+        "vibration",
+        "speaker",
+        "buzzer",
+        "complete circuit",
+        "closed circuit",
+        "battery",
+        "conductor",
+        "energy transformation"
+    ],
+    "anchor_chart": "Electrical Energy to Sound Anchor Chart",
+
+    "bell_ringer": "A buzzer makes sound when it is connected to a battery with wires and a closed switch. What energy transformation is occurring?",
+
+    "mini_lesson": [
+        "A speaker or buzzer can transform electrical energy into sound energy.",
+        "A functioning sound circuit needs a battery, conductors, a complete path, and a speaker or buzzer.",
+        "Electrical energy flows through the complete circuit.",
+        "The speaker or buzzer causes parts to vibrate.",
+        "The vibrations produce sound energy.",
+        "Hearing the sound is evidence that energy transformed."
+    ],
+
+    "science_notebook": "Create a flow map: battery → electrical energy in circuit → speaker or buzzer → vibration → sound energy.",
+
+    "guided_practice": "Students examine several sound circuit diagrams and determine which buzzer will produce sound.",
+
+    "lab": "Sound Signal Lab: Students click each part of a sound circuit and explain how electrical energy transforms into sound.",
+
+    "lab_notebook": "Record each circuit part, its job, the input energy, output energy, and evidence of sound.",
+
+    "staar_practice": "A student connects a battery, wires, closed switch, and buzzer. The buzzer makes a sound. Which energy transformation occurred?",
+
+    "exit_ticket": "Explain how vibration provides evidence that electrical energy transformed into sound energy.",
+
+    "cer": {
+        "claim": "Electrical energy can transform into sound energy in a complete circuit.",
+        "evidence": "The buzzer produces sound when the battery, wires, switch, and buzzer are connected in a complete path.",
+        "reasoning": "Electrical energy flows to the buzzer, causing parts to vibrate. Those vibrations produce sound energy."
+    },
+
+    "mcgraw_hill_connection": "Use district-approved McGraw Hill electricity and energy transformation resources for circuits, buzzers, speakers, vibration, and sound."
+})
+# End Science Studio Day 50 Full Lesson Update
+

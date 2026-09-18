@@ -1,0 +1,439 @@
+{% extends "base.html" %}
+
+{% block title %}Day 50 Sound Signal Lab{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+
+  <a class="btn btn-outline-primary fw-bold mb-3"
+     href="/second-nine-weeks/day/50?view=student">
+    ← Back to Day 50
+  </a>
+
+  <div class="p-4 rounded-4 border border-dark shadow-sm"
+       style="background:linear-gradient(135deg,#243b6b,#118ab2); color:white;">
+    <div class="badge rounded-pill text-bg-warning border border-dark mb-2">
+      Day 50 Interactive Lab
+    </div>
+
+    <h1 class="fw-bold">Sound Signal Lab</h1>
+
+    <p class="lead mb-0">
+      Trace electrical energy through the circuit and discover how a speaker or buzzer produces sound.
+    </p>
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3"
+       style="background:#fff7d6;">
+    <h2 class="fw-bold">Mission</h2>
+    <p class="mb-0">
+      Steve needs an emergency alarm. Inspect the battery, switch, wires,
+      speaker, and sound waves. Explain how electrical energy transforms into sound energy.
+    </p>
+  </div>
+
+  <div class="row g-3 mt-2">
+
+    <div class="col-lg-8">
+      <div class="p-3 rounded-4 border border-dark shadow-sm bg-white">
+
+        <h2 class="fw-bold">Sound Circuit Schematic</h2>
+        <p class="fw-bold">Click each numbered section.</p>
+
+        <svg viewBox="0 0 1100 650"
+             style="width:100%; border:3px solid #111; border-radius:18px; background:#f6fbff;">
+
+          <text x="550" y="45" text-anchor="middle"
+                font-size="34" font-family="Arial" font-weight="900" fill="#2d2a6e">
+            Sound Signal Lab
+          </text>
+
+          <text x="550" y="78" text-anchor="middle"
+                font-size="18" font-family="Arial" font-weight="700" fill="#2d2a6e">
+            Electrical Energy → Sound Energy
+          </text>
+
+          <rect x="125" y="140" width="850" height="410" rx="26"
+                fill="#fff" stroke="#d7def7" stroke-width="5"/>
+
+          <!-- Battery -->
+          <g class="day50-hotspot" data-part="battery">
+            <rect x="205" y="360" width="90" height="125" rx="8"
+                  fill="#ffc400" stroke="#111" stroke-width="5"/>
+            <line x1="232" y1="335" x2="232" y2="360" stroke="#111" stroke-width="5"/>
+            <line x1="270" y1="320" x2="270" y2="360" stroke="#111" stroke-width="5"/>
+
+            <text x="250" y="520" text-anchor="middle"
+                  font-size="20" font-family="Arial" font-weight="900">
+              Battery
+            </text>
+
+            <text x="155" y="118"
+                  font-size="22" font-family="Arial" font-weight="900" fill="#d97b00">
+              1 Battery
+            </text>
+
+            <text x="155" y="143"
+                  font-size="16" font-family="Arial" font-weight="700">
+              Energy source
+            </text>
+          </g>
+
+          <!-- Switch -->
+          <g class="day50-hotspot" data-part="switch">
+            <rect x="395" y="380" width="135" height="90" rx="12"
+                  fill="#fff" stroke="#111" stroke-width="5"/>
+
+            <line x1="415" y1="445" x2="505" y2="402"
+                  stroke="#111" stroke-width="8" stroke-linecap="round"/>
+
+            <circle cx="415" cy="445" r="8" fill="#111"/>
+            <circle cx="505" cy="402" r="8" fill="#111"/>
+
+            <text x="380" y="118"
+                  font-size="22" font-family="Arial" font-weight="900" fill="#7b1cff">
+              2 Closed Switch
+            </text>
+
+            <text x="380" y="143"
+                  font-size="16" font-family="Arial" font-weight="700">
+              Completes the path
+            </text>
+          </g>
+
+          <!-- Wires -->
+          <g class="day50-hotspot" data-part="wires">
+            <path d="M270 320 L270 225 L680 225 L680 345"
+                  stroke="#f08a24" stroke-width="10" fill="none"/>
+
+            <path d="M680 400 L530 425"
+                  stroke="#f08a24" stroke-width="10" fill="none"/>
+
+            <path d="M395 425 L295 425"
+                  stroke="#f08a24" stroke-width="10" fill="none"/>
+
+            <text x="610" y="118"
+                  font-size="22" font-family="Arial" font-weight="900" fill="#006fbf">
+              3 Wires
+            </text>
+
+            <text x="610" y="143"
+                  font-size="16" font-family="Arial" font-weight="700">
+              Electrical energy flows
+            </text>
+          </g>
+
+          <!-- Speaker -->
+          <g class="day50-hotspot" data-part="speaker">
+            <rect x="680" y="310" width="155" height="145" rx="25"
+                  fill="#bfe6ff" stroke="#111" stroke-width="5"/>
+
+            <circle cx="758" cy="382" r="48"
+                    fill="#333" stroke="#111" stroke-width="5"/>
+
+            <circle cx="758" cy="382" r="25"
+                    fill="#777" stroke="#111" stroke-width="4"/>
+
+            <text x="720" y="510"
+                  font-size="22" font-family="Arial" font-weight="900" fill="#c2185b">
+              4 Speaker
+            </text>
+
+            <text x="720" y="537"
+                  font-size="16" font-family="Arial" font-weight="700">
+              Electrical → sound
+            </text>
+          </g>
+
+          <!-- Sound waves -->
+          <g class="day50-hotspot" data-part="sound">
+            <path d="M845 340 C890 355 890 410 845 425"
+                  fill="none" stroke="#c2185b" stroke-width="9"/>
+
+            <path d="M875 310 C950 340 950 425 875 455"
+                  fill="none" stroke="#c2185b" stroke-width="9"/>
+
+            <path d="M905 280 C1020 325 1020 440 905 485"
+                  fill="none" stroke="#c2185b" stroke-width="9"/>
+
+            <text x="830" y="118"
+                  font-size="22" font-family="Arial" font-weight="900" fill="#087a35">
+              5 Sound Waves
+            </text>
+
+            <text x="830" y="143"
+                  font-size="16" font-family="Arial" font-weight="700">
+              Evidence of vibration
+            </text>
+          </g>
+
+          <rect x="250" y="570" width="600" height="52" rx="14"
+                fill="#ede9ff" stroke="#2d2a6e" stroke-width="3"/>
+
+          <text x="550" y="603" text-anchor="middle"
+                font-size="20" font-family="Arial" font-weight="900" fill="#2d2a6e">
+            What evidence shows electrical energy became sound?
+          </text>
+
+        </svg>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="p-3 rounded-4 border border-dark shadow-sm"
+           style="background:#fff7d6;">
+
+        <h2 class="fw-bold" id="partTitle">Choose a part</h2>
+
+        <p id="partExplanation">
+          Click a circuit part to learn how it helps produce sound.
+        </p>
+
+        <div class="p-3 rounded-3 border border-dark bg-white">
+
+          <label class="fw-bold" for="studentExplain">
+            Student explanation:
+          </label>
+
+          <textarea id="studentExplain"
+                    class="form-control mt-2"
+                    rows="5"
+                    placeholder="This part helps transform energy because..."></textarea>
+
+          <button class="btn btn-warning fw-bold border-dark mt-2"
+                  id="saveExplanation">
+            Save Explanation
+          </button>
+
+          <div id="saveMessage" class="fw-bold mt-2"></div>
+
+        </div>
+
+        <div class="p-3 rounded-3 border border-dark bg-white mt-3">
+
+          <h3 class="fw-bold">Energy Path</h3>
+
+          <ol class="mb-0">
+            <li>Battery supplies electrical energy.</li>
+            <li>Closed switch completes the circuit.</li>
+            <li>Wires carry electrical energy.</li>
+            <li>Speaker or buzzer receives electrical energy.</li>
+            <li>Speaker vibrates and produces sound energy.</li>
+          </ol>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3"
+       style="background:#f6fbff;">
+
+    <h2 class="fw-bold">Sound Signal Challenge</h2>
+
+    <p class="fw-bold">
+      Which circuit will make the buzzer produce sound?
+    </p>
+
+    <div class="row g-3">
+
+      <div class="col-md-4">
+        <button class="sound-choice w-100 p-3 rounded-3 border border-dark fw-bold"
+                data-answer="A">
+          A. Battery, buzzer, wires, and an open switch
+        </button>
+      </div>
+
+      <div class="col-md-4">
+        <button class="sound-choice w-100 p-3 rounded-3 border border-dark fw-bold"
+                data-answer="B">
+          B. Battery, buzzer, wires, and a closed switch
+        </button>
+      </div>
+
+      <div class="col-md-4">
+        <button class="sound-choice w-100 p-3 rounded-3 border border-dark fw-bold"
+                data-answer="C">
+          C. Battery, buzzer, plastic strip, and a closed switch
+        </button>
+      </div>
+
+    </div>
+
+    <button class="btn btn-warning fw-bold border-dark mt-3"
+            id="checkSound">
+      Check Sound Choice
+    </button>
+
+    <span id="soundResult" class="fw-bold ms-2"></span>
+
+    <div id="soundExplanation"
+         class="mt-3 p-3 rounded-3 border border-dark"
+         style="display:none;background:#eaf7ed;">
+
+      Correct answer: B. The closed conducting path allows electrical
+      energy to reach the buzzer. The buzzer transforms electrical energy
+      into sound energy.
+
+    </div>
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3"
+       style="background:#fff7d6;">
+
+    <h2 class="fw-bold">Lab CER</h2>
+
+    <p>
+      <strong>Claim:</strong>
+      Electrical energy can transform into sound energy in a complete circuit.
+    </p>
+
+    <p>
+      <strong>Evidence:</strong>
+      The buzzer produces sound when the battery, conducting wires,
+      switch, and buzzer form a complete circuit.
+    </p>
+
+    <p class="mb-0">
+      <strong>Reasoning:</strong>
+      Electrical energy reaches the buzzer through the circuit.
+      Parts inside the buzzer vibrate, producing sound energy.
+    </p>
+
+  </div>
+</div>
+
+<script>
+const labParts = {
+  battery: {
+    title: "1. Battery",
+    explanation: "The battery is the energy source. It provides electrical energy when the circuit is complete."
+  },
+
+  switch: {
+    title: "2. Closed Switch",
+    explanation: "The closed switch completes the circuit so electrical energy can flow."
+  },
+
+  wires: {
+    title: "3. Wires",
+    explanation: "The wires are conductors that carry electrical energy through the circuit."
+  },
+
+  speaker: {
+    title: "4. Speaker / Buzzer",
+    explanation: "The speaker or buzzer transforms electrical energy into sound energy by causing parts to vibrate."
+  },
+
+  sound: {
+    title: "5. Sound Waves",
+    explanation: "The sound you hear is evidence that electrical energy transformed into sound energy."
+  }
+};
+
+let currentPart = null;
+let selectedSound = null;
+
+document.querySelectorAll(".day50-hotspot").forEach(function(part) {
+
+  part.style.cursor = "pointer";
+
+  part.addEventListener("click", function() {
+
+    currentPart = part.dataset.part;
+
+    const info = labParts[currentPart];
+
+    document.querySelector("#partTitle").textContent = info.title;
+    document.querySelector("#partExplanation").textContent = info.explanation;
+
+    document.querySelector("#studentExplain").value =
+      localStorage.getItem("day50SoundLab_" + currentPart) || "";
+
+    document.querySelector("#saveMessage").textContent = "";
+
+    document.querySelectorAll(".day50-hotspot").forEach(function(p) {
+      p.style.opacity = "0.5";
+    });
+
+    part.style.opacity = "1";
+  });
+});
+
+document.querySelector("#saveExplanation").addEventListener("click", function() {
+
+  if (!currentPart) {
+    document.querySelector("#saveMessage").textContent =
+      "Click a circuit part first.";
+
+    document.querySelector("#saveMessage").style.color = "#9a5b00";
+    return;
+  }
+
+  localStorage.setItem(
+    "day50SoundLab_" + currentPart,
+    document.querySelector("#studentExplain").value
+  );
+
+  document.querySelector("#saveMessage").textContent = "Saved!";
+  document.querySelector("#saveMessage").style.color = "#087a35";
+});
+
+document.querySelectorAll(".sound-choice").forEach(function(button) {
+
+  button.addEventListener("click", function() {
+
+    selectedSound = button.dataset.answer;
+
+    document.querySelectorAll(".sound-choice").forEach(function(btn) {
+      btn.style.background = "#ffffff";
+      btn.style.borderColor = "#111";
+    });
+
+    button.style.background = "#dff3e6";
+    button.style.borderColor = "#087a35";
+  });
+});
+
+document.querySelector("#checkSound").addEventListener("click", function() {
+
+  const result = document.querySelector("#soundResult");
+  const explanation = document.querySelector("#soundExplanation");
+
+  if (!selectedSound) {
+    result.textContent = "Choose a circuit first.";
+    result.style.color = "#9a5b00";
+    return;
+  }
+
+  document.querySelectorAll(".sound-choice").forEach(function(btn) {
+
+    if (btn.dataset.answer === "B") {
+      btn.style.background = "#dff3e6";
+      btn.style.borderColor = "#087a35";
+    }
+
+    else if (btn.dataset.answer === selectedSound) {
+      btn.style.background = "#ffe1e1";
+      btn.style.borderColor = "#b00020";
+    }
+  });
+
+  explanation.style.display = "block";
+
+  if (selectedSound === "B") {
+    result.textContent =
+      "Correct! Electrical energy reached the buzzer and became sound.";
+
+    result.style.color = "#087a35";
+  }
+
+  else {
+    result.textContent =
+      "Try again. Look for conductors and a complete closed path.";
+
+    result.style.color = "#b00020";
+  }
+});
+</script>
+{% endblock %}

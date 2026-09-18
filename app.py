@@ -1555,6 +1555,16 @@ def day49_motor_motion_lab():
 # End Science Studio Day 49 Motor Motion Lab Route
 
 
+
+# Science Studio Day 50 Sound Signal Lab Route
+@app.route("/labs/day50-sound-signal-lab")
+@app.route("/labs/day50-electrical-sound-lab")
+def day50_sound_signal_lab():
+    from flask import render_template
+    return render_template("day50_sound_signal_lab.html")
+# End Science Studio Day 50 Sound Signal Lab Route
+
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))

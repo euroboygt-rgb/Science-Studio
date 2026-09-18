@@ -343,3 +343,22 @@ POWER_FRAMES[49] = {
 }
 # End Science Studio Day 49 Power Frame Fix
 
+
+# Science Studio Day 50 Power Frame Fix
+POWER_FRAMES[50] = {
+    "i_can": "I can demonstrate that electrical energy can transform into sound energy.",
+
+    "by": "by tracing electrical energy through a complete circuit to a speaker or buzzer.",
+
+    "i_know": "I know I have learned this when I can explain that electrical energy causes the speaker or buzzer to vibrate and produce sound.",
+
+    "i_know_i_have_learned": "I know I have learned this when I can explain that electrical energy causes the speaker or buzzer to vibrate and produce sound.",
+
+    "we_will": "We will demonstrate electrical energy transforming into sound energy.",
+
+    "learning_target": "We will demonstrate how electrical energy in a complete circuit can transform into sound.",
+
+    "success_criteria": "I can use evidence from a sound circuit to explain how electrical energy becomes sound energy."
+}
+# End Science Studio Day 50 Power Frame Fix
+

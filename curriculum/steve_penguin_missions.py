@@ -1577,3 +1577,54 @@ STEVE_PENGUIN_MISSIONS[49] = {
 }
 # End Day 49 Steve the Penguin STAAR Mission
 
+
+# Day 50 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[50] = {
+    "title": "Steve the Penguin’s Sound Signal Mission",
+    "subtitle": "Day 50 • Electrical Energy to Sound",
+    "character": "Steve the Penguin",
+
+    "scenario": "Steve the Penguin builds an emergency alarm using a battery, conducting wires, a closed switch, and a buzzer. When Steve closes the switch, the buzzer vibrates and makes a loud sound.",
+
+    "question": "Which statement best explains the energy transformation in Steve’s alarm?",
+
+    "options": [
+        {
+            "letter": "A",
+            "text": "Sound energy changes into electrical energy when the buzzer vibrates."
+        },
+
+        {
+            "letter": "B",
+            "text": "Motion energy from the wires changes directly into chemical energy in the battery."
+        },
+
+        {
+            "letter": "C",
+            "text": "Electrical energy flows through the complete circuit to the buzzer, where it transforms into sound energy."
+        },
+
+        {
+            "letter": "D",
+            "text": "Thermal energy causes the open switch to produce sound energy."
+        }
+    ],
+
+    "correct_answer": "C",
+
+    "explanation": "Steve should choose C. Electrical energy flows through the complete circuit to the buzzer. The buzzer vibrates, producing sound energy.",
+
+    "staar_tip": "For sound circuit questions, identify the electrical energy source and the part that vibrates. Vibration is strong evidence that sound energy is being produced.",
+
+    "vocabulary": [
+        "electrical energy",
+        "sound energy",
+        "vibration",
+        "speaker",
+        "buzzer",
+        "complete circuit",
+        "energy transformation"
+    ]
+}
+# End Day 50 Steve the Penguin STAAR Mission
+

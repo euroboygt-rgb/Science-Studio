@@ -6456,5 +6456,777 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio Day 49 Full Page Builder -->
 
+
+<!-- Science Studio Day 50 Full Page Builder -->
+<style>
+  .day50-sound-card {
+    max-width: 980px;
+    margin: 16px auto;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.18);
+    background: #fff7d6;
+  }
+
+  .day50-sound-card h2,
+  .day50-sound-card h3,
+  .day50-sound-card h4 {
+    font-weight: 900;
+  }
+
+  .day50-badge {
+    display: inline-block;
+    background: #7b1cff;
+    color: #fff200;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .day50-thinking-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .day50-thinking-box {
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #fff;
+    padding: 13px;
+  }
+
+  .day50-phenomenon-image {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: white;
+    padding: 8px;
+  }
+
+  .day50-mission-slide {
+    min-height: 220px;
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #fff;
+    padding: 24px;
+    text-align: center;
+    display: grid;
+    place-items: center;
+  }
+
+  .day50-mission-slide .slide-icon {
+    font-size: 4rem;
+    margin-bottom: 8px;
+  }
+
+  .day50-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 8px 0;
+    padding: 10px;
+    border: 2px solid #111;
+    border-radius: 10px;
+    background: #f7f7f7;
+    font-weight: 900;
+  }
+
+  .day50-check-btn,
+  .day50-nav-btn {
+    background: #ffc400;
+    color: #111;
+    border: 2px solid #111;
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-weight: 900;
+    margin: 4px;
+  }
+
+  #scienceStudioDay50LabLaunch {
+    background: linear-gradient(135deg,#fff7d6,#f6fbff);
+  }
+
+  #scienceStudioDay50LabLaunch .lab-launch-inner {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 16px;
+    align-items: center;
+  }
+
+  #scienceStudioDay50LabLaunch .lab-launch-button {
+    display: inline-block;
+    background: #12a150;
+    color: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 14px 18px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.2rem;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+  }
+
+  #scienceStudioDay50LabLaunch .mini-schematic {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+    font-weight: 900;
+  }
+
+  @media (max-width: 800px) {
+    .day50-thinking-grid,
+    #scienceStudioDay50LabLaunch .lab-launch-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+(function () {
+
+  if (!window.location.pathname.includes("/second-nine-weeks/day/50")) return;
+
+  const day50Data = {
+
+    phenomenon: {
+      title: "Where Does the Sound Come From?",
+      subtitle: "Electrical energy to sound evidence",
+      image: "/static/phenomenon/day50_sound_energy_mission.svg",
+
+      focus: "How can electrical energy in a complete circuit produce sound?",
+
+      notice: "The circuit has a battery, wires, a closed switch, and a buzzer. When the switch closes, the buzzer makes sound.",
+
+      wonder: "What happens inside the buzzer? Why is vibration important? What would happen if the circuit opened?",
+
+      explore: "Trace the system: battery → closed switch → wires → buzzer → vibration → sound.",
+
+      evidence: "Record each circuit part, its job, and the evidence that electrical energy became sound energy.",
+
+      cer: "The buzzer produces sound because..."
+    },
+
+    missionBrief: {
+      title: "Mission Brief: Electrical Energy to Sound",
+      subtitle: "Day 50 • Sound Circuits",
+
+      slides: [
+        ["🔊", "Today’s Mission", "Demonstrate that electrical energy in a complete circuit can transform into sound energy.", "A sound circuit is a system."],
+
+        ["🔋", "Battery Supplies Energy", "The battery provides electrical energy when the circuit is complete.", "The battery is the power source."],
+
+        ["🔘", "Close the Circuit", "A closed switch creates a complete path.", "An open switch creates a gap."],
+
+        ["⚡", "Electrical Energy Flows", "Conducting wires allow electrical energy to reach the buzzer.", "Conductors carry electrical energy."],
+
+        ["🔊", "Buzzer Receives Energy", "The buzzer uses electrical energy to make parts move back and forth.", "That movement is vibration."],
+
+        ["〰️", "Vibration Creates Sound", "Vibrating parts produce sound energy.", "Sound is evidence of energy transformation."],
+
+        ["🚫", "Open Circuit", "If the circuit opens, electrical energy cannot reach the buzzer.", "No complete path means no sound."],
+
+        ["🎯", "STAAR Strategy", "Trace the circuit to the buzzer and identify the output you can observe.", "Electrical energy → sound energy."]
+      ]
+    },
+
+    steve: {
+      title: "Steve the Penguin’s Sound Signal Mission",
+      subtitle: "Day 50 • Electrical Energy to Sound",
+
+      scenario: "Steve the Penguin builds an emergency alarm using a battery, conducting wires, a closed switch, and a buzzer. When Steve closes the switch, the buzzer vibrates and makes a loud sound.",
+
+      question: "Which statement best explains the energy transformation in Steve’s alarm?",
+
+      options: [
+        ["A", "Sound energy changes into electrical energy when the buzzer vibrates."],
+
+        ["B", "Motion energy from the wires changes directly into chemical energy in the battery."],
+
+        ["C", "Electrical energy flows through the complete circuit to the buzzer, where it transforms into sound energy."],
+
+        ["D", "Thermal energy causes the open switch to produce sound energy."]
+      ],
+
+      correct: "C",
+
+      explanation: "Steve should choose C. Electrical energy flows through the complete circuit to the buzzer. The buzzer vibrates, producing sound energy.",
+
+      tip: "Look for the electrical energy source and the part that vibrates. Vibration is evidence that sound energy is being produced."
+    }
+  };
+
+  function findPowerFrame() {
+    return document.querySelector("#scienceStudioUniversalPowerFrame");
+  }
+
+  function findTitleCard() {
+
+    const h1 = document.querySelector("h1");
+
+    if (!h1) {
+      return document.querySelector("main") || document.body;
+    }
+
+    let current = h1;
+
+    for (let i = 0; i < 7 && current.parentElement; i++) {
+
+      current = current.parentElement;
+
+      const rect = current.getBoundingClientRect();
+
+      if (rect.width > 350 && rect.height > 70) {
+        return current;
+      }
+    }
+
+    return h1;
+  }
+
+  function insertAfterTop(element) {
+
+    const powerFrame = findPowerFrame();
+    const titleCard = findTitleCard();
+
+    if (powerFrame) {
+      powerFrame.insertAdjacentElement("afterend", element);
+    }
+
+    else {
+      titleCard.insertAdjacentElement("afterend", element);
+    }
+  }
+
+  function createPhenomenon() {
+
+    if (document.querySelector("#scienceStudioDay50Phenomenon")) return;
+
+    const card = document.createElement("section");
+
+    card.id = "scienceStudioDay50Phenomenon";
+    card.className = "day50-sound-card";
+
+    card.innerHTML = `
+      <span class="day50-badge">🔎 Phenomenon Mission</span>
+
+      <h2>${day50Data.phenomenon.title}</h2>
+
+      <p>
+        <strong>${day50Data.phenomenon.subtitle}</strong>
+      </p>
+
+      <img class="day50-phenomenon-image"
+           src="${day50Data.phenomenon.image}"
+           alt="Electrical energy to sound phenomenon">
+
+      <div class="mt-3 p-3 rounded-3 border border-dark bg-white">
+        <h4>❓ Focus Question</h4>
+        <p class="mb-0">${day50Data.phenomenon.focus}</p>
+      </div>
+
+      <div class="day50-thinking-grid mt-3">
+
+        <div class="day50-thinking-box">
+          <h4>👀 Notice</h4>
+          <p>${day50Data.phenomenon.notice}</p>
+        </div>
+
+        <div class="day50-thinking-box">
+          <h4>🤔 Wonder</h4>
+          <p>${day50Data.phenomenon.wonder}</p>
+        </div>
+
+        <div class="day50-thinking-box">
+          <h4>🧪 Quick Explore</h4>
+          <p>${day50Data.phenomenon.explore}</p>
+        </div>
+
+        <div class="day50-thinking-box">
+          <h4>📊 Evidence Tracker</h4>
+          <p>${day50Data.phenomenon.evidence}</p>
+        </div>
+
+        <div class="day50-thinking-box">
+          <h4>💬 CER Starter</h4>
+          <p>${day50Data.phenomenon.cer}</p>
+        </div>
+
+      </div>
+    `;
+
+    insertAfterTop(card);
+  }
+
+  function createMissionBrief() {
+
+    if (document.querySelector("#scienceStudioDay50MissionBrief")) return;
+
+    const phenomenon =
+      document.querySelector("#scienceStudioDay50Phenomenon");
+
+    if (!phenomenon) return;
+
+    const card = document.createElement("section");
+
+    card.id = "scienceStudioDay50MissionBrief";
+    card.className = "day50-sound-card";
+
+    card.innerHTML = `
+      <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+
+        <div>
+          <span class="day50-badge">🎬 Mission Brief Animation</span>
+
+          <h2>${day50Data.missionBrief.title}</h2>
+
+          <p>
+            <strong>${day50Data.missionBrief.subtitle}</strong>
+          </p>
+        </div>
+
+        <button type="button"
+                class="day50-nav-btn"
+                id="day50PlayMissionBrief">
+          ▶ Play Mission Brief
+        </button>
+
+      </div>
+
+      <div class="day50-mission-slide"
+           id="day50MissionSlide">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap gap-2">
+
+        <strong id="day50SlideCounter"></strong>
+
+        <div>
+
+          <button type="button"
+                  class="day50-nav-btn"
+                  id="day50BackSlide">
+            ⬅ Back
+          </button>
+
+          <button type="button"
+                  class="day50-nav-btn"
+                  id="day50NextSlide">
+            Next ➡
+          </button>
+
+          <button type="button"
+                  class="day50-nav-btn"
+                  id="day50RestartSlide"
+                  style="background:#0b8f4d;color:white;">
+            Restart
+          </button>
+
+        </div>
+      </div>
+    `;
+
+    phenomenon.insertAdjacentElement("afterend", card);
+
+    let index = 0;
+    let timer = null;
+
+    function renderSlide() {
+
+      const slide =
+        day50Data.missionBrief.slides[index];
+
+      document.querySelector("#day50MissionSlide").innerHTML = `
+        <div>
+
+          <div class="slide-icon">
+            ${slide[0]}
+          </div>
+
+          <h3>${slide[1]}</h3>
+
+          <p class="fs-5 fw-bold">
+            ${slide[2]}
+          </p>
+
+          <p class="mb-0">
+            ${slide[3]}
+          </p>
+
+        </div>
+      `;
+
+      document.querySelector("#day50SlideCounter").textContent =
+        "Slide " +
+        (index + 1) +
+        " of " +
+        day50Data.missionBrief.slides.length;
+    }
+
+    function nextSlide() {
+
+      index =
+        (index + 1) %
+        day50Data.missionBrief.slides.length;
+
+      renderSlide();
+    }
+
+    document.querySelector("#day50BackSlide")
+      .addEventListener("click", function() {
+
+        index =
+          (index - 1 + day50Data.missionBrief.slides.length) %
+          day50Data.missionBrief.slides.length;
+
+        renderSlide();
+      });
+
+    document.querySelector("#day50NextSlide")
+      .addEventListener("click", nextSlide);
+
+    document.querySelector("#day50RestartSlide")
+      .addEventListener("click", function() {
+
+        index = 0;
+        renderSlide();
+      });
+
+    document.querySelector("#day50PlayMissionBrief")
+      .addEventListener("click", function() {
+
+        if (timer) {
+
+          clearInterval(timer);
+          timer = null;
+
+          this.textContent =
+            "▶ Play Mission Brief";
+        }
+
+        else {
+
+          timer =
+            setInterval(nextSlide, 10000);
+
+          this.textContent =
+            "⏸ Pause Mission Brief";
+        }
+      });
+
+    renderSlide();
+  }
+
+  function createSteveMission() {
+
+    if (document.querySelector("#scienceStudioDay50SteveMission")) return;
+
+    const missionBrief =
+      document.querySelector("#scienceStudioDay50MissionBrief");
+
+    if (!missionBrief) return;
+
+    const card = document.createElement("section");
+
+    card.id = "scienceStudioDay50SteveMission";
+    card.className = "day50-sound-card";
+    card.style.background = "#f6fbff";
+
+    const optionButtons =
+      day50Data.steve.options.map(function(option) {
+
+        return `
+          <button type="button"
+                  class="day50-option"
+                  data-answer="${option[0]}">
+            ${option[0]}. ${option[1]}
+          </button>
+        `;
+      }).join("");
+
+    card.innerHTML = `
+      <span class="day50-badge">
+        🐧 Steve the Penguin’s STAAR Mission
+      </span>
+
+      <h2>${day50Data.steve.title}</h2>
+
+      <p>
+        <strong>${day50Data.steve.subtitle}</strong>
+      </p>
+
+      <div class="p-3 rounded-3 border border-dark mb-3"
+           style="background:#fff7d6;">
+
+        <strong>Steve’s Scenario:</strong>
+
+        <p class="mb-0">
+          ${day50Data.steve.scenario}
+        </p>
+
+      </div>
+
+      <div class="p-3 rounded-3 border border-dark bg-white">
+
+        <strong>STAAR-Style Question:</strong>
+
+        <p class="fw-bold">
+          ${day50Data.steve.question}
+        </p>
+
+        ${optionButtons}
+
+        <button type="button"
+                class="day50-check-btn"
+                id="day50SteveCheck">
+          Check Answer
+        </button>
+
+        <button type="button"
+                class="day50-check-btn"
+                id="day50SteveReset"
+                style="background:#f7f7f7;">
+          Reset
+        </button>
+
+        <span id="day50SteveResult"
+              class="fw-bold ms-2">
+        </span>
+
+        <div id="day50SteveExplanation"
+             class="mt-3 p-3 rounded-3 border border-dark"
+             style="display:none;background:#eaf7ed;">
+
+          <strong>
+            🐧 Steve Explains the Evidence:
+          </strong>
+
+          <p class="mb-0">
+            ${day50Data.steve.explanation}
+          </p>
+
+        </div>
+
+        <div class="mt-3 p-3 rounded-3 border border-dark"
+             style="background:#eef6ff;">
+
+          <strong>⭐ STAAR Tip:</strong>
+
+          <p class="mb-0">
+            ${day50Data.steve.tip}
+          </p>
+
+        </div>
+      </div>
+    `;
+
+    missionBrief.insertAdjacentElement("afterend", card);
+
+    let selected = null;
+
+    card.querySelectorAll(".day50-option")
+      .forEach(function(button) {
+
+        button.addEventListener("click", function() {
+
+          selected = button.dataset.answer;
+
+          card.querySelectorAll(".day50-option")
+            .forEach(function(btn) {
+
+              btn.style.background = "#f7f7f7";
+              btn.style.borderColor = "#111";
+            });
+
+          button.style.background = "#dff3e6";
+          button.style.borderColor = "#087a35";
+        });
+      });
+
+    card.querySelector("#day50SteveCheck")
+      .addEventListener("click", function() {
+
+        const result =
+          card.querySelector("#day50SteveResult");
+
+        const explanation =
+          card.querySelector("#day50SteveExplanation");
+
+        if (!selected) {
+
+          result.textContent =
+            "Choose an answer first.";
+
+          result.style.color =
+            "#9a5b00";
+
+          return;
+        }
+
+        card.querySelectorAll(".day50-option")
+          .forEach(function(btn) {
+
+            if (btn.dataset.answer === day50Data.steve.correct) {
+
+              btn.style.background = "#dff3e6";
+              btn.style.borderColor = "#087a35";
+            }
+
+            else if (btn.dataset.answer === selected) {
+
+              btn.style.background = "#ffe1e1";
+              btn.style.borderColor = "#b00020";
+            }
+          });
+
+        explanation.style.display = "block";
+
+        if (selected === day50Data.steve.correct) {
+
+          result.textContent =
+            "Correct! Steve traced electrical energy to sound.";
+
+          result.style.color =
+            "#087a35";
+        }
+
+        else {
+
+          result.textContent =
+            "Try again. Look for the buzzer and the vibration.";
+
+          result.style.color =
+            "#b00020";
+        }
+      });
+
+    card.querySelector("#day50SteveReset")
+      .addEventListener("click", function() {
+
+        selected = null;
+
+        card.querySelector("#day50SteveResult").textContent = "";
+
+        card.querySelector("#day50SteveExplanation")
+          .style.display = "none";
+
+        card.querySelectorAll(".day50-option")
+          .forEach(function(btn) {
+
+            btn.style.background = "#f7f7f7";
+            btn.style.borderColor = "#111";
+          });
+      });
+  }
+
+  function createLabLaunch() {
+
+    if (document.querySelector("#scienceStudioDay50LabLaunch")) return;
+
+    const steve =
+      document.querySelector("#scienceStudioDay50SteveMission");
+
+    if (!steve) return;
+
+    const section =
+      document.createElement("section");
+
+    section.id =
+      "scienceStudioDay50LabLaunch";
+
+    section.className =
+      "day50-sound-card";
+
+    section.innerHTML = `
+      <div class="lab-launch-inner">
+
+        <div>
+
+          <div class="badge rounded-pill text-bg-warning border border-dark mb-2">
+            🧪 Interactive Lab
+          </div>
+
+          <h2 class="fw-bold">
+            Sound Signal Lab
+          </h2>
+
+          <p class="fw-bold">
+            Students inspect a sound circuit, click each part,
+            and explain how electrical energy transforms into sound.
+          </p>
+
+          <p>
+            Battery → closed switch → wires → buzzer → vibration → sound.
+          </p>
+
+          <a class="lab-launch-button"
+             href="/labs/day50-sound-signal-lab">
+            ▶ Start Interactive Lab
+          </a>
+
+        </div>
+
+        <div class="mini-schematic">
+          🔋 → ⚡ → 🔊 → 〰️
+          <br>
+          Trace it. Hear it. Explain it.
+        </div>
+
+      </div>
+    `;
+
+    steve.insertAdjacentElement("afterend", section);
+  }
+
+  function hideGenericLabBox() {
+
+    document.querySelectorAll("section,div,article,.card")
+      .forEach(function(card) {
+
+        const text =
+          (card.textContent || "")
+          .replace(/\s+/g, " ")
+          .trim();
+
+        const rect =
+          card.getBoundingClientRect();
+
+        if (
+          rect.width > 300 &&
+          text.includes("Lab / Investigation") &&
+          text.includes("Student Investigation Steps")
+        ) {
+          card.style.display = "none";
+        }
+      });
+  }
+
+  function buildDay50() {
+
+    createPhenomenon();
+    createMissionBrief();
+    createSteveMission();
+    createLabLaunch();
+    hideGenericLabBox();
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+
+    setTimeout(buildDay50, 500);
+    setTimeout(buildDay50, 1200);
+    setTimeout(buildDay50, 2200);
+  });
+
+})();
+</script>
+<!-- End Science Studio Day 50 Full Page Builder -->
+
 </body>
 </html>

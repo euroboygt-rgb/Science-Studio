@@ -921,3 +921,32 @@ DAY_49_PHENOMENON_MISSION = {
 PHENOMENON_IMAGE_SETS[49] = DAY_49_PHENOMENON_MISSION
 # End Day 49 Phenomenon Mission
 
+
+# Day 50 Phenomenon Mission
+DAY_50_PHENOMENON_MISSION = {
+    "title": "Where Does the Sound Come From?",
+    "subtitle": "Electrical energy to sound evidence",
+    "unit": "Unit 4: Energy Transformations Through Circuits",
+    "image": "/static/phenomenon/day50_sound_energy_mission.svg",
+
+    "prompt": "Steve connects a battery, wires, a closed switch, and a buzzer. When Steve closes the switch, the buzzer makes a sound. How did electrical energy become sound energy?",
+
+    "observe": [
+        "The circuit contains a battery, wires, a switch, and a buzzer.",
+        "The switch is closed.",
+        "The buzzer produces sound.",
+        "The sound stops if the circuit is opened."
+    ],
+
+    "wonder": [
+        "What energy flows through the wires?",
+        "What happens inside the buzzer?",
+        "Why is vibration important for producing sound?"
+    ],
+
+    "mission": "Trace the electrical energy through the circuit and explain how the buzzer produces sound."
+}
+
+PHENOMENON_IMAGE_SETS[50] = DAY_50_PHENOMENON_MISSION
+# End Day 50 Phenomenon Mission
+

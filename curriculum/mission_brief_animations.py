@@ -2319,3 +2319,70 @@ MISSION_BRIEF_ANIMATIONS[49] = {
 }
 # End Day 49 Mission Brief Animation
 
+
+# Day 50 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[50] = {
+    "title": "Mission Brief: Electrical Energy to Sound",
+    "subtitle": "Day 50 • Sound Circuits",
+    "theme": "energy",
+
+    "slides": [
+        {
+            "icon": "🔊",
+            "heading": "Today’s Mission",
+            "text": "Today we will demonstrate that electrical energy in a complete circuit can transform into sound energy.",
+            "caption": "A sound circuit is a system with parts that work together."
+        },
+
+        {
+            "icon": "🔋",
+            "heading": "Battery Supplies Energy",
+            "text": "The battery provides electrical energy when the circuit is complete.",
+            "caption": "The battery is the power source."
+        },
+
+        {
+            "icon": "🔘",
+            "heading": "Close the Circuit",
+            "text": "A closed switch creates a complete path for electrical energy.",
+            "caption": "An open switch creates a gap."
+        },
+
+        {
+            "icon": "⚡",
+            "heading": "Electrical Energy Flows",
+            "text": "Conducting wires allow electrical energy to reach the speaker or buzzer.",
+            "caption": "Conductors carry electrical energy through the system."
+        },
+
+        {
+            "icon": "🔊",
+            "heading": "Speaker or Buzzer",
+            "text": "The speaker or buzzer uses electrical energy to make parts move back and forth.",
+            "caption": "That back-and-forth motion is vibration."
+        },
+
+        {
+            "icon": "〰️",
+            "heading": "Vibration Creates Sound",
+            "text": "Vibrating parts cause the surrounding air to vibrate, producing sound energy.",
+            "caption": "Hearing sound is evidence of the energy transformation."
+        },
+
+        {
+            "icon": "🚫",
+            "heading": "Open Circuit",
+            "text": "If the circuit is open, electrical energy cannot reach the buzzer and the sound stops.",
+            "caption": "No complete path means no sound."
+        },
+
+        {
+            "icon": "🎯",
+            "heading": "STAAR Strategy",
+            "text": "Trace the circuit to the speaker or buzzer, then identify the observable output.",
+            "caption": "Electrical energy → sound energy."
+        }
+    ]
+}
+# End Day 50 Mission Brief Animation
+
