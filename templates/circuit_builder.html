@@ -1,0 +1,383 @@
+{% extends "base.html" %}
+
+{% block title %}Science Studio Circuit Builder{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='circuit_builder/circuit_builder.css') }}">
+
+<div id="scienceStudioCircuitBuilder"
+     class="cb-page"
+     data-engine-version="1">
+
+  <section class="cb-hero">
+    <div>
+      <div class="cb-badges">
+        <span>⚡ Interactive Lab</span>
+        <span>Circuit Builder</span>
+        <span>Engine v1</span>
+      </div>
+
+      <h1>Science Studio Circuit Builder</h1>
+
+      <p>
+        Build your own electrical system. Drag parts onto the board,
+        connect real terminals with wires, and test your circuit.
+      </p>
+    </div>
+
+    <a class="cb-back-button" href="/labs">
+      ← Back to Labs
+    </a>
+  </section>
+
+  <section class="cb-mission-card">
+    <div>
+      <span class="cb-small-label">ENGINE TEST MISSION</span>
+      <h2>Can you make a bulb light?</h2>
+      <p>
+        For now, experiment freely. Try using one battery, two wires,
+        and one bulb to make a complete circuit.
+      </p>
+    </div>
+
+    <div class="cb-mission-checks">
+      <div id="cbCheckBattery">○ Battery on board</div>
+      <div id="cbCheckPositive">○ Wire connected to +</div>
+      <div id="cbCheckNegative">○ Wire connected to −</div>
+      <div id="cbCheckLoad">○ Load in the circuit</div>
+      <div id="cbCheckComplete">○ Complete conducting path</div>
+    </div>
+  </section>
+
+  <section class="cb-builder-layout">
+
+    <!-- =====================================================
+         PARTS TRAY
+         ===================================================== -->
+    <aside class="cb-parts-panel">
+
+      <h2>Parts Tray</h2>
+
+      <p class="cb-help">
+        Drag a part onto the board.
+        On touch screens, tap a part to add it.
+      </p>
+
+      <div class="cb-parts-list">
+
+        <button type="button"
+                class="cb-part"
+                draggable="true"
+                data-component="battery">
+          <span class="cb-part-icon">🔋</span>
+          <span>
+            <strong>Battery</strong>
+            <small>Power source</small>
+          </span>
+        </button>
+
+        <button type="button"
+                class="cb-part"
+                draggable="true"
+                data-component="wire">
+          <span class="cb-part-icon cb-wire-symbol">〰</span>
+          <span>
+            <strong>Wire</strong>
+            <small>Conductor</small>
+          </span>
+        </button>
+
+        <button type="button"
+                class="cb-part"
+                draggable="true"
+                data-component="bulb">
+          <span class="cb-part-icon">💡</span>
+          <span>
+            <strong>Bulb</strong>
+            <small>Light load</small>
+          </span>
+        </button>
+
+        <button type="button"
+                class="cb-part"
+                draggable="true"
+                data-component="switch">
+          <span class="cb-part-icon">🔘</span>
+          <span>
+            <strong>Switch</strong>
+            <small>Opens/closes path</small>
+          </span>
+        </button>
+
+        <button type="button"
+                class="cb-part"
+                draggable="true"
+                data-component="motor">
+          <span class="cb-part-icon">⚙️</span>
+          <span>
+            <strong>Motor</strong>
+            <small>Motion load</small>
+          </span>
+        </button>
+
+        <button type="button"
+                class="cb-part"
+                draggable="true"
+                data-component="speaker">
+          <span class="cb-part-icon">🔊</span>
+          <span>
+            <strong>Speaker</strong>
+            <small>Sound load</small>
+          </span>
+        </button>
+
+      </div>
+
+      <div class="cb-rule-box">
+        <strong>Battery Connection Rule</strong>
+        <p>
+          Every working circuit must leave one battery terminal,
+          travel through the circuit, and return to the other terminal.
+        </p>
+
+        <div class="cb-rule-flow">
+          <span class="cb-plus">+</span>
+          <span>→ circuit →</span>
+          <span class="cb-minus">−</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- =====================================================
+         WORKBENCH
+         ===================================================== -->
+    <main class="cb-board-panel">
+
+      <div class="cb-board-toolbar">
+
+        <div>
+          <strong>Build Board</strong>
+          <span id="cbObjectCount">0 parts • 0 wires</span>
+        </div>
+
+        <div class="cb-toolbar-buttons">
+          <button type="button"
+                  id="cbTestCircuit"
+                  class="cb-test-button">
+            ⚡ Test Circuit
+          </button>
+
+          <button type="button"
+                  id="cbToggleSwitch"
+                  class="cb-secondary-button"
+                  disabled>
+            Toggle Switch
+          </button>
+
+          <button type="button"
+                  id="cbRotateSelected"
+                  class="cb-secondary-button">
+            ↻ Rotate 90°
+          </button>
+
+          <button type="button"
+                  id="cbDeleteSelected"
+                  class="cb-secondary-button"
+                  disabled>
+            🗑 Delete Selected
+          </button>
+
+          <button type="button"
+                  id="cbResetBoard"
+                  class="cb-reset-button">
+            Reset Board
+          </button>
+        </div>
+
+      </div>
+
+      <div id="cbBoardWrap"
+           class="cb-board-wrap">
+
+        <svg id="cbBoard"
+             class="cb-board"
+             viewBox="0 0 1000 650"
+             role="application"
+             aria-label="Interactive circuit construction board">
+
+          <defs>
+
+            <pattern id="cbGrid"
+                     width="40"
+                     height="40"
+                     patternUnits="userSpaceOnUse">
+
+              <path d="M 40 0 L 0 0 0 40"
+                    fill="none"
+                    stroke="#dce4ef"
+                    stroke-width="1"/>
+
+            </pattern>
+
+            <filter id="cbBulbGlow"
+                    x="-80%"
+                    y="-80%"
+                    width="260%"
+                    height="260%">
+
+              <feGaussianBlur stdDeviation="10"
+                              result="blur"/>
+
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+
+            </filter>
+
+          </defs>
+
+          <rect x="0"
+                y="0"
+                width="1000"
+                height="650"
+                fill="#f8fbff"/>
+
+          <rect x="0"
+                y="0"
+                width="1000"
+                height="650"
+                fill="url(#cbGrid)"/>
+
+          <g id="cbWireLayer"></g>
+          <g id="cbComponentLayer"></g>
+
+          <g id="cbEmptyMessage">
+            <rect x="280"
+                  y="230"
+                  width="440"
+                  height="170"
+                  rx="24"
+                  fill="#ffffff"
+                  stroke="#b9c7dc"
+                  stroke-width="3"
+                  stroke-dasharray="10 8"/>
+
+            <text x="500"
+                  y="285"
+                  text-anchor="middle"
+                  font-size="30"
+                  font-weight="900"
+                  fill="#243b6b">
+              Your circuit board is empty
+            </text>
+
+            <text x="500"
+                  y="330"
+                  text-anchor="middle"
+                  font-size="20"
+                  fill="#44546a">
+              Drag parts here from the Parts Tray
+            </text>
+
+            <text x="500"
+                  y="370"
+                  text-anchor="middle"
+                  font-size="18"
+                  font-weight="700"
+                  fill="#44546a">
+              Start with a battery, two wires, and a bulb.
+            </text>
+          </g>
+
+        </svg>
+
+      </div>
+
+      <div class="cb-mobile-add-note">
+        Tip: If dragging is difficult, tap an item in the Parts Tray.
+        It will appear in the middle of the board.
+      </div>
+
+    </main>
+
+    <!-- =====================================================
+         INSPECTOR
+         ===================================================== -->
+    <aside class="cb-inspector-panel">
+
+      <h2>Inspector</h2>
+
+      <div id="cbInspectorEmpty">
+        <p>
+          Select a part or wire on the board to inspect it.
+        </p>
+      </div>
+
+      <div id="cbInspectorContent"
+           hidden>
+
+        <span class="cb-small-label">
+          SELECTED ITEM
+        </span>
+
+        <h3 id="cbInspectorTitle">
+          Component
+        </h3>
+
+        <p id="cbInspectorDescription"></p>
+
+        <div id="cbInspectorTerminals"
+             class="cb-terminal-readout"></div>
+
+      </div>
+
+      <div class="cb-status-card">
+
+        <span class="cb-small-label">
+          CIRCUIT STATUS
+        </span>
+
+        <div id="cbCircuitStatus"
+             class="cb-status-message"
+             aria-live="polite">
+          Build a circuit, then press Test Circuit.
+        </div>
+
+      </div>
+
+      <div class="cb-howto">
+
+        <h3>How to Connect a Wire</h3>
+
+        <ol>
+          <li>Add a wire.</li>
+          <li>Grab either round wire end.</li>
+          <li>Move it close to a terminal. The terminal will highlight.</li>
+          <li>Release it and the wire will snap into place.</li>
+          <li><strong>Easy method:</strong> select a wire, then click a terminal to connect the next free end.</li>
+        </ol>
+
+        <div class="cb-easy-tip">
+          💡 <strong>Switch tip:</strong> Click the switch lever itself to open or close it.
+        </div>
+
+        <div class="cb-easy-tip">
+          ↻ <strong>Rotation tip:</strong> Select a part and use Rotate 90°.
+          Connected wires will follow the terminals.
+        </div>
+
+      </div>
+
+    </aside>
+
+  </section>
+
+</div>
+
+<script src="{{ url_for('static', filename='circuit_builder/circuit_builder.js') }}"></script>
+
+{% endblock %}

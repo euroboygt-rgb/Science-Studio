@@ -1585,6 +1585,16 @@ def day52_circuit_repair_lab():
 # End Science Studio Day 52 Circuit Repair Lab Route
 
 
+
+# Science Studio Circuit Builder Engine Route
+@app.route("/labs/circuit-builder")
+@app.route("/circuit-builder")
+def circuit_builder():
+    from flask import render_template
+    return render_template("circuit_builder.html")
+# End Science Studio Circuit Builder Engine Route
+
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))

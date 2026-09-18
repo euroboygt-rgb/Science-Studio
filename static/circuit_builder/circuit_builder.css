@@ -1,0 +1,537 @@
+#scienceStudioCircuitBuilder {
+  --cb-ink: #111827;
+  --cb-muted: #5b6472;
+  --cb-blue: #243b6b;
+  --cb-purple: #673ab7;
+  --cb-yellow: #ffc400;
+  --cb-orange: #f08a24;
+  --cb-green: #168847;
+  --cb-red: #bb2435;
+  --cb-soft: #f6fbff;
+  --cb-cream: #fff7d6;
+  color: var(--cb-ink);
+}
+
+.cb-page {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 18px;
+}
+
+.cb-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  padding: 22px;
+  color: white;
+  border: 4px solid #111;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #263b6b, #6937be, #129bd1);
+  box-shadow: 6px 6px 0 rgba(0,0,0,.18);
+}
+
+.cb-hero h1 {
+  margin: 10px 0 4px;
+  font-weight: 900;
+}
+
+.cb-hero p {
+  margin: 0;
+  max-width: 850px;
+  font-weight: 700;
+}
+
+.cb-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cb-badges span,
+.cb-small-label {
+  display: inline-block;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .02em;
+}
+
+.cb-badges span {
+  background: #673ab7;
+  color: #fff200;
+  border: 2px solid #111;
+  border-radius: 999px;
+  padding: 5px 11px;
+}
+
+.cb-back-button {
+  flex: 0 0 auto;
+  background: white;
+  color: #111 !important;
+  text-decoration: none;
+  border: 3px solid #111;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 900;
+}
+
+.cb-mission-card {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 18px;
+  padding: 18px;
+  background: var(--cb-cream);
+  border: 3px solid #111;
+  border-radius: 18px;
+}
+
+.cb-mission-card h2 {
+  margin: 4px 0;
+  font-weight: 900;
+}
+
+.cb-mission-card p {
+  margin: 0;
+}
+
+.cb-mission-checks {
+  display: grid;
+  gap: 5px;
+  font-weight: 800;
+  background: white;
+  border: 2px solid #111;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.cb-builder-layout {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 220px minmax(0,1fr) 250px;
+  gap: 14px;
+  align-items: start;
+}
+
+.cb-parts-panel,
+.cb-board-panel,
+.cb-inspector-panel {
+  border: 3px solid #111;
+  border-radius: 18px;
+  background: white;
+}
+
+.cb-parts-panel,
+.cb-inspector-panel {
+  padding: 14px;
+}
+
+.cb-parts-panel h2,
+.cb-inspector-panel h2 {
+  margin-top: 0;
+  font-weight: 900;
+}
+
+.cb-help,
+.cb-mobile-add-note {
+  color: var(--cb-muted);
+  font-size: .9rem;
+}
+
+.cb-parts-list {
+  display: grid;
+  gap: 8px;
+}
+
+.cb-part {
+  width: 100%;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  background: #f8fbff;
+  color: #111;
+  border: 2px solid #111;
+  border-radius: 12px;
+  padding: 8px 10px;
+  cursor: grab;
+}
+
+.cb-part:active {
+  cursor: grabbing;
+}
+
+.cb-part strong,
+.cb-part small {
+  display: block;
+}
+
+.cb-part small {
+  color: var(--cb-muted);
+}
+
+.cb-part-icon {
+  font-size: 1.8rem;
+  min-width: 35px;
+  text-align: center;
+}
+
+.cb-wire-symbol {
+  color: var(--cb-orange);
+  font-weight: 900;
+}
+
+.cb-rule-box,
+.cb-howto,
+.cb-status-card {
+  margin-top: 14px;
+  border: 2px solid #111;
+  border-radius: 12px;
+  padding: 11px;
+  background: var(--cb-cream);
+}
+
+.cb-rule-box p {
+  font-size: .88rem;
+  margin: 5px 0;
+}
+
+.cb-rule-flow {
+  text-align: center;
+  font-weight: 900;
+}
+
+.cb-plus {
+  color: var(--cb-green);
+}
+
+.cb-minus {
+  color: var(--cb-red);
+}
+
+.cb-board-panel {
+  overflow: hidden;
+}
+
+.cb-board-toolbar {
+  padding: 10px;
+  border-bottom: 3px solid #111;
+  background: #eef5ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cb-board-toolbar strong {
+  display: block;
+  font-size: 1.05rem;
+}
+
+#cbObjectCount {
+  font-size: .82rem;
+  color: var(--cb-muted);
+}
+
+.cb-toolbar-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cb-toolbar-buttons button {
+  min-height: 42px;
+  border: 2px solid #111;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-weight: 900;
+}
+
+.cb-test-button {
+  background: var(--cb-yellow);
+}
+
+.cb-secondary-button {
+  background: white;
+}
+
+.cb-reset-button {
+  background: #ffe4e4;
+}
+
+.cb-toolbar-buttons button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.cb-board-wrap {
+  padding: 10px;
+  background: #dfeaf7;
+}
+
+.cb-board {
+  display: block;
+  width: 100%;
+  min-height: 480px;
+  border: 3px solid #111;
+  border-radius: 16px;
+  background: white;
+  touch-action: none;
+}
+
+.cb-mobile-add-note {
+  padding: 8px 12px 12px;
+  text-align: center;
+}
+
+.cb-component {
+  cursor: grab;
+}
+
+.cb-component.dragging {
+  cursor: grabbing;
+}
+
+.cb-component .cb-select-ring {
+  display: none;
+  fill: none;
+  stroke: #6d32c7;
+  stroke-width: 4;
+  stroke-dasharray: 8 5;
+}
+
+.cb-component.selected .cb-select-ring {
+  display: block;
+}
+
+.cb-terminal {
+  stroke: #111;
+  stroke-width: 3;
+  fill: #fff;
+}
+
+.cb-terminal.available {
+  stroke: #6d32c7;
+  stroke-width: 5;
+}
+
+.cb-terminal.connected {
+  fill: #e7f7eb;
+  stroke: var(--cb-green);
+}
+
+.cb-terminal-polarity {
+  font-size: 22px;
+  font-weight: 900;
+  pointer-events: none;
+}
+
+.cb-wire-visible {
+  fill: none;
+  stroke: var(--cb-orange);
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+
+.cb-wire-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 28;
+  cursor: grab;
+}
+
+.cb-wire.selected .cb-wire-visible {
+  stroke: #6d32c7;
+}
+
+.cb-wire-end {
+  fill: white;
+  stroke: #111;
+  stroke-width: 3;
+  cursor: grab;
+}
+
+.cb-wire-end.connected {
+  fill: #e7f7eb;
+  stroke: var(--cb-green);
+}
+
+.cb-bulb-glass {
+  fill: #eef2f6;
+  stroke: #111;
+  stroke-width: 4;
+}
+
+.cb-component.powered .cb-bulb-glass {
+  fill: #fff38a;
+  stroke: #d59e00;
+  filter: url(#cbBulbGlow);
+}
+
+.cb-motor-rotor {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.cb-component.powered .cb-motor-rotor {
+  animation: cbSpin .7s linear infinite;
+}
+
+.cb-speaker-wave {
+  opacity: .15;
+}
+
+.cb-component.powered .cb-speaker-wave {
+  opacity: 1;
+}
+
+@keyframes cbSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cb-component.powered .cb-motor-rotor {
+    animation: none;
+  }
+}
+
+.cb-inspector-panel p {
+  line-height: 1.35;
+}
+
+.cb-terminal-readout {
+  display: grid;
+  gap: 6px;
+}
+
+.cb-terminal-readout div {
+  border: 1px solid #b8c2cf;
+  border-radius: 8px;
+  padding: 6px;
+  font-size: .88rem;
+}
+
+.cb-status-message {
+  margin-top: 5px;
+  font-weight: 800;
+}
+
+.cb-status-message.success {
+  color: var(--cb-green);
+}
+
+.cb-status-message.error {
+  color: var(--cb-red);
+}
+
+.cb-howto ol {
+  margin-bottom: 0;
+  padding-left: 20px;
+}
+
+@media (max-width: 1100px) {
+  .cb-builder-layout {
+    grid-template-columns: 190px minmax(0,1fr);
+  }
+
+  .cb-inspector-panel {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .cb-page {
+    padding: 8px;
+  }
+
+  .cb-hero,
+  .cb-mission-card {
+    grid-template-columns: 1fr;
+  }
+
+  .cb-hero {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cb-builder-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cb-parts-list {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .cb-board {
+    min-height: 420px;
+  }
+}
+
+
+/* Science Studio Circuit Builder Engine v2 Interaction Polish */
+
+.cb-terminal {
+  transition:
+    stroke-width .12s ease,
+    fill .12s ease;
+}
+
+.cb-terminal.available {
+  fill: #fff3a8;
+  stroke: #673ab7;
+  stroke-width: 7;
+}
+
+.cb-terminal.connected {
+  fill: #dff5e5;
+  stroke: #087a35;
+  stroke-width: 5;
+}
+
+.cb-wire-end {
+  stroke-width: 4;
+}
+
+.cb-wire-end:hover {
+  stroke: #673ab7;
+  stroke-width: 6;
+}
+
+.cb-switch-toggle-hit {
+  cursor: pointer;
+}
+
+.cb-easy-tip {
+  margin-top: 9px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #111;
+  border-radius: 8px;
+  font-size: .84rem;
+  line-height: 1.3;
+}
+
+.cb-terminal-help-ring {
+  fill: transparent;
+  stroke: transparent;
+  pointer-events: none;
+}
+
+.cb-component.selected .cb-terminal-help-ring {
+  stroke: rgba(103, 58, 183, .18);
+  stroke-width: 8;
+}
+
+
+
+/* Science Studio Reliable Component Rotation */
+
+.cb-component-rotation-layer {
+  transform-box: view-box;
+  transform-origin: 0 0;
+}
+
