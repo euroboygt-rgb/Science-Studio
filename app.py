@@ -1565,6 +1565,16 @@ def day50_sound_signal_lab():
 # End Science Studio Day 50 Sound Signal Lab Route
 
 
+
+# Science Studio Day 51 Thermal Circuit Lab Route
+@app.route("/labs/day51-thermal-circuit-lab")
+@app.route("/labs/day51-electrical-thermal-lab")
+def day51_thermal_circuit_lab():
+    from flask import render_template
+    return render_template("day51_thermal_circuit_lab.html")
+# End Science Studio Day 51 Thermal Circuit Lab Route
+
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))

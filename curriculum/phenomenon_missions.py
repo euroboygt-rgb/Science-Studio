@@ -950,3 +950,32 @@ DAY_50_PHENOMENON_MISSION = {
 PHENOMENON_IMAGE_SETS[50] = DAY_50_PHENOMENON_MISSION
 # End Day 50 Phenomenon Mission
 
+
+# Day 51 Phenomenon Mission
+DAY_51_PHENOMENON_MISSION = {
+    "title": "Why Does It Get Warm?",
+    "subtitle": "Electrical energy to thermal energy evidence",
+    "unit": "Unit 4: Energy Transformations Through Circuits",
+    "image": "/static/phenomenon/day51_thermal_energy_mission.svg",
+
+    "prompt": "Steve turns on a battery-powered warming system. A thermometer near the heating element reads 22°C before the circuit is turned on and 34°C afterward. What energy transformation does the temperature change support?",
+
+    "observe": [
+        "The circuit contains a battery, wires, switch, and heating element.",
+        "The switch is closed.",
+        "The temperature increases after the circuit is turned on.",
+        "The heating element becomes warmer."
+    ],
+
+    "wonder": [
+        "What energy flows through the wires?",
+        "What happens at the heating element?",
+        "How can temperature provide evidence of an energy transformation?"
+    ],
+
+    "mission": "Trace the electrical energy through the system and use temperature evidence to explain how thermal energy was produced."
+}
+
+PHENOMENON_IMAGE_SETS[51] = DAY_51_PHENOMENON_MISSION
+# End Day 51 Phenomenon Mission
+

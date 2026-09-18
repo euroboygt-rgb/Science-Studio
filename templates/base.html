@@ -7228,5 +7228,835 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- End Science Studio Day 50 Full Page Builder -->
 
+
+<!-- Science Studio Day 51 Full Page Builder -->
+<style>
+  .day51-thermal-card {
+    max-width: 980px;
+    margin: 16px auto;
+    border: 4px solid #111;
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.18);
+    background: #fff7d6;
+  }
+
+  .day51-thermal-card h2,
+  .day51-thermal-card h3,
+  .day51-thermal-card h4 {
+    font-weight: 900;
+  }
+
+  .day51-badge {
+    display: inline-block;
+    background: #7b1cff;
+    color: #fff200;
+    border: 2px solid #111;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .day51-thinking-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .day51-thinking-box {
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 13px;
+  }
+
+  .day51-phenomenon-image {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: white;
+    padding: 8px;
+  }
+
+  .day51-mission-slide {
+    min-height: 220px;
+    border: 3px solid #111;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 24px;
+    text-align: center;
+    display: grid;
+    place-items: center;
+  }
+
+  .day51-mission-slide .slide-icon {
+    font-size: 4rem;
+    margin-bottom: 8px;
+  }
+
+  .day51-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 8px 0;
+    padding: 10px;
+    border: 2px solid #111;
+    border-radius: 10px;
+    background: #f7f7f7;
+    font-weight: 900;
+  }
+
+  .day51-check-btn,
+  .day51-nav-btn {
+    background: #ffc400;
+    color: #111;
+    border: 2px solid #111;
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-weight: 900;
+    margin: 4px;
+  }
+
+  #scienceStudioDay51LabLaunch {
+    background: linear-gradient(135deg,#fff7d6,#f6fbff);
+  }
+
+  #scienceStudioDay51LabLaunch .lab-launch-inner {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 16px;
+    align-items: center;
+  }
+
+  #scienceStudioDay51LabLaunch .lab-launch-button {
+    display: inline-block;
+    background: #12a150;
+    color: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 14px 18px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.2rem;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+  }
+
+  #scienceStudioDay51LabLaunch .mini-schematic {
+    background: white;
+    border: 3px solid #111;
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+    font-weight: 900;
+  }
+
+  @media (max-width: 800px) {
+    .day51-thinking-grid,
+    #scienceStudioDay51LabLaunch .lab-launch-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+(function () {
+
+  if (!window.location.pathname.includes("/second-nine-weeks/day/51")) return;
+
+  const day51Data = {
+
+    phenomenon: {
+      title: "Why Does It Get Warm?",
+      subtitle: "Electrical energy to thermal energy evidence",
+      image: "/static/phenomenon/day51_thermal_energy_mission.svg",
+
+      focus: "How can electrical energy in a complete circuit produce thermal energy?",
+
+      notice: "The circuit has a battery, wires, closed switch, and heating element. The temperature increases after the circuit is turned on.",
+
+      wonder: "What happens at the heating element? Why does the temperature increase? How can a thermometer provide evidence?",
+
+      explore: "Trace the system: battery → closed switch → wires → heating element → thermal energy → temperature increase.",
+
+      evidence: "Record the starting and ending temperatures and identify the energy transformation supported by the data.",
+
+      cer: "The temperature increases because..."
+    },
+
+    missionBrief: {
+      title: "Mission Brief: Electrical Energy to Thermal Energy",
+      subtitle: "Day 51 • Thermal Energy in Circuits",
+
+      slides: [
+        ["🌡️", "Today’s Mission", "Demonstrate that electrical energy in a complete circuit can transform into thermal energy.", "Temperature can provide evidence of energy transformation."],
+
+        ["🔋", "Battery Supplies Energy", "The battery provides electrical energy when the circuit is complete.", "The battery is the power source."],
+
+        ["🔘", "Close the Circuit", "A closed switch creates a complete path for electrical energy.", "An open switch interrupts the path."],
+
+        ["⚡", "Electrical Energy Flows", "Conducting wires carry electrical energy through the circuit.", "The energy reaches the heating element."],
+
+        ["🔥", "Heating Element", "The heating element transforms electrical energy into thermal energy.", "This is the key transformation."],
+
+        ["🌡️", "Measure the Evidence", "A thermometer measures the temperature increase.", "Higher temperature is evidence of thermal energy."],
+
+        ["📊", "Use the Data", "A rise from 22°C to 34°C supports the conclusion that thermal energy increased.", "Use measurable evidence."],
+
+        ["🎯", "STAAR Strategy", "Identify the electrical source, the output, and the evidence.", "Electrical energy → thermal energy."]
+      ]
+    },
+
+    steve: {
+      title: "Steve the Penguin’s Thermal Circuit Mission",
+      subtitle: "Day 51 • Electrical Energy to Thermal Energy",
+
+      scenario: "Steve the Penguin tests a battery-powered warming device. Before Steve closes the circuit, a thermometer reads 21°C. After the circuit has been closed for several minutes, the thermometer reads 33°C.",
+
+      question: "Which statement best explains Steve’s temperature data?",
+
+      options: [
+        ["A", "Sound energy transformed into chemical energy because the thermometer changed."],
+
+        ["B", "Thermal energy transformed into electrical energy and caused the battery to recharge."],
+
+        ["C", "Motion energy transformed into light energy because the circuit was closed."],
+
+        ["D", "Electrical energy in the complete circuit transformed into thermal energy, causing the measured temperature to increase."]
+      ],
+
+      correct: "D",
+
+      explanation: "Steve should choose D. The increase from 21°C to 33°C is measurable evidence that thermal energy increased. Electrical energy transformed into thermal energy at the heating element.",
+
+      tip: "When a circuit question includes temperature data, use the increase in temperature as evidence of thermal energy."
+    }
+  };
+
+  function findPowerFrame() {
+    return document.querySelector("#scienceStudioUniversalPowerFrame");
+  }
+
+  function findTitleCard() {
+
+    const h1 =
+      document.querySelector("h1");
+
+    if (!h1) {
+      return document.querySelector("main") || document.body;
+    }
+
+    let current = h1;
+
+    for (let i = 0; i < 7 && current.parentElement; i++) {
+
+      current = current.parentElement;
+
+      const rect =
+        current.getBoundingClientRect();
+
+      if (rect.width > 350 && rect.height > 70) {
+        return current;
+      }
+    }
+
+    return h1;
+  }
+
+  function insertAfterTop(element) {
+
+    const powerFrame =
+      findPowerFrame();
+
+    const titleCard =
+      findTitleCard();
+
+    if (powerFrame) {
+      powerFrame.insertAdjacentElement("afterend", element);
+    }
+
+    else {
+      titleCard.insertAdjacentElement("afterend", element);
+    }
+  }
+
+  function createPhenomenon() {
+
+    if (document.querySelector("#scienceStudioDay51Phenomenon")) return;
+
+    const card =
+      document.createElement("section");
+
+    card.id =
+      "scienceStudioDay51Phenomenon";
+
+    card.className =
+      "day51-thermal-card";
+
+    card.innerHTML = `
+      <span class="day51-badge">
+        🔎 Phenomenon Mission
+      </span>
+
+      <h2>${day51Data.phenomenon.title}</h2>
+
+      <p>
+        <strong>${day51Data.phenomenon.subtitle}</strong>
+      </p>
+
+      <img class="day51-phenomenon-image"
+           src="${day51Data.phenomenon.image}"
+           alt="Electrical energy to thermal energy phenomenon">
+
+      <div class="mt-3 p-3 rounded-3 border border-dark bg-white">
+
+        <h4>❓ Focus Question</h4>
+
+        <p class="mb-0">
+          ${day51Data.phenomenon.focus}
+        </p>
+
+      </div>
+
+      <div class="day51-thinking-grid mt-3">
+
+        <div class="day51-thinking-box">
+          <h4>👀 Notice</h4>
+          <p>${day51Data.phenomenon.notice}</p>
+        </div>
+
+        <div class="day51-thinking-box">
+          <h4>🤔 Wonder</h4>
+          <p>${day51Data.phenomenon.wonder}</p>
+        </div>
+
+        <div class="day51-thinking-box">
+          <h4>🧪 Quick Explore</h4>
+          <p>${day51Data.phenomenon.explore}</p>
+        </div>
+
+        <div class="day51-thinking-box">
+          <h4>📊 Evidence Tracker</h4>
+          <p>${day51Data.phenomenon.evidence}</p>
+        </div>
+
+        <div class="day51-thinking-box">
+          <h4>💬 CER Starter</h4>
+          <p>${day51Data.phenomenon.cer}</p>
+        </div>
+
+      </div>
+    `;
+
+    insertAfterTop(card);
+  }
+
+  function createMissionBrief() {
+
+    if (document.querySelector("#scienceStudioDay51MissionBrief")) return;
+
+    const phenomenon =
+      document.querySelector("#scienceStudioDay51Phenomenon");
+
+    if (!phenomenon) return;
+
+    const card =
+      document.createElement("section");
+
+    card.id =
+      "scienceStudioDay51MissionBrief";
+
+    card.className =
+      "day51-thermal-card";
+
+    card.innerHTML = `
+      <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+
+        <div>
+
+          <span class="day51-badge">
+            🎬 Mission Brief Animation
+          </span>
+
+          <h2>${day51Data.missionBrief.title}</h2>
+
+          <p>
+            <strong>${day51Data.missionBrief.subtitle}</strong>
+          </p>
+
+        </div>
+
+        <button type="button"
+                class="day51-nav-btn"
+                id="day51PlayMissionBrief">
+          ▶ Play Mission Brief
+        </button>
+
+      </div>
+
+      <div class="day51-mission-slide"
+           id="day51MissionSlide">
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap gap-2">
+
+        <strong id="day51SlideCounter"></strong>
+
+        <div>
+
+          <button type="button"
+                  class="day51-nav-btn"
+                  id="day51BackSlide">
+            ⬅ Back
+          </button>
+
+          <button type="button"
+                  class="day51-nav-btn"
+                  id="day51NextSlide">
+            Next ➡
+          </button>
+
+          <button type="button"
+                  class="day51-nav-btn"
+                  id="day51RestartSlide"
+                  style="background:#0b8f4d;color:white;">
+            Restart
+          </button>
+
+        </div>
+
+      </div>
+    `;
+
+    phenomenon.insertAdjacentElement("afterend", card);
+
+    let index = 0;
+    let timer = null;
+
+    function renderSlide() {
+
+      const slide =
+        day51Data.missionBrief.slides[index];
+
+      document.querySelector("#day51MissionSlide").innerHTML = `
+        <div>
+
+          <div class="slide-icon">
+            ${slide[0]}
+          </div>
+
+          <h3>${slide[1]}</h3>
+
+          <p class="fs-5 fw-bold">
+            ${slide[2]}
+          </p>
+
+          <p class="mb-0">
+            ${slide[3]}
+          </p>
+
+        </div>
+      `;
+
+      document.querySelector("#day51SlideCounter").textContent =
+        "Slide " +
+        (index + 1) +
+        " of " +
+        day51Data.missionBrief.slides.length;
+    }
+
+    function nextSlide() {
+
+      index =
+        (index + 1) %
+        day51Data.missionBrief.slides.length;
+
+      renderSlide();
+    }
+
+    document.querySelector("#day51BackSlide")
+      .addEventListener("click", function() {
+
+        index =
+          (index - 1 + day51Data.missionBrief.slides.length) %
+          day51Data.missionBrief.slides.length;
+
+        renderSlide();
+      });
+
+    document.querySelector("#day51NextSlide")
+      .addEventListener("click", nextSlide);
+
+    document.querySelector("#day51RestartSlide")
+      .addEventListener("click", function() {
+
+        index = 0;
+        renderSlide();
+      });
+
+    document.querySelector("#day51PlayMissionBrief")
+      .addEventListener("click", function() {
+
+        if (timer) {
+
+          clearInterval(timer);
+          timer = null;
+
+          this.textContent =
+            "▶ Play Mission Brief";
+        }
+
+        else {
+
+          timer =
+            setInterval(nextSlide, 10000);
+
+          this.textContent =
+            "⏸ Pause Mission Brief";
+        }
+      });
+
+    renderSlide();
+  }
+
+  function createSteveMission() {
+
+    if (document.querySelector("#scienceStudioDay51SteveMission")) return;
+
+    const missionBrief =
+      document.querySelector("#scienceStudioDay51MissionBrief");
+
+    if (!missionBrief) return;
+
+    const card =
+      document.createElement("section");
+
+    card.id =
+      "scienceStudioDay51SteveMission";
+
+    card.className =
+      "day51-thermal-card";
+
+    card.style.background =
+      "#f6fbff";
+
+    const optionButtons =
+      day51Data.steve.options.map(function(option) {
+
+        return `
+          <button type="button"
+                  class="day51-option"
+                  data-answer="${option[0]}">
+            ${option[0]}. ${option[1]}
+          </button>
+        `;
+      }).join("");
+
+    card.innerHTML = `
+      <span class="day51-badge">
+        🐧 Steve the Penguin’s STAAR Mission
+      </span>
+
+      <h2>${day51Data.steve.title}</h2>
+
+      <p>
+        <strong>${day51Data.steve.subtitle}</strong>
+      </p>
+
+      <div class="p-3 rounded-3 border border-dark mb-3"
+           style="background:#fff7d6;">
+
+        <strong>Steve’s Scenario:</strong>
+
+        <p class="mb-0">
+          ${day51Data.steve.scenario}
+        </p>
+
+      </div>
+
+      <div class="p-3 rounded-3 border border-dark bg-white">
+
+        <strong>STAAR-Style Question:</strong>
+
+        <p class="fw-bold">
+          ${day51Data.steve.question}
+        </p>
+
+        ${optionButtons}
+
+        <button type="button"
+                class="day51-check-btn"
+                id="day51SteveCheck">
+          Check Answer
+        </button>
+
+        <button type="button"
+                class="day51-check-btn"
+                id="day51SteveReset"
+                style="background:#f7f7f7;">
+          Reset
+        </button>
+
+        <span id="day51SteveResult"
+              class="fw-bold ms-2">
+        </span>
+
+        <div id="day51SteveExplanation"
+             class="mt-3 p-3 rounded-3 border border-dark"
+             style="display:none;background:#eaf7ed;">
+
+          <strong>
+            🐧 Steve Explains the Evidence:
+          </strong>
+
+          <p class="mb-0">
+            ${day51Data.steve.explanation}
+          </p>
+
+        </div>
+
+        <div class="mt-3 p-3 rounded-3 border border-dark"
+             style="background:#eef6ff;">
+
+          <strong>⭐ STAAR Tip:</strong>
+
+          <p class="mb-0">
+            ${day51Data.steve.tip}
+          </p>
+
+        </div>
+
+      </div>
+    `;
+
+    missionBrief.insertAdjacentElement("afterend", card);
+
+    let selected = null;
+
+    card.querySelectorAll(".day51-option")
+      .forEach(function(button) {
+
+        button.addEventListener("click", function() {
+
+          selected =
+            button.dataset.answer;
+
+          card.querySelectorAll(".day51-option")
+            .forEach(function(btn) {
+
+              btn.style.background =
+                "#f7f7f7";
+
+              btn.style.borderColor =
+                "#111";
+            });
+
+          button.style.background =
+            "#dff3e6";
+
+          button.style.borderColor =
+            "#087a35";
+        });
+      });
+
+    card.querySelector("#day51SteveCheck")
+      .addEventListener("click", function() {
+
+        const result =
+          card.querySelector("#day51SteveResult");
+
+        const explanation =
+          card.querySelector("#day51SteveExplanation");
+
+        if (!selected) {
+
+          result.textContent =
+            "Choose an answer first.";
+
+          result.style.color =
+            "#9a5b00";
+
+          return;
+        }
+
+        card.querySelectorAll(".day51-option")
+          .forEach(function(btn) {
+
+            if (btn.dataset.answer === day51Data.steve.correct) {
+
+              btn.style.background =
+                "#dff3e6";
+
+              btn.style.borderColor =
+                "#087a35";
+            }
+
+            else if (btn.dataset.answer === selected) {
+
+              btn.style.background =
+                "#ffe1e1";
+
+              btn.style.borderColor =
+                "#b00020";
+            }
+          });
+
+        explanation.style.display =
+          "block";
+
+        if (selected === day51Data.steve.correct) {
+
+          result.textContent =
+            "Correct! Steve used temperature as evidence.";
+
+          result.style.color =
+            "#087a35";
+        }
+
+        else {
+
+          result.textContent =
+            "Try again. Look at the temperature change.";
+
+          result.style.color =
+            "#b00020";
+        }
+      });
+
+    card.querySelector("#day51SteveReset")
+      .addEventListener("click", function() {
+
+        selected = null;
+
+        card.querySelector("#day51SteveResult").textContent =
+          "";
+
+        card.querySelector("#day51SteveExplanation")
+          .style.display =
+          "none";
+
+        card.querySelectorAll(".day51-option")
+          .forEach(function(btn) {
+
+            btn.style.background =
+              "#f7f7f7";
+
+            btn.style.borderColor =
+              "#111";
+          });
+      });
+  }
+
+  function createLabLaunch() {
+
+    if (document.querySelector("#scienceStudioDay51LabLaunch")) return;
+
+    const steve =
+      document.querySelector("#scienceStudioDay51SteveMission");
+
+    if (!steve) return;
+
+    const section =
+      document.createElement("section");
+
+    section.id =
+      "scienceStudioDay51LabLaunch";
+
+    section.className =
+      "day51-thermal-card";
+
+    section.innerHTML = `
+      <div class="lab-launch-inner">
+
+        <div>
+
+          <div class="badge rounded-pill text-bg-warning border border-dark mb-2">
+            🧪 Interactive Lab
+          </div>
+
+          <h2 class="fw-bold">
+            Thermal Circuit Investigation
+          </h2>
+
+          <p class="fw-bold">
+            Students inspect a virtual heating circuit, click each part,
+            and use temperature data to explain the energy transformation.
+          </p>
+
+          <p>
+            Battery → electrical energy → heating element → thermal energy → temperature increase
+          </p>
+
+          <a class="lab-launch-button"
+             href="/labs/day51-thermal-circuit-lab">
+            ▶ Start Interactive Lab
+          </a>
+
+        </div>
+
+        <div class="mini-schematic">
+          🔋 → ⚡ → 🔥 → 🌡️
+          <br>
+          Trace it. Measure it. Prove it.
+        </div>
+
+      </div>
+    `;
+
+    steve.insertAdjacentElement(
+      "afterend",
+      section
+    );
+  }
+
+  function hideGenericLabBox() {
+
+    document.querySelectorAll(
+      "section,div,article,.card"
+    ).forEach(function(card) {
+
+      const text =
+        (card.textContent || "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      const rect =
+        card.getBoundingClientRect();
+
+      if (
+        rect.width > 300 &&
+        text.includes("Lab / Investigation") &&
+        text.includes("Student Investigation Steps")
+      ) {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  function buildDay51() {
+
+    createPhenomenon();
+    createMissionBrief();
+    createSteveMission();
+    createLabLaunch();
+    hideGenericLabBox();
+  }
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+      setTimeout(buildDay51, 500);
+      setTimeout(buildDay51, 1200);
+      setTimeout(buildDay51, 2200);
+    }
+  );
+
+})();
+</script>
+<!-- End Science Studio Day 51 Full Page Builder -->
+
 </body>
 </html>

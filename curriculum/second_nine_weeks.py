@@ -341,3 +341,66 @@ SECOND_NINE_WEEKS_LESSONS[50].update({
 })
 # End Science Studio Day 50 Full Lesson Update
 
+
+# Science Studio Day 51 Full Lesson Update
+SECOND_NINE_WEEKS_LESSONS[51].update({
+    "title": "Electrical Energy to Thermal Energy",
+    "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+    "unit_title": "Unit 4: Investigating Energy Transformations Through Circuits",
+    "teks": "5.8B, 5.5D, 5.1F",
+
+    "focus": "Electrical energy transforming into thermal energy",
+
+    "learning_target": "We will demonstrate how electrical energy in a complete circuit can transform into thermal energy.",
+
+    "success_criteria": "I can use temperature evidence to explain how electrical energy transforms into thermal energy.",
+
+    "essential_question": "How can electrical energy in a circuit produce thermal energy?",
+
+    "vocabulary": [
+        "electrical energy",
+        "thermal energy",
+        "temperature",
+        "heating element",
+        "complete circuit",
+        "closed circuit",
+        "battery",
+        "conductor",
+        "energy transformation",
+        "evidence"
+    ],
+
+    "anchor_chart": "Electrical Energy to Thermal Energy Anchor Chart",
+
+    "bell_ringer": "A battery-powered warming device gets warmer after its circuit is turned on. What energy transformation most likely occurred?",
+
+    "mini_lesson": [
+        "Electrical energy can transform into thermal energy.",
+        "A functioning thermal circuit needs a power source, conductors, and a complete path.",
+        "Electrical energy flows through the complete circuit.",
+        "A heating element changes some electrical energy into thermal energy.",
+        "An increase in temperature is measurable evidence that thermal energy was produced."
+    ],
+
+    "science_notebook": "Create a flow map: battery → electrical energy in complete circuit → heating element → thermal energy → temperature increase.",
+
+    "guided_practice": "Students compare temperature data from virtual circuits and identify which system produced more thermal energy.",
+
+    "lab": "Thermal Circuit Investigation: Students click each part of a virtual heating circuit and use temperature evidence to explain the energy transformation.",
+
+    "lab_notebook": "Record the circuit part, its job, the energy input, energy output, and temperature evidence.",
+
+    "staar_practice": "A circuit component increases in temperature after electrical energy flows through it. Which transformation is supported by the evidence?",
+
+    "exit_ticket": "Explain how a thermometer can provide evidence that electrical energy transformed into thermal energy.",
+
+    "cer": {
+        "claim": "Electrical energy can transform into thermal energy in a complete circuit.",
+        "evidence": "The measured temperature increases when electrical energy flows through the heating element.",
+        "reasoning": "The heating element transforms electrical energy into thermal energy, which causes a measurable temperature increase."
+    },
+
+    "mcgraw_hill_connection": "Use district-approved McGraw Hill electricity and energy transformation resources for complete circuits and thermal energy outputs."
+})
+# End Science Studio Day 51 Full Lesson Update
+

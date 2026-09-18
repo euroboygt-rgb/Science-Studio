@@ -2386,3 +2386,70 @@ MISSION_BRIEF_ANIMATIONS[50] = {
 }
 # End Day 50 Mission Brief Animation
 
+
+# Day 51 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[51] = {
+    "title": "Mission Brief: Electrical Energy to Thermal Energy",
+    "subtitle": "Day 51 • Thermal Energy in Circuits",
+    "theme": "energy",
+
+    "slides": [
+        {
+            "icon": "🌡️",
+            "heading": "Today’s Mission",
+            "text": "Today we will demonstrate that electrical energy in a complete circuit can transform into thermal energy.",
+            "caption": "Temperature can provide evidence of an energy transformation."
+        },
+
+        {
+            "icon": "🔋",
+            "heading": "Battery Supplies Energy",
+            "text": "The battery provides electrical energy when the circuit is complete.",
+            "caption": "The battery is the power source."
+        },
+
+        {
+            "icon": "🔘",
+            "heading": "Close the Circuit",
+            "text": "A closed switch creates a complete path for electrical energy.",
+            "caption": "An open switch would interrupt the path."
+        },
+
+        {
+            "icon": "⚡",
+            "heading": "Electrical Energy Flows",
+            "text": "Conducting wires carry electrical energy through the circuit.",
+            "caption": "The energy moves to the heating element."
+        },
+
+        {
+            "icon": "🔥",
+            "heading": "Heating Element",
+            "text": "The heating element transforms electrical energy into thermal energy.",
+            "caption": "This is the key transformation."
+        },
+
+        {
+            "icon": "🌡️",
+            "heading": "Measure the Evidence",
+            "text": "A thermometer can measure an increase in temperature.",
+            "caption": "Higher temperature is evidence that thermal energy increased."
+        },
+
+        {
+            "icon": "📊",
+            "heading": "Use the Data",
+            "text": "If the temperature rises from 22°C to 34°C, the data support the production of thermal energy.",
+            "caption": "Science explanations should use measurable evidence."
+        },
+
+        {
+            "icon": "🎯",
+            "heading": "STAAR Strategy",
+            "text": "Look for a complete circuit, identify the output, and use temperature change as evidence.",
+            "caption": "Electrical energy → thermal energy."
+        }
+    ]
+}
+# End Day 51 Mission Brief Animation
+

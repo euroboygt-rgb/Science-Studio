@@ -1628,3 +1628,54 @@ STEVE_PENGUIN_MISSIONS[50] = {
 }
 # End Day 50 Steve the Penguin STAAR Mission
 
+
+# Day 51 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[51] = {
+    "title": "Steve the Penguin’s Thermal Circuit Mission",
+    "subtitle": "Day 51 • Electrical Energy to Thermal Energy",
+    "character": "Steve the Penguin",
+
+    "scenario": "Steve the Penguin tests a battery-powered warming device. Before Steve closes the circuit, a thermometer reads 21°C. After the circuit has been closed for several minutes, the thermometer reads 33°C.",
+
+    "question": "Which statement best explains Steve’s temperature data?",
+
+    "options": [
+        {
+            "letter": "A",
+            "text": "Sound energy transformed into chemical energy because the thermometer changed."
+        },
+
+        {
+            "letter": "B",
+            "text": "Thermal energy transformed into electrical energy and caused the battery to recharge."
+        },
+
+        {
+            "letter": "C",
+            "text": "Motion energy transformed into light energy because the circuit was closed."
+        },
+
+        {
+            "letter": "D",
+            "text": "Electrical energy in the complete circuit transformed into thermal energy, causing the measured temperature to increase."
+        }
+    ],
+
+    "correct_answer": "D",
+
+    "explanation": "Steve should choose D. The increase from 21°C to 33°C is measurable evidence that thermal energy increased. Electrical energy in the complete circuit transformed into thermal energy at the heating element.",
+
+    "staar_tip": "When a circuit question includes temperature data, use the increase in temperature as evidence of thermal energy.",
+
+    "vocabulary": [
+        "electrical energy",
+        "thermal energy",
+        "temperature",
+        "heating element",
+        "complete circuit",
+        "energy transformation",
+        "evidence"
+    ]
+}
+# End Day 51 Steve the Penguin STAAR Mission
+

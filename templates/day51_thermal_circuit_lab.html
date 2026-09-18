@@ -1,0 +1,622 @@
+{% extends "base.html" %}
+
+{% block title %}Day 51 Thermal Circuit Lab{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+
+  <a class="btn btn-outline-primary fw-bold mb-3"
+     href="/second-nine-weeks/day/51?view=student">
+    ← Back to Day 51
+  </a>
+
+  <div class="p-4 rounded-4 border border-dark shadow-sm"
+       style="background:linear-gradient(135deg,#243b6b,#118ab2); color:white;">
+
+    <div class="badge rounded-pill text-bg-warning border border-dark mb-2">
+      Day 51 Interactive Lab
+    </div>
+
+    <h1 class="fw-bold">Thermal Circuit Investigation</h1>
+
+    <p class="lead mb-0">
+      Trace electrical energy through a virtual heating circuit and use temperature evidence to identify the energy transformation.
+    </p>
+
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3"
+       style="background:#fff7d6;">
+
+    <h2 class="fw-bold">Mission</h2>
+
+    <p class="mb-0">
+      Steve is testing a battery-powered warming system. Inspect the battery,
+      switch, wires, heating element, and thermometer. Explain why the
+      temperature increases when the circuit is complete.
+    </p>
+
+  </div>
+
+  <div class="alert alert-warning border border-dark mt-3 fw-bold">
+    🧪 This is a virtual investigation. Students should not intentionally heat wires or electrical components.
+  </div>
+
+  <div class="row g-3 mt-2">
+
+    <div class="col-lg-8">
+
+      <div class="p-3 rounded-4 border border-dark shadow-sm bg-white">
+
+        <h2 class="fw-bold">Thermal Circuit Schematic</h2>
+
+        <p class="fw-bold">
+          Click each numbered section.
+        </p>
+
+        <svg viewBox="0 0 1100 650"
+             style="width:100%; border:3px solid #111; border-radius:18px; background:#f6fbff;">
+
+          <text x="550" y="45"
+                text-anchor="middle"
+                font-size="34"
+                font-family="Arial"
+                font-weight="900"
+                fill="#2d2a6e">
+            Thermal Circuit Investigation
+          </text>
+
+          <text x="550" y="78"
+                text-anchor="middle"
+                font-size="18"
+                font-family="Arial"
+                font-weight="700"
+                fill="#2d2a6e">
+            Electrical Energy → Thermal Energy
+          </text>
+
+          <rect x="125" y="140" width="850" height="410" rx="26"
+                fill="#fff" stroke="#d7def7" stroke-width="5"/>
+
+          <!-- battery -->
+          <g class="day51-hotspot" data-part="battery">
+
+            <rect x="195" y="360" width="90" height="125" rx="8"
+                  fill="#ffc400" stroke="#111" stroke-width="5"/>
+
+            <line x1="222" y1="335" x2="222" y2="360"
+                  stroke="#111" stroke-width="5"/>
+
+            <line x1="260" y1="320" x2="260" y2="360"
+                  stroke="#111" stroke-width="5"/>
+
+            <text x="240" y="520"
+                  text-anchor="middle"
+                  font-size="20"
+                  font-family="Arial"
+                  font-weight="900">
+              Battery
+            </text>
+
+            <text x="145" y="118"
+                  font-size="22"
+                  font-family="Arial"
+                  font-weight="900"
+                  fill="#d97b00">
+              1 Battery
+            </text>
+
+            <text x="145" y="143"
+                  font-size="16"
+                  font-family="Arial"
+                  font-weight="700">
+              Energy source
+            </text>
+
+          </g>
+
+          <!-- switch -->
+          <g class="day51-hotspot" data-part="switch">
+
+            <rect x="380" y="380" width="135" height="90" rx="12"
+                  fill="#fff" stroke="#111" stroke-width="5"/>
+
+            <line x1="400" y1="445" x2="490" y2="402"
+                  stroke="#111" stroke-width="8" stroke-linecap="round"/>
+
+            <circle cx="400" cy="445" r="8" fill="#111"/>
+            <circle cx="490" cy="402" r="8" fill="#111"/>
+
+            <text x="370" y="118"
+                  font-size="22"
+                  font-family="Arial"
+                  font-weight="900"
+                  fill="#7b1cff">
+              2 Closed Switch
+            </text>
+
+            <text x="370" y="143"
+                  font-size="16"
+                  font-family="Arial"
+                  font-weight="700">
+              Completes the path
+            </text>
+
+          </g>
+
+          <!-- wires -->
+          <g class="day51-hotspot" data-part="wires">
+
+            <path d="M260 320 L260 225 L650 225 L650 350"
+                  stroke="#f08a24"
+                  stroke-width="10"
+                  fill="none"/>
+
+            <path d="M650 405 L515 425"
+                  stroke="#f08a24"
+                  stroke-width="10"
+                  fill="none"/>
+
+            <path d="M380 425 L285 425"
+                  stroke="#f08a24"
+                  stroke-width="10"
+                  fill="none"/>
+
+            <text x="580" y="118"
+                  font-size="22"
+                  font-family="Arial"
+                  font-weight="900"
+                  fill="#006fbf">
+              3 Wires
+            </text>
+
+            <text x="580" y="143"
+                  font-size="16"
+                  font-family="Arial"
+                  font-weight="700">
+              Electrical energy flows
+            </text>
+
+          </g>
+
+          <!-- heating element -->
+          <g class="day51-hotspot" data-part="heater">
+
+            <rect x="650" y="310" width="185" height="140" rx="22"
+                  fill="#ffe1e1" stroke="#111" stroke-width="5"/>
+
+            <path d="M675 380
+                     C690 340 710 420 725 380
+                     C740 340 760 420 775 380
+                     C790 340 810 420 825 380"
+                  fill="none"
+                  stroke="#d62828"
+                  stroke-width="10"/>
+
+            <text x="705" y="505"
+                  font-size="22"
+                  font-family="Arial"
+                  font-weight="900"
+                  fill="#c2185b">
+              4 Heating Element
+            </text>
+
+            <text x="705" y="532"
+                  font-size="16"
+                  font-family="Arial"
+                  font-weight="700">
+              Electrical → thermal
+            </text>
+
+          </g>
+
+          <!-- thermal energy -->
+          <g class="day51-hotspot" data-part="heat">
+
+            <path d="M675 285 C660 255 695 255 680 220
+                     M720 285 C705 255 740 255 725 220
+                     M765 285 C750 255 785 255 770 220
+                     M810 285 C795 255 830 255 815 220"
+                  fill="none"
+                  stroke="#ff7a00"
+                  stroke-width="9"
+                  stroke-linecap="round"/>
+
+            <text x="805" y="118"
+                  font-size="22"
+                  font-family="Arial"
+                  font-weight="900"
+                  fill="#d62828">
+              5 Thermal Energy
+            </text>
+
+            <text x="805" y="143"
+                  font-size="16"
+                  font-family="Arial"
+                  font-weight="700">
+              Temperature increases
+            </text>
+
+          </g>
+
+          <!-- thermometer -->
+          <g class="day51-hotspot" data-part="thermometer">
+
+            <rect x="890" y="285" width="48" height="150" rx="22"
+                  fill="#fff" stroke="#111" stroke-width="5"/>
+
+            <circle cx="914" cy="445" r="35"
+                    fill="#ff4d4d" stroke="#111" stroke-width="5"/>
+
+            <rect x="905" y="320" width="18" height="120"
+                  fill="#ff4d4d"/>
+
+            <text x="850" y="505"
+                  font-size="22"
+                  font-family="Arial"
+                  font-weight="900"
+                  fill="#087a35">
+              6 Thermometer
+            </text>
+
+            <text x="850" y="532"
+                  font-size="16"
+                  font-family="Arial"
+                  font-weight="700">
+              Evidence: higher temperature
+            </text>
+
+          </g>
+
+          <rect x="235" y="570"
+                width="630" height="52" rx="14"
+                fill="#ede9ff"
+                stroke="#2d2a6e"
+                stroke-width="3"/>
+
+          <text x="550" y="603"
+                text-anchor="middle"
+                font-size="20"
+                font-family="Arial"
+                font-weight="900"
+                fill="#2d2a6e">
+            What evidence proves thermal energy was produced?
+          </text>
+
+        </svg>
+
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="p-3 rounded-4 border border-dark shadow-sm"
+           style="background:#fff7d6;">
+
+        <h2 class="fw-bold" id="partTitle">
+          Choose a part
+        </h2>
+
+        <p id="partExplanation">
+          Click a circuit part to learn how it contributes to the energy transformation.
+        </p>
+
+        <div class="p-3 rounded-3 border border-dark bg-white">
+
+          <label class="fw-bold" for="studentExplain">
+            Student explanation:
+          </label>
+
+          <textarea id="studentExplain"
+                    class="form-control mt-2"
+                    rows="5"
+                    placeholder="This part helps transform energy because..."></textarea>
+
+          <button class="btn btn-warning fw-bold border-dark mt-2"
+                  id="saveExplanation">
+            Save Explanation
+          </button>
+
+          <div id="saveMessage"
+               class="fw-bold mt-2"></div>
+
+        </div>
+
+        <div class="p-3 rounded-3 border border-dark bg-white mt-3">
+
+          <h3 class="fw-bold">Energy Path</h3>
+
+          <ol class="mb-0">
+            <li>Battery provides electrical energy.</li>
+            <li>Closed switch completes the circuit.</li>
+            <li>Wires carry electrical energy.</li>
+            <li>Heating element transforms electrical energy.</li>
+            <li>Thermal energy increases the temperature.</li>
+          </ol>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3"
+       style="background:#f6fbff;">
+
+    <h2 class="fw-bold">Temperature Evidence Challenge</h2>
+
+    <p>
+      A virtual circuit is turned on for two minutes.
+      The temperature near the heating element changes from
+      <strong>22°C to 34°C</strong>.
+    </p>
+
+    <p class="fw-bold">
+      What is the best conclusion?
+    </p>
+
+    <div class="row g-3">
+
+      <div class="col-md-6">
+
+        <button class="thermal-choice w-100 p-3 rounded-3 border border-dark fw-bold"
+                data-answer="A">
+          A. Electrical energy transformed into thermal energy.
+        </button>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <button class="thermal-choice w-100 p-3 rounded-3 border border-dark fw-bold"
+                data-answer="B">
+          B. Thermal energy transformed into electrical energy.
+        </button>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <button class="thermal-choice w-100 p-3 rounded-3 border border-dark fw-bold"
+                data-answer="C">
+          C. Sound energy caused the battery to cool.
+        </button>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <button class="thermal-choice w-100 p-3 rounded-3 border border-dark fw-bold"
+                data-answer="D">
+          D. No energy transformation occurred because the circuit stayed closed.
+        </button>
+
+      </div>
+
+    </div>
+
+    <button class="btn btn-warning fw-bold border-dark mt-3"
+            id="checkThermal">
+      Check Evidence
+    </button>
+
+    <span id="thermalResult"
+          class="fw-bold ms-2"></span>
+
+    <div id="thermalExplanation"
+         class="mt-3 p-3 rounded-3 border border-dark"
+         style="display:none;background:#eaf7ed;">
+
+      Correct answer: A. The increase from 22°C to 34°C is evidence that
+      thermal energy was produced. Electrical energy in the circuit
+      transformed into thermal energy at the heating element.
+
+    </div>
+
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3"
+       style="background:#fff7d6;">
+
+    <h2 class="fw-bold">
+      Lab CER
+    </h2>
+
+    <p>
+      <strong>Claim:</strong>
+      Electrical energy can transform into thermal energy in a complete circuit.
+    </p>
+
+    <p>
+      <strong>Evidence:</strong>
+      The temperature near the heating element increased after electrical
+      energy flowed through the complete circuit.
+    </p>
+
+    <p class="mb-0">
+      <strong>Reasoning:</strong>
+      The heating element transforms electrical energy into thermal energy.
+      A rise in temperature provides measurable evidence of the transformation.
+    </p>
+
+  </div>
+
+</div>
+
+<script>
+const labParts = {
+
+  battery: {
+    title: "1. Battery",
+    explanation: "The battery is the energy source. It provides electrical energy when the circuit is complete."
+  },
+
+  switch: {
+    title: "2. Closed Switch",
+    explanation: "The closed switch completes the circuit so electrical energy can flow."
+  },
+
+  wires: {
+    title: "3. Wires",
+    explanation: "The wires are conductors that allow electrical energy to move through the circuit."
+  },
+
+  heater: {
+    title: "4. Heating Element",
+    explanation: "The heating element transforms electrical energy into thermal energy."
+  },
+
+  heat: {
+    title: "5. Thermal Energy",
+    explanation: "Thermal energy causes the temperature of the heating element and nearby materials to increase."
+  },
+
+  thermometer: {
+    title: "6. Thermometer",
+    explanation: "The thermometer provides measurable evidence. A temperature increase shows that thermal energy was produced."
+  }
+};
+
+let currentPart = null;
+let selectedThermal = null;
+
+document.querySelectorAll(".day51-hotspot").forEach(function(part) {
+
+  part.style.cursor = "pointer";
+
+  part.addEventListener("click", function() {
+
+    currentPart = part.dataset.part;
+
+    const info = labParts[currentPart];
+
+    document.querySelector("#partTitle").textContent =
+      info.title;
+
+    document.querySelector("#partExplanation").textContent =
+      info.explanation;
+
+    document.querySelector("#studentExplain").value =
+      localStorage.getItem("day51ThermalLab_" + currentPart) || "";
+
+    document.querySelector("#saveMessage").textContent = "";
+
+    document.querySelectorAll(".day51-hotspot").forEach(function(p) {
+      p.style.opacity = "0.5";
+    });
+
+    part.style.opacity = "1";
+  });
+});
+
+document.querySelector("#saveExplanation")
+  .addEventListener("click", function() {
+
+    if (!currentPart) {
+
+      document.querySelector("#saveMessage").textContent =
+        "Click a circuit part first.";
+
+      document.querySelector("#saveMessage").style.color =
+        "#9a5b00";
+
+      return;
+    }
+
+    localStorage.setItem(
+      "day51ThermalLab_" + currentPart,
+      document.querySelector("#studentExplain").value
+    );
+
+    document.querySelector("#saveMessage").textContent =
+      "Saved!";
+
+    document.querySelector("#saveMessage").style.color =
+      "#087a35";
+  });
+
+document.querySelectorAll(".thermal-choice")
+  .forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+      selectedThermal = button.dataset.answer;
+
+      document.querySelectorAll(".thermal-choice")
+        .forEach(function(btn) {
+
+          btn.style.background = "#ffffff";
+          btn.style.borderColor = "#111";
+        });
+
+      button.style.background = "#dff3e6";
+      button.style.borderColor = "#087a35";
+    });
+  });
+
+document.querySelector("#checkThermal")
+  .addEventListener("click", function() {
+
+    const result =
+      document.querySelector("#thermalResult");
+
+    const explanation =
+      document.querySelector("#thermalExplanation");
+
+    if (!selectedThermal) {
+
+      result.textContent =
+        "Choose an answer first.";
+
+      result.style.color =
+        "#9a5b00";
+
+      return;
+    }
+
+    document.querySelectorAll(".thermal-choice")
+      .forEach(function(btn) {
+
+        if (btn.dataset.answer === "A") {
+
+          btn.style.background =
+            "#dff3e6";
+
+          btn.style.borderColor =
+            "#087a35";
+        }
+
+        else if (btn.dataset.answer === selectedThermal) {
+
+          btn.style.background =
+            "#ffe1e1";
+
+          btn.style.borderColor =
+            "#b00020";
+        }
+      });
+
+    explanation.style.display =
+      "block";
+
+    if (selectedThermal === "A") {
+
+      result.textContent =
+        "Correct! The temperature increase is evidence of thermal energy.";
+
+      result.style.color =
+        "#087a35";
+    }
+
+    else {
+
+      result.textContent =
+        "Try again. Use the temperature change as evidence.";
+
+      result.style.color =
+        "#b00020";
+    }
+  });
+</script>
+{% endblock %}

@@ -362,3 +362,22 @@ POWER_FRAMES[50] = {
 }
 # End Science Studio Day 50 Power Frame Fix
 
+
+# Science Studio Day 51 Power Frame Fix
+POWER_FRAMES[51] = {
+    "i_can": "I can demonstrate that electrical energy can transform into thermal energy.",
+
+    "by": "by tracing electrical energy through a complete circuit and using temperature data as evidence.",
+
+    "i_know": "I know I have learned this when I can explain that a temperature increase is evidence that electrical energy transformed into thermal energy.",
+
+    "i_know_i_have_learned": "I know I have learned this when I can explain that a temperature increase is evidence that electrical energy transformed into thermal energy.",
+
+    "we_will": "We will demonstrate electrical energy transforming into thermal energy.",
+
+    "learning_target": "We will demonstrate how electrical energy in a complete circuit can transform into thermal energy.",
+
+    "success_criteria": "I can use temperature evidence to explain an electrical-to-thermal energy transformation."
+}
+# End Science Studio Day 51 Power Frame Fix
+
