@@ -1,3 +1,4 @@
+<!-- Science Studio Battery Standard Day 52 Phenomenon -->
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
   <rect width="1200" height="700" fill="#f6fbff"/>
 
@@ -19,6 +20,10 @@
         fill="#ffc400" stroke="#111" stroke-width="5"/>
   <line x1="217" y1="340" x2="217" y2="365" stroke="#111" stroke-width="5"/>
   <line x1="255" y1="325" x2="255" y2="365" stroke="#111" stroke-width="5"/>
+  <circle cx="217" cy="340" r="6" fill="#fff" stroke="#111" stroke-width="3"/>
+  <circle cx="255" cy="325" r="6" fill="#fff" stroke="#111" stroke-width="3"/>
+  <text x="199" y="338" font-family="Arial" font-size="20" font-weight="900" fill="#b00020">−</text>
+  <text x="264" y="325" font-family="Arial" font-size="20" font-weight="900" fill="#087a35">+</text>
   <text x="235" y="525" text-anchor="middle"
         font-family="Arial" font-size="20" font-weight="900">Battery</text>
 
@@ -59,7 +64,7 @@
   <path d="M570 445 L515 445"
         stroke="#f08a24" stroke-width="10" fill="none"/>
 
-  <path d="M380 425 L280 425"
+  <path d="M380 425 L315 425 L315 340 L217 340"
         stroke="#f08a24" stroke-width="10" fill="none"/>
 
   <!-- gap -->

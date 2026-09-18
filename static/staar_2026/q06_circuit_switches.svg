@@ -16,10 +16,37 @@
   <!-- Battery at top connecting rails -->
   <line x1="160" y1="150" x2="420" y2="150" stroke="#f08a24" stroke-width="10" stroke-linecap="round"/>
   <line x1="580" y1="150" x2="840" y2="150" stroke="#f08a24" stroke-width="10" stroke-linecap="round"/>
-  <rect x="420" y="120" width="160" height="60" rx="10" fill="#dddddd" stroke="#333333" stroke-width="4"/>
-  <text x="500" y="157" text-anchor="middle" font-size="20" font-family="Arial, sans-serif" font-weight="700">Battery</text>
-  <text x="405" y="140" text-anchor="middle" font-size="22" font-family="Arial, sans-serif" font-weight="700">−</text>
-  <text x="595" y="140" text-anchor="middle" font-size="22" font-family="Arial, sans-serif" font-weight="700">+</text>
+  <!-- Science Studio Battery Standard STAAR Q06 -->
+  <rect x="420" y="120" width="160" height="60" rx="10"
+        fill="#dddddd" stroke="#333333" stroke-width="4"/>
+
+  <!-- Wire on left physically touches negative terminal -->
+  <circle cx="420" cy="150" r="10"
+          fill="#ffffff" stroke="#333333" stroke-width="4"/>
+
+  <!-- Wire on right physically touches positive terminal -->
+  <circle cx="580" cy="150" r="10"
+          fill="#ffffff" stroke="#333333" stroke-width="4"/>
+
+  <text x="500" y="157"
+        text-anchor="middle"
+        font-size="20"
+        font-family="Arial, sans-serif"
+        font-weight="700">Battery</text>
+
+  <text x="420" y="108"
+        text-anchor="middle"
+        font-size="25"
+        font-family="Arial, sans-serif"
+        font-weight="900"
+        fill="#b00020">−</text>
+
+  <text x="580" y="108"
+        text-anchor="middle"
+        font-size="25"
+        font-family="Arial, sans-serif"
+        font-weight="900"
+        fill="#087a35">+</text>
 
   <!-- Branch 1: Lightbulb 1 complete -->
   <line x1="160" y1="255" x2="380" y2="255" stroke="#f08a24" stroke-width="10" stroke-linecap="round"/>

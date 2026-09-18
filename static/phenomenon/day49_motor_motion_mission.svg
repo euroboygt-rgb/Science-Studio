@@ -1,3 +1,4 @@
+<!-- Science Studio Battery Standard Day 49 Phenomenon -->
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
   <rect width="1200" height="700" fill="#f6fbff"/>
   <text x="600" y="50" text-anchor="middle" font-family="Arial" font-size="38" font-weight="900" fill="#2d2a6e">Phenomenon Mission: Why Does the Fan Spin?</text>
@@ -9,6 +10,10 @@
   <rect x="210" y="370" width="85" height="120" rx="8" fill="#ffc400" stroke="#111" stroke-width="5"/>
   <line x1="235" y1="345" x2="235" y2="370" stroke="#111" stroke-width="5"/>
   <line x1="270" y1="330" x2="270" y2="370" stroke="#111" stroke-width="5"/>
+  <circle cx="235" cy="345" r="6" fill="#fff" stroke="#111" stroke-width="3"/>
+  <circle cx="270" cy="330" r="6" fill="#fff" stroke="#111" stroke-width="3"/>
+  <text x="218" y="343" font-family="Arial" font-size="20" font-weight="900" fill="#b00020">−</text>
+  <text x="279" y="330" font-family="Arial" font-size="20" font-weight="900" fill="#087a35">+</text>
   <text x="252" y="525" text-anchor="middle" font-family="Arial" font-size="20" font-weight="900">Battery</text>
 
   <!-- Switch -->
@@ -38,7 +43,7 @@
   <path d="M270 330 L270 245 L685 245 L685 365" stroke="#f08a24" stroke-width="10" fill="none"/>
   <path d="M835 390 L900 390 L900 320" stroke="#f08a24" stroke-width="10" fill="none"/>
   <path d="M925 320 L925 545 L478 545 L478 473" stroke="#f08a24" stroke-width="10" fill="none"/>
-  <path d="M410 430 L295 430" stroke="#f08a24" stroke-width="10" fill="none"/>
+  <path d="M410 430 L330 430 L330 345 L235 345" stroke="#f08a24" stroke-width="10" fill="none"/>
 
   <!-- labels -->
   <rect x="175" y="115" width="225" height="52" rx="14" fill="#fff7d6" stroke="#111" stroke-width="3"/>

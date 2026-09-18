@@ -20,10 +20,45 @@
   <path d="M140 520 L140 270 L210 270" fill="none" stroke="#f08a24" stroke-width="10" stroke-linecap="round"/>
   <path d="M410 270 L480 270 L480 520 L230 520" fill="none" stroke="#f08a24" stroke-width="10" stroke-linecap="round"/>
 
-  <!-- Battery left -->
-  <line x1="150" y1="520" x2="150" y2="470" stroke="#2d2a6e" stroke-width="8"/>
-  <line x1="170" y1="520" x2="170" y2="490" stroke="#2d2a6e" stroke-width="4"/>
-  <text x="160" y="550" text-anchor="middle" font-size="16" font-family="Arial, sans-serif" fill="#333">Battery</text>
+  <!-- Science Studio Battery Standard Day 44 -->
+  <!-- Battery left: one connection to negative and one to positive -->
+  <line x1="140" y1="520" x2="155" y2="520"
+        stroke="#f08a24" stroke-width="10" stroke-linecap="round"/>
+
+  <line x1="155" y1="485" x2="155" y2="555"
+        stroke="#2d2a6e" stroke-width="8"/>
+
+  <line x1="180" y1="495" x2="180" y2="545"
+        stroke="#2d2a6e" stroke-width="4"/>
+
+  <line x1="180" y1="520" x2="230" y2="520"
+        stroke="#f08a24" stroke-width="10" stroke-linecap="round"/>
+
+  <circle cx="155" cy="520" r="6"
+          fill="#ffffff" stroke="#111" stroke-width="3"/>
+
+  <circle cx="180" cy="520" r="6"
+          fill="#ffffff" stroke="#111" stroke-width="3"/>
+
+  <text x="150" y="580"
+        text-anchor="middle"
+        font-size="22"
+        font-family="Arial, sans-serif"
+        font-weight="900"
+        fill="#b00020">−</text>
+
+  <text x="185" y="580"
+        text-anchor="middle"
+        font-size="22"
+        font-family="Arial, sans-serif"
+        font-weight="900"
+        fill="#087a35">+</text>
+
+  <text x="167" y="610"
+        text-anchor="middle"
+        font-size="16"
+        font-family="Arial, sans-serif"
+        fill="#333">Battery</text>
 
   <!-- Bulb left -->
   <circle cx="310" cy="270" r="42" fill="#f3f5fa" stroke="#2d2a6e" stroke-width="6"/>
@@ -32,7 +67,8 @@
 
   <!-- Switch left -->
   <line x1="230" y1="520" x2="280" y2="520" stroke="#2d2a6e" stroke-width="8"/>
-  <line x1="280" y1="520" x2="315" y2="495" stroke="#2d2a6e" stroke-width="8"/>
+  <line x1="280" y1="520" x2="320" y2="520"
+        stroke="#2d2a6e" stroke-width="8" stroke-linecap="round"/>
   <circle cx="225" cy="520" r="6" fill="#2d2a6e"/>
   <circle cx="320" cy="520" r="6" fill="#2d2a6e"/>
   <text x="275" y="555" text-anchor="middle" font-size="16" font-family="Arial, sans-serif" fill="#333">Closed switch</text>
@@ -54,10 +90,44 @@
   <path d="M720 520 L720 270 L790 270" fill="none" stroke="#f08a24" stroke-width="10" stroke-linecap="round"/>
   <path d="M990 270 L1060 270 L1060 520 L810 520" fill="none" stroke="#f08a24" stroke-width="10" stroke-linecap="round"/>
 
-  <!-- Battery right -->
-  <line x1="730" y1="520" x2="730" y2="470" stroke="#2d2a6e" stroke-width="8"/>
-  <line x1="750" y1="520" x2="750" y2="490" stroke="#2d2a6e" stroke-width="4"/>
-  <text x="740" y="550" text-anchor="middle" font-size="16" font-family="Arial, sans-serif" fill="#333">Battery</text>
+  <!-- Battery right: one connection to negative and one to positive -->
+  <line x1="720" y1="520" x2="735" y2="520"
+        stroke="#f08a24" stroke-width="10" stroke-linecap="round"/>
+
+  <line x1="735" y1="485" x2="735" y2="555"
+        stroke="#2d2a6e" stroke-width="8"/>
+
+  <line x1="760" y1="495" x2="760" y2="545"
+        stroke="#2d2a6e" stroke-width="4"/>
+
+  <line x1="760" y1="520" x2="810" y2="520"
+        stroke="#f08a24" stroke-width="10" stroke-linecap="round"/>
+
+  <circle cx="735" cy="520" r="6"
+          fill="#ffffff" stroke="#111" stroke-width="3"/>
+
+  <circle cx="760" cy="520" r="6"
+          fill="#ffffff" stroke="#111" stroke-width="3"/>
+
+  <text x="730" y="580"
+        text-anchor="middle"
+        font-size="22"
+        font-family="Arial, sans-serif"
+        font-weight="900"
+        fill="#b00020">−</text>
+
+  <text x="765" y="580"
+        text-anchor="middle"
+        font-size="22"
+        font-family="Arial, sans-serif"
+        font-weight="900"
+        fill="#087a35">+</text>
+
+  <text x="747" y="610"
+        text-anchor="middle"
+        font-size="16"
+        font-family="Arial, sans-serif"
+        fill="#333">Battery</text>
 
   <!-- Bulb right ON -->
   <circle cx="890" cy="270" r="42" fill="#fff4a8" stroke="#2d2a6e" stroke-width="6"/>
@@ -71,7 +141,8 @@
 
   <!-- Switch right -->
   <line x1="810" y1="520" x2="860" y2="520" stroke="#2d2a6e" stroke-width="8"/>
-  <line x1="860" y1="520" x2="895" y2="495" stroke="#2d2a6e" stroke-width="8"/>
+  <line x1="860" y1="520" x2="900" y2="520"
+        stroke="#2d2a6e" stroke-width="8" stroke-linecap="round"/>
   <circle cx="805" cy="520" r="6" fill="#2d2a6e"/>
   <circle cx="900" cy="520" r="6" fill="#2d2a6e"/>
   <text x="855" y="555" text-anchor="middle" font-size="16" font-family="Arial, sans-serif" fill="#333">Closed switch</text>

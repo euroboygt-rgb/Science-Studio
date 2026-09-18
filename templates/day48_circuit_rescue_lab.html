@@ -23,7 +23,8 @@
         <h2 class="fw-bold">Circuit Schematic</h2>
         <p class="fw-bold">Click a circuit part to explain its job.</p>
 
-        <svg id="day48CircuitLabSvg" viewBox="0 0 1100 650" style="width:100%; border:3px solid #111; border-radius:18px; background:#f6fbff;">
+        <!-- Science Studio Battery Standard Day 48 Lab -->
+<svg id="day48CircuitLabSvg" viewBox="0 0 1100 650" style="width:100%; border:3px solid #111; border-radius:18px; background:#f6fbff;">
           <text x="550" y="45" text-anchor="middle" font-size="34" font-family="Arial" font-weight="900" fill="#2d2a6e">Circuit Rescue Lab</text>
           <text x="550" y="78" text-anchor="middle" font-size="18" font-family="Arial" font-weight="700" fill="#2d2a6e">A complete circuit lets electrical energy flow from the battery, through the path, and back.</text>
 
@@ -33,6 +34,10 @@
             <rect x="220" y="370" width="85" height="120" rx="8" fill="#ffc400" stroke="#111" stroke-width="5"/>
             <line x1="245" y1="350" x2="245" y2="370" stroke="#111" stroke-width="5"/>
             <line x1="280" y1="338" x2="280" y2="370" stroke="#111" stroke-width="5"/>
+            <circle cx="245" cy="350" r="6" fill="#fff" stroke="#111" stroke-width="3"/>
+            <circle cx="280" cy="338" r="6" fill="#fff" stroke="#111" stroke-width="3"/>
+            <text x="228" y="348" font-size="20" font-family="Arial" font-weight="900" fill="#b00020">−</text>
+            <text x="289" y="338" font-size="20" font-family="Arial" font-weight="900" fill="#087a35">+</text>
             <text x="262" y="522" text-anchor="middle" font-size="20" font-family="Arial" font-weight="900">Battery</text>
             <text x="165" y="125" font-size="22" font-family="Arial" font-weight="900" fill="#d97b00">1 Battery</text>
             <text x="165" y="150" font-size="16" font-family="Arial" font-weight="700">Power source</text>
@@ -41,7 +46,7 @@
           <g class="day48-hotspot" data-part="wires">
             <path d="M280 338 L280 235 L770 235" stroke="#f08a24" stroke-width="10" fill="none"/>
             <path d="M850 312 L850 450 L540 450" stroke="#f08a24" stroke-width="10" fill="none"/>
-            <path d="M435 450 L305 450" stroke="#f08a24" stroke-width="10" fill="none"/>
+            <path d="M435 450 L340 450 L340 350 L245 350" stroke="#f08a24" stroke-width="10" fill="none"/>
             <text x="410" y="125" font-size="22" font-family="Arial" font-weight="900" fill="#006fbf">2 Conducting Wires</text>
             <text x="410" y="150" font-size="16" font-family="Arial" font-weight="700">Pathway for electrical energy</text>
           </g>
