@@ -381,3 +381,23 @@ POWER_FRAMES[51] = {
 }
 # End Science Studio Day 51 Power Frame Fix
 
+
+# Science Studio Day 52 Power Frame Fix
+POWER_FRAMES[52] = {
+
+    "i_can": "I can troubleshoot an electrical system and identify why a circuit works or does not work.",
+
+    "by": "by checking the power source, switch, conducting path, connections, load, and expected energy output.",
+
+    "i_know": "I know I have learned this when I can identify a circuit problem, choose the correct repair, and explain my answer using evidence.",
+
+    "i_know_i_have_learned": "I know I have learned this when I can identify a circuit problem, choose the correct repair, and explain my answer using evidence.",
+
+    "we_will": "We will use evidence to troubleshoot electrical systems.",
+
+    "learning_target": "We will use evidence to troubleshoot electrical systems and explain why a circuit works or does not work.",
+
+    "success_criteria": "I can diagnose a circuit problem and support the correct repair with evidence."
+}
+# End Science Studio Day 52 Power Frame Fix
+

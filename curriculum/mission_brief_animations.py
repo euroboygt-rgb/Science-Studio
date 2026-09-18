@@ -2453,3 +2453,74 @@ MISSION_BRIEF_ANIMATIONS[51] = {
 }
 # End Day 51 Mission Brief Animation
 
+
+# Day 52 Mission Brief Animation
+MISSION_BRIEF_ANIMATIONS[52] = {
+
+    "title": "Mission Brief: Circuit System Troubleshooting",
+
+    "subtitle": "Day 52 • Diagnose, Repair, Explain",
+
+    "theme": "energy",
+
+    "slides": [
+
+        {
+            "icon": "🛠️",
+            "heading": "Today’s Mission",
+            "text": "Today we will use evidence to troubleshoot electrical systems.",
+            "caption": "Engineers inspect systems one part at a time."
+        },
+
+        {
+            "icon": "🔋",
+            "heading": "Check the Power Source",
+            "text": "First, make sure the circuit has an energy source such as a battery.",
+            "caption": "No power source means the system cannot function."
+        },
+
+        {
+            "icon": "🔘",
+            "heading": "Check the Switch",
+            "text": "An open switch creates a gap. A closed switch completes the path.",
+            "caption": "Trace the path through the switch."
+        },
+
+        {
+            "icon": "🔗",
+            "heading": "Check Every Connection",
+            "text": "Disconnected wires create gaps that stop the complete path.",
+            "caption": "Electrical energy needs a continuous conducting path."
+        },
+
+        {
+            "icon": "🧪",
+            "heading": "Check the Material",
+            "text": "A conductor allows electrical energy to flow. An insulator can interrupt the path.",
+            "caption": "Use material properties as evidence."
+        },
+
+        {
+            "icon": "💡",
+            "heading": "Check the Output",
+            "text": "The load should transform electrical energy into an observable output.",
+            "caption": "Look for light, motion, sound, or thermal energy."
+        },
+
+        {
+            "icon": "🧠",
+            "heading": "Diagnose Before Repairing",
+            "text": "Identify the evidence first, then choose the repair that fixes the actual problem.",
+            "caption": "Scientists and engineers use evidence."
+        },
+
+        {
+            "icon": "🎯",
+            "heading": "STAAR Strategy",
+            "text": "Trace the entire circuit. Check for the energy source, conductors, complete path, load, and observable output.",
+            "caption": "Find the break in the system."
+        }
+    ]
+}
+# End Day 52 Mission Brief Animation
+

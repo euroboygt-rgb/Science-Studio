@@ -1679,3 +1679,59 @@ STEVE_PENGUIN_MISSIONS[51] = {
 }
 # End Day 51 Steve the Penguin STAAR Mission
 
+
+# Day 52 Steve the Penguin STAAR Mission
+STEVE_PENGUIN_MISSIONS[52] = {
+
+    "title": "Steve the Penguin’s Circuit Repair Mission",
+
+    "subtitle": "Day 52 • Circuit System Troubleshooting",
+
+    "character": "Steve the Penguin",
+
+    "scenario": "Steve the Penguin builds a circuit with a battery, bulb, conducting wires, and a closed switch. One wire is disconnected from the bulb. The bulb does not light.",
+
+    "question": "Which change would most likely make Steve’s bulb light?",
+
+    "options": [
+
+        {
+            "letter": "A",
+            "text": "Replace the conducting wires with plastic strips."
+        },
+
+        {
+            "letter": "B",
+            "text": "Reconnect the loose wire so the circuit has a complete conducting path."
+        },
+
+        {
+            "letter": "C",
+            "text": "Open the switch so electrical energy cannot flow."
+        },
+
+        {
+            "letter": "D",
+            "text": "Remove the battery from the circuit."
+        }
+    ],
+
+    "correct_answer": "B",
+
+    "explanation": "Steve should choose B. The disconnected wire creates a gap. Reconnecting the wire creates a complete conducting path so electrical energy can flow to the bulb.",
+
+    "staar_tip": "When a circuit does not work, trace the path all the way around and look for a gap, open switch, disconnected wire, or insulator.",
+
+    "vocabulary": [
+        "troubleshoot",
+        "complete circuit",
+        "incomplete circuit",
+        "conductor",
+        "insulator",
+        "electrical energy",
+        "energy transformation",
+        "evidence"
+    ]
+}
+# End Day 52 Steve the Penguin STAAR Mission
+

@@ -1,0 +1,656 @@
+{% extends "base.html" %}
+
+{% block title %}Day 52 Circuit Repair Lab{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+
+  <a class="btn btn-outline-primary fw-bold mb-3"
+     href="/second-nine-weeks/day/52?view=student">
+    ← Back to Day 52
+  </a>
+
+  <div class="p-4 rounded-4 border border-dark shadow-sm"
+       style="background:linear-gradient(135deg,#243b6b,#118ab2);color:white;">
+
+    <div class="badge rounded-pill text-bg-warning border border-dark mb-2">
+      Day 52 Interactive Lab
+    </div>
+
+    <h1 class="fw-bold">Mission Control Circuit Repair</h1>
+
+    <p class="lead mb-0">
+      Inspect the system, locate the failure, repair the circuit, and explain your evidence.
+    </p>
+
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3"
+       style="background:#fff7d6;">
+
+    <h2 class="fw-bold">Mission</h2>
+
+    <p class="mb-0">
+      Mission Control has several electrical systems that are not working.
+      Use what you know about batteries, conductors, insulators, switches,
+      complete circuits, and energy transformations to repair each system.
+    </p>
+
+  </div>
+
+  <div class="row g-3 mt-2">
+
+    <div class="col-lg-8">
+
+      <div class="p-3 rounded-4 border border-dark shadow-sm bg-white">
+
+        <h2 class="fw-bold">Troubleshooting Schematic</h2>
+
+        <p class="fw-bold">
+          Click each part to inspect the circuit.
+        </p>
+
+        <svg viewBox="0 0 1100 650"
+             style="width:100%;border:3px solid #111;border-radius:18px;background:#f6fbff;">
+
+          <text x="550" y="45" text-anchor="middle"
+                font-size="34" font-family="Arial" font-weight="900" fill="#2d2a6e">
+            Circuit Troubleshooting System
+          </text>
+
+          <text x="550" y="78" text-anchor="middle"
+                font-size="18" font-family="Arial" font-weight="700" fill="#2d2a6e">
+            Inspect → Diagnose → Repair → Explain
+          </text>
+
+          <rect x="120" y="140" width="860" height="410" rx="28"
+                fill="#fff" stroke="#d7def7" stroke-width="5"/>
+
+          <!-- battery -->
+          <g class="day52-hotspot" data-part="battery">
+
+            <rect x="190" y="360" width="90" height="125" rx="8"
+                  fill="#ffc400" stroke="#111" stroke-width="5"/>
+
+            <line x1="217" y1="335" x2="217" y2="360"
+                  stroke="#111" stroke-width="5"/>
+
+            <line x1="255" y1="320" x2="255" y2="360"
+                  stroke="#111" stroke-width="5"/>
+
+            <text x="235" y="520" text-anchor="middle"
+                  font-size="20" font-family="Arial" font-weight="900">
+              Battery
+            </text>
+
+            <text x="145" y="118"
+                  font-size="22" font-family="Arial" font-weight="900" fill="#d97b00">
+              1 Power Source
+            </text>
+
+          </g>
+
+          <!-- switch -->
+          <g class="day52-hotspot" data-part="switch">
+
+            <rect x="375" y="380" width="135" height="90" rx="12"
+                  fill="#fff" stroke="#111" stroke-width="5"/>
+
+            <line x1="395" y1="445" x2="485" y2="400"
+                  stroke="#111" stroke-width="8" stroke-linecap="round"/>
+
+            <circle cx="395" cy="445" r="8" fill="#111"/>
+            <circle cx="495" cy="445" r="8" fill="#111"/>
+
+            <text x="365" y="118"
+                  font-size="22" font-family="Arial" font-weight="900" fill="#7b1cff">
+              2 Switch
+            </text>
+
+          </g>
+
+          <!-- wires -->
+          <g class="day52-hotspot" data-part="wires">
+
+            <path d="M255 320 L255 225 L700 225 L700 300"
+                  stroke="#f08a24" stroke-width="10" fill="none"/>
+
+            <path d="M830 350 L930 350 L930 445 L640 445"
+                  stroke="#f08a24" stroke-width="10" fill="none"/>
+
+            <path d="M560 445 L510 445"
+                  stroke="#f08a24" stroke-width="10" fill="none"/>
+
+            <path d="M375 425 L280 425"
+                  stroke="#f08a24" stroke-width="10" fill="none"/>
+
+            <text x="550" y="118"
+                  font-size="22" font-family="Arial" font-weight="900" fill="#006fbf">
+              3 Conducting Path
+            </text>
+
+          </g>
+
+          <!-- load -->
+          <g class="day52-hotspot" data-part="load">
+
+            <circle cx="765" cy="335" r="65"
+                    fill="#eeeeee" stroke="#111" stroke-width="5"/>
+
+            <path d="M740 335 Q765 292 790 335 Q765 378 740 335"
+                  fill="none" stroke="#777" stroke-width="5"/>
+
+            <text x="765" y="430" text-anchor="middle"
+                  font-size="20" font-family="Arial" font-weight="900">
+              Output Device
+            </text>
+
+            <text x="745" y="118"
+                  font-size="22" font-family="Arial" font-weight="900" fill="#c2185b">
+              4 Load
+            </text>
+
+          </g>
+
+          <!-- fault -->
+          <g class="day52-hotspot" data-part="fault">
+
+            <circle cx="600" cy="445" r="34"
+                    fill="#ffe1e1" stroke="#b00020" stroke-width="5"/>
+
+            <text x="600" y="455" text-anchor="middle"
+                  font-size="30" font-family="Arial" font-weight="900" fill="#b00020">
+              ?
+            </text>
+
+            <text x="530" y="575"
+                  font-size="22" font-family="Arial" font-weight="900" fill="#b00020">
+              5 Trouble Spot
+            </text>
+
+          </g>
+
+          <!-- output -->
+          <g class="day52-hotspot" data-part="output">
+
+            <path d="M850 280 L910 235
+                     M870 335 L945 335
+                     M850 390 L910 435"
+                  stroke="#bbb" stroke-width="10" stroke-linecap="round"/>
+
+            <text x="805" y="575"
+                  font-size="22" font-family="Arial" font-weight="900" fill="#087a35">
+              6 Energy Output
+            </text>
+
+          </g>
+
+          <rect x="240" y="595" width="620" height="40" rx="12"
+                fill="#ede9ff" stroke="#2d2a6e" stroke-width="3"/>
+
+          <text x="550" y="622" text-anchor="middle"
+                font-size="18" font-family="Arial" font-weight="900" fill="#2d2a6e">
+            Can electrical energy travel through the entire path?
+          </text>
+
+        </svg>
+
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="p-3 rounded-4 border border-dark shadow-sm"
+           style="background:#fff7d6;">
+
+        <h2 class="fw-bold" id="partTitle">
+          Begin Inspection
+        </h2>
+
+        <p id="partExplanation">
+          Click a circuit component to inspect its job.
+        </p>
+
+        <div class="p-3 rounded-3 border border-dark bg-white">
+
+          <label class="fw-bold" for="studentExplain">
+            Engineer's notes:
+          </label>
+
+          <textarea id="studentExplain"
+                    class="form-control mt-2"
+                    rows="5"
+                    placeholder="I think the problem is... My evidence is..."></textarea>
+
+          <button class="btn btn-warning fw-bold border-dark mt-2"
+                  id="saveExplanation">
+            Save Notes
+          </button>
+
+          <div id="saveMessage"
+               class="fw-bold mt-2"></div>
+
+        </div>
+
+        <div class="p-3 rounded-3 border border-dark bg-white mt-3">
+
+          <h3 class="fw-bold">
+            Troubleshooting Checklist
+          </h3>
+
+          <ol class="mb-0">
+            <li>Is there a power source?</li>
+            <li>Is the switch closed?</li>
+            <li>Are all connections touching?</li>
+            <li>Is the path made of conductors?</li>
+            <li>Is there a complete path back to the battery?</li>
+            <li>What energy output should occur?</li>
+          </ol>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3"
+       style="background:#f6fbff;">
+
+    <h2 class="fw-bold">
+      Mission Control Repair Challenges
+    </h2>
+
+    <div class="row g-3">
+
+      <div class="col-md-6">
+
+        <div class="p-3 rounded-3 border border-dark bg-white h-100">
+
+          <h3 class="fw-bold">
+            Repair Mission 1
+          </h3>
+
+          <p>
+            A flashlight has a battery, wires, and bulb.
+            The switch is open.
+          </p>
+
+          <p class="fw-bold">
+            What repair should be made?
+          </p>
+
+          <button class="repair-choice w-100 p-2 mb-2 rounded-3 border border-dark fw-bold"
+                  data-case="1" data-answer="A">
+            A. Close the switch
+          </button>
+
+          <button class="repair-choice w-100 p-2 mb-2 rounded-3 border border-dark fw-bold"
+                  data-case="1" data-answer="B">
+            B. Remove the battery
+          </button>
+
+          <button class="repair-choice w-100 p-2 rounded-3 border border-dark fw-bold"
+                  data-case="1" data-answer="C">
+            C. Replace the wire with string
+          </button>
+
+          <button class="btn btn-warning border-dark fw-bold mt-3"
+                  onclick="checkRepair('1','A')">
+            Check Repair
+          </button>
+
+          <div id="repairResult1"
+               class="fw-bold mt-2"></div>
+
+        </div>
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="p-3 rounded-3 border border-dark bg-white h-100">
+
+          <h3 class="fw-bold">
+            Repair Mission 2
+          </h3>
+
+          <p>
+            A buzzer circuit has a plastic strip inserted between two wires.
+          </p>
+
+          <p class="fw-bold">
+            What repair should be made?
+          </p>
+
+          <button class="repair-choice w-100 p-2 mb-2 rounded-3 border border-dark fw-bold"
+                  data-case="2" data-answer="A">
+            A. Add another plastic strip
+          </button>
+
+          <button class="repair-choice w-100 p-2 mb-2 rounded-3 border border-dark fw-bold"
+                  data-case="2" data-answer="B">
+            B. Replace the plastic strip with a conductor
+          </button>
+
+          <button class="repair-choice w-100 p-2 rounded-3 border border-dark fw-bold"
+                  data-case="2" data-answer="C">
+            C. Open the switch
+          </button>
+
+          <button class="btn btn-warning border-dark fw-bold mt-3"
+                  onclick="checkRepair('2','B')">
+            Check Repair
+          </button>
+
+          <div id="repairResult2"
+               class="fw-bold mt-2"></div>
+
+        </div>
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="p-3 rounded-3 border border-dark bg-white h-100">
+
+          <h3 class="fw-bold">
+            Repair Mission 3
+          </h3>
+
+          <p>
+            A motor circuit has a battery, wires, closed switch,
+            and motor, but one wire is disconnected.
+          </p>
+
+          <p class="fw-bold">
+            Why does the motor not spin?
+          </p>
+
+          <button class="repair-choice w-100 p-2 mb-2 rounded-3 border border-dark fw-bold"
+                  data-case="3" data-answer="A">
+            A. The disconnected wire creates a gap
+          </button>
+
+          <button class="repair-choice w-100 p-2 mb-2 rounded-3 border border-dark fw-bold"
+                  data-case="3" data-answer="B">
+            B. The motor produces too much sound
+          </button>
+
+          <button class="repair-choice w-100 p-2 rounded-3 border border-dark fw-bold"
+                  data-case="3" data-answer="C">
+            C. A complete circuit stops motion
+          </button>
+
+          <button class="btn btn-warning border-dark fw-bold mt-3"
+                  onclick="checkRepair('3','A')">
+            Check Diagnosis
+          </button>
+
+          <div id="repairResult3"
+               class="fw-bold mt-2"></div>
+
+        </div>
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="p-3 rounded-3 border border-dark bg-white h-100">
+
+          <h3 class="fw-bold">
+            Repair Mission 4
+          </h3>
+
+          <p>
+            A repaired circuit powers a small bulb, buzzer,
+            motor, and warming component.
+          </p>
+
+          <p class="fw-bold">
+            Which outputs could provide evidence that electrical energy transformed?
+          </p>
+
+          <button class="repair-choice w-100 p-2 mb-2 rounded-3 border border-dark fw-bold"
+                  data-case="4" data-answer="A">
+            A. Light only
+          </button>
+
+          <button class="repair-choice w-100 p-2 mb-2 rounded-3 border border-dark fw-bold"
+                  data-case="4" data-answer="B">
+            B. Sound only
+          </button>
+
+          <button class="repair-choice w-100 p-2 rounded-3 border border-dark fw-bold"
+                  data-case="4" data-answer="C">
+            C. Light, sound, motion, and thermal energy
+          </button>
+
+          <button class="btn btn-warning border-dark fw-bold mt-3"
+                  onclick="checkRepair('4','C')">
+            Check Evidence
+          </button>
+
+          <div id="repairResult4"
+               class="fw-bold mt-2"></div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="p-3 rounded-4 border border-dark shadow-sm mt-3"
+       style="background:#fff7d6;">
+
+    <h2 class="fw-bold">
+      Final CER
+    </h2>
+
+    <p>
+      <strong>Claim:</strong>
+      A functioning electrical system needs a complete conducting circuit.
+    </p>
+
+    <p>
+      <strong>Evidence:</strong>
+      Systems fail when there is an open switch, disconnected wire,
+      or insulator in the path. They work after the conducting path is repaired.
+    </p>
+
+    <p class="mb-0">
+      <strong>Reasoning:</strong>
+      Electrical energy must travel through a complete conducting path.
+      When the circuit works, electrical energy can transform into
+      light, motion, sound, or thermal energy.
+    </p>
+
+  </div>
+
+</div>
+
+<script>
+const labParts = {
+
+  battery: {
+    title: "1. Power Source",
+    explanation: "The battery supplies energy to the circuit. A circuit cannot function without an energy source."
+  },
+
+  switch: {
+    title: "2. Switch",
+    explanation: "A closed switch completes the path. An open switch creates a gap in the circuit."
+  },
+
+  wires: {
+    title: "3. Conducting Path",
+    explanation: "Conducting wires allow electrical energy to travel through the circuit."
+  },
+
+  load: {
+    title: "4. Output Device",
+    explanation: "The load transforms electrical energy into another form such as light, motion, sound, or thermal energy."
+  },
+
+  fault: {
+    title: "5. Trouble Spot",
+    explanation: "A gap, loose connection, or insulator can prevent electrical energy from traveling through the complete circuit."
+  },
+
+  output: {
+    title: "6. Energy Output",
+    explanation: "When the circuit is repaired, observable outputs provide evidence of an energy transformation."
+  }
+};
+
+let currentPart = null;
+const repairSelections = {};
+
+document.querySelectorAll(".day52-hotspot")
+  .forEach(function(part) {
+
+    part.style.cursor = "pointer";
+
+    part.addEventListener("click", function() {
+
+      currentPart = part.dataset.part;
+
+      const info =
+        labParts[currentPart];
+
+      document.querySelector("#partTitle").textContent =
+        info.title;
+
+      document.querySelector("#partExplanation").textContent =
+        info.explanation;
+
+      document.querySelector("#studentExplain").value =
+        localStorage.getItem("day52CircuitLab_" + currentPart) || "";
+
+      document.querySelector("#saveMessage").textContent = "";
+
+      document.querySelectorAll(".day52-hotspot")
+        .forEach(function(p) {
+          p.style.opacity = "0.5";
+        });
+
+      part.style.opacity = "1";
+    });
+  });
+
+document.querySelector("#saveExplanation")
+  .addEventListener("click", function() {
+
+    if (!currentPart) {
+
+      document.querySelector("#saveMessage").textContent =
+        "Click a circuit part first.";
+
+      document.querySelector("#saveMessage").style.color =
+        "#9a5b00";
+
+      return;
+    }
+
+    localStorage.setItem(
+      "day52CircuitLab_" + currentPart,
+      document.querySelector("#studentExplain").value
+    );
+
+    document.querySelector("#saveMessage").textContent =
+      "Saved!";
+
+    document.querySelector("#saveMessage").style.color =
+      "#087a35";
+  });
+
+document.querySelectorAll(".repair-choice")
+  .forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+      const caseNumber =
+        button.dataset.case;
+
+      repairSelections[caseNumber] =
+        button.dataset.answer;
+
+      document.querySelectorAll(
+        '.repair-choice[data-case="' + caseNumber + '"]'
+      ).forEach(function(btn) {
+
+        btn.style.background =
+          "#fff";
+
+        btn.style.borderColor =
+          "#111";
+      });
+
+      button.style.background =
+        "#dff3e6";
+
+      button.style.borderColor =
+        "#087a35";
+    });
+  });
+
+function checkRepair(caseNumber, correctAnswer) {
+
+  const result =
+    document.querySelector("#repairResult" + caseNumber);
+
+  const selected =
+    repairSelections[caseNumber];
+
+  if (!selected) {
+
+    result.textContent =
+      "Choose an answer first.";
+
+    result.style.color =
+      "#9a5b00";
+
+    return;
+  }
+
+  document.querySelectorAll(
+    '.repair-choice[data-case="' + caseNumber + '"]'
+  ).forEach(function(btn) {
+
+    if (btn.dataset.answer === correctAnswer) {
+
+      btn.style.background =
+        "#dff3e6";
+
+      btn.style.borderColor =
+        "#087a35";
+    }
+
+    else if (btn.dataset.answer === selected) {
+
+      btn.style.background =
+        "#ffe1e1";
+
+      btn.style.borderColor =
+        "#b00020";
+    }
+  });
+
+  if (selected === correctAnswer) {
+
+    result.textContent =
+      "Correct! Mission repaired.";
+
+    result.style.color =
+      "#087a35";
+  }
+
+  else {
+
+    result.textContent =
+      "Try again. Trace the entire circuit path.";
+
+    result.style.color =
+      "#b00020";
+  }
+}
+</script>
+{% endblock %}

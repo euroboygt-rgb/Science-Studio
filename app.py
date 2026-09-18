@@ -1575,6 +1575,16 @@ def day51_thermal_circuit_lab():
 # End Science Studio Day 51 Thermal Circuit Lab Route
 
 
+
+# Science Studio Day 52 Circuit Repair Lab Route
+@app.route("/labs/day52-circuit-repair-lab")
+@app.route("/labs/day52-circuit-troubleshooting")
+def day52_circuit_repair_lab():
+    from flask import render_template
+    return render_template("day52_circuit_repair_lab.html")
+# End Science Studio Day 52 Circuit Repair Lab Route
+
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))

@@ -979,3 +979,33 @@ DAY_51_PHENOMENON_MISSION = {
 PHENOMENON_IMAGE_SETS[51] = DAY_51_PHENOMENON_MISSION
 # End Day 51 Phenomenon Mission
 
+
+# Day 52 Phenomenon Mission
+DAY_52_PHENOMENON_MISSION = {
+    "title": "Why Won't the System Work?",
+    "subtitle": "Circuit troubleshooting evidence",
+    "unit": "Unit 4: Energy Transformations Through Circuits",
+    "image": "/static/phenomenon/day52_circuit_troubleshooting_mission.svg",
+
+    "prompt": "Steve builds an electrical system with a battery, wires, switch, and bulb. The bulb does not light. The switch is open and one connection has a gap. What evidence explains why the system does not work?",
+
+    "observe": [
+        "The battery is connected.",
+        "The circuit contains wires and a bulb.",
+        "The switch is open.",
+        "There is a gap in one connection.",
+        "The bulb does not light."
+    ],
+
+    "wonder": [
+        "Which problem should Steve repair?",
+        "Can electrical energy flow through a path with a gap?",
+        "What evidence would show the repair worked?"
+    ],
+
+    "mission": "Diagnose the circuit failure, choose the repair, and explain the evidence."
+}
+
+PHENOMENON_IMAGE_SETS[52] = DAY_52_PHENOMENON_MISSION
+# End Day 52 Phenomenon Mission
+

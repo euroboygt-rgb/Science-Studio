@@ -404,3 +404,72 @@ SECOND_NINE_WEEKS_LESSONS[51].update({
 })
 # End Science Studio Day 51 Full Lesson Update
 
+
+# Science Studio Day 52 Full Lesson Update
+SECOND_NINE_WEEKS_LESSONS[52].update({
+    "title": "Circuit System Troubleshooting",
+
+    "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+
+    "unit_title": "Unit 4: Investigating Energy Transformations Through Circuits",
+
+    "teks": "5.8B, 5.5D, 5.1F",
+
+    "focus": "Using evidence to diagnose and repair electrical circuit systems",
+
+    "learning_target": "We will use evidence to troubleshoot electrical systems and explain why a circuit works or does not work.",
+
+    "success_criteria": "I can identify a problem in a circuit, choose a repair, and explain how the repair allows electrical energy to flow and transform.",
+
+    "essential_question": "How can evidence help us diagnose and repair an electrical system?",
+
+    "vocabulary": [
+        "complete circuit",
+        "incomplete circuit",
+        "open circuit",
+        "closed circuit",
+        "conductor",
+        "insulator",
+        "electrical energy",
+        "energy transformation",
+        "system",
+        "troubleshoot",
+        "evidence"
+    ],
+
+    "anchor_chart": "Circuit Troubleshooting Anchor Chart",
+
+    "bell_ringer": "A bulb does not light even though the circuit has a battery and bulb. What parts of the system should a scientist inspect first?",
+
+    "mini_lesson": [
+        "Troubleshooting means finding the cause of a problem in a system.",
+        "Start by checking for a power source.",
+        "Check whether the switch is closed.",
+        "Trace the conducting path and look for gaps or disconnected wires.",
+        "Check whether an insulator is interrupting the path.",
+        "Identify the load and the expected energy output.",
+        "A functioning circuit can transform electrical energy into light, motion, sound, or thermal energy."
+    ],
+
+    "science_notebook": "Create a troubleshooting flowchart: power source → switch → conducting path → load → energy output.",
+
+    "guided_practice": "Students inspect circuit diagrams, identify the failure, and explain the repair using evidence.",
+
+    "lab": "Mission Control Circuit Repair: Students diagnose broken electrical systems, choose repairs, and explain how the repaired circuits transform energy.",
+
+    "lab_notebook": "Record the circuit problem, evidence, repair, expected energy output, and reasoning.",
+
+    "staar_practice": "A circuit does not function. Which change would most likely create a complete conducting path?",
+
+    "exit_ticket": "Describe the first three things you would check when troubleshooting a circuit that does not work.",
+
+    "cer": {
+        "claim": "A functioning electrical system needs a complete conducting circuit.",
+        "evidence": "Systems fail when there is a gap, open switch, disconnected wire, or insulator in the path.",
+        "reasoning": "Electrical energy must travel through a complete conducting path before it can be transformed into light, motion, sound, or thermal energy."
+    },
+
+    "mcgraw_hill_connection": "Use district-approved McGraw Hill electricity resources for complete circuits, circuit components, troubleshooting, conductors, insulators, and energy transformations."
+})
+# End Science Studio Day 52 Full Lesson Update
+

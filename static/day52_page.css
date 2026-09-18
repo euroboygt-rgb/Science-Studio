@@ -1,0 +1,127 @@
+.day52-fixed-card {
+  max-width: 980px;
+  margin: 16px auto;
+  border: 4px solid #111;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 5px 5px 0 rgba(0,0,0,0.18);
+  background: #fff7d6;
+}
+
+.day52-fixed-card h2,
+.day52-fixed-card h3,
+.day52-fixed-card h4 {
+  font-weight: 900;
+}
+
+.day52-fixed-badge {
+  display: inline-block;
+  background: #7b1cff;
+  color: #fff200;
+  border: 2px solid #111;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.day52-fixed-image {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  border: 3px solid #111;
+  border-radius: 14px;
+  background: #fff;
+  padding: 8px;
+}
+
+.day52-fixed-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.day52-fixed-box {
+  background: #fff;
+  border: 3px solid #111;
+  border-radius: 14px;
+  padding: 13px;
+}
+
+.day52-slide {
+  min-height: 220px;
+  background: #fff;
+  border: 3px solid #111;
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  display: grid;
+  place-items: center;
+}
+
+.day52-slide-icon {
+  font-size: 4rem;
+}
+
+.day52-nav,
+.day52-check {
+  border: 2px solid #111;
+  border-radius: 8px;
+  background: #ffc400;
+  font-weight: 900;
+  padding: 8px 12px;
+  margin: 4px;
+}
+
+.day52-answer {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 2px solid #111;
+  border-radius: 10px;
+  background: #f7f7f7;
+  font-weight: 900;
+  padding: 11px;
+  margin: 8px 0;
+}
+
+#scienceStudioDay52LabFixed {
+  background: linear-gradient(135deg,#fff7d6,#f6fbff);
+}
+
+.day52-lab-grid {
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.day52-lab-button {
+  display: inline-block;
+  background: #12a150;
+  color: #fff !important;
+  border: 3px solid #111;
+  border-radius: 16px;
+  padding: 14px 18px;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 1.2rem;
+  box-shadow: 4px 4px 0 rgba(0,0,0,.25);
+}
+
+.day52-mini {
+  background: #fff;
+  border: 3px solid #111;
+  border-radius: 16px;
+  padding: 18px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 800px) {
+  .day52-fixed-grid,
+  .day52-lab-grid {
+    grid-template-columns: 1fr;
+  }
+}
