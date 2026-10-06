@@ -859,3 +859,207 @@ SECOND_NINE_WEEKS_LESSONS[54] = {
 }
 
 # Science Studio Day 54 End
+
+
+# Science Studio Day 55 Start
+
+SECOND_NINE_WEEKS_LESSONS[55] = {
+
+    "day": 55,
+
+    "title":
+        "Build a Simple Circuit",
+
+    "unit":
+        "Unit 4: Investigating Energy Transformations Through Circuits",
+
+    "teks":
+        "5.8B, 5.5D, 5.1F",
+
+    "focus":
+        "Students construct and test a simple complete electrical circuit "
+        "using one battery, two wires, and one bulb.",
+
+    "learning_target":
+        "We will build and test a simple electrical circuit.",
+
+    "success_criteria":
+        "I can use one battery, two wires, and one bulb to create "
+        "a complete conducting path that lights the bulb.",
+
+    "essential_question":
+        "How can one battery, two wires, and one bulb form a functioning circuit?",
+
+    "bell_ringer": [
+        "You have one battery, two wires, and one bulb.",
+        "Where should the first wire connect?",
+        "Where should the second wire connect?",
+        "How will you know the conducting path is complete?"
+    ],
+
+    "mini_lesson": [
+        "A simple circuit needs a power source, conducting path, and load.",
+        "The battery is the power source.",
+        "The wires create the conducting path.",
+        "The bulb is the load.",
+        "One wire must connect to one battery terminal.",
+        "The conducting path must travel through the bulb.",
+        "Another wire must return to the other battery terminal.",
+        "If the path is complete, the bulb can light.",
+        "If there is a gap or loose connection, the bulb will not light."
+    ],
+
+    "science_notebook": [
+        "Draw your successful simple circuit.",
+        "Label the battery, positive terminal, negative terminal, two wires, and bulb.",
+        "Use arrows to trace the complete conducting path.",
+        "Write one sentence explaining why the bulb lights."
+    ],
+
+    "guided_practice": [
+        "Start at the positive battery terminal.",
+        "Trace the first wire to the bulb.",
+        "Trace through the bulb.",
+        "Trace the second wire back to the negative battery terminal.",
+        "Check that every connection touches a real terminal.",
+        "Explain why this is a complete conducting path."
+    ],
+
+    "lab_title":
+        "Circuit Builder Mission: Make the Bulb Light",
+
+    "lab": [
+        "Open the Circuit Builder.",
+        "Add one battery.",
+        "Add two wires.",
+        "Add one bulb.",
+        "Connect one wire to one battery terminal.",
+        "Connect that conducting path to the bulb.",
+        "Use the second wire to connect the bulb back to the other battery terminal.",
+        "Test the circuit.",
+        "If the bulb does not light, trace the path and repair the connection.",
+        "Rotate or move the parts if needed.",
+        "You may add extra parts, but they are not required to complete today's mission.",
+        "Mission complete when the bulb lights using a complete conducting path."
+    ],
+
+    "lab_notebook": [
+        "Prediction: What connections do you think will make the bulb light?",
+        "Attempt 1: What happened?",
+        "What did you change?",
+        "Successful circuit: Draw and label the final design.",
+        "Evidence: What showed that electrical energy moved through the circuit?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "A student has one battery, two wires, and one bulb. "
+                "Which setup will most likely make the bulb light?",
+
+            "choices": {
+                "A":
+                    "One wire connects the battery to the bulb, but the second wire is not connected.",
+                "B":
+                    "Both wires connect only to the same battery terminal.",
+                "C":
+                    "One wire connects one battery terminal to the bulb and "
+                    "the second wire connects the bulb to the other battery terminal.",
+                "D":
+                    "The bulb is placed beside the battery without wires."
+            },
+
+            "answer": "C",
+
+            "rationale":
+                "The conducting path must travel from one battery terminal, "
+                "through the bulb, and back to the other battery terminal."
+        },
+
+        {
+            "question":
+                "A student builds a simple circuit, but the bulb does not light. "
+                "Which action should the student do first?",
+
+            "choices": {
+                "A":
+                    "Trace the conducting path and check every connection.",
+                "B":
+                    "Add several extra bulbs.",
+                "C":
+                    "Move the battery farther away.",
+                "D":
+                    "Remove both wires."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Tracing the path helps locate a loose connection or gap."
+        },
+
+        {
+            "question":
+                "Which observation is the best evidence that electrical energy "
+                "is moving through a complete simple circuit?",
+
+            "choices": {
+                "A": "The wires are the same length.",
+                "B": "The battery is standing upright.",
+                "C": "The bulb lights.",
+                "D": "The parts are close together."
+            },
+
+            "answer": "C",
+
+            "rationale":
+                "The light produced by the bulb is observable evidence "
+                "that the circuit is functioning."
+        }
+    ],
+
+    "exit_ticket":
+        "Describe the path electrical energy follows in your successful simple circuit.",
+
+    "cer": {
+
+        "claim":
+            "My simple circuit formed a complete conducting path.",
+
+        "evidence":
+            "Use observations from your Circuit Builder test.",
+
+        "reasoning":
+            "Explain why connecting both battery terminals through the bulb "
+            "allowed the circuit to function."
+    },
+
+    "vocabulary": [
+        "circuit",
+        "battery",
+        "power source",
+        "wire",
+        "conductor",
+        "load",
+        "bulb",
+        "complete circuit",
+        "incomplete circuit",
+        "conducting path",
+        "positive terminal",
+        "negative terminal",
+        "electrical energy",
+        "light energy",
+        "thermal energy"
+    ],
+
+    "teacher_note":
+        "The success condition for Day 55 is intentionally simple: "
+        "one battery, two wires, and one bulb in a complete conducting path. "
+        "Students may experiment with additional parts, but extra parts are not required.",
+
+    "lab_url":
+        "/labs/circuit-builder?mission=day55"
+}
+
+# Science Studio Day 55 End

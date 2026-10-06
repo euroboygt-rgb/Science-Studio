@@ -436,3 +436,23 @@ POWER_FRAMES[54] = {
 }
 
 # Science Studio Day 54 Power Frame End
+
+
+# Science Studio Day 55 Power Frame Start
+
+POWER_FRAMES[55] = {
+
+    "i_can":
+        "I can build a simple electrical circuit.",
+
+    "by":
+        "by connecting one battery, two wires, and one bulb "
+        "to create a complete conducting path.",
+
+    "i_know":
+        "I know I have learned this when my bulb lights "
+        "and I can trace the path from one battery terminal "
+        "through the bulb and back to the other terminal."
+}
+
+# Science Studio Day 55 Power Frame End
