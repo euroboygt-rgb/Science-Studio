@@ -2524,3 +2524,85 @@ MISSION_BRIEF_ANIMATIONS[52] = {
 }
 # End Day 52 Mission Brief Animation
 
+
+# Day 53 Mission Brief
+MISSION_BRIEF_ANIMATIONS[53] = {
+    "title": "Mission Brief: Meet the Circuit System",
+    "subtitle": "Day 53 • Circuit Vocabulary",
+    "theme": "circuits",
+
+    "slides": [
+        {
+            "icon": "⚡",
+            "heading": "Today's Mission",
+            "text":
+                "Identify the important parts of an electrical circuit system.",
+            "caption":
+                "A system works because its parts work together."
+        },
+
+        {
+            "icon": "🔋",
+            "heading": "Power Source",
+            "text":
+                "The battery provides the energy source for the circuit.",
+            "caption":
+                "A battery has a positive (+) terminal and a negative (−) terminal."
+        },
+
+        {
+            "icon": "➰",
+            "heading": "Conducting Path",
+            "text":
+                "Wires connect the parts and provide a conducting path.",
+            "caption":
+                "A complete path must connect through the system and return to the battery."
+        },
+
+        {
+            "icon": "🔘",
+            "heading": "Switch",
+            "text":
+                "A switch can open or close the conducting path.",
+            "caption":
+                "Open path = circuit does not function. Closed path = energy can travel."
+        },
+
+        {
+            "icon": "💡",
+            "heading": "Loads",
+            "text":
+                "Loads transform electrical energy into observable forms of energy.",
+            "caption":
+                "Bulbs produce light, motors produce motion, and speakers produce sound."
+        },
+
+        {
+            "icon": "🔌",
+            "heading": "Complete Circuit",
+            "text":
+                "A functioning circuit needs a continuous conducting path.",
+            "caption":
+                "The path connects one battery terminal through the circuit and back to the other terminal."
+        },
+
+        {
+            "icon": "🎯",
+            "heading": "STAAR Strategy",
+            "text":
+                "Trace the entire path. Look for a break, an open switch, or a missing battery connection.",
+            "caption":
+                "Do not stop tracing after reaching the bulb."
+        },
+
+        {
+            "icon": "🧪",
+            "heading": "Circuit Builder Exploration",
+            "text":
+                "Today you will move, rotate, inspect, and identify the circuit components.",
+            "caption":
+                "You do not need to make the circuit work yet."
+        }
+    ]
+}
+

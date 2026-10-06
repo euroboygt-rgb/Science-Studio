@@ -1,0 +1,431 @@
+
+/* ==========================================================
+   SCIENCE STUDIO DAY 53 - CIRCUIT VOCABULARY
+   ========================================================== */
+
+.science-studio-day53-section,
+#scienceStudioDay53CompleteLesson {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.d53-card {
+  margin: 16px 0;
+  padding: 18px;
+  border: 3px solid #111;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.14);
+  box-sizing: border-box;
+}
+
+.d53-card h2 {
+  margin: 5px 0 10px;
+  font-weight: 900;
+}
+
+.d53-card h3 {
+  margin-top: 4px;
+  font-weight: 900;
+}
+
+.d53-phenomenon,
+.d53-lab,
+.d53-connection {
+  background: #fff4cd;
+}
+
+.d53-pill {
+  display: inline-block;
+  padding: 5px 12px;
+  margin-bottom: 5px;
+  border: 2px solid #111;
+  border-radius: 999px;
+  background: #7b24d8;
+  color: #fff500;
+  font-size: .83rem;
+  font-weight: 900;
+}
+
+.d53-blue-pill {
+  background: #147dea;
+  color: #fff;
+}
+
+.d53-subtitle {
+  font-weight: 700;
+}
+
+.d53-image-frame {
+  margin: 12px 0;
+  padding: 10px;
+  border: 3px solid #111;
+  border-radius: 14px;
+  background: #fff;
+  text-align: center;
+}
+
+.d53-image-frame img {
+  display: block;
+  width: 100%;
+  max-width: 950px;
+  height: auto;
+  margin: auto;
+}
+
+.d53-question,
+.d53-important {
+  margin: 12px 0;
+  padding: 12px;
+  border: 2px solid #111;
+  border-radius: 11px;
+  background: #fff;
+}
+
+.d53-important {
+  background: #fff2a8;
+}
+
+.d53-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.d53-small-card,
+.d53-blue-box {
+  padding: 12px;
+  border: 2px solid #111;
+  border-radius: 12px;
+  background: #edf7ff;
+}
+
+.d53-small-card h3 {
+  margin: 0 0 6px;
+}
+
+
+/* ==========================================================
+   VIDEO / MISSION BRIEF
+   ========================================================== */
+
+.d53-video-card {
+  background: #eef6ff;
+}
+
+.d53-video-screen {
+  min-height: 235px;
+  margin-top: 12px;
+  padding: 24px;
+  border: 3px solid #111;
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #17386a,
+      #6535bd,
+      #139bd0
+    );
+
+  color: white;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.d53-video-icon {
+  margin-bottom: 10px;
+  font-size: 3.7rem;
+}
+
+.d53-video-screen h3 {
+  margin: 0 0 8px;
+  font-size: 1.65rem;
+  color: white;
+}
+
+.d53-video-screen p {
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: white;
+}
+
+.d53-video-caption {
+  margin-top: 18px;
+  color: #fff100;
+  font-size: .85rem;
+  font-weight: 900;
+}
+
+.d53-video-controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.d53-btn {
+  padding: 9px 15px;
+  border: 2px solid #111;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.d53-btn-yellow {
+  background: #ffc400;
+}
+
+.d53-progress-shell {
+  height: 12px;
+  margin-top: 10px;
+  overflow: hidden;
+  border: 2px solid #111;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.d53-progress {
+  height: 100%;
+  width: 0;
+  background: #7b24d8;
+  transition: width .3s ease;
+}
+
+
+/* ==========================================================
+   STEVE + STAAR QUESTIONS
+   ========================================================== */
+
+.d53-steve {
+  background: #f2eaff;
+}
+
+.d53-staar-question {
+  margin-top: 14px;
+  padding: 14px;
+  border: 2px solid #111;
+  border-radius: 12px;
+  background: #edf7ff;
+}
+
+.d53-staar-question h3 {
+  margin: 0 0 8px;
+}
+
+.d53-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.d53-choice {
+  padding: 10px;
+  border: 2px solid #111;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  text-align: left;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.d53-choice:hover {
+  background: #fff7c7;
+}
+
+.d53-choice.d53-correct {
+  background: #d9f7df;
+  border-color: #087a35;
+}
+
+.d53-choice.d53-wrong {
+  background: #ffe0e0;
+  border-color: #ba2134;
+}
+
+.d53-feedback {
+  margin-top: 9px;
+  font-weight: 900;
+}
+
+.d53-feedback-correct {
+  color: #087a35;
+}
+
+.d53-feedback-wrong {
+  color: #b31e30;
+}
+
+
+/* ==========================================================
+   MINI LESSON
+   ========================================================== */
+
+.d53-energy-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.d53-energy-row div {
+  padding: 12px;
+  border: 2px solid #111;
+  border-radius: 12px;
+  background: #fff4cd;
+  text-align: center;
+}
+
+.d53-energy-row strong,
+.d53-energy-row span {
+  display: block;
+}
+
+
+/* ==========================================================
+   NOTEBOOK TABLE
+   ========================================================== */
+
+.d53-table-wrap {
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.d53-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.d53-table th,
+.d53-table td {
+  min-width: 120px;
+  padding: 9px;
+  border: 2px solid #111;
+  text-align: left;
+}
+
+.d53-table th {
+  background: #e8f4ff;
+}
+
+
+/* ==========================================================
+   CIRCUIT BUILDER MISSION
+   ========================================================== */
+
+.d53-mission-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  margin: 12px 0;
+}
+
+.d53-mission-list div {
+  padding: 8px;
+  border: 2px solid #111;
+  border-radius: 9px;
+  background: #fff;
+  font-weight: 800;
+}
+
+.d53-big-lab-button {
+  display: inline-block;
+  padding: 13px 21px;
+  border: 3px solid #111;
+  border-radius: 10px;
+  background: #ffc400;
+  color: #111 !important;
+  text-decoration: none;
+  font-size: 1.08rem;
+  font-weight: 900;
+  box-shadow: 3px 4px 0 rgba(0,0,0,.2);
+}
+
+
+/* ==========================================================
+   EXIT TICKET + CER
+   ========================================================== */
+
+.d53-textarea {
+  width: 100%;
+  min-height: 115px;
+  padding: 10px;
+  border: 2px solid #111;
+  border-radius: 10px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.d53-cer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media (max-width: 800px) {
+
+  .d53-grid-2,
+  .d53-choice-grid,
+  .d53-energy-row,
+  .d53-mission-list,
+  .d53-cer-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ==========================================================
+   END DAY 53
+   ========================================================== */
+
+
+/* ==========================================================
+   DAY 53 FIXED TOP LESSON CONTAINER
+   ========================================================== */
+
+#scienceStudioDay53TopLessons {
+  display: block !important;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#scienceStudioDay53TopLessons
+.science-studio-day53-section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#scienceStudioDay53Phenomenon,
+#scienceStudioDay53Video,
+#scienceStudioDay53Steve {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* ==========================================================
+   END DAY 53 FIXED TOP LESSON CONTAINER
+   ========================================================== */
+

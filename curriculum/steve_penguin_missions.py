@@ -1735,3 +1735,30 @@ STEVE_PENGUIN_MISSIONS[52] = {
 }
 # End Day 52 Steve the Penguin STAAR Mission
 
+
+# Day 53 Steve the Penguin Mission
+STEVE_PENGUIN_MISSIONS[53] = {
+    "title": "Steve the Penguin's Circuit Parts Mission",
+    "subtitle": "Day 53 • Circuit Systems",
+
+    "scenario":
+        "Steve wants to build a circuit for a small warning light. "
+        "He has a battery, wires, a switch, and a bulb.",
+
+    "question":
+        "Which part provides the energy source for Steve's circuit?",
+
+    "choices": {
+        "A": "The bulb",
+        "B": "The wire",
+        "C": "The switch",
+        "D": "The battery"
+    },
+
+    "answer": "D",
+
+    "rationale":
+        "The battery is the power source. The wires provide the conducting path, "
+        "the switch controls the path, and the bulb is the load."
+}
+

@@ -473,3 +473,191 @@ SECOND_NINE_WEEKS_LESSONS[52].update({
 })
 # End Science Studio Day 52 Full Lesson Update
 
+
+# ============================================================
+# DAY 53 - CIRCUIT VOCABULARY & SYSTEM EXPLORATION
+# ============================================================
+
+SECOND_NINE_WEEKS_LESSONS[53] = {
+    "day": 53,
+
+    "title": "Circuit Vocabulary & System Exploration",
+
+    "unit": "Unit 4: Investigating Energy Transformations Through Circuits",
+
+    "teks": "5.8B, 5.5D, 5.1D, 5.1F",
+
+    "focus":
+        "Students identify the parts of an electrical circuit system "
+        "and explain the function of each part.",
+
+    "learning_target":
+        "We will identify and describe the main parts of an electrical circuit system.",
+
+    "success_criteria":
+        "I can identify the power source, conducting path, switch, and load "
+        "and explain the job of each part.",
+
+    "essential_question":
+        "How do the parts of an electrical circuit work together as a system?",
+
+    "bell_ringer": [
+        "Look at a flashlight.",
+        "What parts do you think must be inside it for the light to turn on?",
+        "What part provides energy?",
+        "What part produces light?"
+    ],
+
+    "mini_lesson": [
+        "A circuit is a system made of parts that work together.",
+        "The battery is the power source.",
+        "Wires provide a conducting path.",
+        "A switch can open or close the path.",
+        "A load changes electrical energy into another form of energy.",
+        "Examples of loads include bulbs, motors, and speakers.",
+        "A complete circuit must provide a continuous path from one battery terminal, "
+        "through the circuit, and back to the other battery terminal.",
+        "An open or incomplete circuit has a break in the path."
+    ],
+
+    "science_notebook": [
+        "Create a Circuit Parts chart.",
+        "Use these columns:",
+        "Part | What It Does | Example | Circuit Builder Observation",
+        "Include battery, wire, switch, bulb, motor, and speaker."
+    ],
+
+    "guided_practice": [
+        "Identify the power source in a circuit diagram.",
+        "Identify the conducting path.",
+        "Identify the load.",
+        "Identify whether a switch is open or closed.",
+        "Trace a possible path from the positive battery terminal "
+        "through the system and back to the negative terminal."
+    ],
+
+    "lab_title": "Circuit Builder Exploration Mission",
+
+    "lab": [
+        "Open the Science Studio Circuit Builder.",
+        "Place one battery on the board.",
+        "Place at least two wires on the board.",
+        "Place one bulb, one switch, one motor, and one speaker.",
+        "Move each component to a different location.",
+        "Rotate each component.",
+        "Inspect the connection terminals.",
+        "Identify which components are power sources, conductors, controls, and loads.",
+        "You do NOT need to build a successful circuit today.",
+        "Today is an exploration mission."
+    ],
+
+    "lab_notebook": [
+        "Battery: What is its job?",
+        "Wire: What is its job?",
+        "Switch: What is its job?",
+        "Bulb: What energy output would you observe?",
+        "Motor: What energy output would you observe?",
+        "Speaker: What energy output would you observe?",
+        "Which parts must be connected to make a complete conducting path?"
+    ],
+
+    "staar_practice": [
+        {
+            "question":
+                "A student is building an electrical circuit. "
+                "Which component provides the energy for the circuit?",
+
+            "choices": {
+                "A": "Wire",
+                "B": "Battery",
+                "C": "Bulb",
+                "D": "Switch"
+            },
+
+            "answer": "B",
+
+            "rationale":
+                "The battery is the power source for the electrical circuit."
+        },
+
+        {
+            "question":
+                "Which component provides a conducting path between the parts "
+                "of a simple electrical circuit?",
+
+            "choices": {
+                "A": "Wire",
+                "B": "Speaker",
+                "C": "Motor",
+                "D": "Bulb"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Conducting wires connect the parts of the circuit and provide "
+                "a path for electrical energy."
+        },
+
+        {
+            "question":
+                "A circuit has a battery, wires, and a bulb. "
+                "One wire is connected to the positive terminal of the battery, "
+                "but nothing is connected to the negative terminal. "
+                "Why will the bulb not light?",
+
+            "choices": {
+                "A": "The bulb needs two batteries.",
+                "B": "The circuit does not have a complete conducting path.",
+                "C": "The battery has too much energy.",
+                "D": "The wire is producing light energy."
+            },
+
+            "answer": "B",
+
+            "rationale":
+                "A functioning circuit needs a complete path that connects "
+                "both battery terminals through the circuit."
+        }
+    ],
+
+    "exit_ticket":
+        "Name four parts of an electrical circuit and explain the job of each.",
+
+    "cer": {
+        "claim":
+            "A circuit is a system whose parts must work together.",
+
+        "evidence":
+            "Use at least three observations from today's Circuit Builder exploration.",
+
+        "reasoning":
+            "Explain why removing or disconnecting one important part "
+            "can prevent the system from functioning."
+    },
+
+    "vocabulary": [
+        "circuit",
+        "system",
+        "battery",
+        "power source",
+        "wire",
+        "conductor",
+        "load",
+        "switch",
+        "open circuit",
+        "closed circuit",
+        "complete circuit",
+        "electrical energy",
+        "positive terminal",
+        "negative terminal"
+    ],
+
+    "teacher_note":
+        "Day 53 is intentionally exploratory. Students should learn the circuit parts "
+        "and vocabulary before being required to build a functioning circuit. "
+        "Emphasize that a working circuit must connect through both battery terminals.",
+
+    "lab_url": "/labs/circuit-builder"
+}
+

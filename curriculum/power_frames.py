@@ -401,3 +401,18 @@ POWER_FRAMES[52] = {
 }
 # End Science Studio Day 52 Power Frame Fix
 
+
+# Day 53 - Circuit Vocabulary & System Exploration
+POWER_FRAMES[53] = {
+    "i_can":
+        "I can identify and describe the main parts of an electrical circuit system.",
+
+    "by":
+        "by exploring batteries, wires, switches, bulbs, motors, and speakers "
+        "in the Circuit Builder.",
+
+    "i_know":
+        "I know I have learned this when I can identify the power source, "
+        "conducting path, switch, and load and explain the job of each part."
+}
+
