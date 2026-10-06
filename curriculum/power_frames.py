@@ -534,3 +534,40 @@ POWER_FRAMES[59] = {
 }
 
 # Science Studio Day 59 Power Frame End
+
+
+# Science Studio Day 60 Power Frame Start
+
+POWER_FRAMES[60] = {
+
+    "i_can":
+        "I can add multiple loads to a series circuit while keeping one continuous path.",
+
+    "by":
+        "by building one-, two-, and three-bulb circuits and tracing the "
+        "conducting path through every load.",
+
+    "i_know":
+        "I know I have learned this when I can explain that the number of loads "
+        "can increase while the circuit still has only one path."
+}
+
+# Science Studio Day 60 Power Frame End
+
+
+# Science Studio Day 61 Power Frame Start
+
+POWER_FRAMES[61] = {
+
+    "i_can":
+        "I can explain what happens when one bulb is removed from a series circuit.",
+
+    "by":
+        "by building a two-bulb series circuit, removing one bulb, and comparing the circuit before and after.",
+
+    "i_know":
+        "I know I have learned this when I can explain that removing one bulb "
+        "creates a gap in the only conducting path and causes the other bulb to go out."
+}
+
+# Science Studio Day 61 Power Frame End

@@ -1890,3 +1890,398 @@ SECOND_NINE_WEEKS_LESSONS[59] = {
 }
 
 # Science Studio Day 59 End
+
+
+# Science Studio Day 60 Start
+
+SECOND_NINE_WEEKS_LESSONS[60] = {
+
+    "day": 60,
+
+    "title":
+        "One Path, More Loads: Expanding a Series Circuit",
+
+    "unit":
+        "Unit 4: Investigating Energy Transformations Through Circuits",
+
+    "teks":
+        "5.8B, 5.5D, 5.1F",
+
+    "focus":
+        "Students investigate how additional loads can be added to one "
+        "continuous series circuit path.",
+
+    "learning_target":
+        "We will investigate what happens to the circuit path when more loads "
+        "are added to a series circuit.",
+
+    "success_criteria":
+        "I can add multiple loads to one continuous path and trace the path "
+        "through every load.",
+
+    "essential_question":
+        "How can several loads be connected while keeping only one conducting path?",
+
+    "bell_ringer": [
+        "Yesterday you built a circuit with two bulbs in one path.",
+        "If a third bulb is added, does the circuit automatically have another path?",
+        "What determines the number of paths in a circuit?"
+    ],
+
+    "mini_lesson": [
+        "A series circuit has one continuous conducting path.",
+        "Adding another load does not automatically create another path.",
+        "Loads can be placed one after another along the same conducting path.",
+        "A three-bulb series circuit still has one path if the wires do not branch.",
+        "The conducting path must pass through every load.",
+        "The path must leave one battery terminal and return to the opposite terminal.",
+        "Each load must be connected through both of its terminals.",
+        "Students should count paths by tracing wires, not by counting loads."
+    ],
+
+    "science_notebook": [
+        "Draw three models: one bulb, two bulbs, and three bulbs.",
+        "For each model, label the number of loads.",
+        "For each model, label the number of conducting paths.",
+        "Use arrows to trace the path through every load.",
+        "Write a rule explaining the difference between number of loads and number of paths."
+    ],
+
+    "guided_practice": [
+        "Start with one battery and one bulb.",
+        "Trace the complete path.",
+        "Add a second bulb in the same path.",
+        "Trace the path again.",
+        "Add a third bulb in the same path.",
+        "Trace the entire circuit again.",
+        "Count the loads.",
+        "Count the paths.",
+        "Explain why three loads can still be part of one path."
+    ],
+
+    "lab_title":
+        "Circuit Builder Mission: Add More Loads",
+
+    "lab": [
+        "Build 1: Create a complete circuit with one battery, one bulb, and two wires.",
+        "Test the circuit and trace the path.",
+        "Build 2: Add a second bulb and one additional wire.",
+        "Test the circuit and trace the path through both bulbs.",
+        "Build 3: Add a third bulb and one additional wire.",
+        "Test the circuit and trace the path through all three bulbs.",
+        "Record the number of loads after each build.",
+        "Record the number of paths after each build.",
+        "Explain why all three builds can still be series circuits."
+    ],
+
+    "lab_notebook": [
+        "Build 1 — Loads: ___ Paths: ___",
+        "Build 2 — Loads: ___ Paths: ___",
+        "Build 3 — Loads: ___ Paths: ___",
+        "What changed each time you added a bulb?",
+        "What stayed the same?",
+        "How do you know the three-bulb circuit is still a series circuit?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "A student adds a third bulb to a circuit by placing it after "
+                "the second bulb in the same conducting path. How many paths "
+                "does the circuit have?",
+
+            "choices": {
+                "A": "One path",
+                "B": "Two paths",
+                "C": "Three paths",
+                "D": "Four paths"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "The number of loads increased, but the wiring still forms "
+                "one continuous conducting path."
+        },
+
+        {
+            "question":
+                "Which observation best shows that three bulbs are connected "
+                "in series?",
+
+            "choices": {
+                "A":
+                    "One continuous route can be traced through all three bulbs.",
+                "B":
+                    "Each bulb is a different distance from the battery.",
+                "C":
+                    "Each bulb has its own battery.",
+                "D":
+                    "The bulbs are placed in a straight line on the table."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "A series circuit is identified by one continuous conducting "
+                "path through all loads."
+        },
+
+        {
+            "question":
+                "A circuit has one battery and three bulbs. Which evidence is "
+                "most useful for determining whether it is a series circuit?",
+
+            "choices": {
+                "A":
+                    "Trace the wires to determine how many conducting paths exist.",
+                "B":
+                    "Count the total number of bulbs.",
+                "C":
+                    "Compare the sizes of the bulbs.",
+                "D":
+                    "Measure how far each bulb is from the battery."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Series and parallel arrangements are determined by the "
+                "conducting paths, not by the number or position of the loads."
+        }
+    ],
+
+    "exit_ticket":
+        "A circuit contains one battery and three bulbs. Explain how all three "
+        "bulbs can be connected while the circuit still has only one path.",
+
+    "cer": {
+
+        "claim":
+            "Adding more loads does not necessarily add more conducting paths.",
+
+        "evidence":
+            "Use evidence from your one-, two-, and three-bulb Circuit Builder models.",
+
+        "reasoning":
+            "Explain how the wiring determines the number of paths in a circuit."
+    },
+
+    "vocabulary": [
+        "series circuit",
+        "load",
+        "conducting path",
+        "one path",
+        "multiple loads",
+        "complete circuit",
+        "battery",
+        "positive terminal",
+        "negative terminal",
+        "wire",
+        "conductor",
+        "bulb",
+        "electrical energy",
+        "system"
+    ],
+
+    "teacher_note":
+        "Do not reveal the Day 61 bulb-removal result yet. Keep the focus on "
+        "number of loads versus number of paths. Students should discover that "
+        "one, two, or three loads can still be arranged in one series path.",
+
+    "lab_url":
+        "/labs/circuit-builder?mission=day60"
+}
+
+# Science Studio Day 60 End
+
+
+# Science Studio Day 61 Start
+
+SECOND_NINE_WEEKS_LESSONS[61] = {
+
+    "day": 61,
+
+    "title":
+        "Break the Path: What Happens When One Bulb Is Removed?",
+
+    "unit":
+        "Unit 4: Investigating Energy Transformations Through Circuits",
+
+    "teks":
+        "5.8B, 5.5D, 5.1F",
+
+    "focus":
+        "Students investigate why removing one load from a series circuit "
+        "causes the entire circuit to stop working.",
+
+    "learning_target":
+        "We will investigate what happens when one load is removed from a series circuit.",
+
+    "success_criteria":
+        "I can explain that removing one bulb breaks the only conducting path "
+        "and causes the other loads to stop working.",
+
+    "essential_question":
+        "Why does removing one bulb cause every bulb in a series circuit to go out?",
+
+    "bell_ringer": [
+        "Yesterday you connected multiple bulbs in one continuous path.",
+        "Predict what will happen if one bulb is removed.",
+        "Explain what happens to the conducting path."
+    ],
+
+    "mini_lesson": [
+        "A series circuit has one continuous conducting path.",
+        "Every load is part of that same path.",
+        "Electrical energy can move only when the conducting path is complete.",
+        "Removing one bulb creates a gap in the path.",
+        "A gap makes the circuit incomplete or open.",
+        "When the only path is broken, electrical energy cannot move through the entire circuit.",
+        "The remaining bulb does not light even though it is still connected to part of the circuit.",
+        "Students should use the path as evidence instead of saying the other bulb simply 'lost power.'"
+    ],
+
+    "science_notebook": [
+        "Draw the working two-bulb series circuit.",
+        "Trace the one continuous conducting path.",
+        "Draw the same circuit after one bulb is removed.",
+        "Circle the gap in the conducting path.",
+        "Explain why the remaining bulb does not light."
+    ],
+
+    "guided_practice": [
+        "Identify the battery terminals.",
+        "Trace the working path through both bulbs.",
+        "Predict what happens when one bulb is removed.",
+        "Remove one bulb.",
+        "Trace the path again.",
+        "Locate the gap.",
+        "Use evidence to explain why the remaining bulb goes out."
+    ],
+
+    "lab_title":
+        "Circuit Builder Mission: Remove One Bulb",
+
+    "lab": [
+        "Build a complete series circuit using one battery, two bulbs, and three wires.",
+        "Test the circuit and verify that both bulbs are powered.",
+        "Trace the path from one battery terminal through both bulbs and back to the opposite terminal.",
+        "Select one bulb and remove it from the circuit.",
+        "Test the circuit again.",
+        "Observe what happens to the remaining bulb.",
+        "Identify the gap in the conducting path.",
+        "Explain why the remaining bulb is no longer powered."
+    ],
+
+    "lab_notebook": [
+        "Before removing a bulb: Circuit complete? ___",
+        "Before removing a bulb: Number of powered bulbs ___",
+        "After removing a bulb: Circuit complete? ___",
+        "After removing a bulb: Number of powered bulbs ___",
+        "Where is the break in the conducting path?",
+        "Why did the remaining bulb stop working?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "Two bulbs are connected in a series circuit. A student removes "
+                "one bulb. What will most likely happen to the other bulb?",
+
+            "choices": {
+                "A": "It will become brighter.",
+                "B": "It will remain lit because it still touches a wire.",
+                "C": "It will go out because the only conducting path is broken.",
+                "D": "It will become a new power source."
+            },
+
+            "answer": "C",
+
+            "rationale":
+                "Removing one bulb creates a gap in the only conducting path, "
+                "so the circuit becomes incomplete."
+        },
+
+        {
+            "question":
+                "Which evidence best explains why both bulbs stop working when "
+                "one bulb is removed from a series circuit?",
+
+            "choices": {
+                "A": "Both bulbs are the same size.",
+                "B": "There is only one conducting path through both bulbs.",
+                "C": "The battery is closest to the first bulb.",
+                "D": "The wires are different lengths."
+            },
+
+            "answer": "B",
+
+            "rationale":
+                "In a series circuit, all loads depend on the same continuous conducting path."
+        },
+
+        {
+            "question":
+                "A student removes one load from a circuit and the other load "
+                "stops working. Which conclusion is best supported?",
+
+            "choices": {
+                "A": "The loads were likely connected along one continuous path.",
+                "B": "The circuit must have had several independent paths.",
+                "C": "The remaining load became a conductor.",
+                "D": "The battery changed into a load."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "If removing one load breaks the path for every load, the evidence supports a series arrangement."
+        }
+    ],
+
+    "exit_ticket":
+        "A two-bulb series circuit works until one bulb is removed. Explain why "
+        "the second bulb also goes out using the words conducting path and gap.",
+
+    "cer": {
+
+        "claim":
+            "Removing one bulb from a series circuit causes the other bulb to stop working.",
+
+        "evidence":
+            "Use observations from the Circuit Builder before and after removing one bulb.",
+
+        "reasoning":
+            "Explain how a gap in the only conducting path prevents electrical energy from moving through the complete system."
+    },
+
+    "vocabulary": [
+        "series circuit",
+        "conducting path",
+        "complete circuit",
+        "incomplete circuit",
+        "open circuit",
+        "gap",
+        "load",
+        "bulb",
+        "battery",
+        "positive terminal",
+        "negative terminal",
+        "wire",
+        "electrical energy",
+        "system"
+    ],
+
+    "teacher_note":
+        "This is the key evidence day before parallel circuits. Students should "
+        "physically remove one bulb and observe that the remaining bulb also "
+        "goes out because the single path has been broken.",
+
+    "lab_url":
+        "/labs/circuit-builder?mission=day61"
+}
+
+# Science Studio Day 61 End
