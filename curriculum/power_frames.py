@@ -515,3 +515,22 @@ POWER_FRAMES[58] = {
 }
 
 # Science Studio Day 58 Power Frame End
+
+
+# Science Studio Day 59 Power Frame Start
+
+POWER_FRAMES[59] = {
+
+    "i_can":
+        "I can identify and build a series circuit with two loads in one path.",
+
+    "by":
+        "by connecting two bulbs in one continuous conducting path "
+        "and tracing the path through both loads.",
+
+    "i_know":
+        "I know I have learned this when I can trace the circuit from "
+        "one battery terminal through both bulbs and back to the other terminal."
+}
+
+# Science Studio Day 59 Power Frame End

@@ -1682,3 +1682,211 @@ SECOND_NINE_WEEKS_LESSONS[58] = {
 }
 
 # Science Studio Day 58 End
+
+
+# Science Studio Day 59 Start
+
+SECOND_NINE_WEEKS_LESSONS[59] = {
+
+    "day": 59,
+
+    "title":
+        "One Path, Two Loads: Introduction to Series Circuits",
+
+    "unit":
+        "Unit 4: Investigating Energy Transformations Through Circuits",
+
+    "teks":
+        "5.8B, 5.5D, 5.1F",
+
+    "focus":
+        "Students investigate a circuit containing two loads connected "
+        "in one continuous conducting path.",
+
+    "learning_target":
+        "We will investigate how two loads can be connected in one "
+        "continuous electrical path.",
+
+    "success_criteria":
+        "I can build a circuit with two bulbs in one path and trace "
+        "the conducting path from one battery terminal through both "
+        "loads and back to the other terminal.",
+
+    "essential_question":
+        "How can two loads be connected in one continuous circuit path?",
+
+    "bell_ringer": [
+        "Yesterday you repaired circuits by tracing the conducting path.",
+        "Can one battery power more than one load?",
+        "How might two bulbs be connected so both are part of the same path?"
+    ],
+
+    "mini_lesson": [
+        "A series circuit has loads connected along one continuous path.",
+        "Electrical energy moves through each component in the path.",
+        "A series circuit still requires a complete conducting path.",
+        "The path must leave one battery terminal and return to the other battery terminal.",
+        "Each bulb must have both of its connection points included in the path.",
+        "With two bulbs in series, the path travels through bulb 1 and then bulb 2.",
+        "There are no separate branches in today's circuit.",
+        "Students should trace the entire path instead of judging the circuit only by how it looks."
+    ],
+
+    "science_notebook": [
+        "Draw your two-bulb series circuit.",
+        "Label the positive and negative battery terminals.",
+        "Number the bulbs Bulb 1 and Bulb 2.",
+        "Use arrows to trace the single conducting path.",
+        "Write one sentence explaining why both bulbs are part of the same circuit."
+    ],
+
+    "guided_practice": [
+        "Start at the positive battery terminal.",
+        "Trace the first wire to Bulb 1.",
+        "Trace the next wire from Bulb 1 to Bulb 2.",
+        "Trace the final wire from Bulb 2 to the opposite battery terminal.",
+        "Check that there is only one continuous path.",
+        "Identify both loads in the path."
+    ],
+
+    "lab_title":
+        "Circuit Builder Mission: One Path, Two Bulbs",
+
+    "lab": [
+        "Open the Circuit Builder.",
+        "Add one battery.",
+        "Add two bulbs.",
+        "Add three wires.",
+        "Connect the battery to Bulb 1.",
+        "Connect Bulb 1 to Bulb 2.",
+        "Connect Bulb 2 back to the opposite battery terminal.",
+        "Test the circuit.",
+        "Trace the entire conducting path.",
+        "Identify the two loads.",
+        "Explain why this circuit has one path."
+    ],
+
+    "lab_notebook": [
+        "How many batteries did you use?",
+        "How many bulbs did you use?",
+        "How many conducting paths are present?",
+        "Trace the path in order.",
+        "What evidence shows that both bulbs are part of the same circuit?",
+        "How is this circuit different from yesterday's one-load circuit?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "A student connects two bulbs in one continuous path with a battery. "
+                "Which statement best describes the circuit?",
+
+            "choices": {
+                "A":
+                    "Both bulbs are loads in the same conducting path.",
+                "B":
+                    "Each bulb must have its own separate battery.",
+                "C":
+                    "Only the first bulb is part of the circuit.",
+                "D":
+                    "The wires are the loads in the circuit."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Both bulbs are loads connected along the same continuous path."
+        },
+
+        {
+            "question":
+                "Which path correctly describes a two-bulb series circuit?",
+
+            "choices": {
+                "A":
+                    "Battery terminal → Bulb 1 → Bulb 2 → opposite battery terminal",
+                "B":
+                    "Battery terminal → Bulb 1 → same battery terminal",
+                "C":
+                    "Bulb 1 → Bulb 2 without a battery",
+                "D":
+                    "Battery → wire that does not connect to either bulb"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "A complete path must leave one battery terminal, pass through "
+                "both loads, and return to the opposite terminal."
+        },
+
+        {
+            "question":
+                "A student wants to prove that two bulbs are connected in one "
+                "continuous path. Which evidence would be most useful?",
+
+            "choices": {
+                "A":
+                    "Trace one unbroken route from one battery terminal through "
+                    "both bulbs and back to the other terminal.",
+                "B":
+                    "Count how many colors are used in the wires.",
+                "C":
+                    "Measure the distance between the bulbs.",
+                "D":
+                    "Place the bulbs on opposite sides of the table."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Tracing the complete conducting path provides evidence that both "
+                "loads are connected in the same circuit path."
+        }
+    ],
+
+    "exit_ticket":
+        "Describe the path electrical energy follows in a circuit with one "
+        "battery and two bulbs connected in series.",
+
+    "cer": {
+
+        "claim":
+            "Two bulbs can be connected in one continuous circuit path.",
+
+        "evidence":
+            "Use evidence from your Circuit Builder model.",
+
+        "reasoning":
+            "Explain how the path travels from one battery terminal through "
+            "both loads and returns to the other battery terminal."
+    },
+
+    "vocabulary": [
+        "series circuit",
+        "one path",
+        "circuit",
+        "conducting path",
+        "complete circuit",
+        "battery",
+        "positive terminal",
+        "negative terminal",
+        "wire",
+        "conductor",
+        "load",
+        "bulb",
+        "electrical energy",
+        "system"
+    ],
+
+    "teacher_note":
+        "Today is the introduction to series circuits. Do not emphasize bulb "
+        "removal yet. The key idea is that both loads are connected in one "
+        "continuous path. Save the broken-series investigation for the later lesson.",
+
+    "lab_url":
+        "/labs/circuit-builder?mission=day59"
+}
+
+# Science Studio Day 59 End

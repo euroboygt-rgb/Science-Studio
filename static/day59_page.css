@@ -1,0 +1,832 @@
+
+/* =========================================================
+   SCIENCE STUDIO DAY 59
+   ONE PATH, TWO LOADS
+   ========================================================= */
+
+#scienceStudioDay59,
+#scienceStudioDay59Lower {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* ---------------------------------------------------------
+   MAIN CARDS
+   --------------------------------------------------------- */
+
+.d59-card {
+  width: 100%;
+  box-sizing: border-box;
+
+  margin: 18px 0;
+  padding: 18px;
+
+  border: 3px solid #171717;
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    4px 5px 0 rgba(0,0,0,.13);
+}
+
+
+.d59-cream {
+  background: #fff4cd;
+}
+
+
+.d59-blue {
+  background: #eef8ff;
+}
+
+
+.d59-card h2 {
+  margin: 5px 0 7px;
+
+  font-size: 1.55rem;
+  line-height: 1.15;
+
+  font-weight: 900;
+}
+
+
+.d59-card h3 {
+  margin-top: 8px;
+  font-weight: 900;
+}
+
+
+.d59-unit {
+  margin-bottom: 10px;
+
+  font-size: .88rem;
+  font-weight: 800;
+}
+
+
+/* ---------------------------------------------------------
+   BADGES
+   --------------------------------------------------------- */
+
+.d59-badge {
+  display: inline-block;
+
+  margin-bottom: 7px;
+  padding: 5px 12px;
+
+  border: 2px solid #171717;
+  border-radius: 999px;
+
+  background: #7131cc;
+  color: #fff13b;
+
+  font-size: .82rem;
+  font-weight: 900;
+}
+
+
+.d59-blue-badge {
+  background: #1681ee;
+  color: #ffffff;
+}
+
+
+/* ---------------------------------------------------------
+   PHENOMENON
+   --------------------------------------------------------- */
+
+.d59-image {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  margin-top: 10px;
+  padding: 12px;
+
+  overflow: hidden;
+
+  border: 3px solid #171717;
+  border-radius: 15px;
+
+  background: #ffffff;
+}
+
+
+.d59-image img {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+
+  margin: 0 auto;
+
+  object-fit: contain;
+}
+
+
+.d59-focus {
+  margin-top: 10px;
+  padding: 11px;
+
+  border: 2px solid #171717;
+  border-radius: 10px;
+
+  background: #e6f3ff;
+}
+
+
+.d59-grid2 {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0,1fr));
+
+  gap: 10px;
+
+  margin-top: 10px;
+}
+
+
+.d59-grid3 {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0,1fr));
+
+  gap: 10px;
+
+  margin-top: 10px;
+}
+
+
+.d59-box {
+  box-sizing: border-box;
+
+  padding: 12px;
+
+  border: 2px solid #171717;
+  border-radius: 10px;
+
+  background: #edf7ff;
+}
+
+
+.d59-box strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+
+/* ---------------------------------------------------------
+   MISSION BRIEF
+   --------------------------------------------------------- */
+
+.d59-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 14px;
+}
+
+
+.d59-play {
+  flex-shrink: 0;
+
+  padding: 10px 15px;
+
+  border: 2px solid #171717;
+  border-radius: 8px;
+
+  background: #ffc400;
+
+  color: #111111;
+
+  font-weight: 900;
+
+  cursor: pointer;
+
+  box-shadow:
+    2px 3px 0 rgba(0,0,0,.15);
+}
+
+
+.d59-slide {
+  min-height: 235px;
+
+  margin-top: 12px;
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  border: 2px solid #171717;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  text-align: center;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
+
+
+.d59-slide-icon {
+  margin-bottom: 5px;
+
+  font-size: 3.7rem;
+}
+
+
+.d59-slide-title {
+  margin: 4px 0 10px !important;
+}
+
+
+.d59-slide-main {
+  max-width: 760px;
+
+  font-size: 1.08rem;
+  line-height: 1.45;
+
+  font-weight: 900;
+}
+
+
+.d59-slide-caption {
+  margin-top: 10px;
+
+  color: #444444;
+}
+
+
+.d59-footer {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 10px;
+}
+
+
+.d59-control {
+  padding: 7px 11px;
+
+  border: 2px solid #171717;
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+
+.d59-next {
+  background: #1681ee;
+  color: #ffffff;
+}
+
+
+.d59-restart {
+  background: #2ba34a;
+  color: #ffffff;
+}
+
+
+/* ---------------------------------------------------------
+   STEVE
+   --------------------------------------------------------- */
+
+.d59-steve-grid {
+  display: grid;
+
+  grid-template-columns:
+    85px 1fr;
+
+  gap: 14px;
+}
+
+
+.d59-penguin {
+  padding-top: 8px;
+
+  text-align: center;
+
+  font-size: 5rem;
+}
+
+
+.d59-scenario {
+  margin-top: 10px;
+  padding: 13px;
+
+  border: 2px solid #171717;
+  border-radius: 10px;
+
+  background: #fff4cd;
+}
+
+
+.d59-question {
+  margin-top: 11px;
+  padding: 13px;
+
+  border: 2px solid #171717;
+  border-radius: 10px;
+
+  background: #ffffff;
+}
+
+
+.d59-answer {
+  display: block;
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  margin: 7px 0;
+  padding: 10px;
+
+  border: 2px solid #171717;
+  border-radius: 7px;
+
+  background: #f6f6f8;
+
+  color: #111111;
+
+  text-align: left;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+
+.d59-answer:hover {
+  background: #e8f3ff;
+}
+
+
+.d59-answer.selected {
+  border-color: #1875cf;
+  background: #dfeeff;
+}
+
+
+.d59-answer.correct {
+  border-color: #16823b;
+  background: #d8f4dc;
+}
+
+
+.d59-answer.wrong {
+  border-color: #bc2637;
+  background: #ffdede;
+}
+
+
+.d59-answer-row {
+  display: flex;
+
+  gap: 8px;
+
+  margin-top: 9px;
+}
+
+
+.d59-check,
+.d59-reset {
+  padding: 8px 13px;
+
+  border: 2px solid #171717;
+  border-radius: 7px;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+
+.d59-check {
+  background: #ffc400;
+}
+
+
+.d59-reset {
+  background: #ffffff;
+}
+
+
+.d59-feedback {
+  min-height: 24px;
+
+  margin-top: 9px;
+
+  font-weight: 900;
+}
+
+
+/* ---------------------------------------------------------
+   MINI LESSON SERIES PATH
+   --------------------------------------------------------- */
+
+.d59-series-path {
+  display: grid;
+
+  grid-template-columns:
+    1fr auto 1fr auto 1fr auto 1fr;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 13px 0;
+  padding: 14px;
+
+  border: 3px solid #171717;
+  border-radius: 13px;
+
+  background: #fff4cd;
+}
+
+
+.d59-series-path div {
+  padding: 11px;
+
+  border: 2px solid #171717;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  text-align: center;
+
+  font-size: 1.35rem;
+}
+
+
+.d59-series-path strong {
+  display: block;
+
+  margin-top: 5px;
+
+  font-size: .84rem;
+}
+
+
+.d59-series-path span {
+  font-size: 1.7rem;
+  font-weight: 900;
+}
+
+
+.d59-warning,
+.d59-success {
+  margin-top: 12px;
+  padding: 12px;
+
+  border: 2px solid #171717;
+  border-radius: 10px;
+}
+
+
+.d59-warning {
+  background: #fff2a8;
+}
+
+
+.d59-success {
+  background: #dcf6df;
+}
+
+
+/* ---------------------------------------------------------
+   SCIENCE NOTEBOOK
+   --------------------------------------------------------- */
+
+.d59-notebook {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap: 9px;
+
+  margin: 11px 0 14px;
+}
+
+
+.d59-notebook div {
+  padding: 11px;
+
+  border: 2px solid #171717;
+  border-radius: 9px;
+
+  background: #edf7ff;
+}
+
+
+.d59-table-wrap {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+
+.d59-table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+
+.d59-table th,
+.d59-table td {
+  padding: 9px;
+
+  border: 2px solid #171717;
+
+  text-align: left;
+}
+
+
+.d59-table th {
+  background: #e6f3ff;
+}
+
+
+/* ---------------------------------------------------------
+   LAB
+   --------------------------------------------------------- */
+
+.d59-required {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+  gap: 10px;
+
+  margin: 13px 0;
+}
+
+
+.d59-required div {
+  padding: 15px;
+
+  border: 3px solid #171717;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  text-align: center;
+
+  font-size: 1.2rem;
+}
+
+
+.d59-required strong {
+  display: block;
+
+  margin-top: 5px;
+}
+
+
+.d59-build {
+  margin-top: 12px;
+  padding: 14px;
+
+  border: 3px solid #171717;
+  border-radius: 12px;
+
+  background: #e6f3ff;
+}
+
+
+.d59-build-path {
+  margin-top: 8px;
+  padding: 13px;
+
+  border: 2px solid #171717;
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  text-align: center;
+
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+
+.d59-build-path span {
+  display: inline-block;
+
+  margin: 0 8px;
+
+  color: #7131cc;
+
+  font-size: 1.4rem;
+}
+
+
+.d59-mission-steps {
+  margin-top: 12px;
+  padding: 13px;
+
+  border: 2px solid #171717;
+  border-radius: 11px;
+
+  background: #ffffff;
+}
+
+
+.d59-mission-steps > strong {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 1.05rem;
+}
+
+
+.d59-mission-steps div {
+  margin: 6px 0;
+
+  font-weight: 800;
+}
+
+
+.d59-lab-button {
+  display: inline-block;
+
+  margin-top: 13px;
+  padding: 13px 20px;
+
+  border: 3px solid #171717;
+  border-radius: 10px;
+
+  background: #ffc400;
+
+  color: #111111 !important;
+
+  text-decoration: none;
+
+  font-size: 1.05rem;
+  font-weight: 900;
+
+  box-shadow:
+    3px 4px 0 rgba(0,0,0,.17);
+}
+
+
+/* ---------------------------------------------------------
+   STAAR PRACTICE
+   --------------------------------------------------------- */
+
+.d59-practice {
+  margin-top: 12px;
+  padding: 13px;
+
+  border: 2px solid #171717;
+  border-radius: 11px;
+
+  background: #edf7ff;
+}
+
+
+.d59-practice h3 {
+  margin: 0 0 7px;
+}
+
+
+.d59-practice-answer {
+  display: block;
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  margin: 7px 0;
+  padding: 10px;
+
+  border: 2px solid #171717;
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #111111;
+
+  text-align: left;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+
+.d59-practice-answer:hover {
+  background: #e8f3ff;
+}
+
+
+.d59-practice-answer.correct {
+  border-color: #16823b;
+  background: #d8f4dc;
+}
+
+
+.d59-practice-answer.wrong {
+  border-color: #bc2637;
+  background: #ffdede;
+}
+
+
+.d59-practice-feedback {
+  min-height: 23px;
+
+  margin-top: 8px;
+
+  font-weight: 900;
+}
+
+
+/* ---------------------------------------------------------
+   WRITING BOXES
+   --------------------------------------------------------- */
+
+.d59-textarea {
+  width: 100%;
+  min-height: 115px;
+
+  box-sizing: border-box;
+
+  padding: 10px;
+
+  border: 2px solid #171717;
+  border-radius: 9px;
+
+  font-family: inherit;
+
+  resize: vertical;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE / SMALL SCREEN
+   --------------------------------------------------------- */
+
+@media (max-width: 760px) {
+
+  .d59-grid2,
+  .d59-grid3,
+  .d59-notebook,
+  .d59-required,
+  .d59-steve-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .d59-penguin {
+    display: none;
+  }
+
+
+  .d59-header,
+  .d59-footer {
+    display: block;
+  }
+
+
+  .d59-play {
+    margin-top: 8px;
+  }
+
+
+  .d59-series-path {
+    grid-template-columns: 1fr;
+  }
+
+
+  .d59-series-path > span {
+    transform: rotate(90deg);
+
+    text-align: center;
+  }
+
+}
+
