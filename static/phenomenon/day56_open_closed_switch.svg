@@ -1,0 +1,428 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1100 650">
+
+  <rect width="1100"
+        height="650"
+        rx="24"
+        fill="#f5faff"/>
+
+  <text x="550"
+        y="48"
+        text-anchor="middle"
+        font-family="Arial"
+        font-size="34"
+        font-weight="900"
+        fill="#20346f">
+    PHENOMENON MISSION: WHAT CHANGED?
+  </text>
+
+  <text x="550"
+        y="82"
+        text-anchor="middle"
+        font-family="Arial"
+        font-size="19"
+        font-weight="700"
+        fill="#20346f">
+    Same battery. Same wires. Same bulb. Different switch position.
+  </text>
+
+
+  <!-- OPEN CIRCUIT -->
+  <g transform="translate(45 125)">
+
+    <rect x="0"
+          y="0"
+          width="480"
+          height="405"
+          rx="22"
+          fill="#fff"
+          stroke="#c9d6ef"
+          stroke-width="4"/>
+
+    <text x="240"
+          y="42"
+          text-anchor="middle"
+          font-size="28"
+          font-weight="900"
+          fill="#b00020">
+      OPEN CIRCUIT
+    </text>
+
+
+    <!-- Battery -->
+    <rect x="65"
+          y="145"
+          width="60"
+          height="120"
+          rx="8"
+          fill="#ffc400"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="95"
+            cy="133"
+            r="8"
+            fill="#d8ffd9"
+            stroke="#087a35"
+            stroke-width="4"/>
+
+    <circle cx="95"
+            cy="277"
+            r="8"
+            fill="#ffdada"
+            stroke="#b00020"
+            stroke-width="4"/>
+
+    <text x="113"
+          y="128"
+          font-size="22"
+          font-weight="900"
+          fill="#087a35">+</text>
+
+    <text x="113"
+          y="290"
+          font-size="22"
+          font-weight="900"
+          fill="#b00020">−</text>
+
+    <text x="95"
+          y="210"
+          text-anchor="middle"
+          font-size="13"
+          font-weight="900">
+      BATTERY
+    </text>
+
+
+    <!-- Wire to switch -->
+    <path d="M 95 133 L 190 133"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+
+    <!-- Open switch -->
+    <rect x="190"
+          y="103"
+          width="120"
+          height="62"
+          rx="10"
+          fill="#fff"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="215"
+            cy="138"
+            r="7"
+            fill="#111"/>
+
+    <circle cx="283"
+            cy="138"
+            r="7"
+            fill="#111"/>
+
+    <line x1="215"
+          y1="138"
+          x2="273"
+          y2="108"
+          stroke="#111"
+          stroke-width="7"
+          stroke-linecap="round"/>
+
+    <text x="250"
+          y="193"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      SWITCH OPEN
+    </text>
+
+
+    <!-- Switch to bulb -->
+    <path d="M 310 133
+             C 355 133 365 160 365 182"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"/>
+
+
+    <!-- Bulb OFF -->
+    <circle cx="365"
+            cy="225"
+            r="42"
+            fill="#f2f2f2"
+            stroke="#555"
+            stroke-width="5"/>
+
+    <path d="M 349 225
+             Q 365 202 381 225
+             Q 365 248 349 225"
+          fill="none"
+          stroke="#777"
+          stroke-width="4"/>
+
+    <rect x="345"
+          y="263"
+          width="40"
+          height="25"
+          rx="4"
+          fill="#aaa"
+          stroke="#111"
+          stroke-width="3"/>
+
+    <text x="365"
+          y="315"
+          text-anchor="middle"
+          font-size="18"
+          font-weight="900">
+      BULB OFF
+    </text>
+
+
+    <!-- Return wire -->
+    <path d="M 365 288
+             C 340 340 175 345 95 277"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+
+    <rect x="70"
+          y="345"
+          width="340"
+          height="42"
+          rx="10"
+          fill="#ffe1e1"
+          stroke="#b00020"
+          stroke-width="2"/>
+
+    <text x="240"
+          y="372"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900"
+          fill="#b00020">
+      BREAK IN THE CONDUCTING PATH
+    </text>
+
+  </g>
+
+
+  <!-- CLOSED CIRCUIT -->
+  <g transform="translate(575 125)">
+
+    <rect x="0"
+          y="0"
+          width="480"
+          height="405"
+          rx="22"
+          fill="#fff"
+          stroke="#c9d6ef"
+          stroke-width="4"/>
+
+    <text x="240"
+          y="42"
+          text-anchor="middle"
+          font-size="28"
+          font-weight="900"
+          fill="#087a35">
+      CLOSED CIRCUIT
+    </text>
+
+
+    <!-- Battery -->
+    <rect x="65"
+          y="145"
+          width="60"
+          height="120"
+          rx="8"
+          fill="#ffc400"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="95"
+            cy="133"
+            r="8"
+            fill="#d8ffd9"
+            stroke="#087a35"
+            stroke-width="4"/>
+
+    <circle cx="95"
+            cy="277"
+            r="8"
+            fill="#ffdada"
+            stroke="#b00020"
+            stroke-width="4"/>
+
+    <text x="113"
+          y="128"
+          font-size="22"
+          font-weight="900"
+          fill="#087a35">+</text>
+
+    <text x="113"
+          y="290"
+          font-size="22"
+          font-weight="900"
+          fill="#b00020">−</text>
+
+    <text x="95"
+          y="210"
+          text-anchor="middle"
+          font-size="13"
+          font-weight="900">
+      BATTERY
+    </text>
+
+
+    <!-- Wire to switch -->
+    <path d="M 95 133 L 190 133"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+
+    <!-- Closed switch -->
+    <rect x="190"
+          y="103"
+          width="120"
+          height="62"
+          rx="10"
+          fill="#fff"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="215"
+            cy="138"
+            r="7"
+            fill="#111"/>
+
+    <circle cx="283"
+            cy="138"
+            r="7"
+            fill="#111"/>
+
+    <line x1="215"
+          y1="138"
+          x2="283"
+          y2="138"
+          stroke="#111"
+          stroke-width="7"
+          stroke-linecap="round"/>
+
+    <text x="250"
+          y="193"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      SWITCH CLOSED
+    </text>
+
+
+    <!-- Switch to bulb -->
+    <path d="M 310 133
+             C 355 133 365 160 365 182"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"/>
+
+
+    <!-- Bulb ON -->
+    <circle cx="365"
+            cy="225"
+            r="52"
+            fill="#fff1a0"
+            stroke="#d39b00"
+            stroke-width="5"/>
+
+    <circle cx="365"
+            cy="225"
+            r="29"
+            fill="#ffe45d"/>
+
+    <path d="M 349 225
+             Q 365 202 381 225
+             Q 365 248 349 225"
+          fill="none"
+          stroke="#444"
+          stroke-width="4"/>
+
+    <rect x="345"
+          y="271"
+          width="40"
+          height="25"
+          rx="4"
+          fill="#f0831e"
+          stroke="#111"
+          stroke-width="3"/>
+
+    <text x="365"
+          y="323"
+          text-anchor="middle"
+          font-size="18"
+          font-weight="900">
+      BULB ON
+    </text>
+
+
+    <!-- Return wire -->
+    <path d="M 365 296
+             C 340 340 175 345 95 277"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+
+    <rect x="70"
+          y="345"
+          width="340"
+          height="42"
+          rx="10"
+          fill="#dcf6df"
+          stroke="#087a35"
+          stroke-width="2"/>
+
+    <text x="240"
+          y="372"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900"
+          fill="#087a35">
+      COMPLETE CONDUCTING PATH
+    </text>
+
+  </g>
+
+
+  <rect x="165"
+        y="565"
+        width="770"
+        height="58"
+        rx="14"
+        fill="#fff4a8"
+        stroke="#24336b"
+        stroke-width="3"/>
+
+  <text x="550"
+        y="590"
+        text-anchor="middle"
+        font-size="18"
+        font-weight="900"
+        fill="#24336b">
+    FOCUS QUESTION
+  </text>
+
+  <text x="550"
+        y="614"
+        text-anchor="middle"
+        font-size="19"
+        font-weight="800"
+        fill="#24336b">
+    Why does changing only the switch position change the bulb?
+  </text>
+
+</svg>

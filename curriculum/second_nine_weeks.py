@@ -1063,3 +1063,218 @@ SECOND_NINE_WEEKS_LESSONS[55] = {
 }
 
 # Science Studio Day 55 End
+
+
+# Science Studio Day 56 Start
+
+SECOND_NINE_WEEKS_LESSONS[56] = {
+
+    "day": 56,
+
+    "title":
+        "Open and Closed Circuits: Control the Path",
+
+    "unit":
+        "Unit 4: Investigating Energy Transformations Through Circuits",
+
+    "teks":
+        "5.8B, 5.5D, 5.1F",
+
+    "focus":
+        "Students investigate how a switch opens and closes "
+        "the conducting path in an electrical circuit.",
+
+    "learning_target":
+        "We will investigate how a switch controls whether "
+        "an electrical circuit is open or closed.",
+
+    "success_criteria":
+        "I can build a circuit with a switch and explain why "
+        "the bulb turns off when the circuit is open and "
+        "turns on when the circuit is closed.",
+
+    "essential_question":
+        "How does a switch control the conducting path in a circuit?",
+
+    "bell_ringer": [
+        "Yesterday you made a bulb light with one battery and two wires.",
+        "What would happen if you created a gap in one of the wires?",
+        "How could a switch create or remove that gap?"
+    ],
+
+    "mini_lesson": [
+        "A switch is a control in an electrical circuit.",
+        "A closed switch connects the conducting path.",
+        "An open switch creates a break in the conducting path.",
+        "A closed circuit has a continuous conducting path.",
+        "An open circuit has a break or gap in the path.",
+        "The circuit must still connect both battery terminals.",
+        "Opening a switch does not remove the battery's energy.",
+        "Instead, opening the switch prevents electrical energy from moving through the complete path.",
+        "Closing the switch restores the conducting path."
+    ],
+
+    "science_notebook": [
+        "Create an Open vs. Closed Circuit chart.",
+        "Use these columns:",
+        "Switch Position | Conducting Path | Bulb | Evidence",
+        "Record observations for OPEN and CLOSED switch positions.",
+        "Draw both circuit models and label the gap in the open circuit."
+    ],
+
+    "guided_practice": [
+        "Trace the path from one battery terminal.",
+        "Follow the wire to the switch.",
+        "Decide whether the switch connects or breaks the path.",
+        "Continue through the bulb.",
+        "Trace the return wire to the other battery terminal.",
+        "Predict whether the bulb should be ON or OFF."
+    ],
+
+    "lab_title":
+        "Circuit Builder Mission: Control the Bulb",
+
+    "lab": [
+        "Open the Circuit Builder.",
+        "Add one battery.",
+        "Add one bulb.",
+        "Add one switch.",
+        "Add three wires.",
+        "Build a complete circuit with the switch in the conducting path.",
+        "Close the switch.",
+        "Test the circuit and observe the bulb.",
+        "Open the switch.",
+        "Test the circuit again and observe the bulb.",
+        "Close the switch one more time.",
+        "Explain why the bulb changes from ON to OFF to ON.",
+        "Record evidence for each switch position."
+    ],
+
+    "lab_notebook": [
+        "Prediction: What will happen when the switch is open?",
+        "Closed switch observation:",
+        "Open switch observation:",
+        "Closed again observation:",
+        "What changed in the conducting path?",
+        "What evidence supports your explanation?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "A bulb is connected to a battery with wires and a switch. "
+                "The switch is open. Why does the bulb not light?",
+
+            "choices": {
+                "A":
+                    "The open switch creates a break in the conducting path.",
+                "B":
+                    "The battery stops containing energy when the switch opens.",
+                "C":
+                    "The bulb becomes an insulator when the switch opens.",
+                "D":
+                    "The wires stop being conductors when the switch opens."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "An open switch creates a break in the conducting path."
+        },
+
+        {
+            "question":
+                "A student closes a switch and the bulb immediately lights. "
+                "Which statement best explains the observation?",
+
+            "choices": {
+                "A":
+                    "Closing the switch creates a complete conducting path.",
+                "B":
+                    "Closing the switch creates a new battery.",
+                "C":
+                    "Closing the switch changes the wire into a power source.",
+                "D":
+                    "Closing the switch removes the load from the circuit."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Closing the switch connects the path so electrical energy "
+                "can move through the circuit."
+        },
+
+        {
+            "question":
+                "Which investigation provides the best evidence that a switch "
+                "controls the conducting path?",
+
+            "choices": {
+                "A":
+                    "Compare a closed switch with an open switch while keeping "
+                    "the battery, wires, and bulb the same.",
+                "B":
+                    "Use two different batteries and two different bulbs.",
+                "C":
+                    "Measure the length of several wires without connecting them.",
+                "D":
+                    "Move the circuit to different places in the classroom."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Changing only the switch position provides evidence about "
+                "the effect of opening or closing the conducting path."
+        }
+    ],
+
+    "exit_ticket":
+        "Explain why opening a switch turns a bulb off even though "
+        "the battery is still connected to the circuit.",
+
+    "cer": {
+
+        "claim":
+            "The switch controls whether the conducting path is complete.",
+
+        "evidence":
+            "Use observations from the open-switch and closed-switch tests.",
+
+        "reasoning":
+            "Explain how opening and closing the switch changes "
+            "the conducting path and the bulb's output."
+    },
+
+    "vocabulary": [
+        "circuit",
+        "switch",
+        "open circuit",
+        "closed circuit",
+        "complete circuit",
+        "incomplete circuit",
+        "conducting path",
+        "battery",
+        "power source",
+        "wire",
+        "conductor",
+        "load",
+        "bulb",
+        "positive terminal",
+        "negative terminal",
+        "electrical energy",
+        "light energy"
+    ],
+
+    "teacher_note":
+        "Students should change only the switch position while keeping "
+        "the rest of the circuit the same. This makes the evidence for "
+        "open versus closed circuits clear.",
+
+    "lab_url":
+        "/labs/circuit-builder?mission=day56"
+}
+
+# Science Studio Day 56 End

@@ -456,3 +456,23 @@ POWER_FRAMES[55] = {
 }
 
 # Science Studio Day 55 Power Frame End
+
+
+# Science Studio Day 56 Power Frame Start
+
+POWER_FRAMES[56] = {
+
+    "i_can":
+        "I can explain how a switch controls an electrical circuit.",
+
+    "by":
+        "by building a circuit with a switch and comparing "
+        "what happens when the switch is open and closed.",
+
+    "i_know":
+        "I know I have learned this when I can explain why "
+        "a closed switch allows the bulb to light and an "
+        "open switch causes the bulb to turn off."
+}
+
+# Science Studio Day 56 Power Frame End

@@ -15,6 +15,10 @@
       window.location.pathname.includes(
         "/second-nine-weeks/day/55"
       )
+      ||
+      window.location.pathname.includes(
+        "/second-nine-weeks/day/56"
+      )
     )
   ) {
     return;
