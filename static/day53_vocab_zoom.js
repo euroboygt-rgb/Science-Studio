@@ -1,641 +1,534 @@
 (function () {
   "use strict";
 
+  /*
+    SCIENCE STUDIO GLOBAL VOCABULARY ZOOM
+    -------------------------------------
+    Works on every lesson page.
 
-  if (
-    !(
-      window.location.pathname.includes(
-        "/second-nine-weeks/day/53"
-      )
-      ||
-      window.location.pathname.includes(
-        "/second-nine-weeks/day/54"
-      )
-      ||
-      window.location.pathname.includes(
-        "/second-nine-weeks/day/55"
-      )
-      ||
-      window.location.pathname.includes(
-        "/second-nine-weeks/day/56"
-      )
-      ||
-      window.location.pathname.includes(
-        "/second-nine-weeks/day/57"
-      )
-    )
-  ) {
+    HOVER:
+      Slight enlargement.
+
+    CLICK:
+      Large vocabulary card with:
+        - image
+        - science word
+        - definition
+  */
+
+
+  const path =
+    window.location.pathname;
+
+
+  const lessonPage =
+    /\/(?:first-nine-weeks|second-nine-weeks|2nd-nine-weeks)\/day\/\d+/.test(
+      path
+    );
+
+
+  if (!lessonPage) {
     return;
   }
 
 
-  const VOCAB = {
+  // =========================================================
+  // BACKUP DEFINITIONS
+  //
+  // The script first tries to read the real definition from
+  // the lesson's Vocabulary section.
+  //
+  // These definitions are backups if needed.
+  // =========================================================
 
-    "circuit": {
-      definition:
-        "A path or system through which electrical energy can move.",
-      example:
-        "A battery, wires, and a bulb can be connected to form a circuit.",
-      icon: "🔌"
-    },
+  const backupDefinitions = {
 
-    "system": {
-      definition:
-        "A group of connected parts that work together to perform a function.",
-      example:
-        "A circuit is a system because the battery, wires, switch, and load work together.",
-      icon: "⚙️"
-    },
+    "circuit":
+      "A complete path through which electrical energy can flow.",
 
-    "battery": {
-      definition:
-        "A power source that provides energy to an electrical circuit.",
-      example:
-        "The battery provides energy for the bulb in a simple circuit.",
-      icon: "🔋"
-    },
+    "system":
+      "A group of connected parts that work together.",
 
-    "power source": {
-      definition:
-        "The part of a system that supplies energy.",
-      example:
-        "In our Circuit Builder, the battery is the power source.",
-      icon: "⚡"
-    },
+    "battery":
+      "A power source that provides energy to an electrical circuit.",
 
-    "wire": {
-      definition:
-        "A conducting path used to connect parts of an electrical circuit.",
-      example:
-        "Wires connect the battery to the load and provide a path through the circuit.",
-      icon: "〰️"
-    },
+    "power source":
+      "The part of a system that supplies energy.",
 
-    "conductor": {
-      definition:
-        "A material that allows electrical energy to move through it easily.",
-      example:
-        "Metal wire is a conductor used to connect circuit parts.",
-      icon: "🔗"
-    },
+    "wire":
+      "A conductor that provides a path for electrical energy to move.",
 
-    "load": {
-      definition:
-        "A circuit component that changes electrical energy into another form of energy.",
-      example:
-        "A bulb, motor, and speaker are all examples of loads.",
-      icon: "💡"
-    },
+    "conductor":
+      "A material that allows electrical energy to transfer through it easily.",
 
-    "switch": {
-      definition:
-        "A component that opens or closes the conducting path in a circuit.",
-      example:
-        "Closing the switch can complete the path so electrical energy can move through the circuit.",
-      icon: "🔘"
-    },
+    "insulator":
+      "A material that does not allow electrical energy to transfer through it easily.",
 
-    "open circuit": {
-      definition:
-        "A circuit with a break or opening in the conducting path.",
-      example:
-        "When the switch is open, the path is broken and the bulb does not light.",
-      icon: "⭕"
-    },
+    "load":
+      "A circuit component that transforms electrical energy into another form of energy.",
 
-    "closed circuit": {
-      definition:
-        "A circuit in which the conducting path is closed and connected.",
-      example:
-        "Closing the switch connects the path so electrical energy can move through the system.",
-      icon: "✅"
-    },
+    "switch":
+      "A circuit component that opens or closes the conducting path.",
 
-    "complete circuit": {
-      definition:
-        "A continuous conducting path from one battery terminal, through the circuit components, and back to the other battery terminal.",
-      example:
-        "A bulb can light when both battery terminals are connected through a complete conducting path.",
-      icon: "🔁"
-    },
+    "open circuit":
+      "A circuit with a break in the conducting path.",
 
-    "electrical energy": {
-      definition:
-        "Energy associated with moving electric charges in a circuit.",
-      example:
-        "Electrical energy can be transformed into light, motion, sound, or thermal energy.",
-      icon: "⚡"
-    },
+    "closed circuit":
+      "A circuit with an unbroken conducting path.",
 
-    "positive terminal": {
-      definition:
-        "The battery connection point marked with a plus (+) sign.",
-      example:
-        "One conducting path must connect to the battery's positive terminal.",
-      icon: "➕"
-    },
+    "complete circuit":
+      "A circuit with a continuous conducting path from one battery terminal back to the other.",
 
-    "negative terminal": {
-      definition:
-        "The battery connection point marked with a minus (−) sign.",
-      example:
-        "The circuit must return to the battery's negative terminal to form a complete path.",
-      icon: "➖"
-    }
+    "incomplete circuit":
+      "A circuit with a break or missing connection that prevents a complete conducting path.",
 
+    "electrical energy":
+      "Energy associated with electric charges moving through a circuit.",
 
-    "bulb": {
-      definition:
-        "A load that transforms electrical energy into light energy and some thermal energy.",
-      example:
-        "When the bulb is connected in a complete circuit, it can produce light.",
-      icon: "💡"
-    },
+    "positive terminal":
+      "The positive (+) connection point on a battery or power source.",
 
-    "motor": {
-      definition:
-        "A load that transforms electrical energy into motion.",
-      example:
-        "A motor can spin when electrical energy moves through a complete circuit.",
-      icon: "⚙️"
-    },
+    "negative terminal":
+      "The negative (−) connection point on a battery or power source.",
 
-    "speaker": {
-      definition:
-        "A load that transforms electrical energy into sound energy.",
-      example:
-        "A speaker produces sound when it receives electrical energy.",
-      icon: "🔊"
-    },
+    "conducting path":
+      "The continuous route through which electrical energy can travel.",
 
-    "light energy": {
-      definition:
-        "Energy that can travel as light and can be detected by our eyes.",
-      example:
-        "A bulb transforms some electrical energy into light energy.",
-      icon: "💡"
-    },
+    "bulb":
+      "A load that transforms electrical energy mainly into light and thermal energy.",
 
-    "thermal energy": {
-      definition:
-        "Energy associated with the motion of particles that can be observed as heating or warmth.",
-      example:
-        "A working bulb can produce some thermal energy along with light.",
-      icon: "🔥"
-    },
+    "motor":
+      "A load that transforms electrical energy into motion.",
 
-    "sound energy": {
-      definition:
-        "Energy produced by vibrations that travels through matter.",
-      example:
-        "A speaker transforms electrical energy into sound energy.",
-      icon: "🔊"
-    },
+    "speaker":
+      "A load that transforms electrical energy into sound.",
 
-    "motion": {
-      definition:
-        "A change in an object's position.",
-      example:
-        "A motor transforms electrical energy into motion when it spins.",
-      icon: "⚙️"
-    },
+    "series circuit":
+      "A circuit in which loads are connected along one continuous conducting path.",
 
-    "energy transformation": {
-      definition:
-        "A change from one form of energy into another form.",
-      example:
-        "In a motor, electrical energy transforms into motion.",
-      icon: "🔄"
-    },
+    "parallel circuit":
+      "A circuit with more than one conducting path or branch.",
 
+    "branch":
+      "One separate conducting path in a parallel circuit.",
+
+    "one path":
+      "One continuous route from one battery terminal through the circuit and back to the other terminal.",
+
+    "multiple loads":
+      "Two or more circuit components that transform electrical energy into other forms.",
+
+    "energy":
+      "The ability to cause change or do work.",
+
+    "energy transformation":
+      "A change from one form of energy into another.",
+
+    "mechanical energy":
+      "Energy associated with the motion or position of an object.",
+
+    "light energy":
+      "Energy carried by light.",
+
+    "sound energy":
+      "Energy produced by vibrations and carried through matter.",
+
+    "thermal energy":
+      "Energy associated with the motion of particles and experienced as heat.",
+
+    "motion":
+      "A change in an object's position over time.",
+
+    "reflection":
+      "The bouncing of light off a surface.",
+
+    "refraction":
+      "The bending of light as it moves from one medium into another.",
+
+    "medium":
+      "Matter through which energy or waves travel.",
+
+    "transparent":
+      "Allows most light to pass through.",
+
+    "translucent":
+      "Allows some light to pass through but scatters the light.",
+
+    "opaque":
+      "Does not allow light to pass through."
   };
 
 
-  function ready(fn) {
+  function normalize(value) {
 
-    if (
-      document.readyState ===
-      "loading"
-    ) {
-
-      document.addEventListener(
-        "DOMContentLoaded",
-        fn
-      );
-
-    }
-
-    else {
-
-      fn();
-    }
-  }
-
-
-  ready(function () {
-
-    /*
-      Wait until Science Studio finishes building/rearranging
-      the Vocabulary Anchor Chart.
-    */
-
-    setTimeout(
-      initializeVocabularyZoom,
-      800
-    );
-
-  });
-
-
-  function initializeVocabularyZoom() {
-
-    const vocabCard =
-      findVocabularyCard();
-
-
-    if (!vocabCard) {
-
-      console.log(
-        "Day 53 vocabulary zoom: Vocabulary Anchor Chart not found."
-      );
-
-      return;
-    }
-
-
-    addHelpMessage(
-      vocabCard
-    );
-
-
-    const termCards =
-      findTermCards(
-        vocabCard
-      );
-
-
-    Object.entries(
-      termCards
+    return String(
+      value || ""
     )
-    .forEach(
-      function ([term, card]) {
-
-        makeInteractive(
-          card,
-          term
-        );
-      }
-    );
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}+\- ]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  }
 
 
-    buildModal();
+  function visibleText(element) {
 
-
-    console.log(
-      "Day 53 vocabulary zoom ready:",
-      Object.keys(termCards).length,
-      "terms."
-    );
+    return String(
+      element?.innerText || ""
+    )
+    .replace(/\s+/g, " ")
+    .trim();
   }
 
 
   // =========================================================
-  // LOCATE VOCAB CARD
+  // FIND VOCABULARY ANCHOR CHART
   // =========================================================
 
-  function findVocabularyCard() {
+  function findAnchorChart() {
 
-    const elements =
+    const headings =
       Array.from(
         document.querySelectorAll(
-          "section, article, div"
+          "h1,h2,h3,h4"
         )
       );
 
 
-    const matches =
-      elements.filter(
-        function (element) {
+    const heading =
+      headings.find(
+        function (item) {
 
-          const text =
-            cleanText(
-              element.innerText
-            );
-
-
-          return text.includes(
-            "Vocabulary Anchor Chart"
+          return normalize(
+            item.textContent
+          )
+          .includes(
+            "vocabulary anchor chart"
           );
         }
       );
 
 
-    matches.sort(
-      function (a, b) {
-
-        return (
-          area(a) -
-          area(b)
-        );
-      }
-    );
-
-
-    return matches.find(
-      function (element) {
-
-        const rect =
-          element.getBoundingClientRect();
-
-
-        return (
-          rect.width > 500 &&
-          rect.height > 180
-        );
-      }
-    ) || null;
-  }
-
-
-  // =========================================================
-  // FIND EACH SMALL TERM CARD
-  // =========================================================
-
-  function findTermCards(
-    vocabCard
-  ) {
-
-    const result =
-      {};
-
-
-    Object.keys(VOCAB)
-      .forEach(
-        function (term) {
-
-          const candidates =
-            Array.from(
-              vocabCard.querySelectorAll(
-                "div, article, section, li"
-              )
-            )
-            .filter(
-              function (element) {
-
-                const text =
-                  cleanText(
-                    element.innerText
-                  )
-                  .toLowerCase();
-
-
-                const rect =
-                  element.getBoundingClientRect();
-
-
-                return (
-                  (
-                    text === term ||
-                    text.endsWith(
-                      " " + term
-                    ) ||
-                    text.includes(term)
-                  )
-                  &&
-                  rect.width >= 70
-                  &&
-                  rect.width <= 220
-                  &&
-                  rect.height >= 50
-                  &&
-                  rect.height <= 180
-                );
-              }
-            );
-
-
-          candidates.sort(
-            function (a, b) {
-
-              return (
-                area(a) -
-                area(b)
-              );
-            }
-          );
-
-
-          if (
-            candidates.length
-          ) {
-
-            result[term] =
-              candidates[0];
-          }
-        }
-      );
-
-
-    return result;
-  }
-
-
-  // =========================================================
-  // MAKE CARD INTERACTIVE
-  // =========================================================
-
-  function makeInteractive(
-    card,
-    term
-  ) {
-
-    if (
-      card.dataset.vocabZoomReady ===
-      "true"
-    ) {
-      return;
+    if (!heading) {
+      return null;
     }
 
 
-    card.dataset.vocabZoomReady =
-      "true";
+    let current =
+      heading;
 
 
-    card.classList.add(
-      "d53-vocab-clickable"
-    );
+    while (
+      current.parentElement
+      &&
+      current.parentElement !==
+      document.body
+    ) {
+
+      current =
+        current.parentElement;
 
 
-    card.setAttribute(
-      "role",
-      "button"
-    );
+      const text =
+        normalize(
+          current.innerText
+        );
 
 
-    card.setAttribute(
-      "tabindex",
-      "0"
-    );
+      if (
+        text.includes(
+          "print this anchor chart"
+        )
+        ||
+        text.includes(
+          "open full vocabulary page"
+        )
+      ) {
+
+        return current;
+      }
+    }
 
 
-    card.setAttribute(
-      "aria-label",
-      "Open vocabulary card for " +
-      term
-    );
+    return heading.parentElement;
+  }
 
 
-    card.title =
-      "Click to enlarge " +
-      term;
+  // =========================================================
+  // READ DEFINITIONS ALREADY ON THE LESSON PAGE
+  // =========================================================
+
+  function collectDefinitions() {
+
+    const definitions =
+      Object.assign(
+        {},
+        backupDefinitions
+      );
 
 
-    card.addEventListener(
-      "click",
-      function (event) {
+    const possibleCards =
+      Array.from(
+        document.querySelectorAll(
+          "section,article,div"
+        )
+      );
 
-        /*
-          Don't interfere with existing links/buttons.
-        */
+
+    possibleCards.forEach(
+      function (card) {
+
+        const text =
+          visibleText(
+            card
+          );
+
 
         if (
-          event.target.closest(
-            "a, button"
+          text.length < 15
+          ||
+          text.length > 700
+          ||
+          !/definition\s*:/i.test(
+            text
           )
         ) {
           return;
         }
 
 
-        openModal(
-          term,
-          card
-        );
-      }
-    );
+        // Skip large parent containers containing several
+        // vocabulary definitions.
+        const nested =
+          Array.from(
+            card.children
+          )
+          .filter(
+            function (child) {
 
+              return /definition\s*:/i.test(
+                visibleText(child)
+              );
+            }
+          );
 
-    card.addEventListener(
-      "keydown",
-      function (event) {
 
         if (
-          event.key === "Enter" ||
-          event.key === " "
+          nested.length > 1
+        ) {
+          return;
+        }
+
+
+        let term = "";
+
+
+        const heading =
+          card.querySelector(
+            "h1,h2,h3,h4,strong"
+          );
+
+
+        if (heading) {
+
+          term =
+            normalize(
+              heading.textContent
+            );
+        }
+
+
+        if (!term) {
+
+          const before =
+            text.split(
+              /definition\s*:/i
+            )[0];
+
+
+          term =
+            normalize(
+              before
+            );
+        }
+
+
+        const match =
+          text.match(
+            /definition\s*:\s*(.*?)(?=$|example\s*:|science\s*:|real\s+world\s*:|staar\s*:)/i
+          );
+
+
+        if (
+          !term
+          ||
+          !match
+        ) {
+          return;
+        }
+
+
+        const definition =
+          String(
+            match[1] || ""
+          )
+          .replace(/\s+/g, " ")
+          .trim();
+
+
+        if (
+          definition.length > 8
+          &&
+          !definition
+            .toLowerCase()
+            .includes(
+              "a science word connected to this lesson"
+            )
         ) {
 
-          event.preventDefault();
-
-          openModal(
-            term,
-            card
-          );
+          definitions[term] =
+            definition;
         }
       }
     );
+
+
+    return definitions;
   }
 
 
   // =========================================================
-  // HELP MESSAGE
+  // FIND THE SMALLEST CARD CONTAINING AN IMAGE
   // =========================================================
 
-  function addHelpMessage(
-    vocabCard
+  function getVocabularyTile(
+    image,
+    anchor
   ) {
 
-    if (
-      vocabCard.querySelector(
-        ".d53-vocab-help"
-      )
+    let node =
+      image.parentElement;
+
+
+    let best =
+      null;
+
+
+    while (
+      node
+      &&
+      node !== anchor
+      &&
+      node !== document.body
     ) {
-      return;
+
+      const rect =
+        node.getBoundingClientRect();
+
+
+      const text =
+        visibleText(
+          node
+        );
+
+
+      if (
+        text
+        &&
+        text.length < 100
+        &&
+        rect.width >= 55
+        &&
+        rect.width <= 240
+        &&
+        rect.height >= 45
+        &&
+        rect.height <= 190
+      ) {
+
+        best =
+          node;
+      }
+
+
+      node =
+        node.parentElement;
     }
 
 
-    const help =
-      document.createElement(
-        "div"
+    return best;
+  }
+
+
+  function determineTerm(
+    tile,
+    definitions
+  ) {
+
+    const tileText =
+      normalize(
+        tile.innerText
       );
 
 
-    help.className =
-      "d53-vocab-help";
-
-
-    help.textContent =
-      "🔍 Hover over a vocabulary card to preview it. Click any word to enlarge the picture and read the definition.";
-
-
-    /*
-      Put the directions above the vocabulary cards
-      but below the heading/introduction.
-    */
-
-    const children =
-      Array.from(
-        vocabCard.children
-      );
-
-
-    const gridCandidate =
-      children.find(
-        function (child) {
+    const terms =
+      Object.keys(
+        definitions
+      )
+      .sort(
+        function (a, b) {
 
           return (
-            child.querySelectorAll &&
-            child.querySelectorAll(
-              "img"
-            ).length >= 3
+            b.length -
+            a.length
           );
         }
       );
 
 
-    if (gridCandidate) {
+    for (
+      const term
+      of terms
+    ) {
 
-      vocabCard.insertBefore(
-        help,
-        gridCandidate
-      );
-
-    }
-
-    else {
-
-      const heading =
-        Array.from(
-          vocabCard.querySelectorAll(
-            "h1,h2,h3"
-          )
+      if (
+        tileText === term
+        ||
+        tileText.endsWith(
+          " " + term
         )
-        .find(
-          element =>
-            cleanText(
-              element.innerText
-            )
-            .includes(
-              "Vocabulary Anchor Chart"
-            )
-        );
+        ||
+        tileText.includes(
+          term
+        )
+      ) {
 
-
-      if (heading) {
-
-        heading.insertAdjacentElement(
-          "afterend",
-          help
-        );
-
-      }
-
-      else {
-
-        vocabCard.prepend(
-          help
-        );
+        return term;
       }
     }
+
+
+    // If a future lesson has a new vocabulary word,
+    // use the visible label as the term.
+    const cleaned =
+      tileText
+      .replace(
+        "science word",
+        ""
+      )
+      .trim();
+
+
+    if (
+      cleaned &&
+      cleaned.length < 50
+    ) {
+
+      return cleaned;
+    }
+
+
+    return "";
   }
 
 
@@ -643,94 +536,95 @@
   // MODAL
   // =========================================================
 
-  function buildModal() {
+  function createModal() {
 
-    if (
+    let modal =
       document.getElementById(
-        "d53VocabModal"
-      )
-    ) {
-      return;
+        "scienceStudioVocabularyModal"
+      );
+
+
+    if (modal) {
+      return modal;
     }
 
 
-    const modal =
+    modal =
       document.createElement(
         "div"
       );
 
 
     modal.id =
-      "d53VocabModal";
+      "scienceStudioVocabularyModal";
 
 
     modal.innerHTML = `
 
       <div
-        class="d53-vocab-modal-card"
+        class="ss-vocab-overlay"
+        data-close-vocab="true"
+      ></div>
+
+
+      <div
+        class="ss-vocab-big-card"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="d53VocabTerm"
       >
 
         <button
           type="button"
-          class="d53-vocab-close"
-          aria-label="Close vocabulary card"
+          class="ss-vocab-close"
+          data-close-vocab="true"
+          aria-label="Close"
         >
-          ×
+          ✕
         </button>
 
 
-        <div class="d53-vocab-modal-label">
+        <div class="ss-vocab-label">
           🔬 Science Vocabulary
         </div>
 
 
-        <div
-          id="d53VocabTerm"
-          class="d53-vocab-modal-term"
-        ></div>
+        <div class="ss-vocab-big-image-box">
 
+          <img
+            id="ssVocabBigImage"
+            class="ss-vocab-big-image"
+            alt=""
+          >
 
-        <div
-          id="d53VocabImage"
-          class="d53-vocab-image-box"
-        ></div>
-
-
-        <div class="d53-vocab-definition">
-
-          <strong>
-            Definition
-          </strong>
-
-          <span
-            id="d53VocabDefinition"
-          ></span>
+          <div
+            id="ssVocabBigFallback"
+            class="ss-vocab-big-fallback"
+          >
+            🔬
+          </div>
 
         </div>
 
 
-        <div class="d53-vocab-example">
+        <h2 id="ssVocabBigTerm"></h2>
 
-          <strong>
-            Circuit Example
-          </strong>
 
-          <span
-            id="d53VocabExample"
-          ></span>
-
+        <div class="ss-vocab-definition-label">
+          Definition
         </div>
 
 
-        <div class="d53-vocab-modal-tip">
-          Click ×, press Escape, or click outside this card to close.
+        <div
+          id="ssVocabBigDefinition"
+          class="ss-vocab-definition"
+        ></div>
+
+
+        <div class="ss-vocab-close-hint">
+          Click outside this card or press ESC to close.
         </div>
 
       </div>
-
     `;
 
 
@@ -740,179 +634,90 @@
 
 
     modal
-      .querySelector(
-        ".d53-vocab-close"
+      .querySelectorAll(
+        "[data-close-vocab='true']"
       )
-      .addEventListener(
-        "click",
-        closeModal
+      .forEach(
+        function (element) {
+
+          element.addEventListener(
+            "click",
+            closeModal
+          );
+        }
       );
 
 
-    modal.addEventListener(
-      "click",
-      function (event) {
-
-        if (
-          event.target ===
-          modal
-        ) {
-
-          closeModal();
-        }
-      }
-    );
-
-
-    document.addEventListener(
-      "keydown",
-      function (event) {
-
-        if (
-          event.key ===
-          "Escape" &&
-          modal.classList.contains(
-            "d53-vocab-open"
-          )
-        ) {
-
-          closeModal();
-        }
-      }
-    );
+    return modal;
   }
 
 
   function openModal(
     term,
-    sourceCard
+    definition,
+    imageSource
   ) {
 
-    const info =
-      VOCAB[term];
-
-
-    if (!info) {
-      return;
-    }
-
-
     const modal =
-      document.getElementById(
-        "d53VocabModal"
+      createModal();
+
+
+    modal.querySelector(
+      "#ssVocabBigTerm"
+    ).textContent =
+      term;
+
+
+    modal.querySelector(
+      "#ssVocabBigDefinition"
+    ).textContent =
+      definition;
+
+
+    const image =
+      modal.querySelector(
+        "#ssVocabBigImage"
       );
 
 
-    if (!modal) {
-      return;
-    }
+    const fallback =
+      modal.querySelector(
+        "#ssVocabBigFallback"
+      );
 
 
-    document
-      .getElementById(
-        "d53VocabTerm"
-      )
-      .textContent =
+    if (imageSource) {
+
+      image.src =
+        imageSource;
+
+      image.alt =
         term;
 
+      image.style.display =
+        "block";
 
-    document
-      .getElementById(
-        "d53VocabDefinition"
-      )
-      .textContent =
-        info.definition;
+      fallback.style.display =
+        "none";
 
+    } else {
 
-    document
-      .getElementById(
-        "d53VocabExample"
-      )
-      .textContent =
-        info.example;
+      image.style.display =
+        "none";
 
-
-    const imageBox =
-      document.getElementById(
-        "d53VocabImage"
-      );
-
-
-    imageBox.innerHTML =
-      "";
-
-
-    /*
-      Reuse the actual Science Studio vocabulary image
-      that is already displayed on the small card.
-    */
-
-    const sourceImage =
-      sourceCard.querySelector(
-        "img"
-      );
-
-
-    if (sourceImage) {
-
-      const largeImage =
-        sourceImage.cloneNode(
-          true
-        );
-
-
-      largeImage.removeAttribute(
-        "width"
-      );
-
-
-      largeImage.removeAttribute(
-        "height"
-      );
-
-
-      imageBox.appendChild(
-        largeImage
-      );
-
-    }
-
-    else {
-
-      const fallback =
-        document.createElement(
-          "div"
-        );
-
-
-      fallback.className =
-        "d53-vocab-fallback-icon";
-
-
-      fallback.textContent =
-        info.icon;
-
-
-      imageBox.appendChild(
-        fallback
-      );
+      fallback.style.display =
+        "block";
     }
 
 
     modal.classList.add(
-      "d53-vocab-open"
+      "open"
     );
 
 
-    document.body.style.overflow =
-      "hidden";
-
-
-    modal
-      .querySelector(
-        ".d53-vocab-close"
-      )
-      .focus();
+    document.body.classList.add(
+      "ss-vocab-open"
+    );
   }
 
 
@@ -920,57 +725,712 @@
 
     const modal =
       document.getElementById(
-        "d53VocabModal"
+        "scienceStudioVocabularyModal"
       );
 
 
-    if (!modal) {
+    if (modal) {
+
+      modal.classList.remove(
+        "open"
+      );
+    }
+
+
+    document.body.classList.remove(
+      "ss-vocab-open"
+    );
+  }
+
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (
+        event.key === "Escape"
+      ) {
+
+        closeModal();
+      }
+    }
+  );
+
+
+  // =========================================================
+  // ACTIVATE ALL VOCABULARY CARDS
+  // =========================================================
+
+  function activate() {
+
+    const anchor =
+      findAnchorChart();
+
+
+    if (!anchor) {
       return;
     }
 
 
-    modal.classList.remove(
-      "d53-vocab-open"
+    const definitions =
+      collectDefinitions();
+
+
+    const images =
+      Array.from(
+        anchor.querySelectorAll(
+          "img"
+        )
+      );
+
+
+    const used =
+      new Set();
+
+
+    images.forEach(
+      function (image) {
+
+        const tile =
+          getVocabularyTile(
+            image,
+            anchor
+          );
+
+
+        if (
+          !tile
+          ||
+          used.has(tile)
+        ) {
+          return;
+        }
+
+
+        used.add(
+          tile
+        );
+
+
+        const term =
+          determineTerm(
+            tile,
+            definitions
+          );
+
+
+        if (!term) {
+          return;
+        }
+
+
+        let definition =
+          definitions[
+            term
+          ];
+
+
+        if (!definition) {
+
+          definition =
+            "This science word is used in today's lesson. "
+            +
+            "Use the vocabulary page and lesson notes to explain its meaning.";
+        }
+
+
+        tile.classList.add(
+          "ss-vocab-clickable"
+        );
+
+
+        tile.setAttribute(
+          "role",
+          "button"
+        );
+
+
+        tile.setAttribute(
+          "tabindex",
+          "0"
+        );
+
+
+        tile.setAttribute(
+          "aria-label",
+          "Open definition for "
+          +
+          term
+        );
+
+
+        tile.dataset.vocabReady =
+          "true";
+
+
+        const open =
+          function (event) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+
+            openModal(
+              term,
+              definition,
+              image.src || ""
+            );
+          };
+
+
+        if (
+          tile.dataset.vocabListener !==
+          "true"
+        ) {
+
+          tile.dataset.vocabListener =
+            "true";
+
+
+          tile.addEventListener(
+            "click",
+            open
+          );
+
+
+          tile.addEventListener(
+            "keydown",
+            function (event) {
+
+              if (
+                event.key === "Enter"
+                ||
+                event.key === " "
+              ) {
+
+                open(
+                  event
+                );
+              }
+            }
+          );
+        }
+      }
     );
 
 
-    document.body.style.overflow =
-      "";
+    // -------------------------------------------------------
+    // Add the instruction bar once.
+    // -------------------------------------------------------
+
+    if (
+      !anchor.querySelector(
+        ".ss-vocab-directions"
+      )
+    ) {
+
+      const directions =
+        document.createElement(
+          "div"
+        );
+
+
+      directions.className =
+        "ss-vocab-directions";
+
+
+      directions.innerHTML = `
+
+        🔍
+        <strong>
+          Vocabulary Zoom:
+        </strong>
+
+        Hover over a vocabulary card to enlarge it.
+
+        <strong>
+          Click it
+        </strong>
+
+        to see the picture and definition.
+
+      `;
+
+
+      const heading =
+        Array.from(
+          anchor.querySelectorAll(
+            "h1,h2,h3,h4"
+          )
+        )
+        .find(
+          function (item) {
+
+            return normalize(
+              item.textContent
+            )
+            .includes(
+              "vocabulary anchor chart"
+            );
+          }
+        );
+
+
+      if (heading) {
+
+        heading.insertAdjacentElement(
+          "afterend",
+          directions
+        );
+      }
+    }
   }
 
 
   // =========================================================
-  // UTILITIES
+  // STYLING
   // =========================================================
 
-  function cleanText(
-    value
-  ) {
+  function installStyle() {
 
-    return (
-      value ||
-      ""
-    )
-    .replace(
-      /\s+/g,
-      " "
-    )
-    .trim();
+    if (
+      document.getElementById(
+        "ssGlobalVocabularyStyle"
+      )
+    ) {
+      return;
+    }
+
+
+    const style =
+      document.createElement(
+        "style"
+      );
+
+
+    style.id =
+      "ssGlobalVocabularyStyle";
+
+
+    style.textContent = `
+
+      .ss-vocab-clickable {
+        cursor: pointer !important;
+
+        position: relative;
+
+        transition:
+          transform .16s ease,
+          box-shadow .16s ease,
+          background .16s ease;
+
+        transform-origin: center;
+      }
+
+
+      .ss-vocab-clickable:hover,
+      .ss-vocab-clickable:focus {
+        transform: scale(1.12);
+
+        z-index: 50;
+
+        background: #ffffff !important;
+
+        outline: 3px solid #7b2cff;
+        outline-offset: 2px;
+
+        box-shadow:
+          0 10px 22px rgba(0,0,0,.25);
+      }
+
+
+      .ss-vocab-clickable::after {
+        content: "🔍";
+
+        position: absolute;
+
+        right: 4px;
+        top: 3px;
+
+        opacity: 0;
+
+        pointer-events: none;
+      }
+
+
+      .ss-vocab-clickable:hover::after,
+      .ss-vocab-clickable:focus::after {
+        opacity: 1;
+      }
+
+
+      .ss-vocab-directions {
+        margin: 7px 0 10px;
+
+        padding: 8px 11px;
+
+        border: 2px solid #171717;
+        border-radius: 8px;
+
+        background: #e9f5ff;
+
+        font-size: .88rem;
+      }
+
+
+      body.ss-vocab-open {
+        overflow: hidden;
+      }
+
+
+      #scienceStudioVocabularyModal {
+        display: none;
+
+        position: fixed;
+        inset: 0;
+
+        z-index: 999999;
+      }
+
+
+      #scienceStudioVocabularyModal.open {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+      }
+
+
+      .ss-vocab-overlay {
+        position: absolute;
+        inset: 0;
+
+        background:
+          rgba(10,20,40,.74);
+
+        backdrop-filter:
+          blur(3px);
+      }
+
+
+      .ss-vocab-big-card {
+        position: relative;
+
+        z-index: 2;
+
+        width:
+          min(580px, 90vw);
+
+        max-height:
+          88vh;
+
+        overflow-y: auto;
+
+        box-sizing: border-box;
+
+        padding: 25px;
+
+        border:
+          4px solid #171717;
+
+        border-radius:
+          22px;
+
+        background:
+          #fff4cd;
+
+        text-align: center;
+
+        box-shadow:
+          8px 10px 0
+          rgba(0,0,0,.24);
+
+        animation:
+          ssVocabularyPop
+          .18s ease-out;
+      }
+
+
+      @keyframes ssVocabularyPop {
+
+        from {
+          opacity: 0;
+          transform: scale(.82);
+        }
+
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+
+      .ss-vocab-close {
+        position: absolute;
+
+        right: 12px;
+        top: 11px;
+
+        width: 40px;
+        height: 40px;
+
+        border:
+          2px solid #171717;
+
+        border-radius: 50%;
+
+        background: #ffffff;
+
+        font-weight: 900;
+        font-size: 18px;
+
+        cursor: pointer;
+      }
+
+
+      .ss-vocab-label {
+        display: inline-block;
+
+        margin-bottom: 14px;
+
+        padding: 6px 13px;
+
+        border:
+          2px solid #171717;
+
+        border-radius:
+          999px;
+
+        background:
+          #7131cc;
+
+        color:
+          #fff13b;
+
+        font-weight: 900;
+      }
+
+
+      .ss-vocab-big-image-box {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        width:
+          min(300px, 75vw);
+
+        min-height:
+          190px;
+
+        box-sizing: border-box;
+
+        margin:
+          0 auto 15px;
+
+        padding: 15px;
+
+        border:
+          3px solid #171717;
+
+        border-radius:
+          16px;
+
+        background:
+          #ffffff;
+      }
+
+
+      .ss-vocab-big-image {
+        max-width: 100%;
+        max-height: 250px;
+
+        object-fit: contain;
+      }
+
+
+      .ss-vocab-big-fallback {
+        font-size: 7rem;
+      }
+
+
+      #ssVocabBigTerm {
+        margin:
+          4px 0 15px;
+
+        font-size:
+          2rem;
+
+        text-transform:
+          capitalize;
+      }
+
+
+      .ss-vocab-definition-label {
+        margin-bottom: 6px;
+
+        color:
+          #7131cc;
+
+        font-weight: 900;
+
+        text-transform:
+          uppercase;
+      }
+
+
+      .ss-vocab-definition {
+        padding: 15px;
+
+        border:
+          3px solid #171717;
+
+        border-radius:
+          12px;
+
+        background:
+          #eaf6ff;
+
+        font-size:
+          1.2rem;
+
+        line-height:
+          1.45;
+
+        text-align:
+          left;
+      }
+
+
+      .ss-vocab-close-hint {
+        margin-top: 12px;
+
+        color: #555;
+
+        font-size: .78rem;
+      }
+
+
+      @media (max-width: 700px) {
+
+        .ss-vocab-clickable:hover {
+          transform: scale(1.04);
+        }
+
+
+        .ss-vocab-big-card {
+          padding: 18px;
+        }
+
+
+        #ssVocabBigTerm {
+          font-size: 1.6rem;
+        }
+
+
+        .ss-vocab-definition {
+          font-size: 1.05rem;
+        }
+      }
+
+    `;
+
+
+    document.head.appendChild(
+      style
+    );
   }
 
 
-  function area(
-    element
+  // =========================================================
+  // START
+  // =========================================================
+
+  let scanTimer = null;
+
+
+  function scheduleScan() {
+
+    clearTimeout(
+      scanTimer
+    );
+
+
+    scanTimer =
+      setTimeout(
+        activate,
+        160
+      );
+  }
+
+
+  function start() {
+
+    installStyle();
+
+
+    // Immediate and delayed scans support older pages
+    // and newer JS-generated lesson pages.
+
+    activate();
+
+    setTimeout(
+      activate,
+      500
+    );
+
+    setTimeout(
+      activate,
+      1000
+    );
+
+    setTimeout(
+      activate,
+      1800
+    );
+
+    setTimeout(
+      activate,
+      3000
+    );
+
+
+    // Watch for Phenomenon/Mission/Lesson JS adding
+    // sections after the page originally loads.
+
+    const observer =
+      new MutationObserver(
+        function () {
+
+          scheduleScan();
+        }
+      );
+
+
+    observer.observe(
+      document.body,
+      {
+        childList: true,
+        subtree: true
+      }
+    );
+  }
+
+
+  if (
+    document.readyState ===
+    "loading"
   ) {
 
-    const rect =
-      element.getBoundingClientRect();
-
-
-    return (
-      rect.width *
-      rect.height
+    document.addEventListener(
+      "DOMContentLoaded",
+      start
     );
+
+  } else {
+
+    start();
   }
 
 })();

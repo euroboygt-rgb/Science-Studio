@@ -2285,3 +2285,196 @@ SECOND_NINE_WEEKS_LESSONS[61] = {
 }
 
 # Science Studio Day 61 End
+
+
+# Science Studio Day 62 Start
+
+SECOND_NINE_WEEKS_LESSONS[62] = {
+
+    "day": 62,
+
+    "title":
+        "More Than One Path: Introduction to Parallel Circuits",
+
+    "unit":
+        "Unit 4: Investigating Energy Transformations Through Circuits",
+
+    "teks":
+        "5.8B, 5.5D, 5.1F",
+
+    "focus":
+        "Students compare series and parallel circuits and investigate how "
+        "separate branches create more than one conducting path.",
+
+    "learning_target":
+        "We will investigate how a parallel circuit provides more than one conducting path.",
+
+    "success_criteria":
+        "I can build a parallel circuit with two branches and explain why one "
+        "bulb can remain powered if the other branch is broken.",
+
+    "essential_question":
+        "How does having more than one conducting path change what happens when one branch is broken?",
+
+    "bell_ringer": [
+        "Yesterday you removed one bulb from a series circuit and the other bulb went out.",
+        "What caused the second bulb to go out?",
+        "How might a circuit be designed so one bulb could still work if another bulb was removed?"
+    ],
+
+    "mini_lesson": [
+        "A parallel circuit has more than one conducting path.",
+        "Each branch provides a separate route through part of the circuit.",
+        "Both branches connect back to the same power source.",
+        "A complete branch can continue to conduct electrical energy even if another branch is broken.",
+        "Removing one bulb from one branch does not necessarily break the other branch.",
+        "Students should trace each possible route from one battery terminal back to the opposite terminal.",
+        "Series circuits have one path; parallel circuits have more than one path.",
+        "The number of loads does not determine whether a circuit is series or parallel; the arrangement of the conducting paths does."
+    ],
+
+    "science_notebook": [
+        "Draw a two-bulb series circuit.",
+        "Label: ONE conducting path.",
+        "Draw a two-bulb parallel circuit.",
+        "Label: TWO conducting paths or branches.",
+        "Circle the branches in the parallel circuit.",
+        "Write what happens when one bulb is removed from each type of circuit."
+    ],
+
+    "guided_practice": [
+        "Trace the path in a series circuit.",
+        "Count the number of complete routes.",
+        "Trace each branch in a parallel circuit.",
+        "Count the number of complete routes.",
+        "Predict what happens if Branch 1 is broken.",
+        "Use the remaining complete branch as evidence."
+    ],
+
+    "lab_title":
+        "Circuit Builder Final Mission: Build a Parallel Circuit",
+
+    "lab": [
+        "Use one battery, two bulbs, and four wires.",
+        "Create Branch 1 from the positive battery terminal through Bulb 1 and back to the negative terminal.",
+        "Create Branch 2 from the positive battery terminal through Bulb 2 and back to the negative terminal.",
+        "Test the circuit.",
+        "Verify that both bulbs are powered.",
+        "Trace both complete conducting paths.",
+        "Remove Bulb 1.",
+        "Test the circuit again.",
+        "Observe whether Bulb 2 remains powered.",
+        "Explain why the second branch can continue to work."
+    ],
+
+    "lab_notebook": [
+        "Number of loads: ___",
+        "Number of conducting paths: ___",
+        "Before removing a bulb: Bulb 1 powered? ___",
+        "Before removing a bulb: Bulb 2 powered? ___",
+        "After removing Bulb 1: Bulb 2 powered? ___",
+        "Why can the second branch continue to work?",
+        "How is this different from yesterday's series circuit?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "Two bulbs are connected to one battery using two separate "
+                "conducting paths. Which type of circuit is shown?",
+
+            "choices": {
+                "A": "An incomplete circuit",
+                "B": "A series circuit",
+                "C": "A parallel circuit",
+                "D": "An open switch"
+            },
+
+            "answer": "C",
+
+            "rationale":
+                "A parallel circuit has more than one conducting path."
+        },
+
+        {
+            "question":
+                "A student removes one bulb from a parallel circuit. The second "
+                "bulb remains lit. Which statement best explains the observation?",
+
+            "choices": {
+                "A": "The second bulb has its own complete branch through the circuit.",
+                "B": "The second bulb becomes a battery.",
+                "C": "The broken branch creates more electrical energy.",
+                "D": "The circuit changes into an insulator."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "The second bulb can remain powered because its branch still provides a complete conducting path."
+        },
+
+        {
+            "question":
+                "Which evidence best distinguishes a parallel circuit from a series circuit?",
+
+            "choices": {
+                "A": "The circuit contains a battery.",
+                "B": "The circuit contains more than one conducting path.",
+                "C": "The circuit contains wires.",
+                "D": "The circuit contains more than one load."
+            },
+
+            "answer": "B",
+
+            "rationale":
+                "The defining evidence is the presence of more than one conducting path."
+        }
+    ],
+
+    "exit_ticket":
+        "Explain why removing one bulb from a parallel circuit can leave another bulb lit. "
+        "Use the words branch, conducting path, and complete circuit.",
+
+    "cer": {
+
+        "claim":
+            "A parallel circuit can continue to power one branch even when another branch is broken.",
+
+        "evidence":
+            "Use observations from the Circuit Builder before and after removing one bulb.",
+
+        "reasoning":
+            "Explain how separate branches provide more than one complete conducting path."
+    },
+
+    "vocabulary": [
+        "parallel circuit",
+        "series circuit",
+        "branch",
+        "conducting path",
+        "complete circuit",
+        "incomplete circuit",
+        "open circuit",
+        "load",
+        "bulb",
+        "battery",
+        "positive terminal",
+        "negative terminal",
+        "wire",
+        "electrical energy",
+        "system"
+    ],
+
+    "teacher_note":
+        "This is the final circuit-building day in the 10-day sequence. Have students "
+        "directly compare Day 61 series evidence with Day 62 parallel evidence. "
+        "The most important concept is that parallel circuits have more than one "
+        "complete conducting path.",
+
+    "lab_url":
+        "/labs/circuit-builder?mission=day62"
+}
+
+# Science Studio Day 62 End

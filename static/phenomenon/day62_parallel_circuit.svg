@@ -1,0 +1,279 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1100 680">
+
+  <rect width="1100"
+        height="680"
+        rx="24"
+        fill="#f5faff"/>
+
+  <text x="550"
+        y="48"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#20346f">
+    PHENOMENON MISSION: TWO PATHS
+  </text>
+
+  <text x="550"
+        y="82"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="700"
+        fill="#20346f">
+    What happens if one branch stops working?
+  </text>
+
+
+  <rect x="70"
+        y="110"
+        width="960"
+        height="445"
+        rx="24"
+        fill="#ffffff"
+        stroke="#cad7ef"
+        stroke-width="4"/>
+
+
+  <!-- battery -->
+
+  <rect x="120"
+        y="250"
+        width="75"
+        height="130"
+        rx="10"
+        fill="#ffc400"
+        stroke="#111"
+        stroke-width="5"/>
+
+  <circle cx="158"
+          cy="232"
+          r="10"
+          fill="#d9ffdf"
+          stroke="#16823b"
+          stroke-width="5"/>
+
+  <circle cx="158"
+          cy="400"
+          r="10"
+          fill="#ffdfe2"
+          stroke="#b00020"
+          stroke-width="5"/>
+
+  <text x="180"
+        y="237"
+        font-size="25"
+        font-weight="900"
+        fill="#16823b">+</text>
+
+  <text x="180"
+        y="417"
+        font-size="25"
+        font-weight="900"
+        fill="#b00020">−</text>
+
+  <text x="158"
+        y="320"
+        text-anchor="middle"
+        font-size="15"
+        font-weight="900">
+    BATTERY
+  </text>
+
+
+  <!-- upper branch -->
+
+  <path d="M158 232
+           C245 180 315 175 370 205"
+        fill="none"
+        stroke="#f0831e"
+        stroke-width="9"
+        stroke-linecap="round"/>
+
+  <circle cx="440"
+          cy="215"
+          r="50"
+          fill="#fff3a0"
+          stroke="#d69f00"
+          stroke-width="5"/>
+
+  <circle cx="440"
+          cy="215"
+          r="24"
+          fill="#ffe45d"/>
+
+  <rect x="417"
+        y="260"
+        width="46"
+        height="28"
+        rx="4"
+        fill="#f0831e"
+        stroke="#111"
+        stroke-width="4"/>
+
+  <text x="440"
+        y="315"
+        text-anchor="middle"
+        font-size="17"
+        font-weight="900">
+    BULB 1
+  </text>
+
+  <path d="M464 275
+           C570 310 700 285 875 235"
+        fill="none"
+        stroke="#7131cc"
+        stroke-width="9"
+        stroke-linecap="round"/>
+
+
+  <!-- lower branch -->
+
+  <path d="M158 232
+           C245 350 310 400 370 420"
+        fill="none"
+        stroke="#f0831e"
+        stroke-width="9"
+        stroke-linecap="round"/>
+
+  <circle cx="440"
+          cy="430"
+          r="50"
+          fill="#fff3a0"
+          stroke="#d69f00"
+          stroke-width="5"/>
+
+  <circle cx="440"
+          cy="430"
+          r="24"
+          fill="#ffe45d"/>
+
+  <rect x="417"
+        y="475"
+        width="46"
+        height="28"
+        rx="4"
+        fill="#f0831e"
+        stroke="#111"
+        stroke-width="4"/>
+
+  <text x="440"
+        y="530"
+        text-anchor="middle"
+        font-size="17"
+        font-weight="900">
+    BULB 2
+  </text>
+
+  <path d="M464 490
+           C590 520 730 465 875 400"
+        fill="none"
+        stroke="#1681ee"
+        stroke-width="9"
+        stroke-linecap="round"/>
+
+
+  <!-- return junction -->
+
+  <path d="M875 235
+           C930 270 930 365 875 400"
+        fill="none"
+        stroke="#444"
+        stroke-width="9"
+        stroke-linecap="round"/>
+
+  <path d="M875 400
+           C720 565 330 580 158 400"
+        fill="none"
+        stroke="#1681ee"
+        stroke-width="9"
+        stroke-linecap="round"/>
+
+
+  <!-- labels -->
+
+  <rect x="525"
+        y="135"
+        width="230"
+        height="50"
+        rx="12"
+        fill="#e7ddff"
+        stroke="#7131cc"
+        stroke-width="3"/>
+
+  <text x="640"
+        y="167"
+        text-anchor="middle"
+        font-size="19"
+        font-weight="900"
+        fill="#402080">
+    BRANCH 1 — PATH A
+  </text>
+
+
+  <rect x="525"
+        y="410"
+        width="230"
+        height="50"
+        rx="12"
+        fill="#dff1ff"
+        stroke="#1681ee"
+        stroke-width="3"/>
+
+  <text x="640"
+        y="442"
+        text-anchor="middle"
+        font-size="19"
+        font-weight="900"
+        fill="#174b87">
+    BRANCH 2 — PATH B
+  </text>
+
+
+  <rect x="280"
+        y="330"
+        width="530"
+        height="58"
+        rx="13"
+        fill="#dcf6df"
+        stroke="#16823b"
+        stroke-width="3"/>
+
+  <text x="545"
+        y="365"
+        text-anchor="middle"
+        font-size="22"
+        font-weight="900"
+        fill="#087a35">
+    ONE BATTERY • TWO COMPLETE CONDUCTING PATHS
+  </text>
+
+
+  <rect x="155"
+        y="585"
+        width="790"
+        height="65"
+        rx="14"
+        fill="#fff4a8"
+        stroke="#24336b"
+        stroke-width="3"/>
+
+  <text x="550"
+        y="612"
+        text-anchor="middle"
+        font-size="18"
+        font-weight="900"
+        fill="#24336b">
+    FOCUS QUESTION
+  </text>
+
+  <text x="550"
+        y="640"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900"
+        fill="#24336b">
+    If Branch 1 breaks, can Branch 2 still form a complete circuit?
+  </text>
+
+</svg>

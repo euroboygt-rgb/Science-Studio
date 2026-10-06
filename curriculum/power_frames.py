@@ -571,3 +571,21 @@ POWER_FRAMES[61] = {
 }
 
 # Science Studio Day 61 Power Frame End
+
+
+# Science Studio Day 62 Power Frame Start
+
+POWER_FRAMES[62] = {
+
+    "i_can":
+        "I can identify and build a parallel circuit with more than one conducting path.",
+
+    "by":
+        "by building two separate branches from one battery and testing what happens when one branch is broken.",
+
+    "i_know":
+        "I know I have learned this when I can explain why one bulb can remain "
+        "powered even when another branch is incomplete."
+}
+
+# Science Studio Day 62 Power Frame End
