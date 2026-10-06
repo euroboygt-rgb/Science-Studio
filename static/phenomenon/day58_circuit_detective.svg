@@ -1,0 +1,296 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1100 650">
+
+  <rect width="1100"
+        height="650"
+        rx="24"
+        fill="#f5faff"/>
+
+  <text x="550"
+        y="48"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#20346f">
+    PHENOMENON MISSION: CIRCUIT DETECTIVE
+  </text>
+
+  <text x="550"
+        y="82"
+        text-anchor="middle"
+        font-size="19"
+        font-weight="700"
+        fill="#20346f">
+    All the parts are here — so why won't the bulb light?
+  </text>
+
+
+  <rect x="90"
+        y="115"
+        width="920"
+        height="390"
+        rx="24"
+        fill="#fff"
+        stroke="#c8d5ef"
+        stroke-width="4"/>
+
+
+  <!-- Battery -->
+
+  <rect x="155"
+        y="240"
+        width="80"
+        height="145"
+        rx="10"
+        fill="#ffc400"
+        stroke="#111"
+        stroke-width="5"/>
+
+  <circle cx="195"
+          cy="225"
+          r="10"
+          fill="#d8ffd9"
+          stroke="#087a35"
+          stroke-width="5"/>
+
+  <circle cx="195"
+          cy="400"
+          r="10"
+          fill="#ffdada"
+          stroke="#b00020"
+          stroke-width="5"/>
+
+  <text x="217"
+        y="220"
+        font-size="26"
+        font-weight="900"
+        fill="#087a35">+</text>
+
+  <text x="217"
+        y="414"
+        font-size="26"
+        font-weight="900"
+        fill="#b00020">−</text>
+
+  <text x="195"
+        y="310"
+        text-anchor="middle"
+        font-size="16"
+        font-weight="900">
+    BATTERY
+  </text>
+
+
+  <!-- top wire -->
+
+  <path d="M195 225
+           C300 165 390 165 460 220"
+        fill="none"
+        stroke="#f0831e"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+
+  <!-- switch -->
+
+  <rect x="455"
+        y="185"
+        width="150"
+        height="72"
+        rx="12"
+        fill="#fff"
+        stroke="#111"
+        stroke-width="5"/>
+
+  <circle cx="485"
+          cy="224"
+          r="8"
+          fill="#111"/>
+
+  <circle cx="573"
+          cy="224"
+          r="8"
+          fill="#111"/>
+
+  <line x1="485"
+        y1="224"
+        x2="559"
+        y2="184"
+        stroke="#111"
+        stroke-width="8"
+        stroke-linecap="round"/>
+
+  <text x="530"
+        y="290"
+        text-anchor="middle"
+        font-size="17"
+        font-weight="900"
+        fill="#b00020">
+    OPEN SWITCH
+  </text>
+
+
+  <!-- switch to bulb -->
+
+  <path d="M605 224
+           C690 180 760 200 795 245"
+        fill="none"
+        stroke="#f0831e"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+
+  <!-- bulb -->
+
+  <circle cx="820"
+          cy="310"
+          r="62"
+          fill="#f3f3f3"
+          stroke="#555"
+          stroke-width="6"/>
+
+  <path d="M795 310
+           Q820 275 845 310
+           Q820 345 795 310"
+        fill="none"
+        stroke="#777"
+        stroke-width="5"/>
+
+  <rect x="792"
+        y="365"
+        width="56"
+        height="34"
+        rx="5"
+        fill="#aaa"
+        stroke="#111"
+        stroke-width="4"/>
+
+  <text x="820"
+        y="435"
+        text-anchor="middle"
+        font-size="18"
+        font-weight="900">
+    BULB OFF
+  </text>
+
+
+  <!-- return wire with gap -->
+
+  <path d="M792 382
+           C700 445 590 450 505 430"
+        fill="none"
+        stroke="#f0831e"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+  <path d="M445 424
+           C345 425 270 420 195 400"
+        fill="none"
+        stroke="#f0831e"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+
+  <!-- gap marker -->
+
+  <circle cx="475"
+          cy="427"
+          r="28"
+          fill="#ffe0e0"
+          stroke="#d71920"
+          stroke-width="4"/>
+
+  <text x="475"
+        y="438"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#d71920">
+    ?
+  </text>
+
+
+  <!-- Clues -->
+
+  <rect x="120"
+        y="125"
+        width="245"
+        height="52"
+        rx="10"
+        fill="#fff3bd"
+        stroke="#111"
+        stroke-width="2"/>
+
+  <text x="242"
+        y="157"
+        text-anchor="middle"
+        font-size="16"
+        font-weight="900">
+    CLUE 1: Check both battery terminals
+  </text>
+
+
+  <rect x="426"
+        y="125"
+        width="245"
+        height="52"
+        rx="10"
+        fill="#ffe4e4"
+        stroke="#111"
+        stroke-width="2"/>
+
+  <text x="548"
+        y="157"
+        text-anchor="middle"
+        font-size="16"
+        font-weight="900">
+    CLUE 2: Inspect the switch
+  </text>
+
+
+  <rect x="735"
+        y="125"
+        width="245"
+        height="52"
+        rx="10"
+        fill="#ebe3ff"
+        stroke="#111"
+        stroke-width="2"/>
+
+  <text x="857"
+        y="157"
+        text-anchor="middle"
+        font-size="16"
+        font-weight="900">
+    CLUE 3: Look for a gap
+  </text>
+
+
+  <rect x="140"
+        y="545"
+        width="820"
+        height="65"
+        rx="15"
+        fill="#fff4a8"
+        stroke="#24336b"
+        stroke-width="3"/>
+
+  <text x="550"
+        y="572"
+        text-anchor="middle"
+        font-size="18"
+        font-weight="900"
+        fill="#24336b">
+    FOCUS QUESTION
+  </text>
+
+  <text x="550"
+        y="598"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900"
+        fill="#24336b">
+    What evidence would help you locate and repair the fault?
+  </text>
+
+</svg>

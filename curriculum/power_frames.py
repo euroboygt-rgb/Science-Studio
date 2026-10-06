@@ -496,3 +496,22 @@ POWER_FRAMES[57] = {
 }
 
 # Science Studio Day 57 Power Frame End
+
+
+# Science Studio Day 58 Power Frame Start
+
+POWER_FRAMES[58] = {
+
+    "i_can":
+        "I can troubleshoot an electrical circuit and identify why it does not work.",
+
+    "by":
+        "by tracing the conducting path, locating a fault, repairing one problem "
+        "at a time, and testing the circuit again.",
+
+    "i_know":
+        "I know I have learned this when I can identify the fault, make the correct "
+        "repair, and explain why the repair restored the complete conducting path."
+}
+
+# Science Studio Day 58 Power Frame End

@@ -1477,3 +1477,208 @@ SECOND_NINE_WEEKS_LESSONS[57] = {
 }
 
 # Science Studio Day 57 End
+
+
+# Science Studio Day 58 Start
+
+SECOND_NINE_WEEKS_LESSONS[58] = {
+
+    "day": 58,
+
+    "title":
+        "Circuit Detective: Find the Fault",
+
+    "unit":
+        "Unit 4: Investigating Energy Transformations Through Circuits",
+
+    "teks":
+        "5.8B, 5.5D, 5.1F",
+
+    "focus":
+        "Students troubleshoot electrical circuits by tracing the conducting "
+        "path, locating faults, and repairing incomplete circuits.",
+
+    "learning_target":
+        "We will use evidence to diagnose and repair electrical circuits.",
+
+    "success_criteria":
+        "I can identify why a circuit does not work, repair the problem, "
+        "and explain my evidence.",
+
+    "essential_question":
+        "How can we use evidence to find and repair a problem in a circuit?",
+
+    "bell_ringer": [
+        "A circuit has a battery, wires, switch, and bulb, but the bulb is off.",
+        "Does having all of the correct parts guarantee that the circuit will work?",
+        "What should you inspect first?"
+    ],
+
+    "mini_lesson": [
+        "Troubleshooting means finding the cause of a problem and correcting it.",
+        "A functioning circuit needs a complete conducting path.",
+        "Trace the circuit from one battery terminal through every component and back to the other terminal.",
+        "An open switch creates a break in the path.",
+        "A disconnected or loose wire creates a break in the path.",
+        "A wire connected to the wrong location may fail to create a complete return path.",
+        "Both battery terminals must be included in a functioning circuit.",
+        "The load provides observable evidence about whether the circuit is functioning.",
+        "Change one thing at a time when troubleshooting so you know which repair solved the problem."
+    ],
+
+    "science_notebook": [
+        "Create a Circuit Detective Evidence Table.",
+        "Use these columns:",
+        "Fault | Evidence | Repair | Result",
+        "Record evidence for an open switch, disconnected wire, and broken return path."
+    ],
+
+    "guided_practice": [
+        "Start at one battery terminal.",
+        "Trace every wire and component.",
+        "Look for a gap, loose connection, or open switch.",
+        "Check that the path passes through the load.",
+        "Check that the path returns to the other battery terminal.",
+        "Repair only one problem at a time.",
+        "Test again and record the evidence."
+    ],
+
+    "lab_title":
+        "Circuit Builder Mission: Circuit Detective",
+
+    "lab": [
+        "Build a functioning circuit with one battery, one bulb, one switch, and three wires.",
+        "Test it with the switch closed and confirm that the bulb lights.",
+        "Fault 1: Open the switch. Test the circuit. Diagnose the fault and repair it.",
+        "Fault 2: Disconnect one wire. Test the circuit. Diagnose the fault and repair it.",
+        "Fault 3: Create an incorrect return path so the circuit does not connect through both battery terminals.",
+        "Trace the entire circuit and repair the battery-terminal connection.",
+        "After each repair, test the circuit again.",
+        "Record the evidence that showed whether each repair worked."
+    ],
+
+    "lab_notebook": [
+        "Fault 1 — What was wrong? What evidence did you observe? How did you repair it?",
+        "Fault 2 — What was wrong? What evidence did you observe? How did you repair it?",
+        "Fault 3 — What was wrong? What evidence did you observe? How did you repair it?",
+        "Which troubleshooting strategy was most useful?",
+        "Why is tracing the entire conducting path important?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "A student builds a circuit with a battery, wires, a closed switch, "
+                "and a bulb. The bulb does not light. Which action is the best first "
+                "step for finding the problem?",
+
+            "choices": {
+                "A":
+                    "Trace the entire conducting path and inspect every connection.",
+                "B":
+                    "Add another battery before checking the connections.",
+                "C":
+                    "Replace every circuit part at the same time.",
+                "D":
+                    "Move the circuit to another table."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Tracing the path helps identify a gap, loose connection, "
+                "or incorrect terminal connection."
+        },
+
+        {
+            "question":
+                "A circuit contains a battery, wires, bulb, and switch. "
+                "The bulb is off. The student observes that the switch is open. "
+                "Which repair should make the circuit complete?",
+
+            "choices": {
+                "A": "Close the switch.",
+                "B": "Remove the battery.",
+                "C": "Disconnect another wire.",
+                "D": "Remove the bulb."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Closing the switch removes the gap in the conducting path."
+        },
+
+        {
+            "question":
+                "A student repairs a loose wire and the bulb begins to light. "
+                "Which statement is best supported by this evidence?",
+
+            "choices": {
+                "A":
+                    "The loose wire had created a break in the conducting path.",
+                "B":
+                    "The battery produced energy only after the wire was repaired.",
+                "C":
+                    "The bulb changed from an insulator into a conductor.",
+                "D":
+                    "The circuit no longer needs both battery terminals."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "The change from bulb off to bulb on after reconnecting the wire "
+                "is evidence that the loose connection had broken the path."
+        }
+    ],
+
+    "exit_ticket":
+        "A circuit has all the correct parts but the bulb does not light. "
+        "Describe the steps you would use to diagnose the problem.",
+
+    "cer": {
+
+        "claim":
+            "A functioning circuit requires an unbroken conducting path.",
+
+        "evidence":
+            "Use evidence from one of your Circuit Detective repairs.",
+
+        "reasoning":
+            "Explain how the repair restored the path from one battery terminal "
+            "through the circuit and back to the other terminal."
+    },
+
+    "vocabulary": [
+        "circuit",
+        "troubleshoot",
+        "fault",
+        "evidence",
+        "conducting path",
+        "complete circuit",
+        "incomplete circuit",
+        "open circuit",
+        "closed circuit",
+        "switch",
+        "battery",
+        "positive terminal",
+        "negative terminal",
+        "wire",
+        "conductor",
+        "load",
+        "bulb",
+        "connection"
+    ],
+
+    "teacher_note":
+        "Emphasize systematic troubleshooting. Students should trace from one "
+        "battery terminal through the entire system and back to the other terminal. "
+        "Have students change one variable at a time.",
+
+    "lab_url":
+        "/labs/circuit-builder?mission=day58"
+}
+
+# Science Studio Day 58 End

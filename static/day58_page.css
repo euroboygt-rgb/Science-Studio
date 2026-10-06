@@ -1,0 +1,493 @@
+
+.d58-card {
+  margin: 17px 0;
+  padding: 17px;
+  border: 3px solid #171717;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.13);
+  box-sizing: border-box;
+}
+
+.d58-cream {
+  background: #fff4cd;
+}
+
+.d58-blue {
+  background: #eef8ff;
+}
+
+.d58-card h2 {
+  margin: 4px 0 5px;
+  font-weight: 900;
+}
+
+.d58-badge {
+  display: inline-block;
+  margin-bottom: 7px;
+  padding: 5px 12px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #7131cc;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+.d58-blue-badge {
+  background: #1681ee;
+  color: #fff;
+}
+
+.d58-unit {
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.d58-image {
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.d58-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.d58-focus,
+.d58-warning,
+.d58-success {
+  margin-top: 10px;
+  padding: 11px;
+  border: 2px solid #171717;
+  border-radius: 11px;
+}
+
+.d58-focus {
+  background: #e6f3ff;
+}
+
+.d58-warning {
+  background: #fff2a8;
+}
+
+.d58-success {
+  background: #dcf6df;
+}
+
+.d58-grid2 {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 9px;
+  margin-top: 10px;
+}
+
+.d58-grid3,
+.d58-transformation-grid,
+.d58-build-row {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.d58-box {
+  padding: 11px;
+  border: 2px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+}
+
+.d58-box strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.d58-transform {
+  padding: 15px;
+  border: 3px solid #171717;
+  border-radius: 13px;
+  background: #fff4cd;
+  text-align: center;
+}
+
+.d58-transform strong,
+.d58-transform span,
+.d58-transform b {
+  display: block;
+  margin: 5px 0;
+}
+
+.d58-big-icon {
+  font-size: 2.7rem;
+}
+
+.d58-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.d58-play {
+  align-self: flex-start;
+  padding: 10px 15px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #ffc400;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.d58-slide {
+  min-height: 230px;
+  margin-top: 10px;
+  padding: 24px;
+  border: 2px solid #171717;
+  border-radius: 12px;
+  background: #fff;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.d58-slide-icon {
+  font-size: 3.4rem;
+}
+
+.d58-slide-main {
+  max-width: 760px;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.d58-slide-caption {
+  margin-top: 9px;
+  color: #444;
+}
+
+.d58-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 9px;
+}
+
+.d58-control {
+  padding: 7px 10px;
+  border: 2px solid #171717;
+  border-radius: 7px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.d58-next {
+  background: #1681ee;
+  color: #fff;
+}
+
+.d58-restart {
+  background: #2ba34a;
+  color: #fff;
+}
+
+.d58-steve-grid {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 12px;
+}
+
+.d58-penguin {
+  padding-top: 8px;
+  text-align: center;
+  font-size: 4.5rem;
+}
+
+.d58-scenario,
+.d58-question,
+.d58-practice {
+  margin-top: 10px;
+  padding: 12px;
+  border: 2px solid #171717;
+  border-radius: 10px;
+}
+
+.d58-scenario {
+  background: #fff4cd;
+}
+
+.d58-question,
+.d58-practice {
+  background: #fff;
+}
+
+.d58-answer,
+.d58-practice-answer {
+  display: block;
+  width: 100%;
+  margin: 6px 0;
+  padding: 9px;
+  border: 2px solid #171717;
+  border-radius: 7px;
+  background: #f6f6f8;
+  text-align: left;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.d58-answer.selected {
+  background: #dfeeff;
+  border-color: #1875cf;
+}
+
+.d58-answer.correct,
+.d58-practice-answer.correct {
+  background: #d8f4dc;
+  border-color: #16823b;
+}
+
+.d58-answer.wrong,
+.d58-practice-answer.wrong {
+  background: #ffdede;
+  border-color: #bc2637;
+}
+
+.d58-answer-row {
+  display: flex;
+  gap: 7px;
+  margin-top: 8px;
+}
+
+.d58-check {
+  padding: 8px 13px;
+  border: 2px solid #171717;
+  border-radius: 7px;
+  background: #ffc400;
+  font-weight: 900;
+}
+
+.d58-reset {
+  padding: 8px 13px;
+  border: 2px solid #171717;
+  border-radius: 7px;
+  background: #fff;
+  font-weight: 900;
+}
+
+.d58-feedback,
+.d58-practice-feedback {
+  min-height: 23px;
+  margin-top: 8px;
+  font-weight: 900;
+}
+
+.d58-table-wrap {
+  overflow-x: auto;
+}
+
+.d58-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.d58-table th,
+.d58-table td {
+  padding: 9px;
+  border: 2px solid #171717;
+  text-align: left;
+}
+
+.d58-table th {
+  background: #e6f3ff;
+}
+
+.d58-build-row div {
+  padding: 14px;
+  border: 3px solid #171717;
+  border-radius: 12px;
+  background: #fff;
+  text-align: center;
+}
+
+.d58-build-row span,
+.d58-build-row strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.d58-build-row span {
+  font-size: 1.8rem;
+}
+
+.d58-mission {
+  margin-top: 12px;
+  padding: 13px;
+  border: 2px solid #171717;
+  border-radius: 11px;
+  background: #fff;
+}
+
+.d58-mission div {
+  margin: 6px 0;
+  font-weight: 800;
+}
+
+.d58-lab-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 13px 20px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #ffc400;
+  color: #111 !important;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 900;
+  box-shadow: 3px 4px 0 rgba(0,0,0,.17);
+}
+
+.d58-textarea {
+  width: 100%;
+  min-height: 115px;
+  padding: 9px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+@media (max-width:760px) {
+
+  .d58-grid2,
+  .d58-grid3,
+  .d58-transformation-grid,
+  .d58-build-row,
+  .d58-steve-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .d58-penguin {
+    display: none;
+  }
+
+  .d58-header,
+  .d58-footer {
+    display: block;
+  }
+
+  .d58-play {
+    margin-top: 8px;
+  }
+}
+
+
+
+/* Day 58 Circuit Detective additions */
+
+.d58-fault-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.d58-fault {
+  padding: 15px;
+  border: 3px solid #171717;
+  border-radius: 13px;
+  background: #fff4cd;
+  text-align: center;
+}
+
+.d58-fault span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 2.5rem;
+}
+
+.d58-fault strong,
+.d58-fault b {
+  display: block;
+  margin: 5px 0;
+}
+
+.d58-trace {
+  margin-top: 12px;
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 12px;
+  background: #e6f3ff;
+}
+
+.d58-trace strong {
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.d58-trace span {
+  display: block;
+  margin: 5px 0;
+  font-weight: 800;
+}
+
+.d58-required {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 9px;
+  margin: 12px 0;
+}
+
+.d58-required div {
+  padding: 14px;
+  border: 3px solid #171717;
+  border-radius: 11px;
+  background: #fff;
+  text-align: center;
+  font-size: 1.15rem;
+}
+
+.d58-required strong {
+  display: block;
+  margin-top: 4px;
+}
+
+.d58-repair-list {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.d58-repair-list div {
+  padding: 14px;
+  border: 3px solid #171717;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.d58-repair-list span {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 2rem;
+}
+
+.d58-repair-list strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+@media (max-width:760px) {
+
+  .d58-fault-grid,
+  .d58-required,
+  .d58-repair-list {
+    grid-template-columns: 1fr;
+  }
+}
+
