@@ -1,0 +1,453 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1100 670">
+
+  <rect width="1100"
+        height="670"
+        rx="24"
+        fill="#f5faff"/>
+
+  <text x="550"
+        y="48"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#20346f">
+    PHENOMENON MISSION: SAME ELECTRICAL ENERGY — DIFFERENT OUTPUTS
+  </text>
+
+  <text x="550"
+        y="82"
+        text-anchor="middle"
+        font-size="19"
+        font-weight="700"
+        fill="#20346f">
+    What changes when the load changes?
+  </text>
+
+
+  <!-- BULB CIRCUIT -->
+
+  <g transform="translate(35 120)">
+
+    <rect width="325"
+          height="410"
+          rx="20"
+          fill="#fff"
+          stroke="#c8d5ef"
+          stroke-width="4"/>
+
+    <text x="162"
+          y="38"
+          text-anchor="middle"
+          font-size="25"
+          font-weight="900"
+          fill="#24336b">
+      BULB
+    </text>
+
+
+    <!-- battery -->
+
+    <rect x="40"
+          y="145"
+          width="54"
+          height="105"
+          rx="8"
+          fill="#ffc400"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="67"
+            cy="134"
+            r="8"
+            fill="#d8ffd9"
+            stroke="#087a35"
+            stroke-width="4"/>
+
+    <circle cx="67"
+            cy="261"
+            r="8"
+            fill="#ffdada"
+            stroke="#b00020"
+            stroke-width="4"/>
+
+    <text x="84"
+          y="129"
+          font-size="21"
+          font-weight="900"
+          fill="#087a35">+</text>
+
+    <text x="84"
+          y="274"
+          font-size="21"
+          font-weight="900"
+          fill="#b00020">−</text>
+
+
+    <!-- wires -->
+
+    <path d="M67 134 C120 95 205 100 245 150"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+    <path d="M245 252 C205 310 120 310 67 261"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+
+    <!-- bulb -->
+
+    <circle cx="245"
+            cy="200"
+            r="48"
+            fill="#fff3a0"
+            stroke="#d69f00"
+            stroke-width="5"/>
+
+    <circle cx="245"
+            cy="200"
+            r="27"
+            fill="#ffe45d"/>
+
+    <rect x="223"
+          y="243"
+          width="44"
+          height="25"
+          rx="4"
+          fill="#f0831e"
+          stroke="#111"
+          stroke-width="3"/>
+
+
+    <rect x="55"
+          y="325"
+          width="215"
+          height="55"
+          rx="11"
+          fill="#fff3b1"
+          stroke="#111"
+          stroke-width="2"/>
+
+    <text x="162"
+          y="348"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900">
+      OUTPUT
+    </text>
+
+    <text x="162"
+          y="371"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="800">
+      LIGHT + THERMAL
+    </text>
+
+  </g>
+
+
+  <!-- MOTOR CIRCUIT -->
+
+  <g transform="translate(388 120)">
+
+    <rect width="325"
+          height="410"
+          rx="20"
+          fill="#fff"
+          stroke="#c8d5ef"
+          stroke-width="4"/>
+
+    <text x="162"
+          y="38"
+          text-anchor="middle"
+          font-size="25"
+          font-weight="900"
+          fill="#24336b">
+      MOTOR
+    </text>
+
+
+    <rect x="40"
+          y="145"
+          width="54"
+          height="105"
+          rx="8"
+          fill="#ffc400"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="67"
+            cy="134"
+            r="8"
+            fill="#d8ffd9"
+            stroke="#087a35"
+            stroke-width="4"/>
+
+    <circle cx="67"
+            cy="261"
+            r="8"
+            fill="#ffdada"
+            stroke="#b00020"
+            stroke-width="4"/>
+
+    <text x="84"
+          y="129"
+          font-size="21"
+          font-weight="900"
+          fill="#087a35">+</text>
+
+    <text x="84"
+          y="274"
+          font-size="21"
+          font-weight="900"
+          fill="#b00020">−</text>
+
+
+    <path d="M67 134 C120 95 205 100 245 150"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+    <path d="M245 252 C205 310 120 310 67 261"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+
+    <!-- motor -->
+
+    <rect x="205"
+          y="164"
+          width="80"
+          height="74"
+          rx="14"
+          fill="#d9efff"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="245"
+            cy="201"
+            r="23"
+            fill="#fff"
+            stroke="#366a8c"
+            stroke-width="4"/>
+
+    <line x1="245"
+          y1="178"
+          x2="245"
+          y2="224"
+          stroke="#366a8c"
+          stroke-width="4"/>
+
+    <line x1="222"
+          y1="201"
+          x2="268"
+          y2="201"
+          stroke="#366a8c"
+          stroke-width="4"/>
+
+
+    <!-- motion arrows -->
+
+    <path d="M215 130 Q245 100 277 130"
+          fill="none"
+          stroke="#7131cc"
+          stroke-width="5"/>
+
+    <polygon points="277,130 262,122 267,140"
+             fill="#7131cc"/>
+
+
+    <rect x="55"
+          y="325"
+          width="215"
+          height="55"
+          rx="11"
+          fill="#e6f3ff"
+          stroke="#111"
+          stroke-width="2"/>
+
+    <text x="162"
+          y="348"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900">
+      OUTPUT
+    </text>
+
+    <text x="162"
+          y="371"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="800">
+      MOTION
+    </text>
+
+  </g>
+
+
+  <!-- SPEAKER CIRCUIT -->
+
+  <g transform="translate(741 120)">
+
+    <rect width="325"
+          height="410"
+          rx="20"
+          fill="#fff"
+          stroke="#c8d5ef"
+          stroke-width="4"/>
+
+    <text x="162"
+          y="38"
+          text-anchor="middle"
+          font-size="25"
+          font-weight="900"
+          fill="#24336b">
+      SPEAKER
+    </text>
+
+
+    <rect x="40"
+          y="145"
+          width="54"
+          height="105"
+          rx="8"
+          fill="#ffc400"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="67"
+            cy="134"
+            r="8"
+            fill="#d8ffd9"
+            stroke="#087a35"
+            stroke-width="4"/>
+
+    <circle cx="67"
+            cy="261"
+            r="8"
+            fill="#ffdada"
+            stroke="#b00020"
+            stroke-width="4"/>
+
+    <text x="84"
+          y="129"
+          font-size="21"
+          font-weight="900"
+          fill="#087a35">+</text>
+
+    <text x="84"
+          y="274"
+          font-size="21"
+          font-weight="900"
+          fill="#b00020">−</text>
+
+
+    <path d="M67 134 C120 95 205 100 245 150"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+    <path d="M245 252 C205 310 120 310 67 261"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+
+    <!-- speaker -->
+
+    <rect x="205"
+          y="160"
+          width="80"
+          height="82"
+          rx="13"
+          fill="#e9defe"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="245"
+            cy="201"
+            r="25"
+            fill="#444"
+            stroke="#111"
+            stroke-width="3"/>
+
+
+    <!-- sound waves -->
+
+    <path d="M290 180 Q320 201 290 222"
+          fill="none"
+          stroke="#1681ee"
+          stroke-width="5"/>
+
+    <path d="M301 163 Q345 201 301 239"
+          fill="none"
+          stroke="#1681ee"
+          stroke-width="5"/>
+
+
+    <rect x="55"
+          y="325"
+          width="215"
+          height="55"
+          rx="11"
+          fill="#eee4ff"
+          stroke="#111"
+          stroke-width="2"/>
+
+    <text x="162"
+          y="348"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900">
+      OUTPUT
+    </text>
+
+    <text x="162"
+          y="371"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="800">
+      SOUND
+    </text>
+
+  </g>
+
+
+  <rect x="125"
+        y="560"
+        width="850"
+        height="72"
+        rx="15"
+        fill="#fff4a8"
+        stroke="#24336b"
+        stroke-width="3"/>
+
+  <text x="550"
+        y="587"
+        text-anchor="middle"
+        font-size="18"
+        font-weight="900"
+        fill="#24336b">
+    SAME INPUT: ELECTRICAL ENERGY
+  </text>
+
+  <text x="550"
+        y="615"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900"
+        fill="#24336b">
+    Why does changing the load change what we observe?
+  </text>
+
+</svg>

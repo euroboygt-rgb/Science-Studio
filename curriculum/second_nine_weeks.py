@@ -1278,3 +1278,202 @@ SECOND_NINE_WEEKS_LESSONS[56] = {
 }
 
 # Science Studio Day 56 End
+
+
+# Science Studio Day 57 Start
+
+SECOND_NINE_WEEKS_LESSONS[57] = {
+
+    "day": 57,
+
+    "title":
+        "Different Loads, Different Energy Outputs",
+
+    "unit":
+        "Unit 4: Investigating Energy Transformations Through Circuits",
+
+    "teks":
+        "5.8A, 5.8B, 5.5D, 5.1F",
+
+    "focus":
+        "Students compare how different circuit loads transform "
+        "electrical energy into light, thermal, motion, or sound energy.",
+
+    "learning_target":
+        "We will investigate how different loads transform "
+        "electrical energy into different forms of energy.",
+
+    "success_criteria":
+        "I can build circuits using a bulb, motor, and speaker "
+        "and identify the observable energy output from each load.",
+
+    "essential_question":
+        "How does changing the load change the energy output of a circuit?",
+
+    "bell_ringer": [
+        "A battery can power a bulb, motor, or speaker.",
+        "Do all three loads produce the same output?",
+        "What form of energy would you expect from each load?"
+    ],
+
+    "mini_lesson": [
+        "A load is a circuit component that transforms electrical energy.",
+        "A bulb transforms electrical energy into light energy and some thermal energy.",
+        "A motor transforms electrical energy into motion.",
+        "A speaker transforms electrical energy into sound energy.",
+        "The power source and conducting path can remain the same while the load changes.",
+        "Changing the load can change the observable output of the system.",
+        "A functioning load still requires a complete conducting path through both battery terminals."
+    ],
+
+    "science_notebook": [
+        "Create a Load and Energy Output chart.",
+        "Use these columns:",
+        "Load | Electrical Energy In | Observable Energy Out | Evidence",
+        "Record evidence for bulb, motor, and speaker."
+    ],
+
+    "guided_practice": [
+        "Identify the power source.",
+        "Trace the conducting path.",
+        "Identify the load.",
+        "Observe what the load does.",
+        "Determine the form of energy produced.",
+        "Explain how the load transforms electrical energy."
+    ],
+
+    "lab_title":
+        "Circuit Builder Mission: Three Loads Challenge",
+
+    "lab": [
+        "Open the Circuit Builder.",
+        "Build a complete circuit using one battery, two wires, and one bulb.",
+        "Test the circuit and record the observable output.",
+        "Remove the bulb.",
+        "Replace it with a motor while keeping the battery and conducting path concept the same.",
+        "Test the circuit and record the observable output.",
+        "Remove the motor.",
+        "Replace it with a speaker.",
+        "Test the circuit and record the observable output.",
+        "Compare the three loads.",
+        "Explain how changing the load changed the energy output."
+    ],
+
+    "lab_notebook": [
+        "Bulb — What did you observe?",
+        "Motor — What did you observe?",
+        "Speaker — What did you observe?",
+        "Which part stayed the same in all three systems?",
+        "Which part changed?",
+        "How did changing the load change the energy output?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "A battery powers a small motor in a complete circuit. "
+                "Which energy transformation is best represented by the motor?",
+
+            "choices": {
+                "A": "Electrical energy to motion",
+                "B": "Sound energy to electrical energy",
+                "C": "Light energy to chemical energy",
+                "D": "Thermal energy to electrical energy"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "A motor transforms electrical energy into observable motion."
+        },
+
+        {
+            "question":
+                "A student replaces a bulb in a complete circuit with a speaker. "
+                "Which observation would best show that the new load is functioning?",
+
+            "choices": {
+                "A": "The speaker produces sound.",
+                "B": "The battery changes color.",
+                "C": "The wire becomes shorter.",
+                "D": "The circuit moves across the table."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "A speaker transforms electrical energy into sound energy."
+        },
+
+        {
+            "question":
+                "Three complete circuits use identical batteries and wires. "
+                "One uses a bulb, one uses a motor, and one uses a speaker. "
+                "Why are the observable outputs different?",
+
+            "choices": {
+                "A":
+                    "Different loads transform electrical energy into different forms.",
+                "B":
+                    "Each battery contains a completely different kind of electricity.",
+                "C":
+                    "Only the bulb uses electrical energy.",
+                "D":
+                    "The wires determine whether the output is light, motion, or sound."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "The load determines how electrical energy is transformed "
+                "into an observable output."
+        }
+    ],
+
+    "exit_ticket":
+        "Explain how a bulb, motor, and speaker can use the same type "
+        "of electrical energy but produce different outputs.",
+
+    "cer": {
+
+        "claim":
+            "Different loads can transform electrical energy into different forms.",
+
+        "evidence":
+            "Use observations from the bulb, motor, and speaker circuits.",
+
+        "reasoning":
+            "Explain how the load affected the observable energy output."
+    },
+
+    "vocabulary": [
+        "circuit",
+        "battery",
+        "power source",
+        "wire",
+        "conductor",
+        "load",
+        "bulb",
+        "motor",
+        "speaker",
+        "electrical energy",
+        "light energy",
+        "thermal energy",
+        "sound energy",
+        "motion",
+        "energy transformation",
+        "complete circuit",
+        "conducting path"
+    ],
+
+    "teacher_note":
+        "Keep the power source and general circuit structure consistent "
+        "while changing the load. Students should use observable evidence "
+        "to identify each energy transformation.",
+
+    "lab_url":
+        "/labs/circuit-builder?mission=day57"
+}
+
+# Science Studio Day 57 End

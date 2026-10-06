@@ -19,6 +19,10 @@
       window.location.pathname.includes(
         "/second-nine-weeks/day/56"
       )
+      ||
+      window.location.pathname.includes(
+        "/second-nine-weeks/day/57"
+      )
     )
   ) {
     return;
@@ -138,6 +142,71 @@
         "The circuit must return to the battery's negative terminal to form a complete path.",
       icon: "➖"
     }
+
+
+    "bulb": {
+      definition:
+        "A load that transforms electrical energy into light energy and some thermal energy.",
+      example:
+        "When the bulb is connected in a complete circuit, it can produce light.",
+      icon: "💡"
+    },
+
+    "motor": {
+      definition:
+        "A load that transforms electrical energy into motion.",
+      example:
+        "A motor can spin when electrical energy moves through a complete circuit.",
+      icon: "⚙️"
+    },
+
+    "speaker": {
+      definition:
+        "A load that transforms electrical energy into sound energy.",
+      example:
+        "A speaker produces sound when it receives electrical energy.",
+      icon: "🔊"
+    },
+
+    "light energy": {
+      definition:
+        "Energy that can travel as light and can be detected by our eyes.",
+      example:
+        "A bulb transforms some electrical energy into light energy.",
+      icon: "💡"
+    },
+
+    "thermal energy": {
+      definition:
+        "Energy associated with the motion of particles that can be observed as heating or warmth.",
+      example:
+        "A working bulb can produce some thermal energy along with light.",
+      icon: "🔥"
+    },
+
+    "sound energy": {
+      definition:
+        "Energy produced by vibrations that travels through matter.",
+      example:
+        "A speaker transforms electrical energy into sound energy.",
+      icon: "🔊"
+    },
+
+    "motion": {
+      definition:
+        "A change in an object's position.",
+      example:
+        "A motor transforms electrical energy into motion when it spins.",
+      icon: "⚙️"
+    },
+
+    "energy transformation": {
+      definition:
+        "A change from one form of energy into another form.",
+      example:
+        "In a motor, electrical energy transforms into motion.",
+      icon: "🔄"
+    },
 
   };
 

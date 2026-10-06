@@ -476,3 +476,23 @@ POWER_FRAMES[56] = {
 }
 
 # Science Studio Day 56 Power Frame End
+
+
+# Science Studio Day 57 Power Frame Start
+
+POWER_FRAMES[57] = {
+
+    "i_can":
+        "I can explain how different circuit loads transform electrical energy.",
+
+    "by":
+        "by testing a bulb, motor, and speaker in complete circuits "
+        "and comparing their observable outputs.",
+
+    "i_know":
+        "I know I have learned this when I can match each load "
+        "to the form of energy it produces and support my answer "
+        "with evidence from the Circuit Builder."
+}
+
+# Science Studio Day 57 Power Frame End
