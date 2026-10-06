@@ -416,3 +416,23 @@ POWER_FRAMES[53] = {
         "conducting path, switch, and load and explain the job of each part."
 }
 
+
+
+# Science Studio Day 54 Power Frame Start
+
+POWER_FRAMES[54] = {
+
+    "i_can":
+        "I can identify the parts and connections required "
+        "for a functioning electrical circuit.",
+
+    "by":
+        "by tracing conducting paths and testing complete and "
+        "incomplete circuits in the Circuit Builder.",
+
+    "i_know":
+        "I know I have learned this when I can explain why a circuit "
+        "works or does not work using evidence from its connections."
+}
+
+# Science Studio Day 54 Power Frame End

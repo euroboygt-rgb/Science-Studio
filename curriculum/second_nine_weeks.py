@@ -661,3 +661,201 @@ SECOND_NINE_WEEKS_LESSONS[53] = {
     "lab_url": "/labs/circuit-builder"
 }
 
+
+
+# Science Studio Day 54 Start
+
+SECOND_NINE_WEEKS_LESSONS[54] = {
+
+    "day": 54,
+
+    "title":
+        "Parts of a Functioning Circuit",
+
+    "unit":
+        "Unit 4: Investigating Energy Transformations Through Circuits",
+
+    "teks":
+        "5.8B, 5.5D, 5.1F",
+
+    "focus":
+        "Students identify the parts and connections required "
+        "for a functioning electrical circuit.",
+
+    "learning_target":
+        "We will identify the parts required for a functioning "
+        "electrical circuit and explain why a circuit works or does not work.",
+
+    "success_criteria":
+        "I can trace a complete conducting path from one battery terminal, "
+        "through the circuit, and back to the other battery terminal.",
+
+    "essential_question":
+        "What must be connected for an electrical circuit to function?",
+
+    "bell_ringer": [
+        "A circuit has a battery, wires, a bulb, and a switch.",
+        "What should you check before deciding whether the circuit will work?",
+        "Where should the conducting path begin?",
+        "Where must the conducting path return?"
+    ],
+
+    "mini_lesson": [
+        "A functioning circuit needs a power source, a conducting path, and a load.",
+        "A switch can control whether the path is open or closed.",
+        "A complete conducting path must connect through both battery terminals.",
+        "An open switch creates a break in the conducting path.",
+        "A disconnected wire creates an incomplete circuit.",
+        "A load such as a bulb, motor, or speaker transforms electrical energy.",
+        "To troubleshoot a circuit, trace the entire path instead of looking at only one part."
+    ],
+
+    "science_notebook": [
+        "Create a Functioning Circuit Evidence Chart.",
+        "Use these columns:",
+        "Part or Connection | Job | What Happens If It Is Missing or Open?",
+        "Include battery, positive terminal, negative terminal, wire, switch, and load."
+    ],
+
+    "guided_practice": [
+        "Trace a conducting path from the positive battery terminal.",
+        "Follow each wire and component.",
+        "Check whether every connection touches a terminal.",
+        "Check whether the switch is open or closed.",
+        "Continue tracing until the path returns to the other battery terminal.",
+        "Identify the exact location of any break in the path."
+    ],
+
+    "lab_title":
+        "Circuit Builder: Functioning Circuit Detective",
+
+    "lab": [
+        "Open the Circuit Builder.",
+        "Place a battery, bulb, switch, and at least three wires on the board.",
+        "Identify the positive and negative battery terminals.",
+        "Connect part of the system but leave one return connection missing.",
+        "Predict whether the circuit can function.",
+        "Test the circuit and identify the broken path.",
+        "Connect the missing wire.",
+        "Open the switch and test again.",
+        "Close the switch and observe the change.",
+        "Disconnect one wire and identify why the circuit stops functioning.",
+        "Record evidence from each test.",
+        "Tomorrow you will independently build a simple circuit using one battery, two wires, and one load."
+    ],
+
+    "lab_notebook": [
+        "Test 1: Missing return path — What happened?",
+        "Test 2: Open switch — What happened?",
+        "Test 3: Closed switch — What happened?",
+        "Test 4: Disconnected wire — What happened?",
+        "What evidence tells you a conducting path is complete?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "A circuit contains a battery, wires, a bulb, and an open switch. "
+                "Why does the bulb not light?",
+
+            "choices": {
+                "A": "The switch creates a break in the conducting path.",
+                "B": "The bulb is producing too much electrical energy.",
+                "C": "The battery needs only one terminal connected.",
+                "D": "The wires are changing electrical energy into motion."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "An open switch creates a break in the conducting path, "
+                "so the circuit is incomplete."
+        },
+
+        {
+            "question":
+                "A student connects a battery to a bulb. One wire connects "
+                "the positive terminal to the bulb, but there is no path "
+                "from the bulb back to the negative terminal. "
+                "Which change will make a complete conducting path?",
+
+            "choices": {
+                "A": "Add a second bulb without connecting it.",
+                "B": "Connect a wire from the bulb back to the negative battery terminal.",
+                "C": "Remove the positive-terminal wire.",
+                "D": "Place the battery farther from the bulb."
+            },
+
+            "answer": "B",
+
+            "rationale":
+                "The conducting path must return to the other battery terminal."
+        },
+
+        {
+            "question":
+                "Which observation is the best evidence that a simple bulb circuit "
+                "has a complete conducting path?",
+
+            "choices": {
+                "A": "The bulb lights when the circuit is tested.",
+                "B": "The battery is yellow.",
+                "C": "The wire is longer than the bulb.",
+                "D": "The switch is far from the battery."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "A lit bulb is observable evidence that electrical energy "
+                "is traveling through a functioning path."
+        }
+    ],
+
+    "exit_ticket":
+        "Explain how you can trace a circuit to decide whether it has "
+        "a complete conducting path.",
+
+    "cer": {
+
+        "claim":
+            "A circuit must have a complete conducting path to function.",
+
+        "evidence":
+            "Use evidence from at least two Circuit Builder tests.",
+
+        "reasoning":
+            "Explain how the battery terminals, wires, switch, and load "
+            "work together as one electrical system."
+    },
+
+    "vocabulary": [
+        "circuit",
+        "system",
+        "battery",
+        "power source",
+        "wire",
+        "conductor",
+        "load",
+        "switch",
+        "open circuit",
+        "closed circuit",
+        "complete circuit",
+        "incomplete circuit",
+        "electrical energy",
+        "positive terminal",
+        "negative terminal",
+        "conducting path"
+    ],
+
+    "teacher_note":
+        "Emphasize tracing the complete conducting path. Students should "
+        "not decide a circuit works simply because all required parts are present. "
+        "Connections must form a continuous path through both battery terminals.",
+
+    "lab_url":
+        "/labs/circuit-builder"
+}
+
+# Science Studio Day 54 End

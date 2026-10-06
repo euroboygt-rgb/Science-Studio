@@ -3,8 +3,14 @@
 
 
   if (
-    !window.location.pathname.includes(
-      "/second-nine-weeks/day/53"
+    !(
+      window.location.pathname.includes(
+        "/second-nine-weeks/day/53"
+      )
+      ||
+      window.location.pathname.includes(
+        "/second-nine-weeks/day/54"
+      )
     )
   ) {
     return;

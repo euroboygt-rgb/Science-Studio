@@ -1,0 +1,501 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1100 650">
+
+  <rect width="1100"
+        height="650"
+        rx="24"
+        fill="#f5faff"/>
+
+  <text x="550"
+        y="48"
+        text-anchor="middle"
+        font-family="Arial"
+        font-size="34"
+        font-weight="900"
+        fill="#20346f">
+    PHENOMENON MISSION: WHICH CIRCUIT WILL WORK?
+  </text>
+
+  <text x="550"
+        y="82"
+        text-anchor="middle"
+        font-family="Arial"
+        font-size="19"
+        font-weight="700"
+        fill="#20346f">
+    Trace each path from one battery terminal back to the other.
+  </text>
+
+
+  <!-- ======================================================
+       CIRCUIT A
+       MISSING RETURN PATH
+       ====================================================== -->
+
+  <g transform="translate(35 120)">
+
+    <rect x="0"
+          y="0"
+          width="325"
+          height="420"
+          rx="20"
+          fill="#fff"
+          stroke="#c8d5ef"
+          stroke-width="4"/>
+
+    <text x="162"
+          y="38"
+          text-anchor="middle"
+          font-size="26"
+          font-weight="900"
+          fill="#24336b">
+      Circuit A
+    </text>
+
+    <text x="162"
+          y="65"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="700">
+      Missing Return Path
+    </text>
+
+
+    <!-- Battery -->
+    <rect x="42"
+          y="145"
+          width="54"
+          height="110"
+          rx="8"
+          fill="#ffc400"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="69"
+            cy="134"
+            r="8"
+            fill="#d8ffd9"
+            stroke="#087a35"
+            stroke-width="4"/>
+
+    <circle cx="69"
+            cy="266"
+            r="8"
+            fill="#ffdada"
+            stroke="#b00020"
+            stroke-width="4"/>
+
+    <text x="86"
+          y="129"
+          font-size="22"
+          font-weight="900"
+          fill="#087a35">+</text>
+
+    <text x="86"
+          y="278"
+          font-size="22"
+          font-weight="900"
+          fill="#b00020">−</text>
+
+    <text x="69"
+          y="200"
+          text-anchor="middle"
+          font-size="13"
+          font-weight="900">
+      BATTERY
+    </text>
+
+
+    <!-- top wire from + -->
+    <path d="M 69 134
+             C 125 110 190 110 225 145"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+
+    <!-- bulb -->
+    <circle cx="245"
+            cy="185"
+            r="38"
+            fill="#fff8c4"
+            stroke="#111"
+            stroke-width="4"/>
+
+    <rect x="225"
+          y="219"
+          width="40"
+          height="24"
+          rx="4"
+          fill="#f0831e"
+          stroke="#111"
+          stroke-width="3"/>
+
+    <text x="245"
+          y="273"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      BULB
+    </text>
+
+
+    <!-- dangling return -->
+    <path d="M 245 243
+             C 235 290 180 305 145 305"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+    <circle cx="145"
+            cy="305"
+            r="10"
+            fill="#fff"
+            stroke="#b00020"
+            stroke-width="4"/>
+
+    <text x="162"
+          y="360"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900"
+          fill="#b00020">
+      GAP — no connection to −
+    </text>
+
+  </g>
+
+
+  <!-- ======================================================
+       CIRCUIT B
+       OPEN SWITCH
+       ====================================================== -->
+
+  <g transform="translate(388 120)">
+
+    <rect x="0"
+          y="0"
+          width="325"
+          height="420"
+          rx="20"
+          fill="#fff"
+          stroke="#c8d5ef"
+          stroke-width="4"/>
+
+    <text x="162"
+          y="38"
+          text-anchor="middle"
+          font-size="26"
+          font-weight="900"
+          fill="#24336b">
+      Circuit B
+    </text>
+
+    <text x="162"
+          y="65"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="700">
+      Open Switch
+    </text>
+
+
+    <!-- battery -->
+    <rect x="40"
+          y="150"
+          width="54"
+          height="110"
+          rx="8"
+          fill="#ffc400"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="67"
+            cy="139"
+            r="8"
+            fill="#d8ffd9"
+            stroke="#087a35"
+            stroke-width="4"/>
+
+    <circle cx="67"
+            cy="271"
+            r="8"
+            fill="#ffdada"
+            stroke="#b00020"
+            stroke-width="4"/>
+
+    <text x="84"
+          y="134"
+          font-size="22"
+          font-weight="900"
+          fill="#087a35">+</text>
+
+    <text x="84"
+          y="284"
+          font-size="22"
+          font-weight="900"
+          fill="#b00020">−</text>
+
+
+    <!-- wire + to switch -->
+    <path d="M 67 139 L 135 139"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+
+    <!-- open switch -->
+    <rect x="135"
+          y="110"
+          width="105"
+          height="58"
+          rx="10"
+          fill="#fff"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="155"
+            cy="142"
+            r="6"
+            fill="#111"/>
+
+    <circle cx="220"
+            cy="142"
+            r="6"
+            fill="#111"/>
+
+    <line x1="155"
+          y1="142"
+          x2="210"
+          y2="116"
+          stroke="#111"
+          stroke-width="6"
+          stroke-linecap="round"/>
+
+
+    <!-- switch to bulb -->
+    <path d="M 240 139
+             C 255 139 270 145 275 165"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"/>
+
+
+    <!-- bulb -->
+    <circle cx="270"
+            cy="210"
+            r="36"
+            fill="#f5f5f5"
+            stroke="#111"
+            stroke-width="4"/>
+
+    <rect x="251"
+          y="242"
+          width="38"
+          height="22"
+          fill="#f0831e"
+          stroke="#111"
+          stroke-width="3"/>
+
+
+    <!-- return wire correctly to negative -->
+    <path d="M 270 264
+             C 260 315 155 330 67 271"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+
+    <text x="162"
+          y="360"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900"
+          fill="#b00020">
+      BREAK AT OPEN SWITCH
+    </text>
+
+  </g>
+
+
+  <!-- ======================================================
+       CIRCUIT C
+       COMPLETE PATH
+       ====================================================== -->
+
+  <g transform="translate(741 120)">
+
+    <rect x="0"
+          y="0"
+          width="325"
+          height="420"
+          rx="20"
+          fill="#fff"
+          stroke="#c8d5ef"
+          stroke-width="4"/>
+
+    <text x="162"
+          y="38"
+          text-anchor="middle"
+          font-size="26"
+          font-weight="900"
+          fill="#24336b">
+      Circuit C
+    </text>
+
+    <text x="162"
+          y="65"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="700">
+      Complete Conducting Path
+    </text>
+
+
+    <!-- battery -->
+    <rect x="38"
+          y="150"
+          width="54"
+          height="110"
+          rx="8"
+          fill="#ffc400"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="65"
+            cy="139"
+            r="8"
+            fill="#d8ffd9"
+            stroke="#087a35"
+            stroke-width="4"/>
+
+    <circle cx="65"
+            cy="271"
+            r="8"
+            fill="#ffdada"
+            stroke="#b00020"
+            stroke-width="4"/>
+
+    <text x="82"
+          y="134"
+          font-size="22"
+          font-weight="900"
+          fill="#087a35">+</text>
+
+    <text x="82"
+          y="284"
+          font-size="22"
+          font-weight="900"
+          fill="#b00020">−</text>
+
+
+    <!-- + wire -->
+    <path d="M 65 139 L 135 139"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+
+    <!-- closed switch -->
+    <rect x="135"
+          y="110"
+          width="105"
+          height="58"
+          rx="10"
+          fill="#fff"
+          stroke="#111"
+          stroke-width="4"/>
+
+    <circle cx="155"
+            cy="142"
+            r="6"
+            fill="#111"/>
+
+    <circle cx="220"
+            cy="142"
+            r="6"
+            fill="#111"/>
+
+    <line x1="155"
+          y1="142"
+          x2="220"
+          y2="142"
+          stroke="#111"
+          stroke-width="6"
+          stroke-linecap="round"/>
+
+
+    <path d="M 240 139
+             C 260 139 272 150 272 170"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"/>
+
+
+    <!-- lit bulb -->
+    <circle cx="270"
+            cy="215"
+            r="45"
+            fill="#fff3a0"
+            stroke="#d69f00"
+            stroke-width="5"/>
+
+    <circle cx="270"
+            cy="215"
+            r="24"
+            fill="#ffe36d"/>
+
+    <rect x="250"
+          y="255"
+          width="40"
+          height="23"
+          fill="#f0831e"
+          stroke="#111"
+          stroke-width="3"/>
+
+
+    <!-- return to negative -->
+    <path d="M 270 278
+             C 255 330 150 335 65 271"
+          fill="none"
+          stroke="#f0831e"
+          stroke-width="8"
+          stroke-linecap="round"/>
+
+
+    <text x="162"
+          y="360"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900"
+          fill="#087a35">
+      COMPLETE PATH ✓
+    </text>
+
+  </g>
+
+
+  <rect x="165"
+        y="570"
+        width="770"
+        height="55"
+        rx="14"
+        fill="#fff5ad"
+        stroke="#24336b"
+        stroke-width="3"/>
+
+  <text x="550"
+        y="604"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900"
+        fill="#24336b">
+    Which circuit can function? What evidence supports your answer?
+  </text>
+
+</svg>
