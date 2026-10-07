@@ -1,0 +1,317 @@
+.lm-shell {
+  width: min(1200px,95vw);
+  margin: 24px auto 60px;
+}
+
+
+.lm-hero,
+.lm-rules,
+.lm-workspace,
+.lm-evidence {
+  border: 3px solid #171717;
+  border-radius: 17px;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+
+.lm-hero {
+  padding: 20px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #7131cc,
+      #2689d8
+    );
+}
+
+
+.lm-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+
+.lm-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #7d32dc;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+
+.lm-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.lm-back {
+  padding: 10px 14px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+
+.lm-rules {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 14px;
+  background: #fff4cd;
+}
+
+
+.lm-rule-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 8px;
+}
+
+
+.lm-rule-grid div {
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+}
+
+
+.lm-rule-grid strong,
+.lm-rule-grid span {
+  display: block;
+}
+
+
+.lm-rule-grid .transparent {
+  background: #dff5ff;
+}
+
+
+.lm-rule-grid .translucent {
+  background: #eef1f3;
+}
+
+
+.lm-rule-grid .opaque {
+  background: #efe2d4;
+}
+
+
+.lm-goal {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #e8f7ff;
+}
+
+
+#lmCounter {
+  margin-top: 10px;
+  padding: 8px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+  font-weight: 900;
+}
+
+
+.lm-workspace {
+  margin-top: 14px;
+  padding: 15px;
+  background: #111a34;
+  color: #fff;
+}
+
+
+.lm-directions {
+  font-weight: 700;
+}
+
+
+.lm-tray {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 9px;
+  min-height: 120px;
+  margin-bottom: 14px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 12px;
+  background: #f5fbff;
+}
+
+
+.lm-item {
+  min-height: 92px;
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+
+.lm-item.selected {
+  outline: 5px solid #ffe45d;
+}
+
+
+.lm-item.wrong {
+  outline: 5px solid #dc3545;
+}
+
+
+.lm-item.correct {
+  outline: 5px solid #28a745;
+}
+
+
+.lm-item-icon {
+  display: block;
+  font-size: 2.4rem;
+}
+
+
+.lm-item-name {
+  display: block;
+  margin-top: 5px;
+  font-weight: 900;
+}
+
+
+.lm-bins {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+}
+
+
+.lm-bin {
+  min-height: 240px;
+  padding: 12px;
+  border: 4px dashed #171717;
+  border-radius: 12px;
+  color: #111;
+  cursor: pointer;
+}
+
+
+.lm-bin.transparent {
+  background: #dff5ff;
+}
+
+
+.lm-bin.translucent {
+  background: #eef1f3;
+}
+
+
+.lm-bin.opaque {
+  background: #efe2d4;
+}
+
+
+.lm-bin h2,
+.lm-bin p {
+  text-align: center;
+}
+
+
+.lm-dropzone {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+
+.lm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+
+.lm-actions button {
+  padding: 13px 20px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #ffe45d;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+
+.lm-feedback {
+  margin-top: 12px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+}
+
+
+.lm-evidence {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff;
+}
+
+
+.lm-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 9px;
+}
+
+
+.lm-grid article {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #eaf6ff;
+}
+
+
+.lm-question {
+  margin-top: 10px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff3ad;
+}
+
+
+@media (max-width:850px) {
+
+  .lm-hero-row,
+  .lm-rules {
+    display: block;
+  }
+
+
+  .lm-rule-grid,
+  .lm-tray,
+  .lm-bins,
+  .lm-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

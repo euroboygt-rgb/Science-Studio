@@ -1,0 +1,303 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='light_material_sort_lab.css') }}?v=72.1"
+>
+
+
+<div class="lm-shell">
+
+  <header class="lm-hero">
+
+    <div class="lm-tags">
+
+      <span>🔦 Interactive Lab</span>
+
+      <span>12-Item Sorting Challenge</span>
+
+      <span>TEKS 5.8C</span>
+
+    </div>
+
+
+    <div class="lm-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio: Light Material Sort Lab
+        </h1>
+
+        <p>
+          Sort twelve real-world objects
+          as transparent, translucent, or opaque.
+        </p>
+
+      </div>
+
+
+      <a
+        class="lm-back"
+        href="/second-nine-weeks/day/72?view=student"
+      >
+        ← Back to Day 72
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <section class="lm-rules">
+
+    <div>
+
+      <h2>
+        🔍 Light Detective Rules
+      </h2>
+
+
+      <div class="lm-rule-grid">
+
+        <div class="transparent">
+
+          <strong>
+            🪟 Transparent
+          </strong>
+
+          <span>
+            Most light passes through clearly.
+          </span>
+
+        </div>
+
+
+        <div class="translucent">
+
+          <strong>
+            🧻 Translucent
+          </strong>
+
+          <span>
+            Some light passes through,
+            but it scatters.
+          </span>
+
+        </div>
+
+
+        <div class="opaque">
+
+          <strong>
+            📦 Opaque
+          </strong>
+
+          <span>
+            Visible light does not pass through.
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <aside class="lm-goal">
+
+      <strong>
+        🎯 Mission Goal
+      </strong>
+
+      <p>
+        Correctly sort all
+        <strong>12 objects.</strong>
+      </p>
+
+      <div id="lmCounter">
+        0 / 12 sorted
+      </div>
+
+    </aside>
+
+  </section>
+
+
+  <section class="lm-workspace">
+
+    <h2>
+      🧰 Object Tray
+    </h2>
+
+    <p class="lm-directions">
+      Drag an object into a category,
+      or click an object and then click a category.
+    </p>
+
+
+    <div id="lmTray"
+         class="lm-tray"></div>
+
+
+    <div class="lm-bins">
+
+      <div
+        class="lm-bin transparent"
+        data-category="transparent"
+      >
+
+        <h2>
+          🪟 Transparent
+        </h2>
+
+        <p>
+          Passes clearly
+        </p>
+
+        <div class="lm-dropzone"></div>
+
+      </div>
+
+
+      <div
+        class="lm-bin translucent"
+        data-category="translucent"
+      >
+
+        <h2>
+          🧻 Translucent
+        </h2>
+
+        <p>
+          Passes + scatters
+        </p>
+
+        <div class="lm-dropzone"></div>
+
+      </div>
+
+
+      <div
+        class="lm-bin opaque"
+        data-category="opaque"
+      >
+
+        <h2>
+          📦 Opaque
+        </h2>
+
+        <p>
+          Does not pass through
+        </p>
+
+        <div class="lm-dropzone"></div>
+
+      </div>
+
+    </div>
+
+
+    <div class="lm-actions">
+
+      <button
+        id="lmCheck"
+        type="button"
+      >
+        ✅ CHECK MY SORT
+      </button>
+
+      <button
+        id="lmReset"
+        type="button"
+      >
+        ↻ RESET ALL
+      </button>
+
+    </div>
+
+
+    <div id="lmFeedback"
+         class="lm-feedback">
+      Sort all twelve objects, then check your work.
+    </div>
+
+  </section>
+
+
+  <section class="lm-evidence">
+
+    <h2>
+      📓 Light Detective Evidence Notebook
+    </h2>
+
+
+    <div class="lm-grid">
+
+      <article>
+
+        <strong>
+          🪟 Transparent Evidence
+        </strong>
+
+        <p>
+          What would you expect to see
+          through a transparent material?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🧻 Translucent Evidence
+        </strong>
+
+        <p>
+          Why do objects appear blurry
+          through a translucent material?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          📦 Opaque Evidence
+        </strong>
+
+        <p>
+          What happens when visible light
+          reaches an opaque material?
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="lm-question">
+
+      <strong>
+        🧠 Evidence Question:
+      </strong>
+
+      How can the amount and behavior of transmitted light
+      help you classify an unknown material?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='light_material_sort_lab.js') }}?v=72.1"
+></script>
+
+{% endblock %}

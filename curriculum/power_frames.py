@@ -749,3 +749,20 @@ POWER_FRAMES[71] = {
 }
 
 # Science Studio Day 71 Power Frame End
+
+
+# Science Studio Day 72 Power Frame Start
+
+POWER_FRAMES[72] = {
+
+    "i_can":
+        "I can classify materials as transparent, translucent, or opaque.",
+
+    "by":
+        "observing whether light passes through clearly, passes through but scatters, or does not pass through.",
+
+    "i_know":
+        "I know I have learned this when I can correctly sort materials and explain how light behaves in each category."
+}
+
+# Science Studio Day 72 Power Frame End

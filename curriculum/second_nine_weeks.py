@@ -3985,3 +3985,94 @@ SECOND_NINE_WEEKS_LESSONS[71] = {
 }
 
 # Science Studio Day 71 End
+
+
+# Science Studio Day 72 Start
+
+SECOND_NINE_WEEKS_LESSONS[72] = {
+
+    "day": 72,
+
+    "title":
+        "Light Detective Mission: Transparent, Translucent, or Opaque?",
+
+    "unit":
+        "Light Energy: Reflection, Refraction, and Absorption",
+
+    "teks":
+        "5.8C, 5.1F, 5.2D",
+
+    "focus":
+        "Students classify materials as transparent, translucent, or opaque "
+        "based on how visible light interacts with the material.",
+
+    "learning_target":
+        "We will classify materials as transparent, translucent, or opaque based on how light passes through them.",
+
+    "success_criteria":
+        "I can explain whether light passes through clearly, passes through but scatters, or does not pass through a material.",
+
+    "essential_question":
+        "Why can we see clearly through some materials, only blurry shapes through others, and nothing through others?",
+
+    "bell_ringer": [
+        "Imagine shining a flashlight at clear glass, wax paper, and cardboard.",
+        "Would the same amount of light pass through all three?",
+        "Which material would allow you to see an object clearly through it?"
+    ],
+
+    "mini_lesson": [
+        "Transparent materials allow most visible light to pass through with little scattering.",
+        "Objects can usually be seen clearly through transparent materials.",
+        "Translucent materials allow some visible light to pass through, but the light is scattered.",
+        "Objects seen through translucent materials usually look blurry or unclear.",
+        "Opaque materials do not transmit visible light through the material.",
+        "Opaque materials may reflect or absorb light instead.",
+        "Clear window glass is transparent.",
+        "Wax paper and frosted glass are translucent.",
+        "Cardboard, books, wood, and aluminum foil are opaque."
+    ],
+
+    "science_notebook": [
+        "Create a three-column chart labeled Transparent, Translucent, and Opaque.",
+        "Transparent: most light passes through clearly.",
+        "Translucent: some light passes through but scatters.",
+        "Opaque: light does not pass through.",
+        "Draw one example in each column."
+    ],
+
+    "guided_practice": [
+        "Classify clear window glass.",
+        "Classify wax paper.",
+        "Classify cardboard.",
+        "Explain how much light passes through each material.",
+        "Explain what an observer would see through each material."
+    ],
+
+    "lab_title":
+        "Light Material Sort Lab: Classify 12 Objects",
+
+    "lab_url":
+        "/labs/light-material-sort?mission=day72",
+
+    "exit_ticket":
+        "Explain the difference between transparent, translucent, and opaque materials. "
+        "Include how light behaves in each type.",
+
+    "vocabulary": [
+        "transparent",
+        "translucent",
+        "opaque",
+        "transmit",
+        "scatter",
+        "light",
+        "reflection",
+        "absorption"
+    ],
+
+    "teacher_note":
+        "Use familiar real-world examples. Emphasize that opaque means visible light is not transmitted through the material; "
+        "the light may instead be reflected or absorbed. Translucent materials transmit some light but scatter it, which prevents a clear image."
+}
+
+# Science Studio Day 72 End

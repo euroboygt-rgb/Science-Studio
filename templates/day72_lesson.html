@@ -1,0 +1,1100 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=72-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day72_direct.css') }}?v=72-final"
+>
+
+
+<div id="DAY72_DIRECT_TEMPLATE" class="d72-page">
+
+  <!-- HEADER -->
+
+  <section class="d72-hero">
+
+    <div class="d72-tags">
+
+      <span>Day 72</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.8C</span>
+
+    </div>
+
+
+    <h1>
+      🔦 Light Detective Mission:
+      Transparent, Translucent, or Opaque?
+    </h1>
+
+    <p>
+      Investigate what happens when visible light
+      meets different materials.
+    </p>
+
+
+    <div class="d72-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/72?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/72?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today’s Learning Power Frame
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>I can...</strong>
+
+        <p>
+          classify materials as transparent,
+          translucent, or opaque.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>By...</strong>
+
+        <p>
+          observing how light passes
+          through different materials.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can correctly sort materials
+          and explain how light behaves.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🔦 Phenomenon Mission
+    </div>
+
+    <h2>
+      What Happens to the Light?
+    </h2>
+
+    <div class="d59-unit">
+      Day 72 • Light Through Materials
+    </div>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day72_light_materials.svg"
+        alt="Light interacting with clear glass, wax paper, and cardboard"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      Why can we see clearly through some materials,
+      blurry shapes through others,
+      and nothing through others?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d72MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Mission Brief: Follow the Flashlight
+        </h2>
+
+        <div class="d59-unit">
+          Day 72 • Three Types of Materials
+        </div>
+
+      </div>
+
+
+      <button
+        id="d72Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Mission Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d72SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d72SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d72SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d72SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d72SlideNumber"></strong>
+
+      <div>
+
+        <button
+          id="d72Back"
+          class="d59-control"
+          type="button"
+        >
+          ◀ Back
+        </button>
+
+        <button
+          id="d72Next"
+          class="d59-control"
+          type="button"
+        >
+          Next ▶
+        </button>
+
+        <button
+          id="d72Restart"
+          class="d59-control"
+          type="button"
+        >
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section id="d72Steve"
+           class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's STAAR Mission
+        </div>
+
+        <h2>
+          Steve's Mystery Window
+        </h2>
+
+        <div class="d59-unit">
+          Day 72 • Light Through Materials
+        </div>
+
+
+        <div class="d59-scenario">
+
+          <strong>
+            Steve's Scenario:
+          </strong>
+
+          <br><br>
+
+          Steve shines a flashlight
+          through a sheet of wax paper.
+
+          Some light passes through,
+          but the image on the other side
+          looks blurry.
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            STAAR-Style Question:
+          </strong>
+
+          <p>
+            How should Steve classify
+            the wax paper?
+          </p>
+
+
+          <button class="d72-steve-answer"
+                  data-answer="A">
+            A. Translucent
+          </button>
+
+          <button class="d72-steve-answer"
+                  data-answer="B">
+            B. Transparent
+          </button>
+
+          <button class="d72-steve-answer"
+                  data-answer="C">
+            C. Opaque
+          </button>
+
+          <button class="d72-steve-answer"
+                  data-answer="D">
+            D. Magnetic
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button
+              id="d72SteveCheck"
+              class="d59-check"
+              type="button"
+            >
+              Check Answer
+            </button>
+
+            <button
+              id="d72SteveReset"
+              class="d59-reset"
+              type="button"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d72SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCABULARY -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Vocabulary Anchor Chart
+    </h2>
+
+
+    <div class="d72-vocab-note">
+
+      🔍 Hover to preview.
+
+      <strong>
+        Click a vocabulary word
+      </strong>
+
+      to enlarge it and read the definition.
+
+    </div>
+
+
+    <div class="d72-vocab-grid">
+
+      {% set words = [
+        ("🪟", "transparent", "Allows most visible light to pass through with little scattering, so objects can be seen clearly."),
+        ("🧻", "translucent", "Allows some visible light to pass through, but scatters the light so objects look blurry."),
+        ("📦", "opaque", "Does not transmit visible light through the material."),
+        ("➡️", "transmit", "To allow light to pass through a material."),
+        ("✨", "scatter", "To send light in many different directions."),
+        ("🔦", "light", "A form of energy that travels and can interact with matter."),
+        ("↩️", "reflection", "The bouncing of light from a surface."),
+        ("⬇️", "absorption", "When a material takes in light energy.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d72-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span class="d72-vocab-icon">
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- LEARNING TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will classify materials
+      as transparent, translucent, or opaque
+      based on how light passes through them.
+    </p>
+
+  </section>
+
+
+  <!-- BELL RINGER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer — Three Materials
+    </h2>
+
+
+    <div class="d59-box">
+
+      A flashlight shines toward:
+
+      <ul>
+
+        <li>clear window glass,</li>
+
+        <li>wax paper,</li>
+
+        <li>cardboard.</li>
+
+      </ul>
+
+
+      Predict:
+
+      <ol>
+
+        <li>
+          Which material lets light pass through clearly?
+        </li>
+
+        <li>
+          Which lets some light through but makes objects blurry?
+        </li>
+
+        <li>
+          Which does not let light pass through?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson — Three Ways Materials Interact With Light
+    </h2>
+
+
+    <div class="d72-three">
+
+      <article class="transparent">
+
+        <div class="d72-big-icon">
+          🪟
+        </div>
+
+        <h3>
+          Transparent
+        </h3>
+
+        <p>
+          Most visible light passes through
+          with little scattering.
+        </p>
+
+        <strong>
+          You can see clearly through it.
+        </strong>
+
+      </article>
+
+
+      <article class="translucent">
+
+        <div class="d72-big-icon">
+          🧻
+        </div>
+
+        <h3>
+          Translucent
+        </h3>
+
+        <p>
+          Some visible light passes through,
+          but the light scatters.
+        </p>
+
+        <strong>
+          Objects look blurry.
+        </strong>
+
+      </article>
+
+
+      <article class="opaque">
+
+        <div class="d72-big-icon">
+          📦
+        </div>
+
+        <h3>
+          Opaque
+        </h3>
+
+        <p>
+          Visible light is not transmitted
+          through the material.
+        </p>
+
+        <strong>
+          You cannot see through it.
+        </strong>
+
+      </article>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        Light Detective Rule:
+      </strong>
+
+      <br><br>
+
+      TRANSPARENT =
+      <strong>passes through clearly</strong>
+
+      <br>
+
+      TRANSLUCENT =
+      <strong>some passes through + scatters</strong>
+
+      <br>
+
+      OPAQUE =
+      <strong>does not pass through</strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXAMPLE GALLERY -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔍 Real-World Material Examples
+    </h2>
+
+
+    <div class="d72-example-columns">
+
+      <div>
+
+        <h3>
+          🪟 Transparent
+        </h3>
+
+        <div class="d72-example">🪟 Clear window glass</div>
+        <div class="d72-example">🥛 Clear drinking glass</div>
+        <div class="d72-example">💧 Clean water</div>
+        <div class="d72-example">📏 Clear acrylic ruler</div>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          🧻 Translucent
+        </h3>
+
+        <div class="d72-example">🧻 Wax paper</div>
+        <div class="d72-example">🚿 Frosted shower glass</div>
+        <div class="d72-example">📄 Tracing paper</div>
+        <div class="d72-example">🥛 Frosted plastic milk jug</div>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          📦 Opaque
+        </h3>
+
+        <div class="d72-example">📦 Cardboard</div>
+        <div class="d72-example">📕 Book</div>
+        <div class="d72-example">🪵 Wood block</div>
+        <div class="d72-example">🥫 Aluminum foil</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook — Light Material Chart
+    </h2>
+
+
+    <div class="d59-box">
+
+      Create this chart:
+
+      <br><br>
+
+      <strong>
+        Transparent
+      </strong>
+      — most light passes through clearly
+
+      <br><br>
+
+      <strong>
+        Translucent
+      </strong>
+      — some light passes through but scatters
+
+      <br><br>
+
+      <strong>
+        Opaque
+      </strong>
+      — visible light does not pass through
+
+      <br><br>
+
+      Draw one example for each category.
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- TEACHER GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice — Quick Sort
+    </h2>
+
+    <div class="d59-box">
+
+      Call out these objects:
+
+      <ul>
+
+        <li>clear glass window,</li>
+        <li>frosted glass,</li>
+        <li>wooden desk,</li>
+        <li>clear plastic bottle,</li>
+        <li>tracing paper,</li>
+        <li>textbook.</li>
+
+      </ul>
+
+      Students respond:
+
+      <strong>
+        Transparent, Translucent, or Opaque?
+      </strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB LAUNCH -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🔬 Interactive Lab
+    </div>
+
+    <h2>
+      Light Material Sort Lab:
+      Classify 12 Objects
+    </h2>
+
+
+    <p>
+      Sort twelve familiar objects
+      into the correct light category.
+    </p>
+
+
+    <div class="d59-required">
+
+      <div>
+        🪟
+        <strong>Transparent</strong>
+      </div>
+
+      <div>
+        🧻
+        <strong>Translucent</strong>
+      </div>
+
+      <div>
+        📦
+        <strong>Opaque</strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      <strong>
+        Your Mission
+      </strong>
+
+      <ol>
+
+        <li>
+          Examine all twelve objects.
+        </li>
+
+        <li>
+          Decide how light would interact with each.
+        </li>
+
+        <li>
+          Sort each object into one of three categories.
+        </li>
+
+        <li>
+          Check your classification.
+        </li>
+
+        <li>
+          Correct any mistakes using the light evidence.
+        </li>
+
+      </ol>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🎯
+      <strong>
+        Evidence Goal:
+      </strong>
+
+      Correctly classify all
+      <strong>12 objects.</strong>
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/light-material-sort?mission=day72"
+    >
+      🔦 Start Light Material Sort Lab
+    </a>
+
+  </section>
+
+
+  <!-- STAAR PRACTICE -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Practice
+    </div>
+
+    <h2>
+      Light Through Materials Evidence
+    </h2>
+
+
+    <div class="d72-question"
+         data-answer="B">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        A student can see an object clearly
+        through a material.
+        How should the material be classified?
+      </p>
+
+      <button data-choice="A">
+        A. Opaque
+      </button>
+
+      <button data-choice="B">
+        B. Transparent
+      </button>
+
+      <button data-choice="C">
+        C. Translucent
+      </button>
+
+      <button data-choice="D">
+        D. Magnetic
+      </button>
+
+      <div class="d72-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d72-question"
+         data-answer="C">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        Light passes through a material,
+        but an object behind it appears blurry.
+        Which type of material is it?
+      </p>
+
+      <button data-choice="A">
+        A. Transparent
+      </button>
+
+      <button data-choice="B">
+        B. Opaque
+      </button>
+
+      <button data-choice="C">
+        C. Translucent
+      </button>
+
+      <button data-choice="D">
+        D. Reflective only
+      </button>
+
+      <div class="d72-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d72-question"
+         data-answer="A">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        Which material would most likely
+        block visible light from passing through?
+      </p>
+
+      <button data-choice="A">
+        A. Cardboard
+      </button>
+
+      <button data-choice="B">
+        B. Clear glass
+      </button>
+
+      <button data-choice="C">
+        C. Clean water
+      </button>
+
+      <button data-choice="D">
+        D. Clear plastic
+      </button>
+
+      <div class="d72-question-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Written Exit Ticket
+    </h2>
+
+    <p>
+      Explain the difference between
+      transparent, translucent, and opaque materials.
+
+      Describe what happens to light
+      in each type.
+    </p>
+
+    <textarea
+      class="d59-textarea"
+      placeholder="Transparent materials..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Explain Your Thinking: CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        CER Question:
+      </strong>
+
+      How can the behavior of light
+      be used to classify a material?
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="A material can be classified by..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="In the sorting lab..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This shows that..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      📘 McGraw Hill Lesson Connection
+    </div>
+
+    <h2>
+      Light and Materials
+    </h2>
+
+    <div class="d59-box">
+
+      Reinforce:
+
+      <ul>
+
+        <li>transparent materials,</li>
+
+        <li>translucent materials,</li>
+
+        <li>opaque materials,</li>
+
+        <li>light transmission,</li>
+
+        <li>scattering,</li>
+
+        <li>reflection and absorption.</li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d72VocabModal"
+     class="d72-modal">
+
+  <div class="d72-modal-card">
+
+    <button
+      id="d72VocabClose"
+      class="d72-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d72ModalIcon"
+         class="d72-modal-icon"></div>
+
+    <h2 id="d72ModalTerm"></h2>
+
+    <p id="d72ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day72_direct.js') }}?v=72-final"
+></script>
+
+{% endblock %}
