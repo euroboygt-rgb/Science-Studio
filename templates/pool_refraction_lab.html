@@ -1,0 +1,697 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='pool_refraction_lab.css') }}?v=68.1"
+>
+
+<div class="pd-shell">
+
+  <header class="pd-hero">
+
+    <div class="pd-tags">
+      <span>🏊 Interactive Lab</span>
+      <span>Refraction Mission 03</span>
+      <span>TEKS 5.8C</span>
+    </div>
+
+    <div class="pd-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio: Pool Refraction Lab
+        </h1>
+
+        <p>
+          Compare actual depth with apparent depth
+          and discover why underwater objects can look closer.
+        </p>
+
+      </div>
+
+      <a
+        class="pd-back"
+        href="/second-nine-weeks/day/68?view=student"
+      >
+        ← Back to Day 68
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <section class="pd-mission">
+
+    <div>
+
+      <div class="pd-eyebrow">
+        APPARENT DEPTH MISSION
+      </div>
+
+      <h2>
+        Is the object really that close?
+      </h2>
+
+      <p>
+        Change the object's real depth and the observer's position.
+        Then trace the refracted ray to compare where the object
+        really is with where it appears to be.
+      </p>
+
+      <div class="pd-path-title">
+        🔦 Follow the Light
+      </div>
+
+
+      <div class="pd-path">
+
+        <div class="pd-path-step">
+
+          <span class="pd-step-number">
+            1
+          </span>
+
+          <strong>
+            Underwater Object
+          </strong>
+
+          <small>
+            Light leaves the object.
+          </small>
+
+        </div>
+
+
+        <div class="pd-path-arrow">
+          →
+        </div>
+
+
+        <div class="pd-path-step water">
+
+          <span class="pd-step-number">
+            2
+          </span>
+
+          <strong>
+            Water
+          </strong>
+
+          <small>
+            Light travels through water.
+          </small>
+
+        </div>
+
+
+        <div class="pd-path-arrow">
+          →
+        </div>
+
+
+        <div class="pd-path-step boundary">
+
+          <span class="pd-step-number">
+            3
+          </span>
+
+          <strong>
+            Water-Air Boundary
+          </strong>
+
+          <small>
+            The light bends here.
+            This is refraction.
+          </small>
+
+        </div>
+
+
+        <div class="pd-path-arrow">
+          →
+        </div>
+
+
+        <div class="pd-path-step">
+
+          <span class="pd-step-number">
+            4
+          </span>
+
+          <strong>
+            Air
+          </strong>
+
+          <small>
+            The refracted ray travels through air.
+          </small>
+
+        </div>
+
+
+        <div class="pd-path-arrow">
+          →
+        </div>
+
+
+        <div class="pd-path-step observer">
+
+          <span class="pd-step-number">
+            5
+          </span>
+
+          <strong>
+            Observer
+          </strong>
+
+          <small>
+            The eye receives the ray.
+            The object appears shallower.
+          </small>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <aside class="pd-goal">
+
+      <strong>
+        🎯 Mission Goal
+      </strong>
+
+      <p>
+        Explain why the object appears
+        closer to the surface than its actual depth.
+      </p>
+
+      <div>
+        Actual depth =
+        <strong>real depth</strong>
+      </div>
+
+      <div>
+        Apparent depth =
+        <strong>observed depth</strong>
+      </div>
+
+    </aside>
+
+  </section>
+
+
+  <section class="pd-workspace">
+
+    <div class="pd-control-section">
+
+      <div class="pd-control-group">
+
+        <strong>
+          🌊 Actual Depth
+        </strong>
+
+        <button
+          class="pd-depth"
+          data-depth="150"
+          type="button"
+        >
+          Shallow
+        </button>
+
+        <button
+          class="pd-depth active"
+          data-depth="225"
+          type="button"
+        >
+          Medium
+        </button>
+
+        <button
+          class="pd-depth"
+          data-depth="300"
+          type="button"
+        >
+          Deep
+        </button>
+
+      </div>
+
+
+      <div class="pd-control-group">
+
+        <strong>
+          👁 Observer Position
+        </strong>
+
+        <button
+          class="pd-view"
+          data-view="near"
+          type="button"
+        >
+          Near
+        </button>
+
+        <button
+          class="pd-view active"
+          data-view="middle"
+          type="button"
+        >
+          Middle
+        </button>
+
+        <button
+          class="pd-view"
+          data-view="far"
+          type="button"
+        >
+          Far
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="pd-toggles">
+
+      <button
+        id="pdActual"
+        type="button"
+      >
+        📏 Show Actual Depth
+      </button>
+
+      <button
+        id="pdApparent"
+        type="button"
+        class="active"
+      >
+        👁 Hide Apparent Depth
+      </button>
+
+      <button
+        id="pdRays"
+        type="button"
+      >
+        🔦 Show Light Rays
+      </button>
+
+    </div>
+
+
+    <div class="pd-board">
+
+      <svg
+        id="pdSvg"
+        class="pd-svg"
+        viewBox="0 0 1000 620"
+        aria-label="Pool apparent depth refraction simulation"
+      >
+
+        <rect
+          width="1000"
+          height="620"
+          fill="#eefaff"
+        />
+
+        <!-- water -->
+
+        <rect
+          x="0"
+          y="190"
+          width="1000"
+          height="430"
+          fill="#63c4f2"
+          opacity=".74"
+        />
+
+        <line
+          x1="0"
+          y1="190"
+          x2="1000"
+          y2="190"
+          stroke="#177ebc"
+          stroke-width="7"
+        />
+
+        <text
+          x="45"
+          y="80"
+          font-size="28"
+          font-weight="900"
+          fill="#20346f"
+        >
+          AIR
+        </text>
+
+        <text
+          x="45"
+          y="250"
+          font-size="28"
+          font-weight="900"
+          fill="#104b78"
+        >
+          WATER
+        </text>
+
+        <text
+          x="500"
+          y="176"
+          text-anchor="middle"
+          font-size="18"
+          font-weight="900"
+          fill="#104b78"
+        >
+          WATER-AIR BOUNDARY
+        </text>
+
+
+        <!-- observer -->
+
+        <g id="pdEye">
+
+          <ellipse
+            cx="815"
+            cy="90"
+            rx="72"
+            ry="42"
+            fill="#ffffff"
+            stroke="#20346f"
+            stroke-width="6"
+          />
+
+          <circle
+            cx="815"
+            cy="90"
+            r="20"
+            fill="#2689d8"
+          />
+
+          <circle
+            cx="815"
+            cy="90"
+            r="8"
+            fill="#111"
+          />
+
+          <text
+            x="815"
+            y="150"
+            text-anchor="middle"
+            font-size="18"
+            font-weight="900"
+            fill="#20346f"
+          >
+            OBSERVER
+          </text>
+
+        </g>
+
+
+        <!-- actual object -->
+
+        <g
+          id="pdActualGroup"
+          opacity="0"
+        >
+
+          <ellipse
+            id="pdActualObject"
+            cx="410"
+            cy="415"
+            rx="48"
+            ry="18"
+            fill="#f0a928"
+            stroke="#7a4d00"
+            stroke-width="5"
+          />
+
+          <text
+            id="pdActualLabel"
+            x="410"
+            y="455"
+            text-anchor="middle"
+            font-size="17"
+            font-weight="900"
+            fill="#20346f"
+          >
+            ACTUAL POSITION
+          </text>
+
+          <line
+            id="pdActualDepthLine"
+            x1="270"
+            y1="190"
+            x2="270"
+            y2="415"
+            stroke="#20346f"
+            stroke-width="5"
+          />
+
+          <text
+            id="pdActualDepthText"
+            x="245"
+            y="305"
+            text-anchor="middle"
+            font-size="17"
+            font-weight="900"
+            fill="#20346f"
+            transform="rotate(-90 245 305)"
+          >
+            ACTUAL DEPTH
+          </text>
+
+        </g>
+
+
+        <!-- apparent object -->
+
+        <g id="pdApparentGroup">
+
+          <ellipse
+            id="pdApparentObject"
+            cx="470"
+            cy="360"
+            rx="48"
+            ry="18"
+            fill="#fff3a0"
+            stroke="#7131cc"
+            stroke-width="5"
+            stroke-dasharray="10 7"
+          />
+
+          <text
+            id="pdApparentLabel"
+            x="470"
+            y="330"
+            text-anchor="middle"
+            font-size="17"
+            font-weight="900"
+            fill="#7131cc"
+          >
+            APPARENT POSITION
+          </text>
+
+          <line
+            id="pdApparentDepthLine"
+            x1="330"
+            y1="190"
+            x2="330"
+            y2="360"
+            stroke="#7131cc"
+            stroke-width="5"
+            stroke-dasharray="10 7"
+          />
+
+          <text
+            id="pdApparentDepthText"
+            x="350"
+            y="275"
+            text-anchor="middle"
+            font-size="17"
+            font-weight="900"
+            fill="#7131cc"
+            transform="rotate(-90 350 275)"
+          >
+            APPARENT DEPTH
+          </text>
+
+        </g>
+
+
+        <!-- ray path -->
+
+        <g
+          id="pdRayGroup"
+          opacity="0"
+        >
+
+          <line
+            id="pdWaterGlow"
+            x1="410"
+            y1="415"
+            x2="615"
+            y2="190"
+            stroke="#ffe45d"
+            stroke-width="22"
+            opacity=".25"
+            stroke-linecap="round"
+          />
+
+          <line
+            id="pdWaterRay"
+            x1="410"
+            y1="415"
+            x2="615"
+            y2="190"
+            stroke="#fff2a3"
+            stroke-width="7"
+            stroke-linecap="round"
+          />
+
+
+          <line
+            id="pdAirGlow"
+            x1="615"
+            y1="190"
+            x2="815"
+            y2="90"
+            stroke="#ffe45d"
+            stroke-width="22"
+            opacity=".25"
+            stroke-linecap="round"
+          />
+
+          <line
+            id="pdAirRay"
+            x1="615"
+            y1="190"
+            x2="815"
+            y2="90"
+            stroke="#fff2a3"
+            stroke-width="7"
+            stroke-linecap="round"
+          />
+
+          <circle
+            id="pdBoundaryPoint"
+            cx="615"
+            cy="190"
+            r="10"
+            fill="#ffe45d"
+            stroke="#ffffff"
+            stroke-width="3"
+          />
+
+          <line
+            id="pdBackProjection"
+            x1="615"
+            y1="190"
+            x2="470"
+            y2="360"
+            stroke="#7131cc"
+            stroke-width="4"
+            stroke-dasharray="12 10"
+            opacity=".75"
+          />
+
+        </g>
+
+      </svg>
+
+    </div>
+
+
+    <button
+      id="pdTrace"
+      class="pd-test"
+      type="button"
+    >
+      🏊 TRACE THE REFRACTION
+    </button>
+
+
+    <div
+      id="pdResult"
+      class="pd-result"
+    ></div>
+
+  </section>
+
+
+  <section class="pd-evidence">
+
+    <h2>
+      📓 Pool Refraction Evidence Notebook
+    </h2>
+
+    <div class="pd-grid">
+
+      <article>
+
+        <strong>
+          🌊 Actual Depth
+        </strong>
+
+        <p>
+          Where is the underwater object really located?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          👁 Apparent Depth
+        </strong>
+
+        <p>
+          Where does the object appear to be?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🔦 Ray Path
+        </strong>
+
+        <p>
+          Where does the light change direction?
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="pd-question">
+
+      <strong>
+        🧠 Evidence Question:
+      </strong>
+
+      Why might a swimmer think the bottom
+      of a clear pool is closer than it really is?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='pool_refraction_lab.js') }}?v=68.1"
+></script>
+
+{% endblock %}

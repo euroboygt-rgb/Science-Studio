@@ -681,3 +681,20 @@ POWER_FRAMES[67] = {
 }
 
 # Science Studio Day 67 Power Frame End
+
+
+# Science Studio Day 68 Power Frame Start
+
+POWER_FRAMES[68] = {
+
+    "i_can":
+        "I can explain why an underwater object may appear closer to the surface than it really is.",
+
+    "by":
+        "by comparing actual depth, apparent depth, and refracted light rays in water.",
+
+    "i_know":
+        "I know I have learned this when I can use refraction to explain why a pool or lake can appear shallower than its actual depth."
+}
+
+# Science Studio Day 68 Power Frame End

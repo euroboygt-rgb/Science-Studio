@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1100 650">
+
+  <rect width="1100"
+        height="650"
+        rx="24"
+        fill="#f6fbff"/>
+
+  <text x="550"
+        y="48"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#20346f">
+    PHENOMENON MISSION: HOW DEEP IS THE POOL?
+  </text>
+
+  <text x="550"
+        y="82"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="700"
+        fill="#20346f">
+    The pool bottom appears closer than its actual position.
+  </text>
+
+  <rect x="70"
+        y="120"
+        width="960"
+        height="420"
+        rx="22"
+        fill="#eefaff"
+        stroke="#263747"
+        stroke-width="5"/>
+
+  <!-- water -->
+
+  <rect x="70"
+        y="245"
+        width="960"
+        height="295"
+        fill="#6fc8f3"
+        opacity=".72"/>
+
+  <line x1="70"
+        y1="245"
+        x2="1030"
+        y2="245"
+        stroke="#167eba"
+        stroke-width="7"/>
+
+  <text x="110"
+        y="205"
+        font-size="25"
+        font-weight="900"
+        fill="#20346f">
+    AIR
+  </text>
+
+  <text x="110"
+        y="300"
+        font-size="25"
+        font-weight="900"
+        fill="#104b78">
+    WATER
+  </text>
+
+  <!-- observer -->
+
+  <ellipse cx="875"
+           cy="170"
+           rx="70"
+           ry="40"
+           fill="#ffffff"
+           stroke="#20346f"
+           stroke-width="6"/>
+
+  <circle cx="875"
+          cy="170"
+          r="18"
+          fill="#2689d8"/>
+
+  <circle cx="875"
+          cy="170"
+          r="7"
+          fill="#111"/>
+
+  <text x="875"
+        y="225"
+        text-anchor="middle"
+        font-size="17"
+        font-weight="900"
+        fill="#20346f">
+    OBSERVER
+  </text>
+
+  <!-- actual coin -->
+
+  <ellipse cx="420"
+           cy="490"
+           rx="45"
+           ry="17"
+           fill="#f5bd32"
+           stroke="#7a4d00"
+           stroke-width="5"/>
+
+  <text x="420"
+        y="525"
+        text-anchor="middle"
+        font-size="16"
+        font-weight="900"
+        fill="#20346f">
+    ACTUAL POSITION
+  </text>
+
+  <!-- apparent coin -->
+
+  <ellipse cx="475"
+           cy="395"
+           rx="45"
+           ry="17"
+           fill="#fff09a"
+           stroke="#7131cc"
+           stroke-width="5"
+           stroke-dasharray="9 6"/>
+
+  <text x="475"
+        y="365"
+        text-anchor="middle"
+        font-size="16"
+        font-weight="900"
+        fill="#7131cc">
+    APPARENT POSITION
+  </text>
+
+  <!-- ray -->
+
+  <polyline points="420,490 635,245 875,170"
+            fill="none"
+            stroke="#fff2a3"
+            stroke-width="9"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+
+  <circle cx="635"
+          cy="245"
+          r="10"
+          fill="#ffe45d"
+          stroke="#fff"
+          stroke-width="3"/>
+
+  <!-- depth arrows -->
+
+  <line x1="270"
+        y1="245"
+        x2="270"
+        y2="490"
+        stroke="#20346f"
+        stroke-width="5"/>
+
+  <text x="250"
+        y="375"
+        text-anchor="middle"
+        transform="rotate(-90 250 375)"
+        font-size="18"
+        font-weight="900"
+        fill="#20346f">
+    ACTUAL DEPTH
+  </text>
+
+  <line x1="330"
+        y1="245"
+        x2="330"
+        y2="395"
+        stroke="#7131cc"
+        stroke-width="5"
+        stroke-dasharray="10 7"/>
+
+  <text x="350"
+        y="330"
+        text-anchor="middle"
+        transform="rotate(-90 350 330)"
+        font-size="18"
+        font-weight="900"
+        fill="#7131cc">
+    APPARENT DEPTH
+  </text>
+
+  <rect x="150"
+        y="560"
+        width="800"
+        height="62"
+        rx="14"
+        fill="#fff4a8"
+        stroke="#24336b"
+        stroke-width="3"/>
+
+  <text x="550"
+        y="585"
+        text-anchor="middle"
+        font-size="18"
+        font-weight="900"
+        fill="#24336b">
+    FOCUS QUESTION
+  </text>
+
+  <text x="550"
+        y="610"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900"
+        fill="#24336b">
+    Why does the underwater object appear closer to the surface?
+  </text>
+
+</svg>

@@ -3412,3 +3412,187 @@ SECOND_NINE_WEEKS_LESSONS[67] = {
 }
 
 # Science Studio Day 67 End
+
+
+# Science Studio Day 68 Start
+
+SECOND_NINE_WEEKS_LESSONS[68] = {
+
+    "day": 68,
+
+    "title":
+        "Pool Mission: Why Does the Bottom Look Closer?",
+
+    "unit":
+        "Light Energy: Reflection, Refraction, and Absorption",
+
+    "teks":
+        "5.8C, 5.1F, 5.2D",
+
+    "focus":
+        "Students investigate how refraction at the water-air boundary can make "
+        "an underwater object or pool bottom appear closer to the surface than it really is.",
+
+    "learning_target":
+        "We will investigate how refraction changes the apparent depth of objects underwater.",
+
+    "success_criteria":
+        "I can compare actual depth with apparent depth and explain why an underwater object may look closer to the surface.",
+
+    "essential_question":
+        "Why can a pool, lake bottom, or underwater object appear shallower than it really is?",
+
+    "bell_ringer": [
+        "A swimmer looks down into a clear swimming pool.",
+        "The bottom appears closer than the measured depth of the pool.",
+        "What behavior of light could explain the difference?"
+    ],
+
+    "mini_lesson": [
+        "Water and air are different media.",
+        "Light from an underwater object travels through water toward the surface.",
+        "The ray changes direction when it crosses the water-air boundary.",
+        "This change in direction is refraction.",
+        "The observer's eyes receive the refracted ray in air.",
+        "The underwater object can appear closer to the surface than its actual position.",
+        "Actual depth is the real distance below the water surface.",
+        "Apparent depth is how deep the object seems to be to an observer looking through the water."
+    ],
+
+    "science_notebook": [
+        "Draw a side view of a swimming pool.",
+        "Label AIR and WATER.",
+        "Draw the water-air boundary.",
+        "Draw an object on the actual pool bottom.",
+        "Draw its apparent position closer to the surface.",
+        "Trace a light ray from the underwater object to the observer.",
+        "Label actual depth and apparent depth."
+    ],
+
+    "guided_practice": [
+        "Identify the underwater object.",
+        "Identify its actual depth.",
+        "Trace the ray through water.",
+        "Identify the water-air boundary.",
+        "Trace the refracted ray toward the observer.",
+        "Compare actual depth and apparent depth.",
+        "Explain why the object appears shallower."
+    ],
+
+    "lab_title":
+        "Pool Refraction Lab: Actual Depth vs. Apparent Depth",
+
+    "lab": [
+        "Open the Pool Refraction Lab.",
+        "Choose a shallow, medium, or deep underwater object.",
+        "Change the observer position.",
+        "Observe the apparent position first.",
+        "Reveal the actual underwater position.",
+        "Reveal the refracted light rays.",
+        "Compare actual depth and apparent depth.",
+        "Use evidence to explain why the object appears closer to the surface."
+    ],
+
+    "lab_notebook": [
+        "Shallow trial — Compare actual and apparent depth.",
+        "Medium trial — Compare actual and apparent depth.",
+        "Deep trial — Compare actual and apparent depth.",
+        "How did changing observer position affect the ray path?",
+        "At what boundary did the ray change direction?",
+        "Why can a pool look shallower than it really is?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "A student looks into a clear swimming pool and the bottom appears closer "
+                "to the surface than it really is. Which behavior of light best explains this observation?",
+
+            "choices": {
+                "A": "Refraction",
+                "B": "Magnetism",
+                "C": "Electrical conduction",
+                "D": "Sound vibration"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Light refracts as it moves from water into air, which can change the apparent depth."
+        },
+
+        {
+            "question":
+                "Which statement correctly compares actual depth and apparent depth in a pool?",
+
+            "choices": {
+                "A": "Actual depth is the real depth, while apparent depth is how deep the object seems to be.",
+                "B": "Actual depth is always smaller than apparent depth.",
+                "C": "Apparent depth is measured without observing light.",
+                "D": "Actual depth changes whenever an observer moves."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Actual depth describes the real position, while apparent depth describes the observed position."
+        },
+
+        {
+            "question":
+                "Which observation would provide evidence that refraction is occurring when a student looks into a lake?",
+
+            "choices": {
+                "A": "An underwater object appears shifted from its actual position.",
+                "B": "The water becomes magnetic.",
+                "C": "The object begins producing sound.",
+                "D": "The air becomes opaque."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "An apparent shift in an underwater object's position is evidence that light changed direction at the boundary."
+        }
+    ],
+
+    "exit_ticket":
+        "Explain why the bottom of a pool can appear closer to the surface than it really is. "
+        "Use the words refraction, actual depth, apparent depth, water, and air.",
+
+    "cer": {
+
+        "claim":
+            "Refraction can make an underwater object appear closer to the surface than its actual position.",
+
+        "evidence":
+            "Use actual-depth and apparent-depth evidence from the Pool Refraction Lab.",
+
+        "reasoning":
+            "Explain how light changes direction at the water-air boundary before reaching the observer."
+    },
+
+    "vocabulary": [
+        "refraction",
+        "medium",
+        "water",
+        "air",
+        "boundary",
+        "actual depth",
+        "apparent depth",
+        "observer",
+        "underwater object",
+        "refracted ray"
+    ],
+
+    "teacher_note":
+        "Day 68 extends yesterday's broken-pencil model to apparent depth in pools and lakes. "
+        "Keep the emphasis conceptual: the bottom or object does not physically move. "
+        "The apparent shift results from refraction at the water-air boundary.",
+
+    "lab_url":
+        "/labs/pool-refraction?mission=day68"
+}
+
+# Science Studio Day 68 End
