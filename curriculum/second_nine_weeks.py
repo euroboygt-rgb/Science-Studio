@@ -2852,3 +2852,189 @@ SECOND_NINE_WEEKS_LESSONS[64] = {
 }
 
 # Science Studio Day 64 End
+
+
+# Science Studio Day 65 Start
+
+SECOND_NINE_WEEKS_LESSONS[65] = {
+
+    "day": 65,
+
+    "title":
+        "Mirror Maze Engineering Challenge: Redirect the Light",
+
+    "unit":
+        "Light Energy: Reflection, Refraction, and Absorption",
+
+    "teks":
+        "5.8C, 5.1F, 5.2D",
+
+    "focus":
+        "Students apply their understanding of straight-line light travel "
+        "and reflection to redirect a light beam around obstacles toward a target.",
+
+    "learning_target":
+        "We will use reflection to redirect light around obstacles and toward a target.",
+
+    "success_criteria":
+        "I can position and rotate mirrors so a light ray reflects along a planned path and reaches a target.",
+
+    "essential_question":
+        "How can mirrors be arranged to redirect light around an obstacle?",
+
+    "bell_ringer": [
+        "A flashlight points toward an opaque wall, but the target is around the wall.",
+        "The flashlight cannot be moved.",
+        "How could mirrors help the light reach the target?"
+    ],
+
+    "mini_lesson": [
+        "Light travels in a straight line until it interacts with matter.",
+        "A mirror reflects light and changes the direction of the ray.",
+        "The incoming ray travels toward the mirror.",
+        "The reflected ray travels away from the mirror.",
+        "Changing the mirror orientation changes the reflected path.",
+        "Multiple mirrors can redirect a light ray several times.",
+        "Opaque blockers stop a light ray if the ray strikes them.",
+        "Engineers can plan a ray path, test it, collect evidence, and revise the design."
+    ],
+
+    "science_notebook": [
+        "Sketch the flashlight and target.",
+        "Add the opaque blocker.",
+        "Draw the straight path the light would normally travel.",
+        "Place one or more mirrors in your drawing.",
+        "Use arrows to predict the reflected path.",
+        "Circle each reflection point.",
+        "After testing, revise your diagram to match your evidence."
+    ],
+
+    "guided_practice": [
+        "Trace the incoming ray from the flashlight.",
+        "Identify where a mirror should intercept the ray.",
+        "Predict the reflected direction.",
+        "Rotate the mirror if the ray misses the next mirror or target.",
+        "Test again.",
+        "Use the ray path as evidence for each revision."
+    ],
+
+    "lab_title":
+        "Mirror Maze Lab: Can You Hit the Target?",
+
+    "lab": [
+        "Open the Mirror Maze Lab.",
+        "Complete Mission 1 using one mirror.",
+        "Complete Mission 2 by redirecting light around an opaque blocker.",
+        "Complete Mission 3 using multiple mirrors.",
+        "Use Test Light after each change.",
+        "Rotate and reposition mirrors based on evidence.",
+        "Complete the challenge when the reflected light reaches the target.",
+        "Explore Free Build after completing the missions."
+    ],
+
+    "lab_notebook": [
+        "Mission 1 — Number of mirrors used: ___",
+        "Mission 2 — Number of mirrors used: ___",
+        "Mission 3 — Number of mirrors used: ___",
+        "Which mirror orientation caused the biggest change in the ray path?",
+        "What happened when the ray hit an opaque blocker?",
+        "How did your design change after testing?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "A flashlight beam cannot travel directly to a target because "
+                "an opaque object blocks the path. Which tool could redirect "
+                "the light around the object?",
+
+            "choices": {
+                "A": "A mirror",
+                "B": "A battery",
+                "C": "A magnet",
+                "D": "A speaker"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "A mirror can reflect light and redirect the light ray along a new path."
+        },
+
+        {
+            "question":
+                "A student rotates a mirror in a light maze. The reflected beam "
+                "moves away from the target. What should the student do next?",
+
+            "choices": {
+                "A": "Use the new ray path as evidence and adjust the mirror again.",
+                "B": "Conclude that light no longer travels in straight lines.",
+                "C": "Replace the mirror with an opaque blocker.",
+                "D": "Remove the light source."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Engineers use test evidence to revise the mirror position or orientation."
+        },
+
+        {
+            "question":
+                "Which observation is evidence that reflection occurred in a mirror maze?",
+
+            "choices": {
+                "A": "The light ray changed direction after striking a mirror.",
+                "B": "The flashlight produced sound.",
+                "C": "The blocker became transparent.",
+                "D": "The target became a light source."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Reflection is observed when a light ray strikes a reflective surface and changes direction."
+        }
+    ],
+
+    "exit_ticket":
+        "Explain how mirrors can be used to move a light beam around an opaque "
+        "obstacle. Use the words reflection, incoming ray, reflected ray, and target.",
+
+    "cer": {
+
+        "claim":
+            "Mirrors can redirect light around obstacles and toward a target.",
+
+        "evidence":
+            "Use evidence from one successful Mirror Maze mission.",
+
+        "reasoning":
+            "Explain how each mirror changed the direction of the light ray through reflection."
+    },
+
+    "vocabulary": [
+        "reflection",
+        "incoming ray",
+        "reflected ray",
+        "mirror",
+        "light source",
+        "light ray",
+        "target",
+        "blocker",
+        "opaque",
+        "orientation",
+        "ray path"
+    ],
+
+    "teacher_note":
+        "Day 65 is the application day before introducing refraction. "
+        "Students should solve the challenge through reflection only. "
+        "Do not introduce bending through transparent media yet.",
+
+    "lab_url":
+        "/labs/mirror-maze?mission=day65"
+}
+
+# Science Studio Day 65 End

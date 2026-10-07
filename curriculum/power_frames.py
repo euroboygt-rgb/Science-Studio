@@ -626,3 +626,21 @@ POWER_FRAMES[64] = {
 }
 
 # Science Studio Day 64 Power Frame End
+
+
+# Science Studio Day 65 Power Frame Start
+
+POWER_FRAMES[65] = {
+
+    "i_can":
+        "I can use mirrors to redirect light around obstacles and toward a target.",
+
+    "by":
+        "by placing, moving, and rotating mirrors in a light maze and testing the reflected ray path.",
+
+    "i_know":
+        "I know I have learned this when I can create a successful reflected "
+        "light path and explain how each mirror changed the direction of the ray."
+}
+
+# Science Studio Day 65 Power Frame End

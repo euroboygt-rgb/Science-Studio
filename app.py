@@ -1617,6 +1617,17 @@ def reflection_lab():
 # Science Studio Reflection Lab Route End
 
 
+
+
+# Science Studio Mirror Maze Lab Route Start
+
+@app.route("/labs/mirror-maze")
+def mirror_maze_lab():
+    return render_template("mirror_maze_lab.html")
+
+# Science Studio Mirror Maze Lab Route End
+
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))

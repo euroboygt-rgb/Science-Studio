@@ -1,0 +1,340 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='mirror_maze_lab.css') }}?v=65.1"
+>
+
+<div class="mm-shell">
+
+  <header class="mm-hero">
+
+    <div class="mm-tags">
+      <span>🔦 Interactive Lab</span>
+      <span>Mirror Maze</span>
+      <span>TEKS 5.8C</span>
+    </div>
+
+    <div class="mm-hero-row">
+
+      <div>
+        <h1>
+          Science Studio: Light & Mirror Builder
+        </h1>
+
+        <p>
+          Place mirrors, rotate them, test the light ray,
+          and redirect the beam to the target.
+        </p>
+      </div>
+
+      <a
+        class="mm-back"
+        href="/second-nine-weeks/day/65?view=student"
+      >
+        ← Back to Day 65
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <section class="mm-mission-panel">
+
+    <div>
+
+      <div class="mm-eyebrow">
+        REFLECTION ENGINE
+      </div>
+
+      <h2 id="mmMissionTitle">
+        Mission 1: One Bounce
+      </h2>
+
+      <p id="mmMissionText">
+        Use one mirror to redirect the light toward the target.
+      </p>
+
+
+      <div class="mm-mission-buttons">
+
+        <button
+          type="button"
+          class="mm-mission-button active"
+          data-mission="1"
+        >
+          Mission 1
+        </button>
+
+        <button
+          type="button"
+          class="mm-mission-button"
+          data-mission="2"
+        >
+          Mission 2
+        </button>
+
+        <button
+          type="button"
+          class="mm-mission-button"
+          data-mission="3"
+        >
+          Mission 3
+        </button>
+
+        <button
+          type="button"
+          class="mm-mission-button"
+          data-mission="free"
+        >
+          Free Build
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <aside class="mm-goal">
+
+      <strong>
+        🎯 Mission Status
+      </strong>
+
+      <div id="mmStatus">
+        Add a mirror, then test the light.
+      </div>
+
+      <div id="mmBounceCount">
+        Reflections: 0
+      </div>
+
+    </aside>
+
+  </section>
+
+
+  <section class="mm-builder">
+
+    <aside class="mm-tray">
+
+      <h2>
+        Parts Tray
+      </h2>
+
+      <p>
+        Click a part to add it to the board.
+      </p>
+
+
+      <button
+        class="mm-part-button"
+        type="button"
+        data-add="mirror"
+      >
+        🪞 Mirror
+        <small>Reflects light</small>
+      </button>
+
+
+      <button
+        class="mm-part-button mm-free-only"
+        type="button"
+        data-add="light"
+      >
+        🔦 Light Source
+        <small>Produces the ray</small>
+      </button>
+
+
+      <button
+        class="mm-part-button mm-free-only"
+        type="button"
+        data-add="target"
+      >
+        🎯 Target
+        <small>Goal location</small>
+      </button>
+
+
+      <button
+        class="mm-part-button mm-free-only"
+        type="button"
+        data-add="blocker"
+      >
+        ⬛ Blocker
+        <small>Stops light</small>
+      </button>
+
+
+      <div class="mm-tray-note">
+
+        <strong>
+          Reflection Rule
+        </strong>
+
+        Light travels straight until it hits a mirror.
+
+        The mirror redirects the ray.
+
+      </div>
+
+    </aside>
+
+
+    <main class="mm-board-column">
+
+      <div class="mm-toolbar">
+
+        <button
+          id="mmTest"
+          class="mm-test"
+          type="button"
+        >
+          🔦 TEST LIGHT
+        </button>
+
+        <button
+          id="mmRotateLeft"
+          type="button"
+        >
+          ↶ Rotate 15°
+        </button>
+
+        <button
+          id="mmRotateRight"
+          type="button"
+        >
+          ↷ Rotate 15°
+        </button>
+
+        <button
+          id="mmDelete"
+          type="button"
+        >
+          🗑 Delete Selected
+        </button>
+
+        <button
+          id="mmReset"
+          type="button"
+        >
+          Reset Mission
+        </button>
+
+      </div>
+
+
+      <div
+        id="mmBoard"
+        class="mm-board"
+      >
+
+        <svg
+          id="mmRaySvg"
+          class="mm-ray-svg"
+          viewBox="0 0 900 520"
+          preserveAspectRatio="none"
+        ></svg>
+
+
+        <div class="mm-board-empty">
+          Drag mirrors to redirect the light.
+        </div>
+
+      </div>
+
+    </main>
+
+
+    <aside class="mm-inspector">
+
+      <h2>
+        Inspector
+      </h2>
+
+      <div id="mmInspector">
+
+        Select a mirror or part on the board.
+
+      </div>
+
+
+      <div class="mm-how">
+
+        <strong>
+          How to Solve
+        </strong>
+
+        <ol>
+          <li>Predict the path.</li>
+          <li>Place a mirror.</li>
+          <li>Rotate the mirror.</li>
+          <li>Test the beam.</li>
+          <li>Use the evidence to revise.</li>
+        </ol>
+
+      </div>
+
+    </aside>
+
+  </section>
+
+
+  <section class="mm-notebook">
+
+    <h2>
+      📓 Mirror Maze Evidence Notebook
+    </h2>
+
+
+    <div class="mm-notebook-grid">
+
+      <article>
+        <strong>Plan</strong>
+        <p>
+          Sketch where you think the mirrors should go.
+        </p>
+      </article>
+
+      <article>
+        <strong>Test</strong>
+        <p>
+          Where did the light ray actually travel?
+        </p>
+      </article>
+
+      <article>
+        <strong>Revise</strong>
+        <p>
+          What did you move or rotate after testing?
+        </p>
+      </article>
+
+    </div>
+
+
+    <div class="mm-question">
+
+      <strong>
+        🧠 Evidence Question:
+      </strong>
+
+      How did changing a mirror's position or orientation
+      change the reflected ray path?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='mirror_maze_lab.js') }}?v=65.1"
+></script>
+
+{% endblock %}
