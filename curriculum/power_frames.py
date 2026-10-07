@@ -608,3 +608,21 @@ POWER_FRAMES[63] = {
 }
 
 # Science Studio Day 63 Power Frame End
+
+
+# Science Studio Day 64 Power Frame Start
+
+POWER_FRAMES[64] = {
+
+    "i_can":
+        "I can demonstrate and explain how light reflects from a surface.",
+
+    "by":
+        "by tracing an incoming ray and reflected ray and changing the position of a mirror.",
+
+    "i_know":
+        "I know I have learned this when I can explain how a mirror redirects "
+        "light and identify the incoming and reflected rays."
+}
+
+# Science Studio Day 64 Power Frame End

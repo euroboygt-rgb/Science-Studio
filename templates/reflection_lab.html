@@ -1,0 +1,525 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='reflection_lab.css') }}?v=64.2"
+>
+
+<div class="rf-shell">
+
+  <header class="rf-hero">
+
+    <div class="rf-tags">
+      <span>🪞 Interactive Lab</span>
+      <span>Light Mission 02</span>
+      <span>TEKS 5.8C</span>
+    </div>
+
+
+    <div class="rf-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio: Reflection Lab
+        </h1>
+
+        <p>
+          Change the mirror orientation and observe
+          how the reflected light ray changes direction.
+        </p>
+
+      </div>
+
+
+      <a
+        class="rf-back"
+        href="/second-nine-weeks/day/64?view=student"
+      >
+        ← Back to Day 64
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <section class="rf-mission">
+
+    <div>
+
+      <div class="rf-eyebrow">
+        LIGHT ENGINE MISSION
+      </div>
+
+      <h2>
+        Can you redirect the beam?
+      </h2>
+
+      <p>
+        Light travels toward the mirror in a straight line.
+        The mirror reflects the light in a new direction.
+      </p>
+
+
+      <div class="rf-directions">
+
+        <div>
+          <strong>1.</strong>
+          Choose a mirror position.
+        </div>
+
+        <div>
+          <strong>2.</strong>
+          Predict where the reflected ray will travel.
+        </div>
+
+        <div>
+          <strong>3.</strong>
+          Press <b>TEST REFLECTION</b>.
+        </div>
+
+        <div>
+          <strong>4.</strong>
+          Compare the incoming ray and reflected ray.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <aside class="rf-goal">
+
+      <strong>
+        🎯 Mission Goal
+      </strong>
+
+      <p>
+        Explain how reflection changes
+        the direction of light.
+      </p>
+
+      <p>
+        Identify:
+      </p>
+
+      <ul>
+        <li>incoming ray</li>
+        <li>mirror</li>
+        <li>reflected ray</li>
+      </ul>
+
+    </aside>
+
+  </section>
+
+
+  <section class="rf-workspace">
+
+    <div class="rf-controls">
+
+      <button
+        class="rf-choice"
+        type="button"
+        data-angle="-55"
+      >
+        ↖ Mirror Left
+      </button>
+
+      <button
+        class="rf-choice active"
+        type="button"
+        data-angle="-45"
+      >
+        🪞 Mirror Center
+      </button>
+
+      <button
+        class="rf-choice"
+        type="button"
+        data-angle="-35"
+      >
+        ↗ Mirror Right
+      </button>
+
+    </div>
+
+
+    <div class="rf-board">
+
+      <svg
+        class="rf-svg"
+        viewBox="0 0 1000 520"
+        aria-label="Interactive reflection ray diagram"
+      >
+
+        <rect
+          width="1000"
+          height="520"
+          fill="#071120"
+        />
+
+
+        <!-- flashlight -->
+
+        <rect
+          x="55"
+          y="225"
+          width="130"
+          height="72"
+          rx="16"
+          fill="#7131cc"
+          stroke="#ffffff"
+          stroke-width="4"
+        />
+
+        <rect
+          x="160"
+          y="200"
+          width="72"
+          height="122"
+          rx="12"
+          fill="#9c6ddd"
+          stroke="#ffffff"
+          stroke-width="4"
+        />
+
+        <circle
+          cx="233"
+          cy="261"
+          r="39"
+          fill="#fff3a0"
+          stroke="#ffffff"
+          stroke-width="4"
+        />
+
+
+        <text
+          x="110"
+          y="268"
+          fill="#ffffff"
+          text-anchor="middle"
+          font-size="18"
+          font-weight="900"
+        >
+          LIGHT
+        </text>
+
+
+        <!-- incoming ray -->
+
+        <line
+          id="rfIncomingGlow"
+          x1="275"
+          y1="261"
+          x2="500"
+          y2="261"
+          stroke="#ffe45d"
+          stroke-width="28"
+          stroke-linecap="round"
+          opacity=".22"
+        />
+
+        <line
+          id="rfIncoming"
+          x1="275"
+          y1="261"
+          x2="500"
+          y2="261"
+          stroke="#fff6a9"
+          stroke-width="9"
+          stroke-linecap="round"
+        />
+
+
+        <!-- incoming label -->
+
+        <rect
+          x="315"
+          y="300"
+          width="150"
+          height="38"
+          rx="8"
+          fill="#e8f7ff"
+        />
+
+        <text
+          x="390"
+          y="325"
+          text-anchor="middle"
+          font-size="15"
+          font-weight="900"
+          fill="#10224d"
+        >
+          INCOMING RAY
+        </text>
+
+
+        <!-- normal guide -->
+
+        <line
+          id="rfNormal"
+          x1="500"
+          y1="125"
+          x2="500"
+          y2="397"
+          stroke="#9aa8c0"
+          stroke-width="3"
+          stroke-dasharray="10 10"
+          opacity="0"
+        />
+
+
+        <!-- reflected glow -->
+
+        <line
+          id="rfReflectedGlow"
+          x1="500"
+          y1="261"
+          x2="500"
+          y2="261"
+          stroke="#ffe45d"
+          stroke-width="28"
+          stroke-linecap="round"
+          opacity=".22"
+        />
+
+
+        <!-- reflected ray -->
+
+        <line
+          id="rfReflected"
+          x1="500"
+          y1="261"
+          x2="500"
+          y2="261"
+          stroke="#fff6a9"
+          stroke-width="9"
+          stroke-linecap="round"
+        />
+
+
+        <polygon
+          id="rfArrow"
+          points="0,0 0,0 0,0"
+          fill="#fff6a9"
+        />
+
+
+        <!-- TRUE OPAQUE REFLECTING SURFACE -->
+
+        <g
+          id="rfMirror"
+          transform="translate(500,261) rotate(-45)"
+        >
+
+          <!-- opaque backing -->
+
+          <line
+            x1="0"
+            y1="-122"
+            x2="0"
+            y2="122"
+            stroke="#263747"
+            stroke-width="28"
+            stroke-linecap="round"
+          />
+
+
+          <!-- reflective face -->
+
+          <line
+            x1="0"
+            y1="-116"
+            x2="0"
+            y2="116"
+            stroke="#ccecf7"
+            stroke-width="17"
+            stroke-linecap="round"
+          />
+
+
+          <!-- mirror highlight -->
+
+          <line
+            x1="-3"
+            y1="-105"
+            x2="-3"
+            y2="105"
+            stroke="#ffffff"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+
+        </g>
+
+
+        <!-- Exact point where the incoming ray hits the mirror -->
+
+        <circle
+          id="rfContactPoint"
+          cx="500"
+          cy="261"
+          r="8"
+          fill="#ffe45d"
+          stroke="#ffffff"
+          stroke-width="3"
+        />
+
+
+<rect
+          id="rfLabelBox"
+          x="660"
+          y="125"
+          width="160"
+          height="38"
+          rx="8"
+          fill="#e7ddff"
+          opacity="0"
+        />
+
+        <text
+          id="rfLabel"
+          x="740"
+          y="150"
+          text-anchor="middle"
+          font-size="15"
+          font-weight="900"
+          fill="#402080"
+          opacity="0"
+        >
+          REFLECTED RAY
+        </text>
+
+
+        <text
+          x="500"
+          y="445"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-size="18"
+          font-weight="900"
+        >
+          MIRROR
+        </text>
+
+      </svg>
+
+    </div>
+
+
+    <button
+      id="rfTest"
+      class="rf-test"
+      type="button"
+    >
+      🪞 TEST REFLECTION
+    </button>
+
+
+    <div
+      id="rfResult"
+      class="rf-result"
+    ></div>
+
+  </section>
+
+
+  <section class="rf-evidence">
+
+    <h2>
+      📓 Reflection Evidence Notebook
+    </h2>
+
+
+    <div class="rf-grid">
+
+      <article>
+
+        <strong>
+          Trial 1
+        </strong>
+
+        <h3>
+          Mirror Left
+        </h3>
+
+        <p>
+          Where did the reflected ray travel?
+        </p>
+
+        <p>
+          ________________________
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          Trial 2
+        </strong>
+
+        <h3>
+          Mirror Center
+        </h3>
+
+        <p>
+          Where did the reflected ray travel?
+        </p>
+
+        <p>
+          ________________________
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          Trial 3
+        </strong>
+
+        <h3>
+          Mirror Right
+        </h3>
+
+        <p>
+          Where did the reflected ray travel?
+        </p>
+
+        <p>
+          ________________________
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="rf-question">
+
+      <strong>
+        🧠 Evidence Question:
+      </strong>
+
+      What happened to the reflected ray
+      when the mirror changed direction?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='reflection_lab.js') }}?v=64.4"
+></script>
+
+{% endblock %}

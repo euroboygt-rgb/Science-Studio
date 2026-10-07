@@ -1606,6 +1606,17 @@ def light_path_lab():
 # Science Studio Light Path Lab Route End
 
 
+
+
+# Science Studio Reflection Lab Route Start
+
+@app.route("/labs/reflection")
+def reflection_lab():
+    return render_template("reflection_lab.html")
+
+# Science Studio Reflection Lab Route End
+
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))

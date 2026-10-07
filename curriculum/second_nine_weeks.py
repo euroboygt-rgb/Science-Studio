@@ -2667,3 +2667,188 @@ SECOND_NINE_WEEKS_LESSONS[63] = {
 }
 
 # Science Studio Day 63 End
+
+
+# Science Studio Day 64 Start
+
+SECOND_NINE_WEEKS_LESSONS[64] = {
+
+    "day": 64,
+
+    "title":
+        "Reflection Mission: How Light Bounces",
+
+    "unit":
+        "Light Energy: Reflection, Refraction, and Absorption",
+
+    "teks":
+        "5.8C, 5.1F, 5.2D",
+
+    "focus":
+        "Students investigate and explain how light changes direction when "
+        "it reflects from a surface.",
+
+    "learning_target":
+        "We will investigate what happens when light strikes a reflective surface.",
+
+    "success_criteria":
+        "I can identify an incoming light ray and a reflected light ray and "
+        "explain that reflection changes the direction of light.",
+
+    "essential_question":
+        "How does a mirror change the path of light?",
+
+    "bell_ringer": [
+        "Imagine shining a flashlight at a mirror.",
+        "Does the light stop at the mirror, pass straight through it, or change direction?",
+        "What evidence could you collect to determine what happens?"
+    ],
+
+    "mini_lesson": [
+        "Light travels in a straight line until it interacts with matter.",
+        "Reflection occurs when light bounces from a surface.",
+        "The light traveling toward a surface can be called the incoming ray.",
+        "The light traveling away from the surface after reflection is the reflected ray.",
+        "A mirror is a surface that reflects a large amount of visible light.",
+        "Changing the direction of the mirror changes the direction of the reflected ray.",
+        "The light does not originate from the mirror; the mirror redirects light from the original source.",
+        "Scientists use ray diagrams to model the path of light before and after reflection."
+    ],
+
+    "science_notebook": [
+        "Draw a flashlight, mirror, and target.",
+        "Draw and label the incoming ray.",
+        "Draw and label the reflected ray.",
+        "Use arrows to show the direction light travels.",
+        "Write: Reflection is __________________________.",
+        "Explain what changes when the mirror is rotated."
+    ],
+
+    "guided_practice": [
+        "Identify the light source.",
+        "Trace the incoming ray to the mirror.",
+        "Identify the point where light strikes the mirror.",
+        "Trace the reflected ray away from the mirror.",
+        "Rotate the mirror in the model.",
+        "Describe how the reflected path changes."
+    ],
+
+    "lab_title":
+        "Reflection Lab: Redirect the Light",
+
+    "lab": [
+        "Open the Reflection Lab.",
+        "Observe the incoming light ray traveling toward the mirror.",
+        "Test the mirror in three different orientations.",
+        "Observe the reflected ray after each test.",
+        "Compare the incoming and reflected paths.",
+        "Record how rotating the mirror changes where the reflected light travels.",
+        "Use evidence to explain reflection."
+    ],
+
+    "lab_notebook": [
+        "Trial 1 — Mirror tilted left: Where did the reflected ray travel?",
+        "Trial 2 — Mirror centered: Where did the reflected ray travel?",
+        "Trial 3 — Mirror tilted right: Where did the reflected ray travel?",
+        "What stayed the same in every trial?",
+        "What changed when the mirror rotated?",
+        "How does the lab demonstrate reflection?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "A student shines a flashlight at a mirror. The light changes "
+                "direction after striking the mirror. Which behavior of light "
+                "is demonstrated?",
+
+            "choices": {
+                "A": "Reflection",
+                "B": "Absorption",
+                "C": "Sound transfer",
+                "D": "Electrical conduction"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Reflection occurs when light bounces from a surface and changes direction."
+        },
+
+        {
+            "question":
+                "Which statement correctly describes the reflected ray in a ray diagram?",
+
+            "choices": {
+                "A": "It travels from the light source toward the mirror.",
+                "B": "It travels away from the mirror after light strikes the surface.",
+                "C": "It remains inside the flashlight.",
+                "D": "It shows where sound travels."
+            },
+
+            "answer": "B",
+
+            "rationale":
+                "The reflected ray models the direction light travels after it bounces from the surface."
+        },
+
+        {
+            "question":
+                "A student rotates a mirror while shining the same flashlight at it. "
+                "The reflected spot moves to a different location. Which conclusion "
+                "is best supported?",
+
+            "choices": {
+                "A": "Changing the mirror changes the direction of reflected light.",
+                "B": "The mirror becomes a new light source.",
+                "C": "Light stops traveling in straight lines before reaching the mirror.",
+                "D": "The flashlight changes into thermal energy."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "The mirror redirects the light, so changing the mirror orientation changes the reflected path."
+        }
+    ],
+
+    "exit_ticket":
+        "A flashlight beam strikes a mirror and then travels toward a wall. "
+        "Explain what happened to the light using the words reflection, "
+        "incoming ray, and reflected ray.",
+
+    "cer": {
+
+        "claim":
+            "A mirror can change the direction of light through reflection.",
+
+        "evidence":
+            "Use evidence from the three mirror positions in the Reflection Lab.",
+
+        "reasoning":
+            "Explain how the incoming ray strikes the mirror and the reflected ray travels away in a new direction."
+    },
+
+    "vocabulary": [
+        "reflection",
+        "reflect",
+        "mirror",
+        "incoming ray",
+        "reflected ray",
+        "light ray",
+        "light source",
+        "surface",
+        "direction"
+    ],
+
+    "teacher_note":
+        "Keep Day 64 focused on reflection as a change in the direction of light. "
+        "Students should distinguish the incoming ray from the reflected ray. "
+        "More detailed comparisons of reflection angles can be developed on the next lesson.",
+
+    "lab_url":
+        "/labs/reflection?mission=day64"
+}
+
+# Science Studio Day 64 End
