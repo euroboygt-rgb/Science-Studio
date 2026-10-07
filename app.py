@@ -1595,6 +1595,17 @@ def circuit_builder():
 # End Science Studio Circuit Builder Engine Route
 
 
+
+
+# Science Studio Light Path Lab Route Start
+
+@app.route("/labs/light-path")
+def light_path_lab():
+    return render_template("light_path_lab.html")
+
+# Science Studio Light Path Lab Route End
+
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))

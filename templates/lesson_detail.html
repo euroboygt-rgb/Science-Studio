@@ -1107,4 +1107,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <!-- Science Studio Day 62 Direct Lesson Loader End -->
 
+
+
+<!-- Science Studio Day 63 Direct Lesson Loader Start -->
+
+{% if day is defined and day|int == 63 %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=59.63"
+>
+
+<script
+  src="{{ url_for('static', filename='day63_page.js') }}?v=63.2">
+</script>
+
+<script
+  src="{{ url_for('static', filename='day63_lab_launch.js') }}?v=63.2">
+</script>
+
+{% endif %}
+
+<!-- Science Studio Day 63 Direct Lesson Loader End -->
+
 {% endblock %}

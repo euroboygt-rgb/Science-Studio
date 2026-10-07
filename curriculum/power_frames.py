@@ -589,3 +589,22 @@ POWER_FRAMES[62] = {
 }
 
 # Science Studio Day 62 Power Frame End
+
+
+# Science Studio Day 63 Power Frame Start
+
+POWER_FRAMES[63] = {
+
+    "i_can":
+        "I can demonstrate and explain that light travels in a straight line.",
+
+    "by":
+        "by testing aligned openings, misaligned openings, and an opaque blocker "
+        "with a model flashlight beam.",
+
+    "i_know":
+        "I know I have learned this when I can use evidence from the Light Path "
+        "Lab to explain why light reaches a target only when a straight path is available."
+}
+
+# Science Studio Day 63 Power Frame End

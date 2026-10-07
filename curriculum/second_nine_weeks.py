@@ -2478,3 +2478,192 @@ SECOND_NINE_WEEKS_LESSONS[62] = {
 }
 
 # Science Studio Day 62 End
+
+
+# Science Studio Day 63 Start
+
+SECOND_NINE_WEEKS_LESSONS[63] = {
+
+    "day": 63,
+
+    "title":
+        "Light Mission 1: Light Travels in a Straight Line",
+
+    "unit":
+        "Light Energy: Reflection, Refraction, and Absorption",
+
+    "teks":
+        "5.8C, 5.1F, 5.2D",
+
+    "focus":
+        "Students demonstrate and explain that light travels in a straight "
+        "line until it interacts with matter.",
+
+    "learning_target":
+        "We will investigate how light travels from a light source.",
+
+    "success_criteria":
+        "I can use evidence to explain that light travels in a straight line "
+        "until something changes or blocks its path.",
+
+    "essential_question":
+        "What evidence shows that light travels in a straight line?",
+
+    "bell_ringer": [
+        "Imagine shining a flashlight through three cards that each have a small hole.",
+        "Where would the holes need to be for the light to reach a target?",
+        "What does this tell us about the path light travels?"
+    ],
+
+    "mini_lesson": [
+        "Light travels outward from a light source.",
+        "A light ray is a model used to show the direction light travels.",
+        "Light travels in straight lines until it interacts with matter.",
+        "A flashlight beam can be modeled with straight arrows called rays.",
+        "When an opaque object blocks the straight path, light does not pass through it.",
+        "The blocked region behind an opaque object can form a shadow.",
+        "Aligned openings allow light traveling along that straight path to continue.",
+        "Misaligned openings do not cause the light to curve around the obstacle."
+    ],
+
+    "science_notebook": [
+        "Draw a flashlight on the left side of your page.",
+        "Draw three cards with holes aligned in front of it.",
+        "Use a ruler to draw a straight light ray through all three holes.",
+        "Draw a second model with one opening moved upward.",
+        "Show where the light is blocked.",
+        "Write one sentence explaining what the models demonstrate."
+    ],
+
+    "guided_practice": [
+        "Identify the light source.",
+        "Predict the path of the light.",
+        "Trace a straight ray from the flashlight.",
+        "Decide whether each opening lies on the ray.",
+        "Predict whether light will reach the target.",
+        "Use the model as evidence to explain your answer."
+    ],
+
+    "lab_title":
+        "Light Path Lab: Can the Beam Reach the Target?",
+
+    "lab": [
+        "Test three openings that are aligned.",
+        "Observe whether the flashlight beam reaches the target.",
+        "Move the middle opening out of alignment.",
+        "Test the beam again.",
+        "Replace the middle card with an opaque blocker.",
+        "Test the beam again.",
+        "Compare all three trials.",
+        "Use evidence to explain how light travels."
+    ],
+
+    "lab_notebook": [
+        "Trial 1 — Openings aligned: Did light reach the target? ___",
+        "Trial 2 — Middle opening moved: Did light reach the target? ___",
+        "Trial 3 — Opaque blocker: Did light reach the target? ___",
+        "Which trial provides the strongest evidence that light travels in a straight line?",
+        "Explain your evidence."
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "A student shines a flashlight toward three cards. Each card "
+                "has one small hole. Light reaches a screen behind the cards "
+                "only when all three holes are lined up. Which statement is "
+                "best supported by the investigation?",
+
+            "choices": {
+                "A": "Light travels in a straight line.",
+                "B": "Light always travels around objects.",
+                "C": "Light moves only through opaque materials.",
+                "D": "Light stops moving after passing through one opening."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Light reaches the screen when the openings are positioned "
+                "along the same straight path."
+        },
+
+        {
+            "question":
+                "A flashlight shines toward an opaque book. A dark region "
+                "forms behind the book. Which explanation best describes why?",
+
+            "choices": {
+                "A": "The book creates new light.",
+                "B": "The book blocks light traveling along its path.",
+                "C": "The light curves around the entire book.",
+                "D": "The book changes light into sound."
+            },
+
+            "answer": "B",
+
+            "rationale":
+                "An opaque object blocks light traveling along its straight path, "
+                "producing a shadow behind the object."
+        },
+
+        {
+            "question":
+                "Which model best represents light traveling from a flashlight "
+                "toward a wall?",
+
+            "choices": {
+                "A": "A straight ray extending from the flashlight toward the wall",
+                "B": "A spiral moving from the flashlight toward the wall",
+                "C": "A ray that randomly changes direction in empty space",
+                "D": "A circle that remains around the flashlight"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "A straight ray is the appropriate model for light traveling "
+                "through the same medium before interacting with another material."
+        }
+    ],
+
+    "exit_ticket":
+        "Three cards each have a hole. Light passes through all three only when "
+        "the holes are lined up. Explain how this provides evidence that light "
+        "travels in a straight line.",
+
+    "cer": {
+
+        "claim":
+            "Light travels in a straight line until it interacts with matter.",
+
+        "evidence":
+            "Use observations from the aligned, misaligned, and blocked Light Path Lab trials.",
+
+        "reasoning":
+            "Explain why the beam reached the target only when an open straight path was available."
+    },
+
+    "vocabulary": [
+        "light",
+        "light source",
+        "light ray",
+        "straight line",
+        "opaque",
+        "shadow",
+        "transparent",
+        "translucent",
+        "absorb"
+    ],
+
+    "teacher_note":
+        "Keep Day 63 focused on the straight-line behavior of light. Students "
+        "will investigate reflection and refraction in later lessons. Avoid "
+        "introducing bending or bouncing as today's explanation.",
+
+    "lab_url":
+        "#day63-light-path-lab"
+}
+
+# Science Studio Day 63 End

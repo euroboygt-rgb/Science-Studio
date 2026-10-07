@@ -1,0 +1,484 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='light_path_lab.css') }}?v=1.0"
+>
+
+<div class="lp-shell">
+
+  <header class="lp-hero">
+
+    <div class="lp-tags">
+      <span>🔦 Interactive Lab</span>
+      <span>Light Mission 01</span>
+      <span>TEKS 5.8C</span>
+    </div>
+
+    <div class="lp-hero-row">
+
+      <div>
+        <h1>
+          Science Studio: Light Path Lab
+        </h1>
+
+        <p>
+          Test how light travels through aligned openings,
+          misaligned openings, and an opaque blocker.
+        </p>
+      </div>
+
+      <a
+        class="lp-back"
+        href="/second-nine-weeks/day/63?view=student"
+      >
+        ← Back to Day 63
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <section class="lp-mission">
+
+    <div class="lp-mission-main">
+
+      <div class="lp-eyebrow">
+        ENGINE TEST MISSION
+      </div>
+
+      <h2>
+        Can the beam reach the target?
+      </h2>
+
+      <p>
+        Choose a setup, predict what will happen,
+        then test the light beam.
+      </p>
+
+
+      <div class="lp-directions">
+
+        <div>
+          <strong>1.</strong>
+          Select a setup.
+        </div>
+
+        <div>
+          <strong>2.</strong>
+          Predict whether the target will be reached.
+        </div>
+
+        <div>
+          <strong>3.</strong>
+          Press <b>TEST LIGHT BEAM</b>.
+        </div>
+
+        <div>
+          <strong>4.</strong>
+          Record your evidence.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <aside class="lp-goal">
+
+      <strong>
+        🎯 Mission Goal
+      </strong>
+
+      <p>
+        Use evidence to explain that light travels
+        in a straight line until it interacts with matter.
+      </p>
+
+    </aside>
+
+  </section>
+
+
+  <section class="lp-workspace">
+
+    <div class="lp-controls">
+
+      <button
+        class="lp-choice active"
+        type="button"
+        data-state="aligned"
+      >
+        ✅ Aligned Openings
+      </button>
+
+      <button
+        class="lp-choice"
+        type="button"
+        data-state="misaligned"
+      >
+        ↗️ Move Middle Opening
+      </button>
+
+      <button
+        class="lp-choice"
+        type="button"
+        data-state="blocked"
+      >
+        ⬛ Solid Blocker
+      </button>
+
+    </div>
+
+
+    <div class="lp-board">
+
+      <svg
+        class="lp-svg"
+        viewBox="0 0 1000 430"
+        aria-label="Interactive flashlight and card investigation"
+      >
+
+        <rect
+          width="1000"
+          height="430"
+          fill="#071120"
+        />
+
+
+        <!-- FLASHLIGHT -->
+
+        <rect
+          x="45"
+          y="175"
+          width="130"
+          height="72"
+          rx="16"
+          fill="#7131cc"
+          stroke="#ffffff"
+          stroke-width="4"
+        />
+
+        <rect
+          x="150"
+          y="150"
+          width="72"
+          height="122"
+          rx="12"
+          fill="#9c6ddd"
+          stroke="#ffffff"
+          stroke-width="4"
+        />
+
+        <circle
+          cx="223"
+          cy="211"
+          r="39"
+          fill="#fff3a0"
+          stroke="#ffffff"
+          stroke-width="4"
+        />
+
+        <text
+          x="105"
+          y="218"
+          fill="#ffffff"
+          text-anchor="middle"
+          font-size="18"
+          font-weight="900"
+        >
+          LIGHT
+        </text>
+
+
+        <!-- LIGHT BEAM -->
+
+        <line
+          id="lpBeamGlow"
+          x1="265"
+          y1="211"
+          x2="265"
+          y2="211"
+          stroke="#ffe45d"
+          stroke-width="28"
+          stroke-linecap="round"
+          opacity=".28"
+        />
+
+        <line
+          id="lpBeam"
+          x1="265"
+          y1="211"
+          x2="265"
+          y2="211"
+          stroke="#fff6a9"
+          stroke-width="9"
+          stroke-linecap="round"
+        />
+
+
+        <!-- CARD 1 -->
+
+        <rect
+          x="355"
+          y="85"
+          width="42"
+          height="255"
+          rx="6"
+          fill="#55c6ef"
+          stroke="#ffffff"
+          stroke-width="3"
+        />
+
+        <circle
+          cx="376"
+          cy="211"
+          r="23"
+          fill="#071120"
+          stroke="#ffffff"
+          stroke-width="3"
+        />
+
+
+        <!-- CARD 2 -->
+
+        <rect
+          x="535"
+          y="85"
+          width="42"
+          height="255"
+          rx="6"
+          fill="#f0831e"
+          stroke="#ffffff"
+          stroke-width="3"
+        />
+
+        <circle
+          id="lpHole2"
+          cx="556"
+          cy="211"
+          r="23"
+          fill="#071120"
+          stroke="#ffffff"
+          stroke-width="3"
+        />
+
+
+        <!-- CARD 3 -->
+
+        <rect
+          x="715"
+          y="85"
+          width="42"
+          height="255"
+          rx="6"
+          fill="#50b96b"
+          stroke="#ffffff"
+          stroke-width="3"
+        />
+
+        <circle
+          cx="736"
+          cy="211"
+          r="23"
+          fill="#071120"
+          stroke="#ffffff"
+          stroke-width="3"
+        />
+
+
+        <!-- TARGET -->
+
+        <circle
+          id="lpTargetOuter"
+          cx="900"
+          cy="211"
+          r="65"
+          fill="#333c50"
+          stroke="#ffffff"
+          stroke-width="4"
+        />
+
+        <circle
+          id="lpTargetMiddle"
+          cx="900"
+          cy="211"
+          r="40"
+          fill="#566074"
+        />
+
+        <circle
+          id="lpTargetCenter"
+          cx="900"
+          cy="211"
+          r="16"
+          fill="#758096"
+        />
+
+
+        <!-- LABELS -->
+
+        <text
+          x="376"
+          y="385"
+          fill="#ffffff"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900"
+        >
+          CARD 1
+        </text>
+
+        <text
+          x="556"
+          y="385"
+          fill="#ffffff"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900"
+        >
+          CARD 2
+        </text>
+
+        <text
+          x="736"
+          y="385"
+          fill="#ffffff"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900"
+        >
+          CARD 3
+        </text>
+
+        <text
+          x="900"
+          y="385"
+          fill="#ffffff"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900"
+        >
+          TARGET
+        </text>
+
+      </svg>
+
+    </div>
+
+
+    <button
+      id="lpTest"
+      class="lp-test"
+      type="button"
+    >
+      🔦 TEST LIGHT BEAM
+    </button>
+
+
+    <div
+      id="lpResult"
+      class="lp-result"
+    ></div>
+
+  </section>
+
+
+  <section class="lp-evidence">
+
+    <h2>
+      📓 Evidence Notebook
+    </h2>
+
+
+    <div class="lp-evidence-grid">
+
+      <article>
+
+        <strong>
+          Trial 1
+        </strong>
+
+        <h3>
+          Aligned Openings
+        </h3>
+
+        <p>
+          Target reached? ______
+        </p>
+
+        <p>
+          Evidence: ____________________
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          Trial 2
+        </strong>
+
+        <h3>
+          Middle Opening Moved
+        </h3>
+
+        <p>
+          Target reached? ______
+        </p>
+
+        <p>
+          Evidence: ____________________
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          Trial 3
+        </strong>
+
+        <h3>
+          Opaque Blocker
+        </h3>
+
+        <p>
+          Target reached? ______
+        </p>
+
+        <p>
+          Evidence: ____________________
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="lp-question">
+
+      <strong>
+        🧠 Mission Question:
+      </strong>
+
+      What pattern across the three trials provides
+      evidence that light travels in a straight line?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='light_path_lab.js') }}?v=1.0"
+></script>
+
+{% endblock %}
