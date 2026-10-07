@@ -662,3 +662,22 @@ POWER_FRAMES[66] = {
 }
 
 # Science Studio Day 66 Power Frame End
+
+
+
+
+# Science Studio Day 67 Power Frame Start
+
+POWER_FRAMES[67] = {
+
+    "i_can":
+        "I can explain why an object partly underwater can appear shifted or bent.",
+
+    "by":
+        "by tracing light from water into air and comparing an object's actual and apparent positions.",
+
+    "i_know":
+        "I know I have learned this when I can use refraction to explain the broken-pencil illusion."
+}
+
+# Science Studio Day 67 Power Frame End

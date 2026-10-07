@@ -3226,3 +3226,189 @@ SECOND_NINE_WEEKS_LESSONS[66] = {
 }
 
 # Science Studio Day 66 End
+
+
+
+
+# Science Studio Day 67 Start
+
+SECOND_NINE_WEEKS_LESSONS[67] = {
+
+    "day": 67,
+
+    "title":
+        "Water Mission: The Broken Pencil Mystery",
+
+    "unit":
+        "Light Energy: Reflection, Refraction, and Absorption",
+
+    "teks":
+        "5.8C, 5.1F, 5.2D",
+
+    "focus":
+        "Students investigate how refraction at the water-air boundary can make "
+        "an underwater part of an object appear shifted from its actual position.",
+
+    "learning_target":
+        "We will investigate how water refracts light and changes the apparent position of an object.",
+
+    "success_criteria":
+        "I can explain why a pencil partly underwater can appear bent even though the pencil itself is straight.",
+
+    "essential_question":
+        "Why can a straight pencil look bent or broken when part of it is underwater?",
+
+    "bell_ringer": [
+        "A straight pencil is placed into a clear cup of water.",
+        "The pencil looks bent where it enters the water.",
+        "Did the pencil actually bend? What else could explain what you see?"
+    ],
+
+    "mini_lesson": [
+        "Water is a transparent medium through which light can travel.",
+        "Air and water are different media.",
+        "Light from the underwater part of the pencil travels through water before reaching the surface.",
+        "At the water-air boundary, the light ray changes direction through refraction.",
+        "Your eyes receive the refracted rays after they enter the air.",
+        "The underwater part of the pencil can appear to be in a different position from its actual position.",
+        "The pencil itself remains straight.",
+        "Changing the viewing angle can change how large the apparent shift looks."
+    ],
+
+    "science_notebook": [
+        "Draw a cup of water with a pencil partly submerged.",
+        "Label AIR above the water.",
+        "Label WATER below the surface.",
+        "Draw the actual position of the underwater pencil.",
+        "Draw the apparent position.",
+        "Draw a light ray traveling from the underwater pencil to the water surface and then toward the observer.",
+        "Circle the water-air boundary where refraction occurs."
+    ],
+
+    "guided_practice": [
+        "Identify the underwater object.",
+        "Identify the water-air boundary.",
+        "Trace a ray from the underwater pencil toward the surface.",
+        "Trace the refracted ray from the surface toward the observer.",
+        "Compare the actual position and apparent position.",
+        "Explain why the pencil can look bent without physically bending."
+    ],
+
+    "lab_title":
+        "Water Refraction Lab: The Broken Pencil",
+
+    "lab": [
+        "Open the Water Refraction Lab.",
+        "Observe the pencil before showing the light-ray model.",
+        "Change the observer's viewing angle.",
+        "Change how deeply the pencil extends into the water.",
+        "Reveal the actual underwater position.",
+        "Reveal the apparent position.",
+        "Trace the refracted light ray from water into air.",
+        "Compare the actual and apparent positions using evidence."
+    ],
+
+    "lab_notebook": [
+        "Viewing Angle 1 — How large was the apparent shift?",
+        "Viewing Angle 2 — How did the broken-pencil appearance change?",
+        "Viewing Angle 3 — How did the apparent position change?",
+        "What happened when the pencil was placed deeper in the water?",
+        "Where did the light ray change direction?",
+        "Why is the pencil not actually broken?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "A student places a straight pencil into a clear cup of water. "
+                "The pencil appears bent at the water surface. Which behavior of light best explains this observation?",
+
+            "choices": {
+                "A": "Refraction",
+                "B": "Magnetism",
+                "C": "Electrical conduction",
+                "D": "Sound vibration"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Light changes direction as it travels from water into air, making the underwater part appear shifted."
+        },
+
+        {
+            "question":
+                "Why can the underwater part of a pencil appear to be in a different location from its actual position?",
+
+            "choices": {
+                "A": "Light refracts as it crosses the water-air boundary.",
+                "B": "The pencil becomes magnetic underwater.",
+                "C": "Water physically breaks the pencil.",
+                "D": "The pencil begins producing light."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Refraction changes the path of light before the ray reaches the observer's eyes."
+        },
+
+        {
+            "question":
+                "A student changes where she stands while looking at a pencil in water. "
+                "The apparent bend changes. Which statement best explains the observation?",
+
+            "choices": {
+                "A": "Changing the viewing angle changes the refracted path reaching the observer.",
+                "B": "The pencil changes shape whenever the student moves.",
+                "C": "The water becomes opaque.",
+                "D": "The pencil stops reflecting light."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Different viewing positions receive refracted rays along different paths."
+        }
+    ],
+
+    "exit_ticket":
+        "Explain why a straight pencil can look bent when part of it is underwater. "
+        "Use the words water, air, boundary, refraction, and apparent position.",
+
+    "cer": {
+
+        "claim":
+            "The pencil appears bent because light refracts at the water-air boundary.",
+
+        "evidence":
+            "Use evidence from the actual-position, apparent-position, and ray-path views in the Water Refraction Lab.",
+
+        "reasoning":
+            "Explain how the refracted light reaching the observer causes the underwater part to appear shifted."
+    },
+
+    "vocabulary": [
+        "refraction",
+        "refract",
+        "medium",
+        "water",
+        "air",
+        "boundary",
+        "actual position",
+        "apparent position",
+        "viewing angle",
+        "refracted ray"
+    ],
+
+    "teacher_note":
+        "Day 67 focuses only on water refraction and apparent position using the "
+        "broken-pencil phenomenon. Students do not need formal calculations. "
+        "Emphasize that the pencil remains physically straight.",
+
+    "lab_url":
+        "/labs/water-refraction?mission=day67"
+}
+
+# Science Studio Day 67 End

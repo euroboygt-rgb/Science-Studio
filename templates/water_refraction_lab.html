@@ -1,0 +1,627 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='water_refraction_lab.css') }}?v=67.1"
+>
+
+
+<div class="wr-shell">
+
+  <header class="wr-hero">
+
+    <div class="wr-tags">
+      <span>💧 Interactive Lab</span>
+      <span>Refraction Mission 02</span>
+      <span>TEKS 5.8C</span>
+    </div>
+
+
+    <div class="wr-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio: Broken Pencil Lab
+        </h1>
+
+        <p>
+          Investigate why a straight pencil can appear
+          bent when part of it is underwater.
+        </p>
+
+      </div>
+
+
+      <a
+        class="wr-back"
+        href="/second-nine-weeks/day/67?view=student"
+      >
+        ← Back to Day 67
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <section class="wr-mission">
+
+    <div>
+
+      <div class="wr-eyebrow">
+        WATER REFRACTION ENGINE
+      </div>
+
+      <h2>
+        Did the pencil bend—or did the light bend?
+      </h2>
+
+      <p>
+        Change the observer's viewing position and pencil depth.
+        Then compare what is really there with what the observer sees.
+      </p>
+
+
+      <div class="wr-flow">
+
+        <div class="water">
+          WATER
+          <small>Medium 1</small>
+        </div>
+
+        <span>→</span>
+
+        <div class="boundary">
+          BOUNDARY
+          <small>Water Surface</small>
+        </div>
+
+        <span>→</span>
+
+        <div>
+          AIR
+          <small>Medium 2</small>
+        </div>
+
+        <span>→</span>
+
+        <div class="eye">
+          👁 OBSERVER
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <aside class="wr-goal">
+
+      <strong>
+        🎯 Mission Goal
+      </strong>
+
+      <p>
+        Explain why the underwater part of the pencil
+        appears shifted even though the pencil stays straight.
+      </p>
+
+      <div>
+        Actual position =
+        <strong>where the pencil really is</strong>
+      </div>
+
+      <div>
+        Apparent position =
+        <strong>where it seems to be</strong>
+      </div>
+
+    </aside>
+
+  </section>
+
+
+  <section class="wr-workspace">
+
+    <div class="wr-control-section">
+
+      <div class="wr-control-group">
+
+        <strong>
+          👁 Viewing Angle
+        </strong>
+
+        <button
+          class="wr-view"
+          data-view="near"
+          type="button"
+        >
+          Near
+        </button>
+
+        <button
+          class="wr-view active"
+          data-view="middle"
+          type="button"
+        >
+          Middle
+        </button>
+
+        <button
+          class="wr-view"
+          data-view="far"
+          type="button"
+        >
+          Far
+        </button>
+
+      </div>
+
+
+      <div class="wr-control-group">
+
+        <strong>
+          ✏️ Pencil Depth
+        </strong>
+
+        <button
+          class="wr-depth"
+          data-depth="120"
+          type="button"
+        >
+          Shallow
+        </button>
+
+        <button
+          class="wr-depth active"
+          data-depth="180"
+          type="button"
+        >
+          Medium
+        </button>
+
+        <button
+          class="wr-depth"
+          data-depth="235"
+          type="button"
+        >
+          Deep
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="wr-toggles">
+
+      <button
+        id="wrActual"
+        type="button"
+      >
+        👻 Show Actual Pencil
+      </button>
+
+      <button
+        id="wrApparent"
+        type="button"
+        class="active"
+      >
+        ✏️ Hide Apparent Pencil
+      </button>
+
+      <button
+        id="wrRays"
+        type="button"
+      >
+        🔦 Show Light Rays
+      </button>
+
+    </div>
+
+
+    <div class="wr-board">
+
+      <svg
+        id="wrSvg"
+        class="wr-svg"
+        viewBox="0 0 1000 590"
+        aria-label="Broken pencil water refraction simulation"
+      >
+
+        <rect
+          width="1000"
+          height="590"
+          fill="#f5fbff"
+        />
+
+
+        <!-- air -->
+
+        <rect
+          x="0"
+          y="0"
+          width="1000"
+          height="250"
+          fill="#eefaff"
+        />
+
+
+        <!-- water -->
+
+        <rect
+          x="0"
+          y="250"
+          width="1000"
+          height="340"
+          fill="#65c4f2"
+          opacity=".72"
+        />
+
+
+        <!-- water surface -->
+
+        <line
+          x1="0"
+          y1="250"
+          x2="1000"
+          y2="250"
+          stroke="#187ebc"
+          stroke-width="7"
+        />
+
+
+        <text
+          x="55"
+          y="70"
+          font-size="28"
+          font-weight="900"
+          fill="#20346f"
+        >
+          AIR
+        </text>
+
+
+        <text
+          x="55"
+          y="315"
+          font-size="28"
+          font-weight="900"
+          fill="#104b78"
+        >
+          WATER
+        </text>
+
+
+        <text
+          x="500"
+          y="238"
+          text-anchor="middle"
+          font-size="18"
+          font-weight="900"
+          fill="#104b78"
+        >
+          WATER-AIR BOUNDARY
+        </text>
+
+
+        <!-- observer -->
+
+        <g id="wrEye">
+
+          <ellipse
+            cx="815"
+            cy="105"
+            rx="72"
+            ry="42"
+            fill="#ffffff"
+            stroke="#20346f"
+            stroke-width="6"
+          />
+
+          <circle
+            cx="815"
+            cy="105"
+            r="20"
+            fill="#2689d8"
+          />
+
+          <circle
+            cx="815"
+            cy="105"
+            r="8"
+            fill="#111111"
+          />
+
+          <text
+            x="815"
+            y="168"
+            text-anchor="middle"
+            font-size="18"
+            font-weight="900"
+            fill="#20346f"
+          >
+            OBSERVER
+          </text>
+
+        </g>
+
+
+        <!-- above-water pencil -->
+
+        <line
+          x1="335"
+          y1="55"
+          x2="430"
+          y2="250"
+          stroke="#e8a62d"
+          stroke-width="34"
+          stroke-linecap="round"
+        />
+
+        <line
+          x1="335"
+          y1="55"
+          x2="430"
+          y2="250"
+          stroke="#ffd96a"
+          stroke-width="24"
+          stroke-linecap="round"
+        />
+
+        <polygon
+          points="323,32 347,44 332,62"
+          fill="#333333"
+        />
+
+
+        <!-- actual pencil -->
+
+        <g
+          id="wrActualGroup"
+          opacity="0"
+        >
+
+          <line
+            id="wrActualPencil"
+            x1="430"
+            y1="250"
+            x2="520"
+            y2="430"
+            stroke="#7131cc"
+            stroke-width="12"
+            stroke-dasharray="18 11"
+            stroke-linecap="round"
+          />
+
+          <text
+            id="wrActualLabel"
+            x="455"
+            y="470"
+            font-size="17"
+            font-weight="900"
+            fill="#5d24ad"
+          >
+            ACTUAL POSITION
+          </text>
+
+        </g>
+
+
+        <!-- apparent pencil -->
+
+        <g id="wrApparentGroup">
+
+          <line
+            id="wrApparentPencil"
+            x1="430"
+            y1="250"
+            x2="585"
+            y2="395"
+            stroke="#e8a62d"
+            stroke-width="34"
+            stroke-linecap="round"
+          />
+
+          <line
+            id="wrApparentHighlight"
+            x1="430"
+            y1="250"
+            x2="585"
+            y2="395"
+            stroke="#ffd96a"
+            stroke-width="24"
+            stroke-linecap="round"
+          />
+
+          <text
+            id="wrApparentLabel"
+            x="590"
+            y="420"
+            font-size="17"
+            font-weight="900"
+            fill="#7a4d00"
+          >
+            APPARENT POSITION
+          </text>
+
+        </g>
+
+
+        <!-- light rays -->
+
+        <g
+          id="wrRayGroup"
+          opacity="0"
+        >
+
+          <line
+            id="wrWaterRayGlow"
+            x1="520"
+            y1="430"
+            x2="620"
+            y2="250"
+            stroke="#ffe45d"
+            stroke-width="22"
+            opacity=".25"
+            stroke-linecap="round"
+          />
+
+          <line
+            id="wrWaterRay"
+            x1="520"
+            y1="430"
+            x2="620"
+            y2="250"
+            stroke="#fff2a3"
+            stroke-width="7"
+            stroke-linecap="round"
+          />
+
+
+          <line
+            id="wrAirRayGlow"
+            x1="620"
+            y1="250"
+            x2="815"
+            y2="105"
+            stroke="#ffe45d"
+            stroke-width="22"
+            opacity=".25"
+            stroke-linecap="round"
+          />
+
+          <line
+            id="wrAirRay"
+            x1="620"
+            y1="250"
+            x2="815"
+            y2="105"
+            stroke="#fff2a3"
+            stroke-width="7"
+            stroke-linecap="round"
+          />
+
+
+          <circle
+            id="wrBoundaryPoint"
+            cx="620"
+            cy="250"
+            r="10"
+            fill="#ffe45d"
+            stroke="#ffffff"
+            stroke-width="3"
+          />
+
+
+          <line
+            id="wrBackProjection"
+            x1="620"
+            y1="250"
+            x2="585"
+            y2="395"
+            stroke="#7131cc"
+            stroke-width="4"
+            stroke-dasharray="12 10"
+            opacity=".75"
+          />
+
+        </g>
+
+      </svg>
+
+    </div>
+
+
+    <button
+      id="wrTrace"
+      class="wr-test"
+      type="button"
+    >
+      💧 TRACE THE REFRACTION
+    </button>
+
+
+    <div
+      id="wrResult"
+      class="wr-result"
+    ></div>
+
+  </section>
+
+
+  <section class="wr-evidence">
+
+    <h2>
+      📓 Broken Pencil Evidence Notebook
+    </h2>
+
+
+    <div class="wr-grid">
+
+      <article>
+
+        <strong>
+          👁 Viewing Angle
+        </strong>
+
+        <p>
+          What happened to the apparent position
+          when you changed where the observer was?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ✏️ Pencil Depth
+        </strong>
+
+        <p>
+          How did placing more of the pencil underwater
+          change the apparent shift?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          💧 Boundary
+        </strong>
+
+        <p>
+          Where did the light ray actually change direction?
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="wr-question">
+
+      <strong>
+        🧠 Evidence Question:
+      </strong>
+
+      If the pencil remains straight,
+      why does the underwater part appear shifted?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='water_refraction_lab.js') }}?v=67.1"
+></script>
+
+{% endblock %}

@@ -52,7 +52,13 @@ from curriculum.printable_resources import resource_folders, printable_resources
 
 app = Flask(__name__)
 
+# Science Studio Water Refraction Lab Route Start
 
+@app.route("/labs/water-refraction")
+def water_refraction_lab():
+    return render_template("water_refraction_lab.html")
+
+# Science Studio Water Refraction Lab Route End
 
 
 # Science Studio Prism Refraction Lab Route Start

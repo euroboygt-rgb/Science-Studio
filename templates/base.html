@@ -8180,5 +8180,25 @@ document.addEventListener("DOMContentLoaded", function () {
   src="{{ url_for('static', filename='circuit_builder_day62_mission.js') }}?v=62.1">
 </script>
 
+
+
+<!-- Science Studio Day 67 Guaranteed Loader Start -->
+
+{% if request.path.endswith('/day/67') %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=59.67"
+>
+
+<script
+  src="{{ url_for('static', filename='day67_page.js') }}?v=67.2"
+  defer>
+</script>
+
+{% endif %}
+
+<!-- Science Studio Day 67 Guaranteed Loader End -->
+
 </body>
 </html>

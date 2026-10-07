@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1100 650">
+
+  <rect width="1100"
+        height="650"
+        rx="24"
+        fill="#f6fbff"/>
+
+  <text x="550"
+        y="48"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#20346f">
+    PHENOMENON MISSION: DID THE PENCIL BREAK?
+  </text>
+
+  <text x="550"
+        y="82"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="700"
+        fill="#20346f">
+    The pencil is straight. Why does it look bent in water?
+  </text>
+
+  <rect x="80"
+        y="120"
+        width="940"
+        height="405"
+        rx="24"
+        fill="#ffffff"
+        stroke="#cad7ef"
+        stroke-width="4"/>
+
+  <!-- cup -->
+
+  <path d="M325 210
+           L375 485
+           Q550 535 725 485
+           L775 210"
+        fill="#effaff"
+        stroke="#263747"
+        stroke-width="7"/>
+
+  <!-- water -->
+
+  <path d="M355 310
+           L745 310
+           L710 475
+           Q550 515 390 475
+           Z"
+        fill="#72c8f4"
+        opacity=".68"/>
+
+  <line x1="355"
+        y1="310"
+        x2="745"
+        y2="310"
+        stroke="#2689d8"
+        stroke-width="7"/>
+
+  <text x="665"
+        y="285"
+        font-size="22"
+        font-weight="900"
+        fill="#20346f">
+    AIR
+  </text>
+
+  <text x="650"
+        y="355"
+        font-size="22"
+        font-weight="900"
+        fill="#164b78">
+    WATER
+  </text>
+
+  <!-- pencil above water -->
+
+  <line x1="410"
+        y1="145"
+        x2="520"
+        y2="310"
+        stroke="#f5c24b"
+        stroke-width="30"
+        stroke-linecap="round"/>
+
+  <line x1="410"
+        y1="145"
+        x2="520"
+        y2="310"
+        stroke="#e49a29"
+        stroke-width="5"
+        stroke-linecap="round"/>
+
+  <!-- apparent underwater pencil -->
+
+  <line x1="520"
+        y1="310"
+        x2="665"
+        y2="465"
+        stroke="#f5c24b"
+        stroke-width="30"
+        stroke-linecap="round"/>
+
+  <line x1="520"
+        y1="310"
+        x2="665"
+        y2="465"
+        stroke="#e49a29"
+        stroke-width="5"
+        stroke-linecap="round"/>
+
+  <!-- actual underwater pencil ghost -->
+
+  <line x1="520"
+        y1="310"
+        x2="590"
+        y2="470"
+        stroke="#7131cc"
+        stroke-width="8"
+        stroke-dasharray="14 12"
+        opacity=".7"/>
+
+  <text x="370"
+        y="460"
+        font-size="19"
+        font-weight="900"
+        fill="#7131cc">
+    ACTUAL POSITION
+  </text>
+
+  <text x="685"
+        y="450"
+        font-size="19"
+        font-weight="900"
+        fill="#7a4d00">
+    APPARENT POSITION
+  </text>
+
+  <!-- eye -->
+
+  <ellipse cx="875"
+           cy="210"
+           rx="72"
+           ry="42"
+           fill="#ffffff"
+           stroke="#20346f"
+           stroke-width="6"/>
+
+  <circle cx="875"
+          cy="210"
+          r="20"
+          fill="#2689d8"/>
+
+  <circle cx="875"
+          cy="210"
+          r="8"
+          fill="#111"/>
+
+  <text x="875"
+        y="275"
+        text-anchor="middle"
+        font-size="18"
+        font-weight="900"
+        fill="#20346f">
+    OBSERVER
+  </text>
+
+  <rect x="150"
+        y="555"
+        width="800"
+        height="66"
+        rx="14"
+        fill="#fff4a8"
+        stroke="#24336b"
+        stroke-width="3"/>
+
+  <text x="550"
+        y="582"
+        text-anchor="middle"
+        font-size="18"
+        font-weight="900"
+        fill="#24336b">
+    FOCUS QUESTION
+  </text>
+
+  <text x="550"
+        y="608"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900"
+        fill="#24336b">
+    Did the pencil bend, or did the light bend?
+  </text>
+
+</svg>
