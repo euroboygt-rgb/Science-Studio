@@ -1,0 +1,252 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1100 650">
+
+  <defs>
+
+    <linearGradient id="glassFill"
+                    x1="0"
+                    x2="1">
+
+      <stop offset="0%"
+            stop-color="#dff6ff"
+            stop-opacity=".72"/>
+
+      <stop offset="100%"
+            stop-color="#a9def5"
+            stop-opacity=".56"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1100"
+        height="650"
+        rx="24"
+        fill="#f6fbff"/>
+
+
+  <text x="550"
+        y="48"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#20346f">
+    PHENOMENON MISSION: WHY DID THE LIGHT BEND?
+  </text>
+
+
+  <text x="550"
+        y="82"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="700"
+        fill="#20346f">
+    Follow the ray from air into glass and back into air.
+  </text>
+
+
+  <rect x="55"
+        y="115"
+        width="990"
+        height="420"
+        rx="24"
+        fill="#071120"
+        stroke="#cad7ef"
+        stroke-width="4"/>
+
+
+  <!-- Flashlight -->
+
+  <rect x="90"
+        y="300"
+        width="140"
+        height="72"
+        rx="18"
+        fill="#7131cc"
+        stroke="#ffffff"
+        stroke-width="5"/>
+
+  <rect x="205"
+        y="277"
+        width="70"
+        height="118"
+        rx="12"
+        fill="#9d70df"
+        stroke="#ffffff"
+        stroke-width="5"/>
+
+  <circle cx="277"
+          cy="336"
+          r="39"
+          fill="#fff3a0"
+          stroke="#ffffff"
+          stroke-width="5"/>
+
+
+  <!-- incoming ray -->
+
+  <line x1="320"
+        y1="336"
+        x2="447"
+        y2="336"
+        stroke="#fff6a9"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+
+  <!-- Prism -->
+
+  <polygon points="530,160 390,420 690,420"
+           fill="url(#glassFill)"
+           stroke="#ffffff"
+           stroke-width="6"/>
+
+
+  <text x="530"
+        y="395"
+        text-anchor="middle"
+        fill="#153958"
+        font-size="23"
+        font-weight="900">
+    GLASS
+  </text>
+
+
+  <!-- refracted inside -->
+
+  <line x1="447"
+        y1="336"
+        x2="615"
+        y2="383"
+        stroke="#71ddff"
+        stroke-width="11"
+        stroke-linecap="round"/>
+
+
+  <!-- exiting -->
+
+  <line x1="615"
+        y1="383"
+        x2="855"
+        y2="500"
+        stroke="#fff6a9"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+
+  <!-- boundary markers -->
+
+  <circle cx="447"
+          cy="336"
+          r="10"
+          fill="#ffe45d"
+          stroke="#ffffff"
+          stroke-width="3"/>
+
+  <circle cx="615"
+          cy="383"
+          r="10"
+          fill="#ffe45d"
+          stroke="#ffffff"
+          stroke-width="3"/>
+
+
+  <!-- labels -->
+
+  <rect x="280"
+        y="235"
+        width="180"
+        height="45"
+        rx="10"
+        fill="#fff4cd"/>
+
+  <text x="370"
+        y="264"
+        text-anchor="middle"
+        font-size="17"
+        font-weight="900">
+    INCOMING RAY
+  </text>
+
+
+  <rect x="455"
+        y="250"
+        width="180"
+        height="45"
+        rx="10"
+        fill="#dff6ff"/>
+
+  <text x="545"
+        y="279"
+        text-anchor="middle"
+        font-size="17"
+        font-weight="900">
+    REFRACTED RAY
+  </text>
+
+
+  <rect x="690"
+        y="425"
+        width="165"
+        height="45"
+        rx="10"
+        fill="#fff4cd"/>
+
+  <text x="772"
+        y="454"
+        text-anchor="middle"
+        font-size="17"
+        font-weight="900">
+    EXITING RAY
+  </text>
+
+
+  <text x="305"
+        y="470"
+        fill="#ffffff"
+        font-size="21"
+        font-weight="900">
+    AIR
+  </text>
+
+
+  <text x="850"
+        y="350"
+        fill="#ffffff"
+        font-size="21"
+        font-weight="900">
+    AIR
+  </text>
+
+
+  <rect x="150"
+        y="560"
+        width="800"
+        height="62"
+        rx="14"
+        fill="#fff4a8"
+        stroke="#24336b"
+        stroke-width="3"/>
+
+
+  <text x="550"
+        y="585"
+        text-anchor="middle"
+        font-size="18"
+        font-weight="900"
+        fill="#24336b">
+    FOCUS QUESTION
+  </text>
+
+
+  <text x="550"
+        y="610"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900"
+        fill="#24336b">
+    At which boundaries did the light change direction?
+  </text>
+
+</svg>

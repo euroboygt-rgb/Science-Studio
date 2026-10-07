@@ -1168,4 +1168,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <!-- Science Studio Day 65 Direct Lesson Loader End -->
 
+
+
+<!-- Science Studio Day 66 Direct Lesson Loader Start -->
+
+{% if request.path.endswith('/day/66') %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=59.66"
+>
+
+<script
+  src="{{ url_for('static', filename='day66_page.js') }}?v=66.2"
+  defer>
+</script>
+
+{% endif %}
+
+<!-- Science Studio Day 66 Direct Lesson Loader End -->
+
 {% endblock %}

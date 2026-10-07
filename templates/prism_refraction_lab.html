@@ -1,0 +1,462 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='prism_refraction_lab.css') }}?v=66.1"
+>
+
+
+<div class="pr-shell">
+
+  <header class="pr-hero">
+
+    <div class="pr-tags">
+
+      <span>🔺 Interactive Lab</span>
+      <span>Refraction Mission 01</span>
+      <span>TEKS 5.8C</span>
+
+    </div>
+
+
+    <div class="pr-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio: Prism Refraction Lab
+        </h1>
+
+        <p>
+          Follow light from air into glass
+          and back into air.
+        </p>
+
+      </div>
+
+
+      <a
+        class="pr-back"
+        href="/second-nine-weeks/day/66?view=student"
+      >
+        ← Back to Day 66
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <section class="pr-mission">
+
+    <div>
+
+      <div class="pr-eyebrow">
+        REFRACTION ENGINE
+      </div>
+
+
+      <h2>
+        Where does the light bend?
+      </h2>
+
+
+      <p>
+        Change the direction of the incoming ray,
+        test the prism, and trace what happens
+        at each medium boundary.
+      </p>
+
+
+      <div class="pr-medium-flow">
+
+        <div>
+          AIR
+          <small>Medium 1</small>
+        </div>
+
+        <span>→</span>
+
+        <div class="glass">
+          GLASS
+          <small>Medium 2</small>
+        </div>
+
+        <span>→</span>
+
+        <div>
+          AIR
+          <small>Medium 3</small>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <aside class="pr-goal">
+
+      <strong>
+        🎯 Mission Goal
+      </strong>
+
+      <p>
+        Identify where refraction occurs
+        and explain why the ray changes direction.
+      </p>
+
+
+      <div>
+        Boundary 1:
+        <strong>Air → Glass</strong>
+      </div>
+
+      <div>
+        Boundary 2:
+        <strong>Glass → Air</strong>
+      </div>
+
+    </aside>
+
+  </section>
+
+
+  <section class="pr-workspace">
+
+    <div class="pr-controls">
+
+      <button
+        class="pr-angle"
+        type="button"
+        data-angle="-10"
+      >
+        ↗ Upward Ray
+      </button>
+
+
+      <button
+        class="pr-angle active"
+        type="button"
+        data-angle="0"
+      >
+        ➡ Straight Ray
+      </button>
+
+
+      <button
+        class="pr-angle"
+        type="button"
+        data-angle="7"
+      >
+        ↘ Downward Ray
+      </button>
+
+
+      <button
+        id="prPrediction"
+        type="button"
+      >
+        📏 Show Straight Prediction
+      </button>
+
+    </div>
+
+
+    <div class="pr-board">
+
+      <svg
+        id="prSvg"
+        class="pr-svg"
+        viewBox="0 0 1000 560"
+        aria-label="Interactive glass prism refraction diagram"
+      >
+
+        <defs>
+
+          <linearGradient
+            id="prGlass"
+            x1="0"
+            x2="1"
+          >
+
+            <stop
+              offset="0%"
+              stop-color="#dff6ff"
+              stop-opacity=".78"
+            />
+
+            <stop
+              offset="100%"
+              stop-color="#8fd7f0"
+              stop-opacity=".55"
+            />
+
+          </linearGradient>
+
+        </defs>
+
+
+        <rect
+          width="1000"
+          height="560"
+          fill="#071120"
+        />
+
+
+        <!-- medium labels -->
+
+        <text
+          x="105"
+          y="70"
+          fill="#ffffff"
+          font-size="27"
+          font-weight="900"
+        >
+          AIR
+        </text>
+
+
+        <text
+          x="820"
+          y="70"
+          fill="#ffffff"
+          font-size="27"
+          font-weight="900"
+        >
+          AIR
+        </text>
+
+
+        <!-- flashlight -->
+
+        <g id="prSource">
+
+          <rect
+            x="55"
+            y="245"
+            width="132"
+            height="72"
+            rx="16"
+            fill="#7131cc"
+            stroke="#ffffff"
+            stroke-width="4"
+          />
+
+          <rect
+            x="160"
+            y="220"
+            width="72"
+            height="122"
+            rx="12"
+            fill="#9c6ddd"
+            stroke="#ffffff"
+            stroke-width="4"
+          />
+
+          <circle
+            cx="233"
+            cy="281"
+            r="39"
+            fill="#fff3a0"
+            stroke="#ffffff"
+            stroke-width="4"
+          />
+
+          <text
+            x="110"
+            y="288"
+            text-anchor="middle"
+            fill="#ffffff"
+            font-size="17"
+            font-weight="900"
+          >
+            LIGHT
+          </text>
+
+        </g>
+
+
+        <!-- straight-line prediction -->
+
+        <line
+          id="prPredictionRay"
+          x1="274"
+          y1="281"
+          x2="940"
+          y2="281"
+          stroke="#ffffff"
+          stroke-width="4"
+          stroke-dasharray="14 12"
+          opacity="0"
+        />
+
+
+        <!-- prism -->
+
+        <polygon
+          id="prPrism"
+          points="530,105 365,435 695,435"
+          fill="url(#prGlass)"
+          stroke="#ffffff"
+          stroke-width="6"
+        />
+
+
+        <text
+          x="530"
+          y="405"
+          text-anchor="middle"
+          fill="#153958"
+          font-size="27"
+          font-weight="900"
+        >
+          GLASS
+        </text>
+
+
+        <!-- ray groups filled by JS -->
+
+        <g id="prRayGlow"></g>
+
+        <g id="prRays"></g>
+
+        <g id="prPoints"></g>
+
+        <g id="prLabels"></g>
+
+      </svg>
+
+    </div>
+
+
+    <button
+      id="prTest"
+      class="pr-test"
+      type="button"
+    >
+      🔺 TEST REFRACTION
+    </button>
+
+
+    <div
+      id="prResult"
+      class="pr-result"
+    ></div>
+
+  </section>
+
+
+  <section class="pr-evidence">
+
+    <h2>
+      📓 Prism Evidence Notebook
+    </h2>
+
+
+    <div class="pr-evidence-grid">
+
+      <article>
+
+        <strong>
+          Trial 1
+        </strong>
+
+        <h3>
+          Upward Ray
+        </h3>
+
+        <p>
+          Where did the ray change direction?
+        </p>
+
+        <p>
+          ________________________
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          Trial 2
+        </strong>
+
+        <h3>
+          Straight Ray
+        </h3>
+
+        <p>
+          Where did the ray change direction?
+        </p>
+
+        <p>
+          ________________________
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          Trial 3
+        </strong>
+
+        <h3>
+          Downward Ray
+        </h3>
+
+        <p>
+          Where did the ray change direction?
+        </p>
+
+        <p>
+          ________________________
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="pr-question">
+
+      <strong>
+        🧠 Evidence Question:
+      </strong>
+
+      What happened each time the light
+      crossed between air and glass?
+
+    </div>
+
+
+    <div class="pr-extension">
+
+      <strong>
+        🌈 Prism Extension:
+      </strong>
+
+      A prism can also separate white light
+      into different colors.
+
+      Today our main focus is
+      <strong>refraction</strong> —
+      the change in the ray's direction
+      as it moves between media.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='prism_refraction_lab.js') }}?v=66.2"
+></script>
+
+{% endblock %}

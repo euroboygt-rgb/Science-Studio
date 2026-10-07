@@ -1,0 +1,305 @@
+.pr-shell {
+  width: min(1200px, 95vw);
+  margin: 24px auto 60px;
+}
+
+
+.pr-hero,
+.pr-mission,
+.pr-workspace,
+.pr-evidence {
+  border: 3px solid #171717;
+  border-radius: 17px;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+
+.pr-hero {
+  padding: 20px;
+  background:
+    linear-gradient(
+      115deg,
+      #7131cc,
+      #2689d8
+    );
+  color: #fff;
+}
+
+
+.pr-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+
+.pr-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #7d32dc;
+  color: #fff13b;
+  font-size: .78rem;
+  font-weight: 900;
+}
+
+
+.pr-hero-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+
+.pr-hero h1 {
+  margin: 0 0 6px;
+}
+
+
+.pr-hero p {
+  margin: 0;
+  font-weight: 700;
+}
+
+
+.pr-back {
+  padding: 10px 14px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+
+.pr-mission {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 14px;
+  background: #fff4cd;
+}
+
+
+.pr-eyebrow {
+  font-size: .72rem;
+  font-weight: 900;
+}
+
+
+.pr-mission h2 {
+  margin: 5px 0;
+}
+
+
+.pr-medium-flow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+
+.pr-medium-flow > div {
+  min-width: 110px;
+  padding: 9px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+  font-weight: 900;
+}
+
+
+.pr-medium-flow .glass {
+  background: #dff6ff;
+}
+
+
+.pr-medium-flow small {
+  display: block;
+  margin-top: 3px;
+  font-weight: 500;
+}
+
+
+.pr-goal {
+  padding: 11px;
+  border: 2px solid #171717;
+  border-radius: 10px;
+  background: #e8f7ff;
+}
+
+
+.pr-goal > div {
+  margin-top: 7px;
+  padding: 7px;
+  border: 1px solid #777;
+  border-radius: 7px;
+  background: #fff;
+}
+
+
+.pr-workspace {
+  margin-top: 14px;
+  padding: 16px;
+  background: #111a34;
+}
+
+
+.pr-controls {
+  display: grid;
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+
+.pr-controls button {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+
+.pr-controls button.active {
+  background: #fff3ad;
+  outline: 4px solid #7131cc;
+}
+
+
+.pr-board {
+  overflow: hidden;
+  border: 3px solid #171717;
+  border-radius: 12px;
+  background: #071120;
+}
+
+
+.pr-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+.pr-test {
+  display: block;
+  width: min(410px,100%);
+  margin: 14px auto 0;
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #ffe45d;
+  font-size: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+
+.pr-result {
+  display: none;
+  margin-top: 12px;
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+
+.pr-result.show {
+  display: block;
+}
+
+
+.pr-evidence {
+  margin-top: 14px;
+  padding: 16px;
+  background: #fff;
+}
+
+
+.pr-evidence h2 {
+  margin-top: 0;
+}
+
+
+.pr-evidence-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+  gap: 10px;
+}
+
+
+.pr-evidence-grid article {
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #eaf6ff;
+}
+
+
+.pr-evidence-grid article strong {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #7131cc;
+  color: #fff13b;
+}
+
+
+.pr-question,
+.pr-extension {
+  margin-top: 11px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+}
+
+
+.pr-question {
+  background: #fff3ad;
+}
+
+
+.pr-extension {
+  background: #f0e9ff;
+}
+
+
+@media (max-width:760px) {
+
+  .pr-hero-row,
+  .pr-mission {
+    display: block;
+  }
+
+
+  .pr-back {
+    display: inline-block;
+    margin-top: 12px;
+  }
+
+
+  .pr-controls,
+  .pr-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .pr-medium-flow {
+    flex-wrap: wrap;
+  }
+}

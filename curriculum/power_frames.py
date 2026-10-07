@@ -644,3 +644,21 @@ POWER_FRAMES[65] = {
 }
 
 # Science Studio Day 65 Power Frame End
+
+
+# Science Studio Day 66 Power Frame Start
+
+POWER_FRAMES[66] = {
+
+    "i_can":
+        "I can demonstrate and explain how light refracts when it moves between air and glass.",
+
+    "by":
+        "by tracing a light ray as it enters and exits a glass prism and comparing its direction at each boundary.",
+
+    "i_know":
+        "I know I have learned this when I can identify where the ray refracts "
+        "and explain that the direction changed as light moved between different media."
+}
+
+# Science Studio Day 66 Power Frame End

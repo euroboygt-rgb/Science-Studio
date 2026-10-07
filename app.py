@@ -54,6 +54,16 @@ app = Flask(__name__)
 
 
 
+
+# Science Studio Prism Refraction Lab Route Start
+
+@app.route("/labs/prism-refraction")
+def prism_refraction_lab():
+    return render_template("prism_refraction_lab.html")
+
+# Science Studio Prism Refraction Lab Route End
+
+
 @app.context_processor
 def inject_phenomenon_missions():
     from curriculum.phenomenon_missions import get_phenomenon_mission

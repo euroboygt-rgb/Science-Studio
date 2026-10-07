@@ -3038,3 +3038,191 @@ SECOND_NINE_WEEKS_LESSONS[65] = {
 }
 
 # Science Studio Day 65 End
+
+
+# Science Studio Day 66 Start
+
+SECOND_NINE_WEEKS_LESSONS[66] = {
+
+    "day": 66,
+
+    "title":
+        "Prism Mission: Why Does Light Bend?",
+
+    "unit":
+        "Light Energy: Reflection, Refraction, and Absorption",
+
+    "teks":
+        "5.8C, 5.1F, 5.2D",
+
+    "focus":
+        "Students investigate refraction as light travels from air into glass "
+        "and from glass back into air.",
+
+    "learning_target":
+        "We will investigate how light changes direction when it moves between air and glass.",
+
+    "success_criteria":
+        "I can trace an incoming ray, a refracted ray inside glass, and an "
+        "exiting ray and explain where the light changed direction.",
+
+    "essential_question":
+        "Why does a light ray change direction when it enters and leaves a glass prism?",
+
+    "bell_ringer": [
+        "Yesterday mirrors changed the direction of light by reflection.",
+        "What do you predict will happen when light enters a clear glass prism instead of bouncing off a mirror?",
+        "Will the light reflect, continue unchanged, or bend as it enters the glass?"
+    ],
+
+    "mini_lesson": [
+        "Light travels in a straight line while traveling through the same medium.",
+        "A medium is matter through which light travels.",
+        "Air is one medium and glass is another medium.",
+        "Refraction occurs when light changes direction as it moves from one medium into another.",
+        "The boundary is the place where one medium meets another.",
+        "When light travels from air into glass, the ray can bend at the boundary.",
+        "When light leaves the glass and returns to air, the ray can bend again.",
+        "Scientists use ray diagrams to trace the incoming ray, refracted ray, and exiting ray."
+    ],
+
+    "science_notebook": [
+        "Draw a triangular glass prism.",
+        "Label the space outside the prism AIR.",
+        "Label the inside of the prism GLASS.",
+        "Draw and label the incoming ray.",
+        "Draw and label the refracted ray inside the glass.",
+        "Draw and label the exiting ray.",
+        "Circle both boundaries where the ray changes direction."
+    ],
+
+    "guided_practice": [
+        "Identify the first medium: air.",
+        "Trace the incoming ray toward the prism.",
+        "Identify the air-glass boundary.",
+        "Trace the refracted ray inside the glass.",
+        "Identify the glass-air boundary.",
+        "Trace the exiting ray.",
+        "Compare the direction of the ray before and after each boundary."
+    ],
+
+    "lab_title":
+        "Prism Refraction Lab: Follow the Bending Light",
+
+    "lab": [
+        "Open the Prism Refraction Lab.",
+        "Test a straight incoming ray.",
+        "Test a ray entering from a slightly upward direction.",
+        "Test a ray entering from a slightly downward direction.",
+        "Observe the ray as it enters the glass.",
+        "Observe the ray as it exits the glass.",
+        "Compare the refracted path with the straight-line prediction.",
+        "Use evidence to explain refraction."
+    ],
+
+    "lab_notebook": [
+        "Trial 1 — Straight incoming ray: Where did the ray bend?",
+        "Trial 2 — Upward incoming ray: How did the path change?",
+        "Trial 3 — Downward incoming ray: How did the path change?",
+        "How many medium boundaries did the ray cross?",
+        "At which boundaries did the direction change?",
+        "How is refraction different from yesterday's reflection?"
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "A beam of light travels from air into a glass prism and changes direction. "
+                "Which behavior of light is demonstrated?",
+
+            "choices": {
+                "A": "Refraction",
+                "B": "Magnetism",
+                "C": "Electrical conduction",
+                "D": "Sound vibration"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Refraction occurs when light changes direction as it moves between different media."
+        },
+
+        {
+            "question":
+                "In a ray diagram, where would refraction most likely occur?",
+
+            "choices": {
+                "A": "At the boundary between air and glass",
+                "B": "Only inside the flashlight",
+                "C": "At the center of an opaque wall",
+                "D": "Only after the light stops moving"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Refraction occurs at a boundary where light moves from one medium into another."
+        },
+
+        {
+            "question":
+                "A ray enters a glass prism from air and later exits the prism back into air. "
+                "Which observation is the best evidence of refraction?",
+
+            "choices": {
+                "A": "The ray changes direction at the air-glass and glass-air boundaries.",
+                "B": "The prism becomes a light source.",
+                "C": "The ray produces sound inside the prism.",
+                "D": "The glass becomes opaque."
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "A change in the direction of light as it crosses between media is evidence of refraction."
+        }
+    ],
+
+    "exit_ticket":
+        "A light ray travels from air into a glass prism and then back into air. "
+        "Explain what happens to the ray at the two boundaries using the words "
+        "medium, boundary, and refraction.",
+
+    "cer": {
+
+        "claim":
+            "Light can change direction when it travels from one medium into another.",
+
+        "evidence":
+            "Use evidence from one Prism Refraction Lab trial.",
+
+        "reasoning":
+            "Explain how the ray changed direction at the air-glass and glass-air boundaries."
+    },
+
+    "vocabulary": [
+        "refraction",
+        "refract",
+        "medium",
+        "prism",
+        "glass",
+        "boundary",
+        "incoming ray",
+        "refracted ray",
+        "exiting ray",
+        "light ray"
+    ],
+
+    "teacher_note":
+        "Day 66 introduces refraction through glass only. Keep the focus on "
+        "light changing direction at medium boundaries. A prism may also separate "
+        "white light into colors, but dispersion is an extension today rather than "
+        "the central learning target.",
+
+    "lab_url":
+        "/labs/prism-refraction?mission=day66"
+}
+
+# Science Studio Day 66 End
