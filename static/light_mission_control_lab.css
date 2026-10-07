@@ -1,0 +1,319 @@
+.mc-shell {
+  width: min(1100px,95vw);
+  margin: 24px auto 60px;
+}
+
+
+.mc-hero,
+.mc-dashboard,
+.mc-progress-card,
+.mc-workspace,
+.mc-final,
+.mc-evidence {
+  border: 3px solid #171717;
+  border-radius: 17px;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+
+.mc-hero {
+  padding: 20px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #7131cc,
+      #2689d8
+    );
+}
+
+
+.mc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+
+.mc-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #7d32dc;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+
+.mc-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.mc-back {
+  padding: 10px 14px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+
+.mc-dashboard {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+
+.mc-eyebrow {
+  font-size: .75rem;
+  font-weight: 900;
+}
+
+
+.mc-score {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 7px;
+}
+
+
+.mc-score div {
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+}
+
+
+.mc-score span {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+
+.mc-score small {
+  font-weight: 900;
+}
+
+
+.mc-progress-card {
+  margin-top: 14px;
+  padding: 12px;
+  background: #fff;
+}
+
+
+.mc-progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+
+.mc-progress-track {
+  height: 25px;
+  overflow: hidden;
+  border: 3px solid #171717;
+  border-radius: 999px;
+  background: #edf2f7;
+}
+
+
+.mc-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: #7131cc;
+  transition: width .3s ease;
+}
+
+
+.mc-workspace {
+  margin-top: 14px;
+  padding: 22px;
+  background: #111a34;
+  color: #fff;
+  text-align: center;
+}
+
+
+.mc-icon {
+  font-size: 4rem;
+}
+
+
+.mc-mission-label {
+  margin-top: 5px;
+  color: #ffe45d;
+  font-size: .8rem;
+  font-weight: 900;
+}
+
+
+.mc-scenario {
+  margin: 16px 0;
+  padding: 15px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+  text-align: left;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+
+.mc-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+
+.mc-choice {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  text-align: left;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+
+.mc-choice:hover {
+  background: #f6f0ff;
+  border-color: #7131cc;
+}
+
+
+.mc-choice.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+  box-shadow: 0 0 0 4px rgba(113, 49, 204, 0.20);
+  transform: translateY(-2px);
+}
+
+
+.mc-choice.correct {
+  background: #c9f2d0;
+}
+
+
+.mc-choice.wrong {
+  background: #ffd2d2;
+}
+
+
+.mc-check,
+.mc-next,
+#mcRestart {
+  margin-top: 13px;
+  padding: 12px 20px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #ffe45d;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+
+.mc-next:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+
+.mc-feedback {
+  min-height: 70px;
+  margin-top: 12px;
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+  text-align: left;
+  font-weight: 800;
+}
+
+
+.mc-final {
+  display: none;
+  margin-top: 14px;
+  padding: 25px;
+  background: #fff4cd;
+  text-align: center;
+}
+
+
+.mc-final.show {
+  display: block;
+}
+
+
+.mc-final-icon {
+  font-size: 5rem;
+}
+
+
+.mc-final-message {
+  margin-top: 10px;
+  font-weight: 900;
+}
+
+
+.mc-evidence {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff;
+}
+
+
+.mc-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 9px;
+}
+
+
+.mc-grid article {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #eaf6ff;
+}
+
+
+@media (max-width:850px) {
+
+  .mc-hero-row,
+  .mc-dashboard {
+    display: block;
+  }
+
+
+  .mc-score,
+  .mc-choices,
+  .mc-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

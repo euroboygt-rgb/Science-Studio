@@ -1,0 +1,1183 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=73-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day73_direct.css') }}?v=73-final"
+>
+
+
+<div id="DAY73_DIRECT_TEMPLATE"
+     class="d73-page">
+
+  <!-- HEADER -->
+
+  <section class="d73-hero">
+
+    <div class="d73-tags">
+
+      <span>Day 73</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.8C</span>
+
+    </div>
+
+
+    <h1>
+      🚀 Light Mission Control:
+      Master the Behaviors of Light
+    </h1>
+
+    <p>
+      Bring together everything you learned
+      from the entire light unit.
+    </p>
+
+
+    <div class="d73-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/73?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/73?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today’s Learning Power Frame
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          identify and explain
+          different behaviors of light.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          using evidence from mirrors,
+          prisms, water, colors,
+          and different materials.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can explain what light is doing
+          in unfamiliar situations.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🚀 Phenomenon Mission
+    </div>
+
+    <h2>
+      What Is the Light Doing?
+    </h2>
+
+    <div class="d59-unit">
+      Day 73 • Light Unit Synthesis
+    </div>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day73_light_mission_control.svg"
+        alt="Review of light reflection, refraction, and absorption"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mission Question:
+      </strong>
+
+      What evidence can you use
+      to identify the behavior of light
+      in each situation?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d73MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Mission Brief: Your Light Toolkit
+        </h2>
+
+        <div class="d59-unit">
+          Day 73 • Final Light Mission
+        </div>
+
+      </div>
+
+
+      <button
+        id="d73Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Mission Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d73SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d73SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d73SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d73SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d73SlideNumber"></strong>
+
+      <div>
+
+        <button id="d73Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d73Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d73Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section id="d73Steve"
+           class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's STAAR Mission
+        </div>
+
+        <h2>
+          Steve's Light Mystery
+        </h2>
+
+        <div class="d59-unit">
+          Day 73 • Evidence Challenge
+        </div>
+
+
+        <div class="d59-scenario">
+
+          <strong>
+            Steve's Scenario:
+          </strong>
+
+          <br><br>
+
+          Steve shines a flashlight
+          toward a mirror.
+
+          The light reaches the mirror
+          and changes direction,
+          staying in the same medium.
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            STAAR-Style Question:
+          </strong>
+
+          <p>
+            Which behavior of light
+            best explains Steve's observation?
+          </p>
+
+
+          <button class="d73-steve-answer"
+                  data-answer="A">
+            A. Reflection
+          </button>
+
+          <button class="d73-steve-answer"
+                  data-answer="B">
+            B. Refraction
+          </button>
+
+          <button class="d73-steve-answer"
+                  data-answer="C">
+            C. Absorption
+          </button>
+
+          <button class="d73-steve-answer"
+                  data-answer="D">
+            D. Dispersion
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d73SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Answer
+            </button>
+
+            <button id="d73SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d73SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Light Unit Vocabulary Anchor Chart
+    </h2>
+
+
+    <div class="d73-vocab-note">
+
+      🔍 Hover to preview.
+
+      <strong>
+        Click a word
+      </strong>
+
+      to enlarge it and review the definition.
+
+    </div>
+
+
+    <div class="d73-vocab-grid">
+
+      {% set words = [
+        ("➡️", "straight-line travel", "Light travels in a straight line until it interacts with matter."),
+        ("🪞", "reflection", "The bouncing of light from a surface."),
+        ("💧", "refraction", "A change in the direction of light as it crosses between different media."),
+        ("⬇️", "absorption", "When a material takes in light energy."),
+        ("🌈", "visible spectrum", "The visible colors contained in white light."),
+        ("🔤", "ROYGBIV", "Red, Orange, Yellow, Green, Blue, Indigo, Violet."),
+        ("🪟", "transparent", "Allows most visible light to pass through clearly."),
+        ("🧻", "translucent", "Allows some visible light through but scatters it."),
+        ("📦", "opaque", "Does not transmit visible light through the material."),
+        ("🌊", "medium", "Matter through which light travels."),
+        ("🎨", "dispersion", "The separation of white light into visible colors.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d73-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span class="d73-vocab-icon">
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- LEARNING TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will use evidence from different situations
+      to identify and explain how light behaves.
+    </p>
+
+  </section>
+
+
+  <!-- BELL RINGER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer — Activate Your Light Toolkit
+    </h2>
+
+    <div class="d59-box">
+
+      Without looking at your notes:
+
+      <ol>
+
+        <li>
+          Name one example of reflection.
+        </li>
+
+        <li>
+          Name one example of refraction.
+        </li>
+
+        <li>
+          Name one example of absorption.
+        </li>
+
+        <li>
+          Write ROYGBIV.
+        </li>
+
+        <li>
+          Name the three material categories
+          from yesterday.
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson — The Light Mission Map
+    </h2>
+
+
+    <div class="d73-map">
+
+      <article>
+
+        <div>➡️</div>
+
+        <h3>
+          Straight-Line Travel
+        </h3>
+
+        <p>
+          Light travels straight
+          until something changes its path.
+        </p>
+
+        <strong>
+          Example: aligned openings
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <div>🪞</div>
+
+        <h3>
+          Reflection
+        </h3>
+
+        <p>
+          Light bounces from a surface.
+        </p>
+
+        <strong>
+          Example: mirror
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <div>💧</div>
+
+        <h3>
+          Refraction
+        </h3>
+
+        <p>
+          Light changes direction
+          when crossing between media.
+        </p>
+
+        <strong>
+          Example: pencil in water
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <div>🌈</div>
+
+        <h3>
+          Visible Spectrum
+        </h3>
+
+        <p>
+          White light contains
+          ROYGBIV.
+        </p>
+
+        <strong>
+          Example: prism / rainbow
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <div>👕</div>
+
+        <h3>
+          Reflection + Absorption
+        </h3>
+
+        <p>
+          Reflected visible light
+          determines the color we see.
+        </p>
+
+        <strong>
+          Example: orange shirt
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <div>🪟</div>
+
+        <h3>
+          Light Through Materials
+        </h3>
+
+        <p>
+          Materials may be transparent,
+          translucent, or opaque.
+        </p>
+
+        <strong>
+          Example: glass / wax paper / cardboard
+        </strong>
+
+      </article>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        Mission Strategy:
+      </strong>
+
+      <br><br>
+
+      Don't just memorize the word.
+
+      <br><br>
+
+      Ask:
+
+      <strong>
+        “What evidence tells me what the light is doing?”
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook — Light Master Map
+    </h2>
+
+    <div class="d59-box">
+
+      Create six sections:
+
+      <ol>
+
+        <li>
+          Straight-Line Travel
+        </li>
+
+        <li>
+          Reflection
+        </li>
+
+        <li>
+          Refraction
+        </li>
+
+        <li>
+          ROYGBIV / Visible Spectrum
+        </li>
+
+        <li>
+          Absorption / Object Color
+        </li>
+
+        <li>
+          Transparent / Translucent / Opaque
+        </li>
+
+      </ol>
+
+      Add one real-world example
+      and one sentence of evidence
+      to each section.
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice — Name the Evidence
+    </h2>
+
+    <div class="d59-box">
+
+      Ask students to identify and justify:
+
+      <ul>
+
+        <li>
+          Flashlight through aligned holes
+        </li>
+
+        <li>
+          Light bouncing from a mirror
+        </li>
+
+        <li>
+          Pencil appearing bent in water
+        </li>
+
+        <li>
+          Pool bottom appearing shallower
+        </li>
+
+        <li>
+          Orange shirt under white light
+        </li>
+
+        <li>
+          Clear glass, wax paper, and cardboard
+        </li>
+
+      </ul>
+
+      Require students to say:
+
+      <strong>
+        “I know because...”
+      </strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🚀 Interactive Challenge
+    </div>
+
+    <h2>
+      Light Mission Control Challenge
+    </h2>
+
+    <p>
+      Complete twelve light missions
+      from the entire unit.
+    </p>
+
+
+    <div class="d59-required">
+
+      <div>
+        🪞
+        <strong>
+          Reflection
+        </strong>
+      </div>
+
+      <div>
+        💧
+        <strong>
+          Refraction
+        </strong>
+      </div>
+
+      <div>
+        🌈
+        <strong>
+          Spectrum
+        </strong>
+      </div>
+
+      <div>
+        👕
+        <strong>
+          Absorption
+        </strong>
+      </div>
+
+      <div>
+        🪟
+        <strong>
+          Materials
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      <strong>
+        Your Mission
+      </strong>
+
+      <ol>
+
+        <li>
+          Read each light scenario.
+        </li>
+
+        <li>
+          Select the best explanation.
+        </li>
+
+        <li>
+          Check your answer.
+        </li>
+
+        <li>
+          Read the evidence explanation.
+        </li>
+
+        <li>
+          Complete all twelve missions.
+        </li>
+
+      </ol>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆
+      <strong>
+        Mastery Goal:
+      </strong>
+
+      Complete all 12 missions
+      and earn your
+      <strong>Light Mission Specialist</strong>
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/light-mission-control?mission=day73"
+    >
+      🚀 Launch Light Mission Control
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Practice
+    </div>
+
+    <h2>
+      Light Unit Evidence
+    </h2>
+
+
+    <div class="d73-question"
+         data-answer="C">
+
+      <h3>Question 1</h3>
+
+      <p>
+        A beam of light strikes a mirror
+        and changes direction.
+        Which light behavior is occurring?
+      </p>
+
+      <button data-choice="A">
+        A. Absorption
+      </button>
+
+      <button data-choice="B">
+        B. Refraction
+      </button>
+
+      <button data-choice="C">
+        C. Reflection
+      </button>
+
+      <button data-choice="D">
+        D. Transmission
+      </button>
+
+      <div class="d73-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d73-question"
+         data-answer="A">
+
+      <h3>Question 2</h3>
+
+      <p>
+        A spoon appears shifted
+        where it enters a glass of water.
+        Which behavior explains the observation?
+      </p>
+
+      <button data-choice="A">
+        A. Refraction
+      </button>
+
+      <button data-choice="B">
+        B. Absorption
+      </button>
+
+      <button data-choice="C">
+        C. Magnetism
+      </button>
+
+      <button data-choice="D">
+        D. Conduction
+      </button>
+
+      <div class="d73-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d73-question"
+         data-answer="B">
+
+      <h3>Question 3</h3>
+
+      <p>
+        Why does a green object
+        appear green under white light?
+      </p>
+
+      <button data-choice="A">
+        A. It creates green light.
+      </button>
+
+      <button data-choice="B">
+        B. Green light is reflected toward the observer while much of the other visible light is absorbed.
+      </button>
+
+      <button data-choice="C">
+        C. Green light is completely absorbed.
+      </button>
+
+      <button data-choice="D">
+        D. White light contains no other colors.
+      </button>
+
+      <div class="d73-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d73-question"
+         data-answer="D">
+
+      <h3>Question 4</h3>
+
+      <p>
+        A material allows some light through,
+        but an object behind it appears blurry.
+        How should the material be classified?
+      </p>
+
+      <button data-choice="A">
+        A. Reflective
+      </button>
+
+      <button data-choice="B">
+        B. Transparent
+      </button>
+
+      <button data-choice="C">
+        C. Opaque
+      </button>
+
+      <button data-choice="D">
+        D. Translucent
+      </button>
+
+      <div class="d73-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d73-question"
+         data-answer="A">
+
+      <h3>Question 5</h3>
+
+      <p>
+        Which sequence best describes
+        a rainbow ray traveling through a raindrop?
+      </p>
+
+      <button data-choice="A">
+        A. Refract in → reflect inside → refract out
+      </button>
+
+      <button data-choice="B">
+        B. Absorb → transmit → reflect
+      </button>
+
+      <button data-choice="C">
+        C. Reflect → absorb → conduct
+      </button>
+
+      <button data-choice="D">
+        D. Refract → magnetize → absorb
+      </button>
+
+      <div class="d73-question-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Written Exit Ticket
+    </h2>
+
+    <p>
+      Choose one phenomenon from this unit.
+
+      Explain what the light is doing
+      and give evidence that supports your answer.
+    </p>
+
+    <textarea
+      class="d59-textarea"
+      placeholder="The phenomenon I chose is..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Final Light CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        CER Question:
+      </strong>
+
+      How can evidence help scientists determine
+      what light is doing?
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="Scientists can identify light behavior by..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="One example from this unit is..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This evidence shows..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MCGRAW -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      📘 McGraw Hill Lesson Connection
+    </div>
+
+    <h2>
+      Light Unit Review
+    </h2>
+
+    <div class="d59-box">
+
+      Review district-approved resources for:
+
+      <ul>
+
+        <li>straight-line light travel,</li>
+
+        <li>reflection,</li>
+
+        <li>refraction,</li>
+
+        <li>visible spectrum / ROYGBIV,</li>
+
+        <li>absorption and object color,</li>
+
+        <li>transparent, translucent, and opaque materials.</li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d73VocabModal"
+     class="d73-modal">
+
+  <div class="d73-modal-card">
+
+    <button id="d73VocabClose"
+            class="d73-modal-close"
+            type="button">
+      ×
+    </button>
+
+    <div id="d73ModalIcon"
+         class="d73-modal-icon"></div>
+
+    <h2 id="d73ModalTerm"></h2>
+
+    <p id="d73ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day73_direct.js') }}?v=73-final"
+></script>
+
+{% endblock %}

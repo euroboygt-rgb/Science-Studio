@@ -4076,3 +4076,101 @@ SECOND_NINE_WEEKS_LESSONS[72] = {
 }
 
 # Science Studio Day 72 End
+
+
+# Science Studio Day 73 Start
+
+SECOND_NINE_WEEKS_LESSONS[73] = {
+
+    "day": 73,
+
+    "title":
+        "Light Mission Control: Master the Behaviors of Light",
+
+    "unit":
+        "Light Energy: Reflection, Refraction, and Absorption",
+
+    "teks":
+        "5.8C, 5.1F, 5.2D",
+
+    "focus":
+        "Students synthesize their understanding of straight-line light travel, "
+        "reflection, refraction, visible-spectrum colors, absorption, object color, "
+        "and transparent, translucent, and opaque materials.",
+
+    "learning_target":
+        "We will use evidence from different light situations to identify and explain how light behaves.",
+
+    "success_criteria":
+        "I can determine whether light travels straight, reflects, refracts, is absorbed, or passes through a material and explain my evidence.",
+
+    "essential_question":
+        "How can we use evidence to determine what light is doing in different situations?",
+
+    "bell_ringer": [
+        "Think back across our light missions.",
+        "Name one example of reflection.",
+        "Name one example of refraction.",
+        "Name one example of absorption."
+    ],
+
+    "mini_lesson": [
+        "Light travels in a straight line until it interacts with matter.",
+        "Reflection occurs when light bounces from a surface.",
+        "Refraction occurs when light changes direction as it crosses between media.",
+        "White light contains the visible-spectrum colors remembered with ROYGBIV.",
+        "Rainbows involve refraction, internal reflection, refraction again, and separation of visible colors.",
+        "Objects appear colored because certain visible light is reflected toward our eyes while much of the remaining visible light is absorbed.",
+        "Transparent materials transmit most light clearly.",
+        "Translucent materials transmit some light but scatter it.",
+        "Opaque materials do not transmit visible light through the material."
+    ],
+
+    "science_notebook": [
+        "Create a Light Mission Map.",
+        "Add Straight-Line Travel and one example.",
+        "Add Reflection and one example.",
+        "Add Refraction and one example.",
+        "Write ROYGBIV in order.",
+        "Add Absorption and the orange-shirt example.",
+        "Add Transparent, Translucent, and Opaque with one example each."
+    ],
+
+    "guided_practice": [
+        "Identify the light behavior in a mirror scenario.",
+        "Identify the light behavior in a broken-pencil scenario.",
+        "Explain why an orange shirt appears orange.",
+        "Classify clear glass, wax paper, and cardboard.",
+        "Sequence the light path through a raindrop."
+    ],
+
+    "lab_title":
+        "Light Mission Control Challenge",
+
+    "lab_url":
+        "/labs/light-mission-control?mission=day73",
+
+    "exit_ticket":
+        "Choose one light phenomenon from this unit and explain what the light is doing using evidence.",
+
+    "vocabulary": [
+        "straight-line travel",
+        "reflection",
+        "refraction",
+        "absorption",
+        "visible spectrum",
+        "ROYGBIV",
+        "transparent",
+        "translucent",
+        "opaque",
+        "medium",
+        "dispersion"
+    ],
+
+    "teacher_note":
+        "Day 73 is a synthesis and review day. "
+        "Students should justify answers with evidence rather than only naming vocabulary. "
+        "Use the Mission Control Challenge as a formative assessment before moving on."
+}
+
+# Science Studio Day 73 End

@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='light_mission_control_lab.css') }}?v=73.1"
+>
+
+
+<div class="mc-shell">
+
+  <header class="mc-hero">
+
+    <div class="mc-tags">
+
+      <span>🚀 Interactive Review</span>
+
+      <span>12 Light Missions</span>
+
+      <span>TEKS 5.8C</span>
+
+    </div>
+
+
+    <div class="mc-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio: Light Mission Control
+        </h1>
+
+        <p>
+          Complete twelve missions
+          from the entire light unit.
+        </p>
+
+      </div>
+
+
+      <a
+        class="mc-back"
+        href="/second-nine-weeks/day/73?view=student"
+      >
+        ← Back to Day 73
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <section class="mc-dashboard">
+
+    <div>
+
+      <div class="mc-eyebrow">
+        FINAL LIGHT CHALLENGE
+      </div>
+
+      <h2>
+        Light Mission Specialist
+      </h2>
+
+      <p>
+        Read the evidence,
+        identify the light behavior,
+        and complete all twelve missions.
+      </p>
+
+    </div>
+
+
+    <div class="mc-score">
+
+      <div>
+        <span id="mcMissionNumber">1</span>
+        <small>Mission</small>
+      </div>
+
+      <div>
+        <span id="mcCorrect">0</span>
+        <small>Correct</small>
+      </div>
+
+      <div>
+        <span id="mcCompleted">0</span>
+        <small>Completed</small>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="mc-progress-card">
+
+    <div class="mc-progress-label">
+
+      <strong>
+        Mission Progress
+      </strong>
+
+      <span id="mcProgressText">
+        0 / 12
+      </span>
+
+    </div>
+
+
+    <div class="mc-progress-track">
+
+      <div id="mcProgressBar"
+           class="mc-progress-bar"></div>
+
+    </div>
+
+  </section>
+
+
+  <section class="mc-workspace">
+
+    <div id="mcIcon"
+         class="mc-icon">
+      🚀
+    </div>
+
+
+    <div class="mc-mission-label">
+      CURRENT MISSION
+    </div>
+
+
+    <h2 id="mcTitle">
+      Loading Mission...
+    </h2>
+
+
+    <div id="mcScenario"
+         class="mc-scenario"></div>
+
+
+    <div id="mcChoices"
+         class="mc-choices"></div>
+
+
+    <button
+      id="mcCheck"
+      class="mc-check"
+      type="button"
+    >
+      ✅ CHECK MISSION
+    </button>
+
+
+    <div id="mcFeedback"
+         class="mc-feedback"></div>
+
+
+    <button
+      id="mcNext"
+      class="mc-next"
+      type="button"
+      disabled
+    >
+      NEXT MISSION →
+    </button>
+
+  </section>
+
+
+  <section id="mcFinal"
+           class="mc-final">
+
+    <div class="mc-final-icon">
+      🏆
+    </div>
+
+    <h2>
+      Light Mission Complete!
+    </h2>
+
+    <p id="mcFinalScore"></p>
+
+    <div id="mcFinalMessage"
+         class="mc-final-message"></div>
+
+
+    <button
+      id="mcRestart"
+      type="button"
+    >
+      ↻ Run the 12 Missions Again
+    </button>
+
+  </section>
+
+
+  <section class="mc-evidence">
+
+    <h2>
+      📓 Mission Control Evidence Notebook
+    </h2>
+
+
+    <div class="mc-grid">
+
+      <article>
+
+        <strong>
+          🪞 Reflection
+        </strong>
+
+        <p>
+          What evidence tells you
+          that light reflected?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          💧 Refraction
+        </strong>
+
+        <p>
+          What evidence tells you
+          light crossed between media?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          👕 Absorption
+        </strong>
+
+        <p>
+          How does reflected light
+          determine object color?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🪟 Materials
+        </strong>
+
+        <p>
+          How do you distinguish
+          transparent, translucent,
+          and opaque?
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='light_mission_control_lab.js') }}?v=73.1"
+></script>
+
+{% endblock %}

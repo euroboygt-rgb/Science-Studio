@@ -1,0 +1,249 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1100 650">
+
+  <rect width="1100"
+        height="650"
+        rx="24"
+        fill="#071120"/>
+
+  <text x="550"
+        y="48"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#ffffff">
+    LIGHT MISSION CONTROL
+  </text>
+
+  <text x="550"
+        y="82"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="700"
+        fill="#ccecff">
+    Can you identify what the light is doing?
+  </text>
+
+
+  <!-- PANEL 1 -->
+
+  <rect x="45"
+        y="120"
+        width="315"
+        height="190"
+        rx="18"
+        fill="#17213b"
+        stroke="#ffffff"
+        stroke-width="4"/>
+
+  <text x="202"
+        y="150"
+        text-anchor="middle"
+        fill="#ffe45d"
+        font-size="19"
+        font-weight="900">
+    MIRROR
+  </text>
+
+  <line x1="90"
+        y1="255"
+        x2="205"
+        y2="205"
+        stroke="#ffe45d"
+        stroke-width="9"/>
+
+  <line x1="205"
+        y1="205"
+        x2="315"
+        y2="255"
+        stroke="#ffe45d"
+        stroke-width="9"/>
+
+  <line x1="205"
+        y1="170"
+        x2="205"
+        y2="270"
+        stroke="#ccecff"
+        stroke-width="9"/>
+
+  <text x="202"
+        y="292"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="18"
+        font-weight="900">
+    ?
+  </text>
+
+
+  <!-- PANEL 2 -->
+
+  <rect x="392"
+        y="120"
+        width="315"
+        height="190"
+        rx="18"
+        fill="#17213b"
+        stroke="#ffffff"
+        stroke-width="4"/>
+
+  <text x="550"
+        y="150"
+        text-anchor="middle"
+        fill="#ffe45d"
+        font-size="19"
+        font-weight="900">
+    WATER
+  </text>
+
+  <rect x="410"
+        y="215"
+        width="280"
+        height="75"
+        fill="#54bdec"
+        opacity=".7"/>
+
+  <line x1="460"
+        y1="170"
+        x2="550"
+        y2="215"
+        stroke="#ffe45d"
+        stroke-width="9"/>
+
+  <line x1="550"
+        y1="215"
+        x2="625"
+        y2="280"
+        stroke="#ffe45d"
+        stroke-width="9"/>
+
+  <text x="550"
+        y="300"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="18"
+        font-weight="900">
+    ?
+  </text>
+
+
+  <!-- PANEL 3 -->
+
+  <rect x="740"
+        y="120"
+        width="315"
+        height="190"
+        rx="18"
+        fill="#17213b"
+        stroke="#ffffff"
+        stroke-width="4"/>
+
+  <text x="897"
+        y="150"
+        text-anchor="middle"
+        fill="#ffe45d"
+        font-size="19"
+        font-weight="900">
+    ORANGE SHIRT
+  </text>
+
+  <line x1="780"
+        y1="230"
+        x2="875"
+        y2="230"
+        stroke="#ffffff"
+        stroke-width="13"/>
+
+  <rect x="875"
+        y="190"
+        width="65"
+        height="85"
+        rx="10"
+        fill="#f28b2e"
+        stroke="#ffffff"
+        stroke-width="4"/>
+
+  <line x1="940"
+        y1="215"
+        x2="1010"
+        y2="180"
+        stroke="#ff962f"
+        stroke-width="10"/>
+
+  <text x="897"
+        y="300"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="18"
+        font-weight="900">
+    ?
+  </text>
+
+
+  <!-- LOWER LABELS -->
+
+  <rect x="80"
+        y="350"
+        width="940"
+        height="180"
+        rx="18"
+        fill="#ffffff"
+        stroke="#7131cc"
+        stroke-width="5"/>
+
+  <text x="550"
+        y="390"
+        text-anchor="middle"
+        fill="#20346f"
+        font-size="24"
+        font-weight="900">
+    YOUR LIGHT TOOLKIT
+  </text>
+
+  <text x="550"
+        y="435"
+        text-anchor="middle"
+        fill="#20346f"
+        font-size="21"
+        font-weight="900">
+    STRAIGHT-LINE • REFLECTION • REFRACTION • ABSORPTION
+  </text>
+
+  <text x="550"
+        y="475"
+        text-anchor="middle"
+        fill="#20346f"
+        font-size="21"
+        font-weight="900">
+    ROYGBIV • TRANSPARENT • TRANSLUCENT • OPAQUE
+  </text>
+
+  <text x="550"
+        y="515"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="21"
+        font-weight="900">
+    USE THE EVIDENCE. FOLLOW THE LIGHT.
+  </text>
+
+
+  <rect x="160"
+        y="555"
+        width="780"
+        height="58"
+        rx="14"
+        fill="#fff4a8"
+        stroke="#ffffff"
+        stroke-width="3"/>
+
+  <text x="550"
+        y="592"
+        text-anchor="middle"
+        fill="#24336b"
+        font-size="21"
+        font-weight="900">
+    CAN YOU COMPLETE ALL 12 MISSIONS?
+  </text>
+
+</svg>

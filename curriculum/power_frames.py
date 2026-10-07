@@ -766,3 +766,20 @@ POWER_FRAMES[72] = {
 }
 
 # Science Studio Day 72 Power Frame End
+
+
+# Science Studio Day 73 Power Frame Start
+
+POWER_FRAMES[73] = {
+
+    "i_can":
+        "I can identify and explain different behaviors of light.",
+
+    "by":
+        "using evidence from mirrors, prisms, water, colored objects, and different materials.",
+
+    "i_know":
+        "I know I have learned this when I can correctly explain light behavior in unfamiliar situations."
+}
+
+# Science Studio Day 73 Power Frame End
