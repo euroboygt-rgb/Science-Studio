@@ -1,0 +1,862 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=70-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day70_direct.css') }}?v=70-final"
+>
+
+
+<div id="DAY70_DIRECT_TEMPLATE" class="d70-page">
+
+  <section class="d70-hero">
+
+    <div class="d70-tags">
+      <span>Day 70</span>
+      <span>{{ "Teacher View" if view == "teacher" else "Student View" }}</span>
+      <span>TEKS 5.8C</span>
+    </div>
+
+    <h1>
+      🌈 Visible Spectrum Mission: Crack the ROYGBIV Code
+    </h1>
+
+    <p>
+      Discover the seven visible colors hidden inside white light.
+    </p>
+
+    <div class="d70-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/70?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/70?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today’s Learning Power Frame
+    </h2>
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+        <strong>I can...</strong>
+        <p>
+          identify and correctly order the seven colors
+          of the visible spectrum.
+        </p>
+      </div>
+
+      <div class="d59-box">
+        <strong>By...</strong>
+        <p>
+          using ROYGBIV and observing white light
+          separate into visible colors.
+        </p>
+      </div>
+
+      <div class="d59-box">
+        <strong>I know I have learned this when...</strong>
+        <p>
+          I can explain that the colors were already
+          contained in white light.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌈 Phenomenon Mission
+    </div>
+
+    <h2>
+      Where Were the Colors Hiding?
+    </h2>
+
+    <div class="d59-unit">
+      Day 70 • Visible Spectrum
+    </div>
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day70_roygbiv.svg"
+        alt="White light passing through a prism and separating into rainbow colors"
+      >
+
+    </div>
+
+    <div class="d59-focus">
+
+      <strong>❓ Mystery Question:</strong>
+
+      Did the prism create the colors,
+      or were the colors already inside the white light?
+
+    </div>
+
+  </section>
+
+
+  <section id="d70MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Mission Brief: Unlock the Spectrum
+        </h2>
+
+        <div class="d59-unit">
+          Day 70 • ROYGBIV
+        </div>
+
+      </div>
+
+      <button
+        id="d70Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Mission Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d70SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d70SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d70SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d70SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d70SlideNumber"></strong>
+
+      <div>
+
+        <button id="d70Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d70Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d70Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section id="d70Steve"
+           class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's STAAR Mission
+        </div>
+
+        <h2>
+          Steve's Missing Rainbow Color
+        </h2>
+
+        <div class="d59-unit">
+          Day 70 • ROYGBIV
+        </div>
+
+
+        <div class="d59-scenario">
+
+          <strong>Steve's Scenario:</strong>
+
+          <br><br>
+
+          Steve writes the spectrum as:
+
+          <br><br>
+
+          <strong>
+            Red → Orange → Yellow → Green → Blue → ___ → Violet
+          </strong>
+
+          <br><br>
+
+          One color is missing.
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>STAAR-Style Question:</strong>
+
+          <p>
+            Which color belongs in the missing position?
+          </p>
+
+          <button class="d70-steve-answer" data-answer="A">
+            A. Indigo
+          </button>
+
+          <button class="d70-steve-answer" data-answer="B">
+            B. Pink
+          </button>
+
+          <button class="d70-steve-answer" data-answer="C">
+            C. Brown
+          </button>
+
+          <button class="d70-steve-answer" data-answer="D">
+            D. Black
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d70SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Answer
+            </button>
+
+            <button id="d70SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+          <div id="d70SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Vocabulary Anchor Chart
+    </h2>
+
+    <div class="d70-vocab-note">
+
+      🔍 Hover to preview.
+
+      <strong>
+        Click any vocabulary word
+      </strong>
+
+      to enlarge it and read the definition.
+
+    </div>
+
+
+    <div class="d70-vocab-grid">
+
+      {% set words = [
+        ("👁️", "visible light", "Light humans can detect with their eyes."),
+        ("✨", "white light", "Visible colors traveling together."),
+        ("🌈", "visible spectrum", "The range of visible colors separated from white light."),
+        ("🔤", "ROYGBIV", "A memory tool for Red, Orange, Yellow, Green, Blue, Indigo, Violet."),
+        ("🔺", "red", "The R in ROYGBIV."),
+        ("🟧", "orange", "The O in ROYGBIV."),
+        ("🟨", "yellow", "The Y in ROYGBIV."),
+        ("🟩", "green", "The G in ROYGBIV."),
+        ("🟦", "blue", "The B in ROYGBIV."),
+        ("🔷", "indigo", "The I in ROYGBIV."),
+        ("🟪", "violet", "The V in ROYGBIV."),
+        ("🔺", "prism", "A transparent object that can separate white light into visible colors."),
+        ("🌈", "dispersion", "The separation of white light into visible colors.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d70-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span class="d70-vocab-icon">
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will identify the colors of visible light
+      and place them in ROYGBIV order.
+    </p>
+
+  </section>
+
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer — Yesterday's Rainbow
+    </h2>
+
+    <div class="d59-box">
+
+      Yesterday we watched white sunlight
+      travel through a raindrop.
+
+      <ol>
+
+        <li>
+          List as many rainbow colors as you can remember.
+        </li>
+
+        <li>
+          Did the raindrop create those colors?
+        </li>
+
+        <li>
+          Where do you think the colors came from?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson — Meet ROYGBIV
+    </h2>
+
+
+    <div class="d70-spectrum">
+
+      <div class="red">
+        R
+        <small>Red</small>
+      </div>
+
+      <div class="orange">
+        O
+        <small>Orange</small>
+      </div>
+
+      <div class="yellow">
+        Y
+        <small>Yellow</small>
+      </div>
+
+      <div class="green">
+        G
+        <small>Green</small>
+      </div>
+
+      <div class="blue">
+        B
+        <small>Blue</small>
+      </div>
+
+      <div class="indigo">
+        I
+        <small>Indigo</small>
+      </div>
+
+      <div class="violet">
+        V
+        <small>Violet</small>
+      </div>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        Important:
+      </strong>
+
+      <br><br>
+
+      The prism does
+      <strong>not create</strong>
+      the colors.
+
+      <br><br>
+
+      The colors were already part
+      of the
+      <strong>white light</strong>.
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook — Build the Spectrum
+    </h2>
+
+    <div class="d59-box">
+
+      Write ROYGBIV vertically:
+
+      <br><br>
+
+      <strong>
+        R — Red<br>
+        O — Orange<br>
+        Y — Yellow<br>
+        G — Green<br>
+        B — Blue<br>
+        I — Indigo<br>
+        V — Violet
+      </strong>
+
+      <br><br>
+
+      Draw white light entering a prism
+      and the seven visible colors leaving it.
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice — Spectrum Sequence
+    </h2>
+
+    <div class="d59-box">
+
+      Have students arrange seven color cards
+      in ROYGBIV order.
+
+      <br><br>
+
+      Ask:
+
+      <ul>
+        <li>What comes after yellow?</li>
+        <li>What comes before violet?</li>
+        <li>What does the I represent?</li>
+        <li>Were these colors already present in white light?</li>
+      </ul>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌈 Interactive Lab
+    </div>
+
+    <h2>
+      ROYGBIV Spectrum Lab:
+      Separate the White Light
+    </h2>
+
+    <p>
+      Send white light through a prism,
+      reveal the visible spectrum,
+      and solve the ROYGBIV sequence challenge.
+    </p>
+
+
+    <div class="d59-required">
+
+      <div>
+        ✨
+        <strong>White Light</strong>
+      </div>
+
+      <div>
+        🔺
+        <strong>Prism</strong>
+      </div>
+
+      <div>
+        🌈
+        <strong>Spectrum</strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🎯
+      <strong>
+        Evidence Goal:
+      </strong>
+
+      Prove that the visible colors
+      were already contained in white light.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/visible-spectrum?mission=day70"
+    >
+      🌈 Start ROYGBIV Spectrum Lab
+    </a>
+
+  </section>
+
+
+  <section id="d70Practice"
+           class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Practice
+    </div>
+
+    <h2>
+      Visible Spectrum Evidence
+    </h2>
+
+
+    <div class="d70-question"
+         data-answer="C">
+
+      <h3>Question 1</h3>
+
+      <p>
+        Which sequence shows the first four colors
+        of ROYGBIV in the correct order?
+      </p>
+
+      <button data-choice="A">
+        A. Violet, Indigo, Blue, Green
+      </button>
+
+      <button data-choice="B">
+        B. Red, Yellow, Orange, Green
+      </button>
+
+      <button data-choice="C">
+        C. Red, Orange, Yellow, Green
+      </button>
+
+      <button data-choice="D">
+        D. Orange, Red, Green, Yellow
+      </button>
+
+      <div class="d70-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d70-question"
+         data-answer="B">
+
+      <h3>Question 2</h3>
+
+      <p>
+        What does the letter I represent in ROYGBIV?
+      </p>
+
+      <button data-choice="A">
+        A. Infrared
+      </button>
+
+      <button data-choice="B">
+        B. Indigo
+      </button>
+
+      <button data-choice="C">
+        C. Ice blue
+      </button>
+
+      <button data-choice="D">
+        D. Invisible
+      </button>
+
+      <div class="d70-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d70-question"
+         data-answer="A">
+
+      <h3>Question 3</h3>
+
+      <p>
+        White light passes through a prism
+        and separates into several visible colors.
+        Which statement is best supported?
+      </p>
+
+      <button data-choice="A">
+        A. White light contains many visible colors.
+      </button>
+
+      <button data-choice="B">
+        B. The prism creates new colors.
+      </button>
+
+      <button data-choice="C">
+        C. Only red light can travel through glass.
+      </button>
+
+      <button data-choice="D">
+        D. The prism changes light into sound.
+      </button>
+
+      <div class="d70-question-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Written Exit Ticket
+    </h2>
+
+    <p>
+      Write all seven visible-spectrum colors
+      in ROYGBIV order.
+
+      Then explain where those colors were
+      before the white light passed through the prism.
+    </p>
+
+    <textarea
+      class="d59-textarea"
+      placeholder="ROYGBIV stands for..."
+    ></textarea>
+
+  </section>
+
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Explain Your Thinking: CER
+    </h2>
+
+    <div class="d59-focus">
+
+      <strong>
+        CER Question:
+      </strong>
+
+      Did the prism create the rainbow colors?
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The prism did/did not create..."
+        ></textarea>
+
+      </div>
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="In the spectrum lab..."
+        ></textarea>
+
+      </div>
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This shows that white light..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      📘 McGraw Hill Lesson Connection
+    </div>
+
+    <h2>
+      Visible Light and the Spectrum
+    </h2>
+
+    <div class="d59-box">
+
+      Reinforce:
+
+      <ul>
+        <li>white light,</li>
+        <li>visible spectrum,</li>
+        <li>ROYGBIV,</li>
+        <li>prisms,</li>
+        <li>dispersion.</li>
+      </ul>
+
+      <p>
+        Next lesson:
+        <strong>
+          Why does an orange shirt look orange?
+        </strong>
+      </p>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<div id="d70VocabModal"
+     class="d70-modal">
+
+  <div class="d70-modal-card">
+
+    <button
+      id="d70VocabClose"
+      class="d70-modal-close"
+      type="button">
+      ×
+    </button>
+
+    <div id="d70ModalIcon"
+         class="d70-modal-icon"></div>
+
+    <h2 id="d70ModalTerm"></h2>
+
+    <p id="d70ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day70_direct.js') }}?v=70-final"
+></script>
+
+{% endblock %}

@@ -3785,3 +3785,103 @@ SECOND_NINE_WEEKS_LESSONS[69] = {
 }
 
 # Science Studio Day 69 End
+
+
+# Science Studio Day 70 Start
+
+SECOND_NINE_WEEKS_LESSONS[70] = {
+
+    "day": 70,
+
+    "title":
+        "Visible Spectrum Mission: Crack the ROYGBIV Code",
+
+    "unit":
+        "Light Energy: Reflection, Refraction, and Absorption",
+
+    "teks":
+        "5.8C, 5.1F, 5.2D",
+
+    "focus":
+        "Students identify the colors of the visible spectrum in ROYGBIV order "
+        "and connect the spectrum to white light, prisms, and rainbows.",
+
+    "learning_target":
+        "We will identify the colors of visible light and place them in ROYGBIV order.",
+
+    "success_criteria":
+        "I can explain that white light contains many visible colors and correctly order red, orange, yellow, green, blue, indigo, and violet.",
+
+    "essential_question":
+        "If sunlight looks white, where do all the colors of a rainbow come from?",
+
+    "bell_ringer": [
+        "Yesterday, white sunlight entered a raindrop and rainbow colors came out.",
+        "List as many rainbow colors as you can remember.",
+        "Do you think the colors were created by the raindrop, or were they already part of the white light?"
+    ],
+
+    "mini_lesson": [
+        "White light contains many visible colors traveling together.",
+        "When white light is separated, we can observe the visible spectrum.",
+        "The visible spectrum can be remembered using ROYGBIV.",
+        "R = Red.",
+        "O = Orange.",
+        "Y = Yellow.",
+        "G = Green.",
+        "B = Blue.",
+        "I = Indigo.",
+        "V = Violet.",
+        "A prism can separate white light into visible colors.",
+        "Water droplets can also separate white sunlight into visible colors.",
+        "The prism or raindrop does not create the colors; the colors were already present in the white light."
+    ],
+
+    "science_notebook": [
+        "Write ROYGBIV vertically in your notebook.",
+        "Write the matching color beside each letter.",
+        "Draw white light entering a prism.",
+        "Draw the seven visible colors leaving the prism in order.",
+        "Write: White light contains the colors of the visible spectrum."
+    ],
+
+    "guided_practice": [
+        "Identify white light before it enters the prism.",
+        "Identify the visible spectrum after the prism.",
+        "Put seven color cards in ROYGBIV order.",
+        "Explain what the letter I represents.",
+        "Compare the prism spectrum with yesterday's raindrop rainbow."
+    ],
+
+    "lab_title":
+        "ROYGBIV Spectrum Lab: Separate the White Light",
+
+    "lab_url":
+        "/labs/visible-spectrum?mission=day70",
+
+    "exit_ticket":
+        "Write the seven colors of the visible spectrum in ROYGBIV order and explain where the colors were before the white light was separated.",
+
+    "vocabulary": [
+        "visible light",
+        "white light",
+        "visible spectrum",
+        "ROYGBIV",
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "blue",
+        "indigo",
+        "violet",
+        "prism",
+        "dispersion"
+    ],
+
+    "teacher_note":
+        "Keep Day 70 focused on recognizing and sequencing visible-spectrum colors. "
+        "Students do not need wavelength calculations. Connect directly to Day 69: "
+        "the raindrop did not create the colors; it helped separate colors already present in white sunlight."
+}
+
+# Science Studio Day 70 End

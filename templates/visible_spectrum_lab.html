@@ -1,0 +1,374 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='visible_spectrum_lab.css') }}?v=70.1"
+>
+
+
+<div class="vs-shell">
+
+  <header class="vs-hero">
+
+    <div class="vs-tags">
+      <span>🌈 Interactive Lab</span>
+      <span>Visible Spectrum Mission</span>
+      <span>TEKS 5.8C</span>
+    </div>
+
+
+    <div class="vs-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio: ROYGBIV Spectrum Lab
+        </h1>
+
+        <p>
+          Send white light through a prism,
+          reveal the spectrum,
+          and crack the ROYGBIV code.
+        </p>
+
+      </div>
+
+
+      <a
+        class="vs-back"
+        href="/second-nine-weeks/day/70?view=student"
+      >
+        ← Back to Day 70
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <section class="vs-mission">
+
+    <div>
+
+      <div class="vs-eyebrow">
+        SPECTRUM ENGINE
+      </div>
+
+      <h2>
+        What colors are inside white light?
+      </h2>
+
+      <p>
+        Begin with white light.
+        Send it through the prism.
+        Then identify the visible colors in order.
+      </p>
+
+    </div>
+
+
+    <aside class="vs-goal">
+
+      <strong>
+        🎯 Mission Goal
+      </strong>
+
+      <p>
+        Correctly build:
+      </p>
+
+      <strong>
+        R → O → Y → G → B → I → V
+      </strong>
+
+    </aside>
+
+  </section>
+
+
+  <section class="vs-workspace">
+
+    <div class="vs-controls">
+
+      <button id="vsWhite"
+              type="button">
+        ✨ Show White Light
+      </button>
+
+      <button id="vsSplit"
+              type="button">
+        🔺 Send Through Prism
+      </button>
+
+      <button id="vsLabels"
+              type="button">
+        🏷 Show Color Labels
+      </button>
+
+      <button id="vsReset"
+              type="button">
+        ↻ Reset
+      </button>
+
+    </div>
+
+
+    <div class="vs-board">
+
+      <svg
+        viewBox="0 0 1000 580"
+        class="vs-svg"
+      >
+
+        <rect width="1000"
+              height="580"
+              fill="#071120"/>
+
+
+        <circle cx="105"
+                cy="290"
+                r="50"
+                fill="#fff3a0"
+                stroke="#ffffff"
+                stroke-width="5"/>
+
+        <text x="105"
+              y="365"
+              text-anchor="middle"
+              fill="#ffffff"
+              font-size="18"
+              font-weight="900">
+          LIGHT SOURCE
+        </text>
+
+
+        <line id="vsIncoming"
+              x1="155"
+              y1="290"
+              x2="410"
+              y2="290"
+              stroke="#ffffff"
+              stroke-width="16"
+              stroke-linecap="round"
+              opacity="0"/>
+
+
+        <polygon points="405,450 545,160 685,450"
+                 fill="#9fd8ed"
+                 fill-opacity=".78"
+                 stroke="#ffffff"
+                 stroke-width="7"/>
+
+        <text x="545"
+              y="420"
+              text-anchor="middle"
+              fill="#173f64"
+              font-size="26"
+              font-weight="900">
+          PRISM
+        </text>
+
+
+        <g id="vsSpectrum"
+           opacity="0">
+
+          <line x1="605" y1="300"
+                x2="940" y2="175"
+                stroke="#ff3d3d"
+                stroke-width="11"/>
+
+          <line x1="605" y1="300"
+                x2="940" y2="215"
+                stroke="#ff932b"
+                stroke-width="11"/>
+
+          <line x1="605" y1="300"
+                x2="940" y2="255"
+                stroke="#ffe04a"
+                stroke-width="11"/>
+
+          <line x1="605" y1="300"
+                x2="940" y2="295"
+                stroke="#4ac866"
+                stroke-width="11"/>
+
+          <line x1="605" y1="300"
+                x2="940" y2="335"
+                stroke="#4389ff"
+                stroke-width="11"/>
+
+          <line x1="605" y1="300"
+                x2="940" y2="375"
+                stroke="#4c56bf"
+                stroke-width="11"/>
+
+          <line x1="605" y1="300"
+                x2="940" y2="415"
+                stroke="#9752d1"
+                stroke-width="11"/>
+
+        </g>
+
+
+        <g id="vsColorLabels"
+           opacity="0"
+           fill="#ffffff"
+           font-size="17"
+           font-weight="900">
+
+          <text x="950" y="181">RED</text>
+          <text x="950" y="221">ORANGE</text>
+          <text x="950" y="261">YELLOW</text>
+          <text x="950" y="301">GREEN</text>
+          <text x="950" y="341">BLUE</text>
+          <text x="950" y="381">INDIGO</text>
+          <text x="950" y="421">VIOLET</text>
+
+        </g>
+
+      </svg>
+
+    </div>
+
+
+    <div id="vsResult"
+         class="vs-result">
+      Begin by showing the white light.
+    </div>
+
+  </section>
+
+
+  <section class="vs-challenge">
+
+    <h2>
+      🧩 ROYGBIV Sequence Challenge
+    </h2>
+
+    <p>
+      Click the colors in ROYGBIV order.
+    </p>
+
+
+    <div id="vsSequence"
+         class="vs-sequence">
+
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+
+    </div>
+
+
+    <div class="vs-color-buttons">
+
+      <button data-color="Green">Green</button>
+      <button data-color="Violet">Violet</button>
+      <button data-color="Red">Red</button>
+      <button data-color="Blue">Blue</button>
+      <button data-color="Orange">Orange</button>
+      <button data-color="Indigo">Indigo</button>
+      <button data-color="Yellow">Yellow</button>
+
+    </div>
+
+
+    <div class="vs-challenge-buttons">
+
+      <button id="vsCheck"
+              type="button">
+        ✅ Check ROYGBIV
+      </button>
+
+      <button id="vsClear"
+              type="button">
+        ↻ Clear Sequence
+      </button>
+
+    </div>
+
+
+    <div id="vsChallengeFeedback"
+         class="vs-feedback"></div>
+
+  </section>
+
+
+  <section class="vs-evidence">
+
+    <h2>
+      📓 Spectrum Evidence Notebook
+    </h2>
+
+
+    <div class="vs-grid">
+
+      <article>
+
+        <strong>
+          ✨ Before the Prism
+        </strong>
+
+        <p>
+          What color does the incoming light appear?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🌈 After the Prism
+        </strong>
+
+        <p>
+          What visible colors can you identify?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🔤 ROYGBIV
+        </strong>
+
+        <p>
+          Write all seven colors in order.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="vs-question">
+
+      <strong>
+        🧠 Evidence Question:
+      </strong>
+
+      Did the prism create the colors,
+      or did it separate colors
+      already present in white light?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='visible_spectrum_lab.js') }}?v=70.1"
+></script>
+
+{% endblock %}

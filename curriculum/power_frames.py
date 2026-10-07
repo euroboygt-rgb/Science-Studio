@@ -715,3 +715,20 @@ POWER_FRAMES[69] = {
 }
 
 # Science Studio Day 69 Power Frame End
+
+
+# Science Studio Day 70 Power Frame Start
+
+POWER_FRAMES[70] = {
+
+    "i_can":
+        "I can identify and correctly order the seven colors of the visible spectrum.",
+
+    "by":
+        "using ROYGBIV and observing white light separate into visible colors.",
+
+    "i_know":
+        "I know I have learned this when I can explain that white light already contains the colors red, orange, yellow, green, blue, indigo, and violet."
+}
+
+# Science Studio Day 70 Power Frame End

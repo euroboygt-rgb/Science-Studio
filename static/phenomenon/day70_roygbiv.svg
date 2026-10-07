@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1100 650">
+
+  <rect width="1100"
+        height="650"
+        rx="24"
+        fill="#071120"/>
+
+  <text x="550"
+        y="50"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#ffffff">
+    PHENOMENON MISSION: WHERE WERE THE COLORS HIDING?
+  </text>
+
+  <text x="550"
+        y="86"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="700"
+        fill="#d8eaff">
+    White light enters the prism. Seven visible colors leave.
+  </text>
+
+  <!-- light source -->
+
+  <circle cx="130"
+          cy="315"
+          r="55"
+          fill="#fff3a0"
+          stroke="#ffffff"
+          stroke-width="5"/>
+
+  <text x="130"
+        y="400"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="19"
+        font-weight="900">
+    WHITE LIGHT
+  </text>
+
+  <line x1="185"
+        y1="315"
+        x2="435"
+        y2="315"
+        stroke="#ffffff"
+        stroke-width="18"
+        stroke-linecap="round"/>
+
+  <!-- prism -->
+
+  <polygon points="435,470 570,190 705,470"
+           fill="#a9dcf2"
+           fill-opacity=".75"
+           stroke="#ffffff"
+           stroke-width="7"/>
+
+  <text x="570"
+        y="430"
+        text-anchor="middle"
+        fill="#183b63"
+        font-size="25"
+        font-weight="900">
+    PRISM
+  </text>
+
+  <!-- spectrum -->
+
+  <line x1="620" y1="330" x2="965" y2="210"
+        stroke="#ff3d3d" stroke-width="12"/>
+  <line x1="620" y1="330" x2="965" y2="250"
+        stroke="#ff932b" stroke-width="12"/>
+  <line x1="620" y1="330" x2="965" y2="290"
+        stroke="#ffe04a" stroke-width="12"/>
+  <line x1="620" y1="330" x2="965" y2="330"
+        stroke="#4ac866" stroke-width="12"/>
+  <line x1="620" y1="330" x2="965" y2="370"
+        stroke="#4389ff" stroke-width="12"/>
+  <line x1="620" y1="330" x2="965" y2="410"
+        stroke="#4453c7" stroke-width="12"/>
+  <line x1="620" y1="330" x2="965" y2="450"
+        stroke="#8e4fd1" stroke-width="12"/>
+
+  <text x="990" y="216" fill="#ffffff" font-size="18" font-weight="900">R</text>
+  <text x="990" y="256" fill="#ffffff" font-size="18" font-weight="900">O</text>
+  <text x="990" y="296" fill="#ffffff" font-size="18" font-weight="900">Y</text>
+  <text x="990" y="336" fill="#ffffff" font-size="18" font-weight="900">G</text>
+  <text x="990" y="376" fill="#ffffff" font-size="18" font-weight="900">B</text>
+  <text x="990" y="416" fill="#ffffff" font-size="18" font-weight="900">I</text>
+  <text x="990" y="456" fill="#ffffff" font-size="18" font-weight="900">V</text>
+
+  <rect x="150"
+        y="535"
+        width="800"
+        height="72"
+        rx="15"
+        fill="#fff4a8"
+        stroke="#ffffff"
+        stroke-width="3"/>
+
+  <text x="550"
+        y="565"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900"
+        fill="#24336b">
+    MYSTERY QUESTION
+  </text>
+
+  <text x="550"
+        y="592"
+        text-anchor="middle"
+        font-size="21"
+        font-weight="900"
+        fill="#24336b">
+    Did the prism CREATE the colors, or were they already in the white light?
+  </text>
+
+</svg>
