@@ -698,3 +698,20 @@ POWER_FRAMES[68] = {
 }
 
 # Science Studio Day 68 Power Frame End
+
+
+# Science Studio Day 69 Power Frame Start
+
+POWER_FRAMES[69] = {
+
+    "i_can":
+        "I can trace sunlight through a raindrop and explain how refraction and reflection help create a rainbow.",
+
+    "by":
+        "by sequencing refraction into water, internal reflection, refraction back into air, and separation of colors.",
+
+    "i_know":
+        "I know I have learned this when I can correctly explain the complete light path through a raindrop."
+}
+
+# Science Studio Day 69 Power Frame End

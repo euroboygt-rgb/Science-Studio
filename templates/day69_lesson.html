@@ -1,0 +1,1112 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=69-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day69_direct.css') }}?v=69-final"
+>
+
+<div id="DAY69_DIRECT_TEMPLATE" class="d69-page">
+
+  <!-- ======================================================
+       HEADER
+       ====================================================== -->
+
+  <section class="d69-hero">
+
+    <div class="d69-tags">
+
+      <span>Day 69</span>
+
+      <span>
+        {% if view == "teacher" %}
+          Teacher View
+        {% else %}
+          Student View
+        {% endif %}
+      </span>
+
+      <span>TEKS 5.8C</span>
+
+    </div>
+
+
+    <h1>
+      🌈 Rainbow Mission: Inside a Raindrop
+    </h1>
+
+    <p>
+      Follow sunlight through a raindrop and discover
+      how refraction and reflection help create a rainbow.
+    </p>
+
+
+    <div class="d69-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/69?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/69?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       POWER FRAME
+       ====================================================== -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today’s Learning Power Frame
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          trace sunlight through a raindrop and explain
+          how refraction and reflection help create a rainbow.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          sequencing refraction into water,
+          internal reflection,
+          refraction back into air,
+          and separation of colors.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can correctly explain the complete
+          light path through a raindrop.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       PHENOMENON
+       ====================================================== -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌈 Phenomenon Mission
+    </div>
+
+    <h2>
+      What Happens Inside a Raindrop?
+    </h2>
+
+    <div class="d59-unit">
+      Day 69 • Rainbow Science
+    </div>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day69_raindrop_rainbow.svg"
+        alt="Sunlight refracting and reflecting inside a raindrop"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      How can white sunlight enter a raindrop
+      and leave as different colors?
+
+    </div>
+
+
+    <div class="d59-grid2">
+
+      <div class="d59-box">
+
+        <strong>
+          1️⃣ Refract In
+        </strong>
+
+        <p>
+          Sunlight changes direction
+          as it moves from air into water.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          2️⃣ Reflect Inside
+        </strong>
+
+        <p>
+          The light reflects from
+          an inside surface of the droplet.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          3️⃣ Refract Out
+        </strong>
+
+        <p>
+          Light changes direction again
+          as it moves from water back into air.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          4️⃣ Spectrum
+        </strong>
+
+        <p>
+          The visible colors leave
+          along slightly different paths.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       MISSION BRIEF
+       ====================================================== -->
+
+  <section id="d69MissionBrief" class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Journey Through a Raindrop
+        </h2>
+
+        <div class="d59-unit">
+          Day 69 • Lesson Explanation
+        </div>
+
+      </div>
+
+
+      <button
+        id="d69Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Mission Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d69SlideIcon" class="d59-slide-icon"></div>
+
+      <h2 id="d69SlideTitle" class="d59-slide-title"></h2>
+
+      <div id="d69SlideMain" class="d59-slide-main"></div>
+
+      <div id="d69SlideCaption" class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d69SlideNumber"></strong>
+
+
+      <div>
+
+        <button
+          id="d69Back"
+          class="d59-control"
+          type="button"
+        >
+          ◀ Back
+        </button>
+
+        <button
+          id="d69Next"
+          class="d59-control"
+          type="button"
+        >
+          Next ▶
+        </button>
+
+        <button
+          id="d69Restart"
+          class="d59-control"
+          type="button"
+        >
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       STEVE
+       ====================================================== -->
+
+  <section id="d69Steve" class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's STAAR Mission
+        </div>
+
+        <h2>
+          Steve's Rainbow Investigation
+        </h2>
+
+        <div class="d59-unit">
+          Day 69 • Follow the Light
+        </div>
+
+
+        <div class="d59-scenario">
+
+          <strong>
+            Steve's Scenario:
+          </strong>
+
+          <br><br>
+
+          Steve watches sunlight enter a raindrop.
+
+          The ray bends when it enters,
+          changes direction inside the drop,
+          and bends once more when it exits.
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            STAAR-Style Question:
+          </strong>
+
+          <p>
+            Which sequence best describes
+            Steve's observation?
+          </p>
+
+
+          <button class="d69-steve-answer" data-answer="A">
+            A. Refract in → reflect inside → refract out
+          </button>
+
+          <button class="d69-steve-answer" data-answer="B">
+            B. Reflect in → absorb → reflect out
+          </button>
+
+          <button class="d69-steve-answer" data-answer="C">
+            C. Conduct → magnetize → reflect
+          </button>
+
+          <button class="d69-steve-answer" data-answer="D">
+            D. Absorb → vibrate → refract
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d69SteveCheck" class="d59-check">
+              Check Answer
+            </button>
+
+            <button id="d69SteveReset" class="d59-reset">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d69SteveFeedback" class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       VOCABULARY
+       ====================================================== -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Vocabulary Anchor Chart
+    </h2>
+
+    <div class="d69-vocab-note">
+
+      🔍 Hover to preview.
+      <strong>
+        Click any vocabulary word
+      </strong>
+      to enlarge it and read the definition.
+
+    </div>
+
+
+    <div class="d69-vocab-grid">
+
+      {% set words = [
+        ("☀️", "sunlight", "Light energy from the Sun."),
+        ("✨", "white light", "Visible light containing many colors traveling together."),
+        ("💧", "raindrop", "A small drop of liquid water in the atmosphere."),
+        ("↘️", "refraction", "A change in the direction of light when it moves from one medium into another."),
+        ("🪞", "reflection", "The bouncing of light from a surface."),
+        ("🔁", "internal reflection", "Reflection that occurs at an inside surface while the light remains inside the material."),
+        ("🌈", "dispersion", "The separation of white light into visible colors."),
+        ("🎨", "spectrum", "The range of visible colors separated from white light."),
+        ("🌦️", "rainbow", "An arc of colors produced when sunlight interacts with many water droplets."),
+        ("💧", "medium", "Matter through which light travels.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+        <button
+          class="d69-vocab"
+          type="button"
+          data-term="{{ term }}"
+          data-definition="{{ definition }}"
+          data-icon="{{ icon }}"
+        >
+
+          <span class="d69-vocab-icon">
+            {{ icon }}
+          </span>
+
+          <strong>
+            {{ term }}
+          </strong>
+
+        </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       LEARNING TARGET
+       ====================================================== -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will trace the path of sunlight through a raindrop
+      and explain how refraction and reflection
+      help produce a rainbow.
+    </p>
+
+  </section>
+
+
+  <!-- ======================================================
+       BELL RINGER
+       ====================================================== -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer — After the Rain
+    </h2>
+
+
+    <div class="d59-box">
+
+      Sunlight often appears white,
+      but after a rainstorm
+      a rainbow may appear.
+
+      <ol>
+
+        <li>
+          What medium surrounds a raindrop?
+        </li>
+
+        <li>
+          What medium is inside a raindrop?
+        </li>
+
+        <li>
+          What two light behaviors
+          have we already studied
+          that could happen inside the droplet?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       MINI LESSON
+       ====================================================== -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson — Building a Rainbow
+    </h2>
+
+
+    <div class="d59-grid2">
+
+      <div class="d59-box">
+
+        <strong>
+          ☀️ White Light
+        </strong>
+
+        <p>
+          Sunlight contains many visible colors
+          traveling together.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          ↘️ Refraction
+        </strong>
+
+        <p>
+          Light changes direction
+          when it crosses between air and water.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          🪞 Internal Reflection
+        </strong>
+
+        <p>
+          Light reflects from an inside surface
+          of the raindrop.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          🌈 Dispersion
+        </strong>
+
+        <p>
+          White light separates
+          into visible colors.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        Rainbow Sequence
+      </strong>
+
+      <br><br>
+
+      ☀️ WHITE SUNLIGHT
+
+      → ↘️ REFRACT IN
+
+      → 🪞 REFLECT INSIDE
+
+      → ↗️ REFRACT OUT
+
+      → 🌈 SPECTRUM
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       NOTEBOOK
+       ====================================================== -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook — Journey Through a Raindrop
+    </h2>
+
+
+    <div class="d59-box">
+
+      Draw one large raindrop.
+
+      <br><br>
+
+      Number and label:
+
+      <ol>
+
+        <li>
+          Refraction entering the water
+        </li>
+
+        <li>
+          Internal reflection
+        </li>
+
+        <li>
+          Refraction leaving the water
+        </li>
+
+        <li>
+          Spectrum leaving the droplet
+        </li>
+
+      </ol>
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Complete the Rule:
+      </strong>
+
+      <br><br>
+
+      Refraction happens ______ times.
+
+      <br><br>
+
+      Reflection happens ______________________________.
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       TEACHER-ONLY GUIDED PRACTICE
+       ====================================================== -->
+
+  {% if view == "teacher" %}
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice — Put the Light Path in Order
+    </h2>
+
+
+    <div class="d59-box">
+
+      Students order:
+
+      <ol>
+
+        <li>
+          Sunlight refracts entering water.
+        </li>
+
+        <li>
+          Light reflects inside the droplet.
+        </li>
+
+        <li>
+          Light refracts as it leaves water.
+        </li>
+
+        <li>
+          The colors leave along different paths.
+        </li>
+
+      </ol>
+
+      Ask:
+      <strong>
+        Which behavior happens twice?
+      </strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- ======================================================
+       LAB LAUNCH
+       ====================================================== -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌈 Interactive Lab
+    </div>
+
+    <h2>
+      Raindrop Rainbow Lab: Follow the Light
+    </h2>
+
+
+    <p>
+      Follow one ray of sunlight
+      through a raindrop from beginning to rainbow.
+    </p>
+
+
+    <div class="d59-required">
+
+      <div>
+        ☀️
+        <strong>
+          Sunlight
+        </strong>
+      </div>
+
+      <div>
+        💧
+        <strong>
+          Raindrop
+        </strong>
+      </div>
+
+      <div>
+        🌈
+        <strong>
+          Spectrum
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      <strong>
+        Your Mission
+      </strong>
+
+      <ol>
+
+        <li>
+          Reveal refraction into water.
+        </li>
+
+        <li>
+          Reveal internal reflection.
+        </li>
+
+        <li>
+          Reveal refraction back into air.
+        </li>
+
+        <li>
+          Reveal the rainbow colors.
+        </li>
+
+        <li>
+          Explain the complete sequence.
+        </li>
+
+      </ol>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🌈
+      <strong>
+        Evidence Goal:
+      </strong>
+
+      Explain why both
+      <strong>refraction</strong>
+      and
+      <strong>reflection</strong>
+      are part of the rainbow light path.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/raindrop-rainbow?mission=day69"
+    >
+      🌈 Start Raindrop Rainbow Lab
+    </a>
+
+  </section>
+
+
+  <!-- ======================================================
+       STAAR QUESTIONS
+       ====================================================== -->
+
+  <section id="d69Practice" class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Practice
+    </div>
+
+    <h2>
+      Rainbow Light Evidence
+    </h2>
+
+
+    <div class="d69-question" data-answer="A">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        Sunlight changes direction
+        as it moves from air into a raindrop.
+        Which behavior of light occurs?
+      </p>
+
+      <button data-choice="A">A. Refraction</button>
+      <button data-choice="B">B. Magnetism</button>
+      <button data-choice="C">C. Conduction</button>
+      <button data-choice="D">D. Sound vibration</button>
+
+      <div class="d69-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d69-question" data-answer="A">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        Light reaches the inside back surface
+        of a raindrop and changes direction
+        while remaining inside the droplet.
+        Which behavior occurs?
+      </p>
+
+      <button data-choice="A">A. Internal reflection</button>
+      <button data-choice="B">B. Evaporation</button>
+      <button data-choice="C">C. Conduction</button>
+      <button data-choice="D">D. Magnetism</button>
+
+      <div class="d69-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d69-question" data-answer="A">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        Which sequence correctly describes
+        the light path through a raindrop
+        that contributes to a rainbow?
+      </p>
+
+      <button data-choice="A">
+        A. Refraction in → reflection inside → refraction out
+      </button>
+
+      <button data-choice="B">
+        B. Reflection in → absorption → reflection out
+      </button>
+
+      <button data-choice="C">
+        C. Conduction → reflection → magnetism
+      </button>
+
+      <button data-choice="D">
+        D. Absorption → sound → refraction
+      </button>
+
+      <div class="d69-question-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       EXIT TICKET
+       ====================================================== -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Written Exit Ticket
+    </h2>
+
+    <p>
+      Explain how sunlight travels through a raindrop
+      to help form a rainbow.
+
+      Use the words
+      <strong>refraction</strong>,
+      <strong>reflection</strong>,
+      <strong>water</strong>,
+      <strong>air</strong>,
+      and
+      <strong>spectrum</strong>.
+    </p>
+
+    <textarea
+      class="d59-textarea"
+      placeholder="First, sunlight..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- ======================================================
+       CER
+       ====================================================== -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Explain Your Thinking: CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        CER Question:
+      </strong>
+
+      How does one raindrop
+      change the path of sunlight?
+
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="A raindrop changes sunlight by..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="In the Raindrop Rainbow Lab..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This evidence shows..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       MCGRAW HILL CONNECTION
+       ====================================================== -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      📘 McGraw Hill Lesson Connection
+    </div>
+
+    <h2>
+      Light, Water, and Rainbows
+    </h2>
+
+    <div class="d59-box">
+
+      Reinforce:
+
+      <ul>
+
+        <li>refraction,</li>
+        <li>reflection,</li>
+        <li>water as a medium,</li>
+        <li>white light,</li>
+        <li>visible spectrum.</li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- Vocabulary modal -->
+
+<div id="d69VocabModal" class="d69-modal">
+
+  <div class="d69-modal-card">
+
+    <button id="d69VocabClose" class="d69-modal-close">
+      ×
+    </button>
+
+    <div id="d69ModalIcon" class="d69-modal-icon"></div>
+
+    <h2 id="d69ModalTerm"></h2>
+
+    <p id="d69ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day69_direct.js') }}?v=69-final"
+></script>
+
+{% endblock %}

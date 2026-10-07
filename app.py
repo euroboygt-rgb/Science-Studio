@@ -53,6 +53,52 @@ from curriculum.printable_resources import resource_folders, printable_resources
 app = Flask(__name__)
 
 
+
+
+# Science Studio Dedicated Day 69 Start
+
+@app.before_request
+def science_studio_dedicated_day69():
+
+    from flask import (
+        request as flask_request,
+        render_template as flask_render_template,
+    )
+
+    if flask_request.path not in (
+        "/second-nine-weeks/day/69",
+        "/2nd-nine-weeks/day/69",
+    ):
+        return None
+
+    view = flask_request.args.get(
+        "view",
+        "student"
+    )
+
+    if view not in (
+        "student",
+        "teacher",
+    ):
+        view = "student"
+
+    return flask_render_template(
+        "day69_lesson.html",
+        view=view
+    )
+
+# Science Studio Dedicated Day 69 End
+
+
+# Science Studio Raindrop Rainbow Lab Route Start
+
+@app.route("/labs/raindrop-rainbow")
+def raindrop_rainbow_lab():
+    return render_template("raindrop_rainbow_lab.html")
+
+# Science Studio Raindrop Rainbow Lab Route End
+
+
 # Science Studio Pool Refraction Lab Route Start
 
 @app.route("/labs/pool-refraction")

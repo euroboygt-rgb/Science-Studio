@@ -3596,3 +3596,192 @@ SECOND_NINE_WEEKS_LESSONS[68] = {
 }
 
 # Science Studio Day 68 End
+
+
+# Science Studio Day 69 Start
+
+SECOND_NINE_WEEKS_LESSONS[69] = {
+
+    "day": 69,
+
+    "title":
+        "Rainbow Mission: Inside a Raindrop",
+
+    "unit":
+        "Light Energy: Reflection, Refraction, and Absorption",
+
+    "teks":
+        "5.8C, 5.1F, 5.2D",
+
+    "focus":
+        "Students trace sunlight through a raindrop and explain how refraction, "
+        "internal reflection, and refraction again contribute to rainbow formation.",
+
+    "learning_target":
+        "We will trace the path of sunlight through a raindrop and explain how refraction and reflection help produce a rainbow.",
+
+    "success_criteria":
+        "I can correctly sequence refraction into a raindrop, reflection inside the raindrop, and refraction out of the raindrop.",
+
+    "essential_question":
+        "How can one raindrop change white sunlight into the colors we see in a rainbow?",
+
+    "bell_ringer": [
+        "After a rainstorm, sunlight shines through water droplets in the air.",
+        "A rainbow appears even though the sunlight looked white before entering the droplets.",
+        "What might the light be doing inside each raindrop?"
+    ],
+
+    "mini_lesson": [
+        "Sunlight contains many colors of visible light even though it often appears white.",
+        "A raindrop is a transparent water medium surrounded by air.",
+        "When sunlight enters the raindrop, the light refracts because it moves from air into water.",
+        "The colors of white light begin to separate because different colors bend by slightly different amounts. This separation is called dispersion.",
+        "The light reaches the back inside surface of the raindrop and reflects.",
+        "The reflected light travels toward another part of the raindrop surface.",
+        "As the light leaves the water and enters air again, it refracts again.",
+        "The separated colors leave the droplet along slightly different paths.",
+        "Many raindrops sending separated colors toward an observer can create the rainbow we see in the sky."
+    ],
+
+    "science_notebook": [
+        "Draw one large raindrop.",
+        "Draw white sunlight entering the droplet.",
+        "Label Step 1: Refraction into water.",
+        "Draw the ray reaching the back of the droplet.",
+        "Label Step 2: Internal reflection.",
+        "Draw the ray traveling toward the front/lower part of the droplet.",
+        "Label Step 3: Refraction out into air.",
+        "Draw separated colors leaving the droplet.",
+        "Label Step 4: Dispersion / visible spectrum."
+    ],
+
+    "guided_practice": [
+        "Identify the first medium: air.",
+        "Identify the second medium: water.",
+        "Trace the incoming sunlight.",
+        "Mark the first refraction at the air-water boundary.",
+        "Mark the internal reflection inside the droplet.",
+        "Mark the second refraction at the water-air boundary.",
+        "Identify where the separated colors leave the droplet.",
+        "Put the four events in the correct order."
+    ],
+
+    "lab_title":
+        "Raindrop Rainbow Lab: Follow the Light",
+
+    "lab": [
+        "Open the Raindrop Rainbow Lab.",
+        "Choose a sunlight angle.",
+        "Reveal Step 1: Refraction entering the raindrop.",
+        "Reveal Step 2: Internal reflection.",
+        "Reveal Step 3: Refraction leaving the raindrop.",
+        "Reveal Step 4: Separated colors.",
+        "Use the complete ray path to explain how a raindrop contributes to a rainbow."
+    ],
+
+    "lab_notebook": [
+        "Step 1 — What happens when sunlight enters the water?",
+        "Step 2 — What happens at the back inside surface of the raindrop?",
+        "Step 3 — What happens when the light leaves the water?",
+        "Step 4 — What happens to the colors of white light?",
+        "Which behavior happens twice?",
+        "Which behavior occurs inside the droplet?",
+        "Write the full sequence using arrows."
+    ],
+
+    "staar_practice": [
+
+        {
+            "question":
+                "Sunlight enters a raindrop and changes direction as it moves from air into water. "
+                "Which behavior of light occurs first?",
+
+            "choices": {
+                "A": "Refraction",
+                "B": "Magnetism",
+                "C": "Electrical conduction",
+                "D": "Sound vibration"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "Light refracts when it changes direction as it moves from air into water."
+        },
+
+        {
+            "question":
+                "After sunlight enters a raindrop, some of the light reaches the inside back surface "
+                "and changes direction without leaving the droplet. Which behavior is occurring?",
+
+            "choices": {
+                "A": "Internal reflection",
+                "B": "Evaporation",
+                "C": "Conduction",
+                "D": "Magnetism"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "The light reflects from the inside surface of the raindrop and remains inside the water."
+        },
+
+        {
+            "question":
+                "Which sequence best describes the path of sunlight through a raindrop that contributes to a rainbow?",
+
+            "choices": {
+                "A": "Refraction in → reflection inside → refraction out",
+                "B": "Reflection in → absorption → reflection out",
+                "C": "Conduction → reflection → magnetism",
+                "D": "Absorption → sound → refraction"
+            },
+
+            "answer": "A",
+
+            "rationale":
+                "A rainbow ray refracts entering water, reflects inside the droplet, and refracts again as it exits."
+        }
+    ],
+
+    "exit_ticket":
+        "Explain how sunlight travels through a raindrop to help form a rainbow. "
+        "Use the words refraction, reflection, water, air, and spectrum.",
+
+    "cer": {
+
+        "claim":
+            "A raindrop changes the path of sunlight through both refraction and reflection.",
+
+        "evidence":
+            "Use the four stages shown in the Raindrop Rainbow Lab.",
+
+        "reasoning":
+            "Explain how the changes in the light path allow separated colors to leave the droplet."
+    },
+
+    "vocabulary": [
+        "sunlight",
+        "white light",
+        "raindrop",
+        "refraction",
+        "reflection",
+        "internal reflection",
+        "dispersion",
+        "spectrum",
+        "rainbow",
+        "medium"
+    ],
+
+    "teacher_note":
+        "Day 69 synthesizes reflection and refraction using the raindrop/rainbow phenomenon. "
+        "Keep the sequence central: refract in, reflect inside, refract out. "
+        "Dispersion may be introduced as the separation of white light into colors without requiring wavelength calculations.",
+
+    "lab_url":
+        "/labs/raindrop-rainbow?mission=day69"
+}
+
+# Science Studio Day 69 End

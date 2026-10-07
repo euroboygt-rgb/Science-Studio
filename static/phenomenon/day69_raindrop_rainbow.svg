@@ -1,0 +1,285 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1100 650">
+
+  <defs>
+
+    <linearGradient id="dropFill"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#e8f9ff"
+            stop-opacity=".95"/>
+
+      <stop offset="100%"
+            stop-color="#73cff5"
+            stop-opacity=".72"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1100"
+        height="650"
+        rx="24"
+        fill="#f5fbff"/>
+
+
+  <text x="550"
+        y="48"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#20346f">
+    PHENOMENON MISSION: WHAT HAPPENS INSIDE A RAINDROP?
+  </text>
+
+
+  <text x="550"
+        y="82"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="700"
+        fill="#20346f">
+    Follow white sunlight through water and watch the colors emerge.
+  </text>
+
+
+  <rect x="55"
+        y="115"
+        width="990"
+        height="420"
+        rx="24"
+        fill="#071120"
+        stroke="#cad7ef"
+        stroke-width="4"/>
+
+
+  <!-- sun -->
+
+  <circle cx="145"
+          cy="245"
+          r="52"
+          fill="#ffe45d"
+          stroke="#ffffff"
+          stroke-width="5"/>
+
+  <text x="145"
+        y="325"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="20"
+        font-weight="900">
+    SUNLIGHT
+  </text>
+
+
+  <!-- droplet -->
+
+  <circle cx="555"
+          cy="325"
+          r="170"
+          fill="url(#dropFill)"
+          stroke="#ffffff"
+          stroke-width="7"/>
+
+  <text x="555"
+        y="330"
+        text-anchor="middle"
+        fill="#124c76"
+        font-size="26"
+        font-weight="900">
+    WATER
+  </text>
+
+
+  <!-- incoming white light -->
+
+  <line x1="200"
+        y1="245"
+        x2="405"
+        y2="270"
+        stroke="#ffffff"
+        stroke-width="11"
+        stroke-linecap="round"/>
+
+
+  <!-- inside refracted ray -->
+
+  <line x1="405"
+        y1="270"
+        x2="675"
+        y2="420"
+        stroke="#fff6a9"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+
+  <!-- internal reflection -->
+
+  <line x1="675"
+        y1="420"
+        x2="500"
+        y2="475"
+        stroke="#fff6a9"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+
+  <!-- spectrum leaving -->
+
+  <line x1="500"
+        y1="475"
+        x2="845"
+        y2="510"
+        stroke="#ff4141"
+        stroke-width="7"/>
+
+  <line x1="500"
+        y1="475"
+        x2="845"
+        y2="520"
+        stroke="#ff9d2e"
+        stroke-width="7"/>
+
+  <line x1="500"
+        y1="475"
+        x2="845"
+        y2="530"
+        stroke="#ffe45d"
+        stroke-width="7"/>
+
+  <line x1="500"
+        y1="475"
+        x2="845"
+        y2="540"
+        stroke="#56c96b"
+        stroke-width="7"/>
+
+  <line x1="500"
+        y1="475"
+        x2="845"
+        y2="550"
+        stroke="#4a8cff"
+        stroke-width="7"/>
+
+  <line x1="500"
+        y1="475"
+        x2="845"
+        y2="560"
+        stroke="#8d55db"
+        stroke-width="7"/>
+
+
+  <!-- numbered event markers -->
+
+  <circle cx="405"
+          cy="270"
+          r="20"
+          fill="#7131cc"
+          stroke="#ffffff"
+          stroke-width="3"/>
+
+  <text x="405"
+        y="277"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="18"
+        font-weight="900">
+    1
+  </text>
+
+
+  <circle cx="675"
+          cy="420"
+          r="20"
+          fill="#7131cc"
+          stroke="#ffffff"
+          stroke-width="3"/>
+
+  <text x="675"
+        y="427"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="18"
+        font-weight="900">
+    2
+  </text>
+
+
+  <circle cx="500"
+          cy="475"
+          r="20"
+          fill="#7131cc"
+          stroke="#ffffff"
+          stroke-width="3"/>
+
+  <text x="500"
+        y="482"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="18"
+        font-weight="900">
+    3
+  </text>
+
+
+  <text x="367"
+        y="220"
+        fill="#ffffff"
+        font-size="17"
+        font-weight="900">
+    REFRACT IN
+  </text>
+
+
+  <text x="690"
+        y="390"
+        fill="#ffffff"
+        font-size="17"
+        font-weight="900">
+    REFLECT
+  </text>
+
+
+  <text x="420"
+        y="520"
+        fill="#ffffff"
+        font-size="17"
+        font-weight="900">
+    REFRACT OUT
+  </text>
+
+
+  <text x="865"
+        y="540"
+        fill="#ffffff"
+        font-size="18"
+        font-weight="900">
+    SPECTRUM
+  </text>
+
+
+  <rect x="150"
+        y="570"
+        width="800"
+        height="56"
+        rx="14"
+        fill="#fff4a8"
+        stroke="#24336b"
+        stroke-width="3"/>
+
+
+  <text x="550"
+        y="604"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900"
+        fill="#24336b">
+    REFRACT IN → REFLECT INSIDE → REFRACT OUT
+  </text>
+
+</svg>
