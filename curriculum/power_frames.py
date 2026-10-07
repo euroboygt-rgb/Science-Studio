@@ -732,3 +732,20 @@ POWER_FRAMES[70] = {
 }
 
 # Science Studio Day 70 Power Frame End
+
+
+# Science Studio Day 71 Power Frame Start
+
+POWER_FRAMES[71] = {
+
+    "i_can":
+        "I can explain how reflection and absorption determine the color of an object that I see.",
+
+    "by":
+        "tracing white light to an object and identifying which visible light is reflected toward my eyes and which light is absorbed.",
+
+    "i_know":
+        "I know I have learned this when I can explain why an orange shirt looks orange under white light."
+}
+
+# Science Studio Day 71 Power Frame End

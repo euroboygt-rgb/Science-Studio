@@ -3885,3 +3885,103 @@ SECOND_NINE_WEEKS_LESSONS[70] = {
 }
 
 # Science Studio Day 70 End
+
+
+# Science Studio Day 71 Start
+
+SECOND_NINE_WEEKS_LESSONS[71] = {
+
+    "day": 71,
+
+    "title":
+        "Color Detective Mission: Why Does an Orange Shirt Look Orange?",
+
+    "unit":
+        "Light Energy: Reflection, Refraction, and Absorption",
+
+    "teks":
+        "5.8C, 5.1F, 5.2D",
+
+    "focus":
+        "Students explain that objects appear colored because they reflect some visible light "
+        "toward an observer while absorbing much of the remaining visible light.",
+
+    "learning_target":
+        "We will investigate how reflection and absorption help us see the colors of objects.",
+
+    "success_criteria":
+        "I can explain that an orange object appears orange because it reflects orange light toward my eyes and absorbs most other visible colors.",
+
+    "essential_question":
+        "Why does an orange shirt look orange when white light shines on it?",
+
+    "bell_ringer": [
+        "White light contains all the visible colors we learned yesterday.",
+        "An orange shirt is placed under white light.",
+        "If all of the colors strike the shirt, why do our eyes mostly see orange?"
+    ],
+
+    "mini_lesson": [
+        "White light contains many visible colors.",
+        "When white light strikes an object, different colors of light can interact with the material differently.",
+        "Some light is reflected from the surface.",
+        "Some light is absorbed by the material.",
+        "Absorption occurs when a material takes in light energy instead of reflecting or transmitting it.",
+        "An orange shirt appears orange because it reflects orange light toward the observer's eyes.",
+        "The shirt absorbs much of the other visible light.",
+        "A green object reflects green light toward the observer.",
+        "A blue object reflects blue light toward the observer.",
+        "A white object reflects much of the visible light that strikes it.",
+        "A black object absorbs most visible light and reflects very little.",
+        "The color we see depends on the visible light that reaches our eyes."
+    ],
+
+    "science_notebook": [
+        "Draw a white-light source on the left.",
+        "Draw an orange shirt in the center.",
+        "Draw ROYGBIV arrows traveling from the light source to the shirt.",
+        "Show orange light reflecting from the shirt toward an eye.",
+        "Label the remaining colors as mostly absorbed.",
+        "Write: I see orange because orange light is reflected to my eyes."
+    ],
+
+    "guided_practice": [
+        "Identify the colors contained in incoming white light.",
+        "Identify the color of the object.",
+        "Predict which visible color will be reflected toward the eye.",
+        "Predict which colors will mostly be absorbed.",
+        "Explain why the observer sees the object's color.",
+        "Compare a colored object with a white object and a black object."
+    ],
+
+    "lab_title":
+        "Color Detective Lab: Reflected or Absorbed?",
+
+    "lab_url":
+        "/labs/color-detective?mission=day71",
+
+    "exit_ticket":
+        "Explain why an orange shirt looks orange under white light. "
+        "Use the words white light, reflected, absorbed, orange, and eye.",
+
+    "vocabulary": [
+        "absorption",
+        "absorb",
+        "reflection",
+        "reflect",
+        "white light",
+        "visible spectrum",
+        "reflected light",
+        "object color",
+        "white object",
+        "black object"
+    ],
+
+    "teacher_note":
+        "Day 71 introduces absorption through object color. "
+        "Use the conceptual model that a colored object reflects the color we see and absorbs much of the remaining visible light. "
+        "For white objects, emphasize reflection of much of the visible spectrum. "
+        "For black objects, emphasize absorption of most visible light rather than saying absolutely all light is absorbed."
+}
+
+# Science Studio Day 71 End

@@ -1,0 +1,1118 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=71-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day71_direct.css') }}?v=71-final"
+>
+
+
+<div id="DAY71_DIRECT_TEMPLATE" class="d71-page">
+
+  <section class="d71-hero">
+
+    <div class="d71-tags">
+
+      <span>Day 71</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.8C</span>
+
+    </div>
+
+
+    <h1>
+      👕 Color Detective Mission:
+      Why Does an Orange Shirt Look Orange?
+    </h1>
+
+    <p>
+      Investigate what happens when white light
+      strikes colored objects.
+    </p>
+
+
+    <div class="d71-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/71?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/71?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today’s Learning Power Frame
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          explain how reflection and absorption
+          determine the color of an object I see.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          tracing white light to an object
+          and identifying reflected
+          and absorbed light.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can explain why an orange shirt
+          looks orange under white light.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      👕 Phenomenon Mission
+    </div>
+
+    <h2>
+      Why Does the Shirt Look Orange?
+    </h2>
+
+    <div class="d59-unit">
+      Day 71 • Reflection + Absorption
+    </div>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day71_orange_shirt.svg"
+        alt="White light striking an orange shirt while orange light reflects toward an eye"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      White light contains ROYGBIV.
+
+      If every visible color strikes the shirt,
+      why does your eye mostly receive orange light?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d71MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Mission Brief: Follow the Color
+        </h2>
+
+        <div class="d59-unit">
+          Day 71 • How We See Color
+        </div>
+
+      </div>
+
+
+      <button
+        id="d71Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Mission Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d71SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d71SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d71SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d71SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d71SlideNumber"></strong>
+
+      <div>
+
+        <button
+          id="d71Back"
+          class="d59-control"
+          type="button"
+        >
+          ◀ Back
+        </button>
+
+        <button
+          id="d71Next"
+          class="d59-control"
+          type="button"
+        >
+          Next ▶
+        </button>
+
+        <button
+          id="d71Restart"
+          class="d59-control"
+          type="button"
+        >
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section id="d71Steve"
+           class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's STAAR Mission
+        </div>
+
+        <h2>
+          Steve's Orange Jersey Mystery
+        </h2>
+
+        <div class="d59-unit">
+          Day 71 • Reflected Color
+        </div>
+
+
+        <div class="d59-scenario">
+
+          <strong>
+            Steve's Scenario:
+          </strong>
+
+          <br><br>
+
+          Steve puts on an orange jersey
+          under white classroom lights.
+
+          White light contains all
+          of the visible-spectrum colors.
+
+          Steve wonders why everyone
+          still sees his jersey as orange.
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            STAAR-Style Question:
+          </strong>
+
+          <p>
+            Which statement best explains
+            why Steve's jersey appears orange?
+          </p>
+
+
+          <button class="d71-steve-answer"
+                  data-answer="A">
+            A. The jersey reflects orange light toward the observer and absorbs much of the other visible light.
+          </button>
+
+          <button class="d71-steve-answer"
+                  data-answer="B">
+            B. The jersey creates orange light.
+          </button>
+
+          <button class="d71-steve-answer"
+                  data-answer="C">
+            C. The jersey absorbs only orange light.
+          </button>
+
+          <button class="d71-steve-answer"
+                  data-answer="D">
+            D. White light contains only orange light.
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button
+              id="d71SteveCheck"
+              class="d59-check"
+              type="button"
+            >
+              Check Answer
+            </button>
+
+            <button
+              id="d71SteveReset"
+              class="d59-reset"
+              type="button"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d71SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCABULARY -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Vocabulary Anchor Chart
+    </h2>
+
+    <div class="d71-vocab-note">
+
+      🔍 Hover to preview.
+
+      <strong>
+        Click any vocabulary word
+      </strong>
+
+      to enlarge it and read the definition.
+
+    </div>
+
+
+    <div class="d71-vocab-grid">
+
+      {% set words = [
+        ("⬇️", "absorption", "When a material takes in light energy instead of reflecting or transmitting it."),
+        ("🧽", "absorb", "To take in light energy."),
+        ("↩️", "reflection", "The bouncing of light from a surface."),
+        ("✨", "reflect", "To send light away from a surface."),
+        ("🌈", "white light", "Visible colors traveling together."),
+        ("🎨", "visible spectrum", "The visible colors red, orange, yellow, green, blue, indigo, and violet."),
+        ("➡️", "reflected light", "Light that leaves a surface and can travel toward an observer."),
+        ("👕", "object color", "The color seen because certain visible light reaches the observer's eyes."),
+        ("⬜", "white object", "An object that reflects much of the visible light that strikes it."),
+        ("⬛", "black object", "An object that absorbs most visible light and reflects very little.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d71-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span class="d71-vocab-icon">
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- LEARNING TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will investigate how reflection
+      and absorption help us see
+      the colors of objects.
+    </p>
+
+  </section>
+
+
+  <!-- BELL RINGER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer — Where Did the Other Colors Go?
+    </h2>
+
+    <div class="d59-box">
+
+      Yesterday we learned that white light contains:
+
+      <br><br>
+
+      <strong>
+        Red, Orange, Yellow, Green,
+        Blue, Indigo, and Violet.
+      </strong>
+
+      <br><br>
+
+      White light shines on an orange shirt.
+
+      <ol>
+
+        <li>
+          Which visible colors strike the shirt?
+        </li>
+
+        <li>
+          Which color reaches your eyes most strongly?
+        </li>
+
+        <li>
+          What might happen to the other colors?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson — How We See Color
+    </h2>
+
+
+    <div class="d71-light-path">
+
+      <div>
+        ✨
+        <strong>
+          White Light
+        </strong>
+        <small>
+          ROYGBIV travels toward the object.
+        </small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        👕
+        <strong>
+          Orange Shirt
+        </strong>
+        <small>
+          Light interacts with the material.
+        </small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        🟧
+        <strong>
+          Orange Reflected
+        </strong>
+        <small>
+          Orange light travels toward the eye.
+        </small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        👁️
+        <strong>
+          Eye
+        </strong>
+        <small>
+          The observer sees orange.
+        </small>
+      </div>
+
+    </div>
+
+
+    <div class="d59-grid2">
+
+      <div class="d59-box">
+
+        <strong>
+          ↩️ Reflection
+        </strong>
+
+        <p>
+          The color we see is light
+          reflected from the object
+          toward our eyes.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          ⬇️ Absorption
+        </strong>
+
+        <p>
+          Other visible light can be
+          taken in by the material.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          ⬜ White Objects
+        </strong>
+
+        <p>
+          White objects reflect much
+          of the visible light
+          that strikes them.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          ⬛ Black Objects
+        </strong>
+
+        <p>
+          Black objects absorb
+          most visible light
+          and reflect very little.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        Science Rule:
+      </strong>
+
+      <br><br>
+
+      The color we see depends on the light
+
+      <strong>
+        REFLECTED
+      </strong>
+
+      from the object and sent toward our eyes.
+
+      <br><br>
+
+      Much of the remaining visible light may be
+
+      <strong>
+        ABSORBED.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook — The Orange Shirt Model
+    </h2>
+
+    <div class="d59-box">
+
+      Draw:
+
+      <ol>
+
+        <li>
+          a white-light source,
+        </li>
+
+        <li>
+          ROYGBIV traveling toward an orange shirt,
+        </li>
+
+        <li>
+          orange light reflecting toward an eye,
+        </li>
+
+        <li>
+          the other visible colors being mostly absorbed.
+        </li>
+
+      </ol>
+
+      Write underneath:
+
+      <br><br>
+
+      <strong>
+        “The shirt appears orange because orange light
+        is reflected toward my eyes.”
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- TEACHER GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice — Color Detective
+    </h2>
+
+    <div class="d59-box">
+
+      Present these objects one at a time:
+
+      <ul>
+        <li>green object,</li>
+        <li>blue object,</li>
+        <li>white object,</li>
+        <li>black object.</li>
+      </ul>
+
+      For each object ask:
+
+      <ol>
+        <li>What visible colors arrive in the white light?</li>
+        <li>Which light reaches the observer?</li>
+        <li>Which light is mostly absorbed?</li>
+        <li>What color does the observer see?</li>
+      </ol>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB LAUNCH -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🔬 Interactive Lab
+    </div>
+
+    <h2>
+      Color Detective Lab:
+      Reflected or Absorbed?
+    </h2>
+
+
+    <p>
+      Shine white light on different colored objects
+      and discover which visible light reaches the observer.
+    </p>
+
+
+    <div class="d59-required">
+
+      <div>
+        ✨
+        <strong>
+          White Light
+        </strong>
+      </div>
+
+      <div>
+        👕
+        <strong>
+          Colored Object
+        </strong>
+      </div>
+
+      <div>
+        👁️
+        <strong>
+          Observer
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      <strong>
+        Your Investigation
+      </strong>
+
+      <ol>
+
+        <li>
+          Test the orange object.
+        </li>
+
+        <li>
+          Observe which color is reflected.
+        </li>
+
+        <li>
+          Identify the colors mostly absorbed.
+        </li>
+
+        <li>
+          Repeat with green and blue.
+        </li>
+
+        <li>
+          Compare white and black objects.
+        </li>
+
+      </ol>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🎯
+      <strong>
+        Evidence Goal:
+      </strong>
+
+      Explain how reflection and absorption
+      determine the color an observer sees.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/color-detective?mission=day71"
+    >
+      👕 Start Color Detective Lab
+    </a>
+
+  </section>
+
+
+  <!-- STAAR PRACTICE -->
+
+  <section id="d71Practice"
+           class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Practice
+    </div>
+
+    <h2>
+      Reflection and Absorption Evidence
+    </h2>
+
+
+    <div class="d71-question"
+         data-answer="A">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        White light shines on an orange shirt.
+        Why does the shirt appear orange?
+      </p>
+
+      <button data-choice="A">
+        A. Orange light is reflected toward the observer while much of the other visible light is absorbed.
+      </button>
+
+      <button data-choice="B">
+        B. The shirt creates orange light.
+      </button>
+
+      <button data-choice="C">
+        C. Only orange light exists in white light.
+      </button>
+
+      <button data-choice="D">
+        D. Orange light is completely absorbed.
+      </button>
+
+      <div class="d71-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d71-question"
+         data-answer="C">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        Which statement best describes a black object
+        under white light?
+      </p>
+
+      <button data-choice="A">
+        A. It reflects all visible light equally.
+      </button>
+
+      <button data-choice="B">
+        B. It creates black light.
+      </button>
+
+      <button data-choice="C">
+        C. It absorbs most visible light and reflects very little.
+      </button>
+
+      <button data-choice="D">
+        D. It only reflects violet light.
+      </button>
+
+      <div class="d71-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d71-question"
+         data-answer="B">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        A green object is illuminated by white light.
+        Which light must reach the observer's eye
+        for the object to appear green?
+      </p>
+
+      <button data-choice="A">
+        A. Red light
+      </button>
+
+      <button data-choice="B">
+        B. Green light
+      </button>
+
+      <button data-choice="C">
+        C. Orange light
+      </button>
+
+      <button data-choice="D">
+        D. No light
+      </button>
+
+      <div class="d71-question-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT TICKET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Written Exit Ticket
+    </h2>
+
+    <p>
+      Explain why an orange shirt looks orange
+      under white light.
+
+      Use:
+
+      <strong>white light</strong>,
+      <strong>reflected</strong>,
+      <strong>absorbed</strong>,
+      <strong>orange</strong>,
+      and
+      <strong>eye</strong>.
+    </p>
+
+    <textarea
+      class="d59-textarea"
+      placeholder="An orange shirt looks orange because..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Explain Your Thinking: CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        CER Question:
+      </strong>
+
+      What evidence explains
+      why colored objects look different
+      under white light?
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="An object's color depends on..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="In the Color Detective Lab..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This evidence shows that..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MCGRAW HILL -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      📘 McGraw Hill Lesson Connection
+    </div>
+
+    <h2>
+      Reflection, Absorption, and Color
+    </h2>
+
+    <div class="d59-box">
+
+      Reinforce:
+
+      <ul>
+
+        <li>white light,</li>
+
+        <li>visible spectrum,</li>
+
+        <li>reflection,</li>
+
+        <li>absorption,</li>
+
+        <li>object color.</li>
+
+      </ul>
+
+
+      <p>
+        Next lesson:
+
+        <strong>
+          transparent, translucent, and opaque materials.
+        </strong>
+      </p>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCABULARY MODAL -->
+
+<div id="d71VocabModal"
+     class="d71-modal">
+
+  <div class="d71-modal-card">
+
+    <button
+      id="d71VocabClose"
+      class="d71-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d71ModalIcon"
+         class="d71-modal-icon"></div>
+
+    <h2 id="d71ModalTerm"></h2>
+
+    <p id="d71ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day71_direct.js') }}?v=71-final"
+></script>
+
+{% endblock %}

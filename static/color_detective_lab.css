@@ -1,0 +1,291 @@
+.cd-shell {
+  width: min(1200px,95vw);
+  margin: 24px auto 60px;
+}
+
+
+.cd-hero,
+.cd-mission,
+.cd-workspace,
+.cd-analysis,
+.cd-evidence {
+  border: 3px solid #171717;
+  border-radius: 17px;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+
+.cd-hero {
+  padding: 20px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #7131cc,
+      #2689d8
+    );
+}
+
+
+.cd-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+
+.cd-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #7d32dc;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+
+.cd-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.cd-back {
+  padding: 10px 14px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+
+.cd-mission {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 14px;
+  background: #fff4cd;
+}
+
+
+.cd-eyebrow {
+  font-size: .72rem;
+  font-weight: 900;
+}
+
+
+.cd-path {
+  display: grid;
+  grid-template-columns:
+    1fr auto
+    1fr auto
+    1fr auto
+    1fr;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+
+.cd-path div {
+  min-height: 80px;
+  padding: 8px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+
+.cd-path strong,
+.cd-path small {
+  display: block;
+  margin-top: 4px;
+}
+
+
+.cd-goal {
+  padding: 11px;
+  border: 2px solid #171717;
+  border-radius: 10px;
+  background: #e8f7ff;
+}
+
+
+.cd-goal div {
+  margin-top: 7px;
+  padding: 7px;
+  border: 1px solid #777;
+  border-radius: 7px;
+  background: #fff;
+}
+
+
+.cd-workspace {
+  margin-top: 14px;
+  padding: 14px;
+  background: #111a34;
+}
+
+
+.cd-controls {
+  display: grid;
+  grid-template-columns: auto repeat(5,1fr);
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 9px;
+  padding: 8px;
+  border-radius: 9px;
+  background: #e8f7ff;
+}
+
+
+.cd-controls button {
+  padding: 9px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+
+.cd-controls button.active {
+  background: #fff3ad;
+  outline: 3px solid #7131cc;
+}
+
+
+.cd-board {
+  overflow: hidden;
+  border: 3px solid #171717;
+  border-radius: 12px;
+  background: #071120;
+}
+
+
+.cd-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+.cd-test {
+  display: block;
+  width: min(430px,100%);
+  margin: 13px auto 0;
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #ffe45d;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+
+.cd-result {
+  margin-top: 10px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+
+.cd-analysis,
+.cd-evidence {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff;
+}
+
+
+.cd-analyzer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+
+.cd-analyzer > div {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+}
+
+
+.cd-chip-area {
+  min-height: 75px;
+}
+
+
+.cd-chip {
+  display: inline-block;
+  margin: 4px;
+  padding: 7px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 900;
+}
+
+
+.cd-rule {
+  margin-top: 12px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff3ad;
+}
+
+
+.cd-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 9px;
+}
+
+
+.cd-grid article {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #eaf6ff;
+}
+
+
+.cd-question {
+  margin-top: 10px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff3ad;
+}
+
+
+@media (max-width:850px) {
+
+  .cd-hero-row,
+  .cd-mission {
+    display: block;
+  }
+
+
+  .cd-controls,
+  .cd-path,
+  .cd-analyzer,
+  .cd-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

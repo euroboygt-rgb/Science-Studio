@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1100 650">
+
+  <rect width="1100"
+        height="650"
+        rx="24"
+        fill="#f6fbff"/>
+
+  <text x="550"
+        y="48"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#20346f">
+    PHENOMENON MISSION: WHY DOES THE SHIRT LOOK ORANGE?
+  </text>
+
+  <text x="550"
+        y="83"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="700"
+        fill="#20346f">
+    White light contains ROYGBIV. Why does your eye mostly receive orange?
+  </text>
+
+
+  <!-- source -->
+
+  <circle cx="135"
+          cy="285"
+          r="55"
+          fill="#fff8c4"
+          stroke="#24336b"
+          stroke-width="5"/>
+
+  <text x="135"
+        y="375"
+        text-anchor="middle"
+        font-size="19"
+        font-weight="900"
+        fill="#24336b">
+    WHITE LIGHT
+  </text>
+
+
+  <!-- incoming spectrum bundle -->
+
+  <line x1="190" y1="250" x2="445" y2="270"
+        stroke="#ff4040" stroke-width="7"/>
+  <line x1="190" y1="262" x2="445" y2="278"
+        stroke="#ff962f" stroke-width="7"/>
+  <line x1="190" y1="274" x2="445" y2="286"
+        stroke="#ffd940" stroke-width="7"/>
+  <line x1="190" y1="286" x2="445" y2="294"
+        stroke="#45bf62" stroke-width="7"/>
+  <line x1="190" y1="298" x2="445" y2="302"
+        stroke="#4389ff" stroke-width="7"/>
+  <line x1="190" y1="310" x2="445" y2="310"
+        stroke="#4f5abf" stroke-width="7"/>
+  <line x1="190" y1="322" x2="445" y2="318"
+        stroke="#9854d3" stroke-width="7"/>
+
+
+  <!-- shirt -->
+
+  <path d="
+    M470 210
+    L420 245
+    L450 320
+    L490 300
+    L490 475
+    L675 475
+    L675 300
+    L715 320
+    L745 245
+    L695 210
+    L640 235
+    Q585 270 530 235
+    Z"
+    fill="#f28b2e"
+    stroke="#222"
+    stroke-width="6"/>
+
+  <text x="582"
+        y="375"
+        text-anchor="middle"
+        font-size="27"
+        font-weight="900"
+        fill="#ffffff">
+    ORANGE SHIRT
+  </text>
+
+
+  <!-- reflected orange -->
+
+  <line x1="675"
+        y1="290"
+        x2="875"
+        y2="215"
+        stroke="#ff962f"
+        stroke-width="13"
+        stroke-linecap="round"/>
+
+  <text x="755"
+        y="225"
+        font-size="18"
+        font-weight="900"
+        fill="#9a4c00">
+    ORANGE REFLECTED
+  </text>
+
+
+  <!-- eye -->
+
+  <ellipse cx="930"
+           cy="195"
+           rx="70"
+           ry="40"
+           fill="#ffffff"
+           stroke="#20346f"
+           stroke-width="6"/>
+
+  <circle cx="930"
+          cy="195"
+          r="18"
+          fill="#4389ff"/>
+
+  <circle cx="930"
+          cy="195"
+          r="7"
+          fill="#111"/>
+
+  <text x="930"
+        y="255"
+        text-anchor="middle"
+        font-size="18"
+        font-weight="900"
+        fill="#20346f">
+    YOUR EYE
+  </text>
+
+
+  <!-- absorption -->
+
+  <g opacity=".7">
+
+    <line x1="525" y1="440"
+          x2="525" y2="505"
+          stroke="#ff4040"
+          stroke-width="6"/>
+
+    <line x1="550" y1="440"
+          x2="550" y2="505"
+          stroke="#ffd940"
+          stroke-width="6"/>
+
+    <line x1="575" y1="440"
+          x2="575" y2="505"
+          stroke="#45bf62"
+          stroke-width="6"/>
+
+    <line x1="600" y1="440"
+          x2="600" y2="505"
+          stroke="#4389ff"
+          stroke-width="6"/>
+
+    <line x1="625" y1="440"
+          x2="625" y2="505"
+          stroke="#4f5abf"
+          stroke-width="6"/>
+
+    <line x1="650" y1="440"
+          x2="650" y2="505"
+          stroke="#9854d3"
+          stroke-width="6"/>
+
+  </g>
+
+  <text x="585"
+        y="535"
+        text-anchor="middle"
+        font-size="18"
+        font-weight="900"
+        fill="#24336b">
+    MOST OTHER VISIBLE COLORS ARE ABSORBED
+  </text>
+
+
+  <rect x="150"
+        y="565"
+        width="800"
+        height="60"
+        rx="14"
+        fill="#fff4a8"
+        stroke="#24336b"
+        stroke-width="3"/>
+
+  <text x="550"
+        y="602"
+        text-anchor="middle"
+        font-size="21"
+        font-weight="900"
+        fill="#24336b">
+    COLOR WE SEE = LIGHT REFLECTED TOWARD OUR EYES
+  </text>
+
+</svg>

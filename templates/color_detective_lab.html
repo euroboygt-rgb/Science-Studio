@@ -1,0 +1,532 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='color_detective_lab.css') }}?v=71.1"
+>
+
+
+<div class="cd-shell">
+
+  <header class="cd-hero">
+
+    <div class="cd-tags">
+
+      <span>👕 Interactive Lab</span>
+
+      <span>Color Detective Mission</span>
+
+      <span>TEKS 5.8C</span>
+
+    </div>
+
+
+    <div class="cd-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio: Color Detective Lab
+        </h1>
+
+        <p>
+          Shine white light on different objects
+          and discover which light is reflected
+          and which light is absorbed.
+        </p>
+
+      </div>
+
+
+      <a
+        class="cd-back"
+        href="/second-nine-weeks/day/71?view=student"
+      >
+        ← Back to Day 71
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <section class="cd-mission">
+
+    <div>
+
+      <div class="cd-eyebrow">
+        COLOR DETECTIVE ENGINE
+      </div>
+
+      <h2>
+        Why do we see an object's color?
+      </h2>
+
+      <p>
+        White light contains ROYGBIV.
+
+        Choose an object,
+        shine white light on it,
+        and follow the reflected light
+        to the observer.
+      </p>
+
+
+      <div class="cd-path">
+
+        <div>
+          ✨
+          <strong>White Light</strong>
+          <small>ROYGBIV arrives</small>
+        </div>
+
+        <b>→</b>
+
+        <div>
+          👕
+          <strong>Object</strong>
+          <small>Light interacts</small>
+        </div>
+
+        <b>→</b>
+
+        <div>
+          ↩️
+          <strong>Reflected Light</strong>
+          <small>Travels away</small>
+        </div>
+
+        <b>→</b>
+
+        <div>
+          👁️
+          <strong>Observer</strong>
+          <small>Sees the color</small>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <aside class="cd-goal">
+
+      <strong>
+        🎯 Mission Goal
+      </strong>
+
+      <p>
+        Determine which light is reflected
+        and which light is absorbed.
+      </p>
+
+      <div>
+        Reflected light
+        <strong>can reach your eye.</strong>
+      </div>
+
+      <div>
+        Absorbed light
+        <strong>is taken in by the object.</strong>
+      </div>
+
+    </aside>
+
+  </section>
+
+
+  <section class="cd-workspace">
+
+    <div class="cd-controls">
+
+      <strong>
+        Choose an Object:
+      </strong>
+
+      <button
+        class="cd-object active"
+        data-object="orange"
+        type="button"
+      >
+        🟧 Orange
+      </button>
+
+      <button
+        class="cd-object"
+        data-object="green"
+        type="button"
+      >
+        🟩 Green
+      </button>
+
+      <button
+        class="cd-object"
+        data-object="blue"
+        type="button"
+      >
+        🟦 Blue
+      </button>
+
+      <button
+        class="cd-object"
+        data-object="white"
+        type="button"
+      >
+        ⬜ White
+      </button>
+
+      <button
+        class="cd-object"
+        data-object="black"
+        type="button"
+      >
+        ⬛ Black
+      </button>
+
+    </div>
+
+
+    <div class="cd-board">
+
+      <svg
+        class="cd-svg"
+        viewBox="0 0 1000 580"
+      >
+
+        <rect
+          width="1000"
+          height="580"
+          fill="#071120"
+        />
+
+
+        <!-- light source -->
+
+        <circle
+          cx="105"
+          cy="270"
+          r="50"
+          fill="#fff5b5"
+          stroke="#ffffff"
+          stroke-width="5"
+        />
+
+        <text
+          x="105"
+          y="348"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-size="18"
+          font-weight="900"
+        >
+          WHITE LIGHT
+        </text>
+
+
+        <!-- incoming ROYGBIV -->
+
+        <g id="cdIncoming"
+           opacity="0">
+
+          <line x1="155" y1="235" x2="410" y2="255"
+                stroke="#ff4040" stroke-width="7"/>
+
+          <line x1="155" y1="247" x2="410" y2="263"
+                stroke="#ff962f" stroke-width="7"/>
+
+          <line x1="155" y1="259" x2="410" y2="271"
+                stroke="#ffd940" stroke-width="7"/>
+
+          <line x1="155" y1="271" x2="410" y2="279"
+                stroke="#45bf62" stroke-width="7"/>
+
+          <line x1="155" y1="283" x2="410" y2="287"
+                stroke="#4389ff" stroke-width="7"/>
+
+          <line x1="155" y1="295" x2="410" y2="295"
+                stroke="#4f5abf" stroke-width="7"/>
+
+          <line x1="155" y1="307" x2="410" y2="303"
+                stroke="#9854d3" stroke-width="7"/>
+
+        </g>
+
+
+        <!-- object -->
+
+        <rect
+          id="cdObject"
+          x="410"
+          y="185"
+          width="230"
+          height="230"
+          rx="28"
+          fill="#f28b2e"
+          stroke="#ffffff"
+          stroke-width="7"
+        />
+
+        <text
+          id="cdObjectLabel"
+          x="525"
+          y="310"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-size="27"
+          font-weight="900"
+        >
+          ORANGE
+        </text>
+
+
+        <!-- reflected light rays -->
+
+        <g id="cdReflected"
+           opacity="0">
+
+          <line id="cdRed"
+                x1="640" y1="240"
+                x2="825" y2="175"
+                stroke="#ff4040"
+                stroke-width="8"/>
+
+          <line id="cdOrange"
+                x1="640" y1="255"
+                x2="825" y2="190"
+                stroke="#ff962f"
+                stroke-width="8"/>
+
+          <line id="cdYellow"
+                x1="640" y1="270"
+                x2="825" y2="205"
+                stroke="#ffd940"
+                stroke-width="8"/>
+
+          <line id="cdGreen"
+                x1="640" y1="285"
+                x2="825" y2="220"
+                stroke="#45bf62"
+                stroke-width="8"/>
+
+          <line id="cdBlue"
+                x1="640" y1="300"
+                x2="825" y2="235"
+                stroke="#4389ff"
+                stroke-width="8"/>
+
+          <line id="cdIndigo"
+                x1="640" y1="315"
+                x2="825" y2="250"
+                stroke="#4f5abf"
+                stroke-width="8"/>
+
+          <line id="cdViolet"
+                x1="640" y1="330"
+                x2="825" y2="265"
+                stroke="#9854d3"
+                stroke-width="8"/>
+
+        </g>
+
+
+        <!-- eye -->
+
+        <ellipse
+          cx="885"
+          cy="190"
+          rx="70"
+          ry="40"
+          fill="#ffffff"
+          stroke="#4389ff"
+          stroke-width="6"
+        />
+
+        <circle
+          cx="885"
+          cy="190"
+          r="18"
+          fill="#4389ff"
+        />
+
+        <circle
+          cx="885"
+          cy="190"
+          r="7"
+          fill="#111111"
+        />
+
+        <text
+          x="885"
+          y="250"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-size="18"
+          font-weight="900"
+        >
+          OBSERVER
+        </text>
+
+
+        <text
+          id="cdBottomMessage"
+          x="500"
+          y="505"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-size="22"
+          font-weight="900"
+        >
+          Choose an object and test the light.
+        </text>
+
+      </svg>
+
+    </div>
+
+
+    <button
+      id="cdTest"
+      class="cd-test"
+      type="button"
+    >
+      ✨ SHINE WHITE LIGHT
+    </button>
+
+
+    <div id="cdResult"
+         class="cd-result">
+      Select an object and shine white light on it.
+    </div>
+
+  </section>
+
+
+  <section class="cd-analysis">
+
+    <h2>
+      🔍 Reflection vs. Absorption Analyzer
+    </h2>
+
+
+    <div class="cd-analyzer">
+
+      <div>
+
+        <h3>
+          ↩️ Reflected Toward the Observer
+        </h3>
+
+        <div id="cdReflectedList"
+             class="cd-chip-area">
+          Test an object first.
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          ⬇️ Mostly Absorbed
+        </h3>
+
+        <div id="cdAbsorbedList"
+             class="cd-chip-area">
+          Test an object first.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="cd-rule">
+
+      <strong>
+        👁️ Color Rule:
+      </strong>
+
+      The observer sees the visible light
+      that is reflected from the object
+      and reaches the eye.
+
+    </div>
+
+  </section>
+
+
+  <section class="cd-evidence">
+
+    <h2>
+      📓 Color Detective Evidence Notebook
+    </h2>
+
+
+    <div class="cd-grid">
+
+      <article>
+
+        <strong>
+          🟧 Orange Object
+        </strong>
+
+        <p>
+          Which color reached the observer?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ⬜ White Object
+        </strong>
+
+        <p>
+          How was its behavior different
+          from the colored objects?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ⬛ Black Object
+        </strong>
+
+        <p>
+          What happened to most
+          of the visible light?
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="cd-question">
+
+      <strong>
+        🧠 Evidence Question:
+      </strong>
+
+      Why can two objects under the same white light
+      appear to be different colors?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='color_detective_lab.js') }}?v=71.1"
+></script>
+
+{% endblock %}
