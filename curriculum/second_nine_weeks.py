@@ -4665,3 +4665,97 @@ SECOND_NINE_WEEKS_LESSONS[78] = {
 }
 
 # Science Studio Day 78 End
+
+
+# Science Studio Day 79 Start
+
+SECOND_NINE_WEEKS_LESSONS[79] = {
+
+    "day": 79,
+
+    "title":
+        "Shadow Detective Mission: Solve the Sun's Position",
+
+    "unit":
+        "Investigating Earth's Rotation",
+
+    "teks":
+        "5.9A, 5.1F, 5.2D",
+
+    "focus":
+        "Students analyze shadow direction and length as evidence "
+        "of the Sun's apparent position in the sky.",
+
+    "learning_target":
+        "We will use shadow evidence to infer the Sun's apparent position and explain how Earth's rotation creates predictable shadow patterns.",
+
+    "success_criteria":
+        "I can use shadow direction and length to infer where the Sun appears in the sky "
+        "and connect the changing pattern to Earth's rotation.",
+
+    "essential_question":
+        "What can a shadow tell us about the Sun's apparent position?",
+
+    "bell_ringer": [
+        "A shadow extends away from a light source.",
+        "If a shadow points west, where is the Sun likely located?",
+        "Would a low Sun or high Sun usually make the longer shadow?"
+    ],
+
+    "mini_lesson": [
+        "A shadow forms when an object blocks light.",
+        "A shadow extends generally away from the light source.",
+        "If the Sun appears in the east, a shadow generally extends toward the west.",
+        "If the Sun appears in the west, a shadow generally extends toward the east.",
+        "A low Sun generally creates a longer shadow.",
+        "A higher Sun generally creates a shorter shadow.",
+        "Around solar noon, the Sun reaches its highest apparent position for that day.",
+        "The shortest shadow in a daily sequence is often observed near solar noon.",
+        "The exact direction and length of a real shadow vary with location, season, and time of year.",
+        "The daily change in apparent Sun position is caused by Earth's rotation."
+    ],
+
+    "science_notebook": [
+        "Create a Shadow Evidence chart with columns: Shadow Evidence | Sun Position | Likely Part of Day.",
+        "Record: Long shadow toward west → Sun likely low in east → morning.",
+        "Record: Short shadow near object → Sun higher in sky → near solar noon.",
+        "Record: Long shadow toward east → Sun likely low in west → afternoon or evening.",
+        "Write: Shadows extend generally away from the Sun.",
+        "Write: Earth's rotation causes the repeating daily pattern."
+    ],
+
+    "guided_practice": [
+        "Place an object in flashlight light.",
+        "Move the flashlight low to one side and observe the shadow.",
+        "Move the flashlight higher and observe the shorter shadow.",
+        "Move the flashlight low to the opposite side and observe the direction change.",
+        "Hide the flashlight position and ask students to infer its location from the shadow."
+    ],
+
+    "lab_title":
+        "Shadow Detective Lab: Crack the Case",
+
+    "lab_url":
+        "/labs/shadow-detective?mission=day79",
+
+    "exit_ticket":
+        "A long shadow extends east. Use shadow evidence to infer where the Sun likely appears in the sky and explain your reasoning.",
+
+    "vocabulary": [
+        "shadow",
+        "evidence",
+        "infer",
+        "apparent position",
+        "light source",
+        "solar noon",
+        "east",
+        "west",
+        "rotation"
+    ],
+
+    "teacher_note":
+        "Day 79 shifts students from observing a model to inferring from evidence. "
+        "Emphasize general patterns rather than claiming exact shadow direction or length for every place and season."
+}
+
+# Science Studio Day 79 End

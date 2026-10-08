@@ -1,0 +1,1320 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=79-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day79_direct.css') }}?v=79-final"
+>
+
+
+<div id="DAY79_DIRECT_TEMPLATE"
+     class="d79-page">
+
+
+  <!-- HERO -->
+
+  <section class="d79-hero">
+
+    <div class="d79-tags">
+
+      <span>Day 79</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.9A</span>
+
+      <span>Shadow Evidence</span>
+
+    </div>
+
+
+    <h1>
+      🕵️ Shadow Detective Mission:
+      Solve the Sun's Position
+    </h1>
+
+    <p>
+      The Sun has disappeared from the evidence board.
+
+      Use shadow direction and length
+      to determine where it must be.
+    </p>
+
+
+    <div class="d79-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/79?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/79?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Learning Power Frame
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          use shadow evidence
+          to infer the Sun's
+          apparent position.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          analyzing shadow
+          direction and length
+          in mystery cases.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can explain where
+          the Sun likely appears
+          using evidence from a shadow.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🔎 Phenomenon Case File
+    </div>
+
+    <h2>
+      The Missing Sun Mystery
+    </h2>
+
+    <div class="d59-unit">
+      Day 79 • Shadow Evidence
+    </div>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day79_shadow_detective.svg"
+        alt="Three mystery shadow cases"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        🕵️ Detective Question:
+      </strong>
+
+      Which case most likely occurred
+      when the Sun appeared highest
+      in the sky?
+
+      What evidence supports your answer?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d79MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Detective Briefing
+        </div>
+
+        <h2>
+          Mission Brief:
+          Read the Shadow Evidence
+        </h2>
+
+        <div class="d59-unit">
+          Direction + Length = Evidence
+        </div>
+
+      </div>
+
+
+      <button id="d79Play"
+              class="d59-play"
+              type="button">
+        ▶ Play Detective Briefing
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d79SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d79SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d79SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d79SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d79SlideNumber"></strong>
+
+      <div>
+
+        <button id="d79Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d79Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d79Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's Shadow Case
+        </div>
+
+        <h2>
+          Case File 001:
+          The West-Pointing Shadow
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve discovers a long shadow
+          extending toward the west.
+
+          The Sun is hidden
+          behind a tall building,
+          so Steve cannot see it directly.
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            Detective Question:
+          </strong>
+
+          <p>
+            Where is the Sun most likely
+            appearing in the sky?
+          </p>
+
+
+          <button class="d79-steve-answer"
+                  data-answer="A">
+            A. Low in the eastern sky
+          </button>
+
+          <button class="d79-steve-answer"
+                  data-answer="B">
+            B. Low in the western sky
+          </button>
+
+          <button class="d79-steve-answer"
+                  data-answer="C">
+            C. Directly below the ground
+          </button>
+
+          <button class="d79-steve-answer"
+                  data-answer="D">
+            D. The shadow gives no evidence
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d79SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Evidence
+            </button>
+
+            <button id="d79SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d79SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Shadow Detective Vocabulary
+    </h2>
+
+
+    <div class="d79-vocab-note">
+
+      🔍 Hover to preview.
+
+      <strong>
+        Click any vocabulary word
+      </strong>
+
+      to open the evidence card.
+
+    </div>
+
+
+    <div class="d79-vocab-grid">
+
+      {% set words = [
+        ("⬛", "shadow", "A dark area formed when an object blocks light."),
+        ("🔎", "evidence", "Information or observations used to support an explanation."),
+        ("🧠", "infer", "To use evidence and reasoning to reach a conclusion."),
+        ("☀️", "apparent position", "Where the Sun seems to be located from an observer's point of view."),
+        ("💡", "light source", "An object that produces light."),
+        ("🔆", "solar noon", "When the Sun reaches its highest apparent position for that day."),
+        ("🌅", "east", "The direction where the Sun generally appears to rise."),
+        ("🌇", "west", "The direction where the Sun generally appears to set."),
+        ("🌎", "rotation", "Earth spinning around its axis.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d79-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span class="d79-vocab-icon">
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- LEARNING TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will use shadow evidence
+      to infer the Sun's apparent position
+      and explain how Earth's rotation
+      creates predictable daily patterns.
+    </p>
+
+  </section>
+
+
+  <!-- BELL RINGER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      First Clue
+    </h2>
+
+
+    <div class="d59-box">
+
+      A shadow extends generally
+      <strong>
+        away from a light source.
+      </strong>
+
+      <br><br>
+
+      Imagine you see a long shadow
+      pointing west.
+
+      <ol>
+
+        <li>
+          Which direction is the Sun
+          likely appearing?
+        </li>
+
+        <li>
+          Is the Sun probably
+          low or high in the sky?
+        </li>
+
+        <li>
+          What part of the day
+          might this represent?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      Shadow Detective Rules
+    </h2>
+
+
+    <div class="d79-rule-board">
+
+      <article>
+
+        <span>
+          ☀️ ➡️ 🧍 ⬅️ ⬛
+        </span>
+
+        <h3>
+          RULE 1
+        </h3>
+
+        <strong>
+          Shadows extend generally
+          AWAY from the Sun.
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          🌅 ➜ ⬛⬛⬛
+        </span>
+
+        <h3>
+          RULE 2
+        </h3>
+
+        <strong>
+          Lower Sun =
+          generally longer shadow.
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          🔆 ↓ ⬛
+        </span>
+
+        <h3>
+          RULE 3
+        </h3>
+
+        <strong>
+          Higher Sun =
+          generally shorter shadow.
+        </strong>
+
+      </article>
+
+    </div>
+
+
+    <div class="d79-case-chart">
+
+      <div>
+
+        <strong>
+          LONG SHADOW WEST
+        </strong>
+
+        <span>
+          ⬅️⬛⬛⬛ 🧍
+        </span>
+
+        <p>
+          Sun likely appears
+          low in the east.
+        </p>
+
+        <b>
+          MORNING CLUE
+        </b>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          SHORT SHADOW
+        </strong>
+
+        <span>
+          🧍⬛
+        </span>
+
+        <p>
+          Sun appears higher
+          in the sky.
+        </p>
+
+        <b>
+          SOLAR-NOON CLUE
+        </b>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          LONG SHADOW EAST
+        </strong>
+
+        <span>
+          🧍 ⬛⬛⬛➡️
+        </span>
+
+        <p>
+          Sun likely appears
+          low in the west.
+        </p>
+
+        <b>
+          AFTERNOON / EVENING CLUE
+        </b>
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Detective Warning
+      </strong>
+
+      <br><br>
+
+      Real shadows do not have
+      exactly the same direction
+      and length everywhere on Earth.
+
+      <br><br>
+
+      Location, season,
+      and time of year matter.
+
+      <br><br>
+
+      Our reliable evidence rules are:
+
+      <strong>
+        shadow generally points away from the Sun,
+        and a higher Sun generally creates
+        a shorter shadow.
+      </strong>
+
+    </div>
+
+
+    <div class="d79-cause-box">
+
+      <h3>
+        🌎 What Causes the Daily Pattern?
+      </h3>
+
+      Earth rotates west to east.
+
+      <br><br>
+
+      This makes the Sun
+      appear to change position
+      across our sky.
+
+      <br><br>
+
+      As the Sun's apparent position changes,
+      <strong>
+        shadows change too.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Shadow Evidence Table
+    </h2>
+
+
+    <div class="d79-notebook-grid">
+
+      <div>
+
+        <strong>
+          Shadow Evidence
+        </strong>
+
+        <p>
+          Long toward west
+        </p>
+
+        <p>
+          Short near object
+        </p>
+
+        <p>
+          Long toward east
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          Sun Position
+        </strong>
+
+        <p>
+          Low east
+        </p>
+
+        <p>
+          Higher sky
+        </p>
+
+        <p>
+          Low west
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          Likely Time
+        </strong>
+
+        <p>
+          Morning
+        </p>
+
+        <p>
+          Near solar noon
+        </p>
+
+        <p>
+          Afternoon / evening
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Write:
+
+      <br><br>
+
+      <strong>
+        Shadows provide evidence
+        about the Sun's apparent position.
+      </strong>
+
+      <br><br>
+
+      <strong>
+        Earth's rotation causes
+        the repeating daily pattern.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Hide the Flashlight
+    </h2>
+
+
+    <div class="d59-box">
+
+      Use a flashlight
+      and a standing object.
+
+      <ol>
+
+        <li>
+          Create a long shadow
+          but hide the flashlight
+          from students' view.
+        </li>
+
+        <li>
+          Ask students to infer
+          where the flashlight must be.
+        </li>
+
+        <li>
+          Create a short shadow.
+        </li>
+
+        <li>
+          Ask students whether
+          the light source is probably
+          higher or lower.
+        </li>
+
+        <li>
+          Switch the light source
+          to the opposite side.
+        </li>
+
+        <li>
+          Students explain
+          how the shadow proves
+          the source changed position.
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🕵️ Interactive Investigation
+    </div>
+
+    <h2>
+      Shadow Detective Lab:
+      Crack the Case
+    </h2>
+
+
+    <p>
+      The Sun will be hidden
+      from several mystery scenes.
+
+      Use only the shadow evidence
+      to solve each case.
+    </p>
+
+
+    <div class="d79-lab-preview">
+
+      <div>
+        🔎
+        <strong>
+          Inspect
+        </strong>
+      </div>
+
+      <div>
+        ⬛
+        <strong>
+          Analyze
+        </strong>
+      </div>
+
+      <div>
+        ☀️
+        <strong>
+          Infer
+        </strong>
+      </div>
+
+      <div>
+        🧠
+        <strong>
+          Explain
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      <strong>
+        Mission 1 — Decode the Shadow Rule
+      </strong>
+
+      <p>
+        Determine which direction
+        a shadow should extend
+        when the Sun is visible.
+      </p>
+
+
+      <strong>
+        Mission 2 — Mystery Case Files
+      </strong>
+
+      <p>
+        The Sun disappears.
+
+        Use shadow direction and length
+        to infer the hidden Sun position
+        and likely part of the day.
+      </p>
+
+
+      <strong>
+        Mission 3 — Evidence Board
+      </strong>
+
+      <p>
+        Solve final shadow-evidence challenges
+        and connect the pattern
+        to Earth's rotation.
+      </p>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆
+      <strong>
+        Mission Goal:
+      </strong>
+
+      Earn
+      <strong>
+        Master Shadow Detective
+      </strong>
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/shadow-detective?mission=day79"
+    >
+      🕵️ Open Shadow Detective Case Files
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Practice
+    </div>
+
+    <h2>
+      Shadow Evidence Investigation
+    </h2>
+
+
+    <div class="d79-question"
+         data-answer="A">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        A long shadow extends west
+        from a flagpole.
+
+        Where is the Sun
+        most likely appearing?
+      </p>
+
+      <button data-choice="A">
+        A. Low in the eastern sky
+      </button>
+
+      <button data-choice="B">
+        B. Low in the western sky
+      </button>
+
+      <button data-choice="C">
+        C. Directly under the flagpole
+      </button>
+
+      <button data-choice="D">
+        D. Behind Earth
+      </button>
+
+      <div class="d79-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d79-question"
+         data-answer="C">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        Which observation
+        most likely indicates
+        that the Sun appears higher
+        in the sky?
+      </p>
+
+      <button data-choice="A">
+        A. The shadow becomes darker.
+      </button>
+
+      <button data-choice="B">
+        B. The shadow points north.
+      </button>
+
+      <button data-choice="C">
+        C. The shadow becomes shorter.
+      </button>
+
+      <button data-choice="D">
+        D. The object becomes taller.
+      </button>
+
+      <div class="d79-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d79-question"
+         data-answer="B">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        A long shadow extends east.
+
+        Which Sun position
+        best matches the evidence?
+      </p>
+
+      <button data-choice="A">
+        A. Low in the east
+      </button>
+
+      <button data-choice="B">
+        B. Low in the west
+      </button>
+
+      <button data-choice="C">
+        C. Under the ground
+      </button>
+
+      <button data-choice="D">
+        D. Directly behind the Moon
+      </button>
+
+      <div class="d79-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d79-question"
+         data-answer="D">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        Why do shadows
+        change during the day?
+      </p>
+
+      <button data-choice="A">
+        A. Objects change height.
+      </button>
+
+      <button data-choice="B">
+        B. The Sun turns on and off.
+      </button>
+
+      <button data-choice="C">
+        C. The Moon moves the shadows.
+      </button>
+
+      <button data-choice="D">
+        D. Earth's rotation changes the Sun's apparent position.
+      </button>
+
+      <div class="d79-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d79-question"
+         data-answer="C">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        Which statement
+        is the best scientific rule
+        for using shadow evidence?
+      </p>
+
+      <button data-choice="A">
+        A. Every shadow always points exactly west.
+      </button>
+
+      <button data-choice="B">
+        B. Every noon shadow disappears completely.
+      </button>
+
+      <button data-choice="C">
+        C. A shadow extends generally away from its light source.
+      </button>
+
+      <button data-choice="D">
+        D. Shadows always stay the same length.
+      </button>
+
+      <div class="d79-question-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Detective Exit Ticket
+    </h2>
+
+    <p>
+      You discover a
+      <strong>
+        long shadow extending east.
+      </strong>
+
+      <br><br>
+
+      Where is the Sun
+      most likely appearing?
+
+      Use
+      <strong>
+        direction and length
+      </strong>
+      as evidence.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="The Sun is most likely..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Close the Case: CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Case Question:
+      </strong>
+
+      How can a shadow be used
+      as evidence of the Sun's
+      apparent position?
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="A shadow can show..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="In the Shadow Detective Lab..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This evidence works because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🚀 Next Mission
+    </div>
+
+    <h2>
+      Earth Rotation Mission Control
+    </h2>
+
+
+    <div class="d59-box">
+
+      You now have evidence from:
+
+      <strong>
+        Earth's axis,
+        rotation,
+        day and night,
+        apparent Sun movement,
+        and changing shadows.
+      </strong>
+
+      <br><br>
+
+      Day 80 will combine
+      all of those ideas
+      into one integrated mission.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d79VocabModal"
+     class="d79-modal">
+
+  <div class="d79-modal-card">
+
+    <button id="d79VocabClose"
+            class="d79-modal-close"
+            type="button">
+      ×
+    </button>
+
+    <div id="d79ModalIcon"
+         class="d79-modal-icon"></div>
+
+    <h2 id="d79ModalTerm"></h2>
+
+    <p id="d79ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day79_direct.js') }}?v=79-final"
+></script>
+
+{% endblock %}

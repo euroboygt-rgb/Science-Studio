@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#268bd8"/>
+
+      <stop offset="100%"
+            stop-color="#dff5ff"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="24"
+        fill="url(#sky)"/>
+
+
+  <text x="600"
+        y="50"
+        text-anchor="middle"
+        fill="#13285c"
+        font-size="34"
+        font-weight="900">
+    SHADOW DETECTIVE CASE FILE
+  </text>
+
+
+  <text x="600"
+        y="90"
+        text-anchor="middle"
+        fill="#193a70"
+        font-size="21"
+        font-weight="700">
+    The Sun has been hidden from the picture. Can the shadows reveal where it was?
+  </text>
+
+
+  <rect x="55"
+        y="130"
+        width="330"
+        height="425"
+        rx="20"
+        fill="#ffffff"
+        stroke="#171717"
+        stroke-width="5"/>
+
+  <rect x="435"
+        y="130"
+        width="330"
+        height="425"
+        rx="20"
+        fill="#ffffff"
+        stroke="#171717"
+        stroke-width="5"/>
+
+  <rect x="815"
+        y="130"
+        width="330"
+        height="425"
+        rx="20"
+        fill="#ffffff"
+        stroke="#171717"
+        stroke-width="5"/>
+
+
+  <!-- CASE A -->
+
+  <text x="220"
+        y="180"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="26"
+        font-weight="900">
+    CASE A
+  </text>
+
+  <line x1="220"
+        y1="390"
+        x2="220"
+        y2="270"
+        stroke="#5a3820"
+        stroke-width="18"
+        stroke-linecap="round"/>
+
+  <line x1="220"
+        y1="390"
+        x2="90"
+        y2="435"
+        stroke="#212733"
+        stroke-width="24"
+        stroke-linecap="round"
+        opacity=".72"/>
+
+  <text x="220"
+        y="490"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="19"
+        font-weight="900">
+    LONG SHADOW
+  </text>
+
+
+  <!-- CASE B -->
+
+  <text x="600"
+        y="180"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="26"
+        font-weight="900">
+    CASE B
+  </text>
+
+  <line x1="600"
+        y1="390"
+        x2="600"
+        y2="270"
+        stroke="#5a3820"
+        stroke-width="18"
+        stroke-linecap="round"/>
+
+  <line x1="600"
+        y1="390"
+        x2="640"
+        y2="405"
+        stroke="#212733"
+        stroke-width="24"
+        stroke-linecap="round"
+        opacity=".72"/>
+
+  <text x="600"
+        y="490"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="19"
+        font-weight="900">
+    SHORT SHADOW
+  </text>
+
+
+  <!-- CASE C -->
+
+  <text x="980"
+        y="180"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="26"
+        font-weight="900">
+    CASE C
+  </text>
+
+  <line x1="980"
+        y1="390"
+        x2="980"
+        y2="270"
+        stroke="#5a3820"
+        stroke-width="18"
+        stroke-linecap="round"/>
+
+  <line x1="980"
+        y1="390"
+        x2="1110"
+        y2="435"
+        stroke="#212733"
+        stroke-width="24"
+        stroke-linecap="round"
+        opacity=".72"/>
+
+  <text x="980"
+        y="490"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="19"
+        font-weight="900">
+    LONG SHADOW
+  </text>
+
+
+  <rect x="145"
+        y="590"
+        width="910"
+        height="70"
+        rx="16"
+        fill="#fff2a5"
+        stroke="#17213b"
+        stroke-width="4"/>
+
+  <text x="600"
+        y="620"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="20"
+        font-weight="900">
+    MYSTERY:
+  </text>
+
+  <text x="600"
+        y="648"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="20"
+        font-weight="900">
+    Which case most likely happened when the Sun appeared highest in the sky?
+  </text>
+
+</svg>

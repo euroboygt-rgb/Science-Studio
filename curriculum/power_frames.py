@@ -868,3 +868,20 @@ POWER_FRAMES[78] = {
 }
 
 # Science Studio Day 78 Power Frame End
+
+
+# Science Studio Day 79 Power Frame Start
+
+POWER_FRAMES[79] = {
+
+    "i_can":
+        "I can use shadow evidence to infer the Sun's apparent position.",
+
+    "by":
+        "analyzing shadow direction and length in mystery cases.",
+
+    "i_know":
+        "I know I have learned this when I can explain where the Sun likely appears using evidence from a shadow."
+}
+
+# Science Studio Day 79 Power Frame End

@@ -1,0 +1,703 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='shadow_detective_lab.css') }}?v=79.1"
+>
+
+
+<div class="sd-shell">
+
+
+  <!-- HERO -->
+
+  <header class="sd-hero">
+
+    <div class="sd-tags">
+
+      <span>🕵️ Interactive Lab</span>
+
+      <span>Shadow Detective</span>
+
+      <span>TEKS 5.9A</span>
+
+    </div>
+
+
+    <div class="sd-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio:
+          Shadow Detective Lab
+        </h1>
+
+        <p>
+          The Sun is hidden.
+
+          Use the evidence
+          to crack the case.
+        </p>
+
+      </div>
+
+
+      <a
+        class="sd-back"
+        href="/second-nine-weeks/day/79?view=student"
+      >
+        ← Back to Day 79
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- STATUS -->
+
+  <section class="sd-status-panel">
+
+    <div>
+
+      <div class="sd-eyebrow">
+        SHADOW DETECTIVE AGENCY
+      </div>
+
+      <h2>
+        Case Progress
+      </h2>
+
+      <p>
+        Inspect.
+        Infer.
+        Explain.
+      </p>
+
+    </div>
+
+
+    <div class="sd-status-grid">
+
+      <div>
+        <span id="sdMission1Status">⬜</span>
+        <strong>Rule</strong>
+      </div>
+
+      <div>
+        <span id="sdMission2Status">⬜</span>
+        <strong>Cases</strong>
+      </div>
+
+      <div>
+        <span id="sdMission3Status">⬜</span>
+        <strong>Evidence</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="sd-mission">
+
+    <div>
+
+      <div class="sd-eyebrow">
+        MISSION 1
+      </div>
+
+      <h2>
+        Decode the Shadow Rule
+      </h2>
+
+      <p>
+        The Sun is visible in this training case.
+
+        Predict the shadow direction.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="sd-lab-card">
+
+    <div class="sd-training-model">
+
+      <div class="sd-training-sun">
+
+        ☀️
+
+        <strong>
+          SUN
+        </strong>
+
+        <small>
+          Low in the EAST
+        </small>
+
+      </div>
+
+
+      <div class="sd-light-rays">
+
+        <i></i>
+        <i></i>
+        <i></i>
+
+      </div>
+
+
+      <div class="sd-training-object">
+
+        <div class="sd-pole"></div>
+
+        <strong>
+          OBJECT
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="sd-rule-choices">
+
+      <button
+        data-rule="west"
+        type="button"
+      >
+        A. Shadow extends WEST
+      </button>
+
+      <button
+        data-rule="east"
+        type="button"
+      >
+        B. Shadow extends EAST
+      </button>
+
+      <button
+        data-rule="none"
+        type="button"
+      >
+        C. No shadow forms
+      </button>
+
+    </div>
+
+
+    <button
+      id="sdCheckRule"
+      class="sd-main-button"
+      type="button"
+    >
+      🔎 CHECK PREDICTION
+    </button>
+
+
+    <div
+      id="sdRuleFeedback"
+      class="sd-feedback"
+    >
+      Which direction should the shadow extend?
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="sd-mission">
+
+    <div>
+
+      <div class="sd-eyebrow">
+        MISSION 2
+      </div>
+
+      <h2>
+        Mystery Shadow Case Files
+      </h2>
+
+      <p>
+        The Sun has been removed
+        from each scene.
+
+        Determine where it must be.
+      </p>
+
+    </div>
+
+
+    <aside class="sd-score">
+
+      <strong>
+        Cases Solved
+      </strong>
+
+      <span id="sdCaseScore">
+        0 / 3
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="sd-lab-card">
+
+    <div class="sd-case-header">
+
+      <div>
+
+        <span id="sdCaseNumber">
+          CASE FILE 1
+        </span>
+
+        <h2 id="sdCaseTitle">
+          Loading evidence...
+        </h2>
+
+      </div>
+
+
+      <div class="sd-classified">
+        ☀️ SUN POSITION: CLASSIFIED
+      </div>
+
+    </div>
+
+
+    <svg
+      id="sdCaseScene"
+      class="sd-case-svg"
+      viewBox="0 0 1000 500"
+    >
+
+      <defs>
+
+        <linearGradient
+          id="sdSky"
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="1"
+        >
+          <stop offset="0%"
+                stop-color="#208bd8"/>
+
+          <stop offset="100%"
+                stop-color="#dff5ff"/>
+        </linearGradient>
+
+      </defs>
+
+
+      <rect
+        width="1000"
+        height="500"
+        rx="18"
+        fill="url(#sdSky)"
+      />
+
+
+      <rect
+        x="0"
+        y="360"
+        width="1000"
+        height="140"
+        fill="#74b85c"
+      />
+
+
+      <line
+        x1="0"
+        y1="360"
+        x2="1000"
+        y2="360"
+        stroke="#293b2f"
+        stroke-width="6"
+      />
+
+
+      <text
+        x="55"
+        y="415"
+        fill="#ffffff"
+        font-size="28"
+        font-weight="900"
+      >
+        WEST
+      </text>
+
+
+      <text
+        x="865"
+        y="415"
+        fill="#ffffff"
+        font-size="28"
+        font-weight="900"
+      >
+        EAST
+      </text>
+
+
+      <!-- OBJECT -->
+
+      <line
+        x1="500"
+        y1="360"
+        x2="500"
+        y2="205"
+        stroke="#51331e"
+        stroke-width="20"
+        stroke-linecap="round"
+      />
+
+
+      <circle
+        cx="500"
+        cy="190"
+        r="25"
+        fill="#7131cc"
+        stroke="#171717"
+        stroke-width="4"
+      />
+
+
+      <!-- SHADOW -->
+
+      <line
+        id="sdMysteryShadow"
+        x1="500"
+        y1="360"
+        x2="190"
+        y2="405"
+        stroke="#202631"
+        stroke-width="27"
+        stroke-linecap="round"
+        opacity=".75"
+      />
+
+
+      <!-- CLUE TAG -->
+
+      <rect
+        x="310"
+        y="35"
+        width="380"
+        height="55"
+        rx="14"
+        fill="#fff2a5"
+        stroke="#171717"
+        stroke-width="4"
+      />
+
+
+      <text
+        id="sdSceneClue"
+        x="500"
+        y="70"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="19"
+        font-weight="900"
+      >
+        LONG SHADOW TOWARD WEST
+      </text>
+
+    </svg>
+
+
+    <div class="sd-question-label">
+      🔎 Where is the Sun most likely appearing?
+    </div>
+
+
+    <div
+      id="sdSunChoices"
+      class="sd-case-choices"
+    >
+
+      <button data-sun="east"
+              type="button">
+        🌅 Low East
+      </button>
+
+      <button data-sun="high"
+              type="button">
+        🔆 Higher Sky
+      </button>
+
+      <button data-sun="west"
+              type="button">
+        🌇 Low West
+      </button>
+
+    </div>
+
+
+    <div class="sd-question-label">
+      🕒 Which part of the day best matches the evidence?
+    </div>
+
+
+    <div
+      id="sdTimeChoices"
+      class="sd-case-choices"
+    >
+
+      <button data-time="morning"
+              type="button">
+        Morning
+      </button>
+
+      <button data-time="noon"
+              type="button">
+        Near Solar Noon
+      </button>
+
+      <button data-time="afternoon"
+              type="button">
+        Afternoon / Evening
+      </button>
+
+    </div>
+
+
+    <button
+      id="sdCheckCase"
+      class="sd-main-button"
+      type="button"
+    >
+      🕵️ SOLVE CASE
+    </button>
+
+
+    <div
+      id="sdCaseFeedback"
+      class="sd-feedback"
+    >
+      Select both the hidden Sun position
+      and likely part of the day.
+    </div>
+
+
+    <button
+      id="sdNextCase"
+      class="sd-next-button"
+      type="button"
+      disabled
+    >
+      NEXT CASE FILE →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="sd-mission">
+
+    <div>
+
+      <div class="sd-eyebrow">
+        MISSION 3
+      </div>
+
+      <h2>
+        Final Evidence Board
+      </h2>
+
+      <p>
+        Solve four final cases
+        using scientific reasoning.
+      </p>
+
+    </div>
+
+
+    <aside class="sd-score">
+
+      <strong>
+        Evidence Score
+      </strong>
+
+      <span id="sdEvidenceScore">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="sd-lab-card">
+
+    <div
+      id="sdEvidenceQuestion"
+      class="sd-evidence-question"
+    >
+      Loading evidence...
+    </div>
+
+
+    <div
+      id="sdEvidenceChoices"
+      class="sd-evidence-choices"
+    ></div>
+
+
+    <button
+      id="sdCheckEvidence"
+      class="sd-main-button"
+      type="button"
+    >
+      ✅ CHECK EVIDENCE
+    </button>
+
+
+    <div
+      id="sdEvidenceFeedback"
+      class="sd-feedback"
+    >
+      Select the best scientific conclusion.
+    </div>
+
+
+    <button
+      id="sdNextEvidence"
+      class="sd-next-button"
+      type="button"
+      disabled
+    >
+      NEXT EVIDENCE FILE →
+    </button>
+
+  </section>
+
+
+  <!-- MASTER -->
+
+  <section class="sd-master">
+
+    <div class="sd-master-icon">
+      🕵️🔎
+    </div>
+
+    <h2>
+      Shadow Detective Status
+    </h2>
+
+
+    <div
+      id="sdMasterMessage"
+      class="sd-master-message"
+    >
+      Complete all three missions
+      to earn Master Shadow Detective status.
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="sd-evidence-notebook">
+
+    <h2>
+      📓 Detective Evidence Notebook
+    </h2>
+
+
+    <div class="sd-notebook-grid">
+
+      <article>
+
+        <strong>
+          🔎 Direction Evidence
+        </strong>
+
+        <p>
+          A shadow extends generally
+          __________ from the Sun.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          📏 Length Evidence
+        </strong>
+
+        <p>
+          A low Sun generally makes
+          a __________ shadow.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🔆 High Sun Evidence
+        </strong>
+
+        <p>
+          A higher Sun generally makes
+          a __________ shadow.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🌎 Cause
+        </strong>
+
+        <p>
+          Why does the Sun's
+          apparent position change?
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="sd-final-question">
+
+      <strong>
+        🧠 Close the Case:
+      </strong>
+
+      How can a scientist use
+      both shadow direction
+      and shadow length
+      to infer the Sun's apparent position?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='shadow_detective_lab.js') }}?v=79.1"
+></script>
+
+{% endblock %}
