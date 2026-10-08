@@ -1,0 +1,505 @@
+.em-shell {
+  width: min(1200px,96vw);
+  margin: 24px auto 60px;
+}
+
+
+.em-hero,
+.em-status-panel,
+.em-mission,
+.em-lab-card,
+.em-master,
+.em-evidence {
+  border: 3px solid #171717;
+  border-radius: 17px;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+
+.em-hero {
+  padding: 20px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #7131cc,
+      #2689d8
+    );
+}
+
+
+.em-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+
+.em-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #7d32dc;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+
+.em-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.em-back {
+  padding: 10px 14px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+
+.em-status-panel,
+.em-mission {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+
+.em-eyebrow {
+  font-size: .75rem;
+  font-weight: 900;
+}
+
+
+.em-status-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 7px;
+}
+
+
+.em-status-grid div {
+  padding: 9px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+
+.em-status-grid span,
+.em-status-grid strong {
+  display: block;
+}
+
+
+.em-status-grid span {
+  font-size: 1.8rem;
+}
+
+
+.em-score {
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+
+.em-score strong,
+.em-score span {
+  display: block;
+}
+
+
+.em-score span {
+  margin-top: 5px;
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+
+
+.em-lab-card {
+  margin-top: 12px;
+  padding: 16px;
+  background: #111a34;
+  color: #fff;
+}
+
+
+.em-axis-workspace {
+  text-align: center;
+}
+
+
+.em-axis-svg {
+  width: min(700px,100%);
+  border: 3px solid #171717;
+  border-radius: 14px;
+}
+
+
+.em-axis-choices {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+
+.em-axis-choice,
+.em-compare-buttons button,
+.em-rotation-buttons button {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+
+.em-axis-choice.selected,
+.em-compare-buttons button.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+  box-shadow: 0 0 0 4px rgba(113,49,204,.25);
+  transform: translateY(-2px);
+}
+
+
+.em-main-button,
+.em-next {
+  margin-top: 12px;
+  padding: 12px 20px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #ffe45d;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+
+.em-next:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+
+.em-feedback {
+  margin-top: 12px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+}
+
+
+.em-rotation-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: center;
+}
+
+
+.em-rotation-stage {
+  position: relative;
+  min-height: 390px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 3px solid #fff;
+  border-radius: 14px;
+  background: #071120;
+}
+
+
+.em-axis-backdrop {
+  position: absolute;
+  width: 10px;
+  height: 325px;
+  background: #ffe45d;
+  border-radius: 999px;
+  transform: rotate(-18deg);
+  opacity: .9;
+}
+
+
+.em-earth-spin {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .55s ease;
+}
+
+
+.em-earth-emoji {
+  font-size: 11rem;
+  line-height: 1;
+}
+
+
+.em-location-dot {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateX(-50%);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #ff4242;
+}
+
+
+.em-rotation-controls {
+  padding: 14px;
+  border: 3px solid #fff;
+  border-radius: 12px;
+  background: #17213b;
+}
+
+
+.em-gauge {
+  margin-bottom: 10px;
+  padding: 11px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  text-align: center;
+}
+
+
+.em-gauge span,
+.em-gauge strong {
+  display: block;
+}
+
+
+.em-gauge strong {
+  margin-top: 4px;
+  color: #7131cc;
+  font-size: 1.8rem;
+}
+
+
+.em-rotation-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+
+.em-hour-guide {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 6px;
+  margin-top: 12px;
+}
+
+
+.em-hour-guide div {
+  padding: 8px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #e8f7ff;
+  color: #111;
+  text-align: center;
+}
+
+
+.em-hour-guide strong {
+  display: block;
+}
+
+
+.em-compare-question {
+  padding: 17px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+
+.em-compare-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+
+.em-master {
+  margin-top: 14px;
+  padding: 20px;
+  background: #fff4cd;
+  text-align: center;
+}
+
+
+.em-master-icon {
+  font-size: 4rem;
+}
+
+
+.em-master-message {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #e8f7ff;
+  font-weight: 900;
+}
+
+
+.em-evidence {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff;
+}
+
+
+.em-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 9px;
+}
+
+
+.em-evidence-grid article {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #eaf6ff;
+}
+
+
+.em-question {
+  margin-top: 10px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff3ad;
+}
+
+
+@media (max-width:850px) {
+
+  .em-hero-row,
+  .em-status-panel,
+  .em-mission {
+    display: block;
+  }
+
+
+  .em-status-grid,
+  .em-axis-choices,
+  .em-rotation-layout,
+  .em-rotation-buttons,
+  .em-hour-guide,
+  .em-compare-buttons,
+  .em-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* =========================================================
+   DAY 76 TRUE AXIS ROTATION VISUAL
+   ========================================================= */
+
+/*
+The original flat Earth remains in the DOM because the
+existing mission/scoring engine uses it internally.
+
+It is hidden visually and replaced with the 3D sphere.
+*/
+
+.em-rotation-stage > .em-axis-backdrop,
+.em-rotation-stage > .em-earth-spin {
+  display: none !important;
+}
+
+
+.em-globe3d-svg {
+  display: block;
+  width: min(520px, 96%);
+  height: auto;
+  margin: auto;
+}
+
+
+#emAmericasLand,
+#emFarSideLand,
+#emNorthAmericaMarker {
+  transition:
+    transform .55s ease,
+    opacity .55s ease;
+}
+
+
+#emNorthAmericaMarker {
+  filter:
+    drop-shadow(
+      0 0 5px rgba(255,223,88,.8)
+    );
+}
+
+
+/* =========================================================
+   DAY 76 3D EARTH ROTATION FIX
+   ========================================================= */
+
+.em-rotation-stage > .em-axis-backdrop,
+.em-rotation-stage > .em-earth-spin {
+  display: none !important;
+}
+
+
+.em-globe3d {
+  display: block;
+  width: min(520px, 96%);
+  height: auto;
+  margin: auto;
+}
+
+
+#emAmericasLand,
+#emFarSideLand,
+#emNorthAmericaMarker {
+  transition:
+    transform .55s ease,
+    opacity .55s ease;
+}
+
+
+#emNorthAmericaMarker {
+  filter:
+    drop-shadow(
+      0 0 5px rgba(255,223,88,.9)
+    );
+}

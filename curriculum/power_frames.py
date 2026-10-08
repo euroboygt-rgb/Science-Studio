@@ -817,3 +817,20 @@ POWER_FRAMES[75] = {
 }
 
 # Science Studio Day 75 Power Frame End
+
+
+# Science Studio Day 76 Power Frame Start
+
+POWER_FRAMES[76] = {
+
+    "i_can":
+        "I can model Earth's rotation and explain the difference between rotation and revolution.",
+
+    "by":
+        "identifying Earth's axis and comparing Earth spinning in place with Earth traveling around the Sun.",
+
+    "i_know":
+        "I know I have learned this when I can explain that one Earth rotation takes about 24 hours and correctly distinguish rotation from revolution."
+}
+
+# Science Studio Day 76 Power Frame End

@@ -1,0 +1,943 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='earth_motion_control_lab.css') }}?v=76.1"
+>
+
+
+<div class="em-shell">
+
+  <header class="em-hero">
+
+    <div class="em-tags">
+
+      <span>🌎 Interactive Lab</span>
+
+      <span>Earth Motion Control</span>
+
+      <span>TEKS 5.9A</span>
+
+    </div>
+
+
+    <div class="em-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio: Earth Motion Control
+        </h1>
+
+        <p>
+          Identify Earth's axis,
+          complete one full rotation,
+          and compare rotation with revolution.
+        </p>
+
+      </div>
+
+
+      <a
+        class="em-back"
+        href="/second-nine-weeks/day/76?view=student"
+      >
+        ← Back to Day 76
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- MISSION STATUS -->
+
+  <section class="em-status-panel">
+
+    <div>
+
+      <div class="em-eyebrow">
+        EARTH MOTION TRAINING
+      </div>
+
+      <h2>
+        Complete All 3 Missions
+      </h2>
+
+      <p>
+        Use the model as evidence,
+        not just the vocabulary words.
+      </p>
+
+    </div>
+
+
+    <div class="em-status-grid">
+
+      <div>
+
+        <span id="emAxisStatus">
+          ⬜
+        </span>
+
+        <strong>
+          Axis
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span id="emRotationStatus">
+          ⬜
+        </span>
+
+        <strong>
+          Rotation
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span id="emCompareStatus">
+          ⬜
+        </span>
+
+        <strong>
+          Compare
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="em-mission">
+
+    <div>
+
+      <div class="em-eyebrow">
+        MISSION 1
+      </div>
+
+      <h2>
+        Find Earth's Axis
+      </h2>
+
+      <p>
+        Identify the imaginary line
+        Earth rotates around.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="em-lab-card">
+
+    <div class="em-axis-workspace">
+
+      <svg
+        viewBox="0 0 700 470"
+        class="em-axis-svg"
+      >
+
+        <rect width="700"
+              height="470"
+              rx="20"
+              fill="#071120"/>
+
+
+        <circle cx="350"
+                cy="235"
+                r="125"
+                fill="#3d8de8"
+                stroke="#ffffff"
+                stroke-width="6"/>
+
+
+        <path d="M285 185
+                 Q340 145 405 195
+                 Q365 225 390 285
+                 Q330 330 285 285
+                 Q255 230 285 185"
+              fill="#55b85c"/>
+
+
+        <line
+          id="emAxisCorrect"
+          x1="285"
+          y1="70"
+          x2="415"
+          y2="400"
+          stroke="#ffe45d"
+          stroke-width="12"
+          stroke-linecap="round"
+          opacity=".25"
+        />
+
+
+        <line
+          id="emAxisWrongHorizontal"
+          x1="170"
+          y1="235"
+          x2="530"
+          y2="235"
+          stroke="#ff6b6b"
+          stroke-width="10"
+          stroke-linecap="round"
+          opacity=".25"
+        />
+
+
+        <line
+          id="emAxisWrongVertical"
+          x1="350"
+          y1="60"
+          x2="350"
+          y2="410"
+          stroke="#ff6b6b"
+          stroke-width="10"
+          stroke-linecap="round"
+          opacity=".25"
+        />
+
+
+        <text x="350"
+              y="35"
+              text-anchor="middle"
+              fill="#ffffff"
+              font-size="19"
+              font-weight="900">
+          WHICH LINE REPRESENTS EARTH'S AXIS?
+        </text>
+
+      </svg>
+
+
+      <div class="em-axis-choices">
+
+        <button
+          class="em-axis-choice"
+          data-axis="tilted"
+          type="button"
+        >
+          A. Tilted line through Earth
+        </button>
+
+        <button
+          class="em-axis-choice"
+          data-axis="horizontal"
+          type="button"
+        >
+          B. Horizontal line through Earth
+        </button>
+
+        <button
+          class="em-axis-choice"
+          data-axis="vertical"
+          type="button"
+        >
+          C. Straight vertical line
+        </button>
+
+      </div>
+
+
+      <button
+        id="emCheckAxis"
+        class="em-main-button"
+        type="button"
+      >
+        ✅ CHECK AXIS
+      </button>
+
+
+      <div id="emAxisFeedback"
+           class="em-feedback">
+        Select the line you think represents Earth's axis.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="em-mission">
+
+    <div>
+
+      <div class="em-eyebrow">
+        MISSION 2
+      </div>
+
+      <h2>
+        Complete One Earth Rotation
+      </h2>
+
+      <p>
+        Rotate Earth through a complete 360° turn
+        and watch how the elapsed time changes.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="em-lab-card">
+
+    <div class="em-rotation-layout">
+
+      
+      <div class="em-rotation-stage">
+
+        <!-- Science Studio 3D Earth Rotation Model -->
+        <svg
+          id="emGlobe3D"
+          class="em-globe3d-svg"
+          viewBox="0 0 520 430"
+          aria-label="Three-dimensional model of Earth rotating around a fixed tilted axis"
+        >
+
+          <defs>
+
+            <radialGradient
+              id="emOceanGradient"
+              cx="35%"
+              cy="28%"
+              r="75%"
+            >
+              <stop offset="0%"
+                    stop-color="#65b9ff"/>
+
+              <stop offset="55%"
+                    stop-color="#168de3"/>
+
+              <stop offset="100%"
+                    stop-color="#07529b"/>
+            </radialGradient>
+
+
+            <radialGradient
+              id="emSphereShade"
+              cx="30%"
+              cy="25%"
+              r="80%"
+            >
+              <stop offset="50%"
+                    stop-color="#ffffff"
+                    stop-opacity="0"/>
+
+              <stop offset="85%"
+                    stop-color="#00142b"
+                    stop-opacity=".18"/>
+
+              <stop offset="100%"
+                    stop-color="#001020"
+                    stop-opacity=".55"/>
+            </radialGradient>
+
+
+            <clipPath id="emGlobeClip">
+
+              <circle
+                cx="260"
+                cy="205"
+                r="112"
+              />
+
+            </clipPath>
+
+          </defs>
+
+
+          <!-- LABEL -->
+
+          <text
+            x="260"
+            y="28"
+            text-anchor="middle"
+            fill="#ffffff"
+            font-size="18"
+            font-weight="900"
+          >
+            EARTH ROTATES AROUND A FIXED AXIS
+          </text>
+
+
+          <!-- AXIS STAYS FIXED -->
+
+          <line
+            x1="196"
+            y1="42"
+            x2="324"
+            y2="370"
+            stroke="#ffe45d"
+            stroke-width="10"
+            stroke-linecap="round"
+          />
+
+          <text
+            x="167"
+            y="65"
+            fill="#ffe45d"
+            font-size="15"
+            font-weight="900"
+          >
+            AXIS
+          </text>
+
+
+          <!-- SPHERE -->
+
+          <circle
+            cx="260"
+            cy="205"
+            r="112"
+            fill="url(#emOceanGradient)"
+            stroke="#ffffff"
+            stroke-width="6"
+          />
+
+
+          <!-- SURFACE CONTENT IS CLIPPED TO SPHERE -->
+
+          <g clip-path="url(#emGlobeClip)">
+
+            <!-- latitude / longitude guides -->
+
+            <ellipse
+              cx="260"
+              cy="205"
+              rx="98"
+              ry="31"
+              fill="none"
+              stroke="#bfe6ff"
+              stroke-width="2"
+              opacity=".25"
+            />
+
+            <ellipse
+              cx="260"
+              cy="205"
+              rx="42"
+              ry="108"
+              fill="none"
+              stroke="#bfe6ff"
+              stroke-width="2"
+              opacity=".22"
+            />
+
+
+            <!-- AMERICAS - visible at 0° -->
+
+            <g id="emAmericasLand"
+               fill="#4fbd57">
+
+              <!-- North America -->
+
+              <path d="
+                M190 135
+                Q214 112 250 119
+                Q273 124 285 144
+                L274 162
+                L249 158
+                L236 175
+                L214 169
+                L205 185
+                L187 174
+                L177 153
+                Z
+              "/>
+
+              <!-- Central America -->
+
+              <path d="
+                M235 169
+                Q250 177 255 189
+                L244 200
+                L233 189
+                Z
+              "/>
+
+              <!-- South America -->
+
+              <path d="
+                M247 194
+                Q273 195 281 220
+                Q287 246 272 276
+                Q258 302 241 308
+                Q235 277 222 254
+                Q214 229 225 207
+                Z
+              "/>
+
+            </g>
+
+
+            <!-- OTHER SIDE - becomes visible around 180° -->
+
+            <g id="emFarSideLand"
+               fill="#55b85c"
+               opacity=".08">
+
+              <!-- Eurasia -->
+
+              <path d="
+                M205 130
+                Q248 105 303 119
+                Q345 124 367 151
+                Q348 168 320 169
+                Q301 188 269 176
+                Q246 189 224 172
+                Q204 163 205 130
+                Z
+              "/>
+
+              <!-- Africa -->
+
+              <path d="
+                M264 176
+                Q300 176 314 208
+                Q316 242 289 282
+                Q264 270 249 231
+                Q245 200 264 176
+                Z
+              "/>
+
+            </g>
+
+
+            <!-- depth shading -->
+
+            <circle
+              cx="260"
+              cy="205"
+              r="112"
+              fill="url(#emSphereShade)"
+            />
+
+          </g>
+
+
+          <!-- FRONT LOCATION MARKER -->
+
+          <g id="emNorthAmericaMarker">
+
+            <circle
+              cx="0"
+              cy="0"
+              r="10"
+              fill="#ff3d3d"
+              stroke="#ffffff"
+              stroke-width="4"
+            />
+
+            <circle
+              cx="0"
+              cy="0"
+              r="18"
+              fill="none"
+              stroke="#ffdf58"
+              stroke-width="3"
+              opacity=".65"
+            />
+
+          </g>
+
+
+          <!-- ROTATION INDICATOR -->
+
+          <path
+            d="M145 126
+               C100 175 105 251 145 292"
+            fill="none"
+            stroke="#c68cff"
+            stroke-width="8"
+            stroke-linecap="round"
+          />
+
+          <polygon
+            points="145,292 130,263 165,270"
+            fill="#c68cff"
+          />
+
+
+          <!-- STATUS -->
+
+          <rect
+            x="70"
+            y="382"
+            width="380"
+            height="38"
+            rx="12"
+            fill="#ffffff"
+            stroke="#171717"
+            stroke-width="3"
+          />
+
+          <text
+            id="emGlobePositionStatus"
+            x="260"
+            y="407"
+            text-anchor="middle"
+            fill="#17213b"
+            font-size="12"
+            font-weight="900"
+          >
+            North America is facing the observer.
+          </text>
+
+        </svg>
+
+
+        <div class="em-axis-backdrop"></div>
+
+        <div id="emEarthSpin"
+             class="em-earth-spin">
+
+          <div class="em-earth-emoji">
+            🌎
+          </div>
+
+          <div class="em-location-dot"></div>
+
+        </div>
+
+      </div>
+
+
+      <div class="em-rotation-controls">
+
+        <div class="em-gauge">
+
+          <span>
+            Earth Turned
+          </span>
+
+          <strong id="emDegrees">
+            0°
+          </strong>
+
+        </div>
+
+
+        <div class="em-gauge">
+
+          <span>
+            Approximate Time
+          </span>
+
+          <strong id="emHours">
+            0 hours
+          </strong>
+
+        </div>
+
+
+        <div class="em-rotation-buttons">
+
+          <button
+            data-turn="90"
+            type="button"
+          >
+            +90°
+          </button>
+
+          <button
+            data-turn="180"
+            type="button"
+          >
+            +180°
+          </button>
+
+          <button
+            id="emFullRotation"
+            type="button"
+          >
+            🔄 Complete 360°
+          </button>
+
+          <button
+            id="emResetRotation"
+            type="button"
+          >
+            ↻ Reset
+          </button>
+
+        </div>
+
+
+        <div class="em-hour-guide">
+
+          <div>
+            90°
+            <strong>
+              ≈ 6 h
+            </strong>
+          </div>
+
+          <div>
+            180°
+            <strong>
+              ≈ 12 h
+            </strong>
+          </div>
+
+          <div>
+            270°
+            <strong>
+              ≈ 18 h
+            </strong>
+          </div>
+
+          <div>
+            360°
+            <strong>
+              ≈ 24 h
+            </strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div id="emRotationFeedback"
+         class="em-feedback">
+      Rotate Earth until you complete one full 360° rotation.
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="em-mission">
+
+    <div>
+
+      <div class="em-eyebrow">
+        MISSION 3
+      </div>
+
+      <h2>
+        Rotation or Revolution?
+      </h2>
+
+      <p>
+        Use each motion as evidence
+        to identify the correct word.
+      </p>
+
+    </div>
+
+
+    <aside class="em-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="emCompareScore">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="em-lab-card">
+
+    <div id="emCompareQuestion"
+         class="em-compare-question">
+
+      Loading motion challenge...
+
+    </div>
+
+
+    <div class="em-compare-buttons">
+
+      <button
+        id="emChooseRotation"
+        type="button"
+      >
+        🔄 ROTATION
+      </button>
+
+      <button
+        id="emChooseRevolution"
+        type="button"
+      >
+        ☀️ REVOLUTION
+      </button>
+
+    </div>
+
+
+    <button
+      id="emCheckCompare"
+      class="em-main-button"
+      type="button"
+    >
+      ✅ CHECK MOTION
+    </button>
+
+
+    <div id="emCompareFeedback"
+         class="em-feedback">
+      Choose Rotation or Revolution.
+    </div>
+
+
+    <button
+      id="emNextCompare"
+      class="em-next"
+      type="button"
+      disabled
+    >
+      NEXT MOTION →
+    </button>
+
+  </section>
+
+
+  <!-- MASTER STATUS -->
+
+  <section class="em-master">
+
+    <div class="em-master-icon">
+      🌎
+    </div>
+
+    <h2>
+      Earth Motion Mission Status
+    </h2>
+
+
+    <div id="emMasterMessage"
+         class="em-master-message">
+
+      Complete all three missions
+      to become an Earth Motion Specialist.
+
+    </div>
+
+  </section>
+
+
+  <!-- EVIDENCE NOTEBOOK -->
+
+  <section class="em-evidence">
+
+    <h2>
+      📓 Earth Motion Evidence Notebook
+    </h2>
+
+
+    <div class="em-evidence-grid">
+
+      <article>
+
+        <strong>
+          📍 Axis
+        </strong>
+
+        <p>
+          What is Earth's axis?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🔄 Rotation
+        </strong>
+
+        <p>
+          What motion occurs,
+          and approximately how long
+          does one complete rotation take?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ☀️ Revolution
+        </strong>
+
+        <p>
+          What object does Earth
+          revolve around?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🧠 Compare
+        </strong>
+
+        <p>
+          What evidence helps you decide
+          whether a motion is rotation
+          or revolution?
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="em-question">
+
+      <strong>
+        🔮 Tomorrow's Prediction:
+      </strong>
+
+      If Earth rotates once every 24 hours,
+      what repeating pattern might that motion
+      help explain?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='earth_motion_control_lab.js') }}?v=76.1"
+></script>
+
+
+
+<script
+  src="{{ url_for('static', filename='earth_motion_3d_fix.js') }}?v=76.3d4"
+></script>
+
+{% endblock %}

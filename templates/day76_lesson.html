@@ -1,0 +1,1328 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=76-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day76_direct.css') }}?v=76-final"
+>
+
+
+<div id="DAY76_DIRECT_TEMPLATE"
+     class="d76-page">
+
+  <!-- HEADER -->
+
+  <section class="d76-hero">
+
+    <div class="d76-tags">
+
+      <span>Day 76</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.9A</span>
+
+      <span>Earth Rotation</span>
+
+    </div>
+
+
+    <h1>
+      🌎 Earth Motion Mission:
+      Meet the Axis
+    </h1>
+
+    <p>
+      Discover Earth's axis,
+      model one complete rotation,
+      and learn why rotation and revolution
+      are different motions.
+    </p>
+
+
+    <div class="d76-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/76?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/76?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today’s Learning Power Frame
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          model Earth's rotation
+          and explain the difference
+          between rotation and revolution.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          identifying Earth's axis
+          and comparing two different
+          types of Earth motion.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can explain that one Earth rotation
+          takes about 24 hours
+          and distinguish it from revolution.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌎 Phenomenon Mission
+    </div>
+
+    <h2>
+      How Is Earth Moving?
+    </h2>
+
+    <div class="d59-unit">
+      Day 76 • Rotation vs. Revolution
+    </div>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day76_earth_motion.svg"
+        alt="Earth rotating on its axis and Earth revolving around the Sun"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      Earth spins while also traveling around the Sun.
+
+      Are those two motions the same?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d76MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Mission Brief: Two Motions, One Earth
+        </h2>
+
+        <div class="d59-unit">
+          Day 76 • Axis • Rotation • Revolution
+        </div>
+
+      </div>
+
+
+      <button
+        id="d76Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Mission Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d76SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d76SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d76SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d76SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d76SlideNumber"></strong>
+
+      <div>
+
+        <button id="d76Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d76Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d76Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section id="d76Steve"
+           class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's STAAR Mission
+        </div>
+
+        <h2>
+          Steve's Spinning Earth Investigation
+        </h2>
+
+        <div class="d59-unit">
+          Day 76 • Earth's Motion
+        </div>
+
+
+        <div class="d59-scenario">
+
+          <strong>
+            Steve's Scenario:
+          </strong>
+
+          <br><br>
+
+          Steve places a globe on a table.
+
+          He keeps the globe in the same location
+          but spins it one complete turn
+          around its imaginary axis.
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            STAAR-Style Question:
+          </strong>
+
+          <p>
+            Which Earth motion
+            is Steve modeling?
+          </p>
+
+
+          <button class="d76-steve-answer"
+                  data-answer="A">
+            A. Rotation
+          </button>
+
+          <button class="d76-steve-answer"
+                  data-answer="B">
+            B. Revolution
+          </button>
+
+          <button class="d76-steve-answer"
+                  data-answer="C">
+            C. Refraction
+          </button>
+
+          <button class="d76-steve-answer"
+                  data-answer="D">
+            D. Reflection
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d76SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Answer
+            </button>
+
+            <button id="d76SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d76SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCABULARY -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Earth Motion Vocabulary Anchor Chart
+    </h2>
+
+
+    <div class="d76-vocab-note">
+
+      🔍 Hover to preview.
+
+      <strong>
+        Click any vocabulary word
+      </strong>
+
+      to enlarge it and read the definition.
+
+    </div>
+
+
+    <div class="d76-vocab-grid">
+
+      {% set words = [
+        ("📍", "axis", "An imaginary line through Earth from the North Pole to the South Pole that Earth rotates around."),
+        ("🔄", "rotation", "The spinning of an object around its axis."),
+        ("🌎", "rotate", "To spin around an axis."),
+        ("☀️", "revolution", "The movement of one object around another object."),
+        ("🛰️", "revolve", "To travel around another object."),
+        ("⬆️", "North Pole", "The point at the northern end of Earth's axis."),
+        ("⬇️", "South Pole", "The point at the southern end of Earth's axis."),
+        ("🕛", "24 hours", "Approximately the time Earth takes to complete one full rotation."),
+        ("⭕", "orbit", "The path an object follows as it revolves around another object.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d76-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span class="d76-vocab-icon">
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- LEARNING TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will model Earth's rotation
+      and explain the difference
+      between rotation and revolution.
+    </p>
+
+  </section>
+
+
+  <!-- BELL RINGER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer — Spin or Travel?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Imagine you are standing
+      next to a chair.
+
+      <br><br>
+
+      Motion A:
+      <strong>
+        You spin in place.
+      </strong>
+
+      <br><br>
+
+      Motion B:
+      <strong>
+        You walk in a circle around the chair.
+      </strong>
+
+
+      <ol>
+
+        <li>
+          Are these the same motion?
+        </li>
+
+        <li>
+          Which one is more like Earth spinning?
+        </li>
+
+        <li>
+          Which one is more like Earth traveling around the Sun?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson — Earth's Two Motions
+    </h2>
+
+
+    <div class="d76-axis-model">
+
+      <div class="d76-earth-model">
+
+        <div class="d76-axis-line"></div>
+
+        <div class="d76-north">
+          NORTH POLE
+        </div>
+
+        <div class="d76-earth">
+          🌎
+        </div>
+
+        <div class="d76-south">
+          SOUTH POLE
+        </div>
+
+      </div>
+
+
+      <div class="d76-axis-text">
+
+        <h3>
+          Earth's Axis
+        </h3>
+
+        <p>
+          Earth's axis is an
+          <strong>
+            imaginary line
+          </strong>
+          through Earth
+          from the North Pole
+          to the South Pole.
+        </p>
+
+        <p>
+          Earth spins around this axis.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="d76-motion-grid">
+
+      <article>
+
+        <div class="d76-motion-icon">
+          🔄
+        </div>
+
+        <h3>
+          ROTATION
+        </h3>
+
+        <p>
+          Earth
+          <strong>
+            spins on its axis.
+          </strong>
+        </p>
+
+        <div class="d76-time">
+          🕛 ≈ 24 HOURS
+        </div>
+
+        <strong>
+          Think: SPIN
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <div class="d76-motion-icon">
+          ☀️🌎
+        </div>
+
+        <h3>
+          REVOLUTION
+        </h3>
+
+        <p>
+          Earth
+          <strong>
+            travels around the Sun.
+          </strong>
+        </p>
+
+        <div class="d76-time">
+          📅 ≈ 1 YEAR
+        </div>
+
+        <strong>
+          Think: ORBIT
+        </strong>
+
+      </article>
+
+    </div>
+
+
+    <div class="d76-same-time">
+
+      <h3>
+        🤯 Earth Does Both at the Same Time
+      </h3>
+
+      <div>
+
+        <span>
+          🔄
+        </span>
+
+        Earth rotates
+
+        <strong>
+          while
+        </strong>
+
+        <span>
+          ☀️🌎
+        </span>
+
+        Earth revolves around the Sun.
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Do Not Mix These Up
+      </strong>
+
+      <br><br>
+
+      <strong>
+        ROTATION = SPIN
+      </strong>
+
+      <br>
+
+      Earth spins around its axis.
+
+      <br><br>
+
+      <strong>
+        REVOLUTION = TRAVEL AROUND
+      </strong>
+
+      <br>
+
+      Earth travels around the Sun.
+
+    </div>
+
+
+    <div class="d76-preview">
+
+      🌅
+      <strong>
+        Tomorrow's Mission:
+      </strong>
+
+      Why does Earth's rotation
+      create the repeating pattern
+      of day and night?
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook — Rotation vs. Revolution
+    </h2>
+
+
+    <div class="d59-box">
+
+      Draw Earth.
+
+      <br><br>
+
+      Draw a tilted line through Earth
+      from the North Pole
+      to the South Pole.
+
+      Label it:
+
+      <strong>
+        AXIS
+      </strong>
+
+      <br><br>
+
+      Draw a curved arrow around Earth.
+
+      Label:
+
+      <strong>
+        ROTATION — SPIN — ABOUT 24 HOURS
+      </strong>
+
+      <br><br>
+
+      Then draw the Sun
+      with Earth traveling around it.
+
+      Label:
+
+      <strong>
+        REVOLUTION — ORBIT — ABOUT 1 YEAR
+      </strong>
+
+    </div>
+
+
+    <div class="d76-notebook-chart">
+
+      <div>
+
+        <h3>
+          Rotation
+        </h3>
+
+        <p>
+          Motion:
+          ____________________
+        </p>
+
+        <p>
+          Time:
+          ____________________
+        </p>
+
+        <p>
+          Moves around:
+          ____________________
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Revolution
+        </h3>
+
+        <p>
+          Motion:
+          ____________________
+        </p>
+
+        <p>
+          Time:
+          ____________________
+        </p>
+
+        <p>
+          Moves around:
+          ____________________
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice — Be the Earth
+    </h2>
+
+
+    <div class="d59-box">
+
+      Choose one student to be the Sun.
+
+      <br><br>
+
+      Choose another student to be Earth.
+
+      <ol>
+
+        <li>
+          Earth student spins in place.
+        </li>
+
+        <li>
+          Class identifies:
+          <strong>ROTATION.</strong>
+        </li>
+
+        <li>
+          Earth student walks around the Sun student.
+        </li>
+
+        <li>
+          Class identifies:
+          <strong>REVOLUTION.</strong>
+        </li>
+
+        <li>
+          Earth student slowly spins
+          while walking around the Sun.
+        </li>
+
+      </ol>
+
+
+      Ask:
+
+      <ul>
+
+        <li>
+          Which motion takes about 24 hours?
+        </li>
+
+        <li>
+          Which motion takes about one year?
+        </li>
+
+        <li>
+          What imaginary line does Earth rotate around?
+        </li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌎 Interactive Lab
+    </div>
+
+    <h2>
+      Earth Motion Control Lab:
+      Axis, Rotation, and Revolution
+    </h2>
+
+
+    <p>
+      Control a model Earth
+      to investigate its axis,
+      complete one full rotation,
+      and compare rotation with revolution.
+    </p>
+
+
+    <div class="d76-lab-preview">
+
+      <div>
+        📍
+        <strong>
+          Find the Axis
+        </strong>
+      </div>
+
+      <div>
+        🔄
+        <strong>
+          Rotate Earth
+        </strong>
+      </div>
+
+      <div>
+        🕛
+        <strong>
+          Reach 24 Hours
+        </strong>
+      </div>
+
+      <div>
+        ☀️
+        <strong>
+          Compare Revolution
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      <strong>
+        Mission 1 — Find the Axis
+      </strong>
+
+      <p>
+        Identify the imaginary line
+        Earth rotates around.
+      </p>
+
+
+      <strong>
+        Mission 2 — Complete One Rotation
+      </strong>
+
+      <p>
+        Rotate Earth through 90°, 180°, 270°,
+        and finally 360°.
+      </p>
+
+
+      <strong>
+        Mission 3 — Rotation or Revolution?
+      </strong>
+
+      <p>
+        Identify the correct motion
+        from several Earth-motion scenarios.
+      </p>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆
+      <strong>
+        Mission Goal:
+      </strong>
+
+      Earn
+      <strong>
+        Earth Motion Specialist
+      </strong>
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/earth-motion-control?mission=day76"
+    >
+      🌎 Launch Earth Motion Control
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Practice
+    </div>
+
+    <h2>
+      Earth Motion Evidence
+    </h2>
+
+
+    <div class="d76-question"
+         data-answer="B">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        Which statement best describes
+        Earth's rotation?
+      </p>
+
+      <button data-choice="A">
+        A. Earth travels around the Sun.
+      </button>
+
+      <button data-choice="B">
+        B. Earth spins around its axis.
+      </button>
+
+      <button data-choice="C">
+        C. The Moon travels around Earth.
+      </button>
+
+      <button data-choice="D">
+        D. The Sun travels around Earth.
+      </button>
+
+      <div class="d76-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d76-question"
+         data-answer="A">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        Approximately how long
+        does Earth take
+        to complete one full rotation?
+      </p>
+
+      <button data-choice="A">
+        A. 24 hours
+      </button>
+
+      <button data-choice="B">
+        B. 7 days
+      </button>
+
+      <button data-choice="C">
+        C. 29.5 days
+      </button>
+
+      <button data-choice="D">
+        D. 1 year
+      </button>
+
+      <div class="d76-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d76-question"
+         data-answer="C">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        What is Earth's axis?
+      </p>
+
+      <button data-choice="A">
+        A. The path Earth travels around the Sun
+      </button>
+
+      <button data-choice="B">
+        B. A line connecting Earth to the Moon
+      </button>
+
+      <button data-choice="C">
+        C. An imaginary line through Earth that it rotates around
+      </button>
+
+      <button data-choice="D">
+        D. A ring of asteroids around Earth
+      </button>
+
+      <div class="d76-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d76-question"
+         data-answer="D">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        Which motion describes
+        Earth traveling around the Sun?
+      </p>
+
+      <button data-choice="A">
+        A. Reflection
+      </button>
+
+      <button data-choice="B">
+        B. Rotation
+      </button>
+
+      <button data-choice="C">
+        C. Refraction
+      </button>
+
+      <button data-choice="D">
+        D. Revolution
+      </button>
+
+      <div class="d76-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d76-question"
+         data-answer="A">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        A student spins a globe in place
+        while another student holds
+        a flashlight several feet away.
+
+        Which Earth motion
+        is the student modeling?
+      </p>
+
+      <button data-choice="A">
+        A. Rotation
+      </button>
+
+      <button data-choice="B">
+        B. Revolution
+      </button>
+
+      <button data-choice="C">
+        C. Moon phases
+      </button>
+
+      <button data-choice="D">
+        D. Refraction
+      </button>
+
+      <div class="d76-question-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Written Exit Ticket
+    </h2>
+
+    <p>
+      Explain the difference
+      between Earth's
+      <strong>rotation</strong>
+      and
+      <strong>revolution</strong>.
+
+      Use these words:
+
+      <strong>
+        axis,
+        24 hours,
+        Sun.
+      </strong>
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="Earth's rotation is..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Explain Your Thinking: CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        CER Question:
+      </strong>
+
+      How can a model show
+      that rotation and revolution
+      are different Earth motions?
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="Rotation and revolution are different because..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="In the Earth Motion Lab..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This evidence shows..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT CONNECTION -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🌅 Next Mission Connection
+    </div>
+
+    <h2>
+      What Happens Because Earth Rotates?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Today we learned:
+
+      <strong>
+        Earth rotates on its axis
+        approximately once every 24 hours.
+      </strong>
+
+      <br><br>
+
+      Next we will investigate:
+
+      <strong>
+        Why does that rotation create
+        the repeating pattern of day and night?
+      </strong>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCABULARY MODAL -->
+
+<div id="d76VocabModal"
+     class="d76-modal">
+
+  <div class="d76-modal-card">
+
+    <button id="d76VocabClose"
+            class="d76-modal-close"
+            type="button">
+      ×
+    </button>
+
+    <div id="d76ModalIcon"
+         class="d76-modal-icon"></div>
+
+    <h2 id="d76ModalTerm"></h2>
+
+    <p id="d76ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day76_direct.js') }}?v=76-final"
+></script>
+
+{% endblock %}

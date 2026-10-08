@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <rect width="1200"
+        height="700"
+        rx="24"
+        fill="#071120"/>
+
+  <text x="600"
+        y="50"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#ffffff">
+    PHENOMENON MISSION: HOW IS EARTH MOVING?
+  </text>
+
+  <text x="600"
+        y="88"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="700"
+        fill="#ccecff">
+    Earth is doing more than one kind of motion at the same time.
+  </text>
+
+
+  <!-- ROTATION SIDE -->
+
+  <rect x="60"
+        y="125"
+        width="500"
+        height="430"
+        rx="22"
+        fill="#17213b"
+        stroke="#ffffff"
+        stroke-width="5"/>
+
+  <text x="310"
+        y="165"
+        text-anchor="middle"
+        fill="#ffe45d"
+        font-size="25"
+        font-weight="900">
+    MOTION A
+  </text>
+
+
+  <circle cx="310"
+          cy="330"
+          r="105"
+          fill="#3d8de8"
+          stroke="#ffffff"
+          stroke-width="5"/>
+
+  <path d="M265 285
+           Q310 255 355 290
+           Q325 310 340 350
+           Q305 375 275 345
+           Q250 320 265 285"
+        fill="#55b85c"/>
+
+
+  <!-- axis -->
+
+  <line x1="255"
+        y1="175"
+        x2="365"
+        y2="485"
+        stroke="#ffdf58"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+  <text x="235"
+        y="195"
+        fill="#ffe45d"
+        font-size="17"
+        font-weight="900">
+    AXIS
+  </text>
+
+
+  <!-- rotation arrow -->
+
+  <path d="M185 325
+           A135 135 0 1 1 420 415"
+        fill="none"
+        stroke="#d38cff"
+        stroke-width="12"
+        stroke-linecap="round"/>
+
+  <polygon points="418,415 385,400 410,380"
+           fill="#d38cff"/>
+
+  <text x="310"
+        y="520"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="21"
+        font-weight="900">
+    EARTH SPINS IN PLACE
+  </text>
+
+
+  <!-- REVOLUTION SIDE -->
+
+  <rect x="640"
+        y="125"
+        width="500"
+        height="430"
+        rx="22"
+        fill="#17213b"
+        stroke="#ffffff"
+        stroke-width="5"/>
+
+  <text x="890"
+        y="165"
+        text-anchor="middle"
+        fill="#ffe45d"
+        font-size="25"
+        font-weight="900">
+    MOTION B
+  </text>
+
+
+  <!-- orbit -->
+
+  <ellipse cx="890"
+           cy="335"
+           rx="190"
+           ry="125"
+           fill="none"
+           stroke="#94a9c6"
+           stroke-width="5"
+           stroke-dasharray="14 10"/>
+
+
+  <!-- sun -->
+
+  <circle cx="890"
+          cy="335"
+          r="58"
+          fill="#ffd447"
+          stroke="#fff3a0"
+          stroke-width="7"/>
+
+  <text x="890"
+        y="345"
+        text-anchor="middle"
+        fill="#8d6100"
+        font-size="17"
+        font-weight="900">
+    SUN
+  </text>
+
+
+  <!-- earth in orbit -->
+
+  <circle cx="1060"
+          cy="285"
+          r="32"
+          fill="#3d8de8"
+          stroke="#ffffff"
+          stroke-width="4"/>
+
+  <path d="M1043 276
+           Q1060 265 1075 280
+           Q1060 295 1048 288 Z"
+        fill="#55b85c"/>
+
+
+  <!-- revolution arrow -->
+
+  <path d="M750 385
+           A180 115 0 0 0 1035 420"
+        fill="none"
+        stroke="#d38cff"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+  <polygon points="1035,420 1007,400 1008,432"
+           fill="#d38cff"/>
+
+  <text x="890"
+        y="520"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="21"
+        font-weight="900">
+    EARTH TRAVELS AROUND THE SUN
+  </text>
+
+
+  <rect x="155"
+        y="590"
+        width="890"
+        height="72"
+        rx="16"
+        fill="#fff4a8"
+        stroke="#ffffff"
+        stroke-width="4"/>
+
+  <text x="600"
+        y="620"
+        text-anchor="middle"
+        fill="#24336b"
+        font-size="21"
+        font-weight="900">
+    MYSTERY QUESTION
+  </text>
+
+  <text x="600"
+        y="648"
+        text-anchor="middle"
+        fill="#24336b"
+        font-size="21"
+        font-weight="900">
+    Which motion is ROTATION, and which motion is REVOLUTION?
+  </text>
+
+</svg>

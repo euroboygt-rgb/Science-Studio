@@ -4369,3 +4369,103 @@ SECOND_NINE_WEEKS_LESSONS[75] = {
 }
 
 # Science Studio Day 75 End
+
+
+# Science Studio Day 76 Start
+
+SECOND_NINE_WEEKS_LESSONS[76] = {
+
+    "day": 76,
+
+    "title":
+        "Earth Motion Mission: Meet the Axis",
+
+    "unit":
+        "Investigating Earth's Rotation",
+
+    "teks":
+        "5.9A, 5.1F, 5.2D",
+
+    "focus":
+        "Students identify Earth's axis, model Earth rotating on its axis, "
+        "connect one full rotation to approximately 24 hours, "
+        "and distinguish rotation from revolution.",
+
+    "learning_target":
+        "We will model Earth's rotation and explain the difference between rotation and revolution.",
+
+    "success_criteria":
+        "I can identify Earth's axis, explain that Earth completes one rotation in about 24 hours, "
+        "and distinguish rotation from revolution.",
+
+    "essential_question":
+        "How does Earth move, and how can we describe its different motions?",
+
+    "bell_ringer": [
+        "Imagine spinning in place while also walking in a circle around a chair.",
+        "Would those be the same type of motion?",
+        "Which motion is more like Earth spinning?",
+        "Which motion is more like Earth traveling around the Sun?"
+    ],
+
+    "mini_lesson": [
+        "Earth's axis is an imaginary line that passes through Earth from the North Pole to the South Pole.",
+        "Earth's axis is tilted.",
+        "Rotation means spinning around an axis.",
+        "Earth rotates on its axis.",
+        "One complete Earth rotation takes approximately 24 hours.",
+        "Revolution means traveling around another object.",
+        "Earth revolves around the Sun.",
+        "One complete revolution around the Sun takes about one year.",
+        "Rotation and revolution happen at the same time, but they are different motions.",
+        "Day 77 will use Earth's rotation to explain the day and night cycle."
+    ],
+
+    "science_notebook": [
+        "Draw Earth and an imaginary axis through the North and South Poles.",
+        "Draw a curved arrow around Earth and label it ROTATION.",
+        "Write: One rotation ≈ 24 hours.",
+        "Draw the Sun and an orbit path around it.",
+        "Draw Earth on the orbit and label the motion REVOLUTION.",
+        "Write: One revolution ≈ 1 year.",
+        "Create a T-chart comparing rotation and revolution."
+    ],
+
+    "guided_practice": [
+        "Point to Earth's axis on a globe model.",
+        "Demonstrate rotation by spinning the globe in place.",
+        "Demonstrate revolution by moving the globe around a model Sun.",
+        "Identify which motion takes about 24 hours.",
+        "Identify which motion takes about one year.",
+        "Explain why rotation and revolution are not the same thing."
+    ],
+
+    "lab_title":
+        "Earth Motion Control Lab: Axis, Rotation, and Revolution",
+
+    "lab_url":
+        "/labs/earth-motion-control?mission=day76",
+
+    "exit_ticket":
+        "Explain the difference between Earth's rotation and revolution. "
+        "Include axis, 24 hours, and Sun in your response.",
+
+    "vocabulary": [
+        "axis",
+        "rotation",
+        "rotate",
+        "revolution",
+        "revolve",
+        "North Pole",
+        "South Pole",
+        "24 hours",
+        "orbit"
+    ],
+
+    "teacher_note":
+        "Day 76 is a foundation lesson. Focus on axis, rotation, and rotation versus revolution. "
+        "Do not spend the whole lesson teaching day/night yet; Day 77 will explicitly connect rotation "
+        "to the illuminated and dark sides of Earth."
+}
+
+# Science Studio Day 76 End
