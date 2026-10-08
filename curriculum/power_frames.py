@@ -851,3 +851,20 @@ POWER_FRAMES[77] = {
 }
 
 # Science Studio Day 77 Power Frame End
+
+
+# Science Studio Day 78 Power Frame Start
+
+POWER_FRAMES[78] = {
+
+    "i_can":
+        "I can explain why the Sun appears to move across the sky and how shadows change during the day.",
+
+    "by":
+        "tracking the Sun's apparent position and comparing the direction and length of shadows.",
+
+    "i_know":
+        "I know I have learned this when I can connect the Sun's apparent east-to-west motion to Earth's west-to-east rotation."
+}
+
+# Science Studio Day 78 Power Frame End

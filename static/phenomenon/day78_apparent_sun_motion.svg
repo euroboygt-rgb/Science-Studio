@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#218ad7"/>
+
+      <stop offset="100%"
+            stop-color="#dff6ff"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="24"
+        fill="url(#sky)"/>
+
+
+  <text x="600"
+        y="52"
+        text-anchor="middle"
+        fill="#102252"
+        font-size="34"
+        font-weight="900">
+    PHENOMENON MISSION: IS THE SUN REALLY MOVING?
+  </text>
+
+
+  <text x="600"
+        y="90"
+        text-anchor="middle"
+        fill="#173769"
+        font-size="20"
+        font-weight="700">
+    One observer watches the Sun from morning until evening.
+  </text>
+
+
+  <!-- APPARENT PATH -->
+
+  <path d="
+    M120 500
+    Q600 40 1080 500
+  "
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="6"
+    stroke-dasharray="14 12"
+    opacity=".75"/>
+
+
+  <!-- SUN POSITIONS -->
+
+  <g fill="#ffd447"
+     stroke="#fff4a1"
+     stroke-width="7">
+
+    <circle cx="150"
+            cy="465"
+            r="44"/>
+
+    <circle cx="350"
+            cy="260"
+            r="44"/>
+
+    <circle cx="600"
+            cy="145"
+            r="50"/>
+
+    <circle cx="850"
+            cy="260"
+            r="44"/>
+
+    <circle cx="1050"
+            cy="465"
+            r="44"/>
+
+  </g>
+
+
+  <g fill="#102252"
+     font-size="18"
+     font-weight="900"
+     text-anchor="middle">
+
+    <text x="150"
+          y="535">
+      SUNRISE
+    </text>
+
+    <text x="350"
+          y="325">
+      MORNING
+    </text>
+
+    <text x="600"
+          y="220">
+      SOLAR NOON
+    </text>
+
+    <text x="850"
+          y="325">
+      AFTERNOON
+    </text>
+
+    <text x="1050"
+          y="535">
+      SUNSET
+    </text>
+
+  </g>
+
+
+  <!-- GROUND -->
+
+  <rect x="0"
+        y="555"
+        width="1200"
+        height="145"
+        fill="#71b95a"/>
+
+
+  <line x1="0"
+        y1="555"
+        x2="1200"
+        y2="555"
+        stroke="#253b2d"
+        stroke-width="6"/>
+
+
+  <!-- EAST / WEST -->
+
+  <text x="70"
+        y="610"
+        fill="#ffffff"
+        font-size="28"
+        font-weight="900">
+    EAST
+  </text>
+
+  <text x="1035"
+        y="610"
+        fill="#ffffff"
+        font-size="28"
+        font-weight="900">
+    WEST
+  </text>
+
+
+  <!-- PERSON -->
+
+  <circle cx="600"
+          cy="475"
+          r="25"
+          fill="#6b35d7"
+          stroke="#111"
+          stroke-width="4"/>
+
+  <line x1="600"
+        y1="500"
+        x2="600"
+        y2="565"
+        stroke="#111"
+        stroke-width="10"/>
+
+  <line x1="600"
+        y1="520"
+        x2="565"
+        y2="545"
+        stroke="#111"
+        stroke-width="8"/>
+
+  <line x1="600"
+        y1="520"
+        x2="635"
+        y2="545"
+        stroke="#111"
+        stroke-width="8"/>
+
+
+  <rect x="195"
+        y="625"
+        width="810"
+        height="52"
+        rx="14"
+        fill="#fff3a8"
+        stroke="#102252"
+        stroke-width="4"/>
+
+  <text x="600"
+        y="658"
+        text-anchor="middle"
+        fill="#102252"
+        font-size="20"
+        font-weight="900">
+    If Earth is rotating, why does the Sun look like it travels across the sky?
+  </text>
+
+</svg>

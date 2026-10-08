@@ -4565,3 +4565,103 @@ SECOND_NINE_WEEKS_LESSONS[77] = {
 }
 
 # Science Studio Day 77 End
+
+
+# Science Studio Day 78 Start
+
+SECOND_NINE_WEEKS_LESSONS[78] = {
+
+    "day": 78,
+
+    "title":
+        "Sun Tracker Mission: Why Does the Sun Look Like It Moves?",
+
+    "unit":
+        "Investigating Earth's Rotation",
+
+    "teks":
+        "5.9A, 5.1F, 5.2D",
+
+    "focus":
+        "Students investigate the Sun's apparent daily movement across the sky "
+        "and connect the observed pattern to Earth's rotation.",
+
+    "learning_target":
+        "We will explain why the Sun appears to move across the sky and investigate how shadows change during the day.",
+
+    "success_criteria":
+        "I can describe the Sun's apparent path from east to west, "
+        "compare shadows at different times of day, "
+        "and explain that Earth's rotation causes the Sun to appear to move.",
+
+    "essential_question":
+        "If Earth is rotating, why does the Sun look like it moves across our sky?",
+
+    "bell_ringer": [
+        "Yesterday we learned that Earth rotates once in about 24 hours.",
+        "Does the Sun really circle Earth once each day?",
+        "Where does the Sun appear in the sky in the morning?",
+        "How might a shadow change as the Sun appears to move?"
+    ],
+
+    "mini_lesson": [
+        "Apparent motion means motion that seems to occur from an observer's point of view.",
+        "From Earth, the Sun appears to rise in the east.",
+        "The Sun appears to move higher across the sky during the morning.",
+        "Around solar noon, the Sun appears highest in the sky for that day.",
+        "The Sun then appears lower in the western sky before sunset.",
+        "The Sun appears to set in the west.",
+        "This apparent east-to-west motion is caused by Earth rotating west to east.",
+        "A shadow points generally away from the light source.",
+        "When the Sun is low in the sky, shadows are longer.",
+        "When the Sun is higher in the sky, shadows are shorter.",
+        "The Sun is not actually circling Earth once every day."
+    ],
+
+    "science_notebook": [
+        "Draw a horizon line with EAST on the left and WEST on the right.",
+        "Draw the Sun low in the east for sunrise.",
+        "Draw the Sun high in the sky for solar noon.",
+        "Draw the Sun low in the west for sunset.",
+        "Draw a standing object and show how its shadow changes.",
+        "Write: Apparent motion = how motion looks to an observer.",
+        "Write: Earth rotates west to east, making the Sun appear to move east to west."
+    ],
+
+    "guided_practice": [
+        "Point east and west in the classroom if known.",
+        "Model sunrise, solar noon, and sunset using a flashlight.",
+        "Place an object in the light path.",
+        "Move the light source through model sky positions.",
+        "Compare the direction and length of the shadow.",
+        "Explain which object is actually rotating in the Earth-Sun system."
+    ],
+
+    "lab_title":
+        "Sun & Shadow Tracker Lab: Apparent Motion",
+
+    "lab_url":
+        "/labs/apparent-sun-motion?mission=day78",
+
+    "exit_ticket":
+        "Explain why the Sun appears to move from east to west during the day even though Earth is the object rotating.",
+
+    "vocabulary": [
+        "apparent motion",
+        "east",
+        "west",
+        "sunrise",
+        "solar noon",
+        "sunset",
+        "shadow",
+        "rotation",
+        "observer"
+    ],
+
+    "teacher_note":
+        "Emphasize that the Sun's daily movement is apparent motion. "
+        "Earth rotates west to east, causing the Sun to appear to move east to west. "
+        "Use model checkpoints instead of presenting sunrise and sunset as fixed clock times."
+}
+
+# Science Studio Day 78 End

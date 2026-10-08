@@ -1,0 +1,718 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='apparent_sun_motion_lab.css') }}?v=78.1"
+>
+
+
+<div class="sm-shell">
+
+  <header class="sm-hero">
+
+    <div class="sm-tags">
+
+      <span>☀️ Interactive Lab</span>
+
+      <span>Sun Tracker</span>
+
+      <span>TEKS 5.9A</span>
+
+    </div>
+
+
+    <div class="sm-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio:
+          Sun & Shadow Tracker
+        </h1>
+
+        <p>
+          Explore the Sun's apparent path
+          and use changing shadows as evidence.
+        </p>
+
+      </div>
+
+
+      <a
+        class="sm-back"
+        href="/second-nine-weeks/day/78?view=student"
+      >
+        ← Back to Day 78
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- STATUS -->
+
+  <section class="sm-status-panel">
+
+    <div>
+
+      <div class="sm-eyebrow">
+        APPARENT MOTION ENGINE
+      </div>
+
+      <h2>
+        Complete All 3 Missions
+      </h2>
+
+      <p>
+        Observe first.
+        Explain second.
+      </p>
+
+    </div>
+
+
+    <div class="sm-status-grid">
+
+      <div>
+        <span id="smMission1Status">⬜</span>
+        <strong>Direction</strong>
+      </div>
+
+      <div>
+        <span id="smMission2Status">⬜</span>
+        <strong>Shadows</strong>
+      </div>
+
+      <div>
+        <span id="smMission3Status">⬜</span>
+        <strong>Explain</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="sm-mission">
+
+    <div>
+
+      <div class="sm-eyebrow">
+        MISSION 1
+      </div>
+
+      <h2>
+        Which Way Does the Sun Appear to Move?
+      </h2>
+
+      <p>
+        Think from the point of view
+        of an observer standing on Earth.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="sm-lab-card">
+
+    <div class="sm-direction-model">
+
+      <div class="sm-east">
+        EAST
+      </div>
+
+
+      <div class="sm-direction-arc">
+
+        <span class="sm-sun-left">
+          ☀️
+        </span>
+
+        <span class="sm-arrow">
+          ➜
+        </span>
+
+        <span class="sm-sun-right">
+          ☀️
+        </span>
+
+      </div>
+
+
+      <div class="sm-west">
+        WEST
+      </div>
+
+    </div>
+
+
+    <div class="sm-direction-choices">
+
+      <button
+        data-direction="east-west"
+        type="button"
+      >
+        A. East → West
+      </button>
+
+      <button
+        data-direction="west-east"
+        type="button"
+      >
+        B. West → East
+      </button>
+
+      <button
+        data-direction="north-south"
+        type="button"
+      >
+        C. North → South
+      </button>
+
+    </div>
+
+
+    <button
+      id="smCheckDirection"
+      class="sm-main-button"
+      type="button"
+    >
+      ✅ CHECK APPARENT MOTION
+    </button>
+
+
+    <div
+      id="smDirectionFeedback"
+      class="sm-feedback"
+    >
+      Choose the direction the Sun appears to move.
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="sm-mission">
+
+    <div>
+
+      <div class="sm-eyebrow">
+        MISSION 2
+      </div>
+
+      <h2>
+        Sun & Shadow Tracker
+      </h2>
+
+      <p>
+        Move through five sky positions.
+        Watch the shadow change.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="sm-lab-card">
+
+    <svg
+      id="smSkyModel"
+      class="sm-sky-svg"
+      viewBox="0 0 1000 590"
+    >
+
+      <defs>
+
+        <linearGradient
+          id="smSky"
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="1"
+        >
+
+          <stop offset="0%"
+                stop-color="#168de3"/>
+
+          <stop offset="100%"
+                stop-color="#dff6ff"/>
+
+        </linearGradient>
+
+      </defs>
+
+
+      <rect
+        width="1000"
+        height="590"
+        rx="18"
+        fill="url(#smSky)"
+      />
+
+
+      <!-- APPARENT SKY PATH -->
+
+      <path
+        d="
+          M100 430
+          Q500 25 900 430
+        "
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="6"
+        stroke-dasharray="13 11"
+        opacity=".8"
+      />
+
+
+      <!-- EAST / WEST -->
+
+      <text
+        x="75"
+        y="500"
+        fill="#173769"
+        font-size="28"
+        font-weight="900"
+      >
+        EAST
+      </text>
+
+      <text
+        x="835"
+        y="500"
+        fill="#173769"
+        font-size="28"
+        font-weight="900"
+      >
+        WEST
+      </text>
+
+
+      <!-- MOVING SUN -->
+
+      <g id="smSun">
+
+        <circle
+          cx="0"
+          cy="0"
+          r="42"
+          fill="#ffd447"
+          stroke="#fff4a1"
+          stroke-width="7"
+        />
+
+        <circle
+          cx="0"
+          cy="0"
+          r="58"
+          fill="none"
+          stroke="#ffe45d"
+          stroke-width="5"
+          opacity=".4"
+        />
+
+      </g>
+
+
+      <!-- GROUND -->
+
+      <rect
+        x="0"
+        y="455"
+        width="1000"
+        height="135"
+        fill="#73b85b"
+      />
+
+      <line
+        x1="0"
+        y1="455"
+        x2="1000"
+        y2="455"
+        stroke="#273a2d"
+        stroke-width="6"
+      />
+
+
+      <!-- OBJECT -->
+
+      <line
+        x1="500"
+        y1="455"
+        x2="500"
+        y2="330"
+        stroke="#4e321e"
+        stroke-width="18"
+        stroke-linecap="round"
+      />
+
+      <circle
+        cx="500"
+        cy="315"
+        r="24"
+        fill="#7442d8"
+        stroke="#111"
+        stroke-width="4"
+      />
+
+
+      <!-- SHADOW -->
+
+      <line
+        id="smShadow"
+        x1="500"
+        y1="455"
+        x2="780"
+        y2="455"
+        stroke="#18202c"
+        stroke-width="22"
+        stroke-linecap="round"
+        opacity=".68"
+      />
+
+
+      <!-- LABEL -->
+
+      <rect
+        x="325"
+        y="515"
+        width="350"
+        height="50"
+        rx="12"
+        fill="#ffffff"
+        stroke="#171717"
+        stroke-width="3"
+      />
+
+      <text
+        id="smSkyStatus"
+        x="500"
+        y="547"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="18"
+        font-weight="900"
+      >
+        SUNRISE — low Sun, long shadow
+      </text>
+
+    </svg>
+
+
+    <div class="sm-position-buttons">
+
+      <button
+        data-position="sunrise"
+        type="button"
+      >
+        🌅
+        <strong>Sunrise</strong>
+        <small>Low East</small>
+      </button>
+
+      <button
+        data-position="morning"
+        type="button"
+      >
+        ☀️
+        <strong>Morning</strong>
+        <small>Higher</small>
+      </button>
+
+      <button
+        data-position="noon"
+        type="button"
+      >
+        🔆
+        <strong>Solar Noon</strong>
+        <small>Highest</small>
+      </button>
+
+      <button
+        data-position="afternoon"
+        type="button"
+      >
+        ☀️
+        <strong>Afternoon</strong>
+        <small>Lower</small>
+      </button>
+
+      <button
+        data-position="sunset"
+        type="button"
+      >
+        🌇
+        <strong>Sunset</strong>
+        <small>Low West</small>
+      </button>
+
+    </div>
+
+
+    <div class="sm-readout-grid">
+
+      <div>
+
+        <span>
+          Apparent Sun Position
+        </span>
+
+        <strong id="smSunPosition">
+          Low in the East
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span>
+          Shadow
+        </span>
+
+        <strong id="smShadowStatus">
+          Long — points West
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="sm-play-row">
+
+      <button
+        id="smPlaySky"
+        class="sm-main-button"
+        type="button"
+      >
+        ▶ PLAY APPARENT SUN PATH
+      </button>
+
+      <button
+        id="smResetSky"
+        class="sm-reset-button"
+        type="button"
+      >
+        ↻ RESET
+      </button>
+
+    </div>
+
+
+    <div
+      id="smTrackerFeedback"
+      class="sm-feedback"
+    >
+      Start at sunrise and follow the Sun across the model sky.
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="sm-mission">
+
+    <div>
+
+      <div class="sm-eyebrow">
+        MISSION 3
+      </div>
+
+      <h2>
+        Explain the Evidence
+      </h2>
+
+      <p>
+        Use the sky and shadow model
+        to explain what is actually moving.
+      </p>
+
+    </div>
+
+
+    <aside class="sm-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="smExplainScore">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="sm-lab-card">
+
+    <div
+      id="smExplainQuestion"
+      class="sm-explain-question"
+    >
+      Loading...
+    </div>
+
+
+    <div
+      id="smExplainChoices"
+      class="sm-explain-choices"
+    ></div>
+
+
+    <button
+      id="smCheckExplain"
+      class="sm-main-button"
+      type="button"
+    >
+      ✅ CHECK EVIDENCE
+    </button>
+
+
+    <div
+      id="smExplainFeedback"
+      class="sm-feedback"
+    >
+      Choose the best explanation.
+    </div>
+
+
+    <button
+      id="smNextExplain"
+      class="sm-next-button"
+      type="button"
+      disabled
+    >
+      NEXT CHALLENGE →
+    </button>
+
+  </section>
+
+
+  <!-- MASTER -->
+
+  <section class="sm-master">
+
+    <div class="sm-master-icon">
+      ☀️🌎
+    </div>
+
+    <h2>
+      Sun Tracker Mission Status
+    </h2>
+
+
+    <div
+      id="smMasterMessage"
+      class="sm-master-message"
+    >
+      Complete all three missions
+      to become a Sun Tracker Specialist.
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="sm-evidence">
+
+    <h2>
+      📓 Sun & Shadow Evidence Notebook
+    </h2>
+
+
+    <div class="sm-evidence-grid">
+
+      <article>
+
+        <strong>
+          🌅 Sunrise
+        </strong>
+
+        <p>
+          Where is the Sun?
+          What is the shadow like?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🔆 Solar Noon
+        </strong>
+
+        <p>
+          How does the shadow compare
+          with the morning shadow?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🌇 Sunset
+        </strong>
+
+        <p>
+          Where is the Sun?
+          Which direction does the shadow extend?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🌎 Cause
+        </strong>
+
+        <p>
+          What actually causes
+          the Sun's apparent daily motion?
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="sm-question">
+
+      <strong>
+        🧠 Evidence Question:
+      </strong>
+
+      What pattern did you observe
+      between the Sun's apparent height
+      and the length of the shadow?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='apparent_sun_motion_lab.js') }}?v=78.1"
+></script>
+
+{% endblock %}

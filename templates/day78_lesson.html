@@ -1,0 +1,1328 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=78-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day78_direct.css') }}?v=78-final"
+>
+
+
+<div id="DAY78_DIRECT_TEMPLATE"
+     class="d78-page">
+
+
+  <!-- HERO -->
+
+  <section class="d78-hero">
+
+    <div class="d78-tags">
+
+      <span>Day 78</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.9A</span>
+
+      <span>Apparent Motion</span>
+
+    </div>
+
+
+    <h1>
+      ☀️ Sun Tracker Mission:
+      Why Does the Sun Look Like It Moves?
+    </h1>
+
+    <p>
+      Watch the Sun appear to travel
+      from east to west,
+      investigate changing shadows,
+      and connect what we observe
+      to Earth's rotation.
+    </p>
+
+
+    <div class="d78-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/78?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/78?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Learning Power Frame
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          explain why the Sun appears
+          to move across the sky
+          and how shadows change.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          tracking apparent Sun position
+          and comparing shadows
+          during the day.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can connect the Sun's
+          apparent east-to-west motion
+          to Earth's rotation.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ☀️ Phenomenon Mission
+    </div>
+
+    <h2>
+      Is the Sun Really Moving?
+    </h2>
+
+    <div class="d59-unit">
+      Day 78 • Apparent Motion
+    </div>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day78_apparent_sun_motion.svg"
+        alt="The Sun appearing at different positions across the sky from sunrise to sunset"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      Yesterday our model showed Earth rotating
+      while the Sun stayed fixed.
+
+      So why does the Sun
+      look like it moves across our sky?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d78MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Mission Brief:
+          Watch the Sky
+        </h2>
+
+        <div class="d59-unit">
+          East → High Sky → West
+        </div>
+
+      </div>
+
+
+      <button id="d78Play"
+              class="d59-play"
+              type="button">
+        ▶ Play Mission Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d78SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d78SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d78SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d78SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d78SlideNumber"></strong>
+
+      <div>
+
+        <button id="d78Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d78Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d78Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's STAAR Mission
+        </div>
+
+        <h2>
+          Steve's Playground Shadow Mystery
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve places a tall pole
+          on the playground.
+
+          In the morning,
+          the Sun appears low
+          in the eastern sky
+          and the pole makes a long shadow.
+
+          Near solar noon,
+          the Sun appears much higher
+          and the shadow becomes shorter.
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            STAAR-Style Question:
+          </strong>
+
+          <p>
+            Which statement best explains
+            why the Sun appears to change position
+            during the day?
+          </p>
+
+
+          <button class="d78-steve-answer"
+                  data-answer="A">
+            A. Earth rotates on its axis.
+          </button>
+
+          <button class="d78-steve-answer"
+                  data-answer="B">
+            B. The Sun circles Earth once every day.
+          </button>
+
+          <button class="d78-steve-answer"
+                  data-answer="C">
+            C. Earth stops moving during daytime.
+          </button>
+
+          <button class="d78-steve-answer"
+                  data-answer="D">
+            D. The Moon pulls the Sun across the sky.
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d78SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Answer
+            </button>
+
+            <button id="d78SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d78SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Sun Tracker Vocabulary Anchor Chart
+    </h2>
+
+
+    <div class="d78-vocab-note">
+
+      🔍 Hover to preview.
+
+      <strong>
+        Click any vocabulary word
+      </strong>
+
+      to enlarge it and read the definition.
+
+    </div>
+
+
+    <div class="d78-vocab-grid">
+
+      {% set words = [
+        ("👀", "apparent motion", "Motion that seems to occur from an observer's point of view."),
+        ("🌅", "east", "The direction where the Sun generally appears to rise."),
+        ("🌇", "west", "The direction where the Sun generally appears to set."),
+        ("☀️", "sunrise", "When the Sun first appears above the eastern horizon."),
+        ("🔆", "solar noon", "The time when the Sun reaches its highest apparent position in the sky for that day."),
+        ("🌆", "sunset", "When the Sun disappears below the western horizon."),
+        ("⬛", "shadow", "A dark area formed when an object blocks light."),
+        ("🔄", "rotation", "Earth spinning around its axis."),
+        ("🧍", "observer", "A person or location from which an observation is made.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d78-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span class="d78-vocab-icon">
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will explain why the Sun
+      appears to move across the sky
+      and investigate how shadows change
+      during the day.
+    </p>
+
+  </section>
+
+
+  <!-- BELL RINGER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      What Did We See Yesterday?
+    </h2>
+
+
+    <div class="d59-box">
+
+      In yesterday's model:
+
+      <strong>
+        the Sun stayed fixed
+        while Earth rotated.
+      </strong>
+
+      <ol>
+
+        <li>
+          Does the Sun actually travel
+          around Earth every 24 hours?
+        </li>
+
+        <li>
+          Where does the Sun appear
+          in the morning?
+        </li>
+
+        <li>
+          What might happen to a shadow
+          as the Sun appears higher
+          in the sky?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      What We See vs. What Is Really Moving
+    </h2>
+
+
+    <div class="d78-perspective-grid">
+
+      <article>
+
+        <div class="d78-big-icon">
+          👀
+        </div>
+
+        <h3>
+          WHAT WE SEE
+        </h3>
+
+        <p>
+          The Sun appears to move
+          from
+          <strong>east to west</strong>
+          across the sky.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <div class="d78-big-icon">
+          🌎
+        </div>
+
+        <h3>
+          WHAT EARTH DOES
+        </h3>
+
+        <p>
+          Earth rotates
+          <strong>west to east</strong>
+          on its axis.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d78-sky-path">
+
+      <div>
+        🌅
+        <strong>
+          SUNRISE
+        </strong>
+        <small>
+          Sun appears low in the EAST.
+        </small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        ☀️
+        <strong>
+          MORNING
+        </strong>
+        <small>
+          Sun appears higher.
+        </small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        🔆
+        <strong>
+          SOLAR NOON
+        </strong>
+        <small>
+          Sun appears highest for the day.
+        </small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        ☀️
+        <strong>
+          AFTERNOON
+        </strong>
+        <small>
+          Sun appears lower.
+        </small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        🌇
+        <strong>
+          SUNSET
+        </strong>
+        <small>
+          Sun appears low in the WEST.
+        </small>
+      </div>
+
+    </div>
+
+
+    <div class="d78-shadow-rule">
+
+      <h3>
+        ⬛ Shadow Rule
+      </h3>
+
+
+      <div class="d78-shadow-grid">
+
+        <div>
+
+          <span>
+            🌅
+          </span>
+
+          <strong>
+            LOW SUN
+          </strong>
+
+          <p>
+            Longer shadow
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            🔆
+          </span>
+
+          <strong>
+            HIGH SUN
+          </strong>
+
+          <p>
+            Shorter shadow
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            🌇
+          </span>
+
+          <strong>
+            LOW SUN
+          </strong>
+
+          <p>
+            Longer shadow
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <p>
+        A shadow extends generally
+        <strong>
+          away from the light source.
+        </strong>
+      </p>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Apparent Motion
+      </strong>
+
+      <br><br>
+
+      The Sun
+      <strong>
+        appears
+      </strong>
+      to cross our sky.
+
+      <br><br>
+
+      But the daily pattern happens because
+      <strong>
+        Earth is rotating.
+      </strong>
+
+      <br><br>
+
+      Earth rotates west to east,
+      making the Sun appear
+      to move east to west.
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Sun & Shadow Tracker
+    </h2>
+
+
+    <div class="d59-box">
+
+      Draw a horizon.
+
+      <br><br>
+
+      Label:
+
+      <strong>
+        EAST
+      </strong>
+      on one side and
+      <strong>
+        WEST
+      </strong>
+      on the other.
+
+      <br><br>
+
+      Draw:
+
+      <ol>
+
+        <li>
+          Sunrise — Sun low in the east
+        </li>
+
+        <li>
+          Solar noon — Sun highest
+        </li>
+
+        <li>
+          Sunset — Sun low in the west
+        </li>
+
+      </ol>
+
+
+      Add a standing object
+      and show:
+
+      <ul>
+
+        <li>
+          long morning shadow
+        </li>
+
+        <li>
+          short solar-noon shadow
+        </li>
+
+        <li>
+          long afternoon/evening shadow
+        </li>
+
+      </ul>
+
+
+      Write:
+
+      <strong>
+        Earth's rotation causes the Sun's apparent daily motion.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Flashlight Shadow Investigation
+    </h2>
+
+
+    <div class="d59-box">
+
+      Use a flashlight
+      and a standing object.
+
+      <ol>
+
+        <li>
+          Hold the flashlight low
+          on one side.
+        </li>
+
+        <li>
+          Observe the shadow.
+        </li>
+
+        <li>
+          Raise the flashlight higher.
+        </li>
+
+        <li>
+          Observe how the shadow shortens.
+        </li>
+
+        <li>
+          Move the flashlight low
+          on the opposite side.
+        </li>
+
+        <li>
+          Observe how the shadow
+          changes direction.
+        </li>
+
+      </ol>
+
+
+      Ask:
+
+      <strong>
+        What pattern connects
+        Sun height and shadow length?
+      </strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ☀️ Interactive Lab
+    </div>
+
+    <h2>
+      Sun & Shadow Tracker Lab:
+      Apparent Motion
+    </h2>
+
+
+    <p>
+      Follow the Sun's apparent path
+      from east to west
+      and watch a shadow
+      change direction and length.
+    </p>
+
+
+    <div class="d78-lab-preview">
+
+      <div>
+        🌅
+        <strong>
+          East
+        </strong>
+      </div>
+
+      <div>
+        ☀️
+        <strong>
+          Sky Path
+        </strong>
+      </div>
+
+      <div>
+        ⬛
+        <strong>
+          Shadows
+        </strong>
+      </div>
+
+      <div>
+        🌎
+        <strong>
+          Earth Rotation
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      <strong>
+        Mission 1 — Apparent Direction
+      </strong>
+
+      <p>
+        Identify the direction
+        the Sun appears to move.
+      </p>
+
+
+      <strong>
+        Mission 2 — Sun & Shadow Tracker
+      </strong>
+
+      <p>
+        Visit sunrise,
+        morning,
+        solar noon,
+        afternoon,
+        and sunset.
+
+        Compare shadow direction
+        and shadow length.
+      </p>
+
+
+      <strong>
+        Mission 3 — Explain the Evidence
+      </strong>
+
+      <p>
+        Explain what is really moving
+        in the Earth-Sun system.
+      </p>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆
+      <strong>
+        Mission Goal:
+      </strong>
+
+      Become a
+      <strong>
+        Sun Tracker Specialist.
+      </strong>
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/apparent-sun-motion?mission=day78"
+    >
+      ☀️ Launch Sun & Shadow Tracker Lab
+    </a>
+
+  </section>
+
+
+  <!-- QUESTIONS -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Practice
+    </div>
+
+    <h2>
+      Sun & Shadow Evidence
+    </h2>
+
+
+    <div class="d78-question"
+         data-answer="B">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        In which direction
+        does the Sun generally appear
+        to rise?
+      </p>
+
+      <button data-choice="A">
+        A. North
+      </button>
+
+      <button data-choice="B">
+        B. East
+      </button>
+
+      <button data-choice="C">
+        C. South
+      </button>
+
+      <button data-choice="D">
+        D. West
+      </button>
+
+      <div class="d78-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d78-question"
+         data-answer="D">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        In which direction
+        does the Sun generally appear
+        to set?
+      </p>
+
+      <button data-choice="A">
+        A. North
+      </button>
+
+      <button data-choice="B">
+        B. East
+      </button>
+
+      <button data-choice="C">
+        C. South
+      </button>
+
+      <button data-choice="D">
+        D. West
+      </button>
+
+      <div class="d78-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d78-question"
+         data-answer="C">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        When the Sun appears
+        higher in the sky,
+        what generally happens
+        to the length of a shadow?
+      </p>
+
+      <button data-choice="A">
+        A. It always disappears.
+      </button>
+
+      <button data-choice="B">
+        B. It becomes much longer.
+      </button>
+
+      <button data-choice="C">
+        C. It becomes shorter.
+      </button>
+
+      <button data-choice="D">
+        D. It becomes a light source.
+      </button>
+
+      <div class="d78-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d78-question"
+         data-answer="A">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        What causes the Sun's
+        apparent daily movement
+        across the sky?
+      </p>
+
+      <button data-choice="A">
+        A. Earth's rotation
+      </button>
+
+      <button data-choice="B">
+        B. Moon phases
+      </button>
+
+      <button data-choice="C">
+        C. Earth's revolution only
+      </button>
+
+      <button data-choice="D">
+        D. The asteroid belt
+      </button>
+
+      <div class="d78-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d78-question"
+         data-answer="D">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        A student observes
+        a long shadow in the morning
+        and a much shorter shadow
+        near solar noon.
+
+        Which explanation is best?
+      </p>
+
+      <button data-choice="A">
+        A. The object became shorter.
+      </button>
+
+      <button data-choice="B">
+        B. Earth stopped rotating.
+      </button>
+
+      <button data-choice="C">
+        C. The Sun became smaller.
+      </button>
+
+      <button data-choice="D">
+        D. The Sun appeared higher in the sky.
+      </button>
+
+      <div class="d78-question-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Written Exit Ticket
+    </h2>
+
+    <p>
+      Explain why the Sun
+      appears to move
+      from east to west
+      during the day
+      even though Earth
+      is the object rotating.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="The Sun appears to move because..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Explain Your Thinking: CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        CER Question:
+      </strong>
+
+      How can changing shadows
+      provide evidence
+      that the Sun's apparent position
+      changes throughout the day?
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The Sun appears to change position because..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="In the Sun & Shadow Tracker Lab..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The shadow evidence shows..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CURRICULUM CONNECTION -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      📘 Curriculum Connection
+    </div>
+
+    <h2>
+      Earth Rotation Connection
+    </h2>
+
+
+    <div class="d59-box">
+
+      Connect today's original Science Studio investigation
+      to your district-approved science resources
+      on Earth's rotation,
+      apparent Sun movement,
+      and changing shadows.
+
+      <br><br>
+
+      Students should be able to connect:
+
+      <strong>
+        what we observe in the sky
+      </strong>
+
+      to
+
+      <strong>
+        Earth's actual rotation.
+      </strong>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d78VocabModal"
+     class="d78-modal">
+
+  <div class="d78-modal-card">
+
+    <button id="d78VocabClose"
+            class="d78-modal-close"
+            type="button">
+      ×
+    </button>
+
+    <div id="d78ModalIcon"
+         class="d78-modal-icon"></div>
+
+    <h2 id="d78ModalTerm"></h2>
+
+    <p id="d78ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day78_direct.js') }}?v=78-final"
+></script>
+
+{% endblock %}
