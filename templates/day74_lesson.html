@@ -1,0 +1,1288 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=74-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day74_direct.css') }}?v=74-final"
+>
+
+
+<div id="DAY74_DIRECT_TEMPLATE"
+     class="d74-page">
+
+  <!-- HEADER -->
+
+  <section class="d74-hero">
+
+    <div class="d74-tags">
+
+      <span>Day 74</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>Think Along 3.9B</span>
+
+      <span>Bridge to 5.9A</span>
+
+    </div>
+
+
+    <h1>
+      🪐 Solar System Mission:
+      Know Your Neighborhood
+    </h1>
+
+    <p>
+      Learn the eight planets in order,
+      locate the asteroid belt,
+      and identify the major planet groups.
+    </p>
+
+
+    <div class="d74-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/74?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/74?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today’s Learning Power Frame
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          identify the planets in order
+          from the Sun and classify them by type.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          building a solar-system model
+          and comparing planet groups.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can correctly place all eight planets,
+          the asteroid belt,
+          and identify each planet type.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🪐 Phenomenon Mission
+    </div>
+
+    <h2>
+      Where Does Earth Belong?
+    </h2>
+
+    <div class="d59-unit">
+      Day 74 • Solar System Organization
+    </div>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day74_solar_system_order.svg"
+        alt="The planets arranged in order from the Sun with the asteroid belt between Mars and Jupiter"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      If a spacecraft traveled outward from the Sun,
+      what objects would it pass,
+      and in what order?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d74MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Mission Brief: Tour the Solar System
+        </h2>
+
+        <div class="d59-unit">
+          Day 74 • Planet Order and Planet Types
+        </div>
+
+      </div>
+
+
+      <button
+        id="d74Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Mission Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d74SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d74SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d74SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d74SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d74SlideNumber"></strong>
+
+      <div>
+
+        <button id="d74Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d74Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d74Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section id="d74Steve"
+           class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's STAAR Mission
+        </div>
+
+        <h2>
+          Steve's Spaceflight Mystery
+        </h2>
+
+        <div class="d59-unit">
+          Day 74 • Solar System Order
+        </div>
+
+
+        <div class="d59-scenario">
+
+          <strong>
+            Steve's Scenario:
+          </strong>
+
+          <br><br>
+
+          Steve launches from Earth
+          and travels away from the Sun.
+
+          He passes Mars next.
+
+          After Mars, he sees a region
+          containing many rocky objects
+          before reaching Jupiter.
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            STAAR-Style Question:
+          </strong>
+
+          <p>
+            What region did Steve travel through
+            between Mars and Jupiter?
+          </p>
+
+
+          <button class="d74-steve-answer"
+                  data-answer="A">
+            A. Asteroid Belt
+          </button>
+
+          <button class="d74-steve-answer"
+                  data-answer="B">
+            B. Moon Belt
+          </button>
+
+          <button class="d74-steve-answer"
+                  data-answer="C">
+            C. Gas Belt
+          </button>
+
+          <button class="d74-steve-answer"
+                  data-answer="D">
+            D. Solar Ring
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d74SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Answer
+            </button>
+
+            <button id="d74SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d74SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCABULARY -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Solar System Vocabulary Anchor Chart
+    </h2>
+
+
+    <div class="d74-vocab-note">
+
+      🔍 Hover to preview.
+
+      <strong>
+        Click any vocabulary word
+      </strong>
+
+      to enlarge it and read the definition.
+
+    </div>
+
+
+    <div class="d74-vocab-grid">
+
+      {% set words = [
+        ("☀️", "solar system", "The Sun and the objects that orbit it, including planets, moons, asteroids, and other objects."),
+        ("☀️", "Sun", "The star at the center of our solar system."),
+        ("🪐", "planet", "A large nearly round object that travels around a star."),
+        ("🪨", "terrestrial planet", "A rocky planet with a solid surface. Mercury, Venus, Earth, and Mars are terrestrial planets."),
+        ("🟠", "gas giant", "A very large planet made mostly of gases. Jupiter and Saturn are gas giants."),
+        ("🔵", "ice giant", "A large outer planet containing gases and materials such as water, ammonia, and methane compounds. Uranus and Neptune are ice giants."),
+        ("🌍", "inner planets", "Mercury, Venus, Earth, and Mars — the four planets closest to the Sun."),
+        ("🪐", "outer planets", "Jupiter, Saturn, Uranus, and Neptune — the four large planets farther from the Sun."),
+        ("☄️", "asteroid belt", "A region containing many rocky objects located mainly between Mars and Jupiter."),
+        ("🔄", "orbit", "The path an object follows as it moves around another object in space.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d74-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span class="d74-vocab-icon">
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- LEARNING TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will identify the planets
+      in order from the Sun
+      and classify planets by type.
+    </p>
+
+  </section>
+
+
+  <!-- BELL RINGER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer — Where Are We?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Answer from memory:
+
+      <ol>
+
+        <li>
+          What is at the center of our solar system?
+        </li>
+
+        <li>
+          What planet do we live on?
+        </li>
+
+        <li>
+          Which planet comes immediately before Earth?
+        </li>
+
+        <li>
+          Which planet comes immediately after Earth?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson — The Solar System Road Map
+    </h2>
+
+
+    <div class="d74-order">
+
+      <div class="sun">
+        <span>☀️</span>
+        <strong>Sun</strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span class="planet mercury"></span>
+        <strong>Mercury</strong>
+        <small>1st</small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span class="planet venus"></span>
+        <strong>Venus</strong>
+        <small>2nd</small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span class="planet earth"></span>
+        <strong>Earth</strong>
+        <small>3rd</small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span class="planet mars"></span>
+        <strong>Mars</strong>
+        <small>4th</small>
+      </div>
+
+    </div>
+
+
+    <div class="d74-belt">
+      ☄️ ASTEROID BELT — BETWEEN MARS AND JUPITER ☄️
+    </div>
+
+
+    <div class="d74-order d74-order-outer">
+
+      <div>
+        <span class="planet jupiter"></span>
+        <strong>Jupiter</strong>
+        <small>5th</small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span class="planet saturn"></span>
+        <strong>Saturn</strong>
+        <small>6th</small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span class="planet uranus"></span>
+        <strong>Uranus</strong>
+        <small>7th</small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span class="planet neptune"></span>
+        <strong>Neptune</strong>
+        <small>8th</small>
+      </div>
+
+    </div>
+
+
+    <div class="d74-types">
+
+      <article>
+
+        <div class="d74-type-icon">
+          🪨
+        </div>
+
+        <h3>
+          Terrestrial Planets
+        </h3>
+
+        <p>
+          Mercury • Venus • Earth • Mars
+        </p>
+
+        <strong>
+          Rocky planets with solid surfaces
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <div class="d74-type-icon">
+          🟠
+        </div>
+
+        <h3>
+          Gas Giants
+        </h3>
+
+        <p>
+          Jupiter • Saturn
+        </p>
+
+        <strong>
+          Huge outer planets made mostly of gases
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <div class="d74-type-icon">
+          🔵
+        </div>
+
+        <h3>
+          Ice Giants
+        </h3>
+
+        <p>
+          Uranus • Neptune
+        </p>
+
+        <strong>
+          Large cold outer planets
+        </strong>
+
+      </article>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🧠 Memory Trick
+      </strong>
+
+      <br><br>
+
+      <strong>
+        M
+      </strong>y
+      <strong>
+        V
+      </strong>ery
+      <strong>
+        E
+      </strong>ducated
+      <strong>
+        M
+      </strong>other
+      <strong>
+        J
+      </strong>ust
+      <strong>
+        S
+      </strong>erved
+      <strong>
+        U
+      </strong>s
+      <strong>
+        N
+      </strong>oodles
+
+      <br><br>
+
+      Mercury • Venus • Earth • Mars • Jupiter • Saturn • Uranus • Neptune
+
+    </div>
+
+
+    <div class="d74-scale-note">
+
+      ⚠️
+      <strong>
+        Model Reminder:
+      </strong>
+
+      Planet sizes and distances on classroom diagrams
+      are often not drawn to scale.
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook — Solar System Map
+    </h2>
+
+
+    <div class="d59-box">
+
+      Draw and label:
+
+      <ol>
+
+        <li>
+          Sun
+        </li>
+
+        <li>
+          Mercury
+        </li>
+
+        <li>
+          Venus
+        </li>
+
+        <li>
+          Earth
+        </li>
+
+        <li>
+          Mars
+        </li>
+
+        <li>
+          Asteroid Belt
+        </li>
+
+        <li>
+          Jupiter
+        </li>
+
+        <li>
+          Saturn
+        </li>
+
+        <li>
+          Uranus
+        </li>
+
+        <li>
+          Neptune
+        </li>
+
+      </ol>
+
+
+      Then label:
+
+      <br><br>
+
+      <strong>
+        Terrestrial:
+      </strong>
+      Mercury, Venus, Earth, Mars
+
+      <br>
+
+      <strong>
+        Gas Giants:
+      </strong>
+      Jupiter, Saturn
+
+      <br>
+
+      <strong>
+        Ice Giants:
+      </strong>
+      Uranus, Neptune
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice — Solar System Callouts
+    </h2>
+
+
+    <div class="d59-box">
+
+      Ask:
+
+      <ul>
+
+        <li>
+          Which planet is 3rd from the Sun?
+        </li>
+
+        <li>
+          Which planet comes after Mars?
+        </li>
+
+        <li>
+          What lies between Mars and Jupiter?
+        </li>
+
+        <li>
+          Name all four terrestrial planets.
+        </li>
+
+        <li>
+          Name the two gas giants.
+        </li>
+
+        <li>
+          Name the two ice giants.
+        </li>
+
+        <li>
+          Which planet is farthest from the Sun?
+        </li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🚀 Interactive Lab
+    </div>
+
+    <h2>
+      Solar System Builder:
+      Planet Order and Planet Types
+    </h2>
+
+
+    <p>
+      Build the solar system,
+      place the asteroid belt,
+      and classify all eight planets.
+    </p>
+
+
+    <div class="d74-lab-preview">
+
+      <div>
+        ☀️
+        <strong>
+          Start at the Sun
+        </strong>
+      </div>
+
+      <div>
+        🪐
+        <strong>
+          Order 8 Planets
+        </strong>
+      </div>
+
+      <div>
+        ☄️
+        <strong>
+          Place Asteroid Belt
+        </strong>
+      </div>
+
+      <div>
+        🪨
+        <strong>
+          Classify Planet Types
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      <strong>
+        Your Mission
+      </strong>
+
+      <ol>
+
+        <li>
+          Put the eight planets in order from the Sun.
+        </li>
+
+        <li>
+          Place the asteroid belt in its correct location.
+        </li>
+
+        <li>
+          Check your solar-system model.
+        </li>
+
+        <li>
+          Sort each planet as terrestrial,
+          gas giant, or ice giant.
+        </li>
+
+        <li>
+          Use the evidence notebook
+          to explain the solar-system pattern.
+        </li>
+
+      </ol>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆
+      <strong>
+        Mission Goal:
+      </strong>
+
+      Correctly complete both
+      <strong>
+        Solar System Builder missions.
+      </strong>
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/solar-system-builder?mission=day74"
+    >
+      🚀 Launch Solar System Builder
+    </a>
+
+  </section>
+
+
+  <!-- STAAR PRACTICE -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR / Think Along Practice
+    </div>
+
+    <h2>
+      Solar System Evidence
+    </h2>
+
+
+    <div class="d74-question"
+         data-answer="B">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        Which list shows the first four planets
+        in correct order from the Sun?
+      </p>
+
+      <button data-choice="A">
+        A. Venus, Mercury, Mars, Earth
+      </button>
+
+      <button data-choice="B">
+        B. Mercury, Venus, Earth, Mars
+      </button>
+
+      <button data-choice="C">
+        C. Earth, Venus, Mercury, Mars
+      </button>
+
+      <button data-choice="D">
+        D. Mercury, Earth, Venus, Mars
+      </button>
+
+      <div class="d74-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d74-question"
+         data-answer="C">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        Where is the main asteroid belt located?
+      </p>
+
+      <button data-choice="A">
+        A. Between Earth and Mars
+      </button>
+
+      <button data-choice="B">
+        B. Between Jupiter and Saturn
+      </button>
+
+      <button data-choice="C">
+        C. Between Mars and Jupiter
+      </button>
+
+      <button data-choice="D">
+        D. Beyond Neptune
+      </button>
+
+      <div class="d74-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d74-question"
+         data-answer="A">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        Which group contains only terrestrial planets?
+      </p>
+
+      <button data-choice="A">
+        A. Mercury, Venus, Earth, Mars
+      </button>
+
+      <button data-choice="B">
+        B. Earth, Mars, Jupiter, Saturn
+      </button>
+
+      <button data-choice="C">
+        C. Jupiter, Saturn, Uranus, Neptune
+      </button>
+
+      <button data-choice="D">
+        D. Venus, Mars, Jupiter, Neptune
+      </button>
+
+      <div class="d74-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d74-question"
+         data-answer="D">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        Which two planets are gas giants?
+      </p>
+
+      <button data-choice="A">
+        A. Earth and Mars
+      </button>
+
+      <button data-choice="B">
+        B. Uranus and Neptune
+      </button>
+
+      <button data-choice="C">
+        C. Mercury and Venus
+      </button>
+
+      <button data-choice="D">
+        D. Jupiter and Saturn
+      </button>
+
+      <div class="d74-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d74-question"
+         data-answer="B">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        Which two planets are classified
+        as ice giants?
+      </p>
+
+      <button data-choice="A">
+        A. Jupiter and Saturn
+      </button>
+
+      <button data-choice="B">
+        B. Uranus and Neptune
+      </button>
+
+      <button data-choice="C">
+        C. Earth and Mars
+      </button>
+
+      <button data-choice="D">
+        D. Venus and Earth
+      </button>
+
+      <div class="d74-question-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Written Exit Ticket
+    </h2>
+
+    <p>
+      Write the eight planets
+      in order from the Sun.
+
+      Then explain where the asteroid belt is located
+      and name:
+
+      <strong>
+        one terrestrial planet,
+        one gas giant,
+        and one ice giant.
+      </strong>
+    </p>
+
+    <textarea
+      class="d59-textarea"
+      placeholder="The planets in order are..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Explain Your Thinking: CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        CER Question:
+      </strong>
+
+      What evidence shows that the solar system
+      has an organized pattern?
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The solar system is organized because..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The order of the planets shows..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This evidence supports my claim because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONNECTION -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      📘 Earth & Space Connection
+    </div>
+
+    <h2>
+      Preparing for Earth Rotation
+    </h2>
+
+
+    <div class="d59-box">
+
+      Today we located Earth
+      inside the solar system.
+
+      <br><br>
+
+      Soon we will investigate
+      how Earth moves.
+
+      <br><br>
+
+      Before that, our next mission is:
+
+      <strong>
+        Moon Phases and Predicting the Moon's Pattern.
+      </strong>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d74VocabModal"
+     class="d74-modal">
+
+  <div class="d74-modal-card">
+
+    <button id="d74VocabClose"
+            class="d74-modal-close"
+            type="button">
+      ×
+    </button>
+
+    <div id="d74ModalIcon"
+         class="d74-modal-icon"></div>
+
+    <h2 id="d74ModalTerm"></h2>
+
+    <p id="d74ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day74_direct.js') }}?v=74-final"
+></script>
+
+{% endblock %}

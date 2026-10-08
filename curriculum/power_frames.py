@@ -783,3 +783,20 @@ POWER_FRAMES[73] = {
 }
 
 # Science Studio Day 73 Power Frame End
+
+
+# Science Studio Day 74 Power Frame Start
+
+POWER_FRAMES[74] = {
+
+    "i_can":
+        "I can identify the planets in order from the Sun and classify the planets by type.",
+
+    "by":
+        "building a model of the solar system and comparing terrestrial planets, gas giants, and ice giants.",
+
+    "i_know":
+        "I know I have learned this when I can correctly place all eight planets, the asteroid belt, and identify each planet type."
+}
+
+# Science Studio Day 74 Power Frame End

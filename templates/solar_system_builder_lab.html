@@ -1,0 +1,492 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='solar_system_builder_lab.css') }}?v=74.1"
+>
+
+
+<div class="ss-shell">
+
+  <header class="ss-hero">
+
+    <div class="ss-tags">
+
+      <span>🚀 Interactive Lab</span>
+
+      <span>Solar System Builder</span>
+
+      <span>Think Along 3.9B</span>
+
+    </div>
+
+
+    <div class="ss-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio: Solar System Builder
+        </h1>
+
+        <p>
+          Build the solar system,
+          place the asteroid belt,
+          and classify all eight planets.
+        </p>
+
+      </div>
+
+
+      <a
+        class="ss-back"
+        href="/second-nine-weeks/day/74?view=student"
+      >
+        ← Back to Day 74
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="ss-mission">
+
+    <div>
+
+      <div class="ss-eyebrow">
+        MISSION 1
+      </div>
+
+      <h2>
+        Build the Solar System
+      </h2>
+
+      <p>
+        Start at the Sun and place the planets
+        and asteroid belt in the correct order.
+      </p>
+
+    </div>
+
+
+    <aside class="ss-status">
+
+      <strong>
+        🎯 Order Mission
+      </strong>
+
+      <div id="ssOrderCounter">
+        0 / 9 placed
+      </div>
+
+    </aside>
+
+  </section>
+
+
+  <section class="ss-board-card">
+
+    <div class="ss-sun">
+
+      <div class="ss-sun-circle"></div>
+
+      <strong>
+        SUN
+      </strong>
+
+    </div>
+
+
+    <h3>
+      🧰 Object Tray
+    </h3>
+
+    <p>
+      Drag an object into a numbered position,
+      or click an object and then click a position.
+    </p>
+
+
+    <div id="ssOrderTray"
+         class="ss-order-tray"></div>
+
+
+    <div class="ss-orbit-line">
+
+      <div class="ss-slot"
+           data-slot="0">
+
+        <span>1</span>
+
+        <div class="ss-slot-zone"></div>
+
+      </div>
+
+
+      <div class="ss-slot"
+           data-slot="1">
+
+        <span>2</span>
+
+        <div class="ss-slot-zone"></div>
+
+      </div>
+
+
+      <div class="ss-slot"
+           data-slot="2">
+
+        <span>3</span>
+
+        <div class="ss-slot-zone"></div>
+
+      </div>
+
+
+      <div class="ss-slot"
+           data-slot="3">
+
+        <span>4</span>
+
+        <div class="ss-slot-zone"></div>
+
+      </div>
+
+
+      <div class="ss-slot belt-slot"
+           data-slot="4">
+
+        <span>5</span>
+
+        <div class="ss-slot-zone"></div>
+
+      </div>
+
+
+      <div class="ss-slot"
+           data-slot="5">
+
+        <span>6</span>
+
+        <div class="ss-slot-zone"></div>
+
+      </div>
+
+
+      <div class="ss-slot"
+           data-slot="6">
+
+        <span>7</span>
+
+        <div class="ss-slot-zone"></div>
+
+      </div>
+
+
+      <div class="ss-slot"
+           data-slot="7">
+
+        <span>8</span>
+
+        <div class="ss-slot-zone"></div>
+
+      </div>
+
+
+      <div class="ss-slot"
+           data-slot="8">
+
+        <span>9</span>
+
+        <div class="ss-slot-zone"></div>
+
+      </div>
+
+    </div>
+
+
+    <div class="ss-actions">
+
+      <button id="ssCheckOrder"
+              type="button">
+        ✅ CHECK SOLAR SYSTEM
+      </button>
+
+      <button id="ssResetOrder"
+              type="button">
+        ↻ RESET ORDER
+      </button>
+
+    </div>
+
+
+    <div id="ssOrderFeedback"
+         class="ss-feedback">
+      Place all nine objects before checking.
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="ss-mission">
+
+    <div>
+
+      <div class="ss-eyebrow">
+        MISSION 2
+      </div>
+
+      <h2>
+        Classify the Planets
+      </h2>
+
+      <p>
+        Sort each planet into its correct type.
+      </p>
+
+    </div>
+
+
+    <aside class="ss-status">
+
+      <strong>
+        🪨 Planet Type Mission
+      </strong>
+
+      <div id="ssTypeCounter">
+        0 / 8 sorted
+      </div>
+
+    </aside>
+
+  </section>
+
+
+  <section class="ss-board-card">
+
+    <div id="ssTypeTray"
+         class="ss-type-tray"></div>
+
+
+    <div class="ss-type-bins">
+
+      <div class="ss-type-bin terrestrial"
+           data-category="terrestrial">
+
+        <h2>
+          🪨 Terrestrial Planets
+        </h2>
+
+        <p>
+          Rocky planets with solid surfaces
+        </p>
+
+        <div class="ss-type-zone"></div>
+
+      </div>
+
+
+      <div class="ss-type-bin gas"
+           data-category="gas">
+
+        <h2>
+          🟠 Gas Giants
+        </h2>
+
+        <p>
+          Very large outer planets made mostly of gases
+        </p>
+
+        <div class="ss-type-zone"></div>
+
+      </div>
+
+
+      <div class="ss-type-bin ice"
+           data-category="ice">
+
+        <h2>
+          🔵 Ice Giants
+        </h2>
+
+        <p>
+          Large cold outer planets
+        </p>
+
+        <div class="ss-type-zone"></div>
+
+      </div>
+
+    </div>
+
+
+    <div class="ss-actions">
+
+      <button id="ssCheckTypes"
+              type="button">
+        ✅ CHECK PLANET TYPES
+      </button>
+
+      <button id="ssResetTypes"
+              type="button">
+        ↻ RESET TYPES
+      </button>
+
+    </div>
+
+
+    <div id="ssTypeFeedback"
+         class="ss-feedback">
+      Sort all eight planets before checking.
+    </div>
+
+  </section>
+
+
+  <!-- MASTER STATUS -->
+
+  <section class="ss-master">
+
+    <div class="ss-master-icon">
+      🚀
+    </div>
+
+    <h2>
+      Solar System Mission Status
+    </h2>
+
+    <div class="ss-master-grid">
+
+      <div>
+
+        <span id="ssOrderStatus">
+          ⬜
+        </span>
+
+        <strong>
+          Planet Order
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span id="ssTypeStatus">
+          ⬜
+        </span>
+
+        <strong>
+          Planet Types
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div id="ssMasterMessage"
+         class="ss-master-message">
+      Complete both missions to become a Solar System Specialist.
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="ss-evidence">
+
+    <h2>
+      📓 Solar System Evidence Notebook
+    </h2>
+
+
+    <div class="ss-evidence-grid">
+
+      <article>
+
+        <strong>
+          ☀️ Planet Order
+        </strong>
+
+        <p>
+          Write the eight planets
+          in order from the Sun.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ☄️ Asteroid Belt
+        </strong>
+
+        <p>
+          Which two planets
+          surround the asteroid belt?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🪨 Terrestrial
+        </strong>
+
+        <p>
+          What do the four terrestrial planets
+          have in common?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🪐 Outer Planets
+        </strong>
+
+        <p>
+          How are the gas giants
+          and ice giants grouped?
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="ss-question">
+
+      <strong>
+        🧠 Evidence Question:
+      </strong>
+
+      What pattern do you notice
+      as you travel outward from the Sun?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='solar_system_builder_lab.js') }}?v=74.1"
+></script>
+
+{% endblock %}

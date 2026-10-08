@@ -4174,3 +4174,102 @@ SECOND_NINE_WEEKS_LESSONS[73] = {
 }
 
 # Science Studio Day 73 End
+
+
+# Science Studio Day 74 Start
+
+SECOND_NINE_WEEKS_LESSONS[74] = {
+
+    "day": 74,
+
+    "title":
+        "Solar System Mission: Know Your Neighborhood",
+
+    "unit":
+        "Patterns in Space: Solar System and Earth's Rotation",
+
+    "teks":
+        "Think Along 3.9B; Bridge to 5.9A",
+
+    "focus":
+        "Students identify the eight planets in order from the Sun, locate the asteroid belt, "
+        "and classify planets as terrestrial, gas giants, or ice giants.",
+
+    "learning_target":
+        "We will identify the planets in order from the Sun and classify planets by type.",
+
+    "success_criteria":
+        "I can place all eight planets in order, locate the asteroid belt between Mars and Jupiter, "
+        "and classify terrestrial planets, gas giants, and ice giants.",
+
+    "essential_question":
+        "How is our solar system organized?",
+
+    "bell_ringer": [
+        "Earth is one planet in our solar system.",
+        "What object is at the center of our solar system?",
+        "Which planets can you already name?",
+        "Do you know which planet comes immediately before and after Earth?"
+    ],
+
+    "mini_lesson": [
+        "The Sun is the star at the center of our solar system.",
+        "The eight planets in order from the Sun are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.",
+        "Mercury, Venus, Earth, and Mars are terrestrial planets.",
+        "Terrestrial planets have rocky, solid surfaces.",
+        "The asteroid belt is located mainly between Mars and Jupiter.",
+        "Jupiter and Saturn are gas giants.",
+        "Uranus and Neptune are ice giants.",
+        "Jupiter, Saturn, Uranus, and Neptune are the four large outer planets.",
+        "The models used in class are usually not drawn to scale for planet size or distance."
+    ],
+
+    "science_notebook": [
+        "Draw the Sun on the left side of the page.",
+        "Write the planets in order: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.",
+        "Draw the asteroid belt between Mars and Jupiter.",
+        "Bracket Mercury through Mars and label them Terrestrial Planets.",
+        "Label Jupiter and Saturn Gas Giants.",
+        "Label Uranus and Neptune Ice Giants.",
+        "Write the mnemonic: My Very Educated Mother Just Served Us Noodles."
+    ],
+
+    "guided_practice": [
+        "Put Mercury, Earth, and Venus in order.",
+        "Identify the planet immediately after Mars.",
+        "Locate the asteroid belt.",
+        "Identify the four terrestrial planets.",
+        "Identify the two gas giants.",
+        "Identify the two ice giants."
+    ],
+
+    "lab_title":
+        "Solar System Builder: Planet Order and Planet Types",
+
+    "lab_url":
+        "/labs/solar-system-builder?mission=day74",
+
+    "exit_ticket":
+        "Write the eight planets in order from the Sun, identify where the asteroid belt is located, "
+        "and name one terrestrial planet, one gas giant, and one ice giant.",
+
+    "vocabulary": [
+        "solar system",
+        "Sun",
+        "planet",
+        "terrestrial planet",
+        "gas giant",
+        "ice giant",
+        "inner planets",
+        "outer planets",
+        "asteroid belt",
+        "orbit"
+    ],
+
+    "teacher_note":
+        "This lesson supports the SISD Think Along 3.9B planet-order standard embedded in the Grade 5 Earth rotation unit. "
+        "Teach Jupiter and Saturn as gas giants and Uranus and Neptune as ice giants. "
+        "When grouping broadly, all four may be described as large outer planets."
+}
+
+# Science Studio Day 74 End
