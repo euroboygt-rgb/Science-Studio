@@ -4469,3 +4469,99 @@ SECOND_NINE_WEEKS_LESSONS[76] = {
 }
 
 # Science Studio Day 76 End
+
+
+# Science Studio Day 77 Start
+
+SECOND_NINE_WEEKS_LESSONS[77] = {
+
+    "day": 77,
+
+    "title":
+        "Day & Night Mission: Ride Earth's Rotation",
+
+    "unit":
+        "Investigating Earth's Rotation",
+
+    "teks":
+        "5.9A, 5.1F, 5.2D",
+
+    "focus":
+        "Students model how Earth's rotation causes the repeating pattern of day and night.",
+
+    "learning_target":
+        "We will model how Earth's rotation causes day and night.",
+
+    "success_criteria":
+        "I can explain that the side of Earth facing the Sun experiences day, "
+        "the side facing away experiences night, and Earth's rotation causes locations "
+        "to move through a repeating 24-hour day/night cycle.",
+
+    "essential_question":
+        "Why does the same location on Earth experience both day and night?",
+
+    "bell_ringer": [
+        "Yesterday we learned that Earth rotates on its axis about once every 24 hours.",
+        "What happens to a location as Earth rotates?",
+        "Can the entire Earth be experiencing daytime at the same time?"
+    ],
+
+    "mini_lesson": [
+        "The Sun is the main source of light for Earth.",
+        "At any moment, approximately half of Earth is illuminated by sunlight.",
+        "The side facing the Sun experiences daytime.",
+        "The side facing away from the Sun experiences nighttime.",
+        "Earth rotates on its axis approximately once every 24 hours.",
+        "As Earth rotates, a location moves into and out of the illuminated half.",
+        "A location moving from the illuminated side toward the dark side experiences sunset.",
+        "A location moving from the dark side toward the illuminated side experiences sunrise.",
+        "The Sun does not travel around Earth each day. Earth's rotation creates the day/night pattern.",
+        "The day/night cycle repeats because Earth keeps rotating."
+    ],
+
+    "science_notebook": [
+        "Draw the Sun on the left and Earth on the right.",
+        "Shade the half of Earth facing the Sun and label it DAY.",
+        "Shade the half facing away from the Sun and label it NIGHT.",
+        "Draw a curved arrow showing Earth's rotation.",
+        "Write: Earth rotates once in about 24 hours.",
+        "Write the pattern: Day → Sunset → Night → Sunrise → Day."
+    ],
+
+    "guided_practice": [
+        "Identify the illuminated side of an Earth model.",
+        "Identify the dark side.",
+        "Place a location marker on the daytime side.",
+        "Rotate Earth until the marker enters nighttime.",
+        "Continue rotating until the marker returns to daytime.",
+        "Explain what caused the change from day to night."
+    ],
+
+    "lab_title":
+        "Day & Night Rotation Lab: Follow One Location",
+
+    "lab_url":
+        "/labs/day-night-rotation?mission=day77",
+
+    "exit_ticket":
+        "Explain why the same location on Earth experiences both daytime and nighttime during one 24-hour rotation.",
+
+    "vocabulary": [
+        "day",
+        "night",
+        "sunrise",
+        "sunset",
+        "illuminated",
+        "dark side",
+        "rotation",
+        "axis",
+        "24-hour cycle"
+    ],
+
+    "teacher_note":
+        "Keep the Sun fixed in the model. Students should use Earth's rotation as the cause of day and night. "
+        "Explicitly address the misconception that the Sun circles Earth once each day. "
+        "Day 78 will build from this model into the Sun's apparent movement across the sky."
+}
+
+# Science Studio Day 77 End

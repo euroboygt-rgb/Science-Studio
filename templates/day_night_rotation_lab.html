@@ -1,0 +1,808 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day_night_rotation_lab.css') }}?v=77.1"
+>
+
+
+<div class="dn-shell">
+
+  <header class="dn-hero">
+
+    <div class="dn-tags">
+
+      <span>🌎 Interactive Lab</span>
+
+      <span>Day & Night Mission</span>
+
+      <span>TEKS 5.9A</span>
+
+    </div>
+
+
+    <div class="dn-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio:
+          Day & Night Rotation Lab
+        </h1>
+
+        <p>
+          Keep the Sun fixed
+          and follow one location
+          through a complete 24-hour rotation.
+        </p>
+
+      </div>
+
+
+      <a
+        class="dn-back"
+        href="/second-nine-weeks/day/77?view=student"
+      >
+        ← Back to Day 77
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- STATUS -->
+
+  <section class="dn-status-panel">
+
+    <div>
+
+      <div class="dn-eyebrow">
+        DAY / NIGHT ENGINE
+      </div>
+
+      <h2>
+        Follow Mission Control
+      </h2>
+
+      <p>
+        Track the red location marker
+        as Earth rotates.
+      </p>
+
+    </div>
+
+
+    <div class="dn-status-grid">
+
+      <div>
+
+        <span id="dnMission1Status">
+          ⬜
+        </span>
+
+        <strong>
+          Light Side
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span id="dnMission2Status">
+          ⬜
+        </span>
+
+        <strong>
+          24 Hours
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span id="dnMission3Status">
+          ⬜
+        </span>
+
+        <strong>
+          Explain
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="dn-mission">
+
+    <div>
+
+      <div class="dn-eyebrow">
+        MISSION 1
+      </div>
+
+      <h2>
+        Which Side Has Daytime?
+      </h2>
+
+      <p>
+        The Sun is fixed on the left.
+        Identify which half of Earth
+        is receiving direct sunlight.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="dn-lab-card">
+
+    <div class="dn-side-model">
+
+      <div class="dn-model-sun">
+
+        <span>
+          ☀️
+        </span>
+
+        <strong>
+          SUN
+        </strong>
+
+      </div>
+
+
+      <div class="dn-model-rays">
+
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+
+      </div>
+
+
+      <div class="dn-simple-earth">
+
+        <button
+          id="dnLeftSide"
+          type="button"
+          data-side="left"
+        >
+          SIDE A
+        </button>
+
+        <button
+          id="dnRightSide"
+          type="button"
+          data-side="right"
+        >
+          SIDE B
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="dnCheckSide"
+      class="dn-main-button"
+      type="button"
+    >
+      ✅ CHECK DAYTIME SIDE
+    </button>
+
+
+    <div id="dnSideFeedback"
+         class="dn-feedback">
+      Select Side A or Side B.
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="dn-mission">
+
+    <div>
+
+      <div class="dn-eyebrow">
+        MISSION 2
+      </div>
+
+      <h2>
+        Ride One Full Rotation
+      </h2>
+
+      <p>
+        Follow Mission Control
+        through noon, sunset,
+        midnight, sunrise,
+        and back to noon.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="dn-lab-card">
+
+    <svg
+      id="dnEarthModel"
+      class="dn-earth-svg"
+      viewBox="0 0 1000 560"
+    >
+
+      <defs>
+
+        <radialGradient
+          id="dnOcean"
+          cx="32%"
+          cy="28%"
+          r="78%"
+        >
+
+          <stop offset="0%"
+                stop-color="#6cc3ff"/>
+
+          <stop offset="58%"
+                stop-color="#168de3"/>
+
+          <stop offset="100%"
+                stop-color="#064f94"/>
+
+        </radialGradient>
+
+
+        <clipPath id="dnEarthClip">
+
+          <circle
+            cx="650"
+            cy="285"
+            r="175"
+          />
+
+        </clipPath>
+
+      </defs>
+
+
+      <rect width="1000"
+            height="560"
+            rx="20"
+            fill="#071120"/>
+
+
+      <!-- SUN -->
+
+      <circle
+        cx="135"
+        cy="285"
+        r="78"
+        fill="#ffd447"
+        stroke="#fff3a0"
+        stroke-width="8"
+      />
+
+      <text
+        x="135"
+        y="390"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="21"
+        font-weight="900"
+      >
+        SUN
+      </text>
+
+
+      <!-- LIGHT -->
+
+      <g
+        stroke="#ffe45d"
+        stroke-width="8"
+        opacity=".72"
+      >
+
+        <line x1="225"
+              y1="185"
+              x2="475"
+              y2="185"/>
+
+        <line x1="225"
+              y1="235"
+              x2="475"
+              y2="235"/>
+
+        <line x1="225"
+              y1="285"
+              x2="475"
+              y2="285"/>
+
+        <line x1="225"
+              y1="335"
+              x2="475"
+              y2="335"/>
+
+        <line x1="225"
+              y1="385"
+              x2="475"
+              y2="385"/>
+
+      </g>
+
+
+      <!-- AXIS -->
+
+      <line
+        x1="590"
+        y1="80"
+        x2="720"
+        y2="485"
+        stroke="#ffe45d"
+        stroke-width="10"
+        stroke-linecap="round"
+      />
+
+
+      <!-- EARTH -->
+
+      <circle
+        cx="650"
+        cy="285"
+        r="175"
+        fill="url(#dnOcean)"
+        stroke="#ffffff"
+        stroke-width="7"
+      />
+
+
+      <g clip-path="url(#dnEarthClip)">
+
+        <!-- continents -->
+
+        <path
+          d="
+            M530 210
+            Q575 170 630 186
+            Q666 205 655 242
+            Q620 260 599 292
+            Q560 284 530 250
+            Z
+          "
+          fill="#4fbd57"
+        />
+
+
+        <path
+          d="
+            M600 295
+            Q646 296 663 338
+            Q669 390 638 430
+            Q603 408 589 360
+            Z
+          "
+          fill="#4fbd57"
+        />
+
+
+        <!-- NIGHT SIDE -->
+
+        <rect
+          x="650"
+          y="100"
+          width="190"
+          height="370"
+          fill="#010718"
+          opacity=".82"
+        />
+
+      </g>
+
+
+      <!-- TERMINATOR -->
+
+      <line
+        x1="650"
+        y1="110"
+        x2="650"
+        y2="460"
+        stroke="#ffffff"
+        stroke-width="4"
+        stroke-dasharray="11 9"
+        opacity=".9"
+      />
+
+
+      <text
+        x="565"
+        y="500"
+        text-anchor="middle"
+        fill="#ffe45d"
+        font-size="22"
+        font-weight="900"
+      >
+        DAY
+      </text>
+
+
+      <text
+        x="740"
+        y="500"
+        text-anchor="middle"
+        fill="#b9caff"
+        font-size="22"
+        font-weight="900"
+      >
+        NIGHT
+      </text>
+
+
+      <!-- LOCATION PATH -->
+
+      <ellipse
+        cx="650"
+        cy="285"
+        rx="145"
+        ry="66"
+        fill="none"
+        stroke="#c68cff"
+        stroke-width="4"
+        stroke-dasharray="10 8"
+        opacity=".65"
+      />
+
+
+      <!-- LOCATION -->
+
+      <g id="dnLocationMarker">
+
+        <circle
+          cx="0"
+          cy="0"
+          r="12"
+          fill="#ff3d3d"
+          stroke="#ffffff"
+          stroke-width="4"
+        />
+
+        <circle
+          cx="0"
+          cy="0"
+          r="21"
+          fill="none"
+          stroke="#ffe45d"
+          stroke-width="4"
+          opacity=".75"
+        />
+
+      </g>
+
+
+      <text
+        id="dnLocationLabel"
+        x="650"
+        y="52"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="20"
+        font-weight="900"
+      >
+        MISSION CONTROL LOCATION
+      </text>
+
+    </svg>
+
+
+    <!-- CONTROLS -->
+
+    <div class="dn-time-controls">
+
+      <button data-hour="0"
+              type="button">
+        ☀️ 0 h
+        <small>Noon</small>
+      </button>
+
+      <button data-hour="6"
+              type="button">
+        🌇 6 h
+        <small>Sunset</small>
+      </button>
+
+      <button data-hour="12"
+              type="button">
+        🌙 12 h
+        <small>Midnight</small>
+      </button>
+
+      <button data-hour="18"
+              type="button">
+        🌅 18 h
+        <small>Sunrise</small>
+      </button>
+
+      <button data-hour="24"
+              type="button">
+        ☀️ 24 h
+        <small>Noon Again</small>
+      </button>
+
+    </div>
+
+
+    <div class="dn-cycle-readout">
+
+      <div>
+
+        <span>
+          Elapsed Time
+        </span>
+
+        <strong id="dnHours">
+          0 hours
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span>
+          Location Status
+        </span>
+
+        <strong id="dnState">
+          DAY — Noon
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="dn-play-row">
+
+      <button
+        id="dnPlayDay"
+        class="dn-main-button"
+        type="button"
+      >
+        ▶ PLAY FULL 24-HOUR ROTATION
+      </button>
+
+      <button
+        id="dnResetDay"
+        class="dn-reset-button"
+        type="button"
+      >
+        ↻ RESET
+      </button>
+
+    </div>
+
+
+    <div id="dnCycleFeedback"
+         class="dn-feedback">
+
+      Mission Control begins
+      on the illuminated side of Earth.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="dn-mission">
+
+    <div>
+
+      <div class="dn-eyebrow">
+        MISSION 3
+      </div>
+
+      <h2>
+        What Causes Day and Night?
+      </h2>
+
+      <p>
+        Use evidence from the model
+        to complete four explanation challenges.
+      </p>
+
+    </div>
+
+
+    <aside class="dn-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="dnExplainScore">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="dn-lab-card">
+
+    <div
+      id="dnExplainQuestion"
+      class="dn-explain-question"
+    >
+      Loading...
+    </div>
+
+
+    <div
+      id="dnExplainChoices"
+      class="dn-explain-choices"
+    ></div>
+
+
+    <button
+      id="dnCheckExplain"
+      class="dn-main-button"
+      type="button"
+    >
+      ✅ CHECK EVIDENCE
+    </button>
+
+
+    <div
+      id="dnExplainFeedback"
+      class="dn-feedback"
+    >
+      Choose the best explanation.
+    </div>
+
+
+    <button
+      id="dnNextExplain"
+      class="dn-next-button"
+      type="button"
+      disabled
+    >
+      NEXT CHALLENGE →
+    </button>
+
+  </section>
+
+
+  <!-- MASTER -->
+
+  <section class="dn-master">
+
+    <div class="dn-master-icon">
+      🌎☀️
+    </div>
+
+    <h2>
+      Day & Night Mission Status
+    </h2>
+
+
+    <div
+      id="dnMasterMessage"
+      class="dn-master-message"
+    >
+
+      Complete all three missions
+      to become a Day & Night Specialist.
+
+    </div>
+
+  </section>
+
+
+  <!-- EVIDENCE -->
+
+  <section class="dn-evidence">
+
+    <h2>
+      📓 Day & Night Evidence Notebook
+    </h2>
+
+
+    <div class="dn-evidence-grid">
+
+      <article>
+
+        <strong>
+          ☀️ Day
+        </strong>
+
+        <p>
+          Which direction is the location facing?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🌇 Sunset
+        </strong>
+
+        <p>
+          What is happening
+          as the location leaves daylight?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🌙 Night
+        </strong>
+
+        <p>
+          Why is the location dark?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🌅 Sunrise
+        </strong>
+
+        <p>
+          What happens as Earth keeps rotating?
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="dn-question">
+
+      <strong>
+        🧠 Evidence Question:
+      </strong>
+
+      The Sun remained fixed in this lab.
+
+      What evidence proves
+      that Earth's rotation,
+      rather than the Sun circling Earth,
+      caused the day/night pattern?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day_night_rotation_lab.js') }}?v=77.1"
+></script>
+
+{% endblock %}

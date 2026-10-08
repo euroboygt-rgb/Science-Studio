@@ -1,0 +1,219 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <radialGradient id="earthOcean"
+                    cx="32%"
+                    cy="28%"
+                    r="78%">
+
+      <stop offset="0%"
+            stop-color="#69c4ff"/>
+
+      <stop offset="60%"
+            stop-color="#198de0"/>
+
+      <stop offset="100%"
+            stop-color="#064b91"/>
+
+    </radialGradient>
+
+    <clipPath id="earthClip">
+
+      <circle cx="720"
+              cy="330"
+              r="170"/>
+
+    </clipPath>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="24"
+        fill="#071120"/>
+
+
+  <text x="600"
+        y="52"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="34"
+        font-weight="900">
+    PHENOMENON MISSION: WHY IS IT DAY HERE BUT NIGHT THERE?
+  </text>
+
+
+  <text x="600"
+        y="90"
+        text-anchor="middle"
+        fill="#ccecff"
+        font-size="20"
+        font-weight="700">
+    One Earth. One Sun. Two different experiences.
+  </text>
+
+
+  <!-- SUN -->
+
+  <circle cx="190"
+          cy="330"
+          r="85"
+          fill="#ffd447"
+          stroke="#fff3a0"
+          stroke-width="9"/>
+
+  <text x="190"
+        y="445"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="22"
+        font-weight="900">
+    SUN
+  </text>
+
+
+  <!-- LIGHT RAYS -->
+
+  <g stroke="#ffe45d"
+     stroke-width="8"
+     opacity=".75">
+
+    <line x1="285"
+          y1="240"
+          x2="530"
+          y2="240"/>
+
+    <line x1="285"
+          y1="285"
+          x2="530"
+          y2="285"/>
+
+    <line x1="285"
+          y1="330"
+          x2="530"
+          y2="330"/>
+
+    <line x1="285"
+          y1="375"
+          x2="530"
+          y2="375"/>
+
+    <line x1="285"
+          y1="420"
+          x2="530"
+          y2="420"/>
+
+  </g>
+
+
+  <!-- EARTH -->
+
+  <circle cx="720"
+          cy="330"
+          r="170"
+          fill="url(#earthOcean)"
+          stroke="#ffffff"
+          stroke-width="7"/>
+
+
+  <g clip-path="url(#earthClip)">
+
+    <path d="
+      M600 255
+      Q650 205 710 225
+      Q745 245 735 285
+      Q700 300 675 330
+      Q638 322 605 290
+      Z
+    "
+      fill="#4fbd57"/>
+
+    <path d="
+      M680 335
+      Q730 335 748 380
+      Q755 430 720 470
+      Q685 447 670 395
+      Z
+    "
+      fill="#4fbd57"/>
+
+
+    <!-- NIGHT HALF -->
+
+    <rect x="720"
+          y="150"
+          width="185"
+          height="360"
+          fill="#020818"
+          opacity=".78"/>
+
+  </g>
+
+
+  <!-- TERMINATOR -->
+
+  <line x1="720"
+        y1="160"
+        x2="720"
+        y2="500"
+        stroke="#ffffff"
+        stroke-width="5"
+        stroke-dasharray="12 10"/>
+
+
+  <text x="625"
+        y="555"
+        text-anchor="middle"
+        fill="#ffe45d"
+        font-size="25"
+        font-weight="900">
+    DAY
+  </text>
+
+  <text x="815"
+        y="555"
+        text-anchor="middle"
+        fill="#b6c9ff"
+        font-size="25"
+        font-weight="900">
+    NIGHT
+  </text>
+
+
+  <!-- ROTATION ARROW -->
+
+  <path d="
+    M620 165
+    A210 210 0 0 1 845 190
+  "
+    fill="none"
+    stroke="#c68cff"
+    stroke-width="12"
+    stroke-linecap="round"/>
+
+  <polygon points="845,190 808,179 829,151"
+           fill="#c68cff"/>
+
+
+  <rect x="160"
+        y="600"
+        width="880"
+        height="65"
+        rx="16"
+        fill="#fff4a8"
+        stroke="#ffffff"
+        stroke-width="4"/>
+
+  <text x="600"
+        y="640"
+        text-anchor="middle"
+        fill="#24336b"
+        font-size="21"
+        font-weight="900">
+    What happens to one location as Earth keeps rotating?
+  </text>
+
+</svg>

@@ -62,6 +62,58 @@ app = Flask(__name__)
 
 
 
+
+# Science Studio Dedicated Day 77 Start
+
+@app.before_request
+def science_studio_dedicated_day77():
+
+    from flask import (
+        request as flask_request,
+        render_template as flask_render_template,
+    )
+
+    if flask_request.path not in (
+        "/second-nine-weeks/day/77",
+        "/2nd-nine-weeks/day/77",
+    ):
+        return None
+
+    view = flask_request.args.get(
+        "view",
+        "student"
+    )
+
+    if view not in (
+        "student",
+        "teacher",
+    ):
+        view = "student"
+
+    return flask_render_template(
+        "day77_lesson.html",
+        view=view
+    )
+
+# Science Studio Dedicated Day 77 End
+
+
+# Science Studio Day Night Lab Route Start
+
+@app.route("/labs/day-night-rotation")
+def day_night_rotation_lab():
+
+    from flask import (
+        render_template as flask_render_template,
+    )
+
+    return flask_render_template(
+        "day_night_rotation_lab.html"
+    )
+
+# Science Studio Day Night Lab Route End
+
+
 # Science Studio Dedicated Day 76 Start
 
 @app.before_request

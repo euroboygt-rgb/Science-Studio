@@ -1,0 +1,1247 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=77-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day77_direct.css') }}?v=77-final"
+>
+
+
+<div id="DAY77_DIRECT_TEMPLATE"
+     class="d77-page">
+
+  <!-- HERO -->
+
+  <section class="d77-hero">
+
+    <div class="d77-tags">
+
+      <span>Day 77</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.9A</span>
+
+      <span>Day & Night</span>
+
+    </div>
+
+
+    <h1>
+      🌎☀️ Day & Night Mission:
+      Ride Earth's Rotation
+    </h1>
+
+    <p>
+      Follow one location through
+      an entire 24-hour Earth rotation
+      and discover why day and night repeat.
+    </p>
+
+
+    <div class="d77-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/77?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/77?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Learning Power Frame
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          explain how Earth's rotation
+          causes day and night.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          tracking one location
+          through Earth's illuminated
+          and dark sides.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can explain the repeating pattern
+          day → sunset → night → sunrise → day.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌎 Phenomenon Mission
+    </div>
+
+    <h2>
+      Why Is It Day Here but Night There?
+    </h2>
+
+    <div class="d59-unit">
+      Day 77 • Earth's Rotation
+    </div>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day77_day_night.svg"
+        alt="Sun illuminating half of Earth while the opposite half is dark"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      If the Sun stays in the same place
+      in our model,
+      why does one location on Earth
+      experience both daytime and nighttime?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d77MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Mission Brief:
+          Follow One Location
+        </h2>
+
+        <div class="d59-unit">
+          Day → Sunset → Night → Sunrise → Day
+        </div>
+
+      </div>
+
+
+      <button
+        id="d77Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Mission Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d77SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d77SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d77SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d77SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d77SlideNumber"></strong>
+
+      <div>
+
+        <button id="d77Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d77Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d77Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section id="d77Steve"
+           class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's STAAR Mission
+        </div>
+
+        <h2>
+          Steve's Flashlight Earth Investigation
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve shines a flashlight
+          at one side of a globe.
+
+          One half of the globe is illuminated
+          and the opposite half is dark.
+
+          Steve slowly rotates the globe
+          without moving the flashlight.
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            STAAR-Style Question:
+          </strong>
+
+          <p>
+            Why does a marked location
+            move from daylight into darkness?
+          </p>
+
+
+          <button class="d77-steve-answer"
+                  data-answer="A">
+            A. Earth rotates on its axis.
+          </button>
+
+          <button class="d77-steve-answer"
+                  data-answer="B">
+            B. The Sun turns off every night.
+          </button>
+
+          <button class="d77-steve-answer"
+                  data-answer="C">
+            C. Earth moves behind the Moon each night.
+          </button>
+
+          <button class="d77-steve-answer"
+                  data-answer="D">
+            D. Clouds cover half of Earth.
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d77SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Answer
+            </button>
+
+            <button id="d77SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d77SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Day & Night Vocabulary Anchor Chart
+    </h2>
+
+
+    <div class="d77-vocab-note">
+
+      🔍 Hover to preview.
+
+      <strong>
+        Click any vocabulary word
+      </strong>
+
+      to enlarge it and read the definition.
+
+    </div>
+
+
+    <div class="d77-vocab-grid">
+
+      {% set words = [
+        ("☀️", "day", "The time when a location on Earth is facing the Sun and receiving sunlight."),
+        ("🌙", "night", "The time when a location on Earth is facing away from the Sun."),
+        ("🌅", "sunrise", "The time when Earth's rotation carries a location from the dark side into the illuminated side."),
+        ("🌇", "sunset", "The time when Earth's rotation carries a location from the illuminated side into the dark side."),
+        ("💡", "illuminated", "Lit by a light source."),
+        ("🌑", "dark side", "The half of Earth facing away from the Sun at a particular moment."),
+        ("🔄", "rotation", "Earth spinning around its axis."),
+        ("📍", "axis", "The imaginary tilted line Earth rotates around."),
+        ("🕛", "24-hour cycle", "Approximately the time Earth takes to complete one rotation.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d77-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span class="d77-vocab-icon">
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will model how Earth's rotation
+      causes day and night.
+    </p>
+
+  </section>
+
+
+  <!-- BELL RINGER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer — Can Everyone Have Daytime?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Yesterday we learned
+      that Earth rotates once
+      in about 24 hours.
+
+      <ol>
+
+        <li>
+          Can the entire Earth face the Sun
+          at the same time?
+        </li>
+
+        <li>
+          What happens to a location
+          as Earth rotates?
+        </li>
+
+        <li>
+          What do you predict causes
+          the repeating pattern
+          of day and night?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      Follow the Sunlight
+    </h2>
+
+
+    <div class="d77-sun-earth-model">
+
+      <div class="d77-sun">
+
+        <span>
+          ☀️
+        </span>
+
+        <strong>
+          SUN
+        </strong>
+
+        <small>
+          Light source
+        </small>
+
+      </div>
+
+
+      <div class="d77-rays">
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+      </div>
+
+
+      <div class="d77-earth-demo">
+
+        <div class="d77-earth-lit"></div>
+
+        <div class="d77-earth-dark"></div>
+
+        <div class="d77-earth-label-day">
+          DAY
+        </div>
+
+        <div class="d77-earth-label-night">
+          NIGHT
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="d77-two-sides">
+
+      <article>
+
+        <div>
+          ☀️
+        </div>
+
+        <h3>
+          ILLUMINATED SIDE
+        </h3>
+
+        <p>
+          Faces the Sun
+        </p>
+
+        <strong>
+          DAYTIME
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <div>
+          🌙
+        </div>
+
+        <h3>
+          DARK SIDE
+        </h3>
+
+        <p>
+          Faces away from the Sun
+        </p>
+
+        <strong>
+          NIGHTTIME
+        </strong>
+
+      </article>
+
+    </div>
+
+
+    <div class="d77-cycle">
+
+      <div>
+        <span>☀️</span>
+        <strong>DAY</strong>
+        <small>Facing Sun</small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span>🌇</span>
+        <strong>SUNSET</strong>
+        <small>Moving into darkness</small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span>🌙</span>
+        <strong>NIGHT</strong>
+        <small>Facing away</small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span>🌅</span>
+        <strong>SUNRISE</strong>
+        <small>Moving into light</small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span>☀️</span>
+        <strong>DAY</strong>
+        <small>Pattern repeats</small>
+      </div>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Important Misconception
+      </strong>
+
+      <br><br>
+
+      Day and night do
+      <strong>
+        NOT
+      </strong>
+      happen because the Sun
+      travels around Earth every 24 hours.
+
+      <br><br>
+
+      The Sun stays fixed in our model.
+
+      <br><br>
+
+      <strong>
+        EARTH ROTATES.
+      </strong>
+
+      That rotation moves locations
+      into and out of sunlight.
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Day & Night Model
+    </h2>
+
+
+    <div class="d59-box">
+
+      Draw:
+
+      <ol>
+
+        <li>
+          Sun on the left.
+        </li>
+
+        <li>
+          Earth on the right.
+        </li>
+
+        <li>
+          Shade the half facing the Sun
+          and label it DAY.
+        </li>
+
+        <li>
+          Shade the half facing away
+          and label it NIGHT.
+        </li>
+
+        <li>
+          Draw a curved rotation arrow.
+        </li>
+
+      </ol>
+
+
+      Write:
+
+      <br><br>
+
+      <strong>
+        Earth rotates once
+        in approximately 24 hours.
+      </strong>
+
+      <br><br>
+
+      <strong>
+        Day → Sunset → Night → Sunrise → Day
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Flashlight + Globe Model
+    </h2>
+
+
+    <div class="d59-box">
+
+      Darken the room if possible.
+
+      <ol>
+
+        <li>
+          Hold a flashlight still
+          to represent the Sun.
+        </li>
+
+        <li>
+          Shine it on a globe.
+        </li>
+
+        <li>
+          Identify the illuminated half.
+        </li>
+
+        <li>
+          Identify the dark half.
+        </li>
+
+        <li>
+          Place a sticky dot
+          on one location.
+        </li>
+
+        <li>
+          Slowly rotate the globe.
+        </li>
+
+        <li>
+          Watch the location move:
+          day → sunset → night → sunrise → day.
+        </li>
+
+      </ol>
+
+
+      Ask:
+
+      <strong>
+        What moved — the Sun,
+        or the Earth?
+      </strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌎 Interactive Lab
+    </div>
+
+    <h2>
+      Day & Night Rotation Lab:
+      Follow One Location
+    </h2>
+
+
+    <p>
+      Keep the Sun fixed
+      and follow one location
+      as Earth rotates
+      through a complete 24-hour cycle.
+    </p>
+
+
+    <div class="d77-lab-preview">
+
+      <div>
+        ☀️
+        <strong>
+          Fixed Sun
+        </strong>
+      </div>
+
+      <div>
+        💡
+        <strong>
+          Lit vs. Dark
+        </strong>
+      </div>
+
+      <div>
+        📍
+        <strong>
+          Track Location
+        </strong>
+      </div>
+
+      <div>
+        🕛
+        <strong>
+          24-Hour Cycle
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      <strong>
+        Mission 1
+      </strong>
+
+      <p>
+        Identify the side of Earth
+        experiencing daytime.
+      </p>
+
+
+      <strong>
+        Mission 2
+      </strong>
+
+      <p>
+        Track one location through
+        noon, sunset, midnight,
+        sunrise, and back to noon.
+      </p>
+
+
+      <strong>
+        Mission 3
+      </strong>
+
+      <p>
+        Use evidence from the model
+        to explain what causes day and night.
+      </p>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆
+      <strong>
+        Mission Goal:
+      </strong>
+
+      Become a
+      <strong>
+        Day & Night Specialist.
+      </strong>
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/day-night-rotation?mission=day77"
+    >
+      🌎 Launch Day & Night Rotation Lab
+    </a>
+
+  </section>
+
+
+  <!-- QUESTIONS -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Practice
+    </div>
+
+    <h2>
+      Day & Night Evidence
+    </h2>
+
+
+    <div class="d77-question"
+         data-answer="B">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        Which part of Earth
+        experiences daytime?
+      </p>
+
+      <button data-choice="A">
+        A. The half facing away from the Sun
+      </button>
+
+      <button data-choice="B">
+        B. The half facing the Sun
+      </button>
+
+      <button data-choice="C">
+        C. Only the North Pole
+      </button>
+
+      <button data-choice="D">
+        D. The entire Earth
+      </button>
+
+      <div class="d77-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d77-question"
+         data-answer="C">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        What causes a location
+        to move from daytime into nighttime?
+      </p>
+
+      <button data-choice="A">
+        A. The Sun turns off.
+      </button>
+
+      <button data-choice="B">
+        B. The Moon blocks the Sun every night.
+      </button>
+
+      <button data-choice="C">
+        C. Earth rotates on its axis.
+      </button>
+
+      <button data-choice="D">
+        D. Earth stops revolving.
+      </button>
+
+      <div class="d77-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d77-question"
+         data-answer="A">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        Approximately how long
+        does one complete day/night cycle take?
+      </p>
+
+      <button data-choice="A">
+        A. 24 hours
+      </button>
+
+      <button data-choice="B">
+        B. 7 days
+      </button>
+
+      <button data-choice="C">
+        C. 29.5 days
+      </button>
+
+      <button data-choice="D">
+        D. 1 year
+      </button>
+
+      <div class="d77-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d77-question"
+         data-answer="D">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        A location is moving
+        from the dark side of Earth
+        into the illuminated side.
+
+        What is that location experiencing?
+      </p>
+
+      <button data-choice="A">
+        A. Midnight
+      </button>
+
+      <button data-choice="B">
+        B. Sunset
+      </button>
+
+      <button data-choice="C">
+        C. A lunar eclipse
+      </button>
+
+      <button data-choice="D">
+        D. Sunrise
+      </button>
+
+      <div class="d77-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d77-question"
+         data-answer="B">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        Which model best demonstrates
+        the cause of day and night?
+      </p>
+
+      <button data-choice="A">
+        A. Move a flashlight around a stationary globe.
+      </button>
+
+      <button data-choice="B">
+        B. Keep a flashlight still and rotate the globe.
+      </button>
+
+      <button data-choice="C">
+        C. Cover the globe with a blanket.
+      </button>
+
+      <button data-choice="D">
+        D. Move the Moon around the globe.
+      </button>
+
+      <div class="d77-question-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Written Exit Ticket
+    </h2>
+
+    <p>
+      Explain why the
+      <strong>
+        same location
+      </strong>
+      on Earth experiences both
+      daytime and nighttime
+      during one 24-hour rotation.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="The same location experiences day and night because..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Explain Your Thinking: CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        CER Question:
+      </strong>
+
+      What evidence shows
+      that Earth's rotation
+      causes day and night?
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="Day and night happen because..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="In the Day & Night Lab..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This evidence supports my claim because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🌅 Next Mission
+    </div>
+
+    <h2>
+      If Earth Is Rotating,
+      Why Does the Sun Look Like It Moves?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Today:
+
+      <strong>
+        Earth rotates,
+        causing day and night.
+      </strong>
+
+      <br><br>
+
+      Next:
+
+      <strong>
+        We investigate the Sun's
+        apparent movement across the sky.
+      </strong>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d77VocabModal"
+     class="d77-modal">
+
+  <div class="d77-modal-card">
+
+    <button id="d77VocabClose"
+            class="d77-modal-close"
+            type="button">
+      ×
+    </button>
+
+    <div id="d77ModalIcon"
+         class="d77-modal-icon"></div>
+
+    <h2 id="d77ModalTerm"></h2>
+
+    <p id="d77ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day77_direct.js') }}?v=77-final"
+></script>
+
+{% endblock %}

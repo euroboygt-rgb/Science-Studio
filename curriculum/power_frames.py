@@ -834,3 +834,20 @@ POWER_FRAMES[76] = {
 }
 
 # Science Studio Day 76 Power Frame End
+
+
+# Science Studio Day 77 Power Frame Start
+
+POWER_FRAMES[77] = {
+
+    "i_can":
+        "I can explain how Earth's rotation causes the repeating pattern of day and night.",
+
+    "by":
+        "tracking one location as Earth rotates through the illuminated and dark sides of the planet.",
+
+    "i_know":
+        "I know I have learned this when I can explain the pattern day, sunset, night, sunrise, and back to day during one 24-hour rotation."
+}
+
+# Science Studio Day 77 Power Frame End

@@ -1,0 +1,382 @@
+.dn-shell {
+  width: min(1200px,96vw);
+  margin: 24px auto 60px;
+}
+
+.dn-hero,
+.dn-status-panel,
+.dn-mission,
+.dn-lab-card,
+.dn-master,
+.dn-evidence {
+  border: 3px solid #171717;
+  border-radius: 17px;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+.dn-hero {
+  padding: 20px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #7131cc,
+      #2689d8
+    );
+}
+
+.dn-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.dn-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #7d32dc;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+.dn-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.dn-back {
+  padding: 10px 14px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.dn-status-panel,
+.dn-mission {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+.dn-eyebrow {
+  font-size: .75rem;
+  font-weight: 900;
+}
+
+.dn-status-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 7px;
+}
+
+.dn-status-grid div {
+  padding: 9px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.dn-status-grid span,
+.dn-status-grid strong {
+  display: block;
+}
+
+.dn-status-grid span {
+  font-size: 1.8rem;
+}
+
+.dn-score {
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.dn-score strong,
+.dn-score span {
+  display: block;
+}
+
+.dn-score span {
+  margin-top: 5px;
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+
+.dn-lab-card {
+  margin-top: 12px;
+  padding: 16px;
+  background: #111a34;
+  color: #fff;
+}
+
+.dn-side-model {
+  display: grid;
+  grid-template-columns: 160px 1fr 300px;
+  align-items: center;
+  gap: 10px;
+}
+
+.dn-model-sun {
+  text-align: center;
+}
+
+.dn-model-sun span {
+  display: block;
+  font-size: 6rem;
+}
+
+.dn-model-rays i {
+  display: block;
+  height: 7px;
+  margin: 20px 0;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      to right,
+      #ffe45d,
+      rgba(255,228,93,.1)
+    );
+}
+
+.dn-simple-earth {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 280px;
+  height: 280px;
+  overflow: hidden;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  background: #198de0;
+}
+
+.dn-simple-earth button {
+  border: 0;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+#dnLeftSide {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,228,93,.7),
+      #198de0
+    );
+}
+
+#dnRightSide {
+  background: #071120;
+  color: #fff;
+}
+
+.dn-simple-earth button.selected {
+  outline: 7px solid #c68cff;
+  outline-offset: -10px;
+}
+
+.dn-main-button,
+.dn-reset-button,
+.dn-next-button {
+  margin-top: 12px;
+  padding: 12px 18px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #ffe45d;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.dn-next-button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.dn-feedback {
+  margin-top: 12px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+}
+
+.dn-earth-svg {
+  display: block;
+  width: min(1000px,100%);
+  margin: auto;
+  border: 3px solid #fff;
+  border-radius: 14px;
+}
+
+.dn-time-controls {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.dn-time-controls button {
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.dn-time-controls button small {
+  display: block;
+  margin-top: 3px;
+}
+
+.dn-time-controls button.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+  box-shadow: 0 0 0 3px rgba(113,49,204,.25);
+}
+
+.dn-cycle-readout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.dn-cycle-readout div {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  text-align: center;
+}
+
+.dn-cycle-readout span,
+.dn-cycle-readout strong {
+  display: block;
+}
+
+.dn-cycle-readout strong {
+  margin-top: 4px;
+  color: #7131cc;
+  font-size: 1.4rem;
+}
+
+.dn-play-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dn-explain-question {
+  padding: 16px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.dn-explain-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.dn-explain-choice {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dn-explain-choice.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+  box-shadow: 0 0 0 3px rgba(113,49,204,.25);
+}
+
+.dn-master {
+  margin-top: 14px;
+  padding: 20px;
+  background: #fff4cd;
+  text-align: center;
+}
+
+.dn-master-icon {
+  font-size: 4rem;
+}
+
+.dn-master-message {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #e8f7ff;
+  font-weight: 900;
+}
+
+.dn-evidence {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff;
+}
+
+.dn-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 9px;
+}
+
+.dn-evidence-grid article {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #eaf6ff;
+}
+
+.dn-question {
+  margin-top: 10px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff3ad;
+}
+
+@media (max-width:850px) {
+
+  .dn-hero-row,
+  .dn-status-panel,
+  .dn-mission {
+    display: block;
+  }
+
+  .dn-status-grid,
+  .dn-side-model,
+  .dn-time-controls,
+  .dn-cycle-readout,
+  .dn-explain-choices,
+  .dn-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
