@@ -1,0 +1,1298 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=75-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day75_direct.css') }}?v=75-final"
+>
+
+
+<div id="DAY75_DIRECT_TEMPLATE"
+     class="d75-page">
+
+  <!-- HEADER -->
+
+  <section class="d75-hero">
+
+    <div class="d75-tags">
+
+      <span>Day 75</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>Think Along 4.9B</span>
+
+      <span>Pattern Prediction</span>
+
+    </div>
+
+
+    <h1>
+      🌙 Moon Pattern Mission:
+      Predict the Moon
+    </h1>
+
+    <p>
+      Learn the repeating Moon phase cycle
+      and use the pattern to predict
+      what the Moon will look like days later.
+    </p>
+
+
+    <div class="d75-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/75?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/75?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today’s Learning Power Frame
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          identify the Moon phases in order
+          and predict future phases.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          using the repeating
+          approximately 29.5-day
+          Moon phase pattern.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can predict what the Moon
+          will look like several days later.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌙 Phenomenon Mission
+    </div>
+
+    <h2>
+      What Will the Moon Look Like in 15 Days?
+    </h2>
+
+    <div class="d59-unit">
+      Day 75 • Moon Phase Patterns
+    </div>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day75_moon_phase_pattern.svg"
+        alt="Moon phase sequence showing approximately day 0, 7, 15, and 22"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      If tonight is a New Moon,
+      what should the Moon look like
+      about 15 days from now?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d75MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Mission Brief: Follow the Moon Pattern
+        </h2>
+
+        <div class="d59-unit">
+          Day 75 • Observe → Sequence → Predict
+        </div>
+
+      </div>
+
+
+      <button
+        id="d75Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Mission Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d75SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d75SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d75SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d75SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d75SlideNumber"></strong>
+
+      <div>
+
+        <button id="d75Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d75Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d75Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section id="d75Steve"
+           class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's STAAR Mission
+        </div>
+
+        <h2>
+          Steve's 15-Day Moon Prediction
+        </h2>
+
+        <div class="d59-unit">
+          Day 75 • Pattern Prediction
+        </div>
+
+
+        <div class="d59-scenario">
+
+          <strong>
+            Steve's Scenario:
+          </strong>
+
+          <br><br>
+
+          Steve observes a
+          <strong>New Moon</strong>
+          tonight.
+
+          He knows the lunar phase cycle
+          repeats in about 29.5 days.
+
+          Steve wants to predict
+          what he will probably observe
+          about 15 days later.
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            STAAR-Style Question:
+          </strong>
+
+          <p>
+            Which Moon phase should Steve
+            expect to observe
+            approximately 15 days later?
+          </p>
+
+
+          <button class="d75-steve-answer"
+                  data-answer="A">
+            A. Waxing Crescent
+          </button>
+
+          <button class="d75-steve-answer"
+                  data-answer="B">
+            B. First Quarter
+          </button>
+
+          <button class="d75-steve-answer"
+                  data-answer="C">
+            C. Full Moon
+          </button>
+
+          <button class="d75-steve-answer"
+                  data-answer="D">
+            D. Waning Crescent
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d75SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Answer
+            </button>
+
+            <button id="d75SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d75SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCABULARY -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Moon Phase Vocabulary Anchor Chart
+    </h2>
+
+
+    <div class="d75-vocab-note">
+
+      🔍 Hover to preview.
+
+      <strong>
+        Click any vocabulary word
+      </strong>
+
+      to enlarge it and read the definition.
+
+    </div>
+
+
+    <div class="d75-vocab-grid">
+
+      {% set words = [
+        ("🌙", "Moon phase", "The observable shape of the illuminated portion of the Moon seen from Earth."),
+        ("🌑", "New Moon", "The phase when the illuminated side is mostly facing away from Earth, so the Moon appears dark."),
+        ("🌒", "Waxing Crescent", "A growing crescent of the Moon is illuminated."),
+        ("🌓", "First Quarter", "About half of the Moon's visible disk appears illuminated while the Moon is waxing."),
+        ("🌔", "Waxing Gibbous", "More than half of the visible Moon is illuminated and the illuminated portion is growing."),
+        ("🌕", "Full Moon", "The Moon's visible disk appears fully illuminated."),
+        ("🌖", "Waning Gibbous", "More than half of the visible Moon is illuminated and the illuminated portion is shrinking."),
+        ("🌗", "Third Quarter", "About half of the Moon's visible disk appears illuminated while the Moon is waning."),
+        ("🌘", "Waning Crescent", "A shrinking crescent of the Moon is illuminated."),
+        ("📈", "waxing", "The illuminated portion of the Moon that we see is growing."),
+        ("📉", "waning", "The illuminated portion of the Moon that we see is shrinking."),
+        ("🔄", "lunar cycle", "The repeating Moon phase pattern that takes about 29.5 days.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d75-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span class="d75-vocab-icon">
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- LEARNING TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will identify the Moon phases in order
+      and use the repeating pattern
+      to predict future phases.
+    </p>
+
+  </section>
+
+
+  <!-- BELL RINGER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer — Does the Moon Change?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Think about the Moon you have seen
+      during different nights.
+
+      <ol>
+
+        <li>
+          Does the Moon always look the same?
+        </li>
+
+        <li>
+          Name any Moon phases you already know.
+        </li>
+
+        <li>
+          If tonight were a New Moon,
+          what do you predict it would look like
+          about two weeks later?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson — The Moon Phase Pattern
+    </h2>
+
+
+    <div class="d75-phase-cycle">
+
+      <div>
+        <span>🌑</span>
+        <strong>New Moon</strong>
+        <small>Start</small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span>🌒</span>
+        <strong>Waxing Crescent</strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span>🌓</span>
+        <strong>First Quarter</strong>
+        <small>~7 days</small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span>🌔</span>
+        <strong>Waxing Gibbous</strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span>🌕</span>
+        <strong>Full Moon</strong>
+        <small>~14–15 days</small>
+      </div>
+
+    </div>
+
+
+    <div class="d75-phase-cycle d75-phase-cycle-two">
+
+      <div>
+        <span>🌖</span>
+        <strong>Waning Gibbous</strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span>🌗</span>
+        <strong>Third Quarter</strong>
+        <small>~22 days</small>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span>🌘</span>
+        <strong>Waning Crescent</strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        <span>🌑</span>
+        <strong>New Moon Again</strong>
+        <small>~29.5 days</small>
+      </div>
+
+    </div>
+
+
+    <div class="d75-wax-wane">
+
+      <article>
+
+        <div>
+          📈
+        </div>
+
+        <h3>
+          WAXING
+        </h3>
+
+        <p>
+          The illuminated portion
+          we see is
+          <strong>growing.</strong>
+        </p>
+
+        <p>
+          New → Full
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <div>
+          📉
+        </div>
+
+        <h3>
+          WANING
+        </h3>
+
+        <p>
+          The illuminated portion
+          we see is
+          <strong>shrinking.</strong>
+        </p>
+
+        <p>
+          Full → New
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d75-time-map">
+
+      <h3>
+        ⏱ Prediction Shortcut
+      </h3>
+
+
+      <div class="d75-time-grid">
+
+        <div>
+
+          <strong>
+            ~7 Days
+          </strong>
+
+          <span>
+            About ¼ of the cycle
+          </span>
+
+        </div>
+
+
+        <div>
+
+          <strong>
+            ~15 Days
+          </strong>
+
+          <span>
+            About ½ of the cycle
+          </span>
+
+        </div>
+
+
+        <div>
+
+          <strong>
+            ~22 Days
+          </strong>
+
+          <span>
+            About ¾ of the cycle
+          </span>
+
+        </div>
+
+
+        <div>
+
+          <strong>
+            ~29–30 Days
+          </strong>
+
+          <span>
+            About one full cycle
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚫 Important Misconception
+      </strong>
+
+      <br><br>
+
+      Normal Moon phases are
+      <strong>
+        NOT caused by Earth's shadow.
+      </strong>
+
+      <br><br>
+
+      Half of the Moon is always illuminated
+      by the Sun.
+
+      We see different portions
+      of that illuminated half
+      as the Moon moves around Earth.
+
+      <br><br>
+
+      Earth's shadow on the Moon
+      happens during a
+      <strong>
+        lunar eclipse.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook — Moon Phase Cycle
+    </h2>
+
+
+    <div class="d59-box">
+
+      Draw a large circle of arrows
+      and write these phases in order:
+
+      <ol>
+
+        <li>🌑 New Moon</li>
+
+        <li>🌒 Waxing Crescent</li>
+
+        <li>🌓 First Quarter</li>
+
+        <li>🌔 Waxing Gibbous</li>
+
+        <li>🌕 Full Moon</li>
+
+        <li>🌖 Waning Gibbous</li>
+
+        <li>🌗 Third Quarter</li>
+
+        <li>🌘 Waning Crescent</li>
+
+        <li>Return to 🌑 New Moon</li>
+
+      </ol>
+
+
+      Under the cycle write:
+
+      <br><br>
+
+      <strong>
+        Waxing = growing
+      </strong>
+
+      <br>
+
+      <strong>
+        Waning = shrinking
+      </strong>
+
+      <br><br>
+
+      <strong>
+        Complete cycle ≈ 29.5 days
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice — Predict the Moon
+    </h2>
+
+
+    <div class="d59-box">
+
+      Ask students:
+
+      <ol>
+
+        <li>
+          What phase comes after New Moon?
+        </li>
+
+        <li>
+          What phase comes immediately before Full Moon?
+        </li>
+
+        <li>
+          Is Waxing Gibbous growing or shrinking?
+        </li>
+
+        <li>
+          What phase is approximately 15 days after New Moon?
+        </li>
+
+        <li>
+          What phase is approximately 15 days after Full Moon?
+        </li>
+
+        <li>
+          What phase is approximately 7 days after New Moon?
+        </li>
+
+        <li>
+          What phase is approximately 22 days after New Moon?
+        </li>
+
+        <li>
+          Why are Moon phases not caused by Earth's shadow?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌙 Interactive Lab
+    </div>
+
+    <h2>
+      Moon Phase Pattern Lab:
+      Build and Predict
+    </h2>
+
+
+    <p>
+      First build the eight-phase sequence.
+      Then use the repeating pattern
+      to predict future Moon phases.
+    </p>
+
+
+    <div class="d75-lab-preview">
+
+      <div>
+        🌑
+        <strong>
+          Start at New Moon
+        </strong>
+      </div>
+
+      <div>
+        🔄
+        <strong>
+          Build 8 Phases
+        </strong>
+      </div>
+
+      <div>
+        📈📉
+        <strong>
+          Waxing vs. Waning
+        </strong>
+      </div>
+
+      <div>
+        🔮
+        <strong>
+          Predict Days Later
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      <strong>
+        Mission 1 — Build the Cycle
+      </strong>
+
+      <p>
+        Place all eight phases
+        in the correct repeating order.
+      </p>
+
+
+      <strong>
+        Mission 2 — Moon Predictor
+      </strong>
+
+      <p>
+        Choose a starting phase,
+        move forward a number of days,
+        predict the phase,
+        and test your reasoning.
+      </p>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆
+      <strong>
+        Mission Goal:
+      </strong>
+
+      Correctly build the Moon cycle
+      and make successful pattern predictions.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/moon-phase-pattern?mission=day75"
+    >
+      🌙 Launch Moon Phase Pattern Lab
+    </a>
+
+  </section>
+
+
+  <!-- QUESTIONS -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR / Think Along Practice
+    </div>
+
+    <h2>
+      Moon Pattern Evidence
+    </h2>
+
+
+    <div class="d75-question"
+         data-answer="C">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        A student observes a New Moon.
+        Which phase should the student
+        expect approximately 7 days later?
+      </p>
+
+      <button data-choice="A">
+        A. Full Moon
+      </button>
+
+      <button data-choice="B">
+        B. Waning Crescent
+      </button>
+
+      <button data-choice="C">
+        C. First Quarter
+      </button>
+
+      <button data-choice="D">
+        D. Third Quarter
+      </button>
+
+      <div class="d75-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d75-question"
+         data-answer="B">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        A student observes a New Moon.
+        Which phase will most likely be visible
+        about 14 to 15 days later?
+      </p>
+
+      <button data-choice="A">
+        A. Waxing Crescent
+      </button>
+
+      <button data-choice="B">
+        B. Full Moon
+      </button>
+
+      <button data-choice="C">
+        C. Third Quarter
+      </button>
+
+      <button data-choice="D">
+        D. Waning Crescent
+      </button>
+
+      <div class="d75-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d75-question"
+         data-answer="D">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        Which sequence is correct?
+      </p>
+
+      <button data-choice="A">
+        A. New Moon → Full Moon → Waxing Crescent → First Quarter
+      </button>
+
+      <button data-choice="B">
+        B. Full Moon → First Quarter → Waxing Crescent → New Moon
+      </button>
+
+      <button data-choice="C">
+        C. New Moon → Waning Crescent → Third Quarter → Full Moon
+      </button>
+
+      <button data-choice="D">
+        D. New Moon → Waxing Crescent → First Quarter → Waxing Gibbous → Full Moon
+      </button>
+
+      <div class="d75-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d75-question"
+         data-answer="A">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        What does the word
+        <strong>waning</strong>
+        describe?
+      </p>
+
+      <button data-choice="A">
+        A. The illuminated portion we see is shrinking.
+      </button>
+
+      <button data-choice="B">
+        B. The Moon is moving closer to the Sun.
+      </button>
+
+      <button data-choice="C">
+        C. Earth's shadow is covering the Moon each night.
+      </button>
+
+      <button data-choice="D">
+        D. The Moon is producing less light.
+      </button>
+
+      <div class="d75-question-feedback"></div>
+
+    </div>
+
+
+    <div class="d75-question"
+         data-answer="C">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        Which statement best explains
+        why we observe Moon phases?
+      </p>
+
+      <button data-choice="A">
+        A. The Moon makes different amounts of light each night.
+      </button>
+
+      <button data-choice="B">
+        B. Earth's shadow covers a different amount of the Moon every night.
+      </button>
+
+      <button data-choice="C">
+        C. We see different portions of the Moon's sunlit half as the Moon moves around Earth.
+      </button>
+
+      <button data-choice="D">
+        D. Clouds cause the eight Moon phases.
+      </button>
+
+      <div class="d75-question-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Written Exit Ticket
+    </h2>
+
+    <p>
+      Tonight is a
+      <strong>New Moon.</strong>
+
+      Predict what the Moon should look like approximately:
+
+      <strong>
+        7 days later,
+        15 days later,
+        and 22 days later.
+      </strong>
+
+      Then explain the pattern you used.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="About 7 days later..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Explain Your Thinking: CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        CER Question:
+      </strong>
+
+      How can the Moon phase pattern
+      be used to predict
+      the Moon's future appearance?
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="Moon phases can be predicted because..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="For example, if tonight is a New Moon..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This evidence supports my claim because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONNECTION -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🌎 Next Space Mission
+    </div>
+
+    <h2>
+      Preparing for Earth Rotation
+    </h2>
+
+
+    <div class="d59-box">
+
+      We now know:
+
+      <ul>
+
+        <li>
+          where Earth is located in the solar system,
+        </li>
+
+        <li>
+          the order of the planets,
+        </li>
+
+        <li>
+          and the repeating Moon phase pattern.
+        </li>
+
+      </ul>
+
+
+      Next we begin the Grade 5 focus:
+
+      <strong>
+        Earth rotating on its axis.
+      </strong>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d75VocabModal"
+     class="d75-modal">
+
+  <div class="d75-modal-card">
+
+    <button id="d75VocabClose"
+            class="d75-modal-close"
+            type="button">
+      ×
+    </button>
+
+    <div id="d75ModalIcon"
+         class="d75-modal-icon"></div>
+
+    <h2 id="d75ModalTerm"></h2>
+
+    <p id="d75ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day75_direct.js') }}?v=75-final"
+></script>
+
+{% endblock %}

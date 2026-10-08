@@ -1,0 +1,560 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='moon_phase_pattern_lab.css') }}?v=75.1"
+>
+
+
+<div class="mp-shell">
+
+  <header class="mp-hero">
+
+    <div class="mp-tags">
+
+      <span>🌙 Interactive Lab</span>
+
+      <span>Moon Pattern Mission</span>
+
+      <span>Think Along 4.9B</span>
+
+    </div>
+
+
+    <div class="mp-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio: Moon Phase Pattern Lab
+        </h1>
+
+        <p>
+          Build the Moon phase cycle,
+          then use the pattern to predict
+          future Moon phases.
+        </p>
+
+      </div>
+
+
+      <a
+        class="mp-back"
+        href="/second-nine-weeks/day/75?view=student"
+      >
+        ← Back to Day 75
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- KEY -->
+
+  <section class="mp-key">
+
+    <div>
+
+      <div class="mp-eyebrow">
+        MOON PATTERN ENGINE
+      </div>
+
+      <h2>
+        The Pattern Repeats About Every 29.5 Days
+      </h2>
+
+      <p>
+        Waxing = illuminated portion growing.
+
+        <br>
+
+        Waning = illuminated portion shrinking.
+      </p>
+
+    </div>
+
+
+    <aside class="mp-reminder">
+
+      <strong>
+        🚫 Remember
+      </strong>
+
+      <p>
+        Normal Moon phases are not caused
+        by Earth's shadow.
+      </p>
+
+    </aside>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="mp-mission">
+
+    <div>
+
+      <div class="mp-eyebrow">
+        MISSION 1
+      </div>
+
+      <h2>
+        Build the 8-Phase Cycle
+      </h2>
+
+      <p>
+        Start with New Moon
+        and arrange the remaining phases
+        in the correct repeating order.
+      </p>
+
+    </div>
+
+
+    <aside class="mp-counter">
+
+      <strong>
+        🔄 Cycle Status
+      </strong>
+
+      <div id="mpOrderCounter">
+        0 / 8 placed
+      </div>
+
+    </aside>
+
+  </section>
+
+
+  <section class="mp-board">
+
+    <h3>
+      🌙 Phase Tray
+    </h3>
+
+    <p>
+      Drag a phase into a numbered position,
+      or click a phase and then click a position.
+    </p>
+
+
+    <div id="mpPhaseTray"
+         class="mp-phase-tray"></div>
+
+
+    <div class="mp-cycle-slots">
+
+      {% for n in range(1,9) %}
+
+      <div
+        class="mp-slot"
+        data-slot="{{ n - 1 }}"
+      >
+
+        <span class="mp-slot-number">
+          {{ n }}
+        </span>
+
+        <div class="mp-slot-zone"></div>
+
+      </div>
+
+      {% endfor %}
+
+    </div>
+
+
+    <div class="mp-actions">
+
+      <button id="mpCheckOrder"
+              type="button">
+        ✅ CHECK PHASE ORDER
+      </button>
+
+      <button id="mpResetOrder"
+              type="button">
+        ↻ RESET CYCLE
+      </button>
+
+    </div>
+
+
+    <div id="mpOrderFeedback"
+         class="mp-feedback">
+      Place all eight Moon phases before checking.
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="mp-mission">
+
+    <div>
+
+      <div class="mp-eyebrow">
+        MISSION 2
+      </div>
+
+      <h2>
+        Moon Phase Predictor
+      </h2>
+
+      <p>
+        Choose a starting phase,
+        move forward through time,
+        and predict the future phase.
+      </p>
+
+    </div>
+
+
+    <aside class="mp-counter">
+
+      <strong>
+        🔮 Prediction Score
+      </strong>
+
+      <div id="mpPredictionScore">
+        0 correct
+      </div>
+
+    </aside>
+
+  </section>
+
+
+  <section class="mp-predictor">
+
+    <div class="mp-predict-controls">
+
+      <label>
+
+        <strong>
+          Starting Phase
+        </strong>
+
+        <select id="mpStartPhase">
+
+          <option value="0">🌑 New Moon</option>
+
+          <option value="1">🌒 Waxing Crescent</option>
+
+          <option value="2">🌓 First Quarter</option>
+
+          <option value="3">🌔 Waxing Gibbous</option>
+
+          <option value="4">🌕 Full Moon</option>
+
+          <option value="5">🌖 Waning Gibbous</option>
+
+          <option value="6">🌗 Third Quarter</option>
+
+          <option value="7">🌘 Waning Crescent</option>
+
+        </select>
+
+      </label>
+
+
+      <label>
+
+        <strong>
+          Days Later
+        </strong>
+
+        <select id="mpDaysLater">
+
+          <option value="4">About 4 days</option>
+
+          <option value="7">About 7 days</option>
+
+          <option value="11">About 11 days</option>
+
+          <option value="15" selected>About 15 days</option>
+
+          <option value="18">About 18 days</option>
+
+          <option value="22">About 22 days</option>
+
+          <option value="26">About 26 days</option>
+
+          <option value="29">About 29 days</option>
+
+        </select>
+
+      </label>
+
+    </div>
+
+
+    <div class="mp-predict-question">
+
+      <div id="mpStartDisplay"
+           class="mp-large-phase">
+        🌑
+      </div>
+
+      <div>
+
+        <span class="mp-small-label">
+          STARTING PHASE
+        </span>
+
+        <h2 id="mpStartName">
+          New Moon
+        </h2>
+
+        <p id="mpPredictionPrompt">
+          What phase should we expect about 15 days later?
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div id="mpPredictionChoices"
+         class="mp-prediction-choices"></div>
+
+
+    <button
+      id="mpCheckPrediction"
+      class="mp-check-prediction"
+      type="button"
+    >
+      🔮 CHECK MY PREDICTION
+    </button>
+
+
+    <div id="mpPredictionFeedback"
+         class="mp-feedback">
+      Choose the phase you predict,
+      then check your reasoning.
+    </div>
+
+
+    <button
+      id="mpNewPrediction"
+      class="mp-new-prediction"
+      type="button"
+    >
+      ↻ TRY ANOTHER PREDICTION
+    </button>
+
+  </section>
+
+
+  <!-- TIMELINE -->
+
+  <section class="mp-timeline-card">
+
+    <h2>
+      ⏱ Moon Pattern Timeline
+    </h2>
+
+
+    <div class="mp-timeline">
+
+      <div>
+        <span>🌑</span>
+        <strong>Day 0</strong>
+        <small>New</small>
+      </div>
+
+
+      <div>
+        <span>🌓</span>
+        <strong>~Day 7</strong>
+        <small>First Quarter</small>
+      </div>
+
+
+      <div>
+        <span>🌕</span>
+        <strong>~Day 15</strong>
+        <small>Full</small>
+      </div>
+
+
+      <div>
+        <span>🌗</span>
+        <strong>~Day 22</strong>
+        <small>Third Quarter</small>
+      </div>
+
+
+      <div>
+        <span>🌑</span>
+        <strong>~Day 29.5</strong>
+        <small>New Again</small>
+      </div>
+
+    </div>
+
+
+    <div class="mp-timeline-note">
+
+      These times are approximate.
+
+      The complete lunar phase cycle
+      takes about
+      <strong>
+        29.5 days.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- MASTER STATUS -->
+
+  <section class="mp-master">
+
+    <div class="mp-master-icon">
+      🌙
+    </div>
+
+    <h2>
+      Moon Pattern Mission Status
+    </h2>
+
+
+    <div class="mp-master-grid">
+
+      <div>
+
+        <span id="mpOrderStatus">
+          ⬜
+        </span>
+
+        <strong>
+          8-Phase Cycle
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span id="mpPredictStatus">
+          ⬜
+        </span>
+
+        <strong>
+          Pattern Predictions
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div id="mpMasterMessage"
+         class="mp-master-message">
+      Build the cycle and make at least 3 correct predictions.
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="mp-evidence">
+
+    <h2>
+      📓 Moon Phase Evidence Notebook
+    </h2>
+
+
+    <div class="mp-evidence-grid">
+
+      <article>
+
+        <strong>
+          📈 Waxing
+        </strong>
+
+        <p>
+          What happens to the illuminated portion
+          we see while the Moon is waxing?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          📉 Waning
+        </strong>
+
+        <p>
+          What happens to the illuminated portion
+          we see while the Moon is waning?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🔮 15-Day Prediction
+        </strong>
+
+        <p>
+          If tonight is New Moon,
+          what should the Moon look like
+          approximately 15 days later?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🔄 Repeating Pattern
+        </strong>
+
+        <p>
+          Why can scientists predict
+          future Moon phases?
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="mp-question">
+
+      <strong>
+        🧠 Evidence Question:
+      </strong>
+
+      If tonight is a Full Moon,
+      what should the Moon look like
+      approximately 15 days later?
+      Explain how you know.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='moon_phase_pattern_lab.js') }}?v=75.1"
+></script>
+
+{% endblock %}

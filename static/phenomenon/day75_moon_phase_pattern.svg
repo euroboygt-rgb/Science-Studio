@@ -1,0 +1,403 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <rect width="1200"
+        height="700"
+        rx="24"
+        fill="#071120"/>
+
+  <text x="600"
+        y="52"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#ffffff">
+    PHENOMENON MISSION: WHAT WILL THE MOON LOOK LIKE IN 15 DAYS?
+  </text>
+
+  <text x="600"
+        y="90"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="700"
+        fill="#ccecff">
+    The Moon follows a repeating pattern.
+  </text>
+
+
+  <!-- PHASE CARDS -->
+
+  <g font-family="Arial, sans-serif"
+     font-weight="900">
+
+    <rect x="55"
+          y="145"
+          width="125"
+          height="165"
+          rx="16"
+          fill="#17213b"
+          stroke="#ffffff"
+          stroke-width="3"/>
+
+    <text x="117"
+          y="218"
+          text-anchor="middle"
+          font-size="52">
+      🌑
+    </text>
+
+    <text x="117"
+          y="270"
+          text-anchor="middle"
+          font-size="14"
+          fill="#ffffff">
+      NEW
+    </text>
+
+
+    <rect x="190"
+          y="145"
+          width="125"
+          height="165"
+          rx="16"
+          fill="#17213b"
+          stroke="#ffffff"
+          stroke-width="3"/>
+
+    <text x="252"
+          y="218"
+          text-anchor="middle"
+          font-size="52">
+      🌒
+    </text>
+
+    <text x="252"
+          y="266"
+          text-anchor="middle"
+          font-size="13"
+          fill="#ffffff">
+      WAXING
+    </text>
+
+    <text x="252"
+          y="284"
+          text-anchor="middle"
+          font-size="13"
+          fill="#ffffff">
+      CRESCENT
+    </text>
+
+
+    <rect x="325"
+          y="145"
+          width="125"
+          height="165"
+          rx="16"
+          fill="#17213b"
+          stroke="#ffffff"
+          stroke-width="3"/>
+
+    <text x="387"
+          y="218"
+          text-anchor="middle"
+          font-size="52">
+      🌓
+    </text>
+
+    <text x="387"
+          y="266"
+          text-anchor="middle"
+          font-size="13"
+          fill="#ffffff">
+      FIRST
+    </text>
+
+    <text x="387"
+          y="284"
+          text-anchor="middle"
+          font-size="13"
+          fill="#ffffff">
+      QUARTER
+    </text>
+
+
+    <rect x="460"
+          y="145"
+          width="125"
+          height="165"
+          rx="16"
+          fill="#17213b"
+          stroke="#ffffff"
+          stroke-width="3"/>
+
+    <text x="522"
+          y="218"
+          text-anchor="middle"
+          font-size="52">
+      🌔
+    </text>
+
+    <text x="522"
+          y="266"
+          text-anchor="middle"
+          font-size="13"
+          fill="#ffffff">
+      WAXING
+    </text>
+
+    <text x="522"
+          y="284"
+          text-anchor="middle"
+          font-size="13"
+          fill="#ffffff">
+      GIBBOUS
+    </text>
+
+
+    <rect x="595"
+          y="145"
+          width="125"
+          height="165"
+          rx="16"
+          fill="#17213b"
+          stroke="#ffe45d"
+          stroke-width="6"/>
+
+    <text x="657"
+          y="218"
+          text-anchor="middle"
+          font-size="52">
+      🌕
+    </text>
+
+    <text x="657"
+          y="270"
+          text-anchor="middle"
+          font-size="14"
+          fill="#ffe45d">
+      FULL
+    </text>
+
+
+    <rect x="730"
+          y="145"
+          width="125"
+          height="165"
+          rx="16"
+          fill="#17213b"
+          stroke="#ffffff"
+          stroke-width="3"/>
+
+    <text x="792"
+          y="218"
+          text-anchor="middle"
+          font-size="52">
+      🌖
+    </text>
+
+    <text x="792"
+          y="266"
+          text-anchor="middle"
+          font-size="13"
+          fill="#ffffff">
+      WANING
+    </text>
+
+    <text x="792"
+          y="284"
+          text-anchor="middle"
+          font-size="13"
+          fill="#ffffff">
+      GIBBOUS
+    </text>
+
+
+    <rect x="865"
+          y="145"
+          width="125"
+          height="165"
+          rx="16"
+          fill="#17213b"
+          stroke="#ffffff"
+          stroke-width="3"/>
+
+    <text x="927"
+          y="218"
+          text-anchor="middle"
+          font-size="52">
+      🌗
+    </text>
+
+    <text x="927"
+          y="266"
+          text-anchor="middle"
+          font-size="13"
+          fill="#ffffff">
+      THIRD
+    </text>
+
+    <text x="927"
+          y="284"
+          text-anchor="middle"
+          font-size="13"
+          fill="#ffffff">
+      QUARTER
+    </text>
+
+
+    <rect x="1000"
+          y="145"
+          width="125"
+          height="165"
+          rx="16"
+          fill="#17213b"
+          stroke="#ffffff"
+          stroke-width="3"/>
+
+    <text x="1062"
+          y="218"
+          text-anchor="middle"
+          font-size="52">
+      🌘
+    </text>
+
+    <text x="1062"
+          y="266"
+          text-anchor="middle"
+          font-size="13"
+          fill="#ffffff">
+      WANING
+    </text>
+
+    <text x="1062"
+          y="284"
+          text-anchor="middle"
+          font-size="13"
+          fill="#ffffff">
+      CRESCENT
+    </text>
+
+  </g>
+
+
+  <!-- ARROW -->
+
+  <line x1="105"
+        y1="355"
+        x2="1090"
+        y2="355"
+        stroke="#7131cc"
+        stroke-width="10"
+        stroke-linecap="round"/>
+
+  <polygon points="1090,355 1055,335 1055,375"
+           fill="#7131cc"/>
+
+
+  <!-- TIME MARKERS -->
+
+  <circle cx="118"
+          cy="355"
+          r="14"
+          fill="#ffe45d"/>
+
+  <circle cx="387"
+          cy="355"
+          r="14"
+          fill="#ffe45d"/>
+
+  <circle cx="657"
+          cy="355"
+          r="14"
+          fill="#ffe45d"/>
+
+  <circle cx="927"
+          cy="355"
+          r="14"
+          fill="#ffe45d"/>
+
+
+  <text x="118"
+        y="405"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="18"
+        font-weight="900">
+    DAY 0
+  </text>
+
+  <text x="387"
+        y="405"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="18"
+        font-weight="900">
+    ~DAY 7
+  </text>
+
+  <text x="657"
+        y="405"
+        text-anchor="middle"
+        fill="#ffe45d"
+        font-size="18"
+        font-weight="900">
+    ~DAY 15
+  </text>
+
+  <text x="927"
+        y="405"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="18"
+        font-weight="900">
+    ~DAY 22
+  </text>
+
+
+  <rect x="150"
+        y="455"
+        width="900"
+        height="130"
+        rx="18"
+        fill="#ffffff"
+        stroke="#7131cc"
+        stroke-width="5"/>
+
+  <text x="600"
+        y="500"
+        text-anchor="middle"
+        fill="#20346f"
+        font-size="26"
+        font-weight="900">
+    NEW MOON TONIGHT
+  </text>
+
+  <text x="600"
+        y="545"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="26"
+        font-weight="900">
+    WHAT PHASE SHOULD WE EXPECT ABOUT 15 DAYS LATER?
+  </text>
+
+
+  <rect x="285"
+        y="615"
+        width="630"
+        height="55"
+        rx="14"
+        fill="#fff4a8"
+        stroke="#ffffff"
+        stroke-width="3"/>
+
+  <text x="600"
+        y="650"
+        text-anchor="middle"
+        fill="#24336b"
+        font-size="20"
+        font-weight="900">
+    THE FULL CYCLE TAKES ABOUT 29.5 DAYS
+  </text>
+
+</svg>

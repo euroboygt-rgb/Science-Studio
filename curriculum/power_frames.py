@@ -800,3 +800,20 @@ POWER_FRAMES[74] = {
 }
 
 # Science Studio Day 74 Power Frame End
+
+
+# Science Studio Day 75 Power Frame Start
+
+POWER_FRAMES[75] = {
+
+    "i_can":
+        "I can identify the Moon phases in order and predict future phases.",
+
+    "by":
+        "using the repeating approximately 29.5-day Moon phase pattern.",
+
+    "i_know":
+        "I know I have learned this when I can correctly predict what the Moon will look like several days later."
+}
+
+# Science Studio Day 75 Power Frame End

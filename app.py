@@ -60,6 +60,58 @@ app = Flask(__name__)
 
 
 
+
+# Science Studio Dedicated Day 75 Start
+
+@app.before_request
+def science_studio_dedicated_day75():
+
+    from flask import (
+        request as flask_request,
+        render_template as flask_render_template,
+    )
+
+    if flask_request.path not in (
+        "/second-nine-weeks/day/75",
+        "/2nd-nine-weeks/day/75",
+    ):
+        return None
+
+    view = flask_request.args.get(
+        "view",
+        "student"
+    )
+
+    if view not in (
+        "student",
+        "teacher",
+    ):
+        view = "student"
+
+    return flask_render_template(
+        "day75_lesson.html",
+        view=view
+    )
+
+# Science Studio Dedicated Day 75 End
+
+
+# Science Studio Moon Phase Pattern Lab Route Start
+
+@app.route("/labs/moon-phase-pattern")
+def moon_phase_pattern_lab():
+
+    from flask import (
+        render_template as flask_render_template,
+    )
+
+    return flask_render_template(
+        "moon_phase_pattern_lab.html"
+    )
+
+# Science Studio Moon Phase Pattern Lab Route End
+
+
 # Science Studio Dedicated Day 74 Start
 
 @app.before_request

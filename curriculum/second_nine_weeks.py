@@ -4273,3 +4273,99 @@ SECOND_NINE_WEEKS_LESSONS[74] = {
 }
 
 # Science Studio Day 74 End
+
+
+# Science Studio Day 75 Start
+
+SECOND_NINE_WEEKS_LESSONS[75] = {
+
+    "day": 75,
+
+    "title":
+        "Moon Pattern Mission: Predict the Moon",
+
+    "unit":
+        "Patterns in Space: Moon Phases and Earth's Rotation",
+
+    "teks":
+        "Think Along 4.9B; Bridge to 5.9A",
+
+    "focus":
+        "Students identify the repeating sequence of Moon phases and use the approximately 29.5-day lunar cycle to predict the Moon's observable appearance over time.",
+
+    "learning_target":
+        "We will identify the Moon phases in order and use the repeating pattern to predict what the Moon will look like days later.",
+
+    "success_criteria":
+        "I can place the eight major Moon phases in order, identify waxing and waning, and predict the Moon's approximate phase 7, 15, 22, or 29 days later.",
+
+    "essential_question":
+        "How can the repeating pattern of Moon phases help us predict what the Moon will look like in the future?",
+
+    "bell_ringer": [
+        "Does the Moon look exactly the same every night?",
+        "What Moon phases can you already name?",
+        "If tonight is a New Moon, what do you think the Moon might look like about two weeks from now?"
+    ],
+
+    "mini_lesson": [
+        "The Moon does not make its own visible light; it reflects sunlight.",
+        "Half of the Moon is always illuminated by the Sun, but from Earth we see different portions of that illuminated half.",
+        "The repeating pattern of Moon phases takes about 29.5 days.",
+        "The eight major phases are New Moon, Waxing Crescent, First Quarter, Waxing Gibbous, Full Moon, Waning Gibbous, Third Quarter, and Waning Crescent.",
+        "Waxing means the illuminated portion we see is growing.",
+        "Waning means the illuminated portion we see is shrinking.",
+        "About 7 days after a New Moon, the Moon is near First Quarter.",
+        "About 14 to 15 days after a New Moon, the Moon is near Full Moon.",
+        "About 22 days after a New Moon, the Moon is near Third Quarter.",
+        "About 29 to 30 days after a New Moon, the cycle returns near New Moon.",
+        "Moon phases are not normally caused by Earth's shadow. Earth's shadow causes a lunar eclipse."
+    ],
+
+    "science_notebook": [
+        "Draw a Moon Phase Cycle with arrows showing the repeating pattern.",
+        "Write the eight phases in order.",
+        "Label New Moon through Full Moon as the waxing half of the cycle.",
+        "Label Full Moon through New Moon as the waning half of the cycle.",
+        "Write: about 7 days = quarter cycle, about 15 days = half cycle, about 22 days = three-quarter cycle, about 29.5 days = one full cycle."
+    ],
+
+    "guided_practice": [
+        "Identify the phase after New Moon.",
+        "Identify the phase before Full Moon.",
+        "Identify whether Waxing Gibbous is waxing or waning.",
+        "Predict the phase about 15 days after New Moon.",
+        "Predict the phase about 15 days after Full Moon.",
+        "Explain why Moon phases are not caused by Earth's shadow."
+    ],
+
+    "lab_title":
+        "Moon Phase Pattern Lab: Build and Predict",
+
+    "lab_url":
+        "/labs/moon-phase-pattern?mission=day75",
+
+    "exit_ticket":
+        "If tonight is a New Moon, predict what the Moon will look like about 7 days, 15 days, and 22 days later. Explain the pattern you used.",
+
+    "vocabulary": [
+        "Moon phase",
+        "New Moon",
+        "Waxing Crescent",
+        "First Quarter",
+        "Waxing Gibbous",
+        "Full Moon",
+        "Waning Gibbous",
+        "Third Quarter",
+        "Waning Crescent",
+        "waxing",
+        "waning",
+        "lunar cycle"
+    ],
+
+    "teacher_note":
+        "Emphasize prediction from a repeating pattern. The lunar phase cycle is approximately 29.5 days, not exactly 28 days. "
+        "Use approximate timing for elementary prediction questions. Explicitly address the misconception that normal Moon phases are caused by Earth's shadow."
+}
+
+# Science Studio Day 75 End
