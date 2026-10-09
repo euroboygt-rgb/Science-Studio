@@ -1,0 +1,1262 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=81-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day81_direct.css') }}?v=81-final"
+>
+
+
+<div id="DAY81_DIRECT_TEMPLATE"
+     class="d81-page">
+
+
+  <!-- HERO -->
+
+  <section class="d81-hero">
+
+    <div class="d81-tags">
+
+      <span>Day 81</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.9A</span>
+
+      <span>Certification Mission</span>
+
+    </div>
+
+
+    <h1>
+      🏆 Earth Rotation Certification Mission:
+      Prove Your Evidence Skills
+    </h1>
+
+    <p>
+      You restored Mission Control.
+
+      Now prove that you can use
+      Earth-rotation evidence
+      in unfamiliar situations.
+    </p>
+
+
+    <div class="d81-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/81?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/81?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Certification Power Frame
+    </div>
+
+    <h2>
+      Today's Mission
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          use evidence
+          to solve unfamiliar
+          Earth rotation problems.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          analyzing models,
+          observations,
+          and data
+          before selecting an explanation.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can defend my answer
+          with evidence about
+          Earth's rotation.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🏆 Certification Alert
+    </div>
+
+    <h2>
+      Final Science Crew Evaluation
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day81_certification.svg"
+        alt="Earth Rotation Certification with four locked levels"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Certification Question:
+      </strong>
+
+      Can you identify Earth's rotation
+      as the cause of daily patterns
+      even when the scenario
+      looks different from
+      the models you practiced?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d81MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Certification Brief
+        </div>
+
+        <h2>
+          How to Think Like a STAAR Scientist
+        </h2>
+
+        <div class="d59-unit">
+          Evidence → Reasoning → Answer
+        </div>
+
+      </div>
+
+
+      <button
+        id="d81Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Certification Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d81SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d81SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d81SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d81SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d81SlideNumber"></strong>
+
+      <div>
+
+        <button id="d81Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d81Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d81Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve's Certification Challenge
+        </div>
+
+        <h2>
+          Don't Let the Question Trick You
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve reads a question
+          describing sunrise,
+          sunset,
+          and changing shadows.
+
+          None of the answer choices
+          use the exact words
+          from his science notebook.
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            What should Steve do FIRST?
+          </strong>
+
+
+          <button class="d81-steve-answer"
+                  data-answer="A">
+            A. Pick the longest answer.
+          </button>
+
+          <button class="d81-steve-answer"
+                  data-answer="B">
+            B. Identify the evidence in the scenario.
+          </button>
+
+          <button class="d81-steve-answer"
+                  data-answer="C">
+            C. Choose the answer mentioning the Moon.
+          </button>
+
+          <button class="d81-steve-answer"
+                  data-answer="D">
+            D. Guess based on one vocabulary word.
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button
+              id="d81SteveCheck"
+              class="d59-check"
+              type="button"
+            >
+              Check Strategy
+            </button>
+
+            <button
+              id="d81SteveReset"
+              class="d59-reset"
+              type="button"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d81SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Certification Vocabulary
+    </h2>
+
+
+    <div class="d81-vocab-grid">
+
+      {% set words = [
+        ("📍","axis","The imaginary tilted line Earth rotates around."),
+        ("🔄","rotation","Earth spinning around its axis."),
+        ("🔎","evidence","Observations or information used to support an explanation."),
+        ("🧠","infer","To reach a conclusion using evidence and reasoning."),
+        ("☀️","day","When a location is on the side of Earth receiving sunlight."),
+        ("🌙","night","When a location is on the side facing away from the Sun."),
+        ("👀","apparent motion","Motion that seems to occur from an observer's point of view."),
+        ("⬛","shadow","A dark area formed when an object blocks light."),
+        ("🔁","pattern","Something that repeats in a predictable way.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d81-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will use evidence
+      from models,
+      observations,
+      and data
+      to solve Earth rotation problems.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      Evidence Recall
+    </h2>
+
+
+    <div class="d59-box">
+
+      Without looking at your notes:
+
+      <ol>
+
+        <li>
+          How long is one Earth rotation?
+        </li>
+
+        <li>
+          Which direction does Earth rotate?
+        </li>
+
+        <li>
+          Which direction does the Sun
+          appear to move?
+        </li>
+
+        <li>
+          Why does one location
+          experience day and night?
+        </li>
+
+        <li>
+          What happens to a shadow
+          when the Sun appears higher?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      The STAAR Evidence Method
+    </h2>
+
+
+    <div class="d81-method">
+
+      <article>
+
+        <span>1️⃣</span>
+
+        <h3>
+          READ
+        </h3>
+
+        <p>
+          What is happening
+          in the scenario?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>2️⃣</span>
+
+        <h3>
+          FIND EVIDENCE
+        </h3>
+
+        <p>
+          What observation,
+          model,
+          direction,
+          or data is given?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>3️⃣</span>
+
+        <h3>
+          CONNECT
+        </h3>
+
+        <p>
+          Which Earth-rotation idea
+          explains the evidence?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>4️⃣</span>
+
+        <h3>
+          ELIMINATE
+        </h3>
+
+        <p>
+          Remove answers
+          that do not match
+          all evidence.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>5️⃣</span>
+
+        <h3>
+          PROVE
+        </h3>
+
+        <p>
+          Explain why your answer
+          fits the evidence.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d81-evidence-map">
+
+      <div>
+
+        <strong>
+          📍 ROTATION
+        </strong>
+
+        <p>
+          Axis
+        </p>
+
+        <p>
+          West → East
+        </p>
+
+        <p>
+          About 24 hours
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          ☀️🌙 DAY / NIGHT
+        </strong>
+
+        <p>
+          Facing Sun = Day
+        </p>
+
+        <p>
+          Facing away = Night
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          🌅🌇 APPARENT SUN
+        </strong>
+
+        <p>
+          Appears East → West
+        </p>
+
+        <p>
+          Caused by rotation
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          ⬛ SHADOWS
+        </strong>
+
+        <p>
+          Generally away from Sun
+        </p>
+
+        <p>
+          Higher Sun = shorter
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Certification Rule
+      </strong>
+
+      <br><br>
+
+      Do not choose an answer
+      because it contains
+      a familiar science word.
+
+      <br><br>
+
+      Choose the answer
+      that explains
+      <strong>
+        ALL of the evidence.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Certification Evidence Map
+    </h2>
+
+
+    <div class="d59-box">
+
+      Create four boxes:
+
+      <ol>
+
+        <li>
+          <strong>Rotation:</strong>
+          axis, west → east, about 24 hours
+        </li>
+
+        <li>
+          <strong>Day/Night:</strong>
+          facing Sun = day,
+          facing away = night
+        </li>
+
+        <li>
+          <strong>Apparent Sun:</strong>
+          appears east → west
+        </li>
+
+        <li>
+          <strong>Shadows:</strong>
+          generally away from Sun,
+          higher Sun = shorter shadow
+        </li>
+
+      </ol>
+
+      Draw arrows from all four boxes
+      to one center statement:
+
+      <br><br>
+
+      <strong>
+        COMMON CAUSE:
+        EARTH'S ROTATION
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Prove It, Don't Guess It
+    </h2>
+
+
+    <div class="d59-box">
+
+      Display an unfamiliar scenario.
+
+      Students must respond using:
+
+      <br><br>
+
+      <strong>
+        "My answer is ___ because the evidence shows ___."
+      </strong>
+
+      <br><br>
+
+      Require students to identify
+      the evidence before
+      revealing the answer choices.
+
+      <br><br>
+
+      Suggested teacher prompts:
+
+      <ul>
+
+        <li>
+          What evidence matters?
+        </li>
+
+        <li>
+          What information is a distractor?
+        </li>
+
+        <li>
+          What is Earth actually doing?
+        </li>
+
+        <li>
+          What would an observer see?
+        </li>
+
+        <li>
+          Which answer explains all evidence?
+        </li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- CERTIFICATION LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🏆 Final Certification Lab
+    </div>
+
+    <h2>
+      Earth Rotation Certification
+    </h2>
+
+
+    <p>
+      Complete four certification levels
+      using original Earth-rotation scenarios.
+    </p>
+
+
+    <div class="d81-level-grid">
+
+      <div>
+        📍
+        <strong>Level 1</strong>
+        Rotation Fundamentals
+      </div>
+
+      <div>
+        ☀️🌙
+        <strong>Level 2</strong>
+        Day/Night Evidence
+      </div>
+
+      <div>
+        🌅⬛
+        <strong>Level 3</strong>
+        Sun & Shadow Evidence
+      </div>
+
+      <div>
+        🧠
+        <strong>Level 4</strong>
+        Final Mixed Mission
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      Earn all four badges
+      to receive:
+
+      <br><br>
+
+      🏆
+      <strong>
+        EARTH ROTATION SCIENCE SPECIALIST
+      </strong>
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/earth-rotation-certification?mission=day81"
+    >
+      🏆 Begin Earth Rotation Certification
+    </a>
+
+  </section>
+
+
+  <!-- STAAR QUESTIONS -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Synthesis Check
+    </div>
+
+    <h2>
+      Final Earth Rotation Evidence
+    </h2>
+
+
+    <div class="d81-question"
+         data-answer="C">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        A student marks one location
+        on a globe.
+
+        The location is illuminated,
+        then later moves into darkness,
+        and eventually returns
+        to the illuminated side.
+
+        Which process causes this pattern?
+      </p>
+
+      <button data-choice="A">
+        A. Earth's revolution around the Sun
+      </button>
+
+      <button data-choice="B">
+        B. The Moon orbiting Earth
+      </button>
+
+      <button data-choice="C">
+        C. Earth's rotation on its axis
+      </button>
+
+      <button data-choice="D">
+        D. Clouds moving across Earth
+      </button>
+
+      <div class="d81-feedback"></div>
+
+    </div>
+
+
+    <div class="d81-question"
+         data-answer="B">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        An observer watches the Sun
+        appear to move
+        from the eastern sky
+        toward the western sky.
+
+        Which motion best explains
+        the observation?
+      </p>
+
+      <button data-choice="A">
+        A. Earth rotates east to west.
+      </button>
+
+      <button data-choice="B">
+        B. Earth rotates west to east.
+      </button>
+
+      <button data-choice="C">
+        C. The Sun revolves around Earth every day.
+      </button>
+
+      <button data-choice="D">
+        D. The Moon moves the Sun.
+      </button>
+
+      <div class="d81-feedback"></div>
+
+    </div>
+
+
+    <div class="d81-question"
+         data-answer="D">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        The same pole casts
+        a long shadow in the morning
+        and a shorter shadow later.
+
+        Which observation
+        best explains the change?
+      </p>
+
+      <button data-choice="A">
+        A. The pole became shorter.
+      </button>
+
+      <button data-choice="B">
+        B. Earth stopped rotating.
+      </button>
+
+      <button data-choice="C">
+        C. The Sun stopped producing light.
+      </button>
+
+      <button data-choice="D">
+        D. The Sun appeared higher in the sky.
+      </button>
+
+      <div class="d81-feedback"></div>
+
+    </div>
+
+
+    <div class="d81-question"
+         data-answer="A">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        Which statement
+        best explains why sunrise,
+        sunset,
+        and changing shadows
+        occur in a repeating pattern?
+      </p>
+
+      <button data-choice="A">
+        A. Earth rotates continuously.
+      </button>
+
+      <button data-choice="B">
+        B. Earth stops each night.
+      </button>
+
+      <button data-choice="C">
+        C. The Moon moves sunlight.
+      </button>
+
+      <button data-choice="D">
+        D. The Sun circles Earth once every day.
+      </button>
+
+      <div class="d81-feedback"></div>
+
+    </div>
+
+
+    <div class="d81-question"
+         data-answer="C">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        Which evidence
+        most strongly supports
+        the idea that Earth's rotation
+        creates several daily patterns?
+      </p>
+
+      <button data-choice="A">
+        A. Different planets have different sizes.
+      </button>
+
+      <button data-choice="B">
+        B. The Moon changes appearance during a month.
+      </button>
+
+      <button data-choice="C">
+        C. Day/night, apparent Sun position, and shadows repeat daily.
+      </button>
+
+      <button data-choice="D">
+        D. Earth revolves around the Sun each year.
+      </button>
+
+      <div class="d81-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Certification Exit Ticket
+    </h2>
+
+    <p>
+      Which piece of evidence
+      is most useful for proving
+      that Earth's rotation
+      causes a daily pattern?
+
+      <br><br>
+
+      Explain why.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="The strongest evidence is..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Final Earth Rotation CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      Earth's rotation causes
+      several predictable daily patterns.
+
+      <br><br>
+
+      Use evidence from at least
+      <strong>
+        two different patterns
+      </strong>
+      to support or challenge the claim.
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim that..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="One piece of evidence is... A second is..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="These observations connect to rotation because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- UNIT COMPLETE -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🌎 Earth Rotation Mission Complete
+    </div>
+
+    <h2>
+      You Have Investigated Earth's Daily Motion
+    </h2>
+
+
+    <div class="d59-box">
+
+      Your Earth Rotation evidence now includes:
+
+      <ul>
+
+        <li>
+          Earth's axis
+        </li>
+
+        <li>
+          approximately 24-hour rotation
+        </li>
+
+        <li>
+          day and night
+        </li>
+
+        <li>
+          sunrise and sunset
+        </li>
+
+        <li>
+          apparent Sun movement
+        </li>
+
+        <li>
+          changing shadow direction
+        </li>
+
+        <li>
+          changing shadow length
+        </li>
+
+      </ul>
+
+
+      <strong>
+        Next:
+      </strong>
+
+      prepare to transition
+      into our next Earth and Space unit.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d81VocabModal"
+     class="d81-modal">
+
+  <div class="d81-modal-card">
+
+    <button
+      id="d81VocabClose"
+      class="d81-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d81ModalIcon"
+         class="d81-modal-icon"></div>
+
+    <h2 id="d81ModalTerm"></h2>
+
+    <p id="d81ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day81_direct.js') }}?v=81-final"
+></script>
+
+{% endblock %}

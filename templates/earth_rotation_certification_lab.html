@@ -1,0 +1,848 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='earth_rotation_certification_lab.css') }}?v=81.1"
+>
+
+
+<div class="cert-shell">
+
+
+  <!-- HERO -->
+
+  <header class="cert-hero">
+
+    <div class="cert-tags">
+
+      <span>🏆 Certification Lab</span>
+
+      <span>Earth Rotation</span>
+
+      <span>TEKS 5.9A</span>
+
+    </div>
+
+
+    <div class="cert-hero-row">
+
+      <div>
+
+        <h1>
+          Earth Rotation Certification
+        </h1>
+
+        <p>
+          Four levels.
+          Evidence required.
+          No guessing.
+        </p>
+
+      </div>
+
+
+      <a
+        class="cert-back"
+        href="/second-nine-weeks/day/81?view=student"
+      >
+        ← Back to Day 81
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- CERTIFICATION DASHBOARD -->
+
+  <section class="cert-dashboard">
+
+    <div>
+
+      <div class="cert-eyebrow">
+        SCIENCE STUDIO CERTIFICATION
+      </div>
+
+      <h2>
+        Certification Progress
+      </h2>
+
+    </div>
+
+
+    <div class="cert-badges">
+
+      <div id="certBadge1">
+
+        <span>
+          🔒
+        </span>
+
+        <strong>
+          Rotation
+        </strong>
+
+      </div>
+
+
+      <div id="certBadge2">
+
+        <span>
+          🔒
+        </span>
+
+        <strong>
+          Day / Night
+        </strong>
+
+      </div>
+
+
+      <div id="certBadge3">
+
+        <span>
+          🔒
+        </span>
+
+        <strong>
+          Sun + Shadow
+        </strong>
+
+      </div>
+
+
+      <div id="certBadge4">
+
+        <span>
+          🔒
+        </span>
+
+        <strong>
+          Final Mission
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- LEVEL 1 -->
+
+  <section class="cert-level">
+
+    <div>
+
+      <div class="cert-eyebrow">
+        LEVEL 1
+      </div>
+
+      <h2>
+        Rotation Fundamentals
+      </h2>
+
+      <p>
+        Prove that you understand
+        Earth's actual motion.
+      </p>
+
+    </div>
+
+
+    <aside class="cert-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="certScore1">
+        0 / 3
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="cert-panel">
+
+    <div id="certQuestion1"
+         class="cert-question">
+      Loading...
+    </div>
+
+
+    <div id="certChoices1"
+         class="cert-choices">
+    </div>
+
+
+    <button
+      id="certCheck1"
+      class="cert-main-button"
+      type="button"
+    >
+      ✅ CHECK EVIDENCE
+    </button>
+
+
+    <div id="certFeedback1"
+         class="cert-feedback">
+      Choose the best answer.
+    </div>
+
+
+    <button
+      id="certNext1"
+      class="cert-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- LEVEL 2 -->
+
+  <section class="cert-level">
+
+    <div>
+
+      <div class="cert-eyebrow">
+        LEVEL 2
+      </div>
+
+      <h2>
+        Day / Night Evidence
+      </h2>
+
+      <p>
+        Use a rotating-Earth model
+        to analyze one location.
+      </p>
+
+    </div>
+
+
+    <aside class="cert-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="certScore2">
+        0 / 3
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="cert-panel">
+
+    <svg
+      class="cert-earth-model"
+      viewBox="0 0 1000 540"
+    >
+
+      <rect
+        width="1000"
+        height="540"
+        rx="18"
+        fill="#071120"
+      />
+
+
+      <!-- SUN -->
+
+      <circle
+        cx="125"
+        cy="260"
+        r="70"
+        fill="#ffd447"
+        stroke="#fff2a5"
+        stroke-width="8"
+      />
+
+
+      <text
+        x="125"
+        y="355"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="20"
+        font-weight="900"
+      >
+        SUN
+      </text>
+
+
+      <!-- LIGHT -->
+
+      <g
+        stroke="#ffe45d"
+        stroke-width="7"
+        opacity=".7"
+      >
+
+        <line x1="210"
+              y1="170"
+              x2="470"
+              y2="170"/>
+
+        <line x1="210"
+              y1="215"
+              x2="470"
+              y2="215"/>
+
+        <line x1="210"
+              y1="260"
+              x2="470"
+              y2="260"/>
+
+        <line x1="210"
+              y1="305"
+              x2="470"
+              y2="305"/>
+
+        <line x1="210"
+              y1="350"
+              x2="470"
+              y2="350"/>
+
+      </g>
+
+
+      <!-- EARTH -->
+
+      <circle
+        cx="680"
+        cy="260"
+        r="165"
+        fill="#168de3"
+        stroke="#ffffff"
+        stroke-width="7"
+      />
+
+
+      <path
+        d="
+          M560 210
+          Q605 165 660 182
+          Q695 202 680 238
+          Q640 253 615 287
+          Q580 275 560 245
+          Z
+        "
+        fill="#4fbd57"
+      />
+
+
+      <path
+        d="
+          M680 95
+          A165 165 0 0 1 680 425
+          Z
+        "
+        fill="#010718"
+        opacity=".82"
+      />
+
+
+      <line
+        x1="680"
+        y1="95"
+        x2="680"
+        y2="425"
+        stroke="#ffffff"
+        stroke-width="4"
+        stroke-dasharray="10 8"
+      />
+
+
+      <!-- POSITION MARKERS -->
+
+      <g class="cert-position"
+         data-position="A">
+
+        <circle
+          cx="530"
+          cy="260"
+          r="20"
+          fill="#ff3d3d"
+          stroke="#ffffff"
+          stroke-width="4"
+        />
+
+        <text
+          x="495"
+          y="255"
+          fill="#ffffff"
+          font-size="22"
+          font-weight="900"
+        >
+          A
+        </text>
+
+      </g>
+
+
+      <g class="cert-position"
+         data-position="B">
+
+        <circle
+          cx="680"
+          cy="395"
+          r="20"
+          fill="#ff3d3d"
+          stroke="#ffffff"
+          stroke-width="4"
+        />
+
+        <text
+          x="680"
+          y="440"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-size="22"
+          font-weight="900"
+        >
+          B
+        </text>
+
+      </g>
+
+
+      <g class="cert-position"
+         data-position="C">
+
+        <circle
+          cx="830"
+          cy="260"
+          r="20"
+          fill="#ff3d3d"
+          stroke="#ffffff"
+          stroke-width="4"
+        />
+
+        <text
+          x="865"
+          y="255"
+          fill="#ffffff"
+          font-size="22"
+          font-weight="900"
+        >
+          C
+        </text>
+
+      </g>
+
+
+      <g class="cert-position"
+         data-position="D">
+
+        <circle
+          cx="680"
+          cy="125"
+          r="20"
+          fill="#ff3d3d"
+          stroke="#ffffff"
+          stroke-width="4"
+        />
+
+        <text
+          x="680"
+          y="80"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-size="22"
+          font-weight="900"
+        >
+          D
+        </text>
+
+      </g>
+
+    </svg>
+
+
+    <div id="certQuestion2"
+         class="cert-question">
+      Loading...
+    </div>
+
+
+    <div id="certChoices2"
+         class="cert-choices">
+    </div>
+
+
+    <button
+      id="certCheck2"
+      class="cert-main-button"
+      type="button"
+    >
+      ✅ CHECK MODEL
+    </button>
+
+
+    <div id="certFeedback2"
+         class="cert-feedback">
+      Use the Earth-Sun model as evidence.
+    </div>
+
+
+    <button
+      id="certNext2"
+      class="cert-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- LEVEL 3 -->
+
+  <section class="cert-level">
+
+    <div>
+
+      <div class="cert-eyebrow">
+        LEVEL 3
+      </div>
+
+      <h2>
+        Apparent Sun & Shadow Evidence
+      </h2>
+
+      <p>
+        Infer what happened
+        using observations
+        from Earth's surface.
+      </p>
+
+    </div>
+
+
+    <aside class="cert-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="certScore3">
+        0 / 3
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="cert-panel">
+
+    <div id="certEvidenceCard"
+         class="cert-evidence-card">
+
+      Loading evidence...
+
+    </div>
+
+
+    <div class="cert-shadow-scene">
+
+      <div class="cert-east">
+        EAST
+      </div>
+
+      <div class="cert-west">
+        WEST
+      </div>
+
+      <div class="cert-pole"></div>
+
+      <div id="certShadow"
+           class="cert-shadow">
+      </div>
+
+      <div id="certSunHint"
+           class="cert-sun-hint">
+        ?
+      </div>
+
+    </div>
+
+
+    <div id="certQuestion3"
+         class="cert-question">
+      Loading...
+    </div>
+
+
+    <div id="certChoices3"
+         class="cert-choices">
+    </div>
+
+
+    <button
+      id="certCheck3"
+      class="cert-main-button"
+      type="button"
+    >
+      🔎 ANALYZE EVIDENCE
+    </button>
+
+
+    <div id="certFeedback3"
+         class="cert-feedback">
+      Use both direction and length.
+    </div>
+
+
+    <button
+      id="certNext3"
+      class="cert-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- LEVEL 4 -->
+
+  <section class="cert-level cert-final-level">
+
+    <div>
+
+      <div class="cert-eyebrow">
+        LEVEL 4 — FINAL
+      </div>
+
+      <h2>
+        Integrated Earth Rotation Mission
+      </h2>
+
+      <p>
+        These scenarios combine
+        more than one clue.
+      </p>
+
+    </div>
+
+
+    <aside class="cert-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="certScore4">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="cert-panel">
+
+    <div id="certFinalScenario"
+         class="cert-final-scenario">
+      Loading...
+    </div>
+
+
+    <div id="certQuestion4"
+         class="cert-question">
+      Loading...
+    </div>
+
+
+    <div id="certChoices4"
+         class="cert-choices">
+    </div>
+
+
+    <button
+      id="certCheck4"
+      class="cert-main-button"
+      type="button"
+    >
+      🧠 SUBMIT EVIDENCE
+    </button>
+
+
+    <div id="certFeedback4"
+         class="cert-feedback">
+      Explain the scenario using all available evidence.
+    </div>
+
+
+    <button
+      id="certNext4"
+      class="cert-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- CERTIFICATE -->
+
+  <section class="cert-certificate">
+
+    <div class="cert-certificate-icon">
+      🏆
+    </div>
+
+    <h2>
+      Earth Rotation Certification Status
+    </h2>
+
+
+    <div id="certFinalStatus"
+         class="cert-final-status">
+
+      Complete all four levels
+      to earn certification.
+
+    </div>
+
+
+    <div id="certCertificate"
+         class="cert-award">
+
+      <div class="cert-award-top">
+        SCIENCE STUDIO
+      </div>
+
+      <h2>
+        EARTH ROTATION
+        SCIENCE SPECIALIST
+      </h2>
+
+      <p>
+        Certification awarded for
+        evidence-based reasoning
+        about Earth's daily rotation patterns.
+      </p>
+
+      <div class="cert-seal">
+        🌎🏆
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EVIDENCE LOG -->
+
+  <section class="cert-log">
+
+    <h2>
+      📓 Final Evidence Log
+    </h2>
+
+
+    <div class="cert-log-grid">
+
+      <article>
+
+        <strong>
+          🔄 Rotation
+        </strong>
+
+        <p>
+          About 24 hours
+          around Earth's axis.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ☀️🌙 Day/Night
+        </strong>
+
+        <p>
+          Locations rotate
+          into and out of sunlight.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          👀 Apparent Sun
+        </strong>
+
+        <p>
+          Earth west → east.
+
+          Sun appears east → west.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ⬛ Shadows
+        </strong>
+
+        <p>
+          Generally away from Sun.
+
+          Higher Sun = shorter.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="cert-big-question">
+
+      <strong>
+        Final Reflection:
+      </strong>
+
+      Which evidence from this certification
+      best demonstrates that several
+      daily patterns share
+      the same underlying cause?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='earth_rotation_certification_lab.js') }}?v=81.1"
+></script>
+
+{% endblock %}

@@ -4855,3 +4855,99 @@ SECOND_NINE_WEEKS_LESSONS[80] = {
 }
 
 # Science Studio Day 80 End
+
+
+# Science Studio Day 81 Start
+
+SECOND_NINE_WEEKS_LESSONS[81] = {
+
+    "day": 81,
+
+    "title":
+        "Earth Rotation Certification Mission: Prove Your Evidence Skills",
+
+    "unit":
+        "Investigating Earth's Rotation",
+
+    "teks":
+        "5.9A, 5.1F, 5.2D",
+
+    "focus":
+        "Students synthesize evidence about Earth's rotation, day and night, "
+        "apparent Sun motion, and changing shadows in original STAAR-style scenarios.",
+
+    "learning_target":
+        "We will use evidence from models, observations, and data to solve Earth rotation problems.",
+
+    "success_criteria":
+        "I can analyze an unfamiliar scenario and use Earth's rotation "
+        "to explain day/night, apparent Sun motion, and shadow patterns.",
+
+    "essential_question":
+        "Can you use evidence to explain Earth's daily patterns even when the situation looks different from the model you practiced?",
+
+    "bell_ringer": [
+        "What motion of Earth connects the ideas we studied this week?",
+        "How long does one rotation take?",
+        "Name two observations that can be explained by Earth's rotation."
+    ],
+
+    "mini_lesson": [
+        "Read the scenario before looking at the answer choices.",
+        "Identify the observation or evidence given.",
+        "Ask what Earth is doing in the model.",
+        "Separate actual motion from apparent motion.",
+        "Use direction and position as evidence.",
+        "Eliminate answers that describe revolution, Moon phases, or the Sun circling Earth daily.",
+        "Check that your explanation matches all evidence in the scenario.",
+        "Earth rotates west to east around its axis approximately once every 24 hours.",
+        "Locations rotate into and out of sunlight, producing the day/night cycle.",
+        "The Sun appears to move generally east to west because Earth rotates.",
+        "Changing apparent Sun position produces predictable changes in shadows."
+    ],
+
+    "science_notebook": [
+        "Create four evidence boxes: Rotation, Day/Night, Apparent Sun, Shadows.",
+        "Under Rotation write: axis, west to east, about 24 hours.",
+        "Under Day/Night write: facing Sun = day; facing away = night.",
+        "Under Apparent Sun write: appears east to west.",
+        "Under Shadows write: generally point away from Sun; higher Sun = shorter shadow.",
+        "Add a final box: Common Cause = Earth's rotation."
+    ],
+
+    "guided_practice": [
+        "Read one unfamiliar scenario aloud.",
+        "Underline the evidence.",
+        "Identify what the question is asking.",
+        "Eliminate unrelated answer choices.",
+        "Require students to justify the answer using evidence rather than only naming a letter."
+    ],
+
+    "lab_title":
+        "Earth Rotation Certification Lab",
+
+    "lab_url":
+        "/labs/earth-rotation-certification?mission=day81",
+
+    "exit_ticket":
+        "Which piece of evidence is most useful for proving that Earth's rotation causes a daily pattern? Explain why.",
+
+    "vocabulary": [
+        "axis",
+        "rotation",
+        "evidence",
+        "infer",
+        "day",
+        "night",
+        "apparent motion",
+        "shadow",
+        "pattern"
+    ],
+
+    "teacher_note":
+        "Day 81 is a synthesis and transfer lesson. "
+        "Keep scenarios original and require evidence-based reasoning. "
+        "Students should identify Earth's rotation as the common cause rather than memorizing isolated facts."
+}
+
+# Science Studio Day 81 End

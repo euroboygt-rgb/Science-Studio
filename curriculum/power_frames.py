@@ -902,3 +902,20 @@ POWER_FRAMES[80] = {
 }
 
 # Science Studio Day 80 Power Frame End
+
+
+# Science Studio Day 81 Power Frame Start
+
+POWER_FRAMES[81] = {
+
+    "i_can":
+        "I can use evidence to solve unfamiliar Earth rotation problems.",
+
+    "by":
+        "analyzing models, observations, and data before selecting an explanation.",
+
+    "i_know":
+        "I know I have learned this when I can explain my answer using evidence about Earth's rotation."
+}
+
+# Science Studio Day 81 Power Frame End
