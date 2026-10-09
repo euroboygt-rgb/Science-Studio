@@ -1,0 +1,690 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='water_cycle_mission_lab.css') }}?v=82.1"
+>
+
+
+<div class="wc-shell">
+
+
+  <!-- HERO -->
+
+  <header class="wc-hero">
+
+    <div class="wc-tags">
+
+      <span>🌊 Interactive Lab</span>
+
+      <span>Water Cycle Mission Control</span>
+
+      <span>TEKS 5.10A</span>
+
+    </div>
+
+
+    <div class="wc-hero-row">
+
+      <div>
+
+        <h1>
+          Water Cycle Mission Control
+        </h1>
+
+        <p>
+          Power the ocean,
+          build the cycle,
+          create a cloud,
+          and connect water
+          to weather.
+        </p>
+
+      </div>
+
+
+      <a
+        class="wc-back"
+        href="/second-nine-weeks/day/82?view=student"
+      >
+        ← Back to Day 82
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- STATUS -->
+
+  <section class="wc-command">
+
+    <div>
+
+      <div class="wc-eyebrow">
+        WATER SYSTEM STATUS
+      </div>
+
+      <h2>
+        Complete All Four Missions
+      </h2>
+
+    </div>
+
+
+    <div class="wc-status-grid">
+
+      <div id="wcStatus1">
+
+        <span>
+          🔴
+        </span>
+
+        <strong>
+          Sun Energy
+        </strong>
+
+      </div>
+
+
+      <div id="wcStatus2">
+
+        <span>
+          🔴
+        </span>
+
+        <strong>
+          Cycle Path
+        </strong>
+
+      </div>
+
+
+      <div id="wcStatus3">
+
+        <span>
+          🔴
+        </span>
+
+        <strong>
+          Cloud Factory
+        </strong>
+
+      </div>
+
+
+      <div id="wcStatus4">
+
+        <span>
+          🔴
+        </span>
+
+        <strong>
+          Weather Link
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="wc-mission">
+
+    <div>
+
+      <div class="wc-eyebrow">
+        MISSION 1
+      </div>
+
+      <h2>
+        Power the Ocean
+      </h2>
+
+      <p>
+        Which condition
+        provides the most energy
+        for evaporation
+        in this simplified model?
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="wc-panel">
+
+    <div class="wc-ocean-sim">
+
+      <div id="wcSun"
+           class="wc-sun">
+
+        ☀️
+
+      </div>
+
+
+      <div id="wcVapor"
+           class="wc-vapor">
+
+        <span>💧</span>
+        <span>💧</span>
+        <span>💧</span>
+        <span>💧</span>
+        <span>💧</span>
+
+      </div>
+
+
+      <div class="wc-ocean">
+
+        🌊🌊🌊🌊🌊
+
+        <strong>
+          OCEAN
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="wc-energy-buttons">
+
+      <button
+        data-energy="low"
+        type="button"
+      >
+        🌥️ LOW SUN ENERGY
+      </button>
+
+      <button
+        data-energy="medium"
+        type="button"
+      >
+        🌤️ MEDIUM SUN ENERGY
+      </button>
+
+      <button
+        data-energy="high"
+        type="button"
+      >
+        ☀️ HIGH SUN ENERGY
+      </button>
+
+    </div>
+
+
+    <div class="wc-meter">
+
+      <span>
+        Evaporation Model
+      </span>
+
+      <div>
+
+        <i id="wcMeterFill"></i>
+
+      </div>
+
+      <strong id="wcMeterText">
+        Select an energy level.
+      </strong>
+
+    </div>
+
+
+    <button
+      id="wcCheck1"
+      class="wc-main-button"
+      type="button"
+    >
+      ⚡ CHECK ENERGY SYSTEM
+    </button>
+
+
+    <div id="wcFeedback1"
+         class="wc-feedback">
+
+      Select the condition
+      that should produce
+      the greatest evaporation
+      in this model.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="wc-mission">
+
+    <div>
+
+      <div class="wc-eyebrow">
+        MISSION 2
+      </div>
+
+      <h2>
+        Build the Water Cycle
+      </h2>
+
+      <p>
+        Select the four major processes
+        in the correct order.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="wc-panel">
+
+    <div class="wc-cycle-display">
+
+      <div id="wcSlot1">
+        ?
+      </div>
+
+      <b>
+        →
+      </b>
+
+      <div id="wcSlot2">
+        ?
+      </div>
+
+      <b>
+        →
+      </b>
+
+      <div id="wcSlot3">
+        ?
+      </div>
+
+      <b>
+        →
+      </b>
+
+      <div id="wcSlot4">
+        ?
+      </div>
+
+      <b>
+        ↻
+      </b>
+
+    </div>
+
+
+    <div class="wc-process-buttons">
+
+      <button
+        data-process="evaporation"
+        type="button"
+      >
+        ⬆️ Evaporation
+      </button>
+
+      <button
+        data-process="condensation"
+        type="button"
+      >
+        ☁️ Condensation
+      </button>
+
+      <button
+        data-process="precipitation"
+        type="button"
+      >
+        🌧️ Precipitation
+      </button>
+
+      <button
+        data-process="collection"
+        type="button"
+      >
+        🌊 Collection
+      </button>
+
+    </div>
+
+
+    <div class="wc-build-row">
+
+      <button
+        id="wcResetCycle"
+        class="wc-reset-button"
+        type="button"
+      >
+        ↻ RESET CYCLE
+      </button>
+
+    </div>
+
+
+    <div id="wcFeedback2"
+         class="wc-feedback">
+
+      Start with water
+      leaving the ocean surface.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="wc-mission">
+
+    <div>
+
+      <div class="wc-eyebrow">
+        MISSION 3
+      </div>
+
+      <h2>
+        Cloud Factory
+      </h2>
+
+      <p>
+        Water vapor is in the atmosphere.
+
+        What condition helps it condense
+        into cloud droplets?
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="wc-panel">
+
+    <div class="wc-cloud-factory">
+
+      <div id="wcAirLabel"
+           class="wc-air-label">
+        WATER VAPOR
+      </div>
+
+
+      <div id="wcCloud"
+           class="wc-cloud">
+
+        ☁️
+
+      </div>
+
+
+      <div id="wcFactoryVapor"
+           class="wc-factory-vapor">
+
+        💧
+        💧
+        💧
+        💧
+        💧
+
+      </div>
+
+    </div>
+
+
+    <div class="wc-condition-buttons">
+
+      <button
+        data-condition="warming"
+        type="button"
+      >
+        🔥 Keep Air Warming
+      </button>
+
+      <button
+        data-condition="cooling"
+        type="button"
+      >
+        ❄️ Cool the Moist Air
+      </button>
+
+    </div>
+
+
+    <button
+      id="wcCheck3"
+      class="wc-main-button"
+      type="button"
+    >
+      ☁️ START CLOUD FACTORY
+    </button>
+
+
+    <div id="wcFeedback3"
+         class="wc-feedback">
+
+      Choose what should happen
+      to the moist air.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="wc-mission">
+
+    <div>
+
+      <div class="wc-eyebrow">
+        MISSION 4
+      </div>
+
+      <h2>
+        Ocean-to-Weather Evidence
+      </h2>
+
+      <p>
+        Use evidence
+        to connect Sun energy,
+        ocean water,
+        atmospheric moisture,
+        clouds,
+        and precipitation.
+      </p>
+
+    </div>
+
+
+    <aside class="wc-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="wcWeatherScore">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="wc-panel">
+
+    <div id="wcWeatherScenario"
+         class="wc-weather-scenario">
+      Loading...
+    </div>
+
+
+    <div id="wcWeatherQuestion"
+         class="wc-weather-question">
+      Loading...
+    </div>
+
+
+    <div id="wcWeatherChoices"
+         class="wc-weather-choices">
+    </div>
+
+
+    <button
+      id="wcCheck4"
+      class="wc-main-button"
+      type="button"
+    >
+      🌦️ CHECK WEATHER EVIDENCE
+    </button>
+
+
+    <div id="wcFeedback4"
+         class="wc-feedback">
+
+      Select the explanation
+      that matches the evidence.
+
+    </div>
+
+
+    <button
+      id="wcNextWeather"
+      class="wc-next-button"
+      type="button"
+      disabled
+    >
+      NEXT WEATHER FILE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="wc-final">
+
+    <div class="wc-final-icon">
+      ☀️🌊☁️🌧️
+    </div>
+
+    <h2>
+      Water Cycle Mission Status
+    </h2>
+
+
+    <div id="wcFinalMessage"
+         class="wc-final-message">
+
+      Four systems remain incomplete.
+
+    </div>
+
+  </section>
+
+
+  <!-- EVIDENCE LOG -->
+
+  <section class="wc-evidence">
+
+    <h2>
+      📓 Water Cycle Evidence Log
+    </h2>
+
+
+    <div class="wc-evidence-grid">
+
+      <article>
+
+        <strong>
+          ☀️ Sun
+        </strong>
+
+        <p>
+          Provides energy
+          for evaporation.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🌊 Ocean
+        </strong>
+
+        <p>
+          Provides large amounts
+          of surface water
+          for evaporation.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ☁️ Atmosphere
+        </strong>
+
+        <p>
+          Water vapor can cool
+          and condense
+          into cloud droplets.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🌦️ Weather
+        </strong>
+
+        <p>
+          Atmospheric moisture
+          can contribute
+          to clouds and precipitation.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="wc-big-question">
+
+      <strong>
+        🧠 Mission Question:
+      </strong>
+
+      How do the Sun
+      and ocean interact
+      to move water
+      into the atmosphere
+      and affect weather?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='water_cycle_mission_lab.js') }}?v=82.1"
+></script>
+
+{% endblock %}

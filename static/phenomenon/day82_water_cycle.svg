@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#168de3"/>
+
+      <stop offset="100%"
+            stop-color="#dff6ff"/>
+
+    </linearGradient>
+
+    <linearGradient id="ocean"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#25a7f0"/>
+
+      <stop offset="100%"
+            stop-color="#07589d"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="24"
+        fill="url(#sky)"/>
+
+
+  <text x="600"
+        y="50"
+        text-anchor="middle"
+        fill="#102252"
+        font-size="35"
+        font-weight="900">
+    PHENOMENON MISSION: WHERE DOES OCEAN WATER GO?
+  </text>
+
+
+  <!-- SUN -->
+
+  <circle cx="170"
+          cy="170"
+          r="75"
+          fill="#ffd447"
+          stroke="#fff3a0"
+          stroke-width="9"/>
+
+  <g stroke="#ffe45d"
+     stroke-width="9"
+     stroke-linecap="round">
+
+    <line x1="170"
+          y1="65"
+          x2="170"
+          y2="30"/>
+
+    <line x1="170"
+          y1="275"
+          x2="170"
+          y2="310"/>
+
+    <line x1="65"
+          y1="170"
+          x2="30"
+          y2="170"/>
+
+    <line x1="275"
+          y1="170"
+          x2="310"
+          y2="170"/>
+
+  </g>
+
+
+  <text x="170"
+        y="350"
+        text-anchor="middle"
+        fill="#173769"
+        font-size="21"
+        font-weight="900">
+    SUN ENERGY
+  </text>
+
+
+  <!-- CLOUD -->
+
+  <g fill="#ffffff"
+     stroke="#b7d8ed"
+     stroke-width="5">
+
+    <circle cx="780"
+            cy="190"
+            r="70"/>
+
+    <circle cx="850"
+            cy="155"
+            r="90"/>
+
+    <circle cx="935"
+            cy="195"
+            r="75"/>
+
+    <rect x="735"
+          y="190"
+          width="250"
+          height="80"
+          rx="40"/>
+
+  </g>
+
+
+  <!-- EVAPORATION ARROWS -->
+
+  <g fill="none"
+     stroke="#ffffff"
+     stroke-width="8"
+     stroke-linecap="round">
+
+    <path d="
+      M430 520
+      C420 440 450 390 475 335
+    "/>
+
+    <path d="
+      M540 525
+      C530 440 555 385 585 320
+    "/>
+
+    <path d="
+      M650 520
+      C650 440 675 375 710 310
+    "/>
+
+  </g>
+
+
+  <g fill="#ffffff">
+
+    <polygon points="475,335 455,370 495,365"/>
+
+    <polygon points="585,320 565,355 605,350"/>
+
+    <polygon points="710,310 690,345 730,340"/>
+
+  </g>
+
+
+  <text x="570"
+        y="395"
+        text-anchor="middle"
+        fill="#173769"
+        font-size="22"
+        font-weight="900">
+    EVAPORATION
+  </text>
+
+
+  <!-- RAIN -->
+
+  <g stroke="#2368cf"
+     stroke-width="8"
+     stroke-linecap="round">
+
+    <line x1="810"
+          y1="285"
+          x2="785"
+          y2="345"/>
+
+    <line x1="860"
+          y1="285"
+          x2="835"
+          y2="355"/>
+
+    <line x1="915"
+          y1="285"
+          x2="890"
+          y2="350"/>
+
+    <line x1="960"
+          y1="285"
+          x2="935"
+          y2="345"/>
+
+  </g>
+
+
+  <text x="870"
+        y="390"
+        text-anchor="middle"
+        fill="#173769"
+        font-size="22"
+        font-weight="900">
+    PRECIPITATION
+  </text>
+
+
+  <!-- OCEAN -->
+
+  <path d="
+    M0 510
+    Q100 475 200 510
+    Q300 545 400 510
+    Q500 475 600 510
+    Q700 545 800 510
+    Q900 475 1000 510
+    Q1100 545 1200 510
+    L1200 700
+    L0 700
+    Z
+  "
+    fill="url(#ocean)"/>
+
+
+  <text x="600"
+        y="625"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="35"
+        font-weight="900">
+    OCEAN
+  </text>
+
+
+  <rect x="195"
+        y="420"
+        width="810"
+        height="60"
+        rx="15"
+        fill="#fff2a5"
+        stroke="#173769"
+        stroke-width="4"/>
+
+  <text x="600"
+        y="458"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="20"
+        font-weight="900">
+    How can Sun energy move this water from the ocean into the atmosphere?
+  </text>
+
+</svg>

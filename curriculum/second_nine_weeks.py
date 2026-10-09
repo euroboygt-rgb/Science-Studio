@@ -4951,3 +4951,101 @@ SECOND_NINE_WEEKS_LESSONS[81] = {
 }
 
 # Science Studio Day 81 End
+
+
+# Science Studio Day 82 Start
+
+SECOND_NINE_WEEKS_LESSONS[82] = {
+
+    "day": 82,
+
+    "title":
+        "Water Cycle Mission: Power the Planet",
+
+    "unit":
+        "Weather and the Water Cycle",
+
+    "teks":
+        "5.10A, 5.1F, 5.2D",
+
+    "focus":
+        "Students explain how energy from the Sun interacts with ocean water "
+        "to drive the water cycle and contribute to weather.",
+
+    "learning_target":
+        "We will explain how energy from the Sun and water from the ocean interact in the water cycle and affect weather.",
+
+    "success_criteria":
+        "I can trace water from the ocean through evaporation, condensation, precipitation, "
+        "and collection and explain how the Sun provides energy for the cycle.",
+
+    "essential_question":
+        "How can energy from the Sun move ocean water into the atmosphere and affect weather?",
+
+    "bell_ringer": [
+        "Think about a puddle that disappears after a sunny day.",
+        "Did the water stop existing?",
+        "Where could the water have gone?",
+        "What energy source could have caused the change?"
+    ],
+
+    "mini_lesson": [
+        "The Sun provides energy that warms water at Earth's surface.",
+        "The ocean is Earth's largest source of surface water.",
+        "When liquid water gains enough energy, some of it changes into water vapor through evaporation.",
+        "Water vapor enters the atmosphere.",
+        "As moist air cools, water vapor can condense into tiny liquid droplets.",
+        "Many tiny droplets can form clouds.",
+        "When droplets or ice particles become large enough, precipitation can fall.",
+        "Water collects again in oceans, lakes, rivers, soil, and other locations.",
+        "The water cycle continuously moves water through Earth's systems.",
+        "Sun-ocean interaction affects weather because ocean evaporation supplies water vapor that can contribute to clouds and precipitation."
+    ],
+
+    "science_notebook": [
+        "Draw the Sun above an ocean.",
+        "Arrow 1: Sun energy reaches ocean water.",
+        "Arrow 2: Evaporation moves water into the atmosphere.",
+        "Arrow 3: Cooling causes condensation and cloud formation.",
+        "Arrow 4: Precipitation returns water to Earth's surface.",
+        "Arrow 5: Collection returns water to oceans and other bodies of water.",
+        "Write: The Sun provides energy that helps drive the water cycle."
+    ],
+
+    "guided_practice": [
+        "Identify the energy source in a water-cycle model.",
+        "Identify where most surface water is stored.",
+        "Trace one water molecule from ocean to atmosphere.",
+        "Explain evaporation as a change from liquid water to water vapor.",
+        "Explain condensation as water vapor changing into liquid droplets.",
+        "Connect cloud formation and precipitation to weather."
+    ],
+
+    "lab_title":
+        "Water Cycle Mission Control: Sun, Ocean, and Weather",
+
+    "lab_url":
+        "/labs/water-cycle-mission?mission=day82",
+
+    "exit_ticket":
+        "Explain how energy from the Sun can eventually lead ocean water to become part of a cloud.",
+
+    "vocabulary": [
+        "water cycle",
+        "evaporation",
+        "water vapor",
+        "condensation",
+        "cloud",
+        "precipitation",
+        "collection",
+        "Sun energy",
+        "ocean"
+    ],
+
+    "teacher_note":
+        "Emphasize the Grade 5 connection between the Sun, ocean, water cycle, and weather. "
+        "Avoid implying that increased evaporation always causes immediate rainfall; "
+        "instead explain that evaporation adds water vapor that can contribute to clouds and precipitation."
+}
+
+# Science Studio Day 82 End

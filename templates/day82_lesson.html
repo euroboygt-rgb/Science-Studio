@@ -1,0 +1,1227 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=82-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day82_direct.css') }}?v=82-final"
+>
+
+
+<div id="DAY82_DIRECT_TEMPLATE"
+     class="d82-page">
+
+
+  <!-- HERO -->
+
+  <section class="d82-hero">
+
+    <div class="d82-tags">
+
+      <span>Day 82</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10A</span>
+
+      <span>Water Cycle</span>
+
+    </div>
+
+
+    <h1>
+      ☀️🌊 Water Cycle Mission:
+      Power the Planet
+    </h1>
+
+    <p>
+      Follow water from the ocean
+      into the atmosphere,
+      into clouds,
+      back to Earth's surface,
+      and discover what powers the entire journey.
+    </p>
+
+
+    <div class="d82-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/82?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/82?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Learning Power Frame
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          explain how the Sun
+          and ocean interact
+          in the water cycle
+          and affect weather.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          tracing water through
+          evaporation,
+          condensation,
+          precipitation,
+          and collection.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can explain
+          how Sun energy moves
+          ocean water into the atmosphere
+          and eventually back to Earth.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌊 Phenomenon Mission
+    </div>
+
+    <h2>
+      Where Does Ocean Water Go?
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day82_water_cycle.svg"
+        alt="Sun shining on an ocean with evaporation, clouds, and precipitation"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      The ocean contains enormous amounts of water.
+
+      How can some of that liquid water
+      end up inside a cloud
+      high in the atmosphere?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d82MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Follow One Water Molecule
+        </h2>
+
+        <div class="d59-unit">
+          Ocean → Atmosphere → Cloud → Earth
+        </div>
+
+      </div>
+
+
+      <button
+        id="d82Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Water Mission
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d82SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d82SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d82SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d82SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d82SlideNumber"></strong>
+
+      <div>
+
+        <button id="d82Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d82Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d82Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's Water Mystery
+        </div>
+
+        <h2>
+          Steve's Disappearing Puddle
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve sees a puddle
+          on the playground in the morning.
+
+          The day becomes sunny and warm.
+
+          By the afternoon,
+          much of the puddle is gone.
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            STAAR-Style Question:
+          </strong>
+
+          <p>
+            What most likely happened
+            to some of the liquid water?
+          </p>
+
+
+          <button class="d82-steve-answer"
+                  data-answer="A">
+            A. It changed into water vapor and entered the atmosphere.
+          </button>
+
+          <button class="d82-steve-answer"
+                  data-answer="B">
+            B. It stopped existing.
+          </button>
+
+          <button class="d82-steve-answer"
+                  data-answer="C">
+            C. It changed directly into rock.
+          </button>
+
+          <button class="d82-steve-answer"
+                  data-answer="D">
+            D. The Sun absorbed all of the water.
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d82SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Answer
+            </button>
+
+            <button id="d82SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d82SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Water Cycle Vocabulary
+    </h2>
+
+
+    <div class="d82-vocab-grid">
+
+      {% set words = [
+        ("🔄","water cycle","The continuous movement of water through Earth's surface and atmosphere."),
+        ("⬆️","evaporation","The process in which liquid water changes into water vapor."),
+        ("💨","water vapor","Water in its gas state in the atmosphere."),
+        ("☁️","condensation","The process in which water vapor cools and changes into liquid droplets."),
+        ("☁️","cloud","A visible collection of tiny water droplets or ice crystals in the atmosphere."),
+        ("🌧️","precipitation","Water that falls from clouds to Earth's surface, such as rain, snow, sleet, or hail."),
+        ("🌊","collection","Water gathering in oceans, lakes, rivers, soil, and other locations."),
+        ("☀️","Sun energy","Energy from the Sun that warms Earth's surface and helps drive evaporation."),
+        ("🌊","ocean","Earth's largest reservoir of surface water and a major source of water vapor.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d82-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will explain how energy
+      from the Sun and water
+      from the ocean interact
+      in the water cycle
+      and affect weather.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      The Disappearing Water
+    </h2>
+
+
+    <div class="d59-box">
+
+      Imagine a shallow container
+      of water sitting outside
+      on a sunny day.
+
+      <ol>
+
+        <li>
+          What might happen
+          to the amount of liquid water?
+        </li>
+
+        <li>
+          Where might the missing water go?
+        </li>
+
+        <li>
+          What provides the energy
+          for this change?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      The Water Cycle Engine
+    </h2>
+
+
+    <div class="d82-engine">
+
+      <div class="d82-sun-engine">
+
+        <span>
+          ☀️
+        </span>
+
+        <strong>
+          SUN ENERGY
+        </strong>
+
+        <p>
+          Provides energy
+          that warms surface water.
+        </p>
+
+      </div>
+
+
+      <div class="d82-arrow">
+        ➜
+      </div>
+
+
+      <div class="d82-ocean-engine">
+
+        <span>
+          🌊
+        </span>
+
+        <strong>
+          OCEAN
+        </strong>
+
+        <p>
+          Major source
+          of water available
+          for evaporation.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="d82-cycle">
+
+      <article>
+
+        <span>
+          ⬆️
+        </span>
+
+        <h3>
+          1. EVAPORATION
+        </h3>
+
+        <p>
+          Liquid water gains energy
+          and becomes water vapor.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          ☁️
+        </span>
+
+        <h3>
+          2. CONDENSATION
+        </h3>
+
+        <p>
+          Water vapor cools
+          and becomes tiny droplets.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          🌧️
+        </span>
+
+        <h3>
+          3. PRECIPITATION
+        </h3>
+
+        <p>
+          Water falls
+          from clouds
+          to Earth's surface.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          🌊
+        </span>
+
+        <h3>
+          4. COLLECTION
+        </h3>
+
+        <p>
+          Water gathers
+          in oceans,
+          lakes,
+          rivers,
+          soil,
+          and other places.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d82-weather-link">
+
+      <h3>
+        🌦️ How Does This Affect Weather?
+      </h3>
+
+      <p>
+        Evaporation from the ocean
+        adds
+        <strong>
+          water vapor
+        </strong>
+        to the atmosphere.
+      </p>
+
+      <p>
+        That moisture can later
+        condense into clouds
+        and may eventually
+        become precipitation.
+      </p>
+
+      <strong>
+        Sun + Ocean → Atmospheric Moisture → Clouds / Precipitation
+      </strong>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Important Science Idea
+      </strong>
+
+      <br><br>
+
+      Water does not disappear
+      during evaporation.
+
+      <br><br>
+
+      It changes from
+      <strong>
+        liquid water
+      </strong>
+      into invisible
+      <strong>
+        water vapor.
+      </strong>
+
+      <br><br>
+
+      The matter is still present.
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Build the Water Cycle
+    </h2>
+
+
+    <div class="d59-box">
+
+      Draw:
+
+      <strong>
+        ☀️ Sun
+      </strong>
+      above a
+      <strong>
+        🌊 ocean.
+      </strong>
+
+      <br><br>
+
+      Add arrows and labels:
+
+      <ol>
+
+        <li>
+          Sun energy reaches ocean water.
+        </li>
+
+        <li>
+          Evaporation:
+          liquid → water vapor.
+        </li>
+
+        <li>
+          Condensation:
+          water vapor → tiny liquid droplets.
+        </li>
+
+        <li>
+          Precipitation:
+          water falls to Earth.
+        </li>
+
+        <li>
+          Collection:
+          water gathers again.
+        </li>
+
+      </ol>
+
+
+      Write:
+
+      <br><br>
+
+      <strong>
+        The Sun provides energy
+        that helps drive the water cycle.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Be the Water Molecule
+    </h2>
+
+
+    <div class="d59-box">
+
+      Assign students roles:
+
+      <ul>
+
+        <li>
+          Sun Energy
+        </li>
+
+        <li>
+          Ocean Water
+        </li>
+
+        <li>
+          Water Vapor
+        </li>
+
+        <li>
+          Cloud Droplet
+        </li>
+
+        <li>
+          Precipitation
+        </li>
+
+      </ul>
+
+
+      Students physically trace:
+
+      <strong>
+        Ocean → Evaporation → Atmosphere → Condensation → Cloud → Precipitation → Collection
+      </strong>
+
+      <br><br>
+
+      At each step ask:
+
+      <strong>
+        What happened to the water?
+        What energy caused the first change?
+      </strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌊 Interactive Lab
+    </div>
+
+    <h2>
+      Water Cycle Mission Control:
+      Sun, Ocean, and Weather
+    </h2>
+
+
+    <p>
+      Power the water cycle,
+      build the correct pathway,
+      create a cloud,
+      and use evidence
+      to connect the ocean
+      to weather.
+    </p>
+
+
+    <div class="d82-missions">
+
+      <div>
+        ☀️
+        <strong>
+          Mission 1
+        </strong>
+        Power the Ocean
+      </div>
+
+      <div>
+        🔄
+        <strong>
+          Mission 2
+        </strong>
+        Build the Cycle
+      </div>
+
+      <div>
+        ☁️
+        <strong>
+          Mission 3
+        </strong>
+        Make a Cloud
+      </div>
+
+      <div>
+        🌦️
+        <strong>
+          Mission 4
+        </strong>
+        Weather Evidence
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Complete all four missions
+      to earn
+
+      <strong>
+        Water Cycle Systems Specialist
+      </strong>
+
+      status.
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/water-cycle-mission?mission=day82"
+    >
+      🌊 Launch Water Cycle Mission Control
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Practice
+    </div>
+
+    <h2>
+      Sun + Ocean Evidence
+    </h2>
+
+
+    <div class="d82-question"
+         data-answer="B">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        What provides much of the energy
+        that drives evaporation
+        in the water cycle?
+      </p>
+
+      <button data-choice="A">
+        A. The Moon
+      </button>
+
+      <button data-choice="B">
+        B. The Sun
+      </button>
+
+      <button data-choice="C">
+        C. Rocks
+      </button>
+
+      <button data-choice="D">
+        D. Soil
+      </button>
+
+      <div class="d82-feedback"></div>
+
+    </div>
+
+
+    <div class="d82-question"
+         data-answer="C">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        During evaporation,
+        liquid water changes into —
+      </p>
+
+      <button data-choice="A">
+        A. a solid
+      </button>
+
+      <button data-choice="B">
+        B. soil
+      </button>
+
+      <button data-choice="C">
+        C. water vapor
+      </button>
+
+      <button data-choice="D">
+        D. clouds immediately
+      </button>
+
+      <div class="d82-feedback"></div>
+
+    </div>
+
+
+    <div class="d82-question"
+         data-answer="A">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        What process occurs
+        when water vapor cools
+        and changes into tiny
+        liquid water droplets?
+      </p>
+
+      <button data-choice="A">
+        A. Condensation
+      </button>
+
+      <button data-choice="B">
+        B. Evaporation
+      </button>
+
+      <button data-choice="C">
+        C. Collection
+      </button>
+
+      <button data-choice="D">
+        D. Erosion
+      </button>
+
+      <div class="d82-feedback"></div>
+
+    </div>
+
+
+    <div class="d82-question"
+         data-answer="D">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        Which sequence
+        best represents part
+        of the water cycle?
+      </p>
+
+      <button data-choice="A">
+        A. Precipitation → Sun → rock
+      </button>
+
+      <button data-choice="B">
+        B. Cloud → soil → Moon
+      </button>
+
+      <button data-choice="C">
+        C. Ocean → rock → sunlight
+      </button>
+
+      <button data-choice="D">
+        D. Ocean → evaporation → condensation → precipitation
+      </button>
+
+      <div class="d82-feedback"></div>
+
+    </div>
+
+
+    <div class="d82-question"
+         data-answer="B">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        How can ocean evaporation
+        affect weather?
+      </p>
+
+      <button data-choice="A">
+        A. It removes all moisture from the atmosphere.
+      </button>
+
+      <button data-choice="B">
+        B. It adds water vapor that can contribute to clouds and precipitation.
+      </button>
+
+      <button data-choice="C">
+        C. It stops cloud formation.
+      </button>
+
+      <button data-choice="D">
+        D. It causes Earth to stop rotating.
+      </button>
+
+      <div class="d82-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+    <p>
+      Explain how energy
+      from the Sun
+      can eventually cause
+      water from the ocean
+      to become part of a cloud.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="Sun energy causes..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Water Cycle CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      The Sun and ocean interact
+      to help drive the water cycle
+      and affect weather.
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The Sun and ocean interact by..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="Evidence from the lab showed..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This evidence shows..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      ☁️ Next Mission
+    </div>
+
+    <h2>
+      Day 83:
+      Cloud Factory
+    </h2>
+
+
+    <div class="d59-box">
+
+      Today we moved water
+      from the ocean
+      into the atmosphere.
+
+      <br><br>
+
+      Next we will investigate
+      what happens when
+      <strong>
+        water vapor cools
+      </strong>
+      and clouds begin to form.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d82VocabModal"
+     class="d82-modal">
+
+  <div class="d82-modal-card">
+
+    <button
+      id="d82VocabClose"
+      class="d82-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d82ModalIcon"
+         class="d82-modal-icon"></div>
+
+    <h2 id="d82ModalTerm"></h2>
+
+    <p id="d82ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day82_direct.js') }}?v=82-final"
+></script>
+
+{% endblock %}
