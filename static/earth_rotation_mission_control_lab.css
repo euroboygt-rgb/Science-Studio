@@ -1,0 +1,378 @@
+.mc-shell {
+  width: min(1200px,96vw);
+  margin: 24px auto 60px;
+}
+
+.mc-hero,
+.mc-command,
+.mc-mission-header,
+.mc-panel,
+.mc-final,
+.mc-evidence {
+  border: 3px solid #171717;
+  border-radius: 17px;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+.mc-hero {
+  padding: 20px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #351657,
+      #7131cc,
+      #187ec4
+    );
+}
+
+.mc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.mc-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #6e2bc4;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+.mc-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.mc-back {
+  padding: 10px 14px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.mc-command {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+.mc-eyebrow {
+  font-size: .75rem;
+  font-weight: 900;
+}
+
+.mc-system-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.mc-system-grid div {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.mc-system-grid span,
+.mc-system-grid strong {
+  display: block;
+}
+
+.mc-system-grid span {
+  font-size: 2rem;
+}
+
+.mc-system-grid .online {
+  background: #d9f8dd;
+}
+
+.mc-mission-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+.mc-panel {
+  margin-top: 10px;
+  padding: 16px;
+  background: #111a34;
+  color: #fff;
+}
+
+.mc-earth-core {
+  position: relative;
+  width: 310px;
+  height: 310px;
+  margin: auto;
+}
+
+.mc-earth {
+  position: absolute;
+  inset: 45px;
+  display: grid;
+  place-items: center;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  background: #168de3;
+  font-size: 8rem;
+}
+
+.mc-axis {
+  position: absolute;
+  top: 10px;
+  left: 148px;
+  width: 12px;
+  height: 290px;
+  border-radius: 99px;
+  background: #ffe45d;
+  transform: rotate(-18deg);
+  z-index: 2;
+}
+
+.mc-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.mc-choice-grid button,
+.mc-direction-choice button {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.mc-choice-grid button.selected,
+.mc-direction-choice button.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+  box-shadow: 0 0 0 3px rgba(113,49,204,.25);
+}
+
+.mc-main-button,
+.mc-next-button {
+  margin-top: 12px;
+  padding: 12px 18px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #ffe45d;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.mc-next-button:disabled {
+  opacity: .45;
+}
+
+.mc-feedback {
+  margin-top: 12px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+}
+
+.mc-daynight-svg {
+  display: block;
+  width: min(1000px,100%);
+  margin: auto;
+  border: 3px solid #fff;
+  border-radius: 14px;
+}
+
+.mc-time-buttons {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.mc-time-buttons button {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.mc-time-buttons button.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+}
+
+.mc-direction-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.mc-direction-board > div {
+  padding: 16px;
+  border: 3px solid #fff;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.mc-direction-board span {
+  display: block;
+  font-size: 5rem;
+}
+
+.mc-direction-board strong {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.mc-direction-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.mc-score {
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.mc-score strong,
+.mc-score span {
+  display: block;
+}
+
+.mc-score span {
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+
+.mc-shadow-case {
+  padding: 14px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+}
+
+.mc-shadow-scene {
+  position: relative;
+  height: 250px;
+  margin-top: 12px;
+  overflow: hidden;
+  border: 3px solid #fff;
+  border-radius: 12px;
+  background:
+    linear-gradient(
+      #a8dfff 0 65%,
+      #72b85a 65% 100%
+    );
+}
+
+.mc-object {
+  position: absolute;
+  left: 50%;
+  bottom: 35%;
+  width: 18px;
+  height: 110px;
+  border-radius: 99px;
+  background: #52331e;
+  transform: translateX(-50%);
+}
+
+.mc-shadow-line {
+  position: absolute;
+  left: 50%;
+  bottom: 34%;
+  height: 18px;
+  width: 250px;
+  border-radius: 99px;
+  background: rgba(20,25,35,.7);
+  transform-origin: left center;
+}
+
+.mc-final {
+  margin-top: 14px;
+  padding: 20px;
+  background: #fff4cd;
+  text-align: center;
+}
+
+.mc-final-icon {
+  font-size: 4rem;
+}
+
+.mc-final-message {
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #e9f6ff;
+  font-weight: 900;
+}
+
+.mc-evidence {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff;
+}
+
+.mc-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.mc-evidence-grid article {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+}
+
+.mc-final-question {
+  margin-top: 10px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff3ad;
+}
+
+@media (max-width:850px) {
+
+  .mc-hero-row,
+  .mc-mission-header {
+    display: block;
+  }
+
+  .mc-system-grid,
+  .mc-choice-grid,
+  .mc-time-buttons,
+  .mc-direction-board,
+  .mc-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

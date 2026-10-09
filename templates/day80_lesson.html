@@ -1,0 +1,1125 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=80-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day80_direct.css') }}?v=80-final"
+>
+
+
+<div id="DAY80_DIRECT_TEMPLATE"
+     class="d80-page">
+
+  <section class="d80-hero">
+
+    <div class="d80-tags">
+
+      <span>Day 80</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.9A</span>
+
+      <span>Mission Control</span>
+
+    </div>
+
+
+    <h1>
+      🚨 Earth Rotation Mission Control:
+      System Recovery
+    </h1>
+
+    <p>
+      Four science systems are offline.
+
+      Use everything you have learned
+      about Earth's rotation
+      to restore Mission Control.
+    </p>
+
+
+    <div class="d80-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/80?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/80?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Mission Power Frame
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          use Earth's rotation
+          to explain several
+          predictable daily patterns.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          repairing Mission Control
+          using models,
+          observations,
+          and evidence.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can connect
+          day/night,
+          apparent Sun motion,
+          and shadows
+          to Earth's rotation.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🚨 Emergency Transmission
+    </div>
+
+    <h2>
+      Mission Control Has Lost Its Earth Systems
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day80_mission_control.svg"
+        alt="Earth Rotation Mission Control with four offline systems"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Mission Question:
+      </strong>
+
+      Can one motion of Earth
+      explain day and night,
+      apparent Sun movement,
+      and changing shadows?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d80MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Emergency System Briefing
+        </h2>
+
+        <div class="d59-unit">
+          Restore 4 Earth Systems
+        </div>
+
+      </div>
+
+
+      <button
+        id="d80Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Emergency Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d80SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d80SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d80SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d80SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d80SlideNumber"></strong>
+
+      <div>
+
+        <button id="d80Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d80Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d80Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin — Mission Commander
+        </div>
+
+        <h2>
+          Steve's One-Cause Challenge
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve notices four repeating patterns:
+
+          <ul>
+            <li>Day becomes night.</li>
+            <li>The Sun appears to move across the sky.</li>
+            <li>Shadows change direction.</li>
+            <li>Shadows change length.</li>
+          </ul>
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            Mission Question:
+          </strong>
+
+          <p>
+            Which process helps explain
+            all of these daily patterns?
+          </p>
+
+
+          <button class="d80-steve-answer"
+                  data-answer="A">
+            A. Earth's rotation
+          </button>
+
+          <button class="d80-steve-answer"
+                  data-answer="B">
+            B. Moon phases
+          </button>
+
+          <button class="d80-steve-answer"
+                  data-answer="C">
+            C. Earth's revolution only
+          </button>
+
+          <button class="d80-steve-answer"
+                  data-answer="D">
+            D. The asteroid belt
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d80SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check System
+            </button>
+
+            <button id="d80SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d80SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Mission Control Vocabulary
+    </h2>
+
+
+    <div class="d80-vocab-grid">
+
+      {% set words = [
+        ("📍","axis","The imaginary tilted line Earth rotates around."),
+        ("🔄","rotation","Earth spinning around its axis."),
+        ("🕛","24-hour cycle","Approximately the time Earth takes to complete one rotation."),
+        ("☀️","day","When a location faces the Sun and receives sunlight."),
+        ("🌙","night","When a location faces away from the Sun."),
+        ("👀","apparent motion","Motion that seems to occur from an observer's point of view."),
+        ("🌅","sunrise","The transition from darkness into sunlight."),
+        ("🌇","sunset","The transition from sunlight into darkness."),
+        ("⬛","shadow","A dark area formed when an object blocks light.")
+      ] %}
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d80-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will use models and evidence
+      to explain how Earth's rotation
+      creates predictable daily patterns.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      One Cause, Many Effects
+    </h2>
+
+
+    <div class="d59-box">
+
+      Earth rotates once
+      in about 24 hours.
+
+      <br><br>
+
+      List as many daily patterns
+      as you can that are connected
+      to Earth's rotation.
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      The Earth Rotation Chain
+    </h2>
+
+
+    <div class="d80-cause">
+
+      🌎
+
+      <h3>
+        EARTH ROTATES
+      </h3>
+
+      <p>
+        West → East
+      </p>
+
+      <strong>
+        About one rotation every 24 hours
+      </strong>
+
+    </div>
+
+
+    <div class="d80-effect-grid">
+
+      <article>
+
+        <span>
+          ☀️🌙
+        </span>
+
+        <h3>
+          DAY & NIGHT
+        </h3>
+
+        <p>
+          Locations rotate
+          into and out of sunlight.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          🌅☀️🌇
+        </span>
+
+        <h3>
+          APPARENT SUN MOTION
+        </h3>
+
+        <p>
+          The Sun appears
+          to move east → west.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          ⬛
+        </span>
+
+        <h3>
+          SHADOW DIRECTION
+        </h3>
+
+        <p>
+          Shadows point generally
+          away from the Sun.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          📏
+        </span>
+
+        <h3>
+          SHADOW LENGTH
+        </h3>
+
+        <p>
+          Lower Sun = longer shadow.
+
+          Higher Sun = shorter shadow.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Mission Control Rule
+      </strong>
+
+      <br><br>
+
+      Do not memorize these
+      as separate facts.
+
+      <br><br>
+
+      Ask:
+
+      <strong>
+        What is Earth doing?
+      </strong>
+
+      <br><br>
+
+      Earth's rotation
+      is the common cause
+      connecting the patterns.
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Cause & Effect Network
+    </h2>
+
+
+    <div class="d59-box">
+
+      In the center of your page write:
+
+      <br><br>
+
+      <strong>
+        EARTH ROTATES WEST TO EAST
+        ON ITS AXIS
+        ABOUT ONCE EVERY 24 HOURS
+      </strong>
+
+      <br><br>
+
+      Draw four arrows outward to:
+
+      <ol>
+
+        <li>
+          Day & Night
+        </li>
+
+        <li>
+          Apparent Sun Motion
+        </li>
+
+        <li>
+          Shadow Direction
+        </li>
+
+        <li>
+          Shadow Length
+        </li>
+
+      </ol>
+
+      Under each branch,
+      explain the cause-and-effect connection.
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Mission Control Rapid Response
+    </h2>
+
+
+    <div class="d59-box">
+
+      Call out one observation at a time.
+
+      Students respond with
+      the most likely explanation.
+
+      <br><br>
+
+      Examples:
+
+      <ul>
+
+        <li>
+          "A location moves from light into darkness."
+        </li>
+
+        <li>
+          "The Sun appears low in the west."
+        </li>
+
+        <li>
+          "A shadow becomes shorter."
+        </li>
+
+        <li>
+          "A long shadow extends east."
+        </li>
+
+      </ul>
+
+      Require students to use the phrase:
+
+      <strong>
+        "This evidence shows..."
+      </strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🚀 Capstone Lab
+    </div>
+
+    <h2>
+      Earth Rotation Mission Control:
+      System Recovery
+    </h2>
+
+
+    <p>
+      Four systems are offline.
+
+      Restore each one
+      using models and evidence
+      from Days 76–79.
+    </p>
+
+
+    <div class="d80-mission-preview">
+
+      <div>
+        📍
+        <strong>
+          System 1
+        </strong>
+        Axis & Rotation
+      </div>
+
+      <div>
+        ☀️🌙
+        <strong>
+          System 2
+        </strong>
+        Day & Night
+      </div>
+
+      <div>
+        🌅🌇
+        <strong>
+          System 3
+        </strong>
+        Apparent Sun
+      </div>
+
+      <div>
+        ⬛
+        <strong>
+          System 4
+        </strong>
+        Shadows
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Restore all four systems
+      to earn
+
+      <strong>
+        Earth Rotation Mission Commander
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/earth-rotation-mission-control?mission=day80"
+    >
+      🚀 Enter Earth Rotation Mission Control
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Mission Check
+    </div>
+
+    <h2>
+      Earth Rotation Evidence
+    </h2>
+
+
+    <div class="d80-question"
+         data-answer="B">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        Approximately how long
+        does Earth take
+        to complete one rotation?
+      </p>
+
+      <button data-choice="A">
+        A. 12 hours
+      </button>
+
+      <button data-choice="B">
+        B. 24 hours
+      </button>
+
+      <button data-choice="C">
+        C. 29.5 days
+      </button>
+
+      <button data-choice="D">
+        D. 1 year
+      </button>
+
+      <div class="d80-feedback"></div>
+
+    </div>
+
+
+    <div class="d80-question"
+         data-answer="A">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        Why does a location
+        experience day and night?
+      </p>
+
+      <button data-choice="A">
+        A. Earth rotates the location into and out of sunlight.
+      </button>
+
+      <button data-choice="B">
+        B. The Sun turns off every night.
+      </button>
+
+      <button data-choice="C">
+        C. The Moon blocks the Sun every night.
+      </button>
+
+      <button data-choice="D">
+        D. Earth stops moving.
+      </button>
+
+      <div class="d80-feedback"></div>
+
+    </div>
+
+
+    <div class="d80-question"
+         data-answer="C">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        Earth rotates west to east.
+
+        Which apparent motion
+        do observers generally see?
+      </p>
+
+      <button data-choice="A">
+        A. The Sun appears to move west to east.
+      </button>
+
+      <button data-choice="B">
+        B. The Sun does not appear to move.
+      </button>
+
+      <button data-choice="C">
+        C. The Sun appears to move east to west.
+      </button>
+
+      <button data-choice="D">
+        D. The Sun appears to move north to south every day.
+      </button>
+
+      <div class="d80-feedback"></div>
+
+    </div>
+
+
+    <div class="d80-question"
+         data-answer="D">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        A standing object has
+        a shorter shadow
+        than it did earlier.
+
+        Which observation
+        best explains this?
+      </p>
+
+      <button data-choice="A">
+        A. The object became shorter.
+      </button>
+
+      <button data-choice="B">
+        B. Earth stopped rotating.
+      </button>
+
+      <button data-choice="C">
+        C. The Sun moved closer to Earth.
+      </button>
+
+      <button data-choice="D">
+        D. The Sun appears higher in the sky.
+      </button>
+
+      <div class="d80-feedback"></div>
+
+    </div>
+
+
+    <div class="d80-question"
+         data-answer="A">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        Which statement
+        best connects all the evidence?
+      </p>
+
+      <button data-choice="A">
+        A. Earth's rotation causes several predictable daily patterns.
+      </button>
+
+      <button data-choice="B">
+        B. Each daily pattern has a completely unrelated cause.
+      </button>
+
+      <button data-choice="C">
+        C. The Moon causes all daytime changes.
+      </button>
+
+      <button data-choice="D">
+        D. Earth does not move.
+      </button>
+
+      <div class="d80-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Mission Debrief
+    </h2>
+
+    <p>
+      Choose
+      <strong>
+        two daily patterns
+      </strong>
+      from today's lesson.
+
+      Explain how Earth's rotation
+      causes both patterns.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="Earth's rotation causes..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Mission Control CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Mission Question:
+      </strong>
+
+      How can Earth's rotation
+      explain several different
+      observations made during one day?
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="Earth's rotation causes..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="Evidence from the Mission Control lab..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This evidence supports my claim because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      ⭐ Next Mission
+    </div>
+
+    <h2>
+      Day 81:
+      Earth Rotation Mission Assessment
+    </h2>
+
+
+    <div class="d59-box">
+
+      Day 81 will be the final
+      Earth Rotation synthesis day.
+
+      <br><br>
+
+      Students will apply
+      all of their evidence
+      to original STAAR-style
+      Earth rotation scenarios.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d80VocabModal"
+     class="d80-modal">
+
+  <div class="d80-modal-card">
+
+    <button
+      id="d80VocabClose"
+      class="d80-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d80ModalIcon"
+         class="d80-modal-icon"></div>
+
+    <h2 id="d80ModalTerm"></h2>
+
+    <p id="d80ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day80_direct.js') }}?v=80-final"
+></script>
+
+{% endblock %}

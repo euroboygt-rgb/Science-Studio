@@ -885,3 +885,20 @@ POWER_FRAMES[79] = {
 }
 
 # Science Studio Day 79 Power Frame End
+
+
+# Science Studio Day 80 Power Frame Start
+
+POWER_FRAMES[80] = {
+
+    "i_can":
+        "I can use Earth's rotation to explain several predictable daily patterns.",
+
+    "by":
+        "repairing Mission Control systems using models, observations, and evidence.",
+
+    "i_know":
+        "I know I have learned this when I can connect day and night, apparent Sun motion, and changing shadows to Earth's rotation."
+}
+
+# Science Studio Day 80 Power Frame End

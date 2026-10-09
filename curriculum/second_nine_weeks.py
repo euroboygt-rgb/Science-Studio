@@ -4759,3 +4759,99 @@ SECOND_NINE_WEEKS_LESSONS[79] = {
 }
 
 # Science Studio Day 79 End
+
+
+# Science Studio Day 80 Start
+
+SECOND_NINE_WEEKS_LESSONS[80] = {
+
+    "day": 80,
+
+    "title":
+        "Earth Rotation Mission Control: System Recovery",
+
+    "unit":
+        "Investigating Earth's Rotation",
+
+    "teks":
+        "5.9A, 5.1F, 5.2D",
+
+    "focus":
+        "Students integrate evidence about Earth's axis, rotation, day and night, "
+        "the Sun's apparent motion, and changing shadows.",
+
+    "learning_target":
+        "We will use models and evidence to explain how Earth's rotation creates predictable daily patterns.",
+
+    "success_criteria":
+        "I can use Earth's rotation to explain day and night, "
+        "the Sun's apparent movement, and changing shadow patterns.",
+
+    "essential_question":
+        "How can one motion of Earth explain several patterns we observe each day?",
+
+    "bell_ringer": [
+        "Earth rotates on an imaginary axis.",
+        "One rotation takes about 24 hours.",
+        "What daily patterns can be explained by this one motion?"
+    ],
+
+    "mini_lesson": [
+        "Earth rotates around its axis approximately once every 24 hours.",
+        "At any moment, one side of Earth faces the Sun and experiences day while the opposite side experiences night.",
+        "As Earth rotates, locations move through day, sunset, night, sunrise, and back to day.",
+        "Earth rotates west to east.",
+        "From Earth's surface, the Sun appears to move generally east to west.",
+        "The Sun's daily motion across the sky is apparent motion.",
+        "As the Sun's apparent position changes, shadows change direction and length.",
+        "A shadow extends generally away from the light source.",
+        "A lower Sun generally produces a longer shadow.",
+        "A higher Sun generally produces a shorter shadow.",
+        "One cause—Earth's rotation—helps explain several connected daily patterns."
+    ],
+
+    "science_notebook": [
+        "Create a cause-and-effect organizer.",
+        "Center: Earth rotates west to east once every 24 hours.",
+        "Branch 1: Day and night.",
+        "Branch 2: Sun appears to move east to west.",
+        "Branch 3: Shadows change direction and length.",
+        "Branch 4: The cycle repeats predictably."
+    ],
+
+    "guided_practice": [
+        "Identify Earth's axis on a model.",
+        "Explain why one side of Earth has day while the other has night.",
+        "Predict sunrise or sunset for a rotating location.",
+        "Connect Earth's west-to-east rotation to the Sun's east-to-west apparent motion.",
+        "Use a shadow to infer the Sun's likely apparent position."
+    ],
+
+    "lab_title":
+        "Earth Rotation Mission Control: System Recovery",
+
+    "lab_url":
+        "/labs/earth-rotation-mission-control?mission=day80",
+
+    "exit_ticket":
+        "Choose two daily patterns and explain how Earth's rotation causes both.",
+
+    "vocabulary": [
+        "axis",
+        "rotation",
+        "24-hour cycle",
+        "day",
+        "night",
+        "apparent motion",
+        "sunrise",
+        "sunset",
+        "shadow"
+    ],
+
+    "teacher_note":
+        "This is an integrated application lesson rather than simple review. "
+        "Students should repeatedly identify Earth's rotation as the common cause "
+        "connecting day/night, apparent Sun motion, and shadow patterns."
+}
+
+# Science Studio Day 80 End

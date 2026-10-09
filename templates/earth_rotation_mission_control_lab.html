@@ -1,0 +1,731 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='earth_rotation_mission_control_lab.css') }}?v=80.1"
+>
+
+
+<div class="mc-shell">
+
+
+  <header class="mc-hero">
+
+    <div class="mc-tags">
+
+      <span>🚀 Capstone Lab</span>
+
+      <span>Mission Control</span>
+
+      <span>TEKS 5.9A</span>
+
+    </div>
+
+
+    <div class="mc-hero-row">
+
+      <div>
+
+        <h1>
+          Earth Rotation Mission Control:
+          System Recovery
+        </h1>
+
+        <p>
+          Restore all four Earth systems
+          using science evidence.
+        </p>
+
+      </div>
+
+
+      <a
+        class="mc-back"
+        href="/second-nine-weeks/day/80?view=student"
+      >
+        ← Back to Day 80
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- MASTER STATUS -->
+
+  <section class="mc-command">
+
+    <div>
+
+      <div class="mc-eyebrow">
+        MISSION CONTROL STATUS
+      </div>
+
+      <h2>
+        Earth Systems Offline
+      </h2>
+
+    </div>
+
+
+    <div class="mc-system-grid">
+
+      <div id="mcStatus1">
+        <span>🔴</span>
+        <strong>Axis & Rotation</strong>
+      </div>
+
+      <div id="mcStatus2">
+        <span>🔴</span>
+        <strong>Day / Night</strong>
+      </div>
+
+      <div id="mcStatus3">
+        <span>🔴</span>
+        <strong>Apparent Sun</strong>
+      </div>
+
+      <div id="mcStatus4">
+        <span>🔴</span>
+        <strong>Shadow Tracker</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="mc-mission-header">
+
+    <div>
+
+      <div class="mc-eyebrow">
+        SYSTEM 1
+      </div>
+
+      <h2>
+        Axis & Rotation Core
+      </h2>
+
+      <p>
+        Mission Control has loaded
+        three Earth-motion programs.
+
+        Activate the correct one.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="mc-panel">
+
+    <div class="mc-earth-core">
+
+      <div class="mc-axis"></div>
+
+      <div class="mc-earth">
+        🌎
+      </div>
+
+    </div>
+
+
+    <div class="mc-choice-grid">
+
+      <button
+        data-system1="A"
+        type="button"
+      >
+        A.
+        Earth rotates around its axis
+        about once every 24 hours.
+      </button>
+
+      <button
+        data-system1="B"
+        type="button"
+      >
+        B.
+        Earth completes one rotation
+        every 365 days.
+      </button>
+
+      <button
+        data-system1="C"
+        type="button"
+      >
+        C.
+        The Sun rotates around Earth
+        once every 24 hours.
+      </button>
+
+    </div>
+
+
+    <button
+      id="mcCheck1"
+      class="mc-main-button"
+      type="button"
+    >
+      ⚡ ACTIVATE ROTATION CORE
+    </button>
+
+
+    <div id="mcFeedback1"
+         class="mc-feedback">
+      Select the correct Earth-motion program.
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="mc-mission-header">
+
+    <div>
+
+      <div class="mc-eyebrow">
+        SYSTEM 2
+      </div>
+
+      <h2>
+        Day / Night Tracking Array
+      </h2>
+
+      <p>
+        Track Mission Base
+        through one full rotation.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="mc-panel">
+
+    <svg
+      class="mc-daynight-svg"
+      viewBox="0 0 1000 520"
+    >
+
+      <rect width="1000"
+            height="520"
+            rx="20"
+            fill="#071120"/>
+
+
+      <!-- SUN -->
+
+      <circle
+        cx="135"
+        cy="250"
+        r="72"
+        fill="#ffd447"
+        stroke="#fff2a5"
+        stroke-width="8"
+      />
+
+
+      <text
+        x="135"
+        y="350"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="20"
+        font-weight="900"
+      >
+        SUN
+      </text>
+
+
+      <!-- LIGHT -->
+
+      <g
+        stroke="#ffe45d"
+        stroke-width="7"
+        opacity=".7"
+      >
+
+        <line x1="220"
+              y1="160"
+              x2="465"
+              y2="160"/>
+
+        <line x1="220"
+              y1="205"
+              x2="465"
+              y2="205"/>
+
+        <line x1="220"
+              y1="250"
+              x2="465"
+              y2="250"/>
+
+        <line x1="220"
+              y1="295"
+              x2="465"
+              y2="295"/>
+
+        <line x1="220"
+              y1="340"
+              x2="465"
+              y2="340"/>
+
+      </g>
+
+
+      <!-- EARTH -->
+
+      <circle
+        cx="675"
+        cy="250"
+        r="160"
+        fill="#168de3"
+        stroke="#ffffff"
+        stroke-width="7"
+      />
+
+
+      <path d="
+        M555 205
+        Q600 160 655 180
+        Q680 205 660 240
+        Q625 250 600 280
+        Q570 260 555 230
+        Z
+      "
+        fill="#4fbd57"
+      />
+
+
+      <!-- NIGHT HALF -->
+
+      <path
+        d="
+          M675 90
+          A160 160 0 0 1 675 410
+          Z
+        "
+        fill="#010718"
+        opacity=".82"
+      />
+
+
+      <line
+        x1="675"
+        y1="90"
+        x2="675"
+        y2="410"
+        stroke="#ffffff"
+        stroke-width="4"
+        stroke-dasharray="10 8"
+      />
+
+
+      <!-- LOCATION -->
+
+      <g id="mcLocation">
+
+        <circle
+          cx="0"
+          cy="0"
+          r="12"
+          fill="#ff3d3d"
+          stroke="#ffffff"
+          stroke-width="4"
+        />
+
+        <circle
+          cx="0"
+          cy="0"
+          r="21"
+          fill="none"
+          stroke="#ffe45d"
+          stroke-width="4"
+        />
+
+      </g>
+
+
+      <text
+        id="mcDayNightLabel"
+        x="675"
+        y="465"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="19"
+        font-weight="900"
+      >
+        Mission Base is in DAYLIGHT.
+      </text>
+
+    </svg>
+
+
+    <div class="mc-time-buttons">
+
+      <button data-stage="day"
+              type="button">
+        ☀️ Day
+      </button>
+
+      <button data-stage="sunset"
+              type="button">
+        🌇 Sunset
+      </button>
+
+      <button data-stage="night"
+              type="button">
+        🌙 Night
+      </button>
+
+      <button data-stage="sunrise"
+              type="button">
+        🌅 Sunrise
+      </button>
+
+      <button data-stage="day2"
+              type="button">
+        ☀️ Day Again
+      </button>
+
+    </div>
+
+
+    <div id="mcFeedback2"
+         class="mc-feedback">
+      Visit all five positions
+      to restore the Day/Night Tracking Array.
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="mc-mission-header">
+
+    <div>
+
+      <div class="mc-eyebrow">
+        SYSTEM 3
+      </div>
+
+      <h2>
+        Apparent Sun Navigation
+      </h2>
+
+      <p>
+        Navigation has reversed
+        Earth's actual motion
+        and the Sun's apparent motion.
+
+        Repair the directions.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="mc-panel">
+
+    <div class="mc-direction-board">
+
+      <div>
+
+        <span>
+          🌎
+        </span>
+
+        <strong>
+          EARTH ACTUALLY ROTATES
+        </strong>
+
+        <div class="mc-direction-choice">
+
+          <button
+            data-earth-direction="west-east"
+            type="button"
+          >
+            WEST → EAST
+          </button>
+
+          <button
+            data-earth-direction="east-west"
+            type="button"
+          >
+            EAST → WEST
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <span>
+          ☀️
+        </span>
+
+        <strong>
+          SUN APPEARS TO MOVE
+        </strong>
+
+        <div class="mc-direction-choice">
+
+          <button
+            data-sun-direction="west-east"
+            type="button"
+          >
+            WEST → EAST
+          </button>
+
+          <button
+            data-sun-direction="east-west"
+            type="button"
+          >
+            EAST → WEST
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="mcCheck3"
+      class="mc-main-button"
+      type="button"
+    >
+      🧭 CALIBRATE NAVIGATION
+    </button>
+
+
+    <div id="mcFeedback3"
+         class="mc-feedback">
+      Set both motion directions.
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="mc-mission-header">
+
+    <div>
+
+      <div class="mc-eyebrow">
+        SYSTEM 4
+      </div>
+
+      <h2>
+        Shadow Evidence Processor
+      </h2>
+
+      <p>
+        Analyze three shadow readings
+        and identify the likely Sun position.
+      </p>
+
+    </div>
+
+
+    <aside class="mc-score">
+
+      <strong>
+        Cases
+      </strong>
+
+      <span id="mcShadowScore">
+        0 / 3
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="mc-panel">
+
+    <div
+      id="mcShadowCase"
+      class="mc-shadow-case"
+    >
+
+      Loading shadow evidence...
+
+    </div>
+
+
+    <div class="mc-shadow-scene">
+
+      <div class="mc-object"></div>
+
+      <div id="mcShadowLine"
+           class="mc-shadow-line"></div>
+
+    </div>
+
+
+    <div
+      id="mcShadowChoices"
+      class="mc-choice-grid"
+    ></div>
+
+
+    <button
+      id="mcCheck4"
+      class="mc-main-button"
+      type="button"
+    >
+      🔎 ANALYZE SHADOW
+    </button>
+
+
+    <div id="mcFeedback4"
+         class="mc-feedback">
+      Select the best Sun position.
+    </div>
+
+
+    <button
+      id="mcNextShadow"
+      class="mc-next-button"
+      type="button"
+      disabled
+    >
+      NEXT SHADOW CASE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL STATUS -->
+
+  <section class="mc-final">
+
+    <div class="mc-final-icon">
+      🚀🌎
+    </div>
+
+    <h2>
+      Mission Control Recovery Status
+    </h2>
+
+
+    <div id="mcFinalMessage"
+         class="mc-final-message">
+
+      Four systems remain offline.
+
+    </div>
+
+  </section>
+
+
+  <!-- EVIDENCE -->
+
+  <section class="mc-evidence">
+
+    <h2>
+      📓 Mission Control Evidence Log
+    </h2>
+
+
+    <div class="mc-evidence-grid">
+
+      <article>
+
+        <strong>
+          📍 Axis & Rotation
+        </strong>
+
+        <p>
+          Earth rotates around its axis
+          about once every ______ hours.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ☀️🌙 Day / Night
+        </strong>
+
+        <p>
+          Day and night happen
+          because locations rotate
+          into and out of ______.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🌅🌇 Apparent Motion
+        </strong>
+
+        <p>
+          Earth rotates ______ to ______,
+          making the Sun appear
+          to move the opposite direction.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ⬛ Shadows
+        </strong>
+
+        <p>
+          A shadow extends generally
+          ______ from the Sun.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="mc-final-question">
+
+      <strong>
+        🧠 Mission Commander Question:
+      </strong>
+
+      How can one motion of Earth
+      explain several different
+      patterns we observe each day?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='earth_rotation_mission_control_lab.js') }}?v=80.1"
+></script>
+
+{% endblock %}
