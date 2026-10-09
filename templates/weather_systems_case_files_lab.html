@@ -1,0 +1,958 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='weather_systems_case_files_lab.css') }}?v=87.1"
+>
+
+
+<div class="wf-shell">
+
+
+  <!-- HERO -->
+
+  <header class="wf-hero">
+
+    <div class="wf-tags">
+
+      <span>🗂️ Classified Investigation</span>
+
+      <span>Weather Systems Case Files</span>
+
+      <span>TEKS 5.10A</span>
+
+    </div>
+
+
+    <div class="wf-hero-row">
+
+      <div>
+
+        <h1>
+          Weather Systems:
+          Mission Control Case Files
+        </h1>
+
+        <p>
+          Analyze clues.
+          Identify processes.
+          Defend conclusions.
+          Restore the entire weather system.
+        </p>
+
+      </div>
+
+
+      <a
+        class="wf-back"
+        href="/second-nine-weeks/day/87?view=student"
+      >
+        ← Back to Day 87
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- STATUS -->
+
+  <section class="wf-command">
+
+    <div>
+
+      <div class="wf-eyebrow">
+        CLASSIFIED CASE STATUS
+      </div>
+
+      <h2>
+        Solve All Four Files
+      </h2>
+
+    </div>
+
+
+    <div class="wf-status-grid">
+
+      <div id="wfStatus1">
+
+        <span>🔴</span>
+
+        <strong>
+          Ocean Water
+        </strong>
+
+      </div>
+
+
+      <div id="wfStatus2">
+
+        <span>🔴</span>
+
+        <strong>
+          Cloud Mystery
+        </strong>
+
+      </div>
+
+
+      <div id="wfStatus3">
+
+        <span>🔴</span>
+
+        <strong>
+          Weather Change
+        </strong>
+
+      </div>
+
+
+      <div id="wfStatus4">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission Control
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CASE 1 -->
+
+  <section class="wf-case-header">
+
+    <div>
+
+      <div class="wf-eyebrow">
+        CASE FILE 1
+      </div>
+
+      <h2>
+        The Disappearing Ocean Water
+      </h2>
+
+      <p>
+        Determine where the water went.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="wf-panel">
+
+    <div class="wf-clue-board">
+
+      <article>
+
+        <span>☀️</span>
+
+        <strong>
+          SOLAR ENERGY
+        </strong>
+
+        <b class="wf-high">
+          HIGH
+        </b>
+
+      </article>
+
+
+      <article>
+
+        <span>🌊</span>
+
+        <strong>
+          SURFACE WATER
+        </strong>
+
+        <b class="wf-down">
+          DECREASING ↓
+        </b>
+
+      </article>
+
+
+      <article>
+
+        <span>💨</span>
+
+        <strong>
+          WATER VAPOR
+        </strong>
+
+        <b class="wf-up">
+          INCREASING ↑
+        </b>
+
+      </article>
+
+    </div>
+
+
+    <div class="wf-question-box">
+
+      <strong>
+        INVESTIGATOR QUESTION:
+      </strong>
+
+      Which process
+      best explains
+      ALL THREE clues?
+
+    </div>
+
+
+    <div class="wf-case-choices">
+
+      <button
+        data-case1="evaporation"
+        type="button"
+      >
+        ⬆️ Evaporation
+      </button>
+
+      <button
+        data-case1="condensation"
+        type="button"
+      >
+        💧 Condensation
+      </button>
+
+      <button
+        data-case1="precipitation"
+        type="button"
+      >
+        🌧️ Precipitation
+      </button>
+
+    </div>
+
+
+    <h3>
+      🔎 Choose TWO pieces of evidence:
+    </h3>
+
+
+    <div class="wf-evidence-choices">
+
+      <button
+        data-evidence1="sun"
+        type="button"
+      >
+        Solar energy is high.
+      </button>
+
+      <button
+        data-evidence1="water"
+        type="button"
+      >
+        Ocean surface water decreased.
+      </button>
+
+      <button
+        data-evidence1="vapor"
+        type="button"
+      >
+        Atmospheric water vapor increased.
+      </button>
+
+      <button
+        data-evidence1="moon"
+        type="button"
+      >
+        The Moon exists.
+      </button>
+
+    </div>
+
+
+    <button
+      id="wfCheck1"
+      class="wf-main-button"
+      type="button"
+    >
+      🗂️ SOLVE CASE FILE 1
+    </button>
+
+
+    <div id="wfFeedback1"
+         class="wf-feedback">
+
+      Identify the process
+      and select two supporting clues.
+
+    </div>
+
+  </section>
+
+
+  <!-- CASE 2 -->
+
+  <section class="wf-case-header">
+
+    <div>
+
+      <div class="wf-eyebrow">
+        CASE FILE 2
+      </div>
+
+      <h2>
+        The Cloud Formation Mystery
+      </h2>
+
+      <p>
+        Determine why a cloud appeared.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="wf-panel">
+
+    <div class="wf-atmosphere-scene">
+
+      <div class="wf-vapor-symbol">
+        💨
+      </div>
+
+      <div id="wfCase2Cloud"
+           class="wf-case2-cloud">
+        ☁️
+      </div>
+
+
+      <div class="wf-atmos-readouts">
+
+        <div>
+
+          <span>
+            Moisture
+          </span>
+
+          <strong>
+            HIGH
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Air Temperature
+          </span>
+
+          <strong>
+            24°C → 14°C
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Cloud Cover
+          </span>
+
+          <strong>
+            20% → 85%
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="wf-question-box">
+
+      Which process
+      best explains
+      the increasing cloud cover?
+
+    </div>
+
+
+    <div class="wf-case-choices">
+
+      <button
+        data-case2="evaporation"
+        type="button"
+      >
+        Evaporation
+      </button>
+
+      <button
+        data-case2="condensation"
+        type="button"
+      >
+        Condensation
+      </button>
+
+      <button
+        data-case2="collection"
+        type="button"
+      >
+        Collection
+      </button>
+
+    </div>
+
+
+    <h3>
+      🔎 Select the strongest evidence pair:
+    </h3>
+
+
+    <div class="wf-pair-choices">
+
+      <button
+        data-pair2="A"
+        type="button"
+      >
+        A. High moisture + cooling air
+      </button>
+
+      <button
+        data-pair2="B"
+        type="button"
+      >
+        B. High moisture + Earth's rotation
+      </button>
+
+      <button
+        data-pair2="C"
+        type="button"
+      >
+        C. Cloud cover + Moon phase
+      </button>
+
+    </div>
+
+
+    <button
+      id="wfCheck2"
+      class="wf-main-button"
+      type="button"
+    >
+      ☁️ SOLVE CASE FILE 2
+    </button>
+
+
+    <div id="wfFeedback2"
+         class="wf-feedback">
+
+      Identify the process
+      and the strongest evidence pair.
+
+    </div>
+
+  </section>
+
+
+  <!-- CASE 3 -->
+
+  <section class="wf-case-header">
+
+    <div>
+
+      <div class="wf-eyebrow">
+        CASE FILE 3
+      </div>
+
+      <h2>
+        Approaching Weather Change
+      </h2>
+
+      <p>
+        Read four days of evidence.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="wf-panel">
+
+    <div class="wf-weather-days">
+
+      <article>
+
+        <strong>
+          DAY 1
+        </strong>
+
+        <span>
+          🌡️ 29°C
+        </span>
+
+        <span>
+          ☁️ 15%
+        </span>
+
+        <span>
+          🌧️ 0 mm
+        </span>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          DAY 2
+        </strong>
+
+        <span>
+          🌡️ 26°C
+        </span>
+
+        <span>
+          ☁️ 35%
+        </span>
+
+        <span>
+          🌧️ 0 mm
+        </span>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          DAY 3
+        </strong>
+
+        <span>
+          🌡️ 22°C
+        </span>
+
+        <span>
+          ☁️ 65%
+        </span>
+
+        <span>
+          🌧️ 2 mm
+        </span>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          DAY 4
+        </strong>
+
+        <span>
+          🌡️ 18°C
+        </span>
+
+        <span>
+          ☁️ 90%
+        </span>
+
+        <span>
+          🌧️ 8 mm
+        </span>
+
+      </article>
+
+    </div>
+
+
+    <div class="wf-question-box">
+
+      Which statement
+      best describes
+      the changing weather pattern?
+
+    </div>
+
+
+    <div class="wf-case-choices">
+
+      <button
+        data-case3="A"
+        type="button"
+      >
+        A. Temperature is decreasing while cloud cover and precipitation increase.
+      </button>
+
+      <button
+        data-case3="B"
+        type="button"
+      >
+        B. Temperature and cloud cover are both increasing.
+      </button>
+
+      <button
+        data-case3="C"
+        type="button"
+      >
+        C. No measurements changed.
+      </button>
+
+    </div>
+
+
+    <h3>
+      🔮 Best-Supported Forecast:
+    </h3>
+
+
+    <div class="wf-forecast-choices">
+
+      <button
+        data-forecast3="A"
+        type="button"
+      >
+        A. Hot and completely clear weather is guaranteed.
+      </button>
+
+      <button
+        data-forecast3="B"
+        type="button"
+      >
+        B. Cooler, cloudy conditions with precipitation still possible.
+      </button>
+
+      <button
+        data-forecast3="C"
+        type="button"
+      >
+        C. Weather cannot ever change again.
+      </button>
+
+    </div>
+
+
+    <button
+      id="wfCheck3"
+      class="wf-main-button"
+      type="button"
+    >
+      📊 SOLVE CASE FILE 3
+    </button>
+
+
+    <div id="wfFeedback3"
+         class="wf-feedback">
+
+      Identify the pattern
+      and choose a supported forecast.
+
+    </div>
+
+  </section>
+
+
+  <!-- CASE 4 -->
+
+  <section class="wf-case-header">
+
+    <div>
+
+      <div class="wf-eyebrow">
+        FINAL CASE FILE
+      </div>
+
+      <h2>
+        Mission Control System Failure
+      </h2>
+
+      <p>
+        Rebuild the entire
+        Sun-ocean-weather chain.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="wf-panel">
+
+    <div class="wf-system-screen">
+
+      <div id="wfSystemSlot1"
+           class="wf-system-slot">
+        ?
+      </div>
+
+      <b>→</b>
+
+      <div id="wfSystemSlot2"
+           class="wf-system-slot">
+        ?
+      </div>
+
+      <b>→</b>
+
+      <div id="wfSystemSlot3"
+           class="wf-system-slot">
+        ?
+      </div>
+
+      <b>→</b>
+
+      <div id="wfSystemSlot4"
+           class="wf-system-slot">
+        ?
+      </div>
+
+      <b>→</b>
+
+      <div id="wfSystemSlot5"
+           class="wf-system-slot">
+        ?
+      </div>
+
+      <b>→</b>
+
+      <div id="wfSystemSlot6"
+           class="wf-system-slot">
+        ?
+      </div>
+
+    </div>
+
+
+    <div class="wf-system-buttons">
+
+      <button
+        data-system="sun"
+        type="button">
+        ☀️ Sun Energy
+      </button>
+
+      <button
+        data-system="ocean"
+        type="button">
+        🌊 Ocean Water
+      </button>
+
+      <button
+        data-system="evaporation"
+        type="button">
+        ⬆️ Evaporation
+      </button>
+
+      <button
+        data-system="vapor"
+        type="button">
+        💨 Water Vapor
+      </button>
+
+      <button
+        data-system="condensation"
+        type="button">
+        💧 Condensation / Clouds
+      </button>
+
+      <button
+        data-system="precipitation"
+        type="button">
+        🌧️ Possible Precipitation
+      </button>
+
+    </div>
+
+
+    <button
+      id="wfResetSystem"
+      class="wf-reset-button"
+      type="button">
+      ↻ RESET SYSTEM
+    </button>
+
+
+    <div id="wfSystemQuestion"
+         class="wf-question-box">
+
+      Build the complete cause-and-effect chain.
+
+    </div>
+
+
+    <div class="wf-final-choices">
+
+      <button
+        data-final="A"
+        type="button"
+      >
+        A. More evaporation guarantees immediate rain.
+      </button>
+
+      <button
+        data-final="B"
+        type="button"
+      >
+        B. More evaporation can add atmospheric moisture, but cloud formation and precipitation require additional conditions.
+      </button>
+
+      <button
+        data-final="C"
+        type="button"
+      >
+        C. Ocean water cannot enter the atmosphere.
+      </button>
+
+    </div>
+
+
+    <button
+      id="wfCheck4"
+      class="wf-main-button"
+      type="button"
+    >
+      🚨 RESTORE MISSION CONTROL
+    </button>
+
+
+    <div id="wfFeedback4"
+         class="wf-feedback">
+
+      Rebuild the system
+      and select the correct systems statement.
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="wf-final">
+
+    <div class="wf-final-icon">
+      ☀️🌊💨☁️🌧️🔎
+    </div>
+
+    <h2>
+      Weather Systems Investigation Status
+    </h2>
+
+
+    <div id="wfFinalMessage"
+         class="wf-final-message">
+
+      Four classified cases remain open.
+
+    </div>
+
+  </section>
+
+
+  <!-- LOG -->
+
+  <section class="wf-log">
+
+    <h2>
+      📓 Investigator Evidence Log
+    </h2>
+
+
+    <div class="wf-log-grid">
+
+      <article>
+
+        <strong>
+          🌊 → 💨
+        </strong>
+
+        <p>
+          Evaporation transfers
+          water from surface
+          to atmosphere.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          💨 + ❄️ → ☁️
+        </strong>
+
+        <p>
+          Cooling moist air
+          can support condensation.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          📊
+        </strong>
+
+        <p>
+          Weather measurements
+          provide evidence
+          of system changes.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🔎
+        </strong>
+
+        <p>
+          Strong explanations
+          use more than one clue.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="wf-big-question">
+
+      <strong>
+        🧠 Final Investigator Question:
+      </strong>
+
+      How does evidence from
+      the ocean,
+      atmosphere,
+      clouds,
+      and weather station
+      help explain the interaction
+      between the Sun and ocean?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='weather_systems_case_files_lab.js') }}?v=87.1"
+></script>
+
+{% endblock %}

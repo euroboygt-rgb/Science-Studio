@@ -1,0 +1,415 @@
+.wf-shell {
+  width: min(1200px,96vw);
+  margin: 24px auto 60px;
+}
+
+.wf-hero,
+.wf-command,
+.wf-case-header,
+.wf-panel,
+.wf-final,
+.wf-log {
+  border: 3px solid #171717;
+  border-radius: 17px;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+.wf-hero {
+  padding: 20px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #1d3153,
+      #367daf,
+      #7131cc
+    );
+}
+
+.wf-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.wf-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #304e78;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+.wf-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.wf-back {
+  padding: 10px 14px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.wf-command {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+.wf-eyebrow {
+  font-size: .75rem;
+  font-weight: 900;
+}
+
+.wf-status-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.wf-status-grid > div {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.wf-status-grid span,
+.wf-status-grid strong {
+  display: block;
+}
+
+.wf-status-grid span {
+  font-size: 2rem;
+}
+
+.wf-status-grid .online {
+  background: #d9f8dd;
+}
+
+.wf-case-header {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+.wf-panel {
+  margin-top: 10px;
+  padding: 16px;
+  background: #111a34;
+  color: #fff;
+}
+
+.wf-clue-board {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+}
+
+.wf-clue-board article {
+  padding: 16px;
+  border: 3px solid #fff;
+  border-radius: 12px;
+  background: #eaf6ff;
+  color: #111;
+  text-align: center;
+}
+
+.wf-clue-board span {
+  display: block;
+  font-size: 4rem;
+}
+
+.wf-clue-board strong,
+.wf-clue-board b {
+  display: block;
+  margin: 8px 0;
+}
+
+.wf-high {
+  color: #d47a00;
+}
+
+.wf-down {
+  color: #b00020;
+}
+
+.wf-up {
+  color: #087a35;
+}
+
+.wf-question-box {
+  margin-top: 12px;
+  padding: 14px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff3ad;
+  color: #111;
+  text-align: center;
+  font-weight: 900;
+}
+
+.wf-case-choices,
+.wf-evidence-choices,
+.wf-pair-choices,
+.wf-forecast-choices,
+.wf-final-choices,
+.wf-system-buttons {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.wf-case-choices {
+  grid-template-columns: repeat(3,1fr);
+}
+
+.wf-evidence-choices {
+  grid-template-columns: repeat(2,1fr);
+}
+
+.wf-pair-choices,
+.wf-forecast-choices,
+.wf-final-choices {
+  grid-template-columns: repeat(3,1fr);
+}
+
+.wf-system-buttons {
+  grid-template-columns: repeat(3,1fr);
+}
+
+.wf-case-choices button,
+.wf-evidence-choices button,
+.wf-pair-choices button,
+.wf-forecast-choices button,
+.wf-final-choices button,
+.wf-system-buttons button {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.wf-case-choices button.selected,
+.wf-evidence-choices button.selected,
+.wf-pair-choices button.selected,
+.wf-forecast-choices button.selected,
+.wf-final-choices button.selected,
+.wf-system-buttons button.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+  box-shadow: 0 0 0 3px rgba(113,49,204,.25);
+}
+
+.wf-main-button,
+.wf-reset-button {
+  margin-top: 12px;
+  padding: 12px 18px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #ffe45d;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.wf-reset-button {
+  background: #fff;
+}
+
+.wf-feedback {
+  margin-top: 12px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+}
+
+.wf-atmosphere-scene {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  border: 3px solid #fff;
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      #4c7199,
+      #b7e6fb
+    );
+}
+
+.wf-vapor-symbol {
+  position: absolute;
+  top: 45px;
+  left: 20%;
+  font-size: 6rem;
+}
+
+.wf-case2-cloud {
+  position: absolute;
+  top: 35px;
+  right: 18%;
+  font-size: 9rem;
+}
+
+.wf-atmos-readouts {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 8px;
+}
+
+.wf-atmos-readouts > div {
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  text-align: center;
+}
+
+.wf-atmos-readouts span,
+.wf-atmos-readouts strong {
+  display: block;
+}
+
+.wf-atmos-readouts strong {
+  color: #7131cc;
+}
+
+.wf-weather-days {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.wf-weather-days article {
+  padding: 14px;
+  border: 3px solid #fff;
+  border-radius: 11px;
+  background: #eaf6ff;
+  color: #111;
+  text-align: center;
+}
+
+.wf-weather-days strong,
+.wf-weather-days span {
+  display: block;
+  margin: 7px;
+}
+
+.wf-system-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 15px;
+  border: 3px solid #fff;
+  border-radius: 12px;
+  background: #263b61;
+}
+
+.wf-system-slot {
+  display: grid;
+  place-items: center;
+  width: 150px;
+  min-height: 100px;
+  padding: 9px;
+  border: 3px solid #fff;
+  border-radius: 10px;
+  background: #eaf6ff;
+  color: #111;
+  text-align: center;
+  font-weight: 900;
+}
+
+.wf-system-screen b {
+  color: #ffe45d;
+  font-size: 1.8rem;
+}
+
+.wf-final {
+  margin-top: 14px;
+  padding: 20px;
+  background: #fff4cd;
+  text-align: center;
+}
+
+.wf-final-icon {
+  font-size: 4rem;
+}
+
+.wf-final-message {
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #e9f6ff;
+  font-weight: 900;
+}
+
+.wf-log {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff;
+}
+
+.wf-log-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.wf-log-grid article {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+}
+
+.wf-big-question {
+  margin-top: 10px;
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff3ad;
+}
+
+@media (max-width:850px) {
+
+  .wf-hero-row {
+    display: block;
+  }
+
+  .wf-status-grid,
+  .wf-clue-board,
+  .wf-case-choices,
+  .wf-evidence-choices,
+  .wf-pair-choices,
+  .wf-forecast-choices,
+  .wf-final-choices,
+  .wf-system-buttons,
+  .wf-atmos-readouts,
+  .wf-weather-days,
+  .wf-log-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

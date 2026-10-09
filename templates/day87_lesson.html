@@ -1,0 +1,1268 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=87-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day87_direct.css') }}?v=87-final"
+>
+
+
+<div id="DAY87_DIRECT_TEMPLATE"
+     class="d87-page">
+
+
+  <!-- HERO -->
+
+  <section class="d87-hero">
+
+    <div class="d87-tags">
+
+      <span>Day 87</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10A</span>
+
+      <span>Weather Case Files</span>
+
+    </div>
+
+
+    <h1>
+      🕵️🌦️ Weather Systems Case Files:
+      Follow the Evidence
+    </h1>
+
+
+    <p>
+      Solve Earth-system mysteries
+      by connecting Sun energy,
+      ocean water,
+      atmospheric moisture,
+      clouds,
+      precipitation,
+      and weather data.
+    </p>
+
+
+    <div class="d87-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/87?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/87?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Investigator Mission
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          use evidence
+          to explain
+          what is happening
+          in a weather system.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          connecting water-cycle processes
+          with weather measurements.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can solve a case
+          and support my explanation
+          with at least two
+          pieces of evidence.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🗂️ Case File 00
+    </div>
+
+    <h2>
+      What Happened to the Water?
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day87_weather_case.svg"
+        alt="Evidence showing high solar energy decreasing ocean water increasing atmospheric moisture and later cloud formation"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Investigator Question:
+      </strong>
+
+      Ocean surface water decreased,
+      atmospheric water vapor increased,
+      and cloud cover increased later.
+
+      <br><br>
+
+      What sequence of processes
+      best explains all three observations?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d87MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Investigator Brief
+        </div>
+
+        <h2>
+          Evidence Before Explanation
+        </h2>
+
+        <div class="d59-unit">
+          Observe → Process → Evidence → Explanation
+        </div>
+
+      </div>
+
+
+      <button
+        id="d87Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Case Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d87SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d87SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d87SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d87SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d87SlideNumber"></strong>
+
+      <div>
+
+        <button id="d87Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d87Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d87Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's Case File
+        </div>
+
+        <h2>
+          Steve Found One Clue
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve notices
+          that cloud cover increased.
+
+          He immediately says:
+
+          <strong>
+            "Evaporation definitely increased!"
+          </strong>
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            What should Steve do
+            before making that conclusion?
+          </strong>
+
+
+          <button class="d87-steve-answer"
+                  data-answer="A">
+            A. Look for additional evidence such as ocean water, atmospheric moisture, temperature, and precipitation data.
+          </button>
+
+          <button class="d87-steve-answer"
+                  data-answer="B">
+            B. Ignore all other measurements.
+          </button>
+
+          <button class="d87-steve-answer"
+                  data-answer="C">
+            C. Assume every cloud means heavy rain.
+          </button>
+
+          <button class="d87-steve-answer"
+                  data-answer="D">
+            D. Decide that water disappeared.
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d87SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Investigation
+            </button>
+
+            <button id="d87SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d87SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Case File Vocabulary
+    </h2>
+
+
+    <div class="d87-vocab-grid">
+
+      {% set words = [
+        ("⚙️","system","A group of connected parts that interact."),
+        ("🔎","evidence","Information used to support a claim or explanation."),
+        ("👀","observation","Information gathered by noticing or measuring something."),
+        ("⬆️","evaporation","Liquid water changing into water vapor."),
+        ("💧","condensation","Water vapor changing into liquid droplets."),
+        ("💨","atmospheric moisture","Water vapor present in the atmosphere."),
+        ("☁️","cloud cover","The amount of sky covered by clouds."),
+        ("🌧️","precipitation","Water falling from clouds to Earth's surface."),
+        ("🔗","cause and effect","A relationship in which one event or condition influences another.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d87-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will use
+      water-cycle evidence
+      and weather data
+      to explain changes
+      in a weather system.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      Three Mystery Clues
+    </h2>
+
+
+    <div class="d59-box">
+
+      A weather station reports:
+
+      <ul>
+
+        <li>
+          Ocean surface water decreases.
+        </li>
+
+        <li>
+          Atmospheric moisture increases.
+        </li>
+
+        <li>
+          Solar energy is high.
+        </li>
+
+      </ul>
+
+      <strong>
+        Which water-cycle process
+        best explains these observations?
+      </strong>
+
+      <br><br>
+
+      Write the process
+      AND identify two clues
+      supporting your answer.
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      Solve the System, Not the Vocabulary Word
+    </h2>
+
+
+    <div class="d87-investigation-method">
+
+      <article>
+
+        <span>
+          👀
+        </span>
+
+        <strong>
+          1. OBSERVE
+        </strong>
+
+        <p>
+          What actually changed?
+        </p>
+
+      </article>
+
+
+      <b>
+        →
+      </b>
+
+
+      <article>
+
+        <span>
+          🧠
+        </span>
+
+        <strong>
+          2. IDENTIFY
+        </strong>
+
+        <p>
+          Which process could cause it?
+        </p>
+
+      </article>
+
+
+      <b>
+        →
+      </b>
+
+
+      <article>
+
+        <span>
+          🔎
+        </span>
+
+        <strong>
+          3. PROVE
+        </strong>
+
+        <p>
+          Which evidence supports the process?
+        </p>
+
+      </article>
+
+
+      <b>
+        →
+      </b>
+
+
+      <article>
+
+        <span>
+          🔗
+        </span>
+
+        <strong>
+          4. CONNECT
+        </strong>
+
+        <p>
+          How does it affect another part of the system?
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d87-case-example">
+
+      <h3>
+        🗂️ Example Case
+      </h3>
+
+
+      <div class="d87-clues">
+
+        <span>
+          ☀️ High solar energy
+        </span>
+
+        <span>
+          🌊 Ocean water ↓
+        </span>
+
+        <span>
+          💨 Atmospheric moisture ↑
+        </span>
+
+      </div>
+
+
+      <p>
+        <strong>
+          Process:
+        </strong>
+
+        Evaporation
+      </p>
+
+
+      <p>
+        <strong>
+          Evidence:
+        </strong>
+
+        Water decreases at the surface
+        while water vapor increases
+        in the atmosphere.
+      </p>
+
+
+      <p>
+        <strong>
+          Connection:
+        </strong>
+
+        That atmospheric moisture
+        can later contribute
+        to condensation and cloud formation.
+      </p>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Evidence Rule
+      </strong>
+
+      <br><br>
+
+      Naming the correct process
+      is only part of the job.
+
+      <br><br>
+
+      A strong scientist says:
+
+      <strong>
+        "I know because the evidence shows..."
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Case File Evidence Table
+    </h2>
+
+
+    <div class="d87-data-table-wrap">
+
+      <table class="d87-data-table">
+
+        <thead>
+
+          <tr>
+            <th>Observation</th>
+            <th>Likely Process</th>
+            <th>Evidence</th>
+            <th>System Connection</th>
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr>
+            <td>Ocean water ↓, vapor ↑</td>
+            <td>Evaporation</td>
+            <td>Water moves from surface to atmosphere</td>
+            <td>Adds atmospheric moisture</td>
+          </tr>
+
+          <tr>
+            <td>Moist air cools, clouds ↑</td>
+            <td>Condensation</td>
+            <td>Water vapor changes into droplets</td>
+            <td>Builds clouds</td>
+          </tr>
+
+          <tr>
+            <td>Cloud particles grow</td>
+            <td>Precipitation may develop</td>
+            <td>Particles become large enough to fall</td>
+            <td>Returns water to surface</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Write this system chain:
+
+      <br><br>
+
+      <strong>
+        ☀️ Sun
+        →
+        🌊 Ocean
+        →
+        ⬆️ Evaporation
+        →
+        💨 Water Vapor
+        →
+        💧 Condensation
+        →
+        ☁️ Clouds
+        →
+        🌧️ Possible Precipitation
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Reveal One Clue at a Time
+    </h2>
+
+
+    <div class="d59-box">
+
+      Give students this case:
+
+      <br><br>
+
+      <strong>
+        "Something changed in the atmosphere."
+      </strong>
+
+      <br><br>
+
+      Reveal clues one at a time:
+
+      <ol>
+
+        <li>
+          Atmospheric moisture is high.
+        </li>
+
+        <li>
+          Air temperature decreases.
+        </li>
+
+        <li>
+          Cloud cover increases.
+        </li>
+
+      </ol>
+
+      After each clue ask:
+
+      <strong>
+        What can we conclude now?
+        What can we NOT conclude yet?
+      </strong>
+
+      <br><br>
+
+      Final target:
+
+      students identify
+      <strong>
+        condensation
+      </strong>
+      and defend it
+      using moisture + cooling + clouds.
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🗂️ Interactive Investigation
+    </div>
+
+    <h2>
+      Weather Systems Case Files:
+      Mission Control Investigation
+    </h2>
+
+
+    <p>
+      Open four classified case files,
+      analyze the clues,
+      identify the process,
+      and defend every conclusion.
+    </p>
+
+
+    <div class="d87-missions">
+
+      <div>
+
+        🌊💨
+
+        <strong>
+          Case File 1
+        </strong>
+
+        Disappearing Ocean Water
+
+      </div>
+
+
+      <div>
+
+        💨☁️
+
+        <strong>
+          Case File 2
+        </strong>
+
+        Cloud Formation Mystery
+
+      </div>
+
+
+      <div>
+
+        📊🌧️
+
+        <strong>
+          Case File 3
+        </strong>
+
+        Approaching Weather Change
+
+      </div>
+
+
+      <div>
+
+        ☀️🌊☁️🌧️
+
+        <strong>
+          Final Case
+        </strong>
+
+        Mission Control System
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Solve all four case files
+      to earn
+
+      <strong>
+        Weather Systems Investigator
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/weather-systems-case-files?mission=day87"
+    >
+      🗂️ Open Weather Systems Case Files
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR-Style Practice
+    </div>
+
+    <h2>
+      Systems Evidence
+    </h2>
+
+
+    <div class="d87-question"
+         data-answer="A">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        Ocean surface water decreases
+        while atmospheric water vapor increases.
+
+        Which process best explains
+        both observations?
+      </p>
+
+      <button data-choice="A">
+        A. Evaporation
+      </button>
+
+      <button data-choice="B">
+        B. Condensation
+      </button>
+
+      <button data-choice="C">
+        C. Precipitation
+      </button>
+
+      <button data-choice="D">
+        D. Collection
+      </button>
+
+      <div class="d87-feedback"></div>
+
+    </div>
+
+
+    <div class="d87-question"
+         data-answer="C">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        Atmospheric moisture is high,
+        air temperature decreases,
+        and cloud cover increases.
+
+        Which process
+        is best supported?
+      </p>
+
+      <button data-choice="A">
+        A. Ocean water freezing
+      </button>
+
+      <button data-choice="B">
+        B. Earth rotation
+      </button>
+
+      <button data-choice="C">
+        C. Condensation
+      </button>
+
+      <button data-choice="D">
+        D. Magnetism
+      </button>
+
+      <div class="d87-feedback"></div>
+
+    </div>
+
+
+    <div class="d87-question"
+         data-answer="D">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        Which is the strongest
+        scientific explanation?
+      </p>
+
+      <button data-choice="A">
+        A. "It rained because I guessed rain."
+      </button>
+
+      <button data-choice="B">
+        B. "Clouds always make rain."
+      </button>
+
+      <button data-choice="C">
+        C. "Weather changed because weather changes."
+      </button>
+
+      <button data-choice="D">
+        D. "Precipitation became more likely as cloud cover increased and cloud particles grew."
+      </button>
+
+      <div class="d87-feedback"></div>
+
+    </div>
+
+
+    <div class="d87-question"
+         data-answer="B">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        Which sequence best connects
+        the Sun and ocean
+        to possible precipitation?
+      </p>
+
+      <button data-choice="A">
+        A. Ocean → Moon → soil → rain
+      </button>
+
+      <button data-choice="B">
+        B. Sun energy → evaporation → water vapor → condensation → clouds → possible precipitation
+      </button>
+
+      <button data-choice="C">
+        C. Cloud → Sun → evaporation → ocean disappears
+      </button>
+
+      <button data-choice="D">
+        D. Wind → rock → cloud → magnetism
+      </button>
+
+      <div class="d87-feedback"></div>
+
+    </div>
+
+
+    <div class="d87-question"
+         data-answer="A">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        Why should scientists
+        use several observations
+        when explaining a weather system?
+      </p>
+
+      <button data-choice="A">
+        A. Several observations can provide stronger evidence for cause-and-effect relationships.
+      </button>
+
+      <button data-choice="B">
+        B. One observation can always prove every process.
+      </button>
+
+      <button data-choice="C">
+        C. Data are not useful in science.
+      </button>
+
+      <button data-choice="D">
+        D. Weather never changes.
+      </button>
+
+      <div class="d87-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+    <p>
+      Choose one case
+      from today's investigation.
+
+      <br><br>
+
+      Explain what happened
+      and use
+      <strong>
+        two pieces of evidence
+      </strong>
+      to support your explanation.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="I conclude that... My first piece of evidence is... My second piece of evidence is..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Weather Systems CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      Evidence from different parts
+      of an Earth system
+      can be used together
+      to explain weather changes.
+
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The case showed..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="These observations support the process because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🏆 Final Weather Mission
+    </div>
+
+    <h2>
+      Day 88:
+      Weather Mission Certification
+    </h2>
+
+
+    <div class="d59-box">
+
+      You have learned the processes.
+
+      <br><br>
+
+      You have operated the systems.
+
+      <br><br>
+
+      You have analyzed the data.
+
+      <br><br>
+
+      You have solved the case files.
+
+      <br><br>
+
+      <strong>
+        Day 88 is the final
+        TEKS 5.10A certification mission.
+      </strong>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d87VocabModal"
+     class="d87-modal">
+
+  <div class="d87-modal-card">
+
+    <button
+      id="d87VocabClose"
+      class="d87-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d87ModalIcon"
+         class="d87-modal-icon"></div>
+
+    <h2 id="d87ModalTerm"></h2>
+
+    <p id="d87ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day87_direct.js') }}?v=87-final"
+></script>
+
+{% endblock %}

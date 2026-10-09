@@ -5436,3 +5436,99 @@ SECOND_NINE_WEEKS_LESSONS[86] = {
 }
 
 # Science Studio Day 86 End
+
+
+# Science Studio Day 87 Start
+
+SECOND_NINE_WEEKS_LESSONS[87] = {
+
+    "day": 87,
+
+    "title":
+        "Weather Systems Case Files: Follow the Evidence",
+
+    "unit":
+        "Weather and the Water Cycle",
+
+    "teks":
+        "5.10A, 5.1F, 5.2D",
+
+    "focus":
+        "Students synthesize water-cycle processes and weather observations "
+        "to solve evidence-based Earth system case files.",
+
+    "learning_target":
+        "We will use water-cycle and weather data as evidence to explain changes in a weather system.",
+
+    "success_criteria":
+        "I can identify the process occurring in a weather case, select evidence that supports my explanation, "
+        "and connect Sun energy, ocean water, atmospheric moisture, clouds, and precipitation.",
+
+    "essential_question":
+        "How can different pieces of evidence help us explain what is happening in a weather system?",
+
+    "bell_ringer": [
+        "If ocean water decreases while atmospheric moisture increases, what process could explain the change?",
+        "If moist air cools and cloud cover increases, what process could be occurring?",
+        "Why is using several pieces of evidence stronger than using one observation?"
+    ],
+
+    "mini_lesson": [
+        "Scientists often explain systems by connecting several observations rather than relying on one clue.",
+        "Solar energy can provide energy for evaporation from ocean water.",
+        "Evaporation moves water into the atmosphere as water vapor.",
+        "When moist air cools enough, condensation can produce cloud droplets.",
+        "Cloud particles can grow and may eventually fall as precipitation.",
+        "Weather-station data can show changes in temperature, cloud cover, wind direction, and precipitation.",
+        "A useful explanation connects cause and effect.",
+        "Strong explanations cite specific evidence from the case.",
+        "A weather forecast or explanation should not claim more than the evidence supports.",
+        "The Sun-ocean-atmosphere-water system is connected."
+    ],
+
+    "science_notebook": [
+        "Create a Case File Evidence Table with columns: Observation | Process | Evidence | Explanation.",
+        "Case clue: Ocean water decreases while atmospheric moisture increases.",
+        "Case clue: Moist air cools while cloud cover increases.",
+        "Case clue: Temperature decreases while cloud cover and precipitation increase.",
+        "Write: Good scientific explanations connect evidence to a process.",
+        "Write: Sun → Ocean → Evaporation → Water Vapor → Condensation → Clouds → Possible Precipitation."
+    ],
+
+    "guided_practice": [
+        "Read one mystery case without showing answer choices.",
+        "Underline observations that are measurements.",
+        "Circle words that describe changes.",
+        "Identify the likely water-cycle process.",
+        "Require students to name two pieces of supporting evidence.",
+        "Ask what the evidence does NOT allow them to conclude."
+    ],
+
+    "lab_title":
+        "Weather Systems Case Files: Mission Control Investigation",
+
+    "lab_url":
+        "/labs/weather-systems-case-files?mission=day87",
+
+    "exit_ticket":
+        "Choose one case from today and explain what happened using two pieces of evidence.",
+
+    "vocabulary": [
+        "system",
+        "evidence",
+        "observation",
+        "evaporation",
+        "condensation",
+        "atmospheric moisture",
+        "cloud cover",
+        "precipitation",
+        "cause and effect"
+    ],
+
+    "teacher_note":
+        "This is a synthesis lesson for TEKS 5.10A. "
+        "Require students to justify claims with case evidence. "
+        "Avoid accepting answers that correctly name a process but do not connect it to observations."
+}
+
+# Science Studio Day 87 End

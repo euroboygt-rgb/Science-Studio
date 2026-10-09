@@ -1,0 +1,257 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="bg"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#1d3153"/>
+
+      <stop offset="100%"
+            stop-color="#6ab4dc"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="24"
+        fill="url(#bg)"/>
+
+
+  <text x="600"
+        y="42"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="29"
+        font-weight="900">
+    WEATHER SYSTEMS CASE FILE
+  </text>
+
+
+  <text x="600"
+        y="82"
+        text-anchor="middle"
+        fill="#ffe45d"
+        font-size="31"
+        font-weight="900">
+    WHAT HAPPENED TO THIS EARTH SYSTEM?
+  </text>
+
+
+  <!-- SUN -->
+
+  <circle cx="150"
+          cy="195"
+          r="68"
+          fill="#ffd447"
+          stroke="#fff3a0"
+          stroke-width="8"/>
+
+
+  <text x="150"
+        y="295"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="19"
+        font-weight="900">
+    HIGH SUN ENERGY
+  </text>
+
+
+  <!-- OCEAN EVIDENCE CARD -->
+
+  <rect x="285"
+        y="135"
+        width="240"
+        height="300"
+        rx="18"
+        fill="#ffffff"
+        stroke="#151515"
+        stroke-width="5"/>
+
+  <text x="405"
+        y="175"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="22"
+        font-weight="900">
+    OCEAN
+  </text>
+
+  <text x="405"
+        y="240"
+        text-anchor="middle"
+        font-size="50">
+    🌊
+  </text>
+
+  <text x="405"
+        y="310"
+        text-anchor="middle"
+        fill="#b00020"
+        font-size="28"
+        font-weight="900">
+    WATER ↓
+  </text>
+
+  <text x="405"
+        y="365"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="19">
+    Surface water
+  </text>
+
+  <text x="405"
+        y="395"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="19">
+    decreases
+  </text>
+
+
+  <!-- ATMOSPHERE CARD -->
+
+  <rect x="560"
+        y="135"
+        width="240"
+        height="300"
+        rx="18"
+        fill="#ffffff"
+        stroke="#151515"
+        stroke-width="5"/>
+
+  <text x="680"
+        y="175"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="22"
+        font-weight="900">
+    ATMOSPHERE
+  </text>
+
+  <text x="680"
+        y="240"
+        text-anchor="middle"
+        font-size="50">
+    💨
+  </text>
+
+  <text x="680"
+        y="310"
+        text-anchor="middle"
+        fill="#087a35"
+        font-size="27"
+        font-weight="900">
+    MOISTURE ↑
+  </text>
+
+  <text x="680"
+        y="365"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="19">
+    Water vapor
+  </text>
+
+  <text x="680"
+        y="395"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="19">
+    increases
+  </text>
+
+
+  <!-- CLOUD CARD -->
+
+  <rect x="835"
+        y="135"
+        width="240"
+        height="300"
+        rx="18"
+        fill="#ffffff"
+        stroke="#151515"
+        stroke-width="5"/>
+
+  <text x="955"
+        y="175"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="22"
+        font-weight="900">
+    LATER
+  </text>
+
+  <text x="955"
+        y="240"
+        text-anchor="middle"
+        font-size="50">
+    ☁️
+  </text>
+
+  <text x="955"
+        y="310"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="25"
+        font-weight="900">
+    CLOUDS ↑
+  </text>
+
+  <text x="955"
+        y="365"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="19">
+    Moist air
+  </text>
+
+  <text x="955"
+        y="395"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="19">
+    cools
+  </text>
+
+
+  <!-- QUESTION BOX -->
+
+  <rect x="155"
+        y="520"
+        width="890"
+        height="105"
+        rx="18"
+        fill="#fff2a5"
+        stroke="#151515"
+        stroke-width="5"/>
+
+  <text x="600"
+        y="560"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="21"
+        font-weight="900">
+    EVIDENCE:
+  </text>
+
+  <text x="600"
+        y="595"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="21"
+        font-weight="900">
+    Ocean water ↓ + atmospheric moisture ↑ + later cloud cover ↑
+  </text>
+
+</svg>

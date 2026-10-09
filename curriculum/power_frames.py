@@ -1004,3 +1004,20 @@ POWER_FRAMES[86] = {
 }
 
 # Science Studio Day 86 Power Frame End
+
+
+# Science Studio Day 87 Power Frame Start
+
+POWER_FRAMES[87] = {
+
+    "i_can":
+        "I can use evidence to explain what is happening in a weather system.",
+
+    "by":
+        "connecting water-cycle processes with temperature, cloud, moisture, and precipitation observations.",
+
+    "i_know":
+        "I know I have learned this when I can solve a weather case and support my explanation with at least two pieces of evidence."
+}
+
+# Science Studio Day 87 Power Frame End
