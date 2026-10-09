@@ -1,0 +1,270 @@
+.d86-page {
+  width: min(1000px,94vw);
+  margin: 22px auto 60px;
+}
+
+.d86-page > section {
+  margin-bottom: 16px;
+}
+
+.d86-hero {
+  padding: 20px;
+  border: 3px solid #171717;
+  border-radius: 18px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #203a5e,
+      #367daf,
+      #7131cc
+    );
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+.d86-tags,
+.d86-header-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.d86-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #355f83;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+.d86-header-buttons {
+  margin-top: 14px;
+}
+
+.d86-header-buttons a {
+  padding: 8px 12px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.d86-vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 9px;
+}
+
+.d86-vocab {
+  min-height: 105px;
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+}
+
+.d86-vocab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 12px rgba(0,0,0,.2);
+}
+
+.d86-vocab span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 2.2rem;
+}
+
+.d86-instruments {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 9px;
+  margin: 16px 0;
+}
+
+.d86-instruments article {
+  padding: 14px;
+  border: 3px solid #171717;
+  border-radius: 11px;
+  background: #edf7ff;
+  text-align: center;
+}
+
+.d86-instruments span {
+  display: block;
+  font-size: 3rem;
+}
+
+.d86-instruments strong {
+  display: block;
+  margin: 7px 0;
+}
+
+.d86-method,
+.d86-example {
+  margin: 16px 0;
+  padding: 16px;
+  border: 3px solid #171717;
+  border-radius: 12px;
+  background: #e9f6ff;
+}
+
+.d86-method {
+  text-align: center;
+}
+
+.d86-method > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.d86-method span {
+  padding: 9px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  font-weight: 900;
+}
+
+.d86-method b {
+  color: #7131cc;
+  font-size: 1.4rem;
+}
+
+.d86-data-table-wrap {
+  overflow-x: auto;
+  margin: 14px 0;
+}
+
+.d86-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.d86-data-table th,
+.d86-data-table td {
+  padding: 10px;
+  border: 2px solid #171717;
+  text-align: center;
+}
+
+.d86-data-table th {
+  background: #101a36;
+  color: #ffe45d;
+}
+
+.d86-missions {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 9px;
+  margin: 14px 0;
+}
+
+.d86-missions div {
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.d86-missions strong {
+  display: block;
+  margin: 6px 0;
+  font-size: .9rem;
+}
+
+.d86-steve-answer,
+.d86-question button {
+  display: block;
+  width: 100%;
+  margin: 7px 0;
+  padding: 10px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  text-align: left;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.d86-steve-answer.selected,
+.d86-question button.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+  box-shadow: 0 0 0 3px rgba(113,49,204,.2);
+}
+
+.d86-question {
+  margin: 14px 0;
+  padding: 13px;
+  border: 2px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+}
+
+.d86-feedback {
+  min-height: 24px;
+  margin-top: 8px;
+  font-weight: 900;
+}
+
+.d86-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0,0,0,.72);
+}
+
+.d86-modal.show {
+  display: flex;
+}
+
+.d86-modal-card {
+  position: relative;
+  width: min(500px,92vw);
+  padding: 30px;
+  border: 4px solid #171717;
+  border-radius: 18px;
+  background: #fff;
+  text-align: center;
+}
+
+.d86-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: 0;
+  background: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.d86-modal-icon {
+  font-size: 5rem;
+}
+
+@media (max-width:850px) {
+
+  .d86-vocab-grid,
+  .d86-instruments,
+  .d86-missions {
+    grid-template-columns: 1fr;
+  }
+
+}

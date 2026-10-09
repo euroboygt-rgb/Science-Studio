@@ -5341,3 +5341,98 @@ SECOND_NINE_WEEKS_LESSONS[85] = {
 }
 
 # Science Studio Day 85 End
+
+
+# Science Studio Day 86 Start
+
+SECOND_NINE_WEEKS_LESSONS[86] = {
+
+    "day": 86,
+
+    "title":
+        "Weather Data Detective: Find the Pattern",
+
+    "unit":
+        "Weather and the Water Cycle",
+
+    "teks":
+        "5.10A; Prerequisite Skill 3.10A; 5.1F, 5.2D",
+
+    "focus":
+        "Students analyze temperature, wind direction, cloud cover, and precipitation data "
+        "to identify short-term weather patterns and make evidence-based predictions.",
+
+    "learning_target":
+        "We will analyze weather data to identify patterns and make a prediction supported by evidence.",
+
+    "success_criteria":
+        "I can compare several days of weather observations, describe a pattern, "
+        "and defend a forecast using more than one piece of data.",
+
+    "essential_question":
+        "How can weather data help us identify patterns and make a reasonable prediction?",
+
+    "bell_ringer": [
+        "What information could a scientist collect to describe today's weather?",
+        "Would one temperature measurement tell the whole weather story?",
+        "Why might several days of observations be more useful than one day?"
+    ],
+
+    "mini_lesson": [
+        "Weather describes atmospheric conditions at a particular place and time.",
+        "Scientists collect multiple types of observations rather than relying on one measurement.",
+        "Air temperature tells how warm or cool the air is.",
+        "Wind direction tells the direction FROM which the wind is coming.",
+        "Precipitation measurements describe how much water has fallen.",
+        "Cloud cover describes how much of the sky is covered by clouds.",
+        "A sequence of measurements can reveal a pattern.",
+        "A pattern can support a prediction, but a prediction is not a guarantee.",
+        "Strong scientific forecasts use multiple pieces of evidence.",
+        "Weather data can provide evidence about changes occurring in the atmosphere."
+    ],
+
+    "science_notebook": [
+        "Create a Weather Evidence Table with columns: Day, Temperature, Wind Direction, Cloud Cover, Precipitation.",
+        "Write: A pattern is a change or relationship that repeats or develops across observations.",
+        "Write: A forecast is a prediction based on evidence.",
+        "Circle at least two measurements that changed across the five-day dataset.",
+        "Complete: I predict _____ because the data show _____ and _____."
+    ],
+
+    "guided_practice": [
+        "Compare Day 1 and Day 5 before discussing the days in between.",
+        "Identify which variable increased.",
+        "Identify which variable decreased.",
+        "Identify which variable changed direction.",
+        "Require students to use at least two measurements when defending a forecast.",
+        "Discuss why weather predictions should use evidence rather than certainty language."
+    ],
+
+    "lab_title":
+        "Weather Data Detective: Mission Control Dashboard",
+
+    "lab_url":
+        "/labs/weather-data-detective?mission=day86",
+
+    "exit_ticket":
+        "Use two pieces of weather data to describe the strongest pattern you observed.",
+
+    "vocabulary": [
+        "weather",
+        "air temperature",
+        "wind direction",
+        "precipitation",
+        "cloud cover",
+        "data",
+        "pattern",
+        "forecast",
+        "evidence"
+    ],
+
+    "teacher_note":
+        "The five-day dataset is an original simplified classroom dataset. "
+        "Students should treat forecasts as evidence-based predictions rather than guarantees. "
+        "Wind direction is named for the direction FROM which the wind travels."
+}
+
+# Science Studio Day 86 End

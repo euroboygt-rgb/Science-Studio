@@ -1,0 +1,1296 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=86-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day86_direct.css') }}?v=86-final"
+>
+
+
+<div id="DAY86_DIRECT_TEMPLATE"
+     class="d86-page">
+
+
+  <!-- HERO -->
+
+  <section class="d86-hero">
+
+    <div class="d86-tags">
+
+      <span>Day 86</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10A</span>
+
+      <span>Weather Data Detective</span>
+
+    </div>
+
+
+    <h1>
+      🕵️ Weather Data Detective:
+      Find the Pattern
+    </h1>
+
+
+    <p>
+      Investigate five days
+      of temperature,
+      wind,
+      cloud cover,
+      and precipitation data
+      to uncover the weather story.
+    </p>
+
+
+    <div class="d86-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/86?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/86?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Detective Mission
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          analyze weather data
+          to identify a pattern
+          and make a prediction.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          comparing temperature,
+          wind direction,
+          cloud cover,
+          and precipitation.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can defend
+          my forecast
+          using at least
+          two pieces of evidence.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🕵️ Phenomenon Mission
+    </div>
+
+    <h2>
+      What Story Do These Five Days Tell?
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day86_weather_data.svg"
+        alt="Five days of weather data showing changing temperature clouds and precipitation"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Detective Question:
+      </strong>
+
+      If you did not know
+      what Day 6 would look like,
+      what could these five days
+      help you predict?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d86MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Detective Brief
+        </div>
+
+        <h2>
+          Turn Measurements Into Evidence
+        </h2>
+
+        <div class="d59-unit">
+          Observe → Compare → Pattern → Forecast
+        </div>
+
+      </div>
+
+
+      <button id="d86Play"
+              class="d59-play"
+              type="button">
+        ▶ Play Detective Brief
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d86SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d86SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d86SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d86SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d86SlideNumber"></strong>
+
+      <div>
+
+        <button id="d86Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d86Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d86Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's Forecast
+        </div>
+
+        <h2>
+          One Number Is Not Enough
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve looks only
+          at Day 5's temperature.
+
+          He predicts:
+
+          <strong>
+            "Tomorrow will definitely be rainy
+            because today is 17°C."
+          </strong>
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            What is the biggest problem
+            with Steve's reasoning?
+          </strong>
+
+
+          <button class="d86-steve-answer"
+                  data-answer="A">
+            A. A strong forecast should use several pieces of weather evidence, not temperature alone.
+          </button>
+
+          <button class="d86-steve-answer"
+                  data-answer="B">
+            B. Temperature can never be measured.
+          </button>
+
+          <button class="d86-steve-answer"
+                  data-answer="C">
+            C. Weather scientists should ignore patterns.
+          </button>
+
+          <button class="d86-steve-answer"
+                  data-answer="D">
+            D. Forecasts should always be certain.
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d86SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Reasoning
+            </button>
+
+            <button id="d86SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d86SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Weather Detective Vocabulary
+    </h2>
+
+
+    <div class="d86-vocab-grid">
+
+      {% set words = [
+        ("🌦️","weather","Atmospheric conditions at a particular place and time."),
+        ("🌡️","air temperature","A measurement of how warm or cool the air is."),
+        ("🧭","wind direction","The direction FROM which the wind is blowing."),
+        ("🌧️","precipitation","Water that falls from clouds and can be measured."),
+        ("☁️","cloud cover","The amount of the sky covered by clouds."),
+        ("📊","data","Recorded observations or measurements."),
+        ("🔁","pattern","A relationship or change identified across observations."),
+        ("🔮","forecast","A prediction about future weather based on evidence."),
+        ("🔎","evidence","Information used to support an explanation or prediction.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d86-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will analyze
+      weather data
+      to identify patterns
+      and make a prediction
+      supported by evidence.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      What Would You Measure?
+    </h2>
+
+
+    <div class="d59-box">
+
+      A student says:
+
+      <strong>
+        "It looks like bad weather is coming."
+      </strong>
+
+      <br><br>
+
+      What measurements
+      could the student collect
+      to turn that observation
+      into scientific evidence?
+
+      <br><br>
+
+      List at least three.
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      Read the Weather Story
+    </h2>
+
+
+    <div class="d86-instruments">
+
+      <article>
+
+        <span>🌡️</span>
+
+        <strong>
+          TEMPERATURE
+        </strong>
+
+        <p>
+          How warm or cool
+          is the air?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>🧭</span>
+
+        <strong>
+          WIND DIRECTION
+        </strong>
+
+        <p>
+          From which direction
+          is air moving?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>☁️</span>
+
+        <strong>
+          CLOUD COVER
+        </strong>
+
+        <p>
+          How much
+          of the sky
+          is covered?
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>🌧️</span>
+
+        <strong>
+          PRECIPITATION
+        </strong>
+
+        <p>
+          How much water
+          has fallen?
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d86-method">
+
+      <h3>
+        🕵️ Weather Detective Method
+      </h3>
+
+
+      <div>
+
+        <span>
+          1️⃣ OBSERVE
+        </span>
+
+        <b>→</b>
+
+        <span>
+          2️⃣ COMPARE
+        </span>
+
+        <b>→</b>
+
+        <span>
+          3️⃣ FIND PATTERN
+        </span>
+
+        <b>→</b>
+
+        <span>
+          4️⃣ FORECAST
+        </span>
+
+        <b>→</b>
+
+        <span>
+          5️⃣ DEFEND WITH EVIDENCE
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="d86-example">
+
+      <h3>
+        📊 Example Pattern
+      </h3>
+
+      <p>
+        Across five days:
+      </p>
+
+      <ul>
+
+        <li>
+          temperature decreases,
+        </li>
+
+        <li>
+          cloud cover increases,
+        </li>
+
+        <li>
+          precipitation increases.
+        </li>
+
+      </ul>
+
+
+      <strong>
+        A reasonable forecast:
+      </strong>
+
+      <br><br>
+
+      Cooler,
+      cloudy conditions
+      with precipitation still possible.
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Scientist Language
+      </strong>
+
+      <br><br>
+
+      A forecast is a
+      <strong>
+        prediction supported by evidence.
+      </strong>
+
+      <br><br>
+
+      It is not a guarantee.
+
+      <br><br>
+
+      Say:
+
+      <strong>
+        "The data suggest..."
+      </strong>
+
+      or
+
+      <strong>
+        "The evidence supports..."
+      </strong>
+
+      instead of
+
+      <strong>
+        "This definitely will happen."
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Weather Evidence Table
+    </h2>
+
+
+    <div class="d86-data-table-wrap">
+
+      <table class="d86-data-table">
+
+        <thead>
+
+          <tr>
+
+            <th>Day</th>
+
+            <th>Temperature</th>
+
+            <th>Wind</th>
+
+            <th>Cloud Cover</th>
+
+            <th>Precipitation</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr>
+            <td>1</td>
+            <td>28°C</td>
+            <td>S</td>
+            <td>10%</td>
+            <td>0 mm</td>
+          </tr>
+
+          <tr>
+            <td>2</td>
+            <td>27°C</td>
+            <td>S</td>
+            <td>20%</td>
+            <td>0 mm</td>
+          </tr>
+
+          <tr>
+            <td>3</td>
+            <td>24°C</td>
+            <td>SE</td>
+            <td>45%</td>
+            <td>0 mm</td>
+          </tr>
+
+          <tr>
+            <td>4</td>
+            <td>20°C</td>
+            <td>E</td>
+            <td>70%</td>
+            <td>2 mm</td>
+          </tr>
+
+          <tr>
+            <td>5</td>
+            <td>17°C</td>
+            <td>NE</td>
+            <td>90%</td>
+            <td>9 mm</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Complete:
+
+      <br><br>
+
+      <strong>
+        Temperature pattern:
+      </strong>
+      __________________
+
+      <br><br>
+
+      <strong>
+        Cloud-cover pattern:
+      </strong>
+      __________________
+
+      <br><br>
+
+      <strong>
+        Precipitation pattern:
+      </strong>
+      __________________
+
+      <br><br>
+
+      <strong>
+        My evidence-based forecast:
+      </strong>
+      __________________
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Evidence Before Forecast
+    </h2>
+
+
+    <div class="d59-box">
+
+      Hide Day 5.
+
+      <br><br>
+
+      Display only Days 1–4.
+
+      <br><br>
+
+      Ask students to predict Day 5
+      using this frame:
+
+      <br><br>
+
+      <strong>
+        "I predict _____ because _____ and _____."
+      </strong>
+
+      <br><br>
+
+      Reveal Day 5
+      after students defend predictions.
+
+      <br><br>
+
+      Discuss:
+
+      <ul>
+
+        <li>
+          Which evidence was most useful?
+        </li>
+
+        <li>
+          Could more than one prediction be reasonable?
+        </li>
+
+        <li>
+          Why is a forecast not a guarantee?
+        </li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🕵️ Interactive Lab
+    </div>
+
+    <h2>
+      Weather Data Detective:
+      Mission Control Dashboard
+    </h2>
+
+
+    <p>
+      Read weather instruments,
+      investigate five days
+      of station data,
+      build a forecast,
+      and compare weather stations.
+    </p>
+
+
+    <div class="d86-missions">
+
+      <div>
+
+        🌡️🧭
+
+        <strong>
+          Mission 1
+        </strong>
+
+        Instrument Check
+
+      </div>
+
+
+      <div>
+
+        📊
+
+        <strong>
+          Mission 2
+        </strong>
+
+        Trend Analyzer
+
+      </div>
+
+
+      <div>
+
+        🔮
+
+        <strong>
+          Mission 3
+        </strong>
+
+        Forecast Builder
+
+      </div>
+
+
+      <div>
+
+        🗺️
+
+        <strong>
+          Mission 4
+        </strong>
+
+        Compare Stations
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Complete all four investigations
+      to earn
+
+      <strong>
+        Weather Data Specialist
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/weather-data-detective?mission=day86"
+    >
+      🕵️ Enter Weather Data Mission Control
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR-Style Practice
+    </div>
+
+    <h2>
+      Weather Data Evidence
+    </h2>
+
+
+    <div class="d86-question"
+         data-answer="C">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        Which measurement
+        tells how warm or cool
+        the air is?
+      </p>
+
+      <button data-choice="A">
+        A. Cloud cover
+      </button>
+
+      <button data-choice="B">
+        B. Wind direction
+      </button>
+
+      <button data-choice="C">
+        C. Air temperature
+      </button>
+
+      <button data-choice="D">
+        D. Precipitation amount
+      </button>
+
+      <div class="d86-feedback"></div>
+
+    </div>
+
+
+    <div class="d86-question"
+         data-answer="B">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        Across five days,
+        cloud cover changes
+        from 10% to 90%.
+
+        Which statement
+        best describes the pattern?
+      </p>
+
+      <button data-choice="A">
+        A. Cloud cover decreased.
+      </button>
+
+      <button data-choice="B">
+        B. Cloud cover increased.
+      </button>
+
+      <button data-choice="C">
+        C. Cloud cover stayed constant.
+      </button>
+
+      <button data-choice="D">
+        D. No cloud data were collected.
+      </button>
+
+      <div class="d86-feedback"></div>
+
+    </div>
+
+
+    <div class="d86-question"
+         data-answer="D">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        Which forecast
+        uses the strongest evidence?
+      </p>
+
+      <button data-choice="A">
+        A. "It will definitely rain because I feel like it."
+      </button>
+
+      <button data-choice="B">
+        B. "It will be sunny because yesterday was Monday."
+      </button>
+
+      <button data-choice="C">
+        C. "It will rain because the temperature is one number."
+      </button>
+
+      <button data-choice="D">
+        D. "Cloudy, cooler conditions may continue because temperature decreased while cloud cover and precipitation increased."
+      </button>
+
+      <div class="d86-feedback"></div>
+
+    </div>
+
+
+    <div class="d86-question"
+         data-answer="A">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        A wind is reported
+        as a northeast wind.
+
+        What does this mean?
+      </p>
+
+      <button data-choice="A">
+        A. The wind is coming FROM the northeast.
+      </button>
+
+      <button data-choice="B">
+        B. The wind can only blow at night.
+      </button>
+
+      <button data-choice="C">
+        C. The wind is precipitation.
+      </button>
+
+      <button data-choice="D">
+        D. The wind has no direction.
+      </button>
+
+      <div class="d86-feedback"></div>
+
+    </div>
+
+
+    <div class="d86-question"
+         data-answer="B">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        Why is it useful
+        to collect weather data
+        over several days?
+      </p>
+
+      <button data-choice="A">
+        A. One day always predicts an entire year.
+      </button>
+
+      <button data-choice="B">
+        B. Multiple observations can reveal changes and patterns.
+      </button>
+
+      <button data-choice="C">
+        C. Weather never changes.
+      </button>
+
+      <button data-choice="D">
+        D. Scientists should avoid comparisons.
+      </button>
+
+      <div class="d86-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+    <p>
+      Use two pieces
+      of weather data
+      to describe
+      the strongest pattern
+      you observed.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="The data show... One piece of evidence is... Another is..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Weather Data CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      Weather data from several days
+      can provide evidence
+      for a short-term weather prediction.
+
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The temperature data show... The cloud or precipitation data show..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="These measurements support the prediction because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🌦️ Next Mission
+    </div>
+
+    <h2>
+      Day 87:
+      Weather Systems Case Files
+    </h2>
+
+
+    <div class="d59-box">
+
+      Today you learned
+      to read the data.
+
+      <br><br>
+
+      Next we can combine
+      <strong>
+        water-cycle evidence
+      </strong>
+      with
+      <strong>
+        weather-station evidence
+      </strong>
+      to solve more complex
+      weather-system mysteries.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d86VocabModal"
+     class="d86-modal">
+
+  <div class="d86-modal-card">
+
+    <button
+      id="d86VocabClose"
+      class="d86-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d86ModalIcon"
+         class="d86-modal-icon"></div>
+
+    <h2 id="d86ModalTerm"></h2>
+
+    <p id="d86ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day86_direct.js') }}?v=86-final"
+></script>
+
+{% endblock %}

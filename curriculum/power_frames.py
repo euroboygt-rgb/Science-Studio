@@ -987,3 +987,20 @@ POWER_FRAMES[85] = {
 }
 
 # Science Studio Day 85 Power Frame End
+
+
+# Science Studio Day 86 Power Frame Start
+
+POWER_FRAMES[86] = {
+
+    "i_can":
+        "I can analyze weather data to identify a pattern and make a prediction.",
+
+    "by":
+        "comparing temperature, wind direction, cloud cover, and precipitation across several days.",
+
+    "i_know":
+        "I know I have learned this when I can defend my forecast using at least two pieces of weather evidence."
+}
+
+# Science Studio Day 86 Power Frame End

@@ -1,0 +1,929 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='weather_data_detective_lab.css') }}?v=86.1"
+>
+
+
+<div class="wd-shell">
+
+
+  <!-- HERO -->
+
+  <header class="wd-hero">
+
+    <div class="wd-tags">
+
+      <span>🕵️ Interactive Lab</span>
+
+      <span>Weather Data Mission Control</span>
+
+      <span>Evidence + Patterns</span>
+
+    </div>
+
+
+    <div class="wd-hero-row">
+
+      <div>
+
+        <h1>
+          Weather Data Detective
+        </h1>
+
+        <p>
+          Read the instruments.
+          Find the pattern.
+          Build the forecast.
+          Defend the evidence.
+        </p>
+
+      </div>
+
+
+      <a
+        class="wd-back"
+        href="/second-nine-weeks/day/86?view=student"
+      >
+        ← Back to Day 86
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- STATUS -->
+
+  <section class="wd-command">
+
+    <div>
+
+      <div class="wd-eyebrow">
+        DETECTIVE STATUS
+      </div>
+
+      <h2>
+        Complete All Four Investigations
+      </h2>
+
+    </div>
+
+
+    <div class="wd-status-grid">
+
+      <div id="wdStatus1">
+
+        <span>🔴</span>
+
+        <strong>
+          Instruments
+        </strong>
+
+      </div>
+
+
+      <div id="wdStatus2">
+
+        <span>🔴</span>
+
+        <strong>
+          Pattern
+        </strong>
+
+      </div>
+
+
+      <div id="wdStatus3">
+
+        <span>🔴</span>
+
+        <strong>
+          Forecast
+        </strong>
+
+      </div>
+
+
+      <div id="wdStatus4">
+
+        <span>🔴</span>
+
+        <strong>
+          Compare Stations
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="wd-mission">
+
+    <div>
+
+      <div class="wd-eyebrow">
+        MISSION 1
+      </div>
+
+      <h2>
+        Instrument Check
+      </h2>
+
+      <p>
+        Prove that you know
+        what each weather measurement means.
+      </p>
+
+    </div>
+
+
+    <aside class="wd-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="wdScore1">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="wd-panel">
+
+    <div id="wdQuestion1"
+         class="wd-question">
+      Loading...
+    </div>
+
+
+    <div id="wdChoices1"
+         class="wd-choices">
+    </div>
+
+
+    <button
+      id="wdCheck1"
+      class="wd-main-button"
+      type="button"
+    >
+      🌡️ CHECK INSTRUMENT
+    </button>
+
+
+    <div id="wdFeedback1"
+         class="wd-feedback">
+
+      Choose the measurement
+      that matches the evidence.
+
+    </div>
+
+
+    <button
+      id="wdNext1"
+      class="wd-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="wd-mission">
+
+    <div>
+
+      <div class="wd-eyebrow">
+        MISSION 2
+      </div>
+
+      <h2>
+        Weather Trend Analyzer
+      </h2>
+
+      <p>
+        Investigate all five days
+        before identifying the pattern.
+      </p>
+
+    </div>
+
+
+    <aside class="wd-score">
+
+      <strong>
+        Days Viewed
+      </strong>
+
+      <span id="wdDaysViewed">
+        0 / 5
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="wd-panel">
+
+    <div class="wd-day-buttons">
+
+      <button data-day="0"
+              type="button">
+        DAY 1
+      </button>
+
+      <button data-day="1"
+              type="button">
+        DAY 2
+      </button>
+
+      <button data-day="2"
+              type="button">
+        DAY 3
+      </button>
+
+      <button data-day="3"
+              type="button">
+        DAY 4
+      </button>
+
+      <button data-day="4"
+              type="button">
+        DAY 5
+      </button>
+
+    </div>
+
+
+    <div class="wd-dashboard">
+
+      <!-- TEMPERATURE -->
+
+      <article>
+
+        <div class="wd-reading-icon">
+          🌡️
+        </div>
+
+        <strong>
+          AIR TEMPERATURE
+        </strong>
+
+        <span id="wdTemp">
+          28°C
+        </span>
+
+        <div class="wd-bar">
+
+          <i id="wdTempBar"></i>
+
+        </div>
+
+      </article>
+
+
+      <!-- WIND -->
+
+      <article>
+
+        <div id="wdCompassArrow"
+             class="wd-compass-arrow">
+          ↑
+        </div>
+
+        <strong>
+          WIND FROM
+        </strong>
+
+        <span id="wdWind">
+          S
+        </span>
+
+        <small>
+          Arrow points toward
+          the source direction.
+        </small>
+
+      </article>
+
+
+      <!-- CLOUDS -->
+
+      <article>
+
+        <div class="wd-reading-icon">
+          ☁️
+        </div>
+
+        <strong>
+          CLOUD COVER
+        </strong>
+
+        <span id="wdCloud">
+          10%
+        </span>
+
+        <div class="wd-bar">
+
+          <i id="wdCloudBar"></i>
+
+        </div>
+
+      </article>
+
+
+      <!-- PRECIP -->
+
+      <article>
+
+        <div class="wd-reading-icon">
+          🌧️
+        </div>
+
+        <strong>
+          PRECIPITATION
+        </strong>
+
+        <span id="wdRain">
+          0 mm
+        </span>
+
+        <div class="wd-bar">
+
+          <i id="wdRainBar"></i>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <div id="wdDaySummary"
+         class="wd-day-summary">
+
+      DAY 1:
+      Warm,
+      mostly clear,
+      dry conditions.
+
+    </div>
+
+
+    <div class="wd-trend-chart">
+
+      <h3>
+        📊 Five-Day Trend Board
+      </h3>
+
+
+      <div class="wd-chart-row">
+
+        <strong>
+          Day 1
+        </strong>
+
+        <span>
+          🌡️ 28°C
+        </span>
+
+        <div class="wd-mini-track">
+          <i style="width:93%"></i>
+        </div>
+
+        <span>
+          ☁️ 10%
+        </span>
+
+      </div>
+
+
+      <div class="wd-chart-row">
+
+        <strong>
+          Day 2
+        </strong>
+
+        <span>
+          🌡️ 27°C
+        </span>
+
+        <div class="wd-mini-track">
+          <i style="width:90%"></i>
+        </div>
+
+        <span>
+          ☁️ 20%
+        </span>
+
+      </div>
+
+
+      <div class="wd-chart-row">
+
+        <strong>
+          Day 3
+        </strong>
+
+        <span>
+          🌡️ 24°C
+        </span>
+
+        <div class="wd-mini-track">
+          <i style="width:80%"></i>
+        </div>
+
+        <span>
+          ☁️ 45%
+        </span>
+
+      </div>
+
+
+      <div class="wd-chart-row">
+
+        <strong>
+          Day 4
+        </strong>
+
+        <span>
+          🌡️ 20°C
+        </span>
+
+        <div class="wd-mini-track">
+          <i style="width:67%"></i>
+        </div>
+
+        <span>
+          ☁️ 70%
+        </span>
+
+      </div>
+
+
+      <div class="wd-chart-row">
+
+        <strong>
+          Day 5
+        </strong>
+
+        <span>
+          🌡️ 17°C
+        </span>
+
+        <div class="wd-mini-track">
+          <i style="width:57%"></i>
+        </div>
+
+        <span>
+          ☁️ 90%
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="wd-pattern-title">
+
+      🔎 Which statement
+      best describes
+      the five-day pattern?
+
+    </div>
+
+
+    <div class="wd-pattern-choices">
+
+      <button
+        data-pattern="A"
+        type="button">
+        A. Temperature decreases while cloud cover and precipitation increase.
+      </button>
+
+      <button
+        data-pattern="B"
+        type="button">
+        B. Temperature increases while clouds disappear.
+      </button>
+
+      <button
+        data-pattern="C"
+        type="button">
+        C. Every measurement remains exactly the same.
+      </button>
+
+    </div>
+
+
+    <button
+      id="wdCheck2"
+      class="wd-main-button"
+      type="button"
+    >
+      📊 SUBMIT PATTERN
+    </button>
+
+
+    <div id="wdFeedback2"
+         class="wd-feedback">
+
+      Investigate all five days
+      before submitting your pattern.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="wd-mission">
+
+    <div>
+
+      <div class="wd-eyebrow">
+        MISSION 3
+      </div>
+
+      <h2>
+        Forecast Builder
+      </h2>
+
+      <p>
+        Make a prediction,
+        then choose the evidence
+        that best supports it.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="wd-panel">
+
+    <div class="wd-forecast-screen">
+
+      <div>
+
+        <strong>
+          DAY 3
+        </strong>
+
+        <span>
+          24°C
+        </span>
+
+        <span>
+          45% clouds
+        </span>
+
+        <span>
+          0 mm
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          DAY 4
+        </strong>
+
+        <span>
+          20°C
+        </span>
+
+        <span>
+          70% clouds
+        </span>
+
+        <span>
+          2 mm
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          DAY 5
+        </strong>
+
+        <span>
+          17°C
+        </span>
+
+        <span>
+          90% clouds
+        </span>
+
+        <span>
+          9 mm
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <h3>
+      🔮 Step 1 — Choose the Best-Supported Forecast
+    </h3>
+
+
+    <div class="wd-forecast-choices">
+
+      <button data-forecast="A"
+              type="button">
+        A. Hotter, clear, and definitely dry.
+      </button>
+
+      <button data-forecast="B"
+              type="button">
+        B. Cooler, mostly cloudy conditions with precipitation still possible.
+      </button>
+
+      <button data-forecast="C"
+              type="button">
+        C. The data prove tomorrow's weather cannot change.
+      </button>
+
+    </div>
+
+
+    <h3>
+      🔎 Step 2 — Choose the Strongest Evidence
+    </h3>
+
+
+    <div class="wd-reason-choices">
+
+      <button data-reason="A"
+              type="button">
+        A. Day numbers became larger.
+      </button>
+
+      <button data-reason="B"
+              type="button">
+        B. Temperature decreased while cloud cover and precipitation increased across several days.
+      </button>
+
+      <button data-reason="C"
+              type="button">
+        C. One temperature was 17°C.
+      </button>
+
+    </div>
+
+
+    <button
+      id="wdCheck3"
+      class="wd-main-button"
+      type="button"
+    >
+      🔮 SUBMIT FORECAST + EVIDENCE
+    </button>
+
+
+    <div id="wdFeedback3"
+         class="wd-feedback">
+
+      Complete both steps.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="wd-mission">
+
+    <div>
+
+      <div class="wd-eyebrow">
+        MISSION 4
+      </div>
+
+      <h2>
+        Compare Weather Stations
+      </h2>
+
+      <p>
+        Compare weather
+        at different locations
+        using the same types
+        of data.
+      </p>
+
+    </div>
+
+
+    <aside class="wd-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="wdScore4">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="wd-panel">
+
+    <div id="wdStationCards"
+         class="wd-station-cards">
+
+      Loading station data...
+
+    </div>
+
+
+    <div id="wdQuestion4"
+         class="wd-question">
+
+      Loading...
+
+    </div>
+
+
+    <div id="wdChoices4"
+         class="wd-choices">
+    </div>
+
+
+    <button
+      id="wdCheck4"
+      class="wd-main-button"
+      type="button"
+    >
+      🗺️ COMPARE STATIONS
+    </button>
+
+
+    <div id="wdFeedback4"
+         class="wd-feedback">
+
+      Use both station records
+      before answering.
+
+    </div>
+
+
+    <button
+      id="wdNext4"
+      class="wd-next-button"
+      type="button"
+      disabled
+    >
+      NEXT CASE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="wd-final">
+
+    <div class="wd-final-icon">
+      🌡️🧭☁️🌧️🔎
+    </div>
+
+    <h2>
+      Weather Data Detective Status
+    </h2>
+
+
+    <div id="wdFinalMessage"
+         class="wd-final-message">
+
+      Complete all four investigations.
+
+    </div>
+
+  </section>
+
+
+  <!-- EVIDENCE LOG -->
+
+  <section class="wd-evidence">
+
+    <h2>
+      📓 Detective Evidence Log
+    </h2>
+
+
+    <div class="wd-evidence-grid">
+
+      <article>
+
+        <strong>
+          🌡️ Temperature
+        </strong>
+
+        <p>
+          Compare measurements
+          across time
+          or locations.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🧭 Wind
+        </strong>
+
+        <p>
+          Wind direction
+          identifies where
+          moving air comes from.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ☁️🌧️ Clouds + Rain
+        </strong>
+
+        <p>
+          Changes can provide
+          evidence about
+          changing weather.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🔮 Forecast
+        </strong>
+
+        <p>
+          A prediction
+          should be supported
+          by several measurements.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="wd-big-question">
+
+      <strong>
+        🧠 Detective Question:
+      </strong>
+
+      Why is a forecast
+      supported by several measurements
+      stronger than a prediction
+      based on only one observation?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='weather_data_detective_lab.js') }}?v=86.1"
+></script>
+
+{% endblock %}
