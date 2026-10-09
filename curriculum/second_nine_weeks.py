@@ -5626,3 +5626,104 @@ SECOND_NINE_WEEKS_LESSONS[88] = {
 }
 
 # Science Studio Day 88 End
+
+
+# Science Studio Day 89 Start
+
+SECOND_NINE_WEEKS_LESSONS[89] = {
+
+    "day": 89,
+
+    "title":
+        "Sedimentary Rock Detective: Remember W.E.D.C.C.",
+
+    "unit":
+        "Sedimentary Rocks and Fossil Fuels",
+
+    "teks":
+        "5.10B; Prerequisite Connection 4.10B; 5.1F, 5.2D",
+
+    "focus":
+        "Students model and describe the sequence of processes that can form sedimentary rock "
+        "using the memory framework W.E.D.C.C.: weathering, erosion, deposition, compaction, and cementation.",
+
+    "learning_target":
+        "We will model and describe how loose sediment can become sedimentary rock using W.E.D.C.C.",
+
+    "success_criteria":
+        "I can put weathering, erosion, deposition, compaction, and cementation in order "
+        "and explain what happens during each process.",
+
+    "essential_question":
+        "How can loose pieces of sediment eventually become solid sedimentary rock?",
+
+    "bell_ringer": [
+        "What can break a large rock into smaller pieces?",
+        "What can move sediment from one place to another?",
+        "What might happen when moving sediment slows down?"
+    ],
+
+    "mini_lesson": [
+        "W.E.D.C.C. is our memory framework for sedimentary rock formation.",
+        "Weathering breaks rock into smaller pieces called sediment.",
+        "Erosion moves sediment from one location to another.",
+        "Water, wind, ice, and gravity can move sediment.",
+        "Deposition occurs when transported sediment is dropped or settles.",
+        "Repeated deposition can create layers of sediment.",
+        "Compaction occurs when the weight of overlying layers presses sediments closer together.",
+        "Cementation occurs when dissolved minerals fill spaces between sediment grains and bind the grains together.",
+        "Compaction and cementation can turn loose sediment into solid sedimentary rock.",
+        "These geologic processes generally occur over long periods of time."
+    ],
+
+    "science_notebook": [
+        "Write W.E.D.C.C. vertically down the page.",
+        "W = Weathering = breaks rock.",
+        "E = Erosion = moves sediment.",
+        "D = Deposition = drops sediment.",
+        "C = Compaction = squeezes sediment.",
+        "C = Cementation = minerals bind sediment.",
+        "Draw arrows connecting each process in order.",
+        "Finish with a drawing of layered sedimentary rock."
+    ],
+
+    "guided_practice": [
+        "Students act out W.E.D.C.C. with hand motions.",
+        "Weathering: break hands apart.",
+        "Erosion: move hands across the desk.",
+        "Deposition: lower hands and place them down.",
+        "Compaction: press hands together.",
+        "Cementation: lock fingers together.",
+        "Repeat the sequence faster until students can recall all five processes."
+    ],
+
+    "lab_title":
+        "W.E.D.C.C. Sedimentary Rock Factory",
+
+    "lab_url":
+        "/labs/wedcc-rock-factory?mission=day89",
+
+    "exit_ticket":
+        "Write W.E.D.C.C. in order and explain the difference between compaction and cementation.",
+
+    "vocabulary": [
+        "weathering",
+        "erosion",
+        "deposition",
+        "sediment",
+        "compaction",
+        "cementation",
+        "sedimentary rock",
+        "mineral",
+        "layer"
+    ],
+
+    "teacher_note":
+        "Use W.E.D.C.C. consistently as the classroom mnemonic: "
+        "Weathering → Erosion → Deposition → Compaction → Cementation. "
+        "Emphasize the distinction between erosion moving sediment and deposition dropping sediment. "
+        "Also distinguish compaction (pressure squeezes grains closer) from cementation "
+        "(minerals bind grains together)."
+}
+
+# Science Studio Day 89 End

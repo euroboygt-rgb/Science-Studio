@@ -1,0 +1,1314 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=89-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day89_direct.css') }}?v=89-final"
+>
+
+
+<div id="DAY89_DIRECT_TEMPLATE"
+     class="d89-page">
+
+
+  <!-- HERO -->
+
+  <section class="d89-hero">
+
+    <div class="d89-tags">
+
+      <span>Day 89</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10B</span>
+
+      <span>W.E.D.C.C.</span>
+
+    </div>
+
+
+    <h1>
+      🪨 Sedimentary Rock Detective:
+      Remember W.E.D.C.C.
+    </h1>
+
+
+    <p>
+      Follow five Earth processes
+      that can turn loose sediment
+      into solid sedimentary rock.
+    </p>
+
+
+    <div class="d89-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/89?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/89?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Rock Mission
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          model and describe
+          how sedimentary rock forms
+          using W.E.D.C.C.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          sequencing weathering,
+          erosion,
+          deposition,
+          compaction,
+          and cementation.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can build W.E.D.C.C.
+          from memory
+          and explain every step.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🕵️ Rock Mystery
+    </div>
+
+    <h2>
+      Loose Pieces → Solid Rock?
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day89_wedcc.svg"
+        alt="Rock breaking into sediment and eventually becoming layered sedimentary rock"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      How can loose pieces
+      of sediment
+      eventually become
+      solid sedimentary rock?
+
+    </div>
+
+  </section>
+
+
+  <!-- WEDCC ANCHOR CHART -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🧠 Memory Code
+    </div>
+
+    <h2>
+      W.E.D.C.C.
+    </h2>
+
+
+    <div class="d89-wedcc">
+
+      <article class="d89-w">
+
+        <div class="d89-letter">
+          W
+        </div>
+
+        <span>
+          🪨💥
+        </span>
+
+        <strong>
+          WEATHERING
+        </strong>
+
+        <p>
+          BREAKS rock
+          into smaller pieces.
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article class="d89-e">
+
+        <div class="d89-letter">
+          E
+        </div>
+
+        <span>
+          🌊➡️
+        </span>
+
+        <strong>
+          EROSION
+        </strong>
+
+        <p>
+          MOVES sediment.
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article class="d89-d">
+
+        <div class="d89-letter">
+          D
+        </div>
+
+        <span>
+          ⬇️
+        </span>
+
+        <strong>
+          DEPOSITION
+        </strong>
+
+        <p>
+          DROPS sediment.
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article class="d89-c1">
+
+        <div class="d89-letter">
+          C
+        </div>
+
+        <span>
+          🗜️
+        </span>
+
+        <strong>
+          COMPACTION
+        </strong>
+
+        <p>
+          SQUEEZES sediment
+          closer together.
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article class="d89-c2">
+
+        <div class="d89-letter">
+          C
+        </div>
+
+        <span>
+          🧱
+        </span>
+
+        <strong>
+          CEMENTATION
+        </strong>
+
+        <p>
+          Minerals BIND
+          sediment grains together.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d89-memory-line">
+
+      <strong>
+        BREAK IT → MOVE IT → DROP IT → SQUEEZE IT → CEMENT IT
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's Rock Mix-Up
+        </div>
+
+        <h2>
+          Moving or Dropping?
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve watches a river
+          carry sand downstream.
+
+          He says:
+
+          <strong>
+            "That's deposition because the sediment is moving!"
+          </strong>
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            How should we correct Steve?
+          </strong>
+
+
+          <button class="d89-steve-answer"
+                  data-answer="A">
+            A. Moving sediment is erosion. Deposition happens when sediment is dropped or settles.
+          </button>
+
+          <button class="d89-steve-answer"
+                  data-answer="B">
+            B. Steve is correct because deposition means movement.
+          </button>
+
+          <button class="d89-steve-answer"
+                  data-answer="C">
+            C. Moving sediment is cementation.
+          </button>
+
+          <button class="d89-steve-answer"
+                  data-answer="D">
+            D. Rivers cannot move sediment.
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d89SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Steve's Rock Science
+            </button>
+
+            <button id="d89SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d89SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Sedimentary Rock Vocabulary
+    </h2>
+
+
+    <div class="d89-vocab-grid">
+
+      {% set words = [
+        ("💥","weathering","The breaking of rock into smaller pieces."),
+        ("➡️","erosion","The movement of weathered material or sediment."),
+        ("⬇️","deposition","The dropping or settling of sediment."),
+        ("🟤","sediment","Small pieces of rock, minerals, or other Earth material."),
+        ("🗜️","compaction","Pressure that squeezes sediment grains closer together."),
+        ("🧱","cementation","Minerals fill spaces and bind sediment grains together."),
+        ("🪨","sedimentary rock","Rock formed when sediments become compacted and cemented."),
+        ("💎","mineral","A naturally occurring solid material that can help cement sediment grains."),
+        ("🥞","layer","A sheet or band of material deposited over another.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d89-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will model and describe
+      how loose sediment
+      can become sedimentary rock
+      using
+      <strong>W.E.D.C.C.</strong>
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      Break, Move, or Drop?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Match each observation:
+
+      <ol>
+
+        <li>
+          A rock cracks into smaller pieces.
+        </li>
+
+        <li>
+          A river carries sand downstream.
+        </li>
+
+        <li>
+          Sand settles at the bottom of calm water.
+        </li>
+
+      </ol>
+
+      Choose from:
+
+      <strong>
+        Weathering,
+        Erosion,
+        Deposition
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      Follow the Sediment
+    </h2>
+
+
+    <div class="d89-process">
+
+      <div>
+
+        <span class="d89-big-letter">
+          W
+        </span>
+
+        <h3>
+          WEATHERING
+        </h3>
+
+        <div class="d89-process-picture">
+          🪨 → 🪨 🪨 🪨
+        </div>
+
+        <p>
+          A larger rock
+          is broken into
+          smaller pieces.
+        </p>
+
+        <strong>
+          Keyword: BREAK
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span class="d89-big-letter">
+          E
+        </span>
+
+        <h3>
+          EROSION
+        </h3>
+
+        <div class="d89-process-picture">
+          🟤 〰️➡️ 🟤
+        </div>
+
+        <p>
+          Sediment is transported
+          by water,
+          wind,
+          ice,
+          or gravity.
+        </p>
+
+        <strong>
+          Keyword: MOVE
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span class="d89-big-letter">
+          D
+        </span>
+
+        <h3>
+          DEPOSITION
+        </h3>
+
+        <div class="d89-process-picture">
+          🟤 🟤 🟤<br>
+          ━━━━━━━
+        </div>
+
+        <p>
+          Sediment settles
+          and begins creating layers.
+        </p>
+
+        <strong>
+          Keyword: DROP
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span class="d89-big-letter">
+          C
+        </span>
+
+        <h3>
+          COMPACTION
+        </h3>
+
+        <div class="d89-process-picture">
+          ⬇️⬇️⬇️<br>
+          🟤🟤🟤
+        </div>
+
+        <p>
+          The weight
+          of overlying layers
+          presses sediments
+          closer together.
+        </p>
+
+        <strong>
+          Keyword: SQUEEZE
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span class="d89-big-letter">
+          C
+        </span>
+
+        <h3>
+          CEMENTATION
+        </h3>
+
+        <div class="d89-process-picture">
+          🟤🔗🟤🔗🟤
+        </div>
+
+        <p>
+          Minerals
+          bind sediment grains
+          together.
+        </p>
+
+        <strong>
+          Keyword: BIND
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="d89-compare">
+
+      <h3>
+        🚨 Two Important Differences
+      </h3>
+
+
+      <div>
+
+        <article>
+
+          <strong>
+            EROSION
+          </strong>
+
+          <p>
+            Sediment is
+            <strong>MOVING.</strong>
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <strong>
+            DEPOSITION
+          </strong>
+
+          <p>
+            Sediment is
+            <strong>DROPPING / SETTLING.</strong>
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <strong>
+            COMPACTION
+          </strong>
+
+          <p>
+            Sediments are
+            <strong>SQUEEZED.</strong>
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <strong>
+            CEMENTATION
+          </strong>
+
+          <p>
+            Minerals
+            <strong>BIND</strong>
+            the grains.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Build Your W.E.D.C.C. Anchor Chart
+    </h2>
+
+
+    <div class="d89-notebook">
+
+      <div>
+        <strong>W</strong>
+        Weathering
+        <span>BREAKS</span>
+      </div>
+
+      <div>
+        <strong>E</strong>
+        Erosion
+        <span>MOVES</span>
+      </div>
+
+      <div>
+        <strong>D</strong>
+        Deposition
+        <span>DROPS</span>
+      </div>
+
+      <div>
+        <strong>C</strong>
+        Compaction
+        <span>SQUEEZES</span>
+      </div>
+
+      <div>
+        <strong>C</strong>
+        Cementation
+        <span>BINDS</span>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Under your chart write:
+
+      <br><br>
+
+      <strong>
+        Weathering makes sediment.
+        Erosion moves it.
+        Deposition drops it.
+        Compaction squeezes it.
+        Cementation binds it.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      W.E.D.C.C. Hand Motions
+    </h2>
+
+
+    <div class="d59-box">
+
+      Students stand.
+
+      <br><br>
+
+      Call each letter
+      and perform the motion:
+
+      <ul>
+
+        <li>
+          <strong>W — Weathering:</strong>
+          hands together, then break apart.
+        </li>
+
+        <li>
+          <strong>E — Erosion:</strong>
+          slide both hands sideways.
+        </li>
+
+        <li>
+          <strong>D — Deposition:</strong>
+          lower hands and place them down.
+        </li>
+
+        <li>
+          <strong>C — Compaction:</strong>
+          press palms toward each other.
+        </li>
+
+        <li>
+          <strong>C — Cementation:</strong>
+          lock fingers together.
+        </li>
+
+      </ul>
+
+      Repeat:
+
+      <strong>
+        slowly → normal speed → fast → from memory.
+      </strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🧪 Interactive Rock Lab
+    </div>
+
+    <h2>
+      W.E.D.C.C. Sedimentary Rock Factory
+    </h2>
+
+
+    <p>
+      Take one rock
+      through all five processes
+      and transform loose sediment
+      into solid sedimentary rock.
+    </p>
+
+
+    <div class="d89-lab-stages">
+
+      <div>
+        💥
+        <strong>W</strong>
+        Weathering
+      </div>
+
+      <div>
+        ➡️
+        <strong>E</strong>
+        Erosion
+      </div>
+
+      <div>
+        ⬇️
+        <strong>D</strong>
+        Deposition
+      </div>
+
+      <div>
+        🗜️
+        <strong>C</strong>
+        Compaction
+      </div>
+
+      <div>
+        🧱
+        <strong>C</strong>
+        Cementation
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Complete all five stages
+      to earn
+
+      <strong>
+        W.E.D.C.C. Rock Builder
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/wedcc-rock-factory?mission=day89"
+    >
+      🪨 Launch W.E.D.C.C. Rock Factory
+    </a>
+
+  </section>
+
+
+  <!-- STAAR PRACTICE -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR-Style Practice
+    </div>
+
+    <h2>
+      Sedimentary Rock Formation
+    </h2>
+
+
+    <div class="d89-question"
+         data-answer="B">
+
+      <h3>Question 1</h3>
+
+      <p>
+        A large rock breaks
+        into many smaller pieces.
+
+        Which process occurred?
+      </p>
+
+      <button data-choice="A">
+        A. Erosion
+      </button>
+
+      <button data-choice="B">
+        B. Weathering
+      </button>
+
+      <button data-choice="C">
+        C. Deposition
+      </button>
+
+      <button data-choice="D">
+        D. Cementation
+      </button>
+
+      <div class="d89-feedback"></div>
+
+    </div>
+
+
+    <div class="d89-question"
+         data-answer="A">
+
+      <h3>Question 2</h3>
+
+      <p>
+        A stream carries
+        pieces of sediment
+        downstream.
+
+        Which process
+        is being modeled?
+      </p>
+
+      <button data-choice="A">
+        A. Erosion
+      </button>
+
+      <button data-choice="B">
+        B. Cementation
+      </button>
+
+      <button data-choice="C">
+        C. Compaction
+      </button>
+
+      <button data-choice="D">
+        D. Deposition
+      </button>
+
+      <div class="d89-feedback"></div>
+
+    </div>
+
+
+    <div class="d89-question"
+         data-answer="D">
+
+      <h3>Question 3</h3>
+
+      <p>
+        Sediment settles
+        at the bottom
+        of a body of water.
+
+        Which process occurred?
+      </p>
+
+      <button data-choice="A">
+        A. Weathering
+      </button>
+
+      <button data-choice="B">
+        B. Compaction
+      </button>
+
+      <button data-choice="C">
+        C. Cementation
+      </button>
+
+      <button data-choice="D">
+        D. Deposition
+      </button>
+
+      <div class="d89-feedback"></div>
+
+    </div>
+
+
+    <div class="d89-question"
+         data-answer="C">
+
+      <h3>Question 4</h3>
+
+      <p>
+        Layers of sediment
+        are pressed closer together
+        by the weight
+        of material above them.
+
+        Which process occurred?
+      </p>
+
+      <button data-choice="A">
+        A. Erosion
+      </button>
+
+      <button data-choice="B">
+        B. Weathering
+      </button>
+
+      <button data-choice="C">
+        C. Compaction
+      </button>
+
+      <button data-choice="D">
+        D. Deposition
+      </button>
+
+      <div class="d89-feedback"></div>
+
+    </div>
+
+
+    <div class="d89-question"
+         data-answer="B">
+
+      <h3>Question 5</h3>
+
+      <p>
+        Dissolved minerals
+        fill spaces between sediment grains
+        and bind the grains together.
+
+        Which process occurred?
+      </p>
+
+      <button data-choice="A">
+        A. Compaction
+      </button>
+
+      <button data-choice="B">
+        B. Cementation
+      </button>
+
+      <button data-choice="C">
+        C. Erosion
+      </button>
+
+      <button data-choice="D">
+        D. Weathering
+      </button>
+
+      <div class="d89-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+    <p>
+      Write
+      <strong>W.E.D.C.C.</strong>
+      in order.
+
+      <br><br>
+
+      Then explain:
+
+      <strong>
+        What is the difference
+        between compaction
+        and cementation?
+      </strong>
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="W = ... E = ... D = ... C = ... C = ... Compaction differs from cementation because..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Sedimentary Rock CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      Loose sediment
+      can become
+      solid sedimentary rock
+      through a sequence
+      of Earth processes.
+
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim that..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The W.E.D.C.C. model showed..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="These processes form rock because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🪨 Next Mission
+    </div>
+
+    <h2>
+      Day 90:
+      Sedimentary Rock Factory
+    </h2>
+
+
+    <div class="d59-box">
+
+      Today we learned the code:
+
+      <strong>
+        W.E.D.C.C.
+      </strong>
+
+      <br><br>
+
+      Next we will investigate
+      how repeated
+      <strong>deposition</strong>
+      creates layers
+      and how
+      <strong>compaction + cementation</strong>
+      transform those layers
+      into sedimentary rock.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d89VocabModal"
+     class="d89-modal">
+
+  <div class="d89-modal-card">
+
+    <button
+      id="d89VocabClose"
+      class="d89-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d89ModalIcon"
+         class="d89-modal-icon"></div>
+
+    <h2 id="d89ModalTerm"></h2>
+
+    <p id="d89ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day89_direct.js') }}?v=89-final"
+></script>
+
+{% endblock %}

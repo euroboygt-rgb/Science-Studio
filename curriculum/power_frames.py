@@ -1038,3 +1038,20 @@ POWER_FRAMES[88] = {
 }
 
 # Science Studio Day 88 Power Frame End
+
+
+# Science Studio Day 89 Power Frame Start
+
+POWER_FRAMES[89] = {
+
+    "i_can":
+        "I can model and describe how sedimentary rock forms using W.E.D.C.C.",
+
+    "by":
+        "sequencing weathering, erosion, deposition, compaction, and cementation and explaining each process.",
+
+    "i_know":
+        "I know I have learned this when I can build the W.E.D.C.C. sequence from memory and explain how loose sediment becomes solid rock."
+}
+
+# Science Studio Day 89 Power Frame End

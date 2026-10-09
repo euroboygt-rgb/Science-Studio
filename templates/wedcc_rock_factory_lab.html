@@ -1,0 +1,852 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='wedcc_rock_factory_lab.css') }}?v=89.1"
+>
+
+
+<div class="wr-shell">
+
+
+  <!-- HERO -->
+
+  <header class="wr-hero">
+
+    <div class="wr-tags">
+
+      <span>🪨 Interactive Lab</span>
+
+      <span>W.E.D.C.C.</span>
+
+      <span>TEKS 5.10B</span>
+
+    </div>
+
+
+    <div class="wr-hero-row">
+
+      <div>
+
+        <h1>
+          W.E.D.C.C.
+          Sedimentary Rock Factory
+        </h1>
+
+        <p>
+          Break it.
+          Move it.
+          Drop it.
+          Squeeze it.
+          Cement it.
+        </p>
+
+      </div>
+
+
+      <a
+        class="wr-back"
+        href="/second-nine-weeks/day/89?view=student"
+      >
+        ← Back to Day 89
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- STATUS -->
+
+  <section class="wr-status-panel">
+
+    <div>
+
+      <div class="wr-eyebrow">
+        ROCK FACTORY STATUS
+      </div>
+
+      <h2>
+        Complete W.E.D.C.C. in Order
+      </h2>
+
+    </div>
+
+
+    <div class="wr-status-grid">
+
+      <div id="wrStatusW">
+
+        <span>🔴</span>
+
+        <strong>W</strong>
+
+        <small>Weathering</small>
+
+      </div>
+
+
+      <div id="wrStatusE">
+
+        <span>🔴</span>
+
+        <strong>E</strong>
+
+        <small>Erosion</small>
+
+      </div>
+
+
+      <div id="wrStatusD">
+
+        <span>🔴</span>
+
+        <strong>D</strong>
+
+        <small>Deposition</small>
+
+      </div>
+
+
+      <div id="wrStatusC1">
+
+        <span>🔴</span>
+
+        <strong>C</strong>
+
+        <small>Compaction</small>
+
+      </div>
+
+
+      <div id="wrStatusC2">
+
+        <span>🔴</span>
+
+        <strong>C</strong>
+
+        <small>Cementation</small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FACTORY VIEW -->
+
+  <section class="wr-factory">
+
+    <div class="wr-factory-title">
+
+      <span>
+        🏭
+      </span>
+
+      <div>
+
+        <strong>
+          ROCK FACTORY VIEWPORT
+        </strong>
+
+        <p id="wrStageLabel">
+          Stage 0:
+          Begin with a large rock.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div id="wrScene"
+         class="wr-scene stage-0">
+
+
+      <div id="wrMountain"
+           class="wr-mountain">
+
+        🪨
+
+      </div>
+
+
+      <div id="wrParticles"
+           class="wr-particles">
+
+        <span>🟤</span>
+        <span>🟤</span>
+        <span>🟤</span>
+        <span>🟤</span>
+        <span>🟤</span>
+        <span>🟤</span>
+
+      </div>
+
+
+      <div id="wrTransport"
+           class="wr-transport">
+
+        🌊 ➡️ ➡️ ➡️
+
+      </div>
+
+
+      <div id="wrLayers"
+           class="wr-layers">
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+      </div>
+
+
+      <div id="wrPressureTop"
+           class="wr-pressure pressure-top">
+
+        ⬇️⬇️⬇️
+
+      </div>
+
+
+      <div id="wrPressureBottom"
+           class="wr-pressure pressure-bottom">
+
+        ⬆️⬆️⬆️
+
+      </div>
+
+
+      <div id="wrMinerals"
+           class="wr-minerals">
+
+        💧 ✨ 💧 ✨ 💧
+
+      </div>
+
+
+      <div id="wrFinalRock"
+           class="wr-final-rock">
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <strong>
+          SEDIMENTARY ROCK
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="wr-readout">
+
+      <strong>
+        CURRENT MATERIAL:
+      </strong>
+
+      <span id="wrMaterial">
+        Large rock
+      </span>
+
+
+      <strong>
+        PROCESS:
+      </strong>
+
+      <span id="wrProcess">
+        Waiting for W.E.D.C.C.
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- STAGE 1 -->
+
+  <section class="wr-stage">
+
+    <div class="wr-stage-head">
+
+      <div class="wr-stage-letter">
+        W
+      </div>
+
+      <div>
+
+        <h2>
+          Stage 1 — Weathering
+        </h2>
+
+        <p>
+          What must happen first?
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="wr-choices">
+
+      <button
+        data-stage1="break"
+        type="button"
+      >
+        💥 Break the rock
+        into smaller pieces
+      </button>
+
+      <button
+        data-stage1="move"
+        type="button"
+      >
+        ➡️ Move the whole rock downstream
+      </button>
+
+      <button
+        data-stage1="glue"
+        type="button"
+      >
+        🧱 Cement the whole rock
+      </button>
+
+    </div>
+
+
+    <button
+      id="wrRun1"
+      class="wr-run-button"
+      type="button"
+    >
+      💥 RUN WEATHERING
+    </button>
+
+
+    <div id="wrFeedback1"
+         class="wr-feedback">
+
+      Remember:
+      WEATHERING = BREAK.
+
+    </div>
+
+  </section>
+
+
+  <!-- STAGE 2 -->
+
+  <section class="wr-stage">
+
+    <div class="wr-stage-head">
+
+      <div class="wr-stage-letter">
+        E
+      </div>
+
+      <div>
+
+        <h2>
+          Stage 2 — Erosion
+        </h2>
+
+        <p>
+          The sediment now needs to travel.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="wr-choices">
+
+      <button
+        data-stage2="transport"
+        type="button"
+      >
+        🌊 Move sediment
+        to another location
+      </button>
+
+      <button
+        data-stage2="drop"
+        type="button"
+      >
+        ⬇️ Drop sediment
+        in place
+      </button>
+
+      <button
+        data-stage2="cement"
+        type="button"
+      >
+        ✨ Bind sediment
+        with minerals
+      </button>
+
+    </div>
+
+
+    <button
+      id="wrRun2"
+      class="wr-run-button"
+      type="button"
+    >
+      🌊 RUN EROSION
+    </button>
+
+
+    <div id="wrFeedback2"
+         class="wr-feedback">
+
+      Remember:
+      EROSION = MOVE.
+
+    </div>
+
+  </section>
+
+
+  <!-- STAGE 3 -->
+
+  <section class="wr-stage">
+
+    <div class="wr-stage-head">
+
+      <div class="wr-stage-letter">
+        D
+      </div>
+
+      <div>
+
+        <h2>
+          Stage 3 — Deposition
+        </h2>
+
+        <p>
+          The moving sediment
+          reaches calmer conditions.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="wr-choices">
+
+      <button
+        data-stage3="settle"
+        type="button"
+      >
+        ⬇️ Allow sediment
+        to settle into layers
+      </button>
+
+      <button
+        data-stage3="break"
+        type="button"
+      >
+        💥 Break it again
+      </button>
+
+      <button
+        data-stage3="lift"
+        type="button"
+      >
+        ⬆️ Lift all sediment
+        into the air
+      </button>
+
+    </div>
+
+
+    <button
+      id="wrRun3"
+      class="wr-run-button"
+      type="button"
+    >
+      ⬇️ RUN DEPOSITION
+    </button>
+
+
+    <div id="wrFeedback3"
+         class="wr-feedback">
+
+      Remember:
+      DEPOSITION = DROP.
+
+    </div>
+
+  </section>
+
+
+  <!-- STAGE 4 -->
+
+  <section class="wr-stage">
+
+    <div class="wr-stage-head">
+
+      <div class="wr-stage-letter">
+        C
+      </div>
+
+      <div>
+
+        <h2>
+          Stage 4 — Compaction
+        </h2>
+
+        <p>
+          More layers
+          build above the sediment.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="wr-choices">
+
+      <button
+        data-stage4="squeeze"
+        type="button"
+      >
+        🗜️ Apply pressure
+        and squeeze grains closer
+      </button>
+
+      <button
+        data-stage4="move"
+        type="button"
+      >
+        🌊 Move all layers away
+      </button>
+
+      <button
+        data-stage4="break"
+        type="button"
+      >
+        💥 Weather the layers
+      </button>
+
+    </div>
+
+
+    <button
+      id="wrRun4"
+      class="wr-run-button"
+      type="button"
+    >
+      🗜️ RUN COMPACTION
+    </button>
+
+
+    <div id="wrFeedback4"
+         class="wr-feedback">
+
+      Remember:
+      COMPACTION = SQUEEZE.
+
+    </div>
+
+  </section>
+
+
+  <!-- STAGE 5 -->
+
+  <section class="wr-stage">
+
+    <div class="wr-stage-head">
+
+      <div class="wr-stage-letter">
+        C
+      </div>
+
+      <div>
+
+        <h2>
+          Stage 5 — Cementation
+        </h2>
+
+        <p>
+          The grains are close,
+          but how can they become
+          solid rock?
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="wr-choices">
+
+      <button
+        data-stage5="minerals"
+        type="button"
+      >
+        ✨ Allow dissolved minerals
+        to bind the grains
+      </button>
+
+      <button
+        data-stage5="wind"
+        type="button"
+      >
+        💨 Blow all grains apart
+      </button>
+
+      <button
+        data-stage5="erosion"
+        type="button"
+      >
+        ➡️ Move the grains away
+      </button>
+
+    </div>
+
+
+    <button
+      id="wrRun5"
+      class="wr-run-button"
+      type="button"
+    >
+      🧱 RUN CEMENTATION
+    </button>
+
+
+    <div id="wrFeedback5"
+         class="wr-feedback">
+
+      Remember:
+      CEMENTATION = BIND.
+
+    </div>
+
+  </section>
+
+
+  <!-- SEQUENCE CHALLENGE -->
+
+  <section class="wr-sequence">
+
+    <div class="wr-eyebrow">
+      FINAL MEMORY CHECK
+    </div>
+
+    <h2>
+      Build W.E.D.C.C. From Memory
+    </h2>
+
+
+    <div class="wr-sequence-slots">
+
+      <div id="wrSlot1">?</div>
+
+      <b>→</b>
+
+      <div id="wrSlot2">?</div>
+
+      <b>→</b>
+
+      <div id="wrSlot3">?</div>
+
+      <b>→</b>
+
+      <div id="wrSlot4">?</div>
+
+      <b>→</b>
+
+      <div id="wrSlot5">?</div>
+
+    </div>
+
+
+    <div class="wr-sequence-buttons">
+
+      <button data-sequence="deposition"
+              type="button">
+        Deposition
+      </button>
+
+      <button data-sequence="cementation"
+              type="button">
+        Cementation
+      </button>
+
+      <button data-sequence="weathering"
+              type="button">
+        Weathering
+      </button>
+
+      <button data-sequence="compaction"
+              type="button">
+        Compaction
+      </button>
+
+      <button data-sequence="erosion"
+              type="button">
+        Erosion
+      </button>
+
+    </div>
+
+
+    <button
+      id="wrResetSequence"
+      class="wr-reset-button"
+      type="button"
+    >
+      ↻ RESET SEQUENCE
+    </button>
+
+
+    <button
+      id="wrCheckSequence"
+      class="wr-run-button"
+      type="button"
+    >
+      🧠 CHECK W.E.D.C.C.
+    </button>
+
+
+    <div id="wrSequenceFeedback"
+         class="wr-feedback">
+
+      Complete all five factory stages,
+      then build W.E.D.C.C. from memory.
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="wr-final">
+
+    <div class="wr-final-icon">
+      🪨🏆
+    </div>
+
+
+    <h2>
+      Rock Factory Status
+    </h2>
+
+
+    <div id="wrFinalMessage"
+         class="wr-final-message">
+
+      Complete W.E.D.C.C.
+      to build sedimentary rock.
+
+    </div>
+
+  </section>
+
+
+  <!-- EVIDENCE -->
+
+  <section class="wr-evidence">
+
+    <h2>
+      📓 Rock Builder Evidence Log
+    </h2>
+
+
+    <div class="wr-evidence-grid">
+
+      <article>
+
+        <strong>
+          W — BREAK
+        </strong>
+
+        <p>
+          Weathering creates
+          smaller rock pieces.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          E — MOVE
+        </strong>
+
+        <p>
+          Erosion transports
+          sediment.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          D — DROP
+        </strong>
+
+        <p>
+          Deposition
+          builds sediment layers.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          C — SQUEEZE
+        </strong>
+
+        <p>
+          Compaction presses
+          sediment grains closer.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          C — BIND
+        </strong>
+
+        <p>
+          Cementation binds
+          grains with minerals.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='wedcc_rock_factory_lab.js') }}?v=89.1"
+></script>
+
+{% endblock %}
