@@ -5532,3 +5532,97 @@ SECOND_NINE_WEEKS_LESSONS[87] = {
 }
 
 # Science Studio Day 87 End
+
+
+# Science Studio Day 88 Start
+
+SECOND_NINE_WEEKS_LESSONS[88] = {
+
+    "day": 88,
+
+    "title":
+        "Weather & Water Cycle Certification Mission",
+
+    "unit":
+        "Weather and the Water Cycle",
+
+    "teks":
+        "5.10A, 5.1F, 5.2D",
+
+    "focus":
+        "Students demonstrate mastery of water-cycle processes, Sun-ocean interaction, "
+        "weather data, and evidence-based system explanations.",
+
+    "learning_target":
+        "We will demonstrate mastery of how the Sun and ocean interact in the water cycle and affect weather.",
+
+    "success_criteria":
+        "I can pass four certification levels by explaining water-cycle processes, "
+        "Sun-ocean interactions, weather evidence, and complete system relationships.",
+
+    "essential_question":
+        "Can I use evidence to explain the complete Sun-ocean-water-weather system?",
+
+    "bell_ringer": [
+        "What provides energy for evaporation?",
+        "What process changes liquid water into water vapor?",
+        "What process can form cloud droplets when moist air cools?",
+        "Why does a cloud not always produce precipitation?"
+    ],
+
+    "mini_lesson": [
+        "The Sun supplies energy that can contribute to evaporation.",
+        "The ocean is a major source of surface water available for evaporation.",
+        "Evaporation moves water into the atmosphere as water vapor.",
+        "Cooling moist air can support condensation and cloud formation.",
+        "Cloud particles must grow before precipitation can fall.",
+        "More atmospheric moisture can increase weather potential but does not guarantee rain.",
+        "Weather data such as temperature, cloud cover, wind direction, and precipitation provide evidence.",
+        "Strong explanations connect several pieces of evidence.",
+        "A forecast is an evidence-based prediction, not a guarantee."
+    ],
+
+    "science_notebook": [
+        "Write the complete system chain: Sun → Ocean → Evaporation → Water Vapor → Condensation → Clouds → Possible Precipitation.",
+        "Write one piece of evidence for evaporation.",
+        "Write one piece of evidence for condensation.",
+        "Write one weather-data pattern that could support a forecast.",
+        "Write: A strong scientific explanation uses more than one piece of evidence."
+    ],
+
+    "guided_practice": [
+        "Rapid review of four common misconceptions.",
+        "More evaporation does not guarantee rain.",
+        "Water vapor is normally invisible.",
+        "Cloud formation does not guarantee precipitation.",
+        "Forecasts should use multiple measurements."
+    ],
+
+    "lab_title":
+        "Weather & Water Cycle Certification Mission",
+
+    "lab_url":
+        "/labs/weather-certification?mission=day88",
+
+    "exit_ticket":
+        "Which part of the weather system is easiest for you to explain, and which part still requires the most evidence?",
+
+    "vocabulary": [
+        "solar energy",
+        "evaporation",
+        "water vapor",
+        "condensation",
+        "cloud",
+        "precipitation",
+        "weather",
+        "pattern",
+        "evidence"
+    ],
+
+    "teacher_note":
+        "This is the culminating TEKS 5.10A certification lesson. "
+        "Students should demonstrate understanding of the complete interacting system, "
+        "not simply memorize vocabulary."
+}
+
+# Science Studio Day 88 End

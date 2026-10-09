@@ -73,6 +73,58 @@ app = Flask(__name__)
 
 
 
+
+# Science Studio Dedicated Day 88 Start
+
+@app.before_request
+def science_studio_dedicated_day88():
+
+    from flask import (
+        request as flask_request,
+        render_template as flask_render_template,
+    )
+
+    if flask_request.path not in (
+        "/second-nine-weeks/day/88",
+        "/2nd-nine-weeks/day/88",
+    ):
+        return None
+
+    view = flask_request.args.get(
+        "view",
+        "student"
+    )
+
+    if view not in (
+        "student",
+        "teacher",
+    ):
+        view = "student"
+
+    return flask_render_template(
+        "day88_lesson.html",
+        view=view
+    )
+
+# Science Studio Dedicated Day 88 End
+
+
+# Science Studio Weather Certification Route Start
+
+@app.route("/labs/weather-certification")
+def weather_certification_lab():
+
+    from flask import (
+        render_template as flask_render_template,
+    )
+
+    return flask_render_template(
+        "weather_certification_lab.html"
+    )
+
+# Science Studio Weather Certification Route End
+
+
 # Science Studio Dedicated Day 87 Start
 
 @app.before_request

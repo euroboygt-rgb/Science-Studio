@@ -1021,3 +1021,20 @@ POWER_FRAMES[87] = {
 }
 
 # Science Studio Day 87 Power Frame End
+
+
+# Science Studio Day 88 Power Frame Start
+
+POWER_FRAMES[88] = {
+
+    "i_can":
+        "I can explain how the Sun and ocean interact in the water cycle and affect weather.",
+
+    "by":
+        "using process knowledge, weather data, patterns, and evidence across four certification levels.",
+
+    "i_know":
+        "I know I have learned this when I can pass all four Weather & Water Cycle certification levels."
+}
+
+# Science Studio Day 88 Power Frame End

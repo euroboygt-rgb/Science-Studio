@@ -1,0 +1,603 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='weather_certification_lab.css') }}?v=88.1"
+>
+
+
+<div class="wc-shell">
+
+
+  <!-- HERO -->
+
+  <header class="wc-hero">
+
+    <div class="wc-tags">
+
+      <span>🏆 Final Certification</span>
+
+      <span>Weather & Water Cycle</span>
+
+      <span>TEKS 5.10A</span>
+
+    </div>
+
+
+    <div class="wc-hero-row">
+
+      <div>
+
+        <h1>
+          Weather & Water Cycle
+          Certification Mission
+        </h1>
+
+        <p>
+          Pass all four certification levels
+          to become a
+          Weather & Water Cycle Science Specialist.
+        </p>
+
+      </div>
+
+
+      <a
+        class="wc-back"
+        href="/second-nine-weeks/day/88?view=student"
+      >
+        ← Back to Day 88
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- STATUS -->
+
+  <section class="wc-command">
+
+    <div>
+
+      <div class="wc-eyebrow">
+        CERTIFICATION STATUS
+      </div>
+
+      <h2>
+        Pass All Four Levels
+      </h2>
+
+    </div>
+
+
+    <div class="wc-status-grid">
+
+      <div id="wcStatus1">
+
+        <span>🔴</span>
+
+        <strong>
+          Level 1
+        </strong>
+
+        <small>
+          Water Cycle
+        </small>
+
+      </div>
+
+
+      <div id="wcStatus2">
+
+        <span>🔴</span>
+
+        <strong>
+          Level 2
+        </strong>
+
+        <small>
+          Sun + Ocean
+        </small>
+
+      </div>
+
+
+      <div id="wcStatus3">
+
+        <span>🔴</span>
+
+        <strong>
+          Level 3
+        </strong>
+
+        <small>
+          Weather Data
+        </small>
+
+      </div>
+
+
+      <div id="wcStatus4">
+
+        <span>🔴</span>
+
+        <strong>
+          Level 4
+        </strong>
+
+        <small>
+          Final Mission
+        </small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- LEVEL 1 -->
+
+  <section class="wc-level-header">
+
+    <div>
+
+      <div class="wc-eyebrow">
+        CERTIFICATION LEVEL 1
+      </div>
+
+      <h2>
+        💧 Water Cycle Processes
+      </h2>
+
+      <p>
+        Passing score:
+        <strong>3 / 4</strong>
+      </p>
+
+    </div>
+
+
+    <aside class="wc-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="wcScore1">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="wc-panel">
+
+    <div id="wcQuestion1"
+         class="wc-question">
+      Loading...
+    </div>
+
+    <div id="wcChoices1"
+         class="wc-choices">
+    </div>
+
+    <button
+      id="wcCheck1"
+      class="wc-main-button"
+      type="button"
+    >
+      CHECK ANSWER
+    </button>
+
+    <div id="wcFeedback1"
+         class="wc-feedback">
+      Select the best answer.
+    </div>
+
+    <button
+      id="wcNext1"
+      class="wc-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- LEVEL 2 -->
+
+  <section class="wc-level-header">
+
+    <div>
+
+      <div class="wc-eyebrow">
+        CERTIFICATION LEVEL 2
+      </div>
+
+      <h2>
+        ☀️🌊 Sun + Ocean Interaction
+      </h2>
+
+      <p>
+        Passing score:
+        <strong>3 / 4</strong>
+      </p>
+
+    </div>
+
+
+    <aside class="wc-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="wcScore2">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="wc-panel">
+
+    <div id="wcQuestion2"
+         class="wc-question">
+      Loading...
+    </div>
+
+    <div id="wcChoices2"
+         class="wc-choices">
+    </div>
+
+    <button
+      id="wcCheck2"
+      class="wc-main-button"
+      type="button"
+    >
+      CHECK ANSWER
+    </button>
+
+    <div id="wcFeedback2"
+         class="wc-feedback">
+      Select the best answer.
+    </div>
+
+    <button
+      id="wcNext2"
+      class="wc-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- LEVEL 3 -->
+
+  <section class="wc-level-header">
+
+    <div>
+
+      <div class="wc-eyebrow">
+        CERTIFICATION LEVEL 3
+      </div>
+
+      <h2>
+        📊 Weather Data Evidence
+      </h2>
+
+      <p>
+        Passing score:
+        <strong>3 / 4</strong>
+      </p>
+
+    </div>
+
+
+    <aside class="wc-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="wcScore3">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="wc-panel">
+
+    <div id="wcDataDisplay"
+         class="wc-data-display">
+    </div>
+
+    <div id="wcQuestion3"
+         class="wc-question">
+      Loading...
+    </div>
+
+    <div id="wcChoices3"
+         class="wc-choices">
+    </div>
+
+    <button
+      id="wcCheck3"
+      class="wc-main-button"
+      type="button"
+    >
+      CHECK EVIDENCE
+    </button>
+
+    <div id="wcFeedback3"
+         class="wc-feedback">
+      Use the data before answering.
+    </div>
+
+    <button
+      id="wcNext3"
+      class="wc-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- LEVEL 4 -->
+
+  <section class="wc-level-header wc-final-level">
+
+    <div>
+
+      <div class="wc-eyebrow">
+        CERTIFICATION LEVEL 4
+      </div>
+
+      <h2>
+        🌦️🏆 Final Mixed STAAR Mission
+      </h2>
+
+      <p>
+        Passing score:
+        <strong>4 / 5</strong>
+      </p>
+
+    </div>
+
+
+    <aside class="wc-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="wcScore4">
+        0 / 5
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="wc-panel">
+
+    <div id="wcStimulus4"
+         class="wc-stimulus">
+    </div>
+
+    <div id="wcQuestion4"
+         class="wc-question">
+      Loading...
+    </div>
+
+    <div id="wcChoices4"
+         class="wc-choices">
+    </div>
+
+    <button
+      id="wcCheck4"
+      class="wc-main-button"
+      type="button"
+    >
+      SUBMIT FINAL RESPONSE
+    </button>
+
+    <div id="wcFeedback4"
+         class="wc-feedback">
+      Use all available evidence.
+    </div>
+
+    <button
+      id="wcNext4"
+      class="wc-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- CERTIFICATE -->
+
+  <section class="wc-certificate-wrap">
+
+    <div id="wcLocked"
+         class="wc-locked">
+
+      🔒
+
+      <h2>
+        Certification Locked
+      </h2>
+
+      <p>
+        Pass all four levels
+        to unlock your certificate.
+      </p>
+
+    </div>
+
+
+    <div id="wcCertificate"
+         class="wc-certificate">
+
+      <div class="wc-seal">
+        🏆
+      </div>
+
+      <div class="wc-cert-small">
+        SCIENCE STUDIO CERTIFICATION
+      </div>
+
+      <h1>
+        Weather & Water Cycle
+        Science Specialist
+      </h1>
+
+
+      <p>
+        This certifies that the student
+        demonstrated mastery of:
+      </p>
+
+
+      <div class="wc-cert-grid">
+
+        <span>
+          💧 Water Cycle Processes
+        </span>
+
+        <span>
+          ☀️🌊 Sun + Ocean Interaction
+        </span>
+
+        <span>
+          📊 Weather Data Evidence
+        </span>
+
+        <span>
+          🌦️ Complete Weather Systems
+        </span>
+
+      </div>
+
+
+      <div class="wc-cert-line">
+        CERTIFICATION COMPLETE
+      </div>
+
+
+      <p class="wc-cert-footer">
+        TEKS 5.10A • Science Studio Mission Control
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL EVIDENCE -->
+
+  <section class="wc-evidence">
+
+    <h2>
+      📓 Certification Evidence Summary
+    </h2>
+
+
+    <div class="wc-evidence-grid">
+
+      <article>
+
+        <strong>
+          ☀️ Energy
+        </strong>
+
+        <p>
+          The Sun provides energy
+          that can contribute
+          to evaporation.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🌊 Water
+        </strong>
+
+        <p>
+          The ocean provides
+          enormous amounts
+          of surface water.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          💨☁️ Atmosphere
+        </strong>
+
+        <p>
+          Water vapor,
+          cooling,
+          and condensation
+          connect the ocean to clouds.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🌧️📊 Weather
+        </strong>
+
+        <p>
+          Precipitation
+          and weather measurements
+          provide system evidence.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='weather_certification_lab.js') }}?v=88.1"
+></script>
+
+{% endblock %}

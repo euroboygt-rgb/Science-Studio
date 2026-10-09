@@ -1,0 +1,753 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=88-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day88_direct.css') }}?v=88-final"
+>
+
+
+<div id="DAY88_DIRECT_TEMPLATE"
+     class="d88-page">
+
+
+  <section class="d88-hero">
+
+    <div class="d88-tags">
+
+      <span>Day 88</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10A</span>
+
+      <span>Final Certification</span>
+
+    </div>
+
+
+    <h1>
+      🏆 Weather & Water Cycle
+      Certification Mission
+    </h1>
+
+
+    <p>
+      Prove that you can explain
+      the complete Sun,
+      ocean,
+      water-cycle,
+      and weather system.
+    </p>
+
+
+    <div class="d88-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/88?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/88?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Final Weather Mission
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          explain how the Sun
+          and ocean interact
+          in the water cycle
+          and affect weather.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          using process knowledge,
+          weather data,
+          patterns,
+          and evidence.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I pass all four
+          Weather & Water Cycle
+          certification levels.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🏆 Certification Challenge
+    </div>
+
+    <h2>
+      Can You Explain the Whole System?
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day88_weather_certification.svg"
+        alt="Sun ocean evaporation condensation precipitation and weather system"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        🎯 Final Mission Question:
+      </strong>
+
+      Can you explain
+      how energy from the Sun
+      interacting with ocean water
+      can eventually influence
+      atmospheric moisture,
+      clouds,
+      precipitation,
+      and weather observations?
+
+    </div>
+
+  </section>
+
+
+  <!-- RAPID REVIEW -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⚡ Rapid Systems Review
+    </div>
+
+    <h2>
+      Four Rules Before Certification
+    </h2>
+
+
+    <div class="d88-rule-grid">
+
+      <article>
+
+        <span>☀️🌊</span>
+
+        <strong>
+          RULE 1
+        </strong>
+
+        <p>
+          The Sun supplies energy.
+          The ocean supplies water.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>⬆️💨</span>
+
+        <strong>
+          RULE 2
+        </strong>
+
+        <p>
+          Evaporation moves water
+          into the atmosphere
+          as invisible water vapor.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>💨❄️☁️</span>
+
+        <strong>
+          RULE 3
+        </strong>
+
+        <p>
+          Cooling moist air
+          can support condensation
+          and cloud formation.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>☁️🌧️</span>
+
+        <strong>
+          RULE 4
+        </strong>
+
+        <p>
+          A cloud does not guarantee
+          precipitation.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve's Final Weather Claim
+        </div>
+
+        <h2>
+          Is Steve Ready for Certification?
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve says:
+
+          <strong>
+            "Strong sunlight means more evaporation,
+            so heavy rain MUST happen next."
+          </strong>
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            Which response best evaluates Steve's claim?
+          </strong>
+
+
+          <button class="d88-steve-answer"
+                  data-answer="A">
+            A. Steve is correct because evaporation always creates immediate rain.
+          </button>
+
+          <button class="d88-steve-answer"
+                  data-answer="B">
+            B. Steve is partly correct: more energy can increase evaporation, but cloud formation and precipitation require additional atmospheric conditions.
+          </button>
+
+          <button class="d88-steve-answer"
+                  data-answer="C">
+            C. Sunlight stops water from entering the atmosphere.
+          </button>
+
+          <button class="d88-steve-answer"
+                  data-answer="D">
+            D. The ocean is not part of the water cycle.
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button id="d88SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Certification Reasoning
+            </button>
+
+            <button id="d88SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d88SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Certification Vocabulary
+    </h2>
+
+
+    <div class="d88-vocab-grid">
+
+      {% set words = [
+        ("☀️","solar energy","Energy from the Sun that can warm Earth's surface and contribute to evaporation."),
+        ("⬆️","evaporation","Liquid water changing into water vapor."),
+        ("💨","water vapor","Water in the gas state; normally invisible."),
+        ("💧","condensation","Water vapor changing into liquid droplets."),
+        ("☁️","cloud","Tiny water droplets and/or ice crystals suspended in the atmosphere."),
+        ("🌧️","precipitation","Water falling from clouds to Earth's surface."),
+        ("🌦️","weather","Atmospheric conditions at a particular place and time."),
+        ("🔁","pattern","A relationship or change identified across observations."),
+        ("🔎","evidence","Information used to support a scientific claim or explanation.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d88-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Certification Cheat Sheet
+    </h2>
+
+
+    <div class="d88-chain">
+
+      <span>
+        ☀️ Sun
+      </span>
+
+      <b>→</b>
+
+      <span>
+        🌊 Ocean
+      </span>
+
+      <b>→</b>
+
+      <span>
+        ⬆️ Evaporation
+      </span>
+
+      <b>→</b>
+
+      <span>
+        💨 Water Vapor
+      </span>
+
+      <b>→</b>
+
+      <span>
+        💧 Condensation
+      </span>
+
+      <b>→</b>
+
+      <span>
+        ☁️ Clouds
+      </span>
+
+      <b>→</b>
+
+      <span>
+        🌧️ Possible Precipitation
+      </span>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Write three evidence statements:
+
+      <ol>
+
+        <li>
+          Evidence that supports evaporation:
+          __________________________
+        </li>
+
+        <li>
+          Evidence that supports condensation:
+          __________________________
+        </li>
+
+        <li>
+          Evidence that supports a weather forecast:
+          __________________________
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Teacher Certification Warm-Up
+    </h2>
+
+
+    <div class="d59-box">
+
+      Read each misconception aloud.
+
+      Students respond:
+      <strong>
+        TRUE / FALSE / FIX IT
+      </strong>
+
+      <ol>
+
+        <li>
+          Water vapor is a visible cloud.
+        </li>
+
+        <li>
+          Every cloud produces precipitation.
+        </li>
+
+        <li>
+          The Sun provides energy that can contribute to evaporation.
+        </li>
+
+        <li>
+          One weather measurement is always enough for a strong forecast.
+        </li>
+
+      </ol>
+
+      Suggested answers:
+
+      <strong>
+        False, False, True, False.
+      </strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB LAUNCH -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🏆 Final Certification Lab
+    </div>
+
+    <h2>
+      Weather & Water Cycle Certification Mission
+    </h2>
+
+
+    <div class="d88-level-grid">
+
+      <article>
+
+        <span>
+          💧
+        </span>
+
+        <strong>
+          LEVEL 1
+        </strong>
+
+        <p>
+          Water Cycle Processes
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          ☀️🌊
+        </span>
+
+        <strong>
+          LEVEL 2
+        </strong>
+
+        <p>
+          Sun + Ocean Interaction
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          📊
+        </span>
+
+        <strong>
+          LEVEL 3
+        </strong>
+
+        <p>
+          Weather Data Evidence
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          🌦️🏆
+        </span>
+
+        <strong>
+          LEVEL 4
+        </strong>
+
+        <p>
+          Final Mixed Mission
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      Pass every level
+      to earn the title:
+
+      <br><br>
+
+      <strong>
+        WEATHER & WATER CYCLE
+        SCIENCE SPECIALIST
+      </strong>
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/weather-certification?mission=day88"
+    >
+      🏆 Begin Weather Certification
+    </a>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Final Exit Reflection
+    </h2>
+
+    <p>
+      Which part
+      of the weather system
+      is easiest for you
+      to explain?
+
+      <br><br>
+
+      Which part
+      still requires you
+      to look carefully
+      at the evidence?
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="I understand... I still need to think carefully about..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- NEXT UNIT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🪨 New Unit Incoming
+    </div>
+
+    <h2>
+      Day 89:
+      Sedimentary Rock Detective
+    </h2>
+
+
+    <div class="d59-box">
+
+      Weather certification complete.
+
+      <br><br>
+
+      Next we begin
+      <strong>
+        TEKS 5.10B:
+        Sedimentary Rocks
+        and Fossil Fuels.
+      </strong>
+
+      <br><br>
+
+      Our first mystery:
+
+      <strong>
+        How can loose pieces
+        of sediment eventually
+        become solid rock?
+      </strong>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d88VocabModal"
+     class="d88-modal">
+
+  <div class="d88-modal-card">
+
+    <button
+      id="d88VocabClose"
+      class="d88-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d88ModalIcon"
+         class="d88-modal-icon"></div>
+
+    <h2 id="d88ModalTerm"></h2>
+
+    <p id="d88ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day88_direct.js') }}?v=88-final"
+></script>
+
+{% endblock %}
