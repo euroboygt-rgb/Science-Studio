@@ -5146,3 +5146,98 @@ SECOND_NINE_WEEKS_LESSONS[83] = {
 }
 
 # Science Studio Day 83 End
+
+
+# Science Studio Day 84 Start
+
+SECOND_NINE_WEEKS_LESSONS[84] = {
+
+    "day": 84,
+
+    "title":
+        "Precipitation Command: What Will Fall From the Cloud?",
+
+    "unit":
+        "Weather and the Water Cycle",
+
+    "teks":
+        "5.10A, 5.1F, 5.2D",
+
+    "focus":
+        "Students use atmospheric temperature evidence and thunderstorm conditions "
+        "to distinguish rain, snow, sleet/ice pellets, and hail.",
+
+    "learning_target":
+        "We will use evidence about air temperature and storm conditions to explain different forms of precipitation.",
+
+    "success_criteria":
+        "I can analyze an atmosphere model and predict whether rain, snow, or sleet will reach the ground, "
+        "and I can explain why hail requires strong thunderstorm updrafts.",
+
+    "essential_question":
+        "Why can water falling from clouds reach Earth's surface as different forms of precipitation?",
+
+    "bell_ringer": [
+        "Clouds contain tiny droplets and/or ice crystals.",
+        "What must happen before water can fall from a cloud?",
+        "Why might precipitation be liquid on one day but frozen on another?"
+    ],
+
+    "mini_lesson": [
+        "Precipitation is water that falls from clouds to Earth's surface.",
+        "Cloud droplets and ice particles can grow by combining with other droplets or crystals.",
+        "When particles become large enough, gravity can pull them toward Earth's surface.",
+        "Rain is liquid water that reaches the ground without freezing.",
+        "Snow reaches the ground as frozen ice crystals or snowflakes when the air remains cold enough.",
+        "Sleet, also called ice pellets, can form when frozen precipitation melts in a warmer layer and then refreezes before reaching the ground.",
+        "Hail forms differently from ordinary rain, snow, or sleet.",
+        "Hail develops inside strong thunderstorms where powerful updrafts repeatedly carry ice upward through areas containing supercooled water.",
+        "Hailstones can grow in layers until they become too heavy for the updraft to support.",
+        "Temperature profiles in this lesson are simplified models of the atmosphere."
+    ],
+
+    "science_notebook": [
+        "Create a four-column precipitation chart: Type | State | Evidence | How It Forms.",
+        "Rain: liquid | warmer air below cloud | reaches ground as liquid.",
+        "Snow: solid | cold air remains through most or all of the path | remains frozen.",
+        "Sleet/Ice Pellets: solid | warm layer then cold layer near ground | melts then refreezes.",
+        "Hail: solid | strong thunderstorm updrafts | ice grows while being carried upward repeatedly.",
+        "Write: Hail is not simply frozen rain falling through cold air."
+    ],
+
+    "guided_practice": [
+        "Read a simplified vertical temperature profile.",
+        "Identify whether each layer is above or below freezing.",
+        "Trace a precipitation particle from cloud to ground.",
+        "Predict whether the particle melts, remains frozen, or refreezes.",
+        "Compare ordinary winter precipitation with hail formation in thunderstorms."
+    ],
+
+    "lab_title":
+        "Precipitation Command: Atmosphere Scanner",
+
+    "lab_url":
+        "/labs/precipitation-command?mission=day84",
+
+    "exit_ticket":
+        "Explain why a snowflake can become a sleet pellet before reaching the ground.",
+
+    "vocabulary": [
+        "precipitation",
+        "rain",
+        "snow",
+        "sleet",
+        "ice pellet",
+        "hail",
+        "temperature profile",
+        "freezing point",
+        "updraft"
+    ],
+
+    "teacher_note":
+        "Use the temperature-layer models as simplified conceptual models. "
+        "For sleet, emphasize melting in a warmer layer followed by refreezing in cold air before reaching the surface. "
+        "Teach hail separately as a thunderstorm/updraft process rather than as ordinary frozen precipitation."
+}
+
+# Science Studio Day 84 End

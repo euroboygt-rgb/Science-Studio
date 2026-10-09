@@ -953,3 +953,20 @@ POWER_FRAMES[83] = {
 }
 
 # Science Studio Day 83 Power Frame End
+
+
+# Science Studio Day 84 Power Frame Start
+
+POWER_FRAMES[84] = {
+
+    "i_can":
+        "I can use atmospheric evidence to explain different forms of precipitation.",
+
+    "by":
+        "tracing precipitation through warm and cold air layers and analyzing thunderstorm updrafts.",
+
+    "i_know":
+        "I know I have learned this when I can predict what reaches the ground and defend my prediction with evidence."
+}
+
+# Science Studio Day 84 Power Frame End

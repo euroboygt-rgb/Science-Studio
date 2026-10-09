@@ -1,0 +1,1286 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=84-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day84_direct.css') }}?v=84-final"
+>
+
+
+<div id="DAY84_DIRECT_TEMPLATE"
+     class="d84-page">
+
+
+  <!-- HERO -->
+
+  <section class="d84-hero">
+
+    <div class="d84-tags">
+
+      <span>Day 84</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10A</span>
+
+      <span>Precipitation Command</span>
+
+    </div>
+
+
+    <h1>
+      🌧️ Precipitation Command:
+      What Will Fall From the Cloud?
+    </h1>
+
+    <p>
+      Scan the atmosphere,
+      trace precipitation through
+      warm and cold air,
+      and discover why rain,
+      snow,
+      sleet,
+      and hail form differently.
+    </p>
+
+
+    <div class="d84-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/84?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/84?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Precipitation Mission
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          use atmospheric evidence
+          to explain different forms
+          of precipitation.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          tracing precipitation
+          through warm and cold layers
+          and analyzing thunderstorm updrafts.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can predict
+          what reaches the ground
+          and defend my prediction
+          with evidence.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌧️ Phenomenon Mission
+    </div>
+
+    <h2>
+      Same Water — Different Precipitation
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day84_precipitation.svg"
+        alt="Rain, snow, sleet, and hail falling under different atmospheric conditions"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      If all precipitation
+      comes from water in clouds,
+      why does it sometimes reach us
+      as rain,
+      snow,
+      sleet,
+      or hail?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d84MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Follow the Particle to the Ground
+        </h2>
+
+        <div class="d59-unit">
+          Cloud → Atmosphere → Surface
+        </div>
+
+      </div>
+
+
+      <button
+        id="d84Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Precipitation Mission
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d84SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d84SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d84SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d84SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d84SlideNumber"></strong>
+
+      <div>
+
+        <button id="d84Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d84Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d84Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's Hail Mystery
+        </div>
+
+        <h2>
+          Is Hail Just Frozen Rain?
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve sees hailstones
+          falling during a powerful summer thunderstorm.
+
+          He says,
+
+          <strong>
+            "The rain just froze
+            because the ground is cold!"
+          </strong>
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            Which explanation best corrects Steve?
+          </strong>
+
+
+          <button class="d84-steve-answer"
+                  data-answer="A">
+            A. Hail grows inside strong thunderstorms where updrafts repeatedly carry ice upward.
+          </button>
+
+          <button class="d84-steve-answer"
+                  data-answer="B">
+            B. Hail only forms when the ground is covered with snow.
+          </button>
+
+          <button class="d84-steve-answer"
+                  data-answer="C">
+            C. Hail is ordinary rain that always freezes at the ground.
+          </button>
+
+          <button class="d84-steve-answer"
+                  data-answer="D">
+            D. Hail is caused by Earth's rotation.
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button
+              id="d84SteveCheck"
+              class="d59-check"
+              type="button"
+            >
+              Check Explanation
+            </button>
+
+            <button
+              id="d84SteveReset"
+              class="d59-reset"
+              type="button"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d84SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Precipitation Vocabulary
+    </h2>
+
+
+    <div class="d84-vocab-grid">
+
+      {% set words = [
+        ("🌧️","precipitation","Water that falls from clouds to Earth's surface."),
+        ("💧","rain","Liquid precipitation that reaches Earth's surface as water drops."),
+        ("❄️","snow","Frozen precipitation made of ice crystals or snowflakes."),
+        ("🧊","sleet","Small ice pellets that can form when melted precipitation refreezes before reaching the ground."),
+        ("🔵","ice pellet","A small frozen pellet of precipitation; another name commonly used for sleet."),
+        ("⚪","hail","Balls or lumps of ice that grow inside strong thunderstorms."),
+        ("🌡️","temperature profile","A model showing how air temperature changes from the cloud toward the ground."),
+        ("0°","freezing point","The temperature at which water freezes: 0°C or 32°F."),
+        ("⬆️","updraft","A strong upward-moving current of air inside a storm.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d84-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will use evidence
+      about air temperature
+      and storm conditions
+      to explain different forms
+      of precipitation.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      What Leaves the Cloud?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Yesterday we built a cloud
+      from condensed water.
+
+      <ol>
+
+        <li>
+          What can happen
+          as cloud droplets or ice particles grow?
+        </li>
+
+        <li>
+          What force pulls
+          large particles toward Earth?
+        </li>
+
+        <li>
+          Why might the same falling water
+          reach the ground
+          in different forms?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      The Atmosphere Changes the Particle
+    </h2>
+
+
+    <div class="d84-types">
+
+      <article>
+
+        <span>
+          🌧️
+        </span>
+
+        <h3>
+          RAIN
+        </h3>
+
+        <p>
+          Liquid water reaches the ground
+          without refreezing.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          ❄️
+        </span>
+
+        <h3>
+          SNOW
+        </h3>
+
+        <p>
+          Frozen crystals remain frozen
+          through sufficiently cold air.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          🧊
+        </span>
+
+        <h3>
+          SLEET
+        </h3>
+
+        <p>
+          Frozen precipitation melts
+          in a warmer layer,
+          then refreezes
+          before reaching the ground.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          ⚪
+        </span>
+
+        <h3>
+          HAIL
+        </h3>
+
+        <p>
+          Ice grows inside
+          strong thunderstorms
+          with powerful updrafts.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d84-layer-model">
+
+      <h3>
+        🌡️ Read the Atmosphere From Top to Bottom
+      </h3>
+
+      <div class="d84-layer cold">
+
+        <strong>
+          CLOUD LEVEL
+        </strong>
+
+        Cold air
+
+      </div>
+
+      <div class="d84-layer warm">
+
+        <strong>
+          MIDDLE LAYER
+        </strong>
+
+        May be warm or cold
+
+      </div>
+
+      <div class="d84-layer cold">
+
+        <strong>
+          SURFACE LAYER
+        </strong>
+
+        May be warm or cold
+
+      </div>
+
+      <p>
+        Follow the particle
+        through every layer.
+
+        Its state can change
+        before it reaches the ground.
+      </p>
+
+    </div>
+
+
+    <div class="d84-hail-box">
+
+      <h3>
+        ⛈️ Hail Is Different
+      </h3>
+
+      <p>
+        Hail is not explained
+        simply by a cold layer near the ground.
+      </p>
+
+      <p>
+        Inside a strong thunderstorm,
+        powerful
+        <strong>
+          updrafts
+        </strong>
+        can carry ice upward repeatedly.
+
+        The hailstone can collect
+        more supercooled water
+        and grow in layers.
+      </p>
+
+      <strong>
+        Strong thunderstorm + strong updraft = hail-building conditions
+      </strong>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Model Warning
+      </strong>
+
+      <br><br>
+
+      Real atmospheric conditions
+      are more complex
+      than our three-layer classroom model.
+
+      <br><br>
+
+      We are using simplified profiles
+      to practice
+      <strong>
+        evidence-based predictions.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Precipitation Evidence Chart
+    </h2>
+
+
+    <div class="d84-notebook">
+
+      <div>
+
+        <strong>
+          RAIN 🌧️
+        </strong>
+
+        <p>
+          Liquid reaches ground.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          SNOW ❄️
+        </strong>
+
+        <p>
+          Remains frozen.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          SLEET 🧊
+        </strong>
+
+        <p>
+          Melts,
+          then refreezes.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          HAIL ⚪
+        </strong>
+
+        <p>
+          Grows in strong thunderstorm updrafts.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Write:
+
+      <br><br>
+
+      <strong>
+        Temperature layers can change
+        falling precipitation
+        before it reaches the ground.
+      </strong>
+
+      <br><br>
+
+      <strong>
+        Hail forms through a different process
+        involving strong thunderstorm updrafts.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Human Atmosphere
+    </h2>
+
+
+    <div class="d59-box">
+
+      Divide the room into three zones:
+
+      <ol>
+
+        <li>
+          Cloud Layer
+        </li>
+
+        <li>
+          Middle Atmosphere
+        </li>
+
+        <li>
+          Surface Layer
+        </li>
+
+      </ol>
+
+      Assign each zone
+      either
+      <strong>
+        WARM
+      </strong>
+      or
+      <strong>
+        COLD.
+      </strong>
+
+      <br><br>
+
+      One student becomes
+      the precipitation particle.
+
+      As the student moves
+      through each layer,
+      the class calls out:
+
+      <strong>
+        STAY FROZEN,
+        MELT,
+        or REFREEZE.
+      </strong>
+
+      <br><br>
+
+      Then compare those winter-weather models
+      to the separate hail/updraft process.
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌧️ Interactive Lab
+    </div>
+
+    <h2>
+      Precipitation Command:
+      Atmosphere Scanner
+    </h2>
+
+
+    <p>
+      Identify precipitation,
+      scan atmospheric temperature layers,
+      build hail inside a thunderstorm,
+      and solve weather case files.
+    </p>
+
+
+    <div class="d84-missions">
+
+      <div>
+
+        🌧️
+
+        <strong>
+          Mission 1
+        </strong>
+
+        Identify Precipitation
+
+      </div>
+
+
+      <div>
+
+        🌡️
+
+        <strong>
+          Mission 2
+        </strong>
+
+        Atmosphere Scanner
+
+      </div>
+
+
+      <div>
+
+        ⛈️
+
+        <strong>
+          Mission 3
+        </strong>
+
+        Hail Builder
+
+      </div>
+
+
+      <div>
+
+        🕵️
+
+        <strong>
+          Mission 4
+        </strong>
+
+        Weather Detective
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Complete all four missions
+      to earn
+
+      <strong>
+        Precipitation Systems Specialist
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/precipitation-command?mission=day84"
+    >
+      🌧️ Enter Precipitation Command
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Practice
+    </div>
+
+    <h2>
+      Precipitation Evidence
+    </h2>
+
+
+    <div class="d84-question"
+         data-answer="B">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        Frozen precipitation
+        falls through cold air
+        all the way to the ground.
+
+        Which form is most likely?
+      </p>
+
+      <button data-choice="A">
+        A. Rain
+      </button>
+
+      <button data-choice="B">
+        B. Snow
+      </button>
+
+      <button data-choice="C">
+        C. Liquid water vapor
+      </button>
+
+      <button data-choice="D">
+        D. Fog
+      </button>
+
+      <div class="d84-feedback"></div>
+
+    </div>
+
+
+    <div class="d84-question"
+         data-answer="C">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        Frozen precipitation melts
+        in a warm layer,
+        then passes through
+        enough cold air
+        to refreeze before reaching the ground.
+
+        What is most likely?
+      </p>
+
+      <button data-choice="A">
+        A. Rain
+      </button>
+
+      <button data-choice="B">
+        B. Water vapor
+      </button>
+
+      <button data-choice="C">
+        C. Sleet / ice pellets
+      </button>
+
+      <button data-choice="D">
+        D. Clouds
+      </button>
+
+      <div class="d84-feedback"></div>
+
+    </div>
+
+
+    <div class="d84-question"
+         data-answer="A">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        Which condition
+        is most important
+        for hail formation?
+      </p>
+
+      <button data-choice="A">
+        A. Strong thunderstorm updrafts
+      </button>
+
+      <button data-choice="B">
+        B. A warm sidewalk
+      </button>
+
+      <button data-choice="C">
+        C. Earth's rotation stopping
+      </button>
+
+      <button data-choice="D">
+        D. No clouds
+      </button>
+
+      <div class="d84-feedback"></div>
+
+    </div>
+
+
+    <div class="d84-question"
+         data-answer="D">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        Which statement
+        best describes precipitation?
+      </p>
+
+      <button data-choice="A">
+        A. Only rain
+      </button>
+
+      <button data-choice="B">
+        B. Only frozen water
+      </button>
+
+      <button data-choice="C">
+        C. Water vapor entering a cloud
+      </button>
+
+      <button data-choice="D">
+        D. Water falling from clouds to Earth's surface
+      </button>
+
+      <div class="d84-feedback"></div>
+
+    </div>
+
+
+    <div class="d84-question"
+         data-answer="B">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        Why can one cloud system
+        produce different forms
+        of precipitation
+        at different locations?
+      </p>
+
+      <button data-choice="A">
+        A. Gravity changes direction.
+      </button>
+
+      <button data-choice="B">
+        B. Falling particles may pass through different temperature layers.
+      </button>
+
+      <button data-choice="C">
+        C. Water stops being matter.
+      </button>
+
+      <button data-choice="D">
+        D. The Moon changes every raindrop.
+      </button>
+
+      <div class="d84-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+    <p>
+      A snowflake falls from a cloud,
+      enters a warm layer and melts,
+      then enters a deep cold layer
+      before reaching the ground.
+
+      <br><br>
+
+      Predict what may reach the ground
+      and explain your evidence.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="I predict... because..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Precipitation CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      Atmospheric conditions
+      can change the form
+      of precipitation
+      that reaches Earth's surface.
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The Atmosphere Scanner showed..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This evidence supports the claim because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🌦️ Next Mission
+    </div>
+
+    <h2>
+      Day 85:
+      Sun + Ocean Weather Engine
+    </h2>
+
+
+    <div class="d59-box">
+
+      We now understand
+      evaporation,
+      clouds,
+      and precipitation.
+
+      <br><br>
+
+      Next we will connect
+      the whole system back to TEKS 5.10A:
+
+      <strong>
+        How do the Sun and ocean
+        work together
+        to affect weather?
+      </strong>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d84VocabModal"
+     class="d84-modal">
+
+  <div class="d84-modal-card">
+
+    <button
+      id="d84VocabClose"
+      class="d84-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d84ModalIcon"
+         class="d84-modal-icon"></div>
+
+    <h2 id="d84ModalTerm"></h2>
+
+    <p id="d84ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day84_direct.js') }}?v=84-final"
+></script>
+
+{% endblock %}

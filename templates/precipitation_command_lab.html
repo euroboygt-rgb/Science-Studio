@@ -1,0 +1,702 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='precipitation_command_lab.css') }}?v=84.1"
+>
+
+
+<div class="pc-shell">
+
+
+  <!-- HERO -->
+
+  <header class="pc-hero">
+
+    <div class="pc-tags">
+
+      <span>🌧️ Interactive Lab</span>
+
+      <span>Precipitation Command</span>
+
+      <span>TEKS 5.10A</span>
+
+    </div>
+
+
+    <div class="pc-hero-row">
+
+      <div>
+
+        <h1>
+          Precipitation Command:
+          Atmosphere Scanner
+        </h1>
+
+        <p>
+          Trace falling water,
+          scan warm and cold layers,
+          and predict what reaches the ground.
+        </p>
+
+      </div>
+
+
+      <a
+        class="pc-back"
+        href="/second-nine-weeks/day/84?view=student"
+      >
+        ← Back to Day 84
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- STATUS -->
+
+  <section class="pc-command">
+
+    <div>
+
+      <div class="pc-eyebrow">
+        PRECIPITATION SYSTEM STATUS
+      </div>
+
+      <h2>
+        Complete All Four Missions
+      </h2>
+
+    </div>
+
+
+    <div class="pc-status-grid">
+
+      <div id="pcStatus1">
+
+        <span>🔴</span>
+
+        <strong>
+          Identify
+        </strong>
+
+      </div>
+
+
+      <div id="pcStatus2">
+
+        <span>🔴</span>
+
+        <strong>
+          Atmosphere Scanner
+        </strong>
+
+      </div>
+
+
+      <div id="pcStatus3">
+
+        <span>🔴</span>
+
+        <strong>
+          Hail Builder
+        </strong>
+
+      </div>
+
+
+      <div id="pcStatus4">
+
+        <span>🔴</span>
+
+        <strong>
+          Weather Detective
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="pc-mission">
+
+    <div>
+
+      <div class="pc-eyebrow">
+        MISSION 1
+      </div>
+
+      <h2>
+        Identify the Precipitation
+      </h2>
+
+      <p>
+        Match the evidence
+        to the correct form.
+      </p>
+
+    </div>
+
+
+    <aside class="pc-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="pcScore1">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="pc-panel">
+
+    <div id="pcQuestion1"
+         class="pc-question">
+      Loading...
+    </div>
+
+
+    <div id="pcChoices1"
+         class="pc-choices">
+    </div>
+
+
+    <button
+      id="pcCheck1"
+      class="pc-main-button"
+      type="button"
+    >
+      ✅ CHECK PRECIPITATION
+    </button>
+
+
+    <div id="pcFeedback1"
+         class="pc-feedback">
+
+      Select the best answer.
+
+    </div>
+
+
+    <button
+      id="pcNext1"
+      class="pc-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="pc-mission">
+
+    <div>
+
+      <div class="pc-eyebrow">
+        MISSION 2
+      </div>
+
+      <h2>
+        Atmosphere Scanner
+      </h2>
+
+      <p>
+        Follow one particle
+        from cloud to ground
+        through three different
+        atmospheric profiles.
+      </p>
+
+    </div>
+
+
+    <aside class="pc-score">
+
+      <strong>
+        Profiles Solved
+      </strong>
+
+      <span id="pcScannerScore">
+        0 / 3
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="pc-panel">
+
+    <div class="pc-scanner">
+
+      <div class="pc-scanner-title">
+
+        🌡️ ATMOSPHERE SCANNER
+
+        <span id="pcProfileName">
+          PROFILE A
+        </span>
+
+      </div>
+
+
+      <div class="pc-cloud-zone">
+
+        <div class="pc-cloud">
+          ☁️
+        </div>
+
+        <strong>
+          CLOUD
+        </strong>
+
+      </div>
+
+
+      <div id="pcLayerTop"
+           class="pc-atmos-layer">
+
+        <span>
+          UPPER AIR
+        </span>
+
+        <strong id="pcTopTemp">
+          -5°C
+        </strong>
+
+      </div>
+
+
+      <div id="pcLayerMiddle"
+           class="pc-atmos-layer">
+
+        <span>
+          MIDDLE AIR
+        </span>
+
+        <strong id="pcMiddleTemp">
+          +6°C
+        </strong>
+
+      </div>
+
+
+      <div id="pcLayerSurface"
+           class="pc-atmos-layer">
+
+        <span>
+          SURFACE AIR
+        </span>
+
+        <strong id="pcSurfaceTemp">
+          +9°C
+        </strong>
+
+      </div>
+
+
+      <div class="pc-ground">
+        EARTH'S SURFACE
+      </div>
+
+
+      <div id="pcParticle"
+           class="pc-particle">
+        ❄️
+      </div>
+
+    </div>
+
+
+    <div id="pcScannerEvidence"
+         class="pc-scanner-evidence">
+
+      Loading atmospheric profile...
+
+    </div>
+
+
+    <div class="pc-prediction-label">
+
+      🔎 Predict what will reach the ground:
+
+    </div>
+
+
+    <div id="pcScannerChoices"
+         class="pc-scanner-choices">
+
+      <button data-predict="rain"
+              type="button">
+        🌧️ Rain
+      </button>
+
+      <button data-predict="snow"
+              type="button">
+        ❄️ Snow
+      </button>
+
+      <button data-predict="sleet"
+              type="button">
+        🧊 Sleet / Ice Pellets
+      </button>
+
+    </div>
+
+
+    <button
+      id="pcRunScanner"
+      class="pc-main-button"
+      type="button"
+    >
+      🌡️ RUN ATMOSPHERE SCAN
+    </button>
+
+
+    <div id="pcFeedback2"
+         class="pc-feedback">
+
+      Make a prediction,
+      then run the scan.
+
+    </div>
+
+
+    <button
+      id="pcNextProfile"
+      class="pc-next-button"
+      type="button"
+      disabled
+    >
+      NEXT PROFILE →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="pc-mission">
+
+    <div>
+
+      <div class="pc-eyebrow">
+        MISSION 3
+      </div>
+
+      <h2>
+        Hail Builder
+      </h2>
+
+      <p>
+        Build a hailstone
+        by choosing the correct
+        thunderstorm condition.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="pc-panel">
+
+    <div class="pc-storm">
+
+      <div class="pc-storm-cloud">
+        ⛈️
+      </div>
+
+
+      <div id="pcUpdraftArrow"
+           class="pc-updraft">
+
+        ↑
+
+      </div>
+
+
+      <div id="pcHailstone"
+           class="pc-hailstone">
+
+        ⚪
+
+      </div>
+
+
+      <div class="pc-storm-ground">
+
+        GROUND
+
+      </div>
+
+    </div>
+
+
+    <div class="pc-control-title">
+
+      Select storm strength:
+
+    </div>
+
+
+    <div class="pc-hail-controls">
+
+      <button
+        data-updraft="weak"
+        type="button"
+      >
+        🌦️ Weak Updraft
+      </button>
+
+      <button
+        data-updraft="strong"
+        type="button"
+      >
+        ⛈️ Strong Thunderstorm Updraft
+      </button>
+
+    </div>
+
+
+    <button
+      id="pcBuildHail"
+      class="pc-main-button"
+      type="button"
+    >
+      ⚪ TEST HAIL BUILDER
+    </button>
+
+
+    <div id="pcFeedback3"
+         class="pc-feedback">
+
+      Select an updraft strength.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="pc-mission">
+
+    <div>
+
+      <div class="pc-eyebrow">
+        MISSION 4
+      </div>
+
+      <h2>
+        Weather Detective
+      </h2>
+
+      <p>
+        Use temperature profiles
+        and storm clues
+        to solve weather cases.
+      </p>
+
+    </div>
+
+
+    <aside class="pc-score">
+
+      <strong>
+        Cases Solved
+      </strong>
+
+      <span id="pcScore4">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="pc-panel">
+
+    <div id="pcWeatherCase"
+         class="pc-weather-case">
+
+      Loading weather file...
+
+    </div>
+
+
+    <div id="pcQuestion4"
+         class="pc-question">
+
+      Loading...
+
+    </div>
+
+
+    <div id="pcChoices4"
+         class="pc-choices">
+    </div>
+
+
+    <button
+      id="pcCheck4"
+      class="pc-main-button"
+      type="button"
+    >
+      🕵️ SOLVE WEATHER CASE
+    </button>
+
+
+    <div id="pcFeedback4"
+         class="pc-feedback">
+
+      Select the answer
+      supported by the evidence.
+
+    </div>
+
+
+    <button
+      id="pcNext4"
+      class="pc-next-button"
+      type="button"
+      disabled
+    >
+      NEXT WEATHER CASE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="pc-final">
+
+    <div class="pc-final-icon">
+      🌧️❄️🧊⚪
+    </div>
+
+    <h2>
+      Precipitation Command Status
+    </h2>
+
+
+    <div id="pcFinalMessage"
+         class="pc-final-message">
+
+      Complete all four missions.
+
+    </div>
+
+  </section>
+
+
+  <!-- EVIDENCE LOG -->
+
+  <section class="pc-evidence">
+
+    <h2>
+      📓 Precipitation Evidence Log
+    </h2>
+
+
+    <div class="pc-evidence-grid">
+
+      <article>
+
+        <strong>
+          🌧️ Rain
+        </strong>
+
+        <p>
+          Reaches ground
+          as liquid water.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ❄️ Snow
+        </strong>
+
+        <p>
+          Remains frozen
+          through cold air.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🧊 Sleet
+        </strong>
+
+        <p>
+          Melts,
+          then refreezes
+          before reaching ground.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ⚪ Hail
+        </strong>
+
+        <p>
+          Grows inside
+          strong thunderstorm updrafts.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="pc-big-question">
+
+      <strong>
+        🧠 Mission Question:
+      </strong>
+
+      What evidence would you need
+      to predict what form of precipitation
+      will reach the ground?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='precipitation_command_lab.js') }}?v=84.1"
+></script>
+
+{% endblock %}
