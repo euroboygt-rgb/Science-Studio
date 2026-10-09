@@ -5241,3 +5241,103 @@ SECOND_NINE_WEEKS_LESSONS[84] = {
 }
 
 # Science Studio Day 84 End
+
+
+# Science Studio Day 85 Start
+
+SECOND_NINE_WEEKS_LESSONS[85] = {
+
+    "day": 85,
+
+    "title":
+        "Sun + Ocean Weather Engine: Connect the System",
+
+    "unit":
+        "Weather and the Water Cycle",
+
+    "teks":
+        "5.10A, 5.1F, 5.2D",
+
+    "focus":
+        "Students integrate how solar energy and ocean water interact "
+        "through evaporation, atmospheric moisture, condensation, clouds, "
+        "and precipitation to affect weather.",
+
+    "learning_target":
+        "We will explain how the Sun and ocean interact in the water cycle and affect weather.",
+
+    "success_criteria":
+        "I can trace energy and water through the Sun-ocean-atmosphere system "
+        "and use evidence to explain how the interaction can affect weather.",
+
+    "essential_question":
+        "How can energy from the Sun interacting with the ocean eventually affect clouds and precipitation?",
+
+    "bell_ringer": [
+        "What provides energy for evaporation?",
+        "What large body of water provides enormous amounts of water for evaporation?",
+        "What happens when moist air cools?",
+        "Why does a cloud not always produce precipitation?"
+    ],
+
+    "mini_lesson": [
+        "The Sun provides energy that warms Earth's surface, including ocean water.",
+        "The ocean stores enormous amounts of water and is a major source of atmospheric water vapor.",
+        "Solar energy can increase evaporation from ocean surfaces.",
+        "Evaporation transfers water from the ocean into the atmosphere as water vapor.",
+        "Water vapor adds moisture to the atmosphere.",
+        "When moist air cools enough, water vapor can condense into tiny droplets or ice crystals.",
+        "Large numbers of droplets or ice crystals can form clouds.",
+        "Cloud particles must grow large enough before precipitation can fall.",
+        "More evaporation can provide more atmospheric moisture, but it does not guarantee immediate precipitation.",
+        "Weather depends on interactions among energy, water, air temperature, moisture, clouds, and other atmospheric conditions.",
+        "The Sun and ocean are connected parts of one Earth system."
+    ],
+
+    "science_notebook": [
+        "Draw a system model with five boxes.",
+        "Box 1: Sun Energy.",
+        "Box 2: Ocean Water.",
+        "Box 3: Evaporation / Water Vapor.",
+        "Box 4: Condensation / Clouds.",
+        "Box 5: Precipitation / Weather.",
+        "Connect the boxes with arrows.",
+        "Write: More atmospheric moisture can increase cloud and precipitation potential, but does not guarantee rain."
+    ],
+
+    "guided_practice": [
+        "Trace energy from the Sun to ocean water.",
+        "Trace water from the ocean into the atmosphere.",
+        "Explain how cooling connects water vapor to cloud formation.",
+        "Explain why a cloud may form without precipitation.",
+        "Identify evidence showing the Sun-ocean interaction affecting weather."
+    ],
+
+    "lab_title":
+        "Sun + Ocean Weather Engine",
+
+    "lab_url":
+        "/labs/sun-ocean-weather-engine?mission=day85",
+
+    "exit_ticket":
+        "Explain the chain of events that can connect solar energy reaching the ocean to precipitation.",
+
+    "vocabulary": [
+        "solar energy",
+        "ocean",
+        "evaporation",
+        "water vapor",
+        "atmospheric moisture",
+        "condensation",
+        "cloud",
+        "precipitation",
+        "weather"
+    ],
+
+    "teacher_note":
+        "This lesson integrates TEKS 5.10A. "
+        "Emphasize that increased evaporation adds atmospheric moisture and can increase "
+        "cloud or precipitation potential, but precipitation requires additional atmospheric conditions."
+}
+
+# Science Studio Day 85 End

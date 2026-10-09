@@ -1,0 +1,571 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='sun_ocean_weather_engine_lab.css') }}?v=85.1">
+
+
+<div class="we-shell">
+
+
+  <header class="we-hero">
+
+    <div class="we-tags">
+      <span>🌦️ Integrated Lab</span>
+      <span>Sun + Ocean Weather Engine</span>
+      <span>TEKS 5.10A</span>
+    </div>
+
+    <div class="we-hero-row">
+
+      <div>
+        <h1>
+          Sun + Ocean Weather Engine
+        </h1>
+
+        <p>
+          Control energy,
+          water,
+          atmospheric moisture,
+          clouds,
+          and weather potential.
+        </p>
+      </div>
+
+      <a class="we-back"
+         href="/second-nine-weeks/day/85?view=student">
+        ← Back to Day 85
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <section class="we-command">
+
+    <div>
+      <div class="we-eyebrow">
+        EARTH SYSTEM STATUS
+      </div>
+
+      <h2>
+        Restore the Weather Engine
+      </h2>
+    </div>
+
+    <div class="we-status-grid">
+
+      <div id="weStatus1">
+        <span>🔴</span>
+        <strong>Energy + Ocean</strong>
+      </div>
+
+      <div id="weStatus2">
+        <span>🔴</span>
+        <strong>Atmospheric Moisture</strong>
+      </div>
+
+      <div id="weStatus3">
+        <span>🔴</span>
+        <strong>Cloud / Weather</strong>
+      </div>
+
+      <div id="weStatus4">
+        <span>🔴</span>
+        <strong>System Diagnosis</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="we-mission">
+
+    <div>
+      <div class="we-eyebrow">
+        MISSION 1
+      </div>
+
+      <h2>
+        Power the Ocean
+      </h2>
+
+      <p>
+        Adjust Sun energy
+        and ocean surface condition
+        to investigate evaporation.
+      </p>
+    </div>
+
+  </section>
+
+
+  <section class="we-panel">
+
+    <div class="we-main-engine">
+
+      <div id="weSun"
+           class="we-sun">
+        ☀️
+      </div>
+
+      <div id="weVapor"
+           class="we-vapor">
+        💧 💧 💧 💧 💧
+      </div>
+
+      <div class="we-ocean">
+        🌊🌊🌊🌊🌊
+
+        <strong>
+          OCEAN
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="we-control-title">
+      ☀️ Solar Energy
+    </div>
+
+    <div class="we-control-grid">
+
+      <button data-sun="low"
+              type="button">
+        LOW
+      </button>
+
+      <button data-sun="medium"
+              type="button">
+        MEDIUM
+      </button>
+
+      <button data-sun="high"
+              type="button">
+        HIGH
+      </button>
+
+    </div>
+
+
+    <div class="we-control-title">
+      🌊 Ocean Surface
+    </div>
+
+    <div class="we-control-grid two">
+
+      <button data-ocean="cool"
+              type="button">
+        COOLER
+      </button>
+
+      <button data-ocean="warm"
+              type="button">
+        WARMER
+      </button>
+
+    </div>
+
+
+    <div class="we-meter">
+
+      <strong>
+        Evaporation Potential
+      </strong>
+
+      <div>
+        <i id="weEvapFill"></i>
+      </div>
+
+      <span id="weEvapText">
+        Select both controls.
+      </span>
+
+    </div>
+
+
+    <button id="weCheck1"
+            class="we-main-button"
+            type="button">
+      ⚡ TEST SUN + OCEAN SYSTEM
+    </button>
+
+
+    <div id="weFeedback1"
+         class="we-feedback">
+      Find the condition
+      with the greatest evaporation potential
+      in this simplified model.
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="we-mission">
+
+    <div>
+      <div class="we-eyebrow">
+        MISSION 2
+      </div>
+
+      <h2>
+        Build Atmospheric Moisture
+      </h2>
+
+      <p>
+        Use evaporation evidence
+        to determine how much water vapor
+        enters the atmosphere.
+      </p>
+    </div>
+
+  </section>
+
+
+  <section class="we-panel">
+
+    <div class="we-atmosphere">
+
+      <div class="we-atmos-label">
+        ATMOSPHERE
+      </div>
+
+      <div id="weMoistureCloud"
+           class="we-moisture-cloud">
+        💨
+      </div>
+
+      <div class="we-moisture-readout">
+
+        <strong>
+          Atmospheric Moisture
+        </strong>
+
+        <span id="weMoistureLevel">
+          LOW
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="we-choice-grid">
+
+      <button data-moisture-answer="A"
+              type="button">
+        A. Greater evaporation can add more water vapor to the atmosphere.
+      </button>
+
+      <button data-moisture-answer="B"
+              type="button">
+        B. Greater evaporation removes all atmospheric water.
+      </button>
+
+      <button data-moisture-answer="C"
+              type="button">
+        C. Evaporation immediately creates hail.
+      </button>
+
+    </div>
+
+
+    <button id="weCheck2"
+            class="we-main-button"
+            type="button">
+      💨 TRANSFER WATER TO ATMOSPHERE
+    </button>
+
+
+    <div id="weFeedback2"
+         class="we-feedback">
+      Use evaporation evidence
+      to choose the correct relationship.
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="we-mission">
+
+    <div>
+      <div class="we-eyebrow">
+        MISSION 3
+      </div>
+
+      <h2>
+        Create Weather Conditions
+      </h2>
+
+      <p>
+        Moisture is present.
+        Decide what additional conditions
+        can create a cloud
+        and precipitation potential.
+      </p>
+    </div>
+
+  </section>
+
+
+  <section class="we-panel">
+
+    <div class="we-weather-chamber">
+
+      <div id="weCloud"
+           class="we-cloud">
+        ☁️
+      </div>
+
+      <div id="weRain"
+           class="we-rain">
+        🌧️
+      </div>
+
+      <div class="we-weather-readouts">
+
+        <div>
+          <span>Moisture</span>
+          <strong id="weReadMoisture">
+            HIGH
+          </strong>
+        </div>
+
+        <div>
+          <span>Air Condition</span>
+          <strong id="weReadCooling">
+            NOT SET
+          </strong>
+        </div>
+
+        <div>
+          <span>Particle Growth</span>
+          <strong id="weReadGrowth">
+            NOT SET
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="we-control-title">
+      ❄️ Air Condition
+    </div>
+
+    <div class="we-control-grid two">
+
+      <button data-cooling="warm"
+              type="button">
+        KEEP AIR WARM
+      </button>
+
+      <button data-cooling="cool"
+              type="button">
+        COOL MOIST AIR
+      </button>
+
+    </div>
+
+
+    <div class="we-control-title">
+      💧 Cloud Particle Growth
+    </div>
+
+    <div class="we-control-grid two">
+
+      <button data-growth="small"
+              type="button">
+        PARTICLES STAY SMALL
+      </button>
+
+      <button data-growth="large"
+              type="button">
+        PARTICLES GROW
+      </button>
+
+    </div>
+
+
+    <button id="weRunWeather"
+            class="we-main-button"
+            type="button">
+      🌦️ RUN WEATHER CHAMBER
+    </button>
+
+
+    <div id="weFeedback3"
+         class="we-feedback">
+      Build conditions
+      that allow cloud formation
+      and precipitation potential.
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="we-mission">
+
+    <div>
+
+      <div class="we-eyebrow">
+        MISSION 4
+      </div>
+
+      <h2>
+        Diagnose the Full System
+      </h2>
+
+      <p>
+        Use evidence from the entire
+        Sun-ocean-atmosphere system.
+      </p>
+
+    </div>
+
+    <aside class="we-score">
+      <strong>Score</strong>
+      <span id="weScore4">0 / 4</span>
+    </aside>
+
+  </section>
+
+
+  <section class="we-panel">
+
+    <div id="weCase"
+         class="we-case">
+      Loading system case...
+    </div>
+
+    <div id="weQuestion4"
+         class="we-question">
+      Loading...
+    </div>
+
+    <div id="weChoices4"
+         class="we-choices">
+    </div>
+
+    <button id="weCheck4"
+            class="we-main-button"
+            type="button">
+      🕵️ DIAGNOSE SYSTEM
+    </button>
+
+    <div id="weFeedback4"
+         class="we-feedback">
+      Select the explanation
+      supported by all evidence.
+    </div>
+
+    <button id="weNext4"
+            class="we-next-button"
+            type="button"
+            disabled>
+      NEXT SYSTEM CASE →
+    </button>
+
+  </section>
+
+
+  <section class="we-final">
+
+    <div class="we-final-icon">
+      ☀️🌊💨☁️🌧️
+    </div>
+
+    <h2>
+      Weather Engine Status
+    </h2>
+
+    <div id="weFinalMessage"
+         class="we-final-message">
+      Complete all four systems.
+    </div>
+
+  </section>
+
+
+  <section class="we-evidence">
+
+    <h2>
+      📓 Sun + Ocean Evidence Log
+    </h2>
+
+    <div class="we-evidence-grid">
+
+      <article>
+        <strong>☀️ Energy</strong>
+        <p>
+          Sunlight provides energy
+          that can increase evaporation.
+        </p>
+      </article>
+
+      <article>
+        <strong>🌊 Water</strong>
+        <p>
+          Oceans supply large amounts
+          of surface water.
+        </p>
+      </article>
+
+      <article>
+        <strong>💨 Atmosphere</strong>
+        <p>
+          Evaporation adds water vapor
+          to the atmosphere.
+        </p>
+      </article>
+
+      <article>
+        <strong>☁️🌧️ Weather</strong>
+        <p>
+          Cooling,
+          condensation,
+          and particle growth
+          can produce clouds
+          and precipitation.
+        </p>
+      </article>
+
+    </div>
+
+
+    <div class="we-big-question">
+
+      <strong>
+        🧠 Mission Question:
+      </strong>
+
+      How can changing energy
+      at the ocean surface
+      eventually influence
+      atmospheric moisture,
+      clouds,
+      and precipitation potential?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='sun_ocean_weather_engine_lab.js') }}?v=85.1"></script>
+
+{% endblock %}

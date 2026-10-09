@@ -970,3 +970,20 @@ POWER_FRAMES[84] = {
 }
 
 # Science Studio Day 84 Power Frame End
+
+
+# Science Studio Day 85 Power Frame Start
+
+POWER_FRAMES[85] = {
+
+    "i_can":
+        "I can explain how the Sun and ocean interact in the water cycle and affect weather.",
+
+    "by":
+        "tracing energy and water through evaporation, atmospheric moisture, condensation, clouds, and precipitation.",
+
+    "i_know":
+        "I know I have learned this when I can use evidence to connect changes in the Sun-ocean system to possible weather changes."
+}
+
+# Science Studio Day 85 Power Frame End

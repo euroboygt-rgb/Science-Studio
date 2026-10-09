@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+      <stop offset="0%"
+            stop-color="#238fd3"/>
+      <stop offset="100%"
+            stop-color="#dff6ff"/>
+    </linearGradient>
+
+    <linearGradient id="ocean"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+      <stop offset="0%"
+            stop-color="#20a6ee"/>
+      <stop offset="100%"
+            stop-color="#075a9e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200"
+        height="700"
+        rx="24"
+        fill="url(#sky)"/>
+
+  <text x="600"
+        y="42"
+        text-anchor="middle"
+        fill="#0b1f4d"
+        stroke="#eaf4ff"
+        stroke-width="2"
+        paint-order="stroke"
+        font-size="28"
+        font-weight="900">
+    PHENOMENON MISSION:
+  </text>
+
+  <text x="600"
+        y="82"
+        text-anchor="middle"
+        fill="#0b1f4d"
+        stroke="#eaf4ff"
+        stroke-width="3"
+        paint-order="stroke"
+        font-size="34"
+        font-weight="900">
+    HOW CAN THE SUN AND OCEAN AFFECT WEATHER?
+  </text>
+
+  <!-- SUN -->
+  <circle cx="155"
+          cy="185"
+          r="72"
+          fill="#ffd447"
+          stroke="#fff3a0"
+          stroke-width="8"/>
+
+  <text x="155"
+        y="290"
+        text-anchor="middle"
+        fill="#173769"
+        font-size="21"
+        font-weight="900">
+    SUN ENERGY
+  </text>
+
+  <!-- OCEAN -->
+  <path d="
+    M0 510
+    Q100 475 200 510
+    Q300 545 400 510
+    Q500 475 600 510
+    Q700 545 800 510
+    Q900 475 1000 510
+    Q1100 545 1200 510
+    L1200 700
+    L0 700
+    Z
+  "
+    fill="url(#ocean)"/>
+
+  <!-- EVAPORATION -->
+  <g fill="none"
+     stroke="#ffffff"
+     stroke-width="8"
+     stroke-linecap="round">
+
+    <path d="M380 520 C365 445 395 390 420 325"/>
+    <path d="M500 520 C490 445 520 380 545 315"/>
+    <path d="M620 520 C620 440 650 370 680 305"/>
+  </g>
+
+  <g fill="#ffffff">
+    <polygon points="420,325 400,360 440,355"/>
+    <polygon points="545,315 525,350 565,345"/>
+    <polygon points="680,305 660,340 700,335"/>
+  </g>
+
+  <text x="520"
+        y="390"
+        text-anchor="middle"
+        fill="#173769"
+        font-size="21"
+        font-weight="900">
+    WATER VAPOR
+  </text>
+
+  <!-- CLOUD -->
+  <g fill="#ffffff"
+     stroke="#b7d8ed"
+     stroke-width="5">
+    <circle cx="790" cy="220" r="62"/>
+    <circle cx="865" cy="185" r="82"/>
+    <circle cx="950" cy="225" r="67"/>
+    <rect x="745" y="220" width="260" height="75" rx="38"/>
+  </g>
+
+  <text x="875"
+        y="340"
+        text-anchor="middle"
+        fill="#173769"
+        font-size="21"
+        font-weight="900">
+    CONDENSATION + CLOUDS
+  </text>
+
+  <!-- RAIN -->
+  <g stroke="#216bd1"
+     stroke-width="8"
+     stroke-linecap="round">
+    <line x1="810" y1="315" x2="790" y2="385"/>
+    <line x1="865" y1="315" x2="845" y2="395"/>
+    <line x1="920" y1="315" x2="900" y2="385"/>
+    <line x1="970" y1="315" x2="950" y2="390"/>
+  </g>
+
+  <text x="885"
+        y="445"
+        text-anchor="middle"
+        fill="#173769"
+        font-size="21"
+        font-weight="900">
+    POSSIBLE PRECIPITATION
+  </text>
+
+  <rect x="145"
+        y="575"
+        width="910"
+        height="75"
+        rx="16"
+        fill="#fff2a5"
+        stroke="#173769"
+        stroke-width="4"/>
+
+  <text x="600"
+        y="607"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="20"
+        font-weight="900">
+    ONE CONNECTED SYSTEM:
+  </text>
+
+  <text x="600"
+        y="635"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="19"
+        font-weight="900">
+    Sun → Ocean → Water Vapor → Clouds → Weather
+  </text>
+
+</svg>

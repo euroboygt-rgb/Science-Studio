@@ -1,0 +1,948 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='day59_page.css') }}?v=85-final">
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='day85_direct.css') }}?v=85-final">
+
+
+<div id="DAY85_DIRECT_TEMPLATE"
+     class="d85-page">
+
+
+  <section class="d85-hero">
+
+    <div class="d85-tags">
+      <span>Day 85</span>
+      <span>{{ "Teacher View" if view == "teacher" else "Student View" }}</span>
+      <span>TEKS 5.10A</span>
+      <span>Weather Engine</span>
+    </div>
+
+    <h1>
+      ☀️🌊 Sun + Ocean Weather Engine:
+      Connect the System
+    </h1>
+
+    <p>
+      Control solar energy,
+      ocean conditions,
+      atmospheric moisture,
+      cloud formation,
+      and weather potential.
+    </p>
+
+    <div class="d85-header-buttons">
+      <a href="/second-nine-weeks">← 2nd Nine Weeks</a>
+      <a href="/second-nine-weeks/day/85?view=student">Student View</a>
+      <a href="/second-nine-weeks/day/85?view=teacher">Teacher View</a>
+    </div>
+
+  </section>
+
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Systems Mission
+    </h2>
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+        <strong>I can...</strong>
+        <p>
+          explain how the Sun and ocean
+          interact in the water cycle
+          and affect weather.
+        </p>
+      </div>
+
+      <div class="d59-box">
+        <strong>By...</strong>
+        <p>
+          tracing energy and water
+          through the entire system.
+        </p>
+      </div>
+
+      <div class="d59-box">
+        <strong>I know I have learned this when...</strong>
+        <p>
+          I can use evidence
+          to connect changes in the system
+          to possible weather changes.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌦️ Phenomenon Mission
+    </div>
+
+    <h2>
+      One Ocean — One Sun — Many Weather Effects
+    </h2>
+
+    <div class="d59-image">
+      <img
+        src="/static/phenomenon/day85_weather_engine.svg"
+        alt="Sun energy interacting with ocean water, evaporation, clouds, and precipitation">
+    </div>
+
+    <div class="d59-focus">
+      <strong>❓ Mystery Question:</strong>
+
+      How can energy from the Sun
+      interacting with ocean water
+      eventually affect clouds
+      and precipitation?
+    </div>
+
+  </section>
+
+
+  <section id="d85MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          Follow Energy and Water Through the System
+        </h2>
+
+        <div class="d59-unit">
+          Sun → Ocean → Atmosphere → Weather
+        </div>
+      </div>
+
+      <button id="d85Play"
+              class="d59-play"
+              type="button">
+        ▶ Play Weather Engine Brief
+      </button>
+
+    </div>
+
+    <div class="d59-slide">
+
+      <div id="d85SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d85SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d85SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d85SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+    <div class="d59-footer">
+
+      <strong id="d85SlideNumber"></strong>
+
+      <div>
+        <button id="d85Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d85Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d85Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's Weather Prediction
+        </div>
+
+        <h2>
+          Does More Evaporation Guarantee Rain?
+        </h2>
+
+        <div class="d59-scenario">
+
+          Steve sees strong sunlight
+          warming ocean water.
+
+          His model shows
+          increased evaporation.
+
+          Steve says:
+
+          <strong>
+            "That means it MUST rain immediately!"
+          </strong>
+
+        </div>
+
+        <div class="d59-question">
+
+          <strong>
+            Which explanation best corrects Steve?
+          </strong>
+
+          <button class="d85-steve-answer"
+                  data-answer="A">
+            A. More evaporation can add atmospheric moisture, but other conditions are needed for clouds and precipitation.
+          </button>
+
+          <button class="d85-steve-answer"
+                  data-answer="B">
+            B. Evaporation always causes immediate rain.
+          </button>
+
+          <button class="d85-steve-answer"
+                  data-answer="C">
+            C. Evaporation removes all moisture from the atmosphere.
+          </button>
+
+          <button class="d85-steve-answer"
+                  data-answer="D">
+            D. Sunlight stops condensation forever.
+          </button>
+
+          <div class="d59-answer-row">
+
+            <button id="d85SteveCheck"
+                    class="d59-check"
+                    type="button">
+              Check Explanation
+            </button>
+
+            <button id="d85SteveReset"
+                    class="d59-reset"
+                    type="button">
+              Reset
+            </button>
+
+          </div>
+
+          <div id="d85SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Weather Engine Vocabulary
+    </h2>
+
+    <div class="d85-vocab-grid">
+
+      {% set words = [
+        ("☀️","solar energy","Energy from the Sun that can warm Earth's surface."),
+        ("🌊","ocean","A major reservoir of surface water and source of atmospheric water vapor."),
+        ("⬆️","evaporation","Liquid water changing into water vapor."),
+        ("💨","water vapor","Water in the gas state; normally invisible."),
+        ("💦","atmospheric moisture","Water vapor present in the atmosphere."),
+        ("💧","condensation","Water vapor changing into liquid droplets."),
+        ("☁️","cloud","Tiny water droplets and/or ice crystals suspended in the atmosphere."),
+        ("🌧️","precipitation","Water falling from clouds to Earth's surface."),
+        ("🌦️","weather","Conditions in the atmosphere at a particular place and time.")
+      ] %}
+
+      {% for icon, term, definition in words %}
+
+      <button class="d85-vocab"
+              type="button"
+              data-icon="{{ icon }}"
+              data-term="{{ term }}"
+              data-definition="{{ definition }}">
+
+        <span>{{ icon }}</span>
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will explain
+      how the Sun and ocean interact
+      in the water cycle
+      and affect weather.
+    </p>
+
+  </section>
+
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      Rebuild the Chain
+    </h2>
+
+    <div class="d59-box">
+
+      Put these ideas
+      into a cause-and-effect chain:
+
+      <br><br>
+
+      <strong>
+        Clouds — Sun Energy — Ocean —
+        Water Vapor — Evaporation —
+        Condensation — Precipitation
+      </strong>
+
+      <br><br>
+
+      Which event starts
+      the energy part of the system?
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      The Full Weather Engine
+    </h2>
+
+
+    <div class="d85-system-chain">
+
+      <article>
+        <span>☀️</span>
+        <strong>SUN ENERGY</strong>
+        <p>Provides energy that warms Earth's surface.</p>
+      </article>
+
+      <b>→</b>
+
+      <article>
+        <span>🌊</span>
+        <strong>OCEAN</strong>
+        <p>Stores enormous amounts of liquid water.</p>
+      </article>
+
+      <b>→</b>
+
+      <article>
+        <span>⬆️</span>
+        <strong>EVAPORATION</strong>
+        <p>Transfers water into the atmosphere.</p>
+      </article>
+
+      <b>→</b>
+
+      <article>
+        <span>☁️</span>
+        <strong>CONDENSATION</strong>
+        <p>Cooling can produce cloud droplets.</p>
+      </article>
+
+      <b>→</b>
+
+      <article>
+        <span>🌧️</span>
+        <strong>WEATHER</strong>
+        <p>Clouds and precipitation may develop.</p>
+      </article>
+
+    </div>
+
+
+    <div class="d85-engine-rule">
+
+      <h3>
+        🌦️ Systems Rule
+      </h3>
+
+      <p>
+        Changing one part
+        of an Earth system
+        can influence another part.
+      </p>
+
+      <strong>
+        More evaporation → more atmospheric moisture available
+      </strong>
+
+      <br><br>
+
+      BUT:
+
+      <br><br>
+
+      <strong>
+        More moisture ≠ guaranteed rain.
+      </strong>
+
+      Cooling,
+      condensation,
+      particle growth,
+      and other atmospheric conditions
+      also matter.
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Don't Memorize Separate Vocabulary Words
+      </strong>
+
+      <br><br>
+
+      TEKS 5.10A is asking you
+      to understand the
+      <strong>
+        interaction.
+      </strong>
+
+      <br><br>
+
+      Ask:
+
+      <strong>
+        Where is the energy moving?
+      </strong>
+
+      and
+
+      <strong>
+        Where is the water moving?
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Sun + Ocean Systems Model
+    </h2>
+
+    <div class="d59-box">
+
+      Draw five boxes connected with arrows:
+
+      <ol>
+        <li>☀️ Sun Energy</li>
+        <li>🌊 Ocean Water</li>
+        <li>⬆️ Evaporation / Water Vapor</li>
+        <li>☁️ Condensation / Clouds</li>
+        <li>🌧️ Precipitation / Weather</li>
+      </ol>
+
+      Underneath write:
+
+      <br><br>
+
+      <strong>
+        The Sun supplies energy.
+        The ocean supplies water.
+        Their interaction moves water
+        into the atmosphere
+        and can affect weather.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Human Weather Engine
+    </h2>
+
+    <div class="d59-box">
+
+      Assign students five roles:
+
+      <strong>
+        Sun,
+        Ocean,
+        Water Vapor,
+        Cloud,
+        Precipitation.
+      </strong>
+
+      <br><br>
+
+      Pass a yellow card
+      representing
+      <strong>energy</strong>
+      from Sun → Ocean.
+
+      <br><br>
+
+      Pass blue cards
+      representing
+      <strong>water</strong>
+      from Ocean → Atmosphere → Cloud → Surface.
+
+      <br><br>
+
+      Then remove the
+      <strong>cooling condition</strong>
+      and ask:
+
+      <em>
+        Can we guarantee a cloud?
+      </em>
+
+      <br><br>
+
+      This demonstrates
+      why one variable alone
+      does not determine weather.
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌦️ Integrated Systems Lab
+    </div>
+
+    <h2>
+      Sun + Ocean Weather Engine
+    </h2>
+
+    <p>
+      Control the Sun,
+      ocean,
+      atmosphere,
+      clouds,
+      and precipitation potential
+      in one connected model.
+    </p>
+
+
+    <div class="d85-missions">
+
+      <div>
+        ☀️🌊
+        <strong>Mission 1</strong>
+        Power the Ocean
+      </div>
+
+      <div>
+        💨
+        <strong>Mission 2</strong>
+        Build Atmospheric Moisture
+      </div>
+
+      <div>
+        ☁️🌧️
+        <strong>Mission 3</strong>
+        Create Weather Conditions
+      </div>
+
+      <div>
+        🕵️
+        <strong>Mission 4</strong>
+        Diagnose the System
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Restore the entire system
+      to earn
+
+      <strong>
+        Sun + Ocean Weather Systems Specialist
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a class="d59-lab-button"
+       href="/labs/sun-ocean-weather-engine?mission=day85">
+      🌦️ Launch Sun + Ocean Weather Engine
+    </a>
+
+  </section>
+
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Practice
+    </div>
+
+    <h2>
+      Sun + Ocean Systems Evidence
+    </h2>
+
+
+    <div class="d85-question"
+         data-answer="B">
+
+      <h3>Question 1</h3>
+
+      <p>
+        Which interaction
+        best begins the movement
+        of ocean water
+        into the atmosphere?
+      </p>
+
+      <button data-choice="A">
+        A. Moonlight freezes the ocean.
+      </button>
+
+      <button data-choice="B">
+        B. Solar energy warms ocean water and contributes to evaporation.
+      </button>
+
+      <button data-choice="C">
+        C. Clouds push water into the ocean.
+      </button>
+
+      <button data-choice="D">
+        D. Earth stops rotating.
+      </button>
+
+      <div class="d85-feedback"></div>
+
+    </div>
+
+
+    <div class="d85-question"
+         data-answer="A">
+
+      <h3>Question 2</h3>
+
+      <p>
+        What does increased evaporation
+        directly add
+        to the atmosphere?
+      </p>
+
+      <button data-choice="A">
+        A. Water vapor
+      </button>
+
+      <button data-choice="B">
+        B. Rocks
+      </button>
+
+      <button data-choice="C">
+        C. Hailstones immediately
+      </button>
+
+      <button data-choice="D">
+        D. Soil
+      </button>
+
+      <div class="d85-feedback"></div>
+
+    </div>
+
+
+    <div class="d85-question"
+         data-answer="C">
+
+      <h3>Question 3</h3>
+
+      <p>
+        Moist air cools.
+
+        Which process
+        can contribute
+        to cloud formation?
+      </p>
+
+      <button data-choice="A">
+        A. Collection
+      </button>
+
+      <button data-choice="B">
+        B. Erosion
+      </button>
+
+      <button data-choice="C">
+        C. Condensation
+      </button>
+
+      <button data-choice="D">
+        D. Magnetism
+      </button>
+
+      <div class="d85-feedback"></div>
+
+    </div>
+
+
+    <div class="d85-question"
+         data-answer="D">
+
+      <h3>Question 4</h3>
+
+      <p>
+        A weather model shows
+        strong evaporation
+        but no cooling
+        of the moist air.
+
+        Which statement is best?
+      </p>
+
+      <button data-choice="A">
+        A. Rain is guaranteed immediately.
+      </button>
+
+      <button data-choice="B">
+        B. The ocean has disappeared.
+      </button>
+
+      <button data-choice="C">
+        C. No water vapor entered the atmosphere.
+      </button>
+
+      <button data-choice="D">
+        D. Moisture may increase, but cloud formation still requires suitable conditions.
+      </button>
+
+      <div class="d85-feedback"></div>
+
+    </div>
+
+
+    <div class="d85-question"
+         data-answer="A">
+
+      <h3>Question 5</h3>
+
+      <p>
+        Which statement
+        best explains TEKS 5.10A?
+      </p>
+
+      <button data-choice="A">
+        A. The Sun supplies energy and the ocean supplies water that can move through the atmosphere and affect weather.
+      </button>
+
+      <button data-choice="B">
+        B. The Sun and ocean do not interact.
+      </button>
+
+      <button data-choice="C">
+        C. Weather is caused only by clouds.
+      </button>
+
+      <button data-choice="D">
+        D. Ocean water cannot enter the atmosphere.
+      </button>
+
+      <div class="d85-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+    <p>
+      Explain the chain of events
+      that can connect
+      solar energy reaching the ocean
+      to precipitation.
+    </p>
+
+    <textarea class="d59-textarea"
+              placeholder="Solar energy reaches the ocean and..."></textarea>
+
+  </section>
+
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Sun + Ocean CER
+    </h2>
+
+    <div class="d59-focus">
+
+      <strong>Claim:</strong>
+
+      The Sun and ocean interact
+      in the water cycle
+      and can affect weather.
+
+    </div>
+
+    <div class="d59-grid3">
+
+      <div>
+        <h3>Claim</h3>
+        <textarea class="d59-textarea"
+                  placeholder="I claim that..."></textarea>
+      </div>
+
+      <div>
+        <h3>Evidence</h3>
+        <textarea class="d59-textarea"
+                  placeholder="The Weather Engine showed..."></textarea>
+      </div>
+
+      <div>
+        <h3>Reasoning</h3>
+        <textarea class="d59-textarea"
+                  placeholder="This evidence shows the interaction because..."></textarea>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🌦️ Next Mission
+    </div>
+
+    <h2>
+      Day 86:
+      Weather Data Detective
+    </h2>
+
+    <div class="d59-box">
+
+      Now that we understand
+      the weather engine,
+      we can start using
+      <strong>
+        real weather measurements
+      </strong>
+      as evidence.
+
+      <br><br>
+
+      Next:
+      temperature,
+      wind,
+      precipitation,
+      cloud cover,
+      and weather-data patterns.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<div id="d85VocabModal"
+     class="d85-modal">
+
+  <div class="d85-modal-card">
+
+    <button id="d85VocabClose"
+            class="d85-modal-close"
+            type="button">
+      ×
+    </button>
+
+    <div id="d85ModalIcon"
+         class="d85-modal-icon"></div>
+
+    <h2 id="d85ModalTerm"></h2>
+
+    <p id="d85ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='day85_direct.js') }}?v=85-final"></script>
+
+{% endblock %}
