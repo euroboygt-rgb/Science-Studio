@@ -1,0 +1,708 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='cloud_factory_lab.css') }}?v=83.1"
+>
+
+
+<div class="cf-shell">
+
+
+  <!-- HERO -->
+
+  <header class="cf-hero">
+
+    <div class="cf-tags">
+
+      <span>☁️ Interactive Lab</span>
+
+      <span>Cloud Factory</span>
+
+      <span>TEKS 5.10A</span>
+
+    </div>
+
+
+    <div class="cf-hero-row">
+
+      <div>
+
+        <h1>
+          Science Studio:
+          Cloud Factory
+        </h1>
+
+        <p>
+          Control moisture and temperature,
+          create condensation,
+          and build a cloud.
+        </p>
+
+      </div>
+
+
+      <a
+        class="cf-back"
+        href="/second-nine-weeks/day/83?view=student"
+      >
+        ← Back to Day 83
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- STATUS -->
+
+  <section class="cf-command">
+
+    <div>
+
+      <div class="cf-eyebrow">
+        CLOUD FACTORY STATUS
+      </div>
+
+      <h2>
+        Complete All Four Missions
+      </h2>
+
+    </div>
+
+
+    <div class="cf-status-grid">
+
+      <div id="cfStatus1">
+
+        <span>
+          🔴
+        </span>
+
+        <strong>
+          Identify Water
+        </strong>
+
+      </div>
+
+
+      <div id="cfStatus2">
+
+        <span>
+          🔴
+        </span>
+
+        <strong>
+          Cloud Factory
+        </strong>
+
+      </div>
+
+
+      <div id="cfStatus3">
+
+        <span>
+          🔴
+        </span>
+
+        <strong>
+          Troubleshoot
+        </strong>
+
+      </div>
+
+
+      <div id="cfStatus4">
+
+        <span>
+          🔴
+        </span>
+
+        <strong>
+          Weather Evidence
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="cf-mission">
+
+    <div>
+
+      <div class="cf-eyebrow">
+        MISSION 1
+      </div>
+
+      <h2>
+        Vapor or Droplets?
+      </h2>
+
+      <p>
+        Identify what is invisible
+        and what makes a cloud visible.
+      </p>
+
+    </div>
+
+
+    <aside class="cf-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="cfScore1">
+        0 / 3
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="cf-panel">
+
+    <div id="cfQuestion1"
+         class="cf-question">
+      Loading...
+    </div>
+
+
+    <div id="cfChoices1"
+         class="cf-choices">
+    </div>
+
+
+    <button
+      id="cfCheck1"
+      class="cf-main-button"
+      type="button"
+    >
+      🔎 CHECK WATER STATE
+    </button>
+
+
+    <div id="cfFeedback1"
+         class="cf-feedback">
+      Choose the best answer.
+    </div>
+
+
+    <button
+      id="cfNext1"
+      class="cf-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="cf-mission">
+
+    <div>
+
+      <div class="cf-eyebrow">
+        MISSION 2
+      </div>
+
+      <h2>
+        Operate the Cloud Factory
+      </h2>
+
+      <p>
+        Adjust moisture and air condition
+        until condensation creates
+        a visible cloud.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="cf-panel">
+
+    <div class="cf-factory">
+
+      <div class="cf-factory-title">
+        ATMOSPHERIC CLOUD CHAMBER
+      </div>
+
+
+      <div id="cfVaporParticles"
+           class="cf-vapor-particles">
+
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+
+      </div>
+
+
+      <div id="cfCloud"
+           class="cf-cloud">
+
+        ☁️
+
+      </div>
+
+
+      <div id="cfDroplets"
+           class="cf-droplets">
+
+        💧 💧 💧 💧 💧 💧
+
+      </div>
+
+
+      <div class="cf-factory-readout">
+
+        <div>
+
+          <span>
+            Moisture
+          </span>
+
+          <strong id="cfMoistureReadout">
+            NOT SET
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Air Condition
+          </span>
+
+          <strong id="cfTemperatureReadout">
+            NOT SET
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Condensation
+          </span>
+
+          <strong id="cfCondensationReadout">
+            NONE
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <h3 class="cf-control-title">
+      💦 Set Atmospheric Moisture
+    </h3>
+
+
+    <div class="cf-control-grid">
+
+      <button
+        data-moisture="low"
+        type="button"
+      >
+        LOW MOISTURE
+      </button>
+
+      <button
+        data-moisture="high"
+        type="button"
+      >
+        HIGH MOISTURE
+      </button>
+
+    </div>
+
+
+    <h3 class="cf-control-title">
+      🌡️ Set Air Condition
+    </h3>
+
+
+    <div class="cf-control-grid">
+
+      <button
+        data-temp="warm"
+        type="button"
+      >
+        🔥 KEEP AIR WARM
+      </button>
+
+      <button
+        data-temp="cool"
+        type="button"
+      >
+        ❄️ COOL THE AIR
+      </button>
+
+    </div>
+
+
+    <button
+      id="cfRunFactory"
+      class="cf-main-button"
+      type="button"
+    >
+      ☁️ RUN CLOUD FACTORY
+    </button>
+
+
+    <div id="cfFeedback2"
+         class="cf-feedback">
+
+      Select moisture
+      and air condition,
+      then run the factory.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="cf-mission">
+
+    <div>
+
+      <div class="cf-eyebrow">
+        MISSION 3
+      </div>
+
+      <h2>
+        Troubleshoot Failed Clouds
+      </h2>
+
+      <p>
+        Diagnose why each cloud attempt
+        succeeded or failed.
+      </p>
+
+    </div>
+
+
+    <aside class="cf-score">
+
+      <strong>
+        Cases Solved
+      </strong>
+
+      <span id="cfScore3">
+        0 / 3
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="cf-panel">
+
+    <div id="cfCaseCard"
+         class="cf-case-card">
+
+      Loading case...
+
+    </div>
+
+
+    <div class="cf-case-visual">
+
+      <div id="cfCaseMoisture"
+           class="cf-case-meter">
+
+        💦
+
+        <strong>
+          MOISTURE
+        </strong>
+
+      </div>
+
+
+      <div id="cfCaseCloud"
+           class="cf-case-cloud">
+
+        ☁️
+
+      </div>
+
+
+      <div id="cfCaseTemp"
+           class="cf-case-meter">
+
+        🌡️
+
+        <strong>
+          AIR
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div id="cfChoices3"
+         class="cf-choices">
+    </div>
+
+
+    <button
+      id="cfCheck3"
+      class="cf-main-button"
+      type="button"
+    >
+      🛠️ DIAGNOSE CLOUD SYSTEM
+    </button>
+
+
+    <div id="cfFeedback3"
+         class="cf-feedback">
+
+      Identify the best explanation.
+
+    </div>
+
+
+    <button
+      id="cfNext3"
+      class="cf-next-button"
+      type="button"
+      disabled
+    >
+      NEXT CASE →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="cf-mission">
+
+    <div>
+
+      <div class="cf-eyebrow">
+        MISSION 4
+      </div>
+
+      <h2>
+        Cloud-to-Weather Evidence
+      </h2>
+
+      <p>
+        Use cloud evidence
+        to explain weather observations.
+      </p>
+
+    </div>
+
+
+    <aside class="cf-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="cfScore4">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="cf-panel">
+
+    <div id="cfWeatherScenario"
+         class="cf-weather-scenario">
+      Loading weather file...
+    </div>
+
+
+    <div id="cfQuestion4"
+         class="cf-question">
+      Loading...
+    </div>
+
+
+    <div id="cfChoices4"
+         class="cf-choices">
+    </div>
+
+
+    <button
+      id="cfCheck4"
+      class="cf-main-button"
+      type="button"
+    >
+      🌦️ CHECK WEATHER EVIDENCE
+    </button>
+
+
+    <div id="cfFeedback4"
+         class="cf-feedback">
+
+      Select the explanation
+      that matches all evidence.
+
+    </div>
+
+
+    <button
+      id="cfNext4"
+      class="cf-next-button"
+      type="button"
+      disabled
+    >
+      NEXT WEATHER FILE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="cf-final">
+
+    <div class="cf-final-icon">
+      💨❄️💧☁️
+    </div>
+
+    <h2>
+      Cloud Factory Mission Status
+    </h2>
+
+
+    <div id="cfFinalMessage"
+         class="cf-final-message">
+
+      Complete all four cloud systems.
+
+    </div>
+
+  </section>
+
+
+  <!-- EVIDENCE -->
+
+  <section class="cf-evidence">
+
+    <h2>
+      📓 Cloud Factory Evidence Log
+    </h2>
+
+
+    <div class="cf-evidence-grid">
+
+      <article>
+
+        <strong>
+          💨 Water Vapor
+        </strong>
+
+        <p>
+          Gas.
+          Normally invisible.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ❄️ Cooling
+        </strong>
+
+        <p>
+          Can create conditions
+          that allow condensation.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          💧 Condensation
+        </strong>
+
+        <p>
+          Water changes
+          from gas to liquid droplets.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ☁️ Cloud
+        </strong>
+
+        <p>
+          Tiny droplets
+          and/or ice crystals
+          become visible together.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="cf-big-question">
+
+      <strong>
+        🧠 Mission Question:
+      </strong>
+
+      Why can moist air be present
+      without a visible cloud,
+      but a cloud may form
+      after that moist air cools?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='cloud_factory_lab.js') }}?v=83.1"
+></script>
+
+{% endblock %}

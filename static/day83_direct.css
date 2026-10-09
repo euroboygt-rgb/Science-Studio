@@ -1,0 +1,257 @@
+.d83-page {
+  width: min(1000px,94vw);
+  margin: 22px auto 60px;
+}
+
+.d83-page > section {
+  margin-bottom: 16px;
+}
+
+.d83-hero {
+  padding: 20px;
+  border: 3px solid #171717;
+  border-radius: 18px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #486f91,
+      #268ed8,
+      #7131cc
+    );
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+.d83-tags,
+.d83-header-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.d83-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #3877a7;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+.d83-header-buttons {
+  margin-top: 14px;
+}
+
+.d83-header-buttons a {
+  padding: 8px 12px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.d83-vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 9px;
+}
+
+.d83-vocab {
+  min-height: 105px;
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+}
+
+.d83-vocab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 12px rgba(0,0,0,.2);
+}
+
+.d83-vocab span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 2.2rem;
+}
+
+.d83-before-after {
+  display: grid;
+  grid-template-columns: 1fr 150px 1fr;
+  gap: 12px;
+  align-items: center;
+  margin: 18px 0;
+}
+
+.d83-before-after article {
+  padding: 18px;
+  border: 3px solid #171717;
+  border-radius: 12px;
+  background: #edf7ff;
+  text-align: center;
+}
+
+.d83-before-after article > span {
+  display: block;
+  font-size: 4rem;
+}
+
+.d83-process-arrow {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.d83-process-arrow strong {
+  display: block;
+  margin: 8px;
+  font-size: .9rem;
+}
+
+.d83-equation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 18px 0;
+  padding: 16px;
+  border: 3px solid #171717;
+  border-radius: 12px;
+  background: #101a36;
+  color: #fff;
+}
+
+.d83-equation span {
+  padding: 10px;
+  border-radius: 8px;
+  background: #fff;
+  color: #171717;
+  font-weight: 900;
+}
+
+.d83-equation b {
+  color: #ffe45d;
+  font-size: 1.5rem;
+}
+
+.d83-particles,
+.d83-weather {
+  margin: 16px 0;
+  padding: 16px;
+  border: 3px solid #171717;
+  border-radius: 12px;
+  background: #e9f6ff;
+  text-align: center;
+}
+
+.d83-missions {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 9px;
+  margin: 14px 0;
+}
+
+.d83-missions div {
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.d83-missions strong {
+  display: block;
+  margin: 6px 0;
+  font-size: .9rem;
+}
+
+.d83-steve-answer,
+.d83-question button {
+  display: block;
+  width: 100%;
+  margin: 7px 0;
+  padding: 10px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  text-align: left;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.d83-steve-answer.selected,
+.d83-question button.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+  box-shadow: 0 0 0 3px rgba(113,49,204,.2);
+}
+
+.d83-question {
+  margin: 14px 0;
+  padding: 13px;
+  border: 2px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+}
+
+.d83-feedback {
+  min-height: 24px;
+  margin-top: 8px;
+  font-weight: 900;
+}
+
+.d83-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0,0,0,.72);
+}
+
+.d83-modal.show {
+  display: flex;
+}
+
+.d83-modal-card {
+  position: relative;
+  width: min(500px,92vw);
+  padding: 30px;
+  border: 4px solid #171717;
+  border-radius: 18px;
+  background: #fff;
+  text-align: center;
+}
+
+.d83-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: 0;
+  background: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.d83-modal-icon {
+  font-size: 5rem;
+}
+
+@media (max-width:850px) {
+
+  .d83-vocab-grid,
+  .d83-before-after,
+  .d83-missions {
+    grid-template-columns: 1fr;
+  }
+
+}

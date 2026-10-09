@@ -1,0 +1,246 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#268ed8"/>
+
+      <stop offset="100%"
+            stop-color="#ddf5ff"/>
+
+    </linearGradient>
+
+    <linearGradient id="ocean"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#32aef0"/>
+
+      <stop offset="100%"
+            stop-color="#075a9e"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="24"
+        fill="url(#sky)"/>
+
+
+  <text x="600"
+        y="42"
+        text-anchor="middle"
+        fill="#102252"
+        font-size="27"
+        font-weight="900">
+    PHENOMENON MISSION:
+  </text>
+
+  <text x="600"
+        y="78"
+        text-anchor="middle"
+        fill="#102252"
+        font-size="30"
+        font-weight="900">
+    HOW DOES INVISIBLE WATER BECOME A CLOUD?
+  </text>
+
+
+  <!-- OCEAN -->
+
+  <path d="
+    M0 535
+    Q100 500 200 535
+    Q300 570 400 535
+    Q500 500 600 535
+    Q700 570 800 535
+    Q900 500 1000 535
+    Q1100 570 1200 535
+    L1200 700
+    L0 700
+    Z
+  "
+    fill="url(#ocean)"/>
+
+
+  <!-- SUN -->
+
+  <circle cx="165"
+          cy="175"
+          r="70"
+          fill="#ffd447"
+          stroke="#fff3a0"
+          stroke-width="8"/>
+
+
+  <text x="165"
+        y="285"
+        text-anchor="middle"
+        fill="#173769"
+        font-size="20"
+        font-weight="900">
+    SUN ENERGY
+  </text>
+
+
+  <!-- WATER VAPOR -->
+
+  <g fill="none"
+     stroke="#ffffff"
+     stroke-width="7"
+     stroke-linecap="round"
+     opacity=".85">
+
+    <path d="
+      M380 530
+      C360 455 390 400 410 345
+    "/>
+
+    <path d="
+      M500 535
+      C490 455 515 400 535 335
+    "/>
+
+    <path d="
+      M620 535
+      C620 455 645 390 670 325
+    "/>
+
+  </g>
+
+
+  <text x="505"
+        y="400"
+        text-anchor="middle"
+        fill="#173769"
+        font-size="20"
+        font-weight="900">
+    INVISIBLE WATER VAPOR
+  </text>
+
+
+  <!-- COOL AIR -->
+
+  <g fill="#d9f6ff"
+     stroke="#ffffff"
+     stroke-width="4">
+
+    <circle cx="800"
+            cy="210"
+            r="38"/>
+
+    <circle cx="875"
+            cy="180"
+            r="46"/>
+
+    <circle cx="955"
+            cy="215"
+            r="38"/>
+
+  </g>
+
+
+  <text x="875"
+        y="115"
+        text-anchor="middle"
+        fill="#173769"
+        font-size="21"
+        font-weight="900">
+    COOLING
+  </text>
+
+
+  <!-- CLOUD -->
+
+  <g fill="#ffffff"
+     stroke="#b7d8ed"
+     stroke-width="5">
+
+    <circle cx="760"
+            cy="330"
+            r="70"/>
+
+    <circle cx="840"
+            cy="290"
+            r="90"/>
+
+    <circle cx="930"
+            cy="330"
+            r="72"/>
+
+    <rect x="710"
+          y="325"
+          width="275"
+          height="82"
+          rx="40"/>
+
+  </g>
+
+
+  <g fill="#5aaee6">
+
+    <circle cx="770"
+            cy="345"
+            r="8"/>
+
+    <circle cx="815"
+            cy="330"
+            r="8"/>
+
+    <circle cx="855"
+            cy="355"
+            r="8"/>
+
+    <circle cx="900"
+            cy="325"
+            r="8"/>
+
+    <circle cx="945"
+            cy="350"
+            r="8"/>
+
+  </g>
+
+
+  <text x="850"
+        y="450"
+        text-anchor="middle"
+        fill="#173769"
+        font-size="21"
+        font-weight="900">
+    TINY LIQUID DROPLETS
+  </text>
+
+
+  <rect x="175"
+        y="605"
+        width="850"
+        height="62"
+        rx="15"
+        fill="#fff2a5"
+        stroke="#173769"
+        stroke-width="4"/>
+
+  <text x="600"
+        y="644"
+        text-anchor="middle"
+        fill="#17213b"
+        font-size="20"
+        font-weight="900">
+    Water vapor is invisible — so what are we actually seeing when we see a cloud?
+  </text>
+
+</svg>

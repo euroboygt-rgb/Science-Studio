@@ -1,0 +1,1218 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=83-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day83_direct.css') }}?v=83-final"
+>
+
+
+<div id="DAY83_DIRECT_TEMPLATE"
+     class="d83-page">
+
+
+  <!-- HERO -->
+
+  <section class="d83-hero">
+
+    <div class="d83-tags">
+
+      <span>Day 83</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10A</span>
+
+      <span>Cloud Factory</span>
+
+    </div>
+
+
+    <h1>
+      ☁️ Cloud Factory Mission:
+      Build a Cloud
+    </h1>
+
+    <p>
+      Turn invisible water vapor
+      into visible cloud droplets
+      by investigating moisture,
+      cooling,
+      and condensation.
+    </p>
+
+
+    <div class="d83-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/83?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/83?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Cloud Mission
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          explain how invisible
+          water vapor can become
+          visible cloud droplets.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          investigating moisture,
+          cooling,
+          and condensation.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can identify
+          conditions that allow condensation
+          and explain what clouds contain.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ☁️ Phenomenon Mission
+    </div>
+
+    <h2>
+      How Does Invisible Water Become a Cloud?
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day83_cloud_factory.svg"
+        alt="Ocean evaporation, cooling moist air, and visible cloud droplets"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      Water vapor is normally invisible.
+
+      So when you look at a white cloud,
+      what are you actually seeing?
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION BRIEF -->
+
+  <section id="d83MissionBrief"
+           class="d59-card d59-cream">
+
+    <div class="d59-header">
+
+      <div>
+
+        <div class="d59-badge">
+          🎬 Mission Brief
+        </div>
+
+        <h2>
+          From Invisible Gas to Visible Cloud
+        </h2>
+
+        <div class="d59-unit">
+          Moisture + Cooling → Condensation
+        </div>
+
+      </div>
+
+
+      <button
+        id="d83Play"
+        class="d59-play"
+        type="button"
+      >
+        ▶ Play Cloud Mission
+      </button>
+
+    </div>
+
+
+    <div class="d59-slide">
+
+      <div id="d83SlideIcon"
+           class="d59-slide-icon"></div>
+
+      <h2 id="d83SlideTitle"
+          class="d59-slide-title"></h2>
+
+      <div id="d83SlideMain"
+           class="d59-slide-main"></div>
+
+      <div id="d83SlideCaption"
+           class="d59-slide-caption"></div>
+
+    </div>
+
+
+    <div class="d59-footer">
+
+      <strong id="d83SlideNumber"></strong>
+
+      <div>
+
+        <button id="d83Back"
+                class="d59-control"
+                type="button">
+          ◀ Back
+        </button>
+
+        <button id="d83Next"
+                class="d59-control"
+                type="button">
+          Next ▶
+        </button>
+
+        <button id="d83Restart"
+                class="d59-control"
+                type="button">
+          Restart
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's Cloud Mystery
+        </div>
+
+        <h2>
+          Is That Water Vapor?
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve watches a white cloud
+          move across the sky.
+
+          He says,
+
+          <strong>
+            "I can see the water vapor!"
+          </strong>
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            Which statement best corrects Steve?
+          </strong>
+
+
+          <button class="d83-steve-answer"
+                  data-answer="A">
+            A. Water vapor is normally invisible; the visible cloud contains tiny droplets and/or ice crystals.
+          </button>
+
+          <button class="d83-steve-answer"
+                  data-answer="B">
+            B. Clouds are made only of air.
+          </button>
+
+          <button class="d83-steve-answer"
+                  data-answer="C">
+            C. Clouds are solid pieces of water vapor.
+          </button>
+
+          <button class="d83-steve-answer"
+                  data-answer="D">
+            D. Water vapor only exists inside oceans.
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button
+              id="d83SteveCheck"
+              class="d59-check"
+              type="button"
+            >
+              Check Explanation
+            </button>
+
+            <button
+              id="d83SteveReset"
+              class="d59-reset"
+              type="button"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d83SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Cloud Factory Vocabulary
+    </h2>
+
+
+    <div class="d83-vocab-grid">
+
+      {% set words = [
+        ("💨","water vapor","Water in the gas state. Water vapor is normally invisible."),
+        ("💧","condensation","The process in which water vapor changes from a gas into liquid water."),
+        ("☁️","cloud","A visible collection of tiny liquid water droplets and/or ice crystals in the atmosphere."),
+        ("🔵","droplet","A very small drop of liquid water."),
+        ("💦","moisture","Water present in the air or another material."),
+        ("❄️","cooling","A decrease in temperature that can help water vapor condense."),
+        ("🌎","atmosphere","The layer of gases surrounding Earth."),
+        ("•","condensation nucleus","A tiny particle that can provide a surface for water to condense onto."),
+        ("🌧️","precipitation","Water that falls from clouds to Earth's surface.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d83-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>
+          {{ icon }}
+        </span>
+
+        <strong>
+          {{ term }}
+        </strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will explain
+      how cooling moist air
+      can cause water vapor
+      to condense
+      and form cloud droplets.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      Visible or Invisible?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Yesterday,
+      ocean water evaporated
+      into the atmosphere.
+
+      <ol>
+
+        <li>
+          What state of matter
+          is water vapor?
+        </li>
+
+        <li>
+          Can we normally see
+          water vapor?
+        </li>
+
+        <li>
+          What must happen
+          for water vapor
+          to become liquid water again?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      Inside the Cloud Factory
+    </h2>
+
+
+    <div class="d83-before-after">
+
+      <article>
+
+        <span>
+          💨
+        </span>
+
+        <h3>
+          BEFORE CONDENSATION
+        </h3>
+
+        <strong>
+          WATER VAPOR
+        </strong>
+
+        <p>
+          Gas
+        </p>
+
+        <p>
+          Normally invisible
+        </p>
+
+      </article>
+
+
+      <div class="d83-process-arrow">
+
+        ❄️
+        <strong>
+          COOLING
+        </strong>
+
+        ➜
+
+      </div>
+
+
+      <article>
+
+        <span>
+          ☁️
+        </span>
+
+        <h3>
+          AFTER CONDENSATION
+        </h3>
+
+        <strong>
+          TINY DROPLETS
+        </strong>
+
+        <p>
+          Liquid water
+        </p>
+
+        <p>
+          Many droplets can make a visible cloud
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d83-equation">
+
+      <span>
+        💨 Water Vapor
+      </span>
+
+      <b>
+        +
+      </b>
+
+      <span>
+        ❄️ Cooling
+      </span>
+
+      <b>
+        →
+      </b>
+
+      <span>
+        💧 Condensation
+      </span>
+
+      <b>
+        →
+      </b>
+
+      <span>
+        ☁️ Cloud Droplets
+      </span>
+
+    </div>
+
+
+    <div class="d83-particles">
+
+      <h3>
+        🔬 Tiny Particles Can Help
+      </h3>
+
+      <p>
+        In the atmosphere,
+        tiny particles such as dust,
+        sea salt,
+        or smoke can provide surfaces
+        where water can condense.
+      </p>
+
+      <strong>
+        These are called condensation nuclei.
+      </strong>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Major Misconception
+      </strong>
+
+      <br><br>
+
+      The white part of a cloud
+      is
+      <strong>
+        NOT invisible water vapor.
+      </strong>
+
+      <br><br>
+
+      A visible cloud contains
+      huge numbers of
+      <strong>
+        tiny liquid droplets
+        and/or ice crystals.
+      </strong>
+
+    </div>
+
+
+    <div class="d83-weather">
+
+      <h3>
+        🌦️ Weather Connection
+      </h3>
+
+      Clouds are evidence
+      that water from the atmosphere
+      has condensed.
+
+      <br><br>
+
+      Some clouds may later
+      produce precipitation,
+      but
+      <strong>
+        not every cloud produces precipitation.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      How a Cloud Forms
+    </h2>
+
+
+    <div class="d59-box">
+
+      Draw four connected boxes:
+
+      <ol>
+
+        <li>
+          <strong>Evaporation:</strong>
+          liquid water becomes invisible water vapor.
+        </li>
+
+        <li>
+          <strong>Cooling:</strong>
+          moist air loses thermal energy.
+        </li>
+
+        <li>
+          <strong>Condensation:</strong>
+          gas becomes tiny liquid droplets.
+        </li>
+
+        <li>
+          <strong>Cloud:</strong>
+          many tiny droplets and/or ice crystals become visible together.
+        </li>
+
+      </ol>
+
+
+      Write underneath:
+
+      <br><br>
+
+      <strong>
+        Water vapor is invisible.
+        Clouds contain tiny droplets and/or ice crystals.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Cold Surface Condensation
+    </h2>
+
+
+    <div class="d59-box">
+
+      Use a cold cup,
+      bottle,
+      or container.
+
+      <ol>
+
+        <li>
+          Observe the outside
+          before condensation appears.
+        </li>
+
+        <li>
+          Wait for droplets
+          to form on the outside.
+        </li>
+
+        <li>
+          Ask:
+          Did the water leak
+          through the container?
+        </li>
+
+        <li>
+          Identify water vapor
+          in the surrounding air
+          as the source.
+        </li>
+
+        <li>
+          Connect:
+          cooling → condensation → visible droplets.
+        </li>
+
+      </ol>
+
+
+      <strong>
+        Teacher emphasis:
+      </strong>
+
+      This models condensation,
+      not the entire process
+      of cloud formation.
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ☁️ Interactive Lab
+    </div>
+
+    <h2>
+      Cloud Factory:
+      Moisture + Cooling Mission
+    </h2>
+
+
+    <p>
+      Identify what clouds contain,
+      operate the Cloud Factory,
+      troubleshoot failed cloud attempts,
+      and analyze weather evidence.
+    </p>
+
+
+    <div class="d83-missions">
+
+      <div>
+
+        💨
+
+        <strong>
+          Mission 1
+        </strong>
+
+        Vapor or Droplets?
+
+      </div>
+
+
+      <div>
+
+        ☁️
+
+        <strong>
+          Mission 2
+        </strong>
+
+        Operate Cloud Factory
+
+      </div>
+
+
+      <div>
+
+        🛠️
+
+        <strong>
+          Mission 3
+        </strong>
+
+        Troubleshoot Clouds
+
+      </div>
+
+
+      <div>
+
+        🌦️
+
+        <strong>
+          Mission 4
+        </strong>
+
+        Weather Evidence
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Complete all four missions
+      to earn
+
+      <strong>
+        Cloud Systems Specialist
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/cloud-factory?mission=day83"
+    >
+      ☁️ Enter the Cloud Factory
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR Practice
+    </div>
+
+    <h2>
+      Cloud Formation Evidence
+    </h2>
+
+
+    <div class="d83-question"
+         data-answer="C">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        Which statement
+        best describes water vapor?
+      </p>
+
+      <button data-choice="A">
+        A. It is visible liquid water.
+      </button>
+
+      <button data-choice="B">
+        B. It is frozen water.
+      </button>
+
+      <button data-choice="C">
+        C. It is water in the gas state and is normally invisible.
+      </button>
+
+      <button data-choice="D">
+        D. It is another name for rain.
+      </button>
+
+      <div class="d83-feedback"></div>
+
+    </div>
+
+
+    <div class="d83-question"
+         data-answer="A">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        Which process changes
+        water vapor into
+        tiny liquid droplets?
+      </p>
+
+      <button data-choice="A">
+        A. Condensation
+      </button>
+
+      <button data-choice="B">
+        B. Evaporation
+      </button>
+
+      <button data-choice="C">
+        C. Collection
+      </button>
+
+      <button data-choice="D">
+        D. Erosion
+      </button>
+
+      <div class="d83-feedback"></div>
+
+    </div>
+
+
+    <div class="d83-question"
+         data-answer="D">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        What is a visible cloud
+        primarily made of?
+      </p>
+
+      <button data-choice="A">
+        A. Only invisible water vapor
+      </button>
+
+      <button data-choice="B">
+        B. Sunlight
+      </button>
+
+      <button data-choice="C">
+        C. Oxygen only
+      </button>
+
+      <button data-choice="D">
+        D. Tiny water droplets and/or ice crystals
+      </button>
+
+      <div class="d83-feedback"></div>
+
+    </div>
+
+
+    <div class="d83-question"
+         data-answer="B">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        Moist air cools
+        high in the atmosphere.
+
+        What is most likely
+        to happen next?
+      </p>
+
+      <button data-choice="A">
+        A. All water disappears.
+      </button>
+
+      <button data-choice="B">
+        B. Some water vapor may condense.
+      </button>
+
+      <button data-choice="C">
+        C. Earth stops rotating.
+      </button>
+
+      <button data-choice="D">
+        D. The ocean freezes immediately.
+      </button>
+
+      <div class="d83-feedback"></div>
+
+    </div>
+
+
+    <div class="d83-question"
+         data-answer="A">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        Which statement
+        best connects clouds
+        to the water cycle?
+      </p>
+
+      <button data-choice="A">
+        A. Clouds can form when atmospheric water vapor condenses into droplets or ice crystals.
+      </button>
+
+      <button data-choice="B">
+        B. Clouds form because water disappears.
+      </button>
+
+      <button data-choice="C">
+        C. Clouds are made only when precipitation reaches the ocean.
+      </button>
+
+      <button data-choice="D">
+        D. Clouds stop the water cycle.
+      </button>
+
+      <div class="d83-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+    <p>
+      Explain why
+      a visible cloud
+      is not the same thing
+      as invisible water vapor.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="Water vapor is..., while a cloud..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Cloud Factory CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      Cooling moist air
+      can contribute
+      to cloud formation.
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim that..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="In the Cloud Factory..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This happens because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🌧️ Next Mission
+    </div>
+
+    <h2>
+      Day 84:
+      Precipitation Mission
+    </h2>
+
+
+    <div class="d59-box">
+
+      We now know
+      how water can enter a cloud.
+
+      <br><br>
+
+      Next we investigate:
+
+      <strong>
+        How does water get OUT of a cloud?
+      </strong>
+
+      <br><br>
+
+      Rain,
+      snow,
+      sleet,
+      hail,
+      and the conditions
+      that produce precipitation.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d83VocabModal"
+     class="d83-modal">
+
+  <div class="d83-modal-card">
+
+    <button
+      id="d83VocabClose"
+      class="d83-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d83ModalIcon"
+         class="d83-modal-icon"></div>
+
+    <h2 id="d83ModalTerm"></h2>
+
+    <p id="d83ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day83_direct.js') }}?v=83-final"
+></script>
+
+{% endblock %}

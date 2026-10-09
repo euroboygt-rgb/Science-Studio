@@ -5049,3 +5049,100 @@ SECOND_NINE_WEEKS_LESSONS[82] = {
 }
 
 # Science Studio Day 82 End
+
+
+# Science Studio Day 83 Start
+
+SECOND_NINE_WEEKS_LESSONS[83] = {
+
+    "day": 83,
+
+    "title":
+        "Cloud Factory Mission: Build a Cloud",
+
+    "unit":
+        "Weather and the Water Cycle",
+
+    "teks":
+        "5.10A, 5.1F, 5.2D",
+
+    "focus":
+        "Students investigate how water vapor, cooling, and condensation "
+        "contribute to cloud formation and weather.",
+
+    "learning_target":
+        "We will explain how cooling moist air can cause water vapor to condense and form cloud droplets.",
+
+    "success_criteria":
+        "I can distinguish invisible water vapor from visible cloud droplets "
+        "and explain why moisture and cooling are important for cloud formation.",
+
+    "essential_question":
+        "How can invisible water vapor become a visible cloud?",
+
+    "bell_ringer": [
+        "Yesterday water evaporated from the ocean and entered the atmosphere as water vapor.",
+        "Can you normally see water vapor?",
+        "If water vapor is invisible, what are visible clouds made of?"
+    ],
+
+    "mini_lesson": [
+        "Water vapor is water in the gas state and is normally invisible.",
+        "Evaporation adds water vapor to the atmosphere.",
+        "When moist air cools enough, water vapor can condense.",
+        "Condensation changes water from a gas into tiny liquid droplets.",
+        "Clouds are made of tiny liquid water droplets and/or ice crystals, not invisible water vapor.",
+        "Tiny particles in the atmosphere can provide surfaces where condensation occurs.",
+        "Cloud formation requires enough moisture and conditions that allow condensation.",
+        "Cooling moist air can increase condensation and cloud formation.",
+        "A cloud does not automatically produce precipitation.",
+        "Clouds are an important part of weather because they contain condensed water that may later contribute to precipitation."
+    ],
+
+    "science_notebook": [
+        "Title: How a Cloud Forms.",
+        "Step 1: Evaporation adds invisible water vapor to the air.",
+        "Step 2: Moist air cools.",
+        "Step 3: Water vapor condenses into tiny liquid droplets.",
+        "Step 4: Many droplets together form a visible cloud.",
+        "Write: Water vapor is invisible. Clouds are made of tiny droplets and/or ice crystals.",
+        "Draw arrows showing gas → liquid during condensation."
+    ],
+
+    "guided_practice": [
+        "Compare the words water vapor and cloud droplets.",
+        "Identify which is gas and which is liquid.",
+        "Predict what happens when moist air cools.",
+        "Predict whether warm moist air or cooled moist air is more likely to show condensation in a simplified model.",
+        "Use observations from a cold surface demonstration to connect condensation to cloud formation."
+    ],
+
+    "lab_title":
+        "Cloud Factory: Moisture + Cooling Mission",
+
+    "lab_url":
+        "/labs/cloud-factory?mission=day83",
+
+    "exit_ticket":
+        "Explain why a visible cloud is not the same thing as invisible water vapor.",
+
+    "vocabulary": [
+        "water vapor",
+        "condensation",
+        "cloud",
+        "droplet",
+        "moisture",
+        "cooling",
+        "atmosphere",
+        "condensation nucleus",
+        "precipitation"
+    ],
+
+    "teacher_note":
+        "Emphasize that water vapor itself is invisible. "
+        "Visible clouds consist of tiny liquid droplets and/or ice crystals. "
+        "The lab is a simplified model of cloud formation and should not imply "
+        "that cooling alone always guarantees a cloud."
+}
+
+# Science Studio Day 83 End

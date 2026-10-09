@@ -936,3 +936,20 @@ POWER_FRAMES[82] = {
 }
 
 # Science Studio Day 82 Power Frame End
+
+
+# Science Studio Day 83 Power Frame Start
+
+POWER_FRAMES[83] = {
+
+    "i_can":
+        "I can explain how invisible water vapor can become visible cloud droplets.",
+
+    "by":
+        "investigating moisture, cooling, and condensation in a cloud-formation model.",
+
+    "i_know":
+        "I know I have learned this when I can identify the conditions that allow condensation and explain what a cloud is made of."
+}
+
+# Science Studio Day 83 Power Frame End
