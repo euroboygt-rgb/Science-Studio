@@ -6425,3 +6425,103 @@ SECOND_NINE_WEEKS_LESSONS[96] = {
 }
 
 # Science Studio Day 96 End
+
+
+# Science Studio Day 97 Start
+
+SECOND_NINE_WEEKS_LESSONS[97] = {
+
+    "day": 97,
+
+    "title":
+        "TEKS 5.10B Certification Mission: Sedimentary Rocks & Fossil Fuels Science Specialist",
+
+    "unit":
+        "Sedimentary Rocks, Fossils, and Fossil Fuels",
+
+    "teks":
+        "5.10B, 5.1F, 5.2D, 5.3B",
+
+    "focus":
+        "Students demonstrate mastery of sedimentary-rock formation, rock-layer order, "
+        "fossil evidence, past environments, coal formation, and petroleum/natural-gas "
+        "formation through a multi-level certification mission.",
+
+    "learning_target":
+        "We will demonstrate mastery of sedimentary rocks, fossils, rock layers, "
+        "and fossil-fuel formation.",
+
+    "success_criteria":
+        "I can correctly analyze unfamiliar evidence and explain which Earth-history "
+        "process is represented.",
+
+    "essential_question":
+        "Can I use evidence to explain how sedimentary rocks and fossil fuels form "
+        "and what fossils and rock layers reveal about Earth's past?",
+
+    "bell_ringer": [
+        "What does W.E.D.C.C. represent?",
+        "Where is the oldest layer in a simple undisturbed sequence?",
+        "What can fossils reveal about past environments?",
+        "What ancient material is most closely connected to coal?",
+        "What ancient material is commonly connected to petroleum and natural gas?"
+    ],
+
+    "mini_lesson": [
+        "Today is a certification day. No new science content is introduced.",
+        "Use evidence before choosing an answer.",
+        "W.E.D.C.C. describes sedimentary-rock formation.",
+        "In simple undisturbed sequences, lower layers were deposited before layers above them.",
+        "Fossils can provide evidence about organisms and environments from the past.",
+        "Coal forms mainly from ancient plant material through burial and long-term geologic change.",
+        "Petroleum and natural gas are commonly associated with ancient aquatic organic material.",
+        "Fossils and fossil fuels are not the same thing.",
+        "Cementation forms sedimentary rock; it does not directly create fossil fuels."
+    ],
+
+    "science_notebook": [
+        "Title: TEKS 5.10B Certification.",
+        "Write: W.E.D.C.C. = BREAK → MOVE → DROP → SQUEEZE → BIND.",
+        "Write: Oldest = bottom in a simple undisturbed sequence.",
+        "Write: Fossils = evidence of past life and environments.",
+        "Write: Coal = ancient plants → peat → burial → heat + pressure + time.",
+        "Write: Oil + gas = ancient aquatic organic material → burial → heat + pressure + time.",
+        "Write: Evidence first. Explanation second."
+    ],
+
+    "guided_practice": [
+        "Teacher gives three rapid mixed clues before students launch certification.",
+        "Students identify the system and state the evidence.",
+        "Do not reteach the full lesson unless misconceptions are revealed.",
+        "Launch certification when students can explain why each clue fits its system."
+    ],
+
+    "lab_title":
+        "TEKS 5.10B Certification Mission",
+
+    "lab_url":
+        "/labs/earth-history-certification?mission=day97",
+
+    "exit_ticket":
+        "Which part of TEKS 5.10B do you understand best, and what evidence could you use to prove it?",
+
+    "vocabulary": [
+        "weathering",
+        "erosion",
+        "deposition",
+        "compaction",
+        "cementation",
+        "fossil",
+        "evidence",
+        "coal",
+        "petroleum",
+        "natural gas"
+    ],
+
+    "teacher_note":
+        "Day 97 is a mastery/certification day. Students must complete all five certification "
+        "levels before the Science Specialist certificate unlocks. The final mixed level "
+        "should require the strongest evidence-based reasoning."
+}
+
+# Science Studio Day 97 End

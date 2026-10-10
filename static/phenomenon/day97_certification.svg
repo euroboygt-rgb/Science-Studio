@@ -1,0 +1,258 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="bg"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#12243d"/>
+
+      <stop offset="50%"
+            stop-color="#7131cc"/>
+
+      <stop offset="100%"
+            stop-color="#193d36"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="30"
+        fill="url(#bg)"/>
+
+
+  <text x="600"
+        y="70"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="34"
+        font-weight="900">
+    TEKS 5.10B CERTIFICATION MISSION
+  </text>
+
+
+  <text x="600"
+        y="115"
+        text-anchor="middle"
+        fill="#ffe66d"
+        font-size="26"
+        font-weight="900">
+    FIVE SYSTEMS. ONE FINAL CERTIFICATION.
+  </text>
+
+
+  <!-- BADGES -->
+
+  <g transform="translate(90,185)">
+
+    <circle cx="100"
+            cy="100"
+            r="85"
+            fill="#fff3ad"
+            stroke="#171717"
+            stroke-width="6"/>
+
+    <text x="100"
+          y="88"
+          text-anchor="middle"
+          font-size="48">
+      🪨
+    </text>
+
+    <text x="100"
+          y="125"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900">
+      W.E.D.C.C.
+    </text>
+
+  </g>
+
+
+  <g transform="translate(310,185)">
+
+    <circle cx="100"
+            cy="100"
+            r="85"
+            fill="#dff4ff"
+            stroke="#171717"
+            stroke-width="6"/>
+
+    <text x="100"
+          y="82"
+          text-anchor="middle"
+          font-size="43">
+      🥞🦴
+    </text>
+
+    <text x="100"
+          y="122"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      LAYERS
+    </text>
+
+    <text x="100"
+          y="145"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      + FOSSILS
+    </text>
+
+  </g>
+
+
+  <g transform="translate(530,185)">
+
+    <circle cx="100"
+            cy="100"
+            r="85"
+            fill="#dfd5c7"
+            stroke="#171717"
+            stroke-width="6"/>
+
+    <text x="100"
+          y="90"
+          text-anchor="middle"
+          font-size="48">
+      🌿⚫
+    </text>
+
+    <text x="100"
+          y="130"
+          text-anchor="middle"
+          font-size="18"
+          font-weight="900">
+      COAL
+    </text>
+
+  </g>
+
+
+  <g transform="translate(750,185)">
+
+    <circle cx="100"
+            cy="100"
+            r="85"
+            fill="#d8f2ff"
+            stroke="#171717"
+            stroke-width="6"/>
+
+    <text x="100"
+          y="90"
+          text-anchor="middle"
+          font-size="44">
+      🛢️🔥
+    </text>
+
+    <text x="100"
+          y="130"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900">
+      OIL + GAS
+    </text>
+
+  </g>
+
+
+  <g transform="translate(970,185)">
+
+    <circle cx="100"
+            cy="100"
+            r="85"
+            fill="#e7dcff"
+            stroke="#171717"
+            stroke-width="6"/>
+
+    <text x="100"
+          y="88"
+          text-anchor="middle"
+          font-size="48">
+      🔎
+    </text>
+
+    <text x="100"
+          y="128"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      MASTER
+    </text>
+
+    <text x="100"
+          y="150"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      EVIDENCE
+    </text>
+
+  </g>
+
+
+  <!-- ARROW -->
+
+  <text x="600"
+        y="425"
+        text-anchor="middle"
+        fill="#ffe66d"
+        font-size="60"
+        font-weight="900">
+    ↓
+  </text>
+
+
+  <!-- CERTIFICATE -->
+
+  <rect x="190"
+        y="465"
+        width="820"
+        height="165"
+        rx="22"
+        fill="#ffffff"
+        stroke="#ffe66d"
+        stroke-width="8"/>
+
+
+  <text x="600"
+        y="515"
+        text-anchor="middle"
+        fill="#171717"
+        font-size="25"
+        font-weight="900">
+    🏆 CERTIFICATION UNLOCK
+  </text>
+
+
+  <text x="600"
+        y="560"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="27"
+        font-weight="900">
+    SEDIMENTARY ROCKS &amp; FOSSIL FUELS
+  </text>
+
+
+  <text x="600"
+        y="600"
+        text-anchor="middle"
+        fill="#193d36"
+        font-size="28"
+        font-weight="900">
+    SCIENCE SPECIALIST
+  </text>
+
+</svg>

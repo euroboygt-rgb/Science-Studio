@@ -1178,3 +1178,20 @@ POWER_FRAMES[96] = {
 }
 
 # Science Studio Day 96 Power Frame End
+
+
+# Science Studio Day 97 Power Frame Start
+
+POWER_FRAMES[97] = {
+
+    "i_can":
+        "I can demonstrate mastery of sedimentary rocks, fossils, rock layers, and fossil fuels.",
+
+    "by":
+        "solving five certification levels using evidence and scientific reasoning.",
+
+    "i_know":
+        "I know I have learned this when I earn the Sedimentary Rocks & Fossil Fuels Science Specialist certificate."
+}
+
+# Science Studio Day 97 Power Frame End

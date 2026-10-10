@@ -1,0 +1,786 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=97-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day97_direct.css') }}?v=97-final"
+>
+
+
+<div id="DAY97_DIRECT_TEMPLATE"
+     class="d97-page">
+
+
+  <!-- HERO -->
+
+  <section class="d97-hero">
+
+    <div class="d97-tags">
+
+      <span>Day 97</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10B</span>
+
+      <span>Final Certification</span>
+
+    </div>
+
+
+    <h1>
+      🏆 TEKS 5.10B Certification Mission
+    </h1>
+
+
+    <h2>
+      Sedimentary Rocks &amp; Fossil Fuels
+      Science Specialist
+    </h2>
+
+
+    <p>
+      Five certification levels.
+
+      <br>
+
+      One final Science Specialist credential.
+    </p>
+
+
+    <div class="d97-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/97?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/97?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>I can...</strong>
+
+        <p>
+          demonstrate mastery
+          of sedimentary rocks,
+          fossils,
+          rock layers,
+          and fossil fuels.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>By...</strong>
+
+        <p>
+          solving five
+          certification levels
+          using evidence
+          and scientific reasoning.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I earn the
+          Sedimentary Rocks
+          &amp; Fossil Fuels
+          Science Specialist certificate.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CERTIFICATION IMAGE -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🚀 Mission Brief
+    </div>
+
+    <h2>
+      Final Certification Sequence
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day97_certification.svg"
+        alt="Five certification levels leading to the Sedimentary Rocks and Fossil Fuels Science Specialist certificate"
+      >
+
+    </div>
+
+  </section>
+
+
+  <!-- FIVE SYSTEMS -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🧠 Final Memory Board
+    </div>
+
+    <h2>
+      Five Systems — No New Content
+    </h2>
+
+
+    <div class="d97-five">
+
+      <article>
+
+        <span>🪨</span>
+
+        <h3>
+          W.E.D.C.C.
+        </h3>
+
+        <p>
+          BREAK
+          → MOVE
+          → DROP
+          → SQUEEZE
+          → BIND
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>🥞</span>
+
+        <h3>
+          ROCK LAYERS
+        </h3>
+
+        <p>
+          Simple undisturbed sequence:
+
+          <strong>
+            oldest at bottom
+          </strong>
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>🦴</span>
+
+        <h3>
+          FOSSILS
+        </h3>
+
+        <p>
+          Evidence of
+          past organisms
+          and environments.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>🌿⚫</span>
+
+        <h3>
+          COAL
+        </h3>
+
+        <p>
+          Ancient plants
+          → peat
+          → burial
+          → heat + pressure + time
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>🌊🦠🛢️🔥</span>
+
+        <h3>
+          OIL + GAS
+        </h3>
+
+        <p>
+          Ancient aquatic
+          organic material
+          → burial
+          → heat + pressure + time
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- CERTIFICATION RULES -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      📋 Certification Rules
+    </div>
+
+    <h2>
+      How to Earn the Certificate
+    </h2>
+
+
+    <div class="d97-levels">
+
+      <article>
+        <strong>
+          LEVEL 1
+        </strong>
+        🪨 W.E.D.C.C.
+        <span>
+          Pass 4 / 5
+        </span>
+      </article>
+
+      <article>
+        <strong>
+          LEVEL 2
+        </strong>
+        🥞🦴 Layers + Fossils
+        <span>
+          Pass 4 / 5
+        </span>
+      </article>
+
+      <article>
+        <strong>
+          LEVEL 3
+        </strong>
+        ⚫ Coal Formation
+        <span>
+          Pass 3 / 4
+        </span>
+      </article>
+
+      <article>
+        <strong>
+          LEVEL 4
+        </strong>
+        🛢️🔥 Oil + Gas
+        <span>
+          Pass 3 / 4
+        </span>
+      </article>
+
+      <article class="master">
+        <strong>
+          LEVEL 5
+        </strong>
+        🚀 Master Evidence
+        <span>
+          Pass 7 / 8
+        </span>
+      </article>
+
+    </div>
+
+
+    <div class="d97-rule">
+
+      <strong>
+        🔒 Certificate remains locked
+      </strong>
+
+      until all five levels
+      have been passed.
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve's Final Check
+        </div>
+
+        <h2>
+          One Last Misconception
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve says:
+
+          <strong>
+            "Fossil and fossil fuel
+            sound almost the same,
+            so they must mean
+            the same thing."
+          </strong>
+
+        </div>
+
+
+        <button class="d97-steve-answer"
+                data-answer="A">
+
+          A. A fossil is preserved evidence of past life; fossil fuels are energy resources formed from ancient organic material under particular geologic conditions.
+
+        </button>
+
+        <button class="d97-steve-answer"
+                data-answer="B">
+
+          B. Every fossil becomes coal, petroleum, or natural gas.
+
+        </button>
+
+        <button class="d97-steve-answer"
+                data-answer="C">
+
+          C. Fossils form only from fossil fuels.
+
+        </button>
+
+        <button class="d97-steve-answer"
+                data-answer="D">
+
+          D. Fossil fuels are simply fossils melted underground.
+
+        </button>
+
+
+        <div class="d59-answer-row">
+
+          <button
+            id="d97SteveCheck"
+            class="d59-check"
+            type="button"
+          >
+            Final Science Check
+          </button>
+
+          <button
+            id="d97SteveReset"
+            class="d59-reset"
+            type="button"
+          >
+            Reset
+          </button>
+
+        </div>
+
+
+        <div id="d97SteveFeedback"
+             class="d59-feedback"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Final Certification Vocabulary
+    </h2>
+
+
+    <div class="d97-vocab-grid">
+
+      {% set words = [
+        ("💥","weathering","Breaking rock into smaller pieces."),
+        ("➡️","erosion","Moving sediment from one place to another."),
+        ("⬇️","deposition","Dropping or settling sediment."),
+        ("🗜️","compaction","Squeezing sediment grains closer together."),
+        ("🧱","cementation","Minerals binding sediment grains together."),
+        ("🦴","fossil","Preserved evidence of an organism from the past."),
+        ("🔎","evidence","Information used to support a scientific explanation."),
+        ("⚫","coal","A solid fossil fuel formed mainly from ancient plant material."),
+        ("🛢️","petroleum","A liquid fossil fuel formed from ancient organic material over geologic time."),
+        ("🔥","natural gas","A gaseous fossil fuel formed from ancient organic material under suitable geologic conditions.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d97-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Certification Notebook Card
+    </h2>
+
+
+    <div class="d97-notebook">
+
+      <p>
+        🪨
+        <strong>
+          WEDCC:
+        </strong>
+        BREAK → MOVE → DROP → SQUEEZE → BIND
+      </p>
+
+      <p>
+        🥞
+        <strong>
+          LAYERS:
+        </strong>
+        Oldest at bottom in a simple undisturbed sequence.
+      </p>
+
+      <p>
+        🦴
+        <strong>
+          FOSSILS:
+        </strong>
+        Evidence of past organisms and environments.
+      </p>
+
+      <p>
+        ⚫
+        <strong>
+          COAL:
+        </strong>
+        Ancient plants → peat → burial → heat + pressure + time.
+      </p>
+
+      <p>
+        🛢️🔥
+        <strong>
+          OIL + GAS:
+        </strong>
+        Ancient aquatic organic material → burial → heat + pressure + time.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Teacher Launch Check
+    </h2>
+
+
+    <div class="d59-box">
+
+      Before students launch,
+      give these three verbal clues:
+
+      <ol>
+
+        <li>
+          "Sediment is carried downstream."
+        </li>
+
+        <li>
+          "A fish fossil is found in desert rock."
+        </li>
+
+        <li>
+          "Ancient plant material forms peat."
+        </li>
+
+      </ol>
+
+
+      Students should respond:
+
+      <strong>
+        Erosion
+        • Past aquatic environment
+        • Coal pathway
+      </strong>
+
+      <br><br>
+
+      If students can also explain
+      <em>why</em>,
+      launch certification.
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🏆 Final Certification
+    </div>
+
+    <h2>
+      TEKS 5.10B Certification Mission
+    </h2>
+
+
+    <div class="d97-cert-grid">
+
+      <div>
+        🪨
+        <strong>
+          Level 1
+        </strong>
+        W.E.D.C.C.
+      </div>
+
+      <div>
+        🥞🦴
+        <strong>
+          Level 2
+        </strong>
+        Layers + Fossils
+      </div>
+
+      <div>
+        ⚫
+        <strong>
+          Level 3
+        </strong>
+        Coal
+      </div>
+
+      <div>
+        🛢️🔥
+        <strong>
+          Level 4
+        </strong>
+        Oil + Gas
+      </div>
+
+      <div>
+        🚀
+        <strong>
+          Level 5
+        </strong>
+        Master Evidence
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Final Reward:
+
+      <strong>
+        Sedimentary Rocks &amp; Fossil Fuels
+        Science Specialist Certificate
+      </strong>
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/earth-history-certification?mission=day97"
+    >
+      🚀 Begin Final Certification
+    </a>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Final Reflection
+    </h2>
+
+
+    <p>
+      Which part of
+      TEKS 5.10B
+      do you understand best?
+
+      <br><br>
+
+      What evidence
+      could you use
+      to prove your understanding?
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="I understand... I could prove it by explaining..."
+    ></textarea>
+
+  </section>
+
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🚀 Mission Complete
+    </div>
+
+    <h2>
+      Sedimentary Rocks &amp; Fossil Fuels Unit Complete
+    </h2>
+
+
+    <div class="d59-box">
+
+      You have traveled from:
+
+      <br><br>
+
+      <strong>
+        sediment
+        → sedimentary rock
+        → rock layers
+        → fossils
+        → ancient environments
+        → fossil-fuel formation.
+      </strong>
+
+      <br><br>
+
+      Day 97 closes
+      the TEKS 5.10B sequence.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d97VocabModal"
+     class="d97-modal">
+
+  <div class="d97-modal-card">
+
+    <button
+      id="d97VocabClose"
+      class="d97-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d97ModalIcon"
+         class="d97-modal-icon"></div>
+
+    <h2 id="d97ModalTerm"></h2>
+
+    <p id="d97ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day97_direct.js') }}?v=97-final"
+></script>
+
+{% endblock %}

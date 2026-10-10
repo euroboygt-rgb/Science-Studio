@@ -1,0 +1,725 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='earth_history_certification_lab.css') }}?v=97.1"
+>
+
+
+<div class="cert-shell">
+
+
+  <!-- HERO -->
+
+  <header class="cert-hero">
+
+    <div class="cert-tags">
+
+      <span>🏆 Final Certification</span>
+
+      <span>TEKS 5.10B</span>
+
+      <span>Mission Control</span>
+
+    </div>
+
+
+    <div class="cert-hero-row">
+
+      <div>
+
+        <h1>
+          Sedimentary Rocks &amp; Fossil Fuels
+        </h1>
+
+        <h2>
+          Science Specialist Certification
+        </h2>
+
+        <p>
+          Complete five certification levels.
+        </p>
+
+      </div>
+
+
+      <a
+        class="cert-back"
+        href="/second-nine-weeks/day/97?view=student"
+      >
+        ← Back to Day 97
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- STATUS -->
+
+  <section class="cert-status">
+
+    <h2>
+      Certification Progress
+    </h2>
+
+
+    <div class="cert-status-grid">
+
+      <div id="certStatus1">
+        <span>🔒</span>
+        <strong>LEVEL 1</strong>
+        <small>W.E.D.C.C.</small>
+      </div>
+
+      <div id="certStatus2">
+        <span>🔒</span>
+        <strong>LEVEL 2</strong>
+        <small>Layers + Fossils</small>
+      </div>
+
+      <div id="certStatus3">
+        <span>🔒</span>
+        <strong>LEVEL 3</strong>
+        <small>Coal</small>
+      </div>
+
+      <div id="certStatus4">
+        <span>🔒</span>
+        <strong>LEVEL 4</strong>
+        <small>Oil + Gas</small>
+      </div>
+
+      <div id="certStatus5">
+        <span>🔒</span>
+        <strong>LEVEL 5</strong>
+        <small>Master Evidence</small>
+      </div>
+
+    </div>
+
+
+    <div class="cert-progress-track">
+
+      <div id="certProgressBar"></div>
+
+    </div>
+
+
+    <strong id="certProgressText">
+      0 / 5 LEVELS CERTIFIED
+    </strong>
+
+  </section>
+
+
+  <!-- LEVEL 1 -->
+
+  <section class="cert-level">
+
+    <div class="cert-level-head">
+
+      <div class="cert-number">
+        1
+      </div>
+
+      <div>
+
+        <h2>
+          🪨 W.E.D.C.C. Certification
+        </h2>
+
+        <p>
+          Pass requirement:
+          <strong>4 / 5</strong>
+        </p>
+
+      </div>
+
+
+      <div class="cert-score">
+        <span id="certScore1">
+          0 / 5
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="cert-panel">
+
+      <div id="certEvidence1"
+           class="cert-evidence"></div>
+
+      <div id="certQuestion1"
+           class="cert-question"></div>
+
+      <div id="certChoices1"
+           class="cert-choices"></div>
+
+      <button
+        id="certCheck1"
+        class="cert-check"
+        type="button"
+      >
+        CHECK ANSWER
+      </button>
+
+      <div id="certFeedback1"
+           class="cert-feedback">
+
+        BREAK → MOVE → DROP → SQUEEZE → BIND
+
+      </div>
+
+      <button
+        id="certNext1"
+        class="cert-next"
+        type="button"
+        disabled
+      >
+        NEXT →
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- LEVEL 2 -->
+
+  <section class="cert-level">
+
+    <div class="cert-level-head">
+
+      <div class="cert-number">
+        2
+      </div>
+
+      <div>
+
+        <h2>
+          🥞🦴 Layers + Fossils Certification
+        </h2>
+
+        <p>
+          Pass requirement:
+          <strong>4 / 5</strong>
+        </p>
+
+      </div>
+
+
+      <div class="cert-score">
+        <span id="certScore2">
+          0 / 5
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="cert-panel">
+
+      <div id="certEvidence2"
+           class="cert-evidence"></div>
+
+      <div id="certQuestion2"
+           class="cert-question"></div>
+
+      <div id="certChoices2"
+           class="cert-choices"></div>
+
+      <button
+        id="certCheck2"
+        class="cert-check"
+        type="button"
+      >
+        CHECK ANSWER
+      </button>
+
+      <div id="certFeedback2"
+           class="cert-feedback">
+
+        Use layer position and fossil evidence.
+
+      </div>
+
+      <button
+        id="certNext2"
+        class="cert-next"
+        type="button"
+        disabled
+      >
+        NEXT →
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- LEVEL 3 -->
+
+  <section class="cert-level">
+
+    <div class="cert-level-head">
+
+      <div class="cert-number">
+        3
+      </div>
+
+      <div>
+
+        <h2>
+          ⚫ Coal Formation Certification
+        </h2>
+
+        <p>
+          Pass requirement:
+          <strong>3 / 4</strong>
+        </p>
+
+      </div>
+
+
+      <div class="cert-score">
+        <span id="certScore3">
+          0 / 4
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="cert-panel">
+
+      <div id="certEvidence3"
+           class="cert-evidence"></div>
+
+      <div id="certQuestion3"
+           class="cert-question"></div>
+
+      <div id="certChoices3"
+           class="cert-choices"></div>
+
+      <button
+        id="certCheck3"
+        class="cert-check"
+        type="button"
+      >
+        CHECK ANSWER
+      </button>
+
+      <div id="certFeedback3"
+           class="cert-feedback">
+
+        Follow the ancient plant pathway.
+
+      </div>
+
+      <button
+        id="certNext3"
+        class="cert-next"
+        type="button"
+        disabled
+      >
+        NEXT →
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- LEVEL 4 -->
+
+  <section class="cert-level">
+
+    <div class="cert-level-head">
+
+      <div class="cert-number">
+        4
+      </div>
+
+      <div>
+
+        <h2>
+          🛢️🔥 Oil + Natural Gas Certification
+        </h2>
+
+        <p>
+          Pass requirement:
+          <strong>3 / 4</strong>
+        </p>
+
+      </div>
+
+
+      <div class="cert-score">
+        <span id="certScore4">
+          0 / 4
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="cert-panel">
+
+      <div id="certEvidence4"
+           class="cert-evidence"></div>
+
+      <div id="certQuestion4"
+           class="cert-question"></div>
+
+      <div id="certChoices4"
+           class="cert-choices"></div>
+
+      <button
+        id="certCheck4"
+        class="cert-check"
+        type="button"
+      >
+        CHECK ANSWER
+      </button>
+
+      <div id="certFeedback4"
+           class="cert-feedback">
+
+        Follow the ancient aquatic pathway.
+
+      </div>
+
+      <button
+        id="certNext4"
+        class="cert-next"
+        type="button"
+        disabled
+      >
+        NEXT →
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- LEVEL 5 -->
+
+  <section class="cert-level cert-master">
+
+    <div class="cert-level-head">
+
+      <div class="cert-number">
+        5
+      </div>
+
+      <div>
+
+        <h2>
+          🚀 Master Evidence Certification
+        </h2>
+
+        <p>
+          Pass requirement:
+          <strong>7 / 8</strong>
+        </p>
+
+      </div>
+
+
+      <div class="cert-score">
+        <span id="certScore5">
+          0 / 8
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="cert-panel">
+
+      <div id="certEvidence5"
+           class="cert-evidence"></div>
+
+      <div id="certQuestion5"
+           class="cert-question"></div>
+
+      <div id="certChoices5"
+           class="cert-choices"></div>
+
+      <button
+        id="certCheck5"
+        class="cert-check"
+        type="button"
+      >
+        🔎 ANALYZE MASTER CASE
+      </button>
+
+      <div id="certFeedback5"
+           class="cert-feedback">
+
+        Evidence first.
+        Explanation second.
+
+      </div>
+
+      <button
+        id="certNext5"
+        class="cert-next"
+        type="button"
+        disabled
+      >
+        NEXT CASE →
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- LOCKED CERTIFICATE -->
+
+  <section id="certVault"
+           class="cert-vault locked">
+
+    <div id="certLockIcon"
+         class="cert-lock-icon">
+      🔒
+    </div>
+
+
+    <h2>
+      Science Specialist Certificate
+    </h2>
+
+
+    <p id="certVaultMessage">
+
+      Complete all five certification levels
+      to unlock your certificate.
+
+    </p>
+
+  </section>
+
+
+  <!-- CERTIFICATE -->
+
+  <section id="certCertificate"
+           class="cert-certificate-wrap">
+
+    <div id="printCertificate"
+         class="cert-certificate">
+
+      <div class="cert-seal">
+        🏆
+      </div>
+
+
+      <div class="cert-small">
+        SCIENCE STUDIO — MISSION CONTROL
+      </div>
+
+
+      <h1>
+        CERTIFICATE OF SCIENCE SPECIALIZATION
+      </h1>
+
+
+      <p>
+        This certifies that
+      </p>
+
+
+      <div id="certStudentName"
+           class="cert-student-name">
+
+        SCIENCE SPECIALIST
+
+      </div>
+
+
+      <p>
+        has successfully demonstrated mastery
+        of TEKS 5.10B concepts involving
+      </p>
+
+
+      <h2>
+        Sedimentary Rocks &amp; Fossil Fuels
+      </h2>
+
+
+      <div class="cert-badges">
+
+        <span>🪨 W.E.D.C.C.</span>
+
+        <span>🥞 Rock Layers</span>
+
+        <span>🦴 Fossil Evidence</span>
+
+        <span>⚫ Coal</span>
+
+        <span>🛢️🔥 Oil + Gas</span>
+
+      </div>
+
+
+      <div class="cert-specialist-title">
+
+        🏆 SEDIMENTARY ROCKS &amp; FOSSIL FUELS
+        SCIENCE SPECIALIST
+
+      </div>
+
+
+      <div class="cert-signature-row">
+
+        <div>
+          ______________________
+          <strong>
+            Student
+          </strong>
+        </div>
+
+        <div>
+          ______________________
+          <strong>
+            Mission Commander
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="cert-controls">
+
+      <label for="certNameInput">
+
+        Enter your name:
+
+      </label>
+
+
+      <input
+        id="certNameInput"
+        type="text"
+        maxlength="40"
+        placeholder="Student name"
+      >
+
+
+      <button
+        id="certApplyName"
+        type="button"
+      >
+        APPLY NAME
+      </button>
+
+
+      <button
+        id="certPrint"
+        type="button"
+      >
+        🖨️ PRINT CERTIFICATE
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL LOG -->
+
+  <section class="cert-log">
+
+    <h2>
+      📓 Certification Evidence Log
+    </h2>
+
+
+    <div class="cert-log-grid">
+
+      <article>
+
+        <strong>
+          🪨 WEDCC
+        </strong>
+
+        <p>
+          Break
+          → Move
+          → Drop
+          → Squeeze
+          → Bind
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🥞🦴 LAYERS + FOSSILS
+        </strong>
+
+        <p>
+          Oldest at bottom.
+
+          Fossils show
+          past life
+          and environments.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ⚫ COAL
+        </strong>
+
+        <p>
+          Ancient plants
+          → peat
+          → burial
+          → heat + pressure + time
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🛢️🔥 OIL + GAS
+        </strong>
+
+        <p>
+          Ancient aquatic
+          organic material
+          → burial
+          → heat + pressure + time
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='earth_history_certification_lab.js') }}?v=97.1"
+></script>
+
+{% endblock %}
