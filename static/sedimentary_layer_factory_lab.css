@@ -1,0 +1,824 @@
+.sl-shell {
+  width: min(1200px,96vw);
+  margin: 24px auto 60px;
+}
+
+.sl-hero,
+.sl-wedcc-panel,
+.sl-status-panel,
+.sl-factory,
+.sl-mission,
+.sl-final,
+.sl-log {
+  border: 3px solid #171717;
+  border-radius: 17px;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+.sl-hero {
+  padding: 20px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #5c402c,
+      #ad794d,
+      #7131cc
+    );
+}
+
+.sl-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.sl-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #5c402c;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+.sl-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.sl-back {
+  padding: 10px 14px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.sl-wedcc-panel,
+.sl-status-panel {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+.sl-wedcc {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.sl-wedcc > div {
+  min-width: 135px;
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.sl-wedcc > div.current {
+  background: #fff3ad;
+}
+
+.sl-wedcc b,
+.sl-wedcc strong,
+.sl-wedcc span {
+  display: block;
+}
+
+.sl-wedcc b {
+  color: #7131cc;
+  font-size: 1.6rem;
+}
+
+.sl-wedcc span {
+  color: #8a4c1d;
+  font-weight: 900;
+}
+
+.sl-wedcc em {
+  color: #7131cc;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.sl-status-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.sl-status-grid > div {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.sl-status-grid span,
+.sl-status-grid strong,
+.sl-status-grid small {
+  display: block;
+}
+
+.sl-status-grid span {
+  font-size: 1.8rem;
+}
+
+.sl-status-grid .online {
+  background: #d9f8dd;
+}
+
+.sl-factory {
+  margin-top: 14px;
+  padding: 16px;
+  background: #151b2e;
+  color: #fff;
+}
+
+.sl-factory-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sl-factory-heading > div:first-child {
+  font-size: 3rem;
+}
+
+.sl-scene {
+  position: relative;
+  min-height: 470px;
+  margin-top: 10px;
+  overflow: hidden;
+  border: 4px solid #fff;
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      #9bd6ef 0 55%,
+      #c69a66 55% 100%
+    );
+}
+
+.sl-ground-label {
+  position: absolute;
+  left: 25px;
+  bottom: 20px;
+  color: #4d3827;
+  font-weight: 900;
+}
+
+.sl-core {
+  position: absolute;
+  right: 27%;
+  bottom: 35px;
+  display: flex;
+  flex-direction: column-reverse;
+  width: 420px;
+  min-height: 270px;
+  border-right: 5px solid #4d3827;
+  border-bottom: 5px solid #4d3827;
+  border-left: 5px solid #4d3827;
+  background: rgba(255,255,255,.2);
+  transform-origin: bottom center;
+  transition: transform .6s ease;
+}
+
+.sl-empty {
+  display: grid;
+  place-items: center;
+  min-height: 270px;
+  color: #4d3827;
+  font-weight: 900;
+}
+
+.sl-layer {
+  display: grid;
+  place-items: center;
+  height: 60px;
+  border-top: 3px solid #4d3827;
+  color: #342719;
+  font-weight: 900;
+  transition: height .6s ease;
+}
+
+.sl-layer.sand {
+  background: #e2bd74;
+}
+
+.sl-layer.silt {
+  background: #b77b50;
+}
+
+.sl-layer.clay {
+  background: #d78b61;
+}
+
+.sl-layer.pebble {
+  background:
+    radial-gradient(circle at 20% 50%, #665344 0 8px, transparent 9px),
+    radial-gradient(circle at 50% 45%, #806854 0 9px, transparent 10px),
+    radial-gradient(circle at 75% 55%, #534439 0 7px, transparent 8px),
+    #ad9179;
+}
+
+.sl-pressure {
+  position: absolute;
+  top: 30px;
+  right: 32%;
+  display: none;
+  color: #7131cc;
+  text-align: center;
+  font-size: 2.8rem;
+}
+
+.sl-pressure strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.sl-mineral-water {
+  position: absolute;
+  top: 105px;
+  right: 31%;
+  display: none;
+  font-size: 2.4rem;
+}
+
+.sl-rock-label {
+  position: absolute;
+  right: 30%;
+  bottom: 8px;
+  display: none;
+  padding: 7px 15px;
+  border: 3px solid #171717;
+  border-radius: 8px;
+  background: #fff3ad;
+  color: #171717;
+  font-weight: 900;
+}
+
+.sl-readout {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.sl-readout > div {
+  padding: 9px;
+  border: 3px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  text-align: center;
+}
+
+.sl-readout strong,
+.sl-readout span {
+  display: block;
+}
+
+.sl-readout span {
+  margin-top: 4px;
+  color: #7131cc;
+  font-weight: 900;
+}
+
+.sl-mission {
+  margin-top: 14px;
+  padding: 16px;
+  background: #fff4cd;
+}
+
+.sl-mission-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sl-number {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  flex: 0 0 auto;
+  border: 4px solid #171717;
+  border-radius: 50%;
+  background: #7131cc;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.sl-score {
+  margin-left: auto;
+  padding: 9px 15px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.sl-score strong,
+.sl-score span {
+  display: block;
+}
+
+.sl-material-buttons {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.sl-material-buttons button,
+.sl-overburden button,
+.sl-action-grid button {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.sl-overburden {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.sl-overburden > div {
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.sl-overburden strong,
+.sl-overburden span {
+  display: block;
+}
+
+.sl-action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.sl-action-grid > div {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+}
+
+.sl-main-button,
+.sl-next-button {
+  margin-top: 12px;
+  padding: 12px 18px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #ffe45d;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.sl-next-button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.sl-feedback {
+  margin-top: 12px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+}
+
+.sl-evidence-card,
+.sl-question {
+  padding: 14px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.sl-evidence-card {
+  margin-top: 10px;
+  background: #fff3ad;
+}
+
+.sl-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.sl-choice {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: left;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.sl-choice.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+  box-shadow: 0 0 0 3px rgba(113,49,204,.25);
+}
+
+.sl-final {
+  margin-top: 14px;
+  padding: 20px;
+  background: #fff4cd;
+  text-align: center;
+}
+
+.sl-final-icon {
+  font-size: 4rem;
+}
+
+.sl-final-message {
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #e9f6ff;
+  font-weight: 900;
+}
+
+.sl-log {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff;
+}
+
+.sl-log-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 8px;
+}
+
+.sl-log-grid article {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+}
+
+.sl-big-question {
+  margin-top: 10px;
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff3ad;
+}
+
+@media (max-width:850px) {
+
+  .sl-hero-row {
+    display: block;
+  }
+
+  .sl-status-grid,
+  .sl-readout,
+  .sl-material-buttons,
+  .sl-overburden,
+  .sl-action-grid,
+  .sl-choices,
+  .sl-log-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sl-core {
+    right: 10%;
+    width: 80%;
+  }
+
+  .sl-pressure,
+  .sl-mineral-water,
+  .sl-rock-label {
+    right: 25%;
+  }
+
+}
+
+
+/* ==========================================================
+   DAY 90 MISSION 3 VISUAL SPACING FIX
+   Keep pressure and mineral-rich water from overlapping
+   ========================================================== */
+
+.sl-pressure {
+  top: 20px;
+  right: 31%;
+  width: 150px;
+  font-size: 2.15rem;
+  line-height: 1;
+  text-align: center;
+  z-index: 5;
+}
+
+.sl-pressure span {
+  display: block;
+  margin: 0;
+  line-height: .9;
+}
+
+.sl-pressure strong {
+  display: block;
+  margin: 5px 0;
+  font-size: .85rem;
+  letter-spacing: .5px;
+}
+
+
+.sl-mineral-water {
+  top: 125px;
+  right: 32%;
+  width: 175px;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-align: center;
+  z-index: 4;
+}
+
+
+/* Keep both effects centered over the rock core on smaller screens */
+
+@media (max-width:850px) {
+
+  .sl-pressure {
+    top: 20px;
+    right: 34%;
+    width: 130px;
+    font-size: 1.9rem;
+  }
+
+  .sl-mineral-water {
+    top: 120px;
+    right: 30%;
+    width: 180px;
+    font-size: 1.65rem;
+  }
+
+}
+
+
+/* ==========================================================
+   DAY 90 MISSION 3 REFINEMENT
+   Lower the pressure/cement visuals and move rock label right
+   ========================================================== */
+
+.sl-pressure {
+  top: 72px !important;
+  right: 31% !important;
+  width: 120px !important;
+  text-align: center !important;
+  z-index: 6 !important;
+}
+
+.sl-pressure span {
+  display: block !important;
+  margin: 0 !important;
+  line-height: 0.9 !important;
+  font-size: 1.9rem !important;
+}
+
+.sl-pressure strong {
+  display: block !important;
+  margin: 4px 0 !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.4px !important;
+}
+
+.sl-mineral-water {
+  top: 128px !important;
+  right: 24% !important;
+  width: 150px !important;
+  text-align: center !important;
+  font-size: 1.7rem !important;
+  line-height: 1.1 !important;
+  letter-spacing: 2px !important;
+  z-index: 5 !important;
+}
+
+
+/* Try the common label names so the sedimentary rock tag moves right */
+.sl-rock-label,
+.sl-sedimentary-rock,
+.sl-sedimentary-label,
+.sl-rock-tag,
+.sl-rock-name {
+  left: auto !important;
+  right: 24px !important;
+  bottom: 8px !important;
+  transform: none !important;
+  z-index: 7 !important;
+}
+
+
+/* Smaller screen cleanup */
+@media (max-width: 850px) {
+  .sl-pressure {
+    top: 78px !important;
+    right: 29% !important;
+    width: 110px !important;
+  }
+
+  .sl-mineral-water {
+    top: 132px !important;
+    right: 20% !important;
+    width: 140px !important;
+    font-size: 1.5rem !important;
+  }
+
+  .sl-rock-label,
+  .sl-sedimentary-rock,
+  .sl-sedimentary-label,
+  .sl-rock-tag,
+  .sl-rock-name {
+    right: 14px !important;
+    bottom: 6px !important;
+  }
+}
+
+
+/* ==========================================================
+   DAY 90 FINAL MISSION 3 ALIGNMENT
+   Center pressure + mineral water directly above rock core
+   ========================================================== */
+
+.sl-pressure {
+  top: 48px !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  width: 100px !important;
+  text-align: center !important;
+  z-index: 6 !important;
+}
+
+.sl-pressure span {
+  display: block !important;
+  margin: 0 !important;
+  line-height: .9 !important;
+  font-size: 1.8rem !important;
+}
+
+.sl-pressure strong {
+  display: block !important;
+  margin: 3px 0 !important;
+  font-size: .75rem !important;
+}
+
+
+/* Mineral water directly below pressure */
+.sl-mineral-water {
+  top: 105px !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  width: 150px !important;
+  text-align: center !important;
+  font-size: 1.65rem !important;
+  line-height: 1.1 !important;
+  letter-spacing: 3px !important;
+  z-index: 5 !important;
+}
+
+
+/* Keep Sedimentary Rock label on the right */
+.sl-rock-label {
+  left: auto !important;
+  right: 18px !important;
+  bottom: 8px !important;
+  transform: none !important;
+}
+
+
+@media (max-width:850px) {
+
+  .sl-pressure {
+    left: 50% !important;
+    top: 48px !important;
+  }
+
+  .sl-mineral-water {
+    left: 50% !important;
+    top: 105px !important;
+  }
+
+}
+
+
+/* ==========================================================
+   DAY 90 FINAL POSITION TWEAK
+   Nudge pressure/water slightly right and lower
+   ========================================================== */
+
+.sl-pressure {
+  left: calc(50% + 18px) !important;
+  top: 66px !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  width: 100px !important;
+  text-align: center !important;
+  z-index: 6 !important;
+}
+
+.sl-pressure span {
+  display: block !important;
+  margin: 0 !important;
+  line-height: .9 !important;
+  font-size: 1.8rem !important;
+}
+
+.sl-pressure strong {
+  display: block !important;
+  margin: 3px 0 !important;
+  font-size: .75rem !important;
+}
+
+.sl-mineral-water {
+  left: calc(50% + 18px) !important;
+  top: 132px !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  width: 150px !important;
+  text-align: center !important;
+  font-size: 1.65rem !important;
+  line-height: 1.1 !important;
+  letter-spacing: 3px !important;
+  z-index: 5 !important;
+}
+
+.sl-rock-label {
+  left: auto !important;
+  right: 18px !important;
+  bottom: 8px !important;
+  transform: none !important;
+}
+
+
+/* ==========================================================
+   DAY 90 FINAL MICRO-TWEAK
+   move group a little more right, drop water lower
+   ========================================================== */
+
+.sl-pressure {
+  left: calc(50% + 34px) !important;
+  top: 66px !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+}
+
+.sl-mineral-water {
+  left: calc(50% + 34px) !important;
+  top: 145px !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+}
+
+
+/* ==========================================================
+   DAY 90 FINAL MICRO-TWEAK 2
+   move pressure + water a little more right,
+   lower the water
+   ========================================================== */
+
+.sl-pressure {
+  left: calc(50% + 46px) !important;
+  top: 66px !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+}
+
+.sl-mineral-water {
+  left: calc(50% + 46px) !important;
+  top: 156px !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+}

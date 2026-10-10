@@ -1055,3 +1055,20 @@ POWER_FRAMES[89] = {
 }
 
 # Science Studio Day 89 Power Frame End
+
+
+# Science Studio Day 90 Power Frame Start
+
+POWER_FRAMES[90] = {
+
+    "i_can":
+        "I can model how deposition, compaction, and cementation help form sedimentary rock.",
+
+    "by":
+        "building sediment layers, applying pressure, and modeling minerals binding sediment grains.",
+
+    "i_know":
+        "I know I have learned this when I can explain why compaction squeezes while cementation binds."
+}
+
+# Science Studio Day 90 Power Frame End

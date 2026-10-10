@@ -1,0 +1,772 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='sedimentary_layer_factory_lab.css') }}?v=90.1"
+>
+
+
+<div class="sl-shell">
+
+
+  <!-- HERO -->
+
+  <header class="sl-hero">
+
+    <div class="sl-tags">
+
+      <span>🏭 Interactive Lab</span>
+
+      <span>Sedimentary Layer Factory</span>
+
+      <span>TEKS 5.10B</span>
+
+    </div>
+
+
+    <div class="sl-hero-row">
+
+      <div>
+
+        <h1>
+          Sedimentary Layer Factory
+        </h1>
+
+        <p>
+          Deposit it.
+          Stack it.
+          Squeeze it.
+          Bind it.
+        </p>
+
+      </div>
+
+
+      <a
+        class="sl-back"
+        href="/second-nine-weeks/day/90?view=student"
+      >
+        ← Back to Day 90
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- WEDCC STRIP -->
+
+  <section class="sl-wedcc-panel">
+
+    <h2>
+      🧠 W.E.D.C.C. Mission Code
+    </h2>
+
+
+    <div class="sl-wedcc">
+
+      <div>
+        <b>W</b>
+        <strong>Weathering</strong>
+        <span>BREAK</span>
+      </div>
+
+      <em>→</em>
+
+      <div>
+        <b>E</b>
+        <strong>Erosion</strong>
+        <span>MOVE</span>
+      </div>
+
+      <em>→</em>
+
+      <div id="slWedccD"
+           class="current">
+        <b>D</b>
+        <strong>Deposition</strong>
+        <span>DROP</span>
+      </div>
+
+      <em>→</em>
+
+      <div id="slWedccC1"
+           class="current">
+        <b>C</b>
+        <strong>Compaction</strong>
+        <span>SQUEEZE</span>
+      </div>
+
+      <em>→</em>
+
+      <div id="slWedccC2"
+           class="current">
+        <b>C</b>
+        <strong>Cementation</strong>
+        <span>BIND</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STATUS -->
+
+  <section class="sl-status-panel">
+
+    <div class="sl-status-grid">
+
+      <div id="slStatus1">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 1
+        </strong>
+
+        <small>
+          Deposit Layers
+        </small>
+
+      </div>
+
+
+      <div id="slStatus2">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 2
+        </strong>
+
+        <small>
+          Add Overburden
+        </small>
+
+      </div>
+
+
+      <div id="slStatus3">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 3
+        </strong>
+
+        <small>
+          Compact + Cement
+        </small>
+
+      </div>
+
+
+      <div id="slStatus4">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 4
+        </strong>
+
+        <small>
+          Evidence Detective
+        </small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FACTORY VIEWPORT -->
+
+  <section class="sl-factory">
+
+    <div class="sl-factory-heading">
+
+      <div>
+        🏭
+      </div>
+
+      <div>
+
+        <strong>
+          ROCK CORE CHAMBER
+        </strong>
+
+        <p id="slFactoryMessage">
+          Deposit at least four sediment layers.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="sl-scene">
+
+      <div class="sl-ground-label">
+        DEPOSITION BASIN
+      </div>
+
+
+      <div id="slCore"
+           class="sl-core">
+
+        <div id="slEmpty"
+             class="sl-empty">
+
+          Add sediment layers here.
+
+        </div>
+
+      </div>
+
+
+      <div id="slPressure"
+           class="sl-pressure">
+
+        <span>
+          ⬇️
+        </span>
+
+        <strong>
+          PRESSURE
+        </strong>
+
+        <span>
+          ⬇️
+        </span>
+
+      </div>
+
+
+      <div id="slMineralWater"
+           class="sl-mineral-water">
+
+        💧✨💧✨💧
+
+      </div>
+
+
+      <div id="slRockLabel"
+           class="sl-rock-label">
+
+        SEDIMENTARY ROCK
+
+      </div>
+
+    </div>
+
+
+    <div class="sl-readout">
+
+      <div>
+
+        <strong>
+          Layers
+        </strong>
+
+        <span id="slLayerCount">
+          0
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          Pressure
+        </strong>
+
+        <span id="slPressureReadout">
+          LOW
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          Grain Spacing
+        </strong>
+
+        <span id="slSpacingReadout">
+          OPEN
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          Mineral Cement
+        </strong>
+
+        <span id="slCementReadout">
+          NONE
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          Material
+        </strong>
+
+        <span id="slMaterialReadout">
+          LOOSE SEDIMENT
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="sl-mission">
+
+    <div class="sl-mission-head">
+
+      <div class="sl-number">
+        1
+      </div>
+
+      <div>
+
+        <h2>
+          Deposit Sediment Layers
+        </h2>
+
+        <p>
+          Build at least four layers
+          using different sediments.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="sl-material-buttons">
+
+      <button
+        data-material="sand"
+        type="button"
+      >
+        🟡 ADD SAND
+      </button>
+
+      <button
+        data-material="silt"
+        type="button"
+      >
+        🟤 ADD SILT
+      </button>
+
+      <button
+        data-material="clay"
+        type="button"
+      >
+        🟠 ADD CLAY
+      </button>
+
+      <button
+        data-material="pebble"
+        type="button"
+      >
+        🪨 ADD SMALL PEBBLES
+      </button>
+
+    </div>
+
+
+    <button
+      id="slCheck1"
+      class="sl-main-button"
+      type="button"
+    >
+      ⬇️ CHECK DEPOSITION
+    </button>
+
+
+    <div id="slFeedback1"
+         class="sl-feedback">
+
+      Deposition drops sediment
+      and builds layers.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="sl-mission">
+
+    <div class="sl-mission-head">
+
+      <div class="sl-number">
+        2
+      </div>
+
+      <div>
+
+        <h2>
+          Build Overburden
+        </h2>
+
+        <p>
+          Add more material above
+          the lower layers
+          to increase pressure.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="sl-overburden">
+
+      <button
+        id="slAddOverburden"
+        type="button"
+      >
+        🪨 ADD OVERLYING MATERIAL
+      </button>
+
+      <div>
+
+        <strong>
+          Overburden Level
+        </strong>
+
+        <span id="slOverburden">
+          0 / 3
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="slCheck2"
+      class="sl-main-button"
+      type="button"
+    >
+      ⚖️ CHECK PRESSURE
+    </button>
+
+
+    <div id="slFeedback2"
+         class="sl-feedback">
+
+      More material above
+      can increase pressure
+      on lower sediment layers.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="sl-mission">
+
+    <div class="sl-mission-head">
+
+      <div class="sl-number">
+        3
+      </div>
+
+      <div>
+
+        <h2>
+          Compact and Cement
+        </h2>
+
+        <p>
+          Complete the final two
+          W.E.D.C.C. processes.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="sl-action-grid">
+
+      <div>
+
+        <h3>
+          🗜️ Step A — Compaction
+        </h3>
+
+        <button
+          id="slCompact"
+          type="button"
+        >
+          APPLY PRESSURE
+        </button>
+
+        <p>
+          What should happen
+          to spaces between grains?
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          🧱 Step B — Cementation
+        </h3>
+
+        <button
+          id="slPlainWater"
+          type="button"
+        >
+          💧 ADD PLAIN WATER
+        </button>
+
+        <button
+          id="slMineralButton"
+          type="button"
+        >
+          💧✨ ADD MINERAL-RICH WATER
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="slCheck3"
+      class="sl-main-button"
+      type="button"
+    >
+      🪨 CHECK ROCK FORMATION
+    </button>
+
+
+    <div id="slFeedback3"
+         class="sl-feedback">
+
+      Remember:
+      compaction squeezes;
+      cementation binds.
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="sl-mission">
+
+    <div class="sl-mission-head">
+
+      <div class="sl-number">
+        4
+      </div>
+
+      <div>
+
+        <h2>
+          Rock Evidence Detective
+        </h2>
+
+        <p>
+          Identify the process
+          described by the evidence.
+        </p>
+
+      </div>
+
+
+      <aside class="sl-score">
+
+        <strong>
+          Score
+        </strong>
+
+        <span id="slScore4">
+          0 / 4
+        </span>
+
+      </aside>
+
+    </div>
+
+
+    <div id="slEvidence4"
+         class="sl-evidence-card">
+
+      Loading evidence...
+
+    </div>
+
+
+    <div id="slQuestion4"
+         class="sl-question">
+
+      Loading...
+
+    </div>
+
+
+    <div id="slChoices4"
+         class="sl-choices">
+    </div>
+
+
+    <button
+      id="slCheck4"
+      class="sl-main-button"
+      type="button"
+    >
+      🔎 IDENTIFY PROCESS
+    </button>
+
+
+    <div id="slFeedback4"
+         class="sl-feedback">
+
+      Use the evidence.
+
+    </div>
+
+
+    <button
+      id="slNext4"
+      class="sl-next-button"
+      type="button"
+      disabled
+    >
+      NEXT EVIDENCE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="sl-final">
+
+    <div class="sl-final-icon">
+      🪨🏆
+    </div>
+
+    <h2>
+      Sedimentary Layer Factory Status
+    </h2>
+
+
+    <div id="slFinalMessage"
+         class="sl-final-message">
+
+      Complete all four missions.
+
+    </div>
+
+  </section>
+
+
+  <!-- EVIDENCE LOG -->
+
+  <section class="sl-log">
+
+    <h2>
+      📓 D → C → C Evidence Log
+    </h2>
+
+
+    <div class="sl-log-grid">
+
+      <article>
+
+        <strong>
+          ⬇️ DEPOSITION
+        </strong>
+
+        <p>
+          Sediment is dropped
+          and layers accumulate.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🗜️ COMPACTION
+        </strong>
+
+        <p>
+          Pressure pushes grains
+          closer together.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🧱 CEMENTATION
+        </strong>
+
+        <p>
+          Minerals form
+          between grains
+          and bind them.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="sl-big-question">
+
+      <strong>
+        🧠 Rock Engineer Question:
+      </strong>
+
+      Why is pressure alone
+      not the same thing
+      as cementation?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='sedimentary_layer_factory_lab.js') }}?v=90.1"
+></script>
+
+{% endblock %}

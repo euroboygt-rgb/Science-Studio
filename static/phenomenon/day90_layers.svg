@@ -1,0 +1,225 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#8dd4ee"/>
+
+      <stop offset="100%"
+            stop-color="#effaff"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="25"
+        fill="url(#sky)"/>
+
+
+  <text x="600"
+        y="45"
+        text-anchor="middle"
+        fill="#3d2c20"
+        font-size="29"
+        font-weight="900">
+    SEDIMENTARY LAYER MYSTERY
+  </text>
+
+
+  <text x="600"
+        y="86"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="34"
+        font-weight="900">
+    HOW DO LOOSE LAYERS BECOME SOLID ROCK?
+  </text>
+
+
+  <!-- LOOSE LAYERS -->
+
+  <g transform="translate(80,170)">
+
+    <text x="190"
+          y="-20"
+          text-anchor="middle"
+          fill="#3d2c20"
+          font-size="22"
+          font-weight="900">
+      LOOSE SEDIMENT
+    </text>
+
+    <g fill="#d9b16f"
+       stroke="#5b412b"
+       stroke-width="3">
+
+      <circle cx="40" cy="70" r="18"/>
+      <circle cx="90" cy="62" r="15"/>
+      <circle cx="140" cy="75" r="20"/>
+      <circle cx="190" cy="65" r="16"/>
+      <circle cx="240" cy="73" r="19"/>
+      <circle cx="295" cy="66" r="17"/>
+      <circle cx="340" cy="72" r="16"/>
+
+    </g>
+
+
+    <g fill="#b87950"
+       stroke="#5b412b"
+       stroke-width="3">
+
+      <circle cx="45" cy="140" r="15"/>
+      <circle cx="90" cy="142" r="17"/>
+      <circle cx="135" cy="138" r="14"/>
+      <circle cx="180" cy="145" r="18"/>
+      <circle cx="225" cy="140" r="15"/>
+      <circle cx="275" cy="143" r="17"/>
+      <circle cx="330" cy="139" r="15"/>
+
+    </g>
+
+
+    <g fill="#dfc893"
+       stroke="#5b412b"
+       stroke-width="3">
+
+      <circle cx="45" cy="210" r="18"/>
+      <circle cx="95" cy="205" r="14"/>
+      <circle cx="145" cy="212" r="17"/>
+      <circle cx="195" cy="207" r="16"/>
+      <circle cx="245" cy="211" r="18"/>
+      <circle cx="295" cy="206" r="15"/>
+      <circle cx="340" cy="210" r="17"/>
+
+    </g>
+
+
+    <text x="190"
+          y="285"
+          text-anchor="middle"
+          fill="#3d2c20"
+          font-size="20"
+          font-weight="900">
+      DEPOSITION BUILDS LAYERS
+    </text>
+
+  </g>
+
+
+  <text x="600"
+        y="340"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="64"
+        font-weight="900">
+    →
+  </text>
+
+
+  <!-- ROCK -->
+
+  <g transform="translate(730,165)">
+
+    <text x="190"
+          y="-15"
+          text-anchor="middle"
+          fill="#3d2c20"
+          font-size="22"
+          font-weight="900">
+      SOLID SEDIMENTARY ROCK
+    </text>
+
+
+    <rect x="0"
+          y="35"
+          width="380"
+          height="70"
+          rx="8"
+          fill="#d9b16f"
+          stroke="#4d3827"
+          stroke-width="5"/>
+
+    <rect x="0"
+          y="105"
+          width="380"
+          height="70"
+          fill="#b87950"
+          stroke="#4d3827"
+          stroke-width="5"/>
+
+    <rect x="0"
+          y="175"
+          width="380"
+          height="70"
+          rx="8"
+          fill="#dfc893"
+          stroke="#4d3827"
+          stroke-width="5"/>
+
+
+    <g fill="#fff6c7">
+
+      <circle cx="70" cy="72" r="6"/>
+      <circle cx="160" cy="80" r="7"/>
+      <circle cx="260" cy="68" r="6"/>
+      <circle cx="310" cy="150" r="7"/>
+      <circle cx="120" cy="145" r="6"/>
+      <circle cx="215" cy="213" r="7"/>
+
+    </g>
+
+
+    <text x="190"
+          y="295"
+          text-anchor="middle"
+          fill="#3d2c20"
+          font-size="20"
+          font-weight="900">
+      COMPACTED + CEMENTED
+    </text>
+
+  </g>
+
+
+  <!-- DCC BOX -->
+
+  <rect x="120"
+        y="535"
+        width="960"
+        height="100"
+        rx="18"
+        fill="#fff3ad"
+        stroke="#3d2c20"
+        stroke-width="5"/>
+
+
+  <text x="600"
+        y="575"
+        text-anchor="middle"
+        fill="#3d2c20"
+        font-size="24"
+        font-weight="900">
+    TODAY'S W.E.D.C.C. ZOOM-IN:
+  </text>
+
+
+  <text x="600"
+        y="615"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="28"
+        font-weight="900">
+    DEPOSITION → COMPACTION → CEMENTATION
+  </text>
+
+</svg>

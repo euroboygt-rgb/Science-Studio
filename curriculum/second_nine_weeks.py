@@ -5727,3 +5727,102 @@ SECOND_NINE_WEEKS_LESSONS[89] = {
 }
 
 # Science Studio Day 89 End
+
+
+# Science Studio Day 90 Start
+
+SECOND_NINE_WEEKS_LESSONS[90] = {
+
+    "day": 90,
+
+    "title":
+        "Sedimentary Layer Factory: Deposit, Compact, Cement",
+
+    "unit":
+        "Sedimentary Rocks and Fossil Fuels",
+
+    "teks":
+        "5.10B, 5.1F, 5.2D",
+
+    "focus":
+        "Students model how repeated deposition creates sediment layers "
+        "and how compaction and cementation can transform loose sediment "
+        "into sedimentary rock.",
+
+    "learning_target":
+        "We will model how deposition, compaction, and cementation help form sedimentary rock.",
+
+    "success_criteria":
+        "I can build sediment layers, explain how pressure compacts them, "
+        "and describe how minerals can cement the grains together.",
+
+    "essential_question":
+        "How can loose layers of sediment become one solid sedimentary rock?",
+
+    "bell_ringer": [
+        "What does the D in W.E.D.C.C. stand for?",
+        "What is the difference between erosion and deposition?",
+        "What is the difference between compaction and cementation?"
+    ],
+
+    "mini_lesson": [
+        "W.E.D.C.C. remains our sedimentary-rock memory framework.",
+        "Deposition occurs when transported sediment is dropped or settles.",
+        "Repeated deposition can build layers of sediment.",
+        "Different layers can contain different kinds or sizes of sediment.",
+        "As additional layers accumulate, the weight above can press lower sediment grains closer together.",
+        "This squeezing process is called compaction.",
+        "Compaction reduces some of the open space between sediment grains.",
+        "Water moving through sediment can contain dissolved minerals.",
+        "Some dissolved minerals can crystallize in spaces between sediment grains.",
+        "These minerals can bind the grains together through cementation.",
+        "Compaction squeezes grains closer together; cementation binds grains together.",
+        "Compaction and cementation can transform deposited sediment into sedimentary rock over long periods of time."
+    ],
+
+    "science_notebook": [
+        "Write W.E.D.C.C. at the top of the page.",
+        "Highlight D → C → C.",
+        "Draw four horizontal sediment layers.",
+        "Label the process that created the layers: Deposition.",
+        "Draw arrows pressing downward and label them: Compaction.",
+        "Draw mineral material between grains and label it: Cementation.",
+        "Write: Compaction squeezes. Cementation binds."
+    ],
+
+    "guided_practice": [
+        "Stack four different colored paper strips to model deposition.",
+        "Press the stack between two hands to model compaction.",
+        "Explain that pressing alone does not model mineral cement.",
+        "Use drawn dots or glue marks between paper strips to represent mineral cementation.",
+        "Students explain each model limitation."
+    ],
+
+    "lab_title":
+        "Sedimentary Layer Factory",
+
+    "lab_url":
+        "/labs/sedimentary-layer-factory?mission=day90",
+
+    "exit_ticket":
+        "Explain why compaction and cementation are different even though both help form sedimentary rock.",
+
+    "vocabulary": [
+        "deposition",
+        "sediment",
+        "layer",
+        "compaction",
+        "pressure",
+        "cementation",
+        "dissolved mineral",
+        "pore space",
+        "sedimentary rock"
+    ],
+
+    "teacher_note":
+        "Keep W.E.D.C.C. visible throughout the lesson. "
+        "Today emphasizes D-C-C. Do not describe compaction as gluing sediment together. "
+        "Compaction presses grains closer; cementation involves minerals binding grains."
+}
+
+# Science Studio Day 90 End

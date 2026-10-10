@@ -1,0 +1,1262 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=90-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day90_direct.css') }}?v=90-final"
+>
+
+
+<div id="DAY90_DIRECT_TEMPLATE"
+     class="d90-page">
+
+
+  <!-- HERO -->
+
+  <section class="d90-hero">
+
+    <div class="d90-tags">
+
+      <span>Day 90</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10B</span>
+
+      <span>W.E.D.C.C.</span>
+
+    </div>
+
+
+    <h1>
+      🪨 Sedimentary Layer Factory:
+      Deposit, Compact, Cement
+    </h1>
+
+
+    <p>
+      Build sediment layers,
+      squeeze them with pressure,
+      and use mineral cement
+      to transform loose sediment
+      into solid rock.
+    </p>
+
+
+    <div class="d90-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/90?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/90?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Rock-Building Mission
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>I can...</strong>
+
+        <p>
+          model how deposition,
+          compaction,
+          and cementation
+          help form sedimentary rock.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>By...</strong>
+
+        <p>
+          building layers,
+          applying pressure,
+          and modeling mineral cement.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can explain
+          why compaction squeezes
+          while cementation binds.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🕵️ Rock Mystery
+    </div>
+
+    <h2>
+      Loose Layers — Solid Rock
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day90_layers.svg"
+        alt="Loose sediment layers becoming compacted and cemented sedimentary rock"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      What must happen
+      after sediment is deposited
+      before those loose grains
+      can become solid rock?
+
+    </div>
+
+  </section>
+
+
+  <!-- WEDCC RECALL -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🧠 W.E.D.C.C. Recall
+    </div>
+
+    <h2>
+      Never Lose the Whole Sequence
+    </h2>
+
+
+    <div class="d90-wedcc">
+
+      <div>
+        <b>W</b>
+        <strong>Weathering</strong>
+        <span>BREAK</span>
+      </div>
+
+      <span>→</span>
+
+      <div>
+        <b>E</b>
+        <strong>Erosion</strong>
+        <span>MOVE</span>
+      </div>
+
+      <span>→</span>
+
+      <div class="focus-step">
+        <b>D</b>
+        <strong>Deposition</strong>
+        <span>DROP</span>
+      </div>
+
+      <span>→</span>
+
+      <div class="focus-step">
+        <b>C</b>
+        <strong>Compaction</strong>
+        <span>SQUEEZE</span>
+      </div>
+
+      <span>→</span>
+
+      <div class="focus-step">
+        <b>C</b>
+        <strong>Cementation</strong>
+        <span>BIND</span>
+      </div>
+
+    </div>
+
+
+    <div class="d90-memory">
+
+      Today we zoom in on:
+
+      <strong>
+        D → C → C
+      </strong>
+
+      <br>
+
+      <strong>
+        DROP → SQUEEZE → BIND
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve's Rock Factory
+        </div>
+
+        <h2>
+          Does Squeezing Make the Rock Finished?
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve presses
+          loose sediment
+          tightly together.
+
+          He says:
+
+          <strong>
+            "I compacted it,
+            so cementation already happened too!"
+          </strong>
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            Which answer best corrects Steve?
+          </strong>
+
+
+          <button class="d90-steve-answer"
+                  data-answer="A">
+
+            A. Compaction squeezes grains closer together, while cementation involves minerals binding the grains.
+
+          </button>
+
+
+          <button class="d90-steve-answer"
+                  data-answer="B">
+
+            B. Compaction and cementation mean exactly the same thing.
+
+          </button>
+
+
+          <button class="d90-steve-answer"
+                  data-answer="C">
+
+            C. Cementation means moving sediment.
+
+          </button>
+
+
+          <button class="d90-steve-answer"
+                  data-answer="D">
+
+            D. Compaction breaks rock into sediment.
+
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button
+              id="d90SteveCheck"
+              class="d59-check"
+              type="button"
+            >
+              Check Steve's Rock Science
+            </button>
+
+
+            <button
+              id="d90SteveReset"
+              class="d59-reset"
+              type="button"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d90SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Layer Factory Vocabulary
+    </h2>
+
+
+    <div class="d90-vocab-grid">
+
+      {% set words = [
+        ("⬇️","deposition","The dropping or settling of transported sediment."),
+        ("🟤","sediment","Small pieces of rock, minerals, or other Earth material."),
+        ("🥞","layer","A sheet or band of deposited material."),
+        ("🗜️","compaction","Pressure squeezing sediment grains closer together."),
+        ("⬇️","pressure","A force pushing on material."),
+        ("🧱","cementation","Minerals binding sediment grains together."),
+        ("💧","dissolved mineral","Mineral material carried in water in dissolved form."),
+        ("⭕","pore space","Open space between sediment grains."),
+        ("🪨","sedimentary rock","Rock formed when sediment becomes compacted and cemented.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d90-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- LEARNING TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will model
+      how deposition,
+      compaction,
+      and cementation
+      help form
+      sedimentary rock.
+    </p>
+
+  </section>
+
+
+  <!-- BELL RINGER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      What Happens Next?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Sediment has already been:
+
+      <strong>
+        weathered,
+        eroded,
+        and deposited.
+      </strong>
+
+      <br><br>
+
+      The sediment is now
+      lying in loose layers.
+
+      <br><br>
+
+      What are the
+      <strong>
+        final two letters
+      </strong>
+      of W.E.D.C.C.?
+
+      <br><br>
+
+      What does each process do?
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      From Layers to Rock
+    </h2>
+
+
+    <div class="d90-three-processes">
+
+
+      <!-- DEPOSITION -->
+
+      <article>
+
+        <div class="d90-process-letter">
+          D
+        </div>
+
+        <span>
+          ⬇️
+        </span>
+
+        <h3>
+          DEPOSITION
+        </h3>
+
+        <strong>
+          DROP
+        </strong>
+
+        <p>
+          Sediment settles
+          and can build
+          one layer
+          on top of another.
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <!-- COMPACTION -->
+
+      <article>
+
+        <div class="d90-process-letter">
+          C
+        </div>
+
+        <span>
+          🗜️
+        </span>
+
+        <h3>
+          COMPACTION
+        </h3>
+
+        <strong>
+          SQUEEZE
+        </strong>
+
+        <p>
+          More material above
+          increases pressure
+          on lower sediment layers.
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <!-- CEMENTATION -->
+
+      <article>
+
+        <div class="d90-process-letter">
+          C
+        </div>
+
+        <span>
+          🧱
+        </span>
+
+        <h3>
+          CEMENTATION
+        </h3>
+
+        <strong>
+          BIND
+        </strong>
+
+        <p>
+          Minerals can form
+          between sediment grains
+          and bind them together.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d90-layer-model">
+
+      <h3>
+        🥞 Deposition Builds Layers
+      </h3>
+
+      <div class="layer sand">
+        SAND
+      </div>
+
+      <div class="layer silt">
+        SILT
+      </div>
+
+      <div class="layer clay">
+        CLAY
+      </div>
+
+      <div class="layer pebble">
+        SMALL PEBBLES
+      </div>
+
+      <p>
+        Repeated deposition
+        can create layers
+        containing different sediment.
+      </p>
+
+    </div>
+
+
+    <div class="d90-compare">
+
+      <div>
+
+        <h3>
+          🗜️ COMPACTION
+        </h3>
+
+        <p>
+          Pressure pushes grains
+          closer together.
+        </p>
+
+        <strong>
+          SQUEEZE
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          🧱 CEMENTATION
+        </h3>
+
+        <p>
+          Minerals form
+          between grains
+          and help bind them together.
+        </p>
+
+        <strong>
+          BIND
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 STAAR Trap
+      </strong>
+
+      <br><br>
+
+      If the question says:
+
+      <strong>
+        "pressure pushes grains closer together"
+      </strong>
+
+      → think
+      <strong>COMPACTION.</strong>
+
+      <br><br>
+
+      If the question says:
+
+      <strong>
+        "minerals bind grains together"
+      </strong>
+
+      → think
+      <strong>CEMENTATION.</strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      D → C → C Model
+    </h2>
+
+
+    <div class="d90-notebook-grid">
+
+      <div>
+
+        <strong>
+          D
+        </strong>
+
+        <h3>
+          Deposition
+        </h3>
+
+        <p>
+          Draw four loose layers.
+        </p>
+
+        <span>
+          DROP
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          C
+        </strong>
+
+        <h3>
+          Compaction
+        </h3>
+
+        <p>
+          Draw pressure arrows
+          pushing down.
+        </p>
+
+        <span>
+          SQUEEZE
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          C
+        </strong>
+
+        <h3>
+          Cementation
+        </h3>
+
+        <p>
+          Draw minerals
+          between sediment grains.
+        </p>
+
+        <span>
+          BIND
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Write:
+
+      <br><br>
+
+      <strong>
+        Compaction squeezes sediment grains closer together.
+        Cementation uses minerals to bind grains together.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Paper Sedimentary Rock Model
+    </h2>
+
+
+    <div class="d59-box">
+
+      Give students
+      four differently colored
+      paper strips.
+
+      <ol>
+
+        <li>
+          Stack the strips:
+          <strong>Deposition.</strong>
+        </li>
+
+        <li>
+          Press the stack
+          between both hands:
+          <strong>Compaction.</strong>
+        </li>
+
+        <li>
+          Ask:
+          <strong>
+            Did squeezing alone
+            model cementation?
+          </strong>
+        </li>
+
+        <li>
+          Draw dots or lines
+          between the layers
+          representing mineral cement:
+          <strong>Cementation.</strong>
+        </li>
+
+      </ol>
+
+      Ask students to explain:
+
+      <strong>
+        What can this model show?
+        What can it NOT show?
+      </strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🏭 Interactive Rock Lab
+    </div>
+
+    <h2>
+      Sedimentary Layer Factory
+    </h2>
+
+
+    <p>
+      Choose sediment,
+      build layers,
+      add pressure,
+      and apply mineral cement
+      to manufacture
+      a model sedimentary rock.
+    </p>
+
+
+    <div class="d90-missions">
+
+      <div>
+        ⬇️
+        <strong>Mission 1</strong>
+        Deposit Layers
+      </div>
+
+      <div>
+        🥞
+        <strong>Mission 2</strong>
+        Build Overburden
+      </div>
+
+      <div>
+        🗜️
+        <strong>Mission 3</strong>
+        Compact + Cement
+      </div>
+
+      <div>
+        🔎
+        <strong>Mission 4</strong>
+        Rock Evidence Detective
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Complete the factory
+      to earn
+
+      <strong>
+        Sedimentary Layer Engineer
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/sedimentary-layer-factory?mission=day90"
+    >
+      🏭 Launch Sedimentary Layer Factory
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR-Style Practice
+    </div>
+
+    <h2>
+      Layers, Pressure, and Minerals
+    </h2>
+
+
+    <div class="d90-question"
+         data-answer="A">
+
+      <h3>Question 1</h3>
+
+      <p>
+        Sediment settles
+        at the bottom
+        of a lake
+        and begins forming a layer.
+
+        Which process occurred?
+      </p>
+
+      <button data-choice="A">
+        A. Deposition
+      </button>
+
+      <button data-choice="B">
+        B. Erosion
+      </button>
+
+      <button data-choice="C">
+        C. Compaction
+      </button>
+
+      <button data-choice="D">
+        D. Weathering
+      </button>
+
+      <div class="d90-feedback"></div>
+
+    </div>
+
+
+    <div class="d90-question"
+         data-answer="C">
+
+      <h3>Question 2</h3>
+
+      <p>
+        Additional sediment layers
+        accumulate above older layers.
+
+        What can the added weight
+        cause in the lower layers?
+      </p>
+
+      <button data-choice="A">
+        A. Weathering
+      </button>
+
+      <button data-choice="B">
+        B. Erosion
+      </button>
+
+      <button data-choice="C">
+        C. Compaction
+      </button>
+
+      <button data-choice="D">
+        D. Evaporation
+      </button>
+
+      <div class="d90-feedback"></div>
+
+    </div>
+
+
+    <div class="d90-question"
+         data-answer="B">
+
+      <h3>Question 3</h3>
+
+      <p>
+        Sediment grains
+        are pushed closer together
+        by pressure.
+
+        Which word best describes
+        this process?
+      </p>
+
+      <button data-choice="A">
+        A. Cementation
+      </button>
+
+      <button data-choice="B">
+        B. Compaction
+      </button>
+
+      <button data-choice="C">
+        C. Deposition
+      </button>
+
+      <button data-choice="D">
+        D. Erosion
+      </button>
+
+      <div class="d90-feedback"></div>
+
+    </div>
+
+
+    <div class="d90-question"
+         data-answer="D">
+
+      <h3>Question 4</h3>
+
+      <p>
+        Minerals form
+        between sediment grains
+        and bind the grains together.
+
+        Which process occurred?
+      </p>
+
+      <button data-choice="A">
+        A. Weathering
+      </button>
+
+      <button data-choice="B">
+        B. Erosion
+      </button>
+
+      <button data-choice="C">
+        C. Compaction
+      </button>
+
+      <button data-choice="D">
+        D. Cementation
+      </button>
+
+      <div class="d90-feedback"></div>
+
+    </div>
+
+
+    <div class="d90-question"
+         data-answer="A">
+
+      <h3>Question 5</h3>
+
+      <p>
+        Which sequence
+        best describes
+        the final stages
+        of sedimentary rock formation?
+      </p>
+
+      <button data-choice="A">
+        A. Deposition → Compaction → Cementation
+      </button>
+
+      <button data-choice="B">
+        B. Cementation → Erosion → Weathering
+      </button>
+
+      <button data-choice="C">
+        C. Compaction → Weathering → Erosion
+      </button>
+
+      <button data-choice="D">
+        D. Deposition → Weathering → Erosion
+      </button>
+
+      <div class="d90-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+    <p>
+      Explain why
+      <strong>compaction</strong>
+      and
+      <strong>cementation</strong>
+      are different
+      even though both help form
+      sedimentary rock.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="Compaction... Cementation..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Sedimentary Layer CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      Deposited sediment
+      can become sedimentary rock
+      through compaction
+      and cementation.
+
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The Layer Factory showed..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This forms sedimentary rock because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🪨 Next Mission
+    </div>
+
+    <h2>
+      Day 91:
+      Read the Rock Layers
+    </h2>
+
+
+    <div class="d59-box">
+
+      We now know
+      how layers can form.
+
+      <br><br>
+
+      Next we become
+      <strong>
+        Rock Layer Detectives
+      </strong>
+      and investigate
+      what sedimentary layers
+      can tell us
+      about the sequence
+      of past deposition.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d90VocabModal"
+     class="d90-modal">
+
+  <div class="d90-modal-card">
+
+    <button
+      id="d90VocabClose"
+      class="d90-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d90ModalIcon"
+         class="d90-modal-icon"></div>
+
+    <h2 id="d90ModalTerm"></h2>
+
+    <p id="d90ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day90_direct.js') }}?v=90-final"
+></script>
+
+{% endblock %}
