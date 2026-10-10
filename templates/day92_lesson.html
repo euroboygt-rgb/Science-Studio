@@ -1,0 +1,1476 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=92-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day92_direct.css') }}?v=92-final"
+>
+
+
+<div id="DAY92_DIRECT_TEMPLATE"
+     class="d92-page">
+
+
+  <!-- HERO -->
+
+  <section class="d92-hero">
+
+    <div class="d92-tags">
+
+      <span>Day 92</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10B</span>
+
+      <span>Fossil Evidence</span>
+
+    </div>
+
+
+    <h1>
+      🦴🔎 Fossil Evidence Detective:
+      What Was This Place Like Long Ago?
+    </h1>
+
+
+    <p>
+      Read sedimentary layers,
+      examine fossils,
+      and use evidence
+      to reconstruct past environments.
+    </p>
+
+
+    <div class="d92-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/92?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/92?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Fossil Mission
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          use fossils
+          and rock layers
+          as evidence
+          of past environments.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          identifying layer order
+          and connecting fossils
+          to environments.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can explain
+          how fossil evidence
+          shows an environment
+          changed over time.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🗂️ Fossil Case File 001
+    </div>
+
+    <h2>
+      A Fish Fossil... in the Desert?
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day92_fossil_desert.svg"
+        alt="Fish fossil discovered in sedimentary rock beneath a present-day desert"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      Scientists discover
+      a fish fossil
+      inside sedimentary rock
+      beneath a dry desert.
+
+      <br><br>
+
+      What does this fossil suggest
+      about the environment
+      long ago?
+
+    </div>
+
+  </section>
+
+
+  <!-- TWO BIG RULES -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🧠 Fossil Detective Rules
+    </div>
+
+    <h2>
+      Two Rules We Must Remember
+    </h2>
+
+
+    <div class="d92-big-rules">
+
+      <article>
+
+        <div class="d92-rule-icon">
+          ⬇️
+        </div>
+
+        <h3>
+          RULE 1
+        </h3>
+
+        <strong>
+          OLDEST LAYER = BOTTOM
+        </strong>
+
+        <p>
+          In the simple,
+          undisturbed rock models
+          we are using,
+          lower layers were deposited
+          before layers above them.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <div class="d92-rule-icon">
+          🐟🔎
+        </div>
+
+        <h3>
+          RULE 2
+        </h3>
+
+        <strong>
+          FOSSILS = ENVIRONMENTAL EVIDENCE
+        </strong>
+
+        <p>
+          Fossils can provide clues
+          about organisms
+          and environments
+          that existed long ago.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d92-fish-rule">
+
+      🐟 + 🏜️
+
+      <strong>
+        Fish fossil found in a desert today
+      </strong>
+
+      →
+
+      <strong>
+        Evidence that the area once had an aquatic environment.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- WEDCC -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🪨 W.E.D.C.C. Connection
+    </div>
+
+    <h2>
+      How Did the Fossil Get Into the Rock?
+    </h2>
+
+
+    <div class="d92-wedcc">
+
+      <div>
+        <b>W</b>
+        <strong>Weathering</strong>
+        <span>BREAK</span>
+      </div>
+
+      <em>→</em>
+
+      <div>
+        <b>E</b>
+        <strong>Erosion</strong>
+        <span>MOVE</span>
+      </div>
+
+      <em>→</em>
+
+      <div class="d92-focus-step">
+        <b>D</b>
+        <strong>Deposition</strong>
+        <span>BURIES / BUILDS LAYERS</span>
+      </div>
+
+      <em>→</em>
+
+      <div>
+        <b>C</b>
+        <strong>Compaction</strong>
+        <span>SQUEEZE</span>
+      </div>
+
+      <em>→</em>
+
+      <div>
+        <b>C</b>
+        <strong>Cementation</strong>
+        <span>BIND</span>
+      </div>
+
+    </div>
+
+
+    <div class="d92-memory">
+
+      Fossils can be preserved
+      within sedimentary layers
+      while the sediment
+      becomes rock.
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's Fossil Case
+        </div>
+
+        <h2>
+          Steve Says the Desert Was Always Dry
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Scientists uncover
+          a fish fossil
+          beneath a desert.
+
+          Steve says:
+
+          <strong>
+            "This place is dry now,
+            so it must have always been dry."
+          </strong>
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            Which response best uses the fossil evidence?
+          </strong>
+
+
+          <button class="d92-steve-answer"
+                  data-answer="A">
+
+            A. The fish fossil suggests the area once had an aquatic environment, so the environment changed over time.
+
+          </button>
+
+
+          <button class="d92-steve-answer"
+                  data-answer="B">
+
+            B. The fish probably lived in the desert without water.
+
+          </button>
+
+
+          <button class="d92-steve-answer"
+                  data-answer="C">
+
+            C. Fossils cannot provide evidence about past environments.
+
+          </button>
+
+
+          <button class="d92-steve-answer"
+                  data-answer="D">
+
+            D. The desert must have formed yesterday.
+
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button
+              id="d92SteveCheck"
+              class="d59-check"
+              type="button"
+            >
+              Check Fossil Evidence
+            </button>
+
+
+            <button
+              id="d92SteveReset"
+              class="d59-reset"
+              type="button"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d92SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Fossil Evidence Vocabulary
+    </h2>
+
+
+    <div class="d92-vocab-grid">
+
+      {% set words = [
+        ("🦴","fossil","Preserved evidence of an organism that lived in the past."),
+        ("🐟","organism","An individual living thing."),
+        ("🌎","environment","The living and nonliving surroundings of an organism."),
+        ("🌊","aquatic","Related to water or organisms living in water."),
+        ("🥞","sedimentary layer","A band of deposited sediment that became part of sedimentary rock."),
+        ("⬇️","oldest","Existing or forming before something else in a sequence."),
+        ("📚","undisturbed","Remaining in the simple original stacked arrangement used in our model."),
+        ("🔎","evidence","Information used to support a scientific explanation."),
+        ("⛏️","paleontologist","A scientist who studies evidence of ancient life, including fossils.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d92-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- LEARNING TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will use
+      fossils and rock layers
+      as evidence
+      to infer what
+      an environment was like
+      long ago.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      Fossil Clue
+    </h2>
+
+
+    <div class="d59-box">
+
+      A scientist discovers
+      a fish fossil
+      in a rock layer
+      beneath dry desert sand.
+
+      <br><br>
+
+      Answer:
+
+      <ol>
+
+        <li>
+          What is the evidence?
+        </li>
+
+        <li>
+          What can the scientist infer
+          about the past environment?
+        </li>
+
+        <li>
+          Does the present environment
+          have to be the same
+          as the past environment?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      Fossils Are Clues
+    </h2>
+
+
+    <div class="d92-evidence-chain">
+
+      <article>
+
+        <span>
+          🔎
+        </span>
+
+        <strong>
+          OBSERVATION
+        </strong>
+
+        <p>
+          A fish fossil
+          is found in rock.
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>
+          🐟🌊
+        </span>
+
+        <strong>
+          SCIENCE KNOWLEDGE
+        </strong>
+
+        <p>
+          Fish live
+          in aquatic environments.
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>
+          🧠
+        </span>
+
+        <strong>
+          INFERENCE
+        </strong>
+
+        <p>
+          The area
+          once had water.
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>
+          🏜️
+        </span>
+
+        <strong>
+          CHANGE
+        </strong>
+
+        <p>
+          The environment
+          is different today.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d92-layer-model">
+
+      <h3>
+        ⬇️ Fossils + Layer Order
+      </h3>
+
+
+      <div class="f-layer f4">
+
+        <span>
+          LAYER 4
+        </span>
+
+        deposited later
+
+      </div>
+
+
+      <div class="f-layer f3">
+
+        <span>
+          LAYER 3
+        </span>
+
+        🌿 leaf fossil
+
+      </div>
+
+
+      <div class="f-layer f2">
+
+        <span>
+          LAYER 2
+        </span>
+
+        🐚 shell fossil
+
+      </div>
+
+
+      <div class="f-layer f1">
+
+        <span>
+          LAYER 1
+        </span>
+
+        🐟 fish fossil — OLDEST LAYER
+
+      </div>
+
+    </div>
+
+
+    <div class="d92-rule-box">
+
+      <strong>
+        In this simple undisturbed model:
+      </strong>
+
+      <br><br>
+
+      Layer 1 was deposited first.
+
+      <br>
+
+      Layer 4 was deposited later.
+
+      <br><br>
+
+      Therefore,
+      the fossil in Layer 1
+      is found in an older layer
+      than fossils in layers above it.
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Don't Overclaim the Evidence
+      </strong>
+
+      <br><br>
+
+      A fish fossil
+      supports the conclusion
+      that the area
+      once had an
+      <strong>aquatic environment.</strong>
+
+      <br><br>
+
+      It does NOT automatically tell us
+      every detail
+      about the ancient water body.
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Fossil Detective Rules
+    </h2>
+
+
+    <div class="d92-notebook-grid">
+
+      <article>
+
+        <strong>
+          RULE 1
+        </strong>
+
+        <span>
+          ⬇️
+        </span>
+
+        <p>
+          Simple undisturbed model:
+
+          <br>
+
+          <strong>
+            OLDEST LAYER
+            AT THE BOTTOM
+          </strong>
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          RULE 2
+        </strong>
+
+        <span>
+          🦴
+        </span>
+
+        <p>
+          Fossils are
+          <strong>
+            EVIDENCE
+          </strong>
+          about past life.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          RULE 3
+        </strong>
+
+        <span>
+          🐟🌊
+        </span>
+
+        <p>
+          Aquatic fossils
+          provide evidence
+          of a past
+          <strong>
+            AQUATIC ENVIRONMENT.
+          </strong>
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          RULE 4
+        </strong>
+
+        <span>
+          🔄
+        </span>
+
+        <p>
+          Environments
+          can
+          <strong>
+            CHANGE OVER TIME.
+          </strong>
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Write this evidence sentence:
+
+      <br><br>
+
+      <strong>
+        A fish fossil found in a present-day desert is evidence that the area once had an aquatic environment.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Evidence → Inference
+    </h2>
+
+
+    <div class="d59-box">
+
+      Draw four horizontal
+      rock layers.
+
+      <br><br>
+
+      Place a fish fossil
+      in Layer 1,
+      the bottom layer.
+
+      <br><br>
+
+      Tell students:
+
+      <strong>
+        "Today this location is a dry desert."
+      </strong>
+
+      <br><br>
+
+      Ask:
+
+      <ol>
+
+        <li>
+          Which layer is oldest?
+        </li>
+
+        <li>
+          What fossil evidence is present?
+        </li>
+
+        <li>
+          What type of environment
+          does a fish require?
+        </li>
+
+        <li>
+          What changed?
+        </li>
+
+      </ol>
+
+
+      Require the sentence frame:
+
+      <br><br>
+
+      <strong>
+        "The evidence shows ______,
+        so I infer ______."
+      </strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⛏️ Paleontologist Investigation
+    </div>
+
+    <h2>
+      Fossil Evidence Detective Case Files
+    </h2>
+
+
+    <p>
+      Examine sedimentary layers,
+      identify older and younger layers,
+      match fossils to past environments,
+      and solve the Desert Fish Mystery.
+    </p>
+
+
+    <div class="d92-missions">
+
+      <div>
+        ⬇️
+        <strong>
+          Mission 1
+        </strong>
+        Layer Age Scanner
+      </div>
+
+      <div>
+        🦴🌎
+        <strong>
+          Mission 2
+        </strong>
+        Fossil Environment Match
+      </div>
+
+      <div>
+        🐟🏜️
+        <strong>
+          Mission 3
+        </strong>
+        Desert Fish Mystery
+      </div>
+
+      <div>
+        🗂️
+        <strong>
+          Mission 4
+        </strong>
+        Paleontologist Case Files
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Solve all fossil investigations
+      to earn
+
+      <strong>
+        Fossil Evidence Detective
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/fossil-evidence-detective?mission=day92"
+    >
+      ⛏️ Open Fossil Evidence Case Files
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR-Style Practice
+    </div>
+
+    <h2>
+      Fossils and Environmental Evidence
+    </h2>
+
+
+    <div class="d92-question"
+         data-answer="C">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        Scientists discover
+        a fish fossil
+        in sedimentary rock
+        beneath a dry desert.
+
+        Which conclusion
+        is best supported?
+      </p>
+
+      <button data-choice="A">
+        A. Fish can live without water.
+      </button>
+
+      <button data-choice="B">
+        B. The desert has always been dry.
+      </button>
+
+      <button data-choice="C">
+        C. The area once had an aquatic environment.
+      </button>
+
+      <button data-choice="D">
+        D. The fossil formed yesterday.
+      </button>
+
+      <div class="d92-feedback"></div>
+
+    </div>
+
+
+    <div class="d92-question"
+         data-answer="A">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        Which layer
+        is oldest
+        in a simple undisturbed
+        four-layer rock model?
+      </p>
+
+      <button data-choice="A">
+        A. The bottom layer
+      </button>
+
+      <button data-choice="B">
+        B. The top layer
+      </button>
+
+      <button data-choice="C">
+        C. Every layer is the same age
+      </button>
+
+      <button data-choice="D">
+        D. The layer with the brightest color
+      </button>
+
+      <div class="d92-feedback"></div>
+
+    </div>
+
+
+    <div class="d92-question"
+         data-answer="B">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        Why can a fossil
+        help scientists
+        learn about
+        a past environment?
+      </p>
+
+      <button data-choice="A">
+        A. Fossils predict tomorrow's weather.
+      </button>
+
+      <button data-choice="B">
+        B. Fossils provide evidence of organisms that lived in the area long ago.
+      </button>
+
+      <button data-choice="C">
+        C. Fossils always show the present environment.
+      </button>
+
+      <button data-choice="D">
+        D. Fossils contain no information about organisms.
+      </button>
+
+      <div class="d92-feedback"></div>
+
+    </div>
+
+
+    <div class="d92-question"
+         data-answer="D">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        Layer A is below
+        Layer B
+        in an undisturbed model.
+
+        Which statement
+        is best supported?
+      </p>
+
+      <button data-choice="A">
+        A. Layer B was deposited first.
+      </button>
+
+      <button data-choice="B">
+        B. Both layers formed at exactly the same time.
+      </button>
+
+      <button data-choice="C">
+        C. Layer color determines age.
+      </button>
+
+      <button data-choice="D">
+        D. Layer A was deposited before Layer B.
+      </button>
+
+      <div class="d92-feedback"></div>
+
+    </div>
+
+
+    <div class="d92-question"
+         data-answer="A">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        A student finds
+        aquatic-organism fossils
+        in an older rock layer
+        but the location
+        is dry land today.
+
+        What is the strongest explanation?
+      </p>
+
+      <button data-choice="A">
+        A. The environment changed over time.
+      </button>
+
+      <button data-choice="B">
+        B. Aquatic organisms never needed water.
+      </button>
+
+      <button data-choice="C">
+        C. The fossils describe only the present.
+      </button>
+
+      <button data-choice="D">
+        D. The rock layer cannot contain evidence.
+      </button>
+
+      <div class="d92-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+
+    <p>
+      A fish fossil
+      is discovered
+      in a desert rock layer.
+
+      <br><br>
+
+      Explain:
+
+      <strong>
+        What does the fossil suggest
+        about the past environment?
+      </strong>
+
+      <br><br>
+
+      Identify the evidence
+      supporting your explanation.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="The evidence is... This suggests..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Fossil Evidence CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Question:
+      </strong>
+
+      How can a fish fossil
+      found in a desert
+      show that the environment
+      changed over time?
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim that the area..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="Scientists found..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="Fish require... therefore..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- IMPORTANT DISTINCTION -->
+
+  <section class="d59-card">
+
+    <h2>
+      🚨 Important:
+      Fossil ≠ Fossil Fuel
+    </h2>
+
+
+    <div class="d92-not-same">
+
+      <article>
+
+        <span>
+          🦴
+        </span>
+
+        <h3>
+          FOSSIL
+        </h3>
+
+        <p>
+          Preserved evidence
+          of an organism
+          that lived in the past.
+        </p>
+
+      </article>
+
+
+      <div>
+        ≠
+      </div>
+
+
+      <article>
+
+        <span>
+          ⛽
+        </span>
+
+        <h3>
+          FOSSIL FUEL
+        </h3>
+
+        <p>
+          Fuel formed
+          from ancient organic material
+          changed under particular conditions
+          over very long periods of time.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      ⏳ Next Mission
+    </div>
+
+    <h2>
+      Day 93:
+      Fossil Fuel Time Machine
+    </h2>
+
+
+    <div class="d59-box">
+
+      Today,
+      fossils gave us clues
+      about past environments.
+
+      <br><br>
+
+      Tomorrow we investigate
+      a different process:
+
+      <br><br>
+
+      <strong>
+        Ancient organic material
+        → Burial
+        → Long Time
+        → Heat + Pressure
+        → Fossil Fuels
+      </strong>
+
+      <br><br>
+
+      We will make sure students understand:
+
+      <strong>
+        FOSSIL and FOSSIL FUEL
+        are not the same thing.
+      </strong>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d92VocabModal"
+     class="d92-modal">
+
+  <div class="d92-modal-card">
+
+    <button
+      id="d92VocabClose"
+      class="d92-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d92ModalIcon"
+         class="d92-modal-icon"></div>
+
+    <h2 id="d92ModalTerm"></h2>
+
+    <p id="d92ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day92_direct.js') }}?v=92-final"
+></script>
+
+{% endblock %}

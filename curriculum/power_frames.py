@@ -1089,3 +1089,20 @@ POWER_FRAMES[91] = {
 }
 
 # Science Studio Day 91 Power Frame End
+
+
+# Science Studio Day 92 Power Frame Start
+
+POWER_FRAMES[92] = {
+
+    "i_can":
+        "I can use fossils and rock layers as evidence of past environments.",
+
+    "by":
+        "identifying layer order and connecting fossil clues to the environments where organisms lived.",
+
+    "i_know":
+        "I know I have learned this when I can explain how a fossil can show that an environment changed over time."
+}
+
+# Science Studio Day 92 Power Frame End

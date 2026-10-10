@@ -5923,3 +5923,101 @@ SECOND_NINE_WEEKS_LESSONS[91] = {
 }
 
 # Science Studio Day 91 End
+
+
+# Science Studio Day 92 Start
+
+SECOND_NINE_WEEKS_LESSONS[92] = {
+
+    "day": 92,
+
+    "title":
+        "Fossil Evidence Detective: What Was This Place Like Long Ago?",
+
+    "unit":
+        "Sedimentary Rocks, Fossils, and Fossil Fuels",
+
+    "teks":
+        "5.10B, 5.1F, 5.2D",
+
+    "focus":
+        "Students use fossils and simple undisturbed sedimentary layers as evidence "
+        "to infer past environments and describe environmental change over time.",
+
+    "learning_target":
+        "We will use fossils and rock layers as evidence to infer what an environment was like long ago.",
+
+    "success_criteria":
+        "I can identify the oldest layer in a simple undisturbed rock model "
+        "and use a fossil to support an explanation about a past environment.",
+
+    "essential_question":
+        "How can fossils and sedimentary rock layers reveal that an environment changed over time?",
+
+    "bell_ringer": [
+        "In a simple undisturbed rock column, where is the oldest layer?",
+        "What can a fossil tell scientists about organisms that lived long ago?",
+        "What could a fish fossil found in a desert suggest about the area's past environment?"
+    ],
+
+    "mini_lesson": [
+        "Fossils are preserved evidence of organisms that lived in the past.",
+        "Sedimentary rocks can contain fossils.",
+        "In a simple undisturbed rock model, lower layers were deposited before layers above them.",
+        "Therefore, the bottom layer is the oldest layer in that simple model.",
+        "Fossils can provide clues about the environment in which an organism lived.",
+        "Aquatic-organism fossils provide evidence that water was once present in an area.",
+        "A fish fossil found in a present-day desert can support the conclusion that the area once had an aquatic environment.",
+        "Plant fossils can provide evidence that plants once lived in an area.",
+        "Scientists compare fossil evidence with rock-layer evidence before making conclusions.",
+        "The present environment may be very different from the environment represented by older fossils.",
+        "A fossil is evidence of a past organism; a fossil is not the same thing as a fossil fuel."
+    ],
+
+    "science_notebook": [
+        "Write: SIMPLE UNDISTURBED MODEL = OLDEST LAYER AT THE BOTTOM.",
+        "Draw four sedimentary layers and label the bottom layer OLDEST.",
+        "Draw a fish fossil inside one lower layer.",
+        "Write: Fish fossil = evidence of a past aquatic environment.",
+        "Write: Present environment and past environment can be different.",
+        "Write: Fossils are evidence. Scientists use evidence to make explanations."
+    ],
+
+    "guided_practice": [
+        "Show students a four-layer undisturbed rock column.",
+        "Ask students to identify the oldest and youngest layers.",
+        "Place a fish fossil symbol inside a lower layer.",
+        "Tell students the present-day location is a dry desert.",
+        "Ask students what conclusion the fish fossil supports.",
+        "Require students to use the sentence frame: The evidence shows ___, so I infer ___."
+    ],
+
+    "lab_title":
+        "Paleontologist Fossil Evidence Case Files",
+
+    "lab_url":
+        "/labs/fossil-evidence-detective?mission=day92",
+
+    "exit_ticket":
+        "A fish fossil is discovered in a desert rock layer. Explain what the fossil suggests about the past environment and identify the evidence.",
+
+    "vocabulary": [
+        "fossil",
+        "organism",
+        "environment",
+        "aquatic",
+        "sedimentary layer",
+        "oldest",
+        "undisturbed",
+        "evidence",
+        "paleontologist"
+    ],
+
+    "teacher_note":
+        "Reinforce two rules repeatedly: in the simple undisturbed models used here, "
+        "the oldest layer is at the bottom; fossils can provide evidence about past environments. "
+        "A fish fossil in a modern desert supports a past aquatic environment. "
+        "Avoid claiming that the fossil alone identifies every detail of the ancient water body."
+}
+
+# Science Studio Day 92 End

@@ -77,6 +77,58 @@ app = Flask(__name__)
 
 
 
+
+# Science Studio Dedicated Day 92 Start
+
+@app.before_request
+def science_studio_dedicated_day92():
+
+    from flask import (
+        request as flask_request,
+        render_template as flask_render_template,
+    )
+
+    if flask_request.path not in (
+        "/second-nine-weeks/day/92",
+        "/2nd-nine-weeks/day/92",
+    ):
+        return None
+
+    view = flask_request.args.get(
+        "view",
+        "student"
+    )
+
+    if view not in (
+        "student",
+        "teacher",
+    ):
+        view = "student"
+
+    return flask_render_template(
+        "day92_lesson.html",
+        view=view
+    )
+
+# Science Studio Dedicated Day 92 End
+
+
+# Science Studio Fossil Evidence Detective Route Start
+
+@app.route("/labs/fossil-evidence-detective")
+def fossil_evidence_detective_lab():
+
+    from flask import (
+        render_template as flask_render_template,
+    )
+
+    return flask_render_template(
+        "fossil_evidence_detective_lab.html"
+    )
+
+# Science Studio Fossil Evidence Detective Route End
+
+
 # Science Studio Dedicated Day 91 Start
 
 @app.before_request

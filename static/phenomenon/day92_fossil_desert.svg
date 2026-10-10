@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#77c9ee"/>
+
+      <stop offset="100%"
+            stop-color="#eaf8ff"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="25"
+        fill="url(#sky)"/>
+
+
+  <text x="600"
+        y="48"
+        text-anchor="middle"
+        fill="#35261c"
+        font-size="30"
+        font-weight="900">
+    FOSSIL EVIDENCE MYSTERY
+  </text>
+
+
+  <text x="600"
+        y="90"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="34"
+        font-weight="900">
+    WHY IS THERE A FISH FOSSIL IN THE DESERT?
+  </text>
+
+
+  <!-- DESERT SURFACE -->
+
+  <path d="M0 310
+           Q180 245 350 310
+           Q520 360 700 295
+           Q900 225 1200 310
+           L1200 700
+           L0 700 Z"
+        fill="#ddb465"/>
+
+
+  <!-- SUN -->
+
+  <circle cx="1040"
+          cy="175"
+          r="62"
+          fill="#ffd447"
+          stroke="#f5b900"
+          stroke-width="6"/>
+
+
+  <!-- CACTI -->
+
+  <g fill="#3f8c4f"
+     stroke="#265b34"
+     stroke-width="5">
+
+    <rect x="110"
+          y="215"
+          width="35"
+          height="115"
+          rx="15"/>
+
+    <rect x="80"
+          y="245"
+          width="35"
+          height="55"
+          rx="15"/>
+
+    <rect x="140"
+          y="235"
+          width="35"
+          height="65"
+          rx="15"/>
+
+    <rect x="950"
+          y="245"
+          width="30"
+          height="90"
+          rx="15"/>
+
+  </g>
+
+
+  <!-- ROCK CUTAWAY -->
+
+  <g transform="translate(300,330)">
+
+    <rect x="0"
+          y="0"
+          width="600"
+          height="65"
+          fill="#d4a45f"
+          stroke="#553c28"
+          stroke-width="4"/>
+
+    <rect x="0"
+          y="65"
+          width="600"
+          height="65"
+          fill="#b87d55"
+          stroke="#553c28"
+          stroke-width="4"/>
+
+    <rect x="0"
+          y="130"
+          width="600"
+          height="65"
+          fill="#dc946b"
+          stroke="#553c28"
+          stroke-width="4"/>
+
+    <rect x="0"
+          y="195"
+          width="600"
+          height="65"
+          fill="#90745e"
+          stroke="#553c28"
+          stroke-width="4"/>
+
+
+    <!-- FISH FOSSIL -->
+
+    <g transform="translate(215,145)"
+       fill="none"
+       stroke="#433426"
+       stroke-width="7"
+       stroke-linecap="round">
+
+      <ellipse cx="80"
+               cy="25"
+               rx="65"
+               ry="28"/>
+
+      <path d="M15 25 L-25 -5 L-25 55 Z"/>
+
+      <circle cx="120"
+              cy="18"
+              r="4"
+              fill="#433426"/>
+
+      <path d="M45 5 L45 45
+               M70 0 L70 50
+               M95 2 L95 48"/>
+
+    </g>
+
+
+    <text x="500"
+          y="170"
+          text-anchor="middle"
+          fill="#35261c"
+          font-size="20"
+          font-weight="900">
+      FISH FOSSIL
+    </text>
+
+  </g>
+
+
+  <rect x="95"
+        y="610"
+        width="1010"
+        height="65"
+        rx="26"
+        fill="#fff3ad"
+        stroke="#35261c"
+        stroke-width="5"/>
+
+
+  <text x="600"
+        y="652"
+        text-anchor="middle"
+        fill="#35261c"
+        font-size="23"
+        font-weight="900">
+    TODAY: DRY DESERT — LONG AGO: WHAT DOES THE FOSSIL EVIDENCE SUGGEST?
+  </text>
+
+</svg>

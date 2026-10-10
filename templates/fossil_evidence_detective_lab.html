@@ -1,0 +1,705 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='fossil_evidence_detective_lab.css') }}?v=92.1"
+>
+
+
+<div class="fe-shell">
+
+
+  <!-- HERO -->
+
+  <header class="fe-hero">
+
+    <div class="fe-tags">
+
+      <span>⛏️ Paleontologist Mission</span>
+
+      <span>Fossil Evidence Case Files</span>
+
+      <span>TEKS 5.10B Connection</span>
+
+    </div>
+
+
+    <div class="fe-hero-row">
+
+      <div>
+
+        <h1>
+          Fossil Evidence Detective
+        </h1>
+
+        <p>
+          Read the layers.
+          Examine the fossils.
+          Reconstruct the past environment.
+        </p>
+
+      </div>
+
+
+      <a
+        class="fe-back"
+        href="/second-nine-weeks/day/92?view=student"
+      >
+        ← Back to Day 92
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- TWO RULES -->
+
+  <section class="fe-rules">
+
+    <div>
+
+      <strong>
+        ⬇️ LAYER RULE
+      </strong>
+
+      <span>
+        SIMPLE UNDISTURBED MODEL:
+        OLDEST AT THE BOTTOM
+      </span>
+
+    </div>
+
+
+    <div>
+
+      <strong>
+        🦴 FOSSIL RULE
+      </strong>
+
+      <span>
+        FOSSILS CAN PROVIDE EVIDENCE
+        ABOUT PAST ENVIRONMENTS
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- STATUS -->
+
+  <section class="fe-status">
+
+    <h2>
+      Investigation Status
+    </h2>
+
+
+    <div class="fe-status-grid">
+
+      <div id="feStatus1">
+        <span>🔴</span>
+        <strong>Mission 1</strong>
+        <small>Layer Age Scanner</small>
+      </div>
+
+
+      <div id="feStatus2">
+        <span>🔴</span>
+        <strong>Mission 2</strong>
+        <small>Environment Match</small>
+      </div>
+
+
+      <div id="feStatus3">
+        <span>🔴</span>
+        <strong>Mission 3</strong>
+        <small>Desert Fish</small>
+      </div>
+
+
+      <div id="feStatus4">
+        <span>🔴</span>
+        <strong>Mission 4</strong>
+        <small>Case Files</small>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="fe-mission-head">
+
+    <div class="fe-number">
+      1
+    </div>
+
+    <div>
+
+      <h2>
+        Layer Age Scanner
+      </h2>
+
+      <p>
+        Identify the oldest
+        and most recently deposited layers.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="fe-panel">
+
+    <div class="fe-rock-core">
+
+      <div class="fe-layer fe-d">
+        LAYER D — SAND
+      </div>
+
+      <div class="fe-layer fe-c">
+        LAYER C — LEAF FOSSIL 🌿
+      </div>
+
+      <div class="fe-layer fe-b">
+        LAYER B — SHELL FOSSIL 🐚
+      </div>
+
+      <div class="fe-layer fe-a">
+        LAYER A — FISH FOSSIL 🐟
+      </div>
+
+    </div>
+
+
+    <h3>
+      Which layer is OLDEST?
+    </h3>
+
+
+    <div class="fe-button-row"
+         id="feOldChoices">
+
+      <button data-old="A"
+              type="button">
+        Layer A
+      </button>
+
+      <button data-old="B"
+              type="button">
+        Layer B
+      </button>
+
+      <button data-old="C"
+              type="button">
+        Layer C
+      </button>
+
+      <button data-old="D"
+              type="button">
+        Layer D
+      </button>
+
+    </div>
+
+
+    <h3>
+      Which layer was deposited MOST RECENTLY?
+    </h3>
+
+
+    <div class="fe-button-row"
+         id="feYoungChoices">
+
+      <button data-young="A"
+              type="button">
+        Layer A
+      </button>
+
+      <button data-young="B"
+              type="button">
+        Layer B
+      </button>
+
+      <button data-young="C"
+              type="button">
+        Layer C
+      </button>
+
+      <button data-young="D"
+              type="button">
+        Layer D
+      </button>
+
+    </div>
+
+
+    <button
+      id="feCheck1"
+      class="fe-main-button"
+      type="button"
+    >
+      ⬇️ CHECK LAYER ORDER
+    </button>
+
+
+    <div id="feFeedback1"
+         class="fe-feedback">
+
+      Use the simple undisturbed layer rule.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="fe-mission-head">
+
+    <div class="fe-number">
+      2
+    </div>
+
+    <div>
+
+      <h2>
+        Fossil Environment Match
+      </h2>
+
+      <p>
+        Use each fossil
+        as a clue
+        about the environment.
+      </p>
+
+    </div>
+
+
+    <aside class="fe-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="feScore2">
+        0 / 3
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="fe-panel">
+
+    <div id="feEvidence2"
+         class="fe-case-card">
+    </div>
+
+    <div id="feQuestion2"
+         class="fe-question">
+    </div>
+
+    <div id="feChoices2"
+         class="fe-choices">
+    </div>
+
+
+    <button
+      id="feCheck2"
+      class="fe-main-button"
+      type="button"
+    >
+      🌎 MATCH ENVIRONMENT
+    </button>
+
+
+    <div id="feFeedback2"
+         class="fe-feedback">
+
+      Use the fossil as evidence.
+
+    </div>
+
+
+    <button
+      id="feNext2"
+      class="fe-next-button"
+      type="button"
+      disabled
+    >
+      NEXT FOSSIL →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="fe-mission-head">
+
+    <div class="fe-number">
+      3
+    </div>
+
+    <div>
+
+      <h2>
+        The Desert Fish Mystery
+      </h2>
+
+      <p>
+        Solve the main fossil case.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="fe-panel">
+
+    <div class="fe-desert-case">
+
+      <div class="fe-desert-top">
+
+        <span>
+          ☀️
+        </span>
+
+        <strong>
+          PRESENT DAY
+        </strong>
+
+        <p>
+          Hot, dry desert
+        </p>
+
+        <div>
+          🌵 &nbsp; 🏜️ &nbsp; 🌵
+        </div>
+
+      </div>
+
+
+      <div class="fe-desert-layer">
+
+        <strong>
+          SEDIMENTARY ROCK LAYER
+        </strong>
+
+        <div class="fe-fish">
+          🐟
+        </div>
+
+        <p>
+          Fish fossil discovered
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <h3>
+      Choose the best CLAIM:
+    </h3>
+
+
+    <div class="fe-case-choices"
+         id="feClaimChoices">
+
+      <button
+        data-claim="A"
+        type="button"
+      >
+        A. The area once had an aquatic environment.
+      </button>
+
+      <button
+        data-claim="B"
+        type="button"
+      >
+        B. Fish naturally live in dry desert sand.
+      </button>
+
+      <button
+        data-claim="C"
+        type="button"
+      >
+        C. The environment never changed.
+      </button>
+
+    </div>
+
+
+    <h3>
+      Select the TWO ideas that support the claim:
+    </h3>
+
+
+    <div class="fe-support-choices">
+
+      <button
+        data-support="fossil"
+        type="button"
+      >
+        Scientists found a fish fossil at this location.
+      </button>
+
+      <button
+        data-support="fishwater"
+        type="button"
+      >
+        Fish live in aquatic environments.
+      </button>
+
+      <button
+        data-support="color"
+        type="button"
+      >
+        The desert sand is tan.
+      </button>
+
+      <button
+        data-support="today"
+        type="button"
+      >
+        It is dry today, so it must always have been dry.
+      </button>
+
+    </div>
+
+
+    <button
+      id="feCheck3"
+      class="fe-main-button"
+      type="button"
+    >
+      🐟 SOLVE DESERT FISH CASE
+    </button>
+
+
+    <div id="feFeedback3"
+         class="fe-feedback">
+
+      Build a claim
+      from evidence + science knowledge.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="fe-mission-head">
+
+    <div class="fe-number">
+      4
+    </div>
+
+    <div>
+
+      <h2>
+        Paleontologist Case Files
+      </h2>
+
+      <p>
+        Combine fossils,
+        layers,
+        and environmental evidence.
+      </p>
+
+    </div>
+
+
+    <aside class="fe-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="feScore4">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="fe-panel">
+
+    <div id="feEvidence4"
+         class="fe-case-card">
+    </div>
+
+    <div id="feQuestion4"
+         class="fe-question">
+    </div>
+
+    <div id="feChoices4"
+         class="fe-choices">
+    </div>
+
+
+    <button
+      id="feCheck4"
+      class="fe-main-button"
+      type="button"
+    >
+      🗂️ SOLVE CASE FILE
+    </button>
+
+
+    <div id="feFeedback4"
+         class="fe-feedback">
+
+      Use all available evidence.
+
+    </div>
+
+
+    <button
+      id="feNext4"
+      class="fe-next-button"
+      type="button"
+      disabled
+    >
+      NEXT CASE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="fe-final">
+
+    <div class="fe-final-icon">
+      ⛏️🦴🔎🏆
+    </div>
+
+
+    <h2>
+      Paleontology Mission Status
+    </h2>
+
+
+    <div id="feFinalMessage"
+         class="fe-final-message">
+
+      Complete all four fossil investigations.
+
+    </div>
+
+  </section>
+
+
+  <!-- LOG -->
+
+  <section class="fe-log">
+
+    <h2>
+      📓 Fossil Evidence Log
+    </h2>
+
+
+    <div class="fe-log-grid">
+
+      <article>
+
+        <strong>
+          ⬇️ Oldest
+        </strong>
+
+        <p>
+          Bottom layer
+          in our simple
+          undisturbed model.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🦴 Fossils
+        </strong>
+
+        <p>
+          Evidence of organisms
+          that lived
+          in the past.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🐟 Aquatic Clue
+        </strong>
+
+        <p>
+          Fish fossils
+          support a past
+          aquatic environment.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🔄 Change
+        </strong>
+
+        <p>
+          Past environments
+          may differ
+          from today's environment.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="fe-big-question">
+
+      <strong>
+        🧠 Paleontologist Question:
+      </strong>
+
+      If an aquatic fossil
+      is discovered in a place
+      that is dry today,
+      what changed:
+      the fossil,
+      or the environment?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='fossil_evidence_detective_lab.js') }}?v=92.1"
+></script>
+
+{% endblock %}
