@@ -1160,3 +1160,21 @@ POWER_FRAMES[95] = {
 }
 
 # Science Studio Day 95 Power Frame End
+
+
+# Science Studio Day 96 Power Frame Start
+
+POWER_FRAMES[96] = {
+
+    "i_can":
+        "I can use evidence to identify sedimentary-rock, fossil, and fossil-fuel processes.",
+
+    "by":
+        "analyzing mixed Earth-history clues and explaining which process each clue supports.",
+
+    "i_know":
+        "I know I have learned this when I can solve an unfamiliar Earth-history case "
+        "without being told which process to use."
+}
+
+# Science Studio Day 96 Power Frame End

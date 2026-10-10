@@ -1,0 +1,552 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='earth_history_systems_challenge_lab.css') }}?v=96.1"
+>
+
+
+<div class="eh-shell">
+
+
+  <!-- HERO -->
+
+  <header class="eh-hero">
+
+    <div class="eh-tags">
+
+      <span>🧩 Mission Control</span>
+
+      <span>Earth History Systems</span>
+
+      <span>TEKS 5.10B</span>
+
+    </div>
+
+
+    <div class="eh-hero-row">
+
+      <div>
+
+        <h1>
+          Earth History Systems Challenge
+        </h1>
+
+        <p>
+          No topic labels.
+          No shortcuts.
+          Follow the evidence.
+        </p>
+
+      </div>
+
+
+      <a
+        class="eh-back"
+        href="/second-nine-weeks/day/96?view=student"
+      >
+        ← Back to Day 96
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- MASTER STRIP -->
+
+  <section class="eh-master-strip">
+
+    <span>
+      🪨 WEDCC
+    </span>
+
+    <span>
+      🥞 Oldest = Bottom
+    </span>
+
+    <span>
+      🦴 Fossils = Past Evidence
+    </span>
+
+    <span>
+      ⚫ Coal = Ancient Plants
+    </span>
+
+    <span>
+      🛢️🔥 Oil/Gas = Aquatic Organic Material
+    </span>
+
+  </section>
+
+
+  <!-- STATUS -->
+
+  <section class="eh-status">
+
+    <h2>
+      Systems Challenge Status
+    </h2>
+
+
+    <div class="eh-status-grid">
+
+      <div id="ehStatus1">
+        <span>🔴</span>
+        <strong>Mission 1</strong>
+        <small>WEDCC Decoder</small>
+      </div>
+
+      <div id="ehStatus2">
+        <span>🔴</span>
+        <strong>Mission 2</strong>
+        <small>Layers + Fossils</small>
+      </div>
+
+      <div id="ehStatus3">
+        <span>🔴</span>
+        <strong>Mission 3</strong>
+        <small>Fuel Match</small>
+      </div>
+
+      <div id="ehStatus4">
+        <span>🔴</span>
+        <strong>Mission 4</strong>
+        <small>Master Files</small>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="eh-mission-head">
+
+    <div class="eh-number">
+      1
+    </div>
+
+    <div>
+
+      <h2>
+        W.E.D.C.C. Decoder
+      </h2>
+
+      <p>
+        Identify the process
+        from the evidence.
+      </p>
+
+    </div>
+
+
+    <aside class="eh-score">
+
+      <strong>Score</strong>
+
+      <span id="ehScore1">
+        0 / 5
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="eh-panel">
+
+    <div id="ehEvidence1"
+         class="eh-case-card">
+    </div>
+
+    <div id="ehQuestion1"
+         class="eh-question">
+    </div>
+
+    <div id="ehChoices1"
+         class="eh-choices">
+    </div>
+
+
+    <button
+      id="ehCheck1"
+      class="eh-main-button"
+      type="button"
+    >
+      🪨 IDENTIFY PROCESS
+    </button>
+
+
+    <div id="ehFeedback1"
+         class="eh-feedback">
+
+      BREAK → MOVE → DROP → SQUEEZE → BIND
+
+    </div>
+
+
+    <button
+      id="ehNext1"
+      class="eh-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="eh-mission-head">
+
+    <div class="eh-number">
+      2
+    </div>
+
+    <div>
+
+      <h2>
+        Rock Layers + Fossil Evidence
+      </h2>
+
+      <p>
+        Use layer position
+        and fossil clues
+        to reconstruct the past.
+      </p>
+
+    </div>
+
+
+    <aside class="eh-score">
+
+      <strong>Score</strong>
+
+      <span id="ehScore2">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="eh-panel">
+
+    <div id="ehEvidence2"
+         class="eh-case-card">
+    </div>
+
+    <div id="ehQuestion2"
+         class="eh-question">
+    </div>
+
+    <div id="ehChoices2"
+         class="eh-choices">
+    </div>
+
+
+    <button
+      id="ehCheck2"
+      class="eh-main-button"
+      type="button"
+    >
+      🦴 ANALYZE EARTH HISTORY
+    </button>
+
+
+    <div id="ehFeedback2"
+         class="eh-feedback">
+
+      Oldest at bottom.
+      Fossils are evidence.
+    </div>
+
+
+    <button
+      id="ehNext2"
+      class="eh-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="eh-mission-head">
+
+    <div class="eh-number">
+      3
+    </div>
+
+    <div>
+
+      <h2>
+        Fossil Fuel Pathway Match
+      </h2>
+
+      <p>
+        Determine whether the evidence
+        represents coal,
+        petroleum/natural gas,
+        both,
+        or neither.
+      </p>
+
+    </div>
+
+
+    <aside class="eh-score">
+
+      <strong>Score</strong>
+
+      <span id="ehScore3">
+        0 / 5
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="eh-panel">
+
+    <div id="ehEvidence3"
+         class="eh-case-card">
+    </div>
+
+    <div id="ehQuestion3"
+         class="eh-question">
+    </div>
+
+    <div id="ehChoices3"
+         class="eh-choices">
+    </div>
+
+
+    <button
+      id="ehCheck3"
+      class="eh-main-button"
+      type="button"
+    >
+      ⚫🛢️🔥 MATCH PATHWAY
+    </button>
+
+
+    <div id="ehFeedback3"
+         class="eh-feedback">
+
+      Follow the source material.
+    </div>
+
+
+    <button
+      id="ehNext3"
+      class="eh-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="eh-mission-head">
+
+    <div class="eh-number">
+      4
+    </div>
+
+    <div>
+
+      <h2>
+        Master Earth History Case Files
+      </h2>
+
+      <p>
+        Every topic is now mixed together.
+      </p>
+
+    </div>
+
+
+    <aside class="eh-score">
+
+      <strong>Score</strong>
+
+      <span id="ehScore4">
+        0 / 6
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="eh-panel">
+
+    <div id="ehEvidence4"
+         class="eh-case-card">
+    </div>
+
+    <div id="ehQuestion4"
+         class="eh-question">
+    </div>
+
+    <div id="ehChoices4"
+         class="eh-choices">
+    </div>
+
+
+    <button
+      id="ehCheck4"
+      class="eh-main-button"
+      type="button"
+    >
+      🗂️ SOLVE MASTER CASE
+    </button>
+
+
+    <div id="ehFeedback4"
+         class="eh-feedback">
+
+      Identify the evidence first.
+    </div>
+
+
+    <button
+      id="ehNext4"
+      class="eh-next-button"
+      type="button"
+      disabled
+    >
+      NEXT CASE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="eh-final">
+
+    <div class="eh-final-icon">
+      🧩🪨🦴⚫🛢️🔥🏆
+    </div>
+
+
+    <h2>
+      Earth History Mission Status
+    </h2>
+
+
+    <div id="ehFinalMessage"
+         class="eh-final-message">
+
+      Complete all four systems challenges.
+
+    </div>
+
+  </section>
+
+
+  <!-- LOG -->
+
+  <section class="eh-log">
+
+    <h2>
+      📓 Mission Control Evidence Log
+    </h2>
+
+
+    <div class="eh-log-grid">
+
+      <article>
+
+        <strong>
+          🪨 W.E.D.C.C.
+        </strong>
+
+        <p>
+          Break
+          → Move
+          → Drop
+          → Squeeze
+          → Bind
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🥞🦴 LAYERS + FOSSILS
+        </strong>
+
+        <p>
+          Oldest at bottom.
+
+          Fossils reveal
+          past environments.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ⚫ COAL
+        </strong>
+
+        <p>
+          Ancient plants
+          → peat
+          → burial
+          → heat + pressure + time
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🛢️🔥 OIL + GAS
+        </strong>
+
+        <p>
+          Ancient aquatic
+          organic material
+          → burial
+          → heat + pressure + time
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='earth_history_systems_challenge_lab.js') }}?v=96.1"
+></script>
+
+{% endblock %}

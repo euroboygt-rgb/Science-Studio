@@ -1,0 +1,1341 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=96-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day96_direct.css') }}?v=96-final"
+>
+
+
+<div id="DAY96_DIRECT_TEMPLATE"
+     class="d96-page">
+
+
+  <!-- HERO -->
+
+  <section class="d96-hero">
+
+    <div class="d96-tags">
+
+      <span>Day 96</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10B</span>
+
+      <span>Systems Challenge</span>
+
+    </div>
+
+
+    <h1>
+      🧩🔎 Earth History Systems Challenge:
+      Solve the Evidence
+    </h1>
+
+
+    <p>
+      Rock layers.
+      Fossils.
+      W.E.D.C.C.
+      Coal.
+      Petroleum.
+      Natural gas.
+
+      <br>
+
+      Today,
+      the evidence decides
+      which system you are solving.
+    </p>
+
+
+    <div class="d96-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/96?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/96?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Systems Mission
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>I can...</strong>
+
+        <p>
+          use evidence
+          to identify
+          sedimentary-rock,
+          fossil,
+          and fossil-fuel processes.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>By...</strong>
+
+        <p>
+          analyzing mixed clues
+          without being told
+          which Earth process
+          to use.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can solve
+          an unfamiliar
+          Earth-history case
+          using evidence.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🗂️ Mission Control Evidence Board
+    </div>
+
+    <h2>
+      Five Mystery Case Files
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day96_systems_case.svg"
+        alt="Five mystery Earth history cases involving WEDCC layers fossils coal and petroleum"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Challenge:
+      </strong>
+
+      Can you identify
+      all five Earth-history systems
+      using only
+      the evidence shown?
+
+    </div>
+
+  </section>
+
+
+  <!-- MASTER MEMORY BOARD -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🧠 Mission Control Memory Board
+    </div>
+
+    <h2>
+      Five Systems You Must Know
+    </h2>
+
+
+    <div class="d96-master-grid">
+
+      <article>
+
+        <span>🪨</span>
+
+        <h3>
+          W.E.D.C.C.
+        </h3>
+
+        <p>
+          <strong>
+            BREAK → MOVE → DROP → SQUEEZE → BIND
+          </strong>
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>🥞⬇️</span>
+
+        <h3>
+          ROCK LAYERS
+        </h3>
+
+        <p>
+          Simple undisturbed model:
+
+          <strong>
+            oldest at the bottom
+          </strong>
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>🐟🏜️</span>
+
+        <h3>
+          FOSSIL EVIDENCE
+        </h3>
+
+        <p>
+          Fossils can reveal
+          <strong>
+            past environments.
+          </strong>
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>🌿🟫⚫</span>
+
+        <h3>
+          COAL
+        </h3>
+
+        <p>
+          Ancient plants
+          → peat
+          → burial
+          → heat + pressure + time
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>🌊🦠🛢️🔥</span>
+
+        <h3>
+          OIL + GAS
+        </h3>
+
+        <p>
+          Ancient aquatic
+          organic material
+          → burial
+          → heat + pressure + time
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve's Everything-Is-W.E.D.C.C. Problem
+        </div>
+
+        <h2>
+          Can W.E.D.C.C. Explain Everything?
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve says:
+
+          <strong>
+            "I figured it out!
+            Cementation makes sedimentary rock,
+            so cementation must also
+            make coal,
+            petroleum,
+            and natural gas."
+          </strong>
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            Which response best corrects Steve?
+          </strong>
+
+
+          <button class="d96-steve-answer"
+                  data-answer="A">
+
+            A. W.E.D.C.C. explains sedimentary-rock formation. Fossil fuels form from ancient organic material under different geologic conditions.
+
+          </button>
+
+
+          <button class="d96-steve-answer"
+                  data-answer="B">
+
+            B. Steve is correct; cementation forms every fossil fuel.
+
+          </button>
+
+
+          <button class="d96-steve-answer"
+                  data-answer="C">
+
+            C. Weathering changes fossils directly into gasoline.
+
+          </button>
+
+
+          <button class="d96-steve-answer"
+                  data-answer="D">
+
+            D. Fossil fuels do not involve ancient organic material.
+
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button
+              id="d96SteveCheck"
+              class="d59-check"
+              type="button"
+            >
+              Check System Science
+            </button>
+
+
+            <button
+              id="d96SteveReset"
+              class="d59-reset"
+              type="button"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d96SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Systems Challenge Vocabulary
+    </h2>
+
+
+    <div class="d96-vocab-grid">
+
+      {% set words = [
+        ("💥","weathering","The breaking of rock into smaller pieces."),
+        ("➡️","erosion","The movement of sediment from one location to another."),
+        ("⬇️","deposition","The dropping or settling of sediment."),
+        ("🗜️","compaction","Pressure squeezing sediment grains closer together."),
+        ("🧱","cementation","Minerals binding sediment grains together."),
+        ("🦴","fossil","Preserved evidence of an organism that lived in the past."),
+        ("🔎","evidence","Information used to support a scientific explanation."),
+        ("⚫","coal","A solid fossil fuel formed mainly from ancient plant material."),
+        ("🛢️","petroleum","A liquid fossil fuel formed from ancient organic material over geologic time."),
+        ("🔥","natural gas","A gaseous fossil fuel formed from ancient organic material under suitable geologic conditions.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d96-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will use
+      evidence
+      to identify
+      and explain
+      sedimentary-rock,
+      fossil,
+      and fossil-fuel processes.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      Name the System
+    </h2>
+
+
+    <div class="d59-box">
+
+      Identify the system
+      described by each clue:
+
+      <ol>
+
+        <li>
+          Minerals bind sediment grains.
+        </li>
+
+        <li>
+          A fish fossil is discovered beneath a desert.
+        </li>
+
+        <li>
+          Ancient plants form peat.
+        </li>
+
+        <li>
+          Tiny aquatic organisms become deeply buried.
+        </li>
+
+        <li>
+          The lowest layer in an undisturbed rock column.
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      Evidence Before Answer
+    </h2>
+
+
+    <div class="d96-evidence-flow">
+
+      <article>
+
+        <span>1️⃣</span>
+
+        <strong>
+          READ THE CLUE
+        </strong>
+
+        <p>
+          What evidence
+          is actually given?
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>2️⃣</span>
+
+        <strong>
+          FIND THE KEY WORD
+        </strong>
+
+        <p>
+          Break?
+          Fossil?
+          Peat?
+          Aquatic organisms?
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>3️⃣</span>
+
+        <strong>
+          IDENTIFY THE SYSTEM
+        </strong>
+
+        <p>
+          Which process
+          best matches
+          the evidence?
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>4️⃣</span>
+
+        <strong>
+          DEFEND IT
+        </strong>
+
+        <p>
+          Explain
+          which clue
+          supports the answer.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d96-case-grid">
+
+      <article>
+
+        <h3>
+          🪨 Case: Sediment Moves Downstream
+        </h3>
+
+        <p>
+          Key evidence:
+          <strong>moves sediment</strong>
+        </p>
+
+        <div>
+          Answer:
+          <strong>EROSION</strong>
+        </div>
+
+      </article>
+
+
+      <article>
+
+        <h3>
+          🐟 Case: Fish Fossil in Desert
+        </h3>
+
+        <p>
+          Key evidence:
+          <strong>aquatic organism fossil</strong>
+        </p>
+
+        <div>
+          Answer:
+          <strong>
+            past aquatic environment
+          </strong>
+        </div>
+
+      </article>
+
+
+      <article>
+
+        <h3>
+          🌿 Case: Peat Buried Deeply
+        </h3>
+
+        <p>
+          Key evidence:
+          <strong>peat + ancient plants</strong>
+        </p>
+
+        <div>
+          Answer:
+          <strong>COAL PATHWAY</strong>
+        </div>
+
+      </article>
+
+
+      <article>
+
+        <h3>
+          🌊🦠 Case: Aquatic Organic Material
+        </h3>
+
+        <p>
+          Key evidence:
+          <strong>
+            ancient aquatic organisms
+          </strong>
+        </p>
+
+        <div>
+          Answer:
+          <strong>
+            PETROLEUM / NATURAL GAS PATHWAY
+          </strong>
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      5.10B Mission Control Board
+    </h2>
+
+
+    <div class="d96-notebook">
+
+      <article>
+
+        <strong>
+          🪨 ROCK
+        </strong>
+
+        <p>
+          WEDCC
+
+          <br>
+
+          BREAK
+          → MOVE
+          → DROP
+          → SQUEEZE
+          → BIND
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🥞 LAYERS
+        </strong>
+
+        <p>
+          Simple undisturbed model:
+
+          <br>
+
+          OLDEST
+          =
+          BOTTOM
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🦴 FOSSILS
+        </strong>
+
+        <p>
+          Clues about
+          past life
+          and environments.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ⚫ COAL
+        </strong>
+
+        <p>
+          Ancient plants
+
+          <br>
+
+          Peat
+
+          <br>
+
+          Burial + heat
+          + pressure + time
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🛢️🔥 OIL + GAS
+        </strong>
+
+        <p>
+          Ancient aquatic
+          organic material
+
+          <br>
+
+          Burial + heat
+          + pressure + time
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Mystery Evidence Sort
+    </h2>
+
+
+    <div class="d59-box">
+
+      Read one clue at a time.
+
+      Do
+      <strong>not</strong>
+      tell students the category.
+
+      <br><br>
+
+      Suggested clues:
+
+      <ul>
+
+        <li>
+          A river carries sediment downstream.
+        </li>
+
+        <li>
+          Mineral material binds sediment grains.
+        </li>
+
+        <li>
+          A shell fossil is found far inland.
+        </li>
+
+        <li>
+          A bottom rock layer lies beneath three later layers.
+        </li>
+
+        <li>
+          Peat becomes deeply buried.
+        </li>
+
+        <li>
+          Ancient aquatic organic material is buried beneath marine sediments.
+        </li>
+
+      </ul>
+
+
+      Require students to respond:
+
+      <strong>
+        "I identified ______ because the evidence says ______."
+      </strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🧩 Mixed Evidence Laboratory
+    </div>
+
+    <h2>
+      Earth History Systems Challenge
+    </h2>
+
+
+    <p>
+      The computer will no longer
+      tell you which topic
+      you are solving.
+
+      <br><br>
+
+      Analyze the clues,
+      identify the system,
+      and defend your answer
+      with evidence.
+    </p>
+
+
+    <div class="d96-missions">
+
+      <div>
+        🪨
+        <strong>Mission 1</strong>
+        W.E.D.C.C. Decoder
+      </div>
+
+      <div>
+        🥞🦴
+        <strong>Mission 2</strong>
+        Layers + Fossils
+      </div>
+
+      <div>
+        ⚫🛢️🔥
+        <strong>Mission 3</strong>
+        Fossil Fuel Match
+      </div>
+
+      <div>
+        🗂️🔎
+        <strong>Mission 4</strong>
+        Master Case Files
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Complete all four systems
+      to earn
+
+      <strong>
+        Earth History Systems Specialist
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/earth-history-systems-challenge?mission=day96"
+    >
+      🧩 Launch Earth History Systems Challenge
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ Mixed STAAR-Style Practice
+    </div>
+
+    <h2>
+      Which System Does the Evidence Support?
+    </h2>
+
+
+    <div class="d96-question"
+         data-answer="B">
+
+      <h3>Question 1</h3>
+
+      <p>
+        A stream carries
+        pieces of sediment
+        away from a weathered rock.
+
+        Which process
+        is occurring?
+      </p>
+
+      <button data-choice="A">
+        A. Cementation
+      </button>
+
+      <button data-choice="B">
+        B. Erosion
+      </button>
+
+      <button data-choice="C">
+        C. Compaction
+      </button>
+
+      <button data-choice="D">
+        D. Deposition
+      </button>
+
+      <div class="d96-feedback"></div>
+
+    </div>
+
+
+    <div class="d96-question"
+         data-answer="D">
+
+      <h3>Question 2</h3>
+
+      <p>
+        A fish fossil
+        is discovered
+        in an older rock layer
+        beneath a dry desert.
+
+        What conclusion
+        is best supported?
+      </p>
+
+      <button data-choice="A">
+        A. Fish can live without water.
+      </button>
+
+      <button data-choice="B">
+        B. The fossil proves exactly how deep the ancient water was.
+      </button>
+
+      <button data-choice="C">
+        C. The area was always dry.
+      </button>
+
+      <button data-choice="D">
+        D. The area once had an aquatic environment.
+      </button>
+
+      <div class="d96-feedback"></div>
+
+    </div>
+
+
+    <div class="d96-question"
+         data-answer="A">
+
+      <h3>Question 3</h3>
+
+      <p>
+        Which evidence
+        best identifies
+        the coal-formation pathway?
+      </p>
+
+      <button data-choice="A">
+        A. Ancient plants accumulated and formed peat.
+      </button>
+
+      <button data-choice="B">
+        B. A prism separated white light.
+      </button>
+
+      <button data-choice="C">
+        C. A magnet attracted iron.
+      </button>
+
+      <button data-choice="D">
+        D. Water evaporated.
+      </button>
+
+      <div class="d96-feedback"></div>
+
+    </div>
+
+
+    <div class="d96-question"
+         data-answer="C">
+
+      <h3>Question 4</h3>
+
+      <p>
+        Ancient aquatic organic material
+        becomes deeply buried
+        and experiences heat,
+        pressure,
+        and millions of years.
+
+        Which products
+        are most closely connected
+        to this model?
+      </p>
+
+      <button data-choice="A">
+        A. Peat only
+      </button>
+
+      <button data-choice="B">
+        B. Sedimentary rock only
+      </button>
+
+      <button data-choice="C">
+        C. Petroleum and natural gas
+      </button>
+
+      <button data-choice="D">
+        D. Clouds and rain
+      </button>
+
+      <div class="d96-feedback"></div>
+
+    </div>
+
+
+    <div class="d96-question"
+         data-answer="B">
+
+      <h3>Question 5</h3>
+
+      <p>
+        Which statement
+        correctly distinguishes
+        sedimentary-rock formation
+        from fossil-fuel formation?
+      </p>
+
+      <button data-choice="A">
+        A. Cementation directly makes all fossil fuels.
+      </button>
+
+      <button data-choice="B">
+        B. W.E.D.C.C. describes sedimentary-rock formation, while fossil fuels form from ancient organic material under other geologic conditions.
+      </button>
+
+      <button data-choice="C">
+        C. Fossil fuels form when sediment is deposited for one day.
+      </button>
+
+      <button data-choice="D">
+        D. Sedimentary rocks cannot contain fossils.
+      </button>
+
+      <div class="d96-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+
+    <p>
+      Choose
+      <strong>one</strong>
+      Earth-history system
+      from today.
+
+      <br><br>
+
+      Explain:
+
+      <strong>
+        What evidence would help
+        a scientist identify it?
+      </strong>
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="I would identify... The evidence would be..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Systems Challenge CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      Scientists can identify
+      Earth-history processes
+      by matching explanations
+      to evidence.
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="One case showed..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This clue identifies the process because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🏆 Next Mission
+    </div>
+
+    <h2>
+      Day 97:
+      TEKS 5.10B Certification Mission
+    </h2>
+
+
+    <div class="d59-box">
+
+      Day 97 will be
+      the final certification
+      for this unit section.
+
+      <br><br>
+
+      Students will need to prove mastery of:
+
+      <br><br>
+
+      <strong>
+        🪨 W.E.D.C.C.
+      </strong>
+
+      <br>
+
+      <strong>
+        🥞 Rock Layer Evidence
+      </strong>
+
+      <br>
+
+      <strong>
+        🦴 Fossils + Past Environments
+      </strong>
+
+      <br>
+
+      <strong>
+        ⚫ Coal Formation
+      </strong>
+
+      <br>
+
+      <strong>
+        🛢️ Petroleum + 🔥 Natural Gas Formation
+      </strong>
+
+      <br><br>
+
+      Successful students will unlock
+      a final
+      <strong>
+        Sedimentary Rocks &amp; Fossil Fuels Science Specialist
+      </strong>
+      certificate.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d96VocabModal"
+     class="d96-modal">
+
+  <div class="d96-modal-card">
+
+    <button
+      id="d96VocabClose"
+      class="d96-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d96ModalIcon"
+         class="d96-modal-icon"></div>
+
+    <h2 id="d96ModalTerm"></h2>
+
+    <p id="d96ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day96_direct.js') }}?v=96-final"
+></script>
+
+{% endblock %}

@@ -6320,3 +6320,108 @@ SECOND_NINE_WEEKS_LESSONS[95] = {
 }
 
 # Science Studio Day 95 End
+
+
+# Science Studio Day 96 Start
+
+SECOND_NINE_WEEKS_LESSONS[96] = {
+
+    "day": 96,
+
+    "title":
+        "Earth History Systems Challenge: Solve the Evidence",
+
+    "unit":
+        "Sedimentary Rocks, Fossils, and Fossil Fuels",
+
+    "teks":
+        "5.10B, 5.1F, 5.2D, 5.3B",
+
+    "focus":
+        "Students synthesize sedimentary-rock formation, layer order, fossil evidence, "
+        "past environments, coal formation, and petroleum/natural-gas formation by "
+        "using evidence to identify the correct Earth-system process.",
+
+    "learning_target":
+        "We will use evidence to identify and explain sedimentary-rock, fossil, "
+        "and fossil-fuel processes.",
+
+    "success_criteria":
+        "I can determine which Earth-history process is represented by evidence "
+        "and support my answer with scientific reasoning.",
+
+    "essential_question":
+        "How can scientists use layers, fossils, and formation clues to reconstruct "
+        "Earth's past and explain how sedimentary rocks and fossil fuels formed?",
+
+    "bell_ringer": [
+        "What does each letter in W.E.D.C.C. mean?",
+        "Where is the oldest layer in a simple undisturbed rock column?",
+        "What could a fish fossil in a desert tell scientists?",
+        "What source material is most closely connected to coal?",
+        "What source material is commonly associated with petroleum and natural gas?"
+    ],
+
+    "mini_lesson": [
+        "Weathering breaks rock into smaller pieces.",
+        "Erosion moves sediment.",
+        "Deposition drops sediment and can build layers.",
+        "Compaction squeezes sediment grains closer together.",
+        "Cementation binds sediment grains with minerals.",
+        "In a simple undisturbed rock column, lower layers were deposited before layers above them.",
+        "Fossils provide evidence about organisms and environments from the past.",
+        "A fish fossil in a present-day desert can support the conclusion that the area once had an aquatic environment.",
+        "Coal forms mainly from ancient plant material that accumulated, formed peat, became buried, and changed under heat and pressure over geologic time.",
+        "Petroleum and natural gas are commonly associated with ancient aquatic organic material that became deeply buried and changed under suitable conditions over geologic time.",
+        "A fossil is not the same thing as a fossil fuel.",
+        "Cementation forms sedimentary rock; it does not directly create fossil fuels."
+    ],
+
+    "science_notebook": [
+        "Create five evidence boxes.",
+        "Box 1: W.E.D.C.C. = BREAK → MOVE → DROP → SQUEEZE → BIND.",
+        "Box 2: Simple undisturbed layers = oldest at bottom.",
+        "Box 3: Fossils = clues about past organisms and environments.",
+        "Box 4: Coal = ancient plants → peat → burial → heat + pressure + time.",
+        "Box 5: Oil + natural gas = ancient aquatic organic material → burial → heat + pressure + time.",
+        "Write: Scientific explanations must match the evidence."
+    ],
+
+    "guided_practice": [
+        "Read mixed evidence cards without naming the topic.",
+        "Students classify each card as W.E.D.C.C., rock-layer evidence, fossil-environment evidence, coal formation, or petroleum/natural-gas formation.",
+        "Require students to cite the clue that caused them to choose the category.",
+        "Correct misconceptions immediately before the lab."
+    ],
+
+    "lab_title":
+        "Earth History Systems Challenge",
+
+    "lab_url":
+        "/labs/earth-history-systems-challenge?mission=day96",
+
+    "exit_ticket":
+        "Choose one Earth-history system from today's lesson and explain which evidence "
+        "would allow a scientist to identify that system.",
+
+    "vocabulary": [
+        "weathering",
+        "erosion",
+        "deposition",
+        "compaction",
+        "cementation",
+        "fossil",
+        "evidence",
+        "coal",
+        "petroleum",
+        "natural gas"
+    ],
+
+    "teacher_note":
+        "This is a synthesis day before Day 97 certification. "
+        "Do not introduce additional advanced geology. "
+        "Require evidence-based reasoning and continue using simple undisturbed "
+        "rock-layer models for oldest/youngest relationships."
+}
+
+# Science Studio Day 96 End

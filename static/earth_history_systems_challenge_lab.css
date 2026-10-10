@@ -1,0 +1,272 @@
+.eh-shell {
+  width: min(1200px,96vw);
+  margin: 24px auto 60px;
+}
+
+.eh-hero,
+.eh-master-strip,
+.eh-status,
+.eh-mission-head,
+.eh-panel,
+.eh-final,
+.eh-log {
+  border: 3px solid #171717;
+  border-radius: 17px;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+.eh-hero {
+  padding: 20px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #35251e,
+      #166682,
+      #252525,
+      #7131cc
+    );
+}
+
+.eh-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.eh-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #2c3039;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+.eh-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.eh-back {
+  padding: 10px 14px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.eh-master-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 14px;
+  background: #fff4cd;
+}
+
+.eh-master-strip span {
+  padding: 9px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  font-weight: 900;
+}
+
+.eh-status {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+.eh-status-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.eh-status-grid > div {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.eh-status-grid span,
+.eh-status-grid strong,
+.eh-status-grid small {
+  display: block;
+}
+
+.eh-status-grid span {
+  font-size: 1.8rem;
+}
+
+.eh-status-grid .online {
+  background: #d9f8dd;
+}
+
+.eh-mission-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+.eh-number {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  flex: 0 0 auto;
+  border: 4px solid #171717;
+  border-radius: 50%;
+  background: #7131cc;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.eh-score {
+  margin-left: auto;
+  padding: 9px 14px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.eh-score strong,
+.eh-score span {
+  display: block;
+}
+
+.eh-panel {
+  margin-top: 10px;
+  padding: 16px;
+  background: #111a34;
+  color: #fff;
+}
+
+.eh-case-card,
+.eh-question {
+  padding: 14px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+}
+
+.eh-case-card {
+  margin-bottom: 10px;
+  background: #fff3ad;
+}
+
+.eh-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.eh-choice {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.eh-choice.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+  box-shadow: 0 0 0 3px rgba(113,49,204,.25);
+}
+
+.eh-main-button,
+.eh-next-button {
+  margin-top: 12px;
+  padding: 12px 18px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #ffe45d;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.eh-next-button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.eh-feedback {
+  margin-top: 12px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+}
+
+.eh-final {
+  margin-top: 14px;
+  padding: 20px;
+  background: #fff4cd;
+  text-align: center;
+}
+
+.eh-final-icon {
+  font-size: 4rem;
+}
+
+.eh-final-message {
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #e9f6ff;
+  font-weight: 900;
+}
+
+.eh-log {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff;
+}
+
+.eh-log-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.eh-log-grid article {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+}
+
+@media (max-width:850px) {
+
+  .eh-hero-row {
+    display: block;
+  }
+
+  .eh-status-grid,
+  .eh-choices,
+  .eh-log-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

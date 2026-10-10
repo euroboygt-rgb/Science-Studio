@@ -1,0 +1,417 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#84d4ef"/>
+
+      <stop offset="100%"
+            stop-color="#eefaff"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="28"
+        fill="url(#sky)"/>
+
+
+  <text x="600"
+        y="55"
+        text-anchor="middle"
+        fill="#29231f"
+        font-size="32"
+        font-weight="900">
+    EARTH HISTORY SYSTEMS CHALLENGE
+  </text>
+
+
+  <text x="600"
+        y="100"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="28"
+        font-weight="900">
+    WHICH PROCESS DOES EACH PIECE OF EVIDENCE REVEAL?
+  </text>
+
+
+  <!-- FIVE CASE FILES -->
+
+  <g transform="translate(70,160)">
+
+    <rect x="0"
+          y="0"
+          width="200"
+          height="360"
+          rx="18"
+          fill="#fff3ad"
+          stroke="#252525"
+          stroke-width="5"/>
+
+    <text x="100"
+          y="45"
+          text-anchor="middle"
+          font-size="40">
+      🪨
+    </text>
+
+    <text x="100"
+          y="85"
+          text-anchor="middle"
+          font-size="19"
+          font-weight="900">
+      CASE A
+    </text>
+
+    <text x="100"
+          y="130"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      BREAK
+    </text>
+
+    <text x="100"
+          y="170"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      MOVE
+    </text>
+
+    <text x="100"
+          y="210"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      DROP
+    </text>
+
+    <text x="100"
+          y="250"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      SQUEEZE
+    </text>
+
+    <text x="100"
+          y="290"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      BIND
+    </text>
+
+    <text x="100"
+          y="335"
+          text-anchor="middle"
+          font-size="35"
+          font-weight="900">
+      ?
+    </text>
+
+  </g>
+
+
+  <g transform="translate(290,160)">
+
+    <rect x="0"
+          y="0"
+          width="200"
+          height="360"
+          rx="18"
+          fill="#dff4ff"
+          stroke="#252525"
+          stroke-width="5"/>
+
+    <text x="100"
+          y="50"
+          text-anchor="middle"
+          font-size="42">
+      🥞
+    </text>
+
+    <text x="100"
+          y="90"
+          text-anchor="middle"
+          font-size="19"
+          font-weight="900">
+      CASE B
+    </text>
+
+    <rect x="35"
+          y="125"
+          width="130"
+          height="40"
+          fill="#d9b16f"
+          stroke="#4d3827"
+          stroke-width="3"/>
+
+    <rect x="35"
+          y="165"
+          width="130"
+          height="40"
+          fill="#ae7654"
+          stroke="#4d3827"
+          stroke-width="3"/>
+
+    <rect x="35"
+          y="205"
+          width="130"
+          height="40"
+          fill="#df9164"
+          stroke="#4d3827"
+          stroke-width="3"/>
+
+    <rect x="35"
+          y="245"
+          width="130"
+          height="40"
+          fill="#967964"
+          stroke="#4d3827"
+          stroke-width="3"/>
+
+    <text x="100"
+          y="335"
+          text-anchor="middle"
+          font-size="35"
+          font-weight="900">
+      ?
+    </text>
+
+  </g>
+
+
+  <g transform="translate(510,160)">
+
+    <rect x="0"
+          y="0"
+          width="200"
+          height="360"
+          rx="18"
+          fill="#ffe4c7"
+          stroke="#252525"
+          stroke-width="5"/>
+
+    <text x="100"
+          y="50"
+          text-anchor="middle"
+          font-size="42">
+      🐟🏜️
+    </text>
+
+    <text x="100"
+          y="90"
+          text-anchor="middle"
+          font-size="19"
+          font-weight="900">
+      CASE C
+    </text>
+
+    <text x="100"
+          y="155"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900">
+      FISH FOSSIL
+    </text>
+
+    <text x="100"
+          y="200"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900">
+      FOUND IN
+    </text>
+
+    <text x="100"
+          y="245"
+          text-anchor="middle"
+          font-size="17"
+          font-weight="900">
+      DESERT ROCK
+    </text>
+
+    <text x="100"
+          y="335"
+          text-anchor="middle"
+          font-size="35"
+          font-weight="900">
+      ?
+    </text>
+
+  </g>
+
+
+  <g transform="translate(730,160)">
+
+    <rect x="0"
+          y="0"
+          width="200"
+          height="360"
+          rx="18"
+          fill="#e7dfd1"
+          stroke="#252525"
+          stroke-width="5"/>
+
+    <text x="100"
+          y="50"
+          text-anchor="middle"
+          font-size="42">
+      🌿🟫⚫
+    </text>
+
+    <text x="100"
+          y="90"
+          text-anchor="middle"
+          font-size="19"
+          font-weight="900">
+      CASE D
+    </text>
+
+    <text x="100"
+          y="155"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      ANCIENT PLANTS
+    </text>
+
+    <text x="100"
+          y="200"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      PEAT
+    </text>
+
+    <text x="100"
+          y="245"
+          text-anchor="middle"
+          font-size="16"
+          font-weight="900">
+      TIME + PRESSURE
+    </text>
+
+    <text x="100"
+          y="335"
+          text-anchor="middle"
+          font-size="35"
+          font-weight="900">
+      ?
+    </text>
+
+  </g>
+
+
+  <g transform="translate(950,160)">
+
+    <rect x="0"
+          y="0"
+          width="180"
+          height="360"
+          rx="18"
+          fill="#d9f3ff"
+          stroke="#252525"
+          stroke-width="5"/>
+
+    <text x="90"
+          y="50"
+          text-anchor="middle"
+          font-size="42">
+      🌊🦠
+    </text>
+
+    <text x="90"
+          y="90"
+          text-anchor="middle"
+          font-size="19"
+          font-weight="900">
+      CASE E
+    </text>
+
+    <text x="90"
+          y="150"
+          text-anchor="middle"
+          font-size="15"
+          font-weight="900">
+      AQUATIC
+    </text>
+
+    <text x="90"
+          y="185"
+          text-anchor="middle"
+          font-size="15"
+          font-weight="900">
+      ORGANIC
+    </text>
+
+    <text x="90"
+          y="220"
+          text-anchor="middle"
+          font-size="15"
+          font-weight="900">
+      MATERIAL
+    </text>
+
+    <text x="90"
+          y="260"
+          text-anchor="middle"
+          font-size="15"
+          font-weight="900">
+      HEAT + TIME
+    </text>
+
+    <text x="90"
+          y="335"
+          text-anchor="middle"
+          font-size="35"
+          font-weight="900">
+      ?
+    </text>
+
+  </g>
+
+
+  <rect x="150"
+        y="570"
+        width="900"
+        height="85"
+        rx="30"
+        fill="#fff"
+        stroke="#252525"
+        stroke-width="5"/>
+
+
+  <text x="600"
+        y="605"
+        text-anchor="middle"
+        fill="#29231f"
+        font-size="20"
+        font-weight="900">
+    SCIENTISTS DO NOT GUESS.
+  </text>
+
+
+  <text x="600"
+        y="635"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="22"
+        font-weight="900">
+    THEY MATCH EXPLANATIONS TO EVIDENCE.
+  </text>
+
+</svg>
