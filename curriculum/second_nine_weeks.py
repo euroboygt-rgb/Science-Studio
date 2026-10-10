@@ -6021,3 +6021,100 @@ SECOND_NINE_WEEKS_LESSONS[92] = {
 }
 
 # Science Studio Day 92 End
+
+
+# Science Studio Day 93 Start
+
+SECOND_NINE_WEEKS_LESSONS[93] = {
+
+    "day": 93,
+
+    "title":
+        "Fossil Fuel Time Machine: Ancient Life Under Pressure",
+
+    "unit":
+        "Sedimentary Rocks, Fossils, and Fossil Fuels",
+
+    "teks":
+        "5.10B, 5.1F, 5.2D",
+
+    "focus":
+        "Students model and describe the shared formation pattern of fossil fuels: "
+        "ancient organic material becomes buried beneath sediment and, under suitable conditions "
+        "over very long periods of time, heat and pressure contribute to changes that form fossil fuels.",
+
+    "learning_target":
+        "We will model and describe how ancient organic material can become fossil fuels.",
+
+    "success_criteria":
+        "I can explain why burial, very long periods of time, heat, and pressure are important "
+        "to fossil-fuel formation and distinguish a fossil from a fossil fuel.",
+
+    "essential_question":
+        "How can material from organisms that lived long ago eventually become a fossil fuel?",
+
+    "bell_ringer": [
+        "Is a fossil the same thing as a fossil fuel?",
+        "What process can cover and bury material beneath sediment?",
+        "Would fossil fuels form in a few days? Explain."
+    ],
+
+    "mini_lesson": [
+        "Fossil fuels include coal, petroleum or oil, and natural gas.",
+        "Fossil fuels formed from ancient organic material from organisms that lived long ago.",
+        "Different fossil fuels can form from different kinds of ancient organic material and under different conditions.",
+        "Deposition can bury organic material beneath layers of sediment.",
+        "Continued burial places the material deeper beneath Earth's surface.",
+        "Burial can expose the organic material to increasing pressure and heat.",
+        "Under suitable conditions, heat and pressure can change buried organic material over very long periods of time.",
+        "Fossil-fuel formation takes extremely long periods of time, commonly millions of years.",
+        "Because fossil fuels form so slowly compared with how quickly people use them, they are classified as nonrenewable resources.",
+        "A fossil is preserved evidence of past life. A fossil fuel is an energy resource formed from ancient organic material.",
+        "W.E.D.C.C. describes sedimentary-rock formation. It should not be used to claim that cementation creates fossil fuels."
+    ],
+
+    "science_notebook": [
+        "Title: Fossil Fuel Time Machine.",
+        "Write: Ancient organic material → Burial → More layers → Heat + Pressure → Very Long Time → Fossil Fuel.",
+        "Write: Fossil ≠ Fossil Fuel.",
+        "Write: Deposition can bury organic material.",
+        "Write: Cementation forms sedimentary rock; cementation does NOT directly create fossil fuel.",
+        "Write: Fossil fuels are nonrenewable because they take extremely long periods of time to form."
+    ],
+
+    "guided_practice": [
+        "Give students six process cards.",
+        "Cards: ancient organisms, burial, more sediment, heat and pressure, very long time, fossil fuel.",
+        "Students arrange the cards into a reasonable formation sequence.",
+        "Add a distractor card labeled cementation creates fossil fuel.",
+        "Students explain why the distractor does not belong in the fossil-fuel sequence."
+    ],
+
+    "lab_title":
+        "Fossil Fuel Time Machine",
+
+    "lab_url":
+        "/labs/fossil-fuel-time-machine?mission=day93",
+
+    "exit_ticket":
+        "Explain why a fossil is not the same thing as a fossil fuel and name two conditions involved in fossil-fuel formation.",
+
+    "vocabulary": [
+        "fossil fuel",
+        "organic material",
+        "burial",
+        "sediment",
+        "heat",
+        "pressure",
+        "geologic time",
+        "nonrenewable",
+        "petroleum"
+    ],
+
+    "teacher_note":
+        "Keep this day focused on the shared fossil-fuel formation pattern. "
+        "Day 94 will focus on coal, and Day 95 will focus on petroleum and natural gas. "
+        "Avoid teaching that a visible fossil simply turns into gasoline or that cementation creates fossil fuel."
+}
+
+# Science Studio Day 93 End

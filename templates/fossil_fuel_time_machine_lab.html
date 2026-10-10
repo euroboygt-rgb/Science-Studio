@@ -1,0 +1,738 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='fossil_fuel_time_machine_lab.css') }}?v=93.1"
+>
+
+
+<div class="ff-shell">
+
+
+  <!-- HERO -->
+
+  <header class="ff-hero">
+
+    <div class="ff-tags">
+
+      <span>🕰️ Time Machine Lab</span>
+
+      <span>Fossil Fuels</span>
+
+      <span>TEKS 5.10B</span>
+
+    </div>
+
+
+    <div class="ff-hero-row">
+
+      <div>
+
+        <h1>
+          Fossil Fuel Time Machine
+        </h1>
+
+        <p>
+          Bury it.
+          Add layers.
+          Increase heat and pressure.
+          Travel through geologic time.
+        </p>
+
+      </div>
+
+
+      <a
+        class="ff-back"
+        href="/second-nine-weeks/day/93?view=student"
+      >
+        ← Back to Day 93
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- PERMANENT RULE -->
+
+  <section class="ff-rule-strip">
+
+    <div>
+      🦴
+      <strong>FOSSIL</strong>
+      = evidence of past life
+    </div>
+
+    <div class="ff-not-equal">
+      ≠
+    </div>
+
+    <div>
+      ⛽
+      <strong>FOSSIL FUEL</strong>
+      = energy resource from ancient organic material
+    </div>
+
+  </section>
+
+
+  <!-- STATUS -->
+
+  <section class="ff-status">
+
+    <h2>
+      Time Machine Status
+    </h2>
+
+
+    <div class="ff-status-grid">
+
+      <div id="ffStatus1">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 1
+        </strong>
+
+        <small>
+          Fossil or Fuel
+        </small>
+
+      </div>
+
+
+      <div id="ffStatus2">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 2
+        </strong>
+
+        <small>
+          Burial Chamber
+        </small>
+
+      </div>
+
+
+      <div id="ffStatus3">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 3
+        </strong>
+
+        <small>
+          Time Machine
+        </small>
+
+      </div>
+
+
+      <div id="ffStatus4">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 4
+        </strong>
+
+        <small>
+          Formation Detective
+        </small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="ff-mission-head">
+
+    <div class="ff-number">
+      1
+    </div>
+
+    <div>
+
+      <h2>
+        Fossil or Fossil Fuel?
+      </h2>
+
+      <p>
+        Clear up the most important misconception first.
+      </p>
+
+    </div>
+
+
+    <aside class="ff-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="ffScore1">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="ff-panel">
+
+    <div id="ffEvidence1"
+         class="ff-case-card">
+    </div>
+
+    <div id="ffQuestion1"
+         class="ff-question">
+    </div>
+
+    <div id="ffChoices1"
+         class="ff-choices">
+    </div>
+
+
+    <button
+      id="ffCheck1"
+      class="ff-main-button"
+      type="button"
+    >
+      CHECK CLASSIFICATION
+    </button>
+
+
+    <div id="ffFeedback1"
+         class="ff-feedback">
+
+      Fossil ≠ Fossil Fuel
+
+    </div>
+
+
+    <button
+      id="ffNext1"
+      class="ff-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="ff-mission-head">
+
+    <div class="ff-number">
+      2
+    </div>
+
+    <div>
+
+      <h2>
+        Burial Chamber
+      </h2>
+
+      <p>
+        Choose ancient organic material
+        and bury it beneath sediment.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="ff-panel">
+
+    <h3>
+      Step A — Select Ancient Organic Material
+    </h3>
+
+
+    <div class="ff-source-buttons">
+
+      <button
+        data-source="plants"
+        type="button"
+      >
+        🌿 ANCIENT PLANT MATERIAL
+      </button>
+
+      <button
+        data-source="micro"
+        type="button"
+      >
+        🦠 TINY ANCIENT ORGANISMS
+      </button>
+
+    </div>
+
+
+    <div class="ff-burial-scene">
+
+      <div id="ffSedimentStack"
+           class="ff-sediment-stack">
+
+        <div id="ffSourceMaterial"
+             class="ff-source-material">
+
+          SELECT ORGANIC MATERIAL
+
+        </div>
+
+        <div class="ff-surface">
+
+          <strong>
+            ANCIENT SURFACE
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <h3>
+      Step B — Add Sediment Layers
+    </h3>
+
+
+    <div class="ff-burial-buttons">
+
+      <button
+        id="ffAddSediment"
+        type="button"
+      >
+        🥞 ADD SEDIMENT LAYER
+      </button>
+
+
+      <div>
+
+        <strong>
+          Burial Depth
+        </strong>
+
+        <span id="ffLayerCount">
+          0 / 4
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="ffCheck2"
+      class="ff-main-button"
+      type="button"
+    >
+      ⬇️ SEAL BURIAL CHAMBER
+    </button>
+
+
+    <div id="ffFeedback2"
+         class="ff-feedback">
+
+      Deposition can bury
+      ancient organic material.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="ff-mission-head">
+
+    <div class="ff-number">
+      3
+    </div>
+
+    <div>
+
+      <h2>
+        Run the Time Machine
+      </h2>
+
+      <p>
+        Test what happens
+        when buried material experiences
+        long time, heat, and pressure.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="ff-panel">
+
+    <div class="ff-machine">
+
+      <div class="ff-machine-title">
+
+        <span>
+          🕰️
+        </span>
+
+        <div>
+
+          <strong>
+            GEOLOGIC TIME MACHINE
+          </strong>
+
+          <p id="ffMachineMessage">
+            Burial chamber not yet ready.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="ff-gauges">
+
+        <div>
+
+          <strong>
+            🕰️ TIME
+          </strong>
+
+          <div class="ff-meter">
+
+            <div id="ffTimeMeter"></div>
+
+          </div>
+
+          <span id="ffTimeReadout">
+            SHORT
+          </span>
+
+          <button
+            id="ffAdvanceTime"
+            type="button"
+          >
+            ADVANCE TIME
+          </button>
+
+        </div>
+
+
+        <div>
+
+          <strong>
+            ♨️ HEAT
+          </strong>
+
+          <div class="ff-meter">
+
+            <div id="ffHeatMeter"></div>
+
+          </div>
+
+          <span id="ffHeatReadout">
+            LOW
+          </span>
+
+          <button
+            id="ffIncreaseHeat"
+            type="button"
+          >
+            INCREASE HEAT
+          </button>
+
+        </div>
+
+
+        <div>
+
+          <strong>
+            🗜️ PRESSURE
+          </strong>
+
+          <div class="ff-meter">
+
+            <div id="ffPressureMeter"></div>
+
+          </div>
+
+          <span id="ffPressureReadout">
+            LOW
+          </span>
+
+          <button
+            id="ffIncreasePressure"
+            type="button"
+          >
+            INCREASE PRESSURE
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="ff-transform-window">
+
+        <div id="ffTransformMaterial"
+             class="ff-transform-material">
+
+          🌿🦠
+
+        </div>
+
+
+        <div class="ff-transform-arrow">
+          →
+        </div>
+
+
+        <div id="ffTransformResult"
+             class="ff-transform-result">
+
+          ?
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="ffCheck3"
+      class="ff-main-button"
+      type="button"
+    >
+      ⛽ CHECK FORMATION CONDITIONS
+    </button>
+
+
+    <div id="ffFeedback3"
+         class="ff-feedback">
+
+      Burial alone
+      is not enough.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="ff-mission-head">
+
+    <div class="ff-number">
+      4
+    </div>
+
+    <div>
+
+      <h2>
+        Fossil Fuel Formation Detective
+      </h2>
+
+      <p>
+        Use process evidence
+        to solve each case.
+      </p>
+
+    </div>
+
+
+    <aside class="ff-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="ffScore4">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="ff-panel">
+
+    <div id="ffEvidence4"
+         class="ff-case-card">
+    </div>
+
+    <div id="ffQuestion4"
+         class="ff-question">
+    </div>
+
+    <div id="ffChoices4"
+         class="ff-choices">
+    </div>
+
+
+    <button
+      id="ffCheck4"
+      class="ff-main-button"
+      type="button"
+    >
+      🔎 SOLVE FORMATION CASE
+    </button>
+
+
+    <div id="ffFeedback4"
+         class="ff-feedback">
+
+      Follow the formation evidence.
+
+    </div>
+
+
+    <button
+      id="ffNext4"
+      class="ff-next-button"
+      type="button"
+      disabled
+    >
+      NEXT CASE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="ff-final">
+
+    <div class="ff-final-icon">
+      🕰️⛽🏆
+    </div>
+
+
+    <h2>
+      Time Machine Mission Status
+    </h2>
+
+
+    <div id="ffFinalMessage"
+         class="ff-final-message">
+
+      Complete all four missions.
+
+    </div>
+
+  </section>
+
+
+  <!-- EVIDENCE LOG -->
+
+  <section class="ff-log">
+
+    <h2>
+      📓 Fossil Fuel Formation Log
+    </h2>
+
+
+    <div class="ff-log-grid">
+
+      <article>
+
+        <strong>
+          🌿🦠 SOURCE
+        </strong>
+
+        <p>
+          Ancient
+          organic material.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ⬇️ BURIAL
+        </strong>
+
+        <p>
+          Sediment covers
+          the material.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🕰️ TIME
+        </strong>
+
+        <p>
+          Extremely long
+          geologic time.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ♨️🗜️ CONDITIONS
+        </strong>
+
+        <p>
+          Heat and pressure
+          contribute to change.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="ff-big-question">
+
+      <strong>
+        🧠 Time Traveler Question:
+      </strong>
+
+      Why would
+      buried organic material
+      from last year
+      NOT already be
+      a fossil fuel?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='fossil_fuel_time_machine_lab.js') }}?v=93.1"
+></script>
+
+{% endblock %}

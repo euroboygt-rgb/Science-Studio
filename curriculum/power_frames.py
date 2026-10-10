@@ -1106,3 +1106,20 @@ POWER_FRAMES[92] = {
 }
 
 # Science Studio Day 92 Power Frame End
+
+
+# Science Studio Day 93 Power Frame Start
+
+POWER_FRAMES[93] = {
+
+    "i_can":
+        "I can model and describe how ancient organic material can become fossil fuel.",
+
+    "by":
+        "sequencing burial, increasing layers, heat and pressure, and very long periods of time.",
+
+    "i_know":
+        "I know I have learned this when I can explain why a fossil and a fossil fuel are not the same thing."
+}
+
+# Science Studio Day 93 Power Frame End

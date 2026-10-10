@@ -1,0 +1,262 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+      <stop offset="0%"
+            stop-color="#82d0ef"/>
+      <stop offset="100%"
+            stop-color="#eaf9ff"/>
+    </linearGradient>
+
+    <linearGradient id="deep"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+      <stop offset="0%"
+            stop-color="#b98556"/>
+      <stop offset="100%"
+            stop-color="#493126"/>
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="26"
+        fill="url(#sky)"/>
+
+
+  <text x="600"
+        y="48"
+        text-anchor="middle"
+        fill="#2f251f"
+        font-size="30"
+        font-weight="900">
+    FOSSIL FUEL TIME MACHINE
+  </text>
+
+
+  <text x="600"
+        y="90"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="34"
+        font-weight="900">
+    WHAT HAPPENS WHEN ANCIENT LIFE IS BURIED DEEP BELOW EARTH?
+  </text>
+
+
+  <!-- ANCIENT SURFACE -->
+
+  <rect x="0"
+        y="135"
+        width="1200"
+        height="120"
+        fill="#65ad58"/>
+
+
+  <text x="175"
+        y="175"
+        text-anchor="middle"
+        fill="#173c20"
+        font-size="22"
+        font-weight="900">
+    ANCIENT LIFE
+  </text>
+
+
+  <text x="175"
+        y="230"
+        text-anchor="middle"
+        font-size="58">
+    🌿 🦠 🌿
+  </text>
+
+
+  <!-- EARTH CROSS SECTION -->
+
+  <rect x="0"
+        y="255"
+        width="1200"
+        height="445"
+        fill="url(#deep)"/>
+
+
+  <rect x="70"
+        y="285"
+        width="1060"
+        height="65"
+        rx="8"
+        fill="#ddb773"
+        stroke="#473326"
+        stroke-width="4"/>
+
+  <text x="600"
+        y="325"
+        text-anchor="middle"
+        fill="#31231b"
+        font-size="20"
+        font-weight="900">
+    SEDIMENT LAYER
+  </text>
+
+
+  <rect x="70"
+        y="350"
+        width="1060"
+        height="65"
+        fill="#bb7e53"
+        stroke="#473326"
+        stroke-width="4"/>
+
+  <text x="600"
+        y="390"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="20"
+        font-weight="900">
+    MORE BURIAL
+  </text>
+
+
+  <rect x="70"
+        y="415"
+        width="1060"
+        height="65"
+        fill="#9d6d52"
+        stroke="#473326"
+        stroke-width="4"/>
+
+
+  <g transform="translate(480,428)">
+
+    <rect x="0"
+          y="0"
+          width="240"
+          height="40"
+          rx="20"
+          fill="#34281f"
+          stroke="#f6d66d"
+          stroke-width="4"/>
+
+    <text x="120"
+          y="27"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-size="17"
+          font-weight="900">
+      BURIED ORGANIC MATERIAL
+    </text>
+
+  </g>
+
+
+  <rect x="70"
+        y="480"
+        width="1060"
+        height="65"
+        fill="#80563f"
+        stroke="#473326"
+        stroke-width="4"/>
+
+
+  <text x="250"
+        y="525"
+        text-anchor="middle"
+        fill="#ffe66d"
+        font-size="26"
+        font-weight="900">
+    ⬇ PRESSURE ⬇
+  </text>
+
+
+  <text x="950"
+        y="525"
+        text-anchor="middle"
+        fill="#ff9f61"
+        font-size="26"
+        font-weight="900">
+    ♨ HEAT ♨
+  </text>
+
+
+  <rect x="70"
+        y="545"
+        width="1060"
+        height="115"
+        rx="8"
+        fill="#5e4133"
+        stroke="#473326"
+        stroke-width="4"/>
+
+
+  <text x="265"
+        y="602"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="25"
+        font-weight="900">
+    VERY LONG TIME
+  </text>
+
+
+  <text x="265"
+        y="635"
+        text-anchor="middle"
+        fill="#ffe66d"
+        font-size="20"
+        font-weight="900">
+    MILLIONS OF YEARS
+  </text>
+
+
+  <text x="610"
+        y="610"
+        text-anchor="middle"
+        fill="#ffe66d"
+        font-size="52"
+        font-weight="900">
+    →
+  </text>
+
+
+  <g transform="translate(740,565)">
+
+    <rect x="0"
+          y="0"
+          width="300"
+          height="70"
+          rx="20"
+          fill="#171717"
+          stroke="#ffe66d"
+          stroke-width="5"/>
+
+    <text x="150"
+          y="30"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-size="20"
+          font-weight="900">
+      FOSSIL-FUEL
+    </text>
+
+    <text x="150"
+          y="55"
+          text-anchor="middle"
+          fill="#ffe66d"
+          font-size="20"
+          font-weight="900">
+      FORMATION CONDITIONS
+    </text>
+
+  </g>
+
+</svg>

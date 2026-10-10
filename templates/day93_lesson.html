@@ -1,0 +1,1490 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=93-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day93_direct.css') }}?v=93-final"
+>
+
+
+<div id="DAY93_DIRECT_TEMPLATE"
+     class="d93-page">
+
+
+  <!-- HERO -->
+
+  <section class="d93-hero">
+
+    <div class="d93-tags">
+
+      <span>Day 93</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10B</span>
+
+      <span>Fossil Fuels</span>
+
+    </div>
+
+
+    <h1>
+      🕰️⛽ Fossil Fuel Time Machine:
+      Ancient Life Under Pressure
+    </h1>
+
+
+    <p>
+      Bury ancient organic material,
+      travel through geologic time,
+      and investigate the conditions
+      involved in fossil-fuel formation.
+    </p>
+
+
+    <div class="d93-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/93?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/93?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Time-Travel Mission
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>
+          I can...
+        </strong>
+
+        <p>
+          model and describe
+          how ancient organic material
+          can become fossil fuel.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          By...
+        </strong>
+
+        <p>
+          sequencing burial,
+          layers,
+          heat,
+          pressure,
+          and very long time.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can explain
+          why a fossil
+          and fossil fuel
+          are not the same.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🕰️ Time Machine Mystery
+    </div>
+
+    <h2>
+      Ancient Life Buried Deep Underground
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day93_fossil_fuel_time_machine.svg"
+        alt="Ancient organic material buried under sediment with heat pressure and long time"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mystery Question:
+      </strong>
+
+      How can material
+      from organisms
+      that lived millions of years ago
+      eventually become
+      a fossil fuel?
+
+    </div>
+
+  </section>
+
+
+  <!-- BIG DISTINCTION -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🚨 Critical Difference
+    </div>
+
+    <h2>
+      Fossil ≠ Fossil Fuel
+    </h2>
+
+
+    <div class="d93-not-same">
+
+      <article>
+
+        <span>
+          🦴
+        </span>
+
+        <h3>
+          FOSSIL
+        </h3>
+
+        <p>
+          Preserved
+          <strong>evidence</strong>
+          of an organism
+          from the past.
+        </p>
+
+      </article>
+
+
+      <div>
+        ≠
+      </div>
+
+
+      <article>
+
+        <span>
+          ⛽
+        </span>
+
+        <h3>
+          FOSSIL FUEL
+        </h3>
+
+        <p>
+          An
+          <strong>energy resource</strong>
+          formed from ancient
+          organic material
+          under suitable conditions.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d93-warning-line">
+
+      A visible fossil does
+      <strong>NOT</strong>
+      simply turn into gasoline.
+
+    </div>
+
+  </section>
+
+
+  <!-- FORMATION CHAIN -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🧠 Formation Sequence
+    </div>
+
+    <h2>
+      Fossil Fuel Time Machine Sequence
+    </h2>
+
+
+    <div class="d93-chain">
+
+      <article>
+
+        <span>
+          🌿🦠
+        </span>
+
+        <strong>
+          1. ANCIENT
+          ORGANIC MATERIAL
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>
+          ⬇️
+        </span>
+
+        <strong>
+          2. BURIAL
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>
+          🥞
+        </span>
+
+        <strong>
+          3. MORE
+          LAYERS
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>
+          ♨️🗜️
+        </span>
+
+        <strong>
+          4. HEAT +
+          PRESSURE
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>
+          🕰️
+        </span>
+
+        <strong>
+          5. VERY
+          LONG TIME
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>
+          ⚫🛢️🔥
+        </span>
+
+        <strong>
+          FOSSIL FUELS
+        </strong>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- WEDCC BRIDGE -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🪨 W.E.D.C.C. Connection
+    </div>
+
+    <h2>
+      Where Does W.E.D.C.C. Fit?
+    </h2>
+
+
+    <div class="d93-two-paths">
+
+      <article>
+
+        <h3>
+          🪨 Sedimentary Rock
+        </h3>
+
+        <p>
+          <strong>
+            W → E → D → C → C
+          </strong>
+        </p>
+
+        <p>
+          Weathering
+          → Erosion
+          → Deposition
+          → Compaction
+          → Cementation
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <h3>
+          ⛽ Fossil Fuel
+        </h3>
+
+        <p>
+          <strong>
+            Ancient organic material
+            → Burial
+            → Long Time
+            → Heat + Pressure
+          </strong>
+        </p>
+
+        <p>
+          Deposition can help
+          <strong>bury</strong>
+          organic material,
+          but cementation
+          is not what creates
+          fossil fuel.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve's Time-Machine Mistake
+        </div>
+
+        <h2>
+          Does a Fish Fossil Become Gasoline?
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve says:
+
+          <strong>
+            "Yesterday we studied a fish fossil.
+            If we wait long enough,
+            that fossil will turn directly into gasoline!"
+          </strong>
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            Which response best corrects Steve?
+          </strong>
+
+
+          <button class="d93-steve-answer"
+                  data-answer="A">
+
+            A. A fossil is preserved evidence of past life. Fossil fuels form from ancient organic material under suitable burial, heat, pressure, and long-time conditions.
+
+          </button>
+
+
+          <button class="d93-steve-answer"
+                  data-answer="B">
+
+            B. Steve is correct; every fossil eventually becomes gasoline.
+
+          </button>
+
+
+          <button class="d93-steve-answer"
+                  data-answer="C">
+
+            C. Fossil fuels form instantly when sediment is deposited.
+
+          </button>
+
+
+          <button class="d93-steve-answer"
+                  data-answer="D">
+
+            D. Cementation changes every fossil into fuel.
+
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button
+              id="d93SteveCheck"
+              class="d59-check"
+              type="button"
+            >
+              Check Time-Machine Science
+            </button>
+
+
+            <button
+              id="d93SteveReset"
+              class="d59-reset"
+              type="button"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d93SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Fossil Fuel Vocabulary
+    </h2>
+
+
+    <div class="d93-vocab-grid">
+
+      {% set words = [
+        ("⛽","fossil fuel","An energy resource formed from ancient organic material over very long periods of time."),
+        ("🌿","organic material","Material that comes from living or once-living organisms."),
+        ("⬇️","burial","The covering of material by sediment or rock layers."),
+        ("🟤","sediment","Loose pieces of Earth material that can accumulate in layers."),
+        ("♨️","heat","Thermal energy that can contribute to changes in deeply buried organic material."),
+        ("🗜️","pressure","Force acting on buried material from overlying layers and geologic conditions."),
+        ("🕰️","geologic time","Extremely long spans of Earth history, often millions of years."),
+        ("♻️","nonrenewable","A resource that forms far more slowly than people use it."),
+        ("🛢️","petroleum","A liquid fossil fuel also called crude oil.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d93-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will model
+      and describe
+      how ancient organic material
+      can become
+      fossil fuels.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      Fossil or Fossil Fuel?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Decide whether
+      each statement describes
+      a
+      <strong>FOSSIL</strong>
+      or
+      <strong>FOSSIL FUEL</strong>.
+
+      <ol>
+
+        <li>
+          Preserved evidence
+          of an organism.
+        </li>
+
+        <li>
+          Coal, oil,
+          or natural gas.
+        </li>
+
+        <li>
+          Can provide clues
+          about past environments.
+        </li>
+
+        <li>
+          Forms from ancient
+          organic material
+          under particular conditions.
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      Travel Through Geologic Time
+    </h2>
+
+
+    <div class="d93-timeline">
+
+      <article>
+
+        <div>
+          🌿🦠
+        </div>
+
+        <h3>
+          STAGE 1
+        </h3>
+
+        <strong>
+          Ancient Organisms
+        </strong>
+
+        <p>
+          Organic material
+          comes from organisms
+          that lived long ago.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <div>
+          ⬇️🥞
+        </div>
+
+        <h3>
+          STAGE 2
+        </h3>
+
+        <strong>
+          Burial
+        </strong>
+
+        <p>
+          Sediment accumulates
+          and covers
+          the organic material.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <div>
+          🥞🥞🥞
+        </div>
+
+        <h3>
+          STAGE 3
+        </h3>
+
+        <strong>
+          Deeper Burial
+        </strong>
+
+        <p>
+          Additional layers
+          accumulate above.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <div>
+          ♨️🗜️
+        </div>
+
+        <h3>
+          STAGE 4
+        </h3>
+
+        <strong>
+          Heat + Pressure
+        </strong>
+
+        <p>
+          Deeply buried material
+          experiences changing
+          conditions.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <div>
+          🕰️
+        </div>
+
+        <h3>
+          STAGE 5
+        </h3>
+
+        <strong>
+          Very Long Time
+        </strong>
+
+        <p>
+          These changes occur
+          over extremely
+          long periods.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d93-fuels">
+
+      <h3>
+        Three Major Fossil Fuels
+      </h3>
+
+
+      <div>
+
+        <article>
+
+          <span>
+            ⚫
+          </span>
+
+          <strong>
+            COAL
+          </strong>
+
+          <p>
+            Solid fossil fuel
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <span>
+            🛢️
+          </span>
+
+          <strong>
+            PETROLEUM / OIL
+          </strong>
+
+          <p>
+            Liquid fossil fuel
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <span>
+            🔥
+          </span>
+
+          <strong>
+            NATURAL GAS
+          </strong>
+
+          <p>
+            Gaseous fossil fuel
+          </p>
+
+        </article>
+
+      </div>
+
+
+      <p>
+        We will investigate
+        their different formation pathways
+        more closely
+        on Days 94 and 95.
+      </p>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 STAAR Trap
+      </strong>
+
+      <br><br>
+
+      Fossil fuels do
+      <strong>NOT</strong>
+      form in days,
+      weeks,
+      or a human lifetime.
+
+      <br><br>
+
+      They require
+      <strong>
+        extremely long periods
+        of geologic time.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Fossil Fuel Time Machine
+    </h2>
+
+
+    <div class="d93-notebook-chain">
+
+      <div>
+        🌿🦠
+        <strong>
+          ANCIENT ORGANIC MATERIAL
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        ⬇️
+        <strong>
+          BURIAL
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        🥞
+        <strong>
+          MORE LAYERS
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        ♨️🗜️
+        <strong>
+          HEAT + PRESSURE
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        🕰️
+        <strong>
+          VERY LONG TIME
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        ⛽
+        <strong>
+          FOSSIL FUEL
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Under your model write:
+
+      <br><br>
+
+      <strong>
+        Fossil ≠ Fossil Fuel
+      </strong>
+
+      <br><br>
+
+      A fossil is evidence
+      of past life.
+
+      <br>
+
+      Fossil fuels are energy resources
+      formed from ancient organic material
+      over extremely long periods
+      under suitable conditions.
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Human Time Machine
+    </h2>
+
+
+    <div class="d59-box">
+
+      Give students these cards:
+
+      <ul>
+
+        <li>Ancient organic material</li>
+        <li>Burial</li>
+        <li>More sediment layers</li>
+        <li>Heat + pressure</li>
+        <li>Very long time</li>
+        <li>Fossil fuel</li>
+        <li>
+          <strong>
+            DISTRACTOR:
+            Cementation turns a fossil into gasoline
+          </strong>
+        </li>
+
+      </ul>
+
+
+      Students physically
+      arrange themselves
+      into the best sequence.
+
+      <br><br>
+
+      Then ask:
+
+      <strong>
+        Why does the cementation card
+        NOT belong
+        in the fossil-fuel pathway?
+      </strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🕰️ Interactive Time Machine
+    </div>
+
+    <h2>
+      Fossil Fuel Time Machine
+    </h2>
+
+
+    <p>
+      Select ancient organic material,
+      bury it under sediment,
+      travel through geologic time,
+      increase heat and pressure,
+      and determine
+      whether fossil-fuel formation
+      conditions have been modeled.
+    </p>
+
+
+    <div class="d93-missions">
+
+      <div>
+        🦴≠⛽
+        <strong>
+          Mission 1
+        </strong>
+        Fossil or Fuel?
+      </div>
+
+      <div>
+        ⬇️🥞
+        <strong>
+          Mission 2
+        </strong>
+        Burial Chamber
+      </div>
+
+      <div>
+        🕰️♨️🗜️
+        <strong>
+          Mission 3
+        </strong>
+        Run the Time Machine
+      </div>
+
+      <div>
+        🔎
+        <strong>
+          Mission 4
+        </strong>
+        Formation Detective
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Complete all missions
+      to earn
+
+      <strong>
+        Fossil Fuel Time Traveler
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/fossil-fuel-time-machine?mission=day93"
+    >
+      🕰️ Enter the Fossil Fuel Time Machine
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR-Style Practice
+    </div>
+
+    <h2>
+      Fossil-Fuel Formation
+    </h2>
+
+
+    <div class="d93-question"
+         data-answer="B">
+
+      <h3>
+        Question 1
+      </h3>
+
+      <p>
+        Which material
+        begins the fossil-fuel
+        formation process?
+      </p>
+
+      <button data-choice="A">
+        A. New plastic
+      </button>
+
+      <button data-choice="B">
+        B. Ancient organic material
+      </button>
+
+      <button data-choice="C">
+        C. Fresh glass
+      </button>
+
+      <button data-choice="D">
+        D. Sunlight alone
+      </button>
+
+      <div class="d93-feedback"></div>
+
+    </div>
+
+
+    <div class="d93-question"
+         data-answer="C">
+
+      <h3>
+        Question 2
+      </h3>
+
+      <p>
+        Which process
+        can cover ancient organic material
+        with new sediment?
+      </p>
+
+      <button data-choice="A">
+        A. Weathering
+      </button>
+
+      <button data-choice="B">
+        B. Erosion only
+      </button>
+
+      <button data-choice="C">
+        C. Deposition
+      </button>
+
+      <button data-choice="D">
+        D. Reflection
+      </button>
+
+      <div class="d93-feedback"></div>
+
+    </div>
+
+
+    <div class="d93-question"
+         data-answer="A">
+
+      <h3>
+        Question 3
+      </h3>
+
+      <p>
+        Which set of conditions
+        best supports
+        fossil-fuel formation?
+      </p>
+
+      <button data-choice="A">
+        A. Burial, very long time, heat, and pressure
+      </button>
+
+      <button data-choice="B">
+        B. One sunny afternoon
+      </button>
+
+      <button data-choice="C">
+        C. Freezing for ten minutes
+      </button>
+
+      <button data-choice="D">
+        D. Wind moving sand for one day
+      </button>
+
+      <div class="d93-feedback"></div>
+
+    </div>
+
+
+    <div class="d93-question"
+         data-answer="D">
+
+      <h3>
+        Question 4
+      </h3>
+
+      <p>
+        Why are fossil fuels
+        considered nonrenewable?
+      </p>
+
+      <button data-choice="A">
+        A. They form every night.
+      </button>
+
+      <button data-choice="B">
+        B. Humans can instantly replace them.
+      </button>
+
+      <button data-choice="C">
+        C. They contain no energy.
+      </button>
+
+      <button data-choice="D">
+        D. They take extremely long periods to form compared with how quickly they are used.
+      </button>
+
+      <div class="d93-feedback"></div>
+
+    </div>
+
+
+    <div class="d93-question"
+         data-answer="B">
+
+      <h3>
+        Question 5
+      </h3>
+
+      <p>
+        Which statement
+        correctly compares
+        a fossil
+        and a fossil fuel?
+      </p>
+
+      <button data-choice="A">
+        A. They are exactly the same.
+      </button>
+
+      <button data-choice="B">
+        B. A fossil is evidence of past life, while fossil fuel is an energy resource formed from ancient organic material.
+      </button>
+
+      <button data-choice="C">
+        C. Every fossil becomes gasoline.
+      </button>
+
+      <button data-choice="D">
+        D. Fossil fuels form through cementation alone.
+      </button>
+
+      <div class="d93-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+
+    <p>
+      Explain why
+      a fossil is
+      <strong>not</strong>
+      the same thing
+      as a fossil fuel.
+
+      <br><br>
+
+      Then name
+      <strong>two conditions</strong>
+      involved in fossil-fuel formation.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="A fossil is... A fossil fuel is... Two important conditions are..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Fossil Fuel Formation CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      Fossil fuels
+      require more than
+      simply burying
+      ancient organic material.
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>
+          Claim
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Evidence
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The Time Machine showed..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="These conditions matter because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      ⚫ Next Mission
+    </div>
+
+    <h2>
+      Day 94:
+      Coal Formation Mission
+    </h2>
+
+
+    <div class="d59-box">
+
+      Today we learned
+      the shared fossil-fuel
+      formation pattern.
+
+      <br><br>
+
+      Next we follow
+      one specific pathway:
+
+      <br><br>
+
+      <strong>
+        Ancient plants
+        → Burial
+        → Heat + Pressure
+        → Very Long Time
+        → COAL
+      </strong>
+
+      <br><br>
+
+      Then Day 95
+      will investigate
+      <strong>
+        petroleum and natural gas.
+      </strong>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d93VocabModal"
+     class="d93-modal">
+
+  <div class="d93-modal-card">
+
+    <button
+      id="d93VocabClose"
+      class="d93-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d93ModalIcon"
+         class="d93-modal-icon"></div>
+
+    <h2 id="d93ModalTerm"></h2>
+
+    <p id="d93ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day93_direct.js') }}?v=93-final"
+></script>
+
+{% endblock %}
