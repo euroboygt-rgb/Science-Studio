@@ -1123,3 +1123,20 @@ POWER_FRAMES[93] = {
 }
 
 # Science Studio Day 93 Power Frame End
+
+
+# Science Studio Day 94 Power Frame Start
+
+POWER_FRAMES[94] = {
+
+    "i_can":
+        "I can model and describe how ancient plant material can form coal.",
+
+    "by":
+        "sequencing swamp plants, peat, burial, heat and pressure, and millions of years.",
+
+    "i_know":
+        "I know I have learned this when I can explain why plant material does not become coal quickly."
+}
+
+# Science Studio Day 94 Power Frame End

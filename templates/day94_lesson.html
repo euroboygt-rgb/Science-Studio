@@ -1,0 +1,1358 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=94-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day94_direct.css') }}?v=94-final"
+>
+
+
+<div id="DAY94_DIRECT_TEMPLATE"
+     class="d94-page">
+
+
+  <!-- HERO -->
+
+  <section class="d94-hero">
+
+    <div class="d94-tags">
+
+      <span>Day 94</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10B</span>
+
+      <span>Coal Formation</span>
+
+    </div>
+
+
+    <h1>
+      ⚫🌿 Coal Formation Mission:
+      From Ancient Swamp Plants to Coal
+    </h1>
+
+
+    <p>
+      Enter an ancient swamp,
+      accumulate plant material,
+      bury it,
+      and travel millions of years
+      to investigate coal formation.
+    </p>
+
+
+    <div class="d94-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/94?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/94?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Coal Mission
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>I can...</strong>
+
+        <p>
+          model and describe
+          how ancient plant material
+          can form coal.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>By...</strong>
+
+        <p>
+          sequencing swamp plants,
+          peat,
+          burial,
+          heat and pressure,
+          and millions of years.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can explain
+          why plant material
+          does not become coal quickly.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌿 Ancient Earth Evidence
+    </div>
+
+    <h2>
+      An Ancient Swamp Becomes a Coal Bed
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day94_coal_formation.svg"
+        alt="Ancient swamp plants accumulating as peat and becoming buried before forming coal"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mission Question:
+      </strong>
+
+      How can plant material
+      from an ancient swamp
+      eventually become
+      a layer of coal
+      deep underground?
+
+    </div>
+
+  </section>
+
+
+  <!-- MEMORY CHAIN -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🧠 Coal Formation Memory Chain
+    </div>
+
+    <h2>
+      Follow the Plant Material
+    </h2>
+
+
+    <div class="d94-chain">
+
+      <article>
+        <span>🌿🌳</span>
+        <strong>ANCIENT SWAMP PLANTS</strong>
+      </article>
+
+      <b>→</b>
+
+      <article>
+        <span>🍂</span>
+        <strong>PLANT MATERIAL ACCUMULATES</strong>
+      </article>
+
+      <b>→</b>
+
+      <article class="d94-focus">
+        <span>🟫</span>
+        <strong>PEAT</strong>
+      </article>
+
+      <b>→</b>
+
+      <article>
+        <span>⬇️🥞</span>
+        <strong>BURIAL</strong>
+      </article>
+
+      <b>→</b>
+
+      <article>
+        <span>♨️🗜️</span>
+        <strong>HEAT + PRESSURE</strong>
+      </article>
+
+      <b>→</b>
+
+      <article>
+        <span>🕰️</span>
+        <strong>MILLIONS OF YEARS</strong>
+      </article>
+
+      <b>→</b>
+
+      <article class="d94-coal">
+        <span>⚫</span>
+        <strong>COAL</strong>
+      </article>
+
+    </div>
+
+
+    <div class="d94-memory">
+
+      <strong>
+        COAL STARTS MAINLY WITH
+        ANCIENT PLANT MATERIAL.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- PEAT -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🟫 New Vocabulary Spotlight
+    </div>
+
+    <h2>
+      What Is Peat?
+    </h2>
+
+
+    <div class="d94-peat-grid">
+
+      <div class="d94-swamp">
+
+        <div>
+          ☁️ 🌿 🌳 🌿
+        </div>
+
+        <strong>
+          SWAMPY ENVIRONMENT
+        </strong>
+
+        <div class="d94-water">
+          ~ ~ ~ WATER ~ ~ ~
+        </div>
+
+      </div>
+
+
+      <div class="d94-arrow">
+        →
+      </div>
+
+
+      <div class="d94-peat">
+
+        🍂 🌿 🍂 🌿 🍂
+
+        <strong>
+          PEAT
+        </strong>
+
+        <p>
+          Partly decayed
+          plant material
+          that accumulates
+          in wet environments.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Peat is an
+      <strong>early stage</strong>
+      in the coal-formation pathway.
+
+      <br><br>
+
+      Peat is
+      <strong>not yet coal.</strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- YESTERDAY CONNECTION -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🕰️ Day 93 Connection
+    </div>
+
+    <h2>
+      Same Big Pattern — Specific Coal Pathway
+    </h2>
+
+
+    <div class="d94-compare">
+
+      <article>
+
+        <h3>
+          Day 93
+        </h3>
+
+        <strong>
+          General Fossil-Fuel Pattern
+        </strong>
+
+        <p>
+          Ancient organic material
+
+          <br>
+          ↓
+          <br>
+
+          Burial
+
+          <br>
+          ↓
+          <br>
+
+          Heat + Pressure
+
+          <br>
+          ↓
+          <br>
+
+          Very Long Time
+
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <h3>
+          Day 94
+        </h3>
+
+        <strong>
+          Coal Pathway
+        </strong>
+
+        <p>
+          Ancient plants
+
+          <br>
+          ↓
+          <br>
+
+          Peat
+
+          <br>
+          ↓
+          <br>
+
+          Burial
+
+          <br>
+          ↓
+          <br>
+
+          Heat + Pressure + Time
+
+          <br>
+          ↓
+          <br>
+
+          ⚫ COAL
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve's Coal Shortcut
+        </div>
+
+        <h2>
+          Can We Make Coal by Friday?
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve buries
+          a pile of leaves
+          beneath some dirt.
+
+          He says:
+
+          <strong>
+            "Great! By Friday
+            these leaves should be coal."
+          </strong>
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            Which response best corrects Steve?
+          </strong>
+
+
+          <button class="d94-steve-answer"
+                  data-answer="A">
+
+            A. Coal formation requires ancient plant material, burial, heat and pressure, and extremely long periods of geologic time.
+
+          </button>
+
+
+          <button class="d94-steve-answer"
+                  data-answer="B">
+
+            B. Steve is correct because all buried leaves become coal within a week.
+
+          </button>
+
+
+          <button class="d94-steve-answer"
+                  data-answer="C">
+
+            C. Leaves become coal as soon as cementation begins.
+
+          </button>
+
+
+          <button class="d94-steve-answer"
+                  data-answer="D">
+
+            D. Coal forms only when sunlight shines directly on leaves.
+
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button
+              id="d94SteveCheck"
+              class="d59-check"
+              type="button"
+            >
+              Check Coal Science
+            </button>
+
+
+            <button
+              id="d94SteveReset"
+              class="d59-reset"
+              type="button"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d94SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Coal Formation Vocabulary
+    </h2>
+
+
+    <div class="d94-vocab-grid">
+
+      {% set words = [
+        ("⚫","coal","A solid fossil fuel formed mainly from ancient plant material over geologic time."),
+        ("🟫","peat","Partly decayed plant material that can accumulate in wet environments and is an early stage in coal formation."),
+        ("🌿","swamp","A wetland environment where water covers or saturates the ground for long periods."),
+        ("🍂","organic material","Material that comes from living or once-living organisms."),
+        ("⬇️","burial","The covering of material by sediment and rock layers."),
+        ("♨️","heat","Thermal energy that contributes to changes in deeply buried plant material."),
+        ("🗜️","pressure","Force acting on buried material from layers and geologic conditions."),
+        ("🕰️","geologic time","Extremely long spans of Earth's history, including millions of years."),
+        ("♻️","nonrenewable","A resource that forms far more slowly than people use it.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d94-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will model
+      and describe
+      how ancient plant material
+      can eventually
+      form coal.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      Build the Coal Pathway
+    </h2>
+
+
+    <div class="d59-box">
+
+      Put these ideas
+      into a reasonable sequence:
+
+      <br><br>
+
+      <strong>
+        COAL
+        &nbsp; • &nbsp;
+        PEAT
+        &nbsp; • &nbsp;
+        ANCIENT PLANTS
+        &nbsp; • &nbsp;
+        BURIAL
+        &nbsp; • &nbsp;
+        HEAT + PRESSURE
+        &nbsp; • &nbsp;
+        MILLIONS OF YEARS
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      From Swamp to Coal
+    </h2>
+
+
+    <div class="d94-timeline">
+
+      <article>
+
+        <span>1</span>
+
+        <div>
+          🌿🌳🌿
+        </div>
+
+        <h3>
+          Ancient Swamp
+        </h3>
+
+        <p>
+          Large amounts
+          of plant material
+          grow in wet environments.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>2</span>
+
+        <div>
+          🍂🍂🍂
+        </div>
+
+        <h3>
+          Plant Material Accumulates
+        </h3>
+
+        <p>
+          Dead plant material
+          builds up
+          in the wet environment.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>3</span>
+
+        <div>
+          🟫
+        </div>
+
+        <h3>
+          Peat Forms
+        </h3>
+
+        <p>
+          Accumulated
+          partly decayed
+          plant material
+          forms peat.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>4</span>
+
+        <div>
+          ⬇️🥞🥞
+        </div>
+
+        <h3>
+          Burial
+        </h3>
+
+        <p>
+          Sediment and rock
+          accumulate above
+          the peat.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>5</span>
+
+        <div>
+          ♨️🗜️🕰️
+        </div>
+
+        <h3>
+          Coalification
+        </h3>
+
+        <p>
+          Heat,
+          pressure,
+          and geologic time
+          change the buried material.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>6</span>
+
+        <div>
+          ⚫
+        </div>
+
+        <h3>
+          Coal
+        </h3>
+
+        <p>
+          A solid
+          fossil fuel
+          remains underground.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Important
+      </strong>
+
+      <br><br>
+
+      Peat does not become coal
+      simply because
+      sediment touches it.
+
+      <br><br>
+
+      Coal formation requires
+      <strong>
+        burial + changing heat and pressure conditions + extremely long geologic time.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Coal Formation Foldable
+    </h2>
+
+
+    <div class="d94-notebook">
+
+      <div>
+        🌿
+        <strong>
+          ANCIENT PLANTS
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        🍂
+        <strong>
+          PLANT MATERIAL
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div class="peat">
+        🟫
+        <strong>
+          PEAT
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        ⬇️
+        <strong>
+          BURIAL
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        ♨️🗜️🕰️
+        <strong>
+          HEAT + PRESSURE + TIME
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div class="coal">
+        ⚫
+        <strong>
+          COAL
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Under the diagram write:
+
+      <br><br>
+
+      <strong>
+        Coal forms mainly from ancient plant material that accumulated, became buried, and changed under heat and pressure over millions of years.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Coal Formation Line-Up
+    </h2>
+
+
+    <div class="d59-box">
+
+      Give students these cards:
+
+      <ul>
+        <li>Ancient swamp plants</li>
+        <li>Accumulated plant material</li>
+        <li>Peat</li>
+        <li>Burial</li>
+        <li>Heat + pressure</li>
+        <li>Millions of years</li>
+        <li>Coal</li>
+      </ul>
+
+      Add these distractors:
+
+      <ul>
+        <li>Fish fossil automatically becomes coal</li>
+        <li>Cementation creates coal</li>
+        <li>Wait one week</li>
+      </ul>
+
+      Students arrange
+      the correct pathway
+      and explain
+      why each distractor
+      is incorrect.
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌿⚫ Interactive Coal Mission
+    </div>
+
+    <h2>
+      Coal Formation Mission
+    </h2>
+
+
+    <p>
+      Identify the correct source,
+      construct an ancient swamp,
+      form peat,
+      bury it,
+      activate heat and pressure,
+      and travel millions of years
+      until coal-formation conditions are met.
+    </p>
+
+
+    <div class="d94-missions">
+
+      <div>
+        🌿
+        <strong>Mission 1</strong>
+        Coal Source Check
+      </div>
+
+      <div>
+        🌿🌊
+        <strong>Mission 2</strong>
+        Build Ancient Swamp
+      </div>
+
+      <div>
+        🟫➡️⚫
+        <strong>Mission 3</strong>
+        Peat-to-Coal Simulator
+      </div>
+
+      <div>
+        🔎
+        <strong>Mission 4</strong>
+        Coal Detective
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Complete all four missions
+      to earn
+
+      <strong>
+        Coal Formation Specialist
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/coal-formation-mission?mission=day94"
+    >
+      ⚫ Launch Coal Formation Mission
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR-Style Practice
+    </div>
+
+    <h2>
+      Coal Formation Evidence
+    </h2>
+
+
+    <div class="d94-question"
+         data-answer="A">
+
+      <h3>Question 1</h3>
+
+      <p>
+        Which ancient material
+        is most closely connected
+        to coal formation?
+      </p>
+
+      <button data-choice="A">
+        A. Plant material
+      </button>
+
+      <button data-choice="B">
+        B. Fresh plastic
+      </button>
+
+      <button data-choice="C">
+        C. Glass
+      </button>
+
+      <button data-choice="D">
+        D. Sunlight
+      </button>
+
+      <div class="d94-feedback"></div>
+
+    </div>
+
+
+    <div class="d94-question"
+         data-answer="C">
+
+      <h3>Question 2</h3>
+
+      <p>
+        What is peat?
+      </p>
+
+      <button data-choice="A">
+        A. A type of metal
+      </button>
+
+      <button data-choice="B">
+        B. Fully formed petroleum
+      </button>
+
+      <button data-choice="C">
+        C. Accumulated partly decayed plant material
+      </button>
+
+      <button data-choice="D">
+        D. A weather instrument
+      </button>
+
+      <div class="d94-feedback"></div>
+
+    </div>
+
+
+    <div class="d94-question"
+         data-answer="B">
+
+      <h3>Question 3</h3>
+
+      <p>
+        Which sequence
+        best models
+        coal formation?
+      </p>
+
+      <button data-choice="A">
+        A. Coal → peat → plants
+      </button>
+
+      <button data-choice="B">
+        B. Ancient plants → peat → burial → heat and pressure over millions of years → coal
+      </button>
+
+      <button data-choice="C">
+        C. Plants → one week → coal
+      </button>
+
+      <button data-choice="D">
+        D. Fish fossil → cementation → coal
+      </button>
+
+      <div class="d94-feedback"></div>
+
+    </div>
+
+
+    <div class="d94-question"
+         data-answer="D">
+
+      <h3>Question 4</h3>
+
+      <p>
+        Why is coal
+        considered nonrenewable?
+      </p>
+
+      <button data-choice="A">
+        A. Coal forms every day.
+      </button>
+
+      <button data-choice="B">
+        B. Coal can be replaced instantly.
+      </button>
+
+      <button data-choice="C">
+        C. Coal contains no stored energy.
+      </button>
+
+      <button data-choice="D">
+        D. Coal takes extremely long periods to form compared with how quickly it is used.
+      </button>
+
+      <div class="d94-feedback"></div>
+
+    </div>
+
+
+    <div class="d94-question"
+         data-answer="A">
+
+      <h3>Question 5</h3>
+
+      <p>
+        A thick layer
+        of ancient plant material
+        becomes buried
+        beneath sediment.
+
+        Which additional conditions
+        would best support
+        coal formation?
+      </p>
+
+      <button data-choice="A">
+        A. Heat, pressure, and millions of years
+      </button>
+
+      <button data-choice="B">
+        B. One day of sunlight
+      </button>
+
+      <button data-choice="C">
+        C. Reflection and refraction
+      </button>
+
+      <button data-choice="D">
+        D. A magnet and battery
+      </button>
+
+      <div class="d94-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+    <p>
+      Explain how
+      ancient plant material
+      in a swamp
+      can eventually
+      become coal.
+
+      <br><br>
+
+      Use at least
+      <strong>four steps</strong>
+      in your explanation.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="First... Then... Over millions of years..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Coal Formation CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      A pile of leaves
+      buried for one year
+      would not become coal.
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The coal model showed..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This matters because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🛢️ Next Mission
+    </div>
+
+    <h2>
+      Day 95:
+      Oil & Natural Gas Formation
+    </h2>
+
+
+    <div class="d59-box">
+
+      Coal's story
+      begins mainly with
+
+      <strong>
+        ancient plants
+        in swampy environments.
+      </strong>
+
+      <br><br>
+
+      Next we investigate
+      a different fossil-fuel pathway
+      involving ancient organisms
+      associated with aquatic environments.
+
+      <br><br>
+
+      Then we will compare:
+
+      <strong>
+        ⚫ Coal
+        vs.
+        🛢️ Petroleum
+        vs.
+        🔥 Natural Gas
+      </strong>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d94VocabModal"
+     class="d94-modal">
+
+  <div class="d94-modal-card">
+
+    <button
+      id="d94VocabClose"
+      class="d94-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d94ModalIcon"
+         class="d94-modal-icon"></div>
+
+    <h2 id="d94ModalTerm"></h2>
+
+    <p id="d94ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day94_direct.js') }}?v=94-final"
+></script>
+
+{% endblock %}

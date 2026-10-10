@@ -1,0 +1,705 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='coal_formation_mission_lab.css') }}?v=94.1"
+>
+
+
+<div class="cf-shell">
+
+
+  <!-- HERO -->
+
+  <header class="cf-hero">
+
+    <div class="cf-tags">
+
+      <span>🌿 Ancient Earth Mission</span>
+
+      <span>Coal Formation</span>
+
+      <span>TEKS 5.10B</span>
+
+    </div>
+
+
+    <div class="cf-hero-row">
+
+      <div>
+
+        <h1>
+          ⚫ Coal Formation Mission
+        </h1>
+
+        <p>
+          Build the swamp.
+          Form the peat.
+          Bury it.
+          Activate geologic time.
+        </p>
+
+      </div>
+
+
+      <a
+        class="cf-back"
+        href="/second-nine-weeks/day/94?view=student"
+      >
+        ← Back to Day 94
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- MEMORY -->
+
+  <section class="cf-memory">
+
+    <strong>
+      COAL FORMATION:
+    </strong>
+
+    <span>🌿 Ancient Plants</span>
+    <b>→</b>
+    <span>🟫 Peat</span>
+    <b>→</b>
+    <span>⬇️ Burial</span>
+    <b>→</b>
+    <span>♨️ Heat + 🗜️ Pressure</span>
+    <b>→</b>
+    <span>🕰️ Millions of Years</span>
+    <b>→</b>
+    <span>⚫ Coal</span>
+
+  </section>
+
+
+  <!-- STATUS -->
+
+  <section class="cf-status">
+
+    <h2>
+      Coal Mission Status
+    </h2>
+
+
+    <div class="cf-status-grid">
+
+      <div id="cfStatus1">
+        <span>🔴</span>
+        <strong>Mission 1</strong>
+        <small>Source Check</small>
+      </div>
+
+      <div id="cfStatus2">
+        <span>🔴</span>
+        <strong>Mission 2</strong>
+        <small>Ancient Swamp</small>
+      </div>
+
+      <div id="cfStatus3">
+        <span>🔴</span>
+        <strong>Mission 3</strong>
+        <small>Peat → Coal</small>
+      </div>
+
+      <div id="cfStatus4">
+        <span>🔴</span>
+        <strong>Mission 4</strong>
+        <small>Coal Detective</small>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="cf-mission-head">
+
+    <div class="cf-number">
+      1
+    </div>
+
+    <div>
+
+      <h2>
+        Coal Source Check
+      </h2>
+
+      <p>
+        Identify the source material
+        and environment associated
+        with coal formation.
+      </p>
+
+    </div>
+
+
+    <aside class="cf-score">
+
+      <strong>Score</strong>
+
+      <span id="cfScore1">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="cf-panel">
+
+    <div id="cfEvidence1"
+         class="cf-case-card">
+    </div>
+
+    <div id="cfQuestion1"
+         class="cf-question">
+    </div>
+
+    <div id="cfChoices1"
+         class="cf-choices">
+    </div>
+
+
+    <button
+      id="cfCheck1"
+      class="cf-main-button"
+      type="button"
+    >
+      🌿 CHECK COAL SOURCE
+    </button>
+
+
+    <div id="cfFeedback1"
+         class="cf-feedback">
+
+      Follow the plant evidence.
+
+    </div>
+
+
+    <button
+      id="cfNext1"
+      class="cf-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="cf-mission-head">
+
+    <div class="cf-number">
+      2
+    </div>
+
+    <div>
+
+      <h2>
+        Build the Ancient Swamp
+      </h2>
+
+      <p>
+        Create the environment
+        where plant material
+        can accumulate.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="cf-panel">
+
+    <div class="cf-swamp-scene">
+
+      <div class="cf-sky">
+
+        <span>
+          ☁️
+        </span>
+
+        <strong>
+          ANCIENT SWAMP
+        </strong>
+
+        <span>
+          ☀️
+        </span>
+
+      </div>
+
+
+      <div class="cf-plants"
+           id="cfPlants">
+
+        🌿 🌳 🌿 🌳 🌿
+
+      </div>
+
+
+      <div class="cf-water">
+
+        ~ ~ ~ SHALLOW WATER ~ ~ ~
+
+      </div>
+
+
+      <div id="cfPeatBed"
+           class="cf-peat-bed">
+
+        SWAMP FLOOR
+
+      </div>
+
+    </div>
+
+
+    <div class="cf-build-controls">
+
+      <button
+        id="cfAddPlants"
+        type="button"
+      >
+        🍂 ADD DEAD PLANT MATERIAL
+      </button>
+
+
+      <div>
+
+        <strong>
+          Plant Material
+        </strong>
+
+        <span id="cfPlantCount">
+          0 / 4
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="cfFormPeat"
+      class="cf-main-button"
+      type="button"
+    >
+      🟫 CHECK FOR PEAT FORMATION
+    </button>
+
+
+    <div id="cfFeedback2"
+         class="cf-feedback">
+
+      Build up plant material
+      on the swamp floor.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="cf-mission-head">
+
+    <div class="cf-number">
+      3
+    </div>
+
+    <div>
+
+      <h2>
+        Peat-to-Coal Simulator
+      </h2>
+
+      <p>
+        Bury the peat,
+        increase heat and pressure,
+        and travel through geologic time.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="cf-panel">
+
+    <div class="cf-burial-model">
+
+      <div id="cfSedimentStack"
+           class="cf-sediment-stack">
+
+        <div id="cfPeatLayer"
+             class="cf-peat-layer">
+
+          🟫 PEAT
+
+        </div>
+
+
+        <div class="cf-ancient-surface">
+
+          ANCIENT SWAMP SURFACE
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="cf-layer-controls">
+
+      <button
+        id="cfAddLayer"
+        type="button"
+      >
+        🥞 ADD SEDIMENT / ROCK LAYER
+      </button>
+
+
+      <div>
+
+        <strong>
+          Burial Layers
+        </strong>
+
+        <span id="cfLayerCount">
+          0 / 4
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="cf-gauges">
+
+      <div>
+
+        <strong>
+          ♨️ HEAT
+        </strong>
+
+        <div class="cf-meter">
+          <div id="cfHeatMeter"></div>
+        </div>
+
+        <span id="cfHeatReadout">
+          LOW
+        </span>
+
+        <button
+          id="cfHeat"
+          type="button"
+        >
+          INCREASE HEAT
+        </button>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          🗜️ PRESSURE
+        </strong>
+
+        <div class="cf-meter">
+          <div id="cfPressureMeter"></div>
+        </div>
+
+        <span id="cfPressureReadout">
+          LOW
+        </span>
+
+        <button
+          id="cfPressure"
+          type="button"
+        >
+          INCREASE PRESSURE
+        </button>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          🕰️ TIME
+        </strong>
+
+        <div class="cf-meter">
+          <div id="cfTimeMeter"></div>
+        </div>
+
+        <span id="cfTimeReadout">
+          SHORT
+        </span>
+
+        <button
+          id="cfTime"
+          type="button"
+        >
+          ADVANCE TIME
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="cf-transform">
+
+      <div id="cfBefore">
+        🟫
+        <strong>PEAT</strong>
+      </div>
+
+      <span>
+        →
+      </span>
+
+      <div id="cfAfter">
+        ?
+      </div>
+
+    </div>
+
+
+    <button
+      id="cfCheck3"
+      class="cf-main-button"
+      type="button"
+    >
+      ⚫ CHECK COAL FORMATION
+    </button>
+
+
+    <div id="cfFeedback3"
+         class="cf-feedback">
+
+      Peat alone
+      is not coal.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="cf-mission-head">
+
+    <div class="cf-number">
+      4
+    </div>
+
+    <div>
+
+      <h2>
+        Coal Formation Detective
+      </h2>
+
+      <p>
+        Solve coal-formation
+        evidence cases.
+      </p>
+
+    </div>
+
+
+    <aside class="cf-score">
+
+      <strong>Score</strong>
+
+      <span id="cfScore4">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="cf-panel">
+
+    <div id="cfEvidence4"
+         class="cf-case-card">
+    </div>
+
+    <div id="cfQuestion4"
+         class="cf-question">
+    </div>
+
+    <div id="cfChoices4"
+         class="cf-choices">
+    </div>
+
+
+    <button
+      id="cfCheck4"
+      class="cf-main-button"
+      type="button"
+    >
+      🔎 SOLVE COAL CASE
+    </button>
+
+
+    <div id="cfFeedback4"
+         class="cf-feedback">
+
+      Follow the coal pathway.
+
+    </div>
+
+
+    <button
+      id="cfNext4"
+      class="cf-next-button"
+      type="button"
+      disabled
+    >
+      NEXT CASE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="cf-final">
+
+    <div class="cf-final-icon">
+      🌿🟫⚫🏆
+    </div>
+
+
+    <h2>
+      Coal Mission Status
+    </h2>
+
+
+    <div id="cfFinalMessage"
+         class="cf-final-message">
+
+      Complete all four missions.
+
+    </div>
+
+  </section>
+
+
+  <!-- LOG -->
+
+  <section class="cf-log">
+
+    <h2>
+      📓 Coal Formation Evidence Log
+    </h2>
+
+
+    <div class="cf-log-grid">
+
+      <article>
+
+        <strong>
+          🌿 SOURCE
+        </strong>
+
+        <p>
+          Ancient
+          plant material.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🟫 PEAT
+        </strong>
+
+        <p>
+          Accumulated
+          partly decayed
+          plant material.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ⬇️ BURIAL
+        </strong>
+
+        <p>
+          More layers
+          accumulate above.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ♨️🗜️🕰️ CHANGE
+        </strong>
+
+        <p>
+          Heat,
+          pressure,
+          and geologic time.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="cf-big-question">
+
+      <strong>
+        🧠 Coal Specialist Question:
+      </strong>
+
+      Why would
+      a modern pile of leaves
+      buried beneath soil
+      not become coal
+      during our lifetime?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='coal_formation_mission_lab.js') }}?v=94.1"
+></script>
+
+{% endblock %}

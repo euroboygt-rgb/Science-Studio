@@ -79,6 +79,58 @@ app = Flask(__name__)
 
 
 
+
+# Science Studio Dedicated Day 94 Start
+
+@app.before_request
+def science_studio_dedicated_day94():
+
+    from flask import (
+        request as flask_request,
+        render_template as flask_render_template,
+    )
+
+    if flask_request.path not in (
+        "/second-nine-weeks/day/94",
+        "/2nd-nine-weeks/day/94",
+    ):
+        return None
+
+    view = flask_request.args.get(
+        "view",
+        "student"
+    )
+
+    if view not in (
+        "student",
+        "teacher",
+    ):
+        view = "student"
+
+    return flask_render_template(
+        "day94_lesson.html",
+        view=view
+    )
+
+# Science Studio Dedicated Day 94 End
+
+
+# Science Studio Coal Formation Route Start
+
+@app.route("/labs/coal-formation-mission")
+def coal_formation_mission_lab():
+
+    from flask import (
+        render_template as flask_render_template,
+    )
+
+    return flask_render_template(
+        "coal_formation_mission_lab.html"
+    )
+
+# Science Studio Coal Formation Route End
+
+
 # Science Studio Dedicated Day 93 Start
 
 @app.before_request

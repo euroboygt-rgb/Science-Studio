@@ -1,0 +1,267 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#80d0ed"/>
+
+      <stop offset="100%"
+            stop-color="#e9faff"/>
+
+    </linearGradient>
+
+    <linearGradient id="earth"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#b78258"/>
+
+      <stop offset="100%"
+            stop-color="#4b3429"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="26"
+        fill="url(#sky)"/>
+
+
+  <text x="600"
+        y="48"
+        text-anchor="middle"
+        fill="#2f251f"
+        font-size="30"
+        font-weight="900">
+    COAL FORMATION MISSION
+  </text>
+
+
+  <text x="600"
+        y="88"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="32"
+        font-weight="900">
+    HOW CAN AN ANCIENT SWAMP BECOME A COAL BED?
+  </text>
+
+
+  <!-- SWAMP -->
+
+  <rect x="0"
+        y="125"
+        width="1200"
+        height="145"
+        fill="#5ea95c"/>
+
+
+  <rect x="0"
+        y="220"
+        width="1200"
+        height="50"
+        fill="#65bad0"
+        opacity=".8"/>
+
+
+  <text x="600"
+        y="150"
+        text-anchor="middle"
+        fill="#173c20"
+        font-size="22"
+        font-weight="900">
+    ANCIENT SWAMPY FOREST
+  </text>
+
+
+  <g font-size="64">
+
+    <text x="120"
+          y="220">
+      🌿
+    </text>
+
+    <text x="280"
+          y="215">
+      🌳
+    </text>
+
+    <text x="470"
+          y="220">
+      🌿
+    </text>
+
+    <text x="690"
+          y="215">
+      🌳
+    </text>
+
+    <text x="900"
+          y="220">
+      🌿
+    </text>
+
+    <text x="1050"
+          y="215">
+      🌳
+    </text>
+
+  </g>
+
+
+  <!-- EARTH -->
+
+  <rect x="0"
+        y="270"
+        width="1200"
+        height="430"
+        fill="url(#earth)"/>
+
+
+  <!-- PEAT -->
+
+  <rect x="100"
+        y="300"
+        width="1000"
+        height="70"
+        rx="8"
+        fill="#43372a"
+        stroke="#211a16"
+        stroke-width="5"/>
+
+
+  <text x="600"
+        y="342"
+        text-anchor="middle"
+        fill="#f4d66d"
+        font-size="24"
+        font-weight="900">
+    ACCUMULATED PLANT MATERIAL → PEAT
+  </text>
+
+
+  <!-- SEDIMENT -->
+
+  <rect x="100"
+        y="370"
+        width="1000"
+        height="65"
+        fill="#d5aa68"
+        stroke="#4c3728"
+        stroke-width="4"/>
+
+  <text x="600"
+        y="410"
+        text-anchor="middle"
+        fill="#30231b"
+        font-size="20"
+        font-weight="900">
+    SEDIMENT + ROCK LAYERS
+  </text>
+
+
+  <rect x="100"
+        y="435"
+        width="1000"
+        height="65"
+        fill="#b87d54"
+        stroke="#4c3728"
+        stroke-width="4"/>
+
+  <rect x="100"
+        y="500"
+        width="1000"
+        height="65"
+        fill="#97694e"
+        stroke="#4c3728"
+        stroke-width="4"/>
+
+
+  <text x="260"
+        y="545"
+        text-anchor="middle"
+        fill="#ffe66d"
+        font-size="23"
+        font-weight="900">
+    🗜 PRESSURE
+  </text>
+
+
+  <text x="930"
+        y="545"
+        text-anchor="middle"
+        fill="#ff9d66"
+        font-size="23"
+        font-weight="900">
+    ♨ HEAT
+  </text>
+
+
+  <!-- COAL RESULT -->
+
+  <rect x="100"
+        y="565"
+        width="1000"
+        height="95"
+        rx="8"
+        fill="#5a4033"
+        stroke="#4c3728"
+        stroke-width="4"/>
+
+
+  <text x="260"
+        y="620"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="24"
+        font-weight="900">
+    🕰 MILLIONS OF YEARS
+  </text>
+
+
+  <text x="580"
+        y="620"
+        text-anchor="middle"
+        fill="#ffe66d"
+        font-size="42"
+        font-weight="900">
+    →
+  </text>
+
+
+  <g transform="translate(700,580)">
+
+    <rect x="0"
+          y="0"
+          width="280"
+          height="60"
+          rx="18"
+          fill="#181818"
+          stroke="#ffe66d"
+          stroke-width="5"/>
+
+    <text x="140"
+          y="40"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-size="28"
+          font-weight="900">
+      ⚫ COAL
+    </text>
+
+  </g>
+
+</svg>

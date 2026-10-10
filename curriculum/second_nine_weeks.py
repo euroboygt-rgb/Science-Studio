@@ -6118,3 +6118,102 @@ SECOND_NINE_WEEKS_LESSONS[93] = {
 }
 
 # Science Studio Day 93 End
+
+
+# Science Studio Day 94 Start
+
+SECOND_NINE_WEEKS_LESSONS[94] = {
+
+    "day": 94,
+
+    "title":
+        "Coal Formation Mission: From Ancient Swamp Plants to Coal",
+
+    "unit":
+        "Sedimentary Rocks, Fossils, and Fossil Fuels",
+
+    "teks":
+        "5.10B, 5.1F, 5.2D",
+
+    "focus":
+        "Students model and describe coal formation beginning with ancient plant material "
+        "accumulating in swampy environments, forming peat, becoming buried, and changing "
+        "under heat, pressure, and very long periods of geologic time.",
+
+    "learning_target":
+        "We will model and describe how ancient plant material can eventually form coal.",
+
+    "success_criteria":
+        "I can sequence ancient swamp plants, peat, burial, heat and pressure, "
+        "very long time, and coal.",
+
+    "essential_question":
+        "How can plants from an ancient swamp eventually become coal?",
+
+    "bell_ringer": [
+        "What type of ancient organic material is most closely connected to coal formation?",
+        "Why is burial important in fossil-fuel formation?",
+        "Would dead plants buried last year already be coal? Explain."
+    ],
+
+    "mini_lesson": [
+        "Coal is a fossil fuel formed mainly from ancient plant material.",
+        "Many coal-forming plants accumulated in ancient swampy or wetland environments.",
+        "Wet conditions can slow the complete breakdown of plant material and allow organic material to accumulate.",
+        "Accumulated plant material can form peat, an early material in the coal-formation pathway.",
+        "Sediment and rock layers can bury the peat more deeply.",
+        "As burial continues, pressure increases and temperatures can increase.",
+        "Heat, pressure, burial, and chemical changes act over extremely long periods of geologic time.",
+        "Over millions of years, the buried plant material can change into coal.",
+        "Coal is a nonrenewable fossil fuel because its natural formation takes far longer than a human lifetime.",
+        "Coal formation is different from simply preserving a plant fossil.",
+        "Cementation is part of sedimentary-rock formation but is not the process that directly turns peat into coal."
+    ],
+
+    "science_notebook": [
+        "Title: How Coal Forms.",
+        "Draw an ancient swamp with many plants.",
+        "Write: Dead plant material accumulates.",
+        "Write: Plant material → PEAT.",
+        "Draw sediment layers burying the peat.",
+        "Write: Burial → Heat + Pressure → Millions of Years → COAL.",
+        "Write: Coal comes mainly from ancient plant material.",
+        "Write: Coal is nonrenewable."
+    ],
+
+    "guided_practice": [
+        "Give students cards labeled ancient swamp plants, dead plant material, peat, burial, heat + pressure, millions of years, coal.",
+        "Students arrange the cards into a formation sequence.",
+        "Add distractors: fish fossil, cementation makes coal, one week.",
+        "Students identify and explain why the distractors do not belong."
+    ],
+
+    "lab_title":
+        "Coal Formation Mission",
+
+    "lab_url":
+        "/labs/coal-formation-mission?mission=day94",
+
+    "exit_ticket":
+        "Explain how ancient plant material in a swamp can eventually become coal.",
+
+    "vocabulary": [
+        "coal",
+        "peat",
+        "swamp",
+        "organic material",
+        "burial",
+        "heat",
+        "pressure",
+        "geologic time",
+        "nonrenewable"
+    ],
+
+    "teacher_note":
+        "Keep the model conceptual and Grade 5 appropriate. "
+        "Teach peat as an early stage made from accumulated plant material. "
+        "Do not require coal-rank terminology such as lignite, bituminous, or anthracite. "
+        "Day 95 will contrast coal with petroleum and natural gas."
+}
+
+# Science Studio Day 94 End
