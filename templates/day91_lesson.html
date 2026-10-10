@@ -1,0 +1,1182 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=91-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day91_direct.css') }}?v=91-final"
+>
+
+
+<div id="DAY91_DIRECT_TEMPLATE"
+     class="d91-page">
+
+
+  <!-- HERO -->
+
+  <section class="d91-hero">
+
+    <div class="d91-tags">
+
+      <span>Day 91</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10B</span>
+
+      <span>Rock Layer Detective</span>
+
+    </div>
+
+
+    <h1>
+      🕵️🪨 Rock Layer Detective:
+      Read the Story in the Layers
+    </h1>
+
+
+    <p>
+      Examine sedimentary rock columns,
+      reconstruct the order of deposition,
+      and use W.E.D.C.C.
+      to explain how the rock formed.
+    </p>
+
+
+    <div class="d91-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/91?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/91?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+    <h2>
+      Today's Detective Mission
+    </h2>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>I can...</strong>
+
+        <p>
+          use sedimentary rock layers
+          as evidence
+          to describe
+          the order of deposition.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>By...</strong>
+
+        <p>
+          analyzing simple,
+          undisturbed rock columns
+          and connecting them
+          to W.E.D.C.C.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can identify
+          which layer was deposited first
+          and defend my answer
+          with evidence.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🕵️ Evidence File 01
+    </div>
+
+    <h2>
+      Which Layer Was Deposited First?
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day91_rock_layers.svg"
+        alt="Five horizontal sedimentary rock layers labeled A through E"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Detective Question:
+      </strong>
+
+      In this simple,
+      undisturbed rock column,
+      which layer was deposited first?
+
+      <br><br>
+
+      What evidence supports your answer?
+
+    </div>
+
+  </section>
+
+
+  <!-- WEDCC -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🧠 W.E.D.C.C. Never Leaves
+    </div>
+
+    <h2>
+      How Did These Layers Get Here?
+    </h2>
+
+
+    <div class="d91-wedcc">
+
+      <div>
+        <b>W</b>
+        <strong>Weathering</strong>
+        <span>BREAK</span>
+      </div>
+
+      <em>→</em>
+
+      <div>
+        <b>E</b>
+        <strong>Erosion</strong>
+        <span>MOVE</span>
+      </div>
+
+      <em>→</em>
+
+      <div class="d91-focus-step">
+        <b>D</b>
+        <strong>Deposition</strong>
+        <span>BUILDS LAYERS</span>
+      </div>
+
+      <em>→</em>
+
+      <div>
+        <b>C</b>
+        <strong>Compaction</strong>
+        <span>SQUEEZE</span>
+      </div>
+
+      <em>→</em>
+
+      <div>
+        <b>C</b>
+        <strong>Cementation</strong>
+        <span>BIND</span>
+      </div>
+
+    </div>
+
+
+    <div class="d91-memory">
+
+      <strong>
+        Today's evidence spotlight:
+      </strong>
+
+      <br>
+
+      Repeated
+      <strong>DEPOSITION</strong>
+      builds layers.
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve the Penguin's Layer Mystery
+        </div>
+
+        <h2>
+          Steve Picks the Top Layer
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve examines
+          a simple undisturbed
+          four-layer rock column.
+
+          He says:
+
+          <strong>
+            "The top layer must have been deposited first because I can see it first."
+          </strong>
+
+        </div>
+
+
+        <div class="d59-question">
+
+          <strong>
+            Which response best corrects Steve?
+          </strong>
+
+
+          <button class="d91-steve-answer"
+                  data-answer="A">
+
+            A. In this undisturbed model, the bottom layer was deposited first and later layers accumulated above it.
+
+          </button>
+
+
+          <button class="d91-steve-answer"
+                  data-answer="B">
+
+            B. The top layer is always deposited first.
+
+          </button>
+
+
+          <button class="d91-steve-answer"
+                  data-answer="C">
+
+            C. All layers must have formed at exactly the same time.
+
+          </button>
+
+
+          <button class="d91-steve-answer"
+                  data-answer="D">
+
+            D. Deposition cannot create layers.
+
+          </button>
+
+
+          <div class="d59-answer-row">
+
+            <button
+              id="d91SteveCheck"
+              class="d59-check"
+              type="button"
+            >
+              Check Steve's Evidence
+            </button>
+
+
+            <button
+              id="d91SteveReset"
+              class="d59-reset"
+              type="button"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="d91SteveFeedback"
+               class="d59-feedback"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Rock Layer Vocabulary
+    </h2>
+
+
+    <div class="d91-vocab-grid">
+
+      {% set words = [
+        ("🥞","rock layer","A band of rock material that can represent deposited sediment."),
+        ("⬇️","deposition","The dropping or settling of sediment."),
+        ("🟤","sediment","Small pieces of rock, minerals, or other Earth material."),
+        ("1️⃣","sequence","The order in which events happen."),
+        ("📚","undisturbed","Remaining in its original simple stacked arrangement in our model."),
+        ("🗜️","compaction","Pressure squeezing sediment grains closer together."),
+        ("🧱","cementation","Minerals binding sediment grains together."),
+        ("🔎","evidence","Information used to support a scientific explanation."),
+        ("🪨","sedimentary rock","Rock formed when deposited sediment becomes compacted and cemented.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d91-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- LEARNING TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will use
+      sedimentary rock layers
+      as evidence
+      to describe
+      the sequence of deposition.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      First or Later?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Imagine a clear container.
+
+      <br><br>
+
+      First you pour in
+      a layer of sand.
+
+      <br>
+
+      Then you pour
+      a layer of clay
+      on top.
+
+      <br>
+
+      Then you pour
+      a layer of small pebbles
+      on top.
+
+      <br><br>
+
+      <strong>
+        Which layer was deposited first?
+        Which layer was deposited most recently?
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      Read the Rock Story
+    </h2>
+
+
+    <div class="d91-core-model">
+
+      <div class="d91-column">
+
+        <div class="layer layer5">
+          <span>5</span>
+          LATEST DEPOSITION
+        </div>
+
+        <div class="layer layer4">
+          <span>4</span>
+        </div>
+
+        <div class="layer layer3">
+          <span>3</span>
+        </div>
+
+        <div class="layer layer2">
+          <span>2</span>
+        </div>
+
+        <div class="layer layer1">
+          <span>1</span>
+          FIRST DEPOSITION
+        </div>
+
+      </div>
+
+
+      <div class="d91-core-explanation">
+
+        <h3>
+          Simple Undisturbed Model
+        </h3>
+
+        <p>
+          Layer 1 was deposited.
+
+          Then another layer
+          settled on top.
+
+          Then another.
+
+          Then another.
+        </p>
+
+
+        <div class="d91-rule">
+
+          <strong>
+            BOTTOM = DEPOSITED FIRST
+          </strong>
+
+          <br>
+
+          <strong>
+            TOP = DEPOSITED LATER
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="d91-evidence-cards">
+
+      <article>
+
+        <span>
+          ⬇️
+        </span>
+
+        <h3>
+          DEPOSITION
+        </h3>
+
+        <p>
+          Adds new sediment
+          on top of
+          previously deposited material.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          🗜️
+        </span>
+
+        <h3>
+          COMPACTION
+        </h3>
+
+        <p>
+          Weight from material above
+          can squeeze lower sediments.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          🧱
+        </span>
+
+        <h3>
+          CEMENTATION
+        </h3>
+
+        <p>
+          Minerals can bind
+          compacted grains together.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Evidence Rule
+      </strong>
+
+      <br><br>
+
+      Today we are using
+      <strong>
+        SIMPLE UNDISTURBED MODELS.
+      </strong>
+
+      <br><br>
+
+      Do not make claims
+      beyond what the model shows.
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Rock Column Evidence
+    </h2>
+
+
+    <div class="d91-notebook">
+
+      <div class="nb-layer nb5">
+        Layer 5 — deposited later
+      </div>
+
+      <div class="nb-layer nb4">
+        Layer 4
+      </div>
+
+      <div class="nb-layer nb3">
+        Layer 3
+      </div>
+
+      <div class="nb-layer nb2">
+        Layer 2
+      </div>
+
+      <div class="nb-layer nb1">
+        Layer 1 — deposited first
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Under the diagram write:
+
+      <br><br>
+
+      <strong>
+        In this simple undisturbed model,
+        lower layers were deposited before layers above them.
+      </strong>
+
+      <br><br>
+
+      Then add:
+
+      <strong>
+        D builds layers.
+        C squeezes.
+        C binds.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Human Rock Column
+    </h2>
+
+
+    <div class="d59-box">
+
+      Give five students
+      a colored paper strip.
+
+      <br><br>
+
+      Have them come
+      to the front
+      one at a time.
+
+      <ol>
+
+        <li>
+          Student 1 places a strip first.
+        </li>
+
+        <li>
+          Student 2 places a strip on top.
+        </li>
+
+        <li>
+          Continue through Student 5.
+        </li>
+
+      </ol>
+
+      Ask:
+
+      <ul>
+
+        <li>
+          Which layer was deposited first?
+        </li>
+
+        <li>
+          Which was deposited most recently?
+        </li>
+
+        <li>
+          Which W.E.D.C.C. process created the layers?
+        </li>
+
+        <li>
+          Which two processes could later help turn them into rock?
+        </li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🕵️ Interactive Investigation
+    </div>
+
+    <h2>
+      Rock Layer Detective Lab
+    </h2>
+
+
+    <p>
+      Examine rock cores,
+      reconstruct deposition sequences,
+      identify W.E.D.C.C. evidence,
+      and compare mystery columns.
+    </p>
+
+
+    <div class="d91-missions">
+
+      <div>
+        🥞
+        <strong>Mission 1</strong>
+        Layer Order
+      </div>
+
+      <div>
+        🧩
+        <strong>Mission 2</strong>
+        Rebuild the Core
+      </div>
+
+      <div>
+        🔎
+        <strong>Mission 3</strong>
+        W.E.D.C.C. Evidence
+      </div>
+
+      <div>
+        🗂️
+        <strong>Mission 4</strong>
+        Mystery Core Files
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Solve all four investigations
+      to earn
+
+      <strong>
+        Rock Layer Investigator
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/rock-layer-detective?mission=day91"
+    >
+      🕵️ Open Rock Layer Detective Lab
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR-Style Practice
+    </div>
+
+    <h2>
+      Reading Sedimentary Layers
+    </h2>
+
+
+    <div class="d91-question"
+         data-answer="C">
+
+      <h3>Question 1</h3>
+
+      <p>
+        A simple undisturbed model
+        contains four horizontal layers.
+
+        Which layer
+        was deposited first?
+      </p>
+
+      <button data-choice="A">
+        A. The top layer
+      </button>
+
+      <button data-choice="B">
+        B. The second layer
+      </button>
+
+      <button data-choice="C">
+        C. The bottom layer
+      </button>
+
+      <button data-choice="D">
+        D. All formed at the same time
+      </button>
+
+      <div class="d91-feedback"></div>
+
+    </div>
+
+
+    <div class="d91-question"
+         data-answer="B">
+
+      <h3>Question 2</h3>
+
+      <p>
+        Which W.E.D.C.C. process
+        directly builds
+        sediment layers?
+      </p>
+
+      <button data-choice="A">
+        A. Weathering
+      </button>
+
+      <button data-choice="B">
+        B. Deposition
+      </button>
+
+      <button data-choice="C">
+        C. Erosion
+      </button>
+
+      <button data-choice="D">
+        D. Cementation
+      </button>
+
+      <div class="d91-feedback"></div>
+
+    </div>
+
+
+    <div class="d91-question"
+         data-answer="D">
+
+      <h3>Question 3</h3>
+
+      <p>
+        After many layers
+        have been deposited,
+        the weight above
+        presses lower sediment grains
+        closer together.
+
+        Which process
+        is occurring?
+      </p>
+
+      <button data-choice="A">
+        A. Weathering
+      </button>
+
+      <button data-choice="B">
+        B. Erosion
+      </button>
+
+      <button data-choice="C">
+        C. Cementation
+      </button>
+
+      <button data-choice="D">
+        D. Compaction
+      </button>
+
+      <div class="d91-feedback"></div>
+
+    </div>
+
+
+    <div class="d91-question"
+         data-answer="A">
+
+      <h3>Question 4</h3>
+
+      <p>
+        Minerals form
+        between sediment grains
+        and help bind them together.
+
+        Which W.E.D.C.C. process
+        is occurring?
+      </p>
+
+      <button data-choice="A">
+        A. Cementation
+      </button>
+
+      <button data-choice="B">
+        B. Deposition
+      </button>
+
+      <button data-choice="C">
+        C. Erosion
+      </button>
+
+      <button data-choice="D">
+        D. Weathering
+      </button>
+
+      <div class="d91-feedback"></div>
+
+    </div>
+
+
+    <div class="d91-question"
+         data-answer="B">
+
+      <h3>Question 5</h3>
+
+      <p>
+        Which explanation
+        best describes
+        how the layered sediment
+        became sedimentary rock?
+      </p>
+
+      <button data-choice="A">
+        A. The layers were only eroded.
+      </button>
+
+      <button data-choice="B">
+        B. Sediments were deposited, compacted, and cemented.
+      </button>
+
+      <button data-choice="C">
+        C. The layers evaporated.
+      </button>
+
+      <button data-choice="D">
+        D. Sunlight glued the layers together.
+      </button>
+
+      <div class="d91-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+    <p>
+      In a simple undisturbed
+      four-layer rock model,
+      explain how you would determine
+      which layer was deposited first.
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="I would identify... My evidence is..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Rock Layer CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      Sedimentary rock layers
+      can provide evidence
+      about the sequence
+      of deposition.
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="The rock column showed..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This evidence supports my claim because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      ⏳ Next Mission
+    </div>
+
+    <h2>
+      Day 92:
+      Fossil Fuel Time Machine
+    </h2>
+
+
+    <div class="d59-box">
+
+      We now understand
+      how sedimentary layers
+      build and become rock.
+
+      <br><br>
+
+      Next we investigate
+      what can happen
+      when
+      <strong>
+        ancient organic material
+      </strong>
+      becomes buried
+      under layers of sediment
+      for very long periods of time.
+
+      <br><br>
+
+      That begins the
+      <strong>
+        fossil fuel
+      </strong>
+      half of TEKS 5.10B.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d91VocabModal"
+     class="d91-modal">
+
+  <div class="d91-modal-card">
+
+    <button
+      id="d91VocabClose"
+      class="d91-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d91ModalIcon"
+         class="d91-modal-icon"></div>
+
+    <h2 id="d91ModalTerm"></h2>
+
+    <p id="d91ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day91_direct.js') }}?v=91-final"
+></script>
+
+{% endblock %}

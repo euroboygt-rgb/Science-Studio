@@ -1072,3 +1072,20 @@ POWER_FRAMES[90] = {
 }
 
 # Science Studio Day 90 Power Frame End
+
+
+# Science Studio Day 91 Power Frame Start
+
+POWER_FRAMES[91] = {
+
+    "i_can":
+        "I can use sedimentary rock layers as evidence to describe the order of deposition.",
+
+    "by":
+        "analyzing simple undisturbed rock columns and connecting the layers to W.E.D.C.C.",
+
+    "i_know":
+        "I know I have learned this when I can identify which layer was deposited first and explain why using evidence."
+}
+
+# Science Studio Day 91 Power Frame End

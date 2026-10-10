@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+      <stop offset="0%"
+            stop-color="#8fd3ef"/>
+      <stop offset="100%"
+            stop-color="#eefaff"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200"
+        height="700"
+        rx="25"
+        fill="url(#sky)"/>
+
+  <text x="600"
+        y="48"
+        text-anchor="middle"
+        fill="#35261c"
+        font-size="30"
+        font-weight="900">
+    ROCK LAYER DETECTIVE
+  </text>
+
+  <text x="600"
+        y="90"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="33"
+        font-weight="900">
+    WHICH LAYER WAS DEPOSITED FIRST?
+  </text>
+
+  <!-- ROCK COLUMN -->
+
+  <g transform="translate(330,145)">
+
+    <rect x="0"
+          y="0"
+          width="540"
+          height="80"
+          rx="8"
+          fill="#d8b06f"
+          stroke="#4c3726"
+          stroke-width="5"/>
+
+    <text x="270"
+          y="50"
+          text-anchor="middle"
+          fill="#35261c"
+          font-size="22"
+          font-weight="900">
+      LAYER E — SAND
+    </text>
+
+
+    <rect x="0"
+          y="80"
+          width="540"
+          height="80"
+          fill="#ad7654"
+          stroke="#4c3726"
+          stroke-width="5"/>
+
+    <text x="270"
+          y="130"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-size="22"
+          font-weight="900">
+      LAYER D — SILT
+    </text>
+
+
+    <rect x="0"
+          y="160"
+          width="540"
+          height="80"
+          fill="#e09265"
+          stroke="#4c3726"
+          stroke-width="5"/>
+
+    <text x="270"
+          y="210"
+          text-anchor="middle"
+          fill="#35261c"
+          font-size="22"
+          font-weight="900">
+      LAYER C — CLAY
+    </text>
+
+
+    <rect x="0"
+          y="240"
+          width="540"
+          height="80"
+          fill="#967964"
+          stroke="#4c3726"
+          stroke-width="5"/>
+
+    <circle cx="90"
+            cy="280"
+            r="12"
+            fill="#5b493b"/>
+
+    <circle cx="190"
+            cy="280"
+            r="9"
+            fill="#5b493b"/>
+
+    <circle cx="340"
+            cy="280"
+            r="11"
+            fill="#5b493b"/>
+
+    <circle cx="450"
+            cy="280"
+            r="9"
+            fill="#5b493b"/>
+
+    <text x="270"
+          y="290"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-size="22"
+          font-weight="900">
+      LAYER B — PEBBLES
+    </text>
+
+
+    <rect x="0"
+          y="320"
+          width="540"
+          height="80"
+          rx="8"
+          fill="#c89b63"
+          stroke="#4c3726"
+          stroke-width="5"/>
+
+    <text x="270"
+          y="370"
+          text-anchor="middle"
+          fill="#35261c"
+          font-size="22"
+          font-weight="900">
+      LAYER A — SAND
+    </text>
+
+  </g>
+
+
+  <text x="235"
+        y="360"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="58"
+        font-weight="900">
+    ?
+  </text>
+
+  <text x="965"
+        y="360"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="58"
+        font-weight="900">
+    ?
+  </text>
+
+
+  <rect x="75"
+        y="565"
+        width="1050"
+        height="105"
+        rx="30"
+        fill="#fff3ad"
+        stroke="#35261c"
+        stroke-width="5"/>
+
+  <text x="600"
+        y="625"
+        text-anchor="middle"
+        fill="#35261c"
+        font-size="22"
+        font-weight="900">
+    SIMPLE UNDISTURBED MODEL: LOWER LAYERS WERE DEPOSITED BEFORE LAYERS ABOVE
+  </text>
+
+</svg>

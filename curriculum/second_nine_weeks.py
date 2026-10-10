@@ -5826,3 +5826,100 @@ SECOND_NINE_WEEKS_LESSONS[90] = {
 }
 
 # Science Studio Day 90 End
+
+
+# Science Studio Day 91 Start
+
+SECOND_NINE_WEEKS_LESSONS[91] = {
+
+    "day": 91,
+
+    "title":
+        "Rock Layer Detective: Read the Story in the Layers",
+
+    "unit":
+        "Sedimentary Rocks and Fossil Fuels",
+
+    "teks":
+        "5.10B, 5.1F, 5.2D",
+
+    "focus":
+        "Students interpret simple undisturbed sedimentary layers as evidence "
+        "of repeated deposition and connect those layers to the W.E.D.C.C. "
+        "sedimentary-rock formation sequence.",
+
+    "learning_target":
+        "We will use sedimentary rock layers as evidence to describe the sequence of deposition.",
+
+    "success_criteria":
+        "I can identify which layer was deposited first or later in a simple undisturbed model "
+        "and explain how W.E.D.C.C. formed the rock.",
+
+    "essential_question":
+        "What can sedimentary rock layers tell us about the order in which sediments were deposited?",
+
+    "bell_ringer": [
+        "What W.E.D.C.C. process creates sediment layers?",
+        "If one sediment layer is deposited and another layer is later deposited on top, which formed first?",
+        "What must happen after deposition for loose sediment to become sedimentary rock?"
+    ],
+
+    "mini_lesson": [
+        "Deposition can occur repeatedly, building sediment layer upon sediment layer.",
+        "In a simple undisturbed model, lower layers were deposited before layers above them.",
+        "A lower layer is not automatically made of a different material just because it formed first.",
+        "Sedimentary layers can contain different sediment sizes or materials.",
+        "Layer patterns provide evidence about the sequence of deposition.",
+        "Compaction can squeeze deposited sediments closer together.",
+        "Cementation can bind sediment grains with mineral material.",
+        "W.E.D.C.C. explains how the sediments were broken, moved, deposited, compacted, and cemented.",
+        "Rock layers are evidence of processes occurring over time.",
+        "Scientists should make conclusions only from evidence shown in the model."
+    ],
+
+    "science_notebook": [
+        "Write W.E.D.C.C. at the top of the page.",
+        "Circle D = Deposition.",
+        "Draw five horizontal sediment layers.",
+        "Number the bottom layer 1 because it was deposited first in the simple undisturbed model.",
+        "Number each higher layer in sequence.",
+        "Write: Lower layers were deposited before layers above them in this undisturbed model.",
+        "Write: D builds layers. C squeezes. C binds."
+    ],
+
+    "guided_practice": [
+        "Stack five colored paper strips one at a time.",
+        "After each strip, ask which layer was deposited most recently.",
+        "Ask which layer was deposited first.",
+        "Remove the labels and have students reconstruct the order.",
+        "Connect the finished stack to Deposition → Compaction → Cementation."
+    ],
+
+    "lab_title":
+        "Rock Layer Detective Lab",
+
+    "lab_url":
+        "/labs/rock-layer-detective?mission=day91",
+
+    "exit_ticket":
+        "In an undisturbed four-layer model, explain how you can identify the layer deposited first.",
+
+    "vocabulary": [
+        "rock layer",
+        "deposition",
+        "sediment",
+        "sequence",
+        "undisturbed",
+        "compaction",
+        "cementation",
+        "evidence",
+        "sedimentary rock"
+    ],
+
+    "teacher_note":
+        "Use only simple undisturbed models for relative layer order. "
+        "Teach students that lower layers in these models were deposited before layers above. "
+        "Continue reinforcing W.E.D.C.C. rather than turning the lesson into advanced geologic dating."
+}
+
+# Science Studio Day 91 End

@@ -1,0 +1,647 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='rock_layer_detective_lab.css') }}?v=91.1"
+>
+
+
+<div class="rl-shell">
+
+
+  <!-- HERO -->
+
+  <header class="rl-hero">
+
+    <div class="rl-tags">
+
+      <span>🕵️ Geology Investigation</span>
+
+      <span>Rock Layer Detective</span>
+
+      <span>TEKS 5.10B</span>
+
+    </div>
+
+
+    <div class="rl-hero-row">
+
+      <div>
+
+        <h1>
+          Rock Layer Detective Lab
+        </h1>
+
+        <p>
+          Read the layers.
+          Rebuild the sequence.
+          Follow W.E.D.C.C.
+          Solve the mystery.
+        </p>
+
+      </div>
+
+
+      <a
+        class="rl-back"
+        href="/second-nine-weeks/day/91?view=student"
+      >
+        ← Back to Day 91
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- STATUS -->
+
+  <section class="rl-status">
+
+    <div>
+
+      <div class="rl-eyebrow">
+        INVESTIGATION STATUS
+      </div>
+
+      <h2>
+        Solve All Four Rock Files
+      </h2>
+
+    </div>
+
+
+    <div class="rl-status-grid">
+
+      <div id="rlStatus1">
+
+        <span>🔴</span>
+
+        <strong>Mission 1</strong>
+
+        <small>Layer Order</small>
+
+      </div>
+
+
+      <div id="rlStatus2">
+
+        <span>🔴</span>
+
+        <strong>Mission 2</strong>
+
+        <small>Rebuild Core</small>
+
+      </div>
+
+
+      <div id="rlStatus3">
+
+        <span>🔴</span>
+
+        <strong>Mission 3</strong>
+
+        <small>W.E.D.C.C.</small>
+
+      </div>
+
+
+      <div id="rlStatus4">
+
+        <span>🔴</span>
+
+        <strong>Mission 4</strong>
+
+        <small>Case Files</small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PERMANENT WEDCC -->
+
+  <section class="rl-wedcc-panel">
+
+    <strong>
+      W.E.D.C.C.:
+    </strong>
+
+    <span>W — BREAK</span>
+    <b>→</b>
+    <span>E — MOVE</span>
+    <b>→</b>
+    <span>D — DROP / BUILD LAYERS</span>
+    <b>→</b>
+    <span>C — SQUEEZE</span>
+    <b>→</b>
+    <span>C — BIND</span>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="rl-mission-head">
+
+    <div class="rl-number">
+      1
+    </div>
+
+    <div>
+
+      <h2>
+        Layer Order Investigation
+      </h2>
+
+      <p>
+        Examine the undisturbed rock column.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="rl-panel">
+
+    <div class="rl-core-large">
+
+      <button
+        data-layer="E"
+        class="rl-layer l5"
+        type="button"
+      >
+        LAYER E — SAND
+      </button>
+
+      <button
+        data-layer="D"
+        class="rl-layer l4"
+        type="button"
+      >
+        LAYER D — SILT
+      </button>
+
+      <button
+        data-layer="C"
+        class="rl-layer l3"
+        type="button"
+      >
+        LAYER C — CLAY
+      </button>
+
+      <button
+        data-layer="B"
+        class="rl-layer l2"
+        type="button"
+      >
+        LAYER B — PEBBLES
+      </button>
+
+      <button
+        data-layer="A"
+        class="rl-layer l1"
+        type="button"
+      >
+        LAYER A — SAND
+      </button>
+
+    </div>
+
+
+    <div class="rl-question-box">
+
+      <strong>
+        Which layer
+        was deposited FIRST?
+      </strong>
+
+      <br><br>
+
+      Click the layer
+      in the rock column.
+
+    </div>
+
+
+    <button
+      id="rlCheck1"
+      class="rl-main-button"
+      type="button"
+    >
+      🔎 CHECK LAYER EVIDENCE
+    </button>
+
+
+    <div id="rlFeedback1"
+         class="rl-feedback">
+
+      Remember:
+      simple undisturbed model.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="rl-mission-head">
+
+    <div class="rl-number">
+      2
+    </div>
+
+    <div>
+
+      <h2>
+        Rebuild the Deposition Sequence
+      </h2>
+
+      <p>
+        Place the five layers
+        in order from
+        FIRST deposited
+        to LAST deposited.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="rl-panel">
+
+    <div class="rl-sequence-slots">
+
+      <div id="rlSlot1">
+        1st ?
+      </div>
+
+      <b>→</b>
+
+      <div id="rlSlot2">
+        2nd ?
+      </div>
+
+      <b>→</b>
+
+      <div id="rlSlot3">
+        3rd ?
+      </div>
+
+      <b>→</b>
+
+      <div id="rlSlot4">
+        4th ?
+      </div>
+
+      <b>→</b>
+
+      <div id="rlSlot5">
+        5th ?
+      </div>
+
+    </div>
+
+
+    <div class="rl-sequence-buttons">
+
+      <button data-sequence="C"
+              type="button">
+        Layer C
+      </button>
+
+      <button data-sequence="A"
+              type="button">
+        Layer A
+      </button>
+
+      <button data-sequence="E"
+              type="button">
+        Layer E
+      </button>
+
+      <button data-sequence="B"
+              type="button">
+        Layer B
+      </button>
+
+      <button data-sequence="D"
+              type="button">
+        Layer D
+      </button>
+
+    </div>
+
+
+    <button
+      id="rlReset2"
+      class="rl-reset-button"
+      type="button"
+    >
+      ↻ RESET
+    </button>
+
+
+    <button
+      id="rlCheck2"
+      class="rl-main-button"
+      type="button"
+    >
+      🧩 CHECK DEPOSITION SEQUENCE
+    </button>
+
+
+    <div id="rlFeedback2"
+         class="rl-feedback">
+
+      Build the sequence
+      from first to last.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="rl-mission-head">
+
+    <div class="rl-number">
+      3
+    </div>
+
+    <div>
+
+      <h2>
+        W.E.D.C.C. Evidence Scanner
+      </h2>
+
+      <p>
+        Match Earth evidence
+        to the correct process.
+      </p>
+
+    </div>
+
+
+    <aside class="rl-score">
+
+      <strong>Score</strong>
+
+      <span id="rlScore3">
+        0 / 5
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="rl-panel">
+
+    <div id="rlEvidence3"
+         class="rl-case-card">
+
+      Loading evidence...
+
+    </div>
+
+
+    <div id="rlQuestion3"
+         class="rl-question-box">
+
+      Loading...
+
+    </div>
+
+
+    <div id="rlChoices3"
+         class="rl-choices">
+    </div>
+
+
+    <button
+      id="rlCheck3"
+      class="rl-main-button"
+      type="button"
+    >
+      🔎 IDENTIFY PROCESS
+    </button>
+
+
+    <div id="rlFeedback3"
+         class="rl-feedback">
+
+      Follow W.E.D.C.C.
+
+    </div>
+
+
+    <button
+      id="rlNext3"
+      class="rl-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="rl-mission-head">
+
+    <div class="rl-number">
+      4
+    </div>
+
+    <div>
+
+      <h2>
+        Mystery Core Case Files
+      </h2>
+
+      <p>
+        Use layer evidence
+        to solve each geology case.
+      </p>
+
+    </div>
+
+
+    <aside class="rl-score">
+
+      <strong>Score</strong>
+
+      <span id="rlScore4">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="rl-panel">
+
+    <div id="rlCoreCase"
+         class="rl-case-visual">
+    </div>
+
+
+    <div id="rlQuestion4"
+         class="rl-question-box">
+
+      Loading...
+
+    </div>
+
+
+    <div id="rlChoices4"
+         class="rl-choices">
+    </div>
+
+
+    <button
+      id="rlCheck4"
+      class="rl-main-button"
+      type="button"
+    >
+      🗂️ SOLVE CASE
+    </button>
+
+
+    <div id="rlFeedback4"
+         class="rl-feedback">
+
+      Use only the evidence shown.
+
+    </div>
+
+
+    <button
+      id="rlNext4"
+      class="rl-next-button"
+      type="button"
+      disabled
+    >
+      NEXT CASE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="rl-final">
+
+    <div class="rl-final-icon">
+      🕵️🪨🏆
+    </div>
+
+    <h2>
+      Investigation Status
+    </h2>
+
+
+    <div id="rlFinalMessage"
+         class="rl-final-message">
+
+      Complete all four investigations.
+
+    </div>
+
+  </section>
+
+
+  <!-- LOG -->
+
+  <section class="rl-log">
+
+    <h2>
+      📓 Rock Layer Evidence Log
+    </h2>
+
+
+    <div class="rl-log-grid">
+
+      <article>
+
+        <strong>
+          ⬇️ Layers
+        </strong>
+
+        <p>
+          Repeated deposition
+          can build one layer
+          above another.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          1️⃣ Sequence
+        </strong>
+
+        <p>
+          In our undisturbed model,
+          lower layers
+          were deposited first.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          W.E.D.C.C.
+        </strong>
+
+        <p>
+          Layers are part
+          of a larger
+          sedimentary-rock process.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🔎 Evidence
+        </strong>
+
+        <p>
+          Conclusions must match
+          the observations
+          shown in the model.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='rock_layer_detective_lab.js') }}?v=91.1"
+></script>
+
+{% endblock %}

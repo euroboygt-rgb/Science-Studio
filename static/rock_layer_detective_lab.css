@@ -1,0 +1,391 @@
+.rl-shell {
+  width: min(1200px,96vw);
+  margin: 24px auto 60px;
+}
+
+.rl-hero,
+.rl-status,
+.rl-wedcc-panel,
+.rl-mission-head,
+.rl-panel,
+.rl-final,
+.rl-log {
+  border: 3px solid #171717;
+  border-radius: 17px;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+.rl-hero {
+  padding: 20px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #433226,
+      #927052,
+      #7131cc
+    );
+}
+
+.rl-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.rl-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #4d3827;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+.rl-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.rl-back {
+  padding: 10px 14px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.rl-status,
+.rl-wedcc-panel {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+.rl-eyebrow {
+  font-size: .75rem;
+  font-weight: 900;
+}
+
+.rl-status-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.rl-status-grid > div {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.rl-status-grid span,
+.rl-status-grid strong,
+.rl-status-grid small {
+  display: block;
+}
+
+.rl-status-grid span {
+  font-size: 1.8rem;
+}
+
+.rl-status-grid .online {
+  background: #d9f8dd;
+}
+
+.rl-wedcc-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.rl-wedcc-panel span {
+  padding: 8px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  font-weight: 900;
+}
+
+.rl-wedcc-panel b {
+  color: #7131cc;
+}
+
+.rl-mission-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+.rl-number {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  flex: 0 0 auto;
+  border: 4px solid #171717;
+  border-radius: 50%;
+  background: #7131cc;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.rl-score {
+  margin-left: auto;
+  padding: 9px 14px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.rl-score strong,
+.rl-score span {
+  display: block;
+}
+
+.rl-panel {
+  margin-top: 10px;
+  padding: 16px;
+  background: #111a34;
+  color: #fff;
+}
+
+.rl-core-large {
+  width: min(620px,90%);
+  margin: 0 auto 15px;
+  border: 5px solid #4d3827;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.rl-layer {
+  display: block;
+  width: 100%;
+  min-height: 68px;
+  border: 0;
+  border-bottom: 3px solid #4d3827;
+  color: #171717;
+  font-size: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.rl-layer:last-child {
+  border-bottom: 0;
+}
+
+.rl-layer.selected {
+  outline: 6px solid #ffe45d;
+  outline-offset: -7px;
+}
+
+.rl-layer.l5 {
+  background: #d9b16f;
+}
+
+.rl-layer.l4 {
+  background: #ae7654;
+  color: #fff;
+}
+
+.rl-layer.l3 {
+  background: #df9164;
+}
+
+.rl-layer.l2 {
+  background: #967964;
+  color: #fff;
+}
+
+.rl-layer.l1 {
+  background: #c99c63;
+}
+
+.rl-question-box,
+.rl-case-card,
+.rl-case-visual {
+  padding: 14px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+}
+
+.rl-case-card,
+.rl-case-visual {
+  margin-bottom: 10px;
+  background: #fff3ad;
+}
+
+.rl-main-button,
+.rl-reset-button,
+.rl-next-button {
+  margin-top: 12px;
+  padding: 12px 18px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #ffe45d;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.rl-reset-button {
+  background: #fff;
+}
+
+.rl-next-button:disabled {
+  opacity: .45;
+}
+
+.rl-feedback {
+  margin-top: 12px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+}
+
+.rl-sequence-slots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+
+.rl-sequence-slots div {
+  display: grid;
+  place-items: center;
+  width: 140px;
+  min-height: 70px;
+  padding: 8px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  text-align: center;
+  font-weight: 900;
+}
+
+.rl-sequence-slots b {
+  color: #ffe45d;
+  font-size: 1.6rem;
+}
+
+.rl-sequence-buttons {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.rl-sequence-buttons button,
+.rl-choice {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.rl-sequence-buttons button.selected,
+.rl-choice.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+}
+
+.rl-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.rl-case-core {
+  width: min(480px,90%);
+  margin: auto;
+  border: 4px solid #4d3827;
+}
+
+.rl-case-core div {
+  padding: 12px;
+  border-bottom: 3px solid #4d3827;
+  text-align: center;
+  font-weight: 900;
+}
+
+.rl-case-core div:last-child {
+  border-bottom: 0;
+}
+
+.rl-final {
+  margin-top: 14px;
+  padding: 20px;
+  background: #fff4cd;
+  text-align: center;
+}
+
+.rl-final-icon {
+  font-size: 4rem;
+}
+
+.rl-final-message {
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #e9f6ff;
+  font-weight: 900;
+}
+
+.rl-log {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff;
+}
+
+.rl-log-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.rl-log-grid article {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+}
+
+@media (max-width:850px) {
+
+  .rl-hero-row {
+    display: block;
+  }
+
+  .rl-status-grid,
+  .rl-sequence-buttons,
+  .rl-choices,
+  .rl-log-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
