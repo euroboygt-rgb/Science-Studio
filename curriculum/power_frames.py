@@ -1140,3 +1140,23 @@ POWER_FRAMES[94] = {
 }
 
 # Science Studio Day 94 Power Frame End
+
+
+# Science Studio Day 95 Power Frame Start
+
+POWER_FRAMES[95] = {
+
+    "i_can":
+        "I can model and describe how ancient aquatic organic material "
+        "can contribute to petroleum and natural-gas formation.",
+
+    "by":
+        "sequencing accumulation, burial, heat and pressure, "
+        "and millions of years.",
+
+    "i_know":
+        "I know I have learned this when I can compare the source "
+        "and formation of coal with petroleum and natural gas."
+}
+
+# Science Studio Day 95 Power Frame End

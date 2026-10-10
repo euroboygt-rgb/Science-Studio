@@ -1,0 +1,270 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="water"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#4bb9df"/>
+
+      <stop offset="100%"
+            stop-color="#164f85"/>
+
+    </linearGradient>
+
+    <linearGradient id="earth"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#c59a63"/>
+
+      <stop offset="100%"
+            stop-color="#4b342a"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="26"
+        fill="#e8f8ff"/>
+
+
+  <text x="600"
+        y="48"
+        text-anchor="middle"
+        fill="#2c2521"
+        font-size="30"
+        font-weight="900">
+    OIL &amp; NATURAL GAS FORMATION
+  </text>
+
+
+  <text x="600"
+        y="88"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="32"
+        font-weight="900">
+    WHAT IS HIDDEN BENEATH THE ANCIENT SEA?
+  </text>
+
+
+  <!-- WATER -->
+
+  <rect x="0"
+        y="120"
+        width="1200"
+        height="190"
+        fill="url(#water)"/>
+
+
+  <text x="600"
+        y="155"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="22"
+        font-weight="900">
+    ANCIENT AQUATIC ENVIRONMENT
+  </text>
+
+
+  <g font-size="42">
+
+    <text x="150"
+          y="215">
+      🦠
+    </text>
+
+    <text x="300"
+          y="190">
+      🦠
+    </text>
+
+    <text x="475"
+          y="230">
+      🦠
+    </text>
+
+    <text x="700"
+          y="195">
+      🦠
+    </text>
+
+    <text x="880"
+          y="225">
+      🦠
+    </text>
+
+    <text x="1030"
+          y="190">
+      🦠
+    </text>
+
+  </g>
+
+
+  <text x="600"
+        y="275"
+        text-anchor="middle"
+        fill="#dff8ff"
+        font-size="20"
+        font-weight="900">
+    TINY AQUATIC ORGANISMS
+  </text>
+
+
+  <!-- EARTH -->
+
+  <rect x="0"
+        y="310"
+        width="1200"
+        height="390"
+        fill="url(#earth)"/>
+
+
+  <!-- SOURCE MATERIAL -->
+
+  <rect x="90"
+        y="325"
+        width="1020"
+        height="60"
+        rx="8"
+        fill="#4b4036"
+        stroke="#2c211c"
+        stroke-width="4"/>
+
+
+  <text x="600"
+        y="362"
+        text-anchor="middle"
+        fill="#ffe66d"
+        font-size="21"
+        font-weight="900">
+    ORGANIC-RICH MATERIAL ON THE ANCIENT SEA FLOOR
+  </text>
+
+
+  <!-- BURIAL -->
+
+  <rect x="90"
+        y="385"
+        width="1020"
+        height="55"
+        fill="#d7ae70"
+        stroke="#4c3728"
+        stroke-width="4"/>
+
+  <rect x="90"
+        y="440"
+        width="1020"
+        height="55"
+        fill="#b97e57"
+        stroke="#4c3728"
+        stroke-width="4"/>
+
+  <rect x="90"
+        y="495"
+        width="1020"
+        height="55"
+        fill="#9c6b51"
+        stroke="#4c3728"
+        stroke-width="4"/>
+
+
+  <text x="220"
+        y="530"
+        text-anchor="middle"
+        fill="#ffe66d"
+        font-size="22"
+        font-weight="900">
+    🗜 PRESSURE
+  </text>
+
+
+  <text x="980"
+        y="530"
+        text-anchor="middle"
+        fill="#ffad72"
+        font-size="22"
+        font-weight="900">
+    ♨ HEAT
+  </text>
+
+
+  <!-- RESULT -->
+
+  <rect x="90"
+        y="550"
+        width="1020"
+        height="110"
+        rx="8"
+        fill="#5d4134"
+        stroke="#3b2b23"
+        stroke-width="4"/>
+
+
+  <text x="245"
+        y="615"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="23"
+        font-weight="900">
+    🕰 MILLIONS OF YEARS
+  </text>
+
+
+  <text x="540"
+        y="615"
+        text-anchor="middle"
+        fill="#ffe66d"
+        font-size="42"
+        font-weight="900">
+    →
+  </text>
+
+
+  <g transform="translate(655,570)">
+
+    <rect x="0"
+          y="0"
+          width="355"
+          height="70"
+          rx="18"
+          fill="#252525"
+          stroke="#ffe66d"
+          stroke-width="5"/>
+
+
+    <text x="177"
+          y="30"
+          text-anchor="middle"
+          fill="#ffffff"
+          font-size="22"
+          font-weight="900">
+      🛢 PETROLEUM
+    </text>
+
+
+    <text x="177"
+          y="56"
+          text-anchor="middle"
+          fill="#ffe66d"
+          font-size="22"
+          font-weight="900">
+      + 🔥 NATURAL GAS
+    </text>
+
+  </g>
+
+</svg>

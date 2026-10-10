@@ -1,0 +1,859 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='oil_gas_formation_mission_lab.css') }}?v=95.1"
+>
+
+
+<div class="og-shell">
+
+
+  <!-- HERO -->
+
+  <header class="og-hero">
+
+    <div class="og-tags">
+
+      <span>🌊 Ancient Sea Mission</span>
+
+      <span>Petroleum Systems</span>
+
+      <span>TEKS 5.10B</span>
+
+    </div>
+
+
+    <div class="og-hero-row">
+
+      <div>
+
+        <h1>
+          🛢️🔥 Ancient Sea Petroleum Mission
+        </h1>
+
+        <p>
+          Build the basin.
+          Bury the organic material.
+          Run geologic time.
+          Find the oil and gas.
+        </p>
+
+      </div>
+
+
+      <a
+        class="og-back"
+        href="/second-nine-weeks/day/95?view=student"
+      >
+        ← Back to Day 95
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- MEMORY -->
+
+  <section class="og-memory">
+
+    <strong>
+      PETROLEUM FORMATION:
+    </strong>
+
+    <span>
+      🌊🦠 Ancient Aquatic Organisms
+    </span>
+
+    <b>→</b>
+
+    <span>
+      ⬇️ Organic Material
+    </span>
+
+    <b>→</b>
+
+    <span>
+      🥞 Burial
+    </span>
+
+    <b>→</b>
+
+    <span>
+      ♨️ Heat + 🗜️ Pressure
+    </span>
+
+    <b>→</b>
+
+    <span>
+      🕰️ Millions of Years
+    </span>
+
+    <b>→</b>
+
+    <span>
+      🛢️🔥 Oil + Gas
+    </span>
+
+  </section>
+
+
+  <!-- STATUS -->
+
+  <section class="og-status">
+
+    <h2>
+      Petroleum Mission Status
+    </h2>
+
+
+    <div class="og-status-grid">
+
+      <div id="ogStatus1">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 1
+        </strong>
+
+        <small>
+          Source Check
+        </small>
+
+      </div>
+
+
+      <div id="ogStatus2">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 2
+        </strong>
+
+        <small>
+          Build Basin
+        </small>
+
+      </div>
+
+
+      <div id="ogStatus3">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 3
+        </strong>
+
+        <small>
+          Generate + Trap
+        </small>
+
+      </div>
+
+
+      <div id="ogStatus4">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 4
+        </strong>
+
+        <small>
+          Fuel Detective
+        </small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="og-mission-head">
+
+    <div class="og-number">
+      1
+    </div>
+
+    <div>
+
+      <h2>
+        Petroleum Source Check
+      </h2>
+
+      <p>
+        Identify the source material
+        and processes associated
+        with petroleum and natural gas.
+      </p>
+
+    </div>
+
+
+    <aside class="og-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="ogScore1">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="og-panel">
+
+    <div id="ogEvidence1"
+         class="og-case-card">
+    </div>
+
+
+    <div id="ogQuestion1"
+         class="og-question">
+    </div>
+
+
+    <div id="ogChoices1"
+         class="og-choices">
+    </div>
+
+
+    <button
+      id="ogCheck1"
+      class="og-main-button"
+      type="button"
+    >
+      🌊 CHECK SOURCE EVIDENCE
+    </button>
+
+
+    <div id="ogFeedback1"
+         class="og-feedback">
+
+      Follow the ancient aquatic evidence.
+
+    </div>
+
+
+    <button
+      id="ogNext1"
+      class="og-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="og-mission-head">
+
+    <div class="og-number">
+      2
+    </div>
+
+    <div>
+
+      <h2>
+        Build the Ancient Sediment Basin
+      </h2>
+
+      <p>
+        Accumulate ancient organic material,
+        then bury it beneath sediment.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="og-panel">
+
+    <div class="og-sea">
+
+      <div class="og-water">
+
+        <strong>
+          ANCIENT AQUATIC ENVIRONMENT
+        </strong>
+
+        <div>
+          🌊 &nbsp; 🦠 &nbsp; 🦠 &nbsp; 🦠 &nbsp; 🌊
+        </div>
+
+      </div>
+
+
+      <div id="ogBasinStack"
+           class="og-basin-stack">
+
+        <div id="ogOrganicLayer"
+             class="og-organic-layer">
+
+          ANCIENT SEA FLOOR
+
+        </div>
+
+
+        <div class="og-ancient-floor">
+
+          ORIGINAL ANCIENT SEA FLOOR
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <h3>
+      Step A — Accumulate Organic Material
+    </h3>
+
+
+    <div class="og-control-grid">
+
+      <button
+        id="ogAddOrganisms"
+        type="button"
+      >
+        🦠 ADD ORGANIC REMAINS
+      </button>
+
+
+      <div>
+
+        <strong>
+          Organic Material
+        </strong>
+
+        <span id="ogOrganicCount">
+          0 / 4
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <h3>
+      Step B — Bury the Organic-Rich Layer
+    </h3>
+
+
+    <div class="og-control-grid">
+
+      <button
+        id="ogAddSediment"
+        type="button"
+      >
+        🥞 ADD SEDIMENT LAYER
+      </button>
+
+
+      <div>
+
+        <strong>
+          Burial Layers
+        </strong>
+
+        <span id="ogLayerCount">
+          0 / 4
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="ogCheck2"
+      class="og-main-button"
+      type="button"
+    >
+      ⬇️ CHECK SEDIMENT BASIN
+    </button>
+
+
+    <div id="ogFeedback2"
+         class="og-feedback">
+
+      First build
+      an organic-rich layer.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="og-mission-head">
+
+    <div class="og-number">
+      3
+    </div>
+
+    <div>
+
+      <h2>
+        Petroleum Generator
+      </h2>
+
+      <p>
+        Apply geologic conditions,
+        then investigate
+        a conventional reservoir model.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="og-panel">
+
+    <div class="og-generator">
+
+      <div class="og-generator-title">
+
+        <span>
+          ⚙️
+        </span>
+
+        <div>
+
+          <strong>
+            PETROLEUM SYSTEM SIMULATOR
+          </strong>
+
+          <p id="ogMachineMessage">
+            Sediment basin not yet ready.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="og-gauges">
+
+        <div>
+
+          <strong>
+            ♨️ HEAT
+          </strong>
+
+          <div class="og-meter">
+            <div id="ogHeatMeter"></div>
+          </div>
+
+          <span id="ogHeatReadout">
+            LOW
+          </span>
+
+          <button
+            id="ogHeat"
+            type="button"
+          >
+            INCREASE HEAT
+          </button>
+
+        </div>
+
+
+        <div>
+
+          <strong>
+            🗜️ PRESSURE
+          </strong>
+
+          <div class="og-meter">
+            <div id="ogPressureMeter"></div>
+          </div>
+
+          <span id="ogPressureReadout">
+            LOW
+          </span>
+
+          <button
+            id="ogPressure"
+            type="button"
+          >
+            INCREASE PRESSURE
+          </button>
+
+        </div>
+
+
+        <div>
+
+          <strong>
+            🕰️ TIME
+          </strong>
+
+          <div class="og-meter">
+            <div id="ogTimeMeter"></div>
+          </div>
+
+          <span id="ogTimeReadout">
+            SHORT
+          </span>
+
+          <button
+            id="ogTime"
+            type="button"
+          >
+            ADVANCE TIME
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="og-transform">
+
+        <div id="ogBefore">
+
+          🌊🦠
+
+          <strong>
+            BURIED ORGANIC MATERIAL
+          </strong>
+
+        </div>
+
+
+        <span>
+          →
+        </span>
+
+
+        <div id="ogAfter">
+
+          ?
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="ogGenerate"
+      class="og-main-button"
+      type="button"
+    >
+      🛢️🔥 CHECK FORMATION CONDITIONS
+    </button>
+
+
+    <div id="ogFeedback3"
+         class="og-feedback">
+
+      Burial alone
+      is not enough.
+
+    </div>
+
+
+    <!-- RESERVOIR EXTENSION -->
+
+    <div class="og-reservoir-model">
+
+      <h3>
+        🔎 Conventional Reservoir Extension
+      </h3>
+
+
+      <div class="og-cap-rock">
+
+        🛡️
+        <strong>
+          CAP / SEALING ROCK
+        </strong>
+
+      </div>
+
+
+      <div class="og-reservoir-rock">
+
+        <div id="ogGasPocket"
+             class="og-gas-pocket">
+
+          RESERVOIR EMPTY
+
+        </div>
+
+
+        <div id="ogOilPocket"
+             class="og-oil-pocket">
+
+          POROUS RESERVOIR ROCK
+
+        </div>
+
+      </div>
+
+
+      <div class="og-source-rock">
+
+        <strong>
+          ORGANIC-RICH SOURCE MATERIAL
+        </strong>
+
+        <span id="ogSourceResult">
+          ?
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="ogMigrate"
+      class="og-secondary-button"
+      type="button"
+      disabled
+    >
+      ⬆️ MODEL MIGRATION INTO RESERVOIR
+    </button>
+
+
+    <div class="og-extension-note">
+
+      Extension:
+      In some conventional systems,
+      oil and gas can move
+      from source rock
+      into porous reservoir rock
+      and collect beneath
+      a sealing layer.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="og-mission-head">
+
+    <div class="og-number">
+      4
+    </div>
+
+    <div>
+
+      <h2>
+        Fossil Fuel Detective
+      </h2>
+
+      <p>
+        Compare coal,
+        petroleum,
+        and natural-gas pathways.
+      </p>
+
+    </div>
+
+
+    <aside class="og-score">
+
+      <strong>
+        Score
+      </strong>
+
+      <span id="ogScore4">
+        0 / 4
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="og-panel">
+
+    <div id="ogEvidence4"
+         class="og-case-card">
+    </div>
+
+
+    <div id="ogQuestion4"
+         class="og-question">
+    </div>
+
+
+    <div id="ogChoices4"
+         class="og-choices">
+    </div>
+
+
+    <button
+      id="ogCheck4"
+      class="og-main-button"
+      type="button"
+    >
+      🔎 SOLVE FOSSIL-FUEL CASE
+    </button>
+
+
+    <div id="ogFeedback4"
+         class="og-feedback">
+
+      Compare the source
+      and formation evidence.
+
+    </div>
+
+
+    <button
+      id="ogNext4"
+      class="og-next-button"
+      type="button"
+      disabled
+    >
+      NEXT CASE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="og-final">
+
+    <div class="og-final-icon">
+      🌊🦠🛢️🔥🏆
+    </div>
+
+
+    <h2>
+      Petroleum Mission Status
+    </h2>
+
+
+    <div id="ogFinalMessage"
+         class="og-final-message">
+
+      Complete all four missions.
+
+    </div>
+
+  </section>
+
+
+  <!-- LOG -->
+
+  <section class="og-log">
+
+    <h2>
+      📓 Petroleum Systems Evidence Log
+    </h2>
+
+
+    <div class="og-log-grid">
+
+      <article>
+
+        <strong>
+          🌊🦠 SOURCE
+        </strong>
+
+        <p>
+          Ancient aquatic
+          organic material.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ⬇️ BURIAL
+        </strong>
+
+        <p>
+          Sediment accumulates
+          above the material.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ♨️🗜️🕰️ CHANGE
+        </strong>
+
+        <p>
+          Heat,
+          pressure,
+          and geologic time.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🛢️🔥 RESULT
+        </strong>
+
+        <p>
+          Petroleum
+          and natural gas.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="og-big-question">
+
+      <strong>
+        🧠 Petroleum Specialist Question:
+      </strong>
+
+      What is one similarity
+      and one difference
+      between coal formation
+      and petroleum formation?
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='oil_gas_formation_mission_lab.js') }}?v=95.1"
+></script>
+
+{% endblock %}

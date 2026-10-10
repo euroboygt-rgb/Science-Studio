@@ -1,0 +1,399 @@
+.d95-page {
+  width: min(1000px,94vw);
+  margin: 22px auto 60px;
+}
+
+.d95-page > section {
+  margin-bottom: 16px;
+}
+
+.d95-hero {
+  padding: 20px;
+  border: 3px solid #171717;
+  border-radius: 18px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #083a5d,
+      #176d8f,
+      #20252d,
+      #7131cc
+    );
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+.d95-tags,
+.d95-header-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.d95-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #10364c;
+  color: #fff13b;
+  font-weight: 900;
+}
+
+.d95-header-buttons {
+  margin-top: 14px;
+}
+
+.d95-header-buttons a {
+  padding: 8px 12px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.d95-chain {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+
+.d95-chain article {
+  width: 130px;
+  min-height: 130px;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+  text-align: center;
+}
+
+.d95-chain article span {
+  font-size: 2.5rem;
+}
+
+.d95-chain article strong {
+  font-size: .76rem;
+}
+
+.d95-chain > b {
+  color: #7131cc;
+  font-size: 1.5rem;
+}
+
+.d95-chain .d95-result {
+  background: #252525;
+  color: #fff;
+}
+
+.d95-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.d95-compare article {
+  padding: 17px;
+  border: 3px solid #171717;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.d95-compare article > span {
+  display: block;
+  font-size: 4rem;
+}
+
+.d95-compare .coal {
+  background: #e5ded4;
+}
+
+.d95-compare .oil {
+  background: #dff5ff;
+}
+
+.d95-same {
+  margin-top: 12px;
+  padding: 14px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff3ad;
+  text-align: center;
+}
+
+.d95-reservoir {
+  overflow: hidden;
+  margin: 15px auto;
+  width: min(700px,96%);
+  border: 4px solid #171717;
+  border-radius: 13px;
+}
+
+.d95-cap {
+  padding: 16px;
+  background: #67615b;
+  color: #fff;
+  text-align: center;
+}
+
+.d95-cap strong,
+.d95-cap span,
+.d95-reservoir-rock strong,
+.d95-reservoir-rock span,
+.d95-source strong {
+  display: block;
+}
+
+.d95-reservoir-rock {
+  position: relative;
+  min-height: 180px;
+  padding: 50px 20px 18px;
+  background:
+    radial-gradient(
+      circle at 15px 15px,
+      #ffffff 0 3px,
+      transparent 4px
+    ),
+    #d7b77a;
+  background-size: 30px 30px;
+  text-align: center;
+}
+
+.d95-reservoir-rock .gas {
+  position: absolute;
+  top: 12px;
+  left: 20%;
+  right: 20%;
+  padding: 7px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #e9f7ff;
+  font-weight: 900;
+}
+
+.d95-reservoir-rock .oil {
+  margin: 25px auto 10px;
+  width: 65%;
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 999px;
+  background: #28231f;
+  color: #fff;
+  font-weight: 900;
+}
+
+.d95-source {
+  padding: 18px;
+  background: #4c3b33;
+  color: #ffe66d;
+  text-align: center;
+}
+
+.d95-vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 9px;
+}
+
+.d95-vocab {
+  min-height: 105px;
+  padding: 10px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+}
+
+.d95-vocab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 12px rgba(0,0,0,.2);
+}
+
+.d95-vocab span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 2.2rem;
+}
+
+.d95-timeline {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 9px;
+}
+
+.d95-timeline article {
+  position: relative;
+  padding: 14px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+  text-align: center;
+}
+
+.d95-timeline article > span {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #171717;
+  border-radius: 50%;
+  background: #7131cc;
+  color: #fff;
+  font-weight: 900;
+}
+
+.d95-timeline article > div {
+  font-size: 3rem;
+}
+
+.d95-notebook {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  margin: 15px 0;
+}
+
+.d95-notebook div {
+  min-width: 120px;
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #edf7ff;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.d95-notebook strong {
+  display: block;
+  font-size: .78rem;
+}
+
+.d95-notebook b {
+  color: #7131cc;
+  font-size: 1.5rem;
+}
+
+.d95-notebook .result {
+  background: #252525;
+  color: #fff;
+}
+
+.d95-missions {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 9px;
+  margin: 14px 0;
+}
+
+.d95-missions div {
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.d95-missions strong {
+  display: block;
+  margin: 6px 0;
+  font-size: .9rem;
+}
+
+.d95-steve-answer,
+.d95-question button {
+  display: block;
+  width: 100%;
+  margin: 7px 0;
+  padding: 10px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  text-align: left;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.d95-steve-answer.selected,
+.d95-question button.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+  box-shadow: 0 0 0 3px rgba(113,49,204,.2);
+}
+
+.d95-question {
+  margin: 14px 0;
+  padding: 13px;
+  border: 2px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+}
+
+.d95-feedback {
+  min-height: 24px;
+  margin-top: 8px;
+  font-weight: 900;
+}
+
+.d95-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0,0,0,.72);
+}
+
+.d95-modal.show {
+  display: flex;
+}
+
+.d95-modal-card {
+  position: relative;
+  width: min(500px,92vw);
+  padding: 30px;
+  border: 4px solid #171717;
+  border-radius: 18px;
+  background: #fff;
+  text-align: center;
+}
+
+.d95-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: 0;
+  background: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.d95-modal-icon {
+  font-size: 5rem;
+}
+
+@media (max-width:850px) {
+
+  .d95-compare,
+  .d95-vocab-grid,
+  .d95-timeline,
+  .d95-missions {
+    grid-template-columns: 1fr;
+  }
+
+}

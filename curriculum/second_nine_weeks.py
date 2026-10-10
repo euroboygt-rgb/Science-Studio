@@ -6217,3 +6217,106 @@ SECOND_NINE_WEEKS_LESSONS[94] = {
 }
 
 # Science Studio Day 94 End
+
+
+# Science Studio Day 95 Start
+
+SECOND_NINE_WEEKS_LESSONS[95] = {
+
+    "day": 95,
+
+    "title":
+        "Oil & Natural Gas Formation Mission: Secrets Beneath the Ancient Sea",
+
+    "unit":
+        "Sedimentary Rocks, Fossils, and Fossil Fuels",
+
+    "teks":
+        "5.10B, 5.1F, 5.2D",
+
+    "focus":
+        "Students model and describe how ancient microscopic aquatic organisms "
+        "can become buried beneath sediment and, under suitable heat, pressure, "
+        "and geologic-time conditions, contribute to the formation of petroleum "
+        "and natural gas.",
+
+    "learning_target":
+        "We will model and describe how ancient aquatic organisms can contribute "
+        "to the formation of petroleum and natural gas.",
+
+    "success_criteria":
+        "I can sequence ancient aquatic organisms, burial, heat and pressure, "
+        "millions of years, and the formation of petroleum and natural gas.",
+
+    "essential_question":
+        "How can tiny organisms from an ancient sea eventually contribute "
+        "to oil and natural-gas deposits underground?",
+
+    "bell_ringer": [
+        "What type of ancient material did we connect to coal formation?",
+        "What type of ancient environment is commonly connected to petroleum formation?",
+        "Why are oil and natural gas considered nonrenewable?"
+    ],
+
+    "mini_lesson": [
+        "Petroleum, also called crude oil, is a liquid fossil fuel.",
+        "Natural gas is a gaseous fossil fuel.",
+        "Many petroleum and natural-gas deposits formed from ancient organic material associated with aquatic environments.",
+        "Tiny aquatic organisms died and their remains accumulated with sediments on ancient sea or lake floors.",
+        "Additional sand, silt, mud, and rock layers buried the organic-rich material more deeply.",
+        "Increasing burial can expose organic-rich material to changing heat and pressure conditions.",
+        "Over millions of years, these conditions can change buried organic material and contribute to petroleum and natural-gas formation.",
+        "Oil and natural gas may occur within tiny pore spaces in sedimentary rocks.",
+        "In some conventional petroleum systems, oil and gas can move through permeable rock and accumulate in reservoir rock beneath a sealing layer.",
+        "Coal and petroleum are both fossil fuels, but they commonly begin with different source materials and environments.",
+        "A fish fossil does not simply turn directly into a pool of oil."
+    ],
+
+    "science_notebook": [
+        "Title: Oil & Natural Gas Formation.",
+        "Draw an ancient ocean or lake.",
+        "Draw tiny aquatic organisms in the water.",
+        "Write: Organisms die → organic material accumulates on the bottom.",
+        "Write: Burial by sediment → Heat + Pressure → Millions of Years.",
+        "Write: Petroleum = liquid fossil fuel.",
+        "Write: Natural gas = gaseous fossil fuel.",
+        "Write: Coal begins mainly with ancient plants; oil and natural gas are commonly linked to ancient aquatic organic material."
+    ],
+
+    "guided_practice": [
+        "Give students process cards: ancient aquatic organisms, organic-rich sediment, burial, heat + pressure, millions of years, oil and natural gas.",
+        "Students sequence the pathway.",
+        "Add distractors: fish fossil instantly becomes gasoline, one week, cementation makes petroleum.",
+        "Have students compare this pathway with yesterday's coal pathway."
+    ],
+
+    "lab_title":
+        "Ancient Sea Petroleum Mission",
+
+    "lab_url":
+        "/labs/oil-gas-formation-mission?mission=day95",
+
+    "exit_ticket":
+        "Describe how ancient aquatic organic material can eventually contribute "
+        "to petroleum and natural-gas formation.",
+
+    "vocabulary": [
+        "petroleum",
+        "natural gas",
+        "aquatic",
+        "organic material",
+        "burial",
+        "source rock",
+        "reservoir rock",
+        "porous",
+        "cap rock"
+    ],
+
+    "teacher_note":
+        "Keep the assessed core at Grade 5 level: ancient organic material, burial, "
+        "heat, pressure, and very long geologic time. Reservoir rock, migration, "
+        "and cap rock are useful model extensions but should not become extra "
+        "memorization requirements. Day 96 will compare all fossil-fuel systems."
+}
+
+# Science Studio Day 95 End
