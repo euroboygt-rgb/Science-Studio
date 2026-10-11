@@ -1,0 +1,1446 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=99-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day99_direct.css') }}?v=99-final"
+>
+
+
+<div id="DAY99_DIRECT_TEMPLATE"
+     class="d99-page">
+
+
+  <!-- HERO -->
+
+  <section class="d99-hero">
+
+    <div class="d99-tags">
+
+      <span>Day 99</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10C</span>
+
+      <span>Delta Formation</span>
+
+    </div>
+
+
+    <h1>
+      🏞️💧 Delta Builder:
+      When Water Slows,
+      Sediment Drops
+    </h1>
+
+
+    <p>
+      Follow sediment
+      down a river
+      and discover
+      how deposition
+      can build new land.
+    </p>
+
+
+    <div class="d99-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/99?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/99?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>I can...</strong>
+
+        <p>
+          model and explain
+          how deposition by water
+          can form a delta.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>By...</strong>
+
+        <p>
+          tracking sediment
+          from a moving river
+          to where the water slows
+          and sediment settles.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can explain:
+
+          <strong>
+            water → transport
+            → slower flow
+            → deposition
+            → delta.
+          </strong>
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🔎 River Mouth Mystery
+    </div>
+
+    <h2>
+      Where Did All That Sediment Go?
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day99_delta_builder.svg"
+        alt="A river carrying sediment into a larger body of water where deposition builds a delta"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mission Question:
+      </strong>
+
+      How can sediment
+      that was once moving
+      in a river
+      become part
+      of a new landform?
+
+    </div>
+
+  </section>
+
+
+  <!-- MEMORY CHAIN -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🧠 Delta Formation Memory Chain
+    </div>
+
+    <h2>
+      Follow the Sediment
+    </h2>
+
+
+    <div class="d99-chain">
+
+      <article>
+
+        <span>
+          💧
+        </span>
+
+        <strong>
+          RIVER WATER
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>
+          🪨•••
+        </span>
+
+        <strong>
+          TRANSPORTS SEDIMENT
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>
+          🐢💧
+        </span>
+
+        <strong>
+          WATER SLOWS
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article class="deposit">
+
+        <span>
+          ⬇️
+        </span>
+
+        <strong>
+          DEPOSITION
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article class="delta">
+
+        <span>
+          🏞️
+        </span>
+
+        <strong>
+          DELTA
+        </strong>
+
+      </article>
+
+    </div>
+
+
+    <div class="d99-memory">
+
+      <strong>
+        DELTA RULE:
+      </strong>
+
+      Sediment must first be
+      <strong>transported</strong>
+      before it can be
+      <strong>deposited.</strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- MOVE VS DROP -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ➡️ vs. ⬇️
+    </div>
+
+    <h2>
+      One Piece of Sediment —
+      Two Different Processes
+    </h2>
+
+
+    <div class="d99-move-drop">
+
+      <article>
+
+        <span>
+          ➡️💧🪨
+        </span>
+
+        <h3>
+          EROSION / TRANSPORT
+        </h3>
+
+        <p>
+          The river is
+          <strong>
+            moving
+          </strong>
+          the sediment.
+        </p>
+
+      </article>
+
+
+      <div class="d99-middle-arrow">
+        →
+      </div>
+
+
+      <article>
+
+        <span>
+          ⬇️🪨
+        </span>
+
+        <h3>
+          DEPOSITION
+        </h3>
+
+        <p>
+          The sediment
+          <strong>
+            settles
+          </strong>
+          and is dropped.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- RIVER MOUTH -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌊 Location Matters
+    </div>
+
+    <h2>
+      What Is a River Mouth?
+    </h2>
+
+
+    <div class="d99-mouth">
+
+      <div class="river">
+        💧💧💧
+        <strong>
+          RIVER
+        </strong>
+        ➡️ ➡️ ➡️
+      </div>
+
+
+      <div class="mouth">
+        📍
+        <strong>
+          RIVER MOUTH
+        </strong>
+      </div>
+
+
+      <div class="water">
+        🌊 🌊 🌊
+        <strong>
+          LARGER BODY OF WATER
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      A
+      <strong>
+        river mouth
+      </strong>
+      is where a river
+      enters another body of water.
+
+      <br><br>
+
+      In our model,
+      when the river enters
+      the larger body of water,
+      its flow slows
+      and some transported sediment
+      can settle.
+
+    </div>
+
+  </section>
+
+
+  <!-- SEDIMENT LOAD -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🪨 Sediment Supply
+    </div>
+
+    <h2>
+      You Cannot Build a Delta Without Sediment
+    </h2>
+
+
+    <div class="d99-load-grid">
+
+      <article>
+
+        <span>
+          💧
+        </span>
+
+        <h3>
+          LITTLE SEDIMENT
+        </h3>
+
+        <div>
+          •
+        </div>
+
+        <p>
+          Less material
+          is available
+          to be deposited.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          💧
+        </span>
+
+        <h3>
+          MORE SEDIMENT
+        </h3>
+
+        <div>
+          • • • • •
+        </div>
+
+        <p>
+          More material
+          is available
+          for deposition.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Real delta growth
+      depends on more than
+      just river speed.
+
+      <br><br>
+
+      The amount of sediment
+      delivered by the river
+      also matters.
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve's Delta Disaster
+        </div>
+
+        <h2>
+          Should the Water Speed Up?
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve wants
+          to build a delta.
+
+          He turns the river
+          to its fastest setting
+          at the river mouth
+          and says:
+
+          <strong>
+            "Faster water
+            will make all the sediment
+            drop right here!"
+          </strong>
+
+        </div>
+
+
+        <button class="d99-steve-answer"
+                data-answer="A">
+
+          A. Correct. Faster water always causes more deposition.
+
+        </button>
+
+
+        <button class="d99-steve-answer"
+                data-answer="B">
+
+          B. Incorrect. In our model, faster-moving water transports sediment, while slower flow allows more sediment to settle and be deposited.
+
+        </button>
+
+
+        <button class="d99-steve-answer"
+                data-answer="C">
+
+          C. Correct. Deposition means sediment is moving quickly.
+
+        </button>
+
+
+        <button class="d99-steve-answer"
+                data-answer="D">
+
+          D. Incorrect because deltas are made only by wind.
+
+        </button>
+
+
+        <div class="d59-answer-row">
+
+          <button
+            id="d99SteveCheck"
+            class="d59-check"
+            type="button"
+          >
+            Check Delta Science
+          </button>
+
+          <button
+            id="d99SteveReset"
+            class="d59-reset"
+            type="button"
+          >
+            Reset
+          </button>
+
+        </div>
+
+
+        <div id="d99SteveFeedback"
+             class="d59-feedback"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Delta Builder Vocabulary
+    </h2>
+
+
+    <div class="d99-vocab-grid">
+
+      {% set words = [
+        ("🏞️","delta","A landform built from deposited sediment near the mouth of a river."),
+        ("💧","river","A flowing body of water that can transport sediment."),
+        ("📍","river mouth","The place where a river enters another body of water."),
+        ("🪨","sediment","Small pieces of Earth material such as sand, silt, clay, or rock fragments."),
+        ("➡️","erosion","The movement of sediment from one place to another."),
+        ("🚚","transport","The carrying or movement of sediment."),
+        ("⬇️","deposition","The dropping or settling of transported sediment."),
+        ("🌊","flow","The movement of water."),
+        ("•••","sediment load","The amount of sediment being transported by moving water."),
+        ("🌎","landform","A natural feature of Earth's solid surface.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d99-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will model
+      how water transports sediment
+      and how deposition
+      can build a delta.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      Follow the Sediment
+    </h2>
+
+
+    <div class="d59-box">
+
+      A river carries
+      a grain of sand
+      downstream.
+
+      <br><br>
+
+      Answer:
+
+      <ol>
+
+        <li>
+          Is the sand moving
+          or being deposited
+          while it travels?
+        </li>
+
+        <li>
+          What could happen
+          when the river slows?
+        </li>
+
+        <li>
+          Which process
+          could then occur?
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      Build a Delta in Five Steps
+    </h2>
+
+
+    <div class="d99-steps">
+
+      <article>
+
+        <span>1</span>
+
+        <div>
+          🪨•••
+        </div>
+
+        <h3>
+          Sediment Enters River
+        </h3>
+
+        <p>
+          The river contains
+          movable Earth material.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>2</span>
+
+        <div>
+          💧➡️
+        </div>
+
+        <h3>
+          River Transports It
+        </h3>
+
+        <p>
+          Flowing water
+          carries sediment.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>3</span>
+
+        <div>
+          📍🌊
+        </div>
+
+        <h3>
+          River Reaches Its Mouth
+        </h3>
+
+        <p>
+          The river enters
+          a larger body of water.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>4</span>
+
+        <div>
+          🐢💧⬇️
+        </div>
+
+        <h3>
+          Flow Slows
+        </h3>
+
+        <p>
+          Sediment begins
+          to settle.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>5</span>
+
+        <div>
+          🏞️
+        </div>
+
+        <h3>
+          Delta Builds
+        </h3>
+
+        <p>
+          Repeated deposition
+          adds more sediment
+          to the landform.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Remember
+      </strong>
+
+      <br><br>
+
+      <strong>
+        TRANSPORT = MOVE
+      </strong>
+
+      <br>
+
+      <strong>
+        DEPOSITION = DROP
+      </strong>
+
+      <br><br>
+
+      A delta is built
+      mainly by
+      <strong>
+        deposition.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Delta Formation Diagram
+    </h2>
+
+
+    <div class="d99-notebook">
+
+      <div>
+        💧
+        <strong>
+          RIVER
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        ➡️🪨
+        <strong>
+          TRANSPORT
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        📍
+        <strong>
+          RIVER MOUTH
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        🐢💧
+        <strong>
+          FLOW SLOWS
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        ⬇️
+        <strong>
+          DEPOSITION
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div class="delta">
+        🏞️
+        <strong>
+          DELTA
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Write underneath:
+
+      <br><br>
+
+      <strong>
+        A delta can form when a river transports sediment,
+        the water slows near its mouth,
+        and sediment is repeatedly deposited.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED PRACTICE -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Human Delta Builder
+    </h2>
+
+
+    <div class="d59-box">
+
+      Choose one side
+      of the room
+      as the
+      <strong>river</strong>
+      and another
+      as the
+      <strong>lake/ocean.</strong>
+
+      <br><br>
+
+      Give several students
+      paper sediment cards.
+
+      <ol>
+
+        <li>
+          Teacher says
+          <strong>FAST RIVER</strong>:
+          students carry sediment downstream.
+        </li>
+
+        <li>
+          Teacher says
+          <strong>RIVER MOUTH</strong>.
+        </li>
+
+        <li>
+          Teacher says
+          <strong>WATER SLOWS</strong>:
+          students place sediment on the floor.
+        </li>
+
+        <li>
+          Repeat several times.
+        </li>
+
+      </ol>
+
+      Ask:
+
+      <strong>
+        "What landform is our deposited sediment building?"
+      </strong>
+
+      <br><br>
+
+      Expected:
+      <strong>DELTA.</strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🏞️ Interactive Delta Engineering
+    </div>
+
+    <h2>
+      Delta Builder
+    </h2>
+
+
+    <p>
+      Identify delta evidence,
+      load a river with sediment,
+      control water speed,
+      transport sediment downstream,
+      slow the river,
+      and deposit enough material
+      to build new land.
+    </p>
+
+
+    <div class="d99-missions">
+
+      <div>
+        🔎
+        <strong>Mission 1</strong>
+        Delta Evidence Scanner
+      </div>
+
+      <div>
+        🏗️
+        <strong>Mission 2</strong>
+        Build a Delta
+      </div>
+
+      <div>
+        💧•••
+        <strong>Mission 3</strong>
+        Flow + Sediment Lab
+      </div>
+
+      <div>
+        🕵️
+        <strong>Mission 4</strong>
+        Delta Detective
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Complete all four missions
+      to earn
+
+      <strong>
+        Delta Formation Engineer
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/delta-builder?mission=day99"
+    >
+      🏞️ Launch Delta Builder
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR-Style Practice
+    </div>
+
+    <h2>
+      Delta Formation Evidence
+    </h2>
+
+
+    <div class="d99-question"
+         data-answer="C">
+
+      <h3>Question 1</h3>
+
+      <p>
+        A river carries sediment
+        toward a lake.
+
+        Which process
+        is occurring
+        while the sediment
+        is moving?
+      </p>
+
+      <button data-choice="A">
+        A. Cementation
+      </button>
+
+      <button data-choice="B">
+        B. Compaction
+      </button>
+
+      <button data-choice="C">
+        C. Erosion and transport
+      </button>
+
+      <button data-choice="D">
+        D. Deposition
+      </button>
+
+      <div class="d99-feedback"></div>
+
+    </div>
+
+
+    <div class="d99-question"
+         data-answer="B">
+
+      <h3>Question 2</h3>
+
+      <p>
+        What most directly happens
+        when transported sediment
+        settles from the water?
+      </p>
+
+      <button data-choice="A">
+        A. Weathering
+      </button>
+
+      <button data-choice="B">
+        B. Deposition
+      </button>
+
+      <button data-choice="C">
+        C. Cementation
+      </button>
+
+      <button data-choice="D">
+        D. Magnetism
+      </button>
+
+      <div class="d99-feedback"></div>
+
+    </div>
+
+
+    <div class="d99-question"
+         data-answer="D">
+
+      <h3>Question 3</h3>
+
+      <p>
+        Which sequence
+        best models
+        delta formation?
+      </p>
+
+      <button data-choice="A">
+        A. Wind → compaction → canyon
+      </button>
+
+      <button data-choice="B">
+        B. Ice → cementation → delta
+      </button>
+
+      <button data-choice="C">
+        C. Water → faster flow → all sediment remains moving → delta
+      </button>
+
+      <button data-choice="D">
+        D. Water transports sediment → water slows → sediment is deposited → delta builds
+      </button>
+
+      <div class="d99-feedback"></div>
+
+    </div>
+
+
+    <div class="d99-question"
+         data-answer="A">
+
+      <h3>Question 4</h3>
+
+      <p>
+        Which condition
+        provides material
+        for a delta
+        to grow?
+      </p>
+
+      <button data-choice="A">
+        A. Sediment transported by the river
+      </button>
+
+      <button data-choice="B">
+        B. A magnetic field
+      </button>
+
+      <button data-choice="C">
+        C. Reflection of light
+      </button>
+
+      <button data-choice="D">
+        D. No sediment in the water
+      </button>
+
+      <div class="d99-feedback"></div>
+
+    </div>
+
+
+    <div class="d99-question"
+         data-answer="C">
+
+      <h3>Question 5</h3>
+
+      <p>
+        Which statement
+        best explains
+        why a delta
+        is classified
+        as a depositional landform?
+      </p>
+
+      <button data-choice="A">
+        A. Rock is only being broken apart.
+      </button>
+
+      <button data-choice="B">
+        B. Sediment is moving away from the river mouth.
+      </button>
+
+      <button data-choice="C">
+        C. Transported sediment accumulates and builds land.
+      </button>
+
+      <button data-choice="D">
+        D. Minerals are binding sediment into sedimentary rock.
+      </button>
+
+      <div class="d99-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+
+    <p>
+      Explain why
+      a delta can form
+      where a sediment-carrying river
+      enters a larger body of water.
+
+      <br><br>
+
+      Use:
+
+      <strong>
+        transport,
+        slows,
+        deposition,
+        delta
+      </strong>
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="The river transports... When the water slows..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Delta Builder CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      A delta is built
+      mainly by deposition,
+      not erosion alone.
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="In the delta model..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This builds land because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🏜️ Next Mission
+    </div>
+
+    <h2>
+      Day 100:
+      Canyon Carver
+    </h2>
+
+
+    <div class="d59-box">
+
+      Tomorrow
+      the process flips.
+
+      <br><br>
+
+      Instead of asking
+      how deposited sediment
+      <strong>builds</strong>
+      land,
+      we investigate how
+      running water can
+      <strong>remove</strong>
+      material.
+
+      <br><br>
+
+      <strong>
+        💧 WATER + ➡️ EROSION
+        → 🏜️ CANYON
+      </strong>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d99VocabModal"
+     class="d99-modal">
+
+  <div class="d99-modal-card">
+
+    <button
+      id="d99VocabClose"
+      class="d99-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d99ModalIcon"
+         class="d99-modal-icon"></div>
+
+    <h2 id="d99ModalTerm"></h2>
+
+    <p id="d99ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day99_direct.js') }}?v=99-final"
+></script>
+
+{% endblock %}

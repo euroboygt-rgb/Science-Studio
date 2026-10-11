@@ -1,0 +1,737 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='delta_builder_lab.css') }}?v=99.1"
+>
+
+
+<div class="db-shell">
+
+
+  <!-- HERO -->
+
+  <header class="db-hero">
+
+    <div class="db-tags">
+
+      <span>🏞️ Landform Engineering</span>
+
+      <span>Water + Deposition</span>
+
+      <span>TEKS 5.10C</span>
+
+    </div>
+
+
+    <div class="db-hero-row">
+
+      <div>
+
+        <h1>
+          Delta Builder
+        </h1>
+
+        <p>
+          Load the river.
+          Transport the sediment.
+          Slow the water.
+          Build new land.
+        </p>
+
+      </div>
+
+
+      <a
+        class="db-back"
+        href="/second-nine-weeks/day/99?view=student"
+      >
+        ← Back to Day 99
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- MEMORY -->
+
+  <section class="db-memory">
+
+    <span>
+      💧 WATER
+    </span>
+
+    <b>→</b>
+
+    <span>
+      ➡️ TRANSPORT
+    </span>
+
+    <b>→</b>
+
+    <span>
+      🐢 SLOWER FLOW
+    </span>
+
+    <b>→</b>
+
+    <span>
+      ⬇️ DEPOSITION
+    </span>
+
+    <b>→</b>
+
+    <span>
+      🏞️ DELTA
+    </span>
+
+  </section>
+
+
+  <!-- STATUS -->
+
+  <section class="db-status">
+
+    <h2>
+      Delta Mission Status
+    </h2>
+
+
+    <div class="db-status-grid">
+
+      <div id="dbStatus1">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 1
+        </strong>
+
+        <small>
+          Evidence Scanner
+        </small>
+
+      </div>
+
+
+      <div id="dbStatus2">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 2
+        </strong>
+
+        <small>
+          Build Delta
+        </small>
+
+      </div>
+
+
+      <div id="dbStatus3">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 3
+        </strong>
+
+        <small>
+          Flow + Sediment
+        </small>
+
+      </div>
+
+
+      <div id="dbStatus4">
+
+        <span>🔴</span>
+
+        <strong>
+          Mission 4
+        </strong>
+
+        <small>
+          Delta Detective
+        </small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="db-mission-head">
+
+    <div class="db-number">
+      1
+    </div>
+
+    <div>
+
+      <h2>
+        Delta Evidence Scanner
+      </h2>
+
+      <p>
+        Identify the clues
+        that belong
+        in a delta-formation model.
+      </p>
+
+    </div>
+
+
+    <aside class="db-score">
+
+      <strong>Score</strong>
+
+      <span id="dbScore1">
+        0 / 5
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="db-panel">
+
+    <div id="dbEvidence1"
+         class="db-evidence">
+    </div>
+
+    <div id="dbQuestion1"
+         class="db-question">
+    </div>
+
+    <div id="dbChoices1"
+         class="db-choices">
+    </div>
+
+
+    <button
+      id="dbCheck1"
+      class="db-main-button"
+      type="button"
+    >
+      🔎 SCAN EVIDENCE
+    </button>
+
+
+    <div id="dbFeedback1"
+         class="db-feedback">
+
+      Follow the sediment.
+
+    </div>
+
+
+    <button
+      id="dbNext1"
+      class="db-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="db-mission-head">
+
+    <div class="db-number">
+      2
+    </div>
+
+    <div>
+
+      <h2>
+        Build a Delta
+      </h2>
+
+      <p>
+        Complete three
+        transport-and-deposition cycles.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="db-panel">
+
+    <div class="db-simulator">
+
+
+      <!-- RIVER -->
+
+      <div class="db-river-zone">
+
+        <div class="db-zone-label">
+
+          💧 RIVER
+
+        </div>
+
+
+        <div id="dbRiverParticles"
+             class="db-river-particles">
+
+          • • • • •
+
+        </div>
+
+
+        <div class="db-river-arrow">
+
+          ➡️ ➡️ ➡️
+
+        </div>
+
+      </div>
+
+
+      <!-- MOUTH -->
+
+      <div class="db-mouth-zone">
+
+        <div class="db-zone-label">
+
+          📍 RIVER MOUTH
+
+        </div>
+
+        <div>
+          💧
+        </div>
+
+      </div>
+
+
+      <!-- WATER BODY -->
+
+      <div class="db-water-zone">
+
+        <div class="db-zone-label">
+
+          🌊 LARGER BODY OF WATER
+
+        </div>
+
+
+        <div id="dbDeltaFan"
+             class="db-delta-fan">
+
+          <span>
+            DELTA
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- SEDIMENT LOAD -->
+
+    <div class="db-control-section">
+
+      <h3>
+        STEP 1 — SEDIMENT LOAD
+      </h3>
+
+
+      <div class="db-button-row">
+
+        <button
+          class="db-load"
+          data-load="low"
+          type="button"
+        >
+          • LOW SEDIMENT
+        </button>
+
+
+        <button
+          class="db-load"
+          data-load="high"
+          type="button"
+        >
+          ••••• HIGH SEDIMENT
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- FLOW SPEED -->
+
+    <div class="db-control-section">
+
+      <h3>
+        STEP 2 — WATER SPEED
+      </h3>
+
+
+      <div class="db-button-row">
+
+        <button
+          class="db-speed"
+          data-speed="fast"
+          type="button"
+        >
+          ⚡ FAST
+        </button>
+
+
+        <button
+          class="db-speed"
+          data-speed="medium"
+          type="button"
+        >
+          💧 MEDIUM
+        </button>
+
+
+        <button
+          class="db-speed"
+          data-speed="slow"
+          type="button"
+        >
+          🐢 SLOW
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ACTIONS -->
+
+    <div class="db-action-grid">
+
+      <button
+        id="dbTransport"
+        type="button"
+      >
+        ➡️ TRANSPORT SEDIMENT DOWNSTREAM
+      </button>
+
+
+      <button
+        id="dbDeposit"
+        type="button"
+      >
+        ⬇️ DEPOSIT SEDIMENT AT RIVER MOUTH
+      </button>
+
+    </div>
+
+
+    <div class="db-cycle-meter">
+
+      <strong>
+        DELTA BUILD CYCLES
+      </strong>
+
+      <div class="db-cycle-dots">
+
+        <div id="dbCycle1">1</div>
+
+        <div id="dbCycle2">2</div>
+
+        <div id="dbCycle3">3</div>
+
+      </div>
+
+    </div>
+
+
+    <div id="dbFeedback2"
+         class="db-feedback">
+
+      Start with enough sediment
+      and moving water.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="db-mission-head">
+
+    <div class="db-number">
+      3
+    </div>
+
+    <div>
+
+      <h2>
+        Flow + Sediment Lab
+      </h2>
+
+      <p>
+        Predict what happens
+        when water speed
+        and sediment supply change.
+      </p>
+
+    </div>
+
+
+    <aside class="db-score">
+
+      <strong>Score</strong>
+
+      <span id="dbScore3">
+        0 / 5
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="db-panel">
+
+    <div id="dbEvidence3"
+         class="db-evidence">
+    </div>
+
+    <div id="dbQuestion3"
+         class="db-question">
+    </div>
+
+    <div id="dbChoices3"
+         class="db-choices">
+    </div>
+
+
+    <button
+      id="dbCheck3"
+      class="db-main-button"
+      type="button"
+    >
+      💧 TEST PREDICTION
+    </button>
+
+
+    <div id="dbFeedback3"
+         class="db-feedback">
+
+      Think about transport
+      and deposition.
+    </div>
+
+
+    <button
+      id="dbNext3"
+      class="db-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="db-mission-head">
+
+    <div class="db-number">
+      4
+    </div>
+
+    <div>
+
+      <h2>
+        Delta Detective
+      </h2>
+
+      <p>
+        Solve mixed
+        river-mouth cases.
+      </p>
+
+    </div>
+
+
+    <aside class="db-score">
+
+      <strong>Score</strong>
+
+      <span id="dbScore4">
+        0 / 6
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="db-panel">
+
+    <div id="dbEvidence4"
+         class="db-evidence">
+    </div>
+
+    <div id="dbQuestion4"
+         class="db-question">
+    </div>
+
+    <div id="dbChoices4"
+         class="db-choices">
+    </div>
+
+
+    <button
+      id="dbCheck4"
+      class="db-main-button"
+      type="button"
+    >
+      🕵️ SOLVE DELTA CASE
+    </button>
+
+
+    <div id="dbFeedback4"
+         class="db-feedback">
+
+      Follow the sediment evidence.
+
+    </div>
+
+
+    <button
+      id="dbNext4"
+      class="db-next-button"
+      type="button"
+      disabled
+    >
+      NEXT CASE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="db-final">
+
+    <div class="db-final-icon">
+
+      💧➡️⬇️🏞️🏆
+
+    </div>
+
+
+    <h2>
+      Delta Mission Status
+    </h2>
+
+
+    <div id="dbFinalMessage"
+         class="db-final-message">
+
+      Complete all four missions.
+
+    </div>
+
+  </section>
+
+
+  <!-- EVIDENCE LOG -->
+
+  <section class="db-log">
+
+    <h2>
+      📓 Delta Formation Evidence Log
+    </h2>
+
+
+    <div class="db-log-grid">
+
+      <article>
+
+        <strong>
+          💧 WATER
+        </strong>
+
+        <p>
+          River water
+          is the agent.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ➡️ TRANSPORT
+        </strong>
+
+        <p>
+          Moving water
+          carries sediment.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🐢 SLOWER FLOW
+        </strong>
+
+        <p>
+          Sediment can
+          begin settling.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ⬇️ DEPOSITION
+        </strong>
+
+        <p>
+          Repeated deposition
+          builds the delta.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='delta_builder_lab.js') }}?v=99.1"
+></script>
+
+{% endblock %}

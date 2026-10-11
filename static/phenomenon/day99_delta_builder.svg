@@ -1,0 +1,253 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#80d3ef"/>
+
+      <stop offset="100%"
+            stop-color="#effbff"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="30"
+        fill="url(#sky)"/>
+
+
+  <text x="600"
+        y="55"
+        text-anchor="middle"
+        font-size="34"
+        font-weight="900"
+        fill="#242424">
+    DELTA BUILDER
+  </text>
+
+
+  <text x="600"
+        y="100"
+        text-anchor="middle"
+        font-size="28"
+        font-weight="900"
+        fill="#7131cc">
+    WHERE DOES ALL THE RIVER SEDIMENT GO?
+  </text>
+
+
+  <!-- LAND -->
+
+  <path d="M0 150
+           L440 150
+           L440 430
+           Q490 470 570 500
+           L0 500 Z"
+        fill="#75aa5a"/>
+
+
+  <!-- RIVER -->
+
+  <path d="M245 150
+           C220 230 300 300 275 385
+           C260 430 330 455 430 470"
+        fill="none"
+        stroke="#3b9fd1"
+        stroke-width="85"
+        stroke-linecap="round"/>
+
+
+  <!-- BODY OF WATER -->
+
+  <path d="M570 230
+           Q850 180 1200 250
+           L1200 700
+           L500 700
+           Q520 570 570 500 Z"
+        fill="#57b5d6"/>
+
+
+  <!-- MOVING SEDIMENT -->
+
+  <g fill="#9a6c40">
+
+    <circle cx="250"
+            cy="210"
+            r="9"/>
+
+    <circle cx="270"
+            cy="260"
+            r="8"/>
+
+    <circle cx="280"
+            cy="315"
+            r="10"/>
+
+    <circle cx="300"
+            cy="370"
+            r="8"/>
+
+    <circle cx="350"
+            cy="420"
+            r="10"/>
+
+    <circle cx="390"
+            cy="445"
+            r="8"/>
+
+  </g>
+
+
+  <!-- DELTA -->
+
+  <path d="M430 455
+           Q520 420 645 515
+           Q540 565 455 545
+           Z"
+        fill="#d7aa5b"
+        stroke="#72502e"
+        stroke-width="6"/>
+
+
+  <!-- DISTRIBUTARIES -->
+
+  <path d="M440 470 L560 505"
+        stroke="#3b9fd1"
+        stroke-width="18"
+        fill="none"
+        stroke-linecap="round"/>
+
+  <path d="M450 480 L535 540"
+        stroke="#3b9fd1"
+        stroke-width="15"
+        fill="none"
+        stroke-linecap="round"/>
+
+  <path d="M460 465 L590 475"
+        stroke="#3b9fd1"
+        stroke-width="14"
+        fill="none"
+        stroke-linecap="round"/>
+
+
+  <!-- LABELS -->
+
+  <rect x="80"
+        y="180"
+        width="250"
+        height="72"
+        rx="15"
+        fill="#ffffff"
+        stroke="#222"
+        stroke-width="4"/>
+
+  <text x="205"
+        y="210"
+        text-anchor="middle"
+        font-size="19"
+        font-weight="900">
+    FAST-MOVING RIVER
+  </text>
+
+  <text x="205"
+        y="238"
+        text-anchor="middle"
+        font-size="18"
+        font-weight="900"
+        fill="#7131cc">
+    TRANSPORTS SEDIMENT
+  </text>
+
+
+  <rect x="720"
+        y="190"
+        width="365"
+        height="92"
+        rx="15"
+        fill="#ffffff"
+        stroke="#222"
+        stroke-width="4"/>
+
+  <text x="902"
+        y="220"
+        text-anchor="middle"
+        font-size="18"
+        font-weight="900">
+    RIVER ENTERS LARGER WATER BODY
+  </text>
+
+  <text x="902"
+        y="250"
+        text-anchor="middle"
+        font-size="19"
+        font-weight="900"
+        fill="#7131cc">
+    FLOW SLOWS
+  </text>
+
+
+  <rect x="690"
+        y="400"
+        width="370"
+        height="110"
+        rx="15"
+        fill="#fff3ad"
+        stroke="#222"
+        stroke-width="4"/>
+
+  <text x="875"
+        y="435"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900">
+    SEDIMENT SETTLES
+  </text>
+
+  <text x="875"
+        y="465"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900"
+        fill="#7131cc">
+    DEPOSITION
+  </text>
+
+  <text x="875"
+        y="495"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900">
+    → DELTA GROWS
+  </text>
+
+
+  <rect x="130"
+        y="600"
+        width="940"
+        height="64"
+        rx="28"
+        fill="#ffffff"
+        stroke="#222"
+        stroke-width="5"/>
+
+
+  <text x="600"
+        y="640"
+        text-anchor="middle"
+        font-size="23"
+        font-weight="900"
+        fill="#7131cc">
+    WATER → TRANSPORT → SLOWER FLOW → DEPOSITION → DELTA
+  </text>
+
+</svg>

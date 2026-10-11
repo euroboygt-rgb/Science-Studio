@@ -6630,3 +6630,108 @@ SECOND_NINE_WEEKS_LESSONS[98] = {
 }
 
 # Science Studio Day 98 End
+
+
+# Science Studio Day 99 Start
+
+SECOND_NINE_WEEKS_LESSONS[99] = {
+
+    "day": 99,
+
+    "title":
+        "Delta Builder: When Water Slows, Sediment Drops",
+
+    "unit":
+        "Earth's Changing Surface and Landforms",
+
+    "teks":
+        "5.10C",
+
+    "focus":
+        "Students model and identify how flowing water transports sediment "
+        "and how deposition can build a delta where a river enters a larger "
+        "body of water and its flow slows.",
+
+    "learning_target":
+        "We will model how water transports sediment and how deposition "
+        "can build a delta.",
+
+    "success_criteria":
+        "I can explain the pattern water → transport → slower flow "
+        "→ deposition → delta.",
+
+    "essential_question":
+        "How can sediment carried by a river become new land at the river's mouth?",
+
+    "bell_ringer": [
+        "What does erosion do to sediment?",
+        "What does deposition do to sediment?",
+        "What agent forms a delta in our Grade 5 model?",
+        "What might happen to sediment when moving water slows?"
+    ],
+
+    "mini_lesson": [
+        "Rivers can transport sediment such as sand, silt, and clay.",
+        "Transported sediment is part of erosion because Earth material is moving.",
+        "A river mouth is the area where a river enters another body of water.",
+        "When flowing water slows, some transported sediment may settle.",
+        "The settling of transported sediment is deposition.",
+        "Repeated deposition can build land outward near a river mouth.",
+        "This deposited landform is called a delta.",
+        "A delta is built over time as additional sediment is deposited.",
+        "More available sediment can provide more material for deposition.",
+        "Real deltas are also affected by waves, currents, water depth, and sediment supply.",
+        "For our Grade 5 model, remember: water transports → water slows → sediment drops → delta grows."
+    ],
+
+    "science_notebook": [
+        "Title: How a Delta Forms.",
+        "Draw a river entering a lake or ocean.",
+        "Draw sediment moving with the river.",
+        "Write: Erosion/transport = MOVE.",
+        "Write: At the river mouth, the water can slow.",
+        "Write: Deposition = DROP.",
+        "Draw deposited sediment building outward.",
+        "Write: WATER → TRANSPORT → SLOWER FLOW → DEPOSITION → DELTA."
+    ],
+
+    "guided_practice": [
+        "Students act out sediment traveling down a river.",
+        "Teacher calls FAST WATER and students move sediment cards forward.",
+        "Teacher calls RIVER MOUTH — WATER SLOWS and students place sediment cards on the floor.",
+        "Repeat several rounds so the deposited sediment area grows.",
+        "Ask students to identify which part represented erosion/transport and which represented deposition."
+    ],
+
+    "lab_title":
+        "Delta Builder",
+
+    "lab_url":
+        "/labs/delta-builder?mission=day99",
+
+    "exit_ticket":
+        "Explain why a delta can form where a sediment-carrying river enters "
+        "a larger body of water.",
+
+    "vocabulary": [
+        "delta",
+        "river",
+        "river mouth",
+        "sediment",
+        "erosion",
+        "transport",
+        "deposition",
+        "flow",
+        "sediment load",
+        "landform"
+    ],
+
+    "teacher_note":
+        "Use a simplified Grade 5 model: a river transports sediment, "
+        "flow slows near the river mouth, sediment is deposited, and repeated "
+        "deposition builds a delta. Avoid implying that every river automatically "
+        "forms a delta. Actual delta growth also depends on sediment supply and "
+        "whether waves and currents redistribute or remove deposited sediment."
+}
+
+# Science Studio Day 99 End

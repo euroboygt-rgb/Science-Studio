@@ -1213,3 +1213,21 @@ POWER_FRAMES[98] = {
 }
 
 # Science Studio Day 98 Power Frame End
+
+
+# Science Studio Day 99 Power Frame Start
+
+POWER_FRAMES[99] = {
+
+    "i_can":
+        "I can model and explain how deposition by water can form a delta.",
+
+    "by":
+        "tracking sediment from a moving river to where the water slows and sediment settles.",
+
+    "i_know":
+        "I know I have learned this when I can explain "
+        "water → transport → slower flow → deposition → delta."
+}
+
+# Science Studio Day 99 Power Frame End
