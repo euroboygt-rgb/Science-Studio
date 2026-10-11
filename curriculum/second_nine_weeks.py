@@ -6525,3 +6525,108 @@ SECOND_NINE_WEEKS_LESSONS[97] = {
 }
 
 # Science Studio Day 97 End
+
+
+# Science Studio Day 98 Start
+
+SECOND_NINE_WEEKS_LESSONS[98] = {
+
+    "day": 98,
+
+    "title":
+        "Agents of Change: Wind, Water & Ice",
+
+    "unit":
+        "Earth's Changing Surface and Landforms",
+
+    "teks":
+        "5.10C, 5.1F, 5.2D, 5.5B",
+
+    "focus":
+        "Students model and identify how wind, water, and ice change Earth's "
+        "surface through erosion and deposition and connect those processes "
+        "to the formation of landforms including deltas, canyons, and sand dunes.",
+
+    "learning_target":
+        "We will identify how wind, water, and ice change Earth's surface "
+        "and connect each agent and process to landform formation.",
+
+    "success_criteria":
+        "I can use the pattern agent → process → landform to explain how "
+        "deltas, canyons, and sand dunes form.",
+
+    "essential_question":
+        "How can wind, water, and ice slowly reshape Earth's surface into landforms?",
+
+    "bell_ringer": [
+        "What is the difference between erosion and deposition?",
+        "Which agent can carry sediment in a river?",
+        "Which agent can move sand across a desert?",
+        "How could moving ice change rock and soil?"
+    ],
+
+    "mini_lesson": [
+        "A landform is a natural feature of Earth's solid surface.",
+        "Wind, water, and ice are agents that can change Earth's surface.",
+        "Weathering breaks material into smaller pieces.",
+        "Erosion moves sediment.",
+        "Deposition occurs when transported sediment is dropped or settles.",
+        "Running water can weather and erode rock over long periods and contribute to canyon formation.",
+        "When river water slows as it enters a larger body of water, sediment may be deposited and build a delta.",
+        "Wind can transport sand and deposit it, building sand dunes.",
+        "Moving ice can erode and transport rock and sediment and reshape Earth's surface.",
+        "Landforms can continue changing because erosion and deposition continue over time."
+    ],
+
+    "science_notebook": [
+        "Title: Agents of Change.",
+        "Write: AGENT → PROCESS → LANDFORM.",
+        "Draw three agent boxes: WIND, WATER, ICE.",
+        "Write: Erosion = MOVE.",
+        "Write: Deposition = DROP.",
+        "Write: Water + erosion → canyon.",
+        "Write: Water + deposition → delta.",
+        "Write: Wind + deposition → sand dune.",
+        "Write: Ice can erode, transport, and deposit sediment."
+    ],
+
+    "guided_practice": [
+        "Give students three agent cards: wind, water, ice.",
+        "Give students process cards: erosion and deposition.",
+        "Read landform clues and have students hold up the agent and process that best match.",
+        "Require students to say: agent → process → landform.",
+        "Use canyon, delta, sand dune, and one ice-surface-change example."
+    ],
+
+    "lab_title":
+        "Landform Agents Mission",
+
+    "lab_url":
+        "/labs/landform-agents-mission?mission=day98",
+
+    "exit_ticket":
+        "Choose one landform and explain the agent and process that help form it.",
+
+    "vocabulary": [
+        "landform",
+        "agent",
+        "weathering",
+        "erosion",
+        "deposition",
+        "sediment",
+        "delta",
+        "canyon",
+        "sand dune",
+        "glacier"
+    ],
+
+    "teacher_note":
+        "This lesson establishes the 5.10C cause-and-effect framework. "
+        "Reinforce the Grade 4 prerequisite that weathering, erosion, and "
+        "deposition can be caused by water, wind, and ice. Do not imply that "
+        "all landforms form from only one process. For the Grade 5 patterns, "
+        "emphasize canyon formation through erosion, delta formation through "
+        "water deposition, and sand-dune formation through wind deposition."
+}
+
+# Science Studio Day 98 End

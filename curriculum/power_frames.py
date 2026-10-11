@@ -1195,3 +1195,21 @@ POWER_FRAMES[97] = {
 }
 
 # Science Studio Day 97 Power Frame End
+
+
+# Science Studio Day 98 Power Frame Start
+
+POWER_FRAMES[98] = {
+
+    "i_can":
+        "I can identify how wind, water, and ice change Earth's surface.",
+
+    "by":
+        "matching an agent and process to the landform that can result.",
+
+    "i_know":
+        "I know I have learned this when I can explain the pattern "
+        "agent → process → landform for a delta, canyon, and sand dune."
+}
+
+# Science Studio Day 98 Power Frame End

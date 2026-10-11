@@ -1,0 +1,1507 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day59_page.css') }}?v=98-final"
+>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='day98_direct.css') }}?v=98-final"
+>
+
+
+<div id="DAY98_DIRECT_TEMPLATE"
+     class="d98-page">
+
+
+  <!-- HERO -->
+
+  <section class="d98-hero">
+
+    <div class="d98-tags">
+
+      <span>Day 98</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10C</span>
+
+      <span>Readiness Standard</span>
+
+    </div>
+
+
+    <h1>
+      🌎💧💨🧊 Agents of Change:
+      Wind, Water &amp; Ice
+    </h1>
+
+
+    <p>
+      Earth is not finished.
+
+      <br>
+
+      Wind, water,
+      and ice
+      are still reshaping
+      the surface today.
+    </p>
+
+
+    <div class="d98-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/98?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/98?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>I can...</strong>
+
+        <p>
+          identify how
+          wind,
+          water,
+          and ice
+          change Earth's surface.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>By...</strong>
+
+        <p>
+          matching
+          an agent
+          and process
+          to the landform
+          that can result.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can explain
+          agent → process → landform
+          for a delta,
+          canyon,
+          and sand dune.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌎 Earth Surface Mystery
+    </div>
+
+    <h2>
+      Three Landforms — What Built Them?
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day98_agents_of_change.svg"
+        alt="Water erosion forming a canyon, water deposition forming a delta, wind deposition forming a sand dune, and ice reshaping Earth's surface"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mission Question:
+      </strong>
+
+      Why can the same Earth material
+      be removed from one location
+      and become part of
+      a new landform somewhere else?
+
+    </div>
+
+  </section>
+
+
+  <!-- BIG PATTERN -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🧠 New Mission Pattern
+    </div>
+
+    <h2>
+      AGENT → PROCESS → LANDFORM
+    </h2>
+
+
+    <div class="d98-big-pattern">
+
+      <article>
+
+        <span>
+          💧
+        </span>
+
+        <strong>
+          AGENT
+        </strong>
+
+        <p>
+          Water
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>
+          ➡️
+        </span>
+
+        <strong>
+          PROCESS
+        </strong>
+
+        <p>
+          Erosion
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>
+          🏜️
+        </span>
+
+        <strong>
+          LANDFORM
+        </strong>
+
+        <p>
+          Canyon
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d98-rule">
+
+      <strong>
+        FIRST:
+      </strong>
+      Identify what is doing the work.
+
+      <br>
+
+      <strong>
+        THEN:
+      </strong>
+      Identify whether sediment
+      is being moved or dropped.
+
+      <br>
+
+      <strong>
+        FINALLY:
+      </strong>
+      Identify the resulting landform.
+
+    </div>
+
+  </section>
+
+
+  <!-- WEDCC CONNECTION -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🔗 W.E.D.C.C. Connection
+    </div>
+
+    <h2>
+      You Already Know the Processes
+    </h2>
+
+
+    <div class="d98-wedcc">
+
+      <article>
+
+        <span>
+          💥
+        </span>
+
+        <strong>
+          WEATHERING
+        </strong>
+
+        <p>
+          BREAK
+        </p>
+
+      </article>
+
+
+      <article class="highlight">
+
+        <span>
+          ➡️
+        </span>
+
+        <strong>
+          EROSION
+        </strong>
+
+        <p>
+          MOVE
+        </p>
+
+      </article>
+
+
+      <article class="highlight">
+
+        <span>
+          ⬇️
+        </span>
+
+        <strong>
+          DEPOSITION
+        </strong>
+
+        <p>
+          DROP
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          🗜️
+        </span>
+
+        <strong>
+          COMPACTION
+        </strong>
+
+        <p>
+          SQUEEZE
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          🧱
+        </span>
+
+        <strong>
+          CEMENTATION
+        </strong>
+
+        <p>
+          BIND
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      In 5.10B,
+      we followed sediment
+      toward sedimentary rock.
+
+      <br><br>
+
+      In 5.10C,
+      we focus on how
+      <strong>
+        wind,
+        water,
+        and ice
+      </strong>
+      cause surface changes
+      and produce recognizable
+      <strong>
+        landforms.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- THREE LANDFORMS -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🗺️ Required Landforms
+    </div>
+
+    <h2>
+      Canyon • Delta • Sand Dune
+    </h2>
+
+
+    <div class="d98-landforms">
+
+      <article class="canyon">
+
+        <div>
+          💧🏜️
+        </div>
+
+        <h3>
+          CANYON
+        </h3>
+
+        <p>
+          Running water
+          can weather
+          and erode rock
+          over long periods.
+        </p>
+
+        <strong>
+          WATER + EROSION
+        </strong>
+
+      </article>
+
+
+      <article class="delta">
+
+        <div>
+          🏞️💧
+        </div>
+
+        <h3>
+          DELTA
+        </h3>
+
+        <p>
+          When flowing water slows,
+          sediment can settle
+          and accumulate.
+        </p>
+
+        <strong>
+          WATER + DEPOSITION
+        </strong>
+
+      </article>
+
+
+      <article class="dune">
+
+        <div>
+          💨🏜️
+        </div>
+
+        <h3>
+          SAND DUNE
+        </h3>
+
+        <p>
+          Wind transports sand.
+          When sand is deposited,
+          dunes can build.
+        </p>
+
+        <strong>
+          WIND + DEPOSITION
+        </strong>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- ICE -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🧊 Don't Forget Ice
+    </div>
+
+    <h2>
+      Moving Ice Changes Earth's Surface Too
+    </h2>
+
+
+    <div class="d98-ice">
+
+      <div class="glacier">
+
+        🏔️
+        🧊🧊🧊
+        ⬇️
+
+      </div>
+
+
+      <div>
+
+        <p>
+          A large moving body of ice
+          is called a
+          <strong>glacier.</strong>
+        </p>
+
+        <p>
+          As ice moves,
+          it can scrape,
+          loosen,
+          carry,
+          and transport
+          rock and sediment.
+        </p>
+
+        <p>
+          When ice melts,
+          some transported material
+          can be deposited.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      <strong>
+        ICE IS AN AGENT OF CHANGE.
+      </strong>
+
+      <br><br>
+
+      For Day 98,
+      the important idea is that
+      moving ice can
+      <strong>
+        erode,
+        transport,
+        and deposit
+      </strong>
+      Earth material.
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve's Landform Theory
+        </div>
+
+        <h2>
+          Does Erosion Build Every Landform?
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve looks at
+          a canyon,
+          delta,
+          and sand dune.
+
+          He says:
+
+          <strong>
+            "They are all landforms,
+            so they must all be made
+            by erosion."
+          </strong>
+
+        </div>
+
+
+        <button class="d98-steve-answer"
+                data-answer="A">
+
+          A. Correct. Every landform forms only by erosion.
+
+        </button>
+
+
+        <button class="d98-steve-answer"
+                data-answer="B">
+
+          B. Incorrect. Canyons are strongly connected to erosion, while deltas and sand dunes are strongly connected to deposition.
+
+        </button>
+
+
+        <button class="d98-steve-answer"
+                data-answer="C">
+
+          C. Incorrect because only ice can form landforms.
+
+        </button>
+
+
+        <button class="d98-steve-answer"
+                data-answer="D">
+
+          D. Correct. Erosion means sediment is dropped.
+
+        </button>
+
+
+        <div class="d59-answer-row">
+
+          <button
+            id="d98SteveCheck"
+            class="d59-check"
+            type="button"
+          >
+            Check Landform Science
+          </button>
+
+          <button
+            id="d98SteveReset"
+            class="d59-reset"
+            type="button"
+          >
+            Reset
+          </button>
+
+        </div>
+
+
+        <div id="d98SteveFeedback"
+             class="d59-feedback"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Landform Vocabulary
+    </h2>
+
+
+    <div class="d98-vocab-grid">
+
+      {% set words = [
+        ("🌎","landform","A natural feature of Earth's solid surface."),
+        ("⚙️","agent","Something that causes change. In this lesson, wind, water, and ice are agents of surface change."),
+        ("💥","weathering","The breaking of rock into smaller pieces."),
+        ("➡️","erosion","The movement of sediment from one location to another."),
+        ("⬇️","deposition","The dropping or settling of transported sediment."),
+        ("🪨","sediment","Small pieces of rock, soil, sand, or other Earth material that can be transported."),
+        ("🏞️","delta","A landform built by deposited sediment where flowing water enters a larger body of water and slows."),
+        ("🏜️","canyon","A deep landform with steep sides that can be carved over time by erosion, especially running water."),
+        ("💨","sand dune","A hill or ridge of sand built by wind deposition."),
+        ("🧊","glacier","A large body of ice that moves slowly over land and can erode and transport Earth material.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d98-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will identify
+      how wind,
+      water,
+      and ice
+      change Earth's surface
+      and connect
+      each agent and process
+      to landform formation.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      Move or Drop?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Label each example
+      <strong>EROSION</strong>
+      or
+      <strong>DEPOSITION</strong>.
+
+      <ol>
+
+        <li>
+          Wind carries sand across a desert.
+        </li>
+
+        <li>
+          Sand settles behind an obstacle.
+        </li>
+
+        <li>
+          A river carries sediment downstream.
+        </li>
+
+        <li>
+          Sediment settles where a river slows.
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      Agent → Process → Landform
+    </h2>
+
+
+    <div class="d98-mini-grid">
+
+      <article>
+
+        <span>
+          💧
+        </span>
+
+        <h3>
+          WATER
+        </h3>
+
+        <p>
+          Can weather,
+          erode,
+          transport,
+          and deposit
+          sediment.
+        </p>
+
+        <div>
+          Canyon:
+          <strong>erosion</strong>
+        </div>
+
+        <div>
+          Delta:
+          <strong>deposition</strong>
+        </div>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          💨
+        </span>
+
+        <h3>
+          WIND
+        </h3>
+
+        <p>
+          Can pick up
+          and transport
+          small particles.
+        </p>
+
+        <div>
+          Sand dune:
+          <strong>deposition</strong>
+        </div>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          🧊
+        </span>
+
+        <h3>
+          ICE
+        </h3>
+
+        <p>
+          Moving ice
+          can scrape,
+          erode,
+          and transport
+          rock and sediment.
+        </p>
+
+        <div>
+          Melting ice can also
+          <strong>deposit sediment.</strong>
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <div class="d59-warning">
+
+      <strong>
+        🚨 Key STAAR Distinction
+      </strong>
+
+      <br><br>
+
+      <strong>
+        EROSION = sediment is moving away.
+      </strong>
+
+      <br>
+
+      <strong>
+        DEPOSITION = sediment is being dropped.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Landform Mission Map
+    </h2>
+
+
+    <div class="d98-notebook">
+
+      <article>
+
+        <strong>
+          💧 WATER
+        </strong>
+
+        <p>
+          + Erosion
+        </p>
+
+        <span>
+          ↓
+        </span>
+
+        <strong>
+          🏜️ CANYON
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          💧 WATER
+        </strong>
+
+        <p>
+          + Deposition
+        </p>
+
+        <span>
+          ↓
+        </span>
+
+        <strong>
+          🏞️ DELTA
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          💨 WIND
+        </strong>
+
+        <p>
+          + Deposition
+        </p>
+
+        <span>
+          ↓
+        </span>
+
+        <strong>
+          🏜️ SAND DUNE
+        </strong>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🧊 ICE
+        </strong>
+
+        <p>
+          + Erosion /
+          Transport /
+          Deposition
+        </p>
+
+        <span>
+          ↓
+        </span>
+
+        <strong>
+          CHANGES EARTH'S SURFACE
+        </strong>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Human Landform Machine
+    </h2>
+
+
+    <div class="d59-box">
+
+      Give students three
+      agent cards:
+
+      <strong>
+        💧 WATER
+        • 💨 WIND
+        • 🧊 ICE
+      </strong>
+
+      <br><br>
+
+      Give students two
+      process cards:
+
+      <strong>
+        ➡️ EROSION
+        • ⬇️ DEPOSITION
+      </strong>
+
+      <br><br>
+
+      Call out:
+
+      <ul>
+
+        <li>
+          "A river cuts deeper into rock."
+        </li>
+
+        <li>
+          "Sediment collects where a river enters a lake."
+        </li>
+
+        <li>
+          "Sand piles up after being transported by wind."
+        </li>
+
+        <li>
+          "A glacier scrapes and carries rock."
+        </li>
+
+      </ul>
+
+
+      Students must hold up
+      the correct agent
+      and process.
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🌎 Interactive Surface Mission
+    </div>
+
+    <h2>
+      Landform Agents Mission
+    </h2>
+
+
+    <p>
+      Scan the evidence,
+      control the agents,
+      build required landforms,
+      and solve
+      surface-change cases.
+    </p>
+
+
+    <div class="d98-missions">
+
+      <div>
+        💧💨🧊
+        <strong>Mission 1</strong>
+        Agent Scanner
+      </div>
+
+      <div>
+        🏗️
+        <strong>Mission 2</strong>
+        Landform Constructor
+      </div>
+
+      <div>
+        ➡️⬇️
+        <strong>Mission 3</strong>
+        Move or Drop?
+      </div>
+
+      <div>
+        🔎
+        <strong>Mission 4</strong>
+        Surface Detective
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Complete all four missions
+      to earn
+
+      <strong>
+        Earth's Surface Change Specialist
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/landform-agents-mission?mission=day98"
+    >
+      🌎 Launch Landform Agents Mission
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR-Style Practice
+    </div>
+
+    <h2>
+      Agent → Process → Landform
+    </h2>
+
+
+    <div class="d98-question"
+         data-answer="B">
+
+      <h3>Question 1</h3>
+
+      <p>
+        A river slowly
+        removes rock
+        and carries sediment
+        downstream.
+
+        Which process
+        is most directly represented?
+      </p>
+
+      <button data-choice="A">
+        A. Cementation
+      </button>
+
+      <button data-choice="B">
+        B. Erosion
+      </button>
+
+      <button data-choice="C">
+        C. Compaction
+      </button>
+
+      <button data-choice="D">
+        D. Deposition
+      </button>
+
+      <div class="d98-feedback"></div>
+
+    </div>
+
+
+    <div class="d98-question"
+         data-answer="D">
+
+      <h3>Question 2</h3>
+
+      <p>
+        A river enters
+        a large body of water,
+        slows,
+        and drops sediment.
+
+        Which landform
+        can build from
+        this process?
+      </p>
+
+      <button data-choice="A">
+        A. Canyon
+      </button>
+
+      <button data-choice="B">
+        B. Volcano
+      </button>
+
+      <button data-choice="C">
+        C. Mountain
+      </button>
+
+      <button data-choice="D">
+        D. Delta
+      </button>
+
+      <div class="d98-feedback"></div>
+
+    </div>
+
+
+    <div class="d98-question"
+         data-answer="A">
+
+      <h3>Question 3</h3>
+
+      <p>
+        Wind transports sand.
+        The wind slows,
+        and the sand
+        is deposited.
+
+        Which landform
+        may form?
+      </p>
+
+      <button data-choice="A">
+        A. Sand dune
+      </button>
+
+      <button data-choice="B">
+        B. Canyon
+      </button>
+
+      <button data-choice="C">
+        C. Delta
+      </button>
+
+      <button data-choice="D">
+        D. Crater
+      </button>
+
+      <div class="d98-feedback"></div>
+
+    </div>
+
+
+    <div class="d98-question"
+         data-answer="C">
+
+      <h3>Question 4</h3>
+
+      <p>
+        Which statement
+        correctly describes
+        moving ice?
+      </p>
+
+      <button data-choice="A">
+        A. Ice cannot move sediment.
+      </button>
+
+      <button data-choice="B">
+        B. Ice only causes deposition.
+      </button>
+
+      <button data-choice="C">
+        C. Moving ice can erode and transport Earth material.
+      </button>
+
+      <button data-choice="D">
+        D. Ice changes Earth's surface only by cementation.
+      </button>
+
+      <div class="d98-feedback"></div>
+
+    </div>
+
+
+    <div class="d98-question"
+         data-answer="B">
+
+      <h3>Question 5</h3>
+
+      <p>
+        Which pairing
+        is correct?
+      </p>
+
+      <button data-choice="A">
+        A. Canyon — wind deposition
+      </button>
+
+      <button data-choice="B">
+        B. Delta — water deposition
+      </button>
+
+      <button data-choice="C">
+        C. Sand dune — water cementation
+      </button>
+
+      <button data-choice="D">
+        D. Delta — ice compaction
+      </button>
+
+      <div class="d98-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+
+    <p>
+      Choose one:
+
+      <strong>
+        canyon,
+        delta,
+        or sand dune.
+      </strong>
+
+      <br><br>
+
+      Explain using:
+
+      <strong>
+        AGENT → PROCESS → LANDFORM
+      </strong>
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="The agent is... The process is... This helps form..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Surface Change CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      Wind,
+      water,
+      and ice
+      can change Earth's surface
+      over time.
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="One example is..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This shows surface change because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      🏞️ Next Mission
+    </div>
+
+    <h2>
+      Day 99:
+      Delta Builder
+    </h2>
+
+
+    <div class="d59-box">
+
+      Tomorrow we zoom in on:
+
+      <strong>
+        💧 WATER + ⬇️ DEPOSITION
+        → 🏞️ DELTA
+      </strong>
+
+      <br><br>
+
+      Students will control
+      river speed,
+      sediment load,
+      and deposition
+      to build
+      a delta model.
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d98VocabModal"
+     class="d98-modal">
+
+  <div class="d98-modal-card">
+
+    <button
+      id="d98VocabClose"
+      class="d98-modal-close"
+      type="button"
+    >
+      ×
+    </button>
+
+    <div id="d98ModalIcon"
+         class="d98-modal-icon"></div>
+
+    <h2 id="d98ModalTerm"></h2>
+
+    <p id="d98ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='day98_direct.js') }}?v=98-final"
+></script>
+
+{% endblock %}

@@ -1,0 +1,255 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#72cbed"/>
+
+      <stop offset="100%"
+            stop-color="#eefaff"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="28"
+        fill="url(#sky)"/>
+
+
+  <text x="600"
+        y="55"
+        text-anchor="middle"
+        fill="#242424"
+        font-size="34"
+        font-weight="900">
+    AGENTS OF CHANGE
+  </text>
+
+
+  <text x="600"
+        y="98"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="29"
+        font-weight="900">
+    WIND • WATER • ICE
+  </text>
+
+
+  <!-- CANYON PANEL -->
+
+  <g transform="translate(55,155)">
+
+    <rect x="0"
+          y="0"
+          width="340"
+          height="390"
+          rx="20"
+          fill="#f3c58d"
+          stroke="#202020"
+          stroke-width="6"/>
+
+    <text x="170"
+          y="42"
+          text-anchor="middle"
+          font-size="24"
+          font-weight="900">
+      💧 WATER
+    </text>
+
+    <path d="M35 95
+             L120 130
+             L145 300
+             L190 300
+             L220 130
+             L305 95
+             L305 335
+             L35 335 Z"
+          fill="#a35f3e"
+          stroke="#4c3025"
+          stroke-width="5"/>
+
+    <path d="M157 120
+             C165 175 150 230 170 315"
+          fill="none"
+          stroke="#3da9e8"
+          stroke-width="18"
+          stroke-linecap="round"/>
+
+    <text x="170"
+          y="370"
+          text-anchor="middle"
+          font-size="22"
+          font-weight="900">
+      EROSION → CANYON
+    </text>
+
+  </g>
+
+
+  <!-- DELTA PANEL -->
+
+  <g transform="translate(430,155)">
+
+    <rect x="0"
+          y="0"
+          width="340"
+          height="390"
+          rx="20"
+          fill="#dff4ff"
+          stroke="#202020"
+          stroke-width="6"/>
+
+    <text x="170"
+          y="42"
+          text-anchor="middle"
+          font-size="24"
+          font-weight="900">
+      💧 WATER
+    </text>
+
+    <rect x="20"
+          y="245"
+          width="300"
+          height="95"
+          fill="#55acd1"/>
+
+    <path d="M170 70
+             L170 205"
+          fill="none"
+          stroke="#3b98cf"
+          stroke-width="26"
+          stroke-linecap="round"/>
+
+    <path d="M170 195
+             L90 280
+             L250 280 Z"
+          fill="#cfaa62"
+          stroke="#66482f"
+          stroke-width="5"/>
+
+    <path d="M170 195
+             L120 270"
+          fill="none"
+          stroke="#3b98cf"
+          stroke-width="10"/>
+
+    <path d="M170 195
+             L170 280"
+          fill="none"
+          stroke="#3b98cf"
+          stroke-width="10"/>
+
+    <path d="M170 195
+             L220 270"
+          fill="none"
+          stroke="#3b98cf"
+          stroke-width="10"/>
+
+    <text x="170"
+          y="370"
+          text-anchor="middle"
+          font-size="21"
+          font-weight="900">
+      DEPOSITION → DELTA
+    </text>
+
+  </g>
+
+
+  <!-- DUNE PANEL -->
+
+  <g transform="translate(805,155)">
+
+    <rect x="0"
+          y="0"
+          width="340"
+          height="390"
+          rx="20"
+          fill="#ffe7a6"
+          stroke="#202020"
+          stroke-width="6"/>
+
+    <text x="170"
+          y="42"
+          text-anchor="middle"
+          font-size="24"
+          font-weight="900">
+      💨 WIND
+    </text>
+
+    <path d="M35 290
+             Q95 175 165 265
+             Q230 150 310 290
+             Z"
+          fill="#d8a84d"
+          stroke="#765426"
+          stroke-width="5"/>
+
+    <path d="M45 105
+             C95 80 125 115 165 90"
+          fill="none"
+          stroke="#ffffff"
+          stroke-width="10"
+          stroke-linecap="round"/>
+
+    <path d="M90 145
+             C145 120 190 155 245 125"
+          fill="none"
+          stroke="#ffffff"
+          stroke-width="10"
+          stroke-linecap="round"/>
+
+    <text x="170"
+          y="370"
+          text-anchor="middle"
+          font-size="20"
+          font-weight="900">
+      DEPOSITION → SAND DUNE
+    </text>
+
+  </g>
+
+
+  <!-- ICE STRIP -->
+
+  <rect x="150"
+        y="585"
+        width="900"
+        height="75"
+        rx="30"
+        fill="#e5f8ff"
+        stroke="#202020"
+        stroke-width="5"/>
+
+
+  <text x="600"
+        y="615"
+        text-anchor="middle"
+        fill="#164f74"
+        font-size="21"
+        font-weight="900">
+    🧊 MOVING ICE CAN ERODE, TRANSPORT, AND DEPOSIT SEDIMENT
+  </text>
+
+
+  <text x="600"
+        y="645"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="19"
+        font-weight="900">
+    AND RESHAPE EARTH'S SURFACE
+  </text>
+
+</svg>

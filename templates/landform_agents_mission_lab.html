@@ -1,0 +1,646 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='landform_agents_mission_lab.css') }}?v=98.1"
+>
+
+
+<div class="la-shell">
+
+
+  <!-- HERO -->
+
+  <header class="la-hero">
+
+    <div class="la-tags">
+
+      <span>🌎 Surface Mission</span>
+
+      <span>Wind • Water • Ice</span>
+
+      <span>TEKS 5.10C</span>
+
+    </div>
+
+
+    <div class="la-hero-row">
+
+      <div>
+
+        <h1>
+          Landform Agents Mission
+        </h1>
+
+        <p>
+          Identify the agent.
+          Select the process.
+          Build the landform.
+        </p>
+
+      </div>
+
+
+      <a
+        class="la-back"
+        href="/second-nine-weeks/day/98?view=student"
+      >
+        ← Back to Day 98
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- MASTER RULE -->
+
+  <section class="la-rule-strip">
+
+    <strong>
+      MISSION RULE:
+    </strong>
+
+    <span>
+      AGENT
+    </span>
+
+    <b>→</b>
+
+    <span>
+      PROCESS
+    </span>
+
+    <b>→</b>
+
+    <span>
+      LANDFORM
+    </span>
+
+  </section>
+
+
+  <!-- STATUS -->
+
+  <section class="la-status">
+
+    <h2>
+      Surface Mission Status
+    </h2>
+
+
+    <div class="la-status-grid">
+
+      <div id="laStatus1">
+        <span>🔴</span>
+        <strong>Mission 1</strong>
+        <small>Agent Scanner</small>
+      </div>
+
+      <div id="laStatus2">
+        <span>🔴</span>
+        <strong>Mission 2</strong>
+        <small>Constructor</small>
+      </div>
+
+      <div id="laStatus3">
+        <span>🔴</span>
+        <strong>Mission 3</strong>
+        <small>Move or Drop</small>
+      </div>
+
+      <div id="laStatus4">
+        <span>🔴</span>
+        <strong>Mission 4</strong>
+        <small>Surface Detective</small>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="la-mission-head">
+
+    <div class="la-number">
+      1
+    </div>
+
+    <div>
+
+      <h2>
+        Agent Scanner
+      </h2>
+
+      <p>
+        Identify whether
+        wind,
+        water,
+        or ice
+        is causing the change.
+      </p>
+
+    </div>
+
+
+    <aside class="la-score">
+
+      <strong>Score</strong>
+
+      <span id="laScore1">
+        0 / 5
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="la-panel">
+
+    <div id="laEvidence1"
+         class="la-evidence">
+    </div>
+
+    <div id="laQuestion1"
+         class="la-question">
+    </div>
+
+    <div id="laChoices1"
+         class="la-choices">
+    </div>
+
+
+    <button
+      id="laCheck1"
+      class="la-main-button"
+      type="button"
+    >
+      🔎 IDENTIFY AGENT
+    </button>
+
+
+    <div id="laFeedback1"
+         class="la-feedback">
+
+      Look for evidence
+      of wind,
+      water,
+      or ice.
+
+    </div>
+
+
+    <button
+      id="laNext1"
+      class="la-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="la-mission-head">
+
+    <div class="la-number">
+      2
+    </div>
+
+    <div>
+
+      <h2>
+        Landform Constructor
+      </h2>
+
+      <p>
+        Select the correct
+        agent and process
+        to build each target.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="la-panel">
+
+    <div class="la-constructor">
+
+      <div class="la-target-box">
+
+        <span>
+          TARGET LANDFORM
+        </span>
+
+        <div id="laTargetIcon"
+             class="la-target-icon">
+          🏞️
+        </div>
+
+        <h3 id="laTargetName">
+          DELTA
+        </h3>
+
+        <p id="laTargetClue">
+          Sediment builds where flowing water slows.
+        </p>
+
+      </div>
+
+
+      <div class="la-control-box">
+
+        <h3>
+          STEP 1 — SELECT AGENT
+        </h3>
+
+
+        <div class="la-agent-controls">
+
+          <button
+            class="la-agent"
+            data-agent="water"
+            type="button"
+          >
+            💧 WATER
+          </button>
+
+          <button
+            class="la-agent"
+            data-agent="wind"
+            type="button"
+          >
+            💨 WIND
+          </button>
+
+          <button
+            class="la-agent"
+            data-agent="ice"
+            type="button"
+          >
+            🧊 ICE
+          </button>
+
+        </div>
+
+
+        <h3>
+          STEP 2 — SELECT PROCESS
+        </h3>
+
+
+        <div class="la-process-controls">
+
+          <button
+            class="la-process"
+            data-process="erosion"
+            type="button"
+          >
+            ➡️ EROSION
+          </button>
+
+          <button
+            class="la-process"
+            data-process="deposition"
+            type="button"
+          >
+            ⬇️ DEPOSITION
+          </button>
+
+        </div>
+
+
+        <button
+          id="laBuild"
+          class="la-build-button"
+          type="button"
+        >
+          🏗️ RUN LANDFORM MODEL
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="la-landscape">
+
+      <div id="laLandscapeSky"
+           class="la-landscape-sky">
+
+        ☀️
+
+      </div>
+
+
+      <div id="laLandscapeFeature"
+           class="la-landscape-feature">
+
+        SELECT AN AGENT + PROCESS
+
+      </div>
+
+    </div>
+
+
+    <div id="laFeedback2"
+         class="la-feedback">
+
+      Build all four surface-change models.
+
+    </div>
+
+
+    <div class="la-progress-dots">
+
+      <div id="laBuildDot1">1</div>
+      <div id="laBuildDot2">2</div>
+      <div id="laBuildDot3">3</div>
+      <div id="laBuildDot4">4</div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="la-mission-head">
+
+    <div class="la-number">
+      3
+    </div>
+
+    <div>
+
+      <h2>
+        Move or Drop?
+      </h2>
+
+      <p>
+        Decide whether
+        the evidence describes
+        erosion or deposition.
+      </p>
+
+    </div>
+
+
+    <aside class="la-score">
+
+      <strong>Score</strong>
+
+      <span id="laScore3">
+        0 / 5
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="la-panel">
+
+    <div id="laEvidence3"
+         class="la-evidence">
+    </div>
+
+    <div id="laQuestion3"
+         class="la-question">
+    </div>
+
+    <div id="laChoices3"
+         class="la-choices">
+    </div>
+
+
+    <button
+      id="laCheck3"
+      class="la-main-button"
+      type="button"
+    >
+      ➡️⬇️ CHECK PROCESS
+    </button>
+
+
+    <div id="laFeedback3"
+         class="la-feedback">
+
+      Erosion = MOVE.
+      Deposition = DROP.
+    </div>
+
+
+    <button
+      id="laNext3"
+      class="la-next-button"
+      type="button"
+      disabled
+    >
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="la-mission-head">
+
+    <div class="la-number">
+      4
+    </div>
+
+    <div>
+
+      <h2>
+        Surface Detective
+      </h2>
+
+      <p>
+        Solve mixed
+        landform evidence cases.
+      </p>
+
+    </div>
+
+
+    <aside class="la-score">
+
+      <strong>Score</strong>
+
+      <span id="laScore4">
+        0 / 6
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="la-panel">
+
+    <div id="laEvidence4"
+         class="la-evidence">
+    </div>
+
+    <div id="laQuestion4"
+         class="la-question">
+    </div>
+
+    <div id="laChoices4"
+         class="la-choices">
+    </div>
+
+
+    <button
+      id="laCheck4"
+      class="la-main-button"
+      type="button"
+    >
+      🔎 SOLVE SURFACE CASE
+    </button>
+
+
+    <div id="laFeedback4"
+         class="la-feedback">
+
+      Identify:
+      agent → process → landform.
+    </div>
+
+
+    <button
+      id="laNext4"
+      class="la-next-button"
+      type="button"
+      disabled
+    >
+      NEXT CASE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="la-final">
+
+    <div class="la-final-icon">
+      🌎💧💨🧊🏆
+    </div>
+
+
+    <h2>
+      Surface Mission Status
+    </h2>
+
+
+    <div id="laFinalMessage"
+         class="la-final-message">
+
+      Complete all four missions.
+
+    </div>
+
+  </section>
+
+
+  <!-- EVIDENCE LOG -->
+
+  <section class="la-log">
+
+    <h2>
+      📓 Landform Evidence Log
+    </h2>
+
+
+    <div class="la-log-grid">
+
+      <article>
+
+        <strong>
+          💧 + ➡️
+        </strong>
+
+        <p>
+          Water erosion
+
+          <br>
+
+          → Canyon
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          💧 + ⬇️
+        </strong>
+
+        <p>
+          Water deposition
+
+          <br>
+
+          → Delta
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          💨 + ⬇️
+        </strong>
+
+        <p>
+          Wind deposition
+
+          <br>
+
+          → Sand dune
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🧊
+        </strong>
+
+        <p>
+          Ice can erode,
+          transport,
+          and deposit sediment.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script
+  src="{{ url_for('static', filename='landform_agents_mission_lab.js') }}?v=98.1"
+></script>
+
+{% endblock %}
