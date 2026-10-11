@@ -1,0 +1,410 @@
+.cc-shell {
+  width: min(1200px,96vw);
+  margin: 24px auto 60px;
+}
+
+.cc-hero,
+.cc-memory,
+.cc-status,
+.cc-mission-head,
+.cc-panel,
+.cc-final,
+.cc-log {
+  border: 3px solid #171717;
+  border-radius: 17px;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+}
+
+.cc-hero {
+  padding: 22px;
+  color: #fff;
+  background:
+    linear-gradient(
+      115deg,
+      #75422d,
+      #b76843,
+      #116c91,
+      #7131cc
+    );
+}
+
+.cc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.cc-tags span {
+  padding: 5px 10px;
+  border: 2px solid #171717;
+  border-radius: 999px;
+  background: #51362c;
+  color: #fff36a;
+  font-weight: 900;
+}
+
+.cc-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.cc-back {
+  padding: 10px 14px;
+  border: 2px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.cc-memory {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  margin-top: 14px;
+  padding: 14px;
+  background: #fff3ad;
+}
+
+.cc-memory span {
+  padding: 9px 12px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  font-weight: 900;
+}
+
+.cc-memory b {
+  color: #7131cc;
+}
+
+.cc-status {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+.cc-status-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.cc-status-grid > div {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.cc-status-grid span,
+.cc-status-grid strong,
+.cc-status-grid small {
+  display: block;
+}
+
+.cc-status-grid span {
+  font-size: 1.8rem;
+}
+
+.cc-status-grid .online {
+  background: #d9f8dd;
+}
+
+.cc-mission-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff4cd;
+}
+
+.cc-number {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  flex: 0 0 auto;
+  border: 4px solid #171717;
+  border-radius: 50%;
+  background: #7131cc;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.cc-score {
+  margin-left: auto;
+  padding: 9px 14px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  text-align: center;
+}
+
+.cc-score strong,
+.cc-score span {
+  display: block;
+}
+
+.cc-panel {
+  margin-top: 10px;
+  padding: 16px;
+  background: #111a34;
+  color: #fff;
+}
+
+.cc-evidence,
+.cc-question {
+  padding: 14px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+}
+
+.cc-evidence {
+  margin-bottom: 10px;
+  background: #fff3ad;
+}
+
+.cc-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.cc-choice,
+.cc-flow,
+.cc-time {
+  padding: 11px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.cc-choice.selected,
+.cc-flow.selected,
+.cc-time.selected {
+  background: #fff4a8;
+  border-color: #7131cc;
+  box-shadow: 0 0 0 3px rgba(113,49,204,.25);
+}
+
+.cc-main-button,
+.cc-next-button {
+  margin-top: 12px;
+  padding: 12px 18px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #ffe45d;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.cc-next-button:disabled {
+  opacity: .45;
+}
+
+.cc-feedback {
+  margin-top: 12px;
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+}
+
+.cc-canyon-scene {
+  --gap: 80px;
+  --depth: 70px;
+
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+  border: 4px solid #fff;
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      to bottom,
+      #bd714a 0 18%,
+      #e4a16e 18% 22%,
+      #a85f40 22% 42%,
+      #e4a16e 42% 46%,
+      #98563b 46% 67%,
+      #e4a16e 67% 71%,
+      #7d4938 71% 100%
+    );
+}
+
+.cc-layer-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 7px 10px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+}
+
+.cc-cutout {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--gap);
+  height: var(--depth);
+  transform: translateX(-50%);
+  background: #9ddff1;
+  clip-path:
+    polygon(
+      32% 0,
+      68% 0,
+      100% 100%,
+      0 100%
+    );
+  transition:
+    width .7s ease,
+    height .7s ease;
+}
+
+.cc-river {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  text-align: center;
+  font-size: 2.3rem;
+}
+
+.cc-sediment-stream {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 8px;
+  border: 2px solid #171717;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  font-weight: 900;
+}
+
+.cc-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.cc-controls section {
+  padding: 12px;
+  border: 3px solid #fff;
+  border-radius: 10px;
+  background: #263b50;
+}
+
+.cc-button-row {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 7px;
+}
+
+.cc-meters {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.cc-meters article {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 9px;
+  background: #fff;
+  color: #111;
+  text-align: center;
+}
+
+.cc-meter {
+  height: 22px;
+  margin: 8px 0;
+  overflow: hidden;
+  border: 3px solid #171717;
+  border-radius: 999px;
+  background: #ddd;
+}
+
+.cc-meter div {
+  width: 5%;
+  height: 100%;
+  background: #7131cc;
+  transition: width .5s ease;
+}
+
+.cc-final {
+  margin-top: 14px;
+  padding: 20px;
+  background: #fff4cd;
+  text-align: center;
+}
+
+.cc-final-icon {
+  font-size: 4rem;
+}
+
+.cc-final-message {
+  padding: 13px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #e9f6ff;
+  font-weight: 900;
+}
+
+.cc-log {
+  margin-top: 14px;
+  padding: 15px;
+  background: #fff;
+}
+
+.cc-log-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.cc-log-grid article {
+  padding: 12px;
+  border: 3px solid #171717;
+  border-radius: 10px;
+  background: #edf7ff;
+}
+
+@media (max-width:850px) {
+
+  .cc-hero-row {
+    display: block;
+  }
+
+  .cc-status-grid,
+  .cc-choices,
+  .cc-controls,
+  .cc-button-row,
+  .cc-meters,
+  .cc-log-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

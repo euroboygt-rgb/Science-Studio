@@ -6735,3 +6735,104 @@ SECOND_NINE_WEEKS_LESSONS[99] = {
 }
 
 # Science Studio Day 99 End
+
+
+# Science Studio Day 100 Start
+
+SECOND_NINE_WEEKS_LESSONS[100] = {
+
+    "day": 100,
+
+    "title":
+        "Canyon Carver: Water Wears Away Rock",
+
+    "unit":
+        "Earth's Changing Surface and Landforms",
+
+    "teks":
+        "5.10C",
+
+    "focus":
+        "Students model and identify how running water can weather, erode, "
+        "and transport Earth material over time and contribute to canyon formation.",
+
+    "learning_target":
+        "We will model how running water erodes and transports Earth material "
+        "and contributes to canyon formation.",
+
+    "success_criteria":
+        "I can explain the pattern water → erosion → transported sediment "
+        "→ repeated change over time → canyon.",
+
+    "essential_question":
+        "How can flowing water carve a deep canyon into rock over time?",
+
+    "bell_ringer": [
+        "What does erosion mean?",
+        "How is erosion different from deposition?",
+        "Which agent is strongly connected to canyon formation in our Grade 5 model?",
+        "What happens to sediment after flowing water erodes it?"
+    ],
+
+    "mini_lesson": [
+        "Running water is an important agent of erosion.",
+        "Weathering can weaken or break rock into smaller pieces.",
+        "Erosion removes and transports Earth material.",
+        "A river can carry eroded sediment downstream.",
+        "As erosion continues, a river channel can become deeper and wider.",
+        "Repeated change over long periods can contribute to canyon formation.",
+        "Stronger or faster-moving water can transport more material under some conditions.",
+        "Canyons do not form instantly.",
+        "Real canyon formation can also involve weathering, gravity, tributaries, rock properties, uplift, and other geologic processes.",
+        "For our Grade 5 model, remember: running water + erosion over time can carve a canyon."
+    ],
+
+    "science_notebook": [
+        "Title: Canyon Formation.",
+        "Write: WATER → EROSION → TRANSPORT → TIME → CANYON.",
+        "Write: Weathering = BREAK.",
+        "Write: Erosion = MOVE / REMOVE.",
+        "Draw a river channel becoming deeper over time.",
+        "Draw sediment being carried downstream.",
+        "Write: Canyon formation is a slow change to Earth's surface."
+    ],
+
+    "guided_practice": [
+        "Compare yesterday's delta with today's canyon.",
+        "Ask: Is sediment accumulating or being removed?",
+        "Students identify delta as deposition and canyon as erosion.",
+        "Act out weathering by breaking paper-rock pieces apart.",
+        "Act out erosion by moving those pieces downstream.",
+        "Repeat several cycles to represent change over time."
+    ],
+
+    "lab_title":
+        "Canyon Carver",
+
+    "lab_url":
+        "/labs/canyon-carver?mission=day100",
+
+    "exit_ticket":
+        "Explain how running water can contribute to canyon formation over time.",
+
+    "vocabulary": [
+        "canyon",
+        "weathering",
+        "erosion",
+        "transport",
+        "sediment",
+        "river channel",
+        "flow",
+        "depth",
+        "width",
+        "landform"
+    ],
+
+    "teacher_note":
+        "Use the simplified Grade 5 model that running water erodes and transports "
+        "Earth material and can carve a canyon over long periods. Do not imply that "
+        "a river is the only process involved in every real canyon. Weathering, gravity, "
+        "rock type, tributaries, uplift, and other geologic processes may also contribute."
+}
+
+# Science Studio Day 100 End

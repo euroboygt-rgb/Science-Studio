@@ -1231,3 +1231,21 @@ POWER_FRAMES[99] = {
 }
 
 # Science Studio Day 99 Power Frame End
+
+
+# Science Studio Day 100 Power Frame Start
+
+POWER_FRAMES[100] = {
+
+    "i_can":
+        "I can model and explain how running water can contribute to canyon formation.",
+
+    "by":
+        "tracking weathered and eroded Earth material as flowing water transports it away.",
+
+    "i_know":
+        "I know I have learned this when I can explain "
+        "water → erosion → transport → time → canyon."
+}
+
+# Science Studio Day 100 Power Frame End

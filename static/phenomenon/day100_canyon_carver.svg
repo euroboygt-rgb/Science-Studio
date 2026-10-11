@@ -1,0 +1,261 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 700">
+
+  <defs>
+
+    <linearGradient id="sky"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1">
+
+      <stop offset="0%"
+            stop-color="#73cdef"/>
+
+      <stop offset="100%"
+            stop-color="#effaff"/>
+
+    </linearGradient>
+
+  </defs>
+
+
+  <rect width="1200"
+        height="700"
+        rx="30"
+        fill="url(#sky)"/>
+
+
+  <text x="600"
+        y="55"
+        text-anchor="middle"
+        fill="#252525"
+        font-size="35"
+        font-weight="900">
+    CANYON CARVER
+  </text>
+
+
+  <text x="600"
+        y="100"
+        text-anchor="middle"
+        fill="#7131cc"
+        font-size="28"
+        font-weight="900">
+    HOW CAN WATER REMOVE THIS MUCH ROCK?
+  </text>
+
+
+  <!-- LEFT ROCK -->
+
+  <path d="M0 165
+           L440 165
+           L455 225
+           L400 300
+           L365 390
+           L335 525
+           L0 525 Z"
+        fill="#b86b43"
+        stroke="#573627"
+        stroke-width="5"/>
+
+
+  <!-- RIGHT ROCK -->
+
+  <path d="M1200 165
+           L760 165
+           L745 225
+           L800 300
+           L835 390
+           L865 525
+           L1200 525 Z"
+        fill="#b86b43"
+        stroke="#573627"
+        stroke-width="5"/>
+
+
+  <!-- ROCK LAYERS -->
+
+  <g stroke="#e6a36f"
+     stroke-width="16">
+
+    <line x1="20"
+          y1="245"
+          x2="420"
+          y2="245"/>
+
+    <line x1="20"
+          y1="335"
+          x2="380"
+          y2="335"/>
+
+    <line x1="20"
+          y1="430"
+          x2="350"
+          y2="430"/>
+
+    <line x1="780"
+          y1="245"
+          x2="1180"
+          y2="245"/>
+
+    <line x1="820"
+          y1="335"
+          x2="1180"
+          y2="335"/>
+
+    <line x1="850"
+          y1="430"
+          x2="1180"
+          y2="430"/>
+
+  </g>
+
+
+  <!-- RIVER -->
+
+  <path d="M560 150
+           C525 250 620 335 565 520
+           C545 575 610 615 670 650"
+        fill="none"
+        stroke="#2f9bd2"
+        stroke-width="62"
+        stroke-linecap="round"/>
+
+
+  <!-- SEDIMENT -->
+
+  <g fill="#714329">
+
+    <circle cx="560"
+            cy="260"
+            r="9"/>
+
+    <circle cx="585"
+            cy="315"
+            r="8"/>
+
+    <circle cx="570"
+            cy="390"
+            r="9"/>
+
+    <circle cx="590"
+            cy="455"
+            r="8"/>
+
+  </g>
+
+
+  <!-- ARROWS -->
+
+  <text x="600"
+        y="220"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="28"
+        font-weight="900">
+    ↓
+  </text>
+
+  <text x="600"
+        y="355"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="28"
+        font-weight="900">
+    ↓
+  </text>
+
+  <text x="610"
+        y="495"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="28"
+        font-weight="900">
+    ↓
+  </text>
+
+
+  <!-- LABELS -->
+
+  <rect x="80"
+        y="550"
+        width="300"
+        height="88"
+        rx="18"
+        fill="#fff"
+        stroke="#222"
+        stroke-width="4"/>
+
+  <text x="230"
+        y="585"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900">
+    ROCK IS REMOVED
+  </text>
+
+  <text x="230"
+        y="615"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900"
+        fill="#7131cc">
+    EROSION
+  </text>
+
+
+  <rect x="820"
+        y="550"
+        width="300"
+        height="88"
+        rx="18"
+        fill="#fff"
+        stroke="#222"
+        stroke-width="4"/>
+
+  <text x="970"
+        y="585"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900">
+    SEDIMENT MOVES
+  </text>
+
+  <text x="970"
+        y="615"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900"
+        fill="#7131cc">
+    TRANSPORT
+  </text>
+
+
+  <rect x="390"
+        y="565"
+        width="420"
+        height="92"
+        rx="24"
+        fill="#fff3ad"
+        stroke="#222"
+        stroke-width="5"/>
+
+  <text x="600"
+        y="603"
+        text-anchor="middle"
+        font-size="20"
+        font-weight="900">
+    REPEATED CHANGE OVER TIME
+  </text>
+
+  <text x="600"
+        y="635"
+        text-anchor="middle"
+        font-size="22"
+        font-weight="900"
+        fill="#7131cc">
+    → CANYON
+  </text>
+
+</svg>

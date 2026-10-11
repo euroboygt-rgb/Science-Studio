@@ -1,0 +1,1466 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='day59_page.css') }}?v=100-final">
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='day100_direct.css') }}?v=100-final">
+
+
+<div id="DAY100_DIRECT_TEMPLATE"
+     class="d100-page">
+
+
+  <section class="d100-hero">
+
+    <div class="d100-tags">
+
+      <span>Day 100</span>
+
+      <span>
+        {{ "Teacher View" if view == "teacher" else "Student View" }}
+      </span>
+
+      <span>TEKS 5.10C</span>
+
+      <span>Canyon Formation</span>
+
+    </div>
+
+
+    <h1>
+      🏜️💧 Canyon Carver:
+      Water Wears Away Rock
+    </h1>
+
+
+    <p>
+      Yesterday,
+      deposition built land.
+
+      <br>
+
+      Today,
+      erosion removes material
+      and reshapes the surface.
+    </p>
+
+
+    <div class="d100-header-buttons">
+
+      <a href="/second-nine-weeks">
+        ← 2nd Nine Weeks
+      </a>
+
+      <a href="/second-nine-weeks/day/100?view=student">
+        Student View
+      </a>
+
+      <a href="/second-nine-weeks/day/100?view=teacher">
+        Teacher View
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- POWER FRAME -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      ⚡ Power Frame
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div class="d59-box">
+
+        <strong>I can...</strong>
+
+        <p>
+          model and explain
+          how running water
+          can contribute
+          to canyon formation.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>By...</strong>
+
+        <p>
+          tracking eroded
+          Earth material
+          as flowing water
+          transports it away.
+        </p>
+
+      </div>
+
+
+      <div class="d59-box">
+
+        <strong>
+          I know I have learned this when...
+        </strong>
+
+        <p>
+          I can explain
+
+          <strong>
+            water → erosion
+            → transport
+            → time → canyon.
+          </strong>
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHENOMENON -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🔎 Canyon Mystery
+    </div>
+
+    <h2>
+      Where Did All the Rock Go?
+    </h2>
+
+
+    <div class="d59-image">
+
+      <img
+        src="/static/phenomenon/day100_canyon_carver.svg"
+        alt="Running water eroding rock and transporting sediment through a canyon"
+      >
+
+    </div>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        ❓ Mission Question:
+      </strong>
+
+      If a canyon
+      is a giant space
+      in the rock,
+      what happened
+      to the material
+      that used to be there?
+
+    </div>
+
+  </section>
+
+
+  <!-- MEMORY CHAIN -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🧠 Canyon Memory Chain
+    </div>
+
+    <h2>
+      Follow the Removed Rock
+    </h2>
+
+
+    <div class="d100-chain">
+
+      <article>
+
+        <span>💧</span>
+
+        <strong>
+          RUNNING WATER
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>💥</span>
+
+        <strong>
+          ROCK CAN WEATHER
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article class="erosion">
+
+        <span>➡️</span>
+
+        <strong>
+          EROSION REMOVES MATERIAL
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>🚚🪨</span>
+
+        <strong>
+          SEDIMENT TRANSPORT
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <span>🕰️</span>
+
+        <strong>
+          REPEATED OVER TIME
+        </strong>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article class="canyon">
+
+        <span>🏜️</span>
+
+        <strong>
+          CANYON
+        </strong>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- DELTA VS CANYON -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🏞️ vs. 🏜️
+    </div>
+
+    <h2>
+      Day 99 vs. Day 100
+    </h2>
+
+
+    <div class="d100-compare">
+
+      <article class="delta">
+
+        <span>
+          🏞️
+        </span>
+
+        <h3>
+          DELTA
+        </h3>
+
+        <strong>
+          DEPOSITION
+        </strong>
+
+        <p>
+          Sediment is
+          <strong>dropped</strong>
+          and accumulates.
+        </p>
+
+        <div>
+          BUILDS MATERIAL
+        </div>
+
+      </article>
+
+
+      <article class="canyon">
+
+        <span>
+          🏜️
+        </span>
+
+        <h3>
+          CANYON
+        </h3>
+
+        <strong>
+          EROSION
+        </strong>
+
+        <p>
+          Earth material is
+          <strong>removed and moved.</strong>
+        </p>
+
+        <div>
+          REMOVES MATERIAL
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- WEATHERING + EROSION -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      💥 + ➡️
+    </div>
+
+    <h2>
+      Weathering and Erosion Are Not the Same
+    </h2>
+
+
+    <div class="d100-two-process">
+
+      <article>
+
+        <span>
+          💥
+        </span>
+
+        <h3>
+          WEATHERING
+        </h3>
+
+        <strong>
+          BREAK
+        </strong>
+
+        <p>
+          Rock is broken
+          or weakened
+          into smaller pieces.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>
+          ➡️
+        </span>
+
+        <h3>
+          EROSION
+        </h3>
+
+        <strong>
+          MOVE / REMOVE
+        </strong>
+
+        <p>
+          Water carries
+          loosened Earth material
+          away.
+        </p>
+
+      </article>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Weathering can help
+      prepare Earth material
+      to be moved.
+
+      <br><br>
+
+      Erosion is the
+      <strong>
+        removal and transport
+      </strong>
+      of the material.
+
+    </div>
+
+  </section>
+
+
+  <!-- TIME -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      🕰️ Slow Surface Change
+    </div>
+
+    <h2>
+      A Canyon Does Not Form in One Day
+    </h2>
+
+
+    <div class="d100-time">
+
+      <article>
+
+        <strong>
+          START
+        </strong>
+
+        <div>
+          ━━━💧━━━
+        </div>
+
+        <p>
+          Small river channel
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <strong>
+          MORE EROSION
+        </strong>
+
+        <div>
+          ╲ 💧 ╱
+        </div>
+
+        <p>
+          Channel deepens
+        </p>
+
+      </article>
+
+
+      <b>→</b>
+
+
+      <article>
+
+        <strong>
+          REPEATED CHANGE
+        </strong>
+
+        <div>
+          ╲&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;╱
+          <br>
+          &nbsp;╲ 💧 ╱
+        </div>
+
+        <p>
+          Canyon becomes
+          deeper and wider
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- REAL MODEL LIMIT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🔬 Model vs. Real Earth
+    </div>
+
+    <h2>
+      The River Is Important — But Earth Is Complicated
+    </h2>
+
+
+    <div class="d100-real-grid">
+
+      <article>
+        💧
+        <strong>
+          RUNNING WATER
+        </strong>
+      </article>
+
+      <article>
+        💥
+        <strong>
+          WEATHERING
+        </strong>
+      </article>
+
+      <article>
+        ⛰️
+        <strong>
+          ROCK TYPE + LAND SHAPE
+        </strong>
+      </article>
+
+      <article>
+        ⬇️
+        <strong>
+          GRAVITY
+        </strong>
+      </article>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Our Grade 5 model focuses on:
+
+      <strong>
+        WATER + EROSION → CANYON.
+      </strong>
+
+      <br><br>
+
+      Real canyons
+      can involve several
+      interacting processes.
+
+    </div>
+
+  </section>
+
+
+  <!-- STEVE -->
+
+  <section class="d59-card d59-blue">
+
+    <div class="d59-steve-grid">
+
+      <div class="d59-penguin">
+        🐧
+      </div>
+
+
+      <div>
+
+        <div class="d59-badge d59-blue-badge">
+          🐧 Steve's Canyon Construction Company
+        </div>
+
+        <h2>
+          Should Steve Deposit More Sediment?
+        </h2>
+
+
+        <div class="d59-scenario">
+
+          Steve wants
+          to carve a canyon.
+
+          He says:
+
+          <strong>
+            "Yesterday deposition built a delta,
+            so I will keep depositing sediment
+            until a canyon appears."
+          </strong>
+
+        </div>
+
+
+        <button class="d100-steve-answer"
+                data-answer="A">
+
+          A. Correct. Deposition removes material from a canyon.
+
+        </button>
+
+
+        <button class="d100-steve-answer"
+                data-answer="B">
+
+          B. Incorrect. Canyon formation in our model depends mainly on erosion removing and transporting Earth material.
+
+        </button>
+
+
+        <button class="d100-steve-answer"
+                data-answer="C">
+
+          C. Correct. A canyon and a delta form by the exact same process.
+
+        </button>
+
+
+        <button class="d100-steve-answer"
+                data-answer="D">
+
+          D. Incorrect because only wind can form a canyon.
+
+        </button>
+
+
+        <div class="d59-answer-row">
+
+          <button
+            id="d100SteveCheck"
+            class="d59-check"
+            type="button"
+          >
+            Check Canyon Science
+          </button>
+
+
+          <button
+            id="d100SteveReset"
+            class="d59-reset"
+            type="button"
+          >
+            Reset
+          </button>
+
+        </div>
+
+
+        <div id="d100SteveFeedback"
+             class="d59-feedback"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- VOCAB -->
+
+  <section class="d59-card d59-cream">
+
+    <h2>
+      📌 Canyon Carver Vocabulary
+    </h2>
+
+
+    <div class="d100-vocab-grid">
+
+      {% set words = [
+        ("🏜️","canyon","A deep landform with steep sides that can be shaped over time by erosion."),
+        ("💥","weathering","The breaking or weakening of rock into smaller pieces."),
+        ("➡️","erosion","The removal and movement of sediment or rock material."),
+        ("🚚","transport","The movement of sediment from one place to another."),
+        ("🪨","sediment","Small pieces of Earth material that can be transported."),
+        ("💧","river channel","The path through which river water flows."),
+        ("🌊","flow","The movement of water."),
+        ("⬇️","depth","The distance from the top of a feature to a lower point."),
+        ("↔️","width","The distance from one side of a feature to the other."),
+        ("🌎","landform","A natural feature of Earth's solid surface.")
+      ] %}
+
+
+      {% for icon, term, definition in words %}
+
+      <button
+        class="d100-vocab"
+        type="button"
+        data-icon="{{ icon }}"
+        data-term="{{ term }}"
+        data-definition="{{ definition }}"
+      >
+
+        <span>{{ icon }}</span>
+
+        <strong>{{ term }}</strong>
+
+      </button>
+
+      {% endfor %}
+
+    </div>
+
+  </section>
+
+
+  <!-- LEARNING TARGET -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎯 Learning Target
+    </h2>
+
+    <p>
+      We will model
+      how running water
+      erodes and transports
+      Earth material
+      and contributes
+      to canyon formation.
+    </p>
+
+  </section>
+
+
+  <!-- BELL -->
+
+  <section class="d59-card">
+
+    <h2>
+      🔔 Bell Ringer —
+      Build or Remove?
+    </h2>
+
+
+    <div class="d59-box">
+
+      Label each situation:
+
+      <strong>
+        EROSION
+      </strong>
+      or
+      <strong>
+        DEPOSITION.
+      </strong>
+
+      <ol>
+
+        <li>
+          River water carries rock pieces downstream.
+        </li>
+
+        <li>
+          Sediment settles at a river mouth.
+        </li>
+
+        <li>
+          Flowing water removes loose material from a channel.
+        </li>
+
+        <li>
+          Sand accumulates in one location.
+        </li>
+
+      </ol>
+
+    </div>
+
+  </section>
+
+
+  <!-- MINI LESSON -->
+
+  <section class="d59-card">
+
+    <h2>
+      👨‍🏫 Mini Lesson —
+      Carve a Canyon in Five Steps
+    </h2>
+
+
+    <div class="d100-steps">
+
+      <article>
+
+        <span>1</span>
+
+        <div>
+          ⛰️
+        </div>
+
+        <h3>
+          Rock Surface
+        </h3>
+
+        <p>
+          Water begins
+          flowing through
+          a channel.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>2</span>
+
+        <div>
+          💥🪨
+        </div>
+
+        <h3>
+          Weathering
+        </h3>
+
+        <p>
+          Some rock
+          is weakened
+          or broken.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>3</span>
+
+        <div>
+          💧➡️
+        </div>
+
+        <h3>
+          Erosion
+        </h3>
+
+        <p>
+          Flowing water
+          removes material.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>4</span>
+
+        <div>
+          🚚🪨
+        </div>
+
+        <h3>
+          Transport
+        </h3>
+
+        <p>
+          Sediment is carried
+          downstream.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <span>5</span>
+
+        <div>
+          🕰️🏜️
+        </div>
+
+        <h3>
+          Repeated Change
+        </h3>
+
+        <p>
+          The channel
+          becomes deeper
+          and wider
+          over time.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOTEBOOK -->
+
+  <section class="d59-card">
+
+    <h2>
+      📓 Science Notebook —
+      Canyon Formation Diagram
+    </h2>
+
+
+    <div class="d100-notebook">
+
+      <div>
+        💧
+        <strong>
+          WATER
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        ➡️
+        <strong>
+          EROSION
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        🚚🪨
+        <strong>
+          TRANSPORT
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div>
+        🕰️
+        <strong>
+          TIME
+        </strong>
+      </div>
+
+      <b>→</b>
+
+      <div class="canyon">
+        🏜️
+        <strong>
+          CANYON
+        </strong>
+      </div>
+
+    </div>
+
+
+    <div class="d59-box">
+
+      Write underneath:
+
+      <br><br>
+
+      <strong>
+        Running water can erode and transport Earth material.
+        Repeated erosion over long periods can contribute
+        to a canyon becoming deeper and wider.
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  {% if view == "teacher" %}
+
+  <!-- GUIDED -->
+
+  <section class="d59-card">
+
+    <h2>
+      🤝 Guided Practice —
+      Human Canyon Carver
+    </h2>
+
+
+    <div class="d59-box">
+
+      Give several students
+      paper "rock" pieces.
+
+      <ol>
+
+        <li>
+          Students tear or separate pieces:
+          <strong>WEATHERING = BREAK.</strong>
+        </li>
+
+        <li>
+          A student acting as the river
+          moves the pieces downstream:
+          <strong>EROSION = MOVE.</strong>
+        </li>
+
+        <li>
+          Repeat several rounds.
+        </li>
+
+        <li>
+          Widen the empty space
+          each round to represent
+          long-term canyon change.
+        </li>
+
+      </ol>
+
+      Ask:
+
+      <strong>
+        "Did we build material here,
+        or remove material?"
+      </strong>
+
+      <br><br>
+
+      Expected:
+      <strong>REMOVE — EROSION.</strong>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+
+  <!-- LAB -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge">
+      🏜️ Interactive Canyon Engineering
+    </div>
+
+    <h2>
+      Canyon Carver
+    </h2>
+
+
+    <p>
+      Analyze canyon evidence,
+      control water flow,
+      advance geologic time,
+      remove and transport sediment,
+      and watch the canyon
+      become deeper and wider.
+    </p>
+
+
+    <div class="d100-missions">
+
+      <div>
+        🔎
+        <strong>Mission 1</strong>
+        Canyon Evidence
+      </div>
+
+      <div>
+        💧🏜️
+        <strong>Mission 2</strong>
+        Canyon Carver
+      </div>
+
+      <div>
+        💥➡️
+        <strong>Mission 3</strong>
+        Break or Move?
+      </div>
+
+      <div>
+        🕵️
+        <strong>Mission 4</strong>
+        Canyon Detective
+      </div>
+
+    </div>
+
+
+    <div class="d59-success">
+
+      🏆 Complete all four missions
+      to earn
+
+      <strong>
+        Canyon Formation Geologist
+      </strong>
+
+      status.
+
+    </div>
+
+
+    <a
+      class="d59-lab-button"
+      href="/labs/canyon-carver?mission=day100"
+    >
+      🏜️ Launch Canyon Carver
+    </a>
+
+  </section>
+
+
+  <!-- STAAR -->
+
+  <section class="d59-card">
+
+    <div class="d59-badge">
+      ⭐ STAAR-Style Practice
+    </div>
+
+    <h2>
+      Canyon Formation Evidence
+    </h2>
+
+
+    <div class="d100-question"
+         data-answer="B">
+
+      <h3>Question 1</h3>
+
+      <p>
+        Flowing river water
+        removes loose rock
+        and carries it downstream.
+
+        Which process
+        is most directly represented?
+      </p>
+
+      <button data-choice="A">
+        A. Deposition
+      </button>
+
+      <button data-choice="B">
+        B. Erosion
+      </button>
+
+      <button data-choice="C">
+        C. Cementation
+      </button>
+
+      <button data-choice="D">
+        D. Compaction
+      </button>
+
+      <div class="d100-feedback"></div>
+
+    </div>
+
+
+    <div class="d100-question"
+         data-answer="C">
+
+      <h3>Question 2</h3>
+
+      <p>
+        Which sequence
+        best models
+        canyon formation?
+      </p>
+
+      <button data-choice="A">
+        A. Wind → deposition → delta
+      </button>
+
+      <button data-choice="B">
+        B. Water → deposition → canyon
+      </button>
+
+      <button data-choice="C">
+        C. Running water → erosion and transport → repeated change over time → canyon
+      </button>
+
+      <button data-choice="D">
+        D. Cementation → one day → canyon
+      </button>
+
+      <div class="d100-feedback"></div>
+
+    </div>
+
+
+    <div class="d100-question"
+         data-answer="A">
+
+      <h3>Question 3</h3>
+
+      <p>
+        Which statement
+        correctly compares
+        a delta and a canyon?
+      </p>
+
+      <button data-choice="A">
+        A. A delta is strongly connected to deposition, while a canyon is strongly connected to erosion.
+      </button>
+
+      <button data-choice="B">
+        B. Both are formed only by cementation.
+      </button>
+
+      <button data-choice="C">
+        C. A canyon forms mainly by sediment accumulating.
+      </button>
+
+      <button data-choice="D">
+        D. A delta forms mainly by material being removed.
+      </button>
+
+      <div class="d100-feedback"></div>
+
+    </div>
+
+
+    <div class="d100-question"
+         data-answer="D">
+
+      <h3>Question 4</h3>
+
+      <p>
+        Why is time
+        important in a canyon model?
+      </p>
+
+      <button data-choice="A">
+        A. Canyons form instantly.
+      </button>
+
+      <button data-choice="B">
+        B. Time causes cementation only.
+      </button>
+
+      <button data-choice="C">
+        C. Time prevents erosion.
+      </button>
+
+      <button data-choice="D">
+        D. Repeated erosion over long periods can produce larger surface changes.
+      </button>
+
+      <div class="d100-feedback"></div>
+
+    </div>
+
+
+    <div class="d100-question"
+         data-answer="B">
+
+      <h3>Question 5</h3>
+
+      <p>
+        Weathering breaks
+        a piece of rock.
+
+        River water then carries
+        the pieces downstream.
+
+        What happened second?
+      </p>
+
+      <button data-choice="A">
+        A. Deposition
+      </button>
+
+      <button data-choice="B">
+        B. Erosion and transport
+      </button>
+
+      <button data-choice="C">
+        C. Cementation
+      </button>
+
+      <button data-choice="D">
+        D. Compaction
+      </button>
+
+      <div class="d100-feedback"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXIT -->
+
+  <section class="d59-card">
+
+    <h2>
+      🎟 Exit Ticket
+    </h2>
+
+
+    <p>
+      Explain how
+      running water
+      can contribute
+      to canyon formation.
+
+      <br><br>
+
+      Use:
+
+      <strong>
+        erosion,
+        transport,
+        time,
+        canyon
+      </strong>
+    </p>
+
+
+    <textarea
+      class="d59-textarea"
+      placeholder="Running water causes erosion by..."
+    ></textarea>
+
+  </section>
+
+
+  <!-- CER -->
+
+  <section class="d59-card">
+
+    <h2>
+      🧠 Canyon Carver CER
+    </h2>
+
+
+    <div class="d59-focus">
+
+      <strong>
+        Claim:
+      </strong>
+
+      A canyon is mainly
+      an erosional landform
+      in our Grade 5 model.
+    </div>
+
+
+    <div class="d59-grid3">
+
+      <div>
+
+        <h3>Claim</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="I claim..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Evidence</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="In the canyon model..."
+        ></textarea>
+
+      </div>
+
+
+      <div>
+
+        <h3>Reasoning</h3>
+
+        <textarea
+          class="d59-textarea"
+          placeholder="This is erosion because..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEXT -->
+
+  <section class="d59-card d59-cream">
+
+    <div class="d59-badge d59-blue-badge">
+      💨 Next Mission
+    </div>
+
+    <h2>
+      Day 101:
+      Sand Dune Engineer
+    </h2>
+
+
+    <div class="d59-box">
+
+      Next,
+      water steps aside
+      and wind takes control.
+
+      <br><br>
+
+      Students will investigate:
+
+      <strong>
+        💨 WIND
+        → TRANSPORT
+        → ⬇️ DEPOSITION
+        → 🏜️ SAND DUNE
+      </strong>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- VOCAB MODAL -->
+
+<div id="d100VocabModal"
+     class="d100-modal">
+
+  <div class="d100-modal-card">
+
+    <button
+      id="d100VocabClose"
+      class="d100-modal-close"
+      type="button">
+      ×
+    </button>
+
+    <div id="d100ModalIcon"
+         class="d100-modal-icon"></div>
+
+    <h2 id="d100ModalTerm"></h2>
+
+    <p id="d100ModalDefinition"></p>
+
+  </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='day100_direct.js') }}?v=100-final"></script>
+
+{% endblock %}

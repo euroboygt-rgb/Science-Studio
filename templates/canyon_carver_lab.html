@@ -1,0 +1,641 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='canyon_carver_lab.css') }}?v=100.1">
+
+
+<div class="cc-shell">
+
+
+  <header class="cc-hero">
+
+    <div class="cc-tags">
+
+      <span>🏜️ Landform Engineering</span>
+
+      <span>Water + Erosion</span>
+
+      <span>TEKS 5.10C</span>
+
+    </div>
+
+
+    <div class="cc-hero-row">
+
+      <div>
+
+        <h1>
+          Canyon Carver
+        </h1>
+
+        <p>
+          Run the water.
+          Remove sediment.
+          Advance time.
+          Carve the canyon.
+        </p>
+
+      </div>
+
+
+      <a class="cc-back"
+         href="/second-nine-weeks/day/100?view=student">
+        ← Back to Day 100
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <section class="cc-memory">
+
+    <span>
+      💧 WATER
+    </span>
+
+    <b>→</b>
+
+    <span>
+      ➡️ EROSION
+    </span>
+
+    <b>→</b>
+
+    <span>
+      🚚 TRANSPORT
+    </span>
+
+    <b>→</b>
+
+    <span>
+      🕰️ TIME
+    </span>
+
+    <b>→</b>
+
+    <span>
+      🏜️ CANYON
+    </span>
+
+  </section>
+
+
+  <!-- STATUS -->
+
+  <section class="cc-status">
+
+    <h2>
+      Canyon Mission Status
+    </h2>
+
+
+    <div class="cc-status-grid">
+
+      <div id="ccStatus1">
+        <span>🔴</span>
+        <strong>Mission 1</strong>
+        <small>Evidence</small>
+      </div>
+
+      <div id="ccStatus2">
+        <span>🔴</span>
+        <strong>Mission 2</strong>
+        <small>Carver</small>
+      </div>
+
+      <div id="ccStatus3">
+        <span>🔴</span>
+        <strong>Mission 3</strong>
+        <small>Break or Move</small>
+      </div>
+
+      <div id="ccStatus4">
+        <span>🔴</span>
+        <strong>Mission 4</strong>
+        <small>Detective</small>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 1 -->
+
+  <section class="cc-mission-head">
+
+    <div class="cc-number">
+      1
+    </div>
+
+    <div>
+
+      <h2>
+        Canyon Evidence Scanner
+      </h2>
+
+      <p>
+        Identify the evidence
+        that belongs
+        in a canyon model.
+      </p>
+
+    </div>
+
+
+    <aside class="cc-score">
+
+      <strong>Score</strong>
+
+      <span id="ccScore1">
+        0 / 5
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="cc-panel">
+
+    <div id="ccEvidence1"
+         class="cc-evidence"></div>
+
+    <div id="ccQuestion1"
+         class="cc-question"></div>
+
+    <div id="ccChoices1"
+         class="cc-choices"></div>
+
+
+    <button id="ccCheck1"
+            class="cc-main-button"
+            type="button">
+      🔎 SCAN CANYON EVIDENCE
+    </button>
+
+
+    <div id="ccFeedback1"
+         class="cc-feedback">
+      Follow the removed material.
+    </div>
+
+
+    <button id="ccNext1"
+            class="cc-next-button"
+            type="button"
+            disabled>
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 2 -->
+
+  <section class="cc-mission-head">
+
+    <div class="cc-number">
+      2
+    </div>
+
+    <div>
+
+      <h2>
+        Canyon Carver Simulator
+      </h2>
+
+      <p>
+        Control water flow
+        and time
+        while erosion
+        deepens and widens
+        the canyon.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="cc-panel">
+
+    <div id="ccCanyonScene"
+         class="cc-canyon-scene">
+
+      <div class="cc-layer-label">
+        ROCK LAYERS
+      </div>
+
+
+      <div id="ccCutout"
+           class="cc-cutout">
+
+        <div class="cc-river">
+          💧
+        </div>
+
+      </div>
+
+
+      <div class="cc-sediment-stream">
+        <span id="ccSedimentMoved">
+          🪨 0 sediment units moved
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="cc-controls">
+
+      <section>
+
+        <h3>
+          STEP 1 — WATER FLOW
+        </h3>
+
+
+        <div class="cc-button-row">
+
+          <button class="cc-flow"
+                  data-flow="1"
+                  type="button">
+            💧 GENTLE
+          </button>
+
+          <button class="cc-flow"
+                  data-flow="2"
+                  type="button">
+            🌊 MODERATE
+          </button>
+
+          <button class="cc-flow"
+                  data-flow="3"
+                  type="button">
+            🌊⚡ STRONG
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <section>
+
+        <h3>
+          STEP 2 — TIME
+        </h3>
+
+
+        <div class="cc-button-row">
+
+          <button class="cc-time"
+                  data-time="1"
+                  type="button">
+            🕒 SHORT
+          </button>
+
+          <button class="cc-time"
+                  data-time="2"
+                  type="button">
+            🕰️ LONG
+          </button>
+
+          <button class="cc-time"
+                  data-time="3"
+                  type="button">
+            ⏳ VERY LONG
+          </button>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <button id="ccRunErosion"
+            class="cc-main-button"
+            type="button">
+      💧➡️ RUN EROSION CYCLE
+    </button>
+
+
+    <div class="cc-meters">
+
+      <article>
+
+        <strong>
+          CANYON DEPTH
+        </strong>
+
+        <div class="cc-meter">
+          <div id="ccDepthMeter"></div>
+        </div>
+
+        <span id="ccDepthText">
+          SHALLOW
+        </span>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          CANYON WIDTH
+        </strong>
+
+        <div class="cc-meter">
+          <div id="ccWidthMeter"></div>
+        </div>
+
+        <span id="ccWidthText">
+          NARROW
+        </span>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          EROSION PROGRESS
+        </strong>
+
+        <div class="cc-meter">
+          <div id="ccProgressMeter"></div>
+        </div>
+
+        <span id="ccProgressText">
+          0 / 8
+        </span>
+
+      </article>
+
+    </div>
+
+
+    <div id="ccFeedback2"
+         class="cc-feedback">
+
+      Select water flow
+      and a time interval.
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION 3 -->
+
+  <section class="cc-mission-head">
+
+    <div class="cc-number">
+      3
+    </div>
+
+    <div>
+
+      <h2>
+        Break or Move?
+      </h2>
+
+      <p>
+        Distinguish weathering
+        from erosion.
+      </p>
+
+    </div>
+
+
+    <aside class="cc-score">
+
+      <strong>Score</strong>
+
+      <span id="ccScore3">
+        0 / 5
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="cc-panel">
+
+    <div id="ccEvidence3"
+         class="cc-evidence"></div>
+
+    <div id="ccQuestion3"
+         class="cc-question"></div>
+
+    <div id="ccChoices3"
+         class="cc-choices"></div>
+
+
+    <button id="ccCheck3"
+            class="cc-main-button"
+            type="button">
+      💥➡️ CHECK PROCESS
+    </button>
+
+
+    <div id="ccFeedback3"
+         class="cc-feedback">
+
+      Weathering = BREAK.
+      Erosion = MOVE.
+
+    </div>
+
+
+    <button id="ccNext3"
+            class="cc-next-button"
+            type="button"
+            disabled>
+      NEXT →
+    </button>
+
+  </section>
+
+
+  <!-- MISSION 4 -->
+
+  <section class="cc-mission-head">
+
+    <div class="cc-number">
+      4
+    </div>
+
+    <div>
+
+      <h2>
+        Canyon Detective
+      </h2>
+
+      <p>
+        Solve mixed
+        canyon evidence cases.
+      </p>
+
+    </div>
+
+
+    <aside class="cc-score">
+
+      <strong>Score</strong>
+
+      <span id="ccScore4">
+        0 / 6
+      </span>
+
+    </aside>
+
+  </section>
+
+
+  <section class="cc-panel">
+
+    <div id="ccEvidence4"
+         class="cc-evidence"></div>
+
+    <div id="ccQuestion4"
+         class="cc-question"></div>
+
+    <div id="ccChoices4"
+         class="cc-choices"></div>
+
+
+    <button id="ccCheck4"
+            class="cc-main-button"
+            type="button">
+      🕵️ SOLVE CANYON CASE
+    </button>
+
+
+    <div id="ccFeedback4"
+         class="cc-feedback">
+
+      Follow the erosion evidence.
+    </div>
+
+
+    <button id="ccNext4"
+            class="cc-next-button"
+            type="button"
+            disabled>
+      NEXT CASE →
+    </button>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="cc-final">
+
+    <div class="cc-final-icon">
+      💧➡️🏜️🏆
+    </div>
+
+
+    <h2>
+      Canyon Mission Status
+    </h2>
+
+
+    <div id="ccFinalMessage"
+         class="cc-final-message">
+
+      Complete all four missions.
+
+    </div>
+
+  </section>
+
+
+  <!-- LOG -->
+
+  <section class="cc-log">
+
+    <h2>
+      📓 Canyon Formation Evidence Log
+    </h2>
+
+
+    <div class="cc-log-grid">
+
+      <article>
+
+        <strong>
+          💧 WATER
+        </strong>
+
+        <p>
+          Running water
+          is an important
+          erosional agent.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          💥 WEATHERING
+        </strong>
+
+        <p>
+          Rock can be
+          weakened or broken.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          ➡️ EROSION
+        </strong>
+
+        <p>
+          Earth material
+          is removed
+          and transported.
+        </p>
+
+      </article>
+
+
+      <article>
+
+        <strong>
+          🕰️ TIME
+        </strong>
+
+        <p>
+          Repeated change
+          can deepen
+          and widen
+          a canyon.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='canyon_carver_lab.js') }}?v=100.1"></script>
+
+{% endblock %}

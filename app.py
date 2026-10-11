@@ -85,6 +85,58 @@ app = Flask(__name__)
 
 
 
+
+# Science Studio Dedicated Day 100 Start
+
+@app.before_request
+def science_studio_dedicated_day100():
+
+    from flask import (
+        request as flask_request,
+        render_template as flask_render_template,
+    )
+
+    if flask_request.path not in (
+        "/second-nine-weeks/day/100",
+        "/2nd-nine-weeks/day/100",
+    ):
+        return None
+
+    view = flask_request.args.get(
+        "view",
+        "student"
+    )
+
+    if view not in (
+        "student",
+        "teacher",
+    ):
+        view = "student"
+
+    return flask_render_template(
+        "day100_lesson.html",
+        view=view
+    )
+
+# Science Studio Dedicated Day 100 End
+
+
+# Science Studio Canyon Carver Route Start
+
+@app.route("/labs/canyon-carver")
+def canyon_carver_lab():
+
+    from flask import (
+        render_template as flask_render_template,
+    )
+
+    return flask_render_template(
+        "canyon_carver_lab.html"
+    )
+
+# Science Studio Canyon Carver Route End
+
+
 # Science Studio Dedicated Day 99 Start
 
 @app.before_request
